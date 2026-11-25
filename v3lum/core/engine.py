@@ -26,7 +26,7 @@ from v3lum.core.context import Runtime, ScanOptions
 from v3lum.core.detect import Detection
 from v3lum.core.entities import Entity, EntityType
 from v3lum.core.graph import Graph
-from v3lum.core.http import AuthRequired, HttpError, NetworkError, OfflineError, RateLimited
+from v3lum.core.http import AuthRequired, Blocked, HttpError, NetworkError, OfflineError, RateLimited
 from v3lum.core.models import Correlation, Finding, ModuleResult, Pivot, Status
 from v3lum.core.module import Module, load_modules, modules_for, readiness
 
@@ -191,6 +191,9 @@ class Engine:
             if opts.tlp == "red" and cls.shares_input:
                 blocked.append((cls, Status.SKIPPED, "TLP:RED - would share the value with a third party"))
                 continue
+            if cls.daily_quota and not opts.offline and self.runtime.quota.exhausted(cls.name, cls.daily_quota):
+                blocked.append((cls, Status.RATE_LIMITED, f"daily free quota used ({cls.daily_quota}/day per egress IP); add an API key or wait"))
+                continue
             ready, reason = readiness(cls, keys, opts.mode, opts.authorized)
             if not ready:
                 status = Status.NEEDS_KEY if "key" in reason else Status.UNAVAILABLE if "package" in reason else Status.SKIPPED
@@ -222,6 +225,8 @@ class Engine:
                     res = out
                 if res.status is Status.OK and not res.has_data:
                     res.status = Status.EMPTY
+        except Blocked as exc:
+            res.status, res.error = Status.BLOCKED, str(exc)
         except RateLimited as exc:
             res.status, res.error = Status.RATE_LIMITED, str(exc)
         except AuthRequired as exc:
@@ -241,6 +246,11 @@ class Engine:
         res.duration = time.monotonic() - start
         res.requests = ctx.http.requests
         res.cache_hits = ctx.http.cache_hits
+        if cls.daily_quota and res.requests:
+            try:
+                self.runtime.quota.add(cls.name, res.requests)
+            except Exception:  # pragma: no cover - quota bookkeeping must never fail a run
+                pass
         if len(res.pivots) > cls.max_pivots:
             dropped = len(res.pivots) - cls.max_pivots
             res.pivots = res.pivots[: cls.max_pivots]
@@ -346,7 +356,7 @@ class Engine:
         cov["runs"] = cov.get("runs", 0) + 1
         cov[res.status.value] = cov.get(res.status.value, 0) + 1
         cov["status"] = _merge_status(cov.get("status"), res.status.value)
-        if res.error and res.status in (Status.ERROR, Status.RATE_LIMITED, Status.NEEDS_KEY, Status.UNAVAILABLE):
+        if res.error and res.status in (Status.ERROR, Status.RATE_LIMITED, Status.NEEDS_KEY, Status.UNAVAILABLE, Status.BLOCKED):
             cov["reason"] = res.error[:200]
         if res.raw is not None and opts.save_evidence and case.case_dir:
             self._save_evidence(Path(case.case_dir), res)
@@ -434,7 +444,7 @@ def _cov_name(name: str) -> dict[str, Any]:
     return _cov(cls) if cls else {"title": name, "category": "?", "status": "not_run", "runs": 0}
 
 
-_STATUS_RANK = {"ok": 6, "empty": 5, "rate_limited": 4, "error": 3, "needs_key": 2, "unavailable": 2, "skipped": 1, "not_run": 0}
+_STATUS_RANK = {"ok": 7, "empty": 6, "rate_limited": 5, "blocked": 4, "error": 3, "needs_key": 2, "unavailable": 2, "skipped": 1, "not_run": 0}
 
 
 def _merge_status(current: str | None, new: str) -> str:

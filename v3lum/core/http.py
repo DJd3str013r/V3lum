@@ -46,6 +46,58 @@ class AuthRequired(HttpError):
     """The provider answered 401/403 (missing/invalid key or blocked)."""
 
 
+class Blocked(HttpError):
+    """Anti-bot challenge, WAF block page, geo or datacenter-IP block. Means 'could not verify'."""
+
+
+# Markers of anti-bot / WAF interstitials. Never try to bypass them: report "blocked".
+# STRONG markers only appear on challenge pages (checked even on HTTP 200);
+# WEAK markers also appear on normal pages (CF script injection, captcha widgets): error statuses only.
+_STRONG_BLOCK_MARKERS = (
+    "cf-chl-",
+    "<title>just a moment...</title>",
+    "attention required! | cloudflare",
+    "cf-browser-verification",
+    "captcha-delivery.com",
+    "px-captcha",
+    "_incapsula_resource",
+    "blocked by network security",
+    "/blockme.html",
+    "ddos-guard",
+)
+_WEAK_BLOCK_MARKERS = (
+    "challenge-platform",
+    "access denied</title>",
+    "request unsuccessful. incapsula",
+    "akamai bot manager",
+    "sucuri website firewall",
+    "verify you are human",
+    "are you a robot",
+    "g-recaptcha",
+    "h-captcha",
+)
+
+
+def block_reason(status: int, headers: dict[str, str], body: bytes | str) -> str | None:
+    """Return why a response looks like an anti-bot/WAF block page, or None."""
+    if status not in (200, 202, 403, 406, 409, 429, 430, 451, 503) and status < 500:
+        return None
+    text = body.decode("utf-8", errors="replace") if isinstance(body, bytes) else body
+    sample = text[:8000].lower()
+    server = headers.get("server", "").lower()
+    markers = _STRONG_BLOCK_MARKERS if 200 <= status < 300 else _STRONG_BLOCK_MARKERS + _WEAK_BLOCK_MARKERS
+    for marker in markers:
+        if marker in sample:
+            return f"anti-bot/WAF page ({marker.strip('/<>. ')})"
+    if status in (403, 503) and ("cloudflare" in server or "cf-mitigated" in headers):
+        return "Cloudflare block"
+    if status == 451:
+        return "unavailable for legal reasons (geo-block)"
+    if status == 430:
+        return "provider blacklisted this egress IP (HTTP 430)"
+    return None
+
+
 class NetworkError(Exception):
     """Connection failure, DNS failure, TLS failure or timeout."""
 
@@ -86,13 +138,24 @@ class Response:
         except ValueError as exc:
             raise HttpError(f"invalid JSON from {self.url}: {exc}", self.status, self.url, self.text) from exc
 
+    @property
+    def blocked(self) -> str | None:
+        """Reason if this looks like an anti-bot/WAF/geo block page (see block_reason)."""
+        return block_reason(self.status, self.headers, self.content)
+
     def raise_for_status(self) -> Response:
-        if self.status == 429:
-            raise RateLimited(f"rate limited by {urlsplit(self.url).hostname}", 429, self.url, self.text)
+        host = urlsplit(self.url).hostname
+        reason = self.blocked
+        if reason and not self.ok:
+            raise Blocked(f"{host}: {reason}", self.status, self.url, self.text)
+        if self.status in (429, 430):
+            raise RateLimited(f"rate limited by {host}", self.status, self.url, self.text)
         if self.status in (401, 403):
-            raise AuthRequired(f"HTTP {self.status} from {urlsplit(self.url).hostname}", self.status, self.url, self.text)
+            raise AuthRequired(f"HTTP {self.status} from {host}", self.status, self.url, self.text)
         if not self.ok:
-            raise HttpError(f"HTTP {self.status} from {urlsplit(self.url).hostname}", self.status, self.url, self.text)
+            raise HttpError(f"HTTP {self.status} from {host}", self.status, self.url, self.text)
+        if reason:  # 200 OK but the body is a challenge page
+            raise Blocked(f"{host}: {reason}", self.status, self.url, self.text)
         return self
 
 

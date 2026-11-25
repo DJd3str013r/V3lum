@@ -35,8 +35,12 @@ class ExampleSource(Module):
     tags = {"free"}                    # free-form: free, brazil, slow, noisy, offline...
     cache_ttl = 86400                  # seconds; None = global default
     min_interval = 0.0                 # seconds between requests to this module's hosts (ToS!)
+    daily_quota = None                 # free-tier requests/day per egress IP (engine stops when used)
     default_enabled = True             # False = opt-in (slow/noisy); run with -M name or --all-modules
     notice = ""                        # legal/ethical note shown by `v3lum info`
+    user_agent = None                  # per-provider UA when required (e.g. registro.br rejects browser UAs)
+    shares_input = True                # False only if the value never leaves the machine (TLP:RED safe)
+    terms = "open"                     # open | noncommercial | license | key-terms (provider terms)
 
     def applies(self, entity: Entity, ctx) -> bool:   # optional extra filter
         return True
@@ -66,7 +70,8 @@ nothing else has to be edited.
 | `ctx.` | use |
 |---|---|
 | `http.get(url, params=, headers=, timeout=, ttl=, allow_redirects=, max_bytes=)` | returns `Response` (`.status .ok .text .json() .headers .url .history .from_cache`) |
-| `http.get_json(url, ok404=False, ...)` / `http.post_json(...)` | parsed JSON; raises `RateLimited` (429), `AuthRequired` (401/403), `HttpError` (other non-2xx) |
+| `http.get_json(url, ok404=False, ...)` / `http.post_json(...)` | parsed JSON; raises `Blocked` (anti-bot/WAF/geo page, even with HTTP 200), `RateLimited` (429/430), `AuthRequired` (401/403), `HttpError` (other non-2xx) |
+| `Response.blocked` | reason string when a response is a challenge/block page (check it when parsing HTML yourself) |
 | `http.post(url, json_body=..., data=...)` | POST (not cached unless `ttl=` given) |
 | `dns.query(name, "MX")` | `DnsAnswer(records=[...], status, authenticated, error)`; `dns.ptr(ip)`, `dns.addresses(name)` |
 | `key("shodan")` / `has_key(...)` | API keys (env `V3LUM_KEY_<NAME>` or `v3lum keys set`) |
@@ -129,7 +134,9 @@ Team rules (inherited from Céos, approved by the council):
    persisted.
 4. No people-search over leaked databases (CPF/name/phone "painéis"). Brazilian official open data
    (CNPJ, QSA, CEP...) is fine; CPF is validated offline only.
-5. `403`, `429`, timeouts and errors mean **"could not verify"**, never "does not exist".
+5. `403`, `429`, timeouts and errors mean **"could not verify"**, never "does not exist". Many
+   providers return errors inside an HTTP 200 body (`"API count exceeded"`, `{"status": "0"}`,
+   `{"success": false}`): always check the body and `res.mark("rate_limited"|"blocked"|"error", reason)`.
 6. Respect provider limits: set `min_interval` and `cache_ttl`; identify yourself with a UA only
    when the provider asks for it (e.g. Nominatim, SEC).
 7. Do not send the investigated value to services that publish submissions (e.g. urlscan public

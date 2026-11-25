@@ -170,3 +170,36 @@ def test_cache_clear_and_stats(server, client):
     st = client.cache.stats()
     assert st["entries"] == 1
     assert client.cache.clear(host="127.0.0.1") == 1
+
+
+def test_block_detection_strong_and_weak_markers():
+    from v3lum.core.http import Blocked, Response, block_reason
+
+    challenge = b"<html><head><title>Just a moment...</title></head><body>cf-chl-bypass</body></html>"
+    assert block_reason(403, {"server": "cloudflare"}, challenge)
+    assert block_reason(200, {}, challenge)  # challenge served with 200 is still a block
+    normal = b"<html><script src='/cdn-cgi/challenge-platform/scripts/jsd/main.js'></script><div class='g-recaptcha'></div>profile</html>"
+    assert block_reason(200, {}, normal) is None  # weak markers ignored on 200
+    assert block_reason(403, {}, normal)  # but count on an error page
+    assert block_reason(404, {}, challenge) is None
+    r = Response(status=403, url="https://x.example/a", headers={"server": "cloudflare"}, content=b"denied")
+    with pytest.raises(Blocked):
+        r.raise_for_status()
+    r200 = Response(status=200, url="https://x.example/a", headers={}, content=challenge)
+    with pytest.raises(Blocked):
+        r200.raise_for_status()
+    assert Response(status=200, url="https://x.example/a", headers={}, content=b'{"ok":1}').raise_for_status().ok
+
+
+def test_quota_book(tmp_path):
+    from v3lum.core.quota import QuotaBook
+
+    q = QuotaBook(tmp_path / "q.db")
+    assert not q.exhausted("hackertarget", 3)
+    q.add("hackertarget", 2)
+    q.add("hackertarget", 1)
+    assert q.used("hackertarget") == 3 and q.exhausted("hackertarget", 3)
+    assert not q.exhausted("hackertarget", None)
+    assert q.summary() == {"hackertarget": 3}
+    q.reset("hackertarget")
+    assert q.used("hackertarget") == 0

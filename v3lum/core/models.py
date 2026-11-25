@@ -62,7 +62,8 @@ class Status(str, enum.Enum):
     ERROR = "error"  # failed (network, parsing, bug)
     SKIPPED = "skipped"  # not applicable (applies() said no)
     NEEDS_KEY = "needs_key"  # API key missing
-    RATE_LIMITED = "rate_limited"  # provider throttled us
+    RATE_LIMITED = "rate_limited"  # provider throttled us / daily quota used up
+    BLOCKED = "blocked"  # anti-bot wall, geo/datacenter block: could not verify (never "absent")
     UNAVAILABLE = "unavailable"  # provider down / dependency missing / offline mode
 
 

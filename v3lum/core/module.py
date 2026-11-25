@@ -111,6 +111,8 @@ class Module:
     cache_ttl: ClassVar[int | None] = None
     #: minimum seconds between requests to this module's hosts (politeness / ToS).
     min_interval: ClassVar[float] = 0.0
+    #: free-tier requests per day (per egress IP); the engine stops scheduling once used up.
+    daily_quota: ClassVar[int | None] = None
     #: max pivots the engine keeps from one run (protects against explosions).
     max_pivots: ClassVar[int] = 100
     #: hard timeout for one run (seconds).
@@ -162,6 +164,7 @@ class Module:
             "notice": cls.notice,
             "shares_input": cls.shares_input,
             "terms": cls.terms,
+            "daily_quota": cls.daily_quota,
         }
 
 

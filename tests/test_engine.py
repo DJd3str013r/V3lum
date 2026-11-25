@@ -222,3 +222,27 @@ def test_pivot_cap_per_module(registry):
     define(registry, "t_maxpiv", [T.DOMAIN], run, max_pivots=5)
     case = scan([("domain", "example.org")], ["t_maxpiv"])
     assert len(case.results[0].pivots) == 5 and "dropped" in case.results[0].error
+
+
+def test_blocked_status_and_daily_quota(registry):
+    from v3lum.core.http import Blocked
+
+    def walled(self, entity, ctx):
+        raise Blocked("site: anti-bot/WAF page", 403)
+
+    def counted(self, entity, ctx):
+        ctx.http.requests += 1  # simulate one network request
+        res = self.result(entity)
+        res.attr("ok", True)
+        return res
+
+    define(registry, "t_walled", [T.DOMAIN], walled)
+    define(registry, "t_quota", [T.DOMAIN], counted, daily_quota=1)
+    case = scan([("domain", "example.org")], ["t_walled", "t_quota"])
+    by = {r.module: r for r in case.results}
+    assert by["t_walled"].status is Status.BLOCKED
+    assert by["t_quota"].status is Status.OK
+    # second scan: quota (1/day) already used -> not scheduled, reported as rate limited
+    case2 = scan([("domain", "example.net")], ["t_quota"])
+    assert not case2.results
+    assert case2.coverage["t_quota"]["status"] == "rate_limited"

@@ -59,6 +59,7 @@ THEME = Theme(
         "status.skipped": PALETTE["ghost"],
         "status.needs_key": PALETTE["amber"],
         "status.rate_limited": PALETTE["amber"],
+        "status.blocked": PALETTE["magenta"],
         "status.unavailable": PALETTE["ghost"],
         "status.not_run": PALETTE["ghost"],
     }
@@ -72,6 +73,7 @@ STATUS_ICON = {
     "skipped": "[-]",
     "needs_key": "[k]",
     "rate_limited": "[!]",
+    "blocked": "[#]",
     "unavailable": "[-]",
     "not_run": "[ ]",
 }

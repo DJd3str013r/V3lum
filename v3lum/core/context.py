@@ -114,6 +114,16 @@ class Runtime:
             )
         self.http = http_client
         self.data = DataStore(self)
+        self._quota: Any = None
+
+    @property
+    def quota(self) -> Any:
+        """Daily quota book (created lazily in the V3LUM home)."""
+        if self._quota is None:
+            from v3lum.core.quota import QuotaBook
+
+            self._quota = QuotaBook(paths.home() / "quota.db")
+        return self._quota
 
     def now(self) -> _dt.datetime:
         return self._now() if self._now else _dt.datetime.now(_dt.timezone.utc)

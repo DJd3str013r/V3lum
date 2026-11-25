@@ -50,7 +50,7 @@ details{background:var(--panel);border:1px solid var(--line);border-radius:4px;m
 summary{cursor:pointer;color:var(--text)}code{color:var(--acid);word-break:break-all}
 .warn{border-left:3px solid var(--amber);padding:6px 12px;background:#15120a;color:var(--amber);margin:8px 0}
 footer{margin-top:40px;color:var(--ghost);font-size:12px;text-align:center}
-.st-ok{color:var(--neon)}.st-empty{color:var(--dim)}.st-error{color:var(--blood)}.st-needs_key,.st-rate_limited{color:var(--amber)}.st-skipped,.st-unavailable,.st-not_run{color:var(--ghost)}
+.st-ok{color:var(--neon)}.st-empty{color:var(--dim)}.st-error{color:var(--blood)}.st-needs_key,.st-rate_limited{color:var(--amber)}.st-blocked{color:var(--magenta)}.st-skipped,.st-unavailable,.st-not_run{color:var(--ghost)}
 @media print{body{background:#fff;color:#000}header,table,.kpi,details{background:#fff}}
 """
 
