@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "v3lum"
+version = "1.0.0"
+description = "V3LUM - lift the veil. OSINT, Cyber Threat Intelligence and recon multikit for the command line."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "V3LUM contributors" }]
+keywords = ["osint", "cti", "threat-intelligence", "recon", "pentest", "cli"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Environment :: Console",
+    "Topic :: Security",
+    "Intended Audience :: Information Technology",
+]
+dependencies = [
+    "rich>=13.0",
+    "requests>=2.31",
+]
+
+[project.optional-dependencies]
+full = [
+    "phonenumbers>=8.13",
+    "dnspython>=2.4",
+    "Pillow>=10.0",
+    "pypdf>=4.0",
+    "PySocks>=1.7",
+]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "ruff>=0.5",
+]
+
+[project.scripts]
+v3lum = "v3lum.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["v3lum*"]
+
+[tool.setuptools.package-data]
+v3lum = ["data/*", "data/**/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+markers = [
+    "live: hits real third-party APIs (run with V3LUM_LIVE=1)",
+]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B", "UP", "SIM"]
+ignore = ["E501", "UP007", "UP045", "SIM105", "SIM108", "B904", "B905"]
