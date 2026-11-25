@@ -12,6 +12,7 @@ import argparse
 import cmd
 import os
 import shlex
+import sys
 from typing import Any
 
 from rich.table import Table
@@ -60,7 +61,7 @@ class Shell(cmd.Cmd):
     def prompt(self) -> str:  # type: ignore[override]
         mode = self.session["mode"]
         color = {"passive": "32", "light": "36", "active": "33"}.get(mode, "32")
-        if self.console.no_color:
+        if self.console.no_color or not sys.stdout.isatty() or not sys.stdin.isatty():
             return f"v3lum[{mode}]> "
         return f"\001\033[1;32m\002v3lum\001\033[0m\002\001\033[2m\002[\001\033[0;{color}m\002{mode}\001\033[0m\033[2m\002]\001\033[0m\002\001\033[1;35m\002▸\001\033[0m\002 "
 
