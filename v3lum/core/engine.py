@@ -44,6 +44,7 @@ EXPAND_CAP: dict[EntityType, int] = {
     EntityType.BTC: 5, EntityType.ETH: 5, EntityType.THREAT_ACTOR: 3, EntityType.MALWARE: 5, EntityType.MITRE: 15,
 }
 DEFAULT_CAP = 5
+INPUT_LIST_CAP = 200
 
 
 @dataclass
@@ -375,7 +376,9 @@ class Engine:
             child.noise = True
             return False
         k = (parent.key, pv.entity.type)
-        if expanded[k] >= EXPAND_CAP.get(pv.entity.type, DEFAULT_CAP):
+        # IOCs pasted by the analyst (text/file inputs) are all wanted: only the entity budget limits them.
+        cap = INPUT_LIST_CAP if parent.type in (EntityType.TEXT, EntityType.FILE) else EXPAND_CAP.get(pv.entity.type, DEFAULT_CAP)
+        if expanded[k] >= cap:
             return False
         expanded[k] += 1
         return True
