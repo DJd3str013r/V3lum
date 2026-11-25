@@ -188,6 +188,9 @@ class Engine:
                 continue
             if not cls.default_enabled and not opts.include_disabled and cls.name not in opts.include:
                 continue
+            if opts.tlp == "red" and cls.shares_input:
+                blocked.append((cls, Status.SKIPPED, "TLP:RED - would share the value with a third party"))
+                continue
             ready, reason = readiness(cls, keys, opts.mode, opts.authorized)
             if not ready:
                 status = Status.NEEDS_KEY if "key" in reason else Status.UNAVAILABLE if "package" in reason else Status.SKIPPED

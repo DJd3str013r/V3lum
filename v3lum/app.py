@@ -60,6 +60,7 @@ class ScanRequest:
     save_evidence: bool = True
     assume_yes: bool = False
     interactive: bool = True
+    tlp: str = "clear"
 
 
 class App:
@@ -164,6 +165,7 @@ class App:
             timeout_total=req.timeout_total,
             save_evidence=req.save_evidence,
             authorization_note=req.authorization_note,
+            tlp=req.tlp,
         )
         for name in list(options.include) + list(options.exclude):
             try:
@@ -384,6 +386,8 @@ class App:
         g.add_row("reference", d["reference"] or "-")
         g.add_row("tags", ", ".join(d["tags"]) or "-")
         g.add_row("auto-run", "yes" if d["default_enabled"] else "no (select with -M or --all-modules)")
+        g.add_row("shares input", "yes (value sent to the provider)" if d["shares_input"] else "no (offline / local data)")
+        g.add_row("terms", d["terms"])
         g.add_row("status", Text("ready", style="status.ok") if ok else Text(reason, style="status.needs_key"))
         if d["notice"]:
             g.add_row("notice", Text(d["notice"], style="v.warn"))

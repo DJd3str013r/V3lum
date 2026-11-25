@@ -23,6 +23,7 @@ class IocExtract(Module):
     accepts = {T.TEXT, T.FILE}
     produces = {T.URL, T.DOMAIN, T.IPV4, T.IPV6, T.EMAIL, T.MD5, T.SHA1, T.SHA256, T.SHA512, T.CVE, T.MITRE, T.BTC, T.ETH}
     tags = {"offline"}
+    shares_input = False
     max_pivots = 500
 
     def applies(self, entity: Entity, ctx: object) -> bool:

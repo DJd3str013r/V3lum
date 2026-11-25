@@ -34,9 +34,11 @@ class ScanOptions:
     timeout_total: float = 0.0  # 0 = no global timeout
     save_evidence: bool = True
     authorization_note: str = ""  # who authorized active testing / scope reference
+    tlp: str = "clear"  # clear | green | amber | red  (red = never send inputs to third parties)
 
     def to_dict(self) -> dict[str, Any]:
         return {
+            "tlp": self.tlp,
             "mode": self.mode.label,
             "authorized": self.authorized,
             "depth": self.depth,
@@ -137,6 +139,7 @@ class Context:
             runtime.http,
             ttl=getattr(module_cls, "cache_ttl", None),
             min_interval=float(getattr(module_cls, "min_interval", 0.0) or 0.0),
+            user_agent=getattr(module_cls, "user_agent", None),
         )
         self.dns = Resolver(
             self.http,

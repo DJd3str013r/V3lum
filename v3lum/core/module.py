@@ -117,6 +117,16 @@ class Module:
     timeout: ClassVar[float] = 60.0
     #: legal/ethical note shown in `v3lum info` (e.g. LGPD reminders).
     notice: ClassVar[str] = ""
+    #: User-Agent override for this module's requests (some providers require an identifying UA,
+    #: others reject browser-like ones). None = global default.
+    user_agent: ClassVar[str | None] = None
+    #: does the module send the investigated value to a third party? (False for offline modules and
+    #: local datasets). Inputs marked TLP:RED only run modules with shares_input = False.
+    shares_input: ClassVar[bool] = True
+    #: provider terms for the data source: "open" (free, commercial use OK), "noncommercial"
+    #: (free tier forbids commercial use), "license" (needs a paid/commercial plan for companies),
+    #: "key-terms" (governed by the terms the key owner accepted). Shown in `v3lum info`.
+    terms: ClassVar[str] = "open"
 
     # ------------------------------------------------------------------------------------
 
@@ -150,6 +160,8 @@ class Module:
             "tags": sorted(cls.tags),
             "default_enabled": cls.default_enabled,
             "notice": cls.notice,
+            "shares_input": cls.shares_input,
+            "terms": cls.terms,
         }
 
 

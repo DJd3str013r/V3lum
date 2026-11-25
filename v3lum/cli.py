@@ -64,6 +64,7 @@ def build_parser() -> argparse.ArgumentParser:
     s.add_argument("-d", "--depth", type=int, help="pivot depth: 0 = only inputs, 1 = + discovered entities (default), 2+ = deeper")
     s.add_argument("-m", "--mode", choices=["passive", "light", "active"], help="passive (default) | light (touch target like a visitor) | active (intrusive)")
     s.add_argument("--authorized", nargs="?", const="confirmed", metavar="REF", help="confirm written authorization for active mode (optional reference)")
+    s.add_argument("--tlp", choices=["clear", "green", "amber", "red"], default="clear", help="TLP of the inputs: red = never send them to third-party services (offline modules only)")
     s.add_argument("-M", "--modules", help="run only these modules (comma separated)")
     s.add_argument("-x", "--exclude", help="skip these modules (comma separated)")
     s.add_argument("-c", "--categories", help="only modules of these categories (comma separated)")
@@ -245,6 +246,7 @@ def dispatch(args: argparse.Namespace, app: Any, console: Any) -> int:  # noqa: 
             save_evidence=not args.no_evidence,
             assume_yes=args.yes,
             interactive=not args.json and not args.yes,
+            tlp=args.tlp,
         )
         data = app.scan(req)
         if args.json:
