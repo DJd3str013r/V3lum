@@ -1,0 +1,78 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 1
+  },
+  "org_profile": {
+    "org": {
+      "name": "Acme Pagamentos S.A."
+    },
+    "domains": [
+      {
+        "name": "acmepay.com.br",
+        "verification": "txt_verified",
+        "criticality": "high"
+      }
+    ],
+    "brands": [
+      {
+        "keyword": "acmepay",
+        "variants": [
+          "acme pay"
+        ],
+        "criticality": "high"
+      }
+    ],
+    "cnpj_roots": [
+      "11222333"
+    ],
+    "suppliers": [
+      {
+        "name": "Acme Parceiro Logistica Ltda",
+        "domains": [
+          "acmepay-partner.com.br"
+        ],
+        "brands": []
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "key": "url:https://shop.example.net/login",
+      "depth": 1,
+      "seed": false,
+      "ownership": "third_party",
+      "tags": [
+        "third_party"
+      ],
+      "attributes": {
+        "login_form": [
+          {
+            "value": true,
+            "source": "web_fingerprint"
+          }
+        ],
+        "security_headers_missing": [
+          {
+            "value": [
+              "strict-transport-security"
+            ],
+            "source": "security_headers"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [],
+  "expect": {
+    "login_page_without_hsts": {
+      "min": 1,
+      "max": 1,
+      "severity": "info",
+      "confidence_label": "probable"
+    }
+  }
+}

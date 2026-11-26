@@ -247,14 +247,18 @@ def test_brand_lookalikes_are_hostile_shaped(light, value, blocked):
         assert_allowed(decision)
 
 
-def test_no_org_profile_means_no_lookalike_check(light):
+def test_no_org_profile_means_no_lookalike_check(light, tmp_path, monkeypatch):
+    monkeypatch.setattr(policy, "DATA_DIR", tmp_path)  # no lure-word list: 'login' is a bundled lure word (WP24)
     target = ent("domain:acme-login.com")
     assert_allowed(contact_guard(light, target, ctx(org=None), run=seed(target)))
 
 
 def test_lure_word_domains(light, tmp_path, monkeypatch):
     target = ent("domain:atualizacao-cadastro.com")
-    assert_allowed(contact_guard(light, target, ctx(), run=seed(target)))  # no lure list shipped: no lure check
+    empty = tmp_path / "empty"
+    empty.mkdir()
+    monkeypatch.setattr(policy, "DATA_DIR", empty)
+    assert_allowed(contact_guard(light, target, ctx(), run=seed(target)))  # no lure list installed: no lure check
     (tmp_path / "brand_lures_pt.json").write_text(json.dumps({"schema": "v3lum.lures/1", "words": ["atualização", "cadastro", "pix"]}), encoding="utf-8")
     monkeypatch.setattr(policy, "DATA_DIR", tmp_path)
     assert "atualizacao" in policy.lure_words()
@@ -519,3 +523,32 @@ def test_guard02_applies_to_org_mail_tokens(light):
     target = ent("url:https://evil.example/landing?u=ana%40acme-corp.com")
     decision = contact_guard(light, target, ctx(), run=seed(target))
     assert decision.rule_id == "GUARD-02" and decision.reason_code == "policy"
+
+
+class _GrowingSet(set):
+    """A tag set another thread grows while the guard reads it: the first iteration raises like a
+    live ``set`` changed during iteration."""
+
+    def __init__(self, *args: Any) -> None:
+        super().__init__(*args)
+        self.raised = False
+
+    def __iter__(self):
+        if not self.raised:
+            self.raised = True
+            raise RuntimeError("Set changed size during iteration")
+        return super().__iter__()
+
+
+def test_guard_reads_live_graph_collections_through_snapshots(light):
+    """Audit (wave 2): redirect hops run the guard in module worker threads while the engine thread
+    grows the case graph; the consensus check copies the node's tags (retrying a copy that raced)
+    instead of iterating the live set, so a racing update never turns into a spurious refusal and a
+    listing tag is still seen."""
+    graph = Graph()
+    node, _ = graph.add_node(ent("domain:listed.example"), 0)
+    node.tags = _GrowingSet({"blocklisted"})
+    assert policy._consensus(node, ctx(graph=graph)) == "listed as blocklisted"
+    node.tags = _GrowingSet({"blocklisted"})
+    reasons = policy.hostile_reasons(ent("domain:listed.example"), ctx(graph=graph))
+    assert any("listed as blocklisted" in r for r in reasons), reasons

@@ -1,0 +1,245 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 1
+  },
+  "org_profile": {
+    "org": {
+      "name": "Acme Pagamentos S.A."
+    },
+    "domains": [
+      {
+        "name": "acmepay.com.br",
+        "verification": "txt_verified",
+        "criticality": "high"
+      }
+    ],
+    "brands": [
+      {
+        "keyword": "acmepay",
+        "variants": [
+          "acme pay"
+        ],
+        "criticality": "high"
+      }
+    ],
+    "cnpj_roots": [
+      "11222333"
+    ],
+    "suppliers": [
+      {
+        "name": "Acme Parceiro Logistica Ltda",
+        "domains": [
+          "acmepay-partner.com.br"
+        ],
+        "brands": []
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "key": "domain:acmepay.com.br",
+      "depth": 0,
+      "seed": true,
+      "ownership": "own_asset",
+      "criticality": "high",
+      "tags": [
+        "own_asset"
+      ],
+      "attributes": {
+        "nameservers": [
+          {
+            "value": [
+              "ns1.acmepay.com.br",
+              "ns2.acmepay.com.br"
+            ],
+            "source": "dns_records"
+          }
+        ],
+        "mx": [
+          {
+            "value": [
+              "10 mx.acmepay.com.br"
+            ],
+            "source": "dns_records"
+          }
+        ]
+      }
+    },
+    {
+      "key": "domain:acmepay-store.com",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "registered": [
+          {
+            "value": true,
+            "source": "rdap"
+          }
+        ],
+        "created": [
+          {
+            "value": "2026-11-23",
+            "source": "rdap"
+          }
+        ],
+        "domain_age_days": [
+          {
+            "value": 3,
+            "source": "rdap"
+          }
+        ],
+        "registrant_kind": [
+          {
+            "value": "org",
+            "source": "rdap"
+          }
+        ],
+        "rdap_server": [
+          {
+            "value": "rdap.registro.br",
+            "source": "rdap"
+          }
+        ],
+        "registrant": [
+          {
+            "value": "Promocoes Exemplo Ltda",
+            "source": "rdap"
+          }
+        ],
+        "cnpj_roots": [
+          {
+            "value": [
+              "99888777"
+            ],
+            "source": "rdap"
+          }
+        ],
+        "registrant_doc": [
+          {
+            "value": "99.888.777/0001-00",
+            "source": "rdap"
+          }
+        ]
+      }
+    },
+    {
+      "key": "domain:acmepay-pix-old.com",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "registered": [
+          {
+            "value": true,
+            "source": "rdap"
+          }
+        ],
+        "created": [
+          {
+            "value": "2025-01-01",
+            "source": "rdap"
+          }
+        ],
+        "domain_age_days": [
+          {
+            "value": 694,
+            "source": "rdap"
+          }
+        ],
+        "registrant_kind": [
+          {
+            "value": "org",
+            "source": "rdap"
+          }
+        ],
+        "rdap_server": [
+          {
+            "value": "rdap.registro.br",
+            "source": "rdap"
+          }
+        ],
+        "registrant": [
+          {
+            "value": "Promocoes Exemplo Ltda",
+            "source": "rdap"
+          }
+        ],
+        "cnpj_roots": [
+          {
+            "value": [
+              "99888777"
+            ],
+            "source": "rdap"
+          }
+        ],
+        "registrant_doc": [
+          {
+            "value": "99.888.777/0001-00",
+            "source": "rdap"
+          }
+        ]
+      }
+    },
+    {
+      "key": "domain:unrelated-pix.com",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "registered": [
+          {
+            "value": true,
+            "source": "rdap"
+          }
+        ],
+        "created": [
+          {
+            "value": "2026-11-20",
+            "source": "rdap"
+          }
+        ],
+        "domain_age_days": [
+          {
+            "value": 6,
+            "source": "rdap"
+          }
+        ],
+        "registrant_kind": [
+          {
+            "value": "org",
+            "source": "rdap"
+          }
+        ],
+        "rdap_server": [
+          {
+            "value": "rdap.registro.br",
+            "source": "rdap"
+          }
+        ],
+        "registrant": [
+          {
+            "value": "Promocoes Exemplo Ltda",
+            "source": "rdap"
+          }
+        ],
+        "cnpj_roots": [
+          {
+            "value": [
+              "99888777"
+            ],
+            "source": "rdap"
+          }
+        ],
+        "registrant_doc": [
+          {
+            "value": "99.888.777/0001-00",
+            "source": "rdap"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": []
+}

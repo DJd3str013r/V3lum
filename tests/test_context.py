@@ -206,15 +206,17 @@ def test_ctx_http_error_markers_and_keyless(clean_registry):
         )
         http = FakeHttp().add("GET", "https://api.example.test/q", json={"error": "quota exceeded"}).add("GET", "https://api.example.test/f", status=403, text="Forbidden")
         ctx = make_ctx(cls, http)
-        with pytest.raises(QuotaExceeded):
-            ctx.http.get_json("https://api.example.test/q")  # error inside HTTP 200 (P321)
-        res = run_module(cls, "domain:example.com", http)
-        assert res.status is Status.EMPTY  # the synthetic run() makes no request
         from v3lum.core.http import Blocked
 
         with pytest.raises(Blocked) as err:
             ctx.http.get_json("https://api.example.test/f")  # keyless 403 = could not verify
         assert err.value.reason_code == "challenge"
+        with pytest.raises(QuotaExceeded):
+            ctx.http.get_json("https://api.example.test/q")  # error inside HTTP 200 (P321)
+        with pytest.raises(QuotaExceeded):  # the provider's own quota signal wins until the window resets (P334 cond 8)
+            ctx.http.get_json("https://api.example.test/f")
+        res = run_module(cls, "domain:example.com", http)
+        assert res.status is Status.EMPTY  # the synthetic run() makes no request
 
 
 def test_cancel_kill_switch(net_module):

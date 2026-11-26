@@ -65,6 +65,17 @@ Membership (``OrgProfile.owns``) uses the PSL registrable domain plus a label-wi
 ASNs, favicon hashes compare equal, CNPJs by their 8-character root and card BINs by prefix. Only
 ``txt_verified`` and ``attested`` domain entries are verified: ``seeded`` and ``confirmed`` entries
 never unlock own-asset-only or per-person breach modules (A4/A11).
+
+v2 (WP18, P378 cond 1/5/8/11): :func:`validate` / :func:`validate_text` are the strict schema check
+behind ``v3lum org check`` (every problem with its field path and file line; the lenient loader above
+stays as it is for scans); :func:`save` writes the profile 0600 (TOML or JSON, validated first, never
+an invalid document); :func:`txt_token` / :func:`txt_record` / :func:`verify_txt` implement the DNS
+proof of control (``TXT "v3lum-verify=<hmac12('domain', domain)>"`` at the domain, read through the
+core resolver: True / False / None = could not verify, never "absent"); :meth:`OrgProfile.mark_attested`
+and :meth:`OrgProfile.mark_txt_verified` record the two verified states and ``add_domain`` /
+``add_network`` / ``add_cnpj_root`` / ``add_app_id`` add analyst-confirmed entries (``v3lum org seed``).
+Nothing here sends the profile anywhere; the ``v3lum org`` commands write every change to the audit
+trail.
 """
 
 from __future__ import annotations
@@ -77,6 +88,7 @@ import os
 import re
 import stat
 import unicodedata
+from collections.abc import Mapping
 from dataclasses import dataclass, field, replace
 from pathlib import Path
 from typing import Any
@@ -93,6 +105,7 @@ except ModuleNotFoundError:  # pragma: no cover - Python 3.10: JSON profiles onl
 __all__ = [
     "CRITICALITIES",
     "NOT_OWNED",
+    "TXT_PREFIX",
     "VERIFICATIONS",
     "VERIFIED",
     "AppId",
@@ -102,9 +115,18 @@ __all__ = [
     "NetEntry",
     "OrgProfile",
     "Ownership",
+    "ProfileProblem",
     "SupplierEntry",
+    "default_path",
     "fold",
     "load_default",
+    "mark_attested",
+    "save",
+    "txt_record",
+    "txt_token",
+    "validate",
+    "validate_text",
+    "verify_txt",
 ]
 
 VERIFICATIONS: tuple[str, ...] = ("seeded", "confirmed", "txt_verified", "attested")
@@ -160,12 +182,14 @@ class NetEntry:
     value: str
     criticality: str = DEFAULT_CRITICALITY
     third_party_hosted: bool = False
+    note: str = ""
 
 
 @dataclass(frozen=True)
 class AppId:
     kind: str
     value: str
+    note: str = ""
 
 
 @dataclass(frozen=True)
@@ -173,6 +197,7 @@ class SupplierEntry:
     name: str
     domains: tuple[str, ...] = ()
     brands: tuple[str, ...] = ()
+    note: str = ""
 
 
 @dataclass(frozen=True)
@@ -308,6 +333,36 @@ def _asn(value: Any) -> str | None:
     return f"AS{int(m.group(1))}"
 
 
+_CTRL_RE = re.compile(r"[\x00-\x1f\x7f]")
+#: Own networks broader than these prefixes are refused by the strict check and by
+#: ``OrgProfile.add_network`` (a typo such as 0.0.0.0/0 would make every address an own asset).
+_MIN_OWN_PREFIX = {4: 8, 6: 19}
+
+
+def _require_domain(value: Any) -> str:
+    """The normalised (punycode) registrable domain or subdomain; ValueError otherwise."""
+    name = _domain(value)
+    if name is None:
+        raise ValueError(f"{str(value)[:80]!r} is not a valid registrable domain (public suffixes are refused)")
+    return name
+
+
+def _cidr_problem(value: Any) -> str:
+    """'' when ``value`` is a valid own network, else why not (malformed, host bits set, too broad)."""
+    text = str(value if value is not None else "").strip()
+    try:
+        net = ipaddress.ip_network(text, strict=True)
+    except ValueError:
+        try:
+            loose = ipaddress.ip_network(text, strict=False)
+        except ValueError:
+            return f"{text[:60]!r} is not a valid network (CIDR)"
+        return f"{text[:60]!r} has host bits set: did you mean {loose}?"
+    if net.prefixlen < _MIN_OWN_PREFIX[net.version]:
+        return f"{net} is too broad for an own network (at most /{_MIN_OWN_PREFIX[net.version]} for IPv{net.version})"
+    return ""
+
+
 def _entity(entity: Any) -> Entity | None:
     if isinstance(entity, Entity):
         return entity
@@ -355,6 +410,10 @@ class OrgProfile:
     suppliers: list[SupplierEntry] = field(default_factory=list)
     executives: list[ExecutiveEntry] = field(default_factory=list)
     errors: list[str] = field(default_factory=list)
+    #: ``[org] note`` (free text kept when v3lum rewrites the file)
+    note: str = ""
+    #: top-level ``schema`` / ``version`` values of the file (kept when v3lum rewrites it)
+    meta: dict[str, Any] = field(default_factory=dict)
 
     def __repr__(self) -> str:  # never dump the inventory (or executive names) into logs
         counts = ", ".join(f"{k}={v}" for k, v in self.counts().items() if v)
@@ -439,6 +498,8 @@ class OrgProfile:
             org = {}
         _unknown(org, _ORG_KEYS, "org", errors)
         prof = cls(path=path, sha256=sha256, name=str(org.get("name") or data.get("name") or "").strip())
+        prof.note = str(org.get("note") or "").strip() if isinstance(org.get("note"), str) else ""
+        prof.meta = {k: data[k] for k in ("schema", "version") if isinstance(data.get(k), (str, int)) and not isinstance(data.get(k), bool)}
         prof._parse_domains(_items(data, org, "domains", errors), errors)
         prof._parse_brands(_items(data, org, "brands", errors), errors)
         prof._parse_simple(data, org, errors)
@@ -560,7 +621,14 @@ class OrgProfile:
                 continue
             if any(e.value == value for e in target):
                 continue
-            target.append(NetEntry(value, _criticality(item.get("criticality"), where, errors), _bool(item.get("third_party_hosted"), f"{where}.third_party_hosted", errors)))
+            target.append(
+                NetEntry(
+                    value,
+                    _criticality(item.get("criticality"), where, errors),
+                    _bool(item.get("third_party_hosted"), f"{where}.third_party_hosted", errors),
+                    str(item.get("note") or "") if isinstance(item.get("note"), str) else "",
+                )
+            )
 
     def _parse_apps(self, items: list[Any], errors: list[str]) -> None:
         for i, item in enumerate(items):
@@ -573,7 +641,7 @@ class OrgProfile:
             if not kind or not value:
                 errors.append(f"{where}: kind and value are required")
                 continue
-            self.app_ids.append(AppId(kind, value))
+            self.app_ids.append(AppId(kind, value, str(item.get("note") or "") if isinstance(item.get("note"), str) else ""))
 
     def _parse_suppliers(self, items: list[Any], errors: list[str]) -> None:
         for i, item in enumerate(items):
@@ -594,7 +662,8 @@ class OrgProfile:
                 elif dom not in domains:
                     domains.append(dom)
             brands = tuple(str(b).strip() for b in (item.get("brands") or []) if str(b).strip())
-            self.suppliers.append(SupplierEntry(name, tuple(domains), brands))
+            note = str(item.get("note") or "") if isinstance(item.get("note"), str) else ""
+            self.suppliers.append(SupplierEntry(name, tuple(domains), brands, note))
 
     def _parse_executives(self, items: list[Any], errors: list[str]) -> None:
         for i, item in enumerate(items):
@@ -628,19 +697,35 @@ class OrgProfile:
                 out["note"] = e.note
             return out
 
-        return {
-            "org": {"name": self.name},
+        def net(n: NetEntry) -> dict[str, Any]:
+            out: dict[str, Any] = {"value": n.value, "criticality": n.criticality, "third_party_hosted": n.third_party_hosted}
+            if n.note:
+                out["note"] = n.note
+            return out
+
+        def with_note(item: dict[str, Any], note: str) -> dict[str, Any]:
+            if note:
+                item["note"] = note
+            return item
+
+        org: dict[str, Any] = {"name": self.name}
+        if self.note:
+            org["note"] = self.note
+        out: dict[str, Any] = dict(self.meta)
+        out.update({
+            "org": org,
             "domains": [dom(e) for e in self.domains],
             "brands": [{"keyword": b.keyword, "variants": list(b.variants), "criticality": b.criticality} for b in self.brands],
             "cnpj_roots": list(self.cnpj_roots),
             "card_bins": list(self.card_bins),
-            "asns": [{"value": n.value, "criticality": n.criticality, "third_party_hosted": n.third_party_hosted} for n in self.asns],
-            "cidrs": [{"value": n.value, "criticality": n.criticality, "third_party_hosted": n.third_party_hosted} for n in self.cidrs],
-            "app_ids": [{"kind": a.kind, "value": a.value} for a in self.app_ids],
+            "asns": [net(n) for n in self.asns],
+            "cidrs": [net(n) for n in self.cidrs],
+            "app_ids": [with_note({"kind": a.kind, "value": a.value}, a.note) for a in self.app_ids],
             "favicon_hashes": list(self.favicon_hashes),
-            "suppliers": [{"name": s.name, "domains": list(s.domains), "brands": list(s.brands)} for s in self.suppliers],
+            "suppliers": [with_note({"name": s.name, "domains": list(s.domains), "brands": list(s.brands)}, s.note) for s in self.suppliers],
             "executives": [{"name": x.name, "opt_in": x.opt_in, "programme": x.programme, "informed_at": x.informed_at} for x in self.executives],
-        }
+        })
+        return out
 
     def counts(self) -> dict[str, int]:
         return {key: len(getattr(self, key)) for key in _LIST_KEYS}
@@ -775,6 +860,115 @@ class OrgProfile:
         """Every supplier domain (punycode, deduplicated, sorted)."""
         return sorted({d for s in self.suppliers for d in s.domains})
 
+    # ---- editing (v2, WP18: `v3lum org verify|seed`; the commands audit every change) ----------
+    def _exact_domain(self, name: str) -> int:
+        return next((i for i, entry in enumerate(self.domains) if entry.name == name), -1)
+
+    def _set_domain(self, entry: DomainEntry) -> DomainEntry:
+        index = self._exact_domain(entry.name)
+        if index >= 0:
+            self.domains[index] = entry
+        else:
+            self.domains.append(entry)
+        return entry
+
+    def mark_txt_verified(self, domain: str, *, note: str = "") -> DomainEntry:
+        """Record a successful DNS TXT proof of control (:func:`verify_txt`): the entry of exactly
+        ``domain`` becomes ``txt_verified`` (added, criticality medium, when the profile has none for
+        that name; its criticality, hosting flag and note are kept otherwise). ValueError for an
+        invalid domain or a public suffix."""
+        name = _require_domain(domain)
+        index = self._exact_domain(name)
+        current = self.domains[index] if index >= 0 else DomainEntry(name)
+        updated = replace(current, verification="txt_verified", attested_by="", attested_date="", note=note or current.note)
+        return self._set_domain(updated)
+
+    def mark_attested(self, domain: str, by: str, date: Any = None) -> DomainEntry:
+        """Record an analyst attestation ``{by, date}`` (P378 cond 2/5): the entry of exactly ``domain``
+        becomes ``attested`` (added when missing). ``date`` is 'YYYY-MM-DD' or a date (default: today,
+        UTC) and may not lie in the future. ValueError without a name, with a bad date or domain."""
+        name = _require_domain(domain)
+        who = " ".join(str(by or "").split())
+        if not who or _CTRL_RE.search(who):
+            raise ValueError("an attestation needs the analyst's name (--by NAME)")
+        day = _date(date) if date not in (None, "") else _dt.datetime.now(_dt.timezone.utc).date().isoformat()
+        if not day:
+            raise ValueError("the attestation date must be YYYY-MM-DD")
+        if day > _dt.datetime.now(_dt.timezone.utc).date().isoformat():
+            raise ValueError(f"the attestation date {day} lies in the future")
+        index = self._exact_domain(name)
+        current = self.domains[index] if index >= 0 else DomainEntry(name)
+        return self._set_domain(replace(current, verification="attested", attested_by=who, attested_date=day))
+
+    def add_domain(
+        self, domain: str, *, verification: str = "seeded", criticality: str = DEFAULT_CRITICALITY, third_party_hosted: bool = False, note: str = ""
+    ) -> DomainEntry:
+        """Add an analyst-confirmed domain entry (never ``txt_verified``/``attested``: those come only
+        from :meth:`mark_txt_verified` / :meth:`mark_attested`). ValueError for an invalid or
+        duplicate domain, an unknown criticality or a verified state."""
+        name = _require_domain(domain)
+        if verification not in ("seeded", "confirmed"):
+            raise ValueError("new entries are 'seeded' or 'confirmed'; verified states need `v3lum org verify`")
+        if criticality not in CRITICALITIES:
+            raise ValueError(f"criticality must be one of {', '.join(CRITICALITIES)}")
+        if self._exact_domain(name) >= 0:
+            raise ValueError(f"{name} is already in the profile")
+        return self._set_domain(DomainEntry(name, verification, "", "", criticality, bool(third_party_hosted), str(note or "")))
+
+    def add_network(
+        self, kind: str, value: Any, *, criticality: str = DEFAULT_CRITICALITY, third_party_hosted: bool = False, note: str = ""
+    ) -> NetEntry:
+        """Add an own ASN (``kind`` 'asns') or network (``kind`` 'cidrs'). ValueError for an invalid,
+        too broad or duplicate value."""
+        if kind not in ("asns", "cidrs"):
+            raise ValueError("kind must be 'asns' or 'cidrs'")
+        if criticality not in CRITICALITIES:
+            raise ValueError(f"criticality must be one of {', '.join(CRITICALITIES)}")
+        if kind == "asns":
+            normalised = _asn(value)
+            if normalised is None:
+                raise ValueError(f"{str(value)[:40]!r} is not a valid ASN")
+            target = self.asns
+        else:
+            problem = _cidr_problem(value)
+            if problem:
+                raise ValueError(problem)
+            normalised = str(ipaddress.ip_network(str(value).strip(), strict=True))
+            target = self.cidrs
+        if any(entry.value == normalised for entry in target):
+            raise ValueError(f"{normalised} is already in the profile")
+        entry = NetEntry(normalised, criticality, bool(third_party_hosted), str(note or ""))
+        target.append(entry)
+        return entry
+
+    def add_cnpj_root(self, value: Any) -> str:
+        """Add the 8-character root of a CNPJ (a full CNPJ is reduced to its root). ValueError when
+        no 8-character root can be read or it is already listed."""
+        root = re.sub(r"[^0-9A-Za-z]", "", str(value or "")).upper()
+        if len(root) == 14:
+            root = root[:8]
+        if len(root) != 8:
+            raise ValueError("a CNPJ root has 8 characters")
+        if root in self.cnpj_roots:
+            raise ValueError(f"CNPJ root {root} is already in the profile")
+        self.cnpj_roots.append(root)
+        return root
+
+    def add_app_id(self, kind: str, value: str, *, note: str = "") -> AppId:
+        """Add an application/tenant id (e.g. kind 'm365_tenant'). ValueError when empty or listed."""
+        kind, value = str(kind or "").strip(), str(value or "").strip()
+        if not kind or not value or _CTRL_RE.search(kind + value):
+            raise ValueError("an app id needs a kind and a value")
+        if any(a.kind == kind and a.value == value for a in self.app_ids):
+            raise ValueError(f"{kind} {value} is already in the profile")
+        entry = AppId(kind, value, str(note or ""))
+        self.app_ids.append(entry)
+        return entry
+
+    def save(self, path: str | Path | None = None) -> Path:
+        """:func:`save` this profile (0600, validated first); returns the written path."""
+        return save(self, path)
+
 
 def load_default(config: Any = None) -> OrgProfile:
     """The profile at setting ``org_profile_path``; '' -> ~/.v3lum/org_profile.toml, then .json.
@@ -797,3 +991,803 @@ def load_default(config: Any = None) -> OrgProfile:
         if candidate.is_file():
             return OrgProfile.load(candidate)
     return OrgProfile.empty(str(home / "org_profile.toml"))
+
+
+# ======================================================================================
+# v2 (WP18): strict validation, save, DNS TXT proof of control, attestation
+# ======================================================================================
+
+#: Prefix of the DNS TXT record that proves control of a domain (``v3lum org verify``): the record
+#: published at the domain itself is ``v3lum-verify=<txt_token(domain)>``.
+TXT_PREFIX = "v3lum-verify="
+#: Largest profile file :func:`validate` reads.
+_MAX_FILE_BYTES = 4 * 1024 * 1024
+_ATTESTED_KEYS = frozenset({"by", "date"})
+_TOP_ALLOWED = ", ".join(sorted(_TOP_KEYS))
+
+
+def default_path(config: Any = None) -> Path:
+    """Where the profile lives or would be created: setting ``org_profile_path`` when set, else an
+    existing ``~/.v3lum/org_profile.toml`` / ``.json``, else ``org_profile.toml`` (``.json`` on
+    Python 3.10, which cannot read TOML back)."""
+    getter = getattr(config, "get", None)
+    configured = str(getter("org_profile_path", "") or "").strip() if callable(getter) else ""
+    if configured:
+        return Path(configured).expanduser()
+    home = paths.home()
+    for name in ("org_profile.toml", "org_profile.json"):
+        if (home / name).is_file():
+            return home / name
+    return home / ("org_profile.toml" if _toml is not None else "org_profile.json")
+
+
+@dataclass(frozen=True)
+class ProfileProblem:
+    """One strict-validation problem of an org profile.
+
+    ``field`` is the path in the document ('domains[2].verification', 'org.cnpj_roots[0]'; '' for
+    the whole file), ``line`` the 1-based line of the file (0 when unknown: a parsed mapping, or a
+    problem of the file itself such as its mode), ``message`` says what is wrong without echoing an
+    executive's name or a card number.
+    """
+
+    field: str
+    message: str
+    line: int = 0
+
+    def __str__(self) -> str:
+        where = f"line {self.line}: " if self.line else ""
+        return f"{where}{self.field + ': ' if self.field else ''}{self.message}"
+
+
+# ---- strict checks -----------------------------------------------------------------------------
+
+
+class _Checker:
+    """Strict schema checks over a parsed document: (field path, message) pairs."""
+
+    def __init__(self) -> None:
+        self.problems: list[tuple[str, str]] = []
+        self.seen: dict[str, dict[str, str]] = {}
+
+    def add(self, where: str, message: str) -> None:
+        self.problems.append((where, message))
+
+    def unique(self, kind: str, key: str, where: str, label: str) -> None:
+        first = self.seen.setdefault(kind, {}).get(key)
+        if first is not None:
+            self.add(where, f"duplicate {label} (first listed at {first})")
+        else:
+            self.seen[kind][key] = where
+
+    def unknown(self, item: Mapping[str, Any], allowed: frozenset[str], where: str) -> None:
+        for key in sorted(set(item) - allowed, key=str):
+            self.add(f"{where}.{key}" if where else str(key), f"unknown key (allowed: {', '.join(sorted(allowed))})")
+
+    def text(self, item: Mapping[str, Any], key: str, where: str, *, required: bool = False, label: str = "") -> str:
+        value = item.get(key)
+        here = f"{where}.{key}" if where else key
+        if value is None or value == "":
+            if required:
+                self.add(here, f"{label or key} is required")
+            return ""
+        if not isinstance(value, str):
+            self.add(here, "must be a string")
+            return ""
+        if _CTRL_RE.search(value):
+            self.add(here, "contains a control character")
+        return value.strip()
+
+    def boolean(self, item: Mapping[str, Any], key: str, where: str) -> None:
+        if key in item and not isinstance(item[key], bool):
+            self.add(f"{where}.{key}", "must be true or false")
+
+    def criticality(self, item: Mapping[str, Any], where: str) -> None:
+        if "criticality" in item and (not isinstance(item["criticality"], str) or item["criticality"].strip().lower() not in CRITICALITIES):
+            self.add(f"{where}.criticality", f"must be one of {', '.join(CRITICALITIES)}")
+
+    def date(self, value: Any, where: str, *, required: bool, label: str) -> str:
+        if value in (None, ""):
+            if required:
+                self.add(where, f"{label} is required (YYYY-MM-DD)")
+            return ""
+        day = _date(value) if isinstance(value, (str, _dt.date)) else ""
+        if not day:
+            self.add(where, f"{label} must be a date (YYYY-MM-DD)")
+            return ""
+        if day > _dt.datetime.now(_dt.timezone.utc).date().isoformat():
+            self.add(where, f"{label} {day} lies in the future")
+        return day
+
+    def string_list(self, value: Any, where: str) -> list[str]:
+        if not isinstance(value, list):
+            self.add(where, "must be a list of strings")
+            return []
+        out = []
+        for i, item in enumerate(value):
+            if not isinstance(item, str) or not item.strip():
+                self.add(f"{where}[{i}]", "must be a non-empty string")
+            else:
+                out.append(item.strip())
+        return out
+
+    # ---- entries -------------------------------------------------------------------------
+    def domain(self, item: Any, where: str) -> None:
+        if isinstance(item, str):
+            item = {"name": item}
+        if not isinstance(item, Mapping):
+            self.add(where, "must be a domain name or a table")
+            return
+        self.unknown(item, _DOMAIN_KEYS, where)
+        if "name" in item and "domain" in item:
+            self.add(f"{where}.domain", "give the domain once (name)")
+        key = "name" if "name" in item else "domain"
+        raw = item.get(key)
+        if not isinstance(raw, str) or not raw.strip():
+            self.add(f"{where}.{key}" if key in item else where, "a domain name is required")
+        else:
+            name = _domain(raw)
+            if name is None:
+                self.add(f"{where}.{key}", f"{raw.strip()[:80]!r} is not a valid registrable domain (public suffixes are refused)")
+            else:
+                self.unique("domains", name, f"{where}.{key}" if key in item and len(item) > 1 else where, f"domain {name}")
+        verification = item.get("verification", "seeded")
+        state = verification.strip().lower() if isinstance(verification, str) else ""
+        if state not in VERIFICATIONS:
+            self.add(f"{where}.verification", f"must be one of {', '.join(VERIFICATIONS)} (txt_verified comes from `v3lum org verify`)")
+        attested = item.get("attested")
+        if attested is not None and not isinstance(attested, Mapping):
+            self.add(f"{where}.attested", "must be a table {by, date}")
+            attested = {}
+        attested = attested or {}
+        if attested:
+            self.unknown(attested, _ATTESTED_KEYS, f"{where}.attested")
+        flat = "attested" not in item  # attested_by / attested_date (else the {by, date} table)
+        by_where = f"{where}.attested_by" if flat or "attested_by" in item else f"{where}.attested.by"
+        date_where = f"{where}.attested_date" if flat or "attested_date" in item else f"{where}.attested.date"
+        by = item.get("attested_by", attested.get("by"))
+        date = item.get("attested_date", attested.get("date"))
+        if state == "attested":
+            if not isinstance(by, str) or not by.strip():
+                self.add(by_where, "attested entries need the analyst's name (attested_by or attested.by)")
+            self.date(date, date_where, required=True, label="the attestation date")
+        elif any(k in item for k in ("attested_by", "attested_date", "attested")):
+            self.add(f"{where}.verification", f"attestation fields only apply to verification = 'attested' (this entry is {state or '?'})")
+        self.criticality(item, where)
+        self.boolean(item, "third_party_hosted", where)
+        self.text(item, "note", where)
+
+    def brand(self, item: Any, where: str) -> None:
+        if isinstance(item, str):
+            item = {"keyword": item}
+        if not isinstance(item, Mapping):
+            self.add(where, "must be a keyword or a table")
+            return
+        self.unknown(item, _BRAND_KEYS, where)
+        key = "keyword" if "keyword" in item else "name"
+        keyword = self.text(item, key, where, required=True, label="keyword")
+        if keyword:
+            self.unique("brands", fold(keyword), f"{where}.{key}", f"brand keyword {fold(keyword)!r}")
+        if "variants" in item:
+            self.string_list(item["variants"], f"{where}.variants")
+        self.criticality(item, where)
+
+    def cnpj_root(self, item: Any, where: str) -> None:
+        if not isinstance(item, str):
+            self.add(where, "write CNPJ roots as strings (an integer loses leading zeros)")
+            return
+        root = re.sub(r"[^0-9A-Za-z]", "", item).upper()
+        if len(root) != 8:
+            hint = " (a full CNPJ: keep only its first 8 characters)" if len(root) == 14 else ""
+            self.add(where, f"a CNPJ root has 8 characters, this one has {len(root)}{hint}")
+            return
+        self.unique("cnpj_roots", root, where, f"CNPJ root {root}")
+
+    def card_bin(self, item: Any, where: str) -> None:
+        digits = re.sub(r"[\s-]", "", str(item)) if isinstance(item, (str, int)) and not isinstance(item, bool) else ""
+        if not digits.isdigit() or not 6 <= len(digits) <= 8:
+            self.add(where, "a BIN prefix has 6-8 digits (never store full card numbers)")  # the value is never echoed
+            return
+        self.unique("card_bins", digits, where, "BIN prefix")
+
+    def favicon(self, item: Any, where: str) -> None:
+        text = str(item).strip() if isinstance(item, (str, int)) and not isinstance(item, bool) else ""
+        if not re.match(r"^-?\d{1,11}$", text) or not -(2**31) <= int(text) < 2**31:
+            self.add(where, "an mmh3 favicon hash is a signed 32-bit integer")
+            return
+        self.unique("favicon_hashes", str(int(text)), where, f"favicon hash {int(text)}")
+
+    def network(self, item: Any, where: str, kind: str) -> None:
+        if isinstance(item, Mapping):
+            self.unknown(item, _NET_KEYS, where)
+            value, vwhere = item.get("value"), f"{where}.value"
+            self.criticality(item, where)
+            self.boolean(item, "third_party_hosted", where)
+            self.text(item, "note", where)
+        else:
+            value, vwhere = item, where
+        if value is None or isinstance(value, bool) or not isinstance(value, (str, int)):
+            self.add(vwhere, f"{'an ASN' if kind == 'asns' else 'a network'} is required")
+            return
+        if kind == "asns":
+            asn = _asn(value)
+            if asn is None or asn == "AS0":
+                self.add(vwhere, f"{str(value)[:40]!r} is not a valid ASN (AS1-AS4294967295)")
+            else:
+                self.unique("asns", asn, vwhere, asn)
+            return
+        problem = _cidr_problem(value)
+        if problem:
+            self.add(vwhere, problem)
+        else:
+            self.unique("cidrs", str(ipaddress.ip_network(str(value).strip())), vwhere, f"network {ipaddress.ip_network(str(value).strip())}")
+
+    def app_id(self, item: Any, where: str) -> None:
+        if not isinstance(item, Mapping):
+            self.add(where, "must be a table with kind and value")
+            return
+        self.unknown(item, _APP_KEYS, where)
+        kind = self.text(item, "kind", where, required=True)
+        value = self.text(item, "value", where, required=True)
+        self.text(item, "note", where)
+        if kind and value:
+            self.unique("app_ids", f"{kind}\x00{value}", where, f"app id {kind} {value}")
+
+    def supplier(self, item: Any, where: str) -> None:
+        if not isinstance(item, Mapping):
+            self.add(where, "must be a table")
+            return
+        self.unknown(item, _SUPPLIER_KEYS, where)
+        self.text(item, "name", where, required=True)
+        self.text(item, "note", where)
+        if "domains" in item:
+            for j, raw in enumerate(self.string_list(item["domains"], f"{where}.domains")):
+                if _domain(raw) is None:
+                    self.add(f"{where}.domains[{j}]", f"{raw[:80]!r} is not a valid registrable domain")
+        if "brands" in item:
+            self.string_list(item["brands"], f"{where}.brands")
+
+    def executive(self, item: Any, where: str) -> None:
+        # never echo the person's name in a message
+        if not isinstance(item, Mapping):
+            self.add(where, "must be a table")
+            return
+        self.unknown(item, _EXEC_KEYS, where)
+        name = item.get("name")
+        if not isinstance(name, str) or not name.strip():
+            self.add(f"{where}.name", "name is required")
+        if item.get("opt_in") is not True:
+            self.add(f"{where}.opt_in", "executives are listed only with explicit opt_in = true (informed under the VIP-protection programme)")
+        self.date(item.get("informed_at"), f"{where}.informed_at", required=True, label="informed_at (date of the VIP-protection notice)")
+        self.text(item, "programme", where)
+
+
+_CHECKS = {
+    "domains": _Checker.domain,
+    "brands": _Checker.brand,
+    "cnpj_roots": _Checker.cnpj_root,
+    "card_bins": _Checker.card_bin,
+    "favicon_hashes": _Checker.favicon,
+    "app_ids": _Checker.app_id,
+    "suppliers": _Checker.supplier,
+    "executives": _Checker.executive,
+}
+
+
+def _strict(data: Any) -> list[tuple[str, str]]:
+    """Strict schema problems of a parsed profile document as (field path, message)."""
+    check = _Checker()
+    if data is None:
+        return []
+    if not isinstance(data, Mapping):
+        check.add("", "the org profile must be a table/object")
+        return check.problems
+    for key in sorted(set(data) - _TOP_KEYS, key=str):
+        check.add(str(key), f"unknown top-level key (allowed: {_TOP_ALLOWED})")
+    org = data.get("org", {})
+    if not isinstance(org, Mapping):
+        check.add("org", "must be a table")
+        org = {}
+    check.unknown(org, _ORG_KEYS, "org")
+    if "name" in org:
+        check.text(org, "name", "org")
+    if "name" in data:
+        check.text(data, "name", "")
+    if "note" in org:
+        check.text(org, "note", "org")
+    for key in ("schema", "version"):
+        if key in data and (isinstance(data[key], bool) or not isinstance(data[key], (str, int))):
+            check.add(key, "must be a string or an integer")
+    for key in _LIST_KEYS:
+        for prefix, container in (("", data), ("org.", org)):
+            if key not in container:
+                continue
+            items = container[key]
+            if not isinstance(items, list):
+                check.add(f"{prefix}{key}", "must be a list")
+                continue
+            for i, item in enumerate(items):
+                where = f"{prefix}{key}[{i}]"
+                if key in ("asns", "cidrs"):
+                    check.network(item, where, key)
+                else:
+                    _CHECKS[key](check, item, where)
+    return check.problems
+
+
+# ---- line numbers ------------------------------------------------------------------------------
+
+
+class _Scanner:
+    """Best-effort map of field paths to 1-based lines for a TOML or JSON document that parsed."""
+
+    def __init__(self, text: str) -> None:
+        self.s = text
+        self.n = len(text)
+        self.i = 0
+        self.line = 1
+        self.index: dict[str, int] = {}
+
+    def mark(self, path: str, line: int) -> None:
+        self.index.setdefault(path, line)
+
+    def skip(self, newlines: bool, comments: bool = True) -> None:
+        s, n = self.s, self.n
+        while self.i < n:
+            ch = s[self.i]
+            if ch in " \t\r":
+                self.i += 1
+            elif ch == "\n":
+                if not newlines:
+                    return
+                self.line += 1
+                self.i += 1
+            elif ch == "#" and comments:
+                while self.i < n and s[self.i] != "\n":
+                    self.i += 1
+            else:
+                return
+
+    def string(self) -> str:
+        """Consume a TOML/JSON string at the cursor and return its (approximate) text."""
+        s, n = self.s, self.n
+        for delim in ('"""', "'''"):
+            if s.startswith(delim, self.i):
+                end = s.find(delim, self.i + 3)
+                end = n if end < 0 else end
+                chunk = s[self.i + 3 : end]
+                self.line += chunk.count("\n")
+                self.i = min(n, end + 3)
+                while self.i < n and s[self.i] == delim[0]:  # up to two extra quotes belong to the string
+                    self.i += 1
+                return chunk
+        quote = s[self.i]
+        self.i += 1
+        out = []
+        while self.i < n and s[self.i] != quote and s[self.i] != "\n":
+            if quote == '"' and s[self.i] == "\\" and self.i + 1 < n:
+                out.append(s[self.i : self.i + 2])
+                self.i += 2
+                continue
+            out.append(s[self.i])
+            self.i += 1
+        self.i += 1
+        raw = "".join(out)
+        if quote == '"' and "\\" in raw:
+            try:
+                return json.loads(f'"{raw}"')
+            except ValueError:
+                return raw
+        return raw
+
+    def scalar(self, stops: str) -> None:
+        while self.i < self.n and self.s[self.i] not in stops:
+            self.i += 1
+
+
+class _TomlScanner(_Scanner):
+    def key(self) -> str:
+        parts = []
+        while self.i < self.n:
+            self.skip(False)
+            if self.i < self.n and self.s[self.i] in "\"'":
+                parts.append(self.string())
+            else:
+                start = self.i
+                while self.i < self.n and (self.s[self.i].isalnum() or self.s[self.i] in "-_"):
+                    self.i += 1
+                parts.append(self.s[start : self.i])
+            self.skip(False)
+            if self.i < self.n and self.s[self.i] == ".":
+                self.i += 1
+                continue
+            break
+        return ".".join(parts)
+
+    def value(self, path: str) -> None:
+        self.skip(False)
+        if self.i >= self.n:
+            return
+        ch = self.s[self.i]
+        if ch in "\"'":
+            self.string()
+        elif ch == "[":
+            self.i += 1
+            k = 0
+            while self.i < self.n:
+                self.skip(True)
+                if self.i >= self.n or self.s[self.i] == "]":
+                    self.i += 1
+                    return
+                self.mark(f"{path}[{k}]", self.line)
+                start = self.i
+                self.value(f"{path}[{k}]")
+                k += 1
+                self.skip(True)
+                if self.i < self.n and self.s[self.i] == ",":
+                    self.i += 1
+                elif self.i < self.n and self.s[self.i] == "]":
+                    self.i += 1
+                    return
+                elif self.i == start:
+                    return  # malformed: stop rather than loop
+        elif ch == "{":
+            self.i += 1
+            while self.i < self.n:
+                self.skip(False)
+                if self.i >= self.n or self.s[self.i] in "}\n":
+                    self.i += 1
+                    return
+                line = self.line
+                start = self.i
+                key = self.key()
+                self.skip(False)
+                if self.i < self.n and self.s[self.i] == "=":
+                    self.i += 1
+                self.mark(f"{path}.{key}", line)
+                self.value(f"{path}.{key}")
+                self.skip(False)
+                if self.i < self.n and self.s[self.i] == ",":
+                    self.i += 1
+                elif self.i < self.n and self.s[self.i] == "}":
+                    self.i += 1
+                    return
+                elif self.i == start:
+                    return
+        else:
+            self.scalar(",]}\n#")
+
+    def run(self) -> dict[str, int]:
+        prefix = ""
+        counts: dict[str, int] = {}
+        while self.i < self.n:
+            self.skip(True)
+            if self.i >= self.n:
+                break
+            start = self.i
+            if self.s[self.i] == "[":
+                aot = self.s.startswith("[[", self.i)
+                self.i += 2 if aot else 1
+                name = self.key()
+                self.skip(False)
+                self.i += 2 if aot else 1
+                if aot:
+                    counts[name] = counts.get(name, -1) + 1
+                    prefix = f"{name}[{counts[name]}]"
+                else:  # a sub-table of the last element of an array of tables keeps its index
+                    parent = max((a for a in counts if name.startswith(a + ".")), key=len, default="")
+                    prefix = f"{parent}[{counts[parent]}]{name[len(parent):]}" if parent else name
+                self.mark(prefix, self.line)
+            else:
+                line = self.line
+                key = self.key()
+                self.skip(False)
+                if self.i < self.n and self.s[self.i] == "=":
+                    self.i += 1
+                    path = f"{prefix}.{key}" if prefix else key
+                    self.mark(path, line)
+                    self.value(path)
+            while self.i < self.n and self.s[self.i] != "\n":  # the rest of the line (a comment)
+                self.i += 1
+            if self.i == start:
+                self.i += 1
+        return self.index
+
+
+class _JsonScanner(_Scanner):
+    def value(self, path: str) -> None:
+        self.skip(True, comments=False)
+        if self.i >= self.n:
+            return
+        ch = self.s[self.i]
+        if ch == "{":
+            self.i += 1
+            while self.i < self.n:
+                self.skip(True, comments=False)
+                if self.i >= self.n or self.s[self.i] == "}":
+                    self.i += 1
+                    return
+                if self.s[self.i] != '"':
+                    return
+                line = self.line
+                key = self.string()
+                self.skip(True, comments=False)
+                if self.i < self.n and self.s[self.i] == ":":
+                    self.i += 1
+                child = f"{path}.{key}" if path else key
+                self.mark(child, line)
+                self.value(child)
+                self.skip(True, comments=False)
+                if self.i < self.n and self.s[self.i] == ",":
+                    self.i += 1
+                else:
+                    self.i += 1
+                    return
+        elif ch == "[":
+            self.i += 1
+            k = 0
+            while self.i < self.n:
+                self.skip(True, comments=False)
+                if self.i >= self.n or self.s[self.i] == "]":
+                    self.i += 1
+                    return
+                self.mark(f"{path}[{k}]", self.line)
+                self.value(f"{path}[{k}]")
+                k += 1
+                self.skip(True, comments=False)
+                if self.i < self.n and self.s[self.i] == ",":
+                    self.i += 1
+                else:
+                    self.i += 1
+                    return
+        elif ch == '"':
+            self.string()
+        else:
+            self.scalar(",]}\n \t\r")
+
+    def run(self) -> dict[str, int]:
+        self.value("")
+        return self.index
+
+
+def _line_index(text: str, fmt: str) -> dict[str, int]:
+    try:
+        return (_JsonScanner(text) if fmt == "json" else _TomlScanner(text)).run()
+    except (IndexError, RecursionError):  # pragma: no cover - best effort only
+        return {}
+
+
+def _line_for(index: Mapping[str, int], field_path: str) -> int:
+    """Line of ``field_path`` or of its closest listed parent (0 when unknown)."""
+    path = field_path
+    while path:
+        if path in index:
+            return index[path]
+        cut = max(path.rfind("."), path.rfind("["))
+        path = path[:cut] if cut > 0 else ""
+    return 0
+
+
+# ---- validate ----------------------------------------------------------------------------------
+
+
+def _fmt_of(path: Path | None, fmt: str | None, text: str = "") -> str:
+    if fmt:
+        return "json" if fmt.lower() == "json" else "toml"
+    if path is not None:
+        return "json" if path.suffix.lower() == ".json" else "toml"
+    return "json" if text.lstrip().startswith(("{", "[")) else "toml"
+
+
+def validate_text(text: str | bytes, *, fmt: str | None = None) -> list[ProfileProblem]:
+    """Strict validation of profile text (``fmt`` 'toml' | 'json'; default: JSON when it starts with
+    '{' or '[', else TOML). Parse errors come back as one problem with the parser's line."""
+    if isinstance(text, (bytes, bytearray)):
+        try:
+            text = bytes(text).decode("utf-8-sig")
+        except UnicodeDecodeError as exc:
+            return [ProfileProblem("", f"the org profile is not UTF-8 text ({exc.reason})")]
+    kind = _fmt_of(None, fmt, text)
+    try:
+        if kind == "json":
+            data = json.loads(text)
+        elif _toml is None:  # pragma: no cover - Python 3.10
+            return [ProfileProblem("", "TOML profiles need Python 3.11+ (tomllib): use an org_profile.json")]
+        else:
+            data = _toml.loads(text)
+    except ValueError as exc:  # JSONDecodeError / TOMLDecodeError
+        line = getattr(exc, "lineno", 0) or 0
+        if not line:
+            found = re.search(r"line (\d+)", str(exc))
+            line = int(found.group(1)) if found else 0
+        return [ProfileProblem("", f"invalid {'JSON' if kind == 'json' else 'TOML'}: {exc}", int(line))]
+    index = _line_index(text, kind)
+    return [ProfileProblem(where, message, _line_for(index, where)) for where, message in _strict(data)]
+
+
+def validate(source: str | os.PathLike[str] | Mapping[str, Any]) -> list[ProfileProblem]:
+    """Strict schema validation (``v3lum org check``; P378 cond 1, A11). [] = valid.
+
+    ``source`` is a profile file (TOML, or JSON for '.json') or an already parsed mapping (no line
+    numbers). Everything the lenient loader (:meth:`OrgProfile.load`) drops, downgrades or merely
+    tolerates is a problem here: unknown keys; invalid verification states (an unknown state,
+    attested without the analyst's name and a past date, attestation fields on another state);
+    invalid or public-suffix domains, malformed ASNs, malformed/host-bit/too-broad networks; CNPJ
+    roots that are not 8 characters; duplicate domains, brands, roots, BINs, favicon hashes, ASNs,
+    networks and app ids; executives without ``opt_in = true`` or ``informed_at``; wrong value
+    types. For a file also: parse errors (with the parser's line) and a mode that lets other users
+    read or write it (A11: 0600). Each problem carries its field path and file line. Executive
+    names and card numbers are never echoed.
+    """
+    if isinstance(source, Mapping):
+        return [ProfileProblem(where, message) for where, message in _strict(source)]
+    path = Path(source).expanduser()
+    if not path.is_file():
+        return [ProfileProblem("", f"{path} is not a readable file")]
+    try:
+        if path.stat().st_size > _MAX_FILE_BYTES:
+            return [ProfileProblem("", f"the org profile is larger than {_MAX_FILE_BYTES // (1024 * 1024)} MB")]
+        raw = path.read_bytes()
+    except OSError as exc:
+        return [ProfileProblem("", f"cannot read the org profile: {exc.strerror or exc}")]
+    if path.suffix.lower() in (".yaml", ".yml"):
+        return [ProfileProblem("", "YAML profiles are an optional extra and are not validated strictly: convert the profile to TOML or JSON")]
+    problems = validate_text(raw, fmt=_fmt_of(path, None))
+    access, _writable = _access_problem(path)
+    if access:
+        problems.append(ProfileProblem("", access))
+    return problems
+
+
+# ---- save --------------------------------------------------------------------------------------
+
+
+def _toml_str(value: str) -> str:
+    out = ['"']
+    for ch in value:
+        code = ord(ch)
+        if ch == '"':
+            out.append('\\"')
+        elif ch == "\\":
+            out.append("\\\\")
+        elif ch == "\n":
+            out.append("\\n")
+        elif ch == "\t":
+            out.append("\\t")
+        elif ch == "\r":
+            out.append("\\r")
+        elif code < 0x20 or code == 0x7F:
+            out.append(f"\\u{code:04x}")
+        else:
+            out.append(ch)
+    out.append('"')
+    return "".join(out)
+
+
+def _toml_value(value: Any) -> str:
+    if isinstance(value, bool):
+        return "true" if value else "false"
+    if isinstance(value, int):
+        return str(value)
+    if isinstance(value, str):
+        return _toml_str(value)
+    if isinstance(value, (list, tuple)):
+        return "[" + ", ".join(_toml_value(v) for v in value) + "]"
+    raise TypeError(f"cannot write {type(value).__name__} to TOML")
+
+
+def _toml_key(key: str) -> str:
+    return key if re.match(r"^[A-Za-z0-9_-]+$", key) else _toml_str(key)
+
+
+def _dump_toml(data: Mapping[str, Any], stamp: str) -> str:
+    lines = [
+        "# V3LUM organisation profile (P378, A11): a sensitive asset inventory. Keep it 0600, never share",
+        "# or export it. Reports and exports carry only own_asset/third_party tags and its SHA-256.",
+        f"# Written by v3lum on {stamp}; `v3lum org check` validates it. Edits keep their meaning,",
+        "# but v3lum rewrites the file in this canonical form (comments are not kept).",
+    ]
+    for key in ("schema", "version"):
+        if key in data:
+            lines.append(f"{key} = {_toml_value(data[key])}")
+    lines += ["", "[org]"]
+    for key, value in data.get("org", {}).items():
+        lines.append(f"{_toml_key(key)} = {_toml_value(value)}")
+    for key in ("cnpj_roots", "card_bins", "favicon_hashes"):
+        lines.append(f"{key} = {_toml_value(list(data.get(key) or []))}")
+    for key in ("domains", "brands", "asns", "cidrs", "app_ids", "suppliers", "executives"):
+        for item in data.get(key) or []:
+            lines += ["", f"[[{key}]]"]
+            lines += [f"{_toml_key(k)} = {_toml_value(v)}" for k, v in item.items()]
+    return "\n".join(lines) + "\n"
+
+
+def save(profile: OrgProfile, path: str | os.PathLike[str] | None = None) -> Path:
+    """Write ``profile`` and return the path (P378 cond 1: 0600 via ``paths.secure_write_text``,
+    atomic replace).
+
+    ``path`` defaults to ``profile.path``, else :func:`default_path`. The format follows the suffix:
+    '.json' writes JSON, anything else TOML (YAML is never written). The document is validated
+    strictly before it is written (ValueError listing the problems: v3lum never writes an invalid
+    profile) and a TOML document is parsed back and compared. A file outside the V3LUM home keeps
+    its group permission bits (a team-maintained profile) but never any for other users.
+    ``profile.path`` and ``profile.sha256`` are updated.
+    """
+    target = Path(path or profile.path or default_path()).expanduser()
+    suffix = target.suffix.lower()
+    if suffix in (".yaml", ".yml"):
+        raise ValueError("v3lum writes TOML or JSON org profiles only: save it as org_profile.toml or org_profile.json")
+    kind = "json" if suffix == ".json" else "toml"
+    data = profile.to_dict()
+    problems = _strict(data)
+    if problems:
+        shown = "; ".join(f"{w}: {m}" if w else m for w, m in problems[:5])
+        raise ValueError(f"refusing to write an invalid org profile ({len(problems)} problem(s)): {shown}")
+    stamp = _dt.datetime.now(_dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    if kind == "json":
+        text = json.dumps(data, indent=2, ensure_ascii=False) + "\n"
+    else:
+        text = _dump_toml(data, stamp)
+        if _toml is not None and OrgProfile.from_dict(_toml.loads(text)).to_dict() != data:  # pragma: no cover - serialiser bug guard
+            raise RuntimeError("org profile TOML serialisation mismatch: nothing written")
+    mode = paths.FILE_MODE
+    if target.exists() and not paths.inside_home(target):
+        try:
+            mode = (stat.S_IMODE(target.stat().st_mode) & 0o660) | 0o600
+        except OSError:
+            mode = paths.FILE_MODE
+    paths.secure_write_text(target, text, mode=mode)
+    profile.path = str(target)
+    profile.sha256 = hashlib.sha256(text.encode("utf-8")).hexdigest()
+    return target
+
+
+def mark_attested(profile: OrgProfile, domain: str, by: str, date: Any = None) -> DomainEntry:
+    """Module-level form of :meth:`OrgProfile.mark_attested` (the profile is changed in memory;
+    :func:`save` writes it)."""
+    return profile.mark_attested(domain, by, date)
+
+
+# ---- DNS TXT proof of control ------------------------------------------------------------------
+
+
+def txt_token(domain: str) -> str:
+    """The verification token of ``domain``: ``hmacid.hmac12('domain', <normalised domain>)``.
+
+    It is keyed with this installation's secret (``~/.v3lum/secret.key``), so nobody can compute
+    it elsewhere; IDN domains are normalised to punycode first. ValueError for an invalid domain
+    or a public suffix."""
+    from v3lum.core import hmacid
+
+    return hmacid.hmac12("domain", _require_domain(domain))
+
+
+def txt_record(domain: str) -> str:
+    """The TXT record value to publish at ``domain``: ``'v3lum-verify=<txt_token(domain)>'``."""
+    return TXT_PREFIX + txt_token(domain)
+
+
+def _txt_text(record: Any) -> str:
+    text = str(record or "").strip()
+    if len(text) >= 2 and text[0] == text[-1] == '"':
+        text = text[1:-1].strip()
+    return text.lower()
+
+
+def verify_txt(resolver: Any, domain: str) -> bool | None:
+    """Is ``txt_record(domain)`` published at the domain? Read through ``resolver`` (the core
+    DoH resolver, ``Resolver.query(name, 'TXT')``).
+
+    True: one TXT string equals the record (quotes and case ignored). False: the name answered
+    (NOERROR or NXDOMAIN) without it. None: could not verify (SERVFAIL, timeout, transport or policy
+    failure, offline) - never read as 'absent' (team rule 5). ValueError for an invalid domain.
+    """
+    name = _require_domain(domain)
+    expected = txt_record(name).lower()
+    try:
+        answer = resolver.query(name, "TXT")
+    except Exception:  # noqa: BLE001 - a resolver failure is "could not verify", never "absent"
+        return None
+    if answer is None or getattr(answer, "could_not_verify", True):
+        return None
+    return any(_txt_text(rec) == expected for rec in getattr(answer, "records", None) or ())

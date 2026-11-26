@@ -86,7 +86,12 @@ __all__ = [
 #: A7: an authorization reference (``--authorized REF`` and the scope's ``authorization_ref``).
 AUTH_REF_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:/#-]{2,63}$")
 #: references that only pretend to be one (compared case-insensitively).
-PLACEHOLDER_REFS: frozenset[str] = frozenset({"confirmed", "yes", "ok", "none", "n/a", "test"})
+#: placeholders that are not an authorization reference: the A7 list (confirmed, yes, ok, none, n/a, test)
+#: plus the ones the policy gate also refuses (policy.AUTH_REF_PLACEHOLDERS), so a scope file and
+#: --authorized accept and refuse the same references
+PLACEHOLDER_REFS: frozenset[str] = frozenset({
+    "confirmed", "yes", "ok", "none", "n/a", "test", "tbd", "todo", "xxx", "null", "true", "authorized",
+})
 #: top-level keys of a scope file.
 SCOPE_KEYS: frozenset[str] = frozenset(
     {"authorization_ref", "owner", "contacts", "ticket", "window_start", "window_end", "targets", "exclusions", "shared_infra_hosts", "limits", "roe", "notes", "description"}

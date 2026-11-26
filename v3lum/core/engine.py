@@ -536,7 +536,7 @@ class Engine:
         except Exception as exc:  # noqa: BLE001
             if vocab.strict_enabled():  # tests surface policy bugs; analysts get a fail-closed skip
                 raise
-            log.error("policy.decide failed for %s: %s", cls.name, exc)
+            log.error("policy.decide failed for %s: %s: %s", cls.name, type(exc).__name__, _redact(str(exc)))  # AR01: no key value in logs
             return _refusal(f"skipped: policy error ({type(exc).__name__}) - fail closed")
 
     def _guard(self, cls: type[Module], entity: Entity, pctx: Any, run: Any) -> Any:
@@ -549,7 +549,7 @@ class Engine:
         except Exception as exc:  # noqa: BLE001
             if vocab.strict_enabled():
                 raise
-            log.error("policy.contact_guard failed for %s: %s", cls.name, exc)
+            log.error("policy.contact_guard failed for %s: %s: %s", cls.name, type(exc).__name__, _redact(str(exc)))
             return _refusal(f"blocked: contact guard error ({type(exc).__name__}) - fail closed", "hostile_host", Status.BLOCKED, "GUARD-01")
 
     # ------------------------------------------------------------------ planning
@@ -809,7 +809,8 @@ class Engine:
         if not callable(fn):
             return
         try:
-            fn(cls.name, float(res.duration), res.status.value)
+            # BLOCKED 'circuit' / 'hostile_host' never reached the source: neutral for demotion (A3)
+            fn(cls.name, float(res.duration), res.status.value, reason_code=res.reason_code or "")
             if not getattr(health, "autosave", True) and not getattr(self.runtime, "in_scan", False):
                 save = getattr(health, "save", None)
                 if callable(save):

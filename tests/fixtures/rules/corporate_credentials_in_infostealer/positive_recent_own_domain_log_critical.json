@@ -1,0 +1,145 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 1
+  },
+  "org_profile": {
+    "org": {
+      "name": "Acme Pagamentos S.A."
+    },
+    "domains": [
+      {
+        "name": "acmepay.com.br",
+        "verification": "txt_verified",
+        "criticality": "high"
+      }
+    ],
+    "brands": [
+      {
+        "keyword": "acmepay",
+        "variants": [
+          "acme pay"
+        ],
+        "criticality": "high"
+      }
+    ],
+    "cnpj_roots": [
+      "11222333"
+    ],
+    "suppliers": [
+      {
+        "name": "Acme Parceiro Logistica Ltda",
+        "domains": [
+          "acmepay-partner.com.br"
+        ],
+        "brands": []
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "key": "email:maria.silva@acmepay.com.br",
+      "depth": 0,
+      "seed": true,
+      "ownership": "own_asset",
+      "tags": [
+        "own_asset"
+      ],
+      "attributes": {
+        "infostealer": [
+          {
+            "value": true,
+            "source": "hudson_rock"
+          }
+        ],
+        "stealer_logs": [
+          {
+            "value": [
+              {
+                "date_compromised": "2026-06-10T08:15:00.000Z",
+                "stealer_family": "Lumma",
+                "total_corporate_services": 3,
+                "total_user_services": 12
+              }
+            ],
+            "source": "hudson_rock"
+          }
+        ],
+        "malware_family": [
+          {
+            "value": [
+              "Lumma"
+            ],
+            "source": "hudson_rock"
+          }
+        ]
+      },
+      "findings": [
+        {
+          "title": "Identity found in an infostealer log",
+          "severity": "critical",
+          "confidence": 0.8,
+          "criterion": "Hudson Rock search-by-email: stealer log dated 2026-06-10T08:15:00.000Z",
+          "tags": [
+            "infostealer",
+            "credential_exposure"
+          ],
+          "module": "hudson_rock",
+          "source": "hudsonrock.search_by_email",
+          "data": {
+            "date_compromised": "2026-06-10T08:15:00.000Z",
+            "stealer_family": "Lumma",
+            "total_corporate_services": 3,
+            "total_user_services": 12
+          },
+          "confidence_label": "probable",
+          "observed_first": "2026-06-10T08:15:00.000Z"
+        }
+      ]
+    },
+    {
+      "key": "domain:acmepay.com.br",
+      "depth": 1,
+      "seed": false,
+      "ownership": "own_asset",
+      "tags": [
+        "own_asset"
+      ],
+      "attributes": {
+        "created": [
+          {
+            "value": "2009-04-02",
+            "source": "rdap"
+          }
+        ],
+        "registered": [
+          {
+            "value": true,
+            "source": "rdap"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "src": "email:maria.silva@acmepay.com.br",
+      "dst": "domain:acmepay.com.br",
+      "relation": "email_domain",
+      "module": "email_basics",
+      "confidence": 0.9,
+      "expand": true
+    }
+  ],
+  "expect": {
+    "corporate_credentials_in_infostealer": {
+      "min": 1,
+      "max": 1,
+      "severity": "critical",
+      "confidence_label": "probable"
+    }
+  }
+}

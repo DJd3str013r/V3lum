@@ -542,13 +542,15 @@ def test_snowflake_and_tiktok_timestamps():
 
 
 def test_core_platforms():
-    assert {
+    core = {
         "instagram", "tiktok", "x", "facebook", "linkedin", "youtube", "github", "gitlab", "reddit", "threads",
         "pinterest", "twitch", "kwai", "snapchat",
-    } == SOCIAL_PLATFORMS
+    }
+    assert core == set(ent.CORE_PLATFORMS)
+    assert core <= SOCIAL_PLATFORMS  # module-batch fragments (v3lum/data/platforms/) only add platforms
     assert ent.platform_errors() == []
     assert "x" in SOCIAL_PLATFORMS and "twitter" not in SOCIAL_PLATFORMS and ent.resolve_platform("Twitter") == "x"
-    assert len(SOCIAL_PLATFORMS) == 14 and sorted(SOCIAL_PLATFORMS)[0] == "facebook"
+    assert len(ent.CORE_PLATFORMS) == 14 and sorted(ent.CORE_PLATFORMS)[0] == "facebook"
     assert SOCIAL_PLATFORMS & {"x", "myspace"} == {"x"}
 
 
@@ -595,9 +597,10 @@ def test_platform_added_by_tmp_fragment(tmp_path):
         },
     }
     (tmp_path / "batch_g04.json").write_text(json.dumps(fragment), encoding="utf-8")
+    before = len(SOCIAL_PLATFORMS)  # the core set plus the bundled batch fragments
     try:
         ent.reload_platforms(extra_dirs=[tmp_path])
-        assert "mastodon_social" in SOCIAL_PLATFORMS and len(SOCIAL_PLATFORMS) == 15
+        assert "mastodon_social" in SOCIAL_PLATFORMS and len(SOCIAL_PLATFORMS) == before + 1
         assert ent.platform_errors() == []
         assert normalize(T.SOCIAL_ACCOUNT, "mastodon_social:Gargron") == "mastodon_social:gargron"
         assert normalize(T.SOCIAL_ACCOUNT, "msocial:gargron") == "mastodon_social:gargron"

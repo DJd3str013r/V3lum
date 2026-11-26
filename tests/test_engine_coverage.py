@@ -347,3 +347,29 @@ def test_pack_links_carry_their_metadata_and_privacy_only_for_opted_in_typed_see
     asked.clear()
     scan([seed], include={"t_links_mail"}, purpose="phishing triage INC-9")  # no opt-in for the case
     assert asked[seed.key] is False
+
+
+# ------------------------------------------------------------------ health (A3 demotion data)
+def test_health_gets_the_reason_code_so_circuit_blocks_stay_neutral(registry, tmp_path):
+    """A run BLOCKED 'circuit' (or 'hostile_host') never reached the source: the engine passes the
+    reason_code to health.record_run, so five of them never demote the module (A3) while five
+    challenge pages do."""
+    from v3lum.core.health import HealthState
+
+    def circuit(self, entity, ctx):
+        raise Blocked("host short-circuited earlier in this run", reason_code="circuit")
+
+    def challenge(self, entity, ctx):
+        raise Blocked("anti-bot challenge page")
+
+    define_module("t_health_circuit", [T.DOMAIN], circuit)
+    define_module("t_health_challenge", [T.DOMAIN], challenge)
+    rt = make_runtime(FakeHttp())
+    rt.health = HealthState(tmp_path / "health.json")
+    eng = Engine(rt, ScanOptions())
+    for i in range(5):
+        target = Entity.make("domain", f"h{i}.example.org")
+        assert eng.run_module(registry["t_health_circuit"], target).reason_code == "circuit"
+        assert eng.run_module(registry["t_health_challenge"], target).reason_code == "challenge"
+    assert rt.health.stats("t_health_circuit")["runs"] == 5 and not rt.health.is_demoted("t_health_circuit")
+    assert rt.health.is_demoted("t_health_challenge")

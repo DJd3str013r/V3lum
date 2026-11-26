@@ -1,0 +1,22 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "pack_web_hygiene",
+  "title": "Correlation pack: web hygiene (P084, WP24)",
+  "description": "Facts the LIGHT/ACTIVE web modules record and v3lum/correlations/web_hygiene.py (CR17-CR24) reads; the rules never contact anything. Values are names, flags, counts and fingerprints only: never cookie values, secrets, file bodies or bucket object names. The rules also read the core security_headers_missing and intercepted_by, and jwt_header / jwt_claims; never cert_not_after or cert_issuer (CT or scan-database facts, not a live handshake under the policy gate, P084 cond 2).",
+  "owner": "WP24",
+  "attributes": {
+    "tls_certificate": "leaf certificate of a live TLS handshake (LIGHT tls_inspect): {subject, issuer, not_before, not_after, self_signed, hostname_match, key_type, key_bits, signature_hash, chain_verified, sha256}",
+    "tls_protocols": "dict {protocol: accepted | refused | could_not_test} from the ACTIVE tls_protocol_scan (SSLv3, TLSv1, TLSv1.1, TLSv1.2, TLSv1.3); a client-side refusal is could_not_test, never refused (rule 5)",
+    "tls_weak_ciphers": "list of weak cipher suites the server accepted (ACTIVE tls_protocol_scan: RC4, DES/3DES, NULL, EXPORT, anonymous)",
+    "hsts": "Strict-Transport-Security of a page fetched over HTTPS: {present, max_age, include_subdomains, preload}",
+    "login_form": "bool: the fetched page holds a password input or login form (LIGHT page fetch; field values are never kept)",
+    "cookie_flags": "list of {name, secure, httponly, samesite, session_like} from the Set-Cookie headers of a fetched page: cookie names and flags only, never values",
+    "cors_results": "list of {endpoint, origin_kind (arbitrary | null | prefix | suffix | wildcard), acao_reflected, acac, user_data, acao} from the ACTIVE cors_probe on in-scope authorized targets",
+    "cors_acao": "Access-Control-Allow-Origin observed on ordinary responses (LIGHT): context only, never a CORS finding",
+    "sensitive_files": "list of {path, status, size, signature, sha256} exposures confirmed by a content signature (ACTIVE sensitive_files): never the body or the values it holds",
+    "cloud_buckets": "list of {bucket, provider, state (public_listing | exists_private | redirect | absent | could_not_verify), attribution (page | js | archive | dns | cname | scope_file | permutation), evidence}: existence and listability only, never object names or contents"
+  },
+  "tags": {
+    "inconclusive": "a check that could not conclude (e.g. TLS interception on the egress path): neither a problem nor an all-clear"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "schema": "v3lum.attack_index/1",
+  "version": "enterprise-attack 20.1 (2026-11-05)",
+  "source": "https://github.com/mitre-attack/attack-stix-data (enterprise-attack.json, collection 'Enterprise ATT&CK' 20.1)",
+  "attribution": "MITRE ATT&CK(R) is a registered trademark of The MITRE Corporation. (c) The MITRE Corporation. This work is reproduced and distributed with the permission of The MITRE Corporation (ATT&CK terms of use).",
+  "pack": "pack_web_hygiene",
+  "notes": "Correlation pack web hygiene (WP24, P084): techniques of CR17-CR24 (P277 maps weak TLS to T1557, P279 to T1213/T1552.001, P282 to T1530, P316 to T1606/T1528).",
+  "techniques": {
+    "T1185": {"name": "Browser Session Hijacking", "stix_id": "attack-pattern--544b0346-29ad-41e1-a808-501bb4193f47", "revoked": false, "deprecated": false, "replaced_by": null},
+    "T1189": {"name": "Drive-by Compromise", "stix_id": "attack-pattern--d742a578-d70e-4d0e-96a6-02a9c30204e6", "revoked": false, "deprecated": false, "replaced_by": null},
+    "T1213": {"name": "Data from Information Repositories", "stix_id": "attack-pattern--d28ef391-8ed4-45dc-bc4a-2f43abf54416", "revoked": false, "deprecated": false, "replaced_by": null},
+    "T1528": {"name": "Steal Application Access Token", "stix_id": "attack-pattern--890c9858-598c-401d-a4d5-c67ebcdd703a", "revoked": false, "deprecated": false, "replaced_by": null},
+    "T1530": {"name": "Data from Cloud Storage", "stix_id": "attack-pattern--3298ce88-1628-43b1-87d9-0b5336b193d7", "revoked": false, "deprecated": false, "replaced_by": null},
+    "T1539": {"name": "Steal Web Session Cookie", "stix_id": "attack-pattern--10ffac09-e42d-4f56-ab20-db94c67d76ff", "revoked": false, "deprecated": false, "replaced_by": null},
+    "T1552.001": {"name": "Unsecured Credentials: Credentials In Files", "stix_id": "attack-pattern--837f9164-50af-4ac0-8219-379d8a74cefc", "revoked": false, "deprecated": false, "replaced_by": null},
+    "T1557": {"name": "Adversary-in-the-Middle", "stix_id": "attack-pattern--035bb001-ab69-4a0b-9f6c-2de8b09e1b9d", "revoked": false, "deprecated": false, "replaced_by": null},
+    "T1606": {"name": "Forge Web Credentials", "stix_id": "attack-pattern--94cb00a4-b295-4d06-aa2b-5653b9c1be9c", "revoked": false, "deprecated": false, "replaced_by": null},
+    "T1619": {"name": "Cloud Storage Object Discovery", "stix_id": "attack-pattern--8565825b-21c8-4518-b75e-cbc4c717a156", "revoked": false, "deprecated": false, "replaced_by": null}
+  }
+}

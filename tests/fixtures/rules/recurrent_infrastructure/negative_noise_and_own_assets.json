@@ -1,0 +1,29 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {"mode": "passive", "tlp": "amber"},
+  "org_profile": {"name": "Corp", "domains": [{"name": "corp.example", "verification": "txt_verified"}]},
+  "nodes": [
+    {
+      "key": "ipv4:8.8.8.8",
+      "depth": 1, "tlp": "amber", "noise": true, "noise_kind": "resolver",
+      "attributes": {"sightings": [{"value": {"count": 9, "last": "2026-11-25", "verdict": "", "restricted": 0}, "source": "case_sightings"}]}
+    },
+    {
+      "key": "domain:www.corp.example",
+      "depth": 0, "seed": true, "tlp": "amber", "ownership": "own_asset", "criticality": "high", "tags": ["own_asset"],
+      "attributes": {"sightings": [{"value": {"count": 4, "last": "2026-11-24", "verdict": "", "restricted": 0}, "source": "case_sightings"}]}
+    },
+    {
+      "key": "domain:sinkhole-recurrent.example",
+      "depth": 1, "tlp": "amber", "tags": ["sinkhole"],
+      "attributes": {"sightings": [{"value": {"count": 2, "last": "2026-11-23", "verdict": "malicious", "restricted": 0}, "source": "case_sightings"}]}
+    },
+    {
+      "key": "domain:allowlisted-recurrent.example",
+      "depth": 1, "tlp": "amber", "tags": ["known_good"],
+      "attributes": {"sightings": [{"value": {"count": 2, "last": "2026-11-23", "verdict": "", "restricted": 0}, "source": "case_sightings"}]}
+    }
+  ],
+  "edges": []
+}

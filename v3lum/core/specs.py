@@ -210,8 +210,12 @@ MAX_DOC_BYTES = 5 * 1024 * 1024
 MAX_RAW_BYTES = 1024 * 1024
 #: Largest spec file (and expected.json) the loader reads.
 _MAX_SPEC_BYTES = 512 * 1024
-#: A spec failing its health check on this many consecutive days is auto-disabled (P331 cond 9).
-AUTO_DISABLE_DAYS = 7
+#: A spec failing its health check on this many consecutive days is auto-disabled (P331 cond 9);
+#: the same threshold as the doctor notice of ``health.HealthState.notices`` (one constant).
+try:
+    from v3lum.core.health import SPEC_DISABLE_DAYS as AUTO_DISABLE_DAYS
+except ImportError:  # pragma: no cover - health.py ships with the core
+    AUTO_DISABLE_DAYS = 7
 #: Profile-site specs (A5): politeness floor and per-site timeout in seconds.
 PROFILE_MIN_INTERVAL = 1.0
 PROFILE_TIMEOUT = 10.0
@@ -1864,6 +1868,12 @@ def validate_spec(spec: Any) -> list[str]:  # noqa: C901 - one linear schema che
             errs.append(f"request.ignored_status_codes: a {a5} is tri-state: anything but the markers is 'unknown'")
         if known and tier not in ("trusted", "community"):
             errs.append(f"provider: a {a5} is queried only when its provider is trusted or community (A5)")
+        for prov in known:
+            # A5: one request at a time per site - the per-host concurrency comes from the provider's
+            # http_profile (a spec cannot set it), so the fragment must declare 1 (fail closed)
+            concurrency = getattr(getattr(prov, "http_profile", None), "concurrency", None)
+            if concurrency != 1:
+                errs.append(f"provider: {prov.id} must declare http_profile.concurrency 1 for a {a5} (one request at a time per site)")
         for pivot in pivot_rules:
             if pivot.get("expand", True) is not False:
                 errs.append(f"results: pivots of a {a5} never expand (expand: false)")

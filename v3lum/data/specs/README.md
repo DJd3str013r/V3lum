@@ -193,7 +193,8 @@ when the policy removed it from `ctx.allowed_sources` (SKIPPED `licence`).
   provider accepts IOC types only (never PERSONAL_TYPES, company ids or keywords, at any TLP).
 * **profile-site specs** (accepting `username` or a handle type, or sending the local part of an
   e-mail as a handle with `{user}`) follow the A5 username rules:
-  `run_on: "seeds"`, `default_enabled: false`, trusted/community provider, a `found` rule plus an
+  `run_on: "seeds"`, `default_enabled: false`, trusted/community provider whose fragment declares
+  `http_profile.concurrency: 1` (one request at a time per site), a `found` rule plus an
   `absent` rule or `absent_statuses`, `max_requests: 1` without pagination or ignored statuses,
   `min_interval >= 1`, pivots with `expand: false` and POSSIBLE confidence at most. One request, no
   retries, 10 s timeout, redirects not followed: a redirect is classified (a login redirect is BLOCKED

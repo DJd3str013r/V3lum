@@ -1,0 +1,145 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 1
+  },
+  "org_profile": {
+    "org": {
+      "name": "Acme Pagamentos S.A."
+    },
+    "domains": [
+      {
+        "name": "acmepay.com.br",
+        "verification": "txt_verified",
+        "criticality": "high"
+      }
+    ],
+    "brands": [
+      {
+        "keyword": "acmepay",
+        "variants": [
+          "acme pay"
+        ],
+        "criticality": "high"
+      }
+    ],
+    "cnpj_roots": [
+      "11222333"
+    ],
+    "suppliers": [
+      {
+        "name": "Acme Parceiro Logistica Ltda",
+        "domains": [
+          "acmepay-partner.com.br"
+        ],
+        "brands": []
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "key": "email:joao.souza@acmepay.com.br",
+      "depth": 0,
+      "seed": true,
+      "ownership": "own_asset",
+      "tags": [
+        "own_asset"
+      ],
+      "attributes": {
+        "breach_records": [
+          {
+            "value": [
+              {
+                "name": "SynthForum",
+                "date": "2024-03-02",
+                "data_classes": [
+                  "Email addresses",
+                  "Passwords"
+                ],
+                "verified": true,
+                "source": "hibp.account"
+              },
+              {
+                "name": "ShopSynth",
+                "date": "2023-07-10",
+                "data_classes": [
+                  "Email addresses",
+                  "Passwords"
+                ],
+                "verified": true,
+                "source": "hibp.account"
+              },
+              {
+                "name": "GameSynth",
+                "date": "2025-02-01",
+                "data_classes": [
+                  "Email addresses",
+                  "Passwords"
+                ],
+                "verified": true,
+                "source": "hibp.account"
+              }
+            ],
+            "source": "hibp_account"
+          }
+        ],
+        "first_seen_breach": [
+          {
+            "value": "2023-07-10",
+            "source": "hibp_account"
+          }
+        ],
+        "breach_count": [
+          {
+            "value": 3,
+            "source": "hibp_account"
+          }
+        ]
+      }
+    },
+    {
+      "key": "domain:acmepay.com.br",
+      "depth": 1,
+      "seed": false,
+      "ownership": "own_asset",
+      "tags": [
+        "own_asset"
+      ],
+      "attributes": {
+        "created": [
+          {
+            "value": "2009-04-02",
+            "source": "rdap"
+          }
+        ],
+        "registered": [
+          {
+            "value": true,
+            "source": "rdap"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "src": "email:joao.souza@acmepay.com.br",
+      "dst": "domain:acmepay.com.br",
+      "relation": "email_domain",
+      "module": "email_basics",
+      "confidence": 0.9,
+      "expand": true
+    }
+  ],
+  "expect": {
+    "email_in_multiple_password_breaches": {
+      "min": 1,
+      "max": 1,
+      "severity": "high",
+      "confidence_label": "probable"
+    }
+  }
+}

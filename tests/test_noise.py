@@ -294,12 +294,17 @@ def test_runtime_misp_warninglists(tmp_path):
     noise.register_list("misp_urls", dataset="wl_strings.json")
     noise.register_list("misp_sub", dataset="wl_sub.json")
     assert noise.errors() == []
-    assert noise.warninglists(E("domain", "img.cdn.example")) == ["misp_hosts"]
-    assert noise.warninglists(E("domain", "assets.example")) == ["misp_hosts"]
-    assert noise.warninglists(E("ipv4", "8.8.8.99")) == ["misp_dns"]
-    assert noise.warninglists(E("ipv6", "2001:4860:4860::8888")) == ["misp_dns"]
-    assert noise.warninglists(E("url", "https://good.example/login")) == ["misp_urls"]
-    assert noise.warninglists(E("domain", "ads-tracker.example")) == ["misp_sub"]
+    mine = {"misp_hosts", "misp_dns", "misp_urls", "misp_sub"}
+
+    def runtime(entity):  # bundled warninglist fragments of module batches (misp.public-dns-*) may also match
+        return [name for name in noise.warninglists(entity) if name in mine]
+
+    assert runtime(E("domain", "img.cdn.example")) == ["misp_hosts"]
+    assert runtime(E("domain", "assets.example")) == ["misp_hosts"]
+    assert runtime(E("ipv4", "8.8.8.99")) == ["misp_dns"]
+    assert runtime(E("ipv6", "2001:4860:4860::8888")) == ["misp_dns"]
+    assert runtime(E("url", "https://good.example/login")) == ["misp_urls"]
+    assert runtime(E("domain", "ads-tracker.example")) == ["misp_sub"]
     assert noise.warninglists(E("domain", "evil.example")) == []
     assert not noise.is_noise(E("domain", "img.cdn.example"))  # warninglists are not noise
 

@@ -1,0 +1,108 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 1
+  },
+  "org_profile": {
+    "org": {
+      "name": "Acme Pagamentos S.A."
+    },
+    "domains": [
+      {
+        "name": "acmepay.com.br",
+        "verification": "txt_verified",
+        "criticality": "high"
+      }
+    ],
+    "brands": [
+      {
+        "keyword": "acmepay",
+        "variants": [
+          "acme pay"
+        ],
+        "criticality": "high"
+      }
+    ],
+    "cnpj_roots": [
+      "11222333"
+    ],
+    "suppliers": [
+      {
+        "name": "Acme Parceiro Logistica Ltda",
+        "domains": [
+          "acmepay-partner.com.br"
+        ],
+        "brands": []
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "key": "domain:acmepay.com.br",
+      "depth": 0,
+      "seed": true,
+      "ownership": "own_asset",
+      "criticality": "high",
+      "tags": [
+        "own_asset"
+      ],
+      "attributes": {
+        "nameservers": [
+          {
+            "value": [
+              "ns1.acmepay.com.br",
+              "ns2.acmepay.com.br"
+            ],
+            "source": "dns_records"
+          }
+        ],
+        "mx": [
+          {
+            "value": [
+              "10 mx.acmepay.com.br"
+            ],
+            "source": "dns_records"
+          }
+        ]
+      }
+    },
+    {
+      "key": "domain:acmepay-store.com",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "first_cert_seen": [
+          {
+            "value": "2023-05-02",
+            "source": "ct_logs"
+          }
+        ],
+        "ct_summary": [
+          {
+            "value": {
+              "cert_count": 14,
+              "first_cert_seen": "2023-05-02"
+            },
+            "source": "ct_logs"
+          }
+        ],
+        "cert_not_after": [
+          {
+            "value": "2027-02-20",
+            "source": "tls_inspect"
+          }
+        ],
+        "cert_issuer": [
+          {
+            "value": "Example DV CA",
+            "source": "tls_inspect"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": []
+}

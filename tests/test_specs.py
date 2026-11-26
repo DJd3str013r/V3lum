@@ -707,6 +707,19 @@ def test_profile_spec_a5_refusals(selftest_providers_registered, path, value, ne
     assert any(needle in p for p in specs.validate_spec(spec)), specs.validate_spec(spec)
 
 
+def test_profile_spec_needs_a_one_connection_provider(clean_registry, spec_state):
+    """A5 'one request at a time per site': the per-host concurrency comes from the provider's
+    http_profile (a spec cannot set it), so a profile-site spec whose provider allows more than one
+    connection is refused (fail closed)."""
+    for fragment in selftest_providers():
+        fragment = copy.deepcopy(fragment)
+        if fragment["id"] == "selftest_profiles":
+            fragment["http_profile"] = {}  # registry default concurrency (4)
+        providers.register(fragment, origin="tests:selftest")
+    problems = specs.validate_spec(selftest_spec("selftest_profile"))
+    assert any("http_profile.concurrency 1" in p for p in problems), problems
+
+
 def test_email_local_part_lookups_follow_a5(selftest_providers_registered):
     """{user} of an e-mail sends the local part as a handle: a username lookup derived from an
     address, which A5 allows only on analyst-typed seeds (never on pivots, never default)."""

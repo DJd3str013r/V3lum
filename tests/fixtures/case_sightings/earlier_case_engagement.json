@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.case/2",
+  "case_id": "20261123-070000-d4d4",
+  "created": "2026-11-23T07:00:00+00:00",
+  "tlp": "amber",
+  "seeds": ["domain:recurrent-c2.example"],
+  "options": {"mode": "light", "tlp": "amber", "authorization_ref": "PENTEST-7"},
+  "summary": {"risk_score": 10.0, "risk_level": "low", "findings": 0, "entities": 1},
+  "entities": [
+    {"key": "domain:recurrent-c2.example", "type": "domain", "value": "recurrent-c2.example", "seed": true, "tlp": "amber", "tags": []}
+  ],
+  "findings": [],
+  "correlations": []
+}

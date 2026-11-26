@@ -1,0 +1,22 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {"mode": "passive", "tlp": "amber", "depth": 1},
+  "nodes": [
+    {
+      "key": "domain:recurrent-c2.example",
+      "depth": 0, "seed": true, "tlp": "amber", "path_confidence": 1.0,
+      "attributes": {
+        "sightings": [{"value": {"count": 2, "last": "2026-11-20", "verdict": "malicious", "restricted": 1, "verdicts": {"malicious": 2}}, "source": "case_sightings"}]
+      },
+      "findings": [
+        {"title": "seen in 2 previous cases, last 2026-11-20, verdict: malicious", "severity": "info", "confidence": "confirmed",
+         "criterion": "case DB sighting", "tags": ["info"], "module": "case_sightings", "key": "sightings",
+         "data": {"count": 2, "last": "2026-11-20", "verdict": "malicious", "restricted": 1}}
+      ]
+    },
+    {"key": "ipv4:203.0.113.77", "depth": 1, "tlp": "amber"}
+  ],
+  "edges": [{"src": "domain:recurrent-c2.example", "dst": "ipv4:203.0.113.77", "relation": "resolves_to", "module": "dns_records", "confidence": 0.9}],
+  "expect": {"recurrent_infrastructure": {"min": 1, "max": 1, "severity": "medium", "confidence_label": "confirmed"}}
+}

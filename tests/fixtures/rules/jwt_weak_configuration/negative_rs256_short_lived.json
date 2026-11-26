@@ -1,0 +1,90 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "light",
+    "tlp": "amber",
+    "depth": 1
+  },
+  "org_profile": {
+    "org": {
+      "name": "Acme Pagamentos S.A."
+    },
+    "domains": [
+      {
+        "name": "acmepay.com.br",
+        "verification": "txt_verified",
+        "criticality": "high"
+      }
+    ],
+    "brands": [
+      {
+        "keyword": "acmepay",
+        "variants": [
+          "acme pay"
+        ],
+        "criticality": "high"
+      }
+    ],
+    "cnpj_roots": [
+      "11222333"
+    ],
+    "suppliers": [
+      {
+        "name": "Acme Parceiro Logistica Ltda",
+        "domains": [
+          "acmepay-partner.com.br"
+        ],
+        "brands": []
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "key": "url:https://portal.acmepay.com.br/app.js",
+      "depth": 1,
+      "seed": false,
+      "ownership": "own_asset",
+      "tags": [
+        "own_asset"
+      ]
+    },
+    {
+      "key": "jwt:eyJh…ZW4i:5f0c3a1e9b7d2c46",
+      "depth": 2,
+      "seed": false,
+      "attributes": {
+        "jwt_header": [
+          {
+            "value": {
+              "alg": "RS256",
+              "typ": "JWT",
+              "kid": "2026-11-key"
+            },
+            "source": "jwt_analysis"
+          }
+        ],
+        "jwt_claims": [
+          {
+            "value": {
+              "iss": "https://portal.acmepay.com.br",
+              "iat": 1764150000,
+              "exp": 1764153600
+            },
+            "source": "jwt_analysis"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "src": "url:https://portal.acmepay.com.br/app.js",
+      "dst": "jwt:eyJh…ZW4i:5f0c3a1e9b7d2c46",
+      "relation": "mentions",
+      "module": "js_endpoints_live",
+      "confidence": 0.9,
+      "expand": true
+    }
+  ]
+}

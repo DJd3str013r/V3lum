@@ -1,0 +1,114 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 1,
+    "breach_scope": "all",
+    "purpose": "IR-2026-117 phishing triage"
+  },
+  "org_profile": {
+    "org": {
+      "name": "Acme Pagamentos S.A."
+    },
+    "domains": [
+      {
+        "name": "acmepay.com.br",
+        "verification": "txt_verified",
+        "criticality": "high"
+      }
+    ],
+    "brands": [
+      {
+        "keyword": "acmepay",
+        "variants": [
+          "acme pay"
+        ],
+        "criticality": "high"
+      }
+    ],
+    "cnpj_roots": [
+      "11222333"
+    ],
+    "suppliers": [
+      {
+        "name": "Acme Parceiro Logistica Ltda",
+        "domains": [
+          "acmepay-partner.com.br"
+        ],
+        "brands": []
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "key": "email:ana.costa@partner-firm.com.br",
+      "depth": 0,
+      "seed": true,
+      "ownership": "third_party",
+      "tags": [
+        "third_party"
+      ],
+      "attributes": {
+        "breach_records": [
+          {
+            "value": [
+              {
+                "name": "SynthForum",
+                "date": "2019-07-12",
+                "data_classes": [
+                  "Email addresses",
+                  "Passwords"
+                ],
+                "verified": false,
+                "source": "hibp.account"
+              }
+            ],
+            "source": "hibp_account"
+          },
+          {
+            "value": [
+              {
+                "name": "SynthForum.example",
+                "date": "2019-07",
+                "data_classes": [
+                  "username",
+                  "password"
+                ],
+                "verified": null,
+                "source": "leakcheck.public"
+              },
+              {
+                "name": "ArcadeSynth.example",
+                "date": "2025-05",
+                "data_classes": [
+                  "password",
+                  "ip"
+                ],
+                "verified": null,
+                "source": "leakcheck.public"
+              }
+            ],
+            "source": "leakcheck_public"
+          }
+        ],
+        "breach_hit_count": [
+          {
+            "value": 2,
+            "source": "leakcheck_public"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [],
+  "expect": {
+    "email_in_multiple_password_breaches": {
+      "min": 1,
+      "max": 1,
+      "severity": "medium",
+      "confidence_label": "probable"
+    }
+  }
+}

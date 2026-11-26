@@ -1,0 +1,69 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 1
+  },
+  "nodes": [
+    {
+      "key": "domain:acmepay-pix.com",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "registered": [
+          {
+            "value": true,
+            "source": "rdap"
+          }
+        ],
+        "created": [
+          {
+            "value": "2026-11-14",
+            "source": "rdap"
+          }
+        ],
+        "domain_age_days": [
+          {
+            "value": 12,
+            "source": "rdap"
+          }
+        ],
+        "registrant_kind": [
+          {
+            "value": "org",
+            "source": "rdap"
+          }
+        ],
+        "rdap_server": [
+          {
+            "value": "rdap.registro.br",
+            "source": "rdap"
+          }
+        ],
+        "registrant": [
+          {
+            "value": "Promocoes Exemplo Ltda",
+            "source": "rdap"
+          }
+        ],
+        "cnpj_roots": [
+          {
+            "value": [
+              "99888777"
+            ],
+            "source": "rdap"
+          }
+        ],
+        "registrant_doc": [
+          {
+            "value": "99.888.777/0001-00",
+            "source": "rdap"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": []
+}

@@ -349,7 +349,11 @@ class Runtime:
     @property
     def quota(self) -> Any:
         """Quota book (P334; created lazily at setting ``quota_db_path``, default
-        ``~/.v3lum/quota.db``; one instance even when module threads ask for it concurrently)."""
+        ``~/.v3lum/quota.db``; one instance even when module threads ask for it concurrently).
+
+        The book follows the runtime clock (UTC windows, provider signals and the token bucket move
+        with an injected FakeClock) and the runtime's provider registry (an injected registry is
+        the one whose quota blocks are charged)."""
         if self._quota is None:
             with self._quota_lock:
                 if self._quota is None:
@@ -357,7 +361,7 @@ class Runtime:
 
                     configured = str(self.config.get("quota_db_path", "") or "").strip()
                     path = Path(configured).expanduser() if configured else paths.home() / "quota.db"
-                    self._quota = QuotaBook(path)
+                    self._quota = QuotaBook(path, clock=self.clock, providers=self._live_providers, settings=self.config)
         return self._quota
 
     @quota.setter

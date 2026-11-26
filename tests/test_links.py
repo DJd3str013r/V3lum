@@ -92,6 +92,10 @@ FIXTURE_VALUES = {
     T.IPV4: "8.8.8.8", T.IPV6: "2001:4860:4860::8888", T.DOMAIN: "example.com", T.URL: "https://example.com/",
     T.EMAIL: "someone@example.com", T.SHA256: "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f",
     T.CNPJ: "00000000000191", T.ASN: "AS15169", T.PHONE: "+5511987654321", T.USERNAME: "octocat",
+    # types used by module-batch pivot packs (v3lum/data/pivot_links/<batch>.json)
+    T.MD5: "44d88612fea8a8f36de82e1278abb02f", T.SHA1: "3395856ce81f2b7382dee72602f798b642f14140",
+    T.CERT_FP: "5ef2f2c1b5b2bbd2a31b4b0b4e3a3ab4b9b9c4d7c0c2e0f3a6d2b4f1e3a5c7d9", T.CVE: "CVE-2021-44228",
+    T.MALWARE: "emotet",
 }
 
 
@@ -99,6 +103,8 @@ def test_every_bundled_template_renders_a_valid_https_url():
     seen = 0
     for link in links.templates():
         for etype in link.entity_types:
+            if etype not in FIXTURE_VALUES and not link.ref.startswith("core_reference:"):
+                continue  # a batch pack's new type: its pack is linted by test_registry_contract (lint_pack)
             assert etype in FIXTURE_VALUES, f"add a fixture value for {etype.value}"
             rendered = links.render(link, Entity.make(etype, FIXTURE_VALUES[etype]))
             if link.privacy:
@@ -111,10 +117,9 @@ def test_every_bundled_template_renders_a_valid_https_url():
 
 
 def test_links_for_legacy_signature():
-    assert links.links_for(Entity.make("ipv4", "8.8.8.8")) == [("Shodan host", "https://www.shodan.io/host/8.8.8.8")]
-    assert links.links_for(Entity.make("domain", "example.com"), categories={"history"}) == [
-        ("IANA WHOIS", "https://www.iana.org/whois?q=example.com")
-    ]
+    # module-batch pivot packs add links after the core reference pack: the core entries come first
+    assert links.links_for(Entity.make("ipv4", "8.8.8.8"))[0] == ("Shodan host", "https://www.shodan.io/host/8.8.8.8")
+    assert ("IANA WHOIS", "https://www.iana.org/whois?q=example.com") in links.links_for(Entity.make("domain", "example.com"), categories={"history"})
     assert links.links_for(Entity.make("domain", "example.com"), categories={"social"}) == []
     assert links.links_for(Entity.make("cpf", "52998224725")) == []
 
@@ -472,7 +477,9 @@ def test_pack_without_schema_is_not_loaded(extra_packs, tiers):
 
 
 def test_invalid_links_are_dropped_fail_closed(extra_packs, tiers):
-    extra_packs({"test_pack.json": pack(item(), item(id="bad", template="http://www.virustotal.com/{q}"))})
+    # a template of its own: a bundled batch pack may already serve the default one (deduplicated)
+    good = item(template="https://www.virustotal.com/gui/domain/{domain}/test-pack")
+    extra_packs({"test_pack.json": pack(good, item(id="bad", template="http://www.virustotal.com/{q}"))})
     assert links.get_link("test_pack:vt_domain") is not None
     assert links.get_link("test_pack:bad") is None
     assert any("test_pack:bad" in e for e in links.errors())

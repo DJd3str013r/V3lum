@@ -48,7 +48,7 @@
       "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
       "personal_data_review": null,
       "reliability": {"grade": "D", "justification": "synthetic provider for offline tests"},
-      "http_profile": {},
+      "http_profile": {"concurrency": 1},
       "quota": null,
       "error_markers": [],
       "keys": {},

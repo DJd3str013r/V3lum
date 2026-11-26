@@ -1,0 +1,221 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 1
+  },
+  "org_profile": {
+    "org": {
+      "name": "Acme Pagamentos S.A."
+    },
+    "domains": [
+      {
+        "name": "acmepay.com.br",
+        "verification": "txt_verified",
+        "criticality": "high"
+      }
+    ],
+    "brands": [
+      {
+        "keyword": "acmepay",
+        "variants": [
+          "acme pay"
+        ],
+        "criticality": "high"
+      }
+    ],
+    "cnpj_roots": [
+      "11222333"
+    ],
+    "suppliers": [
+      {
+        "name": "Acme Parceiro Logistica Ltda",
+        "domains": [
+          "acmepay-partner.com.br"
+        ],
+        "brands": []
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "key": "domain:acmepay.com.br",
+      "depth": 0,
+      "seed": true,
+      "ownership": "own_asset",
+      "criticality": "high",
+      "tags": [
+        "own_asset"
+      ],
+      "attributes": {
+        "nameservers": [
+          {
+            "value": [
+              "ns1.acmepay.com.br",
+              "ns2.acmepay.com.br"
+            ],
+            "source": "dns_records"
+          }
+        ],
+        "mx": [
+          {
+            "value": [
+              "10 mx.acmepay.com.br"
+            ],
+            "source": "dns_records"
+          }
+        ]
+      }
+    },
+    {
+      "key": "domain:acmepay-pix.com",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "registered": [
+          {
+            "value": true,
+            "source": "rdap"
+          }
+        ],
+        "created": [
+          {
+            "value": "2026-11-14",
+            "source": "rdap"
+          }
+        ],
+        "domain_age_days": [
+          {
+            "value": 12,
+            "source": "rdap"
+          }
+        ],
+        "registrant_kind": [
+          {
+            "value": "org",
+            "source": "rdap"
+          }
+        ],
+        "rdap_server": [
+          {
+            "value": "rdap.registro.br",
+            "source": "rdap"
+          }
+        ],
+        "registrant": [
+          {
+            "value": "Promocoes Exemplo Ltda",
+            "source": "rdap"
+          }
+        ],
+        "cnpj_roots": [
+          {
+            "value": [
+              "99888777"
+            ],
+            "source": "rdap"
+          }
+        ],
+        "registrant_doc": [
+          {
+            "value": "99.888.777/0001-00",
+            "source": "rdap"
+          }
+        ],
+        "nameservers": [
+          {
+            "value": [
+              "ns1.cheap-dns.example",
+              "ns2.cheap-dns.example"
+            ],
+            "source": "dns_records"
+          }
+        ],
+        "mx": [
+          {
+            "value": [
+              "10 mail.acmepay-pix.com"
+            ],
+            "source": "dns_records"
+          }
+        ],
+        "a_records": [
+          {
+            "value": [
+              "198.51.100.20"
+            ],
+            "source": "dns_records"
+          }
+        ]
+      },
+      "findings": [
+        {
+          "title": "Registered lookalike domain",
+          "severity": "medium",
+          "confidence": 0.8,
+          "criterion": "P012 ladder: registered lookalike with 2 activity signal(s)",
+          "tags": [
+            "typosquat"
+          ],
+          "module": "typosquat",
+          "source": "core_doh.resolvers",
+          "data": {
+            "domain": "acmepay-pix.com",
+            "fuzzer": "combo",
+            "signals": [
+              "mx",
+              "nrd<=30d"
+            ]
+          },
+          "confidence_label": "probable"
+        }
+      ]
+    },
+    {
+      "key": "cnpj:99888777000100",
+      "depth": 2,
+      "seed": false
+    },
+    {
+      "key": "ipv4:198.51.100.20",
+      "depth": 2,
+      "seed": false
+    }
+  ],
+  "edges": [
+    {
+      "src": "domain:acmepay.com.br",
+      "dst": "domain:acmepay-pix.com",
+      "relation": "lookalike",
+      "module": "typosquat",
+      "confidence": 0.7,
+      "expand": false
+    },
+    {
+      "src": "domain:acmepay-pix.com",
+      "dst": "cnpj:99888777000100",
+      "relation": "registrant",
+      "module": "rdap",
+      "confidence": 0.9,
+      "expand": true
+    },
+    {
+      "src": "domain:acmepay-pix.com",
+      "dst": "ipv4:198.51.100.20",
+      "relation": "resolves_to",
+      "module": "dns_records",
+      "confidence": 0.9,
+      "expand": true
+    }
+  ],
+  "expect": {
+    "typosquat_phishing_capable": {
+      "min": 1,
+      "max": 1,
+      "severity": "high",
+      "confidence_label": "probable"
+    }
+  }
+}

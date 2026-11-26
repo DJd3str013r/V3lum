@@ -1,0 +1,29 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {"mode": "passive", "tlp": "amber", "purpose": "incident response"},
+  "nodes": [
+    {
+      "key": "email:analyst-test@example.com",
+      "depth": 0, "seed": true, "tlp": "amber",
+      "attributes": {"sightings": [{"value": {"count": 3, "last": "2026-11-20", "verdict": "malicious", "restricted": 0}, "source": "case_sightings"}]}
+    },
+    {
+      "key": "username:recurring_handle",
+      "depth": 0, "seed": true, "tlp": "amber",
+      "attributes": {"sightings": [{"value": {"count": 2, "last": "2026-11-21", "verdict": "", "restricted": 1}, "source": "case_sightings"}]}
+    },
+    {
+      "key": "domain:first-time.example",
+      "depth": 0, "seed": true, "tlp": "amber",
+      "attributes": {"sightings": [{"value": {"count": 0, "last": "", "verdict": "", "restricted": 0}, "source": "case_sightings"}]}
+    },
+    {
+      "key": "cve:CVE-2021-44228",
+      "depth": 1, "tlp": "amber",
+      "attributes": {"sightings": [{"value": {"count": 5, "last": "2026-11-22", "verdict": "", "restricted": 0}, "source": "case_sightings"}]}
+    },
+    {"key": "domain:no-sightings.example", "depth": 0, "seed": true, "tlp": "amber"}
+  ],
+  "edges": []
+}

@@ -1,0 +1,19 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {"mode": "passive", "tlp": "amber"},
+  "nodes": [
+    {
+      "key": "sha256:275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f",
+      "depth": 0, "seed": true, "tlp": "amber",
+      "attributes": {"sightings": [{"value": {"count": 0, "last": "", "verdict": "", "restricted": 2}, "source": "case_sightings"}]}
+    },
+    {
+      "key": "btc_address:bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq",
+      "depth": 0, "seed": true, "tlp": "amber",
+      "attributes": {"sightings": [{"value": {"count": 1, "last": "2026-10-02", "verdict": "", "restricted": 0}, "source": "case_sightings"}]}
+    }
+  ],
+  "edges": [],
+  "expect": {"recurrent_infrastructure": {"min": 2, "max": 2, "severity": "low", "confidence_label": "confirmed"}}
+}

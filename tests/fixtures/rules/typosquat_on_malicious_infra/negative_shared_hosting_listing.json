@@ -1,0 +1,221 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 1
+  },
+  "org_profile": {
+    "org": {
+      "name": "Acme Pagamentos S.A."
+    },
+    "domains": [
+      {
+        "name": "acmepay.com.br",
+        "verification": "txt_verified",
+        "criticality": "high"
+      }
+    ],
+    "brands": [
+      {
+        "keyword": "acmepay",
+        "variants": [
+          "acme pay"
+        ],
+        "criticality": "high"
+      }
+    ],
+    "cnpj_roots": [
+      "11222333"
+    ],
+    "suppliers": [
+      {
+        "name": "Acme Parceiro Logistica Ltda",
+        "domains": [
+          "acmepay-partner.com.br"
+        ],
+        "brands": []
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "key": "domain:acmepay.com.br",
+      "depth": 0,
+      "seed": true,
+      "ownership": "own_asset",
+      "criticality": "high",
+      "tags": [
+        "own_asset"
+      ],
+      "attributes": {
+        "nameservers": [
+          {
+            "value": [
+              "ns1.acmepay.com.br",
+              "ns2.acmepay.com.br"
+            ],
+            "source": "dns_records"
+          }
+        ],
+        "mx": [
+          {
+            "value": [
+              "10 mx.acmepay.com.br"
+            ],
+            "source": "dns_records"
+          }
+        ]
+      }
+    },
+    {
+      "key": "domain:acmepay-fatura.com",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "registered": [
+          {
+            "value": true,
+            "source": "rdap"
+          }
+        ],
+        "created": [
+          {
+            "value": "2026-11-10",
+            "source": "rdap"
+          }
+        ],
+        "domain_age_days": [
+          {
+            "value": 16,
+            "source": "rdap"
+          }
+        ],
+        "registrant_kind": [
+          {
+            "value": "org",
+            "source": "rdap"
+          }
+        ],
+        "rdap_server": [
+          {
+            "value": "rdap.registro.br",
+            "source": "rdap"
+          }
+        ],
+        "registrant": [
+          {
+            "value": "Promocoes Exemplo Ltda",
+            "source": "rdap"
+          }
+        ],
+        "cnpj_roots": [
+          {
+            "value": [
+              "99888777"
+            ],
+            "source": "rdap"
+          }
+        ],
+        "registrant_doc": [
+          {
+            "value": "99.888.777/0001-00",
+            "source": "rdap"
+          }
+        ],
+        "mx": [
+          {
+            "value": [
+              "10 mail.acmepay-fatura.com"
+            ],
+            "source": "dns_records"
+          }
+        ],
+        "a_records": [
+          {
+            "value": [
+              "203.0.113.50"
+            ],
+            "source": "dns_records"
+          }
+        ]
+      }
+    },
+    {
+      "key": "ipv4:203.0.113.50",
+      "depth": 2,
+      "seed": false,
+      "tags": [],
+      "attributes": {
+        "cloud_role": [
+          {
+            "value": "shared_hosting",
+            "source": "cloud_ranges"
+          }
+        ],
+        "is_cloud": [
+          {
+            "value": true,
+            "source": "cloud_ranges"
+          }
+        ],
+        "cohosted_count": [
+          {
+            "value": 340,
+            "source": "passive_dns"
+          }
+        ]
+      },
+      "findings": [
+        {
+          "title": "Listed by ThreatFox",
+          "severity": "high",
+          "confidence": 0.8,
+          "criterion": "ThreatFox IOC (botnet_cc)",
+          "tags": [
+            "malicious",
+            "c2"
+          ],
+          "module": "abusech",
+          "source": "abusech.threatfox",
+          "data": {},
+          "observed_first": "2026-11-18",
+          "observed_last": "2026-11-24"
+        },
+        {
+          "title": "Listed on Spamhaus DROP",
+          "severity": "high",
+          "confidence": 0.8,
+          "criterion": "Spamhaus DROP netblock",
+          "tags": [
+            "malicious"
+          ],
+          "module": "ip_blocklists",
+          "source": "spamhaus.drop_v4",
+          "data": {},
+          "observed_first": "2026-11-01",
+          "observed_last": "2026-11-25"
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "src": "domain:acmepay.com.br",
+      "dst": "domain:acmepay-fatura.com",
+      "relation": "lookalike",
+      "module": "typosquat",
+      "confidence": 0.7,
+      "expand": false
+    },
+    {
+      "src": "domain:acmepay-fatura.com",
+      "dst": "ipv4:203.0.113.50",
+      "relation": "resolves_to",
+      "module": "dns_records",
+      "confidence": 0.9,
+      "expand": true
+    }
+  ]
+}

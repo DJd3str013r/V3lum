@@ -1,0 +1,83 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "light",
+    "tlp": "amber",
+    "depth": 1
+  },
+  "org_profile": {
+    "org": {
+      "name": "Acme Pagamentos S.A."
+    },
+    "domains": [
+      {
+        "name": "acmepay.com.br",
+        "verification": "txt_verified",
+        "criticality": "high"
+      }
+    ],
+    "brands": [
+      {
+        "keyword": "acmepay",
+        "variants": [
+          "acme pay"
+        ],
+        "criticality": "high"
+      }
+    ],
+    "cnpj_roots": [
+      "11222333"
+    ],
+    "suppliers": [
+      {
+        "name": "Acme Parceiro Logistica Ltda",
+        "domains": [
+          "acmepay-partner.com.br"
+        ],
+        "brands": []
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "key": "url:https://portal.acmepay.com.br/api",
+      "depth": 1,
+      "seed": false,
+      "ownership": "own_asset",
+      "tags": [
+        "own_asset"
+      ],
+      "attributes": {
+        "cors_acao": [
+          {
+            "value": "https://evil.example",
+            "source": "web_fingerprint"
+          }
+        ],
+        "cors_results": [
+          {
+            "value": [
+              {
+                "endpoint": "https://api.client.example/v1/me",
+                "origin_kind": "arbitrary",
+                "acao_reflected": true,
+                "acac": true,
+                "user_data": true,
+                "acao": "https://x7k2.v3lum-probe.invalid"
+              },
+              {
+                "endpoint": "https://api.client.example/v1/me",
+                "origin_kind": "null",
+                "acao_reflected": false,
+                "acac": false
+              }
+            ],
+            "source": "web_fingerprint"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": []
+}

@@ -16,6 +16,8 @@ from v3lum.core.orgprofile import OrgProfile
 from v3lum.core.scope import RulesOfEngagement, Scope, ScopeError, ScopeLimits, authorization_ref_problem
 
 NOW = dt.datetime(2026, 11, 26, 12, 0, tzinfo=dt.timezone.utc)
+#: an ordinary public address outside every target CIDR and every bundled noise/warninglist fragment
+PLAIN_PUBLIC_IP = "81.2.69.160"
 
 BASE: dict = {
     "authorization_ref": "PENTEST-2026-042",
@@ -222,6 +224,14 @@ def test_authorization_ref_rules(ref, ok):
     assert (authorization_ref_problem(ref) == "") is ok
 
 
+@pytest.mark.parametrize("ref", ["PENTEST-2026-042", "SEC:1234#a/b", "ab", "confirmed", "TBD", "todo", "xxx", "null", "true", "Authorized", "-x-1", ""])
+def test_scope_and_policy_agree_on_authorization_refs(ref):
+    """A scope file and --authorized accept and refuse the same references (one A7 rule)."""
+    from v3lum.core import policy
+
+    assert (authorization_ref_problem(ref) == "") is policy.valid_authorization_ref(ref)
+
+
 # --------------------------------------------------------------------------------------
 # matching
 # --------------------------------------------------------------------------------------
@@ -298,7 +308,9 @@ def test_url_prefixes_judge_the_path_the_server_sees(url, expected):
     past an exclusion (AR02)."""
     sc = scope()
     assert sc.matches_url(url) is expected
-    assert sc.allows_contact("portal.partner.example", ["8.8.4.4"], probe="http", url=url)[0] is expected  # not a target CIDR
+    # an ordinary public address (not a target CIDR, not on a noise/warninglist: public resolvers such as
+    # 8.8.4.4 are shared infrastructure once the MISP public-dns warninglist fragment is installed)
+    assert sc.allows_contact("portal.partner.example", [PLAIN_PUBLIC_IP], probe="http", url=url)[0] is expected
 
 
 def test_an_excluded_directory_also_covers_its_bare_path():
@@ -341,7 +353,7 @@ def test_out_of_scope_and_excluded_hosts_are_refused():
     assert not sc.allows_contact("www.acme-cdn.example", ["93.184.216.10", "8.8.8.8"])[0]
     # URL prefixes make their host contactable for HTTP probes of those paths only
     assert sc.allows_contact("portal.partner.example", ["93.184.216.20"], url="https://portal.partner.example/acme/x")[0]
-    assert not sc.allows_contact("portal.partner.example", ["8.8.4.4"], url="https://portal.partner.example/other")[0]
+    assert not sc.allows_contact("portal.partner.example", [PLAIN_PUBLIC_IP], url="https://portal.partner.example/other")[0]
     assert not sc.allows_contact("portal.partner.example", ["93.184.216.20"], url="https://portal.partner.example/acme/admin")[0]
 
 

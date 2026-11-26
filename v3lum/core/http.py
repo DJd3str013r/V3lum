@@ -2090,6 +2090,16 @@ def _origin(url: str) -> tuple[str, str, int]:
     return (parts.scheme.lower(), (parts.hostname or "").lower(), _port(url))
 
 
+def _max_signal_seconds() -> float:
+    """Longest provider signal honoured (``quota.MAX_SIGNAL_DAYS``; quota.py imports this module,
+    so the constant is read lazily)."""
+    try:
+        from v3lum.core.quota import MAX_SIGNAL_DAYS
+    except ImportError:  # pragma: no cover - quota.py ships with the core
+        MAX_SIGNAL_DAYS = 32
+    return float(MAX_SIGNAL_DAYS) * 86400.0
+
+
 def _retry_after(value: str | None, clock: Clock) -> float | None:
     if not value:
         return None
@@ -3116,6 +3126,41 @@ class HttpClient:
         else:
             self.clock.sleep(seconds)
 
+    def _spend_rate_wait(self, req: _Req, prov: Any, host: str, url: str, wait: Any) -> None:
+        """Spend the provider token-bucket wait returned by ``quota.reserve`` (P334 cond 3: requests at
+        ``rate_per_second x safety_margin``) on the runtime clock before sending. The longest wait
+        accepted is ``max(quota.RATE_WAIT_MAX, one provider interval)``: the provider's own pacing
+        (one slot, e.g. 15 s for 4/min at 80%) is always spent when the run deadline allows, and
+        ``RATE_WAIT_MAX`` caps only the queueing beyond it. A longer wait, or one the run has no
+        time left for, is 'could not verify now' (RateLimited); the kill switch cuts the wait short
+        (Cancelled)."""
+        try:
+            seconds = float(wait or 0.0)
+        except (TypeError, ValueError):
+            return  # a v1 book (or a fake) returns nothing to wait for
+        if seconds != seconds or seconds <= 0:  # NaN or no wait
+            return
+        try:
+            from v3lum.core.quota import RATE_WAIT_MAX
+        except ImportError:  # pragma: no cover - quota.py ships with the core
+            RATE_WAIT_MAX = 15.0
+        limit = float(RATE_WAIT_MAX)
+        interval_of = getattr(self.quota, "rate_interval", None)
+        if callable(interval_of) and prov is not None:
+            try:
+                interval = float(interval_of(prov.id) or 0.0)
+            except Exception:  # noqa: BLE001 - a broken book keeps the plain cap
+                interval = 0.0
+            if interval == interval and interval > limit:  # not NaN
+                limit = interval * 1.001  # one slot (float slack: 1 / (0.0833 x 0.8) = 15.006 s)
+        if seconds > limit or not self._can_wait(req, seconds):
+            self._check_live(req.cancel_event, req.deadline)
+            raise RateLimited(
+                f"{self._name(prov, host)}: provider rate limit ({seconds:.1f} s to the next request slot); could not verify now", 0, url
+            )
+        self._wait(req, seconds)
+        self._check_live(req.cancel_event, req.deadline)
+
     def _name(self, prov: Any, host: str) -> str:
         return str(getattr(prov, "name", "") or host) if prov is not None else host
 
@@ -3213,7 +3258,8 @@ class HttpClient:
                 if req.network_gate is not None:
                     req.network_gate()
             if req.charge_quota and self.quota is not None and prov is not None:
-                self.quota.reserve(prov.id, hop_host, priority=req.priority)
+                wait = self.quota.reserve(prov.id, hop_host, priority=req.priority)
+                self._spend_rate_wait(req, prov, hop_host, current, wait)
             resp, found = self._send(req, method, current, headers, body, prov, history, pin=pin)
             location = resp.headers.get("location", "").strip()
             if not (req.allow_redirects and resp.status in REDIRECT_STATUS and location and found is None):
@@ -3402,11 +3448,13 @@ class HttpClient:
         if found.status in ("quota", "rate_limited") and self.quota is not None and prov is not None:
             signal = getattr(self.quota, "signal", None)
             if callable(signal):
-                until = None
-                wait = _retry_after(resp.headers.get("retry-after"), self.clock)
-                if wait is not None:
-                    until = self.clock.now() + _dt.timedelta(seconds=wait)
                 try:
+                    until = None
+                    wait = _retry_after(resp.headers.get("retry-after"), self.clock)
+                    if wait is not None:
+                        # a hostile or broken Retry-After ('99999999999999', 'inf') is capped like the
+                        # quota book caps every signal (MAX_SIGNAL_DAYS), never an OverflowError
+                        until = self.clock.now() + _dt.timedelta(seconds=min(wait, _max_signal_seconds()))
                     signal(prov.id, kind=found.status, until=until)
                 except Exception:  # pragma: no cover - quota bookkeeping never breaks requests
                     pass

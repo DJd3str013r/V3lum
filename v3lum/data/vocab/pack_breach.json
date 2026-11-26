@@ -1,0 +1,15 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "pack_breach",
+  "title": "Correlation pack: breach and infostealer validation (P146, WP24)",
+  "description": "Names read by v3lum/correlations/breach.py (CR09-CR12) besides the core breach_count, breaches, breach_data_classes, infostealer and generic_address and the batch names stealer_logs, stealer_exposure and breach_metadata. Breach source modules emit first_seen_breach (the earliest breach date) and breach_records (sanitized metadata only, P145); CR10/CR12 read the earliest value.",
+  "owner": "WP24",
+  "attributes": {
+    "first_seen_breach": "ISO date of the oldest breach that lists the entity: account-age evidence on the case timeline, never scored (P146 cond 10)",
+    "breach_records": "list of sanitized per-breach records {name, date, data_classes, password_form, verified, fabricated, spam_list, stealer_log, sensitive, compilation, domain, source}: metadata only (P145), never passwords, hashes, hints or leaked values",
+    "breach_hit_count": "int: total breach-corpus hits an aggregator reports for the entity (LeakCheck 'found'); 100 or more marks a generic or shared address (CR11), never scored"
+  },
+  "timeline": {
+    "first_seen_breach": "first seen in a breach"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "schema": "v3lum.case/2",
+  "case_id": "20261120-100000-a1a1",
+  "created": "2026-11-20T10:00:00+00:00",
+  "tlp": "amber",
+  "seeds": ["domain:recurrent-c2.example", "email:victim@example.com"],
+  "options": {"mode": "passive", "tlp": "amber", "purpose": "incident response INC-1"},
+  "summary": {"risk_score": 61.0, "risk_level": "high", "findings": 2, "entities": 4},
+  "entities": [
+    {"key": "domain:recurrent-c2.example", "type": "domain", "value": "recurrent-c2.example", "seed": true, "tlp": "amber", "noise": false, "noise_kind": "", "ownership": "", "tags": []},
+    {"key": "ipv4:203.0.113.77", "type": "ipv4", "value": "203.0.113.77", "tlp": "amber", "noise": false, "noise_kind": "", "ownership": "", "tags": []},
+    {"key": "sha256:275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f", "type": "sha256", "value": "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f", "tlp": "amber", "tags": []},
+    {"key": "email:victim@example.com", "type": "email", "value": "victim@example.com", "seed": true, "tlp": "amber", "tags": []}
+  ],
+  "findings": [
+    {"id": "a1a1f00000000001", "title": "Listed as C2 by a reputation feed", "severity": "high", "confidence": 0.9, "confidence_label": "confirmed",
+     "criterion": "feed verdict", "tags": ["c2", "malicious"], "module": "t_feed", "source": "t_feed_provider.default", "entity": "domain:recurrent-c2.example"},
+    {"id": "a1a1f00000000002", "title": "Hosted on a shared address", "severity": "low", "confidence": 0.6, "confidence_label": "probable",
+     "criterion": "passive DNS", "tags": ["infrastructure"], "module": "t_dns", "entity": "ipv4:203.0.113.77"}
+  ],
+  "correlations": [],
+  "coverage": {}
+}

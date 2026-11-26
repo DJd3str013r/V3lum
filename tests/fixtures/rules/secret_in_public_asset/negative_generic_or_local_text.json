@@ -1,0 +1,151 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "light",
+    "tlp": "amber",
+    "depth": 1
+  },
+  "org_profile": {
+    "org": {
+      "name": "Acme Pagamentos S.A."
+    },
+    "domains": [
+      {
+        "name": "acmepay.com.br",
+        "verification": "txt_verified",
+        "criticality": "high"
+      }
+    ],
+    "brands": [
+      {
+        "keyword": "acmepay",
+        "variants": [
+          "acme pay"
+        ],
+        "criticality": "high"
+      }
+    ],
+    "cnpj_roots": [
+      "11222333"
+    ],
+    "suppliers": [
+      {
+        "name": "Acme Parceiro Logistica Ltda",
+        "domains": [
+          "acmepay-partner.com.br"
+        ],
+        "brands": []
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "key": "text_blob:pasted config snippet",
+      "depth": 0,
+      "seed": true,
+      "findings": [
+        {
+          "title": "Secret exposed: aws-access-token",
+          "severity": "high",
+          "confidence": 0.8,
+          "criterion": "pattern match of rule 'aws-access-token' with its entropy threshold; never validated",
+          "tags": [
+            "credential_exposure"
+          ],
+          "module": "secret_scanner",
+          "source": "",
+          "data": {
+            "rule": "aws-access-token",
+            "kind": "aws_key",
+            "masked": {
+              "type": "aws_key",
+              "preview": "AKIA…Q2XZ",
+              "sha256": "693bb0eea4c7fb5cd90d3dc25d207d75825f802fbd3c9f0f9b103ccfd663a6e1"
+            },
+            "locations": [
+              {
+                "path": "",
+                "line": 3
+              }
+            ],
+            "count": 1,
+            "entropy": 4.6
+          },
+          "confidence_label": "probable"
+        }
+      ]
+    },
+    {
+      "key": "url:https://www.acmepay.com.br/static/app.js",
+      "depth": 1,
+      "seed": false,
+      "ownership": "own_asset",
+      "tags": [
+        "own_asset"
+      ],
+      "findings": [
+        {
+          "title": "Secret exposed: generic-api-key",
+          "severity": "high",
+          "confidence": 0.8,
+          "criterion": "pattern match of rule 'generic-api-key' with its entropy threshold; never validated",
+          "tags": [
+            "credential_exposure",
+            "weak_signal"
+          ],
+          "module": "js_endpoints_live",
+          "source": "",
+          "data": {
+            "rule": "generic-api-key",
+            "kind": "generic",
+            "masked": {
+              "type": "generic",
+              "preview": "a1b2…c3d4",
+              "sha256": "f13c5054ac72aa5626aeaaa6b9f42ae95925383bb8e1546dc505d1525c4bb237"
+            },
+            "locations": [
+              {
+                "path": "https://www.acmepay.com.br/static/app.js",
+                "line": 40
+              }
+            ],
+            "count": 1,
+            "entropy": 4.6
+          },
+          "confidence_label": "probable"
+        },
+        {
+          "title": "Secret exposed: slack-webhook-url",
+          "severity": "high",
+          "confidence": 0.8,
+          "criterion": "pattern match of rule 'slack-webhook-url' with its entropy threshold; never validated",
+          "tags": [
+            "credential_exposure"
+          ],
+          "module": "js_endpoints_live",
+          "source": "",
+          "data": {
+            "rule": "slack-webhook-url",
+            "kind": "slack_webhook",
+            "masked": {
+              "type": "slack_webhook",
+              "preview": "http…XyZ1",
+              "sha256": "e41353e7d171f9b3a7e0cfa4b05770d49f54603768870852008f4d20a80875f0"
+            },
+            "locations": [
+              {
+                "path": "https://www.acmepay.com.br/static/app.js",
+                "line": 41
+              }
+            ],
+            "count": 1,
+            "entropy": 1.2
+          },
+          "confidence_label": "probable"
+        }
+      ]
+    }
+  ],
+  "edges": []
+}

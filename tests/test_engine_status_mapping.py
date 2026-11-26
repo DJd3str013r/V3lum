@@ -1,8 +1,9 @@
 """Engine outcome mapping (WP01, module_author_contract section 3) and the thin v2 integration.
 
 One test per exception -> (status, reason_code, partial, stop_reason); partial-result recovery
-through collect_results; fail-closed sanitizer; selection blocked tuples (A16 interim guard,
-TLP:RED, daily quota); the disclosure ledger; RunInfo/RuleContext plumbing; timeline fragments.
+through collect_results; fail-closed sanitizer; selection through the policy gate (Engine.select
+returns (cls, policy.Decision) pairs since wave 2: not_default, POL-02, TLP:RED, rule 7, daily
+quota); the disclosure ledger; RunInfo/RuleContext plumbing; timeline fragments.
 Synthetic module classes are local stubs (not registered unless a test inserts them).
 """
 
@@ -252,7 +253,8 @@ def test_sanitizer_runs_on_every_result():
     res = make_engine().run_module(stub(run, category="breach_leak", sources=("nobody.nothing",)), DOMAIN)
     assert res.raw is None and "raw" in res.redacted_fields  # sensitive without a schema: raw dropped
     res = make_engine().run_module(stub(run), DOMAIN)
-    assert res.raw == {"line": "alice@corp.example", "password": "hunter2"} and "raw:combo" in res.redacted_fields
+    # WP09: password-labelled values are dropped in every module (P145 cond 5/8), combos keep the e-mail
+    assert res.raw == {"line": "alice@corp.example"} and {"raw:combo", "raw.password"} <= set(res.redacted_fields)
 
 
 # ------------------------------------------------------------------ ids, ledger, datasets, strict mode
@@ -358,52 +360,73 @@ def registry(monkeypatch):
 
 def blocked_for(eng: Engine, name: str):
     runnable, blocked = eng.select(DOMAIN)
-    assert all(len(b) == 4 for b in blocked)
-    return [c.name for c in runnable], {c.name: (s, r, code) for c, s, r, code in blocked}.get(name)
+    assert all(len(b) == 2 for b in blocked)  # (module class, policy.Decision)
+    return [c.name for c, _d in runnable], {c.name: (d.status, d.reason, d.reason_code) for c, d in blocked}.get(name)
 
 
-def test_source_modules_are_opt_in_until_the_policy_gate(registry):
-    src = registry(stub(lambda self, e, c: self.result(e), name="t_source_mod", disclosure="third_party", hosts=("api.example.test",)))
+def test_selection_goes_through_the_policy_gate(registry):
+    """WP08 replaced the interim A16 source opt-in by policy.decide: opt-in modules (default_enabled
+    False) are SKIPPED 'not_default' unless -M or --preset deep / --all-modules selects them, and a
+    network module placed in the registry without @register never runs (POL-02)."""
+    optin = registry(stub(lambda self, e, c: self.result(e), name="t_optin_mod", default_enabled=False))
     offline = registry(stub(lambda self, e, c: self.result(e), name="t_offline_mod"))
-    runnable, block = blocked_for(make_engine(), src.name)
-    assert src.name not in runnable and offline.name in runnable
-    assert block == (Status.SKIPPED, engine_mod.NOT_DEFAULT_REASON, "not_default")
-    runnable, block = blocked_for(make_engine(ScanOptions(include={src.name})), src.name)
-    assert src.name in runnable and block is None
-    runnable, block = blocked_for(make_engine(ScanOptions(include_disabled=True)), src.name)
-    assert src.name in runnable
-    for disclosure in ("internal", "target"):
+    runnable, block = blocked_for(make_engine(), optin.name)
+    assert optin.name not in runnable and offline.name in runnable
+    assert (block[0], block[2]) == (Status.SKIPPED, "not_default")
+    runnable, block = blocked_for(make_engine(ScanOptions(include={optin.name})), optin.name)
+    assert optin.name in runnable and block is None
+    runnable, block = blocked_for(make_engine(ScanOptions(include_disabled=True)), optin.name)
+    assert optin.name in runnable
+    for disclosure in ("third_party", "internal", "target"):
         cls = registry(stub(lambda self, e, c: self.result(e), name=f"t_{disclosure}_mod", disclosure=disclosure))
-        assert blocked_for(make_engine(), cls.name)[1][2] == "not_default"
+        assert blocked_for(make_engine(ScanOptions(include={cls.name})), cls.name)[1][2] == "policy"
 
 
-def test_tlp_red_skips_modules_that_share_the_input(registry):
-    src = registry(stub(lambda self, e, c: self.result(e), name="t_red_src", disclosure="third_party"))
-    offline = registry(stub(lambda self, e, c: self.result(e), name="t_red_offline"))
-    opts = ScanOptions(include={src.name, offline.name}, tlp="red")
-    runnable, block = blocked_for(make_engine(opts), src.name)
-    assert block[0] is Status.SKIPPED and block[2] == "tlp"
-    assert offline.name in runnable
+def _third_party(name: str, prov, **attrs):
+    from tests.fakes import define_module, source_ids
+
+    return define_module(
+        name, [T.DOMAIN], lambda self, e, c: self.result(e), disclosure="third_party", provider=prov.id, sources=source_ids(prov),
+        hosts=prov.hosts, access_model="free_noauth_unlimited", **attrs,
+    )
 
 
-def test_providers_that_publish_lookups_never_run(registry):
-    pub = registry(stub(lambda self, e, c: self.result(e), name="t_pub_mod", disclosure="third_party", publishes_queries=True))
-    for opts in (ScanOptions(include={pub.name}, tlp="clear"), ScanOptions(include_disabled=True, tlp="clear")):
-        runnable, block = blocked_for(make_engine(opts), pub.name)
-        assert pub.name not in runnable and block == (Status.SKIPPED, engine_mod.PUBLISHES_REASON, "policy")
+def test_tlp_red_skips_modules_that_share_the_input(clean_registry, registry):
+    from tests.fakes import test_provider
+
+    with test_provider("t_red_prov") as prov:
+        src = _third_party("t_red_src", prov)
+        offline = registry(stub(lambda self, e, c: self.result(e), name="t_red_offline"))
+        opts = ScanOptions(include={src.name, offline.name}, tlp="red")
+        runnable, block = blocked_for(make_engine(opts), src.name)
+        assert block[0] is Status.SKIPPED and block[2] == "tlp"
+        assert offline.name in runnable
+
+
+def test_providers_that_publish_lookups_never_run(clean_registry, registry):
+    from tests.fakes import test_provider
+
+    with test_provider("t_pub_prov", publishes_queries=True) as prov:
+        pub = _third_party("t_pub_mod", prov, default_enabled=False)
+        for opts in (ScanOptions(include={pub.name}, tlp="clear"), ScanOptions(include_disabled=True, tlp="clear")):
+            runnable, block = blocked_for(make_engine(opts), pub.name)
+            assert pub.name not in runnable and (block[0], block[2]) == (Status.SKIPPED, "policy") and "publishes" in block[1]
     calls = []
     direct = stub(lambda self, e, c: calls.append(e) or self.result(e), name="t_pub_direct", disclosure="third_party", publishes_queries=True)
     res = make_engine().run_module(direct, DOMAIN)  # the `v3lum run` path does not go through select()
     assert (res.status, res.reason_code, calls) == (Status.SKIPPED, "policy", [])
 
 
-def test_a_red_seed_keeps_third_party_modules_away(registry):
-    src = registry(stub(lambda self, e, c: self.result(e), name="t_red_seed_src", disclosure="third_party"))
-    opts = ScanOptions(include={src.name}, tlp="amber", seed_tlp={DOMAIN.key: "TLP:RED"})
-    runnable, block = blocked_for(make_engine(opts), src.name)
-    assert src.name not in runnable and block[0] is Status.SKIPPED and block[2] == "tlp"
-    opts = ScanOptions(include={src.name}, tlp="amber", seed_tlp={DOMAIN.key: "not-a-tlp"})
-    assert blocked_for(make_engine(opts), src.name)[1][2] == "tlp"  # unreadable marking: fail closed
+def test_a_red_seed_keeps_third_party_modules_away(clean_registry):
+    from tests.fakes import test_provider
+
+    with test_provider("t_red_seed_prov") as prov:
+        src = _third_party("t_red_seed_src", prov)
+        opts = ScanOptions(include={src.name}, tlp="amber", seed_tlp={DOMAIN.key: "TLP:RED"})
+        runnable, block = blocked_for(make_engine(opts), src.name)
+        assert src.name not in runnable and block[0] is Status.SKIPPED and block[2] == "tlp"
+        opts = ScanOptions(include={src.name}, tlp="amber", seed_tlp={DOMAIN.key: "not-a-tlp"})
+        assert blocked_for(make_engine(opts), src.name)[1][2] == "tlp"  # unreadable marking: fail closed
 
 
 def test_runtime_is_in_scan_while_investigating(registry):
@@ -455,9 +478,11 @@ def test_quota_coverage_stays_visible_on_the_first_screen(registry):
     assert "quota (1)" in cap.get() and cls.name in cap.get()
 
 
-def test_readiness_blocked_tuples(registry):
+def test_readiness_blocked_tuples(clean_registry, registry):
     keyed = registry(stub(lambda self, e, c: self.result(e), name="t_keyed_mod", requires_keys=("t_missing_key",)))
-    active = registry(stub(lambda self, e, c: self.result(e), name="t_active_mod", opsec=Opsec.ACTIVE, disclosure="target"))
+    from tests.fakes import define_module
+
+    active = define_module("t_active_mod", [T.DOMAIN], lambda self, e, c: self.result(e), opsec=Opsec.ACTIVE)
     eng = make_engine(ScanOptions(include={keyed.name, active.name}))
     assert blocked_for(eng, keyed.name)[1][::2] == (Status.NEEDS_KEY, "needs_key")
     assert blocked_for(eng, active.name)[1][::2] == (Status.SKIPPED, "opsec")
@@ -526,7 +551,7 @@ def test_a_case_where_no_source_answered_says_inconclusive(registry):
     """Rule 5 (audit of wave 1): with every source module opt-in (interim A16 guard) or every run
     could-not-verify, the case says 'inconclusive: no source answered' instead of letting a
     zero-finding 'clean' read as a verdict; a case where a module answered gets no such note."""
-    src = registry(stub(lambda self, e, c: self.result(e), name="t_note_src", disclosure="third_party"))
+    src = registry(stub(lambda self, e, c: self.result(e), name="t_note_src", default_enabled=False))
     case = make_engine(ScanOptions(categories={"utility"}, save_evidence=False)).investigate([DOMAIN])
     assert case.coverage[src.name]["reason_code"] == "not_default"
     notes = [n for n in case.notes if n.startswith("inconclusive")]
@@ -550,7 +575,7 @@ def test_a_case_where_no_source_answered_says_inconclusive(registry):
 
 
 def test_investigate_reports_not_default_in_coverage(registry):
-    src = registry(stub(lambda self, e, c: self.result(e), name="t_cov_src2", disclosure="third_party"))
+    src = registry(stub(lambda self, e, c: self.result(e), name="t_cov_src2", default_enabled=False))
     case = make_engine(ScanOptions(categories={"utility"}, save_evidence=False)).investigate([DOMAIN])
     assert case.coverage[src.name]["status"] == "skipped" and case.coverage[src.name]["reason_code"] == "not_default"
 
@@ -610,7 +635,7 @@ def test_evidence_path_never_holds_the_value(registry):
         return res
 
     mod = registry(stub(run, name="t_ev_path_mod", accepts=frozenset({T.EMAIL})))
-    case = make_engine(ScanOptions(include={mod.name})).investigate([email])
+    case = make_engine(ScanOptions(include={mod.name}, purpose="unit test")).investigate([email])
     path = Path(next(r for r in case.results if r.module == mod.name).evidence)
     assert "alice" not in str(path) and "corp" not in path.name
     assert path.parent.name == "evidence" and path.name.startswith("t_ev_path_mod__email__")
@@ -679,11 +704,14 @@ def test_no_key_value_leaves_a_run_in_any_result_field(registry):
         res.error = f"partial answer from {url}"
         return res
 
+    from tests.fakes import test_provider
+
     mod = registry(stub(run, name="t_key_echo_mod", sources=("t_src.feed",)))
     events: list[tuple[str, dict]] = []
     eng = make_engine(ScanOptions(include={mod.name}, save_evidence=False))
     eng.runtime.events.subscribe(lambda kind, payload: events.append((kind, payload)))
-    case = eng.investigate([DOMAIN])
+    with test_provider("t_src", sources=("feed",)):  # POL-04: every declared source is a registered source
+        case = eng.investigate([DOMAIN])
     res = next(r for r in case.results if r.module == mod.name)
     blob = json.dumps(case.to_dict(), default=str) + json.dumps(res.to_dict(), default=str) + json.dumps(res.raw, default=str)
     blob += repr([(kind, payload) for kind, payload in events if kind in ("finding", "module_done", "entity")])
@@ -738,4 +766,4 @@ def test_no_auto_expand_alias():
     if hasattr(entities, "NO_AUTO_EXPAND"):
         assert engine_mod.NO_AUTO_EXPAND is entities.NO_AUTO_EXPAND
     assert T.CPF in engine_mod.NO_AUTO_EXPAND and T.TEXT in engine_mod.NO_AUTO_EXPAND
-    assert engine_mod._STATUS_RANK["quota"] == engine_mod._STATUS_RANK["rate_limited"]
+    assert engine_mod._STATUS_RANK["quota"] > engine_mod._STATUS_RANK["rate_limited"] > engine_mod._STATUS_RANK["empty"]

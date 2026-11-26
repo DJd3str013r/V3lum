@@ -1,0 +1,17 @@
+{
+  "schema": "v3lum.case/2",
+  "case_id": "20261122-080000-c3c3",
+  "created": "2026-11-22T08:00:00+00:00",
+  "tlp": "red",
+  "seeds": ["domain:recurrent-c2.example"],
+  "options": {"mode": "passive", "tlp": "red"},
+  "summary": {"risk_score": 80.0, "risk_level": "critical", "findings": 1, "entities": 1},
+  "entities": [
+    {"key": "domain:recurrent-c2.example", "type": "domain", "value": "recurrent-c2.example", "seed": true, "tlp": "red", "tags": []}
+  ],
+  "findings": [
+    {"id": "c3c3f00000000001", "title": "Seen in an internal incident", "severity": "critical", "confidence": 1.0, "confidence_label": "confirmed",
+     "criterion": "internal incident record", "tags": ["malicious"], "module": "t_internal", "entity": "domain:recurrent-c2.example"}
+  ],
+  "correlations": []
+}

@@ -1,0 +1,85 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "active",
+    "tlp": "amber",
+    "depth": 1,
+    "authorized": true
+  },
+  "org_profile": {
+    "org": {
+      "name": "Acme Pagamentos S.A."
+    },
+    "domains": [
+      {
+        "name": "acmepay.com.br",
+        "verification": "txt_verified",
+        "criticality": "high"
+      }
+    ],
+    "brands": [
+      {
+        "keyword": "acmepay",
+        "variants": [
+          "acme pay"
+        ],
+        "criticality": "high"
+      }
+    ],
+    "cnpj_roots": [
+      "11222333"
+    ],
+    "suppliers": [
+      {
+        "name": "Acme Parceiro Logistica Ltda",
+        "domains": [
+          "acmepay-partner.com.br"
+        ],
+        "brands": []
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "key": "domain:portal.acmepay.com.br",
+      "depth": 1,
+      "seed": false,
+      "ownership": "own_asset",
+      "tags": [
+        "own_asset"
+      ],
+      "attributes": {
+        "tls_certificate": [
+          {
+            "value": {
+              "subject": "portal.acmepay.com.br",
+              "issuer": "Example DV CA",
+              "not_before": "2026-09-01T00:00:00Z",
+              "not_after": "2027-06-01T00:00:00Z",
+              "self_signed": false,
+              "hostname_match": true,
+              "key_type": "rsa",
+              "key_bits": 2048,
+              "signature_hash": "sha256",
+              "chain_verified": true
+            },
+            "source": "tls_inspect"
+          }
+        ],
+        "tls_protocols": [
+          {
+            "value": {
+              "TLSv1": "refused",
+              "TLSv1.1": "could_not_test",
+              "TLSv1.2": "accepted",
+              "TLSv1.3": "accepted"
+            },
+            "source": "tls_protocol_scan"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": []
+}

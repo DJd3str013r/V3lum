@@ -1,0 +1,93 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "light",
+    "tlp": "amber",
+    "depth": 1
+  },
+  "org_profile": {
+    "org": {
+      "name": "Acme Pagamentos S.A."
+    },
+    "domains": [
+      {
+        "name": "acmepay.com.br",
+        "verification": "txt_verified",
+        "criticality": "high"
+      }
+    ],
+    "brands": [
+      {
+        "keyword": "acmepay",
+        "variants": [
+          "acme pay"
+        ],
+        "criticality": "high"
+      }
+    ],
+    "cnpj_roots": [
+      "11222333"
+    ],
+    "suppliers": [
+      {
+        "name": "Acme Parceiro Logistica Ltda",
+        "domains": [
+          "acmepay-partner.com.br"
+        ],
+        "brands": []
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "key": "url:https://www.acmepay.com.br/static/app.js",
+      "depth": 1,
+      "seed": false,
+      "ownership": "own_asset",
+      "tags": [
+        "own_asset"
+      ],
+      "findings": [
+        {
+          "title": "Secret exposed: aws-access-token",
+          "severity": "high",
+          "confidence": 0.8,
+          "criterion": "pattern match of rule 'aws-access-token' with its entropy threshold; never validated",
+          "tags": [
+            "credential_exposure"
+          ],
+          "module": "js_endpoints_live",
+          "source": "",
+          "data": {
+            "rule": "aws-access-token",
+            "kind": "aws_key",
+            "masked": {
+              "type": "aws_key",
+              "preview": "AKIA…Q2XZ",
+              "sha256": "92be6fce3e7dfde49eba58598a8ff26c244df5ae64c94e1b863ece3af5d2ac9a"
+            },
+            "locations": [
+              {
+                "path": "https://www.acmepay.com.br/static/app.js",
+                "line": 120
+              }
+            ],
+            "count": 1,
+            "entropy": 4.6
+          },
+          "confidence_label": "probable"
+        }
+      ]
+    }
+  ],
+  "edges": [],
+  "expect": {
+    "secret_in_public_asset": {
+      "min": 1,
+      "max": 1,
+      "severity": "high",
+      "confidence_label": "probable"
+    }
+  }
+}

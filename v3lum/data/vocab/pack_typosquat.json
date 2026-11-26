@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "pack_typosquat",
+  "title": "Correlation pack: typosquat and brand abuse (P028, WP24)",
+  "description": "Names read or emitted by v3lum/correlations/typosquat.py (CR04, CR05, CR06, CR35). The rules also read the existing names lookalike / lookalike_of (relations), lookalike_matches, typosquat_lookalikes, registered, created, domain_age_days, registrant_kind, privacy_proxy, cnpj_roots, registrant_doc, nameservers, mx, a_records, first_cert_seen, ct_summary, bcb_verified_domain, is_parked, is_sinkhole, is_cdn, is_hosting, shared_ip, hostnames, blocklist_families and the finding source ids (upstream families).",
+  "owner": "WP24",
+  "attributes": {
+    "cohosted_count": "int: distinct domain names observed on the IP address by passive DNS or reverse-IP data; 50 or more means shared hosting, whose listings never taint a lookalike behind it (P028 cond 6)"
+  },
+  "tags": {
+    "phishing_capable": "lookalike domain with the facts needed to phish (registered, MX, recently registered or a fresh first certificate): an indicator, never a verdict of maliciousness (P028 cond 9)"
+  }
+}

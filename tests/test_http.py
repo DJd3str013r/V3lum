@@ -539,3 +539,33 @@ def test_the_kill_switch_stops_a_body_being_read(server):
     with pytest.raises(Cancelled):
         c.request("GET", server + "/drip", cancel_event=cancel, ttl=0)
     assert time.monotonic() - start < 2.0
+
+
+# ------------------------------------------------------------------ provider token bucket (P334 cond 3)
+@pytest.mark.parametrize(("timeout", "second_ok"), [(60.0, True), (10.0, False)])
+def test_one_provider_interval_is_waited_within_the_run_deadline(clean_registry, timeout, second_ok):
+    """A provider whose paced interval exceeds quota.RATE_WAIT_MAX (VirusTotal-like 4/min at 80% =
+    18.75 s apart) still gets its next request after one interval when the run deadline allows
+    (RATE_WAIT_MAX caps only the queueing beyond one slot); without the time left it is 'could not
+    verify now', never a silent absence."""
+    from tests.fakes import FakeClock, FakeHttp, define_module, make_ctx, source_ids, test_provider
+    from v3lum.core.entities import EntityType as T
+
+    quota = {"scope": "egress_ip", "rate_per_second": 4 / 60, "burst": 1, "published": True, "evidence_url": "https://api.example.test/limits"}
+    with test_provider("t_slow_api", quota=quota) as prov:
+        cls = define_module(
+            "t_slow_api_mod", [T.DOMAIN], lambda self, e, c: self.result(e), disclosure="third_party", provider=prov.id,
+            sources=source_ids(prov), hosts=prov.hosts, access_model="free_noauth_limited", timeout=timeout,
+        )
+        http = FakeHttp().add("GET", "https://api.example.test/a", json={"n": 1}).add("GET", "https://api.example.test/b", json={"n": 2})
+        clock = FakeClock()
+        ctx = make_ctx(cls, http, clock=clock, entity="domain:example.org")
+        assert ctx.http.get_json("https://api.example.test/a") == {"n": 1}
+        start = clock.monotonic()
+        if second_ok:
+            assert ctx.http.get_json("https://api.example.test/b") == {"n": 2}
+            assert clock.monotonic() - start == pytest.approx(18.75, abs=0.5)  # one paced slot, on the runtime clock
+        else:
+            with pytest.raises(RateLimited):
+                ctx.http.get_json("https://api.example.test/b")
+            assert http.urls() == ["https://api.example.test/a"]  # never sent early

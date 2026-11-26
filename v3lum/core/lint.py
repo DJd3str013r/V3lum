@@ -238,6 +238,10 @@ FORBIDDEN_PROBE_PATTERNS: tuple[ProbePattern, ...] = (
        description="account existence oracle (isEmailRegistered, is_username_taken)"),
     _p(LINT_ENUMERATION, "validation_account", r"(?:validations?|verifications?)[-_/]?(?:" + _ACCOUNT_NOUN + r")",
        description="account/e-mail validation endpoint (/validations/email)"),
+    # wave-2 integration (WP12 review): SMTP mailbox probing behind an HTTP API (team rule 2: no SMTP
+    # probing); only smtp + a probing verb, so DNS names such as '_smtp._tls' (TLS-RPT) stay allowed
+    _p(LINT_ENUMERATION, "smtp_check", r"smtp[-_]?(?:check(?:er)?|verif[a-z]*|validat[a-z]*|test(?:er)?|probe|ping|exists?)",
+       description="SMTP mailbox verification endpoint (/smtp-check/{value}; team rule 2)"),
 )
 
 
@@ -616,6 +620,8 @@ UNSAFE_LOADERS: frozenset[str] = frozenset({
 _SMTP_PROBE = re.compile(r"(?im)RCPT[ \t]{1,3}TO[ \t]{0,3}:|^[ \t]*(?:VRFY|EXPN)(?:[ \t]|\r?$)")
 #: LINT-01: core clients a module never builds itself (they would bypass the ctx host/scope checks).
 CORE_CLIENT_CLASSES: frozenset[str] = frozenset({"HttpClient", "RequestsTransport", "Connector", "EgressProfiles"})
+#: LINT-01: ctx.data readers whose v1 ``(name, url)`` form downloads from an unregistered URL.
+_DATASET_FETCHES: frozenset[str] = frozenset({"fetch", "fetch_text", "fetch_json", "fetch_lines"})
 #: LINT-02: anti-bot/CAPTCHA bypass, TLS impersonation and borrowed-session libraries (import names).
 FORBIDDEN_DEPENDENCIES: frozenset[str] = frozenset({
     "cloudscraper", "cfscrape", "cloudflare_scrape", "cf_clearance", "cloudflare_bypass", "flaresolverr",
@@ -747,6 +753,18 @@ def is_credential_field(name: Any) -> bool:
     if not norm or norm == "password_form" or norm.endswith("_form"):
         return False
     return norm in _CRED_EXACT or any(s in norm for s in _CRED_SUBSTRINGS)
+
+
+#: a provider field that names the password FORM under another name (XposedOrNot 'password_risk' /
+#: 'passwordRisk', 'password_type', 'password_algorithm'): a P145 schema may keep it, because the
+#: sanitizer renames it 'password_form' when it holds a form word and drops it otherwise
+#: (docs/contract_additions/WP09.md, 'sensitive modules')
+_FORM_CARRIER_FIELD = re.compile(r"^(?:password|passwd|senha|pwd|pass)_(?:risk|type|kind|format|algorithm|algo|scheme|storage)$")
+
+
+def is_password_form_carrier(name: Any) -> bool:
+    """True for a provider field carrying the password FORM (a schema may keep it; LINT-07 exempt)."""
+    return bool(_FORM_CARRIER_FIELD.match(_norm_key(name)))
 
 
 def _module_covered(name: str, table: frozenset[str]) -> str | None:
@@ -1241,8 +1259,9 @@ class _SourceLint(ast.NodeVisitor):
             if name in UNSAFE_LOADERS or (name in ("yaml.load", "yaml.load_all") and not self._safe_yaml(node)):
                 self.add(node, LINT_NETWORK, f"{name}(): deserialiser that can execute code from the data it loads (use json, or "
                                              "yaml.safe_load)")
-        # process execution
-        if (name in SUBPROCESS_CALLS or _module_covered(name, SUBPROCESS_MODULES)) and not self.tools_file:
+        # process execution (only through names an import bound: a loop variable called 'sh' is not the sh package)
+        imported = _dotted(node.func).split(".", 1)[0] in self.aliases
+        if imported and (name in SUBPROCESS_CALLS or _module_covered(name, SUBPROCESS_MODULES)) and not self.tools_file:
             self.add(node, LINT_NETWORK, f"{name}(): process execution (external binaries only through ctx.net.run_tool)")
         if self.profile != PROFILE_CORE:
             receiver = _dotted(node.func.value) if isinstance(node.func, ast.Attribute) else ""
@@ -1253,6 +1272,13 @@ class _SourceLint(ast.NodeVisitor):
                 self.add(node, LINT_NETWORK, f"{last}(...) built inside a module: use ctx.http / ctx.net (host, scope and egress checks)")
             if last in REMOTE_WRITE_METHODS:
                 self.add(node, LINT_OFFENSIVE, f"{last}(): uploads, writes or deletes remote objects")
+            if last in _DATASET_FETCHES and isinstance(node.func, ast.Attribute) and re.search(r"(?:^|\.)data$", _dotted(node.func.value) or ""):
+                url = node.args[1] if len(node.args) >= 2 else next((kw.value for kw in node.keywords if kw.arg == "url"), None)
+                if url is not None and not (isinstance(url, ast.Constant) and url.value is None):
+                    # the v1 fetch(name, url) form downloads from any URL outside the registry: no host check, no
+                    # licence/terms class for the policy gate (A1), no size rule (A6) - register_dataset it instead
+                    self.add(node, LINT_NETWORK, f"ctx.data.{last}(name, url): ad-hoc dataset download outside the registry "
+                                                 "(register_dataset with its source, licence and terms class, then fetch by name)")
             if last == "run_tool" and (node.args or node.keywords):
                 arg = node.args[0] if node.args else next((kw.value for kw in node.keywords if kw.arg in ("name", "tool")), None)
                 tool = re.split(r"[\\/]", (self._const_arg(arg) or "").strip())[-1].lower()
@@ -1713,7 +1739,7 @@ def _provider_issues(rel: str, path: Path | None, data: Any, cache: dict[str, An
             keep = sanitizer.get("keep") if isinstance(sanitizer, Mapping) else None
             for path_text in keep if isinstance(keep, list) else ():
                 last = str(path_text).replace("[]", "").rsplit(".", 1)[-1]
-                if last and last != "*" and is_credential_field(last):
+                if last and last != "*" and is_credential_field(last) and not is_password_form_carrier(last):
                     out.append(_issue(rel, LINT_CREDENTIAL_FIELD, f"sources.{sid}.sanitizer keeps {path_text!r}: schemas keep metadata only (P145)"))
     if path is not None:
         out.extend(_provider_schema_issues(rel, path, cache))

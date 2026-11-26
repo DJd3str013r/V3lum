@@ -1622,10 +1622,24 @@ def _node(pctx: PolicyContext, key: str) -> Any:
         return None
 
 
+def _snapshot(items: Any) -> tuple:
+    """A C-level copy of a live graph collection: the guard runs in module worker threads (redirect
+    hops) while the engine thread mutates the case graph, and iterating a set/list that grows
+    meanwhile would raise (a spurious fail-closed refusal)."""
+    if not items:
+        return ()
+    for _attempt in range(3):
+        try:
+            return tuple(items)
+        except RuntimeError:  # changed size during the copy: retry
+            continue
+    return ()
+
+
 def _node_tags(node: Any) -> set[str]:
-    tags = {str(t) for t in (getattr(node, "tags", None) or ())}
-    for finding in getattr(node, "findings", None) or ():
-        tags.update(str(t) for t in (getattr(finding, "tags", None) or ()))
+    tags = {str(t) for t in _snapshot(getattr(node, "tags", None))}
+    for finding in _snapshot(getattr(node, "findings", None)):
+        tags.update(str(t) for t in _snapshot(getattr(finding, "tags", None)))
     return tags
 
 
@@ -1752,12 +1766,12 @@ def _hostile_sighting(summary: Any) -> str:
 
 def _consensus(node: Any, pctx: PolicyContext) -> str:
     """'listed ...' when a reputation source lists the node (ad/tracking-only listings excluded)."""
-    for finding in getattr(node, "findings", None) or ():
-        ftags = {str(t) for t in (getattr(finding, "tags", None) or ())}
+    for finding in _snapshot(getattr(node, "findings", None)):  # live graph: copied first (redirect hops run in workers)
+        ftags = {str(t) for t in _snapshot(getattr(finding, "tags", None))}
         listed = sorted(LISTING_TAGS & ftags)
         if listed and not ftags & _WEAK_LISTING_TAGS:
             return f"listed as {listed[0]}"
-    listed = sorted(LISTING_TAGS & {str(t) for t in (getattr(node, "tags", None) or ())})
+    listed = sorted(LISTING_TAGS & {str(t) for t in _snapshot(getattr(node, "tags", None))})
     if listed:
         return f"listed as {listed[0]}"
     hits = [h for h in _attr_list(node, "blocklist_hits") if h]
@@ -1771,7 +1785,7 @@ def _consensus(node: Any, pctx: PolicyContext) -> str:
             values = [v for v in _attr_list(node, attr) if v]
             if values:
                 return f"listed by {values[0]}"
-    for corr in getattr(pctx.graph, "correlations", None) or ():
+    for corr in _snapshot(getattr(pctx.graph, "correlations", None)):
         rule_name = str(getattr(corr, "rule", "") or "").lower()
         keys_fn = getattr(corr, "entity_keys", None)
         keys = keys_fn() if callable(keys_fn) else []

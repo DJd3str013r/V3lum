@@ -505,6 +505,7 @@ def test_info_and_dataview_citations():
 
 
 def test_first_run_hint_and_update_all():
+    DATASETS.clear()  # only this test's datasets (module batches register essential datasets of their own)
     register_dataset("core.txt", URL, essential=True)
     register_dataset("extra.txt", URL + "?x")
     http = FakeHttp().add("GET", URL, text="x\n").add("GET", URL + "?x", text="y\n")

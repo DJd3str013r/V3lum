@@ -1,0 +1,16 @@
+{
+  "schema": "v3lum.attack_index/1",
+  "version": "enterprise-attack 20.1 (2026-11-05)",
+  "source": "https://github.com/mitre-attack/attack-stix-data (enterprise-attack.json, collection 'Enterprise ATT&CK' 20.1)",
+  "attribution": "MITRE ATT&CK(R) is a registered trademark of The MITRE Corporation. (c) The MITRE Corporation. This work is reproduced and distributed with the permission of The MITRE Corporation (ATT&CK terms of use).",
+  "pack": "pack_breach",
+  "notes": "Correlation pack breach and infostealer validation (WP24, P146): techniques of CR09-CR12.",
+  "techniques": {
+    "T1078": {"name": "Valid Accounts", "stix_id": "attack-pattern--b17a1a56-e99c-403c-8948-561df0cffe81", "revoked": false, "deprecated": false, "replaced_by": null},
+    "T1110.004": {"name": "Brute Force: Credential Stuffing", "stix_id": "attack-pattern--b2d03cea-aec1-45ca-9744-9ee583c1e1cc", "revoked": false, "deprecated": false, "replaced_by": null},
+    "T1539": {"name": "Steal Web Session Cookie", "stix_id": "attack-pattern--10ffac09-e42d-4f56-ab20-db94c67d76ff", "revoked": false, "deprecated": false, "replaced_by": null},
+    "T1555.003": {"name": "Credentials from Password Stores: Credentials from Web Browsers", "stix_id": "attack-pattern--58a3e6aa-4453-4cc8-a51f-4befe80b31a8", "revoked": false, "deprecated": false, "replaced_by": null},
+    "T1589.001": {"name": "Gather Victim Identity Information: Credentials", "stix_id": "attack-pattern--bc76d0a4-db11-4551-9ac4-01a469cfb161", "revoked": false, "deprecated": false, "replaced_by": null},
+    "T1589.002": {"name": "Gather Victim Identity Information: Email Addresses", "stix_id": "attack-pattern--69f897fd-12a9-4c89-ad6a-46d2f3c38262", "revoked": false, "deprecated": false, "replaced_by": null}
+  }
+}

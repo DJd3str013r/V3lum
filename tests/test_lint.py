@@ -227,6 +227,41 @@ def test_provider_fragments_people_search_hosts_and_credential_keep_paths(tmp_pa
     assert issues and {i.rule_id for i in issues} == {"LINT-00"}  # schema problems through the provider loader
 
 
+@pytest.mark.parametrize(
+    "url, rule",
+    [
+        ("https://api.x.test/v1/smtp-check/{value}", "LINT-03"),
+        ("https://api.x.test/smtpCheck?address={value}", "LINT-03"),
+        ("https://api.x.test/v1/smtp_verify/{value}", "LINT-03"),
+        ("https://dns.google/resolve?name=_smtp._tls.example.com&type=TXT", None),  # TLS-RPT DNS name
+        ("https://mta-sts.example.com/.well-known/mta-sts.txt", None),
+        ("https://api.x.test/v1/breaches/{value}", None),
+    ],
+)
+def test_smtp_mailbox_probing_endpoints_are_refused(url, rule):
+    """Team rule 2 (no SMTP probing): an HTTP API that probes a mailbox over SMTP is LINT-03, like the
+    e-mail verification endpoints; DNS names such as '_smtp._tls' stay allowed."""
+    assert forbidden_probe(url) == rule
+
+
+@pytest.mark.parametrize(
+    "field, flagged",
+    [("password_risk", False), ("passwordRisk", False), ("password_type", False), ("hash_type", False),
+     ("password", True), ("password_hash", True), ("top_passwords", True), ("masked_password", True), ("senha", True)],
+)
+def test_schema_keep_paths_may_name_a_password_form_carrier(tmp_path, field, flagged):
+    """WP09.md tells authors to list a provider's password-FORM field (XposedOrNot 'password_risk') in
+    the keep paths: the sanitizer renames it 'password_form' or drops a non-form value, so LINT-07
+    accepts form carriers in schemas while credential fields stay refused."""
+    fragment = json.loads((PACKAGE / "data" / "providers" / "shodan.json").read_text())
+    first = next(iter(fragment["sources"]))
+    fragment["sources"] = {first: {**fragment["sources"][first], "sanitizer": {"keep": ["breaches[].name", f"breaches[].{field}"]}}}
+    path = tmp_path / "providers" / "shodan.json"
+    path.parent.mkdir()
+    path.write_text(json.dumps(fragment))
+    assert ("LINT-07" in rules(lint_data_file(path))) is flagged
+
+
 def test_lint07_is_satisfied_by_a_p145_schema():
     src = (
         "from v3lum.core import sanitize\n\nsanitize.register_schema('synthetic.breach', keep=['breaches[].name'])\n\n\n"
@@ -447,6 +482,13 @@ def test_lint01_dynamic_code_unsafe_loaders_and_more_clients(src, line):
     assert (line, "LINT-01") in _found(src)
 
 
+def test_lint01_process_names_must_be_bound_by_an_import():
+    local = "def sheets(root):\n    return [sh.get('name') for sh in root.iter('sheet')]\n"
+    assert lint_module_source("m.py", source=local) == []  # 'sh' is an XML element here, not the sh package
+    assert {(1, "LINT-01"), (5, "LINT-01")} <= _found("import sh\n\n\ndef run(self, e, ctx):\n    return sh.ls(e.value)\n")
+    assert (5, "LINT-01") in _found("from subprocess import run as r\n\n\ndef go(args):\n    return r(args)\n")
+
+
 def test_lint01_safe_forms_stay_allowed():
     ok = (
         "import importlib\nimport re\nimport yaml\n\nHELPER = 'v3lum.modules.url_web.url_unwrap'\n\n\n"
@@ -610,3 +652,18 @@ def test_contract_additions_names_resolve():
                 break
             obj = getattr(obj, attr)
     assert missing == []
+
+
+def test_lint01_ad_hoc_dataset_downloads_in_modules():
+    """Audit (wave 2): ``ctx.data.fetch(name, url)`` downloads from an unregistered URL outside the host
+    checks and the licence gate (A1/A6); modules fetch registered datasets by name only."""
+    src = (
+        "def run(self, entity, ctx):\n"
+        "    ctx.data.fetch('feed', 'https://files.example.test/feed.txt')\n"
+        "    ctx.data.fetch_json('feed', url='https://files.example.test/' + entity.value)\n"
+        "    self.ctx.data.fetch_lines('feed', None)\n"
+        "    ctx.data.fetch_text('feed', ttl=60)\n"
+        "    return ctx.data.fetch('registered')\n"
+    )
+    found = {(i.line, i.rule_id) for i in lint_module_source("m.py", source=src)}
+    assert found == {(2, "LINT-01"), (3, "LINT-01")}

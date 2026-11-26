@@ -1,0 +1,17 @@
+{
+  "schema": "v3lum.case/2",
+  "case_id": "20261121-090000-b2b2",
+  "created": "2026-11-21T09:00:00+00:00",
+  "tlp": "amber+strict",
+  "seeds": ["domain:recurrent-c2.example"],
+  "options": {"mode": "passive", "tlp": "amber+strict"},
+  "summary": {"risk_score": 30.0, "risk_level": "medium", "findings": 1, "entities": 1},
+  "entities": [
+    {"key": "domain:recurrent-c2.example", "type": "domain", "value": "recurrent-c2.example", "seed": true, "tlp": "amber+strict", "tags": []}
+  ],
+  "findings": [
+    {"id": "b2b2f00000000001", "title": "Phishing kit fingerprint", "severity": "medium", "confidence": 0.7, "confidence_label": "probable",
+     "criterion": "page fingerprint", "tags": ["phishing"], "module": "t_web", "entity": "domain:recurrent-c2.example"}
+  ],
+  "correlations": []
+}
