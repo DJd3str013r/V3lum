@@ -319,6 +319,12 @@ This build implements every approved P1 and P2 proposal, P3 items only when chea
 - Vetoed proposals ship only in their veto_lift form (P326, P332). P341 is rejected.
 - Release blockers (must-haves): P145, P327, P377, P378, P328, P321, P322, P326, P332, P334, P376, P029, P302, P311, P172, P171, P303 (markings and personal-data stripping), P336, P324, P325, P375, P379, the A10 purge and permissions, ACTIVE scope binding (A7) and URL/key redaction (AR01).
 
+### Scope extension by the team lead (2026-11-26)
+
+A16 BR1 limited P3 items to effort S with no new runtime dependency. The team lead extended the build scope to every
+approved P3 item, larger efforts included (core P340 and the P333 slip types too). A16 BR8 still applies: any new
+runtime dependency is an optional extra, and a module without it reports UNAVAILABLE (reason `package`).
+
 ## Architecture actions
 
 | id | area | priority | action | files |
