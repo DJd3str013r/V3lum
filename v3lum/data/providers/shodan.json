@@ -1,0 +1,78 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "shodan",
+  "name": "Shodan (InternetDB, CVEDB, REST API, web host pages)",
+  "operator": "Shodan LLC",
+  "hosts": ["internetdb.shodan.io", "cvedb.shodan.io", "api.shodan.io", "www.shodan.io"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms, a privacy policy and a business offering (A8 BR2; 'Shodan is an established company: tier trusted', P039 chair rationale).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-25",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "B", "justification": "Internet-wide scanner observations (may be days old); CVEs are version-inferred from banners/CPEs and must be confirmed on the host."},
+  "http_profile": {"ttl": 86400},
+  "quota": null,
+  "error_markers": [],
+  "keys": {
+    "shodan": {
+      "description": "Shodan API (host details, search)",
+      "signup_url": "https://account.shodan.io",
+      "env": ["SHODAN_API_KEY"],
+      "multi_key": false,
+      "plan_hint": "business = a company-held subscription whose licence covers internal commercial use (P039 cond 2); membership, academic and free keys count as noncommercial"
+    }
+  },
+  "sources": {
+    "internetdb": {
+      "title": "Shodan InternetDB (keyless open ports, hostnames, CPEs, tags and CVEs per IP)",
+      "terms": {
+        "class": "noncommercial",
+        "evidence_url": "https://internetdb.shodan.io/docs",
+        "quote": "Shodan InternetDB, Shodan CVEDB, VirusTotal public API and Censys free = 'noncommercial'.",
+        "checked_at": "2026-11-25",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "shodan",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding A1 initial class (the docs page carries no terms text). Off under the corporate profile until licence-cleared; never replaced by an active port scan (A1).",
+      "licensed_alternative": "A commercial Shodan subscription covering InternetDB (source shodan.api with key_plans.shodan='business'), or a licence_allow entry recording a written Shodan permission."
+    },
+    "cvedb": {
+      "title": "Shodan CVEDB (keyless CVE details, EPSS, KEV flag, product search)",
+      "terms": {
+        "class": "noncommercial",
+        "evidence_url": "https://cvedb.shodan.io/",
+        "quote": "free for non-commercial use! If you're using the CVEDB API to make money, then you need an enterprise license",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "shodan",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "A1 initial class 'noncommercial' (P189 cond 2). Off under the corporate profile until licence-cleared.",
+      "licensed_alternative": "A Shodan enterprise licence (recorded licence_allow entry); CIRCL vulnerability-lookup + FIRST EPSS + CISA KEV cover the gap."
+    },
+    "api": {
+      "title": "Shodan REST API (keyed host, DNS and search endpoints; on-demand scan endpoints are never wired)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://developer.shodan.io/api",
+        "quote": "Key-terms: a company-held Shodan API subscription whose licence covers internal commercial use, recorded as key_plans.shodan='business' with the terms URL.",
+        "checked_at": "2026-11-25",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "shodan",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P039 cond 2). Runs under the corporate profile only with key_plans.shodan == 'business'. The key travels as ?key= and is masked by the central redactor (AR01)."
+    }
+  },
+  "notes": "Owned by core (WP02). www.shodan.io host pages sit behind a Cloudflare challenge for scripts: manual pivot links only (core_reference:shodan_host)."
+}

@@ -1,0 +1,38 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "publicsuffix",
+  "name": "Public Suffix List",
+  "operator": "Mozilla Foundation and the Public Suffix List maintainers",
+  "hosts": ["publicsuffix.org"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Long-standing community reference list maintained under the Mozilla Foundation with a published licence; 'IANA and the PSL are data sources: tier trusted, terms open' (P330 chair rationale).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-25",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "A", "justification": "Canonical list used by browsers to compute registrable domains."},
+  "http_profile": {"ttl": 86400},
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "psl": {
+      "title": "public_suffix_list.dat (registrable-domain computation)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://publicsuffix.org/list/public_suffix_list.dat",
+        "quote": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.",
+        "checked_at": "2026-11-25",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "publicsuffix",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "MPL-2.0, bundled unmodified with its notice (A6, P330 cond 5); refreshed by `v3lum data update`."
+    }
+  },
+  "notes": "Owned by core (WP02)."
+}

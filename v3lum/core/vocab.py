@@ -1,11 +1,66 @@
-"""Shared vocabulary: attribute keys, finding tags and relation names.
+"""Shared vocabulary: attribute keys, finding tags and relation names (contract v2, section 14).
 
-Modules MUST use these names so correlation rules and reports can cross-reference
-results coming from different sources. Add new names here (with a description)
-rather than inventing ad-hoc keys inside a module.
+Modules MUST use these names so correlation rules and reports can cross-reference results
+coming from different sources. The core names live in this file; packs and module batches add
+their own names through *fragments* (``v3lum/data/vocab/<pack>.json``) instead of editing it::
+
+    {
+      "schema": "v3lum.vocab/1",
+      "attributes": {"first_seen_breach": "ISO date of the oldest breach that lists the entity"},
+      "tags": {"lookalike_brand": "domain imitates an org-profile brand"},
+      "relations": {"same_tenant": "domain -> domain in the same SaaS tenant"},
+      "timeline": {"first_seen_breach": "first seen in a breach"}
+    }
+
+Names match ``^[a-z][a-z0-9_]{0,63}$`` and need a non-empty description. Core names come first,
+then fragments in file-name order; re-declaring a name is allowed (the first description wins)
+and is listed by :func:`redeclarations` for review. Malformed files or entries never raise: they
+are reported by :func:`errors` (the registry contract test requires none).
+
+Strict contract mode (``V3LUM_STRICT=1``, always on in tests) turns unknown names into
+:class:`UnknownVocab` errors; outside strict mode unknown names are kept and logged once.
 """
 
 from __future__ import annotations
+
+import json
+import logging
+import os
+import re
+import threading
+from pathlib import Path
+from typing import Any
+
+log = logging.getLogger("v3lum.contract")
+
+#: Schema id of vocabulary fragment files.
+FRAGMENT_SCHEMA = "v3lum.vocab/1"
+#: Directory scanned for fragments (tests monkeypatch it, then call :func:`reload`).
+FRAGMENT_DIR: Path = Path(__file__).resolve().parent.parent / "data" / "vocab"
+#: Allowed vocabulary names.
+NAME_RE = re.compile(r"^[a-z][a-z0-9_]{0,63}$")
+#: Vocabulary kinds accepted by :func:`check`.
+KINDS = ("attribute", "tag", "relation")
+_SECTIONS = {"attributes": "attribute", "tags": "tag", "relations": "relation"}
+_META_KEYS = frozenset({"schema", "pack", "title", "description", "owner", "notes", "$comment", "timeline"})
+
+
+class ContractViolation(ValueError):
+    """A module broke the module-author contract (raised only in strict contract mode)."""
+
+
+class UnknownVocab(ContractViolation):
+    """An attribute, tag or relation name outside the merged vocabulary (strict mode only)."""
+
+    def __init__(self, kind: str, name: str, message: str = "") -> None:
+        self.kind = kind
+        self.name = name
+        super().__init__(
+            message
+            or f"unknown {kind} {name!r}: use a name from v3lum.core.vocab or declare it in a "
+            f"v3lum/data/vocab/<pack>.json fragment (schema {FRAGMENT_SCHEMA})"
+        )
+
 
 # ----------------------------------------------------------------------------------------
 # Attributes: facts about the subject entity, recorded with ModuleResult.attr(key, value).
@@ -27,6 +82,10 @@ ATTRIBUTES: dict[str, str] = {
     "reputation": "dict {source: verdict/score}",
     "tags": "list of source-provided tags/labels",
     "names": "list of names/aliases associated with the entity",
+    "presence": "tri-state existence check {state: found|absent|unknown, marker, url, checked_at, source}; absent only on positive evidence",
+    "sightings": "cross-case sightings of the entity in the V3LUM case database (TLP-filtered summary)",
+    "intercepted_by": "TLS interception detected on the egress path (issuer/product of the re-signing proxy)",
+    "watch_hits": "list of {name, registrable_domain, serial, cert_sha256, issuer, not_before, source} new names reported by watch sources",
     # network
     "asn": "autonomous system number, e.g. 'AS15169'",
     "as_org": "AS owner name",
@@ -43,6 +102,8 @@ ATTRIBUTES: dict[str, str] = {
     "is_vpn": "bool",
     "is_hosting": "bool (datacenter / hosting range)",
     "is_cdn": "bool (CDN / shared edge)",
+    "is_sinkhole": "bool: the address/name is a known sinkhole (research or law-enforcement takeover)",
+    "is_parked": "bool: the domain is parked (parking provider page or nameservers)",
     "abuse_contact": "abuse email for the network",
     "blocklists": "list of blocklist names that list the entity",
     # domain / DNS / web
@@ -80,6 +141,7 @@ ATTRIBUTES: dict[str, str] = {
     "disposable": "bool: disposable/temporary email provider",
     "free_provider": "bool: free webmail provider (gmail, outlook...)",
     "mx_valid": "bool: the email domain accepts mail (MX/A present)",
+    "generic_address": "kind of generic address (role | test | example_domain): flagged, capped at POSSIBLE, never scored",
     "breach_count": "int: number of known breaches containing the entity",
     "breaches": "list of breach names",
     "breach_data_classes": "list of exposed data classes (never the data itself)",
@@ -125,6 +187,7 @@ ATTRIBUTES: dict[str, str] = {
 
 # ----------------------------------------------------------------------------------------
 # Finding tags: semantic labels used by correlation rules and risk scoring.
+# (The engine also sets some of them as entity-level tags on graph nodes: own_asset, ...)
 # ----------------------------------------------------------------------------------------
 TAGS: dict[str, str] = {
     "malicious": "confirmed malicious by a reputable source",
@@ -161,6 +224,20 @@ TAGS: dict[str, str] = {
     "noise": "common benign infrastructure (low pivot value)",
     "privacy": "personal data: handle with care (LGPD/GDPR)",
     "info": "informational",
+    # contract v2 core tags
+    "own_asset": "entity belongs to the organisation (org profile match)",
+    "third_party": "entity belongs to a third party (supplier, hosting platform, unrelated org)",
+    "hosted_on_legit_platform": "URL hosted on a big legitimate platform (Google Forms/Sites, OneDrive...): investigated at URL level",
+    "sinkhole": "known sinkhole infrastructure (not attacker controlled)",
+    "parked": "parked domain (parking provider page or nameservers)",
+    "benign_scanner": "known benign internet scanner (research / search engine crawlers)",
+    "recipient_token": "value carries a per-recipient tracking token (privacy: do not share as an IOC)",
+    "version_inferred": "inferred from a software version banner (distro backports not considered): confirm on the host",
+    "high_collision": "value collides often (short handle, dictionary word, common name): weak identity signal",
+    "weak_signal": "weak signal: context for the analyst, not evidence on its own",
+    "verified_fi": "verified financial institution (official authorised-institution list)",
+    "unknown_operator": "source or link operated by an unknown-tier provider",
+    "context_only": "shown as context, never scored as exposure (third-party breach context, generic/role/test addresses, anonymity-network membership)",
 }
 
 # ----------------------------------------------------------------------------------------
@@ -212,16 +289,223 @@ RELATIONS: dict[str, str] = {
     "extracted_from": "file/text -> IOC",
     "lookalike": "brand domain -> typosquat candidate",
     "related": "generic relationship (use only if nothing else fits)",
+    "similar_to": "entity -> similar entity (fuzzy hash, favicon/visual similarity, lookalike content)",
+    "same_m365_tenant": "domain -> domain registered in the same Microsoft 365 tenant",
 }
+
+# ----------------------------------------------------------------------------------------
+# Timeline: dated attributes put on the case timeline (attribute -> timeline label).
+# Fragments add more through their optional "timeline" section.
+# ----------------------------------------------------------------------------------------
+CORE_TIMELINE: dict[str, str] = {
+    "created": "registered/created",
+    "updated": "updated",
+    "expires": "expires",
+    "first_seen": "first seen",
+    "last_seen": "last seen",
+    "opened": "company opened",
+    "archive_first": "first web archive snapshot",
+    "cert_not_after": "certificate expires",
+}
+
+_CORE = {"attribute": ATTRIBUTES, "tag": TAGS, "relation": RELATIONS}
+
+
+class _State:
+    def __init__(self) -> None:
+        self.loaded = False
+        self.merged: dict[str, dict[str, str]] = {"attribute": {}, "tag": {}, "relation": {}}
+        self.timeline: dict[str, str] = {}
+        self.errors: list[str] = []
+        self.redeclarations: list[tuple[str, str, str]] = []
+        self.files: list[str] = []
+
+
+_STATE = _State()
+_LOCK = threading.RLock()
+_WARNED: set[tuple[str, str, str]] = set()
+_WARN_LOCK = threading.Lock()
+
+
+def _load() -> _State:
+    st = _State()
+    for kind, core in _CORE.items():
+        st.merged[kind] = dict(core)
+    pending_timeline: list[tuple[str, str, str]] = []
+    directory = Path(FRAGMENT_DIR)
+    files = sorted(directory.glob("*.json")) if directory.is_dir() else []
+    for path in files:
+        fname = path.name
+        st.files.append(fname)
+        try:
+            doc = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, UnicodeDecodeError, ValueError) as exc:
+            st.errors.append(f"vocab fragment {fname}: unreadable or invalid JSON ({type(exc).__name__}: {exc})")
+            continue
+        if not isinstance(doc, dict):
+            st.errors.append(f"vocab fragment {fname}: top level must be an object")
+            continue
+        if doc.get("schema") != FRAGMENT_SCHEMA:
+            st.errors.append(f"vocab fragment {fname}: schema must be {FRAGMENT_SCHEMA!r} (got {doc.get('schema')!r})")
+            continue
+        for key in doc:
+            if key not in _SECTIONS and key not in _META_KEYS:
+                st.errors.append(f"vocab fragment {fname}: unknown top-level key {key!r}")
+        for section, kind in _SECTIONS.items():
+            entries = doc.get(section, {})
+            if entries in (None, {}):
+                continue
+            if not isinstance(entries, dict):
+                st.errors.append(f"vocab fragment {fname}: '{section}' must be an object of name -> description")
+                continue
+            for name, desc in entries.items():
+                problem = _entry_problem(name, desc)
+                if problem:
+                    st.errors.append(f"vocab fragment {fname}: {kind} {name!r}: {problem}")
+                    continue
+                if name in st.merged[kind]:
+                    st.redeclarations.append((kind, name, fname))
+                    continue
+                st.merged[kind][name] = desc.strip()
+        timeline = doc.get("timeline", {})
+        if timeline not in (None, {}):
+            if not isinstance(timeline, dict):
+                st.errors.append(f"vocab fragment {fname}: 'timeline' must be an object of attribute -> label")
+            else:
+                for name, label in timeline.items():
+                    if not isinstance(name, str) or not isinstance(label, str) or not label.strip():
+                        st.errors.append(f"vocab fragment {fname}: timeline entry {name!r} needs a non-empty label")
+                        continue
+                    pending_timeline.append((name, label.strip(), fname))
+    st.timeline = dict(CORE_TIMELINE)
+    for name, label, fname in pending_timeline:
+        if name not in st.merged["attribute"] and name not in ATTRIBUTES:
+            st.errors.append(f"vocab fragment {fname}: timeline attribute {name!r} is not in the merged vocabulary")
+            continue
+        st.timeline.setdefault(name, label)
+    st.loaded = True
+    return st
+
+
+def _entry_problem(name: Any, desc: Any) -> str:
+    if not isinstance(name, str) or not NAME_RE.match(name):
+        return "name must match ^[a-z][a-z0-9_]{0,63}$"
+    if not isinstance(desc, str) or not desc.strip():
+        return "needs a non-empty description"
+    return ""
+
+
+def _state() -> _State:
+    global _STATE
+    if not _STATE.loaded:
+        with _LOCK:
+            if not _STATE.loaded:
+                _STATE = _load()
+    return _STATE
+
+
+def reload() -> None:
+    """Drop the cached merge and re-read the fragments (tests, plugins)."""
+    global _STATE
+    with _LOCK:
+        _STATE = _load()
+    with _WARN_LOCK:
+        _WARNED.clear()
+
+
+# ----------------------------------------------------------------------------------------
+# Public API
+# ----------------------------------------------------------------------------------------
+
+
+def attributes() -> dict[str, str]:
+    """Merged attribute vocabulary (core + fragments): name -> description."""
+    merged = dict(_state().merged["attribute"])
+    for name, desc in ATTRIBUTES.items():
+        merged.setdefault(name, desc)
+    return merged
+
+
+def tags() -> dict[str, str]:
+    """Merged finding/entity tag vocabulary (core + fragments): name -> description."""
+    merged = dict(_state().merged["tag"])
+    for name, desc in TAGS.items():
+        merged.setdefault(name, desc)
+    return merged
+
+
+def relations() -> dict[str, str]:
+    """Merged relation vocabulary (core + fragments): name -> description."""
+    merged = dict(_state().merged["relation"])
+    for name, desc in RELATIONS.items():
+        merged.setdefault(name, desc)
+    return merged
+
+
+def timeline_attributes() -> dict[str, str]:
+    """Dated attributes shown on the case timeline: core set merged with fragment ``timeline`` sections."""
+    merged = dict(_state().timeline)
+    for name, label in CORE_TIMELINE.items():
+        merged.setdefault(name, label)
+    return merged
 
 
 def is_known_attribute(key: str) -> bool:
-    return key in ATTRIBUTES
+    return key in ATTRIBUTES or key in _state().merged["attribute"]
 
 
 def is_known_tag(tag: str) -> bool:
-    return tag in TAGS
+    return tag in TAGS or tag in _state().merged["tag"]
 
 
 def is_known_relation(rel: str) -> bool:
-    return rel in RELATIONS
+    return rel in RELATIONS or rel in _state().merged["relation"]
+
+
+_KNOWN = {"attribute": is_known_attribute, "tag": is_known_tag, "relation": is_known_relation}
+
+
+def strict_enabled() -> bool:
+    """True when strict contract mode is on (env ``V3LUM_STRICT=1``; tests/conftest.py sets it)."""
+    return os.environ.get("V3LUM_STRICT", "") == "1"
+
+
+def check(kind: str, name: str, *, module: str = "") -> bool:
+    """Is ``name`` a known ``kind`` ('attribute' | 'tag' | 'relation')?
+
+    Unknown names raise :class:`UnknownVocab` in strict mode; otherwise they are logged once per
+    (module, kind, name) on logger ``v3lum.contract`` and False is returned (callers keep them).
+    """
+    if kind not in _KNOWN:
+        raise ValueError(f"unknown vocabulary kind {kind!r} (expected one of {', '.join(KINDS)})")
+    if isinstance(name, str) and _KNOWN[kind](name):
+        return True
+    if strict_enabled():
+        raise UnknownVocab(kind, str(name))
+    warn_once(module, f"{kind}:{name}", f"{module or '?'}: unknown {kind} {name!r} kept (not in the merged vocabulary)")
+    return False
+
+
+def warn_once(module: str, name: str, message: str) -> None:
+    """Log ``message`` once per (module, name) on logger ``v3lum.contract`` (non-strict contract gaps)."""
+    key = (module or "", name, "")
+    with _WARN_LOCK:
+        if key in _WARNED:
+            return
+        _WARNED.add(key)
+    log.warning("%s", message)
+
+
+def errors() -> list[str]:
+    """Problems found in vocabulary fragments (malformed files/entries, bad timeline names)."""
+    return list(_state().errors)
+
+
+def redeclarations() -> list[tuple[str, str, str]]:
+    """Names declared again by a fragment: list of (kind, name, fragment file). First description wins."""
+    return list(_state().redeclarations)
+
+
+def fragment_files() -> list[str]:
+    """File names of the fragments that were read (diagnostics)."""
+    return list(_state().files)

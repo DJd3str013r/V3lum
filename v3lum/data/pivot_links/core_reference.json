@@ -1,0 +1,40 @@
+{
+  "schema": "v3lum.pivot_pack/1",
+  "pack": "core_reference",
+  "title": "Core reference pivots",
+  "notes": "Owned by WP05. Reference links used by the core reference modules (manual_link fallback) and as schema examples.",
+  "links": [
+    {
+      "id": "shodan_host",
+      "label": "Shodan host",
+      "template": "https://www.shodan.io/host/{ip}",
+      "entity_types": ["ipv4", "ipv6"],
+      "category": "reputation",
+      "host": "www.shodan.io",
+      "verified": true,
+      "checked_at": "2026-11-25",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Public host page (open ports, banners, vulns) from Shodan's existing crawl; viewing it does not scan the host."
+    },
+    {
+      "id": "iana_whois",
+      "label": "IANA WHOIS",
+      "template": "https://www.iana.org/whois?q={domain}",
+      "entity_types": ["domain"],
+      "category": "history",
+      "host": "www.iana.org",
+      "verified": true,
+      "checked_at": "2026-11-25",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "IANA WHOIS: the TLD record and the registry WHOIS server responsible for the domain."
+    }
+  ]
+}

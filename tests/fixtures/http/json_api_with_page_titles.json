@@ -1,0 +1,20 @@
+{
+ "results": [
+  {
+   "page": {
+    "url": "https://phish.example/login",
+    "title": "Just a moment..."
+   }
+  },
+  {
+   "page": {
+    "url": "https://other.example/",
+    "title": "Vercel Security Checkpoint"
+   }
+  },
+  {
+   "note": "<title>Just a moment...</title> stored as data, attention required! | cloudflare"
+  }
+ ],
+ "captcha": false
+}

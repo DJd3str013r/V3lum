@@ -1,0 +1,38 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "quad9",
+  "name": "Quad9 (DNS-over-HTTPS, RFC 8484 wire format)",
+  "operator": "Quad9 Foundation",
+  "hosts": ["dns.quad9.net"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established security non-profit with published terms and privacy policy (A8 BR2); allowed resolver by council decision (P029 cond 6), reached only through the no-ECS endpoint dns.quad9.net.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-25",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "B", "justification": "Threat-blocking resolver: names it blocks as malicious are answered NXDOMAIN, so its NXDOMAIN is confirmed by a second resolver before any 'does not exist' decision (P029 cond 10)."},
+  "http_profile": {"accept": "application/dns-message", "ttl": 3600},
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "doh": {
+      "title": "DNS-over-HTTPS wire-format answers (dns.quad9.net/dns-query, via the optional dnspython extra)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://quad9.net/privacy/policy/",
+        "quote": "Default resolvers are limited to providers whose terms allow business use, recorded with evidence in the provider registry (Google Public DNS, Cloudflare 1.1.1.1, Quad9; tier trusted).",
+        "checked_at": "2026-11-25",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "dns",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P029 cond 6). RFC 8484 only through no-ECS endpoints (dns.quad9.net, not dns11)."
+    }
+  },
+  "notes": "Owned by core (WP02); provider_id of the 'quad9' resolver of core/dns.py (not a default resolver)."
+}

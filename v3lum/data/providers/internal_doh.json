@@ -1,0 +1,38 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "internal_doh",
+  "name": "Company internal DNS-over-HTTPS resolver",
+  "operator": "The organisation running V3LUM (setting doh_internal)",
+  "hosts": [],
+  "hosts_from_settings": ["doh_internal"],
+  "internal": true,
+  "tier": "trusted",
+  "tier_rationale": "Company-operated resolver configured by the team (setting doh_internal, https only); the opsec option for typosquat permutation lists and the only resolver allowed under TLP:RED (A2, P029 cond 5 and 7).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-25",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "A", "justification": "The organisation's own resolver: answers as served by the company DNS infrastructure."},
+  "http_profile": {"accept": "application/dns-json", "ttl": 3600},
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "resolver": {
+      "title": "DNS answers from the company internal DoH resolver",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://datatracker.ietf.org/doc/html/rfc8484",
+        "quote": "The resolver list is configurable (setting doh_providers, https only, validated) and may include the company's internal DoH, listed first when set.",
+        "checked_at": "2026-11-25",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "dns",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P029 cond 5). Company-operated: no third-party terms apply. provider_id of the 'internal' resolver of core/dns.py."
+    }
+  },
+  "notes": "Owned by core (WP02)."
+}

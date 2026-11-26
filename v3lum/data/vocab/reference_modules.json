@@ -1,0 +1,12 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "reference_modules",
+  "title": "Names used by the four reference modules that are not core vocabulary",
+  "owner": "WP06 (reference modules dns_records, email_basics, shodan_internetdb, ioc_extract)",
+  "attributes": {
+    "caa": "list of CAA records (certificate authorities allowed to issue for the domain), e.g. '0 issue \"letsencrypt.org\"'",
+    "soa": "SOA record of the zone: 'mname rname serial refresh retry expire minimum'"
+  },
+  "tags": {},
+  "relations": {}
+}

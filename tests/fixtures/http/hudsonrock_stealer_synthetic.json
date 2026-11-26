@@ -1,0 +1,25 @@
+{
+ "message": "This email address is associated with a computer that was infected by an info-stealer.",
+ "stealers": [
+  {
+   "total_corporate_services": 3,
+   "total_user_services": 41,
+   "date_compromised": "2026-10-02T00:00:00.000Z",
+   "computer_name": "DESKTOP-FAKE0042",
+   "operating_system": "Windows 10 Pro",
+   "malware_path": "C:\\\\Users\\\\fakeuser\\\\AppData\\\\Local\\\\Temp\\\\fake-stealer.exe",
+   "antiviruses": [
+    "None"
+   ],
+   "ip": "203.0.113.77",
+   "top_passwords": [
+    "f********9"
+   ],
+   "top_logins": [
+    "f*****r@example.com"
+   ]
+  }
+ ],
+ "total_corporate_services": 3,
+ "total_user_services": 41
+}

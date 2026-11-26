@@ -1,0 +1,8 @@
+{
+  "schema": "v3lum.generic_addresses/1",
+  "description": "Generic, role and test e-mail addresses (A4 BR6): entities.generic_address_kind() flags them; they are capped at POSSIBLE and never scored as exposure.",
+  "local_parts": ["test", "info", "contato", "contact", "sac", "admin", "noreply", "no-reply", "suporte", "support", "vendas", "financeiro", "rh", "webmaster", "postmaster", "abuse", "hostmaster", "security", "privacy", "privacidade", "dpo", "lgpd", "sales", "marketing", "billing", "comercial", "atendimento", "ouvidoria", "faleconosco", "hello", "help", "office", "jobs", "careers", "donotreply", "do-not-reply", "mailer-daemon", "root"],
+  "test_local_parts": ["test", "teste", "testing", "tester", "dummy", "fake", "foo", "bar", "foobar", "example", "sample", "someone", "nobody"],
+  "domains": ["example.com", "example.net", "example.org"],
+  "domain_suffixes": [".example", ".test", ".invalid", ".localhost"]
+}

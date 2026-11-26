@@ -1,0 +1,92 @@
+{
+ "A": {
+  "Status": 0,
+  "AD": true,
+  "Question": [
+   {
+    "name": "example.com.",
+    "type": 1
+   }
+  ],
+  "Answer": [
+   {
+    "name": "example.com.",
+    "type": 1,
+    "TTL": 160,
+    "data": "104.20.23.154"
+   },
+   {
+    "name": "example.com.",
+    "type": 1,
+    "TTL": 160,
+    "data": "172.66.147.243"
+   },
+   {
+    "name": "example.com.",
+    "type": 46,
+    "TTL": 160,
+    "data": "a 13 2 300 1795731724 1795551724 34505 example.com. K2CCAKsFimrW18orHZyF+px15trgW3X7qElhjRBTt+7HNJdtgbsaPTNX6eUSMMiL4ue37jH3wf+Z13yR4TjHzg=="
+   }
+  ]
+ },
+ "AAAA": {
+  "Status": 0,
+  "AD": true,
+  "Question": [
+   {
+    "name": "example.com.",
+    "type": 28
+   }
+  ],
+  "Answer": [
+   {
+    "name": "example.com.",
+    "type": 28,
+    "TTL": 300,
+    "data": "2606:4700:10::6814:179a"
+   },
+   {
+    "name": "example.com.",
+    "type": 28,
+    "TTL": 300,
+    "data": "2606:4700:10::ac42:93f3"
+   }
+  ]
+ },
+ "MX": {
+  "Status": 0,
+  "AD": true,
+  "Question": [
+   {
+    "name": "example.com.",
+    "type": 15
+   }
+  ],
+  "Answer": [
+   {
+    "name": "example.com.",
+    "type": 15,
+    "TTL": 134,
+    "data": "0 ."
+   }
+  ]
+ },
+ "DS": {
+  "Status": 0,
+  "AD": true,
+  "Question": [
+   {
+    "name": "example.com.",
+    "type": 43
+   }
+  ],
+  "Answer": [
+   {
+    "name": "example.com.",
+    "type": 43,
+    "TTL": 21600,
+    "data": "2371 13 2 C988EC423E3880EB8DD8A46FE06CA230EE23F35B578D64E78B29C3E1C83D245A"
+   }
+  ]
+ }
+}

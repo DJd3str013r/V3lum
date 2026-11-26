@@ -1,0 +1,17 @@
+{
+ "Status": 2,
+ "TC": false,
+ "RD": true,
+ "RA": true,
+ "AD": false,
+ "CD": false,
+ "Question": [
+  {
+   "name": "test.surbl.org.multi.surbl.org",
+   "type": 1
+  }
+ ],
+ "Comment": [
+  "EDE(22): No Reachable Authority at delegation multi.surbl.org."
+ ]
+}

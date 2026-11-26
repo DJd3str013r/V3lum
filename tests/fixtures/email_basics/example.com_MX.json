@@ -1,0 +1,18 @@
+{
+ "Status": 0,
+ "AD": true,
+ "Question": [
+  {
+   "name": "example.com.",
+   "type": 15
+  }
+ ],
+ "Answer": [
+  {
+   "name": "example.com.",
+   "type": 15,
+   "TTL": 134,
+   "data": "0 ."
+  }
+ ]
+}

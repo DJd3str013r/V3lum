@@ -1,0 +1,38 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "core_doh",
+  "name": "V3LUM core DNS-over-HTTPS resolver chain",
+  "operator": "V3LUM core (routes every query to one of the configured resolvers: internal DoH, Google Public DNS, Cloudflare 1.1.1.1 or Quad9)",
+  "hosts": [],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Virtual provider: queries only reach resolvers registered as their own trusted providers (internal_doh, google_public_dns, cloudflare_dns, quad9). Default resolvers are limited to providers whose terms allow business use (P029 cond 6).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-25",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "A", "justification": "Relays authoritative DNS answers; the AD flag is reported as 'validated by resolver', never as proof, and SERVFAIL/REFUSED/timeouts stay 'could not verify'."},
+  "http_profile": {"ttl": 3600},
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "resolvers": {
+      "title": "DNS answers through the core DoH resolver chain (DoH-only modules declare this source)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://developers.google.com/speed/public-dns/terms",
+        "quote": "Default resolvers are limited to providers whose terms allow business use, recorded with evidence in the provider registry (Google Public DNS, Cloudflare 1.1.1.1, Quad9; tier trusted).",
+        "checked_at": "2026-11-25",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "dns",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P029 cond 6). Not counted in max_requests or quotas; the resolver hosts that received a value are listed in the disclosure ledger (res.hosts)."
+    }
+  },
+  "notes": "Owned by core (WP02). DoH-only modules declare provider='core_doh', sources=('core_doh.resolvers',), hosts=(), disclosure='third_party', terms='open'."
+}

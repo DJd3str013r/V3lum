@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+<meta charset="utf-8">
+<title>Whois Lookup Captcha</title>
+<link rel="canonical" href="https://whois.domaintools.com/example.com" />
+</head>
+<body>
+<div id="ajax-captcha" class="alert alert-warning" >
+<div class="n-message-body"><div class="n-message-summary">Validation Required</div><div class="n-message-detail">Please help us validate that you are indeed human by solving the provided captcha.</div></div>
+</div>
+<form method="POST" action="" onsubmit=" return grecaptcha.getResponse() != '';">
+<div class="recaptcha-container"><div id="dt-recaptcha"></div></div>
+<button class="btn btn-md btn-primary" id="dt-recaptcha-submit" type="submit" disabled role="button">Go</button>
+<span class="help-block">Solve the provided captcha and click <em>Go</em> to continue.</span>
+</form>
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+</body>
+</html>

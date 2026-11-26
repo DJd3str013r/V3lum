@@ -9,11 +9,11 @@ from pathlib import Path
 import pytest
 
 from tests.fakes import FakeHttp, make_runtime
-from v3lum.core import module as modreg
 from v3lum.core.context import ScanOptions
 from v3lum.core.engine import Engine
 from v3lum.core.entities import Entity
 from v3lum.core.entities import EntityType as T
+from v3lum.core.models import Opsec
 from v3lum.core.module import Module, register
 from v3lum.core.store import Store, reliability_from
 from v3lum.report import write_reports
@@ -21,20 +21,30 @@ from v3lum.report.stix import bundle
 
 
 @pytest.fixture()
-def case_dict():
-    modreg.load_modules()
-    saved = dict(modreg.REGISTRY)
-
+def case_dict(clean_registry):
     class Src(Module):
         name = "t_report_src"
+        title = "Synthetic report source"
+        description = "Offline synthetic module feeding the report writers."
         accepts = {T.DOMAIN}
         category = "domain_dns"
+        terms = "open"
+        opsec = Opsec.PASSIVE
+        disclosure = "none"
+        hosts = ()
 
         def run(self, entity, ctx):
             res = self.result(entity)
             res.attr("created", "2026-11-20T10:00:00Z")
             res.attr("domain_age_days", 5)
-            res.finding("<script>alert(1)</script> phishing kit", "critical", "desc & more", tags=["phishing", "malicious"], references=["https://example.net/ref"])
+            res.finding(
+                "<script>alert(1)</script> phishing kit",
+                "critical",
+                "desc & more",
+                criterion="synthetic phishing-kit match",
+                tags=["phishing", "malicious"],
+                references=["https://example.net/ref"],
+            )
             res.pivot(T.IPV4, "203.0.113.5", "resolves_to")
             res.pivot(T.CVE, "CVE-2024-3400", "has_vuln", expand=False)
             res.link("Example tool", "https://tool.example/?q=" + entity.value)
@@ -42,13 +52,9 @@ def case_dict():
             return res
 
     register(Src)
-    try:
-        rt = make_runtime(FakeHttp())
-        case = Engine(rt, ScanOptions(include={"t_report_src"})).investigate([Entity.make("domain", "evil.example")])
-        yield case.to_dict()
-    finally:
-        modreg.REGISTRY.clear()
-        modreg.REGISTRY.update(saved)
+    rt = make_runtime(FakeHttp())
+    case = Engine(rt, ScanOptions(include={"t_report_src"})).investigate([Entity.make("domain", "evil.example")])
+    yield case.to_dict()
 
 
 def test_store_roundtrip_and_feedback(case_dict, tmp_path):

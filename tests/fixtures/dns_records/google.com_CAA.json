@@ -1,0 +1,18 @@
+{
+ "Status": 0,
+ "AD": false,
+ "Question": [
+  {
+   "name": "google.com.",
+   "type": 257
+  }
+ ],
+ "Answer": [
+  {
+   "name": "google.com.",
+   "type": 257,
+   "TTL": 20899,
+   "data": "0 issue \"pki.goog\""
+  }
+ ]
+}

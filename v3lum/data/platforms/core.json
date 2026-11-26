@@ -1,0 +1,90 @@
+{
+  "schema": "v3lum.platforms/1",
+  "notes": "Core social platforms of entities.SOCIAL_PLATFORMS (WP05). Batches add platforms with their own fragment; never edit this file from a batch.",
+  "platforms": {
+    "instagram": {
+      "title": "Instagram",
+      "aliases": ["ig"],
+      "profile_url_patterns": ["https://www.instagram.com/{handle}"],
+      "reserved_handles": ["p", "reel", "reels", "stories", "tv", "direct", "web", "emails", "challenge", "accounts", "explore"]
+    },
+    "tiktok": {
+      "title": "TikTok",
+      "aliases": [],
+      "profile_url_patterns": ["https://www.tiktok.com/@{handle}"],
+      "reserved_handles": []
+    },
+    "x": {
+      "title": "X (Twitter)",
+      "aliases": ["twitter"],
+      "profile_url_patterns": ["https://x.com/{handle}", "https://twitter.com/{handle}"],
+      "reserved_handles": ["i", "hashtag", "compose", "messages", "explore", "notifications", "settings", "tos", "home"]
+    },
+    "facebook": {
+      "title": "Facebook",
+      "aliases": ["fb"],
+      "profile_url_patterns": ["https://www.facebook.com/{handle}"],
+      "reserved_handles": ["profile.php", "groups", "pages", "watch", "events", "marketplace", "gaming", "photo.php", "photo", "story.php", "permalink.php", "people", "public", "hashtag", "dialog", "reel", "stories", "business", "ads", "plugins", "l.php"]
+    },
+    "linkedin": {
+      "title": "LinkedIn",
+      "aliases": [],
+      "profile_url_patterns": ["https://www.linkedin.com/in/{handle}"],
+      "reserved_handles": []
+    },
+    "youtube": {
+      "title": "YouTube",
+      "aliases": ["yt"],
+      "profile_url_patterns": ["https://www.youtube.com/@{handle}", "https://www.youtube.com/c/{handle}", "https://www.youtube.com/user/{handle}"],
+      "reserved_handles": []
+    },
+    "github": {
+      "title": "GitHub",
+      "aliases": ["gh"],
+      "profile_url_patterns": ["https://github.com/{handle}"],
+      "reserved_handles": ["orgs", "topics", "trending", "features", "pricing", "enterprise", "marketplace", "sponsors", "collections", "events", "issues", "pulls", "notifications", "new", "codespaces", "copilot", "readme", "site", "apps", "team", "customer-stories", "resources", "solutions"]
+    },
+    "gitlab": {
+      "title": "GitLab",
+      "aliases": [],
+      "profile_url_patterns": ["https://gitlab.com/{handle}"],
+      "reserved_handles": ["users", "explore", "dashboard", "projects", "groups", "snippets", "-"]
+    },
+    "reddit": {
+      "title": "Reddit",
+      "aliases": [],
+      "profile_url_patterns": ["https://www.reddit.com/user/{handle}", "https://www.reddit.com/u/{handle}", "https://old.reddit.com/user/{handle}"],
+      "reserved_handles": []
+    },
+    "threads": {
+      "title": "Threads",
+      "aliases": [],
+      "profile_url_patterns": ["https://www.threads.net/@{handle}", "https://www.threads.com/@{handle}"],
+      "reserved_handles": []
+    },
+    "pinterest": {
+      "title": "Pinterest",
+      "aliases": [],
+      "profile_url_patterns": ["https://www.pinterest.com/{handle}", "https://br.pinterest.com/{handle}"],
+      "reserved_handles": ["pin", "ideas", "today", "business", "categories", "_"]
+    },
+    "twitch": {
+      "title": "Twitch",
+      "aliases": [],
+      "profile_url_patterns": ["https://www.twitch.tv/{handle}"],
+      "reserved_handles": ["directory", "videos", "downloads", "p", "store", "turbo", "prime", "subscriptions", "inventory", "wallet", "drops"]
+    },
+    "kwai": {
+      "title": "Kwai",
+      "aliases": [],
+      "profile_url_patterns": ["https://www.kwai.com/@{handle}"],
+      "reserved_handles": []
+    },
+    "snapchat": {
+      "title": "Snapchat",
+      "aliases": ["snap"],
+      "profile_url_patterns": ["https://www.snapchat.com/add/{handle}", "https://www.snapchat.com/@{handle}"],
+      "reserved_handles": []
+    }
+  }
+}

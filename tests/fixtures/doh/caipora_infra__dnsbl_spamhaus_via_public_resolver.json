@@ -1,0 +1,22 @@
+{
+ "Status": 3,
+ "TC": false,
+ "RD": true,
+ "RA": true,
+ "AD": false,
+ "CD": false,
+ "Question": [
+  {
+   "name": "2.0.0.127.zen.spamhaus.org.",
+   "type": 1
+  }
+ ],
+ "Authority": [
+  {
+   "name": "zen.spamhaus.org.",
+   "type": 6,
+   "TTL": 10,
+   "data": "need.to.know.only. hostmaster.spamhaus.org. 2611252106 3600 600 432000 10"
+  }
+ ]
+}

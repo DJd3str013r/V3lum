@@ -1,0 +1,15 @@
+{
+  "schema": "v3lum.attack_index/1",
+  "version": "enterprise-attack 20.1 (2026-11-05)",
+  "source": "https://github.com/mitre-attack/attack-stix-data (enterprise-attack.json)",
+  "attribution": "MITRE ATT&CK(R) is a registered trademark of The MITRE Corporation. (c) The MITRE Corporation. This work is reproduced and distributed with the permission of The MITRE Corporation (ATT&CK terms of use).",
+  "notes": "Core minimum set owned by the core (WP01); packs and the P292 batch add their own v3lum/data/attack/<pack>.json fragments and never edit this file.",
+  "techniques": {
+    "T1566": {"name": "Phishing", "stix_id": "attack-pattern--a62a8db3-f23a-4d8f-afd6-9dbc77e7813b", "revoked": false, "deprecated": false, "replaced_by": null},
+    "T1566.001": {"name": "Spearphishing Attachment", "stix_id": "attack-pattern--2e34237d-8574-43f6-aace-ae2915de8597", "revoked": false, "deprecated": false, "replaced_by": null},
+    "T1566.002": {"name": "Spearphishing Link", "stix_id": "attack-pattern--2b742742-28c3-4e1b-bab7-8350d6300fa7", "revoked": false, "deprecated": false, "replaced_by": null},
+    "T1684": {"name": "Social Engineering", "stix_id": "attack-pattern--41e4d77a-6275-4976-9e35-785985598519", "revoked": false, "deprecated": false, "replaced_by": null},
+    "T1684.001": {"name": "Impersonation", "stix_id": "attack-pattern--cd92d2b8-ce43-4666-9472-f1b4b9f4f8be", "revoked": false, "deprecated": false, "replaced_by": null},
+    "T1656": {"name": "Impersonation", "stix_id": "attack-pattern--c9e0c59e-162e-40a4-b8b1-78fab4329ada", "revoked": true, "deprecated": false, "replaced_by": "T1684.001"}
+  }
+}

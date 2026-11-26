@@ -1,0 +1,134 @@
+{
+ "MX": {
+  "Status": 0,
+  "AD": false,
+  "Question": [
+   {
+    "name": "github.com.",
+    "type": 15
+   }
+  ],
+  "Answer": [
+   {
+    "name": "github.com.",
+    "type": 15,
+    "TTL": 300,
+    "data": "0 github-com.mail.protection.outlook.com."
+   }
+  ]
+ },
+ "NS": {
+  "Status": 0,
+  "AD": false,
+  "Question": [
+   {
+    "name": "github.com.",
+    "type": 2
+   }
+  ],
+  "Answer": [
+   {
+    "name": "github.com.",
+    "type": 2,
+    "TTL": 900,
+    "data": "dns2.p08.nsone.net."
+   },
+   {
+    "name": "github.com.",
+    "type": 2,
+    "TTL": 900,
+    "data": "ns-520.awsdns-01.net."
+   },
+   {
+    "name": "github.com.",
+    "type": 2,
+    "TTL": 900,
+    "data": "ns-421.awsdns-52.com."
+   },
+   {
+    "name": "github.com.",
+    "type": 2,
+    "TTL": 900,
+    "data": "dns4.p08.nsone.net."
+   },
+   {
+    "name": "github.com.",
+    "type": 2,
+    "TTL": 900,
+    "data": "ns-1283.awsdns-32.org."
+   },
+   {
+    "name": "github.com.",
+    "type": 2,
+    "TTL": 900,
+    "data": "ns-1707.awsdns-21.co.uk."
+   },
+   {
+    "name": "github.com.",
+    "type": 2,
+    "TTL": 900,
+    "data": "dns1.p08.nsone.net."
+   },
+   {
+    "name": "github.com.",
+    "type": 2,
+    "TTL": 900,
+    "data": "dns3.p08.nsone.net."
+   }
+  ]
+ },
+ "SOA": {
+  "Status": 0,
+  "AD": false,
+  "Question": [
+   {
+    "name": "github.com.",
+    "type": 6
+   }
+  ],
+  "Answer": [
+   {
+    "name": "github.com.",
+    "type": 6,
+    "TTL": 900,
+    "data": "ns-1707.awsdns-21.co.uk. awsdns-hostmaster.amazon.com. 1 7200 900 1209600 86400"
+   }
+  ]
+ },
+ "TXT": {
+  "Status": 0,
+  "AD": false,
+  "Question": [
+   {
+    "name": "github.com.",
+    "type": 16
+   }
+  ],
+  "Answer": [
+   {
+    "name": "github.com.",
+    "type": 16,
+    "TTL": 300,
+    "data": "MS=ms58704441"
+   },
+   {
+    "name": "github.com.",
+    "type": 16,
+    "TTL": 300,
+    "data": "v=spf1 ip4:192.30.252.0/22 ip4:172.170.10.240/28 ip4:40.78.162.192/28 ip4:172.170.3.48/28 include:spf.protection.outlook.com include:_netblocks.google.com include:_netblocks2.google.com include:mail.zendesk.com include:_spf.salesforce.com include:servers.mcsv.net include:mktomail.com include:sendgrid.net ip4:62.253.227.114 ip4:166.78.69.169 ip4:166.78.69.170 ip4:166.78.71.131 ~all"
+   },
+   {
+    "name": "github.com.",
+    "type": 16,
+    "TTL": 300,
+    "data": "MS=ms44452932"
+   },
+   {
+    "name": "github.com.",
+    "type": 16,
+    "TTL": 300,
+    "data": "MS=6BF03E6AF5CB689E315FB6199603BABF2C88D805"
+   }
+  ]
+ }
+}

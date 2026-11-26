@@ -1,6 +1,15 @@
+"""Core DoH resolver: the v1 cases, with the P029 URL change (Google always carries ECS 0.0.0.0/0)."""
+
+from urllib.parse import parse_qsl, urlsplit
+
+import pytest
+
 from tests.fakes import FakeHttp, add_dns
 from v3lum.core.dns import Resolver, reverse_name
-from v3lum.core.http import ScopedHttp
+from v3lum.core.http import NetworkError, ScopedHttp
+
+GOOGLE = "https://dns.google/resolve"
+CLOUDFLARE = "https://cloudflare-dns.com/dns-query"
 
 
 def resolver(http):
@@ -37,17 +46,51 @@ def test_filters_other_rr_types():
     http = FakeHttp()
     http.add(
         "GET",
-        "https://dns.google/resolve?name=www.example.com&type=A",
+        f"{GOOGLE}?name=www.example.com&type=A&edns_client_subnet=0.0.0.0/0",
         json={"Status": 0, "Answer": [{"type": 5, "data": "example.com."}, {"type": 1, "data": "93.184.215.14"}]},
     )
-    assert resolver(http).query("www.example.com", "A").records == ["93.184.215.14"]
+    ans = resolver(http).query("www.example.com", "A")
+    assert ans.records == ["93.184.215.14"]
+    assert ans.cnames == ["example.com"]  # the CNAME hop is kept apart from the A records
 
 
-def test_fallback_to_cloudflare():
+def test_google_url_carries_ecs_in_order():
     http = FakeHttp()
-    http.add("GET", "https://dns.google/resolve?name=x.com&type=A", status=503)
-    http.add("GET", "https://cloudflare-dns.com/dns-query?name=x.com&type=A", json={"Status": 0, "Answer": [{"type": 1, "data": "5.6.7.8"}]})
-    assert resolver(http).query("x.com", "A").records == ["5.6.7.8"]
+    add_dns(http, "x.com", "A", ["5.6.7.8"])
+    resolver(http).query("x.com", "A")
+    url = http.urls()[0]
+    assert url == f"{GOOGLE}?name=x.com&type=A&edns_client_subnet=0.0.0.0%2F0"
+    assert [k for k, _ in parse_qsl(urlsplit(url).query)] == ["name", "type", "edns_client_subnet"]
+
+
+@pytest.mark.parametrize(
+    "failure",
+    [
+        {"status": 503},
+        {"status": 500},
+        {"status": 429},
+        {"error": NetworkError("ConnectionError contacting dns.google: reset")},
+    ],
+    ids=["503", "500", "429", "transport"],
+)
+def test_fallback_to_cloudflare(failure):
+    http = FakeHttp()
+    http.add("GET", f"{GOOGLE}?name=x.com&type=A&edns_client_subnet=0.0.0.0/0", **failure)
+    http.add("GET", f"{CLOUDFLARE}?name=x.com&type=A", json={"Status": 0, "Answer": [{"type": 1, "data": "5.6.7.8"}]})
+    ans = resolver(http).query("x.com", "A")
+    assert ans.records == ["5.6.7.8"]
+    assert ans.resolver == "cloudflare"
+
+
+def test_no_fallback_on_dns_answers():
+    """An NXDOMAIN (or SERVFAIL) answer is final: the next resolver is never asked."""
+    http = FakeHttp()
+    add_dns(http, "gone.example", "A", [], status=3)
+    add_dns(http, "broken.example", "A", [], status=2)
+    r = resolver(http)
+    assert r.query("gone.example", "A").nxdomain
+    assert r.query("broken.example", "A").could_not_verify
+    assert all(u.startswith(GOOGLE) for u in http.urls())
 
 
 def test_reverse_name():

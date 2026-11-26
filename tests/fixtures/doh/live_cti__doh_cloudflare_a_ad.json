@@ -1,0 +1,34 @@
+{
+ "Status": 0,
+ "TC": false,
+ "RD": true,
+ "RA": true,
+ "AD": true,
+ "CD": false,
+ "Question": [
+  {
+   "name": "example.com",
+   "type": 1
+  }
+ ],
+ "Answer": [
+  {
+   "name": "example.com",
+   "type": 1,
+   "TTL": 60,
+   "data": "172.66.147.243"
+  },
+  {
+   "name": "example.com",
+   "type": 1,
+   "TTL": 60,
+   "data": "104.20.23.154"
+  },
+  {
+   "name": "example.com",
+   "type": 46,
+   "TTL": 60,
+   "data": "A 13 2 300 1795731619 1795551619 34505 example.com. tpiyVuDR/36Vy03SrVVf3MZniKmkiz/CBASjCeVEDoYjTXWnQTNrl3A19+meC0o5ljuqhjxfclb2qly11xHpgA=="
+  }
+ ]
+}

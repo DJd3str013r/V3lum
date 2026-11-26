@@ -1,0 +1,62 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "internal_opencti",
+  "name": "Company OpenCTI instance (read-only GraphQL)",
+  "operator": "The organisation running V3LUM (setting opencti_url)",
+  "hosts": [],
+  "hosts_from_settings": [
+    "opencti_url"
+  ],
+  "internal": true,
+  "tier": "trusted",
+  "tier_rationale": "Instance operated by the company or a contracted processor (A12: disclosure 'internal', allowed at TLP:RED); community or shared instances must be registered as third-party providers instead.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-25",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Team-curated internal platform; reliability follows the events/feeds it holds and their own markings."
+  },
+  "http_profile": {
+    "accept": "application/json",
+    "timeout": 5.0,
+    "retries": 0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {
+    "opencti": {
+      "description": "OpenCTI API token of a read-only least-privilege service account",
+      "signup_url": "",
+      "env": [
+        "OPENCTI_TOKEN"
+      ],
+      "multi_key": false,
+      "plan_hint": "a read-only least-privilege service account of the company instance (A12)"
+    }
+  },
+  "sources": {
+    "graphql": {
+      "title": "OpenCTI observables/indicators via the read-only GraphQL API",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://docs.opencti.io/",
+        "quote": "disclosure='internal' (allowed at TLP:RED) applies only to instances operated by the company or a contracted processor.",
+        "checked_at": "2026-11-25",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "internal_tip",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (A12). Read-only GraphQL queries only (the platform's read-only search POST)."
+    }
+  },
+  "notes": "Owned by core (WP02). Disabled unless setting opencti_url (https) and key 'opencti' are configured; read-only endpoints only, TLS verification always on (A12)."
+}

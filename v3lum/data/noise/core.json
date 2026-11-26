@@ -1,0 +1,18 @@
+{
+  "schema": "v3lum.noise_kinds/1",
+  "description": "Noise kinds understood by v3lum.core.noise. The built-in core lists live in v3lum/core/noise.py (_CORE); data fragments in this directory (schema v3lum.noise/1) add more lists. This file only documents the kinds.",
+  "builtin_kinds": ["webmail", "resolver", "saas", "cloud", "cdn", "hosting", "parked"],
+  "kinds": {
+    "cdn": "content delivery networks and edge caches (Cloudflare, Akamai, Fastly, CloudFront...): one address serves thousands of unrelated sites; is_cdn() is True",
+    "cloud": "public cloud provider infrastructure (AWS, Azure, Google Cloud...); is_cdn() is True",
+    "resolver": "public DNS resolvers (8.8.8.8, 1.1.1.1, 9.9.9.9, OpenDNS...)",
+    "webmail": "consumer mailbox providers: the domain is noise, an address at it is a person and never noise",
+    "hosting": "shared web/DNS hosting, registrar name servers and site builders; is_cdn() is True",
+    "saas": "large platforms and SaaS front doors (Google, Microsoft 365, Dropbox, mail delivery services, form/share short links); is_cdn() is True",
+    "sinkhole": "sinkholed infrastructure operated by researchers or registries: a resolution to it is a lead (is_sinkhole), pivoting on it is not",
+    "parked": "domain parking services and their name servers: tags the domain as parked (is_parked)",
+    "benign_scanner": "known benign internet-wide scanners (research scanners): their hits in logs are background noise",
+    "warninglist": "a named warninglist (MISP warninglist style): values are listed but not auto-pivoted and their malicious findings become 'POSSIBLE - on warninglist <name>'; not noise for is_noise()",
+    "private": "computed: private, loopback, reserved, multicast and link-local addresses (never listed in fragments)"
+  }
+}

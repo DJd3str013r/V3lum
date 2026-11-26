@@ -1,0 +1,52 @@
+{
+ "note": "trimmed from the research record design_email_posture_doh.json (values as returned by DoH JSON, 2026-11-25)",
+ "posture": {
+  "github.com": {
+   "dmarc_record": "v=DMARC1; p=quarantine; sp=reject; pct=100; rua=mailto:dmarc@github.com; ruf=mailto:dmarc@github.com; fo=1",
+   "mta_sts_txt": null,
+   "caa": [
+    "0 issuewild \"letsencrypt.org\"",
+    "0 issuewild \"digicert.com\"",
+    "0 issue \"sectigo.com\"",
+    "0 issuewild \"sectigo.com\"",
+    "0 issue \"globalsign.com\"",
+    "0 issue \"digicert.com\"",
+    "0 issue \"letsencrypt.org\""
+   ],
+   "mx": [
+    "0 github-com.mail.protection.outlook.com."
+   ],
+   "dnssec": {
+    "ds_present": false,
+    "ad_flag_on_A": false
+   }
+  },
+  "google.com": {
+   "dmarc_record": "v=DMARC1; p=reject; rua=mailto:mailauth-reports@google.com",
+   "mta_sts_txt": "v=STSv1; id=20210803T010101;",
+   "caa": [
+    "0 issue \"pki.goog\""
+   ],
+   "mx": [
+    "10 smtp.google.com."
+   ],
+   "dnssec": {
+    "ds_present": false,
+    "ad_flag_on_A": false
+   }
+  },
+  "example.com": {
+   "dmarc_record": "v=DMARC1;p=reject;sp=reject;adkim=s;aspf=s",
+   "mta_sts_txt": null,
+   "caa": [],
+   "mx": [
+    "0 ."
+   ],
+   "dnssec": {
+    "ds_present": true,
+    "ad_flag_on_A": true
+   }
+  }
+ },
+ "spf_github.com": "v=spf1 ip4:192.30.252.0/22 ip4:172.170.10.240/28 ip4:40.78.162.192/28 ip4:172.170.3.48/28 include:spf.protection.outlook.com include:_netblocks.google.com include:_netblocks2.google.com include:mail.zendesk.com include:_spf.salesforce.com include:servers.mcsv.net include:mktomail.com include:sendgrid.net ip4:62.253.227.114 ip4:166.78.69.169 ip4:166.78.69.170 ip4:166.78.71.131 ~all"
+}

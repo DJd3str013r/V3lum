@@ -1,0 +1,22 @@
+{
+ "Status": 0,
+ "TC": false,
+ "RD": true,
+ "RA": true,
+ "AD": true,
+ "CD": false,
+ "Question": [
+  {
+   "name": "example.com.",
+   "type": 43
+  }
+ ],
+ "Answer": [
+  {
+   "name": "example.com.",
+   "type": 43,
+   "TTL": 21600,
+   "data": "2371 13 2 C988EC423E3880EB8DD8A46FE06CA230EE23F35B578D64E78B29C3E1C83D245A"
+  }
+ ]
+}

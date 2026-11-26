@@ -1,4 +1,10 @@
-"""Engine behaviour with synthetic modules (no network)."""
+"""Engine behaviour with synthetic modules (no network).
+
+Synthetic modules are declared with ``tests.fakes.define_module`` (contract v2 metadata; offline
+unless they use the synthetic provider of ``test_provider``) inside the ``clean_registry`` fixture.
+Findings of severity >= low carry a criterion and attribute names are vocabulary names (test-only
+names go through ``allow_vocab``), because tests run in strict contract mode.
+"""
 
 from __future__ import annotations
 
@@ -8,33 +14,29 @@ from pathlib import Path
 
 import pytest
 
-from tests.fakes import FakeHttp, make_runtime
-from v3lum.core import module as modreg
+from tests.fakes import FakeHttp, allow_vocab, define_module, make_runtime, source_ids, test_provider
 from v3lum.core.context import ScanOptions
 from v3lum.core.engine import Engine
 from v3lum.core.entities import Entity
 from v3lum.core.entities import EntityType as T
 from v3lum.core.http import RateLimited
 from v3lum.core.models import Opsec, Status
-from v3lum.core.module import Module, register
+
+TEST_ATTRIBUTES = ("ok", "ran", "x")  # test-only attribute names (strict mode)
 
 
 @pytest.fixture()
-def registry():
-    modreg.load_modules()
-    saved = dict(modreg.REGISTRY)
-    yield modreg.REGISTRY
-    modreg.REGISTRY.clear()
-    modreg.REGISTRY.update(saved)
+def registry(clean_registry):
+    with allow_vocab(attributes=TEST_ATTRIBUTES):
+        yield clean_registry
 
 
 def define(registry, name, accepts, run, **attrs):
-    cls = type(name, (Module,), {"name": name, "accepts": set(accepts), "category": attrs.pop("category", "utility"), "run": run, **attrs})
-    return register(cls)
+    return define_module(name, accepts, run, **attrs)
 
 
-def scan(seeds, include, **opts):
-    rt = make_runtime(FakeHttp())
+def scan(seeds, include, *, http=None, **opts):
+    rt = make_runtime(http or FakeHttp())
     options = ScanOptions(include=set(include), **opts)
     return Engine(rt, options).investigate([Entity.make(t, v) for t, v in seeds])
 
@@ -43,7 +45,7 @@ def test_findings_attributes_and_pivots(registry):
     def run(self, entity, ctx):
         res = self.result(entity)
         res.attr("country", "BR")
-        res.finding("bad thing", "high", tags=["malicious"])
+        res.finding("bad thing", "high", tags=["malicious"], criterion="synthetic test criterion")
         res.pivot(T.IPV4, "203.0.113.10", "resolves_to")
         return res
 
@@ -145,17 +147,22 @@ def test_keys_and_opsec_gating(registry):
         res.attr("ran", True)
         return res
 
-    define(registry, "t_keyed", [T.DOMAIN], run, requires_keys=("t_service",))
-    define(registry, "t_active", [T.DOMAIN], run, opsec=Opsec.ACTIVE)
-    case = scan([("domain", "example.org")], ["t_keyed", "t_active"])
-    assert case.coverage["t_keyed"]["status"] == "needs_key"
-    assert case.coverage["t_active"]["status"] == "skipped"
-    assert not case.results
+    with test_provider("t_service_provider", keys=("t_service",)) as prov:
+        define(
+            registry, "t_keyed", [T.DOMAIN], run,
+            requires_keys=("t_service",), disclosure="third_party", provider=prov.id, sources=source_ids(prov),
+            hosts=prov.hosts, access_model="free_auth_limited",
+        )
+        define(registry, "t_active", [T.DOMAIN], run, opsec=Opsec.ACTIVE)
+        case = scan([("domain", "example.org")], ["t_keyed", "t_active"])
+        assert case.coverage["t_keyed"]["status"] == "needs_key"
+        assert case.coverage["t_active"]["status"] == "skipped"
+        assert not case.results
 
-    rt = make_runtime(FakeHttp(), keys={"t_service": "secret"})
-    opts = ScanOptions(include={"t_keyed", "t_active"}, mode=Opsec.ACTIVE, authorized=True)
-    case2 = Engine(rt, opts).investigate([Entity.make("domain", "example.org")])
-    assert {r.module for r in case2.results} == {"t_keyed", "t_active"}
+        rt = make_runtime(FakeHttp(), keys={"t_service": "secret-value-1"})
+        opts = ScanOptions(include={"t_keyed", "t_active"}, mode=Opsec.ACTIVE, authorized=True)
+        case2 = Engine(rt, opts).investigate([Entity.make("domain", "example.org")])
+        assert {r.module for r in case2.results} == {"t_keyed", "t_active"}
 
 
 def test_evidence_saved_with_sha256(registry):
@@ -202,7 +209,7 @@ def test_budget(registry):
 def test_multi_source_malicious_and_risk(registry):
     def bad(self, entity, ctx):
         res = self.result(entity)
-        res.finding("flagged", "high", tags=["malicious"], confidence=0.9)
+        res.finding("flagged", "high", tags=["malicious"], confidence=0.9, criterion="synthetic source verdict")
         return res
 
     define(registry, "t_src1", [T.DOMAIN], bad)
@@ -231,18 +238,24 @@ def test_blocked_status_and_daily_quota(registry):
         raise Blocked("site: anti-bot/WAF page", 403)
 
     def counted(self, entity, ctx):
-        ctx.http.requests += 1  # simulate one network request
+        ctx.http.get("https://api.example.test/ping")  # one real (fake-transport) network request
         res = self.result(entity)
         res.attr("ok", True)
         return res
 
-    define(registry, "t_walled", [T.DOMAIN], walled)
-    define(registry, "t_quota", [T.DOMAIN], counted, daily_quota=1)
-    case = scan([("domain", "example.org")], ["t_walled", "t_quota"])
-    by = {r.module: r for r in case.results}
-    assert by["t_walled"].status is Status.BLOCKED
-    assert by["t_quota"].status is Status.OK
-    # second scan: quota (1/day) already used -> not scheduled, reported as rate limited
-    case2 = scan([("domain", "example.net")], ["t_quota"])
-    assert not case2.results
-    assert case2.coverage["t_quota"]["status"] == "rate_limited"
+    with test_provider() as prov:
+        define(registry, "t_walled", [T.DOMAIN], walled)
+        define(
+            registry, "t_quota", [T.DOMAIN], counted,
+            daily_quota=1, disclosure="third_party", provider=prov.id, sources=source_ids(prov), hosts=prov.hosts,
+            access_model="free_noauth_limited",
+        )
+        http = FakeHttp().add("GET", "https://api.example.test/ping", json={"pong": True})
+        case = scan([("domain", "example.org")], ["t_walled", "t_quota"], http=http)
+        by = {r.module: r for r in case.results}
+        assert by["t_walled"].status is Status.BLOCKED
+        assert by["t_quota"].status is Status.OK
+        # second scan: quota (1/day) already used -> not scheduled, reported as quota (P328 cond 1)
+        case2 = scan([("domain", "example.net")], ["t_quota"], http=http)
+        assert not case2.results
+        assert case2.coverage["t_quota"]["status"] == "quota"

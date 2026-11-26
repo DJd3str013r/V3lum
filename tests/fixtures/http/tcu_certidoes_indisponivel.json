@@ -1,0 +1,25 @@
+{
+ "certidaoPDF": null,
+ "certidoes": [
+  {
+   "descricao": "Licitantes Inidoneos",
+   "emissor": "TCU",
+   "situacao": "NADA_CONSTA",
+   "tipo": "Inidoneos"
+  },
+  {
+   "descricao": "CNIA - Cadastro Nacional de Condenacoes Civeis por Ato de Improbidade Administrativa",
+   "emissor": "CNJ",
+   "situacao": "SISTEMA_INDISPONIVEL",
+   "tipo": "CNIA"
+  },
+  {
+   "descricao": "Cadastro Nacional de Empresas Inidoneas e Suspensas",
+   "emissor": "Portal da Transparencia",
+   "situacao": "NADA_CONSTA",
+   "tipo": "CEIS"
+  }
+ ],
+ "cnpj": "00.000.000/0001-91",
+ "seCnpjEncontradoNaBaseTcu": true
+}

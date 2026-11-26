@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex" />
+<title>MalwareBazaar | Checking your browser</title>
+<!-- Scrapers go to hell! -->
+<script src='https://js.hcaptcha.com/1/api.js' async defer></script>
+</head>
+<body>
+<main class="container container-lg">
+<h1 class="mt-5">Checking your browser</h1>
+<div class="col-8 d-flex justify-content-center">
+<p>Please confirm that you are not a robot by clicking on the checkbox below</p>
+</div>
+<form action="" method="POST" name="gaform">
+<div class="h-captcha" data-sitekey="TRIMMED" data-callback="pushBtn"></div>
+<input type="submit" value="Submit" id="btn-ga-submit" disabled="disabled" class="d-none">
+</form>
+<noscript><span class="alert alert-danger">Verification failed - your browser does not support JavaScript.</span></noscript>
+</main>
+</body>
+</html>

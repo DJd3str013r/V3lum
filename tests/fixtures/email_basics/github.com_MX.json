@@ -1,0 +1,18 @@
+{
+ "Status": 0,
+ "AD": false,
+ "Question": [
+  {
+   "name": "github.com.",
+   "type": 15
+  }
+ ],
+ "Answer": [
+  {
+   "name": "github.com.",
+   "type": 15,
+   "TTL": 300,
+   "data": "0 github-com.mail.protection.outlook.com."
+  }
+ ]
+}

@@ -1,0 +1,8 @@
+Incident note (sanitised training sample - benign/test values only)
+Beacon to hxxp://bad-site[.]xyz/gate.php from 45.33.32.156 at 03:12 UTC.
+Dropper sha256 275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f (EICAR test file), md5 44d88612fea8a8f36de82e1278abb02f.
+Exploited CVE-2021-44228; ATT&CK T1566.001.
+Phishing sender: someone@example.com
+Ransom wallet: bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq
+CPF citado no e-mail: 111.444.777-35
+Session token pasted by the user: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.dozjgNryP4J3jVmNHl0w5N_XgL0n3I9PlFUP0THsR8U

@@ -1,0 +1,38 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "iana",
+  "name": "Internet Assigned Numbers Authority (IANA)",
+  "operator": "IANA / Public Technical Identifiers (PTI), an affiliate of ICANN",
+  "hosts": ["data.iana.org", "www.iana.org"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Internet registry (A8 BR2: internet registries and RIRs are trusted); 'IANA and the PSL are data sources: tier trusted, terms open' (P330 chair rationale).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-25",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "A", "justification": "Authoritative registry of top-level domains and protocol parameters."},
+  "http_profile": {"ttl": 86400},
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "tlds": {
+      "title": "IANA list of top-level domains (tlds-alpha-by-domain.txt) and RDAP bootstrap files",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://data.iana.org/TLD/tlds-alpha-by-domain.txt",
+        "quote": "Both providers are registered as tier trusted, terms open (IANA public data; PSL MPL-2.0).",
+        "checked_at": "2026-11-25",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "iana",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P330 cond 1); research record C0707 'IANA public data.' Bundled copy v3lum/data/iana_tlds.txt; refreshed by `v3lum data update`."
+    }
+  },
+  "notes": "Owned by core (WP02)."
+}

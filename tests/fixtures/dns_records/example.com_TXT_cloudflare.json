@@ -1,0 +1,18 @@
+{
+ "Status": 0,
+ "AD": true,
+ "Question": [
+  {
+   "name": "example.com",
+   "type": 16
+  }
+ ],
+ "Answer": [
+  {
+   "name": "example.com",
+   "type": 16,
+   "TTL": 300,
+   "data": "\"v=spf1 -all\""
+  }
+ ]
+}

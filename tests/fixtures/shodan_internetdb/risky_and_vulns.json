@@ -1,0 +1,1 @@
+{"cpes":["cpe:/a:openbsd:openssh:7.4","cpe:/a:redis:redis"],"hostnames":[],"ip":"45.33.32.156","ports":[22,3389,6379],"tags":[],"vulns":["CVE-2023-0001","CVE-2023-0002"]}

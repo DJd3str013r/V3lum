@@ -1,0 +1,148 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "abusech",
+  "name": "abuse.ch platforms (MalwareBazaar, URLhaus, ThreatFox, YARAify, Feodo Tracker, SSLBL)",
+  "operator": "abuse.ch (Institute for Cybersecurity and Engineering, Bern University of Applied Sciences) with Spamhaus",
+  "hosts": [
+    "mb-api.abuse.ch",
+    "urlhaus-api.abuse.ch",
+    "threatfox-api.abuse.ch",
+    "yaraify-api.abuse.ch",
+    "feodotracker.abuse.ch",
+    "sslbl.abuse.ch",
+    "bazaar.abuse.ch",
+    "urlhaus.abuse.ch",
+    "threatfox.abuse.ch",
+    "yaraify.abuse.ch",
+    "auth.abuse.ch"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established security non-profit with published terms (A8 BR2 names abuse.ch as trusted).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-25",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Curated community submissions reviewed by abuse.ch; all six platforms form ONE upstream family for consensus counting (P171 cond 2)."
+  },
+  "http_profile": {
+    "ttl": 3600
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {
+    "abusech": {
+      "description": "abuse.ch Auth-Key (URLhaus, ThreatFox, MalwareBazaar, YARAify)",
+      "signup_url": "https://auth.abuse.ch/",
+      "env": [
+        "ABUSECH_AUTH_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "the Auth-Key is free; it does not license MalwareBazaar/URLhaus/ThreatFox for business use (A1)"
+    }
+  },
+  "sources": {
+    "malwarebazaar": {
+      "title": "MalwareBazaar (malware sample metadata by hash)",
+      "terms": {
+        "class": "license",
+        "evidence_url": "https://abuse.ch/terms-of-use/",
+        "quote": "Use of the Platforms listed below by companies, networks, or individuals with commercial or for- profit needs may require a paid subscription, which will be managed by Spamhaus, and will be subject to separate terms and conditions.",
+        "checked_at": "2026-11-25",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "abuse.ch",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "A1 initial class 'license': the quote is abuse.ch terms 2026-10-21 s.4.1 (verbatim), which lists MalwareBazaar, URLhaus and ThreatFox; s.3.1 limits free authenticated access to 'not-for-profit purposes'. Licence-blocked until a Spamhaus/abuse.ch subscription or written decision is recorded (off under the corporate profile until licence-cleared).",
+      "licensed_alternative": "A Spamhaus/abuse.ch commercial subscription, or a written abuse.ch decision recorded as a licence_allow entry (source id, scope, review date)."
+    },
+    "urlhaus": {
+      "title": "URLhaus (malware distribution URLs)",
+      "terms": {
+        "class": "license",
+        "evidence_url": "https://abuse.ch/terms-of-use/",
+        "quote": "Use of the Platforms listed below by companies, networks, or individuals with commercial or for- profit needs may require a paid subscription, which will be managed by Spamhaus, and will be subject to separate terms and conditions.",
+        "checked_at": "2026-11-25",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "abuse.ch",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "A1 initial class 'license': the quote is abuse.ch terms 2026-10-21 s.4.1 (verbatim), which lists MalwareBazaar, URLhaus and ThreatFox; s.3.1 limits free authenticated access to 'not-for-profit purposes'. Licence-blocked until a Spamhaus/abuse.ch subscription or written decision is recorded (off under the corporate profile until licence-cleared).",
+      "licensed_alternative": "A Spamhaus/abuse.ch commercial subscription, or a written abuse.ch decision recorded as a licence_allow entry (source id, scope, review date)."
+    },
+    "threatfox": {
+      "title": "ThreatFox (IOCs with malware attribution)",
+      "terms": {
+        "class": "license",
+        "evidence_url": "https://abuse.ch/terms-of-use/",
+        "quote": "Use of the Platforms listed below by companies, networks, or individuals with commercial or for- profit needs may require a paid subscription, which will be managed by Spamhaus, and will be subject to separate terms and conditions.",
+        "checked_at": "2026-11-25",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "abuse.ch",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "A1 initial class 'license': the quote is abuse.ch terms 2026-10-21 s.4.1 (verbatim), which lists MalwareBazaar, URLhaus and ThreatFox; s.3.1 limits free authenticated access to 'not-for-profit purposes'. Licence-blocked until a Spamhaus/abuse.ch subscription or written decision is recorded (off under the corporate profile until licence-cleared).",
+      "licensed_alternative": "A Spamhaus/abuse.ch commercial subscription, or a written abuse.ch decision recorded as a licence_allow entry (source id, scope, review date)."
+    },
+    "yaraify": {
+      "title": "YARAify (YARA scan results by hash)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://abuse.ch/terms-of-use/",
+        "quote": "Feodo Tracker, SSL Blacklist and YARAify are all currently free to use without limitations according to Creative Commons principles (CC0) for both commercial and non-commercial purposes.",
+        "checked_at": "2026-11-25",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "abuse.ch",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "A1 initial class 'open' (CC0, abuse.ch terms s.3.4)."
+    },
+    "feodotracker": {
+      "title": "Feodo Tracker (botnet C2 IP blocklists)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://abuse.ch/terms-of-use/",
+        "quote": "Feodo Tracker, SSL Blacklist and YARAify are all currently free to use without limitations according to Creative Commons principles (CC0) for both commercial and non-commercial purposes.",
+        "checked_at": "2026-11-25",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "abuse.ch",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "A1 initial class 'open' (CC0, abuse.ch terms s.3.4)."
+    },
+    "sslbl": {
+      "title": "SSL Blacklist (malicious TLS certificates and JA3 fingerprints)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://abuse.ch/terms-of-use/",
+        "quote": "Feodo Tracker, SSL Blacklist and YARAify are all currently free to use without limitations according to Creative Commons principles (CC0) for both commercial and non-commercial purposes.",
+        "checked_at": "2026-11-25",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "abuse.ch",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "A1 initial class 'open' (CC0, abuse.ch terms s.3.4)."
+    }
+  },
+  "notes": "Owned by core (WP02). Exports need an Auth-Key since 2026-10-21; key values are masked by the central redactor (abuse.ch v2 export URLs embed the key in the path)."
+}

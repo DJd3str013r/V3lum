@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+<head>
+    <title>Resultado da busca</title>
+    <link rel="canonical" href="https://portaldatransparencia.gov.br/busca" />
+    <script type="text/javascript" src="https://c41081116149.edge.sdk.awswaf.com/c41081116149/daffd43b3933/challenge.js" defer></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=TRIMMED"></script>
+</head>
+<body>
+    <main id="main-content">
+        <h2 class="py-0 px-0 mx-0 mt-0 mb-2">Resultado da busca</h2>
+        <section class="busca-portal"><form id="form-busca"></form></section>
+    </main>
+    <script>
+        const login_response = await AwsWafIntegration.fetch(login_url, {method: 'POST'});
+        grecaptcha.ready(function() { grecaptcha.execute('TRIMMED', {action: 'submit'}); });
+    </script>
+</body>
+</html>

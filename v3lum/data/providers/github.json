@@ -1,0 +1,30 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "github",
+  "name": "GitHub (REST API, raw file and archive hosting)",
+  "operator": "GitHub, Inc. (Microsoft)",
+  "hosts": ["github.com", "api.github.com", "raw.githubusercontent.com", "codeload.github.com", "objects.githubusercontent.com"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms, a privacy policy and a business offering (A8 BR2). Shared hosting platform: dataset sources hosted here are added by extension fragments (github__<suffix>.json) with their own terms.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-25",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "B", "justification": "Platform metadata is authoritative; hosted content is as reliable as its repository maintainer (graded per dataset source)."},
+  "http_profile": {"ttl": 86400},
+  "quota": null,
+  "error_markers": [],
+  "keys": {
+    "github": {
+      "description": "GitHub token (raises API limit 60 -> 5000/h, no scopes needed)",
+      "signup_url": "https://github.com/settings/tokens",
+      "env": ["GITHUB_TOKEN", "GH_TOKEN"],
+      "multi_key": false,
+      "plan_hint": "a fine-grained token without scopes on an account created under the corporate identity"
+    }
+  },
+  "sources": {},
+  "notes": "Owned by core (WP02). No sources here on purpose: each package adds the datasets/APIs it uses with an extension fragment (one owning package per provider fragment; others extend it)."
+}

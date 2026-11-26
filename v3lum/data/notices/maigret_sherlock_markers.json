@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "maigret_sherlock_markers",
+  "source_url": "https://github.com/soxoj/maigret",
+  "version": "maigret commit 50e62c45e17b03fd3f059622d38a4cdb3ec2eab4 (2026-11-25), maigret/errors.py COMMON_ERRORS (sha256 ff26621b39e42bbed43a06d68f42c78359191cd4f8546f8b303237e3900139f2); sherlock commit c588d7c8b476df9f9c84912a05d1430fb8cdcdae (2026-11-01), sherlock_project/sherlock.py WAFHitMsgs (sha256 228733a29ffe77d440ace119291e9dc0434c5987ba4cf0f58a2a8ba7257a4662); transcribed 2026-11-26",
+  "sha256": "",
+  "licence": "MIT",
+  "attribution": "Anti-bot/WAF error-page marker strings adapted from maigret (https://github.com/soxoj/maigret, maigret/errors.py COMMON_ERRORS) and sherlock (https://github.com/sherlock-project/sherlock, sherlock_project/sherlock.py WAFHitMsgs). Detection strings only: no bypass helper or recommendation from either project is used. maigret: MIT License, Copyright (c) 2020-2026 Soxoj. sherlock: MIT License, Copyright (c) 2019 Sherlock Project. Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.",
+  "bundled": true,
+  "files": [
+    "v3lum/core/http.py"
+  ]
+}
