@@ -1,0 +1,73 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "firehol",
+  "name": "FireHOL IP lists",
+  "operator": "FireHOL project (open-source community)",
+  "hosts": [
+    "iplists.firehol.org"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "FireHOL, a long-running open-source community project with public documentation that aggregates IP lists (A8 community); P035 and P149 record tier community ('the list maintainers are public community projects').",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Aggregates third-party lists of mixed quality; FireHOL level1 hits are LOW fidelity and never sole evidence (P149), and the proxy sets churn with residential proxies (P035)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "level1": {
+      "title": "FireHOL level1 aggregate netset (and level2/3/webclient on request)",
+      "terms": {
+        "class": "noncommercial",
+        "evidence_url": "https://iplists.firehol.org/?ipset=firehol_level1",
+        "quote": "Noncommercial, off under the corporate profile until licence-cleared: blocklist.de, CINS, ET compromised IPs, GreenSnow and DataPlane (A1 BR16), VoIPBL, and the FireHOL level1 aggregate (it embeds noncommercial upstreams such as DShield).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "firehol",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P149 cond 2). iplists.firehol.org/files/firehol_level1.netset (research C0353; netset header 2026-11-26: 'includes: dshield feodo fullbogons spamhaus_drop'); level2/level3/webclient on request under the same class. A hit counts as the families it embeds, never as an extra vote (P149, P171 cond 3); bogon/RFC 1918 entries are dropped at load. Refreshed daily through the dataset manager; never redistributed outside the team.",
+      "embeds": [
+        "abuse.ch",
+        "dshield",
+        "spamhaus"
+      ],
+      "licensed_alternative": "The open constituents read directly: Spamhaus DROP/EDROP (P149, open) and abuse.ch Feodo Tracker (core source abusech.feodotracker, open); DShield needs its own SANS ISC licence decision."
+    },
+    "proxies": {
+      "title": "FireHOL proxies netset (open-proxy and anonymizer aggregate)",
+      "terms": {
+        "class": "noncommercial",
+        "evidence_url": "https://iplists.firehol.org/?ipset=firehol_proxies",
+        "quote": "FireHOL proxy ipsets inherit each upstream list's terms and are consumed per upstream (the ipset header names it). Noncommercial upstreams stay off under the corporate profile until licence-cleared; upstreams with unrecorded terms are not wired.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "firehol",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P035 cond 4). iplists.firehol.org/files/firehol_proxies.netset (research C0112; netset header 2026-11-26: 'includes: iblocklist_proxies ip2proxy_px1lite socks_proxy_30d sslproxies_30d'). Context tag only, never sole evidence; an IP is never tested as an open proxy (P035). Per-upstream sources with recorded terms may be added by extension.",
+      "licensed_alternative": "Per-upstream sources whose terms legal records, added by extension (firehol__<suffix>.json) and consumed individually (P035)."
+    }
+  },
+  "notes": "Shared seed for batches p1-G02-2, p2-G02-1: batches only extend it (firehol__<suffix>.json: extra sources and error markers). Aggregator: each source lists the families it embeds (P171 cond 3) so consensus never counts FireHOL twice; the aggregate class is noncommercial (P149, P035). Lists refresh daily; no value leaves the machine. The raw.githubusercontent.com mirror belongs to core provider github (extend it there)."
+}

@@ -1,0 +1,50 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "shodan_web",
+  "name": "Shodan apex web host (shodan.io)",
+  "operator": "Shodan LLC",
+  "hosts": [
+    "shodan.io"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Shodan LLC, an established company with published terms and a business offering (A8 trusted; same operator as the core provider shodan); P062 records tier trusted and P304 cond 5 'trusted - ... Shodan'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Shodan host and search pages show internet-wide scan observations that may be days old; manual links only."
+  },
+  "http_profile": {
+    "user_agent": "neutral"
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "web_pages": {
+      "title": "Shodan search and host pages via the apex host (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.shodan.io/",
+        "quote": "Free web UI; provider ToS apply (manual analyst use)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "shodan",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: research C0128 terms (status unverified 403: Cloudflare challenge for scripts; A9 manual links only). Pages that require a login (e.g. Shodan search) are excluded by the P311 lint (P304 cond 9). Used by favicon_hash (http.favicon.hash pivots) and pivots_unverified."
+    }
+  },
+  "notes": "Shared seed for batches p2-G14-3, p9-G03-1 (P062, P304): batches only extend it (shodan_web__<suffix>.json: extra sources and error markers). Owns only the apex shodan.io that P062/P304 list; the apex redirects to www.shodan.io, which the research templates use and which belongs to core shodan: templates should prefer www.shodan.io, and any www source is added by a shodan__<batch>.json extension. V3LUM never fetches these pages."
+}

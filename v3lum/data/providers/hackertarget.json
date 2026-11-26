@@ -1,0 +1,97 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "hackertarget",
+  "name": "HackerTarget API",
+  "operator": "HackerTarget Pty Ltd",
+  "hosts": [
+    "api.hackertarget.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Small company with a long public record and published terms (A8 community): 'HackerTarget is a small company with a long public record: tier community.' (P014 rationale).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Passive datasets (host search, reverse IP, DNS, ASN, analytics ids) from a small vendor: useful but incomplete and of unknown freshness; reverse-IP answers on shared hosting are counts only (P014 cond 6)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "day": 50,
+    "burst": 1,
+    "published": false,
+    "evidence_url": "",
+    "safety_margin": 0.8
+  },
+  "error_markers": [
+    {
+      "id": "api_count_exceeded",
+      "statuses": [
+        200
+      ],
+      "json_path": null,
+      "equals": null,
+      "regex": "API count exceeded",
+      "final_url_regex": null,
+      "maps_to": "quota",
+      "reason_code": "quota",
+      "reason": "HackerTarget: daily quota exhausted (API count exceeded)"
+    },
+    {
+      "id": "error_check_search_parameter",
+      "statuses": [
+        200
+      ],
+      "json_path": null,
+      "equals": null,
+      "regex": "error check your search parameter",
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "HackerTarget: request rejected (error check your search parameter)"
+    }
+  ],
+  "keys": {
+    "hackertarget": {
+      "description": "HackerTarget API key (membership; sent as &apikey= only through the central redactor)",
+      "signup_url": "https://hackertarget.com/",
+      "env": [
+        "V3LUM_HACKERTARGET_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "business = a company/team HackerTarget membership recorded by legal (key_plans.hackertarget, P014 cond 4); keyless use under corporate needs free_plan_business_use recorded from HackerTarget's free-tier terms"
+    }
+  },
+  "sources": {
+    "api": {
+      "title": "HackerTarget API (hostsearch, dnslookup, reversedns, reverseiplookup, aslookup, findshareddns, analyticslookup)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://hackertarget.com/ip-tools/",
+        "quote": "Key-terms: a company/team account on a plan recorded by legal (key_plans.hackertarget). Keyless use under corporate needs legal to record free_plan_business_use=true from HackerTarget's free-tier terms (A1).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "hackertarget",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0012 terms 'HackerTarget free API terms' / 'HackerTarget ToS; free tier for light use' / 'HackerTarget terms (free tier, membership for more)'. Passive endpoints only, held in a code allow-list: hostsearch, reverseiplookup, aslookup, dnslookup, analyticslookup (P014 cond 1); never nmap, zonetransfer (P281 cond 5), mtr, httpheaders or pagelinks. hackertarget.com answers scripts with a 403, so the evidence page was not re-fetched on 2026-11-26. Used by hackertarget (analytics_ids pivots to it, P061 cond 4)."
+    }
+  },
+  "notes": "Seeded once for batches p2-G01-2, p2-G03-1 and p9-G13-2 (P014, P061, P281). Quota: '50/day per egress IP (budget <= 80%), shared by every module calling api.hackertarget.com' (P014 cond 3), observed through the x-api-quota/x-api-count headers (research C0012): budget 40/day; with a membership key the plan's own limit applies once recorded. Markers: 'API count exceeded' -> QUOTA (research sample 'API count exceeded - Increase Quota with Membership'; the provider is then exhausted for the day, P334 cond 8) and 'error check your search parameter' -> ERROR (P014 cond 2); the P014 batch ships the recorded fixtures and tests. 'no records found' is EMPTY at module level (never a marker). The key travels in the URL (&apikey=) only through the central redactor (AR01)."
+}

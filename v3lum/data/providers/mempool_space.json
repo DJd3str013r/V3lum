@@ -1,0 +1,67 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "mempool_space",
+  "name": "mempool.space (Esplora API and explorer pages)",
+  "operator": "mempool.space (The Mempool Open Source Project)",
+  "hosts": [
+    "mempool.space"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "The Mempool Open Source Project, a community project with a public explorer, documented API and a multi-year track record (A8 community); P211 and P216 record 'mempool.space community'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Esplora-compatible reader of the public Bitcoin ledger: balances and transactions are verifiable on-chain data."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 3600,
+    "min_interval": 1.0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "esplora_api": {
+      "title": "mempool.space Esplora-compatible REST API (address, address txs)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://mempool.space/terms-of-service",
+        "quote": "Per-adapter terms recorded: Esplora, mempool, litecoinspace and Blockchain.com 'open'; BlockCypher and Blockchair 'key-terms'.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "mempool.space",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P211 cond 6). mempool.space/api/address/{address} and /api/address/{address}/txs (research C0486); one Esplora parser shared with Blockstream and litecoinspace; a configured self-hosted esplora_url is tried first (module). 429 -> RATE_LIMITED and the host is short-circuited for the run, never empty (P211)."
+    },
+    "explorer_pages": {
+      "title": "mempool.space address pages (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://mempool.space/terms-of-service",
+        "quote": "Per-adapter terms recorded: Esplora, mempool, litecoinspace and Blockchain.com 'open'; BlockCypher and Blockchair 'key-terms'.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "mempool.space",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P211 cond 6). Manual links mempool.space/address/{btc_address} (P216, research C0503). V3LUM never fetches pivot links itself (P311)."
+    }
+  },
+  "notes": "Shared seed for batches p2-G09-2, p2-G14-2: batches only extend it (mempool_space__<suffix>.json: extra sources and error markers). Undocumented public limits with 429 on bursts (research C0486): min_interval 1 s as politeness floor, crypto ttl 1 h (TTL_CLASSES), no quota block (no figure). Public API free, AGPL server code self-hostable."
+}

@@ -1,0 +1,129 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "brasilapi",
+  "name": "BrasilAPI",
+  "operator": "BrasilAPI open-source community project",
+  "hosts": [
+    "brasilapi.com.br"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Well-known open-source community project (MIT) with public documentation and a multi-year public track record, hosted on Vercel (A8 community). 'Registry provider brasilapi: tier community, terms open.' (P127 cond 3); also P021 cond 2, P233 cond 9, P234 cond 4, P236 cond 1 and P244 cond 7.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Community relay of official data (RFB CNPJ dumps, the Correios/ViaCEP chain, Anatel, BCB, registro.br, CVM): values are as good as the upstream snapshot it serves; relays can lag or fail, and error-in-200 bodies are validated (P021 cond 2)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "timeout": 8,
+    "ttl": 259200,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "cnpj": {
+      "title": "BrasilAPI CNPJ v1 (Receita Federal open data relay)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://brasilapi.com.br/docs",
+        "quote": "Sources at release (class open, legal_dpo): BrasilAPI and Minha Receita (MIT code, RFB open data; one shared parser), publica.cnpj.ws public API (only free source of state IE) and Querido Diario company/partners.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "rfb",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "upstream_family 'rfb': BrasilAPI CNPJ v1 relays the Receita Federal open-data dump, so its not_found and one from another RFB-dump provider count as one upstream (P236 cond 4). Research C0541 terms 'code MIT (BrasilAPI/BrasilAPI); data = RFB CNPJ open data'. Endpoint https://brasilapi.com.br/api/cnpj/v1/{cnpj}; 8 s per provider in the chain (P236 cond 3); cache 72 h (P236 cond 7). Used by cnpj_lookup."
+    },
+    "cep": {
+      "title": "BrasilAPI CEP v2/v1",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://brasilapi.com.br/docs",
+        "quote": "Registry provider brasilapi: tier community, terms open.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "correios",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "BrasilAPI CEP v2 (v1 fallback) relays CEP providers (ViaCEP, OpenCEP, Correios): upstream family 'correios'. Research C0547 terms 'MIT code; multi-provider (ViaCEP, OpenCEP, Correios...)'. Chain BrasilAPI -> ViaCEP -> OpenCEP, 5 s per provider (P234 cond 3); coordinates are a 'CEP centroid (approximate)' (P234 cond 6). P234 cond 9 asks 30 days for CEP answers: at the HTTP layer the 72 h provider cap applies (P326 cond 7: long-lived reference data belongs in datasets). Used by cep_lookup."
+    },
+    "ddd": {
+      "title": "BrasilAPI DDD v1 (Anatel numbering)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://brasilapi.com.br/docs",
+        "quote": "Registry provider brasilapi: tier community, terms open.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "anatel",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Dataset brasilapi_ddd (30-day TTL) prefetched by `v3lum data update` with one GET of /api/ddd/v1/{ddd} per valid DDD (67 calls, <= 1 req/s); requests carry only the 2-digit DDD, never a phone number (P127 cond 1). Research C0287 terms 'MIT code; Anatel data'. Attribution BrasilAPI (MIT code) over Anatel data in THIRD_PARTY_NOTICES (P127 cond 3). Used by brasilapi_ddd (folded into phone_parse)."
+    },
+    "banks": {
+      "title": "BrasilAPI banks v1 and PIX participants",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://brasilapi.com.br/docs",
+        "quote": "Tier community is the lowest of the dataset providers (BrasilAPI); terms open.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "bcb",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Banks v1 and PIX participants are full-list datasets refreshed weekly by the dataset manager, never per-value calls (P233 cond 9). Research C0557 terms 'MIT code; BCB data'. Same upstream as bcb.str_participants (family 'bcb'). Used by boleto_pix."
+    },
+    "registrobr": {
+      "title": "BrasilAPI registro.br availability wrapper",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://brasilapi.com.br/docs",
+        "quote": "Terms open (public registry service, MIT community API).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "registro.br",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Fallback of registrobr_domain_status only (P021 cond 2): it discloses the .br name to a third party (shares_input) and its body is validated for error-in-200; individual .br names only, at most 20 per run, cache 24 h (P021 cond 1, cond 4). Research C0558 terms 'BrasilAPI (MIT).' Endpoint https://brasilapi.com.br/api/registrobr/v1/{domain}."
+    },
+    "cvm_brokers": {
+      "title": "BrasilAPI CVM brokers (corretoras)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://brasilapi.com.br/docs",
+        "quote": "Registry provider brasilapi: tier community, terms open.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "cvm",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Dataset fetched only by `v3lum data update`, never mid-scan (P244 cond 1). Research C0572 terms 'MIT code; CVM open data'. CVM data share-alike obligations apply only if redistributed (P244 cond 7). Used by br_cnpj_risk_lists."
+    }
+  },
+  "notes": "Seeded once for batches p1-G10-1, p1-G10-2, p2-G10-1, p3-G01-1, p3-G06-1 and p3-G10-2 (P021, P127, P233, P234, P236, P244). Community service on Vercel with no published limit: min_interval 1.0 s (research: throttle <= 1 req/s), concurrency 1, no quota block. ttl 259200 = CNPJ class (P326 cond 7); modules ask shorter TTLs where their conditions say so (registro.br wrapper 24 h, P021 cond 4). Each source names its upstream family (P236 different-upstreams rule). Error-in-200 bodies are validated (P021 cond 2): markers come with the owning batches' fixtures. The code is MIT (https://raw.githubusercontent.com/BrasilAPI/BrasilAPI/main/LICENSE). .br hosts default to Accept-Language pt-BR."
+}

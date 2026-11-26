@@ -1,0 +1,99 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "torproject",
+  "name": "Tor Project metrics services",
+  "operator": "The Tor Project, Inc.",
+  "hosts": [
+    "check.torproject.org",
+    "onionoo.torproject.org",
+    "collector.torproject.org",
+    "metrics.torproject.org"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "The Tor Project, Inc. is an established non-profit that publishes its network data under stated licences (A8 trusted); P040 trusted and P057 cond 5 'trusted - ... Tor Project ExoneraTor'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "Authoritative Tor network data published by the Tor Project: TorDNSEL exit lists, relay consensus data through Onionoo and CollecTor archives."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 3600
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "exit_list": {
+      "title": "TorDNSEL bulk exit list check.torproject.org/torbulkexitlist",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://metrics.torproject.org/about.html",
+        "quote": "Tor Metrics attribution (CC0/CC BY) in THIRD_PARTY_NOTICES.md.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "tor-project",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P040 cond 7); research C0093 terms '[design_ceos] Tor Project public data (CC0/CC-BY per Tor metrics)' (verified_live 200). Tor Metrics (checked 2026-11-26): 'Data on this site is freely available under a CC0 no copyright declaration'. check.torproject.org/torbulkexitlist as a 1 h dataset matched locally (tor_exit_local, disclosure none, P040 cond 1); older than 6 h it is refreshed, otherwise could not verify (P040 cond 7). Used by tor_relays."
+    },
+    "onionoo": {
+      "title": "Onionoo relay search (details, summary)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://metrics.torproject.org/about.html",
+        "quote": "Tor Metrics attribution (CC0/CC BY) in THIRD_PARTY_NOTICES.md.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "tor-project",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P040 cond 7); research C0094 terms 'Tor Project (public data)' (verified_live 200). onionoo.torproject.org/details?search= and /summary?search=: only IPs that matched the local exit list or running-relay summary are sent, filtered to the exact IP client-side; operator contact fields are dropped at ingestion (P040 cond 2); If-Modified-Since (P040 cond 7). Used by tor_relays (tor_onionoo)."
+    },
+    "collector": {
+      "title": "CollecTor exit lists (recent and archive)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://metrics.torproject.org/about.html",
+        "quote": "Tor Metrics attribution (CC0/CC BY) in THIRD_PARTY_NOTICES.md.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "tor-project",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P040 cond 7); research C0465 terms 'Tor Metrics data is public (CC0-like); mthcht/awesome-lists MIT.' (verified_live 200). collector.torproject.org/recent/exit-lists/ and /archive/exit-lists/ monthly tarballs through the core safe_extract helper; archives larger than 5 MB only through `v3lum data update`, never mid-scan (P040 cond 3-4). Used by tor_relays."
+    },
+    "exonerator": {
+      "title": "ExoneraTor on metrics.torproject.org (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://metrics.torproject.org/about.html",
+        "quote": "Tor Metrics attribution (CC0/CC BY) in THIRD_PARTY_NOTICES.md.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "tor-project",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P040 cond 7: 'ExoneraTor is a manual pivot link'); research C0136 (verified_live 200). metrics.torproject.org/exonerator.html?ip={ip}&timestamp={YYYY-MM-DD}: manual links only, never fetched (P057 cond 8). Used by tor_relays and pivots_ip_network."
+    }
+  },
+  "notes": "Shared seed for batches p1-G02-2, p2-G14-1 (P040, P057): batches only extend it (torproject__<suffix>.json: extra sources and error markers). Lists refresh hourly at most (ttl 1 h); Onionoo with If-Modified-Since. dan.me.uk is not used (P040 cond 5) and the GitHub mirrors belong to core github. No published limits: no quota block."
+}

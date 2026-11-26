@@ -1,0 +1,54 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "publicnode",
+  "name": "PublicNode Ethereum JSON-RPC",
+  "operator": "Allnodes Inc. (PublicNode)",
+  "hosts": [
+    "ethereum-rpc.publicnode.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Allnodes Inc., an established node-hosting company with published terms of service (A8 trusted); P205 cond 7 and P212 cond 5 'PublicNode (Allnodes) trusted'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Public Ethereum node answering eth_call against current chain state: answers are as reliable as the node's sync state, and any anomalous answer is ERROR (could not verify), never 'not sanctioned' (P205 cond 4)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 3600
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "ethereum_rpc": {
+      "title": "PublicNode Ethereum JSON-RPC (eth_call to the Chainalysis sanctions oracle, balances)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.publicnode.com/terms",
+        "quote": "Blockscout keyless and PublicNode RPC 'open' (free public APIs, terms recorded, as in P205 and P211)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "ethereum",
+      "embeds": [
+        "chainalysis"
+      ],
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P212 cond 5; P205 cond 7: oracle and stablecoin calls 'open'). Research C0484/C0493 terms 'PublicNode (Allnodes) ToS.' (verified_live 200). The PublicNode Terms of Service (checked 2026-11-26) allow automated access to the endpoints 'for development and production purposes' without prior authorization, under automatic Usage Limits (HTTP 429 when exceeded); chain data may be used in own applications but not resold as an RPC or data service. JSON-RPC POST eth_call: the Chainalysis sanctions oracle isSanctioned (selector 0xdf592f7d), USDT isBlackListed and USDC isBlacklisted reads, balances and code (P205 cond 2, P212 cond 2). embeds chainalysis: oracle answers are Chainalysis-curated sanctions data, the same upstream as the Chainalysis REST check. Used by crypto_sanctions (onchain) and evm_explorers."
+    }
+  },
+  "notes": "Shared seed for batches p1-G09-1, p2-G09-2 (P205, P212): batches only extend it (publicnode__<suffix>.json: extra sources and error markers). Keyless: V3LUM_ETH_RPC (P205) is the eth_rpc setting for an alternative RPC URL, not a key of this provider; another RPC host needs its own provider entry. No published Usage Limits figures: no quota block (429 = RATE_LIMITED). ttl 1 h (crypto class); JSON-RPC POSTs are not cached unless a module asks. No error markers yet: the owning batch adds the JSON-RPC error.code marker (ERROR, could not verify) with a trimmed real fixture (P205 cond 4)."
+}

@@ -1,0 +1,53 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "rfb",
+  "name": "Receita Federal CNPJ open data",
+  "operator": "Receita Federal do Brasil (RFB)",
+  "hosts": [
+    "arquivos.receitafederal.gov.br"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Government body (A8): 'tiers: RFB, CVM, BCB, GLEIF and Wikimedia all trusted' (P361 cond 7); P238 provider tier trusted.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "Authoritative federal company register (CNPJ open data); a monthly snapshot, so companies opened after the last dump may be missing (P236 cond 4)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 0,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "cnpj_open_data": {
+      "title": "RFB CNPJ open-data monthly dump on the WebDAV share (Empresas, Estabelecimentos, Socios and code tables)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://dados.gov.br/dados/conjuntos-dados/cadastro-nacional-da-pessoa-juridica---cnpj",
+        "quote": "Terms classes (definitions for every chair file and registry entry): 'open' = free use, internal business use included (public domain, CC0, CC BY, open government data, and permissive or copyleft licences whose obligations V3LUM meets by runtime download and attribution, A6)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "rfb",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding A1 definition of 'open' (open government data); research C0512 terms 'Dados abertos RFB (public)' / 'Receita Federal open data (public by law)', C0743 'RFB open data (free reuse).' WebDAV share: PROPFIND https://arquivos.receitafederal.gov.br/public.php/webdav/ (Depth: 1), then GET {YYYY-MM}/{file}.zip (Empresas, Estabelecimentos, Socios and code tables; ';' separated, latin-1). Only the share token RFB itself publishes on its official open-data page; stop if RFB requires a login (P238 cond 2). Only through `v3lum data import-rfb`, never a scan: tens of GB, streamed, resumable Range downloads, refused when free space < 3x the download (P238 cond 1, cond 3). Used by rfb_cnpj_bulk and cnpj_name_resolver."
+    }
+  },
+  "notes": "Seeded once for batches p2-G10-2 and p2-G10-3 (P238, P361): one importer shared by both. ttl 0: multi-GB dumps never enter the HTTP cache (the importer stores them under ~/.v3lum/datasets and deletes superseded dumps, P238 cond 5); the importer sets its own per-request byte and time limits. Minimisation at import (rule 4): CPF digits in MEI/EI names stripped, partner CPFs stay RFB-masked and are never join keys (P238 cond 4). .br hosts default to Accept-Language pt-BR."
+}

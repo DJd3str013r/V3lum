@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "ghostarchive",
+  "name": "Ghostarchive (search pages)",
+  "operator": "Ghostarchive (anonymous operator)",
+  "hosts": [
+    "ghostarchive.org"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "Anonymous operator without a recorded legal entity, terms or privacy policy (A8 unknown); P083 lists 'unknown - CrawlGraph, Ghostarchive, WebTechSurvey' (P060's module tier trusted is not a statement about this provider).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "F",
+    "justification": "Anonymous archive operator: captures cannot be checked against an accountable operator, so reliability cannot be judged."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "search": {
+      "title": "Ghostarchive search pages search?term= (read only)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://ghostarchive.org/",
+        "quote": "Every link host has a provider-registry entry with tier and rationale (A8); unknown-tier hosts get the 'unknown operator' badge and their templates take IOC_TYPES values only (A8 BR4): never PERSONAL_TYPES, CNPJ, company names, keywords, malware or actor names, or other free text (P311 lint).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "ghostarchive",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P083 cond 4). Class 'open' is the P060/P083 chair-file class (search pages, read only). ghostarchive.org/search?term= (research C0196, verified): 'unknown operator' badge, IOC_TYPES values only. P060 drops ghostarchive from archive_mining's hosts (its URL lists reach it through the graph), so in this build only the manual link uses it. The archive/submit function is never used (it would fetch and publish the target, rule 7)."
+    }
+  },
+  "notes": "Shared seed for batches p2-G01-3, p2-G14-1: batches only extend it (ghostarchive__<suffix>.json: extra sources and error markers). Flags all false because no submission path exists. archive_mining (default off) and the links carry the 'unknown operator' badge."
+}

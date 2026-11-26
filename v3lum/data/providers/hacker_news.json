@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "hacker_news",
+  "name": "Hacker News API",
+  "operator": "Y Combinator (Hacker News API hosted on Google Firebase)",
+  "hosts": [
+    "hacker-news.firebaseio.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Y Combinator is an established company with published terms (A8 trusted); P109 cond 4 'Registry providers hacker_news (Y Combinator) and algolia: tier trusted'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Authoritative for Hacker News accounts and items; the 'about' text is self-asserted by the account owner (P109 cond 2)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "firebase_api": {
+      "title": "Hacker News Firebase API v0 (user/{u}.json, item/{id}.json)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/HackerNews/API",
+        "quote": "Registry providers hacker_news (Y Combinator) and algolia: tier trusted, terms open; personal_data_review before default use (A3 BR8).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "hacker-news",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P109 cond 4); research C0248 terms '[gh_people] HN API terms (public)' / '[live_osint] Public HN API (Y Combinator).' (verified_live 200); the evidence URL is the official API documentation. hacker-news.firebaseio.com/v0/user/{u}.json and /v0/item/{id}.json; HTTP 200 with body 'null' = ABSENT, decided from the JSON (P109 cond 1); the username is validated against [A-Za-z0-9_-]{2,15} first (P109 cond 2). Keep links, dates and matched items only (P109 cond 3). Used by hackernews and username_check."
+    }
+  },
+  "notes": "Shared seed for batches p1-G05-2, p3-G05-1 (P109, P113): batches only extend it (hacker_news__<suffix>.json: extra sources and error markers). A third-party app hosted on firebaseio.com belongs to its real operator; hn.algolia.com is the separate provider algolia (P109). No documented rate limit (research C0248): no quota block. Usernames are PERSONAL_TYPES: personal_data_review before default use (P109 cond 4)."
+}

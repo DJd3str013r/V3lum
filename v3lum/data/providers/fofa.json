@@ -1,0 +1,78 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "fofa",
+  "name": "FOFA (search API and result pages)",
+  "operator": "FOFA (Chinese operator; legal entity per the fofa.info terms, to be recorded by the reviewer)",
+  "hosts": [
+    "fofa.info",
+    "en.fofa.info"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "Chinese operator whose legal entity is not yet recorded (A8 unknown); P049 'Registry tier unknown (Chinese operator; its query logs reveal our targets)', stricter than P057's community: excluded at AMBER, AMBER+STRICT and RED, CLEAR/GREEN only with --allow-unknown, IOC_TYPES selectors only (A8 BR4). A later promotion needs legal_dpo's written decision and keeps the AMBER+ exclusion.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": true,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Internet-wide scan index: banners and fingerprints of varying age, never a verdict by themselves."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {
+    "fofa_key": {
+      "description": "FOFA API key (sent as the key= URL parameter; masked by the central redactor, AR01)",
+      "signup_url": "https://en.fofa.info/",
+      "env": [
+        "V3LUM_FOFA_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "a paid FOFA membership bought by the company after legal/procurement review incl. LGPD art. 33, recorded in licence_allow (P049)"
+    }
+  },
+  "sources": {
+    "search_api": {
+      "title": "FOFA search API /api/v1/search/all (paid membership)",
+      "terms": {
+        "class": "license",
+        "evidence_url": "https://en.fofa.info/api",
+        "quote": "Paid licence bought by the company after a legal/procurement review of FOFA's terms and of sending queries to a Chinese provider (LGPD art. 33), recorded in licence_allow.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "fofa",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P049 cond 1). fofa.info/api/v1/search/all?key=&qbase64=&fields=host,ip,port,title (research C0100, unverified: no paid key). IOC_TYPES selectors only (IP, domain, certificate, favicon hash), never e-mails, names or other personal data (P049). The reviewer records FOFA's terms URL and legal entity during the P049 review. Merge only with a trimmed real success fixture captured with the paid key.",
+      "licensed_alternative": "The P049 paid licence recorded in licence_allow; until then only the FOFA manual pivot links (fofa.result_pages)."
+    },
+    "result_pages": {
+      "title": "FOFA result pages en.fofa.info/result?qbase64= (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://en.fofa.info/",
+        "quote": "FOFA and Criminal IP carry a 'foreign provider: queries are logged abroad - never paste internal host names' badge (legal_dpo, osint_investigator) and max_tlp=green: at TLP:AMBER and above they are hidden from reports and listed only by `v3lum links` with the warning (redteam_lead).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "fofa",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P057 cond 10). Class 'open' is the P057/P062 chair-file class for manual links. en.fofa.info/result?qbase64={b64q}: the vetted base64 placeholder over a fixed query expression (ip=, icon_hash=, cert=), or FOFA is dropped (P057); 'unknown operator' badge, IOC_TYPES values only (A8 BR4). V3LUM never fetches pivot links itself (P311)."
+    }
+  },
+  "notes": "Shared seed for batches p2-G14-1, p3-G02-1, p9-G03-1: batches only extend it (fofa__<suffix>.json: extra sources and error markers). reuses_queries true (fail closed): query logs held by a foreign operator under terms not yet reviewed reveal our targets, and the flag keeps P049's AMBER+ exclusion (max_tlp GREEN) even after a tier promotion. Key: P049 names fofa_email and fofa_key; one key per provider and the current API authenticates with the key only (research C0100), so only fofa_key is declared (an e-mail, if still needed, is a non-secret module setting). The key travels in the URL: AR01 redaction before merge. No quota block: the paid membership's figures are not recorded yet."
+}

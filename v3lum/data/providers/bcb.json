@@ -1,0 +1,72 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "bcb",
+  "name": "Banco Central do Brasil (STR participants, Olinda OData)",
+  "operator": "Banco Central do Brasil",
+  "hosts": [
+    "bcb.gov.br",
+    "www.bcb.gov.br",
+    "olinda.bcb.gov.br"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Government body (A8: government bodies are trusted). 'Tiers: BCB and CVM trusted (government).' (P360 cond 10); 'Tiers: BCB trusted, BrasilAPI community.' (P233 cond 9); 'tiers: RFB, CVM, BCB, GLEIF and Wikimedia all trusted' (P361 cond 7).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "Authoritative official registers of the Brazilian central bank (STR participants, authorised institutions and their BCB-verified domains); a local copy is as current as its last daily/weekly download."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "timeout": 60,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "str_participants": {
+      "title": "BCB STR participants CSV (bank code / ISPB table; UTF-8 BOM, ',' separator)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://dadosabertos.bcb.gov.br/",
+        "quote": "Terms classes (definitions for every chair file and registry entry): 'open' = free use, internal business use included (public domain, CC0, CC BY, open government data, and permissive or copyleft licences whose obligations V3LUM meets by runtime download and attribution, A6)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "bcb",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding A1 definition of 'open' (open government data); research C0556 terms 'Banco Central do Brasil public data' (endpoint https://www.bcb.gov.br/content/estabilidadefinanceira/str1/ParticipantesSTR.csv, UTF-8 BOM, ',' separator). Full-list dataset refreshed weekly by the dataset manager with a bundled BCB snapshot, never per-value calls (P233 cond 9, disclosure 'none'). Attribution BCB in reports (P360 cond 10). Used by boleto_pix."
+    },
+    "olinda_institutions": {
+      "title": "BCB Olinda Instituicoes_em_funcionamento v1 OData (DominiosVerificados, Sedes*)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://olinda.bcb.gov.br/olinda/servico/Instituicoes_em_funcionamento/versao/v1/aplicacao",
+        "quote": "Terms classes (definitions for every chair file and registry entry): 'open' = free use, internal business use included (public domain, CC0, CC BY, open government data, and permissive or copyleft licences whose obligations V3LUM meets by runtime download and attribution, A6)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "bcb",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding A1 definition of 'open'; research C0745 terms 'BCB open data (dados abertos).' Datasets only (P360 cond 1): DominiosVerificados (~630 KB) downloaded daily in full and matched locally because server-side $filter/$count are broken; the slow Sedes* sets (3-35 s, http_profile timeout 60 s) are refreshed by `v3lum data update`. OData comment-wrapped error bodies ('/*{...}*/') are ERROR, never an empty list (P360 cond 3): the owning batch adds that P321 marker with its trimmed real fixture. Used by bcb_authorized_institutions and cnpj_name_resolver."
+    }
+  },
+  "notes": "Seeded once for batches p1-G10-1, p1-G10-3 and p2-G10-3 (P233, P360, P361); batches extend it with bcb__<batch>.json. www.bcb.gov.br serves the STR CSV (research C0556); bcb.gov.br is the host P233 declares. Datasets only, never per-value calls. .br hosts default to Accept-Language pt-BR."
+}

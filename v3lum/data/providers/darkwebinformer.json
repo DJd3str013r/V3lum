@@ -1,0 +1,54 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "darkwebinformer",
+  "name": "Dark Web Informer RSS",
+  "operator": "Dark Web Informer (pseudonymous operator)",
+  "hosts": [
+    "darkwebinformer.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "Pseudonymous operator, terms not yet reviewed (A8 unknown): 'Tiers are recorded per feed (CERT.br and The Record trusted; anonymous feeds unknown, labelled 'unverified source')' (P298 cond 9).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "F",
+    "justification": "Relays dark-web news and leak claims at headline level; the pseudonymous operator's reliability cannot be judged (labelled 'unverified source', P298 cond 9)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "max_bytes": 2097152,
+    "ttl": 3600,
+    "min_interval": 5.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "rss": {
+      "title": "Dark Web Informer RSS feed /rss/ (dark-web news headlines)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://darkwebinformer.com/terms-of-service/",
+        "quote": "Licence (A1, legal floor): feed terms are 'unknown' until legal reviews them, so nothing runs yet in any profile.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "darkwebinformer",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding legal floor (strictest of P298 'unknown' and P357 'open'). Legal's feed-reader decision, once recorded: poll <= hourly; headline + link + date only; no full text; no redistribution (P298 cond 3). Feed downloads carry no investigated value (disclosure 'none'). Research C0467 terms 'Publisher content (headline + link use only).' The site publishes terms at the evidence URL for legal's review. Companion feed of telegram_channel_watch: 'Dark Web Informer RSS (headline + link only, safe XML helper)' (P357 cond 8). Feed https://darkwebinformer.com/rss/. Used by cti_news_rss and telegram_channel_watch."
+    }
+  },
+  "notes": "Seeded once for batches p2-G09-2 and p2-G11-1 (P298, P357). Same rules as darkfeed: terms 'unknown' until legal reviews them (P298 cond 3), unknown tier (P298 cond 9), poll <= hourly, headline + link + date only."
+}

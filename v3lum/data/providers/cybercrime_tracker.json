@@ -1,0 +1,69 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "cybercrime_tracker",
+  "name": "CyberCrime-Tracker (C2 panel list and search)",
+  "operator": "CyberCrime-Tracker (anonymous operator)",
+  "hosts": [
+    "cybercrime-tracker.net"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "Anonymous operator without published terms or a privacy policy (A8 unknown): 'unknown - HoneyLabs, MultiRBL (valli.org), CyberCrime-Tracker' (P170 cond 5). A promotion to community needs a recorded reviewer decision (A8), which also gates the malware_family link template (P170 cond 11).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Long-running C2-panel tracker whose c2 listings P071 cond 7 rates HIGH, but the operator is anonymous and entries carry no scheme or per-entry evidence (P071 cond 9)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "max_bytes": 5242880,
+    "ttl": 43200,
+    "min_interval": 5.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "panel_list": {
+      "title": "CyberCrime-Tracker C2 panel list all.php (~870 KB, refresh daily)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://cybercrime-tracker.net/about.php",
+        "quote": "Per-feed terms: CERT.PL Hole (any use incl. commercial; trusted), Phishing.Database (MIT), StevenBlack (MIT), MetaMask eth-phishing-detect (permissive), spmedia (MIT), Botvrij, CyberCrime-Tracker and Procon-SP run with attribution.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "cybercrime-tracker",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0351 terms 'Free'; https://cybercrime-tracker.net/all.php (~870 KB, refresh daily) through the dataset manager and matched locally (disclosure 'none', P071 cond 1); entries have no scheme: host/IP pivots and path patterns as family hints (P071 cond 9). Tier unknown: a default module that declares this source fails the A3 rule, so batch p1-G03-1 keeps this feed in a non-default module class until a community promotion is recorded. Used by url_domain_blocklists."
+    },
+    "search_pages": {
+      "title": "CyberCrime-Tracker search pages index.php?search= (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://cybercrime-tracker.net/about.php",
+        "quote": "The pack is offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "cybercrime-tracker",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Manual pivot links index.php?search={value} (research C0403 terms 'Public site.'); unknown tier: IOC values only (IP, domain, URL) with the 'unknown operator' badge (P170 cond 11). Used by pivots_threat_intel."
+    }
+  },
+  "notes": "Seeded once for batches p1-G03-1 and p2-G14-1 (P071, P170). Unknown tier: never default (A3), excluded at TLP:AMBER and above, --allow-unknown at CLEAR/GREEN, IOC_TYPES values only, neutral UA only (P326 cond 5). The panel list is ~870 KB: max_bytes 5 MB, ttl 12 h (P071 per-feed TTL 1-12 h)."
+}

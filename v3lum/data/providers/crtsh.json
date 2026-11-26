@@ -1,0 +1,54 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "crtsh",
+  "name": "crt.sh certificate search",
+  "operator": "Sectigo Limited (crt.sh)",
+  "hosts": [
+    "crt.sh"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Operated by Sectigo Limited, an established certificate authority with published terms (A8 trusted); P001 cond 2 'crt.sh open (Sectigo, trusted)' and P026 cond 2 'trusted - crt.sh (Sectigo)'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "Searches public Certificate Transparency logs (append-only, cryptographically verifiable certificate records); the service itself is often slow or failing (502/503, timeouts), which reads 'could not verify', never 'no certificates' (P001 cond 4)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "timeout": 60,
+    "retries": 2,
+    "ttl": 86400,
+    "concurrency": 2
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "search": {
+      "title": "crt.sh certificate search (JSON output; identity, O=, SHA-256 queries; HTML report links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://crt.sh/",
+        "quote": "Per-source terms in the registry: crt.sh open (Sectigo, trusted)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "ct-logs",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P001 cond 2); research C0002 terms '[gh_infra] Free public service run by Sectigo; no formal API ToS' (verified_live 200). crt.sh/?q=%25.{domain}&output=json&exclude=expired[&deduplicate=Y], ?q={sha256}&output=json, ?O={org}&output=json and report links ?q={domain} / ?q={cert_sha256}. A body truncated at the core 15 MB cap is partial, never complete (P001 cond 5). Brand mode q=%25{brand}%25 is opt-in (setting ct_brand_search) because the keyword discloses the brand (P001 cond 10). Upstream family ct-logs: crt.sh, ctl.shodan.io and Cert Spotter mirror the same public CT logs, so they never count as independent votes. Used by ct_logs, domain_ownership (graph facts only, no calls: P013 cond 1) and pivots_domain_dns (manual links)."
+    }
+  },
+  "notes": "Shared seed for batches p1-G01-1, p2-G14-1, p9-G01-1 (P001, P013, P026): batches only extend it (crtsh__<suffix>.json: extra sources and error markers). No published quota: timeout 60 s and 2 retries for the frequent 502/503 and timeouts (research C0002: 'Use 60s timeout, 2-3 retries with backoff, 24h cache'), always inside the module budget (P001 cond 4: default 30 s, setting max 90 s, AR05); concurrency 2 keeps parallel heavy queries off a fragile free service; ttl 24 h."
+}

@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "viewdns",
+  "name": "ViewDNS.info (web tools)",
+  "operator": "ViewDNS.info (operator per the viewdns.info terms)",
+  "hosts": [
+    "viewdns.info"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "DNS/WHOIS web-tools site with a paid API offering and a long public track record (A8 community); P231 lists 'community - ViewDNS'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Third-party WHOIS/DNS aggregation; reverse-WHOIS results are ownership candidates, never scope or own-asset evidence by themselves (P231)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "web_tools": {
+      "title": "ViewDNS web tools (reverse WHOIS, DNS records, reverse IP, IP history; manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://viewdns.info/",
+        "quote": "Person-name and e-mail templates (ViewDNS reverse WHOIS) are privacy=true: rendered only for analyst-typed seeds in a case with a recorded purpose, never for discovered QSA partners, registrants, employees or customers, and hidden unless the analyst opts in for the case (P311; enforced in links.py and tested with a QSA partner fixture).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "viewdns",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P231 cond 10). Class 'open' is the P231/P278 chair-file class for manual links. reversewhois/?q= for company_name, domain, email and person_name (P231, research C0537); reverseip and iphistory are Cloudflare-challenged and not in the P231 pack, and P278 emits only the iphistory link with no network calls. The paid API (api.viewdns.info) is not used. viewdns.info answered 403 to scripted requests on 2026-11-26: links are for manual browser use. V3LUM never fetches pivot links itself (P311)."
+    }
+  },
+  "notes": "Shared seed for batches p2-G14-2, p3-G13-1: batches only extend it (viewdns__<suffix>.json: extra sources and error markers). Manual links only: no module contacts viewdns.info."
+}

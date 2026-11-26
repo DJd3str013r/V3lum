@@ -1,0 +1,114 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "google_web",
+  "name": "Google web properties (Search, Maps, News, Play, Safe Browsing report form)",
+  "operator": "Google LLC",
+  "hosts": [
+    "google.com",
+    "www.google.com",
+    "news.google.com",
+    "play.google.com",
+    "safebrowsing.google.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company (A8): 'Hosts in the provider registry: Google, Bing and DuckDuckGo, trusted tier (A8).' (P306 cond 7); 'trusted - Google Lens/Maps' (P260 cond 5); 'trusted - BuiltWith, urlscan.io, Netcraft, securityheaders.com (Snyk), Google Play' (P083 cond 5).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "F",
+    "justification": "Manual links to search, news, maps and store pages: the content is third-party or user-generated and its reliability cannot be judged at provider level."
+  },
+  "http_profile": {
+    "user_agent": "neutral"
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "search": {
+      "title": "Google Search result pages www.google.com/search?q= (dork links, manual only)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://policies.google.com/terms",
+        "quote": "Links only: the module builds search URLs for Google, Bing and DuckDuckGo (duckduckgo.com/?q=) and makes zero HTTP requests (unit test); search engines are never queried, scraped or rendered by V3LUM (rule 1), and Google Programmable Search is not used (it ends on 2027-01-01).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "google",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0688 terms 'team-owned; search engines' ToS (no server-side automation of Google)'. Dork links www.google.com/search?q={dork} follow A2/P311 rendering: non-clickable text at TLP:AMBER and above (P306 cond 7). Used by dork_generator."
+    },
+    "maps": {
+      "title": "Google Maps URL scheme www.google.com/maps/search/?api=1 (manual links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.google.com/help/terms_maps/",
+        "quote": "Map templates (openstreetmap.org/?mlat=&mlon=, google.com/maps/search/?api=1&query=) take lat/lon from the normalised coordinates through a vetted placeholder and are privacy=true: shown only for coordinates already in the case after the analyst opts in.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "google",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0614 terms 'Google Maps ToS.' (www.google.com/maps/search/?api=1&query={lat},{lon}). Used by pivots_geo_image."
+    },
+    "news_search": {
+      "title": "Google News search page news.google.com/search?q= (manual link; RSS never automated)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://policies.google.com/terms",
+        "quote": "Google News RSS is not automated: it is an unofficial endpoint with unknown terms, and A1 lets unknown-terms sources run in no profile (research included), which is stricter than the members' 'research profile only'. news.google.com/search?q= stays the manual pivot link (Module.manual_link).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "google",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Google News RSS (news.google.com/rss/search) is never automated: research C0587 terms 'Google News RSS (unofficial, ToS-sensitive)', status 503. Only the manual search link. Used by adverse_media_rss (Module.manual_link)."
+    },
+    "play_store": {
+      "title": "Google Play store search and app-details pages (manual pivot links, never fetched)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://play.google.com/about/play-terms/",
+        "quote": "Google Play search and app-details links only for brand/app keywords and for package names found by other modules (APK triage, Digital Asset Links); the pages are never fetched or parsed (Google Play terms, no scraping).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "google",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0779 terms 'Google Play terms (no scraping).' Links play.google.com/store/search?q={brand}&c=apps&hl=pt_BR&gl=BR and /store/apps/details?id={package}&hl=pt_BR. P346 also uses Google Play only as manual pivot links. Used by pivots_url_web."
+    },
+    "safebrowsing_report": {
+      "title": "Safe Browsing report_phish form (manual analyst submission)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://policies.google.com/terms",
+        "quote": "Manual report links: Google Safe Browsing report_phish, Netcraft, and the platforms abused in BR scams (WhatsApp, Instagram/Meta, Telegram, Google Forms/Sites) when the case holds such entities.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "google",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0777 terms 'Provider forms (manual submissions by the analyst).' (safebrowsing.google.com/safebrowsing/report_phish/?url={url}). The analyst submits manually; V3LUM never submits (rule 7). The takedown packet is a third-party disclosure: minimised, TLP-marked and the decision recorded (P345). Used by takedown_packet."
+    }
+  },
+  "notes": "Manual-link-only Google hosts: no key, no budget, never fetched by V3LUM (no server-side Google automation; Google Play terms forbid scraping, P083 cond 12; Google News RSS stays unautomated, P253 cond 2). Seeded once for batches p2-G03-1, p2-G12-1, p2-G14-1, p2-G14-3 and p3-G10-3 (P083, P253, P260, P306, P345); www.google.com is listed because every search/maps template is on www. Lens (fetches the URL), the Calendar ICS feed and the Transparency Report status endpoint are separate providers (google_lens, google_calendar, google_transparency)."
+}

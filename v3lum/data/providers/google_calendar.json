@@ -1,0 +1,54 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "google_calendar",
+  "name": "Google Calendar public ICS",
+  "operator": "Google LLC",
+  "hosts": [
+    "calendar.google.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms, a privacy policy and a business offering (A8): 'Google: tier trusted, terms open.' (P093 rationale).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Google answers authoritatively whether a public ICS feed exists; a 404 means 'private or nonexistent' and is not an existence signal (P093 cond 4)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "max_bytes": 1048576,
+    "ttl": 0,
+    "min_interval": 2.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "public_ics": {
+      "title": "Google Calendar public ICS feed /calendar/ical/{email}/public/basic.ics",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://policies.google.com/terms",
+        "quote": "Google: tier trusted, terms open.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "google",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0213 terms 'Google ToS (public calendar feed)'; endpoint https://calendar.google.com/calendar/ical/{urlencoded_email}/public/basic.ics. Opt-in, analyst-typed seed addresses only (P093 cond 1); SUMMARY, DESCRIPTION, LOCATION, ATTENDEE and ORGANIZER are dropped at ingestion (P093 cond 2); the raw ICS body is never cached (ttl 0 = no-store, P093 cond 3); 1 MB parse cap (max_bytes, P093 cond 4). The input is an e-mail address (PERSONAL_TYPES): personal_data_review must be recorded before default use. Used by google_calendar_ics."
+    }
+  },
+  "notes": "Seeded for batch p3-G04-1 (P093) together with the other google.com hosts. Automated but polite (min_interval 2 s): its own budget, separate from the manual-link Google hosts of google_web."
+}

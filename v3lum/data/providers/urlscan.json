@@ -1,0 +1,85 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "urlscan",
+  "name": "urlscan.io (Search API, result API, web pages)",
+  "operator": "urlscan GmbH",
+  "hosts": [
+    "urlscan.io"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "urlscan GmbH, an established company with published terms, a privacy policy and commercial plans (A8 trusted); P066 'urlscan is an established company: tier trusted', P083 lists urlscan.io as trusted.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Dated public scan records (page metadata, screenshots, verdicts); results older than 30 days are historical and urlscan verdicts count as one vote (P066)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 3600,
+    "min_interval": 2.0
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "rate_per_second": 0.5,
+    "burst": 1,
+    "published": false,
+    "evidence_url": "",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {
+    "urlscan": {
+      "description": "urlscan.io API key (API-Key header; search quota)",
+      "signup_url": "https://urlscan.io/user/profile/",
+      "env": [
+        "V3LUM_URLSCAN_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "a company key under urlscan's commercial terms, or urlscan's written approval in licence_allow (P066); free use is personal only"
+    }
+  },
+  "sources": {
+    "search": {
+      "title": "urlscan.io Search API and result API (search only; no scan submission)",
+      "terms": {
+        "class": "noncommercial",
+        "evidence_url": "https://urlscan.io/terms/",
+        "quote": "Terms: the urlscan.io ToS (verified 2026-11-26) provide the free service 'only for your own personal use' and bar commercial endeavours not approved by urlscan, so free/keyless use is noncommercial.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "urlscan",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P066 cond 2). /api/v1/search/?q= (size <= 100, at most 2 search_after pages) and /api/v1/result/{uuid}/ only with a key (403 fixture otherwise) (research C0143); X-Rate-Limit-* headers honoured, 429 = RATE_LIMITED. No scan-submission path exists (POST /api/v1/scan/ is never built; a test asserts it): only submissions publish, so publishes_queries stays false (P066). Screenshots and DOM of existing public scans come only from urlscan.io (P066).",
+      "licensed_alternative": "A company key under urlscan's commercial terms or urlscan's written approval recorded in licence_allow (P066); the manual links (urlscan.web_pages) stay available."
+    },
+    "web_pages": {
+      "title": "urlscan.io domain, IP and search pages (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://urlscan.io/terms/",
+        "quote": "Report links urlscan.io/domain/{domain} and urlscan.io/ip/{ip} are the manual links.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "urlscan",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P066 cond 8). Class 'open' is the P083 chair-file class for manual links: urlscan.io domain/IP search pages only, never a scan submission (P083, rule 7; research C0189). V3LUM never fetches pivot links itself (P311)."
+    }
+  },
+  "notes": "Shared seed for batches p1-G03-1, p2-G01-3, p2-G14-1, p9-G03-3: batches only extend it (urlscan__<suffix>.json: extra sources and error markers). page_capture (P347) lists urlscan.io and its key but has no urlscan submission path; P060 drops urlscan from archive_mining's hosts. Quota: keyless search 30/min per IP with Concurrency-Limit 10 (research C0143, observed) -> rate 0.5/s (published false, 80% budget) and min_interval 2 s; ttl 1 h keeps searches fresh for newly public scans."
+}

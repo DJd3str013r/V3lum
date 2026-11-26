@@ -1,0 +1,95 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "blockchair",
+  "name": "Blockchair (API and explorer pages)",
+  "operator": "Blockchair",
+  "hosts": [
+    "api.blockchair.com",
+    "blockchair.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms, a privacy policy and a business offering (A8). 'Registry tiers: Blockstream, Blockchain.com, BlockCypher and Blockchair trusted' (P211 cond 6); 'trusted - Blockchain.com, Blockchair' (P216 cond 5).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Explorer API serving chain data indexed from its own full nodes (40+ chains): balances and histories are chain facts; freshness depends on its indexer."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "retries": 0,
+    "ttl": 3600,
+    "min_interval": 2.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [
+    {
+      "id": "ip_temporary_blacklisted",
+      "statuses": [
+        430
+      ],
+      "json_path": null,
+      "equals": null,
+      "regex": "IP temporary blacklisted",
+      "final_url_regex": null,
+      "maps_to": "rate_limited",
+      "reason_code": "rate_limited",
+      "reason": "Blockchair: egress IP temporarily blacklisted (HTTP 430): rate limited, could not verify"
+    }
+  ],
+  "keys": {
+    "blockchair": {
+      "description": "Blockchair API key (commercial plan; keyless use is personal/non-commercial)",
+      "signup_url": "https://blockchair.com/api/plans",
+      "env": [
+        "V3LUM_BLOCKCHAIR_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "business = a commercial Blockchair API plan held by the company (P211 cond 2); keyless and free use are personal/non-commercial, so the API stays off under the corporate profile without it"
+    }
+  },
+  "sources": {
+    "api": {
+      "title": "Blockchair API (address dashboards on 40+ chains)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://blockchair.com/api/docs",
+        "quote": "Per-adapter terms recorded: Esplora, mempool, litecoinspace and Blockchain.com 'open'; BlockCypher and Blockchair 'key-terms'.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "blockchair",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "free_plan_business_use false: 'Blockchair only with a commercial key 'blockchair' (keyless use is personal/non-commercial, and our egress got HTTP 430 on the second call)' (P211 cond 2), so under corporate it runs only with key_plans.blockchair='business'. Research C0482 terms 'Blockchair API terms; keyless use limited, non-commercial free tier on request.' The API docs link the terms of service (https://blockchair.com/terms) and the plans page. Endpoint https://api.blockchair.com/{chain}/dashboards/address/{address}?limit=10. Used by btc_explorers.",
+      "licensed_alternative": "A commercial Blockchair API plan recorded as key_plans.blockchair='business' (P211 cond 2); the Esplora, mempool.space and Blockchain.com adapters ('open') keep BTC coverage."
+    },
+    "explorer_pages": {
+      "title": "Blockchair explorer address pages (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://blockchair.com/terms",
+        "quote": "The pack is offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "blockchair",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Manual pivot links only (data/pivot_links/crypto.json): blockchair.com/{chain}/address/{address}; research C0508 terms 'Blockchair ToS.' Used by pivots_crypto."
+    }
+  },
+  "notes": "Seeded once for batches p2-G09-2 and p2-G14-2 (P211, P216). Keyless egress got HTTP 430 'IP temporary blacklisted ... apply for an API key' on the second call (research C0482): the marker maps it to RATE_LIMITED as P211 cond 4 requires (the core classifier alone reads 430 as blocked/challenge) and the host is short-circuited for the run, hence retries 0. Plan limits depend on the commercial plan bought: no quota block until it is recorded (per-host P334 bucket)."
+}

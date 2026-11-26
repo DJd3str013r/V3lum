@@ -1,0 +1,77 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "criminalip",
+  "name": "Criminal IP (asset API and search pages)",
+  "operator": "AI Spera Inc. (Criminal IP)",
+  "hosts": [
+    "api.criminalip.io",
+    "search.criminalip.io"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Commercial CTI search engine of AI Spera (KR) with published terms and paid plans. P048's chair rationale says trusted, but P057 lists 'community - FOFA (CN), Criminal IP (KR)': the stricter statement applies (a fragment may only be stricter).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Internet-wide scan observations and vendor risk scores: one vote, never 'malicious' alone; port and vulnerability data are version-inferred (P048)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {
+    "criminalip": {
+      "description": "Criminal IP API key (x-api-key header)",
+      "signup_url": "https://search.criminalip.io/pricing",
+      "env": [
+        "V3LUM_CRIMINALIP_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "a company/team account on a plan recorded by legal (key_plans.criminalip = 'business') before it runs under corporate (P048); its monthly credits go into the P334 budget"
+    }
+  },
+  "sources": {
+    "asset_api": {
+      "title": "Criminal IP asset API /v1/asset/ip/report (domain scan endpoints are active and never wired)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://www.criminalip.io/about/terms-of-service",
+        "quote": "Requires key 'criminalip' in config.KNOWN_KEYS (V3LUM_CRIMINALIP_KEY as alias), sent in the x-api-key header. Key-terms: a company/team account on a plan recorded by legal before it runs under corporate.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "criminalip",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P048 cond 2). api.criminalip.io/v1/asset/ip/report?ip= and domain report lookups of existing data only (research C0099); /v1/domain/scan makes Criminal IP crawl the target and is never wired in any mode (P048), hence fetches_target false. HTTP 200 with body status 403 ('check access failed') maps to NEEDS_KEY/ERROR through a P321 marker the owning batch adds with its fixture, never EMPTY."
+    },
+    "search_pages": {
+      "title": "Criminal IP asset report and search pages (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.criminalip.io/about/terms-of-service",
+        "quote": "FOFA and Criminal IP carry a 'foreign provider: queries are logged abroad - never paste internal host names' badge (legal_dpo, osint_investigator) and max_tlp=green: at TLP:AMBER and above they are hidden from reports and listed only by `v3lum links` with the warning (redteam_lead).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "criminalip",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P057 cond 10). Class 'open' is the P057/P062 chair-file class for manual links. search.criminalip.io/asset/report/{ip} (the P048 manual link, research C0132) and asset/search?query=favicon: {h} (P062). V3LUM never fetches pivot links itself (P311)."
+    }
+  },
+  "notes": "Shared seed for batches p2-G14-1, p3-G02-1, p9-G03-1: batches only extend it (criminalip__<suffix>.json: extra sources and error markers). No quota block: the company plan's monthly credits are not recorded yet (no published or observed figure in the research); add them when legal records key_plans.criminalip. Error-in-200 markers come from the owning batch with fixtures. The foreign-provider badge and max_tlp=green apply to the pivot links (P057)."
+}

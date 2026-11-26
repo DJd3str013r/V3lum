@@ -1,0 +1,52 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "rdap_org",
+  "name": "rdap.org RDAP redirector",
+  "operator": "rdap.org (volunteer-run RDAP redirector)",
+  "hosts": [
+    "rdap.org"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Volunteer-run RDAP redirector with public documentation (A8 community); P003 'rdap.org (community tier, volunteer-run) is only a fallback, following its 302'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "A redirector, not a data source: answers come from the registry it redirects to, and its own 404 never means 'not registered' (P003)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/rdap+json",
+    "ttl": 86400
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "redirector": {
+      "title": "rdap.org redirector /domain, /ip, /autnum, /entity (302 to the authoritative RDAP server)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://about.rdap.org/",
+        "quote": "registro.br RDAP is default-on by decision (A3 BR9). Tier community because rdap.org, a volunteer redirector, receives values on fallback; registries are trusted. Terms open (public registry data).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "rdap.org",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: council chair rationale (P003). rdap.org/domain|ip|autnum|entity answer 302 to the authoritative RDAP server, whose provider the module also declares (rdap.registro.br is in registrobr) (research C0006). Fallback only: the authoritative server is queried first through the IANA bootstrap (P003). Per-query lookups only, no bulk harvesting; registry terms apply."
+    }
+  },
+  "notes": "Shared seed for batches p1-G01-1, p9-G01-1: batches only extend it (rdap_org__<suffix>.json: extra sources and error markers). rdap.org/ itself redirects to about.rdap.org (documentation), which no module contacts. RDAP ttl 24 h (TTL_CLASSES)."
+}

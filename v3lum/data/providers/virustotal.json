@@ -1,0 +1,77 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "virustotal",
+  "name": "VirusTotal (API v3 and GUI links)",
+  "operator": "VirusTotal (Google LLC)",
+  "hosts": [
+    "virustotal.com",
+    "www.virustotal.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "VirusTotal (Google LLC), an established company with published terms, a privacy policy and premium plans (A8 trusted); P158 'Registry: tier trusted' and P304 lists VirusTotal as trusted.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Multi-engine scan aggregation with community data; verdicts count engines (>= 5 malicious, 3-4 suspicious, 1-2 low, P158) and change on re-analysis."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400,
+    "retries": 0
+  },
+  "quota": {
+    "scope": "key",
+    "day": 500,
+    "rate_per_second": 0.0667,
+    "burst": 1,
+    "published": true,
+    "evidence_url": "https://docs.virustotal.com/reference/public-vs-premium-api",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "api": {
+      "title": "VirusTotal API v3 (files, domains, ip_addresses, urls, relationships)",
+      "terms": {
+        "class": "noncommercial",
+        "evidence_url": "https://docs.virustotal.com/reference/public-vs-premium-api",
+        "quote": "Shodan InternetDB, Shodan CVEDB, VirusTotal public API and Censys free = 'noncommercial'.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "virustotal",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (A1 decision, docs/COUNCIL_1.md). P158 also records 'terms noncommercial (public API) and license (premium)'. evidence_url checked 2026-11-26: 'The Public API must not be used in commercial products or services. The Public API must not be used in business workflows that do not contribute new files.' GET lookups only (files, domains, ip_addresses, urls as base64url without padding, relationships); no POST /files or /urls, rescan, comment or vote is ever built (P158, rule 7). 404 = EMPTY. Provider data is not redistributed: exports shared outside the company carry verdict, link and source name only (P158).",
+      "licensed_alternative": "A VirusTotal premium/enterprise licence recorded in licence_allow (basis licence, P158); under corporate the GUI links (virustotal.gui_links) stay available."
+    },
+    "gui_links": {
+      "title": "VirusTotal GUI deep links (manual pivot links, always emitted)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://docs.virustotal.com/docs/terms-of-service",
+        "quote": "Under the corporate profile VirusTotal stays manual-only (public API excluded, A1/A15).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "virustotal",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P304 cond 11). Class 'open' is the P304 chair-file class for manual links. /gui/file/{hash}, /gui/domain/{d}, /gui/ip-address/{ip}, /gui/url/<sha256 of the URL> (vetted placeholder); never upload or rescan pages (P304 lint). Always emitted, key or not (P158). V3LUM never fetches pivot links itself (P311)."
+    }
+  },
+  "notes": "Shared seed for batches p2-G07-1, p2-G14-3: batches only extend it (virustotal__<suffix>.json: extra sources and error markers). www.virustotal.com added: every endpoint (API v3 and /gui/) is on www, and virustotal.com redirects there. Quota: the published public-key limits (500/day, 4/min; evidence_url) as a deferring token bucket (P158); a premium licence's own figures replace this block when legal records it. retries 0: the scan never waits on VT (P158). Key: P158's key 'virustotal' (x-apikey header) is the legacy config.KNOWN_KEYS entry (V3LUM_KEY_VIRUSTOTAL, VT_API_KEY, VIRUSTOTAL_API_KEY); this fragment does not redeclare it because tests/test_config.py keeps 'virustotal' as its legacy-only key fixture, so the P158 alias V3LUM_VT_KEY waits for a core change (WP02). Plan: a premium/enterprise licence recorded in licence_allow (basis licence) for corporate use; a public key runs only in the research profile and is never offered by the keys wizard under corporate (P158, A15)."
+}

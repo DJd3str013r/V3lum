@@ -1,0 +1,116 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "registrobr",
+  "name": "Registro.br (RDAP, availability, public lists)",
+  "operator": "NIC.br (Nucleo de Informacao e Coordenacao do Ponto BR) - Registro.br",
+  "hosts": [
+    "registro.br",
+    "rdap.registro.br",
+    "ftp.registro.br"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "NIC.br / Registro.br, the .br registry and Brazilian NIR (A8 definitions: internet registries, 'NIC.br/registro.br', are trusted); P005 'NIC.br, trusted', P038 'NIC.br public registry data: tier trusted' (P003/P021's community tier is rdap.org's/BrasilAPI's).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "Authoritative registry data for .br names and Brazilian IP/ASN space (registrant CNPJ, dates, availability, release process)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/rdap+json",
+    "accept_language": "pt-BR",
+    "ttl": 86400,
+    "min_interval": 1.0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "rdap": {
+      "title": "Registro.br RDAP (domain, entity, ip, autnum)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://registro.br/upp",
+        "quote": "registro.br RDAP is default-on by decision (A3 BR9). Tier community because rdap.org, a volunteer redirector, receives values on fallback; registries are trusted. Terms open (public registry data).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "registro.br",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: council chair rationale (P003). rdap.registro.br/domain|entity|ip|autnum (research C0544, C0089). Observed 2026-11-26 in the RDAP notices ('Use and Privacy Policy', link = evidence_url): 'Use of this data is governed by the Use and Privacy Policy. Distribution, commercialization, reproduction, and use for advertising or similar purposes are expressly prohibited.' Per-query lookups only, no bulk harvesting; natural-person data dropped at ingestion, CPF never stored (P003). 403/429/timeouts = BLOCKED/RATE_LIMITED, never cached."
+    },
+    "avail": {
+      "title": "Registro.br domain availability API /v2/ajax/avail/raw/{domain}",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://registro.br/upp",
+        "quote": "Tier community because BrasilAPI receives the name on fallback; registro.br is trusted. Terms open (public registry service, MIT community API).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "registro.br",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: council chair rationale (P021). registro.br/v2/ajax/avail/raw/{domain} (research C0051): individual .br names only, at most 20 per run, min_interval >= 5 s and cache 24 h at module level, never a bulk checker for typosquat permutations (P021, registro.br anti-abuse terms); the module sets its own Accept for this JSON."
+    },
+    "release_list": {
+      "title": "Registro.br domains-in-release list /dominio/lista-processo-liberacao.txt",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://registro.br/upp",
+        "quote": "the registro.br release list lista-processo-liberacao.txt (open; NIC.br, trusted). Lists are never redistributed.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "registro.br",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P005 cond 1). registro.br/dominio/lista-processo-liberacao.txt (research C0038; ISO-8859-1, '#' comments, weekly cycle) through the dataset manager; hits are tagged in_release (P005)."
+    },
+    "asn_blocks": {
+      "title": "NIC.br ASN block list /pub/numeracao/origin/nicbr-asn-blk-latest.txt",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://registro.br/upp",
+        "quote": "NIC.br public registry data: tier trusted, terms open.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "registro.br",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: council chair rationale (P038). ftp.registro.br/pub/numeracao/origin/nicbr-asn-blk-latest.txt (research C0088) as a daily dataset: stale copy kept on failure, a missing dataset = could not verify (P038)."
+    },
+    "whois_web": {
+      "title": "Registro.br web whois (manual link when RDAP is blocked)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://registro.br/upp",
+        "quote": "403/429/timeouts give BLOCKED/RATE_LIMITED 'could not verify' (never cached, so the next scan retries) and emit the registro.br web whois as manual_link.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "registro.br",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P003 cond 2). Manual link to the registro.br web whois when RDAP is blocked. V3LUM never fetches pivot links itself (P311)."
+    }
+  },
+  "notes": "Shared seed for batches p1-G01-1, p1-G02-1, p2-G01-1, p3-G01-1, p9-G01-1: batches only extend it (registrobr__<suffix>.json: extra sources and error markers). One provider: one operator with shared per-IP limits. BINDING PROFILE_REQUIREMENTS (registro.br, rdap.registro.br): user_agent neutral, Accept application/rdap+json, Accept-Language pt-BR, ttl <= 86400; the profile applies to every host, so modules set Accept themselves for the avail JSON and the text lists. Per-IP limits are unpublished (from a datacenter egress 1 of 5 RDAP attempts answered, the others 403; research C0544): min_interval 1 s floor, no quota block (no figure)."
+}

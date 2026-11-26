@@ -1,0 +1,85 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "circl_vulnlookup",
+  "name": "CIRCL Vulnerability-Lookup",
+  "operator": "CIRCL (Computer Incident Response Center Luxembourg)",
+  "hosts": [
+    "vulnerability.circl.lu",
+    "cve.circl.lu"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "National CERT (A8 definitions name CIRCL as trusted); P181 'Registry provider circl: tier trusted' (this service is split out of provider circl only for its own key and budget) and P194 'trusted - CIRCL Vulnerability-Lookup'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Aggregates authoritative vulnerability records (CVE 5 records, GHSA, PySec, CSAF) with EPSS; sightings are community observations kept apart from CISA KEV (P181)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400,
+    "min_interval": 3.0
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "rate_per_second": 0.3333,
+    "burst": 1,
+    "published": false,
+    "evidence_url": "",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {
+    "circl_vuln": {
+      "description": "CIRCL Vulnerability-Lookup API key (optional; keyless access works)",
+      "signup_url": "https://vulnerability.circl.lu/",
+      "env": [
+        "V3LUM_CIRCL_VULN_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "optional account on vulnerability.circl.lu created under the corporate identity (A15); the data stays 'open' with or without it"
+    }
+  },
+  "sources": {
+    "api": {
+      "title": "Vulnerability-Lookup API (vulnerability by CVE/GHSA/PySec/CSAF id, EPSS, sightings, CWE; legacy cve.circl.lu alias)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://vulnerability.circl.lu/api/",
+        "quote": "Registry provider circl: tier trusted, terms open (CC BY 4.0 where applicable, attribution).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "circl",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P181 cond 1). This provider is that service (split from circl for its key and budget). /api/vulnerability/{id} (CVE, GHSA, PySec, CSAF ids), /api/epss/{cve}, /api/sighting/?vuln_id=, /api/cwe/{id}; legacy alias cve.circl.lu/api/cve/{cve} (research C0428). 404 -> EMPTY; one shared CVE JSON 5 parser (P181). Attribute CIRCL (CC BY 4.0 where applicable)."
+    },
+    "vuln_pages": {
+      "title": "Vulnerability-Lookup pages /vuln/{cve} (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://vulnerability.circl.lu/",
+        "quote": "Registry provider circl: tier trusted, terms open (CC BY 4.0 where applicable, attribution).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "circl",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P181 cond 1). Manual links vulnerability.circl.lu/vuln/{cve} (P194 entries, verified; research C0451). V3LUM never fetches pivot links itself (P311)."
+    }
+  },
+  "notes": "Shared seed for batches p2-G08-1, p2-G14-1: batches only extend it (circl_vulnlookup__<suffix>.json: extra sources and error markers). Quota: x-ratelimit-limit 20 per 60 s with retry-after 60 on /api/vulnerability (research C0428, observed keyless) -> rate 0.3333/s (published false, 80% budget) and min_interval 3 s; per-CVE calls follow the P183 fan-out budget."
+}

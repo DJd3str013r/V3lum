@@ -1,0 +1,84 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "securitytrails",
+  "name": "SecurityTrails (API and web pages)",
+  "operator": "SecurityTrails (Recorded Future, Inc.)",
+  "hosts": [
+    "api.securitytrails.com",
+    "securitytrails.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "SecurityTrails, part of Recorded Future, Inc., is an established company with published terms and paid plans (A8 trusted); P006 trusted and P304 cond 5 'trusted - ... SecurityTrails'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Large passive-DNS and historical DNS collection: historical records keep first/last seen and old A records are never current infrastructure (P006 cond 5)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 604800
+  },
+  "quota": {
+    "scope": "key",
+    "month": 50,
+    "burst": 1,
+    "published": false,
+    "evidence_url": "",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {
+    "securitytrails": {
+      "description": "SecurityTrails API key (APIKEY header)",
+      "signup_url": "https://securitytrails.com/app/account/credentials",
+      "env": [
+        "V3LUM_SECURITYTRAILS_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "business = a company/team SecurityTrails plan, never an analyst's personal free account (P006 cond 2): the free plan targets individuals, so corporate use needs key_plans.securitytrails='business' or a recorded free_plan_business_use"
+    }
+  },
+  "sources": {
+    "api": {
+      "title": "SecurityTrails API v1 (domain, subdomains, DNS history, ips/nearby)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://securitytrails.com/corp/terms",
+        "quote": "The free plan targets individuals, so under the corporate profile it runs only when legal records that the plan permits internal business use (registry free_plan_business_use=true) or key_plans.securitytrails='business' (A1).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "securitytrails",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P006 cond 2); research C0017 terms '[live_cti] Recorded Future/SecurityTrails terms' (verified_needs_key 401). The terms page sits behind Cloudflare (403 to scripts). api.securitytrails.com/v1/domain/{domain}, /v1/domain/{domain}/subdomains (labels without the apex: append it and validate through the shared hostname sink) and /v1/history/{domain}/dns/a; key in the APIKEY header (P006 cond 1, 3). 429 and quota-exceeded bodies give RATE_LIMITED/QUOTA, 401/403 NEEDS_KEY, never EMPTY (P006 cond 6). Merge only with trimmed real fixtures captured with the team key plus the existing 401 fixture (P006 cond 8). Used by securitytrails."
+    },
+    "web_pages": {
+      "title": "SecurityTrails web pages (manual pivot links; Cloudflare-protected)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://securitytrails.com/corp/terms",
+        "quote": "Free web UI; provider ToS apply (manual analyst use)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "securitytrails",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: research C0061 terms (status unverified 403: Cloudflare, P006 cond 7). securitytrails.com/domain/{domain}/dns and /list/ip/{ip}: manual pivot links only (A9), never fetched. Used by pivots_unverified."
+    }
+  },
+  "notes": "Shared seed for batches p2-G01-1, p2-G14-3, p3-G13-1 (P006, P278, P304): batches only extend it (securitytrails__<suffix>.json: extra sources and error markers). Quota: monthly window at <= 80% of the plan's limit (P006 cond 4); the free tier allows about 50 queries per month (research C0017, observed) -> key budget, published false until the team plan is recorded. run_on seeds; cache 7 days (P006 cond 4). cdn_origin_hypothesis (P278) only consumes P006 facts and never calls this API (P278 cond 1)."
+}

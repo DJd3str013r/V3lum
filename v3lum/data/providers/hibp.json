@@ -1,0 +1,99 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "hibp",
+  "name": "Have I Been Pwned (catalogue, account API, breach pages)",
+  "operator": "Superlative Enterprises Pty Ltd, trading as Have I Been Pwned (per the haveibeenpwned.com Terms of Use)",
+  "hosts": [
+    "haveibeenpwned.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established breach-notification service run by Superlative Enterprises Pty Ltd with published terms, a privacy policy and paid plans (A8 trusted); P132 and P133 trusted, P144 cond 4 'haveibeenpwned.com is a trusted-tier registry entry'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": true
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Curated breach catalogue with per-breach verification flags (IsVerified, IsFabricated, IsSpamList, IsSensitive); fabricated and spam-list breaches never count as exposure (P132 cond 4), and per-account answers reflect only the corpora HIBP has loaded."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400
+  },
+  "quota": {
+    "scope": "key",
+    "rate_per_second": 0.1666,
+    "burst": 1,
+    "published": true,
+    "evidence_url": "https://haveibeenpwned.com/Subscription",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {
+    "hibp": {
+      "description": "Have I Been Pwned API key (hibp-api-key header; paid subscription for breachedaccount, pasteaccount, stealer-log and domain search endpoints)",
+      "signup_url": "https://haveibeenpwned.com/API/Key",
+      "env": [
+        "V3LUM_HIBP_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "a company-paid HIBP subscription (Core 1: 10 RPM, one own domain, no stealer logs) recorded in licence_allow before corporate use (P133 cond 1); stealer logs only with a recorded Pro plan (P133 cond 4); never an analyst's personal key"
+    }
+  },
+  "sources": {
+    "catalog": {
+      "title": "HIBP breach catalogue /api/v3/breaches (also ?domain=), /breach/{name}, /latestbreach, /dataclasses",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://haveibeenpwned.com/TermsOfUse",
+        "quote": "for any lawful purpose, including within commercial products",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "hibp",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: HIBP terms as recorded by the council (P132 cond 1, verified 2026-11-26). The Terms of Use (re-checked 2026-11-26) say the unauthenticated breach catalogue endpoints '(including /breaches, /breach/{name}, /latestbreach and /dataclasses) may be used for any lawful purpose, including within commercial products and for the benefit of third parties'. Research C0302 (verified_live 200). /breaches is a registered 24 h dataset; ?domain= lookups are answered locally (P132 cond 2) and mean 'this service was breached' (P132 cond 6). Data CC BY 4.0: attribution 'Have I Been Pwned' with a link wherever shown (P132 cond 7). Sensitive provider: a module declaring this source registers its P145 schema (A4). Used by hibp_catalog (shared breach-catalogue helper, P132 cond 3)."
+    },
+    "account": {
+      "title": "HIBP paid-key endpoints (breachedaccount, pasteaccount, stealerlogs, breacheddomain)",
+      "terms": {
+        "class": "license",
+        "evidence_url": "https://haveibeenpwned.com/Subscription",
+        "quote": "Company-paid key only (key 'hibp' in the hibp-api-key header), recorded in licence_allow as the HIBP subscription (budget: Core 1, from US$4.39/month: 10 RPM, one own domain, no stealer logs).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "hibp",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P133 cond 1); research C0301 terms '[live_osint] Paid subscription; CC BY 4.0 attribution.' (verified_needs_key 401). Off under the corporate profile until licence-cleared; Permitted Purpose = on-demand queries within the plan's rate limit (P133 cond 1). breachedaccount/{email}?truncateResponse=false, pasteaccount, stealerlogsbyemail, breacheddomain; 404 = 'not found in HIBP', never 'never breached' (P133 cond 2); domain search and stealer logs run_on own_assets_only (P133 cond 4); pastes metadata only (P133 cond 5). Sensitive: P145 schema before the HTTP cache, TTL <= 7 days (P133 cond 8). Used by hibp_account.",
+      "licensed_alternative": "A company-paid HIBP subscription (Core 1 or higher) recorded as a licence_allow entry (P133 cond 1); the keyless catalogue (hibp.catalog) still dates and classifies breaches named by other sources."
+    },
+    "breach_pages": {
+      "title": "HIBP breach pages /Breach/{Name} (manual links emitted next to HIBP breach names)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://haveibeenpwned.com/TermsOfUse",
+        "quote": "haveibeenpwned.com is a trusted-tier registry entry; breach pages are CC BY 4.0, attributed 'Have I Been Pwned'.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "hibp",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P144 cond 4); research C0322 terms 'HIBP (CC BY 4.0).' (verified_live 200). https://haveibeenpwned.com/breach/{Name}, emitted next to HIBP breach names through ModuleResult.link() only (P144 cond 1-2); it carries the breach name, never the investigated e-mail, and V3LUM never fetches it (P144 cond 3). Sensitive provider: a module declaring this source registers a sanitizer schema (A4). Used by pivots_breach_leak (link helper)."
+    }
+  },
+  "notes": "Shared seed for batches p1-G04-1, p2-G04-1, p3-G14-1 (P132, P133, P144): batches only extend it (hibp__<suffix>.json: extra sources and error markers). Binding profile (PROFILE_REQUIREMENTS): neutral UA, flags.sensitive true, ttl <= 7 days. The API documentation (checked 2026-11-26) asks for a user agent that accurately describes the consuming application and may block requests without one (the catalogue endpoints still accept them); the neutral 'V3LUM/<version>' UA is always sent (P132 cond 2). ttl 24 h matches the daily catalogue dataset. Quota: HIBP publishes the Core 1 subscription at 10 RPM (pricing page, checked 2026-11-26; P133 cond 1) -> key budget at 80%; 429 answers carry Retry-After, honoured (module min_interval from a tier setting, P133 cond 2). Sensitive provider (A4): every source a module declares needs a P145 schema (no schema -> no-store). api.pwnedpasswords.com is the separate provider pwnedpasswords (own keyless budget). personal_data_review before default use (P133 cond 9)."
+}

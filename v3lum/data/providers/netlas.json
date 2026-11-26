@@ -1,0 +1,84 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "netlas",
+  "name": "Netlas.io (API and web pages)",
+  "operator": "Netlas LLC (Netlas.io)",
+  "hosts": [
+    "app.netlas.io"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Netlas LLC, a smaller internet-scanner company with public documentation, terms and a multi-year track record (A8 community); P037 records tier community and P304 cond 5 lists 'community - Netlas'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Internet-wide scan observations from a smaller scanner: banners and DNS data can be days or weeks old, and co-hosted domains on CDN or shared-hosting IPs are counts only (P037 cond 5)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400
+  },
+  "quota": {
+    "scope": "key",
+    "day": 50,
+    "burst": 1,
+    "published": true,
+    "evidence_url": "https://netlas.io/pricing/",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {
+    "netlas": {
+      "description": "Netlas API key (X-API-Key header only)",
+      "signup_url": "https://app.netlas.io/profile/",
+      "env": [
+        "V3LUM_NETLAS_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "business = a paid Netlas plan whose terms allow business use, recorded by legal (key_plans.netlas='business' or a licence_allow entry, P037 cond 1); keyless and the free Community plan are 'for your own personal needs (non-commercial use only)'"
+    }
+  },
+  "sources": {
+    "api": {
+      "title": "Netlas API (host, responses search, domains_count, domains download)",
+      "terms": {
+        "class": "noncommercial",
+        "evidence_url": "https://netlas.io/pricing/",
+        "quote": "for your own personal needs (non-commercial use only)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "netlas",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: Netlas pricing FAQ as recorded by the council (P037 cond 1, checked 2026-11-26; re-checked the same day: 'You can use it for your own personal needs (non-commercial use only).'). Research C0087 (verified_live 200). app.netlas.io/api/host/{ip_or_domain}/, /api/responses/?q=, /api/domains_count/?q= and POST /api/domains/download/; key in the X-API-Key header only; default runs only with a key, keyless calls only through explicit -M where the licence profile allows them (P037 cond 2). Error bodies inside 200 map to QUOTA, RATE_LIMITED or NEEDS_KEY through P321 markers the owning batch adds with fixtures, never EMPTY (P037 cond 4). Used by netlas.",
+      "licensed_alternative": "A paid Netlas plan whose terms allow business use, recorded by legal as a licence_allow entry or key_plans.netlas='business' (P037 cond 1); the manual Netlas links (netlas.web_pages) stay available."
+    },
+    "web_pages": {
+      "title": "Netlas host and responses pages (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://netlas.io/legal/",
+        "quote": "Free web UI; provider ToS apply (manual analyst use)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "netlas",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: research C0134 terms (status unverified 403: the web UI is behind a Cloudflare challenge, P037 cond 6). app.netlas.io/host/{ip}/ and /responses/?q= (favicon: http.favicon.hash_sha256:{sha256}, P062). Manual pivot links only (A9), never fetched. Used by favicon_hash and pivots_unverified."
+    }
+  },
+  "notes": "Shared seed for batches p2-G14-3, p3-G02-1, p9-G03-1 (P037, P062, P304): batches only extend it (netlas__<suffix>.json: extra sources and error markers). Quota: the Community plan allows 50 requests / day (netlas.io pricing page, checked 2026-11-26; research C0087 observed the same) -> key budget at 80%; a paid plan raises it once recorded. Use the free domains_count to size a job before spending quota (P037 cond 3)."
+}

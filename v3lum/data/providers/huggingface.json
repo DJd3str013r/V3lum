@@ -1,0 +1,53 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "huggingface",
+  "name": "Hugging Face Hub users API",
+  "operator": "Hugging Face, Inc.",
+  "hosts": [
+    "huggingface.co"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms, a privacy policy and a business offering (A8): 'Registry: npm (GitHub), PyPI (PSF), DEV/Forem and Hugging Face tier trusted' (P100 cond 8).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Authoritative for the accounts and repositories it hosts; profile content is self-asserted by the account owner."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 2
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "users_api": {
+      "title": "Hugging Face Hub /api/users/{u}/overview",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://huggingface.co/terms-of-service",
+        "quote": "Registry: npm (GitHub), PyPI (PSF), DEV/Forem and Hugging Face tier trusted, Codeberg e.V. community; all terms open; personal_data_review before default use (A3 BR8).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "huggingface",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0251 terms 'Hugging Face ToS' (rate limit 'HF Hub anonymous limits'). Endpoint https://huggingface.co/api/users/{username}/overview; joins dev_profiles_pack only once trimmed found + absent fixtures exist (P100 cond 1). Usernames are PERSONAL_TYPES: personal_data_review before default use (A3 BR8). Used by dev_profiles_pack and username_check."
+    }
+  },
+  "notes": "Seeded once for batches p1-G05-2 and p2-G05-1 (P100, P113). Anonymous Hub limits are not published as figures: no quota block."
+}

@@ -1,0 +1,96 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "opensanctions",
+  "name": "OpenSanctions (licensed bulk data, screening API, web search)",
+  "operator": "OpenSanctions Datenbanken GmbH",
+  "hosts": [
+    "api.opensanctions.org",
+    "data.opensanctions.org",
+    "opensanctions.org",
+    "www.opensanctions.org"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "OpenSanctions Datenbanken GmbH, an established company with published licensing terms and a business offering (A8 trusted); P222 and P231 record tier trusted.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Curated consolidation of official sanctions lists and PEP sources with per-record provenance; name matches are screening candidates, never confirmations."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {
+    "opensanctions": {
+      "description": "OpenSanctions API key (Authorization: ApiKey header only, never in URLs)",
+      "signup_url": "https://www.opensanctions.org/api/",
+      "env": [
+        "V3LUM_OPENSANCTIONS_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "the company's OpenSanctions commercial licence (in-house Screening licence or bulk data licence) recorded in the registry and licence_allow (P222); the free path is never used under corporate"
+    }
+  },
+  "sources": {
+    "bulk_licensed": {
+      "title": "OpenSanctions bulk datasets (default collection targets and index) under a bulk data licence",
+      "terms": {
+        "class": "license",
+        "evidence_url": "https://www.opensanctions.org/licensing/",
+        "quote": "Licence (A1): OpenSanctions data is CC BY-NC 4.0 (class 'noncommercial'); this module uses only the business-licensed path, registered as class 'license'. The free data and API path is never used under corporate.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "opensanctions",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P222 cond 1). data.opensanctions.org/datasets/latest/default/ (index.json, targets) through the dataset manager (`v3lum data update opensanctions`, never mid-scan), matched locally with core/namematch.py (disclosure 'none'); bulk datasets are never downloaded without the bulk licence (P222; research C0519).",
+      "licensed_alternative": "An OpenSanctions bulk data licence recorded in licence_allow; P219 sanctions_lists (OFAC, UN, EU official lists) covers official sanctions offline without it."
+    },
+    "screening_api": {
+      "title": "OpenSanctions API /match and /search under a Screening licence",
+      "terms": {
+        "class": "license",
+        "evidence_url": "https://www.opensanctions.org/licensing/",
+        "quote": "It runs only when the company holds an OpenSanctions commercial licence (in-house Screening licence or bulk data licence) recorded in the provider registry and licence_allow; otherwise it is skipped under the corporate profile with reason_code 'licence'.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "opensanctions",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P222 cond 2). api.opensanctions.org /match and /search with requires_keys ('opensanctions'), key only in the Authorization header, a monthly query budget in config with a hard stop and QUOTA status, no automatic credit purchase; 401 without a key -> NEEDS_KEY; 401/403/429, timeouts, 5xx and error-in-200 mean could not verify and are never cached (P222).",
+      "licensed_alternative": "An OpenSanctions in-house Screening licence recorded in licence_allow."
+    },
+    "web_search": {
+      "title": "OpenSanctions web search www.opensanctions.org/search (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.opensanctions.org/licensing/",
+        "quote": "The opensanctions.org website stays a manual link in P231 (their FAQ: free to use in a browser).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "opensanctions",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P222 cond 7). Manual links www.opensanctions.org/search/?q= (research C0539, P231); routine screening needs the licensed P222 path. V3LUM never fetches pivot links itself (P311)."
+    }
+  },
+  "notes": "Shared seed for batches p1-G10-1, p2-G14-2, p3-G10-1: batches only extend it (opensanctions__<suffix>.json: extra sources and error markers). P219 sanctions_lists lists these hosts but declares no source here (legal floor: the CC BY-NC hosts belong to P222 only); a free-path source, if ever wanted for the research profile, is added by extension with class noncommercial. No quota block: the monthly query budget lives in config with a hard stop (P222) until the licence's figures are recorded here. opensanctions.org redirects to www.opensanctions.org (observed 2026-11-26)."
+}

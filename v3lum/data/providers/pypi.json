@@ -1,0 +1,68 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "pypi",
+  "name": "PyPI (JSON API and organisation pages)",
+  "operator": "Python Software Foundation (PyPI)",
+  "hosts": [
+    "pypi.org"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Operated by the Python Software Foundation with published terms (A8): 'Registry: npm (GitHub), PyPI (PSF), DEV/Forem and Hugging Face tier trusted' (P100 cond 8); 'Registry: GitHub, GitLab, npm, PyPI and Docker trusted' (P359 cond 9).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Authoritative package metadata (JSON API) and organisation pages; author and maintainer fields are self-asserted."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 604800,
+    "min_interval": 1.0,
+    "concurrency": 2
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "json_api": {
+      "title": "PyPI JSON API /pypi/{package}/json and /pypi/{package}/{version}/json",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://policies.python.org/pypi.org/Terms-of-Use/",
+        "quote": "Registry: npm (GitHub), PyPI (PSF), DEV/Forem and Hugging Face tier trusted, Codeberg e.V. community; all terms open; personal_data_review before default use (A3 BR8).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "pypi",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0253 terms 'PyPI ToS.' (CDN cached; generous). Endpoints /pypi/{package}/json and /pypi/{package}/{version}/json, only for package names already in the case (PyPI has no user API, P100 cond 3). Never /user/* (JS Client Challenge): a challenge is BLOCKED reason challenge via a P321 marker the owning batch adds with its fixture, never ABSENT (P100 cond 4, P359 cond 8). Used by dev_profiles_pack and org_code_footprint."
+    },
+    "org_pages": {
+      "title": "PyPI organisation pages /org/{org}/ (HTML, one polite request per org)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://policies.python.org/pypi.org/Terms-of-Use/",
+        "quote": "Sources: GitHub REST 'key-terms' (as P111); GitLab, Codeberg, npm, PyPI and Docker Hub 'open'.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "pypi",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0761 terms 'PyPI terms of use.' HTML organisation page /org/{org}/, one polite request per org, cache 7 days (the provider ttl cap allows it). Used by org_code_footprint."
+    }
+  },
+  "notes": "Seeded once for batches p2-G05-1 and p2-G05-2 (P100, P359). ttl 604800 is the cap needed for the 7-day org-page cache (research C0761); JSON metadata calls may ask a shorter TTL. Limits undocumented (CDN cached): no quota block."
+}

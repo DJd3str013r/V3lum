@@ -1,0 +1,77 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "triage",
+  "name": "Recorded Future Triage (tria.ge)",
+  "operator": "Recorded Future, Inc. (Hatching Triage)",
+  "hosts": [
+    "tria.ge"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Recorded Future, Inc. (Hatching Triage), an established company with published terms, a privacy policy and a business offering (A8 trusted); P177 and P180 'trusted - tria.ge (Hatching / Recorded Future)'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Sandbox analysis reports with extracted malware configurations; family labels are vendor signatures, one vote per adapter (P177)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {
+    "triage": {
+      "description": "Recorded Future Triage API key (Authorization: Bearer header)",
+      "signup_url": "https://tria.ge/signup",
+      "env": [
+        "V3LUM_TRIAGE_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "free Individual/Researcher licences are non-commercial and publish analyses; corporate use needs a commercial Triage licence recorded in licence_allow (P177)"
+    }
+  },
+  "sources": {
+    "search_api": {
+      "title": "Triage API v0 search (sha256, family, tag, url queries)",
+      "terms": {
+        "class": "noncommercial",
+        "evidence_url": "https://tria.ge/signup",
+        "quote": "Licence (legal floor, verified 2026-11-26): Triage's free Individual/Researcher licences are non-commercial and make analyses public, so corporate use needs a commercial Triage licence",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "triage",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P177 cond 3). tria.ge/api/v0/search?query=sha256:|family:|tag:|url: with the Bearer key (research C0411); search/metadata only: no sample download or submission endpoint is ever built (P177). evidence_url checked 2026-11-26: the Individual plan lists 'Public analysis results' and 'Non-commercial use'; Researcher adds API access. Success fixture required before merge (P177).",
+      "licensed_alternative": "A commercial Triage licence recorded in licence_allow (the 'license' path, P177); the manual report search links (triage.report_pages) stay available."
+    },
+    "report_pages": {
+      "title": "Triage report search pages /s?q= and /reports?q= (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://tria.ge/",
+        "quote": "Search pages only: no template points to a submission or upload endpoint (rule 7); V3LUM never downloads samples or reports from Triage.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "triage",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P180 cond 9). Class 'open' is the P180 chair-file class for manual links. tria.ge/s?q={hash} (redirects to /reports?q=) for md5/sha1/sha256; the family search q=family:{q} stays verified=false until checked in a browser (P180, research C0423)."
+    }
+  },
+  "notes": "Shared seed for batches p2-G14-1, p3-G07-2: batches only extend it (triage__<suffix>.json: extra sources and error markers). Flags all false: no submission path exists (free plans publish analyses; same rule as P066). One module per provider (triage inside hash_lookup_keyed), default off, Bearer header (P177). No quota block: daily budgets via P334 once the licence's figures are recorded."
+}

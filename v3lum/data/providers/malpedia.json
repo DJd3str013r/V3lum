@@ -1,0 +1,80 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "malpedia",
+  "name": "Malpedia (API and pages)",
+  "operator": "Fraunhofer FKIE (Fraunhofer Institute for Communication, Information Processing and Ergonomics)",
+  "hosts": [
+    "malpedia.caad.fkie.fraunhofer.de"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Academic institution with published terms (A8 trusted): 'trusted - MITRE ATT&CK and D3FEND (attack.mitre.org, d3fend.mitre.org), Malpedia (Fraunhofer FKIE)' (P300 cond 5); P296 provider tier trusted.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Curated academic malware-family and actor reference with a bibliography: usually reliable; attribution claims follow the cited reports."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 604800,
+    "min_interval": 2.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {
+    "malpedia": {
+      "description": "Malpedia API token (team account; Authorization header only)",
+      "signup_url": "https://malpedia.caad.fkie.fraunhofer.de/usage/api",
+      "env": [
+        "V3LUM_MALPEDIA_TOKEN",
+        "V3LUM_MALPEDIA_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "optional team-account token; the API stays 'noncommercial' (CC BY-NC-SA 3.0) until a written Fraunhofer FKIE agreement is recorded in licence_allow (P296 cond 1); token-tier material carries TLP:AMBER and is never exported (P296 cond 3)"
+    }
+  },
+  "sources": {
+    "api": {
+      "title": "Malpedia API (find/get/list actors and families, bibliography)",
+      "terms": {
+        "class": "noncommercial",
+        "evidence_url": "https://malpedia.caad.fkie.fraunhofer.de/usage/tos",
+        "quote": "Licence (A1 initial class, legal floor): Malpedia content is CC BY-NC-SA 3.0, class 'noncommercial': off under the corporate profile until licence-cleared.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "malpedia",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "A1 initial class (binding): 'Team Cymru MHR, Robtex, Malpedia, blocklist.de, CINS, ET, GreenSnow, DataPlane and Phishing Army = 'noncommercial''. Research C0658 terms 'Content CC BY-NC-SA 3.0 (non-commercial!); non-public material TLP:AMBER.' Endpoint allow-list in code: list/families, find/actor, get/actor and get/family only; no sample, YARA or other download endpoint can be built (P296 cond 2). Caching: list/families 7 days (P296 cond 5). Used by malpedia.",
+      "licensed_alternative": "A written Fraunhofer FKIE agreement ('alternative agreements' per its ToS) recorded in licence_allow (P296 cond 1); under the corporate profile the bundled MISP galaxy Malpedia cluster (P295) and the manual pages (malpedia.pages, P300) cover family/actor ids and references."
+    },
+    "pages": {
+      "title": "Malpedia family and actor pages /details/{slug}, /actor/{id} (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://malpedia.caad.fkie.fraunhofer.de/usage/tos",
+        "quote": "Manual browsing is unaffected by the API's CC BY-NC-SA licence and is the corporate-profile fallback for P296.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "malpedia",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0674 terms 'site terms'. Manual links malpedia.caad.fkie.fraunhofer.de/details/{slug} and /actor/{actor_id}, the slug taken from the P295 alias-index mapping, never from the raw family name (P300 cond 9). Used by pivots_cti."
+    }
+  },
+  "notes": "Seeded once for batches p2-G14-2 and p3-G11-1 (P296, P300). ttl 604800 is the cap needed for the 7-day list/families cache (P296 cond 5); undocumented limits: min_interval 2 s, no quota block."
+}

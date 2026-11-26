@@ -1,0 +1,60 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "gleif",
+  "name": "GLEIF LEI API",
+  "operator": "Global Legal Entity Identifier Foundation (GLEIF)",
+  "hosts": [
+    "api.gleif.org"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Not-for-profit foundation operating the Global LEI System, with published terms (A8 trusted): 'tiers: RFB, CVM, BCB, GLEIF and Wikimedia all trusted' (P361 cond 7); P220 provider tier trusted.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "Authoritative Global LEI System data (LEI records and parent/child relationships validated by the issuing organisations); most Brazilian SMEs have no LEI, so a miss is never a risk signal (P220 cond 6)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 259200,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "rate_per_second": 1.0,
+    "burst": 1,
+    "published": true,
+    "evidence_url": "https://api.gleif.org/docs",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "lei_api": {
+      "title": "GLEIF LEI API v1 (lei-records filters, fuzzycompletions, direct/ultimate parent and children)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.gleif.org/en/meta/lei-data-terms-of-use/",
+        "quote": "Host api.gleif.org, keyless, CC0 (attribution courtesy line), documented 60 req/min: min_interval 1 s and a registry quota.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "gleif",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0515 terms 'GLEIF data CC0' / 'CC0 1.0.' One shared GLEIF client for P220 and P361 (P220 cond 1); the registeredAs filter always sends the formatted CNPJ (P220 cond 2); 404 is a declared absence (absent_statuses {404}, P220 cond 7). Used by gleif and cnpj_name_resolver."
+    }
+  },
+  "notes": "Seeded once for batches p2-G10-1 and p2-G10-3 (P220, P361). Quota: the GLEIF API documentation (https://api.gleif.org/docs, checked 2026-11-26) states 'Rate limiting is currently set at 60 requests, per minute, per user, for all users.' and that there is no charge for the use of the LEI data: rate 1/s per egress IP (budget 0.8/s) plus min_interval 1 s (P220 cond 1). ttl 259200 = company registry data (CNPJ class, P326 cond 7). 401/403/429, timeouts, 5xx and error-in-200 bodies are could-not-verify statuses and never cached (P220 cond 7)."
+}

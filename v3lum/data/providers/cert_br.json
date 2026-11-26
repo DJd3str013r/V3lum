@@ -1,0 +1,66 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "cert_br",
+  "name": "CERT.br (RSS and incident reporting)",
+  "operator": "CERT.br / NIC.br (Nucleo de Informacao e Coordenacao do Ponto BR)",
+  "hosts": [
+    "www.cert.br"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Brazilian national CERT run by NIC.br (A8 definitions: national CERTs/CSIRTs are trusted); P298 records 'CERT.br and The Record trusted' and P345 is tier trusted.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "National CERT publishing its own advisories, statistics and notification guidance; feed items are headlines and links to its own publications."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 3600
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "rss": {
+      "title": "CERT.br RSS feed /rss/certbr-rss.xml",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://cert.br/privacidade/",
+        "quote": "Licence (A1, legal floor): feed terms are 'unknown' until legal reviews them, so nothing runs yet in any profile. Legal's feed-reader decision (poll <= hourly; headline + link + date only; no full text; no redistribution) is recorded per kept feed with its class and evidence; a feed whose terms forbid business use or automated reading is dropped.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "cert.br",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P298 cond 3). Feed https://www.cert.br/rss/certbr-rss.xml (research C0754: verified, 14 items); poll <= hourly, headline + link + date only. For legal's review, observed 2026-11-26 on the evidence_url ('Termos de Uso'): CERT.br content is under Creative Commons BY-NC-ND 4.0 for informational (non-commercial) use and commercial use of the information is prohibited. Also observed: www.cert.br now redirects to cert.br, so the owning batch adds host cert.br by extension (and to its module hosts) before the feed can be read."
+    },
+    "incident_reporting": {
+      "title": "CERT.br incident notification guidance (manual; Cc cert@cert.br on takedown notifications)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://cert.br/docs/notificacoes/",
+        "quote": ".br domains and BR-hosted IPs add CERT.br guidance (notify the source network, cert@cert.br in Cc).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "cert.br",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P345 cond 4). Class 'open' is the P345 chair-file class. Manual channel only: V3LUM never sends e-mail or submits forms; the takedown packet names cert@cert.br in Cc and follows the CERT.br 'Recomendacoes para Notificacoes de Incidentes de Seguranca' (evidence_url, v1.4)."
+    }
+  },
+  "notes": "Shared seed for batches p2-G03-1, p2-G11-1: batches only extend it (cert_br__<suffix>.json: extra sources and error markers). Feed downloads carry no investigated value (P298: disclosure 'none'); the incident channel is manual. ttl 1 h keeps the feed poll at most hourly. No quota block: no published or observed figure."
+}

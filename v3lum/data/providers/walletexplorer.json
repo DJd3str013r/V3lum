@@ -1,0 +1,69 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "walletexplorer",
+  "name": "WalletExplorer (API and address pages)",
+  "operator": "WalletExplorer (individual operator)",
+  "hosts": [
+    "walletexplorer.com",
+    "www.walletexplorer.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Identifiable individual operator with a public keyless API and a long public track record; the council recorded tier community (P208 cond 3 'Registry provider walletexplorer: tier community', P216 cond 5 'community - ... WalletExplorer').",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Bitcoin wallet clustering heuristics with a service-name database not updated since 2016 (per its info page): a label is a lead for a legal request to that service, not proof of ownership (P208 cond 2)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 3600,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "api": {
+      "title": "WalletExplorer API /api/1/address-lookup and /api/1/wallet (caller id)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.walletexplorer.com/api",
+        "quote": "Registry provider walletexplorer: tier community, terms open.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "walletexplorer",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P208 cond 3); research C0489 records a free keyless API with attribution, a caller id and moderate use (~1 req/s) (verified_live 200). The API page (checked 2026-11-26): 'You can use it without any API key.' www.walletexplorer.com/api/1/address-lookup?address={a}&caller={caller_id} and /api/1/wallet?wallet={id}&from=0&count=100&caller={caller_id}; caller comes from the operator-identifier setting caller_id, a generic team identifier, never an analyst's name or an investigated value (unset = SKIPPED 'config', P208 cond 1). found:false = EMPTY (P208 cond 2). Used by walletexplorer."
+    },
+    "address_pages": {
+      "title": "WalletExplorer address pages (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.walletexplorer.com/info",
+        "quote": "Registry provider walletexplorer: tier community, terms open.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "walletexplorer",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P208 cond 3); research C0506 (verified_live 200). www.walletexplorer.com/address/{btc_address}: manual pivot links only (P216), never fetched. Used by pivots_crypto."
+    }
+  },
+  "notes": "Shared seed for batches p2-G09-1, p2-G14-2 (P208, P216): batches only extend it (walletexplorer__<suffix>.json: extra sources and error markers). www.walletexplorer.com serves the API and pages (research C0489/C0506). The author asks for a caller id and moderate use (~1 req/s): min_interval 1 s, one request at a time, no quota block; attribution in reports. ttl 1 h (crypto class)."
+}

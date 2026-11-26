@@ -1,0 +1,68 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "transparencia",
+  "name": "Portal da Transparencia (bulk downloads and web search)",
+  "operator": "Controladoria-Geral da Uniao (CGU)",
+  "hosts": [
+    "portaldatransparencia.gov.br"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Government body (CGU, A8): 'trusted - Portal da Transparencia (CGU), Receita Federal, Sintegra/CCC, consumidor.gov.br, REDESIM/juntas comerciais, Jusbrasil, Reclame Aqui' (P250 cond 5); P240 provider tier trusted.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "Official federal sanctions registers (CEIS, CNEP, CEPIM, leniency agreements) published by CGU; a stale copy reads 'not screened', never 'not sanctioned' (P240 cond 8)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "bulk_sanctions": {
+      "title": "CGU bulk downloads /download-de-dados/{ceis|cnep|cepim|acordos-leniencia}/{YYYYMMDD} (daily zip files)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://portaldatransparencia.gov.br/download-de-dados",
+        "quote": "Terms classes (definitions for every chair file and registry entry): 'open' = free use, internal business use included (public domain, CC0, CC BY, open government data, and permissive or copyleft licences whose obligations V3LUM meets by runtime download and attribution, A6)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "cgu",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding A1 definition of 'open' (open government data); research C0548 terms 'Open government data (CGU)' / 'CGU open data.' Daily zips /download-de-dados/{ceis|cnep|cepim|acordos-leniencia}/{YYYYMMDD} (PEP monthly) through the dataset manager only, walking back at most 7 days on 404, never during a scan (P240 cond 1). Downloads answer 302 -> dadosabertos-download.cgu.gov.br, a single-batch host of P240 (batch p1-G10-2): add it with a transparencia__<batch>.json extension, never as a second CGU provider. Person rows keep only the name and the CPF exactly as published (masked), never a lookup key (P240 cond 6). The portal's web pages answer a CAPTCHA to scripts, so the evidence page was not re-fetched on 2026-11-26. Used by cgu_sanctions_bulk."
+    },
+    "web_search": {
+      "title": "Portal da Transparencia web search /busca?termo= (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://portaldatransparencia.gov.br/",
+        "quote": "The pack is offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "cgu",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0584 terms 'public open data / free public API'. Manual link portaldatransparencia.gov.br/busca?termo= with the formatted CNPJ ({cnpj_fmt}) or the company name; never a CPF or person name (P250 cond 8, cond 9); the /pessoa-juridica/{cnpj} page (bot challenge) is not used. Used by pivots_brazil."
+    }
+  },
+  "notes": "Split from transparencia_api: the keyed API has its own key and per-key budget. Seeded once for batches p1-G10-2 and p2-G14-2 (P240, P250). ttl 86400 = sanctions class (P326 cond 7). .br hosts default to Accept-Language pt-BR."
+}

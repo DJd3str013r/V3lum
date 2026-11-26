@@ -1,0 +1,69 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "telegram",
+  "name": "Telegram public web (t.me)",
+  "operator": "Telegram FZ-LLC (Telegram Messenger)",
+  "hosts": [
+    "t.me"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Telegram FZ-LLC runs a major messaging platform with published terms and a privacy policy (A8 trusted); P112 cond 1 'Registry provider telegram: tier trusted', P128 cond 5 't.me trusted' and P357 trusted.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Authoritative for the presence and display names of public Telegram handles, but channel posts are unverified user-generated claims (fraud, leak and actor chatter): extracted IOCs are leads."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "max_bytes": 2097152,
+    "ttl": 3600,
+    "min_interval": 2.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "web_preview": {
+      "title": "Telegram t.me/{name} public preview and t.me/s/{channel} web view (?before= paging)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://telegram.org/tos",
+        "quote": "Registry provider telegram: tier trusted, terms open (public web preview)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "telegram",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P112 cond 1); research C0227 terms '[caipora_people] Telegram ToS (public preview pages)' (verified_live 200). LEGAL RE-REVIEW REQUESTED: the Terms of Service for Content Licensing linked from telegram.org/tos (telegram.org/tos/content-licensing, checked 2026-11-26) state 'Access to user-generated content for any purpose other than ordinary, legitimate, and intended use of the Telegram platform as its user is prohibited.' The council class stays until legal records its reading of automated public-preview reading (a chair may only make the class stricter, A1). Unauthenticated GETs of t.me/{name} and t.me/s/{channel}?before={post_id} only; never an account, session, bot token, Telethon or joining (P112 cond 1, P357 cond 1). The generic 'Telegram: Contact @x' page = UNKNOWN 'could not read', never ABSENT (P112 cond 2): the owning batch adds that P321 marker with its fixture. Posts are scrubbed (P145/AR24) before cache, evidence and reports (P112 cond 5); media and links in posts are never fetched (P112 cond 8). Used by telegram_public and telegram_channel_watch (>= 10 s between requests at module level, P357 cond 3)."
+    },
+    "phone_links": {
+      "title": "t.me/+{e164} deep links (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://telegram.org/tos",
+        "quote": "Platform terms (manual use).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "telegram",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: research C0798 terms (verified_live 200). t.me/+{e164_digits} deep links: off by default (setting phone_messaging_links=false), privacy=true, analyst-typed phone seeds only, never presence checks (P128 cond 2, 4). V3LUM never fetches them. Used by pivots_phone."
+    }
+  },
+  "notes": "Shared seed for batches p1-G05-1, p1-G06-1, p2-G09-2 (P112, P128, P357): batches only extend it (telegram__<suffix>.json: extra sources and error markers). Legal re-review requested for telegram.web_preview (Telegram's content-licensing terms, checked 2026-11-26; see the source notes); the council class 'open' stays until legal records its decision. Politeness: min_interval 2 s on t.me and cache 1 h (P112 cond 4); 2 MB page cap of the shared t.me parser (P112 cond 2); one request at a time. Handles are PERSONAL_TYPES: personal_data_review before default use (P112 cond 1). Telegram is not a breach provider (sensitive false): leaked personal data in posts is scrubbed at ingestion by the module sanitizer."
+}

@@ -1,0 +1,130 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "mitre",
+  "name": "MITRE (CVE Services, CWE API, ATT&CK, D3FEND)",
+  "operator": "The MITRE Corporation",
+  "hosts": [
+    "cveawg.mitre.org",
+    "cwe-api.mitre.org",
+    "attack-taxii.mitre.org",
+    "attack.mitre.org",
+    "d3fend.mitre.org"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "The MITRE Corporation is named by A8 among the trusted security non-profits; P183 cond 7 'Registry providers mitre and nist_nvd: tier trusted', P292 cond 8, P294 and P300 cond 5 (MITRE ATT&CK and D3FEND trusted).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "Authoritative publisher of the CVE List (with CNA and CISA ADP containers), CWE, ATT&CK and D3FEND: curated reference data, not observations."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "cve_services": {
+      "title": "CVE Services API cveawg /api/cve/{id} (CNA and CISA ADP containers)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.cve.org/Legal/TermsOfUse",
+        "quote": "MITRE's CVE/CWE copyright designation and licence in THIRD_PARTY_NOTICES. Registry providers mitre and nist_nvd: tier trusted, terms open.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "mitre",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P183 cond 7); research C0431 terms 'CVE terms of use (free)' (verified_live 200; RateLimit-Policy 25000;w=60). cveawg.mitre.org/api/cve/{id}: the CVE 5 record with CNA and CISA ADP containers (CVSS, SSVC, KEV ADP), cache 24 h (P183 cond 1, 4); per-CVE calls follow the CVE fan-out rule (P183 cond 3). REJECTED/RESERVED records are info, never scored. Used by cve_record."
+    },
+    "cwe_api": {
+      "title": "CWE REST API /api/v1/cwe/weakness/{id} (dataset refresh only, never per CVE)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://cwe.mitre.org/about/termsofuse.html",
+        "quote": "MITRE's CVE/CWE copyright designation and licence in THIRD_PARTY_NOTICES. Registry providers mitre and nist_nvd: tier trusted, terms open.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "mitre",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P183 cond 7); research C0447 terms 'CWE terms of use (free)' (verified_live 200). The CWE Terms of Use (checked 2026-11-26) grant 'a non-exclusive, royalty-free license to use CWE for research, development, and commercial purposes' with MITRE's copyright designation reproduced. cwe-api.mitre.org/api/v1/cwe/weakness/{id} for dataset refresh only: CWE names come from a registered CWE dataset, never a per-CVE call (P183 cond 2). Used by cve_record."
+    },
+    "attack_taxii": {
+      "title": "MITRE ATT&CK TAXII 2.1 server (collections and objects)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://attack.mitre.org/resources/legal-and-branding/terms-of-use/",
+        "quote": "the MITRE ATT&CK/CAPEC Terms of Use (royalty-free, commercial use allowed with the notice reproduced)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "mitre",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P292 cond 2); research C0662 terms '[live_cti] ATT&CK terms of use (royalty-free, attribution)' (verified_live 200). attack-taxii.mitre.org/api/v21/collections/ and .../objects/ only detect a newer version; full loads stream the raw GitHub STIX bundles (core github) through the dataset manager (P292 cond 3). MITRE notice in data/NOTICE and report footers (P292 cond 1). Used by attack_index."
+    },
+    "attack_pages": {
+      "title": "ATT&CK technique pages /techniques/{T}/{sub}/ (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://attack.mitre.org/resources/legal-and-branding/terms-of-use/",
+        "quote": "the MITRE ATT&CK/CAPEC Terms of Use (royalty-free, commercial use allowed with the notice reproduced)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "mitre",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P292 cond 2): the same ATT&CK Terms of Use cover the website; research C0675 terms 'Free web UI; provider ToS apply (manual analyst use)' (verified_live 200). attack.mitre.org/techniques/{T}/{sub}/ through the vetted {mitre_path} placeholder (P300 cond 8). Manual links only (data/pivot_links/cti.json), never fetched. Used by pivots_cti."
+    },
+    "d3fend_api": {
+      "title": "D3FEND API /api/offensive-technique/attack/{T}.json",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://d3fend.mitre.org/tou/",
+        "quote": "Terms of Use checked 2026-11-26: royalty-free for research, development and commercial purposes with the notice",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "mitre",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P294 cond 4); research C0668 terms 'MITRE D3FEND terms' (verified_live 200). The D3FEND Terms of Use grant 'a non-exclusive, royalty-free license to use D3FEND for research, development, and commercial purposes'. Fallback only: d3fend.mitre.org/api/offensive-technique/attack/{T}.json sends just the technique id and 404 = 'no mapping' (P294 cond 2); the ATT&CK mapping export through the dataset manager is preferred (P294 cond 1). The provider ttl (24 h) caps the 30-day cache P294 cond 2 allows. Copyright designation and licence text in data/NOTICE, THIRD_PARTY_NOTICES and reports (P294 cond 4). Used by d3fend."
+    },
+    "d3fend_pages": {
+      "title": "D3FEND offensive-technique pages (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://d3fend.mitre.org/tou/",
+        "quote": "Terms of Use checked 2026-11-26: royalty-free for research, development and commercial purposes with the notice",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "mitre",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P294 cond 4). d3fend.mitre.org/offensive-technique/attack/{id}/ (P294 cond 3, P300 cond 10). Manual links only, never fetched. Used by pivots_cti."
+    }
+  },
+  "notes": "Shared seed for batches p1-G08-1, p1-G11-1, p2-G14-2, p3-G11-1 (P183, P292, P294, P300): batches only extend it (mitre__<suffix>.json: extra sources and error markers). One keyless provider for the MITRE services; the terms differ only in text and are kept per source. nist_nvd (services.nvd.nist.gov) is a separate provider owned by batch p1-G08-1. CVE Services sends RateLimit-Policy 25000;w=60 (research C0431): no quota block. ttl 24 h follows the CVE cache of P183 cond 4; ATT&CK and D3FEND bulk data belong in datasets, not in the HTTP cache."
+}

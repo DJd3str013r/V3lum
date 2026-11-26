@@ -1,0 +1,72 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "gravatar",
+  "name": "Gravatar profiles",
+  "operator": "Automattic Inc. (Gravatar)",
+  "hosts": [
+    "gravatar.com",
+    "api.gravatar.com",
+    "en.gravatar.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company (Automattic) with published terms, a privacy policy and a business offering (A8): 'Gravatar (Automattic): tier trusted, terms open.' (P087 rationale).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Authoritative for the profiles it hosts; profile content is self-asserted by the account owner, so identity links stay PROBABLE (verified accounts) or POSSIBLE (free-text links), P087 cond 4."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "hour": 100,
+    "burst": 1,
+    "published": true,
+    "evidence_url": "https://docs.gravatar.com/rest-api/",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {
+    "gravatar": {
+      "description": "Gravatar API key (optional; raises the Profiles API limit from 100 to 1000 requests per hour)",
+      "signup_url": "https://gravatar.com/developers",
+      "env": [
+        "V3LUM_GRAVATAR_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "free key from the Gravatar Developer Dashboard on an account created under the corporate identity; the API is free to use (terms open) and the key only raises limits: P087 keeps only display name, verified-account URLs and avatar hash whatever the key returns"
+    }
+  },
+  "sources": {
+    "profiles": {
+      "title": "Gravatar v3 profiles API (e-mail hash or username), legacy {u}.json and avatar existence d=404",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://automattic.com/tos/",
+        "quote": "Gravatar (Automattic): tier trusted, terms open.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "gravatar",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0202 terms 'Gravatar/Automattic API terms' / 'Gravatar (Automattic) API ToS.' Endpoints api.gravatar.com/v3/profiles/{sha256(lower(trim(email)))} (hash computed locally, P087 cond 1), legacy en.gravatar.com/{username}.json, avatar existence gravatar.com/avatar/{hash}?d=404. A 404 {'error':'Profile not found'} is a declared absence handled by the module (P087 cond 3). E-mail hashes are dictionary-reversible personal data (PERSONAL_TYPES): personal_data_review must be recorded before default use (P087 cond 2). Used by gravatar and username_check."
+    }
+  },
+  "notes": "Seeded once for batches p1-G05-2 and p2-G04-1 (P087, P113). Quota: the Gravatar REST API documentation publishes 'Unauthenticated requests are limited to 100 per hour. Authenticated requests are limited to 1000 per hour.' (checked 2026-11-26); the block uses the keyless figure (budget 80/h per egress IP), also when the optional key is set; 429 = RATE_LIMITED (P087 cond 3). Not a people-data provider: flags.sensitive false."
+}

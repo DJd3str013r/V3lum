@@ -1,0 +1,113 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "gitlab",
+  "name": "GitLab.com (API, public keys, raw files)",
+  "operator": "GitLab Inc.",
+  "hosts": [
+    "gitlab.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "GitLab Inc. is an established company with published terms, a privacy policy and a business offering (A8 trusted); P103 cond 1 'Registry provider gitlab: tier trusted', P190 cond 6, P305 cond 1 and P359 cond 3.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Authoritative for the GitLab.com accounts, groups and repositories it hosts; profile fields are self-published by the account owner (P103 cond 4); hosted datasets such as the Exploit-DB CSV are as reliable as their maintainers."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "rate_per_second": 8.333,
+    "burst": 1,
+    "published": true,
+    "evidence_url": "https://docs.gitlab.com/user/gitlab_com/rate_limits/",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {
+    "gitlab": {
+      "description": "GitLab.com access token (read_api; PRIVATE-TOKEN or Authorization header only, never in URLs or logs)",
+      "signup_url": "https://gitlab.com/-/user_settings/personal_access_tokens",
+      "env": [
+        "V3LUM_GITLAB_TOKEN"
+      ],
+      "multi_key": false,
+      "plan_hint": "business = a token of a company/team GitLab.com account on a plan whose terms permit internal business use, recorded in key_plans.gitlab (P305 cond 2); only blob search needs it"
+    }
+  },
+  "sources": {
+    "users_api": {
+      "title": "GitLab users API (users?username=, users/{id}) and public {user}.keys/.gpg",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://about.gitlab.com/terms/",
+        "quote": "Registry provider gitlab: tier trusted, terms open; personal_data_review before default use (A3 BR8).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "gitlab",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P103 cond 1); research C0238 terms 'GitLab.com ToS; public API' (verified_live 200). gitlab.com/api/v4/users?username={u} (200 with [] = ABSENT), /api/v4/users/{id}, and the plain-text gitlab.com/{u}.keys and {u}.gpg capped at 1 MB at module level, stored as SHA-256 fingerprints (P103 cond 3). public_email, linked accounts and website fields are case-bound personal data, pivots with expand=False (P103 cond 4). Used by gitlab_user, username_check and github_user (cross-platform key match, P111)."
+    },
+    "groups_api": {
+      "title": "GitLab groups API (top-level group search, group projects)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://about.gitlab.com/terms/",
+        "quote": "Sources: GitHub REST 'key-terms' (as P111); GitLab, Codeberg, npm, PyPI and Docker Hub 'open'.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "gitlab",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P359 cond 3); research C0759 terms 'GitLab API terms.' (verified_live 200). gitlab.com/api/v4/groups?search={name}&top_level_only=true&per_page=20 and /api/v4/groups/{id}/projects?per_page=100&order_by=last_activity_at&simple=true. Secrets found in public history are reported masked, never tested (P359 cond 1). Used by org_code_footprint."
+    },
+    "blob_search": {
+      "title": "GitLab search API scope=blobs and repository file raw (token)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://about.gitlab.com/terms/",
+        "quote": "Key-terms (legal floor): the tokens belong to company/team accounts on plans whose terms permit internal business use, recorded in the provider registry (key_plans) before the module runs under the corporate profile.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "gitlab",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P305 cond 2); research C0680 terms 'GitLab ToS' (unverified). gitlab.com/api/v4/search?scope=blobs&search={term}&per_page=100 and /api/v4/projects/{id}/repository/files/{path}/raw?ref={ref} with the token. Raw search bodies are never cached (ttl=0 at module level) and matched fragments pass the P312 secret scanner (P305 cond 6). Merge only with trimmed real fixtures captured with the team token (P305 cond 10). Used by code_search."
+    },
+    "exploitdb_csv": {
+      "title": "Exploit-DB files_exploits.csv hosted at gitlab.com/exploit-database (CVE -> public exploit)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://gitlab.com/exploit-database/exploitdb",
+        "quote": "Repository under GPL-2.0: download as external data at runtime, do not vendor into V3LUM",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "exploit-db",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: research C0435 terms (verified_live 206): gitlab.com/exploit-database/exploitdb/-/raw/main/files_exploits.csv, refreshed weekly by the dataset manager (P190 cond 1). GPL-2.0 obligations are met by runtime download and attribution (A1 'open', A6); never vendored. An Exploit-DB entry marks exploit_maturity 'weaponised' (P190 cond 3). Used by exploit_index (offline index, disclosure none)."
+    }
+  },
+  "notes": "Shared seed for batches p1-G05-1, p1-G05-2, p2-G05-1, p2-G05-2, p2-G08-2, p2-G14-3 (P103, P111, P113, P190, P305, P359): batches only extend it (gitlab__<suffix>.json: extra sources and error markers). Shared hosting platform like core github: further datasets hosted on gitlab.com are added by gitlab__<batch>.json extensions with their own terms; self-hosted GitLab instances are target infrastructure, never this provider (P103 cond 2). Quota: GitLab.com publishes 500 requests each minute for unauthenticated traffic from an IP address (current rate limits, checked 2026-11-26) -> egress budget at 80%; 429 = could not verify (P103 cond 5). The same page lists proposed per-plan limits that are not in effect yet (unauthenticated traffic 60 each hour per IP address, announced with brownout windows): lower this block when GitLab enforces them. Token only in a header, never in URLs or logs (P305 cond 8). Usernames are PERSONAL_TYPES: personal_data_review before default use (P103 cond 1)."
+}

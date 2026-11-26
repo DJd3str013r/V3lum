@@ -1,0 +1,67 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "querido_diario",
+  "name": "Querido Diario API",
+  "operator": "Open Knowledge Brasil (Querido Diario)",
+  "hosts": [
+    "api.queridodiario.org.br"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Open Knowledge Brasil, a civil-society non-profit running the open-source Querido Diario project (A8 community); P236 'Querido Diario (Open Knowledge Brasil) community' and P243 'Open Knowledge Brasil is recorded as community tier'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Indexes official municipal gazettes for part of Brazil's municipalities; an empty result means 'not found in covered gazettes', never 'no mentions' (P243)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400,
+    "min_interval": 1.0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "gazettes": {
+      "title": "Querido Diario gazette search API (/gazettes, /cities)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://api.queridodiario.org.br/docs",
+        "quote": "'open' = free use, internal business use included (public domain, CC0, CC BY, open government data, and permissive or copyleft licences whose obligations V3LUM meets by runtime download and attribution, A6)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "queridodiario",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (A1 decision, docs/COUNCIL_1.md). Class 'open' is the P243 chair-file class: official municipal gazettes indexed by Open Knowledge Brasil as open data (research C0554). /gazettes?querystring=&territory_ids=&published_since=&size=10&excerpt_size=500 and /cities; at most 10 excerpts per query (P243)."
+    },
+    "company": {
+      "title": "Querido Diario company info and partners (/company/info, /company/partners by CNPJ)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://api.queridodiario.org.br/docs",
+        "quote": "Sources at release (class open, legal_dpo): BrasilAPI and Minha Receita (MIT code, RFB open data; one shared parser), publica.cnpj.ws public API (only free source of state IE) and Querido Diario company/partners.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "queridodiario",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P236 cond 1). /company/info/{cnpj} and /company/partners/{cnpj} (research C0528); QSA data keeps masked CPFs (rule 4) and a CPF is never looked up (P236)."
+    }
+  },
+  "notes": "Shared seed for batches p1-G10-2, p2-G10-3: batches only extend it (querido_diario__<suffix>.json: extra sources and error markers). P243 also uses the alias host api.queridodiario.ok.org.br (single batch p2-G10-3): it is added with a querido_diario__<suffix>.json extension, not a second provider. ~3 s per query and no published limit (research C0554/C0528: throttle <= 1 req/s, cache 24 h) -> min_interval 1 s and ttl 24 h, no quota block. Error-in-200 and 401/403/429 = could not verify, never cached (P243). Person names only for typed due-diligence seeds (P243)."
+}

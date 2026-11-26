@@ -1,0 +1,93 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "grayhatwarfare",
+  "name": "GrayhatWarfare (open bucket index)",
+  "operator": "GrayhatWarfare (operator per the grayhatwarfare.com terms)",
+  "hosts": [
+    "buckets.grayhatwarfare.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Small identifiable operator with published terms (A8 community): 'GrayhatWarfare is a small identifiable operator: tier community.' (P138 rationale); 'community - GrayhatWarfare' (P290 cond 5).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": true
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Index of publicly listable cloud buckets and file names as observed at crawl time: entries can be stale, and brand-named buckets are unverified candidates until linked to the organisation (P138 cond 4)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "max_bytes": 2097152,
+    "ttl": 0,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {
+    "grayhat": {
+      "description": "GrayhatWarfare API key (Authorization: Bearer header)",
+      "signup_url": "https://grayhatwarfare.com/register",
+      "env": [
+        "V3LUM_GRAYHAT_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "business = a company/team GrayhatWarfare plan recorded by legal before it runs under the corporate profile (P138 cond 1)"
+    }
+  },
+  "sources": {
+    "api": {
+      "title": "GrayhatWarfare API v2 (files and buckets by keyword)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://grayhatwarfare.com/terms",
+        "quote": "Key-terms: a company/team account on a plan recorded by legal before it runs under corporate.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "grayhatwarfare",
+      "sanitizer": {
+        "keep": [
+          "meta.results",
+          "meta.notice",
+          "files[].bucket",
+          "files[].filename",
+          "files[].size",
+          "files[].type",
+          "files[].lastModified",
+          "buckets[].bucket",
+          "buckets[].fileCount",
+          "buckets[].type"
+        ],
+        "notes": "Bucket and file names only (P290 cond 8, P138 cond 2): files[].url, files[].fullPath, ids and the echoed query are dropped, so no file link or content is ever kept (A7: no object downloads). File names can carry personal data: names with CPF patterns, e-mails or person names are masked by the module before storage (P138 cond 3). Field names from the GrayhatWarfare API v2 reference (buckets.grayhatwarfare.com/docs/api/v2, checked 2026-11-26)."
+      },
+      "dataset": null,
+      "notes": "Research C0309 terms 'GrayhatWarfare terms' (status verified_needs_key 401). Endpoints /api/v2/files?keywords= and /api/v2/buckets?keywords=; key in 'Authorization: Bearer' only (the API also accepts ?access_token=, never used: the cache stores URLs); 401 without it = NEEDS_KEY (P138 cond 1). Result cap 100 (P138 cond 5). Used by grayhatwarfare."
+    },
+    "search_pages": {
+      "title": "GrayhatWarfare files search page files?keywords= (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://grayhatwarfare.com/terms",
+        "quote": "GrayhatWarfare: buckets.grayhatwarfare.com/files?keywords= pre-filled only with analyst-typed entities or org_profile brands; bucket and file names only, never file links or downloads (third-party files may hold personal data, LGPD); privacy badge.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "grayhatwarfare",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0651 terms 'Free web UI; provider ToS apply (manual analyst use)'. Manual links only (data/pivot_links/pentest.json), never fetched by V3LUM. The provider is flagged sensitive: a module that ever declares this source needs its own sanitizer schema (A4). Used by pivots_pentest."
+    }
+  },
+  "notes": "Seeded once for batches p2-G14-2 and p3-G04-1 (P138, P290). flags.sensitive: an index of exposed bucket files (leak data, LGPD; P290 cond 8): the sanitizer keeps bucket and file names only and the HTTP cache never stores these answers (ttl 0, no-store). Free registered users get the web search limits (API v2 reference); the team plan is not recorded yet: no quota block."
+}

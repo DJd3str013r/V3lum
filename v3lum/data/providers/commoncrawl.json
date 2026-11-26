@@ -1,0 +1,55 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "commoncrawl",
+  "name": "Common Crawl index server",
+  "operator": "Common Crawl Foundation",
+  "hosts": [
+    "index.commoncrawl.org"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established non-profit with published terms of use (A8). 'All archives are established non-profits or public bodies: tier trusted, terms open.' (P059 rationale); 'Tiers: Internet Archive, Common Crawl and Brave trusted.' (P287 cond 7).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Large public web-crawl archive: authoritative for what its crawls captured; coverage is partial and the index server is often overloaded, so a miss is never 'never existed'."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "timeout": 30,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 2.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "cdx_index": {
+      "title": "Common Crawl CDX index server (collinfo.json and per-crawl indexes)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://commoncrawl.org/terms-of-use",
+        "quote": "Registry terms (A1 BR3): the Internet Archive (Wayback CDX and availability), Arquivo.pt (FCT public service), Common Crawl (free terms of use) and CarbonDate (ODU academic service) are 'open', each recorded by legal with evidence",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "commoncrawl",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0146 terms 'Common Crawl terms of use (free)'; endpoints https://index.commoncrawl.org/collinfo.json -> {cdx-api}?url=*.{domain}&output=json. The index server is often overloaded (HTTP 504/503, resets): only the newest crawls with backoff, Common Crawl only with --preset deep or -M (P059 cond 3: latest 1-2 indexes). WARC records via Range from data.commoncrawl.org are not seeded here (no batch declared that host): add it with commoncrawl__<batch>.json. Used by web_archives and archive_mining."
+    }
+  },
+  "notes": "Seeded once for batches p1-G01-2 and p2-G01-3 (P059, P060). Overloaded index server (504/503, resets): timeout 30 s, one retry, min_interval 2 s and concurrency 1 to avoid bursts; volume stays low (rule 6). No published limit: no quota block."
+}

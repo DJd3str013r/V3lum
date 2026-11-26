@@ -1,0 +1,151 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "circl",
+  "name": "CIRCL services (pDNS, MISP OSINT feed, hashlookup, BGP Ranking, Lookyloo)",
+  "operator": "CIRCL (Computer Incident Response Center Luxembourg)",
+  "hosts": [
+    "circl.lu",
+    "www.circl.lu",
+    "hashlookup.circl.lu",
+    "cra.circl.lu",
+    "bgpranking-ng.circl.lu",
+    "lookyloo.circl.lu"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "National CERT of Luxembourg (A8 definitions name CIRCL among the trusted CERTs and security non-profits); P173 'Registry provider circl (national CERT): tier trusted', P015 CIRCL pDNS tier trusted, P033 'established non-profits or CERTs: tier trusted', P078 'CIRCL is trusted'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "National CERT services: hashlookup indexes known-file sets (NSRL and CIRCL collections), pDNS holds sensor observations, the MISP OSINT feed is curated from public reports; BGP Ranking is context only (P033)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {
+    "circl_pdns_user": {
+      "description": "CIRCL Passive DNS account user name (HTTP basic auth together with circl_pdns_pass)",
+      "signup_url": "https://www.circl.lu/services/passive-dns/",
+      "env": [
+        "V3LUM_CIRCL_PDNS_USER"
+      ],
+      "multi_key": false,
+      "plan_hint": "the team's own vetted CIRCL pDNS account (CSIRT access granted on request); runs only with a licence_allow entry recording the CIRCL grant (P015)"
+    },
+    "circl_pdns_pass": {
+      "description": "CIRCL Passive DNS account password (HTTP basic auth with circl_pdns_user; Authorization header only, never in URLs)",
+      "signup_url": "https://www.circl.lu/services/passive-dns/",
+      "env": [
+        "V3LUM_CIRCL_PDNS_PASS"
+      ],
+      "multi_key": false,
+      "plan_hint": "same credential as circl_pdns_user: one account stored under the two key names P015 requires"
+    }
+  },
+  "sources": {
+    "pdns": {
+      "title": "CIRCL Passive DNS www.circl.lu/pdns/query (COF/NDJSON; CSIRT account on request)",
+      "terms": {
+        "class": "license",
+        "evidence_url": "https://www.circl.lu/services/passive-dns/",
+        "quote": "CIRCL pDNS = license (CSIRT access granted on request), tier trusted.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "circl",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P015 cond 1). Runs only with the team's own vetted account and a licence_allow entry recording the CIRCL grant (P015). Credentials only in the Authorization header (basic auth), never in URLs; CIRCL TLP/handling rules apply: CIRCL-sourced records are not exported outside the team (STIX/MISP) unless CIRCL allows. www.circl.lu/pdns/query/{domain_or_ip} (COF/NDJSON, research C0010); one COF/NDJSON parser for every pDNS provider.",
+      "licensed_alternative": "The CIRCL pDNS grant itself (CSIRT access on request) recorded as a licence_allow entry; mnemonic pDNS (P015) covers part of the gap once legal records its terms."
+    },
+    "misp_osint_feed": {
+      "title": "CIRCL MISP OSINT feed (TLP:CLEAR manifest, per-event JSON, hashes.csv)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.circl.lu/doc/misp/feed-osint/",
+        "quote": "Feeds in this module, terms recorded in the registry, all 'open': TweetFeed (CC0, LICENSE verified 2026-11-26; today/week lists), CIRCL MISP OSINT feed (TLP:CLEAR, attribute CIRCL)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "circl",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P159 cond 2). manifest.json and per-event {uuid}.json (hashes.csv in the same folder, research C0333), synced incrementally (If-Modified-Since): last 365 days by default, per-event size cap, same host only (P159). TLP:CLEAR; attribute CIRCL."
+    },
+    "hashlookup": {
+      "title": "CIRCL hashlookup (lookup by MD5/SHA-1/SHA-256, bulk, parents/children, info)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.circl.lu/services/hashlookup/",
+        "quote": "Registry provider circl (national CERT): tier trusted, terms open.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "circl",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P173 cond 1). GET hashlookup.circl.lu/lookup/{md5|sha1|sha256}/{h}, POST /bulk/{md5|sha1} for pasted lists, parents/children and /info (research C0407). 404 = 'not in hashlookup' (EMPTY, absent_statuses {404}), never clean (P173). Known-file data: never a malicious vote."
+    },
+    "hashlookup_bloom": {
+      "title": "CIRCL hashlookup full Bloom filter on cra.circl.lu (offline prefilter, 2023 snapshot, ~1 GB)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.circl.lu/services/hashlookup/",
+        "quote": "the CIRCL Bloom (open data, 2023 snapshot) comes only from `v3lum data fetch hashlookup-bloom` with a 1 GB warning and is a prefilter, never a known_good verdict.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "circl",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P350 cond 4). cra.circl.lu/hashlookup/hashlookup-full.bloom (DCSO bloom format, 1,002,366,384 bytes, Last-Modified 2023-10-07; directory listing answers 403; research C0731). Deferred in this build until the dataset manager offers a compact on-disk index behind an explicit size confirmation; never loaded into memory (P350)."
+    },
+    "bgpranking": {
+      "title": "CIRCL BGP Ranking (ipasn_history, ASN ranking)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.circl.lu/services/bgp-ranking/",
+        "quote": "Registry (A1 BR3, A8 BR12): PeeringDB (free under its AUP), CIRCL BGP Ranking (free CIRCL service) and the Shadowserver public API (free public-benefit service) are 'open', tier trusted, each with evidence recorded.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "circl",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P033 cond 1). bgpranking-ng.circl.lu/ipasn_history/?ip= and POST /json/asn (research C0098). Context only: never raises an IP or domain above INFO and never counts as a consensus vote; large clouds and hosters always rank high (P033)."
+    },
+    "lookyloo": {
+      "title": "CIRCL Lookyloo public instance (capture lookups only; /submit never wired)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://lookyloo.circl.lu/",
+        "quote": "The keyless Lookyloo lookups of CIRCL's public instance (trusted) run once legal records CIRCL's terms for that instance with evidence (legal_dpo's lift lists Lookyloo capture lookup as allowed).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "circl",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P078 cond 5). Lookups of existing captures only (/json/recent_captures, /json/{capture_uuid}/hostnames|urls|redirects|stats, research C0182); POST /submit is never built (P078 veto_lift, test-asserted). Disabled in every profile until legal records CIRCL's terms for this instance; then reclassify."
+    }
+  },
+  "notes": "Shared seed for batches p1-G07-1, p1-G07-2, p2-G01-2, p2-G02-1, p2-G07-2, p9-G03-3: batches only extend it (circl__<suffix>.json: extra sources and error markers). CIRCL Vulnerability-Lookup is the separate provider circl_vulnlookup (own key and budget). No provider-wide quota on purpose: these services publish no hard limits (batch hashlookup lists through /bulk and cache). www.circl.lu serves pDNS and the MISP feed. Keys: one credential (the team's vetted pDNS account) under the two key names P015 requires; multi_key false. Flags all false: no submission path to Lookyloo exists."
+}

@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "docker_hub",
+  "name": "Docker Hub v2 API",
+  "operator": "Docker, Inc.",
+  "hosts": [
+    "hub.docker.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Docker, Inc. is an established company with published terms, a privacy policy and a business offering (A8 trusted); P102 cond 1 'Registry provider docker_hub: tier trusted' and P359 cond 3 'Docker trusted'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Authoritative for the accounts, repositories and image metadata it hosts; profile fields and image LABEL e-mails are self-asserted, and labels inherited from base images are ignored (P102 cond 4)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 604800
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "hub_api": {
+      "title": "Docker Hub v2 API (users, orgs, repositories, tags, image layer instructions)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.docker.com/legal/docker-terms-use/",
+        "quote": "Registry provider docker_hub: tier trusted, terms open.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "docker-hub",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P102 cond 1); research C0234 terms '[gh_people] Docker Hub ToS; public API' (verified_live 200). The Docker Terms of Use (checked 2026-11-26) govern unauthenticated 'Free Hub Access' and allow automated access 'through documented APIs and within published limits'. hub.docker.com/v2/users/{u} (308 -> /v2/orgs/{o}), /v2/orgs/{o}, /v2/repositories/{ns}/?page_size<=100, .../{repo}/tags and .../tags/{tag}/images (layer instructions); <= 5 repositories, latest tag, 1 page (P102 cond 3). 404 {'message':'User not found'} = ABSENT; 429 = RATE_LIMITED. Used by dockerhub, username_check and org_code_footprint."
+    }
+  },
+  "notes": "Shared seed for batches p1-G05-2, p2-G05-1, p2-G05-2 (P102, P113, P359): batches only extend it (docker_hub__<suffix>.json: extra sources and error markers). hub.docker.com v2 API only: registry-1.docker.io and auth.docker.io are never contacted (anonymous pull limits are shared by the corporate NAT and its CI; P102 cond 2). Observed x-ratelimit-limit 180 per window (research C0234): the headers are honoured and 429 = RATE_LIMITED, so no quota block. ttl 7 days (P102 cond 3). Usernames are PERSONAL_TYPES: personal_data_review before default use (P102 cond 6); secrets in layer instructions pass the P145/P323 sanitizer at module level (P102 cond 5)."
+}

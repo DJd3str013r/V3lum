@@ -1,0 +1,78 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "ipinfo",
+  "name": "IPinfo (API and web pages)",
+  "operator": "IPinfo Inc.",
+  "hosts": [
+    "api.ipinfo.io",
+    "ipinfo.io"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms, a privacy policy and a business offering (A8): 'IPinfo is an established company: tier trusted.' (P036 rationale); 'trusted - bgp.he.net (Hurricane Electric), IPinfo' (P057 cond 5).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Commercial IP geolocation and ASN data (Lite: country and ASN): usually reliable; geolocation is an estimate."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400,
+    "concurrency": 2
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {
+    "ipinfo": {
+      "description": "IPinfo token (Lite API: country and ASN; Authorization: Bearer header only)",
+      "signup_url": "https://ipinfo.io/account/token",
+      "env": [
+        "V3LUM_IPINFO_TOKEN"
+      ],
+      "multi_key": false,
+      "plan_hint": "business = a company/team IPinfo account whose plan and terms URL legal records (P036 cond 2; IPinfo Lite is CC BY-SA 4.0 with commercial use allowed, attribution required)"
+    }
+  },
+  "sources": {
+    "api": {
+      "title": "IPinfo API (Lite /lite/{ip}, core /{ip}/json)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://ipinfo.io/developers/lite-api",
+        "quote": "Key-terms: a company/team account; legal records the plan and terms URL (IPinfo Lite is CC BY-SA 4.0 with commercial use allowed, verified 2026-11-26) before it runs under the corporate profile.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "ipinfo",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0084 terms 'IPinfo terms; Lite data CC BY-SA 4.0 (attribution)'. Token only in 'Authorization: Bearer', never ?token= (the cache stores URLs); keyless calls are disabled (429 'Rate limit hit' from shared egress); 403 'Unknown token' = NEEDS_KEY (P036 cond 1, cond 4). Attribution to IPinfo (CC BY-SA 4.0) in reports, `v3lum info` and THIRD_PARTY_NOTICES.md; case data only, never bundled (P036 cond 5). The Lite API documentation states 'The API has no daily or monthly limit and provides unlimited access.' (checked 2026-11-26): no quota block. Used by ipinfo."
+    },
+    "web_pages": {
+      "title": "IPinfo IP and ASN pages (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://ipinfo.io/terms-of-service",
+        "quote": "The pack is offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "ipinfo",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0133 terms 'Free web UI; provider ToS apply (manual analyst use)' / 'site terms'. Manual links ipinfo.io/{ip} and ipinfo.io/AS{asn} (P036 cond 3, P057 cond 8). ipinfo.io answers scripts with API JSON, so its terms page renders only in a browser. Used by pivots_ip_network."
+    }
+  },
+  "notes": "Seeded once for batches p2-G02-1 and p2-G14-1 (P036, P057). Key 'ipinfo' is also in the legacy config.KNOWN_KEYS table (alias IPINFO_TOKEN); config.key_registry() merges the aliases."
+}

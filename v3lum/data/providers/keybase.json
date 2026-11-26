@@ -1,0 +1,52 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "keybase",
+  "name": "Keybase user lookup API",
+  "operator": "Keybase (Zoom Video Communications, Inc.)",
+  "hosts": [
+    "keybase.io"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Keybase, operated by Zoom Video Communications, Inc., an established company with published terms and a privacy policy (A8 trusted); P104 'Registry provider keybase (Zoom): tier trusted, terms open'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Self-asserted, signed identity proofs from a service in maintenance mode: an OK proof is PROBABLE on Keybase alone and CONFIRMED only with corroboration (P104)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400,
+    "min_interval": 1.0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "user_lookup": {
+      "title": "Keybase user/lookup.json (basics, proofs_summary, public_keys; github=/twitter=/domain= reverse lookups)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://keybase.io/docs/terms",
+        "quote": "Registry provider keybase (Zoom): tier trusted, terms open; usernames are PERSONAL_TYPES, so personal_data_review comes before default use (A3 BR8).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "keybase",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P104 cond 1). keybase.io/_/api/1.0/user/lookup.json?usernames= (plus github=/twitter=/domain= reverse lookups) with fields basics, proofs_summary and public_keys only; no full sigchain download (P104; research C0239). Results carry 'Keybase is in maintenance mode: historical, self-asserted evidence' and the data age."
+    }
+  },
+  "notes": "Shared seed for batches p1-G05-2, p2-G05-1, p2-G05-2, p3-G05-1: batches only extend it (keybase__<suffix>.json: extra sources and error markers). P102 removed keybase.io from dockerhub and P359 declares only SaaS forges, so they do not call it. No published limit (light use, research C0239): min_interval 1 s as politeness floor, no quota block. personal_data_review is still to be recorded (usernames, A3 BR8)."
+}

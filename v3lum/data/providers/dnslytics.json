@@ -1,0 +1,50 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "dnslytics",
+  "name": "DNSlytics (search pages)",
+  "operator": "DNSlytics (operator per the dnslytics.com terms)",
+  "hosts": [
+    "search.dnslytics.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Small company with published terms of service and a multi-year public track record (A8 community): 'community - Netlas, Spur, CentralOps, DNSlytics, dotDB, TGStat, tellows, CVEdetails, Vulners, Ahmia, Arkham, Chainabuse' (P304 cond 5).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Aggregated DNS, IP, ASN and reverse-analytics pages built from its own crawls: useful context for manual pivots, not a primary source."
+  },
+  "http_profile": {
+    "user_agent": "neutral"
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "search_pages": {
+      "title": "DNSlytics domain, IP, ASN and reverse-analytics pages (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://dnslytics.com/terms-of-service/",
+        "quote": "The packs are offline data (disclosure 'none'): V3LUM never requests these URLs, not even from doctor, and never solves their challenges.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "dnslytics",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0066 terms 'Free web UI; provider ToS apply (manual analyst use)' (status 403: Cloudflare answers scripts with 403, so manual links only, A9). Pages search.dnslytics.com/domain/{domain}, /ip/{ip}, /bgp/as{asn}; analytics_ids (P061) uses it as a reverse-analytics pivot link. Used by analytics_ids and pivots_unverified."
+    }
+  },
+  "notes": "Seeded once for batches p2-G03-1 and p2-G14-3 (P061, P304). Manual links only: V3LUM never fetches these pages, so no budget."
+}

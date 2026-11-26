@@ -1,0 +1,71 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "transparencia_api",
+  "name": "Portal da Transparencia API de dados",
+  "operator": "Controladoria-Geral da Uniao (CGU)",
+  "hosts": [
+    "api.portaldatransparencia.gov.br"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Government body (Controladoria-Geral da Uniao; A8: government bodies are trusted); P237 provider tier trusted, the same operator as transparencia ('trusted - Portal da Transparencia (CGU)', P250 cond 5).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "Official CGU API (company records, sanctions, contracts, convenios); rows that do not contain the queried CNPJ mean the filter was ignored -> ERROR, never findings (P237 cond 6)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "key",
+    "rate_per_second": 1.5,
+    "burst": 1,
+    "published": true,
+    "evidence_url": "https://portaldatransparencia.gov.br/api-de-dados",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {
+    "transparencia": {
+      "description": "Portal da Transparencia (CGU) API key (chave-api-dados header)",
+      "signup_url": "https://portaldatransparencia.gov.br/api-de-dados/cadastrar-email",
+      "env": [
+        "V3LUM_TRANSPARENCIA_KEY",
+        "V3LUM_CGU_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "free key registered with the team's institutional gov.br account, never a personal or borrowed key (P237 cond 1); CGU open data, business-compatible (free_plan_business_use true)"
+    }
+  },
+  "sources": {
+    "api_dados": {
+      "title": "Portal da Transparencia API de dados (pessoa-juridica, CEIS, CNEP, CEPIM, acordos-leniencia, contratos)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://api.portaldatransparencia.gov.br/swagger-ui/index.html",
+        "quote": "CGU open data: key_plans business-compatible (free_plan_business_use true per the registry evidence).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "cgu",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0543 terms 'Open government data (CGU); free key by e-mail registration (gov.br login) at portaldatransparencia.gov.br/api-de-dados/cadastrar-email' / 'Brazilian federal open data' / 'CGU / LAI open data; free key by email.' The OpenAPI document (api.portaldatransparencia.gov.br/v3/api-docs) declares the chave-api-dados header. Key in that header only, never logged or stored in URLs (AR01); 401 'Chave de API nao informada' = NEEDS_KEY (P237 cond 2). Never a CPF or NIS parameter (/pessoa-fisica, /ceaf?cpfSancionado=, /peps?cpf=, benefit endpoints): rule 4 (P237 cond 3). Pagination <= 3 pages, max_requests 10 per entity (P237 cond 7). Used by portal_transparencia_api."
+    }
+  },
+  "notes": "Seeded for batch p2-G10-1 (P237), split from transparencia (own key, per-key budget). Quota: 'the documented 90 req/min (06:00-23:59) and 300 req/min (00:00-05:59) per key' (P237 cond 7; research C0543 'per portal docs'): the block uses the stricter daytime figure, 1.5/s per key (budget 1.2/s), with min_interval 1 s; the API page answers a CAPTCHA to scripts, so it was not re-fetched on 2026-11-26. 429 = RATE_LIMITED. Key 'transparencia' is also in the legacy config.KNOWN_KEYS table (alias PORTAL_TRANSPARENCIA_KEY); config.key_registry() merges the aliases. .br hosts default to Accept-Language pt-BR."
+}

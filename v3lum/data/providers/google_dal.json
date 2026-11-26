@@ -1,0 +1,53 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "google_dal",
+  "name": "Google Digital Asset Links API",
+  "operator": "Google LLC",
+  "hosts": [
+    "digitalassetlinks.googleapis.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms (A8): 'Google public API: tier trusted, terms open (Google APIs terms, no commercial-use bar recorded in the research).' (P008 rationale).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Serves the statements a site owner publishes (assetlinks.json) through Google's statement service; an empty list means 'no statements published', never 'no official apps' (P008 cond 4)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 2
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "statements": {
+      "title": "Digital Asset Links statements:list (web site and Android app delegations)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://developers.google.com/terms",
+        "quote": "Google public API: tier trusted, terms open (Google APIs terms, no commercial-use bar recorded in the research).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "google",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0030 terms 'Google APIs ToS' (keyless worked; Google API default quotas). Keyless GET /v1/statements:list?source.web.site=https://{domain}&relation=delegate_permission/common.handle_all_urls on registrable domains, cache 24 h (P008 cond 1); 429 = RATE_LIMITED, 403/5xx = could not verify (P008 cond 4). P346 reuses the P008 client (its 'license' class comes from Apple iTunes, not from this source). Used by digital_asset_links and mobile_app_impersonation."
+    }
+  },
+  "notes": "googleapis.com is a public-suffix namespace: each Google API host is its own provider (safebrowsing.googleapis.com and webrisk.googleapis.com belong to batch p2-G03-1). Seeded once for batches p2-G01-1 and p2-G03-2 (P008, P346). Google default API quotas are not published per keyless caller: no quota block."
+}

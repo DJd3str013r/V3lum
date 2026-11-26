@@ -1,0 +1,52 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "ripestat",
+  "name": "RIPEstat Data API",
+  "operator": "RIPE NCC",
+  "hosts": [
+    "stat.ripe.net"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "RIPE NCC is a Regional Internet Registry (A8 trusted: internet registries and RIRs); P031 and P345 trusted.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "RIPE NCC registry and routing data from the RIR itself; rir-geo and maxmind-geo-lite answers are MaxMind-derived geolocation context only (P031 cond 6)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400,
+    "concurrency": 4
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "data_api": {
+      "title": "RIPEstat Data API /data/{call}/data.json (network-info, prefix-overview, as-overview, announced-prefixes, whois, abuse-contact-finder, ...)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.ripe.net/about-us/legal/ripestat-service-terms-and-conditions/",
+        "quote": "Keyless RIPEstat Data API (stat.ripe.net/data/<call>/data.json), sourceapp=v3lum on every call, attribution to RIPE NCC per its terms.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "ripe-ncc",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P031 cond 1); research C0075 terms '[live_cti] RIPE NCC terms of service (free, attribution)' (verified_live 200). For legal's record: the RIPEstat Service Terms and Conditions (checked 2026-11-26) art. 3.3 forbid re-packaging or redistributing the service or its data, and commercial products or paid services based on it need the RIPE NCC's written permission; internal defensive use is outside that clause and V3LUM never redistributes RIPEstat data. Calls network-info, prefix-overview, rir-geo, whois, abuse-contact-finder, reverse-dns-ip, as-overview, announced-prefixes (streamed, <= 100 cidr pivots), asn-neighbours, searchcomplete and dns-chain (P031 cond 2, 4). JSON envelope errors in 200 (status, status_code, messages of type error) map to ERROR or RATE_LIMITED through P321 markers the owning batch adds with its error-envelope fixture (P031 cond 3, 7). RIPE person objects are dropped at ingestion (P031 cond 5). Used by ripestat and takedown_packet (the abuse-contact helper; the exporter itself makes no calls, P345 cond 1)."
+    }
+  },
+  "notes": "Shared seed for batches p1-G02-1, p2-G03-1 (P031, P345): batches only extend it (ripestat__<suffix>.json: extra sources and error markers). sourceapp=v3lum on every call (module level); fair use with no hard published limit: no quota block, concurrency 4 stays under the ~8 concurrent requests the research warns about (research C0075), ttl 24 h (P031 cond 1)."
+}

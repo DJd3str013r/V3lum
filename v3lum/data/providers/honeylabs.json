@@ -1,0 +1,76 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "honeylabs",
+  "name": "HoneyLabs honeypot telemetry",
+  "operator": "HoneyLabs (a sole proprietorship registered in the Netherlands, per honeylabs.net/terms)",
+  "hosts": [
+    "honeylabs.net"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "Individual operator whose terms had not been reviewed when the council decided (A8 unknown: anonymous or individual operators); P147 cond 3 'terms unknown, tier unknown' and P170 cond 5 'unknown - HoneyLabs'. A promotion needs a recorded review with reviewer and date (A8).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "F",
+    "justification": "Single-operator honeypot telemetry with closed-source collection: reliability cannot be judged until the operator is reviewed (A8 unknown); sightings mean opportunistic scanning, at most MEDIUM alone (P147 cond 6)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 21600
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {
+    "honeylabs": {
+      "description": "HoneyLabs API key (keyed IP lookups; free plan)",
+      "signup_url": "https://honeylabs.net/pricing",
+      "env": [
+        "V3LUM_HONEYLABS_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "free HoneyLabs key; unused until legal records HoneyLabs' terms (source honeylabs.api is 'unknown' and disabled in every profile, P147 cond 3)"
+    }
+  },
+  "sources": {
+    "api": {
+      "title": "HoneyLabs API (CVE, port and ASN telemetry; keyed IP lookup JSON)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://honeylabs.net/terms",
+        "quote": "they ship as a separate module honeypot_intel_extra (default_enabled=False, terms 'unknown', tier unknown), disabled in every profile until legal records their terms.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "honeylabs",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P147 cond 3: the HoneyLabs feed and a second honeypot feed 'publish no licence'; the second feed's name, a person's name, is left out of the registry). Research C0336 terms 'Free community service; API/MCP surface is closed-source; data covers the last ~90 days of their own honeypots.' (verified_live 200). For legal's review queue: honeylabs.net now publishes terms of service ('Last updated 24 November 2026', seen 2026-11-26) whose summary reads 'Use it in your own security work; putting it in a product you sell needs the redistribution licence (section 5).' If cleared: keyless /api/cves/{cve} with 'actors' capped at the top 20 IPs, IP lookups (/lookup/{ip} JSON) only with the free key (P147 cond 4); UDP-derived source IPs never feed verdicts (P147 cond 7); cache CVE answers 6-24 h. Used by honeypot_intel_extra."
+    },
+    "lookup_pages": {
+      "title": "HoneyLabs IP report page /lookup/{ip} (manual pivot links, HTML)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://honeylabs.net/terms",
+        "quote": "Free web UI.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "honeylabs",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: research C0399 terms (verified_live 200): honeylabs.net/lookup/{ip} HTML report page, not the keyed JSON (P170 cond 8). Manual links only with the 'unknown operator' badge; unknown-tier hosts receive IOC values only (P170 cond 4, 11). Used by pivots_threat_intel."
+    }
+  },
+  "notes": "Shared seed for batches p2-G02-2, p2-G14-1 (P147, P170): batches only extend it (honeylabs__<suffix>.json: extra sources and error markers). Tier unknown: never default, excluded at AMBER and above, --allow-unknown at CLEAR/GREEN, IOC_TYPES values only (A8). ttl 6 h: CVE telemetry answers are cached 6-24 h (research C0336). No quota block: the free plan's daily budget is not recorded (honeylabs.net/docs, plans and limits) and the API source is disabled until legal records its terms."
+}

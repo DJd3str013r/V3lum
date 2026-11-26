@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "hackerone",
+  "name": "HackerOne (public GraphQL, backlog)",
+  "operator": "HackerOne Inc.",
+  "hosts": [
+    "hackerone.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company (HackerOne Inc.) with published terms, a privacy policy and a business offering (A8 trusted); no council statement names a HackerOne tier.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Platform records are authoritative for HackerOne accounts (not queried in this build)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "graphql": {
+      "title": "HackerOne public GraphQL user query (undocumented internal endpoint; BACKLOG, not in this build)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://www.hackerone.com/terms/general",
+        "quote": "HackerOne public GraphQL is not in this build: an undocumented internal endpoint with terms 'unknown' and no trimmed fixture (legal_dpo, architect). BACKLOG.md keeps it until legal records its terms and a fixed read-only query with fixtures exists.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "hackerone",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P100 cond 2). hackerone.com/graphql (research C0249). Backlog only: no module calls it in this build (P102 removed the host from dockerhub; P359 declares only SaaS forges). legal_dpo's floor allows only unauthenticated GETs for username checks (P113), so a read-only GraphQL POST needs a new decision."
+    }
+  },
+  "notes": "Shared seed for batches p2-G05-1, p2-G05-2: batches only extend it (hackerone__<suffix>.json: extra sources and error markers). Seeded so the hosts those batches declare resolve to one provider; nothing calls it in this build."
+}

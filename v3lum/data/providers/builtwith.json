@@ -1,0 +1,85 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "builtwith",
+  "name": "BuiltWith (API and web profiles)",
+  "operator": "BuiltWith Pty Ltd",
+  "hosts": [
+    "api.builtwith.com",
+    "builtwith.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "BuiltWith Pty Ltd is an established company with published terms, a privacy policy and a business offering (A8 trusted); P073 records tier trusted and P083 cond 5 lists 'trusted - BuiltWith'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Commercial web-technology index: technology profiles and shared-id relationships come from BuiltWith's crawls and can lag the live site; relationship data follows the P061 shared-id and clone rules (P073 cond 5)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 604800,
+    "min_interval": 1.0
+  },
+  "quota": {
+    "scope": "key",
+    "rate_per_second": 1.0,
+    "burst": 1,
+    "published": false,
+    "evidence_url": "",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {
+    "builtwith": {
+      "description": "BuiltWith API key (KEY= query parameter, masked by the central redactor AR01; free1 technology groups, v21/rv2 on paid credits)",
+      "signup_url": "https://api.builtwith.com/",
+      "env": [
+        "V3LUM_BUILTWITH_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "business = a company/team BuiltWith plan whose terms permit internal business use, recorded by legal before it runs under corporate (P073 cond 2); the free key returns technology groups only and Domain API lookups spend paid credits"
+    }
+  },
+  "sources": {
+    "api": {
+      "title": "BuiltWith API (free1 technology groups; v21 domain and rv2 relationships on paid credits)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://builtwith.com/terms",
+        "quote": "Key-terms: a company/team account on a plan whose terms permit internal business use, recorded by legal before it runs under corporate.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "builtwith",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P073 cond 2); research C0157 terms 'BuiltWith terms' (status verified_needs_key 200) and C0156 'BuiltWith ToS'. Endpoints api.builtwith.com/free1/api.json?KEY=&LOOKUP= (technology groups), /v21/api.json?KEY=&LOOKUP=&HIDETEXT=yes&NOPII=yes and /rv2/api.json (relationships) on paid credits. KEY= travels in the URL: the module merges only after the central redaction (AR01, P073 cond 1); every call carries NOPII=yes and HIDETEXT=yes (P073 cond 3). Merge only with a trimmed real success fixture captured with the team key (P073 cond 6). Used by builtwith."
+    },
+    "web_profiles": {
+      "title": "BuiltWith technology and relationship pages builtwith.com/{domain}, /relationships/... (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://builtwith.com/terms",
+        "quote": "Free web UI; provider ToS apply (manual analyst use)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "builtwith",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0188 terms (verified_live 200): builtwith.com/{domain}, /relationships/{domain} and /relationships/tag/{analytics_id}; the analytics_id relationship template stays verified=false until checked (P083 cond 8). Manual pivot links only (data/pivot_links/url_web.json and the analytics_ids reverse-lookup pivots, P061 cond 4); V3LUM never fetches them (P311). Used by pivots_url_web and analytics_ids."
+    }
+  },
+  "notes": "Shared seed for batches p2-G03-1, p2-G14-1, p3-G03-1 (P061, P073, P083): batches only extend it (builtwith__<suffix>.json: extra sources and error markers). api.builtwith.com serves the keyed API (P073); builtwith.com serves the manual technology and relationship pages (P061, P083). Quota: the free key answers about 1 request per second (research C0157, observed) -> key budget at 80% plus min_interval 1 s; Domain API credits are paid and get their own figures once the plan is recorded (P073 cond 2). ttl 7 days saves paid credits on repeated domains. No error markers yet: the owning batch adds the Errors[]-in-200 markers ('You need to login or create an account', credit messages; never EMPTY, P073 cond 4) with a trimmed real fixture."
+}

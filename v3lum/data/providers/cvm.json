@@ -1,0 +1,67 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "cvm",
+  "name": "CVM open-data portal",
+  "operator": "Comissao de Valores Mobiliarios (CVM)",
+  "hosts": [
+    "dados.cvm.gov.br"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Comissao de Valores Mobiliarios is the Brazilian securities regulator, a government body (A8 trusted); P360 cond 10 'BCB and CVM trusted (government)', P244 cond 7 and P361 cond 7 (all trusted).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "Official registries and sanction-proceeding data published by the regulator as dated daily files; absence reads 'not found in CVM registries as of <date>', never fraud (P244 cond 6)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400,
+    "concurrency": 2
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "cadastral": {
+      "title": "CVM open data: CKAN API and cadastral registries (listed companies, intermediaries, advisers, portfolio managers, crowdfunding)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://dados.cvm.gov.br/dataset/cia_aberta-cad",
+        "quote": "Open Database License (ODbL) per CKAN metadata: internal use fine; share-alike only if a derived database is redistributed.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "cvm",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: research C0744 terms (verified_live 200/206); the CKAN package metadata re-checked 2026-11-26 carries license_id odc-odbl for cia_aberta-cad. dados.cvm.gov.br/api/3/action/package_show?id={cia_aberta-cad|intermed-cad|consultor_vlmob-cad|adm_cart-cad|crowdfunding-cad} -> /dados/{CIA_ABERTA|INTERMED|CONSULTOR_VLMOB|ADM_CART|CROWDFUNDING}/CAD/DADOS/*.csv|*.zip (';', ISO-8859-1). Whole files through the dataset manager, one CVM loader shared by P244/P360/P361, never mid-scan; natural-person registries only in explicit due diligence, CPF masked and never a lookup key (P360 cond 9). Attribution CVM. Used by bcb_authorized_institutions, cnpj_name_resolver and br_cnpj_risk_lists."
+    },
+    "sanctions": {
+      "title": "CVM sanctioning proceedings open data (PROCESSO/SANCIONADOR)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://dados.cvm.gov.br/dataset/processo-sancionador",
+        "quote": "Tiers: PGFN, MTE and CVM trusted, BrasilAPI community; CVM data share-alike obligations apply only if redistributed.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "cvm",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P244 cond 7); research C0561 terms '[caipora_br_gov] Open government data (CVM, ODbL-like terms on portal)' (verified_live); the CKAN package processo-sancionador carries license_id odc-odbl (re-checked 2026-11-26). dados.cvm.gov.br/dados/PROCESSO/SANCIONADOR/DADOS/ through the dataset manager (daily). A sanction proceeding is MEDIUM (P244 cond 5); a missing or stale dataset reads 'not screened against <list> (<date>)', never 'clean' (P244 cond 7). Used by br_cnpj_risk_lists."
+    }
+  },
+  "notes": "Shared seed for batches p1-G10-3, p2-G10-3, p3-G10-2 (P244, P360, P361): batches only extend it (cvm__<suffix>.json: extra sources and error markers). Datasets only: whole files downloaded by the dataset manager and matched locally, never mid-scan (P244 cond 1, P360 cond 1). Natural-person rows are dropped at import unless --include-persons is recorded; a CPF is never a lookup key and stays masked (P244 cond 3). ODbL share-alike applies only if a derived database is redistributed (P360 cond 10). No quota block (a few file downloads a day). .br host: Accept-Language pt-BR by default."
+}

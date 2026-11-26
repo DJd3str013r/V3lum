@@ -1,0 +1,77 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "hostio",
+  "name": "host.io (API and domain pages)",
+  "operator": "host.io (operator per the host.io terms, to be recorded by the reviewer)",
+  "hosts": [
+    "host.io"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Commercial domain-data API with published terms and paid plans. P004's chair rationale says trusted, but P026 lists host.io as community: the stricter statement applies (a fragment may only be stricter).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Crawled web and DNS relations (backlinks, redirects, shared analytics ids) of varying freshness; shared ids are capped hypotheses (P061)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 604800
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {
+    "hostio": {
+      "description": "host.io API token (header if the API supports it, else ?token= masked by the central redactor, AR01)",
+      "signup_url": "https://host.io/signup",
+      "env": [
+        "V3LUM_HOSTIO_TOKEN",
+        "V3LUM_HOSTIO_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "a company/team account (never an analyst's personal free account) on a plan whose terms permit internal business use, recorded as key_plans.hostio with the terms URL before corporate use (P004)"
+    }
+  },
+  "sources": {
+    "api": {
+      "title": "host.io API (web, dns, related, full; domains by ip/ns/mx/asn/backlinks/redirects/adsense/googleanalytics)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://host.io/terms",
+        "quote": "Key-terms: the key belongs to a company/team account, never an analyst's personal free account, on a plan whose terms permit internal business use. The plan (key_plans.hostio) and terms URL are recorded in the registry before it runs under the corporate profile (A1).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "host.io",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P004 cond 2). /api/web/{domain}, /api/related/{domain} and /api/domains/{field}/{value} for googleanalytics, adsense, redirects, backlinks and ipinfo (research C0013); run_on seeds, at most 5 requests per entity, cache 7 days (P004). Error-in-200 bodies (invalid key, quota, throttling) map through P321 markers the owning batch adds with fixtures, never EMPTY."
+    },
+    "domain_pages": {
+      "title": "host.io domain pages host.io/{domain} (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://host.io/terms",
+        "quote": "Host tiers are stated per A8; the pack itself sends nothing (tier n/a, terms open, default-on per A3 as manual links).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "host.io",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: council chair rationale (P026). host.io/{domain} is the hostio manual_link (P004) and a pivots_domain_dns template (research C0060). V3LUM never fetches pivot links itself (P311)."
+    }
+  },
+  "notes": "Shared seed for batches p2-G01-1, p2-G03-1, p2-G14-1: batches only extend it (hostio__<suffix>.json: extra sources and error markers). Profile ttl 7 days so the P004 cache_ttl (7 days) is not capped. No quota block yet: the monthly plan budget (<= 80% of the plan, P004) is added when legal records key_plans.hostio; no figure is recorded today. analytics_ids pivots to hostio and has no own client (P061)."
+}

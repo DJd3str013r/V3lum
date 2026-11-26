@@ -1,0 +1,53 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "npm",
+  "name": "npm registry",
+  "operator": "npm, Inc. (GitHub, Inc. / Microsoft)",
+  "hosts": [
+    "registry.npmjs.org"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company (npm, Inc., part of GitHub/Microsoft) with published terms (A8): 'Registry: npm (GitHub), PyPI (PSF), DEV/Forem and Hugging Face tier trusted' (P100 cond 8); 'Registry: GitHub, GitLab, npm, PyPI and Docker trusted' (P359 cond 9).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Authoritative registry metadata for npm packages; maintainer names and e-mails are self-asserted by publishers."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 2
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "registry": {
+      "title": "npm registry API (package metadata, -/v1/search maintainer queries)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://docs.npmjs.com/policies/terms/",
+        "quote": "Registry: npm (GitHub), PyPI (PSF), DEV/Forem and Hugging Face tier trusted, Codeberg e.V. community; all terms open; personal_data_review before default use (A3 BR8).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "npm",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0242 terms 'npm ToS (public metadata)' (limits undocumented; light use). Endpoints registry.npmjs.org/-/v1/search?text=maintainer:{u} (200 with total=0 = ABSENT) and registry.npmjs.org/{package} (P100 cond 3); never www.npmjs.com/~{u} (Client Challenge = BLOCKED reason challenge, P100 cond 4). Also 'open' for org_code_footprint: 'Sources: GitHub REST 'key-terms' (as P111); GitLab, Codeberg, npm, PyPI and Docker Hub 'open'.' (P359 cond 9). Usernames are PERSONAL_TYPES: personal_data_review before default use (A3 BR8). Used by dev_profiles_pack and org_code_footprint."
+    }
+  },
+  "notes": "Seeded once for batches p2-G05-1 and p2-G05-2 (P100, P359): one client shared by both. Limits undocumented: no quota block."
+}

@@ -1,0 +1,66 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "govbr",
+  "name": "gov.br portal pages (CTIR Gov alerts, Anatel open-data page)",
+  "operator": "Governo Federal do Brasil (gov.br portal, Secretaria de Governo Digital)",
+  "hosts": [
+    "www.gov.br"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Federal government portal (Secretaria de Governo Digital) publishing pages of government bodies (A8 'government bodies': trusted). P298's unknown tier is the lowest of its anonymous feeds, recorded per feed (P298 cond 9), not a statement about gov.br; P126 is offline (tier n/a).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "Official publications of federal government bodies (CTIR Gov alerts and recommendations, Anatel open-data index)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 3600
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "ctir_alerts": {
+      "title": "CTIR Gov alerts and recommendations page www.gov.br/ctir",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://www.gov.br/ctir/pt-br/assuntos/alertas-e-recomendacoes/alertas",
+        "quote": "Licence (A1, legal floor): feed terms are 'unknown' until legal reviews them, so nothing runs yet in any profile.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "ctir-gov",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P298 cond 3). Research C0754: the CTIR Gov alerts page was in maintenance during research (it answered 200 on 2026-11-26) and joins only after re-verification from the team network (P298 cond 2). Headline + link + date only, polled at most hourly with conditional GET; safe XML helper, 2 MB cap, <= 200 items (P298 cond 4-5). Disabled in every profile until legal records its class (A1). Used by cti_news_rss."
+    },
+    "anatel_open_data": {
+      "title": "Anatel open-data page www.gov.br/anatel (numbering datasets; deferred)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.gov.br/anatel/pt-br/dados/dados-abertos",
+        "quote": "Brazilian open data.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "anatel",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: research C0800 terms (status unverified: CONNECT 502 from the research egress; the page answered 200 on 2026-11-26). Deferred (P126 cond 6): this page is only the dataset index; the numbering datasets themselves are on dadosabertos.anatel.gov.br (another provider) and become a registered dataset once their URL is verified from the team network. Used by phone_parse (maintainer data script; the module itself is offline)."
+    }
+  },
+  "notes": "Shared seed for batches p1-G06-1, p2-G11-1 (P126, P298): batches only extend it (govbr__<suffix>.json: extra sources and error markers). Only www.gov.br: other gov.br hosts belong to their own providers, and later sources on www.gov.br (for example the MTE 'lista suja' CSV of P244 cond 1) are added by govbr__<batch>.json extensions. Geo-restricted gov.br endpoints follow A9 (requires_egress BR at module level). ttl 1 h: feeds are polled at most hourly (P298 cond 4). .br host: Accept-Language pt-BR by default."
+}

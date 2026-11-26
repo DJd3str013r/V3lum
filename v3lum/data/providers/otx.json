@@ -1,0 +1,73 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "otx",
+  "name": "AlienVault OTX (indicator API)",
+  "operator": "LevelBlue (formerly AT&T Cybersecurity; AlienVault OTX)",
+  "hosts": [
+    "otx.alienvault.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "LevelBlue (formerly AT&T Cybersecurity) is an established security company with published terms and a business offering (A8 trusted); P153 cond 3 'Registry provider otx (LevelBlue): tier trusted' and P304 cond 5 'trusted - ... OTX'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Community threat-intel pulses of uneven quality: pulse membership is not a verdict (P153 cond 5); malicious only with >= 2 pulses from distinct authors modified in the last 365 days or 1 pulse by the AlienVault/LevelBlue labs account."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "timeout": 20,
+    "max_bytes": 5242880,
+    "ttl": 86400
+  },
+  "quota": {
+    "scope": "key",
+    "hour": 10000,
+    "burst": 1,
+    "published": false,
+    "evidence_url": "",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {
+    "otx": {
+      "description": "AlienVault OTX API key (X-OTX-API-KEY header)",
+      "signup_url": "https://otx.alienvault.com/api",
+      "env": [
+        "V3LUM_OTX_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "business = a company OTX account whose terms legal recorded as permitting internal business use (key_plans.otx='business', or free_plan_business_use recorded, P153 cond 3)"
+    }
+  },
+  "sources": {
+    "indicators": {
+      "title": "OTX indicator API v1 (general, reputation, geo, malware, url_list, passive_dns, http_scans per IPv4/IPv6/domain/hostname/url/file/cve)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://otx.alienvault.com/terms",
+        "quote": "Terms: the OTX terms page is JS-only and was not verified (2026-11-26): legal records the OTX terms for a company account; source class 'key-terms', so under corporate it runs only with free_plan_business_use=true or key_plans.otx='business'.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "otx",
+      "embeds": [
+        "abuse.ch"
+      ],
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P153 cond 3); P060 (url_list use) is 'open' and the strictest class applies. Research C0324 terms '[gh_cti_ioc] LevelBlue/AT&T OTX terms (free community)' (verified_live 200). otx.alienvault.com/api/v1/indicators/{IPv4|IPv6|domain|hostname|url|file|cve}/{value}/{general|reputation|geo|malware|url_list|passive_dns|http_scans}; read-only, never create pulses or submit indicators (P153 cond 2). otx needs the key; otx_keyless uses 'general' only (default off, P153 cond 1). 403 with a key = NEEDS_KEY; 429 = RATE_LIMITED, never 'not listed' (P153 cond 4). embeds abuse.ch: pulses relaying abuse.ch count as the abuse.ch upstream family (P153 cond 6, P171). Used by otx and otx_keyless (P060 cond 1 dropped OTX from archive_mining's hosts)."
+    }
+  },
+  "notes": "Shared seed for batches p1-G07-1, p2-G01-3 (P060, P153): batches only extend it (otx__<suffix>.json: extra sources and error markers). Quota: a free key allows about 10,000 requests per hour (research C0324 live_cti, observed) -> key budget at 80%; anonymous passive_dns answers 429 'Anonymous access to this endpoint is limited' (RATE_LIMITED, never absent). http_profile: timeout 20 s (the deep preset's 60 s is set by the module), max_bytes 5 MB (truncated = partial, never complete), ttl 24 h (P153 cond 4). No error markers yet: the owning batch adds them with the trimmed real fixtures P153 cond 8 lists (general 8.8.8.8, a domain with pulses, keyless passive_dns 429, bad-key 403)."
+}

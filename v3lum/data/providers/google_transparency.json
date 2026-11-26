@@ -1,0 +1,54 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "google_transparency",
+  "name": "Google Transparency Report Safe Browsing status",
+  "operator": "Google LLC",
+  "hosts": [
+    "transparencyreport.google.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company (A8): 'Google: tier trusted.' (P067 rationale).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Google Safe Browsing list status: usually reliable, but a miss reads 'not on Google's lists at <time>', never 'safe' (P067 cond 5); Google verdicts count as one vote in consensus."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400,
+    "min_interval": 5.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "safebrowsing_status": {
+      "title": "Transparency Report /transparencyreport/api/v3/safebrowsing/status (undocumented internal endpoint behind the Site Status page)",
+      "terms": {
+        "class": "noncommercial",
+        "evidence_url": "https://developers.google.com/safe-browsing",
+        "quote": "Safe Browsing v4/v5 (noncommercial; v4 deprecated; Google sends commercial users to Web Risk) runs only through licence_allow or the research profile.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "google",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Binding class of P067 (A1: 'Google Safe Browsing v4/v5 = 'noncommercial' (Google Web Risk = 'license')'). Research C0160 terms 'Undocumented internal endpoint behind the public Site Status page' (rate limits unknown); legal may tighten the class to 'unknown' as an undocumented endpoint (cf. P253 for Google News RSS). P067 cond 3: the status endpoint is not automated (undocumented internal API); it becomes a manual pivot link (transparencyreport.google.com/safe-browsing/search) in the URL link pack. Used by google_safe_browsing.",
+      "licensed_alternative": "Google Web Risk (webrisk.googleapis.com, class 'license'): a company billing account recorded in licence_allow and key 'webrisk' (P067 cond 1)."
+    }
+  },
+  "notes": "Seeded for batch p2-G03-1 (P067) together with the other google.com hosts. The Safe Browsing and Web Risk APIs (safebrowsing.googleapis.com, webrisk.googleapis.com; keys V3LUM_GSB_KEY/V3LUM_WEBRISK_KEY) are other providers owned by batch p2-G03-1. Undocumented endpoint: polite use (min_interval 5 s), cache 24 h."
+}

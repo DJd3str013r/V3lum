@@ -1,0 +1,67 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "ransomlook",
+  "name": "RansomLook (ransomware leak-site tracker)",
+  "operator": "RansomLook open-source project (operator named on ransomlook.io/about)",
+  "hosts": [
+    "ransomlook.io",
+    "www.ransomlook.io"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Well-known open-source community project (AGPL-3.0 code, CC BY 4.0 data) with identifiable maintainers, public documentation and a public track record since 2022 (A8 community); P196 cond 7 'Registry provider ransomlook: tier community' and P203 cond 5.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": true
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Tracker of ransomware leak-site posts: entries are actor claims, unverified until corroborated (P196 cond 4-5); scraper coverage and group naming vary across trackers."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 21600
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "api": {
+      "title": "RansomLook API /api/groups, /api/group/{name}, /api/recent, /api/last/{days}, /api/markets",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.ransomlook.io/about",
+        "quote": "Licence: content CC BY 4.0 with commercial use allowed (ransomlook.io/about, verified 2026-11-26): attribution 'Source: RansomLook (CC BY 4.0)' in every report and export using it; the AGPL service code is not copied.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "ransomlook",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P196 cond 7). The about page (re-checked 2026-11-26) puts 'the website, API responses, and datasets' under CC BY 4.0, free to share and adapt 'for any purpose, even commercially, provided that appropriate credit is given'; research C0456 (verified_live 200). Per-entity lookups /api/search?q= (bounded, 2 MB at module level) plus a daily local index from /api/posts/period/{d1}/{d2} and /api/groups through the dataset manager (P196 cond 1); /api/group/{name}, /api/posts and /api/export (3-163 MB) are never called during a scan (P196 cond 2). Posts are actor claims: metadata and <= 300-char excerpts, no description text for natural-person victims, onion and claim URLs never fetched (P196 cond 6). Sensitive provider: the owning module registers its P145 schema (group, victim name/website, dates, counts) with a trimmed real fixture. Used by ransomlook."
+    },
+    "group_pages": {
+      "title": "RansomLook group pages /group/{group} (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.ransomlook.io/about",
+        "quote": "Licence: content CC BY 4.0 with commercial use allowed (ransomlook.io/about, verified 2026-11-26)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "ransomlook",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P196 cond 7); research C0469 terms 'site terms' (verified_live 200). www.ransomlook.io/group/{group} with the per-site slug resolved through the P295 alias index, the search URL when no slug is known (P203 cond 8). Rule 3: claim, leak-file and download URLs are never linked (P203 cond 9). Manual links only. Used by pivots_darkweb."
+    }
+  },
+  "notes": "Shared seed for batches p1-G09-1, p2-G14-2 (P196, P203): batches only extend it (ransomlook__<suffix>.json: extra sources and error markers). www.ransomlook.io serves the API and pages (research C0456/C0469); the apex redirects to it. flags.sensitive: a leak-site tracker carrying breach claims (leaked personal data from leak trackers is scrubbed at ingestion): sanitizer schema mandatory, cache sanitized or no-store, ttl 6 h (<= 7 days). No published rate limit (fair use, research C0456): no quota block. Attribution 'Source: RansomLook (CC BY 4.0)'."
+}

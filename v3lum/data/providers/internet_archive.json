@@ -1,0 +1,90 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "internet_archive",
+  "name": "Internet Archive (Wayback Machine)",
+  "operator": "Internet Archive (US non-profit)",
+  "hosts": [
+    "archive.org",
+    "web.archive.org"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established US non-profit digital library with published terms (A8 trusted); P059 'All archives are established non-profits or public bodies: tier trusted', P287 and P304 list the Internet Archive as trusted.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Captures are faithful records of what was served at capture time; coverage is partial and CDX answers can be throttled or truncated (partial, never complete)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400,
+    "min_interval": 4.0
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "rate_per_second": 0.25,
+    "burst": 1,
+    "published": false,
+    "evidence_url": "",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "wayback": {
+      "title": "Wayback Machine CDX server, availability API and snapshot replay (id_/if_)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://archive.org/about/terms",
+        "quote": "Registry terms (A1 BR3): the Internet Archive (Wayback CDX and availability), Arquivo.pt (FCT public service), Common Crawl (free terms of use) and CarbonDate (ODU academic service) are 'open', each recorded by legal with evidence; the Internet Archive grants access for research, so legal records internal CTI research as the purpose.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "archive.org",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P059 cond 10). archive.org/wayback/available, web.archive.org/cdx/search/cdx (collapse=urlkey, fl=original,timestamp,statuscode,mimetype, total row cap 20,000; a truncated body is partial) and replay web/{ts}id_/{url} or if_ (research C0144, C0152; P059, P060, P287). Save Page Now and any save/archive-now endpoint are never called (rule 7); archived URLs are never requested from the live target (P059)."
+    },
+    "wayback_web": {
+      "title": "Wayback calendar and URL-list pages web/*/{url} (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://archive.org/about/terms",
+        "quote": "Rule 7: search/view/report pages only. VirusTotal uses /gui/file/{hash}, /gui/domain/{d}, /gui/ip-address/{ip} and /gui/url/<sha256 of the URL> (vetted placeholder); Wayback calendar or URL list, never /save; archive.ph capture lists, never /submit.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "archive.org",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P304 cond 7). Class 'open' is the P304 chair-file class for manual links. web.archive.org/web/*/{url} and /web/*/{domain}* (research C0190). V3LUM never fetches pivot links itself (P311)."
+    },
+    "wayback_social": {
+      "title": "Wayback CDX for deleted-post recovery of X/Twitter URLs (opt-in per run)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://archive.org/about/terms",
+        "quote": "Terms 'unknown' until legal records the X oEmbed terms and confirms the P059 Internet Archive decision for this use: disabled in every profile until then (A1); default_enabled False.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "archive.org",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P119 cond 6). Deleted-post recovery for X/Twitter URLs through the shared Wayback CDX client (collapse=urlkey, limit <= 500, archive hosts only), opt-in per run (research C0246); no crawler or search-engine UA spoofing, a test asserts no bot UA (P119). Reclassify once legal confirms the P059 decision for this use (P287's key-terms class comes from Brave, not from this provider)."
+    }
+  },
+  "notes": "Shared seed for batches p1-G01-2, p2-G01-3, p2-G14-3, p3-G05-3, p9-G13-3: batches only extend it (internet_archive__<suffix>.json: extra sources and error markers). Gentle use ~15 requests/min (P059; research C0144: 'IA recommends gentle use (~15 req/min)') -> quota rate 0.25/s (published false, 80% budget) shared by archive.org and web.archive.org, and min_interval 4 s per host. CDX throttles with 429 and connection resets (RATE_LIMITED); P059's default scan stays inside a 15 s budget. Flags all false: Save Page Now is never used (P059, P287). No bot UA ever (P119)."
+}

@@ -1,0 +1,50 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "hunter_how",
+  "name": "hunter.how (search pages)",
+  "operator": "hunter.how (operator not identified in the research record)",
+  "hosts": [
+    "hunter.how"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "Operator not identified and the JavaScript-only site shows no reviewed terms (A8 unknown); P304 cond 4 names hunter.how as an unknown-tier host ('unknown operator' badge, IOC values only).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "F",
+    "justification": "Unknown operator (A8): manual pivot links only, never an automated verdict; reliability cannot be judged."
+  },
+  "http_profile": {
+    "user_agent": "neutral"
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "search_pages": {
+      "title": "hunter.how search pages list?searchValue= (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://hunter.how/",
+        "quote": "Free web UI; provider ToS apply (manual analyst use)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "hunter-how",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: research C0138 terms (status unverified 200; JavaScript-only page). hunter.how/list?searchValue={base64(query)} pre-filled with IOC_TYPES values only (favicon hash, IP, domain; P304 cond 4, P062 cond 6); never PERSONAL_TYPES or CNPJ (A8). A default-enabled module must not declare this source (A3: a provider of tier unknown is never default); link templates only need the host -> provider entry. Used by favicon_hash and pivots_unverified (manual links)."
+    }
+  },
+  "notes": "Shared seed for batches p2-G14-3, p9-G03-1 (P062, P304): batches only extend it (hunter_how__<suffix>.json: extra sources and error markers). Links only: V3LUM never requests hunter.how (P304 cond 1). Tier unknown: 'unknown operator' badge, excluded at AMBER and above (A8)."
+}

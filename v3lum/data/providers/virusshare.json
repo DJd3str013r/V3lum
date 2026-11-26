@@ -1,0 +1,85 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "virusshare",
+  "name": "VirusShare (API and hash lists)",
+  "operator": "VirusShare.com (operator per the virusshare.com terms)",
+  "hosts": [
+    "virusshare.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Long-running researcher repository with an identifiable operator (A8 community): 'Registry tiers: Recorded Future, OPSWAT and PolySwarm trusted; MalShare and VirusShare community.' (P177 cond 6).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Large historical malware-sample repository: corpus membership is not a verdict (may include PUP/benign; low, never malicious alone, P350 cond 4); the hash lists were last modified 2022-04-07."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400,
+    "min_interval": 20.0,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "key",
+    "rate_per_second": 0.0666,
+    "burst": 1,
+    "published": false,
+    "evidence_url": "",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {
+    "virusshare": {
+      "description": "VirusShare API key (apiv2; apikey URL parameter, masked by the central redactor)",
+      "signup_url": "https://virusshare.com/about",
+      "env": [
+        "V3LUM_VIRUSSHARE_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "researcher account (site access by invitation); terms 'unknown' until legal records them (P177 cond 4), so the source stays disabled in every profile; empty-key answers are ignored"
+    }
+  },
+  "sources": {
+    "api": {
+      "title": "VirusShare API v2 (file and quick hash lookups)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://virusshare.com/apiv2_reference",
+        "quote": "Classes: triage free 'noncommercial' (commercial licence 'license'); metadefender free 'noncommercial' (paid plan 'key-terms'); malshare, polyswarm and virusshare 'unknown' until legal records their terms.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "virusshare",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0418 terms 'VirusShare terms (free account for researchers).'; endpoints https://virusshare.com/apiv2/file?apikey={key}&hash={hash} and /apiv2/quick?apikey={key}&hash={hash}. Free account 4 requests/minute per the research (the figure is not on the API reference page as of 2026-11-26, so published false). The API reference documents HTTP 204 as 'Request rate limit exceeded' (repeated 204s get the client blocked): the owning batch adds that marker with a fixture. The key is a URL parameter (AR01 redaction, P177 cond 1); no sample download path is ever built (P177 cond 2). Used by hash_lookup_keyed (module virusshare)."
+    },
+    "hash_lists": {
+      "title": "VirusShare MD5 hash lists hashfiles/VirusShare_{00000..00511}.md5 (historical corpus)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://virusshare.com/hashes",
+        "quote": "Hudson Rock free tools, LeakCheck public, Filescan, MalwareIntel, SecurityContext, VirusShare lists, ViriBack and binlist/data = 'unknown'.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "virusshare",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Binding A1 initial class 'unknown' (P350 cond 4: 'terms 'unknown' per A1 BR16'). Research C0730 terms 'No published licence for the hash lists (site 'Because Sharing is Caring'; sample downloads need an account) -> terms unknown: corporate profile needs a legal decision.' hashfiles/VirusShare_{00000..00511}.md5 (newest Last-Modified 2022-04-07; 00512 -> 404): download once, refresh rarely. Deferred inside P350 until the dataset manager offers a compact on-disk index (P350 cond 3); when added, a separate default-off module worded 'present in the VirusShare corpus (historical; may include PUP/benign)', low, never malicious alone (P350 cond 4). Used by offline_hash_sets."
+    }
+  },
+  "notes": "Seeded once for batches p2-G07-2 and p3-G07-2 (P177, P350). Terms 'unknown' (A1 initial class for the lists, P177 cond 4 for the API): disabled in every profile until legal records them. The site states that access is by invitation and that bots or scripts scraping data or downloading at an excessive rate are not tolerated (virusshare.com/about, 2026-11-26): min_interval 20 s keeps the API under the reported 4 requests/minute (quota rate 0.0666/s per key, observed)."
+}

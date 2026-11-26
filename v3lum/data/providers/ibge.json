@@ -1,0 +1,83 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "ibge",
+  "name": "IBGE service APIs",
+  "operator": "Instituto Brasileiro de Geografia e Estatistica (IBGE)",
+  "hosts": [
+    "servicodados.ibge.gov.br"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Government body (A8): 'Tiers (A8): BrasilAPI and ViaCEP community, IBGE trusted.' (P234 cond 4); 'Open government data, trusted provider, default-on as offline data.' (P235 rationale); P252 provider tier trusted.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "Official national statistics and code tables (municipalities, CNAE, Census first-name frequencies); aggregate data, no personal data."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "localidades": {
+      "title": "IBGE Localidades API v1 (municipalities, states)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://servicodados.ibge.gov.br/api/docs/localidades",
+        "quote": "Terms classes (definitions for every chair file and registry entry): 'open' = free use, internal business use included (public domain, CC0, CC BY, open government data, and permissive or copyleft licences whose obligations V3LUM meets by runtime download and attribution, A6)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "ibge",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding A1 definition of 'open' (open government data); research C0563 terms 'IBGE open data' (undocumented limits: throttle <= 1 req/s, cache 24 h). Endpoints /api/v1/localidades/municipios/{ibge_code}, /estados and /estados/{UF}/municipios: IBGE localidades normalises municipality codes (P234 cond 3). Used by cep_lookup."
+    },
+    "cnae": {
+      "title": "IBGE CNAE API v2 (subclasses, classes)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://servicodados.ibge.gov.br/api/docs/cnae?versao=2",
+        "quote": "Open government data, trusted provider, default-on as offline data.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "ibge",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0576 terms 'IBGE open data'. Only a `v3lum data update cnae` refresher of the full tree, never called per CNPJ (P235 cond 2); bundled reference data carries source, version and retrieval date (P235 cond 1). Used by cnae_tables."
+    },
+    "nomes": {
+      "title": "IBGE Nomes API v2 (Census first-name frequency and ranking)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://servicodados.ibge.gov.br/api/docs/nomes?versao=2",
+        "quote": "Offline data: the IBGE first-name ranking (aggregate Census statistics, open data with attribution) as a dataset fetched by `v3lum data update`",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "ibge",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0588 terms 'IBGE open data (aggregated, no personal data)' / 'IBGE open data (cite source).' The online lookup /api/v2/censos/nomes/{first_name} runs only inside ibge_name_frequency, only for the normalised first name of a name already matched and missing from the offline table, never at TLP:RED (P252 cond 3); its 365-day retention belongs in the module's dataset, not in the HTTP cache (P326 cond 7). Used by ibge_name_frequency."
+    }
+  },
+  "notes": "Seeded once for batches p1-G10-2 and p2-G10-1 (P234, P235, P252). Undocumented limits: min_interval 1 s, cache 24 h; long-lived reference data goes to datasets, not to the HTTP cache (P326 cond 7). The API documentation pages answered 403 to scripts from the research egress, so the evidence pages were not re-fetched on 2026-11-26. .br hosts default to Accept-Language pt-BR."
+}

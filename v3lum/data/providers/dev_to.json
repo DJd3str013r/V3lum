@@ -1,0 +1,52 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "dev_to",
+  "name": "DEV Community users API",
+  "operator": "DEV Community Inc. (Forem)",
+  "hosts": [
+    "dev.to"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "DEV Community Inc. (Forem), an established company with published terms, a privacy policy and a public API (A8 trusted); P100 records 'DEV/Forem ... tier trusted'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Platform answers are authoritative for DEV accounts; linked github_username/twitter_username fields are self-asserted."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400,
+    "min_interval": 1.0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "users_api": {
+      "title": "DEV (Forem) users API /api/users/by_username",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://dev.to/terms",
+        "quote": "Registry: npm (GitHub), PyPI (PSF), DEV/Forem and Hugging Face tier trusted, Codeberg e.V. community; all terms open; personal_data_review before default use (A3 BR8).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "dev.to",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P100 cond 8). GET dev.to/api/users/by_username?url={u} (research C0247): 404 = ABSENT; a github_username/twitter_username equal to a login already linked to the seed raises that link to PROBABLE (P100). Usernames are PERSONAL_TYPES: personal_data_review before default use."
+    }
+  },
+  "notes": "Shared seed for batches p1-G05-2, p2-G05-1: batches only extend it (dev_to__<suffix>.json: extra sources and error markers). Forem public API with no published limit ('polite use', research C0247): min_interval 1 s as politeness floor, no quota block. personal_data_review is still to be recorded (usernames, A3 BR8)."
+}

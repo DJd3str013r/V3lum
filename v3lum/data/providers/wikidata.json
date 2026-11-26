@@ -1,0 +1,70 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "wikidata",
+  "name": "Wikidata (API and Query Service)",
+  "operator": "Wikimedia Foundation, Inc.",
+  "hosts": [
+    "wikidata.org",
+    "www.wikidata.org",
+    "query.wikidata.org"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Wikimedia Foundation, Inc., an established non-profit with published terms and policies (A8 trusted); P224 tier trusted and P361 'Wikimedia ... trusted'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Community-edited knowledge base: P856 official website is labelled 'official site per Wikidata (community-edited)' at confidence <= 0.7 and never sets known_good (P224)."
+  },
+  "http_profile": {
+    "user_agent": "V3LUM/{version} (+{contact}) python-requests",
+    "timeout": 20.0,
+    "ttl": 86400,
+    "min_interval": 1.0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "wbapi": {
+      "title": "Wikidata API (wbsearchentities, wbgetentities, wbgetclaims) and Special:EntityData",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "quote": "'open' = free use, internal business use included (public domain, CC0, CC BY, open government data, and permissive or copyleft licences whose obligations V3LUM meets by runtime download and attribution, A6)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "wikidata",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (A1 decision, docs/COUNCIL_1.md). Class 'open' is the P224 chair-file class; research C0523 records the data as CC0. www.wikidata.org/w/api.php wbsearchentities, wbgetentities, wbgetclaims for P6204 (CNPJ), P856 (official website), P749 (parent) and P355 (subsidiary), plus wiki/Special:EntityData/{QID}.json (P224, P361)."
+    },
+    "sparql": {
+      "title": "Wikidata Query Service SPARQL (fixed templates only, LIMIT <= 20, 20 s timeout)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "quote": "'open' = free use, internal business use included (public domain, CC0, CC BY, open government data, and permissive or copyleft licences whose obligations V3LUM meets by runtime download and attribution, A6)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "wikidata",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (A1 decision, docs/COUNCIL_1.md). Class 'open' is the P224 chair-file class; research C0523 records the data as CC0. query.wikidata.org/sparql: free-form SPARQL is never sent, only fixed templates with LIMIT <= 20 and a 20 s timeout (P224); 429 = RATE_LIMITED."
+    }
+  },
+  "notes": "Shared seed for batches p2-G10-3, p3-G10-1: batches only extend it (wikidata__<suffix>.json: extra sources and error markers). www.wikidata.org added: the API is on www (research C0523) and wikidata.org redirects there. BINDING PROFILE_REQUIREMENTS (www.wikidata.org, query.wikidata.org): user_agent 'V3LUM/{version} (+{contact}) python-requests' (Wikimedia User-Agent policy; a UA without contact got 429), applied to every host of this provider; without setting contact_email it is SKIPPED reason_code 'config' (P224). min_interval 1 s (P224); timeout 20 s for the SPARQL templates. meta.wikimedia.org (batch p3-G05-3) is another provider."
+}
