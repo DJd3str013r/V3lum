@@ -499,7 +499,7 @@ def test_non_legacy_rules_ship_fixtures():
     correlate.load_rules()
     missing = []
     for rule_id, info in correlate.RULES.items():
-        if getattr(info, "legacy", False):
+        if getattr(info, "legacy", False) and rule_id in correlate.LEGACY_RULES:  # only the eight v1 rules are exempt
             continue
         folder = FIXTURES / "rules" / rule_id
         if not list(folder.glob("positive_*.json")) or not list(folder.glob("negative_*.json")):

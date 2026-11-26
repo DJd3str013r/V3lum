@@ -502,6 +502,53 @@ def test_investigate_coverage_reason_codes_and_run_info(registry, monkeypatch):
     assert data["modules"][0]["reason_code"] in ("", "geo_block")
 
 
+def test_coverage_reason_code_always_matches_the_merged_status(registry):
+    """A module that answers for one entity and is blocked for another shows status ok (the merged
+    best outcome) with no reason code - never the pair ('ok', 'geo_block') - while the per-status
+    counters keep the failure."""
+
+    def run(self, entity, ctx):
+        if entity.value == "example.org":
+            res = self.result(entity)
+            res.attr("country", "BR")
+            res.pivot(T.DOMAIN, "child.example.org", "subdomain")
+            return res
+        raise http.Blocked("geo", 451, reason_code="geo_block")
+
+    mod = registry(stub(run, name="t_cov_mixed"))
+    case = make_engine(ScanOptions(include={mod.name}, depth=1, save_evidence=False)).investigate([DOMAIN])
+    cov = case.coverage[mod.name]
+    assert cov["runs"] == 2 and cov["status"] == "ok" and cov["ok"] == 1 and cov["blocked"] == 1
+    assert cov.get("reason_code", "") == ""
+
+
+def test_a_case_where_no_source_answered_says_inconclusive(registry):
+    """Rule 5 (audit of wave 1): with every source module opt-in (interim A16 guard) or every run
+    could-not-verify, the case says 'inconclusive: no source answered' instead of letting a
+    zero-finding 'clean' read as a verdict; a case where a module answered gets no such note."""
+    src = registry(stub(lambda self, e, c: self.result(e), name="t_note_src", disclosure="third_party"))
+    case = make_engine(ScanOptions(categories={"utility"}, save_evidence=False)).investigate([DOMAIN])
+    assert case.coverage[src.name]["reason_code"] == "not_default"
+    notes = [n for n in case.notes if n.startswith("inconclusive")]
+    assert len(notes) == 1 and "opt-in" in notes[0]
+
+    def blocked(self, entity, ctx):
+        raise http.Blocked("challenge page", 403)
+
+    dead = registry(stub(blocked, name="t_note_blocked"))
+    case = make_engine(ScanOptions(include={dead.name}, save_evidence=False)).investigate([DOMAIN])
+    assert any(n.startswith("inconclusive") and "could not verify" in n for n in case.notes)
+
+    def answers(self, entity, ctx):
+        res = self.result(entity)
+        res.attr("country", "BR")
+        return res
+
+    ok = registry(stub(answers, name="t_note_ok"))
+    case = make_engine(ScanOptions(include={ok.name}, save_evidence=False)).investigate([DOMAIN])
+    assert not [n for n in case.notes if n.startswith("inconclusive")]
+
+
 def test_investigate_reports_not_default_in_coverage(registry):
     src = registry(stub(lambda self, e, c: self.result(e), name="t_cov_src2", disclosure="third_party"))
     case = make_engine(ScanOptions(categories={"utility"}, save_evidence=False)).investigate([DOMAIN])
@@ -585,6 +632,81 @@ def test_evidence_never_holds_a_configured_key(registry):
     res = next(r for r in case.results if r.module == mod.name)
     text = Path(res.evidence).read_text(encoding="utf-8")
     assert secret not in text and json.loads(text)["data"]["echo"] == redact.MASK
+
+
+def test_evidence_files_are_owner_only(registry):
+    """A10/AR03 (audit of wave 1): evidence may hold provider data about people - written 0600 from
+    creation whatever the process umask."""
+    import os
+    import stat
+
+    def run(self, entity, ctx):
+        res = self.result(entity)
+        res.raw = {"answer": "x"}
+        res.attr("country", "BR")
+        return res
+
+    mod = registry(stub(run, name="t_ev_mode_mod"))
+    old = os.umask(0o022)
+    try:
+        case = make_engine(ScanOptions(include={mod.name})).investigate([DOMAIN])
+    finally:
+        os.umask(old)
+    res = next(r for r in case.results if r.module == mod.name)
+    assert res.evidence and stat.S_IMODE(os.stat(res.evidence).st_mode) == 0o600
+
+
+def test_no_key_value_leaves_a_run_in_any_result_field(registry):
+    """AR01 (audit of wave 1): a module that echoes a request URL or an upstream message carrying a
+    configured key (or an unregistered key-like parameter) into findings, attributes, links, pivots,
+    per-feed reasons or its own error string never puts the key into the result - hence never into
+    the graph, the live events, the case JSON or the reports. Pivot values are indicators: only a
+    configured key is masked there, a key-like parameter of an investigated URL stays in the IOC."""
+    redact = pytest.importorskip("v3lum.core.redact")
+    secret = "ResultKey0123456789abcdXYZ"
+    redact.register_secret(secret)
+    url = f"https://api.example.test/v1/lookup/{secret}?q=example.org"
+
+    def run(self, entity, ctx):
+        res = self.result(entity)
+        res.attr("tags", [f"seen at {url}"])
+        res.finding(f"Listed ({secret})", "low", f"answer of {url}", criterion=f"verdict from {url}", data={"url": url, secret: 1}, references=[url])
+        res.link("raw answer", url + "&apikey=UNREGISTEREDkey987")
+        res.pivot(T.URL, f"https://other.example.test/{secret}/page", "links_to", note=f"from {url}")
+        res.pivot(T.URL, "https://phish.example.test/login?token=RecipientToken12345", "links_to")  # an IOC, kept
+        res.source_status("t_src.feed", Status.BLOCKED, reason=f"refused at {url}")
+        res.raw = {"request": url}
+        res.error = f"partial answer from {url}"
+        return res
+
+    mod = registry(stub(run, name="t_key_echo_mod", sources=("t_src.feed",)))
+    events: list[tuple[str, dict]] = []
+    eng = make_engine(ScanOptions(include={mod.name}, save_evidence=False))
+    eng.runtime.events.subscribe(lambda kind, payload: events.append((kind, payload)))
+    case = eng.investigate([DOMAIN])
+    res = next(r for r in case.results if r.module == mod.name)
+    blob = json.dumps(case.to_dict(), default=str) + json.dumps(res.to_dict(), default=str) + json.dumps(res.raw, default=str)
+    blob += repr([(kind, payload) for kind, payload in events if kind in ("finding", "module_done", "entity")])
+    assert secret not in blob and "UNREGISTEREDkey987" not in blob
+    assert res.findings and res.links and len(res.pivots) == 2 and res.source_statuses  # masked, not dropped
+    assert redact.MASK in res.findings[0].description and res.links[0][1].endswith("apikey=" + redact.MASK)
+    values = [p.entity.value for p in res.pivots]
+    assert any(f"/{redact.MASK}/page" in v for v in values)
+    assert "https://phish.example.test/login?token=RecipientToken12345" in values
+
+
+def test_a_run_that_returns_no_result_is_an_error_never_empty(registry):
+    """Rule 5: a module bug (run() returning None or anything but a ModuleResult) never reads as
+    'nothing found' - whatever the source answered."""
+
+    def run(self, entity, ctx):
+        res = self.result(entity)
+        res.attr("country", "BR")
+        return None  # forgot to return the result
+
+    mod = registry(stub(run, name="t_no_return_mod"))
+    res = make_engine(ScanOptions(include={mod.name})).run_module(mod, DOMAIN)
+    assert res.status is Status.ERROR and res.reason_code == "error" and "not a ModuleResult" in res.error
 
 
 # ------------------------------------------------------------------ timeline and aliases

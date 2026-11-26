@@ -36,6 +36,7 @@ from urllib.parse import urlsplit
 from v3lum import paths
 from v3lum.config import Config, SettingSpec
 from v3lum.core import entities as _entities
+from v3lum.core import module as _module_registry
 from v3lum.core import orgprofile as _orgprofile
 from v3lum.core import providers as _providers
 from v3lum.core import redact as _redact
@@ -52,8 +53,8 @@ log = logging.getLogger("v3lum.context")
 
 EventListener = Callable[[str, dict[str, Any]], None]
 
-#: Disclosure classes of contract v2 (module.DISCLOSURES; repeated here to avoid an import cycle).
-_DISCLOSURES = ("none", "internal", "third_party", "target")
+#: Disclosure classes of contract v2 (the module registry's table; module.py never imports this file).
+_DISCLOSURES = _module_registry.DISCLOSURES
 
 
 # --------------------------------------------------------------------------------------

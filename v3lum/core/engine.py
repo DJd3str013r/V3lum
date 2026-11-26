@@ -16,6 +16,7 @@ from __future__ import annotations
 import datetime as _dt
 import hashlib
 import json
+import os
 import re
 import secrets
 import time
@@ -350,6 +351,10 @@ class Engine:
                     out = mod.run(entity, ctx)
                     if isinstance(out, ModuleResult):
                         res = out
+                    else:
+                        # a run() that returns no result is a module bug: whatever the source answered,
+                        # it must never read as 'nothing found' (rule 5)
+                        res.mark(Status.ERROR, f"run() returned {type(out).__name__}, not a ModuleResult (module bug): could not verify", reason_code="error")
                     if res.status is Status.OK and not res.has_data:
                         res.status = Status.EMPTY
             except ContractViolation as exc:
@@ -452,6 +457,7 @@ class Engine:
         try:
             out = sanitize.sanitize_result(res, cls)
             res = out if isinstance(out, ModuleResult) else res
+            _redact_result(res)  # AR01: no key value reaches the graph, events, case JSON or reports
         except Exception as exc:  # fail closed (P145 cond 2): drop everything the module produced
             res.raw = None
             res.findings, res.pivots, res.attributes, res.links = [], [], {}, []
@@ -536,6 +542,7 @@ class Engine:
                 cov["status"] = cov["status"] if cov.get("runs") else status.value
                 cov["reason"] = reason
                 cov["reason_code"] = cov.get("reason_code") if cov.get("runs") else code
+                _consistent_reason_code(cov)
             rt.events.emit("investigate", entity=entity, depth=depth, modules=[c.name for c in runnable])
             run = self._run_info(entity, is_seed=node.seed, depth=depth, provenance=provenance.get(entity.key, ()), case_id=case_id)
             for cls in runnable:
@@ -596,8 +603,9 @@ class Engine:
         if res.status in (Status.ERROR, Status.RATE_LIMITED, Status.NEEDS_KEY, Status.UNAVAILABLE, Status.BLOCKED, Status.QUOTA):
             if res.error:
                 cov["reason"] = res.error[:200]
-            if res.reason_code:
+            if res.reason_code and cov["status"] == res.status.value:
                 cov["reason_code"] = res.reason_code
+        _consistent_reason_code(cov)
         if res.raw is not None and opts.save_evidence and case.case_dir:
             self._save_evidence(Path(case.case_dir), res)
         node, _ = graph.add_node(res.entity, depth, source=res.module)
@@ -655,7 +663,11 @@ class Engine:
             module = re.sub(r"[^A-Za-z0-9._-]+", "_", res.module)[:64] or "module"
             path = case_dir / "evidence" / f"{module}__{res.entity.type.value}__{slug}__{digest[:10]}.json"
             path.parent.mkdir(parents=True, exist_ok=True)
-            path.write_bytes(blob)
+            # evidence can hold provider data about people: owner-only from creation (A10/AR03), whatever the umask
+            fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600)
+            with os.fdopen(fd, "wb") as fh:
+                fh.write(blob)
+            os.chmod(path, 0o600)  # an older copy of the same evidence file keeps no looser mode
             res.evidence, res.evidence_sha256 = str(path), digest
         except (OSError, TypeError, ValueError) as exc:  # evidence failure must not lose the result
             res.error = (res.error + "; " if res.error else "") + f"evidence not saved: {exc}"
@@ -678,6 +690,7 @@ class Engine:
 
     def _finish(self, case: CaseResult) -> None:
         graph = case.graph
+        _inconclusive_note(case)
         case.correlations = correlate.run_rules(graph, case.results, rctx=self.rule_context())
         for corr in case.correlations:
             self.runtime.events.emit("correlation", correlation=corr)
@@ -692,6 +705,22 @@ class Engine:
                 for item in extra:
                     if item not in bucket:
                         bucket.append(item)
+
+
+def _inconclusive_note(case: CaseResult) -> None:
+    """Rule 5 on the first screen: when no module answered (none ran - e.g. every source module is
+    opt-in until the policy gate lands - or every run could not verify), say so; the risk level
+    of such a case is not a verdict ('inconclusive' replaces 'clean' in the renderers from wave 3/4)."""
+    if any(r.status in (Status.OK, Status.EMPTY) for r in case.results):
+        return
+    opt_in = sum(1 for cov in case.coverage.values() if cov.get("reason_code") == "not_default" and not cov.get("runs"))
+    unverified = sum(1 for r in case.results if r.status.could_not_verify)
+    why = []
+    if opt_in:
+        why.append(f"{opt_in} source module(s) are opt-in until the policy gate lands: select them with -M <name> or --all-modules")
+    if unverified:
+        why.append(f"{unverified} run(s) could not verify")
+    case.notes.append("inconclusive: no source answered" + (f" ({'; '.join(why)})" if why else "") + " - a 'clean' risk level is not a verdict")
 
 
 def _shares_input(cls: type[Module]) -> bool:
@@ -723,6 +752,54 @@ def _readiness(cls: type[Module], keys: dict[str, str], opts: ScanOptions) -> tu
     if "authorized" in text:
         return False, Status.SKIPPED, "authorization", reason
     return False, Status.SKIPPED, "opsec", reason
+
+
+def _redact_result(res: ModuleResult) -> None:
+    """AR01: mask configured key values and key-like URL parameters in everything a module produced.
+
+    Modules may echo a request URL or an upstream message (a key in a query string or in a path) into
+    a finding, an attribute, a link, a pivot, a per-feed reason or the raw payload; the result then
+    reaches the graph, the live events, the case JSON, evidence and reports. This pass runs right
+    after the sanitizer (and fails closed with it). Pivot values are indicators: they are rewritten
+    only when they carry a configured key value (rebuilt from the masked value, or dropped when
+    nothing valid is left); a key-like parameter of an investigated URL stays part of the IOC.
+    """
+    from v3lum.core import redact
+
+    def clean(value: Any) -> Any:
+        if isinstance(value, str):
+            return redact.redact_text(value)
+        if isinstance(value, dict):
+            return {(clean(k) if isinstance(k, str) else k): clean(v) for k, v in value.items()}
+        if isinstance(value, list):
+            return [clean(v) for v in value]
+        if isinstance(value, tuple):
+            return tuple(clean(v) for v in value)
+        return value
+
+    for f in res.findings:
+        f.title = clean(f.title)
+        f.description = clean(f.description)
+        f.criterion = clean(f.criterion)
+        f.key = clean(f.key)
+        f.references = [clean(r) for r in f.references]
+        f.data = clean(f.data)
+    res.attributes = clean(res.attributes)
+    res.links = [(clean(label), clean(url)) for label, url in res.links]
+    kept: list[Pivot] = []
+    for p in res.pivots:
+        p.note = clean(p.note)
+        value = p.entity.value
+        if redact.has_secret(value):
+            rebuilt = Entity.try_make(p.entity.type, redact.redact_text(value))
+            if rebuilt is None:
+                continue
+            p.entity = rebuilt
+        kept.append(p)
+    res.pivots = kept
+    res.source_statuses = clean(res.source_statuses)
+    res.error = clean(res.error)
+    res.raw = clean(res.raw)
 
 
 def _unique_finding_ids(res: ModuleResult) -> None:
@@ -776,6 +853,18 @@ _STATUS_RANK = {
     "ok": 7, "empty": 6, "rate_limited": 5, "quota": 5, "blocked": 4, "error": 3,
     "needs_key": 2, "unavailable": 2, "skipped": 1, "not_run": 0,
 }
+
+
+def _consistent_reason_code(cov: dict[str, Any]) -> None:
+    """Keep a coverage entry's reason_code valid for its (merged) status: '' for ok/empty, the
+    status default when the recorded code belongs to another status (e.g. an earlier failed run)."""
+    try:
+        status = Status(cov.get("status"))
+    except ValueError:  # 'not_run'
+        return
+    code = str(cov.get("reason_code") or "")
+    if not valid_reason(status, code):
+        cov["reason_code"] = "" if status in (Status.OK, Status.EMPTY) else DEFAULT_REASON.get(status, "")
 
 
 def _merge_status(current: str | None, new: str) -> str:

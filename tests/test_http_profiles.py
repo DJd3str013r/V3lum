@@ -391,6 +391,30 @@ def test_sensitive_provider_with_schema_stores_and_returns_only_the_sanitized_bo
         cache.close()
 
 
+def test_sensitive_body_is_never_sanitized_with_another_providers_schema(tmp_path):
+    """P145 cond 7 (audit of wave 1): only a schema of the sensitive provider's own sources decides
+    what of its body is kept; naming a source of another provider (whose schema may keep more) means
+    no-store - the raw body stays in memory only."""
+    db = tmp_path / "c.db"
+    cache = HttpCache(str(db))
+    sanitize.register_schema("lenient_demo.search", keep=["*", "stealers[].*"])  # another provider's broad schema
+    try:
+        t = StubTransport().add("GET", "https://cavalier.example.test/api/search?email=someone@example.com", body=load(STEALER), content_type="application/json", times=2)
+        prov = provider("stealer_guard", ("cavalier.example.test",), sensitive=True, sources=("search",))
+        lenient = provider("lenient_demo", ("lenient.example.test",), sources=("search",))
+        c = client_for(t, registry(prov, lenient), cache=cache)
+        resp = c.request("GET", "https://cavalier.example.test/api/search?email=someone@example.com", source="lenient_demo.search")
+        assert resp.content == load(STEALER)  # raw body in memory only
+        assert cache.stats()["entries"] == 0
+        assert not c.request("GET", "https://cavalier.example.test/api/search?email=someone@example.com", source="lenient_demo.search").from_cache
+        dump = _cache_dump(db)
+        for leak in LEAKS:
+            assert leak.encode() not in dump, leak
+    finally:
+        sanitize.unregister_schema("lenient_demo.search")
+        cache.close()
+
+
 def test_sensitive_provider_uses_the_core_sanitizer_by_default(tmp_path):
     db = tmp_path / "c.db"
     cache = HttpCache(str(db))

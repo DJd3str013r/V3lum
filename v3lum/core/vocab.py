@@ -309,9 +309,16 @@ CORE_TIMELINE: dict[str, str] = {
 }
 
 _CORE = {"attribute": ATTRIBUTES, "tag": TAGS, "relation": RELATIONS}
+#: The shipped core names (a fragment re-declaring one of them is a re-declaration; names a test adds
+#: to the live tables with tests.fakes.allow_vocab never hide a fragment name).
+_CORE_NAMES = {kind: frozenset(table) for kind, table in _CORE.items()}
 
 
 class _State:
+    """The fragment side of the vocabulary. ``merged`` holds only the names fragments add: the core
+    tables are always read live (so tests.fakes.allow_vocab additions and removals take effect at
+    once, whenever the fragments were loaded)."""
+
     def __init__(self) -> None:
         self.loaded = False
         self.merged: dict[str, dict[str, str]] = {"attribute": {}, "tag": {}, "relation": {}}
@@ -329,8 +336,6 @@ _WARN_LOCK = threading.Lock()
 
 def _load() -> _State:
     st = _State()
-    for kind, core in _CORE.items():
-        st.merged[kind] = dict(core)
     pending_timeline: list[tuple[str, str, str]] = []
     directory = Path(FRAGMENT_DIR)
     files = sorted(directory.glob("*.json")) if directory.is_dir() else []
@@ -363,7 +368,7 @@ def _load() -> _State:
                 if problem:
                     st.errors.append(f"vocab fragment {fname}: {kind} {name!r}: {problem}")
                     continue
-                if name in st.merged[kind]:
+                if name in _CORE_NAMES[kind] or name in st.merged[kind]:
                     st.redeclarations.append((kind, name, fname))
                     continue
                 st.merged[kind][name] = desc.strip()
@@ -418,28 +423,27 @@ def reload() -> None:
 # ----------------------------------------------------------------------------------------
 
 
-def attributes() -> dict[str, str]:
-    """Merged attribute vocabulary (core + fragments): name -> description."""
-    merged = dict(_state().merged["attribute"])
-    for name, desc in ATTRIBUTES.items():
+def _merged(kind: str) -> dict[str, str]:
+    """Core names (live table, first) then the fragment names; the first description wins."""
+    merged = dict(_CORE[kind])
+    for name, desc in _state().merged[kind].items():
         merged.setdefault(name, desc)
     return merged
+
+
+def attributes() -> dict[str, str]:
+    """Merged attribute vocabulary (core + fragments): name -> description."""
+    return _merged("attribute")
 
 
 def tags() -> dict[str, str]:
     """Merged finding/entity tag vocabulary (core + fragments): name -> description."""
-    merged = dict(_state().merged["tag"])
-    for name, desc in TAGS.items():
-        merged.setdefault(name, desc)
-    return merged
+    return _merged("tag")
 
 
 def relations() -> dict[str, str]:
     """Merged relation vocabulary (core + fragments): name -> description."""
-    merged = dict(_state().merged["relation"])
-    for name, desc in RELATIONS.items():
-        merged.setdefault(name, desc)
-    return merged
+    return _merged("relation")
 
 
 def timeline_attributes() -> dict[str, str]:

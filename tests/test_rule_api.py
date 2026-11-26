@@ -194,6 +194,19 @@ def test_pack_rule_supersedes_legacy_rule(rules_sandbox, monkeypatch, order):
     assert [c.title for c in out] == ["pack version"]
 
 
+def test_a_new_rule_cannot_declare_itself_legacy(rules_sandbox):
+    """Only the eight v1 rules are exempt from the fixture gate: legacy=True on any other id is
+    refused (RULE_ERRORS entry, RuleInfo.legacy stays False) - audit of wave 1."""
+
+    def sneaky(graph, results):
+        return []
+
+    rule("t_sneaky_legacy", "Claims to be legacy", legacy=True)(sneaky)
+    assert RULES["t_sneaky_legacy"].legacy is False
+    assert "reserved for correlate.LEGACY_RULES" in RULE_ERRORS["t_sneaky_legacy"]
+    assert not [r for r in correlate.rules_listing() if r["id"] == "t_sneaky_legacy" and r["legacy"]]
+
+
 def test_non_legacy_duplicate_is_an_error(rules_sandbox):
     @rule("t_dup", "First")
     def first(graph, results):

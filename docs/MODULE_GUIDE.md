@@ -51,10 +51,11 @@ Contents: [0 Sequencing and merge gates](#0-sequencing-and-merge-gates) ·
   explicitly: `-M name` (`ScanOptions.include`), `--all-modules` (`include_disabled`) or
   `v3lum run <name> <input>`. A plain `v3lum scan` runs only disclosure `none` modules and lists the
   others as SKIPPED `not_default` (interim A16 guard in `v3lum.core.engine.Engine.select`; the DoH
-  reference modules are source modules too). The other wave-1 engine gates: TLP:RED (any RED seed)
-  keeps every `third_party`/`target` module away (SKIPPED `tlp`), a provider flagged
-  `publishes_queries` never receives a value on any path (SKIPPED `policy`, rule 7), and an exhausted
-  `daily_quota` gives QUOTA `quota`.
+  reference modules are source modules too). The other wave-1 selection gates: TLP:RED (the scan TLP
+  or any RED seed) keeps every `third_party`/`target` module away (SKIPPED `tlp`) and an exhausted
+  `daily_quota` gives QUOTA `quota`; a provider flagged `publishes_queries` never receives a value on
+  any path (SKIPPED `policy`, rule 7, also enforced in `Engine.run_module`). `v3lum run` goes straight
+  to `Engine.run_module`, where only rule 7 applies, until the CLI is rewired in wave 3.
 * **LIGHT/ACTIVE module files are not added before `tests/safety/test_scope.py` exists** (WP28,
   wave 5): the contract test fails otherwise (A7 merge gate).
 * Per group, the AR21 golden-path fixtures go to `tests/fixtures/acceptance/<type>/<module>.json`
@@ -69,7 +70,9 @@ Contents: [0 Sequencing and merge gates](#0-sequencing-and-merge-gates) ·
 `v3lum.core.module.Module`, one file per module under `v3lum/modules/<category>/`, auto-discovered
 by `v3lum.core.module.load_modules` and decorated with `v3lum.core.module.register`. Module files
 are side-effect free at import time except for registrations (datasets, sanitizer schemas, noise
-lists).
+lists). Registered classes live in `v3lum.core.module.REGISTRY` (`v3lum.core.module.get_module`
+by name or unique prefix, `v3lum.core.module.modules_for` by entity type,
+`v3lum.core.module.package_available` for optional packages).
 
 ### 1.1 Skeleton: the worked example
 
@@ -398,7 +401,7 @@ there as `extras:<file>`).
 `package`; missing `requires_keys` -> NEEDS_KEY `needs_key`; opsec above the mode -> SKIPPED
 `opsec`; ACTIVE without authorization -> SKIPPED `authorization`. `v3lum.core.module.readiness` is
 the legacy `(ready, reason)` wrapper. `describe()` keeps every v1 key and adds every v2 field
-(`contract: 'v2'`); `v3lum info` and doctor print it.
+(`contract: 'v2'`); `v3lum info <module>` and `v3lum modules --json` print it.
 
 ---
 
@@ -467,7 +470,7 @@ Exception -> status mapping, done by the engine (`v3lum.core.engine.Engine`):
 | `v3lum.core.http.QuotaExceeded` | quota / quota |
 | `v3lum.core.http.RateLimited` | rate_limited / rate_limited |
 | `v3lum.core.http.Blocked` | blocked / its `reason_code` (challenge, geo_block, login_wall, circuit, hostile_host) |
-| `v3lum.core.http.AuthRequired` | needs_key for keyed modules; blocked / challenge for keyless ones |
+| `v3lum.core.http.AuthRequired` | needs_key / needs_key for modules declaring `requires_keys` or `optional_keys`; blocked / challenge for keyless ones |
 | `v3lum.core.http.OfflineError` | unavailable / offline |
 | `v3lum.core.datasets.DatasetUnavailable` | unavailable / dataset |
 | `v3lum.core.http.PolicyError` | skipped / its reason_code (default policy) |
@@ -477,8 +480,11 @@ Exception -> status mapping, done by the engine (`v3lum.core.engine.Engine`):
 | sanitizer failure | error / sanitizer (everything the module produced is dropped) |
 | `applies()` False | skipped / not_applicable |
 | a module that returns ok with no data | empty |
+| `run()` returning anything but a `ModuleResult` (e.g. a forgotten `return res`) | error / error (a module bug: never read as empty) |
 
 A module bug (any other exception) ends error / error with the redacted traceback in `res.raw`.
+`v3lum.core.datasets.DatasetError` (a download that failed with no previous copy to serve) is
+"anything else": error / error.
 `v3lum.core.engine.Engine.run_module` never raises, except in strict contract mode (tests): a
 `v3lum.core.models.ContractViolation` is re-raised so the test fails loudly (outside strict mode it
 becomes error / error; inside `investigate()` an escaped exception becomes an ERROR result too).
@@ -503,10 +509,11 @@ finding, only with >= 2 independent upstream families (`Finding.upgrade(independ
 rule, reason)`, recorded in `Finding.upgraded_by`, kept across storage). Modules never call
 them: the engine's suppression stage (wave 2) and correlation packs do. **Analyst overrides always
 win**: `Finding.override` /
-`Finding.apply_override(*, label, severity, verdict, analyst, note, at)` (set by `v3lum cases
-override|confirm`, stored by deterministic finding id, re-applied by the engine); downgrade() and
-upgrade() never cross an override (they only record `blocked_by: analyst`). Pivot edges carry the
-same labels.
+`Finding.apply_override(*, label, severity, verdict, analyst, note, at)` keeps the automatic values
+under `override['auto']` and travels through `to_dict()`/`Finding.from_dict()` (the `v3lum cases
+override|confirm` commands that store overrides by deterministic finding id and re-apply them on
+re-runs arrive in wave 3, WP16); downgrade() and upgrade() never cross an override (they only record
+`blocked_by: analyst`). Pivot edges carry the same labels (`Pivot.confidence_label`).
 
 ---
 
@@ -516,8 +523,10 @@ Build results with `self.result(entity)` (a `v3lum.core.models.ModuleResult`):
 
 * `res.finding(title, severity='info', description='', *, confidence=0.8|'probable', criterion='',
   data=None, tags=(), references=(), source='', observed_first=None, observed_last=None, attack=(),
-  key='') -> Finding`. `Finding.id` = `v3lum.core.models.finding_id` = sha256('module|entity.key|
-  title|key')[:16]: **keep titles stable**, put counts in description/data and use `key=` to
+  key='') -> Finding`. `severity` is `'info' | 'low' | 'medium' | 'high' | 'critical'` or a
+  `v3lum.core.models.Severity` member. `Finding.id` = `v3lum.core.models.finding_id` =
+  sha256('module|entity.key|title|key')[:16] (filled by `v3lum.core.models.Finding.ensure_id`; the
+  engine refreshes it after the run): **keep titles stable**, put counts in description/data and use `key=` to
   separate same-title findings (two findings with the same id in one result raise in strict mode;
   outside it the second gets a `'#n'` key). `confidence` is a float or a label
   (`v3lum.core.models.Confidence`). `references` keep http(s) URLs only. `source` = registry source
@@ -538,7 +547,9 @@ Build results with `self.result(entity)` (a `v3lum.core.models.ModuleResult`):
 * `res.presence(state, *, marker='', url='', checked_at=None, source='') -> res`, state `found |
   absent | unknown` (`v3lum.core.models.PRESENCE_STATES`; tri-state existence) -> attribute
   `presence` = `{state, marker, url, checked_at, source}`. `absent` needs a marker or URL as
-  positive evidence (strict mode raises; otherwise it is recorded as `unknown`).
+  positive evidence (strict mode raises; otherwise it is recorded as `unknown`). `checked_at`
+  defaults to the wall-clock UTC time: pass `checked_at=ctx.now()` to follow the run's clock (frozen
+  in tests).
 * `res.set_marking(tlp) -> res`: results carrying a platform marking (e.g. a MISP `tlp:` tag) keep
   the highest TLP seen in `res.tlp`; the engine raises the entity/case TLP from it in wave 2 (A12).
 * `res.source_status(source_id, status, *, reason_code='', reason='') -> res`: aggregators report
@@ -552,7 +563,13 @@ Build results with `self.result(entity)` (a `v3lum.core.models.ModuleResult`):
   `res.datasets` (citations) and `res.redacted_fields` are filled by the engine.
 * **Secrets**: never put raw secrets anywhere; use `v3lum.core.sanitize.mask_secret` (`{type,
   preview first4…last4, sha256}`) or `v3lum.core.entities.secret_entity`; combos (email:password)
-  are dropped by the core (`v3lum.core.sanitize.drop_combos`).
+  are dropped by the core (`v3lum.core.sanitize.drop_combos`). After the sanitizer the engine also
+  passes every string the module produced (findings, attributes, links, pivots, per-feed reasons,
+  `res.error`, `res.raw`) through `v3lum.core.redact.redact_text`: configured key values and
+  key-like URL parameters (`v3lum.core.redact.KEY_PARAMS`) become `v3lum.core.redact.MASK`, so an
+  echoed request URL never carries a key into the graph, events, case JSON or reports (pivot values
+  are indicators: they are rewritten only when they carry a configured key value; this pass fails
+  closed with the sanitizer).
 * **Strict contract mode** (`V3LUM_STRICT=1`, always on in tests; `v3lum.core.vocab.strict_enabled`)
   raises `v3lum.core.models.ContractViolation` (unknown vocabulary names raise its subclass
   `v3lum.core.vocab.UnknownVocab`) for: unknown attribute/tag/relation names, a missing criterion
@@ -574,10 +591,10 @@ Build results with `self.result(entity)` (a `v3lum.core.models.ModuleResult`):
 | `http` | `v3lum.core.http.ScopedHttp` carrying the module's metadata: host allow-list (declared hosts + the `hosts_from_settings` hosts of its providers as `ProviderRegistry.hosts_for` resolves them - https URLs only, never a host another provider owns; static provider hosts it does not declare stay refused; target modules: no host list in wave 1, scope binding from wave 2), `max_requests`, run deadline, error markers, `absent_statuses`, keyless flag (no requires/optional key configured), cancel event, priority |
 | `doh` | the per-run **core DoH scope**: not counted in `max_requests` or quotas, no module UA/min_interval, restricted to the resolver hosts; its hosts reach the disclosure ledger (`res.hosts`) |
 | `dns` | `v3lum.core.dns.Resolver` over `ctx.doh`; public resolvers off for disclosure `none`/`internal` and at TLP:RED; no public fallback from an internal resolver at AMBER and above |
-| `net` | `v3lum.core.net.Connector`: raw sockets for target modules only (PolicyError otherwise) |
+| `net` | `v3lum.core.net.Connector`: raw sockets for target modules only (PolicyError otherwise): `v3lum.core.net.Connector.connect` `(host, port, *, timeout=None) -> socket.socket` (timeout capped by the run deadline; cancel/deadline honoured) and `v3lum.core.net.Connector.wrap_tls` `(sock, server_hostname, *, timeout=None) -> ssl.SSLSocket` (default verifying context, verification never disabled); socket errors propagate as OSError |
 | `data` | a dataset view (`v3lum.core.datasets.DataView`; `ctx.data.used` becomes `res.datasets`) |
 | `org` | the organisation profile (`v3lum.core.orgprofile.OrgProfile`; empty when none is configured) |
-| `state` | `v3lum.core.context.ModuleState`: `get/set/delete/all`, persistent per-module JSON under `~/.v3lum/state/<module>.json` (0600, 1 MB cap, JSON values only; never personal identifiers or secrets) - **the only persistence a module may use**; the same object is available to `HealthCheck.selftest(ctx)` |
+| `state` | `v3lum.core.context.ModuleState`: `get/set/delete/all`, persistent per-module JSON under `~/.v3lum/state/<module>.json` (0600, 1 MB cap, JSON values only; never personal identifiers or secrets: a refused value raises `v3lum.core.context.StateError`) - **the only persistence a module may use**; the same object is available to `HealthCheck.selftest(ctx)` |
 | `key(name)`, `has_key(name)`, `key_plan(name)` | configured keys; plan `'business' \| 'free' \| ''` |
 | `setting(name, default=None)` | core and module settings (configured value, else the registered default, else `default`) |
 | `log(message, level='info')` | a line in the live feed (configured key values and key-like URL parameters are masked first) |
@@ -611,14 +628,18 @@ reported in `errors`; JSON uses the same keys). The schema (tables `[org]`, `[[d
 `favicon_hashes`, `[[suppliers]]`, `[[executives]]`) is documented in the `v3lum.core.orgprofile`
 module docstring. Problems are collected in `ctx.org.errors`, never raised. API:
 `ctx.org.owns(entity)` -> `v3lum.core.orgprofile.Ownership` (`own`, `verified`, `kind`, `entry`,
-`criticality`, `third_party_hosted`; `kind` 'domain' | 'cidr' | 'asn' | 'cnpj_root' | 'favicon_hash' |
-'card_bin', or 'supplier' for supplier domains (own False); `.tag` is `own_asset` when own, else
-`third_party`; domains match by
-PSL registrable domain + label-wise subdomain, never string suffixes, IDN as punycode; IPs/CIDRs by
-containment; ASNs and favicon hashes by equality; CNPJs by their 8-character root; card BINs by
-prefix), `ctx.org.is_verified_domain(domain)` (only `txt_verified`/`attested` entries; `seeded` and
+`criticality`, `third_party_hosted`; `kind` 'domain' | 'cidr' | 'asn' | 'cnpj_root' |
+'favicon_hash' | 'card_bin', or 'supplier' for supplier domains (own False); `.tag` is `own_asset`
+when own, else `third_party`; domains match by PSL registrable domain + label-wise subdomain, never
+string suffixes, IDN as punycode; IPs/CIDRs by containment; ASNs and favicon hashes by equality;
+CNPJs by their 8-character root; card BINs by prefix), `ctx.org.is_verified_domain(domain)` (only `txt_verified`/`attested` entries; `seeded` and
 `confirmed` never unlock own-asset-only or per-person modules), `ctx.org.brand_terms()`
 (accent-folded lower-case keywords and variants), `ctx.org.supplier_domains()`, `ctx.org.is_empty`.
+The entries are frozen dataclasses: `v3lum.core.orgprofile.DomainEntry` (`name, verification,
+attested_by, attested_date, criticality, third_party_hosted, note`; `.verified`),
+`v3lum.core.orgprofile.BrandEntry`, `v3lum.core.orgprofile.NetEntry` (ASNs and CIDRs),
+`v3lum.core.orgprofile.AppId`, `v3lum.core.orgprofile.SupplierEntry` and
+`v3lum.core.orgprofile.ExecutiveEntry` (explicit opt-in only).
 Never copy profile content into results: reports carry only the `own_asset`/`third_party` tags.
 
 `v3lum.core.context.ScanOptions` keeps every v1 field and adds `authorization_ref`, `scope_path`,
@@ -664,6 +685,13 @@ Exceptions, all importable from `v3lum.core.http`: `v3lum.core.http.HttpError` (
 `v3lum.core.http.RequestCapReached`, `v3lum.core.http.PolicyError` (`reason_code`),
 `v3lum.core.http.ConfigError`.
 
+Core plumbing behind `ctx.http` (never used by modules directly): one `v3lum.core.http.HttpClient`
+per runtime over a `v3lum.core.http.Transport` (one hop per call; `v3lum.core.http.RequestsTransport`
+in production, `tests.fakes.FakeHttp` in tests), the SQLite `v3lum.core.cache.HttpCache`, the per-host
+`v3lum.core.limiter.HostLimiter` and a `v3lum.core.clock.Clock` (`v3lum.core.clock.SystemClock`,
+`v3lum.core.clock.SYSTEM_CLOCK`; `tests.fakes.FakeClock` in tests); `v3lum.core.http.block_reason` is
+the v1 compatibility wrapper of `classify`.
+
 Core behaviour you can rely on:
 
 * the provider `http_profile` is applied by host (UA, Accept, Accept-Language, timeout, retries,
@@ -695,10 +723,14 @@ Core behaviour you can rely on:
   `v3lum.core.redact.redact_text`: configured key values and key-like parameters are masked).
 
 **Body-error classification (P321)**: `v3lum.core.http.classify` `(resp, *, markers=(),
-keyless=False) -> Classification(status 'blocked'|'rate_limited'|'quota'|'error', reason_code,
-reason, marker_id) | None` runs on every response before parsing and caching: module and provider
-error markers, login-wall/geo-block/challenge final-URL and body fingerprints (weak captcha words
-only on error statuses), 429 -> rate_limited, keyless 403 -> blocked/challenge. Error-marker
+keyless=False, provider_name='') -> Classification(status 'blocked'|'rate_limited'|'quota'|'error',
+reason_code, reason, marker_id) | None` (`v3lum.core.http.Classification`) runs on every response
+before parsing and caching, first match wins: module and provider error markers; login walls and
+`/blockme.html` by final URL; geo-blocks (CloudFront 403, Akamai access-denied, HTTP 451); strong
+anti-bot fingerprints on any status (Cloudflare, AWS WAF, PerimeterX, Incapsula, DDoS-Guard, Vercel,
+DataDome...); weak captcha words only on error statuses; 429 -> rate_limited; 430/999 ->
+blocked/challenge; keyless 403 -> blocked/challenge. Body fingerprints are never applied to JSON
+documents and the result is never an absence. Error-marker
 schema (module `error_markers` and provider `error_markers`, parsed by
 `v3lum.core.providers.parse_marker`):
 
@@ -733,7 +765,8 @@ resolver)` (`v3lum.core.dns.DnsblResult`). DNSBL queries go only through a non-p
 status `unverified`; the refusal codes 127.255.255.252/254/255 are `error`/`blocked`/`rate_limited`,
 never 'not listed'. `query_name` is used exactly as given: build it with
 `v3lum.core.dns.dnsbl_label` (`ctx.dns.dnsbl(dnsbl_label(ip), 'zen.spamhaus.org')`) or
-`v3lum.core.dns.reverse_name` for PTR names.
+`v3lum.core.dns.reverse_name` for PTR names. Record types and DNS status names are
+`v3lum.core.dns.RTYPES` (name -> code) and `v3lum.core.dns.RCODES` (rcode -> status).
 
 Resolvers: `v3lum.core.dns.DOH_PROVIDERS` - Google with `edns_client_subnet=0.0.0.0/0` on every
 query, Cloudflare (ECS-free; first for `hostile=True` names), Quad9 (RFC 8484 wire format, only with
@@ -780,7 +813,11 @@ an SQLite index above), `ctx.data.info(name)` -> `v3lum.core.datasets.DatasetInf
 fetched_at, bytes, licence, terms_class, attribution, age_hours, stale, provider, source, present),
 `ctx.data.used` (citations `{name, sha256, fetched_at, licence}` copied into `ModuleResult.datasets`).
 Unregistered names (the v1 `fetch(name, url)` form) still work but record no licence or terms:
-always register.
+always register. Registrations live in `v3lum.core.datasets.DATASETS`; a download that fails with
+no copy to serve raises `v3lum.core.datasets.DatasetError` (its `reason_code` names why, e.g.
+challenge, geo_block, rate_limited, quota or error; the engine maps it to error / error);
+`DataStore.update` / `update_all` (behind `v3lum data update`) return
+`v3lum.core.datasets.UpdateResult(name, status, old_sha256, new_sha256, diff_summary, reason)`.
 
 Downloads go through the core HTTP client (classification, redaction, conditional GET with
 ETag/Last-Modified) into a temporary file and are installed atomically: a challenge page, an error
@@ -791,10 +828,10 @@ data update <name>'); a stale copy is served at once while the refresh is deferr
 NC data are runtime downloads only, never bundled (A6). Datasets that drive LIGHT/ACTIVE behaviour
 use `active=True` and ship a pin in `v3lum/data/active_locks/<name>.json` (`{"schema":
 "v3lum.active_lock/1", "name", "sha256", "url", "commit", "reason"}`;
-[format](../v3lum/data/active_locks/README.md)): a changed active dataset is installed only after its
-diff summary is reviewed and accepted (`DataStore.update(name, accept_new=True)`), never mid-scan. Archives go through
-`v3lum.core.datasets.safe_extract` (no absolute paths, `..`, links or special files; size, ratio and
-member-count limits).
+[format](../v3lum/data/active_locks/README.md)): a changed active dataset is installed only after
+its diff summary is reviewed and accepted (`DataStore.update(name, accept_new=True)`), never
+mid-scan. Archives go through `v3lum.core.datasets.safe_extract` (no absolute paths, `..`, links or
+special files; size, ratio and member-count limits).
 
 ---
 
@@ -808,7 +845,9 @@ and `v3lum.config.key_env_names` feeds the test env scrub automatically. **One k
 `optional_keys` reference registered names (a missing `requires_keys` key gives NEEDS_KEY
 `needs_key` before the run; `ctx.key(name)` returns `''` for a key that is not configured); key
 values are registered with the central redactor (`v3lum.core.redact.register_secret`)
-automatically, so they never reach logs, events, exceptions, cache rows or evidence.
+automatically, so they never reach logs, events, exceptions, cache rows or evidence (the redactor
+also offers `v3lum.core.redact.redact_url`, `v3lum.core.redact.redact_headers` and
+`v3lum.core.redact.registered_count`; `v3lum.config.mask` gives the masked display form of a key).
 `ctx.key_plan(name)` returns the plan recorded in setting `key_plans` (`'business' | 'free' | ''`;
 written by `Config.set_key(name, value, plan=...)` - the `v3lum keys` plan flag and the keys wizard
 arrive with the key commands of waves 3 and 5).
@@ -849,8 +888,13 @@ the union applies; a non-JSON raw or a missing schema drops `raw`) and
 attributes and finding data whatever the schema says; for every module, email:password and URL
 userinfo combos are removed from every string (`drop_combos`) and a pivot left invalid is dropped.
 What was removed is listed in `res.redacted_fields`. Any internal failure fails closed: ERROR
-`sanitizer` and everything the module produced is dropped. Sensitive providers' HTTP bodies pass
-`v3lum.core.sanitize.sanitize_body` before caching (no schema -> never cached). Modules put the
+`sanitizer` (`v3lum.core.sanitize.SanitizerError`) and everything the module produced is dropped.
+A schema is a `v3lum.core.sanitize.SanitizerSchema(source_id, keep, notes)`;
+`v3lum.core.sanitize.apply_schema` `(obj, schema) -> (kept copy, dropped paths)` applies one.
+Sensitive providers' HTTP bodies pass `v3lum.core.sanitize.sanitize_body` before caching, with the
+schema of the request's `source=` only when that source belongs to the sensitive provider itself
+(no schema, a non-JSON body or another provider's source -> never cached; the module gets the raw
+body in memory only and the engine sanitizer still applies). Modules put the
 password FORM in a kept field `password_form` (`'plaintext'` | `'hashed: <algorithm>'`) and never
 keep passwords, hashes, salts, masked hints, cookies, tokens, computer names, infected-host IPs,
 malware paths or combo lines (A4). WP09 completes this stage in wave 2 (free-text scrubbing,
@@ -889,17 +933,23 @@ needing it cannot register) and the problem is listed in `registry().errors`; re
 an `<id>.json` without `schema`, unknown fields (except `x_*`, kept in `Provider.extra`), a host owned
 by two providers, a wildcard over a public-suffix namespace (`*.github.io`, `*.amazonaws.com`: list
 exact hosts), private/loopback/reserved IP literals (internal platforms come from
-`hosts_from_settings`), a UA template that looks like a browser UA (use `"browser"`), an identifying
-UA (`contact`, `{contact}`, `{contact_url}`) on a provider of tier `unknown`, terms contradictions (`open` with `free_plan_business_use:
-false`, `license`/`noncommercial` with `true`), invalid sanitizer keep paths and `multi_key: true`.
+`hosts_from_settings`), a UA template that looks like a browser UA (use `"browser"`), an
+identifying UA (`contact`, `{contact}`, `{contact_url}`) on a provider of tier `unknown`, terms
+contradictions (`open` with `free_plan_business_use: false`, `license`/`noncommercial` with `true`),
+invalid sanitizer keep paths and `multi_key: true`.
 `hosts_from_settings` adds only the host of an **https** URL setting that no other provider owns.
 
 A host belongs to exactly one provider; each fragment has one owning package and others extend it.
 Core seeds (wave 1): `core_doh`, `google_public_dns`, `cloudflare_dns`, `quad9`, `internal_doh`,
 `shodan`, `iana`, `publicsuffix`, `github`, `abusech`, `internal_misp`, `internal_opencti`. API:
-`v3lum.core.providers.registry` (`.get`, `.source`, `.provider_for_host`, `.providers`, `.keys`,
-`.errors`, `.hosts_for`), `v3lum.core.providers.register` / `v3lum.core.providers.unregister`
-(tests and plugins), `v3lum.core.providers.most_restrictive`, `v3lum.core.providers.TERMS_ORDER`.
+`v3lum.core.providers.registry` (`.get`, `.source`, `.provider_for_host`, `.providers`,
+`.sources`, `.keys`, `.errors`, `.hosts_for`), `v3lum.core.providers.register` / `v3lum.core.providers.unregister`
+(tests and plugins), `v3lum.core.providers.reload`, `v3lum.core.providers.most_restrictive`,
+`v3lum.core.providers.lowest_tier`, `v3lum.core.providers.TERMS_ORDER`. Parsed fragments are frozen
+dataclasses: `v3lum.core.providers.ProviderRegistry` holds `v3lum.core.providers.Provider` objects
+with `v3lum.core.providers.ProviderFlags`, `v3lum.core.providers.HttpProfile`,
+`v3lum.core.providers.QuotaSpec`, `v3lum.core.providers.ErrorMarker`, `v3lum.core.providers.KeySpec`
+and `v3lum.core.providers.Source` (with `v3lum.core.providers.Terms`).
 
 Review additions: a source may declare `embeds` (upstream families an aggregator re-serves, P171
 consensus) and `licensed_alternative` (text for `doctor --licences`) - `v3lum.core.providers.Source`;
@@ -923,7 +973,9 @@ file order; a re-declared name is allowed - first description wins, listed by
 (`v3lum.core.vocab.UnknownVocab`). An optional `"timeline": {attribute: label}` section puts a
 dated attribute on the case timeline (`v3lum.core.vocab.timeline_attributes`). API:
 `v3lum.core.vocab.attributes`, `v3lum.core.vocab.tags`, `v3lum.core.vocab.relations`,
-`v3lum.core.vocab.is_known_attribute`, `v3lum.core.vocab.check`, `v3lum.core.vocab.errors`
+`v3lum.core.vocab.is_known_attribute`, `v3lum.core.vocab.is_known_tag`,
+`v3lum.core.vocab.is_known_relation`, `v3lum.core.vocab.check`, `v3lum.core.vocab.errors`,
+`v3lum.core.vocab.reload` (re-reads the fragments)
 ([format](../v3lum/data/vocab/README.md)). Re-use an existing name before adding one; a new name
 needs a one-line description of what the value means.
 
@@ -949,6 +1001,12 @@ path/query/fragment; **no CPF ever**; no submit/publish/scan endpoints, no login
 people-search/painel/leak sites; PERSONAL_TYPES/CNPJ templates only to trusted/community provider
 hosts (`privacy: true`); unknown-tier hosts only for IOC types, with an 'unknown operator' badge.
 
+Categories are `v3lum.core.links.LINK_CATEGORIES`; the loaded packs and links are
+`v3lum.core.links.packs` and `v3lum.core.links.templates`; the per-type encoders behind the
+placeholders are `v3lum.core.links.encode_e164`, `v3lum.core.links.encode_br_national`,
+`v3lum.core.links.encode_wa`, `v3lum.core.links.cnpj_fmt`, `v3lum.core.links.cnpj_digits`,
+`v3lum.core.links.cnpj_root`, `v3lum.core.links.idn_unicode`, `v3lum.core.links.punycode`,
+`v3lum.core.links.b64` and `v3lum.core.links.b64url`.
 API: `v3lum.core.links.render` `(link_or_ref, entity) -> RenderedLink | None`,
 `v3lum.core.links.pivot_links_for` `(entity, *, categories=None, include_privacy=False)` (verified
 links first, unverified ones with badge 'unverified'), `v3lum.core.links.links_for` (legacy
@@ -977,10 +1035,21 @@ Python rules in `v3lum/correlations/<pack>.py`:
 `@rule(rule_id, title, description='', *, version='1', code='', severity='info', criterion='',
 references=(), attack=(), false_positives='', fixtures=())` (`v3lum.core.correlate.rule`);
 `fn(graph, results)` or `fn(graph, results, rctx)` with `v3lum.core.correlate.RuleContext(now,
-org, options, providers, settings, meta)`. Rules only read the graph (`v3lum.core.graph.Graph`)
-and emit `v3lum.core.models.Correlation` objects (deterministic ids via
-`v3lum.core.models.correlation_id`, criterion, confidence_label, attack, why, recommendation,
-evidence); they never schedule modules or pivots and never change opsec or scope.
+org, options, providers, settings, meta)` (`rctx.setting(name, default=None)` reads a setting; `org`
+is the OrgProfile). Rules only read the graph (`v3lum.core.graph.Graph`: `get`, `of_type`,
+`seeds`, `findings`, `neighbors`, `out_edges`, `in_edges`; `v3lum.core.graph.Node`: `attr`,
+`attr_values`, `attr_sources`, `findings`, `seed`, `depth`, `noise`, `noise_kind`, `ownership`,
+`criticality`, `tlp`, `path_confidence`, entity tags with `v3lum.core.graph.Node.tagged` (entity
+or finding tags) - the engine sets them with `v3lum.core.graph.Node.add_tag`;
+`v3lum.core.graph.Edge(src, dst, relation, module, confidence)` with `confidence_label`)
+and emit `v3lum.core.models.Correlation` objects (`Correlation(rule, title, severity, description,
+entities, confidence=0.7|label, evidence, recommendation, tags, criterion=, attack=, references=,
+why=, key=)`; deterministic ids via `v3lum.core.models.correlation_id`, the rule version stamped by
+the engine); they never schedule modules or pivots and never change opsec or scope.
+Registered rules are `v3lum.core.correlate.RuleInfo` entries of `v3lum.core.correlate.RULES`
+(`v3lum.core.correlate.load_rules` imports the packs, `v3lum.core.correlate.run_rules` `(graph,
+results, only=None, *, rctx=None)` runs them, `v3lum.core.correlate.rules_listing` feeds `v3lum
+rules`, `v3lum.core.correlate.register_compiler` hooks data rules in wave 4).
 
 Every new rule ships positive and negative graph fixtures
 `tests/fixtures/rules/<rule_id>/positive_*.json` and `negative_*.json` (schema
@@ -990,8 +1059,10 @@ source}]}, findings [...]}], "edges": [{src, dst, relation, module, confidence}]
 "expect": {"<rule_id>": {"min", "max", "severity", "confidence_label"}}}`), run automatically by
 `tests/test_rule_fixtures.py` through `v3lum.core.correlate.load_graph_fixture` (format and
 keys: [tests/fixtures/rules/README.md](../tests/fixtures/rules/README.md); worked example:
-`tests/fixtures/rules/young_domain/`). The eight `v3lum.core.correlate.LEGACY_RULES` are exempt until
-replaced; a non-legacy rule registered under a legacy id supersedes it whatever the import order
+`tests/fixtures/rules/young_domain/`; a loaded fixture is a `v3lum.core.correlate.GraphFixture`).
+The eight `v3lum.core.correlate.LEGACY_RULES` are exempt until replaced (only they can be legacy: a
+rule cannot declare itself legacy to skip its fixtures - that is a RULE_ERRORS entry); a non-legacy
+rule registered under a legacy id supersedes it whatever the import order
 (the legacy one goes to `v3lum.core.correlate.RULE_REPLACED`), any other duplicate id, an invalid id
 or severity and unknown ATT&CK ids are `v3lum.core.correlate.RULE_ERRORS` entries (the contract test
 requires none). A rule that raises is isolated (its error is recorded, the others still run).
@@ -999,7 +1070,8 @@ Data rules (`v3lum/data/rules/*.json|toml`, P301) arrive in wave 4; Python rules
 first-class. ATT&CK ids extra to core go into `v3lum/data/attack/<pack>.json` (schema
 `v3lum.attack_index/1`: `{"schema", "version", "source", "attribution", "techniques": {"T1566":
 {"name", "stix_id", "revoked", "deprecated", "replaced_by"}}}`; first declaration wins;
-`v3lum.core.attack.lookup`, `v3lum.core.attack.canonical`, `v3lum.core.attack.validate`).
+`v3lum.core.attack.lookup` -> `v3lum.core.attack.Technique`, `v3lum.core.attack.is_valid`,
+`v3lum.core.attack.canonical`, `v3lum.core.attack.validate`, `v3lum.core.attack.stix_id`).
 
 ---
 
@@ -1033,12 +1105,12 @@ ND and unknown licences are refused, A6; [format](../v3lum/data/noise/README.md)
 lists stay in code (`v3lum/data/noise/core.json` documents them). Noise applies to domains, IPs and
 bare-host URLs only; domain matching walks up to the PSL registrable domain. API:
 `v3lum.core.noise.is_noise`, `v3lum.core.noise.noise_kind` (the most informative kind,
-`v3lum.core.noise.PRECEDENCE`),
-`v3lum.core.noise.is_sinkhole`, `v3lum.core.noise.is_parked`, `v3lum.core.noise.is_cdn`
-(cdn/cloud/hosting/saas), `v3lum.core.noise.legit_platform` `(url) -> platform | None` (Google
-Forms/Sites/Drive, OneDrive, SharePoint, Dropbox, `*.github.io`, `*.pages.dev`... -
-`v3lum.core.noise.PLATFORM_HOSTS`; a URL with a path or query on them is **not** noise: it is
-investigated, the bare host is; the engine tags such URLs `hosted_on_legit_platform` from wave 2), `v3lum.core.noise.warninglists` `(entity) -> [list names]` and
+`v3lum.core.noise.PRECEDENCE`), `v3lum.core.noise.is_sinkhole`, `v3lum.core.noise.is_parked`,
+`v3lum.core.noise.is_cdn` (cdn/cloud/hosting/saas), `v3lum.core.noise.legit_platform` `(url) ->
+platform | None` (Google Forms/Sites/Drive, OneDrive, SharePoint, Dropbox, `*.github.io`,
+`*.pages.dev`... - `v3lum.core.noise.PLATFORM_HOSTS`; a URL with a path or query on them is **not**
+noise: it is investigated, the bare host is; the engine tags such URLs `hosted_on_legit_platform`
+from wave 2), `v3lum.core.noise.warninglists` `(entity) -> [list names]` and
 `v3lum.core.noise.errors`. Kind `warninglist` marks a named warninglist: warninglisted values are
 listed, not auto-pivoted, and their malicious findings become `'POSSIBLE - on warninglist <name>'`
 (the engine's suppression stage applies this from wave 2). Runtime warninglists backed by a
@@ -1081,18 +1153,28 @@ and bot-token values become fingerprints, cards `BIN6…last4`, even when built 
 `Entity.display` / `Entity.redacted` are the masked forms for output.
 
 Type sets (A8): `v3lum.core.entities.PERSONAL_TYPES` (never sent to unknown-tier providers - the
-policy gate enforces it from wave 2; pivot them with `expand=False` when found as a side effect), `v3lum.core.entities.IOC_TYPES`,
-`v3lum.core.entities.SECRET_TYPES` (never sent anywhere or exported),
-`v3lum.core.entities.COMPANY_ID_TYPES` (CNPJ, EU VAT: treated like PERSONAL_TYPES for tiers),
-`v3lum.core.entities.NO_AUTO_EXPAND` (never investigated automatically); `v3lum.core.entities.STIX_SCO`;
+policy gate enforces it from wave 2; pivot them with `expand=False` when found as a side effect),
+`v3lum.core.entities.IOC_TYPES`, `v3lum.core.entities.SECRET_TYPES` (never sent anywhere or
+exported), `v3lum.core.entities.COMPANY_ID_TYPES` (CNPJ, EU VAT: treated like PERSONAL_TYPES for
+tiers), `v3lum.core.entities.NO_AUTO_EXPAND` (never investigated automatically);
+`v3lum.core.entities.STIX_SCO`;
 `v3lum.core.entities.display_value` `(etype, value, *, show_personal=False)` (CPF
 `***.456.789-**`), `v3lum.core.entities.redacted_value`, `v3lum.core.entities.secret_entity`,
-`v3lum.core.entities.generic_address_kind`, `v3lum.core.entities.platform_for_url`. Validators:
+`v3lum.core.entities.generic_address_kind`, `v3lum.core.entities.platform_for_url`; also
+`v3lum.core.entities.TYPE_LABELS` (display names), `v3lum.core.entities.is_personal`,
+`v3lum.core.entities.is_ioc`, `v3lum.core.entities.is_secret`,
+`v3lum.core.entities.secret_fingerprint` `(kind, raw)`, `v3lum.core.entities.normalize`
+`(etype, raw)` (canonical value; ValueError on invalid values), `v3lum.core.entities.refang`,
+`v3lum.core.entities.defang`, `v3lum.core.entities.url_host` and
+`v3lum.core.entities.snowflake_timestamp` `(value, epoch='discord'|'twitter')`. Validators (offline,
+stdlib only; CPF is validated offline only, rule 4):
 `v3lum.core.validators.crypto_address_info` -> `v3lum.core.validators.CryptoInfo(chain, kind,
 network, checksum_ok, confidence)`, `v3lum.core.validators.keccak256`,
-`v3lum.core.validators.eip55_checksum`, `v3lum.core.validators.xmr_address_valid`,
-`v3lum.core.validators.xrp_address_valid`, `v3lum.core.validators.sol_address_plausible`,
-`v3lum.core.validators.onion_valid`, `v3lum.core.validators.btc_address_info`.
+`v3lum.core.validators.eip55_checksum`, `v3lum.core.validators.eth_checksum_state`,
+`v3lum.core.validators.xmr_address_valid`, `v3lum.core.validators.xrp_address_valid`,
+`v3lum.core.validators.sol_address_plausible`, `v3lum.core.validators.onion_valid`,
+`v3lum.core.validators.btc_address_info`, `v3lum.core.validators.btc_address_valid`,
+`v3lum.core.validators.cpf_valid`, `v3lum.core.validators.cnpj_valid`.
 
 ---
 
@@ -1115,7 +1197,7 @@ Every module gets `tests/modules/test_<name>.py` plus trimmed real fixtures in
 | `tests.fakes.run_module` | `(module_cls, entity, http=None, **ctx_kwargs)` with `entity` an Entity or `'type:value'`, through `Engine.run_module` (status mapping, sanitizer, caps, host checks, strict mode): **the recommended way**; a request without a route fails the test even though the engine maps the module's exception to an ERROR result |
 | `tests.fakes.define_module` | `(name, accepts, run, **attrs)` registers a synthetic module (defaults terms open, disclosure none, hosts (), PASSIVE, category utility; LIGHT/ACTIVE without an explicit disclosure become `target` with `default_enabled=False`; networked ones default `max_requests=10`, `expected_latency=1.0`); use it with the `clean_registry` fixture |
 | `tests.fakes.test_provider` | context manager registering a synthetic provider fragment (`provider_id='test_provider', *, hosts=('api.example.test',), tier='trusted', terms='open', sensitive=False, sources=('default',), keys=None, **extra`; `extra` overrides fragment fields, the flags `publishes_queries`/`reuses_queries`/`fetches_target` and `sanitizer` included) and yielding the Provider; `tests.fakes.provider_fragment` builds the same dict and `tests.fakes.source_ids` lists its qualified source ids |
-| `tests.fakes.allow_vocab` | `(attributes=(), tags=(), relations=())` temporarily extends the vocabulary |
+| `tests.fakes.allow_vocab` | `(attributes=(), tags=(), relations=())` context manager: temporarily extends the core vocabulary for a test (strict mode accepts the names inside the block only); ship real names in a `v3lum/data/vocab/<pack>.json` fragment |
 | `tests.fakes.fixture`, `tests.fakes.module_fixture` | `tests/fixtures/<name>`, `tests/fixtures/<module>/<name>` (JSON parsed) |
 | `tests.fakes.graph_fixture` | `(path) -> (Graph, results, RuleContext)` |
 | `tests.fakes.assert_no_secret` | `(secret, *items)`: str/bytes/dict/objects/Paths (directories recursively, SQLite as bytes; raw, URL-encoded and base64 forms) |
@@ -1203,7 +1285,9 @@ Team rules (inherited from Céos, approved by Council #1) - enforced in code whe
    receive a value; search endpoints only).
 
 Also binding: active probing only with explicit authorization (`--authorized REF` + a scope file,
-A7); reports are self-contained; no biometrics or sensitive-data inference.
+A7; today `--authorized [REF]` confirms with an optional reference, the scope binding arrives in
+wave 2 and the mandatory reference with the CLI of wave 3); reports are self-contained; no
+biometrics or sensitive-data inference.
 
 Defaults that every module inherits (the policy gate that enforces them on every path arrives in
 wave 2, WP07/WP08; in wave 1 the engine applies the gates listed in section 0 - interim source
@@ -1215,14 +1299,18 @@ guide; declare your module for the full set now):
   `license` only through an active licence_allow entry; `unknown` never. A licence-blocked source
   is SKIPPED `licence`, is never replaced by a LIGHT/ACTIVE alternative and gets its manual link.
 * **TLP (A2)**: scans default to **TLP:AMBER** (`ScanOptions.tlp`, setting `tlp`; the `v3lum scan
-  --tlp` flag still defaults to clear until the CLI is rewired in wave 3); AMBER excludes unknown-tier and query-reusing
-  providers, AMBER+STRICT allows trusted providers only, RED allows offline and internal platforms
-  only (DNS then needs an internal resolver, otherwise 'could not verify'); TLP is inherited by
-  pivots. `v3lum.core.tlp.TLP`, `v3lum.core.tlp.parse`.
+  --tlp` flag still defaults to clear until the CLI is rewired in wave 3); AMBER excludes
+  unknown-tier and query-reusing providers, AMBER+STRICT allows trusted providers only, RED allows
+  offline and internal platforms only (DNS then needs an internal resolver, otherwise 'could not
+  verify'); TLP is inherited by pivots (from wave 2). `v3lum.core.tlp.TLP`, `v3lum.core.tlp.TLP_VALUES`,
+  `v3lum.core.tlp.parse`, `v3lum.core.tlp.highest` (the most restrictive of several values),
+  `v3lum.core.tlp.max_tlp` and `v3lum.core.tlp.max_tlp_for_target` (RED only for verified own
+  assets that are not third-party hosted).
 * **Privacy (A4, A8, LGPD)**: per-person breach/stealer modules use `run_on='own_assets'`;
   PERSONAL_TYPES never go to unknown-tier providers; generic/role/test addresses are context only;
-  personal values are pseudonymised (keyed HMAC) in file names and search indexes; purpose and
-  ticket are recorded when a seed is personal (AR16). TLP is not a privacy classification: the LGPD
+  personal values are pseudonymised in file names and search indexes (wave-1 evidence file names
+  carry a hash, never the value; the keyed HMAC arrives with waves 2-3); purpose and ticket are
+  recorded when a seed is personal (AR16, CLI of wave 3). TLP is not a privacy classification: the LGPD
   controls apply at every TLP.
 * **Tier (A8)**: unknown-tier providers are never default, excluded at AMBER and above and need
   `--allow-unknown` at CLEAR/GREEN.

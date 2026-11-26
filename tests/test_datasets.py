@@ -547,6 +547,31 @@ def test_through_real_runtime():
     assert rt.data.scoped().index("feed.txt").contains("EVIL.example")
 
 
+def test_error_in_200_marker_body_never_replaces_a_dataset():
+    """AR10/P321 (audit of wave 1): a provider error marker on an HTTP-200 JSON answer (a quota
+    message that is valid JSON) is classified before the install - the previous copy stays and is
+    served stale; the refresh fails with the marker's reason."""
+    from tests.fakes import make_runtime, test_provider
+
+    marker = {"id": "lists_quota", "statuses": [200], "json_path": "error", "equals": "quota exceeded",
+              "maps_to": "quota", "reason": "Lists: daily quota exhausted"}
+    with test_provider("lists_src", hosts=("lists.example.test",), sources=("feed",), error_markers=[marker]):
+        register_dataset("feed.json", URL, ttl=60, expect="json", provider="lists_src", source="lists_src.feed",
+                         licence="CC0-1.0", terms_class="open")
+        http = FakeHttp().add("GET", URL, json={"items": ["good"]}, times=1).add("GET", URL, json={"error": "quota exceeded"})
+        rt = make_runtime(http)
+        path = rt.data.fetch("feed.json")
+        good = path.read_text(encoding="utf-8")
+        sha = manifest()["feed.json"]["sha256"]
+        rt.clock.advance(3600)
+        assert rt.data.fetch("feed.json") == path  # the stale copy, never the quota message
+        assert path.read_text(encoding="utf-8") == good
+        assert manifest()["feed.json"]["sha256"] == sha and manifest()["feed.json"]["stale"] is True
+        result = rt.data.update("feed.json")
+        assert result.status == "failed" and "quota" in result.reason.lower()
+        assert path.read_text(encoding="utf-8") == good
+
+
 def test_dataset_errors_report_unregistered_sources():
     register_dataset("nosrc.txt", URL)
     register_dataset("badsrc.txt", URL + "?b", licence="CC0-1.0", source="nobody.feed")

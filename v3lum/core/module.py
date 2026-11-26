@@ -101,8 +101,8 @@ CATEGORIES: dict[str, str] = {
     "utility": "Utilities",
 }
 
-#: Terms classes (A1), least to most restrictive (same order as providers.TERMS_ORDER).
-TERMS: tuple[str, ...] = ("open", "key-terms", "license", "noncommercial", "unknown")
+#: Terms classes (A1), least to most restrictive: the provider registry's TERMS_ORDER (one table).
+TERMS: tuple[str, ...] = _providers.TERMS_ORDER
 #: Where the investigated value goes (A8): nowhere, company platforms, an external provider, the target.
 DISCLOSURES: tuple[str, ...] = ("none", "internal", "third_party", "target")
 #: Which entities a module may run on (A4/A5/A11): any, analyst-typed seeds, own assets (per-person

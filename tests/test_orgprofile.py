@@ -288,6 +288,17 @@ def test_never_string_suffix_matching(profile, value):
     assert result == NOT_OWNED and result.tag == "third_party"
 
 
+@pytest.mark.parametrize("value", ["xcdn.acme.com.br", "img.xcdn.acme.com.br", "notcdn.acme.com.br"])
+def test_subdomain_entries_match_label_wise_never_by_string_suffix(profile, value):
+    """A more specific entry (cdn.acme.com.br, confirmed, third-party hosted) covers its own labels
+    only: 'xcdn.acme.com.br' ends with the string 'cdn.acme.com.br' but belongs to acme.com.br
+    (txt_verified) - a string-suffix match would hand it the wrong verification and hosting state."""
+    own = profile.owns(E("domain", value))
+    assert own.own and own.entry.name == "acme.com.br"
+    assert own.verified and not own.third_party_hosted and own.criticality == "high"
+    assert profile.is_verified_domain(value)
+
+
 def test_idn_entries_match_through_punycode(profile):
     assert profile.owns(E("domain", "loja.açúcar.com.br")).own  # Unicode input
     assert profile.owns(E("domain", "loja.xn--acar-0oa8i.com.br")).own  # punycode input

@@ -89,6 +89,25 @@ def test_reason_codes_match_a3_exactly():
         assert REASON_CODES[code] is status
 
 
+def test_reason_code_copies_in_sibling_packages_match_the_canonical_table():
+    """http.py and providers.py keep local copies of the A3 codes (no import of models); they must
+    never drift from models.REASON_CODES (wave-1 integration)."""
+    from v3lum.core import http as http_mod
+    from v3lum.core import providers
+
+    def codes(status):
+        return frozenset(c for c, s in REASON_CODES.items() if s is status)
+
+    assert codes(Status.SKIPPED) == http_mod._SKIPPED_CODES
+    assert codes(Status.BLOCKED) == http_mod._BLOCKED_CODES
+    assert codes(Status.ERROR) == http_mod._ERROR_CODES
+    marker_status = {"blocked": Status.BLOCKED, "rate_limited": Status.RATE_LIMITED, "quota": Status.QUOTA, "error": Status.ERROR}
+    for maps_to, status in marker_status.items():
+        assert providers._MARKER_CODES[maps_to] == codes(status)
+        assert http_mod._MARKER_CODES[maps_to] == codes(status)
+        assert http_mod._MARKER_DEFAULT_CODE[maps_to] == DEFAULT_REASON[status]
+
+
 def test_status_for_and_valid_reason():
     assert status_for("licence") is Status.SKIPPED
     assert status_for("geo_block") is Status.BLOCKED

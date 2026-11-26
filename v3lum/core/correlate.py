@@ -153,6 +153,10 @@ def register_rule(info: RuleInfo) -> RuleInfo:
     with _LOCK:
         problems = attack_index.validate(info.attack) if info.attack else []
         info.attack = tuple(dict.fromkeys(attack_index.canonical(t) for t in info.attack))
+        if info.legacy and info.id not in LEGACY_RULES:
+            # only the eight v1 rules are exempt from the fixture gate: a rule cannot opt out by itself
+            info.legacy = False
+            _add_error(info.id, f"legacy is reserved for correlate.LEGACY_RULES (the eight v1 rules): {info.id!r} ships positive and negative fixtures")
         existing = RULES.get(info.id)
         if existing is not None and existing.origin != info.origin:
             if existing.legacy and not info.legacy:
@@ -186,7 +190,9 @@ def rule(
 ) -> Callable[[RuleFn], RuleFn]:
     """Register a correlation rule. ``fn(graph, results)`` or ``fn(graph, results, rctx)``.
 
-    ``legacy`` defaults to: the id is in LEGACY_RULES and the function lives in a legacy module.
+    ``legacy`` defaults to: the id is in LEGACY_RULES and the function lives in a legacy module. It is
+    never True for another id (an explicit ``legacy=True`` there is a RULE_ERRORS entry): new rules
+    always ship graph fixtures.
     """
 
     def deco(fn: RuleFn) -> RuleFn:

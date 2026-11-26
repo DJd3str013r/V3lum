@@ -2039,10 +2039,15 @@ class HttpClient:
         if found is not None:
             self._on_classified(found, resp, req, final_prov)
         no_store = False
-        sensitive = any(bool(getattr(getattr(p, "flags", None), "sensitive", False)) for p in (req.provider, final_prov) if p is not None)
+        sensitive_owners = [p for p in (req.provider, final_prov) if p is not None and bool(getattr(getattr(p, "flags", None), "sensitive", False))]
+        sensitive = bool(sensitive_owners)
         resp.sensitive = sensitive
         if sensitive:
-            cleaned = self._sanitize(req.source, resp)
+            # only a schema of the sensitive provider's own sources may decide what of its body is kept:
+            # a source of another provider (a module mistake, a redirect) means no-store (fail closed)
+            owner_ids = {str(getattr(p, "id", "") or "") for p in sensitive_owners}
+            own_source = str(req.source or "").split(".", 1)[0] in owner_ids
+            cleaned = self._sanitize(req.source, resp) if own_source else None
             if cleaned is None:
                 no_store = True  # no schema / not JSON: the module gets the raw body in memory only
             else:

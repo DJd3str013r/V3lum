@@ -30,7 +30,7 @@
 * **Per-parent caps** per entity type (e.g. at most 12 subdomains or 10 IPs expanded from one parent).
 * **Never auto-expanded**: free text, files, keywords, person names, CPF, coordinates, JWTs, card BINs, IMEIs.
 * **Noise suppression**: public resolvers, big webmail/CDN/cloud providers and private/reserved IPs are
-  recorded but not pivoted on (`core/noise.py`, `data/noise.json`).
+  recorded but not pivoted on (`core/noise.py`; list fragments in `data/noise/`, schema in its README).
 * **Module pivot cap** (`max_pivots`) and `expand=False` for weak relations (MX/NS hosts, co-tenants on CDNs).
 * **Opsec**: `passive` by default; `light` touches the target like a visitor; `active` needs `--authorized`
   plus an interactive confirmation, and the authorization reference is stored in the case.

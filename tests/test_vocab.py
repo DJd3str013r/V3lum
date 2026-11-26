@@ -140,3 +140,19 @@ def test_core_tables_are_consulted_live():
     finally:
         del vocab.TAGS["zz_live_tag"]
     assert not vocab.is_known_tag("zz_live_tag")
+
+
+def test_a_first_load_inside_a_temporary_extension_does_not_keep_the_name(monkeypatch):
+    """The fragment state never snapshots the core tables: when the vocabulary is first loaded
+    while allow_vocab-style names are present, removing them still makes them unknown (no leak
+    into later tests, whatever the test order)."""
+    monkeypatch.setattr(vocab, "_STATE", vocab._State())  # not loaded yet
+    vocab.ATTRIBUTES["zz_first_load_attr"] = "temporary"
+    try:
+        assert "zz_first_load_attr" in vocab.attributes()  # triggers the first load
+        assert vocab.is_known_attribute("zz_first_load_attr")
+    finally:
+        del vocab.ATTRIBUTES["zz_first_load_attr"]
+    assert not vocab.is_known_attribute("zz_first_load_attr")
+    assert "zz_first_load_attr" not in vocab.attributes()
+    assert list(vocab.attributes())[: len(vocab.ATTRIBUTES)] == list(vocab.ATTRIBUTES)  # core first
