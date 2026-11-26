@@ -1,0 +1,7 @@
+"""Pragmas: reported, never silent."""
+import socket  # v3lum-lint: allow LINT-01 -- offline loopback banner fixture reviewed in #42
+import requests  # v3lum-lint: allow LINT-01
+
+
+def run(self, entity, ctx):
+    return socket, requests

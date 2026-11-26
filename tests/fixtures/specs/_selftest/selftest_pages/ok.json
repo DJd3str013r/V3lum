@@ -1,0 +1,11 @@
+{
+  "page": 1,
+  "subdomains": [
+    {
+      "name": "www.example.com"
+    },
+    {
+      "name": "mail.example.com"
+    }
+  ]
+}

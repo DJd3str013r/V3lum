@@ -1,0 +1,97 @@
+{
+  "$comment": "Synthetic providers of the declarative-spec self-test set (tests/test_specs.py registers them; load_specs ignores files starting with '_').",
+  "providers": [
+    {
+      "schema": "v3lum.provider/1",
+      "id": "selftest_api",
+      "name": "Selftest API (synthetic provider of the spec self-test)",
+      "operator": "V3LUM test suite",
+      "hosts": ["api.selftest.test"],
+      "hosts_from_settings": [],
+      "internal": false,
+      "tier": "community",
+      "tier_rationale": "synthetic provider for offline tests",
+      "tier_reviewer": "tests",
+      "tier_date": "2026-11-26",
+      "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+      "personal_data_review": null,
+      "reliability": {"grade": "C", "justification": "synthetic provider for offline tests"},
+      "http_profile": {"accept": "application/json"},
+      "quota": {"scope": "egress_ip", "day": 1000, "published": true, "evidence_url": "https://docs.selftest.test/limits"},
+      "error_markers": [],
+      "keys": {
+        "selftest_api": {"description": "selftest API key (synthetic)", "signup_url": "https://docs.selftest.test/keys", "env": [], "multi_key": false, "plan_hint": ""}
+      },
+      "sources": {
+        "lookup": {
+          "title": "Selftest lookups",
+          "terms": {"class": "open", "evidence_url": "https://docs.selftest.test/terms", "quote": "synthetic provider used by the V3LUM test suite", "checked_at": "2026-11-26", "reviewer": "tests", "free_plan_business_use": true},
+          "upstream_family": "selftest_api",
+          "sanitizer": null,
+          "dataset": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "schema": "v3lum.provider/1",
+      "id": "selftest_profiles",
+      "name": "Selftest profiles (synthetic community profile site)",
+      "operator": "V3LUM test suite",
+      "hosts": ["profiles.selftest.test"],
+      "hosts_from_settings": [],
+      "internal": false,
+      "tier": "community",
+      "tier_rationale": "synthetic provider for offline tests",
+      "tier_reviewer": "tests",
+      "tier_date": "2026-11-26",
+      "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+      "personal_data_review": null,
+      "reliability": {"grade": "D", "justification": "synthetic provider for offline tests"},
+      "http_profile": {},
+      "quota": null,
+      "error_markers": [],
+      "keys": {},
+      "sources": {
+        "profiles": {
+          "title": "Selftest public profiles",
+          "terms": {"class": "open", "evidence_url": "https://profiles.selftest.test/terms", "quote": "synthetic provider used by the V3LUM test suite", "checked_at": "2026-11-26", "reviewer": "tests", "free_plan_business_use": true},
+          "upstream_family": "selftest_profiles",
+          "sanitizer": null,
+          "dataset": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "schema": "v3lum.provider/1",
+      "id": "selftest_unknown",
+      "name": "Selftest unknown operator (synthetic unknown-tier provider)",
+      "operator": "unknown (synthetic)",
+      "hosts": ["unknown.selftest.test"],
+      "hosts_from_settings": [],
+      "internal": false,
+      "tier": "unknown",
+      "tier_rationale": "synthetic unknown-tier provider for offline tests",
+      "tier_reviewer": "tests",
+      "tier_date": "2026-11-26",
+      "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+      "personal_data_review": null,
+      "reliability": {"grade": "F", "justification": "synthetic provider for offline tests"},
+      "http_profile": {},
+      "quota": null,
+      "error_markers": [],
+      "keys": {},
+      "sources": {
+        "lookup": {
+          "title": "Selftest unknown-operator lookups",
+          "terms": {"class": "unknown", "evidence_url": "https://unknown.selftest.test/", "quote": "no published terms (synthetic)", "checked_at": "2026-11-26", "reviewer": "tests", "free_plan_business_use": null},
+          "upstream_family": "selftest_unknown",
+          "sanitizer": null,
+          "dataset": null,
+          "notes": ""
+        }
+      }
+    }
+  ]
+}

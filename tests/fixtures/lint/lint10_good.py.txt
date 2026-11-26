@@ -1,0 +1,9 @@
+"""Good: default TLS verification (LINT-10)."""
+import ssl
+
+
+def run(self, entity, ctx):
+    context = ssl.create_default_context()
+    if context.verify_mode == ssl.CERT_NONE:
+        raise RuntimeError("TLS verification must stay on")
+    return ctx.http.get("https://" + entity.value)

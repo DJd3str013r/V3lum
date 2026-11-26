@@ -1,0 +1,19 @@
+"""Good: GET/HEAD toward the target; POST only to a passive third-party API (LINT-06)."""
+from v3lum.core.models import Opsec
+
+
+class LightProbe:
+    name = "synthetic_light_probe"
+    opsec = Opsec.LIGHT
+
+    def run(self, entity, ctx):
+        ctx.http.head(f"https://{entity.value}/")
+        return ctx.http.get(f"https://{entity.value}/robots.txt")
+
+
+class PassiveApi:
+    name = "synthetic_passive_api"
+    opsec = Opsec.PASSIVE
+
+    def run(self, entity, ctx):
+        return ctx.http.post_json("https://mb-api.abuse.ch/api/v1/", data={"query": "get_info", "hash": entity.value})

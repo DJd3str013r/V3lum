@@ -1,0 +1,13 @@
+"""Good: public profile pages only; a login wall is detected, never used (LINT-03)."""
+
+LOGIN_WALLS = ("/login", "/accounts/login")
+
+
+def run(self, entity, ctx):
+    res = self.result(entity)
+    data = ctx.http.get_json(f"https://api.github.com/users/{entity.value}")
+    resp = ctx.http.get(f"https://www.example.com/u/{entity.value}")
+    if any(wall in resp.url for wall in LOGIN_WALLS) or resp.url.endswith("/signin"):
+        return res.mark("blocked", "login wall: could not verify", reason_code="login_wall")
+    res.attr("handle", data.get("login"))
+    return res

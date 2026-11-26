@@ -1,0 +1,1 @@
+{"success":true,"found":3,"fields":["username","password","ip","dob","phone","address"],"sources":[{"name":"SynthForum.example","date":"2019-07"},{"name":"Collection 1","date":"2019-01"},{"name":"Stealer Logs","date":""}]}

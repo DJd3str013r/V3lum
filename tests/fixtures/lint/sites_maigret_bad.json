@@ -1,0 +1,9 @@
+{
+ "sites": {
+  "GoodSite": {"url": "https://good.example/{username}", "urlMain": "https://good.example/", "checkType": "status_code", "tags": ["social"]},
+  "OracleSite": {"url": "https://oracle.example/{username}", "urlProbe": "https://oracle.example/api/users/exists?username={username}", "urlMain": "https://oracle.example/", "checkType": "message", "presenseStrs": ["true"], "absenceStrs": ["false"]},
+  "Twitch": {"url": "https://www.twitch.tv/{username}", "urlProbe": "https://passport.twitch.tv/usernames/{username}", "urlMain": "https://www.twitch.tv/", "checkType": "status_code"}
+ },
+ "engines": {},
+ "tags": ["social"]
+}

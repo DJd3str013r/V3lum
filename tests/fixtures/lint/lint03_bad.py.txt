@@ -1,0 +1,14 @@
+"""Bad: account enumeration, login attempts and borrowed sessions (LINT-03)."""
+
+
+class Bad:
+    requires_keys = ("insta_sessionid",)
+
+    def run(self, entity, ctx):
+        ctx.http.get("https://www.example.com/api/check_username?username=" + entity.value)
+        ctx.http.get(f"https://passport.twitch.tv/usernames/{entity.value}")
+        ctx.http.get("https://emailverification.whoisxmlapi.com/api/v3", params={"emailAddress": entity.value})
+        ctx.http.post("https://www.example.com/password-reset", json={"email": entity.value})
+        ctx.http.post("https://www.example.com/api/v1/token", json={"username": entity.value, "password": "admin"})
+        cookie = ctx.key("fb_cookie")
+        return ctx.http.get("https://www.example.com/profile", cookies={"sessionid": cookie})

@@ -1,0 +1,80 @@
+{
+  "schema": "v3lum.spec/1",
+  "name": "selftest_profile",
+  "title": "Selftest profile site",
+  "description": "Self-test spec: community profile site (A5 rules): found/absent/unknown presence.",
+  "category": "username_social",
+  "accepts": [
+    "username"
+  ],
+  "produces": [
+    "url"
+  ],
+  "provider": "selftest_profiles",
+  "sources": [
+    "selftest_profiles.profiles"
+  ],
+  "hosts": [
+    "profiles.selftest.test"
+  ],
+  "terms": "open",
+  "disclosure": "third_party",
+  "opsec": "passive",
+  "access_model": "free_noauth_limited",
+  "run_on": "seeds",
+  "requires_keys": [],
+  "optional_keys": [],
+  "max_requests": 1,
+  "expected_latency": 1.0,
+  "min_interval": 1.0,
+  "cache_ttl": null,
+  "absent_statuses": [
+    404
+  ],
+  "error_markers": [
+    {
+      "id": "selftest.profile.rate",
+      "json_path": "error",
+      "equals": "rate_limited",
+      "maps_to": "rate_limited",
+      "reason": "Selftest profiles: rate limited"
+    }
+  ],
+  "manual_link": "",
+  "default_enabled": false,
+  "health_check": {
+    "etype": "username",
+    "value": "octocat",
+    "expect": "ok"
+  },
+  "request": {
+    "url": "https://profiles.selftest.test/api/users/{user}",
+    "method": "GET"
+  },
+  "format": "json",
+  "results": [
+    {
+      "key": "user.name",
+      "attribute": "display_name"
+    },
+    {
+      "key": "user.profile_url",
+      "pivot": {
+        "type": "url",
+        "relation": "has_account",
+        "expand": false,
+        "confidence": "possible"
+      }
+    }
+  ],
+  "multi_match": null,
+  "found": {
+    "path": "user.login",
+    "regex": "^\\S{1,64}$"
+  },
+  "absent": {
+    "path": "error",
+    "equals": "user_not_found"
+  },
+  "findings": []
+}

@@ -1,0 +1,11 @@
+"""Bad: direct network and process APIs inside a module (LINT-01)."""
+import socket
+import subprocess
+
+import requests
+
+
+def run(self, entity, ctx):
+    requests.get("https://api.example.com/v1/" + entity.value)
+    socket.create_connection((entity.value, 443))
+    subprocess.run(["whois", entity.value], check=False)

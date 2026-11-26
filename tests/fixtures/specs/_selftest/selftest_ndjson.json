@@ -1,0 +1,88 @@
+{
+  "schema": "v3lum.spec/1",
+  "name": "selftest_ndjson",
+  "title": "Selftest NDJSON passive DNS",
+  "description": "Self-test spec: NDJSON passive-DNS answer, multi_match with onlyif, list attribute and pivots.",
+  "category": "domain_dns",
+  "accepts": [
+    "domain"
+  ],
+  "produces": [
+    "ipv4"
+  ],
+  "provider": "selftest_api",
+  "sources": [
+    "selftest_api.lookup"
+  ],
+  "hosts": [
+    "api.selftest.test"
+  ],
+  "terms": "open",
+  "disclosure": "third_party",
+  "opsec": "passive",
+  "access_model": "free_noauth_limited",
+  "run_on": "any",
+  "requires_keys": [],
+  "optional_keys": [],
+  "max_requests": 1,
+  "expected_latency": 1.0,
+  "min_interval": 0.0,
+  "cache_ttl": 3600,
+  "absent_statuses": [
+    404
+  ],
+  "error_markers": [
+    {
+      "id": "selftest.ndjson.rate",
+      "regex": "rate limit exceeded",
+      "maps_to": "rate_limited",
+      "reason": "Selftest pDNS: rate limit exceeded"
+    }
+  ],
+  "manual_link": "",
+  "default_enabled": true,
+  "health_check": {
+    "etype": "domain",
+    "value": "example.com",
+    "expect": "ok"
+  },
+  "request": {
+    "url": "https://api.selftest.test/v1/pdns/{value_q}",
+    "method": "GET",
+    "params": {
+      "format": "ndjson"
+    }
+  },
+  "format": "ndjson",
+  "results": [
+    {
+      "key": "rdata",
+      "pivot": {
+        "type": "ipv4",
+        "relation": "resolves_to",
+        "expand": true,
+        "confidence": "probable"
+      }
+    },
+    {
+      "key": "rdata",
+      "attribute": "a_records",
+      "format": "as_list"
+    },
+    {
+      "key": "time_first",
+      "attribute": "first_seen",
+      "format": "as_time"
+    }
+  ],
+  "multi_match": {
+    "path": "[]",
+    "onlyif": {
+      "path": "rrtype",
+      "equals": "A"
+    }
+  },
+  "found": null,
+  "absent": null,
+  "findings": []
+}

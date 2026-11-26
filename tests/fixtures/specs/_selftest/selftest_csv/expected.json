@@ -1,0 +1,15 @@
+{
+  "ok": {
+    "status": "ok",
+    "attributes": {
+      "malware_family": "EICAR-Test-File",
+      "first_seen": "2024-01-02T03:04:05Z",
+      "file_type": "txt"
+    },
+    "pivots": []
+  },
+  "error_in_200": {
+    "status": "quota",
+    "reason_code": "quota"
+  }
+}

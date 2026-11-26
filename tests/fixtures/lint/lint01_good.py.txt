@@ -1,0 +1,11 @@
+"""Good: every request goes through ctx (LINT-01)."""
+import ipaddress
+import ssl
+from urllib.parse import quote
+
+
+def run(self, entity, ctx):
+    data = ctx.http.get_json("https://api.example.com/v1/" + quote(entity.value))
+    answer = ctx.dns.query(entity.value, "A")
+    found = ctx.net.run_tool("nuclei", ["-u", entity.value], targets=[entity.value])
+    return data, answer, found, ipaddress.ip_address("192.0.2.1"), ssl.PROTOCOL_TLS_CLIENT

@@ -1,0 +1,10 @@
+"""Bad: a state-changing method toward the target (LINT-06)."""
+from v3lum.core.models import Opsec
+
+
+class ActiveProbe:
+    name = "synthetic_active_probe"
+    opsec = Opsec.ACTIVE
+
+    def run(self, entity, ctx):
+        return ctx.http.post(f"https://{entity.value}/api/graphql", json={"query": "{ __typename }"})

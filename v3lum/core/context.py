@@ -19,7 +19,9 @@ Modules never choose proxies, user agents or resolvers: everything network-relat
 from __future__ import annotations
 
 import copy
+import dataclasses
 import datetime as _dt
+import functools
 import hashlib
 import json
 import logging
@@ -103,9 +105,16 @@ class ScanOptions:
     #: (module, entity_key) -> recorded {is_seed, depth, provenance, tlp} of a stored case
     #: (``cases resume``); the engine schedules only these pairs and never promotes them to seeds.
     only_pairs: dict[tuple[str, str], dict[str, Any]] | None = None
+    # ---- engine v2 (WP08 review additions) ------------------------------------------------
+    #: URLs the analyst confirmed one by one for fetching although they look like per-recipient
+    #: token URLs (A7 BR15, ``--confirm-url``); the case records only their SHA-256.
+    confirmed_urls: set[str] = field(default_factory=set)
+    #: seed entity key -> role of the subject ('incident_victim', ``--incident-victim``; P338 posture).
+    subject_roles: dict[str, str] = field(default_factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        """JSON-safe view stored in the case (the scope object is recorded by its SHA-256)."""
+        """JSON-safe view stored in the case (the scope object is recorded by its SHA-256; confirmed
+        URLs by their SHA-256 only)."""
         return {
             "tlp": self.tlp,
             "mode": self.mode.label,
@@ -142,6 +151,8 @@ class ScanOptions:
                 {"module": module, "entity": key, **dict(info or {})}
                 for (module, key), info in sorted(self.only_pairs.items(), key=lambda kv: kv[0])
             ],
+            "confirmed_urls": sorted(hashlib.sha256(str(u).encode("utf-8")).hexdigest() for u in self.confirmed_urls),
+            "subject_roles": dict(sorted((str(k), str(v)) for k, v in self.subject_roles.items())),
         }
 
 
@@ -227,7 +238,16 @@ class EventBus:
 
 
 class Runtime:
-    """Shared, long-lived plumbing: config, HTTP client + cache, datasets, org, events, clock."""
+    """Shared, long-lived plumbing: config, HTTP client + cache, datasets, org, events, clock.
+
+    Engine v2 wiring (WP08): the HTTP client it builds gets the quota book (``quota=``: provider
+    budgets, P334 - resolved lazily, see :attr:`quota`), a shared :class:`HostLimiter` on the runtime
+    clock (``limiter=``) and a cache-key sink (``cache_key_sink=``) that feeds the case being
+    investigated (``CaseResult.cache_keys`` -> ``Store.record_cache_keys``); the HTTP cache is opened
+    with ``max_age_days`` = setting ``cache_max_age_days`` (A10). ``case_hooks`` holds objects with
+    optional ``on_case_start(case)`` / ``on_before_finish(case)`` / ``on_case_end(case)`` hooks called
+    by ``Engine.investigate``; :attr:`health` is the module health state (demotion, A3).
+    """
 
     def __init__(
         self,
@@ -260,12 +280,22 @@ class Runtime:
         self.meta: dict[str, Any] = {}
         #: True while Engine.investigate runs (datasets are not downloaded then, AR10).
         self.in_scan = False
-        #: objects with on_case_start/on_case_end hooks (wave 2+).
+        #: objects with on_case_start / on_before_finish / on_case_end hooks (Engine.investigate).
         self.case_hooks: list[Any] = []
         self.offline = offline
+        self._quota: Any = None
+        self._health: Any = None
+        self._health_lock = threading.Lock()
+        self._cache_keys_lock = threading.Lock()
+        #: set collecting the cache keys written/served during the case being investigated
+        #: (installed by Engine.investigate; None outside a scan).
+        self.cache_key_collector: set[str] | None = None
+        #: the policy.PolicyContext of the running investigation (installed by Engine.investigate;
+        #: None outside a scan): the contact guard of redirect hops decides with the case graph.
+        self.policy_context: Any = None
         self._register_key_secrets()
         if http_client is None:
-            cache = None if no_cache else HttpCache(str(paths.cache_file()))
+            cache = None if no_cache else HttpCache(str(paths.cache_file()), max_age_days=self._cache_max_age_days())
             http_client = HttpClient(
                 user_agent=str(self.config.get("user_agent")),
                 timeout=float(self.config.get("timeout")),
@@ -277,12 +307,14 @@ class Runtime:
                 providers=self._live_providers,  # callable: registry snapshots stay current
                 settings=self.config,
                 clock=self.clock,
+                limiter=_host_limiter(self.clock),
+                quota=RuntimeQuota(self),
                 on_request=self.events.http,
                 on_request_info=self.events.http_request,
+                cache_key_sink=self.record_cache_key,
             )
         self.http = http_client
         self.data = DataStore(self)
-        self._quota: Any = None
 
     # ---- registries -----------------------------------------------------------------
     @property
@@ -316,15 +348,53 @@ class Runtime:
 
     @property
     def quota(self) -> Any:
-        """Daily quota book (created lazily in the V3LUM home; one instance even when module
-        threads ask for it concurrently)."""
+        """Quota book (P334; created lazily at setting ``quota_db_path``, default
+        ``~/.v3lum/quota.db``; one instance even when module threads ask for it concurrently)."""
         if self._quota is None:
             with self._quota_lock:
                 if self._quota is None:
                     from v3lum.core.quota import QuotaBook
 
-                    self._quota = QuotaBook(paths.home() / "quota.db")
+                    configured = str(self.config.get("quota_db_path", "") or "").strip()
+                    path = Path(configured).expanduser() if configured else paths.home() / "quota.db"
+                    self._quota = QuotaBook(path)
         return self._quota
+
+    @quota.setter
+    def quota(self, value: Any) -> None:
+        with self._quota_lock:
+            self._quota = value
+
+    @property
+    def health(self) -> Any:
+        """Module health state (``v3lum.core.health.HealthState``: run durations, votes, doctor
+        checks, demotion - A3): the process-wide state the policy gate reads (one instance per state
+        file, so concurrent writers never drop each other's records), unless one was injected; None
+        while the health module is unavailable."""
+        if self._health is not None:
+            return self._health
+        return shared_health_state()
+
+    @health.setter
+    def health(self, value: Any) -> None:
+        with self._health_lock:
+            self._health = value
+
+    def record_cache_key(self, key: str) -> None:
+        """HttpClient ``cache_key_sink``: remember a cache key written or served during the case
+        being investigated (the A10 purge deletes the case's cache rows through them)."""
+        collector = self.cache_key_collector
+        if collector is None or not key:
+            return
+        with self._cache_keys_lock:
+            collector.add(str(key))
+
+    def _cache_max_age_days(self) -> float | None:
+        try:
+            days = float(self.config.get("cache_max_age_days", 0) or 0)
+        except (TypeError, ValueError):
+            return None
+        return days if days > 0 else None
 
     def _register_key_secrets(self) -> None:
         try:
@@ -407,6 +477,15 @@ class Context:
         else:
             self.deadline = None
         key_names = tuple(getattr(module_cls, "requires_keys", ()) or ()) + tuple(getattr(module_cls, "optional_keys", ()) or ())
+        #: the kill switch of this run: the runtime's cancel event when the run was built (a later
+        #: scan of the same runtime installs a new one; a run it abandoned stays cancelled, AR05)
+        self.cancel_event = runtime.cancel_event
+        # scope binding (A7/AR02/P376, WP11): the run facts and the loaded scope reach the HTTP scope
+        # and the socket connector (hop-by-hop SSRF and scope checks after resolution through the
+        # egress profile; LIGHT bound to typed seeds); LIGHT/ACTIVE redirect targets re-run the
+        # contact guard. The keywords are passed explicitly: a binding is never dropped silently.
+        scope = getattr(options, "scope", None)
+        guard = functools.partial(redirect_guard, runtime, module_cls, options, self.run) if is_module and opsec >= Opsec.LIGHT else None
         self.http = ScopedHttp(
             runtime.http,
             ttl=getattr(module_cls, "cache_ttl", None),
@@ -422,9 +501,12 @@ class Context:
             error_markers=_markers(getattr(module_cls, "error_markers", ()) or ()),
             keyless=not any(self.config.key(k) for k in key_names),
             deadline=self.deadline,
-            cancel_event=runtime.cancel_event,
+            cancel_event=self.cancel_event,
             clock=clock,
             priority=self.run.priority,
+            run=self.run,
+            scope=scope,
+            contact_guard=guard,
         )
         tlp = _tlp(self.tlp)
         offline_class = disclosure in ("none", "internal")
@@ -442,7 +524,11 @@ class Context:
             clock=clock,
             settings=self.config,
         )
-        self.net = Connector(module=name, disclosure=disclosure, opsec=opsec, deadline=self.deadline, cancel_event=runtime.cancel_event, clock=clock)
+        self.net = Connector(
+            module=name, disclosure=disclosure, opsec=opsec, deadline=self.deadline, cancel_event=self.cancel_event, clock=clock,
+            http=self.http, run=self.run, scope=scope,
+            org=_org_of(runtime) if disclosure == "target" else None,  # third_party_hosted exclusion of ACTIVE network probes (A11 BR7)
+        )
         self.data = runtime.data.scoped()
         self._state: ModuleState | None = None
 
@@ -559,7 +645,9 @@ class Context:
         self.runtime.events.emit("log", module=getattr(self.module, "name", "?"), message=_redact.redact_text(message), level=level)
 
     def cancelled(self) -> bool:
-        return self.runtime.cancel_event.is_set()
+        """True once the kill switch of this run is set (Ctrl+C, scan deadline, end of the scope
+        window) - also when a later scan of the runtime has installed a new one meanwhile."""
+        return self.cancel_event.is_set()
 
     def now(self) -> _dt.datetime:
         """Timezone-aware UTC now (frozen in tests)."""
@@ -774,6 +862,118 @@ def _strings(*items: Any) -> Iterable[str]:
 # --------------------------------------------------------------------------------------
 
 _MISSING = object()
+
+
+class RuntimeQuota:
+    """The quota hook the runtime hands to its HttpClient (P334).
+
+    Resolves ``runtime.quota`` (the QuotaBook) on first use - building a Runtime never opens the
+    quota database - and forwards the client's quota protocol: ``reserve(provider_id, host, *,
+    priority, ...)`` (raises QuotaExceeded when a provider budget is used up) and
+    ``signal(provider_id, *, kind, until=None, ...)`` (a provider's own quota/rate-limit marker).
+    A book without these methods (a v1 book) charges nothing; every other attribute is the book's.
+    """
+
+    def __init__(self, runtime: Runtime) -> None:
+        self._runtime = runtime
+
+    @property
+    def book(self) -> Any:
+        return self._runtime.quota
+
+    def reserve(self, provider_id: str, host: str, **kw: Any) -> Any:
+        fn = getattr(self.book, "reserve", None)
+        return fn(provider_id, host, **kw) if callable(fn) else None
+
+    def signal(self, provider_id: str, **kw: Any) -> Any:
+        fn = getattr(self.book, "signal", None)
+        return fn(provider_id, **kw) if callable(fn) else None
+
+    def __getattr__(self, name: str) -> Any:
+        if name.startswith("__"):
+            raise AttributeError(name)
+        return getattr(self.book, name)
+
+
+def _host_limiter(clock: Any) -> Any:
+    """The shared per-host limiter (``HostLimiter`` v2) on the runtime clock."""
+    from v3lum.core.limiter import HostLimiter
+
+    return HostLimiter(clock=clock)
+
+
+def shared_health_state() -> Any:
+    """The process-wide module health state the policy gate reads (``policy.shared_health`` /
+    ``policy._shared_health``; ``HealthState.load()`` while the policy module offers neither),
+    or None when it cannot be loaded. Never raises."""
+    try:
+        from v3lum.core import policy
+
+        fn = getattr(policy, "shared_health", None) or getattr(policy, "_shared_health", None)
+        if callable(fn):
+            return fn()
+    except Exception as exc:  # noqa: BLE001 - health bookkeeping never stops a scan
+        log.debug("shared health state unavailable through the policy module: %s", type(exc).__name__)
+    try:
+        from v3lum.core.health import HealthState
+
+        return HealthState.load()
+    except Exception as exc:  # noqa: BLE001
+        log.warning("module health state unavailable: %s", type(exc).__name__)
+        return None
+
+
+@dataclass(frozen=True)
+class GuardRefusal:
+    """A redirect hop refused by the context itself (the contact guard could not be evaluated)."""
+
+    allowed: bool = False
+    status: str = "blocked"
+    reason_code: str = "hostile_host"
+    reason: str = ""
+    rule_id: str = "GUARD-01"
+
+
+def redirect_guard(runtime: Runtime, module_cls: Any, options: ScanOptions, run: RunInfo, url: str) -> Any:
+    """``policy.contact_guard`` for a redirect target of a LIGHT/ACTIVE request (P376 cond 6, A13).
+
+    Called by the HTTP scope for every hop of a target-contact request; decides with the policy
+    context of the running investigation (``runtime.policy_context``: the case graph and sightings)
+    or, outside a scan, a fresh 'run' context. Fails closed: an unparseable target or a guard error
+    refuses the hop (BLOCKED 'hostile_host').
+    """
+    from v3lum.core.entities import Entity, EntityType
+
+    text = str(url or "").strip()
+    try:
+        parts = urlsplit(text)
+        plain = parts.scheme.lower() in ("http", "https") and bool(parts.hostname)
+    except ValueError:
+        plain = False
+    entity = Entity.try_make(EntityType.URL, text) if plain else None
+    if entity is None:
+        return GuardRefusal(reason="redirect target is not a plain http(s) URL: not followed (contact guard)")
+    try:
+        from v3lum.core import policy
+
+        pctx = getattr(runtime, "policy_context", None)
+        if pctx is None:
+            name = str(getattr(module_cls, "name", "") or "")
+            pctx = policy.make_context(runtime, options, explicit={name} if name else (), path="run")
+        hop = dataclasses.replace(run, entity=entity) if isinstance(run, RunInfo) else run
+        return policy.contact_guard(module_cls, entity, pctx, run=hop)
+    except Exception as exc:  # noqa: BLE001 - fail closed
+        log.warning("contact guard failed on a redirect hop: %s", type(exc).__name__)
+        return GuardRefusal(reason=f"contact guard unavailable ({type(exc).__name__}): redirect not followed")
+
+
+def _org_of(runtime: Runtime) -> Any:
+    try:
+        return runtime.org
+    except Exception:  # noqa: BLE001 - org profile problems never break a run
+        return None
+
+
 
 
 def doh_hosts(config: Any, *, public: bool = True) -> tuple[str, ...]:

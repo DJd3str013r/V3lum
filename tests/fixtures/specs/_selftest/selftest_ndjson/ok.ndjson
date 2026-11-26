@@ -1,0 +1,3 @@
+{"rrname": "example.com", "rrtype": "A", "rdata": "93.184.215.14", "time_first": 1600000000}
+{"rrname": "example.com", "rrtype": "MX", "rdata": "mail.example.com", "time_first": 1600000100}
+{"rrname": "example.com", "rrtype": "A", "rdata": "93.184.216.34", "time_first": 1500000000}

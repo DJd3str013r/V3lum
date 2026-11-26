@@ -24,6 +24,32 @@ markers). The client underneath:
   all;
 * redacts every URL and message that leaves it - events, exceptions, cache rows (AR01).
 
+Target contact (LIGHT/ACTIVE, wave 2, WP11: P376, A7, A13, AR02) adds, per request:
+
+* the **egress profile** (:class:`v3lum.core.net.EgressProfiles`): passive and third-party traffic
+  always takes the default route; LIGHT uses ``proxy_light`` and ACTIVE ``proxy_active`` when
+  configured (own ``requests.Session`` with ``trust_env=False``, names resolved by the proxy); a
+  configured profile whose proxy is down fails closed (PolicyError) and is never resent on the
+  default route;
+* the **SSRF/redirect guard** on every hop: private, loopback, link-local, CGNAT, ULA, multicast,
+  reserved and cloud-metadata addresses, single-label names and internal suffixes are refused unless
+  the run's seed is internal (``RunInfo.internal_seed``) or the scope lists them; bound requests
+  (``run=``/``scope=``) resolve each hop through the profile (DoH) and pin the checked IP on the
+  direct route; ACTIVE hops must match the scope, LIGHT first hops the analyst-typed seed, and
+  redirect targets re-run the hostile-host guard (``contact_guard``);
+* the **request rules**: GET/HEAD for LIGHT, GET/HEAD/OPTIONS for ACTIVE unless an approved
+  ``v3lum/data/policy/method_allowlist/<module>.json`` lists the method; LIGHT <= 1 req/s and <= 25
+  requests per target host per scan, ACTIVE <= 10 req/s, <= 2 concurrent connections per host and a
+  per-case budget (``ContactCeilings``); the UA is setting ``ua_light`` (ACTIVE: the scope's ROE UA
+  and header), never the V3LUM/contact UA or the organisation's identity; no credential header
+  (Authorization, Cookie, X-Api-Key...) and no configured secret ever goes to a target (no login
+  attempts or borrowed sessions); a bound scope's window is enforced per request (before it
+  PolicyError 'scope', after it Cancelled); ACTIVE needs a scope (a context without an entity may
+  reach internal hosts only, for self-tests); internal names are resolved only by the internal
+  resolver. No CA/verify override exists (A12).
+* the **kill switch** also shuts down a body read blocked on a slow or silent server (within
+  ~100 ms; urllib3 >= 2.3).
+
 Body fingerprints of anti-bot/WAF pages are adapted from maigret ``maigret/errors.py`` COMMON_ERRORS
 (https://github.com/soxoj/maigret, commit 50e62c45e17b03fd3f059622d38a4cdb3ec2eab4, MIT, Copyright
 (c) 2020-2026 Soxoj) and sherlock ``sherlock_project/sherlock.py`` WAFHitMsgs
@@ -43,11 +69,14 @@ import email.utils
 import hashlib
 import html
 import http.cookiejar
+import inspect
+import ipaddress
 import json
 import re
 import threading
 from collections.abc import Callable, Iterable, Mapping
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import Any, Protocol, runtime_checkable
 from urllib.parse import parse_qsl, urlencode, urljoin, urlsplit
 
@@ -59,18 +88,45 @@ from v3lum.core.clock import SYSTEM_CLOCK, Clock, SystemClock
 from v3lum.core.limiter import HostLimiter
 from v3lum.core.redact import KEY_PARAMS, has_secret, is_credential_header, redact_text, redact_url
 
+try:  # A7 hard ceilings (WP10 adds them to the limiter in wave 2; the values are fixed by A7)
+    from v3lum.core.limiter import ACTIVE_MAX_CONCURRENT, ACTIVE_MAX_RPS, LIGHT_MAX_PER_HOST_PER_SCAN, LIGHT_MAX_RPS
+except ImportError:  # pragma: no cover - limiter without the wave-2 constants
+    LIGHT_MAX_RPS = 1.0
+    LIGHT_MAX_PER_HOST_PER_SCAN = 25
+    ACTIVE_MAX_RPS = 10.0
+    ACTIVE_MAX_CONCURRENT = 2
+
 __all__ = [
+    "ACTIVE_MAX_CONCURRENT",
+    "ACTIVE_MAX_RPS",
+    "ACTIVE_METHODS",
     "CACHEABLE_STATUS",
+    "DEFAULT_ACTIVE_BUDGET",
+    "DEFAULT_MAX_PPS",
+    "INTERNAL_SUFFIXES",
+    "LIGHT_MAX_PER_HOST_PER_SCAN",
+    "LIGHT_MAX_RPS",
+    "LIGHT_METHODS",
+    "MAX_ACTIVE_BUDGET",
+    "MAX_PPS",
+    "METADATA_IPS",
+    "METHOD_ALLOW_SCHEMA",
+    "NEVER_ALLOWED_METHODS",
+    "PORT_SCAN_MAX",
+    "ROE_FORBIDDEN_HEADERS",
+    "WORDLIST_MAX",
     "AuthRequired",
     "Blocked",
     "Cancelled",
     "Classification",
     "ConfigError",
+    "ContactCeilings",
     "DeadlineExceeded",
     "HostLimiter",
     "HttpCache",
     "HttpClient",
     "HttpError",
+    "MethodAllowance",
     "NetworkError",
     "OfflineError",
     "PolicyError",
@@ -82,8 +138,23 @@ __all__ = [
     "Response",
     "ScopedHttp",
     "Transport",
+    "active_budget",
+    "allowed_methods",
     "block_reason",
     "classify",
+    "contact_concurrency",
+    "contact_rps",
+    "entity_hosts",
+    "host_problem",
+    "host_within",
+    "ip_problem",
+    "is_metadata_ip",
+    "max_pps",
+    "method_allowlist",
+    "method_allowlist_errors",
+    "normalize_host",
+    "parse_ip",
+    "reload_method_allowlist",
 ]
 
 RETRY_STATUS = frozenset({502, 503, 504})
@@ -212,17 +283,23 @@ class QuotaExceeded(HttpError):
 
 class NetworkError(Exception):
     """Connection, DNS, TLS or transport failure (message redacted). ``retryable`` tells the client
-    whether another attempt may help; ``kind`` names the underlying error class."""
+    whether another attempt may help; ``kind`` names the underlying error class;
+    ``proxy_unreachable`` is True when the configured proxy itself could not be reached (the client
+    then refuses the request on a LIGHT/ACTIVE egress profile instead of retrying, A13)."""
 
     default_reason_code = "error"
+    proxy_unreachable = False
 
-    def __init__(self, message: Any = "", *, retryable: bool = True, kind: str = "", reason_code: str = "") -> None:
+    def __init__(
+        self, message: Any = "", *, retryable: bool = True, kind: str = "", reason_code: str = "", proxy_unreachable: bool = False
+    ) -> None:
         msg = redact_text(message)
         super().__init__(msg)
         self.message = msg
         self.retryable = bool(retryable)
         self.kind = kind or type(self).__name__
         self.reason_code = reason_code or self.default_reason_code
+        self.proxy_unreachable = bool(proxy_unreachable)
 
 
 class OfflineError(NetworkError):
@@ -297,6 +374,449 @@ class ConfigError(Exception):
         msg = redact_text(message)
         super().__init__(msg)
         self.message = msg
+
+
+# ======================================================================================
+# SSRF guard helpers (AR02): address and name classes refused for target contact
+# ======================================================================================
+
+#: Cloud metadata endpoints: AWS/GCP/Azure/OpenStack 169.254.169.254, AWS ECS 169.254.170.2, AWS
+#: IPv6 fd00:ec2::254, Alibaba 100.100.100.200 and Oracle 192.0.0.192. Target contact with them
+#: needs the scope to list the address itself (an internal seed alone never unlocks them).
+METADATA_IPS: frozenset[str] = frozenset({"169.254.169.254", "169.254.170.2", "fd00:ec2::254", "100.100.100.200", "192.0.0.192"})
+#: Name suffixes of internal namespaces refused for target contact (single-label names too).
+INTERNAL_SUFFIXES: tuple[str, ...] = (".local", ".internal", ".lan", ".corp", ".home", ".intranet", ".localdomain", ".localhost", ".home.arpa")
+_CGNAT_NET = ipaddress.ip_network("100.64.0.0/10")
+_ULA_NET = ipaddress.ip_network("fc00::/7")
+_NAT64_NET = ipaddress.ip_network("64:ff9b::/96")
+_NAT64_LOCAL_NET = ipaddress.ip_network("64:ff9b:1::/48")
+_DOC_NETS = tuple(ipaddress.ip_network(n) for n in ("192.0.2.0/24", "198.51.100.0/24", "203.0.113.0/24", "2001:db8::/32"))
+_NUMERIC_LABEL_RE = re.compile(r"^(?:0x[0-9a-f]*|[0-9]+)$")
+
+
+def parse_ip(value: Any) -> ipaddress.IPv4Address | ipaddress.IPv6Address | None:
+    """The address of an IP literal (brackets and an IPv6 zone index ignored), else None."""
+    text = str(value or "").strip().strip("[]").split("%", 1)[0]
+    if not text:
+        return None
+    try:
+        return ipaddress.ip_address(text)
+    except ValueError:
+        return None
+
+
+def normalize_host(host: Any) -> str:
+    """Lower-case host without brackets or trailing dot; IDN names as punycode ('' when empty)."""
+    text = str(host or "").strip().strip("[]").lower().rstrip(".")
+    if text and not text.isascii():
+        try:
+            text = text.encode("idna").decode("ascii")
+        except UnicodeError:
+            pass
+    return text
+
+
+def _embedded_v4(addr: ipaddress.IPv6Address) -> ipaddress.IPv4Address | None:
+    if addr.ipv4_mapped is not None:
+        return addr.ipv4_mapped
+    if addr.sixtofour is not None:
+        return addr.sixtofour
+    if addr in _NAT64_NET:
+        return ipaddress.IPv4Address(int(addr) & 0xFFFFFFFF)
+    return None
+
+
+def ip_problem(value: Any) -> str:
+    """Why an address may not be contacted by LIGHT/ACTIVE probes without an explicit allowance
+    (AR02, A7): 'cloud metadata', 'loopback', 'link-local', 'CGNAT', 'unique local (ULA)',
+    'multicast', 'reserved', 'private', 'documentation range' or 'not globally routable'; IPv4
+    embedded in IPv6 (mapped, 6to4, NAT64) is judged by the IPv4 address. '' for a public address;
+    'not an IP address' for anything unparsable."""
+    addr = parse_ip(value)
+    if addr is None:
+        return "not an IP address"
+    if addr.compressed in METADATA_IPS:
+        return "cloud metadata"
+    if isinstance(addr, ipaddress.IPv6Address):
+        inner = _embedded_v4(addr)
+        if inner is not None:
+            found = ip_problem(inner)
+            return f"{found} (IPv4 embedded in IPv6)" if found else ""
+        if addr in _NAT64_LOCAL_NET:
+            return "reserved"
+    if addr.is_loopback:
+        return "loopback"
+    if addr.is_link_local:
+        return "link-local"
+    if isinstance(addr, ipaddress.IPv4Address) and addr in _CGNAT_NET:
+        return "CGNAT"
+    if isinstance(addr, ipaddress.IPv6Address) and addr in _ULA_NET:
+        return "unique local (ULA)"
+    if addr.is_multicast:
+        return "multicast"
+    if addr.is_unspecified or addr.is_reserved:
+        return "reserved"
+    if any(addr.version == net.version and addr in net for net in _DOC_NETS):
+        return "documentation range"
+    if addr.is_private:
+        return "private"
+    if not addr.is_global:
+        return "not globally routable"
+    return ""
+
+
+def _numeric_host(host: str) -> bool:
+    """An IPv4 address written in a legacy inet_aton form (2130706433, 0x7f.1, 0177.0.0.1)."""
+    labels = host.split(".")
+    return 1 <= len(labels) <= 4 and all(_NUMERIC_LABEL_RE.match(label) for label in labels)
+
+
+def host_problem(host: Any) -> str:
+    """Why a host may not be contacted by LIGHT/ACTIVE probes without an explicit allowance: the
+    :func:`ip_problem` of an IP literal, 'ambiguous numeric host', 'single-label name' or
+    'internal name (<suffix>)' ('' when the name itself is acceptable; its resolved addresses are
+    judged separately)."""
+    name = normalize_host(host)
+    if not name:
+        return "empty host"
+    if parse_ip(name) is not None:
+        return ip_problem(name)
+    if _numeric_host(name):
+        return "ambiguous numeric host (an IPv4 address in decimal, octal or hex form)"
+    if "." not in name:
+        return "single-label name"
+    for suffix in INTERNAL_SUFFIXES:
+        if name.endswith(suffix) or name == suffix[1:]:
+            return f"internal name ({suffix})"
+    return ""
+
+
+def is_metadata_ip(value: Any) -> bool:
+    """True for a cloud metadata endpoint (``METADATA_IPS``; IPv4-mapped forms included)."""
+    addr = parse_ip(value)
+    if addr is None:
+        return False
+    if isinstance(addr, ipaddress.IPv6Address):
+        inner = _embedded_v4(addr)
+        if inner is not None:
+            addr = inner
+    return addr.compressed in METADATA_IPS
+
+
+def entity_hosts(entity: Any) -> tuple[str, ...]:
+    """Host names/addresses an entity designates for target contact (a domain and its subdomains, the
+    host of a URL, an IP, the domain of an e-mail, the host of a host:port service, a CIDR)."""
+    if entity is None:
+        return ()
+    etype = getattr(entity, "type", "")
+    etype = str(getattr(etype, "value", etype) or "")
+    value = str(getattr(entity, "value", "") or "").strip()
+    if not value:
+        return ()
+    if etype == "cidr":
+        try:
+            return (str(ipaddress.ip_network(value, strict=False)),)
+        except ValueError:
+            return ()
+    if "://" in value:
+        host = _host(value)
+    elif etype == "email" or ("@" in value and etype not in ("domain", "ipv4", "ipv6")):
+        host = value.rsplit("@", 1)[-1]
+    elif etype == "port_service" or (value.count(":") == 1 and "." in value):
+        host = value.rsplit(":", 1)[0] if not value.startswith("[") else value[1:].split("]", 1)[0]
+        host = host.split("/", 1)[0]
+    else:
+        host = value.split("/", 1)[0]
+    host = normalize_host(host)
+    return (host,) if host else ()
+
+
+def host_within(host: str, candidates: Iterable[str]) -> bool:
+    """Does ``host`` belong to one of ``candidates`` (entity_hosts): the same host, a subdomain of
+    a domain candidate (label-wise), or an address inside a CIDR candidate?"""
+    name = normalize_host(host)
+    if not name:
+        return False
+    addr = parse_ip(name)
+    for cand in candidates:
+        if "/" in cand:
+            if addr is None:
+                continue
+            try:
+                net = ipaddress.ip_network(cand, strict=False)
+            except ValueError:
+                continue
+            if addr.version == net.version and addr in net:
+                return True
+            continue
+        if name == cand:
+            return True
+        if addr is None and parse_ip(cand) is None and name.endswith("." + cand):
+            return True
+    return False
+
+
+# ======================================================================================
+# Method allow-list for target contact (A7: GET/HEAD for LIGHT, GET/HEAD/OPTIONS for ACTIVE)
+# ======================================================================================
+
+#: Header names a scope's ROE header may never use (credentials, hop-by-hop and identity headers):
+#: an engagement token goes in its own header, e.g. X-Engagement-Token (A7 ROE).
+ROE_FORBIDDEN_HEADERS: frozenset[str] = frozenset(
+    {
+        "authorization", "proxy-authorization", "cookie", "set-cookie", "host", "user-agent", "content-length", "content-type",
+        "transfer-encoding", "connection", "upgrade", "te", "trailer", "keep-alive", "proxy-connection", "from", "referer",
+        "forwarded", "x-forwarded-for", "x-real-ip", "accept-encoding",
+    }
+)
+
+METHOD_ALLOW_SCHEMA = "v3lum.method_allow/1"
+LIGHT_METHODS: frozenset[str] = frozenset({"GET", "HEAD"})
+ACTIVE_METHODS: frozenset[str] = frozenset({"GET", "HEAD", "OPTIONS"})
+#: Methods no allow-list fragment can grant: writes, deletes, tracing and tunnelling toward targets
+#: are forbidden in every mode (A7).
+NEVER_ALLOWED_METHODS: frozenset[str] = frozenset(
+    {"PUT", "PATCH", "DELETE", "TRACE", "TRACK", "CONNECT", "PROPPATCH", "MKCOL", "COPY", "MOVE", "LOCK", "UNLOCK"}
+)
+_METHOD_RE = re.compile(r"^[A-Z][A-Z_-]{1,19}$")
+_ALLOW_MODULE_RE = re.compile(r"^[a-z][a-z0-9_]{2,63}$")
+_ALLOWLIST_DIR = Path(__file__).resolve().parent.parent / "data" / "policy" / "method_allowlist"
+
+
+@dataclass(frozen=True)
+class MethodAllowance:
+    """An approved method allow-list fragment (``v3lum.method_allow/1``): extra methods one
+    LIGHT/ACTIVE module may send to targets for a documented read-only reason."""
+
+    module: str
+    methods: Mapping[str, str]
+    approved_by: str
+    decision_ref: str
+    origin: str = ""
+
+
+_ALLOW_LOCK = threading.Lock()
+_ALLOW_STATE: tuple[dict[str, MethodAllowance], tuple[str, ...]] | None = None
+_ALLOW_EXTRA_DIRS: tuple[Path, ...] = ()
+
+
+def _parse_allowance(origin: str, stem: str, data: Any) -> tuple[MethodAllowance | None, list[str]]:
+    if not isinstance(data, dict):
+        return None, [f"{origin}: a fragment must be a JSON object"]
+    if data.get("schema") != METHOD_ALLOW_SCHEMA:
+        return None, [f"{origin}: schema must be {METHOD_ALLOW_SCHEMA!r} (got {data.get('schema')!r})"]
+    unknown = sorted(set(data) - {"schema", "module", "methods", "approved_by", "decision_ref", "notes"})
+    if unknown:
+        return None, [f"{origin}: unknown keys {unknown}"]
+    module = str(data.get("module") or "")
+    if not _ALLOW_MODULE_RE.match(module) or module != stem:
+        return None, [f"{origin}: 'module' must be the module name and equal the file stem ({stem!r})"]
+    approved_by = str(data.get("approved_by") or "").strip()
+    decision_ref = str(data.get("decision_ref") or "").strip()
+    if not approved_by or not decision_ref:
+        return None, [f"{origin}: ignored - an allow-list entry needs approved_by and decision_ref (a recorded core policy decision)"]
+    methods = data.get("methods")
+    if not isinstance(methods, dict) or not methods:
+        return None, [f"{origin}: 'methods' must be a non-empty object method -> justification"]
+    granted: dict[str, str] = {}
+    errors: list[str] = []
+    for raw, why in methods.items():
+        method = str(raw).strip().upper()
+        if not _METHOD_RE.match(method):
+            errors.append(f"{origin}: invalid method {raw!r}")
+        elif method in NEVER_ALLOWED_METHODS:
+            errors.append(f"{origin}: {method} can never be allow-listed (writes, deletes, tracing and tunnelling toward targets are forbidden, A7)")
+        elif not isinstance(why, str) or not why.strip():
+            errors.append(f"{origin}: {method} needs a written justification (the documented read-only reason)")
+        else:
+            granted[method] = why.strip()
+    if errors:
+        return None, errors
+    return MethodAllowance(module, granted, approved_by, decision_ref, origin), []
+
+
+def _load_allowlist() -> tuple[dict[str, MethodAllowance], tuple[str, ...]]:
+    found: dict[str, MethodAllowance] = {}
+    errors: list[str] = []
+    for directory in (_ALLOWLIST_DIR, *_ALLOW_EXTRA_DIRS):
+        if not directory.is_dir():
+            continue
+        for path in sorted(directory.glob("*.json")):
+            origin = str(path)
+            try:
+                data = json.loads(path.read_text(encoding="utf-8"))
+            except (OSError, UnicodeDecodeError, ValueError) as exc:
+                errors.append(f"{origin}: unreadable ({exc})")
+                continue
+            entry, errs = _parse_allowance(origin, path.stem, data)
+            errors.extend(errs)
+            if entry is None:
+                continue
+            if entry.module in found:
+                errors.append(f"{origin}: duplicate allow-list entry for {entry.module!r} (ignored)")
+                continue
+            found[entry.module] = entry
+    return found, tuple(errors)
+
+
+def _allow_state() -> tuple[dict[str, MethodAllowance], tuple[str, ...]]:
+    global _ALLOW_STATE
+    with _ALLOW_LOCK:
+        if _ALLOW_STATE is None:
+            _ALLOW_STATE = _load_allowlist()
+        return _ALLOW_STATE
+
+
+def method_allowlist() -> dict[str, MethodAllowance]:
+    """Approved method allow-list fragments by module (``v3lum/data/policy/method_allowlist/``;
+    none ship; a fragment without ``approved_by`` and ``decision_ref`` is ignored and reported)."""
+    return dict(_allow_state()[0])
+
+
+def method_allowlist_errors() -> list[str]:
+    """Problems of the allow-list fragments (ignored fragments included), for doctor and CI."""
+    return list(_allow_state()[1])
+
+
+def reload_method_allowlist(extra_dirs: Iterable[str | Path] | None = None) -> None:
+    """Forget the loaded fragments; ``extra_dirs`` adds fragment directories (tests; ``()`` removes them)."""
+    global _ALLOW_STATE, _ALLOW_EXTRA_DIRS
+    with _ALLOW_LOCK:
+        if extra_dirs is not None:
+            _ALLOW_EXTRA_DIRS = tuple(Path(d) for d in extra_dirs)
+        _ALLOW_STATE = None
+
+
+def allowed_methods(module: str, opsec: Any) -> frozenset[str]:
+    """Methods ``module`` may send to targets at ``opsec``: GET/HEAD (LIGHT) or GET/HEAD/OPTIONS
+    (ACTIVE) plus the methods of its approved allow-list fragment (every method for PASSIVE)."""
+    label = _opsec_label(opsec)
+    if label == "passive":
+        return frozenset({"*"})
+    base = LIGHT_METHODS if label == "light" else ACTIVE_METHODS
+    entry = method_allowlist().get(str(module or ""))
+    return base | frozenset(entry.methods) if entry is not None else base
+
+
+# ======================================================================================
+# A7 hard ceilings shared by HttpClient, the socket connector and the external-tool runner
+# ======================================================================================
+
+#: ACTIVE budget per case (requests/probes); a scope's limits.max_requests may set it up to the max.
+DEFAULT_ACTIVE_BUDGET = 10_000
+MAX_ACTIVE_BUDGET = 50_000
+#: packets (connection attempts) per second over all target hosts; a scope's limits.max_pps may
+#: raise it up to MAX_PPS.
+DEFAULT_MAX_PPS = 100
+MAX_PPS = 1000
+#: distinct TCP ports per target host and case (port scans; no UDP sweeps exist at all).
+PORT_SCAN_MAX = 1000
+#: entries of any wordlist (``Connector.cap_wordlist``; --wordlist included).
+WORDLIST_MAX = 5000
+
+
+def _limit(scope: Any, name: str) -> Any:
+    limits = getattr(scope, "limits", None) if scope is not None else None
+    if isinstance(limits, Mapping):
+        return limits.get(name)
+    return getattr(limits, name, None) if limits is not None else None
+
+
+def _positive(value: Any) -> float | None:
+    try:
+        number = float(value)
+    except (TypeError, ValueError):
+        return None
+    return number if number > 0 else None
+
+
+def contact_rps(opsec: Any, scope: Any = None) -> float:
+    """Requests/probes per second per target host: LIGHT <= 1, ACTIVE <= 10, lower when the scope's
+    limits.max_rps says so (never higher)."""
+    ceiling = LIGHT_MAX_RPS if _opsec_label(opsec) == "light" else ACTIVE_MAX_RPS
+    asked = _positive(_limit(scope, "max_rps"))
+    return min(ceiling, asked) if asked else ceiling
+
+
+def contact_concurrency(opsec: Any, scope: Any = None) -> int:
+    """Concurrent connections per target host: <= 2, lower when the scope's limits.max_concurrency says so."""
+    asked = _positive(_limit(scope, "max_concurrency"))
+    return max(1, min(ACTIVE_MAX_CONCURRENT, int(asked))) if asked else ACTIVE_MAX_CONCURRENT
+
+
+def active_budget(scope: Any = None) -> int:
+    """ACTIVE requests/probes per case: 10000, or the scope's limits.max_requests (<= 50000)."""
+    asked = _positive(_limit(scope, "max_requests"))
+    return int(min(MAX_ACTIVE_BUDGET, asked)) if asked else DEFAULT_ACTIVE_BUDGET
+
+
+def max_pps(scope: Any = None) -> int:
+    """Connection attempts per second over all targets: 100, or the scope's limits.max_pps (<= 1000)."""
+    asked = _positive(_limit(scope, "max_pps"))
+    return int(max(1, min(MAX_PPS, asked))) if asked else DEFAULT_MAX_PPS
+
+
+class ContactCeilings:
+    """Counters behind the A7 per-scan and per-case ceilings of one runtime (shared by HttpClient,
+    the socket connector and the external-tool runner): LIGHT <= 25 requests per target host per
+    scan, the ACTIVE budget per case, <= 1000 distinct TCP ports per target host. Counters are kept
+    per case id (``RunInfo.case_id``), else per scan (``reset_scan`` starts a new one; the engine
+    calls it through ``HttpClient.reset_circuit`` at the start of every investigation).
+    Exceeding a ceiling raises :class:`RequestCapReached` (a partial result, stop_reason request_cap)."""
+
+    def __init__(self) -> None:
+        self._lock = threading.Lock()
+        self._epoch = 0
+        self._light: dict[tuple[str, str], int] = {}
+        self._active: dict[str, int] = {}
+        self._ports: dict[tuple[str, str], set[int]] = {}
+
+    def _key(self, case_id: str) -> str:
+        return f"case:{case_id}" if case_id else f"scan:{self._epoch}"
+
+    def reset_scan(self) -> None:
+        """Start a new scan: per-scan counters restart (per-case counters of other cases are dropped)."""
+        with self._lock:
+            self._epoch += 1
+            self._light.clear()
+            self._active.clear()
+            self._ports.clear()
+
+    def charge(self, opsec: Any, host: str, *, case_id: str = "", scope: Any = None, n: int = 1) -> None:
+        """Count ``n`` requests/probes to ``host``; raise RequestCapReached when a ceiling would be passed."""
+        label = _opsec_label(opsec)
+        host = normalize_host(host)
+        with self._lock:
+            key = self._key(case_id)
+            if label == "light":
+                used = self._light.get((key, host), 0)
+                if used + n > LIGHT_MAX_PER_HOST_PER_SCAN:
+                    raise RequestCapReached(f"LIGHT ceiling reached: at most {LIGHT_MAX_PER_HOST_PER_SCAN} requests to {host} per scan (A7)")
+                self._light[(key, host)] = used + n
+            elif label == "active":
+                budget = active_budget(scope)
+                used = self._active.get(key, 0)
+                if used + n > budget:
+                    raise RequestCapReached(f"ACTIVE budget reached: {budget} requests/probes per case (A7; a scope's limits.max_requests sets it, at most {MAX_ACTIVE_BUDGET})")
+                self._active[key] = used + n
+
+    def port(self, host: str, port: int, *, case_id: str = "") -> None:
+        """Record a TCP port probed on ``host``; more than PORT_SCAN_MAX distinct ports raise RequestCapReached."""
+        host = normalize_host(host)
+        with self._lock:
+            ports = self._ports.setdefault((self._key(case_id), host), set())
+            if int(port) not in ports and len(ports) >= PORT_SCAN_MAX:
+                raise RequestCapReached(f"port-scan ceiling reached: at most {PORT_SCAN_MAX} TCP ports per target host ({host}) (A7)")
+            ports.add(int(port))
+
+    def used(self, opsec: Any, host: str = "", *, case_id: str = "") -> int:
+        """Requests/probes counted so far (LIGHT: for ``host``; ACTIVE: for the case)."""
+        label = _opsec_label(opsec)
+        with self._lock:
+            key = self._key(case_id)
+            if label == "light":
+                return self._light.get((key, normalize_host(host)), 0)
+            return self._active.get(key, 0) if label == "active" else 0
 
 
 # ======================================================================================
@@ -884,6 +1404,12 @@ class Response:
     _classified: bool = field(default=False, init=False, repr=False, compare=False)
     #: set by the client for providers flagged sensitive: exceptions never copy the body (A4)
     sensitive: bool = field(default=False, init=False, repr=False, compare=False)
+    #: the checked address the connection was pinned to ('' = the transport resolved the name, or a
+    #: proxy did; AR02)
+    pinned_ip: str = field(default="", init=False, repr=False, compare=False)
+    #: bytes written to the request's ``stream_to`` file (-1 = the body was not streamed; then
+    #: ``content`` is the whole body, else only its first 64 KB)
+    streamed_bytes: int = field(default=-1, init=False, repr=False, compare=False)
 
     def __post_init__(self) -> None:
         self.headers = {str(k).lower(): ("" if v is None else str(v)) for k, v in (self.headers or {}).items()}
@@ -956,7 +1482,10 @@ class RequestInfo:
     """Structured record of one network send or cache hit (event ``http_request``, request ledger).
 
     ``url`` and ``path`` (path + query) are redacted; ``classification`` is the P321 result of that
-    answer; ``egress_profile``/``resolved_ip`` are filled from wave 2 (WP11).
+    answer; ``egress_profile`` names the route ('default' | 'light' | 'active') and ``resolved_ip``
+    the checked (pinned) address of a bound target request. The socket connector records every
+    connection with method 'CONNECT' (url ``tcp://host:port``) and the external-tool runner every
+    launch with method 'EXEC' (url ``exec://<tool>/<target>``), one record per target (WP11).
     """
 
     ts: str
@@ -1076,13 +1605,103 @@ class _NoAuth(requests.auth.AuthBase):
         return r
 
 
+_SOCKS_REPLY_RE = re.compile(r"\b0x0[1-9a-f]\b")
+
+
+def _proxy_down(exc: BaseException) -> bool:
+    """Did a request through a proxy fail because the proxy itself is unreachable (not the target)?
+
+    An HTTP proxy answering CONNECT with an error ('Tunnel connection failed') and a SOCKS proxy
+    returning a reply code ('0x05: Connection refused') are reachable: the target failed."""
+    text = str(exc).lower()
+    if "tunnel connection failed" in text or _SOCKS_REPLY_RE.search(text):
+        return False
+    if isinstance(exc, requests.exceptions.ProxyError):
+        return True
+    if isinstance(exc, requests.exceptions.ConnectTimeout):
+        return True
+    return isinstance(exc, requests.exceptions.ConnectionError) and "failed to establish a new connection" in text
+
+
+class _PinnedAdapter(requests.adapters.HTTPAdapter):
+    """Connects to one checked IP while the URL, Host header, SNI and certificate check keep the
+    host name (AR02: the address the SSRF guard checked is the address contacted)."""
+
+    def __init__(self, ip: str, **kw: Any) -> None:
+        self._pin = ip
+        super().__init__(**kw)
+
+    def build_connection_pool_key_attributes(self, request: Any, verify: Any, cert: Any = None) -> tuple[dict[str, Any], dict[str, Any]]:
+        host_params, pool_kwargs = super().build_connection_pool_key_attributes(request, verify, cert)
+        name = str(host_params.get("host") or "")
+        host_params = dict(host_params, host=self._pin)
+        if str(host_params.get("scheme") or "").lower() == "https" and name:
+            pool_kwargs = dict(pool_kwargs, server_hostname=name)
+        return host_params, pool_kwargs
+
+
+_PINNING_SUPPORTED = hasattr(requests.adapters.HTTPAdapter, "build_connection_pool_key_attributes")
+
+
+class _CancelWatch:
+    """One daemon thread that shuts down the in-flight response bodies of cancelled runs: a body
+    read blocked on a slow or silent server stops within ~100 ms of the kill switch instead of at its
+    socket timeout (A7/AR05; urllib3 >= 2.3 ``HTTPResponse.shutdown``, a no-op watch otherwise)."""
+
+    def __init__(self) -> None:
+        self._lock = threading.Lock()
+        self._items: dict[int, tuple[Any, Any]] = {}
+        self._thread: threading.Thread | None = None
+        self._tick = threading.Event()  # never set: its wait() is the 100 ms tick
+
+    def add(self, response: Any, event: Any) -> int | None:
+        if event is None or not callable(getattr(response, "shutdown", None)):
+            return None
+        key = id(response)
+        with self._lock:
+            self._items[key] = (response, event)
+            if self._thread is None:
+                self._thread = threading.Thread(target=self._run, name="v3lum-http-cancel", daemon=True)
+                self._thread.start()
+        return key
+
+    def remove(self, key: int | None) -> None:
+        if key is not None:
+            with self._lock:
+                self._items.pop(key, None)
+
+    def _run(self) -> None:
+        while True:
+            self._tick.wait(0.1)
+            with self._lock:
+                if not self._items:
+                    self._thread = None
+                    return
+                fired = [(k, r) for k, (r, e) in self._items.items() if e.is_set()]
+                for key, _response in fired:
+                    self._items.pop(key, None)
+            for _key, response in fired:
+                with contextlib.suppress(Exception):
+                    response.shutdown()
+
+
+_CANCEL_WATCH = _CancelWatch()
+
+
 class RequestsTransport:
     """Default transport: one ``requests.Session`` per thread, ``allow_redirects=False``, streamed.
 
     TLS verification is always on: ``verify`` is the configured CA bundle or True, never False (A12).
     Cookies are never stored or replayed and ~/.netrc credentials are never attached (no session
     state or borrowed credentials between requests or modules); ``trust_env`` only brings the
-    environment's proxy settings and CA bundle.
+    environment's proxy settings and CA bundle (egress profiles other than the default route use
+    ``trust_env=False``: no environment proxies, NO_PROXY bypass or ~/.netrc).
+
+    ``send(..., pin_ip=...)`` connects to that already checked address when the request goes out
+    directly (no proxy applies to the URL): Host header, SNI and certificate verification keep the
+    host name. Through a proxy the name is sent (the proxy resolves it). ``send(..., stream_to=f)``
+    writes the body into the binary file ``f`` instead of memory (the returned ``content`` holds the
+    first 64 KB for classification; ``Response.streamed_bytes`` counts what was written).
     """
 
     def __init__(self, *, proxy: str = "", trust_env: bool = True, ca_bundle: str = "", clock: Clock | None = None, pool_maxsize: int = 16) -> None:
@@ -1093,19 +1712,43 @@ class RequestsTransport:
         self.pool_maxsize = int(pool_maxsize)
         self._local = threading.local()
 
+    def _configure(self, sess: requests.Session, *, proxies: bool = True) -> requests.Session:
+        sess.trust_env = self.trust_env
+        if proxies and self.proxy:
+            sess.proxies = {"http": self.proxy, "https": self.proxy}
+        sess.cookies.set_policy(_NoCookies())  # type: ignore[arg-type]
+        sess.auth = _NoAuth()  # a session auth makes requests skip the ~/.netrc lookup
+        return sess
+
     def session(self) -> requests.Session:
         sess = getattr(self._local, "session", None)
         if sess is None:
             sess = requests.Session()
-            sess.trust_env = self.trust_env
             adapter = requests.adapters.HTTPAdapter(pool_connections=16, pool_maxsize=self.pool_maxsize, max_retries=0)
             sess.mount("http://", adapter)
             sess.mount("https://", adapter)
-            if self.proxy:
-                sess.proxies = {"http": self.proxy, "https": self.proxy}
-            sess.cookies.set_policy(_NoCookies())  # type: ignore[arg-type]
-            sess.auth = _NoAuth()  # a session auth makes requests skip the ~/.netrc lookup
+            self._configure(sess)
             self._local.session = sess
+        return sess
+
+    def direct(self, url: str) -> bool:
+        """True when ``url`` would be fetched without any proxy (explicit or from the environment)."""
+        if self.proxy:
+            return False
+        if not self.trust_env:
+            return True
+        try:
+            return not requests.utils.get_environ_proxies(url)
+        except Exception:  # noqa: BLE001 - an unreadable environment counts as 'maybe proxied'
+            return False
+
+    def _pinned_session(self, ip: str) -> requests.Session:
+        sess = requests.Session()
+        adapter = _PinnedAdapter(ip, pool_connections=1, pool_maxsize=1, max_retries=0)
+        sess.mount("http://", adapter)
+        sess.mount("https://", adapter)
+        self._configure(sess, proxies=False)
+        sess.trust_env = False  # the pinned route is direct by construction
         return sess
 
     def send(
@@ -1118,41 +1761,67 @@ class RequestsTransport:
         timeout: float = 20.0,
         max_bytes: int = DEFAULT_MAX_BYTES,
         deadline: float | None = None,
+        pin_ip: str | None = None,
+        stream_to: Any = None,
+        cancel_event: Any = None,
     ) -> Response:
         clock = self.clock
         host = _host(url)
         if deadline is not None and clock.monotonic() >= deadline:
             raise DeadlineExceeded(f"run deadline reached before contacting {host}")
         start = clock.monotonic()
+        session = self.session()
+        pinned = ""
+        if pin_ip and _PINNING_SUPPORTED and parse_ip(pin_ip) is not None and parse_ip(host) is None and self.direct(url):
+            pinned = str(parse_ip(pin_ip))
+            session = self._pinned_session(pinned)
+            headers = {k: v for k, v in headers.items() if k.lower() != "host"}
+            port = urlsplit(url).port
+            headers["Host"] = f"{host}:{port}" if port else host
         try:
-            raw = self.session().request(
-                method,
-                url,
-                headers=headers,
-                data=body,
-                timeout=timeout,
-                allow_redirects=False,
-                stream=True,
-                verify=self.verify,
-            )
-        except requests.exceptions.RequestException as exc:
-            raise NetworkError(
-                f"{type(exc).__name__} contacting {host}: {_short(exc)}",
-                retryable=not isinstance(exc, _NON_RETRYABLE),
-                kind=type(exc).__name__,
-                reason_code="timeout" if isinstance(exc, requests.exceptions.Timeout) else "",
-            ) from exc
-        except (OSError, ValueError) as exc:  # e.g. an unreadable ca_bundle path: not retried
-            raise NetworkError(f"{type(exc).__name__} contacting {host}: {_short(exc)}", retryable=False, kind=type(exc).__name__) from exc
-        try:
-            content, truncated = _read_body(raw, max_bytes, deadline, clock, host)
+            try:
+                raw = session.request(
+                    method,
+                    url,
+                    headers=headers,
+                    data=body,
+                    timeout=timeout,
+                    allow_redirects=False,
+                    stream=True,
+                    verify=self.verify,
+                )
+            except requests.exceptions.RequestException as exc:
+                proxied = not pinned and not self.direct(url)
+                raise NetworkError(
+                    f"{type(exc).__name__} contacting {host}: {_short(exc)}",
+                    retryable=not isinstance(exc, _NON_RETRYABLE),
+                    kind=type(exc).__name__,
+                    reason_code="timeout" if isinstance(exc, requests.exceptions.Timeout) else "",
+                    proxy_unreachable=proxied and _proxy_down(exc),
+                ) from exc
+            except (OSError, ValueError) as exc:  # e.g. an unreadable ca_bundle path: not retried
+                raise NetworkError(f"{type(exc).__name__} contacting {host}: {_short(exc)}", retryable=False, kind=type(exc).__name__) from exc
+            watch = _CANCEL_WATCH.add(getattr(raw, "raw", None), cancel_event)  # the kill switch also stops a blocked read
+            try:
+                if stream_to is not None:
+                    content, truncated, written = _stream_body(raw, stream_to, max_bytes, deadline, clock, host, cancel_event=cancel_event)
+                else:
+                    (content, truncated), written = _read_body(raw, max_bytes, deadline, clock, host, cancel_event=cancel_event), -1
+            finally:
+                _CANCEL_WATCH.remove(watch)
+                raw.close()
         finally:
-            raw.close()
-        return Response(raw.status_code, raw.url or url, {k.lower(): v for k, v in raw.headers.items()}, content, clock.monotonic() - start, False, truncated, [])
+            if pinned:
+                session.close()
+        resp = Response(raw.status_code, raw.url or url, {k.lower(): v for k, v in raw.headers.items()}, content, clock.monotonic() - start, False, truncated, [])
+        resp.pinned_ip = pinned
+        resp.streamed_bytes = written
+        return resp
 
 
-def _read_body(raw: requests.Response, max_bytes: int, deadline: float | None, clock: Clock, host: str) -> tuple[bytes, bool]:
-    """Read a streamed body with a size cap, checking the deadline between received chunks."""
+def _read_body(raw: requests.Response, max_bytes: int, deadline: float | None, clock: Clock, host: str, *, cancel_event: Any = None) -> tuple[bytes, bool]:
+    """Read a streamed body with a size cap, checking the deadline (and the kill switch, when
+    given) between received chunks."""
     import urllib3.exceptions
 
     chunks: list[bytes] = []
@@ -1164,6 +1833,8 @@ def _read_body(raw: requests.Response, max_bytes: int, deadline: float | None, c
             while True:
                 if deadline is not None and clock.monotonic() > deadline:
                     raise DeadlineExceeded(f"deadline exceeded while reading from {host}")
+                if cancel_event is not None and cancel_event.is_set():
+                    raise Cancelled(f"cancelled while reading from {host}")
                 chunk = read1(65536, decode_content=True)
                 if not chunk:
                     break
@@ -1181,14 +1852,104 @@ def _read_body(raw: requests.Response, max_bytes: int, deadline: float | None, c
                 size += len(chunk)
                 if size > max_bytes:
                     return b"".join(chunks)[:max_bytes], True
-    except DeadlineExceeded:
+    except (DeadlineExceeded, Cancelled):
         raise
     except (requests.exceptions.RequestException, urllib3.exceptions.HTTPError, OSError) as exc:
+        if cancel_event is not None and cancel_event.is_set():  # the kill switch shut the read down
+            raise Cancelled(f"cancelled while reading from {host}") from None
         timed_out = isinstance(exc, (requests.exceptions.Timeout, urllib3.exceptions.TimeoutError, TimeoutError))
         raise NetworkError(f"{type(exc).__name__} reading from {host}: {_short(exc)}", kind=type(exc).__name__, reason_code="timeout" if timed_out else "") from exc
+    if cancel_event is not None and cancel_event.is_set():  # a shut-down read ends like EOF: never a whole body
+        raise Cancelled(f"cancelled while reading from {host}")
     if deadline is not None and clock.monotonic() > deadline:
         raise DeadlineExceeded(f"deadline exceeded while reading from {host}")
     return b"".join(chunks), False
+
+
+def _stream_body(
+    raw: requests.Response, sink: Any, max_bytes: int, deadline: float | None, clock: Clock, host: str, *, cancel_event: Any = None
+) -> tuple[bytes, bool, int]:
+    """Write a streamed body into ``sink`` (at most ``max_bytes``), checking the deadline between
+    chunks. Returns (first CLASSIFY_BYTES for classification, truncated, bytes written)."""
+    import urllib3.exceptions
+
+    head = bytearray()
+    written = 0
+    stream = getattr(raw, "raw", None)
+    read1 = getattr(stream, "read1", None)
+
+    def chunks() -> Iterable[bytes]:
+        if callable(read1):
+            while True:
+                chunk = read1(65536, decode_content=True)
+                if not chunk:
+                    return
+                yield chunk
+        else:  # pragma: no cover - urllib3 < 2
+            yield from raw.iter_content(chunk_size=65536)
+
+    try:
+        for chunk in chunks():
+            if deadline is not None and clock.monotonic() > deadline:
+                raise DeadlineExceeded(f"deadline exceeded while reading from {host}")
+            if cancel_event is not None and cancel_event.is_set():
+                raise Cancelled(f"cancelled while reading from {host}")
+            if not chunk:
+                continue
+            room = max_bytes - written
+            part = chunk[:room]
+            if part:
+                sink.write(part)
+                written += len(part)
+                if len(head) < CLASSIFY_BYTES:
+                    head += part[: CLASSIFY_BYTES - len(head)]
+            if len(chunk) > room:
+                return bytes(head), True, written
+    except (DeadlineExceeded, Cancelled):
+        raise
+    except (requests.exceptions.RequestException, urllib3.exceptions.HTTPError, OSError) as exc:
+        if cancel_event is not None and cancel_event.is_set():  # the kill switch shut the read down
+            raise Cancelled(f"cancelled while reading from {host}") from None
+        timed_out = isinstance(exc, (requests.exceptions.Timeout, urllib3.exceptions.TimeoutError, TimeoutError))
+        raise NetworkError(f"{type(exc).__name__} reading from {host}: {_short(exc)}", kind=type(exc).__name__, reason_code="timeout" if timed_out else "") from exc
+    if cancel_event is not None and cancel_event.is_set():  # a shut-down read ends like EOF: never a whole body
+        raise Cancelled(f"cancelled while reading from {host}")
+    if deadline is not None and clock.monotonic() > deadline:
+        raise DeadlineExceeded(f"deadline exceeded while reading from {host}")
+    return bytes(head), False, written
+
+
+def _reset_sink(sink: Any) -> None:
+    """Empty a stream_to file before a new attempt or redirect hop (retries never append)."""
+    try:
+        sink.seek(0)
+        sink.truncate()
+    except (AttributeError, OSError, ValueError) as exc:
+        raise ValueError(f"stream_to must be a seekable binary file opened for writing ({exc})") from None
+
+
+_KW_SUPPORT: dict[tuple[type, str], bool] = {}
+_KW_LOCK = threading.Lock()
+
+
+def _accepts(obj: Any, name: str, method: str = "send") -> bool:
+    """Does ``obj.<method>`` accept keyword ``name`` (directly or through ``**kw``)? Cached per class."""
+    key = (type(obj), f"{method}.{name}")
+    with _KW_LOCK:
+        hit = _KW_SUPPORT.get(key)
+    if hit is not None:
+        return hit
+    fn = getattr(obj, method, None)
+    ok = False
+    if callable(fn):
+        try:
+            params = inspect.signature(fn).parameters
+        except (TypeError, ValueError):
+            params = {}
+        ok = name in params or any(p.kind is inspect.Parameter.VAR_KEYWORD for p in params.values())
+    with _KW_LOCK:
+        _KW_SUPPORT[key] = ok
+    return ok
 
 
 # ======================================================================================
@@ -1389,12 +2150,301 @@ class _Req:
         "method", "url", "host", "body", "headers", "user_agent", "timeout", "max_bytes", "min_interval", "retries",
         "deadline", "cancel_event", "allow_redirects", "hop_check", "source", "module", "opsec", "priority", "markers",
         "provider_markers", "keyless", "charge_quota", "network_gate", "info_sink", "cache_if", "provider", "key", "ttl",
-        "use_cache",
+        "use_cache", "contact", "profile", "stream_to", "ttl_from",
     )
 
     def __init__(self, **kw: Any) -> None:
         for name in self.__slots__:
             setattr(self, name, kw.get(name))
+
+
+def _scope_call(scope: Any, name: str, *args: Any) -> bool:
+    """A scope predicate (matches_url/matches_host/matches_ip); a scope without it matches nothing."""
+    fn = getattr(scope, name, None)
+    if not callable(fn):
+        return False
+    try:
+        return bool(fn(*args))
+    except (TypeError, ValueError):
+        return False
+
+
+def _scope_allows(scope: Any, host: str, ips: list[str], *, probe: str, url: str | None = None, org: Any = None) -> tuple[bool, str]:
+    """``scope.allows_contact(host, ips, probe=...)`` (fail closed when the scope cannot answer)."""
+    fn = getattr(scope, "allows_contact", None)
+    if not callable(fn):
+        return False, f"the scope cannot check contact with {host}"
+    kw: dict[str, Any] = {"probe": probe}
+    if url is not None and _accepts(scope, "url", "allows_contact"):
+        kw["url"] = url
+    if org is not None and _accepts(scope, "org", "allows_contact"):
+        kw["org"] = org
+    try:
+        found = fn(host, list(ips), **kw)
+    except (TypeError, ValueError) as exc:
+        return False, f"the scope could not check contact with {host}: {exc}"
+    if isinstance(found, tuple):
+        return bool(found[0]), str(found[1] if len(found) > 1 else "")
+    return bool(found), "" if found else f"{host} is outside the scope"
+
+
+def _check_window(scope: Any, clock: Clock, label: str) -> None:
+    """Target contact bound to a scope happens only inside its window (A7): before window_start ->
+    PolicyError 'scope'; at or after window_end -> Cancelled (the end of the window is a kill
+    switch: new target requests are refused). An unreadable window refuses (fail closed)."""
+    now = clock.now()
+    start = getattr(scope, "window_start", None)
+    expired = getattr(scope, "window_expired", None)
+    try:
+        closed = bool(expired(now)) if callable(expired) else False
+        early = start is not None and now < start
+    except Exception:  # noqa: BLE001 - a window that cannot be compared never authorizes contact
+        closed, early = True, False
+    if closed:
+        end = getattr(scope, "window_end", None)
+        when = f" at {end.isoformat()}" if isinstance(end, _dt.datetime) else ""
+        raise Cancelled(f"{label}: the scope window closed{when}: new target requests are refused (A7)")
+    if early:
+        raise PolicyError("scope", f"{label}: the scope window opens at {start.isoformat()}: no target contact before it (A7)")
+
+
+def _scope_label(scope: Any) -> str:
+    ref = str(getattr(scope, "authorization_ref", "") or "")
+    digest = str(getattr(scope, "sha256", "") or "")[:12]
+    return ", ".join(p for p in (f"ref {ref}" if ref else "", f"sha256 {digest}" if digest else "") if p) or "scope file"
+
+
+def _pick_ip(ips: Iterable[str]) -> str:
+    """The address to pin: the first IPv4, else the first address."""
+    values = [str(i) for i in ips]
+    for value in values:
+        if ":" not in value:
+            return value
+    return values[0] if values else ""
+
+
+def _decision_parts(decision: Any) -> tuple[bool | None, str, str, str]:
+    """(allowed, status, reason_code, reason) of a policy Decision-like object, bool or mapping."""
+    if decision is None or decision is True:
+        return True, "", "", ""
+    if decision is False:
+        return False, "blocked", "hostile_host", ""
+    get = decision.get if isinstance(decision, Mapping) else (lambda k, d=None: getattr(decision, k, d))
+    allowed = get("allowed", None)
+    status = get("status", "")
+    status = str(getattr(status, "value", status) or "").lower()
+    return (None if allowed is None else bool(allowed)), status, str(get("reason_code", "") or ""), str(get("reason", "") or "")
+
+
+class _Contact:
+    """Rules of one LIGHT/ACTIVE (target-contact) request (A7, A13, AR02).
+
+    ``bound`` = the request carries a ``scope`` or a ``run`` with its entity (a module run through
+    ctx.http): every hop is then resolved through the request's egress profile, every address
+    checked and the checked address pinned on the direct route; LIGHT first hops must belong to the
+    analyst-typed seed, ACTIVE hops to the scope. Unbound requests (core or test callers, contexts
+    built without an entity) get the name and IP-literal checks only. The method rules and the
+    ceilings apply to both.
+    """
+
+    def __init__(
+        self,
+        client: HttpClient,
+        *,
+        opsec: str,
+        profile: str,
+        scope: Any,
+        run: Any,
+        guard: Callable[[str], Any] | None,
+        module: str,
+        deadline: float | None,
+        cancel_event: Any,
+        info_sink: Callable[[RequestInfo], None] | None = None,
+    ) -> None:
+        self.client = client
+        self.info_sink = info_sink
+        self.opsec = opsec
+        self.profile = profile
+        self.scope = scope
+        self.run = run
+        self.guard = guard
+        self.module = module or "module"
+        self.deadline = deadline
+        self.cancel_event = cancel_event
+        # a run without an entity (a context built outside the engine) binds nothing but its flags
+        self.bound = scope is not None or (run is not None and getattr(run, "entity", None) is not None)
+        # a module context without an entity and without a scope (a self-test, never a scan run): at
+        # ACTIVE it reaches only internal hosts (with internal_seed), never a public target unscoped
+        self.seedless = run is not None and getattr(run, "entity", None) is None and scope is None
+        self.internal_seed = bool(getattr(run, "internal_seed", False)) if run is not None else False
+        self.case_id = str(getattr(run, "case_id", "") or "") if run is not None else ""
+        self.seed_hosts = entity_hosts(getattr(run, "entity", None)) if run is not None else ()
+        self.tor = bool(client._profile_attr(profile, "tor")) if client is not None else False
+        # a SOCKS LIGHT route used for .onion is Tor whatever its port ('detected by .onion use', A13)
+        scheme = str(client._profile_attr(profile, "scheme") or "") if client is not None else ""
+        self.onion_route = opsec == "light" and profile == "light" and scheme.startswith("socks")
+
+    # ------------------------------------------------------------------ request-level rules
+    def request_rules(self, method: str, url: str) -> None:
+        """Method allow-list, Tor read-only, ACTIVE needs a scope, then the first-hop static checks."""
+        if method not in allowed_methods(self.module, self.opsec):
+            extra = "/OPTIONS" if self.opsec == "active" else ""
+            raise PolicyError(
+                "policy",
+                f"{self.module}: {method} is not allowed toward targets in {self.opsec.upper()} mode (GET/HEAD{extra}); "
+                f"a state-changing method needs an approved v3lum/data/policy/method_allowlist/{self.module}.json (A7)",
+            )
+        host = _host(url)
+        if (self.tor or host == "onion" or host.endswith(".onion")) and method not in LIGHT_METHODS:
+            raise PolicyError("policy", f"{self.module}: the Tor egress profile carries LIGHT reads only (GET/HEAD, A13)")
+        if self.opsec == "active" and self.scope is None and (self.bound or (self.seedless and not self.internal_seed)):
+            raise PolicyError("scope", f"{self.module}: ACTIVE contact needs a scope file (--scope FILE) bound to --authorized (A7)")
+        if self.scope is not None:
+            _check_window(self.scope, self.client.clock if self.client is not None else SYSTEM_CLOCK, self.module)
+        self.static(url, first=True)
+
+    def credentials(self, headers: Mapping[str, str], url: str, body: bytes | None) -> None:
+        """No login attempt, borrowed session or V3LUM key ever goes to a target (A7: no login
+        attempts, no use of found credentials or keys): credential headers (Authorization, Cookie,
+        X-Api-Key...) and registered secrets in a header, the URL or the body refuse the request.
+        The scope's own ROE header (an engagement token agreed with the owner) is exempt."""
+        _ua, roe_header = self.roe()
+        roe_name = roe_header[0].lower() if roe_header is not None else ""
+        found = sorted(k for k, v in headers.items() if k.lower() != roe_name and is_credential_header(k, v))
+        if found or has_secret(url) or (body is not None and has_secret(bytes(body[:CLASSIFY_BYTES]).decode("utf-8", errors="replace"))):
+            what = f"header {', '.join(found)}" if found else "a configured secret"
+            raise PolicyError(
+                "policy",
+                f"{self.module}: {what} never goes to a target: no login attempts, borrowed sessions or V3LUM keys toward targets (A7)",
+            )
+
+    def _name_allowed(self, host: str) -> bool:
+        if self.scope is not None:
+            return _scope_call(self.scope, "matches_host", host)
+        return self.internal_seed
+
+    def check_ip(self, host: str, ip: str) -> None:
+        """Refuse an address of a private/loopback/link-local/CGNAT/ULA/multicast/reserved/metadata
+        class unless the scope lists it (or, without a scope, the seed is internal; metadata
+        endpoints only when the seed is that very address)."""
+        problem = ip_problem(ip)
+        if not problem:
+            return
+        if self.scope is not None:
+            if _scope_call(self.scope, "matches_ip", ip):
+                return
+        elif self.internal_seed and (not is_metadata_ip(ip) or host_within(ip, self.seed_hosts)):
+            return
+        shown = f"{host} ({ip})" if normalize_host(host) != normalize_host(ip) else ip
+        raise PolicyError(
+            "policy",
+            f"{self.module}: refused contact with {shown}: {problem} address (SSRF guard, AR02); internal targets need an "
+            "internal analyst-typed seed or a scope that lists them",
+        )
+
+    def static(self, url: str, first: bool) -> None:
+        """Checks that need no DNS: onion/Tor, internal names, IP literals, scope or seed binding."""
+        host = _host(url)
+        where = "" if first else " (redirect target)"
+        onion = host == "onion" or host.endswith(".onion")
+        if onion and not (self.opsec == "light" and (self.tor or self.onion_route)):
+            raise PolicyError(
+                "policy",
+                f"{self.module}: {host}{where}: onion services are reached only for LIGHT reads through a Tor proxy_light "
+                "(v3lum config set proxy_light socks5h://127.0.0.1:9050; A13)",
+            )
+        if self.scope is not None and not _scope_call(self.scope, "matches_url", url):
+            # the scope decides first: excluded or unlisted targets are out of scope
+            raise PolicyError("scope", f"{self.module}: {host}{where} is outside the scope ({_scope_label(self.scope)}); pivots never inherit scope (A7)")
+        if self.seedless and self.opsec == "active" and (onion or not host_problem(host)):
+            raise PolicyError(
+                "scope",
+                f"{self.module}: {host}{where}: an ACTIVE context without an entity or a scope (a self-test) reaches only internal "
+                "hosts with RunInfo.internal_seed; ACTIVE contact needs --scope FILE (A7)",
+            )
+        if not onion:
+            problem = host_problem(host)
+            if problem:
+                if parse_ip(host) is not None:
+                    self.check_ip(host, host)
+                elif problem.startswith("ambiguous") or not self._name_allowed(host):
+                    raise PolicyError(
+                        "policy",
+                        f"{self.module}: refused contact with {host}{where} ({problem}; SSRF guard, AR02); internal targets need an "
+                        "internal analyst-typed seed or a scope that lists them",
+                    )
+        if self.scope is None and self.bound and first and self.opsec == "light":
+            if not bool(getattr(self.run, "is_seed", True)):
+                raise PolicyError("scope", f"{self.module}: LIGHT contact runs only on analyst-typed seeds, never on pivots (A7)")
+            if self.seed_hosts and not host_within(host, self.seed_hosts):
+                raise PolicyError("scope", f"{self.module}: LIGHT request to {host} is outside the seed {', '.join(self.seed_hosts)} (A7)")
+
+    def guard_hop(self, url: str) -> None:
+        """Re-run the hostile-host guard (policy.contact_guard) for a redirect target (P376 cond 6)."""
+        if self.guard is None:
+            return
+        host = _host(url)
+        try:
+            decision = self.guard(url)
+        except (PolicyError, Blocked, Cancelled, DeadlineExceeded):
+            raise
+        except Exception as exc:  # noqa: BLE001 - a broken guard refuses (fail closed)
+            raise PolicyError("policy", f"{self.module}: the hostile-host guard failed for redirect target {host}: {_short(exc)} (refused)") from None
+        allowed, status, code, reason = _decision_parts(decision)
+        if allowed:
+            return
+        reason = reason or f"{self.module}: redirect target {host} refused by the hostile-host guard (needs non-corporate egress)"
+        if status == "skipped" or code in _SKIPPED_CODES:
+            raise PolicyError(reason, reason_code=code if code in _SKIPPED_CODES else "policy")
+        raise Blocked(reason, 0, url, reason_code=code if code in _BLOCKED_CODES else "hostile_host")
+
+    def hop(self, url: str, first: bool) -> str:
+        """Every check before one hop is sent; returns the checked address to pin ('' = none)."""
+        host = _host(url)
+        self.static(url, first)
+        if not first:
+            self.guard_hop(url)
+        if not self.bound or host == "onion" or host.endswith(".onion"):
+            return ""
+        literal = parse_ip(host)
+        if literal is not None:
+            ips = [str(literal)]
+        else:
+            ips = self.client.resolve_host(
+                host, profile=self.profile, deadline=self.deadline, cancel_event=self.cancel_event,
+                strict=not self.client._direct_route(self.profile, url), info_sink=self.info_sink,
+            )
+        if self.scope is not None:
+            # the scope decides first (exclusions, targets, unlisted private and CDN addresses)
+            ok, why = _scope_allows(self.scope, host, ips, probe="http", url=url)
+            if not ok:
+                raise PolicyError("scope", f"{self.module}: {why or host + ' is outside the scope'} (A7)")
+        for ip in ips:
+            self.check_ip(host, ip)
+        return _pick_ip(ips)
+
+    # ------------------------------------------------------------------ ceilings
+    def charge(self, host: str) -> None:
+        self.client.ceilings.charge(self.opsec, host, case_id=self.case_id, scope=self.scope)
+
+    def interval(self) -> float:
+        return 1.0 / contact_rps(self.opsec, self.scope)
+
+    def concurrency(self) -> int:
+        return contact_concurrency(self.opsec, self.scope)
+
+    # ------------------------------------------------------------------ identity
+    def roe(self) -> tuple[str, tuple[str, str] | None]:
+        """(ROE User-Agent, ROE header) of the scope for ACTIVE requests ('' / None when absent)."""
+        if self.opsec != "active" or self.scope is None:
+            return "", None
+        roe = getattr(self.scope, "roe", None)
+        if roe is None:
+            return "", None
+        ua = str(getattr(roe, "user_agent", "") or "").strip()
+        name = str(getattr(roe, "header_name", "") or "").strip()
+        value = str(getattr(roe, "header_value", "") or "").strip()
+        return ua, ((name, value) if name and value else None)
 
 
 class HttpClient:
@@ -1410,6 +2460,13 @@ class HttpClient:
     (``callable(source_id, content, content_type) -> bytes | None``; default ``sanitize.sanitize_body``),
     ``on_request_info`` (``callable(RequestInfo)``) and ``cache_key_sink`` (``callable(cache_key)`` for
     every response written to or served from the cache).
+
+    Wave 2 (WP11): ``egress`` (:class:`v3lum.core.net.EgressProfiles`; default built from
+    ``settings``: proxy, proxy_light, proxy_active) and ``ceilings`` (:class:`ContactCeilings`). The
+    default route keeps ``transport``; the light/active profiles use their own transports.
+    :meth:`resolve_host` resolves a target host through a profile (DoH sent through that profile);
+    :meth:`request` takes ``scope``, ``run``, ``contact_guard``, ``egress_profile`` (core requests
+    only), ``stream_to`` and ``ttl_from``.
     """
 
     #: ScopedHttp passes its v2 keywords (hop checks, request cap gate, info sink) to this client.
@@ -1438,6 +2495,8 @@ class HttpClient:
         sanitizer: Callable[[str, bytes, str], bytes | None] | None = None,
         on_request_info: Callable[[RequestInfo], None] | None = None,
         cache_key_sink: Callable[[str], None] | None = None,
+        egress: Any = None,
+        ceilings: ContactCeilings | None = None,
     ) -> None:
         self.user_agent = user_agent or ""
         self.timeout = float(timeout)
@@ -1464,6 +2523,16 @@ class HttpClient:
         self._circuit: dict[str, str] = {}
         self._circuit_lock = threading.Lock()
         self._key_locks = _KeyedLocks()
+        if egress is None:
+            from v3lum.core.net import EgressProfiles
+
+            egress = EgressProfiles(
+                settings, default_transport=self.transport, default_proxy=self.proxy, ca_bundle=str(self._setting("ca_bundle", "") or ""), clock=self.clock
+            )
+        self.egress = egress
+        self.ceilings = ceilings if ceilings is not None else ContactCeilings()
+        self._resolvers: dict[str, Any] = {}
+        self._resolver_lock = threading.Lock()
 
     # ------------------------------------------------------------------ settings / registry
     def _setting(self, name: str, default: Any = None) -> Any:
@@ -1530,9 +2599,13 @@ class HttpClient:
             return frozenset(self._circuit)
 
     def reset_circuit(self) -> None:
-        """Forget short-circuited hosts (the engine calls it at the start of each investigation)."""
+        """Forget short-circuited hosts (the engine calls it at the start of each investigation);
+        the per-scan LIGHT/ACTIVE ceiling counters start over too (``ContactCeilings.reset_scan``)."""
         with self._circuit_lock:
             self._circuit.clear()
+        reset = getattr(self.ceilings, "reset_scan", None)
+        if callable(reset):
+            reset()
 
     def _trip(self, hosts: Iterable[str], reason: str) -> None:
         with self._circuit_lock:
@@ -1647,8 +2720,10 @@ class HttpClient:
         return False
 
     def _identifying(self, ua: str) -> bool:
+        """Does a UA (or ROE header value) name V3LUM anywhere, equal the neutral UA, or carry the
+        organisation's contact? Such values never reach a target (P326 cond 5)."""
         lowered = ua.lower()
-        if lowered.startswith("v3lum") or ua == self.neutral_user_agent():
+        if "v3lum" in lowered or ua == self.neutral_user_agent():
             return True
         return self._carries_contact(ua)
 
@@ -1699,6 +2774,7 @@ class HttpClient:
         opsec: str,
         content_type: str,
         fallback: Mapping[str, Any] | None,
+        contact: _Contact | None = None,
     ) -> dict[str, str]:
         hdrs: dict[str, str] = {}
         for name, value in (caller or {}).items():
@@ -1708,6 +2784,18 @@ class HttpClient:
         for name in [k for k in hdrs if k.lower() == "user-agent"]:
             header_ua = hdrs.pop(name)
         caller_ua = user_agent or header_ua
+        if contact is not None:
+            # LIGHT/ACTIVE never carry the organisation's identity (P326 cond 5, A7): no 'From'
+            # header and no header value naming the contact mailbox/URL
+            hdrs = {k: v for k, v in hdrs.items() if k.lower() != "from" and not self._carries_contact(v)}
+            roe_ua, roe_header = contact.roe()
+            if contact.bound:
+                caller_ua = roe_ua if roe_ua and not self._identifying(roe_ua) else None
+            elif roe_ua and not self._identifying(roe_ua):
+                caller_ua = roe_ua
+            if roe_header is not None and roe_header[0].lower() not in ROE_FORBIDDEN_HEADERS and not self._identifying(roe_header[1]):
+                hdrs = {k: v for k, v in hdrs.items() if k.lower() != roe_header[0].lower()}
+                hdrs[roe_header[0]] = roe_header[1]
         ua = self.user_agent_for(profile, provider, opsec=opsec, caller=caller_ua)
         out = {"User-Agent": ua}
         out.update(hdrs)
@@ -1761,6 +2849,12 @@ class HttpClient:
         network_gate: Callable[[], None] | None = None,
         info_sink: Callable[[RequestInfo], None] | None = None,
         fallback_headers: Mapping[str, Any] | None = None,
+        scope: Any = None,
+        run: Any = None,
+        contact_guard: Callable[[str], Any] | None = None,
+        egress_profile: str | None = None,
+        stream_to: Any = None,
+        ttl_from: Callable[[Response], float | None] | None = None,
     ) -> Response:
         """Send a request (see the module docstring for profiles, redirects, retries, caching).
 
@@ -1769,6 +2863,15 @@ class HttpClient:
         (RequestInfo of every send/hit), ``markers``/``keyless`` (classification), ``charge_quota``
         (False for the core DoH scope) and ``fallback_headers`` (used only when neither the caller nor
         the profile sets the header, e.g. get_json's Accept).
+
+        Target contact (``opsec`` LIGHT/ACTIVE, WP11): ``scope`` (a ``v3lum.core.scope.Scope``),
+        ``run`` (``RunInfo``: entity, is_seed, internal_seed, case_id) and ``contact_guard``
+        (``callable(url)`` returning a policy Decision for redirect targets) bind the request (see
+        the module docstring). Core keywords: ``egress_profile`` ('default' | 'light' | 'active')
+        sends a core request through that profile (profile resolver, ``net.public_ip``);
+        ``stream_to`` (a seekable binary file) receives the body instead of memory and disables
+        caching; ``ttl_from(resp) -> seconds | None`` shortens the cache lifetime of an answer from
+        its content (e.g. DNS TTLs: a cached answer older than it is a miss; 0 = never stored).
         """
         method = (method or "GET").upper()
         url = _with_params(str(url), params)
@@ -1784,14 +2887,31 @@ class HttpClient:
         problem = _authority_problem(url)
         if problem:
             raise PolicyError("policy", f"refused {problem}: {redact_url(url)[:120]}")
+        op = _opsec_label(opsec)
+        profile_name = self._profile_name(op, egress_profile)
+        contact: _Contact | None = None
+        if op != "passive":
+            contact = _Contact(
+                self, opsec=op, profile=profile_name, scope=scope, run=run, guard=contact_guard, module=module,
+                deadline=deadline, cancel_event=cancel_event, info_sink=info_sink,
+            )
+            contact.request_rules(method, url)
+        elif host == "onion" or host.endswith(".onion"):
+            raise PolicyError("policy", f"refused {host}: onion services are reached only by LIGHT reads through a Tor proxy_light (A13)")
+        if profile_name != "default":
+            self._ensure_reachable(profile_name)  # a dead LIGHT/ACTIVE proxy refuses (fail closed, A13)
         self._check_live(cancel_event, deadline)
         if hop_check is not None:
             hop_check(url)
         body, content_type = _encode_body(data, json_body)
-        op = _opsec_label(opsec)
         prov = self.provider_for(host, provider, source)
         profile = getattr(prov, "http_profile", None) if prov is not None else None
-        hdrs = self._headers(headers, user_agent=user_agent, profile=profile, provider=prov, host=host, opsec=op, content_type=content_type, fallback=fallback_headers)
+        hdrs = self._headers(
+            headers, user_agent=user_agent, profile=profile, provider=prov, host=host, opsec=op, content_type=content_type,
+            fallback=fallback_headers, contact=contact,
+        )
+        if contact is not None:
+            contact.credentials(hdrs, url, body)  # no login attempt, session or V3LUM key toward targets (A7)
         sensitive = bool(getattr(getattr(prov, "flags", None), "sensitive", False))
         eff_ttl = self.effective_ttl(method, ttl, profile, sensitive=sensitive)
         accept = _header(hdrs, "accept")
@@ -1828,7 +2948,11 @@ class HttpClient:
             provider=prov,
             key=key,
             ttl=eff_ttl,
-            use_cache=self.cache is not None and eff_ttl > 0,
+            use_cache=self.cache is not None and eff_ttl > 0 and stream_to is None,
+            contact=contact,
+            profile=profile_name,
+            stream_to=stream_to,
+            ttl_from=ttl_from,
         )
         if req.use_cache:
             hit = self._cache_hit(req)
@@ -1850,6 +2974,125 @@ class HttpClient:
             raise Cancelled()
         if deadline is not None and self.clock.monotonic() >= deadline:
             raise DeadlineExceeded("run deadline reached: request not sent")
+
+    # ------------------------------------------------------------------ egress profiles (A13)
+    def _profile_name(self, opsec: str, explicit: str | None) -> str:
+        """The egress profile of a request: an explicit core profile, else by opsec (passive and
+        third-party traffic always 'default'; LIGHT/ACTIVE their profile when configured)."""
+        egress = self.egress
+        if explicit:
+            name = str(explicit)
+            if name not in ("default", "light", "active"):
+                raise PolicyError("policy", f"unknown egress profile {name!r} (default, light or active)")
+            effective = getattr(egress, "effective", None)
+            return str(effective(name)) if callable(effective) else "default"
+        if opsec == "passive":
+            return "default"
+        chooser = getattr(egress, "profile_for", None)
+        return str(chooser(opsec)) if callable(chooser) else "default"
+
+    def _profile_attr(self, name: str, attr: str) -> Any:
+        getter = getattr(self.egress, "profile", None)
+        if not callable(getter):
+            return None
+        try:
+            return getattr(getter(name), attr, None)
+        except (KeyError, ValueError):
+            return None
+
+    def _ensure_reachable(self, name: str) -> None:
+        check = getattr(self.egress, "ensure_reachable", None)
+        if callable(check):
+            check(name)
+
+    def _transport_for(self, name: str) -> Any:
+        """The transport of an egress profile; a configured but unusable profile refuses (PolicyError)."""
+        if name == "default":
+            return self.transport
+        getter = getattr(self.egress, "transport_for", None)
+        if not callable(getter):
+            raise PolicyError("policy", f"egress profile {name!r} is not available: request refused (A13)")
+        return getter(name)
+
+    def _direct_route(self, profile: str, url: str) -> bool:
+        """Would a request on ``profile`` leave without a proxy (so the checked IP can be pinned)?"""
+        if profile != "default" or self.proxy:
+            return False
+        direct = getattr(self.transport, "direct", None)
+        if callable(direct):
+            try:
+                return bool(direct(url))
+            except Exception:  # noqa: BLE001 - unknown means 'not pinned': resolution must then be strict
+                return False
+        return True
+
+    def resolve_host(
+        self, host: str, *, profile: str = "default", deadline: float | None = None, cancel_event: Any = None, strict: bool = True,
+        info_sink: Callable[[RequestInfo], None] | None = None,
+    ) -> list[str]:
+        """A and AAAA addresses of a target host resolved through an egress profile: DoH sent through
+        that profile (public resolvers only on proxied profiles; never a local getaddrinfo), or the
+        ``resolver`` injected into the egress profiles. Raises NetworkError when the name does not
+        resolve or the answer could not be verified (``strict``: both lookups must be verified, as on
+        proxied routes where the proxy picks the address itself). ``info_sink`` receives the
+        RequestInfo of every DoH lookup (the module's disclosure ledger: the resolver saw the name)."""
+        name = normalize_host(host)
+        literal = parse_ip(name)
+        if literal is not None:
+            return [str(literal)]
+        # an internal name (single label, .corp, .internal...) never goes to a public resolver: it
+        # would leak the internal namespace and could not resolve there anyway (A2, AR02)
+        internal = bool(host_problem(name))
+        if internal and profile != "default":
+            raise NetworkError(f"{name} is an internal name: it is not resolved through the {profile} egress profile (request not sent)", retryable=False)
+        if profile != "default":
+            self._ensure_reachable(profile)  # the profile resolver goes through that proxy
+        custom = getattr(self.egress, "resolver", None)
+        if callable(custom):
+            try:
+                found = custom(name, profile)
+            except Exception as exc:  # noqa: BLE001 - an injected resolver failure is 'could not verify'
+                raise NetworkError(f"could not resolve {name} through the {profile} egress profile: {_short(exc)}", retryable=False) from exc
+            ips = [str(parse_ip(v)) for v in (found or ()) if parse_ip(v) is not None]
+            if not ips:
+                raise NetworkError(f"could not resolve {name} through the {profile} egress profile: no address (request not sent)", retryable=False)
+            return ips
+        resolver = self._profile_resolver(profile, deadline, cancel_event, internal=internal)
+        try:
+            answers = [resolver.query(name, rtype) for rtype in ("A", "AAAA")]
+        finally:
+            if info_sink is not None:
+                for info in list(getattr(resolver.http, "request_log", ()) or ()):
+                    try:
+                        info_sink(info)
+                    except Exception:  # pragma: no cover - bookkeeping never breaks a request
+                        pass
+        ips = [r for a in answers if a.ok for r in a.records if parse_ip(r) is not None]
+        unverified = [a for a in answers if a.could_not_verify]
+        if unverified and (strict or not ips):
+            detail = "; ".join(str(a.error or a.status) for a in unverified)[:200]
+            raise NetworkError(f"could not resolve {name} through the {profile} egress profile ({detail}): could not verify, request not sent", retryable=False)
+        if not ips:
+            if all(a.nxdomain for a in answers):
+                raise NetworkError(f"{name} does not resolve (NXDOMAIN through the {profile} egress profile): request not sent", retryable=False)
+            raise NetworkError(f"{name} has no A/AAAA records through the {profile} egress profile: request not sent", retryable=False)
+        return list(dict.fromkeys(ips))
+
+    def _profile_resolver(self, profile: str, deadline: float | None, cancel_event: Any, *, internal: bool = False) -> Any:
+        from v3lum.core.dns import DOH_PROVIDERS, Resolver
+
+        scope = ScopedHttp(
+            self, ttl=None, core=True, module="egress_resolver", disclosure="third_party", opsec="passive",
+            deadline=deadline, cancel_event=cancel_event, clock=self.clock, egress_profile=profile,
+        )
+        if profile == "default":
+            # internal names: only the organisation's own resolver (setting doh_internal), never a public one
+            return Resolver(scope, mode="doh", clock=self.clock, settings=self.settings, allow_public=not internal, allow_public_fallback=not internal)
+        configured = self._setting("doh_providers", None)
+        names = [configured] if isinstance(configured, str) else list(configured or ())
+        public = [str(p).strip().lower() for p in names if str(p).strip().lower() in DOH_PROVIDERS and str(p).strip().lower() != "internal"]
+        # through a proxy only public resolvers are reachable: an internal resolver URL never leaves
+        return Resolver(scope, mode="doh", providers=public or ["google", "cloudflare"], internal_url="", clock=self.clock)
 
     def _remaining(self, req: _Req) -> float | None:
         if req.deadline is None:
@@ -1905,15 +3148,50 @@ class HttpClient:
                 except Exception:  # pragma: no cover
                     pass
             return None
-        if req.hop_check is not None:
-            for hop_url in [*hit.history[1:], hit.url]:
+        if req.ttl_from is not None and self._expired_by_content(req, hit):
+            try:
+                self.cache.delete(req.key)  # type: ignore[union-attr]
+            except Exception:  # pragma: no cover
+                pass
+            return None
+        for hop_url in [*hit.history[1:], hit.url]:
+            if req.hop_check is not None:
                 req.hop_check(hop_url)
+            if req.contact is not None and hop_url != req.url:
+                req.contact.static(hop_url, first=False)  # a replayed redirect target is still judged
         hit.classification = None
         hit._classified = True
         hit.cache_key = req.key
         self._sink(req.key)
         self._record(req, req.method, req.url, status=hit.status, nbytes=len(hit.content), cached=True, prov=req.provider)
         return hit
+
+    def _content_ttl(self, req: _Req, resp: Response) -> float | None:
+        """``ttl_from(resp)`` as seconds (None = no opinion; a broken hook counts as 0: never cached)."""
+        if req.ttl_from is None:
+            return None
+        try:
+            value = req.ttl_from(resp)
+        except Exception:  # noqa: BLE001 - fail closed: an answer whose lifetime is unknown is not kept
+            return 0.0
+        if value is None:
+            return None
+        try:
+            return max(0.0, float(value))
+        except (TypeError, ValueError):
+            return 0.0
+
+    def _expired_by_content(self, req: _Req, hit: Response) -> bool:
+        limit = self._content_ttl(req, hit)
+        if limit is None:
+            return False
+        try:
+            fetched = _dt.datetime.fromisoformat(str(hit.fetched_at).replace("Z", "+00:00"))
+        except ValueError:
+            return True
+        if fetched.tzinfo is None:
+            fetched = fetched.replace(tzinfo=_dt.timezone.utc)
+        return (self.clock.now() - fetched).total_seconds() > limit
 
     def _fetch(self, req: _Req) -> Response:
         method, current, body = req.method, req.url, req.body
@@ -1927,13 +3205,16 @@ class HttpClient:
             reason = self._circuit_reason(hop_host)
             if reason is not None:
                 raise Blocked(f"{self._name(prov, hop_host)}: short-circuited for this run after {reason}", 0, current, reason_code="circuit")
+            # target contact: SSRF/scope/seed checks after resolution through the egress profile, the
+            # hostile-host guard for redirect targets (AR02, A7, P376); the checked address is pinned
+            pin = req.contact.hop(current, first=not history) if req.contact is not None else ""
             if not gated:
                 gated = True
                 if req.network_gate is not None:
                     req.network_gate()
             if req.charge_quota and self.quota is not None and prov is not None:
                 self.quota.reserve(prov.id, hop_host, priority=req.priority)
-            resp, found = self._send(req, method, current, headers, body, prov, history)
+            resp, found = self._send(req, method, current, headers, body, prov, history, pin=pin)
             location = resp.headers.get("location", "").strip()
             if not (req.allow_redirects and resp.status in REDIRECT_STATUS and location and found is None):
                 break
@@ -1967,12 +3248,27 @@ class HttpClient:
             current = nxt
         return self._finish(req, resp, history)
 
-    def _send(self, req: _Req, method: str, url: str, headers: dict[str, str], body: bytes | None, prov: Any, history: list[str]) -> tuple[Response, Classification | None]:
+    def _send(
+        self, req: _Req, method: str, url: str, headers: dict[str, str], body: bytes | None, prov: Any, history: list[str], *, pin: str = ""
+    ) -> tuple[Response, Classification | None]:
         """One hop with retries (5xx/connection errors with backoff, one 429 with a short Retry-After)."""
         host = _host(url)
         profile = getattr(prov, "http_profile", None) if prov is not None else None
         interval = max(req.min_interval, float(getattr(profile, "min_interval", 0.0) or 0.0))
         concurrency = int(getattr(profile, "concurrency", 0) or 0) or self.max_per_host
+        contact = req.contact
+        contact_slots = 0
+        if contact is not None:
+            interval = max(interval, contact.interval())  # LIGHT <= 1 req/s, ACTIVE <= 10 req/s (A7)
+            contact_slots = contact.concurrency()
+        transport = self._transport_for(req.profile or "default")
+        extra: dict[str, Any] = {}
+        if pin and _accepts(transport, "pin_ip") and self._direct_route(req.profile or "default", url):
+            extra["pin_ip"] = pin  # the direct route connects to the checked address; a proxy gets the name
+        if req.stream_to is not None and _accepts(transport, "stream_to"):
+            extra["stream_to"] = req.stream_to
+        if req.cancel_event is not None and _accepts(transport, "cancel_event"):
+            extra["cancel_event"] = req.cancel_event  # the kill switch also stops a body being read
         markers = self._markers_for(req, prov)
         name = self._name(prov, host)
         attempt = 0
@@ -1986,31 +3282,51 @@ class HttpClient:
                     raise DeadlineExceeded(f"run deadline reached while waiting for {host} (politeness interval)")
                 self._wait(req, delay)
                 self._check_live(req.cancel_event, req.deadline)
+            if contact is not None:
+                contact.charge(host)  # LIGHT 25 per host per scan, the ACTIVE case budget (A7)
+            if req.stream_to is not None:
+                _reset_sink(req.stream_to)
             remaining = self._remaining(req)
             timeout = req.timeout if remaining is None else max(0.001, min(req.timeout, remaining))
             start = self.clock.monotonic()
+            contact_slot = (
+                self.limiter.acquire(f"contact:{contact_slots}:{host}", contact_slots, timeout=remaining) if contact_slots else contextlib.nullcontext()
+            )
             try:
-                with self.limiter.acquire(host, concurrency, timeout=remaining):
-                    resp = self.transport.send(method, url, headers=dict(headers), body=body, timeout=timeout, max_bytes=req.max_bytes, deadline=req.deadline)
+                with self.limiter.acquire(host, concurrency, timeout=remaining), contact_slot:
+                    resp = transport.send(method, url, headers=dict(headers), body=body, timeout=timeout, max_bytes=req.max_bytes, deadline=req.deadline, **extra)
             except TimeoutError:
                 raise DeadlineExceeded(f"run deadline reached while waiting for a connection slot to {host}") from None
             except DeadlineExceeded as exc:
-                self._record(req, method, url, elapsed=self.clock.monotonic() - start, error=exc.kind, prov=prov)
+                self._record(req, method, url, elapsed=self.clock.monotonic() - start, error=exc.kind, prov=prov, resolved_ip=pin)
+                raise
+            except Cancelled:  # the kill switch stopped a body being read: the send still reaches the ledger
+                self._record(req, method, url, elapsed=self.clock.monotonic() - start, error="Cancelled", prov=prov, resolved_ip=pin)
                 raise
             except NetworkError as exc:
-                self._record(req, method, url, elapsed=self.clock.monotonic() - start, error=exc.kind, prov=prov)
+                self._record(req, method, url, elapsed=self.clock.monotonic() - start, error=exc.kind, prov=prov, resolved_ip=pin)
+                if req.profile not in (None, "", "default") and exc.proxy_unreachable:
+                    # fail closed (A13): never resent on the default route, never retried
+                    setting = f"proxy_{req.profile}"
+                    raise PolicyError("policy", f"{setting} unreachable: request refused (never sent through the default route)") from None
                 backoff = min(4.0, 0.5 * (2**attempt))
                 if attempt < req.retries and exc.retryable and self._can_wait(req, backoff):
                     self._wait(req, backoff)
                     attempt += 1
                     continue
                 raise
+            if req.stream_to is not None and resp.streamed_bytes < 0:
+                # a transport without streaming: the body goes to the file here, memory keeps the head
+                req.stream_to.write(resp.content)
+                resp.streamed_bytes = len(resp.content)
+                resp.content = bytes(resp.content[:CLASSIFY_BYTES])
             elapsed = max(self.clock.monotonic() - start, float(resp.elapsed or 0.0))
             resp.elapsed = elapsed
             resp.request_url = url
             resp.history = list(history)
             found = classify(resp, markers=markers, keyless=req.keyless, provider_name=name)
-            self._record(req, method, url, status=resp.status, nbytes=len(resp.content), elapsed=elapsed, cls=found, prov=prov)
+            nbytes = resp.streamed_bytes if resp.streamed_bytes >= 0 else len(resp.content)
+            self._record(req, method, url, status=resp.status, nbytes=nbytes, elapsed=elapsed, cls=found, prov=prov, resolved_ip=pin)
             if resp.status in RETRY_STATUS and found is None and attempt < req.retries:
                 backoff = min(4.0, 0.5 * (2**attempt))
                 if self._can_wait(req, backoff):
@@ -2052,6 +3368,9 @@ class HttpClient:
                 no_store = True  # no schema / not JSON: the module gets the raw body in memory only
             else:
                 resp.content = cleaned
+        content_ttl = self._content_ttl(req, resp) if req.use_cache else None
+        if content_ttl is not None and content_ttl <= 0:
+            no_store = True  # ttl_from: this answer must not outlive the request (e.g. DNS TTL 0)
         if req.use_cache and not no_store and found is None and not resp.truncated and resp.status in CACHEABLE_STATUS and self._cache_allowed(req, resp):
             try:
                 stored = self.cache.put(req.key, resp, now=self._epoch())  # type: ignore[union-attr]
@@ -2125,6 +3444,7 @@ class HttpClient:
         error: str = "",
         cls: Classification | None = None,
         prov: Any = None,
+        resolved_ip: str = "",
     ) -> None:
         red = redact_url(url)
         if self.on_request is not None:
@@ -2149,6 +3469,8 @@ class HttpClient:
             provider=str(getattr(prov, "id", "") or ""),
             source=req.source or "",
             opsec=req.opsec or "passive",
+            egress_profile=str(req.profile or "default"),
+            resolved_ip=str(resolved_ip or ""),
             port=_port(url),
             classification=cls,
             user_agent=req.user_agent or "",
@@ -2218,13 +3540,18 @@ class ScopedHttp:
     DeadlineExceeded; more than ``max_requests`` network sends -> RequestCapReached; disclosure 'none'
     -> PolicyError (no network); disclosure 'third_party'/'internal' with ``allowed_hosts`` -> the
     URL host (and every redirect hop) must match them (exact or '*.suffix') else PolicyError;
-    disclosure 'target' hosts are scope-checked from wave 2. ``core=True`` (the core DoH scope): not
-    counted against ``max_requests`` or quotas and no module UA/min_interval. The scope's metadata
-    wins over per-call keywords: opsec, module name, priority, quota charging and the cancel event are
-    the scope's, a per-call deadline can only be earlier and a per-call min_interval only longer.
+    disclosure 'target' (LIGHT/ACTIVE) requests follow the target-contact rules of :class:`HttpClient`
+    (egress profile, SSRF guard, method rules, ceilings; with ``run``/``scope`` the hop-by-hop
+    resolution, pinning, seed and scope binding, and ``contact_guard`` for redirect targets).
+    ``core=True`` (the core DoH scope): not counted against ``max_requests`` or quotas and no module
+    UA/min_interval; only core scopes may name an ``egress_profile``. The scope's metadata wins over
+    per-call keywords: opsec, module name, priority, quota charging, the cancel event and the
+    run/scope/contact-guard binding are the scope's, a per-call deadline can only be earlier and a
+    per-call min_interval only longer.
 
     Counters: ``requests`` (network request calls), ``cache_hits``, ``hosts`` (host -> network sends),
-    ``bytes`` (network body bytes), ``request_log`` (RequestInfo of this scope).
+    ``bytes`` (network body bytes), ``request_log`` (RequestInfo of this scope; the socket connector
+    bound to this scope adds its CONNECT and EXEC records).
     """
 
     def __init__(
@@ -2249,6 +3576,10 @@ class ScopedHttp:
         clock: Clock | None = None,
         core: bool = False,
         priority: str = "seed",
+        run: Any = None,
+        scope: Any = None,
+        contact_guard: Callable[[str], Any] | None = None,
+        egress_profile: str | None = None,
     ) -> None:
         self._client = client
         self._v2 = bool(getattr(client, "accepts_scope_kwargs", False))
@@ -2270,6 +3601,11 @@ class ScopedHttp:
         self.clock: Clock = clock or getattr(client, "clock", None) or SYSTEM_CLOCK
         self.core = bool(core)
         self.priority = priority or "seed"
+        #: the run facts (RunInfo) and the loaded scope binding LIGHT/ACTIVE requests (WP11)
+        self.run = run
+        self.scope = scope
+        self.contact_guard = contact_guard
+        self.egress_profile = str(egress_profile) if (egress_profile and self.core) else None
         self._lock = threading.Lock()
         self.requests = 0
         self.cache_hits = 0
@@ -2342,6 +3678,11 @@ class ScopedHttp:
         self._check_live()
         self.check_host(url)
         kw = dict(kw)
+        # the binding is the scope's: a module never passes its own run, scope, guard or route
+        for name in ("run", "scope", "contact_guard", "egress_profile"):
+            kw.pop(name, None)
+        if not self.core:
+            kw.pop("stream_to", None)  # streaming to a file is a core facility (datasets)
         kw.setdefault("ttl", self._ttl if method in ("GET", "HEAD") else None)
         if not self.core:
             try:
@@ -2372,6 +3713,12 @@ class ScopedHttp:
         kw["keyless"] = self.keyless or bool(kw.get("keyless", False))
         kw["charge_quota"] = not self.core
         kw["hop_check"] = self._hop_checker(kw.get("hop_check"))
+        if self.opsec != "passive" and not self.core:
+            kw["run"] = self.run
+            kw["scope"] = self.scope
+            kw["contact_guard"] = self.contact_guard
+        if self.egress_profile:
+            kw["egress_profile"] = self.egress_profile
         infos: list[RequestInfo] = []
         kw["info_sink"] = infos.append
         kw["network_gate"] = self._gate
@@ -2384,10 +3731,23 @@ class ScopedHttp:
                 self.cache_hits += 1
         return resp
 
+    def _legacy_contact(self) -> _Contact | None:
+        if self.opsec == "passive" or self.core:
+            return None
+        return _Contact(
+            None, opsec=self.opsec, profile="default", scope=self.scope, run=self.run, guard=None, module=self.module,  # type: ignore[arg-type]
+            deadline=self.deadline, cancel_event=self.cancel_event,
+        )
+
     def _request_legacy(self, method: str, url: str, kw: dict[str, Any]) -> Response:
         with self._lock:
             if self.max_requests is not None and not self.core and self.requests >= self.max_requests:
                 raise RequestCapReached(f"{self._label()}: max_requests ({self.max_requests}) reached for this entity")
+        contact = self._legacy_contact()
+        if contact is not None:
+            # a legacy client cannot resolve or pin: the name/literal, method, seed and scope rules
+            contact.request_rules(method, url)
+            contact.credentials({str(k): str(v) for k, v in (kw.get("headers") or {}).items()}, _with_params(url, kw.get("params")), None)
         start = self.clock.monotonic()
         host = _host(url)
         try:
@@ -2421,6 +3781,8 @@ class ScopedHttp:
         for hop in [*(resp.history or [])[1:], resp.url]:
             if hop:
                 self.check_host(hop)
+                if contact is not None and hop != url:
+                    contact.static(hop, first=False)
         return resp
 
     def get(self, url: str, **kw: Any) -> Response:

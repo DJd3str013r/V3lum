@@ -1,0 +1,3 @@
+# selftest malware feed (synthetic)
+sha256,first_seen,signature,file_type
+275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f,2024-01-02 03:04:05,EICAR-Test-File,TXT

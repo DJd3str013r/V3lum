@@ -1,0 +1,21 @@
+{
+  "ok": {
+    "status": "ok",
+    "attributes": {
+      "country": "US",
+      "asn": "AS15169",
+      "tags": [
+        "scanner-research",
+        "dns"
+      ],
+      "last_seen": "2025-11-24T16:00:00Z"
+    },
+    "pivots": [
+      "domain:dns.google"
+    ]
+  },
+  "error_in_200": {
+    "status": "quota",
+    "reason_code": "quota"
+  }
+}

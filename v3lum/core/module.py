@@ -43,7 +43,10 @@ access_label, terms_sources) are computed from the provider registry and never d
 
 Modules are discovered automatically from the ``v3lum.modules`` package (and from
 ``~/.v3lum/plugins/*.py``). They must be side-effect free at import time (registering datasets and
-sanitizer schemas at the top level of the file is the only allowed import-time work).
+sanitizer schemas at the top level of the file is the only allowed import-time work). Declarative
+specs (P331: ``v3lum/data/specs/*.json`` and ``~/.v3lum/specs``) are compiled into Module subclasses
+by ``v3lum.core.specs`` after the module package is imported; their classes carry a non-empty
+``spec_origin``, which only the spec compiler may set.
 """
 
 from __future__ import annotations
@@ -563,7 +566,7 @@ class Module:
             "absent_statuses": sorted(cls.absent_statuses),
             "error_markers": [m.to_dict() if hasattr(m, "to_dict") else dict(m) for m in cls.error_markers],
             "manual_link": cls.manual_link,
-            "settings": dict(cls.settings),
+            "settings": {k: (v.default if isinstance(v, _config.SettingSpec) else v) for k, v in dict(cls.settings).items()},
             "trust_tier": cls.trust_tier,
             "providers": sorted(cls.providers),
             "upstream_families": sorted(cls.upstream_families),
@@ -575,7 +578,37 @@ class Module:
             "max_tlp": max_tlp.value_str if max_tlp is not None and hasattr(max_tlp, "value_str") else None,
             "terms_sources": dict(cls.terms_sources),
             "contract": CONTRACT_VERSION,
+            **_spec_fields(cls),
         }
+
+
+def _spec_fields(cls: type) -> dict[str, Any]:
+    """describe() fields of a compiled declarative spec (P331): its origin and auto-disable reason."""
+    origin = getattr(cls, "spec_origin", "")
+    if not isinstance(origin, str) or not origin:
+        return {}
+    return {"spec_origin": origin, "spec_disabled": str(getattr(cls, "spec_disabled", "") or "")}
+
+
+#: Marker the declarative-spec compiler puts in the class body of compiled specs (v3lum.core.specs).
+SPEC_MARK = "__v3lum_compiled_spec__"
+
+
+def _compiled_spec_class(cls: type) -> bool:
+    """True for a class built by ``v3lum.core.specs.compile_spec``: the compiler's marker in its own
+    body, a SpecModule base and no code of its own (its run/applies/health_check are the compiler's).
+    A hand-written module cannot pose as a compiled spec (whose tests are its spec fixtures)."""
+    if not cls.__dict__.get(SPEC_MARK, False):
+        return False
+    from v3lum.core import specs  # lazy: specs imports this module
+
+    if not issubclass(cls, specs.SpecModule):
+        return False
+    return not any(
+        callable(value) or isinstance(value, (classmethod, staticmethod, property))
+        for key, value in cls.__dict__.items()
+        if not (key.startswith("__") and key.endswith("__"))
+    )
 
 
 REGISTRY: dict[str, type[Module]] = {}
@@ -661,6 +694,12 @@ def _check(cls: type[Module]) -> dict[str, Any]:
     for attr in ("title", "description", "notice", "reference", "manual_link", "provider"):
         if not isinstance(getattr(cls, attr), str):
             raise _fail(cls, f"{attr} must be a string", f"declare {attr} = '...'")
+    if getattr(cls, "spec_origin", "") and not _compiled_spec_class(cls):
+        raise _fail(
+            cls,
+            "declares spec_origin, which only the declarative-spec compiler sets",
+            "hand-written modules never declare spec_origin; declarative specs live in v3lum/data/specs (P331)",
+        )
     if cls.reference and not re.match(r"^https?://\S+$", cls.reference):
         raise _fail(cls, f"reference {cls.reference!r} is not an http(s) URL", "point reference to the source's documentation or terms page")
     if not isinstance(cls.category, str) or cls.category not in CATEGORIES:
@@ -1001,8 +1040,16 @@ def unregister(name: str) -> bool:
 # ---------------------------------------------------------------------------------- discovery
 
 
-def load_modules(extra_dirs: list[str] | None = None, *, force: bool = False) -> dict[str, type[Module]]:
-    """Import every module under ``v3lum.modules`` (+ plugin dirs). Errors are recorded, never raised."""
+def load_modules(extra_dirs: list[str] | None = None, *, force: bool = False, user_specs: bool | None = None) -> dict[str, type[Module]]:
+    """Import every module under ``v3lum.modules`` (+ plugin dirs), then compile the declarative
+    specs (``v3lum.core.specs.load_specs``). Errors are recorded in :func:`load_errors` (specs under
+    ``'spec:<name>'``), never raised.
+
+    Bundled specs are always compiled. User specs (``~/.v3lum/specs``) are user content like the
+    plugins: ``user_specs`` decides (default: when the caller loads its user directories, i.e.
+    ``extra_dirs`` is given, as the App and the Engine do), so a bare ``load_modules()`` (tests,
+    tools) never reads the home.
+    """
     global _LOADED
     if _LOADED and not force:
         return REGISTRY
@@ -1042,12 +1089,38 @@ def load_modules(extra_dirs: list[str] | None = None, *, force: bool = False) ->
                 _LOAD_ERRORS[path] = f"{type(exc).__name__}: {exc}"
             else:
                 _LOAD_ERRORS.pop(path, None)
+    _load_specs(include_user=extra_dirs is not None if user_specs is None else bool(user_specs))
     _LOADED = True
     return REGISTRY
 
 
+def _load_specs(*, include_user: bool) -> None:
+    """Compile the declarative specs (P331); a failure of the compiler itself is recorded, never raised."""
+    try:
+        from v3lum.core import specs
+
+        specs.load_specs(include_user=include_user)
+    except Exception as exc:  # the spec compiler must never kill the tool
+        _LOAD_ERRORS["spec:*"] = f"{type(exc).__name__}: {exc}"
+        log.warning("declarative specs not loaded: %s", exc)
+    else:
+        _LOAD_ERRORS.pop("spec:*", None)
+
+
+def _set_load_error(key: str, message: str) -> None:
+    """Record a load error (used by the spec loader: ``'spec:<name>'`` keys)."""
+    _LOAD_ERRORS[str(key)] = str(message)
+
+
+def _clear_load_errors(prefix: str) -> None:
+    """Forget the load errors whose key starts with ``prefix`` (a reload reports the current state)."""
+    for key in [k for k in _LOAD_ERRORS if k.startswith(prefix)]:
+        del _LOAD_ERRORS[key]
+
+
 def load_errors() -> dict[str, str]:
-    """Import/registration errors by module path (and 'extras:<file>' fragment errors)."""
+    """Import/registration errors by module path (and 'extras:<file>' fragment errors, 'spec:<name>'
+    declarative-spec errors, P331)."""
     return dict(_LOAD_ERRORS)
 
 

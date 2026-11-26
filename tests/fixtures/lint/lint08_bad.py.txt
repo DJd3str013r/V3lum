@@ -1,0 +1,11 @@
+"""Bad: hash and JWT cracking (LINT-08)."""
+import hashcat
+
+
+def crack_jwt(token):
+    return hashcat.HashCat(token)
+
+
+def run(self, entity, ctx):
+    ctx.net.run_tool("john", ["--wordlist=words.txt", "hashes.txt"], targets=[])
+    return ctx.http.get("https://crackstation.net/?hash=" + entity.value)

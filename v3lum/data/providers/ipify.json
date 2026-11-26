@@ -1,0 +1,38 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "ipify",
+  "name": "ipify public IP echo",
+  "operator": "ipify (open-source public IP address API)",
+  "hosts": ["api.ipify.org"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Benign echo service that returns the caller's own public IP address and receives no investigated value; named by the WP11 plan for net.public_ip (P376 cond 11, A13: 'doctor --egress shows each profile's public IP, on request only, via a benign echo service').",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "B", "justification": "Reports the address it sees for the connection; used only to show which public IP an egress profile exits from."},
+  "http_profile": {"user_agent": "neutral", "accept": "application/json", "ttl": 0, "timeout": 10, "retries": 0},
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "echo": {
+      "title": "Public IP echo (GET https://api.ipify.org?format=json -> {\"ip\": ...})",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.ipify.org/",
+        "quote": "You can use it without limit (even if you're doing millions of requests per minute. ipify is completely open source",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "ipify",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: the provider's own home page (checked 2026-11-26). Use named by the binding plan text (WP11 spec item 1, from P376 cond 11 / A13: 'source echo open'). Asked only by net.public_ip on request (v3lum doctor --egress); never during scans and never cached (ttl 0). The request carries no investigated value."
+    }
+  },
+  "notes": "Owned by core (WP11)."
+}

@@ -1,0 +1,87 @@
+{
+  "schema": "v3lum.spec/1",
+  "name": "selftest_rss",
+  "title": "Selftest RSS advisories",
+  "description": "Self-test spec: RSS feed search, items as records, URL pivots and a low finding.",
+  "category": "vulnerability_cve",
+  "accepts": [
+    "cve"
+  ],
+  "produces": [
+    "url"
+  ],
+  "provider": "selftest_api",
+  "sources": [
+    "selftest_api.lookup"
+  ],
+  "hosts": [
+    "api.selftest.test"
+  ],
+  "terms": "open",
+  "disclosure": "third_party",
+  "opsec": "passive",
+  "access_model": "free_noauth_limited",
+  "run_on": "any",
+  "requires_keys": [],
+  "optional_keys": [],
+  "max_requests": 1,
+  "expected_latency": 1.0,
+  "min_interval": 0.0,
+  "cache_ttl": 3600,
+  "absent_statuses": [
+    404
+  ],
+  "error_markers": [],
+  "manual_link": "",
+  "default_enabled": true,
+  "health_check": {
+    "etype": "cve",
+    "value": "CVE-2021-44228",
+    "expect": "ok"
+  },
+  "request": {
+    "url": "https://api.selftest.test/v1/advisories.rss",
+    "method": "GET",
+    "params": {
+      "q": "{value}"
+    }
+  },
+  "format": "rss",
+  "results": [
+    {
+      "key": "link",
+      "pivot": {
+        "type": "url",
+        "relation": "related",
+        "expand": false,
+        "confidence": "possible"
+      },
+      "match_all": true
+    },
+    {
+      "key": "pubDate",
+      "attribute": "last_seen",
+      "format": "as_time"
+    }
+  ],
+  "multi_match": {
+    "path": "items[]"
+  },
+  "found": null,
+  "absent": null,
+  "findings": [
+    {
+      "when": {
+        "path": "title",
+        "regex": "(?i)exploit"
+      },
+      "title": "Selftest: exploit mentioned in the advisory feed",
+      "severity": "low",
+      "criterion": "an advisory feed item mentions an exploit for this CVE",
+      "tags": [
+        "exploit_available"
+      ],
+      "confidence": "possible"
+    }
+  ]
+}

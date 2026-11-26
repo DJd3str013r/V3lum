@@ -1,0 +1,11 @@
+{
+ "schema": "v3lum.pivot_pack/1",
+ "pack": "pack_bad",
+ "title": "Lint fixture: forbidden pivot links",
+ "links": [
+  {"id": "public_scan", "label": "Submit to urlscan", "template": "https://urlscan.io/api/v1/scan/?url={q}", "entity_types": ["domain"], "category": "reputation",
+   "host": "urlscan.io", "verified": false, "checked_at": "", "privacy": false, "publishes": false, "touches_target": false, "login_required": false, "antibot": false, "notes": ""},
+  {"id": "login_page", "label": "Login", "template": "https://www.example.com/login?u={q}", "entity_types": ["domain"], "category": "other",
+   "host": "www.example.com", "verified": false, "checked_at": "", "privacy": false, "publishes": false, "touches_target": false, "login_required": false, "antibot": false, "notes": ""}
+ ]
+}

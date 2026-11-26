@@ -1,0 +1,16 @@
+{
+  "data": {
+    "ip": "8.8.8.8",
+    "country": "US",
+    "asn": "AS15169",
+    "tags": [
+      "scanner-research",
+      "dns"
+    ],
+    "last_report": 1764000000,
+    "hostnames": [
+      "dns.google"
+    ],
+    "abuse_score": 0
+  }
+}

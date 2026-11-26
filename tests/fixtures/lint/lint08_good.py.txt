@@ -1,0 +1,9 @@
+"""Good: hashes are computed and typed, never reversed (LINT-08)."""
+import hashlib
+
+HASH_LENGTHS = {32: "md5", 40: "sha1", 64: "sha256"}
+
+
+def run(self, entity, ctx):
+    kind = HASH_LENGTHS.get(len(entity.value), "unknown")
+    return kind, hashlib.sha256(entity.value.encode()).hexdigest()

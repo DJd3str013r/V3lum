@@ -1,0 +1,15 @@
+{
+  "ok": {
+    "status": "ok",
+    "attributes": {
+      "display_name": "The Octocat"
+    },
+    "pivots": [
+      "url:https://profiles.selftest.test/octocat"
+    ]
+  },
+  "error_in_200": {
+    "status": "rate_limited",
+    "reason_code": "rate_limited"
+  }
+}

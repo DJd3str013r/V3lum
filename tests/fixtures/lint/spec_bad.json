@@ -1,0 +1,9 @@
+{
+ "schema": "v3lum.spec/1",
+ "name": "synthetic_leak_search",
+ "title": "Synthetic leak search (lint fixture)",
+ "hosts": ["api.dehashed.com"],
+ "request": {"url": "https://api.dehashed.com/search?query={value_q}", "method": "POST", "headers": {"Cookie": "session=borrowed"}},
+ "format": "json",
+ "results": [{"key": "entries[].password", "attribute": "leaked_password"}, {"key": "entries[].email", "pivot": {"type": "email", "relation": "mentions"}}]
+}

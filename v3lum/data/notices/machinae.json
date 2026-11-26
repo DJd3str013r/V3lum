@@ -1,0 +1,11 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "machinae",
+  "source_url": "https://github.com/HurricaneLabs/machinae",
+  "version": "commit d5deae8d231810c47b2e89a9df8a20ebe358912b (v1.4.11, 2026-06-03)",
+  "sha256": "",
+  "licence": "MIT",
+  "attribution": "Declarative collector pattern (request url template, params, method, headers, ignored_status_codes; results key dotted path, pretty_name, regex, match_all, format; multi_match/onlyif; pagination; multi_json/NDJSON) re-implemented in v3lum.core.specs from Machinae, Copyright (c) 2015 Hurricane Labs, MIT licence. No Machinae code is copied and its site list is not ported.",
+  "bundled": true,
+  "files": ["v3lum/core/specs.py"]
+}

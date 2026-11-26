@@ -1,0 +1,11 @@
+"""Bad: credential fields produced without a P145 schema (LINT-07)."""
+
+
+def run(self, entity, ctx):
+    res = self.result(entity)
+    entry = ctx.http.get_json("https://api.example.com/v1/leaks/" + entity.value)
+    res.raw = {"email": entity.value, "password": entry.get("password")}
+    res.attr("password_hash", entry.get("hash"))
+    out = {}
+    out["top_passwords"] = entry.get("top")
+    return res

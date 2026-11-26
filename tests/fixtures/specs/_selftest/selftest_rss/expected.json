@@ -1,0 +1,15 @@
+{
+  "ok": {
+    "status": "ok",
+    "attributes": {
+      "last_seen": "2021-12-10T12:00:00Z"
+    },
+    "pivots": [
+      "url:https://api.selftest.test/advisories/cve-2021-44228"
+    ]
+  },
+  "error_in_200": {
+    "status": "blocked",
+    "reason_code": "challenge"
+  }
+}

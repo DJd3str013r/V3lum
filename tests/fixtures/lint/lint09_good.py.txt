@@ -1,0 +1,9 @@
+"""Good: attack patterns are only detected in data the analyst provides (LINT-09)."""
+import re
+
+DESCRIPTION = "Passive lookup: no brute force, no login and no payloads are ever sent."
+SQLI = re.compile(r"union\s+select")
+
+
+def detect_brute_force(lines):
+    return [line for line in lines if SQLI.search(line) or "failed password" in line]

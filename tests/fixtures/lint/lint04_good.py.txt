@@ -1,0 +1,7 @@
+"""Good: official open company data; CPF is validated offline only (LINT-04)."""
+from v3lum.core import validators
+
+
+def run(self, entity, ctx):
+    ok = validators.cpf_valid("11144477735")
+    return ok, ctx.http.get_json(f"https://brasilapi.com.br/api/cnpj/v1/{entity.value}")

@@ -1,0 +1,9 @@
+"""Bad: CPF lookups and people-search panels (LINT-04)."""
+
+
+class Bad:
+    hosts = ("api.dehashed.com",)
+
+    def run(self, entity, ctx):
+        ctx.http.get(f"https://api.example.com/v1/pessoa?cpf={entity.value}")
+        return ctx.http.get("https://consulta-painel.example/busca?nome=" + entity.value)

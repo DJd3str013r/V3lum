@@ -1,0 +1,88 @@
+{
+  "schema": "v3lum.spec/1",
+  "name": "selftest_csv",
+  "title": "Selftest CSV malware feed",
+  "description": "Self-test spec: CSV answer with a header row, comment lines, records and a high finding.",
+  "category": "malware_hash",
+  "accepts": [
+    "sha256"
+  ],
+  "produces": [],
+  "provider": "selftest_api",
+  "sources": [
+    "selftest_api.lookup"
+  ],
+  "hosts": [
+    "api.selftest.test"
+  ],
+  "terms": "open",
+  "disclosure": "third_party",
+  "opsec": "passive",
+  "access_model": "free_noauth_limited",
+  "run_on": "any",
+  "requires_keys": [],
+  "optional_keys": [],
+  "max_requests": 1,
+  "expected_latency": 1.0,
+  "min_interval": 0.0,
+  "cache_ttl": 3600,
+  "absent_statuses": [
+    404
+  ],
+  "error_markers": [
+    {
+      "id": "selftest.csv.quota",
+      "regex": "query limit reached",
+      "maps_to": "quota",
+      "reason": "Selftest feed: query limit reached"
+    }
+  ],
+  "manual_link": "",
+  "default_enabled": true,
+  "health_check": {
+    "etype": "sha256",
+    "value": "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f",
+    "expect": "ok"
+  },
+  "request": {
+    "url": "https://api.selftest.test/v1/hash/{value}.csv",
+    "method": "GET"
+  },
+  "format": "csv",
+  "results": [
+    {
+      "key": "signature",
+      "attribute": "malware_family"
+    },
+    {
+      "key": "first_seen",
+      "attribute": "first_seen",
+      "format": "as_time"
+    },
+    {
+      "key": "file_type",
+      "attribute": "file_type",
+      "format": "lower"
+    }
+  ],
+  "multi_match": {
+    "path": "[]"
+  },
+  "found": null,
+  "absent": null,
+  "findings": [
+    {
+      "when": {
+        "path": "signature",
+        "regex": "\\S"
+      },
+      "title": "Selftest: hash listed in the malware feed",
+      "severity": "high",
+      "criterion": "the selftest feed lists this SHA-256 with a malware signature",
+      "tags": [
+        "malware"
+      ],
+      "confidence": "probable"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema": "v3lum.spec/1",
+  "name": "selftest_html",
+  "title": "Selftest HTML-embedded JSON",
+  "description": "Self-test spec: HTML page with __NEXT_DATA__ and ld+json blocks.",
+  "category": "domain_dns",
+  "accepts": [
+    "domain"
+  ],
+  "produces": [],
+  "provider": "selftest_api",
+  "sources": [
+    "selftest_api.lookup"
+  ],
+  "hosts": [
+    "api.selftest.test"
+  ],
+  "terms": "open",
+  "disclosure": "third_party",
+  "opsec": "passive",
+  "access_model": "free_noauth_limited",
+  "run_on": "any",
+  "requires_keys": [],
+  "optional_keys": [],
+  "max_requests": 1,
+  "expected_latency": 1.0,
+  "min_interval": 0.0,
+  "cache_ttl": 3600,
+  "absent_statuses": [
+    404
+  ],
+  "error_markers": [
+    {
+      "id": "selftest.html.maintenance",
+      "regex": "Service temporarily unavailable",
+      "maps_to": "error",
+      "reason": "Selftest site: maintenance page served with HTTP 200"
+    }
+  ],
+  "manual_link": "",
+  "default_enabled": true,
+  "health_check": {
+    "etype": "domain",
+    "value": "example.com",
+    "expect": "ok"
+  },
+  "request": {
+    "url": "https://api.selftest.test/v1/site/{domain}",
+    "method": "GET"
+  },
+  "format": "html_json",
+  "results": [
+    {
+      "key": "next_data.props.pageProps.site.registrar",
+      "attribute": "registrar"
+    },
+    {
+      "key": "next_data.props.pageProps.site.created",
+      "attribute": "created",
+      "format": "as_time"
+    },
+    {
+      "key": "ld_json[].name",
+      "attribute": "org"
+    }
+  ],
+  "multi_match": null,
+  "found": null,
+  "absent": null,
+  "findings": []
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<asn number="15169">
+  <name>GOOGLE</name>
+  <country>US</country>
+  <prefixes>
+    <prefix family="4">8.8.8.0/24</prefix>
+    <prefix family="4">8.8.4.0/24</prefix>
+  </prefixes>
+</asn>

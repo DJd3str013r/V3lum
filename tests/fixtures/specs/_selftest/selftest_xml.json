@@ -1,0 +1,78 @@
+{
+  "schema": "v3lum.spec/1",
+  "name": "selftest_xml",
+  "title": "Selftest XML ASN lookup",
+  "description": "Self-test spec: generic XML answer (attributes, repeated elements, '#text' values).",
+  "category": "ip_network",
+  "accepts": [
+    "asn"
+  ],
+  "produces": [
+    "cidr"
+  ],
+  "provider": "selftest_api",
+  "sources": [
+    "selftest_api.lookup"
+  ],
+  "hosts": [
+    "api.selftest.test"
+  ],
+  "terms": "open",
+  "disclosure": "third_party",
+  "opsec": "passive",
+  "access_model": "free_noauth_limited",
+  "run_on": "any",
+  "requires_keys": [],
+  "optional_keys": [],
+  "max_requests": 1,
+  "expected_latency": 1.0,
+  "min_interval": 0.0,
+  "cache_ttl": 3600,
+  "absent_statuses": [
+    404
+  ],
+  "error_markers": [
+    {
+      "id": "selftest.xml.error",
+      "regex": "<error>",
+      "maps_to": "error",
+      "reason": "Selftest ASN API: error document inside HTTP 200"
+    }
+  ],
+  "manual_link": "",
+  "default_enabled": true,
+  "health_check": {
+    "etype": "asn",
+    "value": "AS15169",
+    "expect": "ok"
+  },
+  "request": {
+    "url": "https://api.selftest.test/v1/asn/{value}.xml",
+    "method": "GET"
+  },
+  "format": "xml",
+  "results": [
+    {
+      "key": "asn.name",
+      "attribute": "as_org"
+    },
+    {
+      "key": "asn.country",
+      "attribute": "country"
+    },
+    {
+      "key": "asn.prefixes.prefix[].#text",
+      "pivot": {
+        "type": "cidr",
+        "relation": "announces",
+        "expand": false,
+        "confidence": "probable"
+      },
+      "match_all": true
+    }
+  ],
+  "multi_match": null,
+  "found": null,
+  "absent": null,
+  "findings": []
+}

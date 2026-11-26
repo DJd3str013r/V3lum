@@ -1,0 +1,17 @@
+{
+  "ok": {
+    "status": "ok",
+    "attributes": {
+      "as_org": "GOOGLE",
+      "country": "US"
+    },
+    "pivots": [
+      "cidr:8.8.8.0/24",
+      "cidr:8.8.4.0/24"
+    ]
+  },
+  "error_in_200": {
+    "status": "error",
+    "reason_code": "error"
+  }
+}

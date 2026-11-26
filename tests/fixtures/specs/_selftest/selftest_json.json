@@ -1,0 +1,127 @@
+{
+  "schema": "v3lum.spec/1",
+  "name": "selftest_json",
+  "title": "Selftest JSON lookup",
+  "description": "Self-test spec: JSON IP lookup mapped to attributes, a tag, pivots and a finding.",
+  "category": "threat_intel_ioc",
+  "accepts": [
+    "ipv4"
+  ],
+  "produces": [
+    "domain"
+  ],
+  "provider": "selftest_api",
+  "sources": [
+    "selftest_api.lookup"
+  ],
+  "hosts": [
+    "api.selftest.test"
+  ],
+  "terms": "open",
+  "disclosure": "third_party",
+  "opsec": "passive",
+  "access_model": "free_noauth_limited",
+  "run_on": "any",
+  "requires_keys": [],
+  "optional_keys": [],
+  "max_requests": 1,
+  "expected_latency": 1.0,
+  "min_interval": 0.0,
+  "cache_ttl": 3600,
+  "absent_statuses": [
+    404
+  ],
+  "error_markers": [
+    {
+      "id": "selftest.json.quota",
+      "statuses": [
+        200
+      ],
+      "json_path": "error.code",
+      "equals": "quota_exceeded",
+      "maps_to": "quota",
+      "reason": "Selftest API: daily quota exhausted"
+    }
+  ],
+  "manual_link": "https://api.selftest.test/ui/ip/{q}",
+  "default_enabled": true,
+  "health_check": {
+    "etype": "ipv4",
+    "value": "8.8.8.8",
+    "expect": "ok"
+  },
+  "request": {
+    "url": "https://api.selftest.test/v1/ip/{value}",
+    "method": "GET",
+    "params": {
+      "format": "json"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
+    "ignored_status_codes": [],
+    "paginate": null
+  },
+  "format": "json",
+  "results": [
+    {
+      "key": "data.country",
+      "pretty_name": "Country",
+      "attribute": "country"
+    },
+    {
+      "key": "data.asn",
+      "attribute": "asn",
+      "format": "str"
+    },
+    {
+      "key": "data.tags[]",
+      "attribute": "tags",
+      "format": "as_list"
+    },
+    {
+      "key": "data.last_report",
+      "attribute": "last_seen",
+      "format": "as_time"
+    },
+    {
+      "key": "data.tags[]",
+      "pretty_name": "Selftest: scanner activity",
+      "tag": "scanner",
+      "regex": "^scanner"
+    },
+    {
+      "key": "data.hostnames[]",
+      "pivot": {
+        "type": "domain",
+        "relation": "hosted_domain",
+        "expand": false,
+        "confidence": 0.5
+      },
+      "match_all": true
+    }
+  ],
+  "multi_match": null,
+  "found": null,
+  "absent": null,
+  "findings": [
+    {
+      "when": {
+        "path": "data.abuse_score",
+        "gte": 50
+      },
+      "title": "Selftest: high abuse score",
+      "severity": "medium",
+      "criterion": "abuse score >= 50 reported by the selftest API",
+      "tags": [
+        "suspicious"
+      ],
+      "confidence": "probable"
+    }
+  ],
+  "reference": "https://docs.selftest.test/api",
+  "tags": [
+    "free",
+    "reputation"
+  ]
+}

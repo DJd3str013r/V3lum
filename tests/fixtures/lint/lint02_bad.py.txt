@@ -1,0 +1,11 @@
+"""Bad: anti-bot bypass and CAPTCHA solving (LINT-02)."""
+import cloudscraper
+from twocaptcha import TwoCaptcha
+
+SOLVER = "https://2captcha.com/in.php"
+FLARE = "http://localhost:8191/v1"
+
+
+def run(self, entity, ctx):
+    scraper = cloudscraper.create_scraper()
+    return scraper, TwoCaptcha("key"), SOLVER, FLARE

@@ -1,0 +1,9 @@
+{
+ "schema": "v3lum.spec/1",
+ "name": "synthetic_reputation",
+ "title": "Synthetic reputation lookup (lint fixture)",
+ "hosts": ["api.reputation.example"],
+ "request": {"url": "https://api.reputation.example/v1/ip/{value}", "method": "GET", "headers": {"Accept": "application/json", "X-Api-Key": "{key:reputation_example}"}},
+ "format": "json",
+ "results": [{"key": "data.abuse_score", "attribute": "abuse_score"}, {"key": "data.asn", "pivot": {"type": "asn", "relation": "announced_by"}}]
+}

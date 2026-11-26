@@ -1,0 +1,20 @@
+{
+  "ok": {
+    "status": "ok",
+    "attributes": {
+      "a_records": [
+        "93.184.215.14",
+        "93.184.216.34"
+      ],
+      "first_seen": "2020-09-13T12:26:40Z"
+    },
+    "pivots": [
+      "ipv4:93.184.215.14",
+      "ipv4:93.184.216.34"
+    ]
+  },
+  "error_in_200": {
+    "status": "rate_limited",
+    "reason_code": "rate_limited"
+  }
+}

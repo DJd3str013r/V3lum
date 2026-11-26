@@ -1,0 +1,84 @@
+{
+  "schema": "v3lum.spec/1",
+  "name": "selftest_pages",
+  "title": "Selftest paginated subdomains",
+  "description": "Self-test spec: paginated JSON answer (page parameter, stop when a page is empty).",
+  "category": "domain_dns",
+  "accepts": [
+    "domain"
+  ],
+  "produces": [
+    "domain"
+  ],
+  "provider": "selftest_api",
+  "sources": [
+    "selftest_api.lookup"
+  ],
+  "hosts": [
+    "api.selftest.test"
+  ],
+  "terms": "open",
+  "disclosure": "third_party",
+  "opsec": "passive",
+  "access_model": "free_noauth_limited",
+  "run_on": "any",
+  "requires_keys": [],
+  "optional_keys": [],
+  "max_requests": 5,
+  "expected_latency": 1.0,
+  "min_interval": 0.0,
+  "cache_ttl": 3600,
+  "absent_statuses": [
+    404
+  ],
+  "error_markers": [
+    {
+      "id": "selftest.pages.quota",
+      "json_path": "status",
+      "equals": "over_quota",
+      "maps_to": "quota",
+      "reason": "Selftest subdomains: quota exhausted"
+    }
+  ],
+  "manual_link": "",
+  "default_enabled": true,
+  "health_check": {
+    "etype": "domain",
+    "value": "example.com",
+    "expect": "ok"
+  },
+  "request": {
+    "url": "https://api.selftest.test/v1/subdomains/{value_q}",
+    "method": "GET",
+    "paginate": {
+      "param": "page",
+      "start": 1,
+      "step": 1,
+      "max_pages": 5,
+      "stop_when_empty": true
+    }
+  },
+  "format": "json",
+  "results": [
+    {
+      "key": "name",
+      "pivot": {
+        "type": "domain",
+        "relation": "subdomain",
+        "expand": false,
+        "confidence": "probable"
+      }
+    },
+    {
+      "key": "name",
+      "attribute": "subdomains",
+      "format": "as_list"
+    }
+  ],
+  "multi_match": {
+    "path": "subdomains[]"
+  },
+  "found": null,
+  "absent": null,
+  "findings": []
+}

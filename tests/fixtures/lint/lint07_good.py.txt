@@ -1,0 +1,10 @@
+"""Good: only the password FORM is produced (LINT-07)."""
+
+
+def run(self, entity, ctx):
+    res = self.result(entity)
+    entry = ctx.http.get_json("https://api.example.com/v1/leaks/" + entity.value)
+    form = "plaintext" if entry.get("password") else "unknown"
+    res.attr("password_form", form)
+    res.attr("breaches", [b["name"] for b in entry.get("breaches", [])])
+    return res

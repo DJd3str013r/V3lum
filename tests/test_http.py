@@ -464,3 +464,78 @@ def test_a_read_timeout_is_a_network_error_with_reason_timeout(server):
         c.request("GET", server + "/stall", ttl=0)
     assert err.value.reason_code == "timeout" and err.value.retryable
     assert "Timeout" in err.value.kind
+
+
+# --------------------------------------------------------------------------------------
+# wave 2 (WP11): streamed bodies (dataset downloads) and content-driven cache lifetimes
+# --------------------------------------------------------------------------------------
+
+
+def test_stream_to_writes_the_body_to_a_file_and_never_caches(server, client, tmp_path):
+    target = tmp_path / "download.bin"
+    with target.open("w+b") as sink:
+        resp = client.request("GET", server + "/big", stream_to=sink)
+    assert resp.status == 200 and resp.streamed_bytes == 50000 and not resp.truncated
+    assert target.read_bytes() == b"x" * 50000
+    assert resp.content == b"x" * 50000  # the head kept for classification (<= 64 KB)
+    with target.open("w+b") as sink:
+        again = client.request("GET", server + "/big", stream_to=sink)
+    assert not again.from_cache and Handler.hits["/big"] == 2  # a streamed answer is never cached
+    with target.open("w+b") as sink:
+        capped = client.request("GET", server + "/big", stream_to=sink, max_bytes=1000)
+    assert capped.truncated and capped.streamed_bytes == 1000 and target.stat().st_size == 1000
+
+
+def test_stream_to_follows_redirects_without_keeping_hop_bodies(server, client, tmp_path):
+    target = tmp_path / "followed.json"
+    with target.open("w+b") as sink:
+        resp = client.request("GET", server + "/redirect", stream_to=sink)
+    assert resp.status == 200 and json.loads(target.read_bytes())["ok"] is True
+
+
+def test_stream_to_works_over_a_transport_without_streaming(tmp_path):
+    from tests.fakes import FakeClock, FakeHttp
+
+    http = FakeHttp(clock=FakeClock()).add("GET", "https://data.example.test/feed.csv", text="a,b\n" * 30000)
+    c = HttpClient(transport=http, clock=http.clock, retries=0)
+    target = tmp_path / "feed.csv"
+    with target.open("w+b") as sink:
+        resp = c.request("GET", "https://data.example.test/feed.csv", stream_to=sink)
+    assert resp.streamed_bytes == 120000 and target.stat().st_size == 120000
+    assert len(resp.content) == 64 * 1024  # memory keeps only the head
+
+
+def test_ttl_from_shortens_the_cache_lifetime_of_an_answer(tmp_path):
+    from tests.fakes import FakeClock, FakeHttp
+
+    clock = FakeClock()
+    http = FakeHttp(clock=clock).add("GET", "https://dns.example.test/q", json={"TTL": 60}, times=2)
+    cache = HttpCache(str(tmp_path / "ttl.db"), clock=clock)
+    try:
+        c = HttpClient(transport=http, clock=clock, cache=cache, default_ttl=3600, retries=0)
+        ttl_from = lambda resp: resp.json()["TTL"]  # noqa: E731 - the answer's own lifetime
+        c.request("GET", "https://dns.example.test/q", ttl_from=ttl_from)
+        clock.advance(30)
+        assert c.request("GET", "https://dns.example.test/q", ttl_from=ttl_from).from_cache
+        clock.advance(40)  # 70 s > TTL 60 although the request TTL is 3600
+        assert not c.request("GET", "https://dns.example.test/q", ttl_from=ttl_from).from_cache
+        assert len(http.calls) == 2
+        never = FakeHttp(clock=clock).add("GET", "https://dns.example.test/zero", json={"TTL": 0}, times=2)
+        c2 = HttpClient(transport=never, clock=clock, cache=cache, default_ttl=3600, retries=0)
+        c2.request("GET", "https://dns.example.test/zero", ttl_from=ttl_from)
+        assert not c2.request("GET", "https://dns.example.test/zero", ttl_from=ttl_from).from_cache  # TTL 0: never stored
+    finally:
+        cache.close()
+
+
+def test_the_kill_switch_stops_a_body_being_read(server):
+    """Cancel also interrupts a slow-drip body already being read (target traffic stops within 2 s)."""
+    from v3lum.core.http import Cancelled
+
+    c = HttpClient(trust_env=False, retries=0, timeout=5)
+    cancel = threading.Event()
+    threading.Timer(0.1, cancel.set).start()
+    start = time.monotonic()
+    with pytest.raises(Cancelled):
+        c.request("GET", server + "/drip", cancel_event=cancel, ttl=0)
+    assert time.monotonic() - start < 2.0

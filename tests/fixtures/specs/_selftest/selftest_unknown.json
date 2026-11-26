@@ -1,0 +1,62 @@
+{
+  "schema": "v3lum.spec/1",
+  "name": "selftest_unknown",
+  "title": "Selftest unknown-tier lookup",
+  "description": "Self-test spec: unknown-tier, unknown-terms provider: IOC types only, never default.",
+  "category": "ip_network",
+  "accepts": [
+    "ipv4"
+  ],
+  "produces": [],
+  "provider": "selftest_unknown",
+  "sources": [
+    "selftest_unknown.lookup"
+  ],
+  "hosts": [
+    "unknown.selftest.test"
+  ],
+  "terms": "unknown",
+  "disclosure": "third_party",
+  "opsec": "passive",
+  "access_model": "free_noauth_limited",
+  "run_on": "any",
+  "requires_keys": [],
+  "optional_keys": [],
+  "max_requests": 1,
+  "expected_latency": 1.0,
+  "min_interval": 0.0,
+  "cache_ttl": 3600,
+  "absent_statuses": [],
+  "error_markers": [
+    {
+      "id": "selftest.unknown.error",
+      "json_path": "status",
+      "equals": "error",
+      "maps_to": "error",
+      "reason": "Selftest unknown-tier API: error inside HTTP 200"
+    }
+  ],
+  "manual_link": "",
+  "default_enabled": false,
+  "health_check": {
+    "etype": "ipv4",
+    "value": "8.8.8.8",
+    "expect": "ok"
+  },
+  "request": {
+    "url": "https://unknown.selftest.test/lookup/{value}",
+    "method": "GET"
+  },
+  "format": "json",
+  "results": [
+    {
+      "key": "proxy",
+      "attribute": "is_proxy",
+      "format": "bool"
+    }
+  ],
+  "multi_match": null,
+  "found": null,
+  "absent": null,
+  "findings": []
+}

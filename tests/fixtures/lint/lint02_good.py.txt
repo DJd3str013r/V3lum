@@ -1,0 +1,9 @@
+"""Good: a challenge is detected and reported, never bypassed (LINT-02)."""
+
+
+def run(self, entity, ctx):
+    res = self.result(entity)
+    resp = ctx.http.get("https://www.example.com/search?q=" + entity.value)
+    if "cf-chl" in resp.text or resp.status == 403:
+        return res.mark("blocked", "anti-bot challenge: could not verify", reason_code="challenge")
+    return res

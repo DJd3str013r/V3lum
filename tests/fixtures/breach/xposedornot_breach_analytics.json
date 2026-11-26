@@ -1,0 +1,44 @@
+{
+ "BreachMetrics": {
+  "get_details": [],
+  "passwords_strength": [{"EasyToCrack": 1, "PlainText": 1, "StrongHash": 0, "Unknown": 1}],
+  "risk": [{"risk_label": "Medium", "risk_score": 47}],
+  "yearwise_details": [{"y2013": 1, "y2019": 2}]
+ },
+ "BreachesSummary": {"site": "Adobe;SynthForum;Collection-1"},
+ "ExposedBreaches": {
+  "breaches_details": [
+   {
+    "breach": "Adobe",
+    "details": "In October 2013, 153 million Adobe accounts were breached with each containing an internal ID, username, email, encrypted password and a password hint in plain text.",
+    "domain": "adobe.com",
+    "industry": "Information Technology",
+    "logo": "https://xposedornot.com/static/logos/Adobe.png",
+    "password_risk": "easytocrack",
+    "references": "https://www.troyhunt.com/adobe-credentials-and-serious/",
+    "searchable": "Yes",
+    "verified": "Yes",
+    "xposed_data": "Email addresses;Password hints;Passwords;Usernames",
+    "xposed_date": "2013",
+    "xposed_records": 152445165
+   },
+   {
+    "breach": "SynthForum",
+    "details": "Synthetic forum breach used by the V3LUM test suite (no real data).",
+    "domain": "synthforum.example",
+    "industry": "Entertainment",
+    "logo": "https://xposedornot.com/static/logos/SynthForum.png",
+    "password_risk": "plaintext",
+    "references": "",
+    "searchable": "Yes",
+    "verified": "Yes",
+    "xposed_data": "Email addresses;Passwords;IP addresses",
+    "xposed_date": "2019",
+    "xposed_records": 12345
+   }
+  ]
+ },
+ "ExposedPastes": null,
+ "PasteMetrics": null,
+ "PastesSummary": {"cnt": 0, "domain": "", "tmpstmp": ""}
+}

@@ -1,0 +1,21 @@
+{
+  "ok": {
+    "status": "ok",
+    "attributes": {
+      "subdomains": [
+        "www.example.com",
+        "mail.example.com",
+        "dev.example.com"
+      ]
+    },
+    "pivots": [
+      "domain:www.example.com",
+      "domain:mail.example.com",
+      "domain:dev.example.com"
+    ]
+  },
+  "error_in_200": {
+    "status": "quota",
+    "reason_code": "quota"
+  }
+}

@@ -1,0 +1,9 @@
+{
+ "schema": "v3lum.pivot_pack/1",
+ "pack": "pack_good",
+ "title": "Lint fixture: allowed pivot links",
+ "links": [
+  {"id": "urlscan_search", "label": "urlscan search", "template": "https://urlscan.io/search/#domain:{q}", "entity_types": ["domain"], "category": "reputation",
+   "host": "urlscan.io", "verified": false, "checked_at": "", "privacy": false, "publishes": false, "touches_target": false, "login_required": false, "antibot": false, "notes": ""}
+ ]
+}

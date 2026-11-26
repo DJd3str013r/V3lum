@@ -1,0 +1,15 @@
+"""Bad: payloads, brute force, OAST callbacks, uploads and deletes (LINT-09)."""
+
+CALLBACK = "v3lum-test.oast.pro"
+
+
+def brute_force_login(ctx, host, users):
+    for user in users:
+        ctx.http.get(f"https://{host}/admin?user={user}")
+
+
+def run(self, entity, ctx):
+    ctx.http.get(f"https://{entity.value}/item?id=1' OR 1=1--")
+    ctx.http.get(f"https://{entity.value}/download?file=../../../etc/passwd")
+    ctx.http.request("DELETE", f"https://{entity.value}/api/items/1")
+    return ctx.http.post(f"https://{entity.value}/upload", files={"f": b"x"})

@@ -1,0 +1,9 @@
+{
+ "license": ["synthetic WhatsMyName-format list for the V3LUM lint tests"],
+ "categories": ["social"],
+ "sites": [
+  {"name": "ProfilePage", "uri_check": "https://social.example/u/{account}", "e_code": 200, "e_string": "profile", "m_code": 404, "m_string": "not found", "known": ["alice"], "cat": "social"},
+  {"name": "SignupOracle", "uri_check": "https://social.example/signup/check?username={account}", "e_code": 200, "e_string": "taken", "m_code": 200, "m_string": "available", "known": ["alice"], "cat": "social"},
+  {"name": "PostScan", "uri_check": "https://tools.example/api/v1/scan", "post_body": "{\"q\": \"{account}\"}", "e_code": 200, "e_string": "x", "m_code": 200, "m_string": "y", "known": ["alice"], "cat": "misc"}
+ ]
+}

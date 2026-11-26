@@ -1,0 +1,13 @@
+{
+  "ok": {
+    "status": "ok",
+    "attributes": {
+      "is_proxy": false
+    },
+    "pivots": []
+  },
+  "error_in_200": {
+    "status": "error",
+    "reason_code": "error"
+  }
+}

@@ -1,0 +1,7 @@
+"""Bad: submitting or publishing the value (LINT-05)."""
+
+
+def run(self, entity, ctx):
+    ctx.http.post("https://urlscan.io/api/v1/scan/", json={"url": entity.value, "visibility": "public"})
+    ctx.http.get("https://web.archive.org/save/" + entity.value)
+    return ctx.http.post("https://www.virustotal.com/api/v3/urls", data={"url": entity.value})

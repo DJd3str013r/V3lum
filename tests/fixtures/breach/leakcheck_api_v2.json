@@ -1,0 +1,23 @@
+{
+ "success": true,
+ "quota": 398,
+ "found": 2,
+ "result": [
+  {
+   "email": "someone@example.com",
+   "source": {"name": "SynthForum.example", "breach_date": "2019-07", "unverified": 0, "passwordless": 0, "compilation": 0},
+   "first_name": "Synthia",
+   "last_name": "Placeholder",
+   "username": "synth_user_42",
+   "password": "Synth3tic!Pass",
+   "fields": ["first_name", "last_name", "username", "password"]
+  },
+  {
+   "email": "someone@example.com",
+   "source": {"name": "Collection 1", "breach_date": "2019-01", "unverified": 1, "passwordless": 0, "compilation": 1},
+   "password": "5f4dcc3b5aa765d61d8327deb882cf99",
+   "line": "someone@example.com:Synth3tic!Pass",
+   "fields": ["password"]
+  }
+ ]
+}

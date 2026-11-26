@@ -1,0 +1,33 @@
+{
+ "message": "This email address is associated with a computer that was infected by an info-stealer, all the credentials saved on this computer are at risk of being accessed by cybercriminals. Visit https://www.hudsonrock.com/free-tools to discover additional free tools and Infostealers related data.",
+ "stealers": [
+  {
+   "total_corporate_services": 3,
+   "total_user_services": 41,
+   "date_compromised": "2026-10-02T00:00:00.000Z",
+   "stealer_family": "RedLine",
+   "computer_name": "SYNTH-PC-0042",
+   "operating_system": "Windows 10 Pro",
+   "malware_path": "C:\\Users\\synthuser\\AppData\\Local\\Temp\\synthetic-loader.exe",
+   "antiviruses": ["Windows Defender"],
+   "ip": "203.0.113.77",
+   "top_passwords": ["S*******9", "q*****y"],
+   "top_logins": ["s******r@example.com", "synth***"]
+  },
+  {
+   "total_corporate_services": 0,
+   "total_user_services": 12,
+   "date_compromised": "2024-05-26T17:37:44.000Z",
+   "stealer_family": "StealC",
+   "computer_name": "DESKTOP-SYN7Q2X",
+   "operating_system": "Windows 11 Home",
+   "malware_path": " C:\\Users\\Synthetic Owner\\Desktop\\Setup\\SynthSetup.exe",
+   "antiviruses": [],
+   "ip": "198.51.100.23",
+   "top_passwords": ["h*****2"],
+   "top_logins": ["s*****r"]
+  }
+ ],
+ "total_corporate_services": 3,
+ "total_user_services": 53
+}
