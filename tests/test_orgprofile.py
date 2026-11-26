@@ -3,10 +3,12 @@ by PSL + label match and ipaddress containment, verified semantics."""
 
 from __future__ import annotations
 
+import importlib.util
 import json
 
 import pytest
 
+from v3lum.core import orgprofile
 from v3lum.core.entities import Entity
 from v3lum.core.orgprofile import (
     NOT_OWNED,
@@ -82,14 +84,46 @@ informed_at = 2026-10-01
 """
 
 
+#: The TOML document above as JSON (TOML dates become ISO strings). Python 3.10 has no tomllib, so
+#: the shared fixture loads this JSON there (the tree stays green on 3.10 until WP29, AR23).
+JSON_DOC = {
+    "cnpj_roots": ["43.828.151"],
+    "card_bins": ["412345"],
+    "favicon_hashes": ["-1234567890"],
+    "org": {"name": "ACME S.A.", "card_bins": ["51234567"]},
+    "domains": [
+        {"name": "acme.com.br", "verification": "txt_verified", "criticality": "high"},
+        {"name": "cdn.acme.com.br", "verification": "confirmed", "third_party_hosted": True, "criticality": "low"},
+        {"name": "açúcar.com.br", "verification": "attested", "attested": {"by": "Analyst One", "date": "2026-11-01"}},
+        {"name": "acme-seeded.com"},
+    ],
+    "brands": [{"keyword": "Açme", "variants": ["acrne", "ACMÉ"], "criticality": "high"}],
+    "asns": [{"value": "AS64500"}],
+    "cidrs": [
+        {"value": "203.0.113.0/24", "criticality": "high"},
+        {"value": "203.0.113.128/25", "third_party_hosted": True},
+        {"value": "2001:db8:ac::/48"},
+    ],
+    "app_ids": [{"kind": "m365_tenant", "value": "00000000-0000-0000-0000-000000000000"}],
+    "suppliers": [{"name": "Supplier Ltd", "domains": ["supplier.example"], "brands": ["supplierbrand"]}],
+    "executives": [{"name": "Executive Person", "opt_in": True, "programme": "VIP protection", "informed_at": "2026-10-01"}],
+}
+HAS_TOML = importlib.util.find_spec("tomllib") is not None
+needs_toml = pytest.mark.skipif(not HAS_TOML, reason="TOML profiles need Python 3.11+ (tomllib)")
+
+
 def E(etype: str, value: str) -> Entity:
     return Entity.make(etype, value)
 
 
 @pytest.fixture
 def profile(tmp_path) -> OrgProfile:
-    path = tmp_path / "org_profile.toml"
-    path.write_text(TOML, encoding="utf-8")
+    if HAS_TOML:
+        path = tmp_path / "org_profile.toml"
+        path.write_text(TOML, encoding="utf-8")
+    else:  # Python 3.10: the same profile as JSON
+        path = tmp_path / "org_profile.json"
+        path.write_text(json.dumps(JSON_DOC), encoding="utf-8")
     path.chmod(0o600)  # P378 cond 1: the profile is a 0600 file
     prof = OrgProfile.load(path)
     assert prof.errors == []
@@ -101,6 +135,7 @@ def profile(tmp_path) -> OrgProfile:
 # --------------------------------------------------------------------------------------
 
 
+@needs_toml
 def test_toml_load(profile, tmp_path):
     assert profile.name == "ACME S.A."
     assert [d.name for d in profile.domains] == ["acme.com.br", "cdn.acme.com.br", "xn--acar-0oa8i.com.br", "acme-seeded.com"]
@@ -131,6 +166,28 @@ def test_json_load_and_round_trip(profile, tmp_path):
     assert again.domains == profile.domains and again.brands == profile.brands
 
 
+@needs_toml
+def test_toml_and_json_documents_are_the_same_profile(tmp_path):
+    toml_path, json_path = tmp_path / "org_profile.toml", tmp_path / "org_profile.json"
+    toml_path.write_text(TOML, encoding="utf-8")
+    json_path.write_text(json.dumps(JSON_DOC), encoding="utf-8")
+    for path in (toml_path, json_path):
+        path.chmod(0o600)
+    from_toml, from_json = OrgProfile.load(toml_path), OrgProfile.load(json_path)
+    assert from_toml.errors == from_json.errors == []
+    assert from_toml.to_dict() == from_json.to_dict()
+
+
+def test_toml_without_tomllib_is_a_clear_error_never_a_crash(tmp_path, monkeypatch):
+    """Python 3.10 (no tomllib): a .toml profile is reported in errors with the JSON alternative."""
+    monkeypatch.setattr(orgprofile, "_toml", None)
+    path = tmp_path / "org_profile.toml"
+    path.write_text(TOML, encoding="utf-8")
+    path.chmod(0o600)
+    prof = OrgProfile.load(path)
+    assert prof.is_empty and prof.errors == ["TOML profiles need Python 3.11+ (tomllib): use an org_profile.json"]
+
+
 def test_missing_file_is_empty_profile(tmp_path):
     prof = OrgProfile.load(tmp_path / "nope.toml")
     assert prof.is_empty and prof.errors == [] and prof.owns(E("domain", "acme.com.br")) == NOT_OWNED
@@ -140,7 +197,7 @@ def test_missing_file_is_empty_profile(tmp_path):
 @pytest.mark.parametrize(
     ("name", "content", "expected"),
     [
-        ("bad.toml", "[[domains]\nname = ", "invalid TOML"),
+        pytest.param("bad.toml", "[[domains]\nname = ", "invalid TOML", marks=needs_toml),
         ("bad.json", "{not json", "invalid JSON"),
         ("list.json", "[1, 2]", "must be a table"),
         ("latin1.toml", "name = 'caf\xe9'", "not UTF-8"),
@@ -313,7 +370,10 @@ def test_load_default_paths(tmp_path, isolated_home):
     (isolated_home / "org_profile.json").write_text(json.dumps({"domains": ["json.example"]}))
     assert [d.name for d in load_default({}).domains] == ["json.example"]
     (isolated_home / "org_profile.toml").write_text('[[domains]]\nname = "toml.example"\n')
-    assert [d.name for d in load_default({"org_profile_path": ""}).domains] == ["toml.example"]  # .toml first
+    if HAS_TOML:
+        assert [d.name for d in load_default({"org_profile_path": ""}).domains] == ["toml.example"]  # .toml first
+    else:  # Python 3.10: the .toml file still comes first and is reported, never silently skipped
+        assert any("Python 3.11+" in e for e in load_default({"org_profile_path": ""}).errors)
     team = tmp_path / "team" / "profile.json"
     team.parent.mkdir()
     team.write_text(json.dumps({"domains": [{"name": "team.example", "verification": "attested", "attested_by": "A", "attested_date": "2026-01-02"}]}))

@@ -44,7 +44,6 @@ class DnsRecords(Module):
     expected_latency = 1.5
     reference = "https://developers.google.com/speed/public-dns/docs/doh/json"
     tags = {"free", "core"}
-    cache_ttl = 3600
 
     def run(self, entity: Entity, ctx: Any) -> ModuleResult:
         res = self.result(entity)

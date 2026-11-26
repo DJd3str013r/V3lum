@@ -478,6 +478,14 @@ def test_absent_statuses_range(reg):
     refused(offline("t_absent_int", absent_statuses=404), "absent_statuses")
 
 
+@pytest.mark.parametrize("status", [401, 403, 407, 429, 430, 451, 500, 503, 599])
+def test_absent_statuses_never_declare_a_refusal_or_failure(reg, status):
+    """Rule 5: refusals, throttling and server failures mean 'could not verify' - declaring them as
+    absences fails registration (ScopedHttp.get_json raises for them anyway)."""
+    err = refused(offline(f"t_absent_{status}", absent_statuses={404, status}), "could not verify")
+    assert str(status) in str(err) and "never an absence (rule 5)" in str(err)
+
+
 def test_error_markers_schema(reg):
     marker = {"id": "count", "regex": "API count exceeded", "maps_to": "quota", "reason": "Synth: daily quota exhausted"}
     cls = register(offline("t_markers", error_markers=(marker,)))

@@ -53,7 +53,6 @@ class EmailBasics(Module):
     expected_latency = 1.5
     reference = "https://www.rfc-editor.org/rfc/rfc7505"
     tags = {"free", "core"}
-    cache_ttl = 3600
 
     def run(self, entity: Entity, ctx: Any) -> ModuleResult:
         res = self.result(entity)

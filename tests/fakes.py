@@ -38,18 +38,22 @@ from urllib.parse import parse_qsl, quote, quote_plus, unquote, urlencode, urljo
 
 from v3lum.config import Config
 from v3lum.core import providers as providers_mod
-from v3lum.core.context import RunInfo, Runtime, ScanOptions
+from v3lum.core.context import RunInfo, Runtime, ScanOptions, doh_hosts, settings_hosts
+from v3lum.core.dns import DOH_PROVIDERS
 from v3lum.core.entities import Entity, EntityType
-from v3lum.core.http import DeadlineExceeded, NetworkError, Response
+from v3lum.core.http import DeadlineExceeded, NetworkError, Response, host_allowed
 from v3lum.core.models import Opsec
 
 FIXTURES = Path(__file__).parent / "fixtures"
 
-#: Hosts of the core DoH resolvers (always allowed by ``assert_hosts_within``).
-DOH_HOSTS: frozenset[str] = frozenset({"dns.google", "cloudflare-dns.com", "dns.quad9.net"})
+#: Hosts of the core public DoH resolvers (always allowed by ``assert_hosts_within``); derived from
+#: ``v3lum.core.dns.DOH_PROVIDERS`` so the kit never drifts from the resolver catalogue.
+DOH_HOSTS: frozenset[str] = frozenset(
+    (urlsplit(spec["url"]).hostname or "").lower() for spec in DOH_PROVIDERS.values() if spec.get("url")
+)
 
-_GOOGLE_DOH = "https://dns.google/resolve"
-_CLOUDFLARE_DOH = "https://cloudflare-dns.com/dns-query"
+_GOOGLE_DOH = DOH_PROVIDERS["google"]["url"]
+_CLOUDFLARE_DOH = DOH_PROVIDERS["cloudflare"]["url"]
 _DEFAULT_PORTS = {"http": 80, "https": 443}
 
 
@@ -162,18 +166,6 @@ def _lower_origin(url: str) -> str:
     if not parts.scheme:
         return url
     return url.replace(f"{parts.scheme}://{parts.netloc}", f"{parts.scheme.lower()}://{parts.netloc.lower()}", 1)
-
-
-def _host_allowed(host: str, patterns: Iterable[str]) -> bool:
-    host = host.lower().rstrip(".")
-    for pattern in patterns:
-        pattern = str(pattern).lower().rstrip(".")
-        if pattern.startswith("*."):
-            if host.endswith(pattern[1:]) and host != pattern[2:]:
-                return True
-        elif host == pattern:
-            return True
-    return False
 
 
 class UnexpectedRequest(AssertionError):
@@ -365,17 +357,14 @@ class FakeHttp:
         """Assert every requested host is declared by ``module_cls`` (P327 cond 11).
 
         Allowed: ``module_cls.hosts`` ('*.suffix' wildcards honoured), the hosts_from_settings
-        hosts of its providers, the core DoH hosts (``DOH_HOSTS`` + configured internal DoH) and
-        ``extra``.
+        hosts of its providers (the same rule as ``ctx.http``), the core DoH hosts (``DOH_HOSTS`` +
+        a configured internal DoH, as ``ctx.doh``) and ``extra``.
         """
         config = self.bound_config or Config()
         allowed = {str(h).lower() for h in (getattr(module_cls, "hosts", ()) or ())}
-        allowed |= set(DOH_HOSTS) | {str(h).lower() for h in extra}
-        allowed |= _settings_hosts(module_cls, config)
-        internal = urlsplit(str(config.get("doh_internal") or "")).hostname
-        if internal:
-            allowed.add(internal.lower())
-        bad = sorted(h for h in self.hosts() if not _host_allowed(h, allowed))
+        allowed |= set(DOH_HOSTS) | set(doh_hosts(config)) | {str(h).lower() for h in extra}
+        allowed |= settings_hosts(module_cls, config)
+        bad = sorted(h for h in self.hosts() if not host_allowed(h, allowed))
         assert not bad, f"{getattr(module_cls, 'name', module_cls)} requested undeclared hosts {bad}; allowed: {sorted(allowed)}"
 
 
@@ -391,23 +380,6 @@ class DeadHttp(FakeHttp):
         with self._lock:
             self.calls.append({"method": method.upper(), "url": url, **kw})
         raise NetworkError(f"ConnectionError contacting {url}")
-
-
-def _settings_hosts(module_cls: Any, config: Any) -> set[str]:
-    hosts: set[str] = set()
-    registry = providers_mod.registry()
-    pids = set(getattr(module_cls, "providers", ()) or ())
-    if getattr(module_cls, "provider", ""):
-        pids.add(module_cls.provider)
-    for sid in getattr(module_cls, "sources", ()) or ():
-        pids.add(str(sid).split(".", 1)[0])
-    for pid in pids:
-        prov = registry.get(pid)
-        for setting in getattr(prov, "hosts_from_settings", ()) or ():
-            host = urlsplit(str(config.get(setting) or "")).hostname
-            if host:
-                hosts.add(host.lower())
-    return hosts
 
 
 # --------------------------------------------------------------------------------------

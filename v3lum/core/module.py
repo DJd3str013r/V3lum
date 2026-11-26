@@ -67,6 +67,7 @@ from v3lum import config as _config
 from v3lum.core import providers as _providers
 from v3lum.core import tlp as _tlp
 from v3lum.core.entities import Entity, EntityType
+from v3lum.core.http import NEVER_ABSENT_STATUS
 from v3lum.core.models import ModuleResult, Opsec, Status
 
 if TYPE_CHECKING:  # pragma: no cover
@@ -823,10 +824,17 @@ def _check(cls: type[Module]) -> dict[str, Any]:
     if isinstance(egress, str) or not isinstance(egress, Iterable) or not all(isinstance(c, str) and _COUNTRY_RE.match(c) for c in egress):
         raise _fail(cls, f"requires_egress {egress!r} is invalid", "use a frozenset of ISO 3166 alpha-2 codes, e.g. frozenset({'BR'})")
     out["requires_egress"] = frozenset(egress)
-    # 10. absent_statuses 100-599 ---------------------------------------------------------------------
+    # 10. absent_statuses 100-599, never a refusal or a failure (rule 5) ---------------------------------
     absent = cls.absent_statuses
     if isinstance(absent, (str, int)) or not isinstance(absent, Iterable) or not all(isinstance(s, int) and not isinstance(s, bool) and 100 <= s <= 599 for s in absent):
         raise _fail(cls, f"absent_statuses {absent!r} is invalid", "use a frozenset of HTTP status codes 100-599, e.g. frozenset({404})")
+    refusals = sorted(s for s in absent if s in NEVER_ABSENT_STATUS or s >= 500)
+    if refusals:
+        raise _fail(
+            cls,
+            f"absent_statuses {refusals} mean 'could not verify', never an absence (rule 5)",
+            "declare only documented meaningful absences such as 404/410: 401/403/407/429/430/451 and 5xx are refusals or failures",
+        )
     out["absent_statuses"] = frozenset(absent)
     # 11. error_markers schema --------------------------------------------------------------------------
     markers_in = cls.error_markers
@@ -961,7 +969,13 @@ def register(cls: type[Module]) -> type[Module]:
         set_by_register: set[str] = set(cls.__dict__.get(_MARK, ()))
         for attr in _NORMALISED:
             if _declared(cls, attr):
+                # a value inherited from a base (mixin, compiled spec, registered module) is written on
+                # the class normalised but stays the base's declaration (e.g. inherited settings keep
+                # their owner when the class is registered again or checked by the contract test)
+                inherited = attr not in cls.__dict__ or attr in set_by_register
                 setattr(cls, attr, values[attr])
+                if inherited:
+                    set_by_register.add(attr)
         if "_default_access_model" in values:
             cls.access_model = values["_default_access_model"]
             set_by_register.add("access_model")

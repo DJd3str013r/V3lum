@@ -34,13 +34,13 @@ from typing import Any
 from urllib.parse import urlsplit
 
 from v3lum import paths
-from v3lum.config import Config
+from v3lum.config import Config, SettingSpec
 from v3lum.core import entities as _entities
 from v3lum.core import orgprofile as _orgprofile
 from v3lum.core import providers as _providers
 from v3lum.core import redact as _redact
 from v3lum.core.clock import SYSTEM_CLOCK
-from v3lum.core.dns import DOH_PROVIDERS, PUBLIC_DOH_HOSTS, Resolver
+from v3lum.core.dns import DOH_PROVIDERS, Resolver, is_public_doh_host
 from v3lum.core.http import HttpCache, HttpClient, ScopedHttp
 from v3lum.core.models import Opsec
 from v3lum.core.net import Connector
@@ -449,21 +449,18 @@ class Context:
     def _allowed_hosts(self, module_cls: Any, declared: str) -> tuple[str, ...] | None:
         """Declared hosts + hosts_from_settings of the module's providers (None = no host check).
 
-        Static provider hosts the module does not declare stay refused (P327 cond 4). Target
-        modules get None (scope checks arrive in wave 2).
+        Static provider hosts the module does not declare stay refused (P327 cond 4). Settings
+        hosts come from ``ProviderRegistry.hosts_for`` (one rule for the whole core): only https
+        URLs count and a configured host that another provider owns is ignored, so e.g. a
+        ``misp_url`` pointing at a third-party API never becomes an 'internal' host (A12, fail
+        closed). Target modules get None (scope checks arrive in wave 2).
         """
         if declared == "target":
             return None
         hosts = {str(h).lower() for h in (getattr(module_cls, "hosts", ()) or ())}
         if declared == "none":
             return tuple(sorted(hosts))
-        registry = self.runtime.providers
-        for pid in _module_providers(module_cls):
-            prov = registry.get(pid)
-            for setting in tuple(getattr(prov, "hosts_from_settings", ()) or ()):
-                host = urlsplit(str(self.config.get(setting) or "")).hostname
-                if host:
-                    hosts.add(host.lower())
+        hosts |= settings_hosts(module_cls, self.config, self.runtime.providers)
         return tuple(sorted(hosts))
 
     # ---- facts about the run -----------------------------------------------------------
@@ -550,7 +547,8 @@ class Context:
             return value
         declared = getattr(self.module, "settings", None) or {}
         if isinstance(declared, dict) and name in declared:
-            return declared[name]
+            value = declared[name]
+            return value.default if isinstance(value, SettingSpec) else value  # settings may declare SettingSpec(default, ...)
         return default
 
     # ---- utilities -----------------------------------------------------------------------
@@ -799,7 +797,10 @@ def doh_hosts(config: Any, *, public: bool = True) -> tuple[str, ...]:
 
 
 def _internal_doh_host(value: Any) -> str:
-    """Host of a valid internal DoH URL (https, no credentials, not a public resolver), else ''."""
+    """Host of a valid internal DoH URL (https, no credentials, not a public resolver), else ''.
+
+    'Public resolver' is :func:`v3lum.core.dns.is_public_doh_host` - the Resolver's own rule
+    (public DoH domains and their subdomains, IP literals of the public anycast networks)."""
     text = str(value or "").strip()
     if not text.lower().startswith("https://"):
         return ""
@@ -809,9 +810,29 @@ def _internal_doh_host(value: Any) -> str:
         has_credentials = bool(parts.username or parts.password)
     except ValueError:
         return ""
-    if not host or has_credentials or host in PUBLIC_DOH_HOSTS:
+    if not host or has_credentials or is_public_doh_host(host):
         return ""
     return host
+
+
+def settings_hosts(module_cls: Any, config: Any, registry: Any = None) -> set[str]:
+    """Hosts the module's providers get from their ``hosts_from_settings`` URL settings.
+
+    Delegates to ``ProviderRegistry.hosts_for`` (https URLs only; a host owned by another provider
+    is ignored) and drops the providers' static hosts: those count only when the module declares
+    them in ``Module.hosts`` (P327 cond 4). Used by ``ctx.http`` and by the test kit
+    (``FakeHttp.assert_hosts_within``)."""
+    reg = registry if registry is not None else _providers.registry()
+    hosts: set[str] = set()
+    for pid in _module_providers(module_cls):
+        prov = reg.get(pid)
+        if prov is None:
+            continue
+        static = {str(h).lower() for h in (getattr(prov, "hosts", ()) or ())}
+        hosts_for = getattr(reg, "hosts_for", None)
+        found = hosts_for(pid, config) if callable(hosts_for) else ()
+        hosts |= {str(h).lower() for h in found if str(h).lower() not in static}
+    return hosts
 
 
 def _disclosure_of(module_cls: Any) -> tuple[str, bool]:

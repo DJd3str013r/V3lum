@@ -29,6 +29,7 @@ from v3lum import config
 from v3lum.core import correlate, datasets, links, providers, sanitize, vocab
 from v3lum.core import module as modreg
 from v3lum.core.entities import PERSONAL_TYPES, EntityType
+from v3lum.core.http import NEVER_ABSENT_STATUS
 from v3lum.core.models import Opsec
 from v3lum.core.tlp import TLP
 
@@ -74,6 +75,20 @@ def declared(cls: type, attr: str) -> bool:
         if attr in own and attr not in own.get(SET_BY_REGISTER, ()):
             return True
     return False
+
+
+def registered_ancestors(cls: type) -> set[str]:
+    """Names of the registered base modules whose settings ``cls`` inherits without re-declaring
+    them (a class body that declares ``settings`` owns all of its settings)."""
+    if "settings" in vars(cls) and "settings" not in vars(cls).get(SET_BY_REGISTER, ()):
+        return set()
+    names = set()
+    for klass in cls.__mro__[1:]:
+        if isinstance(klass, type) and issubclass(klass, modreg.Module) and klass is not modreg.Module:
+            base_name = str(vars(klass).get("name", "") or "")
+            if base_name and modreg.REGISTRY.get(base_name) is klass:
+                names.add(base_name)
+    return names
 
 
 def source_providers(cls: type) -> set[str]:
@@ -238,6 +253,8 @@ def module_problems(cls: type) -> list[str]:
     for status in getattr(cls, "absent_statuses", ()) or ():
         if not isinstance(status, int) or not 100 <= status <= 599:
             bad(f"absent_statuses entry {status!r}", "use HTTP statuses 100-599")
+        elif status in NEVER_ABSENT_STATUS or status >= 500:
+            bad(f"absent_statuses entry {status} means 'could not verify', never an absence (rule 5)", "declare only documented meaningful absences such as 404/410")
     marker_ids: set[str] = set()
     for marker in getattr(cls, "error_markers", ()) or ():
         try:
@@ -305,8 +322,11 @@ def module_problems(cls: type) -> list[str]:
     for pkg in getattr(cls, "requires_packages", ()) or ():
         if pkg not in modreg.OPTIONAL_PACKAGES:
             bad(f"package {pkg!r} is not a known optional package", "add a v3lum/data/extras/<package>.json fragment")
+    inherited_from = registered_ancestors(cls)
     for setting in (getattr(cls, "settings", None) or {}):
         spec = config.SETTINGS_META.get(setting)
+        if spec is not None and spec.owner != name and spec.owner in inherited_from:
+            continue  # inherited, not re-declared, from a registered base module: it stays the base's (as @register does)
         if spec is None or spec.owner != name:
             owner = spec.owner if spec is not None else "nobody"
             bad(f"setting {setting!r} is registered by {owner}", "module settings need unique names (prefix them with the module name)")
@@ -414,6 +434,14 @@ def test_pivot_links_have_no_errors():
     assert links.errors() == []
 
 
+def test_platform_fragments_and_extras_have_no_errors():
+    """v3lum/data/platforms (SOCIAL_PLATFORMS) and v3lum/data/extras (OPTIONAL_PACKAGES) fragments."""
+    from v3lum.core import entities
+
+    assert entities.platform_errors() == []
+    assert modreg.extras_errors() == []
+
+
 def test_correlation_rules_have_no_errors():
     correlate.load_rules()
     assert correlate.RULE_ERRORS == {}
@@ -456,8 +484,13 @@ def test_module_contract(name):
 def test_module_settings_are_unique():
     owners: dict[str, str] = {}
     for name in MODULE_NAMES:
-        for setting in getattr(modreg.REGISTRY[name], "settings", None) or {}:
+        cls = modreg.REGISTRY[name]
+        inherited_from = registered_ancestors(cls)
+        for setting in getattr(cls, "settings", None) or {}:
             assert setting not in config.DEFAULT_SETTINGS, f"{name}: setting {setting!r} collides with a core setting"
+            spec = config.SETTINGS_META.get(setting)
+            if spec is not None and spec.owner in inherited_from:
+                continue  # inherited from a registered base module: counted for its owner
             assert setting not in owners, f"setting {setting!r} declared by {owners[setting]} and {name}"
             owners[setting] = name
 
@@ -586,6 +619,24 @@ def test_checker_catches_provider_and_health_check_mistakes():
     assert "personal type" in "\n".join(health_check_problems(phone, {EntityType.PHONE}))
     bogus = modreg.HealthCheck(etype=EntityType.IPV4, value="not-an-ip")
     assert "not a valid ipv4" in "\n".join(health_check_problems(bogus, {EntityType.IPV4}))
+
+
+def test_checker_accepts_settings_inherited_from_a_registered_base(clean_registry):
+    """A subclass of a registered module inherits its settings without owning them (same rule as
+    @register); re-declaring them in the subclass body is still a collision."""
+
+    def run(self, entity, ctx):
+        return self.result(entity)
+
+    body = {"title": "t", "description": "t", "category": "utility", "accepts": {EntityType.DOMAIN}, "terms": "open",
+            "opsec": Opsec.PASSIVE, "disclosure": "none", "hosts": (), "run": run}
+    base = modreg.register(type("Base", (modreg.Module,), dict(body, name="t_contract_base", settings={"t_contract_base_limit": 3})))
+    sub = modreg.register(type("Sub", (base,), {"name": "t_contract_sub", "title": "sub", "description": "sub"}))
+    modreg.register(sub)  # registering again keeps the base's ownership
+    assert registered_ancestors(sub) == {"t_contract_base"}
+    assert not [p for p in module_problems(sub) if "setting" in p]
+    clash = type("Clash", (base,), {"name": "t_contract_clash", "title": "c", "description": "c", "settings": {"t_contract_base_limit": 5}})
+    assert any("setting 't_contract_base_limit' is registered by t_contract_base" in p for p in module_problems(clash))
 
 
 def test_notice_checker(tmp_path):

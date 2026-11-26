@@ -320,6 +320,30 @@ def test_run_info_is_passed_to_the_context(monkeypatch):
     assert seen == [run]
 
 
+def test_single_runs_without_run_info_still_know_their_entity():
+    """`v3lum run` (App.run_single) calls run_module without RunInfo: the run is an analyst-typed
+    seed and ctx.entity / ctx.state's guard on the investigated value still see the entity."""
+    seen = []
+
+    def run(self, entity, ctx):
+        seen.append((ctx.entity, ctx.is_seed, ctx.depth, ctx.provenance))
+        return self.result(entity)
+
+    res = make_engine().run_module(stub(run), DOMAIN)
+    assert res.status is Status.EMPTY and seen == [(DOMAIN, True, 0, ())]
+
+
+def test_each_investigation_starts_with_a_fresh_http_circuit(registry):
+    """A host short-circuited after a challenge in one scan gets a new chance in the next scan of the
+    same Runtime (shell sessions): Engine.investigate calls HttpClient.reset_circuit()."""
+    mod = registry(stub(lambda self, e, c: self.result(e), name="t_circuit_mod"))
+    rt = Runtime(Config(), transport=FakeHttp(), no_cache=True)
+    rt.http._trip(["blocked.example.test"], "challenge")
+    assert rt.http.circuit_hosts() == frozenset({"blocked.example.test"})
+    Engine(rt, ScanOptions(include={mod.name}, save_evidence=False)).investigate([DOMAIN])
+    assert rt.http.circuit_hosts() == frozenset()
+
+
 # ------------------------------------------------------------------ selection
 @pytest.fixture()
 def registry(monkeypatch):
@@ -412,6 +436,23 @@ def test_exhausted_daily_quota_is_quota(registry):
     eng.runtime.quota.add(cls.name, 1)
     runnable, block = blocked_for(eng, cls.name)
     assert cls.name not in runnable and block[0] is Status.QUOTA and block[2] == "quota"
+
+
+def test_quota_coverage_stays_visible_on_the_first_screen(registry):
+    """An exhausted daily quota was 'rate_limited' in v1 and is 'quota' now: the terminal coverage
+    table keeps listing it as a could-not-verify source (it must never silently disappear)."""
+    from v3lum.ui.render import _coverage
+    from v3lum.ui.theme import make_console
+
+    cls = registry(stub(lambda self, e, c: self.result(e), name="t_quota_cov_mod", daily_quota=1))
+    eng = make_engine(ScanOptions(include={cls.name}, save_evidence=False))
+    eng.runtime.quota.add(cls.name, 1)
+    case = eng.investigate([DOMAIN]).to_dict()
+    assert case["coverage"][cls.name]["status"] == "quota" and case["coverage"][cls.name]["reason_code"] == "quota"
+    console = make_console(no_color=True, width=120)
+    with console.capture() as cap:
+        console.print(_coverage(case, full=False))
+    assert "quota (1)" in cap.get() and cls.name in cap.get()
 
 
 def test_readiness_blocked_tuples(registry):

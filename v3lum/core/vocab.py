@@ -119,7 +119,7 @@ ATTRIBUTES: dict[str, str] = {
     "spf": "SPF record text",
     "dmarc": "DMARC record text",
     "dmarc_policy": "none|quarantine|reject",
-    "dnssec": "bool",
+    "dnssec": "bool: the resolver's AD flag (DNSSEC validated by the resolver, never proof; P029 cond 8)",
     "domain_age_days": "int: days since registration",
     "subdomains": "list of discovered subdomains",
     "http_status": "HTTP status of the homepage",

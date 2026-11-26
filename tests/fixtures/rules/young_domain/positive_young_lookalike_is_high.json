@@ -1,0 +1,18 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "nodes": [
+    {
+      "key": "domain:acme-support.example",
+      "depth": 1,
+      "attributes": {"domain_age_days": [{"value": 3, "source": "rdap_lookup"}]},
+      "findings": [
+        {"title": "Lookalike of an organisation brand", "severity": "medium", "confidence": 0.7,
+         "criterion": "brand keyword plus a lure word in the registrable domain", "tags": ["typosquat"],
+         "module": "typosquat_check", "source": ""}
+      ]
+    }
+  ],
+  "edges": [],
+  "expect": {"young_domain": {"min": 1, "max": 1, "severity": "high", "confidence_label": "probable"}}
+}

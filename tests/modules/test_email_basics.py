@@ -98,6 +98,17 @@ def test_role_address_flagged():
     assert res.attributes["generic_address"] == "role"
 
 
+def test_v1_role_accounts_stay_flagged():
+    """The role mailboxes of the v1 module list (administrator, helpdesk, hr, it, ti) live in the
+    central data/generic_addresses.json now: they are still flagged, never handle pivots."""
+    for local in ("administrator", "helpdesk", "hr", "it", "ti"):
+        http = FakeHttp()
+        add_dns(http, "acme.com", "MX", ["10 mx.acme.com."])
+        res = run(http, f"{local}@acme.com")
+        assert res.attributes["generic_address"] == "role", local
+        assert not any(p.entity.type is T.USERNAME for p in res.pivots), local
+
+
 def test_implicit_mx_and_no_mail_on_noerror():
     http = FakeHttp()
     add_dns(http, "web-only.example", "MX", [])

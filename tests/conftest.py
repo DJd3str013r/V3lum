@@ -267,10 +267,11 @@ def _import_time_tables() -> list[dict[str, Any]]:
 
 @contextlib.contextmanager
 def registry_snapshot() -> Iterator[Any]:
-    """Snapshot/restore the module REGISTRY, correlation RULES, programmatic provider
-    registrations, registered module settings, the import-time registries (sanitizer schemas,
-    datasets, runtime noise lists, module load errors) and the vocab/link caches (the body of
-    the ``clean_registry`` fixture; yields the module REGISTRY)."""
+    """Snapshot/restore the module REGISTRY, the correlation tables (RULES, RULE_ERRORS,
+    RULE_REPLACED and the data-rule compilers), programmatic provider registrations, registered
+    module settings, the import-time registries (sanitizer schemas, datasets, runtime noise lists,
+    module load errors) and the vocab/link caches (the body of the ``clean_registry`` fixture;
+    yields the module REGISTRY)."""
     from v3lum.core import correlate
     from v3lum.core import module as modreg
 
@@ -279,6 +280,8 @@ def registry_snapshot() -> Iterator[Any]:
     saved_modules = dict(modreg.REGISTRY)
     saved_rules = correlate.RULES.copy()
     saved_rule_errors = dict(correlate.RULE_ERRORS)
+    saved_replaced = dict(correlate.RULE_REPLACED)
+    saved_compilers = dict(correlate._COMPILERS)
     saved_providers = _provider_snapshot()
     saved_settings = _settings_snapshot()
     saved_tables = [(table, dict(table)) for table in _import_time_tables()]
@@ -293,6 +296,10 @@ def registry_snapshot() -> Iterator[Any]:
         correlate.RULES.update(saved_rules)
         correlate.RULE_ERRORS.clear()
         correlate.RULE_ERRORS.update(saved_rule_errors)
+        correlate.RULE_REPLACED.clear()
+        correlate.RULE_REPLACED.update(saved_replaced)
+        correlate._COMPILERS.clear()
+        correlate._COMPILERS.update(saved_compilers)
         _provider_restore(saved_providers)
         _restore_settings(saved_settings)
         for table, saved in saved_tables:

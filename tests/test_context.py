@@ -343,6 +343,20 @@ def test_setting_resolves_module_and_core_settings(clean_registry):
     assert make_ctx(unregistered, FakeHttp()).setting("t_ctx_unreg_mode") == "fast"
 
 
+def test_setting_declared_as_setting_spec(clean_registry):
+    """Module settings may declare SettingSpec(default, description, choices=...): ctx.setting gives
+    the default (registered or not), and the choices are enforced by Config.set."""
+    spec = config.SettingSpec("fast", "scan depth of the synthetic module", choices=("fast", "full"))
+    cls = define_module("t_ctx_spec", [T.DOMAIN], _noop, settings={"t_ctx_spec_mode": spec})
+    ctx = make_ctx(cls, FakeHttp())
+    assert ctx.setting("t_ctx_spec_mode") == "fast"
+    assert config.SETTINGS_META["t_ctx_spec_mode"].description == "scan depth of the synthetic module"
+    with pytest.raises(ValueError):
+        ctx.config.set("t_ctx_spec_mode", "deep")
+    unregistered = type("UnregisteredSpec", (), {"name": "t_ctx_unreg2", "settings": {"t_ctx_unreg2_mode": spec}})
+    assert make_ctx(unregistered, FakeHttp()).setting("t_ctx_unreg2_mode") == "fast"
+
+
 def test_key_values_registered_with_the_redactor_at_runtime_start(net_module):
     secret = "tk-0123456789abcdef"
     redact.clear()
@@ -576,6 +590,44 @@ def test_internal_doh_entries_must_be_internal():
     assert hosts(doh_providers=["https://cloudflare-dns.com/dns-query", "https://doh2.corp.example/q"]) == ("doh2.corp.example",)
     public = doh_hosts(config.Config(), public=True)
     assert {"dns.google", "cloudflare-dns.com"} <= set(public)
+
+
+@pytest.mark.parametrize(
+    "url",
+    [
+        "https://mozilla.cloudflare-dns.com/dns-query",  # subdomain of a public DoH operator
+        "https://dns.google./resolve",  # trailing dot
+        "https://[2001:4860:4860::8888]/resolve",  # IP literal of a public anycast network
+        "https://8.8.8.8/resolve",
+    ],
+)
+def test_internal_doh_scope_uses_the_resolver_rule_for_public_hosts(url):
+    """The internal-only DoH scope and the Resolver agree on what is public (dns.is_public_doh_host):
+    a public resolver never passes as the organisation's internal DoH at TLP:RED (A2, P029 cond 7)."""
+    from v3lum.core.context import doh_hosts
+    from v3lum.core.dns import Resolver
+
+    cfg = config.Config()
+    cfg.settings["doh_internal"] = url
+    assert doh_hosts(cfg, public=False) == ()
+    assert Resolver(None, internal_url=url).internal_url == ""
+
+
+def test_ctx_http_settings_hosts_follow_the_provider_registry_rule(clean_registry):
+    """hosts_from_settings go through ProviderRegistry.hosts_for: an http:// URL or a host another
+    provider owns never becomes an 'internal' host of ctx.http (A12, fail closed)."""
+    fragment = provider_fragment("t_ctx_internal2", hosts=(), internal=True, hosts_from_settings=["t_ctx_platform2_url"], sources=("events",))
+    with test_provider(**{k: v for k, v in fragment.items() if k not in ("schema", "id")}, provider_id="t_ctx_internal2") as prov:
+        cls = define_module("t_ctx_tip2", [T.DOMAIN], _noop, disclosure="internal", provider=prov.id, sources=source_ids(prov), hosts=())
+        for url, host in (("http://tip.corp.example/", "tip.corp.example"), ("https://internetdb.shodan.io/", "internetdb.shodan.io")):
+            http = FakeHttp().add("GET", f"https://{host}/api", json=[])
+            ctx = make_ctx(cls, http, settings={"t_ctx_platform2_url": url})
+            assert host not in (ctx.http.allowed_hosts or ())
+            with pytest.raises(PolicyError):
+                ctx.http.get_json(f"https://{host}/api")
+            assert http.calls == []
+        ok = make_ctx(cls, FakeHttp(), settings={"t_ctx_platform2_url": "https://tip.corp.example/"})
+        assert ok.http.allowed_hosts == ("tip.corp.example",)
 
 
 def test_ctx_log_is_redacted():
@@ -943,6 +995,26 @@ def test_registry_snapshot_restores_every_registry():
     assert "t_snap_dataset" not in datasets.DATASETS and "t-snap-list" not in noise._RUNTIME
     assert "t_snap_broken" not in modreg.load_errors()
     assert providers.registry().get("t_snap_leaked") is None
+
+
+def test_registry_snapshot_restores_the_correlation_tables():
+    """A pack rule superseding a legacy rule (RULE_REPLACED) and a data-rule compiler registered
+    inside the block are undone too."""
+    from v3lum.core import correlate
+
+    correlate.load_rules()
+    before = (set(correlate.RULES), dict(correlate.RULE_REPLACED), dict(correlate._COMPILERS), dict(correlate.RULE_ERRORS))
+    with conftest.registry_snapshot():
+
+        @correlate.rule("young_domain", "pack version of a legacy rule", criterion="test")
+        def _pack_rule(graph, results):
+            return []
+
+        correlate.register_compiler("t_snap_kind", lambda doc: [])
+        assert "young_domain" in correlate.RULE_REPLACED and "t_snap_kind" in correlate._COMPILERS
+    after = (set(correlate.RULES), dict(correlate.RULE_REPLACED), dict(correlate._COMPILERS), dict(correlate.RULE_ERRORS))
+    assert after == before
+    assert correlate.RULES["young_domain"].legacy is True
 
 
 def test_strict_mode_and_isolated_home(isolated_home):

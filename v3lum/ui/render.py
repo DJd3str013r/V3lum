@@ -218,13 +218,13 @@ def _coverage(case: dict[str, Any], *, full: bool) -> Table | Text:
     t = Table(box=box.SIMPLE, show_header=False, title="[v.accent]◎ source coverage[/]", title_justify="left", expand=True)
     t.add_column(no_wrap=True, width=16)
     t.add_column(overflow="fold", style="v.dim")
-    order = ["ok", "empty", "rate_limited", "blocked", "error", "needs_key", "unavailable", "skipped", "not_run"]
+    order = ["ok", "empty", "rate_limited", "quota", "blocked", "error", "needs_key", "unavailable", "skipped", "not_run"]
     for st in order:
         names = groups.get(st)
         if not names:
             continue
         label = Text(f"{STATUS_ICON.get(st, '')} {st.replace('_', ' ')} ({len(names)})", style=f"status.{st}")
-        if st in ("error", "rate_limited", "blocked", "needs_key") or full:
+        if st in ("error", "rate_limited", "quota", "blocked", "needs_key") or full:
             detail = ", ".join(f"{n}" + (f" [{cov[n].get('reason', '')[:60]}]" if st in ("error", "needs_key") and cov[n].get("reason") else "") for n in names)
         else:
             detail = ", ".join(names[:25]) + (f" … +{len(names) - 25}" if len(names) > 25 else "")

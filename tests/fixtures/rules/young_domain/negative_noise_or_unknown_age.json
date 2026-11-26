@@ -1,0 +1,24 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "nodes": [
+    {
+      "key": "domain:cdn-edge.example",
+      "depth": 1,
+      "noise": true,
+      "noise_kind": "cdn",
+      "attributes": {"domain_age_days": [{"value": 5, "source": "rdap_lookup"}]}
+    },
+    {
+      "key": "domain:no-age.example",
+      "depth": 1,
+      "attributes": {"registrar": [{"value": "Example Registrar", "source": "rdap_lookup"}]}
+    },
+    {
+      "key": "domain:bad-age.example",
+      "depth": 1,
+      "attributes": {"domain_age_days": [{"value": "unknown", "source": "rdap_lookup"}]}
+    }
+  ],
+  "edges": []
+}

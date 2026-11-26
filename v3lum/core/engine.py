@@ -333,6 +333,10 @@ class Engine:
         start = time.monotonic()
         if getattr(cls, "publishes_queries", False) is True:  # rule 7 on every path (scan, `v3lum run`, tests)
             return self._finalize(fallback.mark(Status.SKIPPED, PUBLISHES_REASON, reason_code="policy"), cls, entity, None, start)
+        if run is None:
+            # a single run (`v3lum run`, direct callers) is an analyst-typed seed: ctx.entity, ctx.is_seed
+            # and the ctx.state guard on the investigated value need the entity
+            run = self._run_info(entity, is_seed=True, depth=0, provenance=(), case_id="")
         rt.events.emit("module_start", module=cls.name, entity=entity)
         with collect_results() as built:
             try:
@@ -485,6 +489,9 @@ class Engine:
             raise ValueError(f"invalid case id {case_id!r}")
         rt.cancel_event.clear()
         rt.cancel_reason = ""  # a previous scan's stop reason must not label this one
+        reset_circuit = getattr(rt.http, "reset_circuit", None)
+        if callable(reset_circuit):  # hosts short-circuited by a challenge in an earlier scan get a new chance
+            reset_circuit()
         case_dir = paths.cases_dir() / case_id
         if opts.save_evidence:
             (case_dir / "evidence").mkdir(parents=True, exist_ok=True)

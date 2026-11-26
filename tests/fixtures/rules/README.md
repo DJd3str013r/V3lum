@@ -9,6 +9,10 @@ tests/fixtures/rules/<rule_id>/positive_<case>.json   # the rule must fire
 tests/fixtures/rules/<rule_id>/negative_<case>.json   # the rule must stay silent
 ```
 
+Worked example: `tests/fixtures/rules/young_domain/` (the legacy rule `young_domain` ships its
+pairs as the reference: two positives with exact `expect` blocks, two negatives covering an old
+domain, a noise node and unknown ages).
+
 `tests/test_rule_fixtures.py` discovers every directory automatically and runs
 `correlate.run_rules(graph, results, only={rule_id}, rctx=rctx)` on each file
 (`correlate.check_fixture(rule_id, path)`); nothing has to be registered by hand. File names
