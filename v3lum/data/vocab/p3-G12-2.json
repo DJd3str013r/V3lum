@@ -1,0 +1,41 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p3-G12-2",
+  "title": "VIN decoder and ELF triage names of batch p3-G12-2 (vin_decoder, elf_triage)",
+  "owner": "batch p3-G12-2 (P320, P368)",
+  "attributes": {
+    "vin_summary": "one plain-language line about a VIN (P320): WMI manufacturer/make, ISO 3780 country, model-year candidates, check-digit outcome and, when the opt-in vPIC step ran, the decoded make/model/year (US-market data)",
+    "vin_wmi": "World Manufacturer Identifier of a VIN (positions 1-3) from the bundled NHTSA table: {wmi, manufacturer (NHTSA registrant), make, vehicle_types, source nhtsa_vpic|curated, small_manufacturer}; the serial is never included",
+    "vin_country": "country of the VIN's WMI assignment from the ISO 3780 range of its first two characters (never vPIC's registrant country)",
+    "vin_check_digit": "position-9 check digit of a VIN: {expected, actual, matches, enforced, note}; enforced only for North American WMIs (first character 1-5), elsewhere a mismatch is a note, never 'invalid' (P320 c2)",
+    "vin_validity": "offline VIN validity: 'valid' or 'invalid' (only a North American VIN with a failing check digit is invalid)",
+    "vin_model_years": "model years encoded at VIN position 10 (30-year cycle; narrowed by position 7 for North American VINs; only a hint elsewhere)",
+    "vin_labelled": "VINs found next to a VIN/chassi label in a keyword input (P320 c1): list {vin_masked, label, wmi, country, make, validity}; never a bare 17-character token",
+    "vehicle_make": "vehicle make decoded by NHTSA vPIC for a VIN (US-market data)",
+    "vehicle_model": "vehicle model decoded by NHTSA vPIC for a VIN (US-market data)",
+    "vehicle_model_year": "model year decoded by NHTSA vPIC for a VIN",
+    "vehicle_details": "other vPIC decode fields of a VIN: {manufacturer, vehicle_type, body_class, trim, series, doors, drive_type, fuel_primary, gvwr, plant {city, state, country, company}, engine {cylinders, displacement_l, hp, configuration, model}}; never owner, plate or registration data (P320 c4)",
+    "vpic_result": "NHTSA vPIC answer metadata for a VIN: {error_codes, errors [{code, text, flag}], reason, scope (US-centric label), vehicle_descriptor}",
+    "elf_summary": "one plain-language line about an ELF file (P368): kind, architecture, linkage and interpreter, needed-library/import/export counts, stripped or not, packer hints",
+    "elf_arch": "architecture of an ELF file, e.g. 'x86-64 (64-bit LE)', 'MIPS (32-bit BE)'",
+    "elf_kind": "ELF file kind: executable, pie executable, shared object, relocatable object or core dump",
+    "elf_interpreter": "program interpreter (PT_INTERP) of an ELF file, e.g. /lib64/ld-linux-x86-64.so.2",
+    "elf_linkage": "'dynamic' or 'static' linkage of an ELF file",
+    "elf_needed": "shared libraries an ELF file needs (DT_NEEDED, capped)",
+    "elf_dynamic": "other dynamic-section facts of an ELF file: {soname, rpath, runpath, pie}",
+    "elf_imports": "imported (undefined) dynamic symbols of an ELF file (toolchain/CRT names hidden, capped; the count keeps the total)",
+    "elf_exports": "exported (defined global/weak, default/protected visibility) dynamic symbols of an ELF file (capped)",
+    "elf_symbols": "symbol facts of an ELF file: {imports_count, exports_count, stripped, symtab_globals (sample of global functions when .symtab is present)}",
+    "elf_sections": "sections of an ELF file: list {name, type, size, entropy}",
+    "elf_build_id": "GNU build-id (NT_GNU_BUILD_ID) of an ELF file: a sample identifier, also a keyword pivot with expand=False",
+    "elf_compiler": "compiler/toolchain strings from the .comment section of an ELF file",
+    "elf_markers": "static triage markers of an ELF file (all INFO hints, never verdicts): list {id, detail} with ids upx_packed, packed_unknown, high_entropy_section, high_entropy_segment, no_section_headers, nonstandard_interpreter, truncated, out_of_bounds, parse_error, output_capped"
+  },
+  "tags": {
+    "vin_check_digit_mismatch": "a North American VIN whose position-9 check digit does not match (typo, altered/cloned VIN or non-compliant record)",
+    "elf_hint": "static ELF triage hint (packer markers, entropy, missing section headers, unusual interpreter): context, never a verdict"
+  },
+  "relations": {
+    "has_build_id": "file -> keyword: the GNU build-id recorded in an ELF file (sample identifier; listed, not expanded)"
+  }
+}

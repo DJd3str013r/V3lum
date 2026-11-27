@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "url_domain_blocklists_cybercrime_tracker",
+  "source_url": "https://cybercrime-tracker.net/",
+  "version": "all.php (runtime download)",
+  "sha256": "",
+  "licence": "CyberCrime-Tracker public list (free, with attribution)",
+  "attribution": "CyberCrime-Tracker C2 panel list (https://cybercrime-tracker.net/all.php).",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/url_web/url_domain_blocklists.py"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "pje",
+  "name": "CNJ Comunica PJe / DJEN (Diario de Justica Eletronico Nacional)",
+  "operator": "Conselho Nacional de Justica (CNJ)",
+  "hosts": [
+    "comunicaapi.pje.jus.br",
+    "comunica.pje.jus.br"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Government body (A8 trusted): the National Council of Justice runs the national electronic justice gazette (DJEN, CNJ Resolucao 455/2022) through the Comunica PJe portal and API; P362 provider tier trusted.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "Official court communications (intimacoes, citacoes, editais) published by the courts themselves; CloudFront geo-blocks non-Brazilian egress, so outside Brazil the answer is 'could not verify', never 'no communications' (P362 cond 3)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 30,
+    "retries": 0,
+    "ttl": 86400,
+    "min_interval": 2.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "djen_api": {
+      "title": "CNJ DJEN / Comunica PJe public API (court communications by text, tribunal and date window; parameters unverified outside Brazil)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://comunica.pje.jus.br/",
+        "quote": "The Comunica PJe API terms were not readable from the research egress (CloudFront 'configured to block access from your country' on the API and swagger; the portal reset the connection), so terms='unknown' until legal records them (official communications under CNJ Resolucao 455/2022).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1, P362 cond 2)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "cnj_djen",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0770 (HTTP 403 CloudFront geo-block, 2026-11-25/26): endpoint https://comunicaapi.pje.jus.br/api/v1/comunicacao?texto=&siglaTribunal=&dataDisponibilizacaoInicio=&dataDisponibilizacaoFim=&itensPorPagina=&pagina= to be confirmed from the team's Brazilian network (P362 cond 1 build gate). Disabled in every licence profile until legal records the terms (unknown). requires_egress BR (A9): a CloudFront 403 'block access from your country' is BLOCKED geo_block, never 'no communications', no retry with other headers. Texts name natural persons: CNPJ/company queries by default, person names only on explicit due diligence, never employee or candidate screening (LGPD). Used by djen_court_communications (manual link to comunica.pje.jus.br meanwhile)."
+    }
+  },
+  "notes": "Owned by batch p2-G10-3 (P362 djen_court_communications); id from the registrable domain pje.jus.br (CNJ's own provider 'cnj' belongs to batch p2-G10-2 for DataJud). No quota block: the CloudFront limits are unknown and the module sends no request until the build gate is met; min_interval 2 s and no automatic retries (A9: never retried with other headers)."
+}

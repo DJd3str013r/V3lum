@@ -1,0 +1,20 @@
+{
+ "name": "List of known Tor exit nodes",
+ "type": "cidr",
+ "version": 20261123,
+ "description": "Specialized list of IPv4 addresses belonging to Tor exit nodes, from https://github.com/X4BNet/lists_torexit",
+ "matching_attributes": [
+  "ip-src",
+  "ip-dst",
+  "domain|ip",
+  "ip-src|port",
+  "ip-dst|port"
+ ],
+ "category": "known",
+ "list": [
+  "102.130.113.9/32",
+  "102.130.117.167/32",
+  "102.130.127.117/32",
+  "102.211.56.20/32"
+ ]
+}

@@ -1,0 +1,20 @@
+{
+ "name": "Shodan IP-Ranges, pot. used for Scanning",
+ "type": "cidr",
+ "version": 20261014,
+ "description": "List of Shodan.io scanners ",
+ "matching_attributes": [
+  "ip-src",
+  "ip-dst",
+  "domain|ip",
+  "ip-dst|port",
+  "ip-src|port"
+ ],
+ "category": "known",
+ "list": [
+  "134.209.95.237/32",
+  "137.184.112.103/32",
+  "137.184.112.192/32",
+  "137.184.13.100/32"
+ ]
+}

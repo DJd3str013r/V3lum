@@ -1,0 +1,115 @@
+{
+ "_doc": "Maintainer verification records for the pivots_brazil links (batch p2-G14-2): request URL, status, page title and a note per check, 2026-11-25/26 from a datacenter egress. Page bodies are not kept (victim lists, PEP names and bucket file names never enter the repository). 'link' and 'entity' name the pack link and the value the URL was built from; tests render them and compare with 'url'. V3LUM itself never requests these URLs.",
+ "checks": [
+  {
+   "case": "casadosdados_challenge",
+   "url": "https://casadosdados.com.br/solucao/cnpj/00000000000191",
+   "status": 403,
+   "title": "Just a moment...",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:40:07Z",
+   "note": "Casa dos Dados: Cloudflare managed challenge for curl on 2026-11-26 (one probe, not retried)",
+   "link": "brazil:casadosdados_cnpj",
+   "entity": "cnpj:00000000000191"
+  },
+  {
+   "case": "ccc_login_redirect",
+   "url": "https://dfe-portal.svrs.rs.gov.br/NFE/CCC",
+   "status": 302,
+   "title": "Object moved",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:40:12Z",
+   "note": "SVRS CCC consultation now requires a login (OpenID Connect): excluded by the P311 login lint",
+   "link": null,
+   "entity": null
+  },
+  {
+   "case": "consumidor_js_redirect",
+   "url": "https://www.consumidor.gov.br/",
+   "status": 200,
+   "title": "Consumidor",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:40:10Z",
+   "note": "home answers a JS redirect to pages/principal/",
+   "link": null,
+   "entity": null
+  },
+  {
+   "case": "consumidor_principal_autocomplete",
+   "url": "https://www.consumidor.gov.br/pages/principal/",
+   "status": 200,
+   "title": "Consumidor",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:43:59Z",
+   "note": "company search is a JS autocomplete widget: no GET search URL (no stable value template)",
+   "link": "inline:consumidor_gov_busca",
+   "entity": "company_name:Banco do Brasil"
+  },
+  {
+   "case": "escavador_challenge",
+   "url": "https://www.escavador.com/busca?q=Banco%20do%20Brasil",
+   "status": 403,
+   "title": "Just a moment...",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:40:06Z",
+   "note": "Escavador: Cloudflare managed challenge for curl on 2026-11-26 (one probe, not retried)",
+   "link": "brazil:escavador_busca_nome",
+   "entity": "company_name:Banco do Brasil"
+  },
+  {
+   "case": "jusbrasil_challenge",
+   "url": "https://www.jusbrasil.com.br/busca?q=Banco%20do%20Brasil",
+   "status": 403,
+   "title": "Just a moment...",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:40:04Z",
+   "note": "Jusbrasil: Cloudflare managed challenge for curl on 2026-11-26 (one probe, not retried)",
+   "link": "brazil:jusbrasil_busca_nome",
+   "entity": "company_name:Banco do Brasil"
+  },
+  {
+   "case": "reclameaqui_challenge",
+   "url": "https://www.reclameaqui.com.br/busca/?q=Banco%20do%20Brasil",
+   "status": 403,
+   "title": "Just a moment...",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:40:09Z",
+   "note": "Reclame Aqui: Cloudflare managed challenge for curl on 2026-11-26 (one probe, not retried)",
+   "link": "brazil:reclameaqui_busca",
+   "entity": "company_name:Banco do Brasil"
+  },
+  {
+   "case": "sintegra_frameset",
+   "url": "https://www.sintegra.gov.br/",
+   "status": 200,
+   "title": "SINTEGRA",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:44:02Z",
+   "note": "national SINTEGRA portal (https works): frameset that links to each UF; no CNPJ parameter",
+   "link": "inline:sintegra_portal",
+   "entity": "cnpj:00000000000191"
+  },
+  {
+   "case": "transparencia_pj_challenge_202",
+   "url": "https://portaldatransparencia.gov.br/pessoa-juridica/00000000000191",
+   "status": 202,
+   "title": "",
+   "observed_at": "",
+   "source": "research record C0584 (synthetic envelope)",
+   "note": "202 with an empty bot-challenge body; not requested again",
+   "link": null,
+   "entity": null
+  },
+  {
+   "case": "transparencia_waf_captcha",
+   "url": "https://portaldatransparencia.gov.br/busca?termo=00.000.000%2F0001-91",
+   "status": 405,
+   "title": "Human Verification",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:40:00Z",
+   "note": "AWS WAF CAPTCHA (HTTP 405, x-amzn-waf-action: captcha) for /busca?termo= with the formatted CNPJ, the digits and the name on 2026-11-26; research C0584 saw 200 'Resultado da busca'",
+   "link": "brazil:transparencia_busca_cnpj",
+   "entity": "cnpj:00000000000191"
+  }
+ ]
+}

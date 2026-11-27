@@ -1,0 +1,50 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "kaspersky",
+  "name": "Kaspersky OpenTIP (web pages)",
+  "operator": "AO Kaspersky Lab (RU)",
+  "hosts": [
+    "opentip.kaspersky.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms and a privacy policy (A8 BR2; P304 cond 5 lists Kaspersky (RU) as trusted). Foreign-provider policy: links carry the badge 'foreign provider (RU) - check the company vendor policy' and max_tlp=clear (P304 cond 10).",
+  "tier_reviewer": "batch p2-G14-3 (council-1 P304 cond 5: initial tiers, reviewer confirms)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Vendor verdicts (zone) for IPs, domains, URLs and hashes."
+  },
+  "http_profile": {
+    "user_agent": "neutral"
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "opentip_pages": {
+      "title": "Kaspersky OpenTIP {ioc}/results?tab=lookup (manual pivot links, TLP:CLEAR only)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://opentip.kaspersky.com/",
+        "quote": "Free web UI; provider ToS apply (manual analyst use)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "kaspersky",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0404 (SPA shell). Listed only at TLP:CLEAR (max_tlp=clear) with the RU vendor-policy badge (P304 cond 10, redteam_lead/legal_dpo/analyst_ux). Used by pivots_unverified."
+    }
+  },
+  "notes": "Manual pivot links only (P304 cond 1): V3LUM never requests these pages, not even from doctor, and never solves their challenges; the analyst opens them in a browser. No budget. Owned by batch p2-G14-3 (module pivots_unverified); other batches extend it with <id>__<batch>.json. The OpenTIP API (P162) belongs to another proposal: extend this fragment (keep the vendor-policy note)."
+}

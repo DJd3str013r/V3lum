@@ -1,0 +1,109 @@
+{
+ "data": [
+  {
+   "id": "a1c8efc4-fd4d-4d5e-be3c-ba9ee9e89b36",
+   "created_at": "2026-04-06T00:07:29.84958Z",
+   "sha1_hash": "a522d2101053a161a47393d1eac37385ef77c9a4",
+   "title": "Lazarus Expands Malicious npm Campaign: 11 New Packages Add ...",
+   "llm_title": "Lazarus Expands Malicious npm Campaign: 11 New Packages Add ...",
+   "authors": "Socket",
+   "file_creation_date": "0001-01-01T00:00:00Z",
+   "plain_text": "",
+   "sources": [
+    "Malpedia",
+    "MITRE",
+    "ETDA"
+   ],
+   "origins": [
+    "web"
+   ],
+   "references": [
+    "https://socket.dev/blog/lazarus-expands-malicious-npm-campaign-11-new-packages-add-malware-loaders-and-bitbucket"
+   ],
+   "report_names": [
+    "lazarus-expands-malicious-npm-campaign-11-new-packages-add-malware-loaders-and-bitbucket"
+   ],
+   "threat_actors": [
+    {
+     "main_name": "Contagious Interview",
+     "aliases": [],
+     "source_id": "MISPGALAXY"
+    },
+    {
+     "main_name": "Contagious Interview",
+     "aliases": [
+      "Contagious Interview",
+      "DeceptiveDevelopment",
+      "Gwisin Gang",
+      "Tenacious Pungsan",
+      "DEV#POPPER",
+      "PurpleBravo"
+     ],
+     "source_id": "MITRE"
+    },
+    {
+     "main_name": "Lazarus Group",
+     "aliases": [
+      "Lazarus Group",
+      "Labyrinth Chollima",
+      "HIDDEN COBRA",
+      "Guardians of Peace",
+      "NICKEL ACADEMY",
+      "Diamond Sleet"
+     ],
+     "source_id": "MITRE"
+    },
+    {
+     "main_name": "NICKEL ACADEMY",
+     "aliases": [
+      "ATK3",
+      "Black Artemis",
+      "COVELLITE",
+      "CTG-2460",
+      "Citrine Sleet",
+      "Diamond Sleet"
+     ],
+     "source_id": "Secureworks"
+    },
+    {
+     "main_name": "NICKEL GLADSTONE",
+     "aliases": [
+      "APT38",
+      "ATK 117",
+      "Alluring Pisces",
+      "Black Alicanto",
+      "Bluenoroff",
+      "CTG-6459"
+     ],
+     "source_id": "Secureworks"
+    },
+    {
+     "main_name": "Lazarus Group",
+     "aliases": [
+      "Hastati Group",
+      "Andariel",
+      "APT 38",
+      "Whois Hacking Team",
+      "G0082",
+      "Sapphire Sleet"
+     ],
+     "source_id": "MISPGALAXY"
+    },
+    {
+     "main_name": "Lazarus Group",
+     "aliases": [
+      "APT-C-26",
+      "ATK 3",
+      "Appleworm",
+      "Citrine Sleet",
+      "DEV-0139",
+      "Diamond Sleet"
+     ],
+     "source_id": "ETDA"
+    }
+   ]
+  }
+ ],
+ "message": "library entry search results",
+ "status": "success"
+}

@@ -1,0 +1,30 @@
+{
+ "ok": true,
+ "doc": {
+  "creator": "INTERPOL CNTL",
+  "title": "US Treasury OFAC Sanctions List",
+  "description": "Tagpack automatically created with the INTERPOL CNTL scraping tool",
+  "lastmod": "2024-02-26",
+  "label": "Asset listed under US Treasury OFAC Sanctions List",
+  "category": "user",
+  "source": "https://www.treasury.gov/ofac/downloads/sdnlist.txt",
+  "tags": [
+   {
+    "address": "3K35dyL85fR9ht7UgzPfd1gLRRXQtNTqE3",
+    "currency": "BTC"
+   },
+   {
+    "address": "TMStbg5fgb4uTV7fK1gEYF9hKAzP3siPsG",
+    "currency": "TRX"
+   },
+   {
+    "address": "3LtcaPbCj87CwJHnRX3vh7c2y9RZQqeSy8",
+    "currency": "USDT"
+   },
+   {
+    "address": "TUCsTq7TofTCJRRoHk6RvhMoS2mJLm5Yzq",
+    "currency": "BTC"
+   }
+  ]
+ }
+}

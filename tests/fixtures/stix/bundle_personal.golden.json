@@ -1,0 +1,602 @@
+{
+ "type": "bundle",
+ "id": "bundle--f9f928b4-3a04-5ae6-9c45-29e590f206f2",
+ "objects": [
+  {
+   "type": "marking-definition",
+   "spec_version": "2.1",
+   "id": "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421",
+   "created": "2022-10-01T00:00:00.000Z",
+   "name": "TLP:AMBER",
+   "extensions": {
+    "extension-definition--60a3c5c5-0d10-413e-aab3-9e08dde9e88d": {
+     "extension_type": "property-extension",
+     "tlp_2_0": "amber"
+    }
+   }
+  },
+  {
+   "type": "identity",
+   "spec_version": "2.1",
+   "id": "identity--4cb3a3f6-f16a-5935-a58d-043d1297b56f",
+   "created": "2026-01-01T00:00:00.000Z",
+   "modified": "2026-01-01T00:00:00.000Z",
+   "name": "V3LUM",
+   "identity_class": "system",
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ]
+  },
+  {
+   "type": "attack-pattern",
+   "id": "attack-pattern--a62a8db3-f23a-4d8f-afd6-9dbc77e7813b",
+   "name": "Phishing",
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "T1566",
+     "url": "https://attack.mitre.org/techniques/T1566/"
+    }
+   ],
+   "spec_version": "2.1",
+   "created": "2026-01-01T00:00:00.000Z",
+   "modified": "2026-01-01T00:00:00.000Z",
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ]
+  },
+  {
+   "type": "identity",
+   "id": "identity--403a54f0-6dd3-5606-a2a1-ea9739ae6397",
+   "name": "Joao Silva Teste",
+   "identity_class": "individual",
+   "spec_version": "2.1",
+   "created": "2026-01-01T00:00:00.000Z",
+   "modified": "2026-01-01T00:00:00.000Z",
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ]
+  },
+  {
+   "type": "malware",
+   "id": "malware--119c9381-7719-578b-9137-d2bedfe83cb2",
+   "name": "V3lumTestLoader",
+   "spec_version": "2.1",
+   "created": "2026-01-01T00:00:00.000Z",
+   "modified": "2026-01-01T00:00:00.000Z",
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ],
+   "is_family": true
+  },
+  {
+   "type": "threat-actor",
+   "id": "threat-actor--11111111-2222-4333-8444-555555555555",
+   "name": "APT28",
+   "spec_version": "2.1",
+   "created": "2026-01-01T00:00:00.000Z",
+   "modified": "2026-01-01T00:00:00.000Z",
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ],
+   "aliases": [
+    "Sofacy",
+    "Fancy Bear"
+   ]
+  },
+  {
+   "type": "vulnerability",
+   "id": "vulnerability--8b92ff00-6329-58ae-adbd-d8566ee9dec3",
+   "name": "CVE-2024-3400",
+   "external_references": [
+    {
+     "source_name": "cve",
+     "external_id": "CVE-2024-3400"
+    }
+   ],
+   "spec_version": "2.1",
+   "created": "2026-01-01T00:00:00.000Z",
+   "modified": "2026-01-01T00:00:00.000Z",
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ]
+  },
+  {
+   "type": "autonomous-system",
+   "spec_version": "2.1",
+   "id": "autonomous-system--0a5f7072-df00-5729-9f0a-4eb18631a446",
+   "number": 64500,
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ]
+  },
+  {
+   "type": "domain-name",
+   "spec_version": "2.1",
+   "id": "domain-name--28433070-74bd-55fb-9426-628e5f6e2cc4",
+   "value": "login-acme.example",
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ]
+  },
+  {
+   "type": "email-addr",
+   "spec_version": "2.1",
+   "id": "email-addr--dab64bd7-564a-5f59-a2d5-4c244b6a2fe0",
+   "value": "joao.silva@acme-corp.example",
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ]
+  },
+  {
+   "type": "file",
+   "spec_version": "2.1",
+   "id": "file--44e59b2a-24f4-54dd-a422-98670c7af7c4",
+   "hashes": {
+    "SHA-256": "a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1",
+    "MD5": "b7e2b7e2b7e2b7e2b7e2b7e2b7e2b7e2"
+   },
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ]
+  },
+  {
+   "type": "ipv4-addr",
+   "spec_version": "2.1",
+   "id": "ipv4-addr--570130c0-7daf-5d1e-992f-58b53b447312",
+   "value": "203.0.113.10",
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ]
+  },
+  {
+   "type": "url",
+   "spec_version": "2.1",
+   "id": "url--899db5ff-974b-510c-8816-bd1efaa6414b",
+   "value": "https://login-acme.example/it's\\path?x=1",
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ]
+  },
+  {
+   "type": "url",
+   "spec_version": "2.1",
+   "id": "url--a2a92f20-b874-5927-82d6-1f589aba7036",
+   "value": "https://login-acme.example/reset?email=joao.silva@acme-corp.example",
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ]
+  },
+  {
+   "type": "user-account",
+   "spec_version": "2.1",
+   "id": "user-account--8ae63eca-47f4-539b-8d07-654d597918f1",
+   "account_login": "jsilva_teste",
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ]
+  },
+  {
+   "type": "indicator",
+   "spec_version": "2.1",
+   "id": "indicator--66bc0a44-2ee3-55c3-bca9-b5d406d4f702",
+   "created": "2026-01-01T00:00:00.000Z",
+   "modified": "2026-11-26T10:00:00.000Z",
+   "created_by_ref": "identity--4cb3a3f6-f16a-5935-a58d-043d1297b56f",
+   "name": "SHA-256 hash: a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1",
+   "description": "Analyst-confirmed: sandbox verdict",
+   "indicator_types": [
+    "malicious-activity"
+   ],
+   "pattern": "[file:hashes.'SHA-256' = 'a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1']",
+   "pattern_type": "stix",
+   "pattern_version": "2.1",
+   "valid_from": "2026-11-21T08:30:00.000Z",
+   "confidence": 90,
+   "labels": [
+    "malware"
+   ],
+   "external_references": [
+    {
+     "source_name": "v3lum",
+     "external_id": "f0hash000000001",
+     "description": "V3LUM finding id"
+    }
+   ],
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ]
+  },
+  {
+   "type": "indicator",
+   "spec_version": "2.1",
+   "id": "indicator--8e348624-95fe-5c35-8193-f89dc7262b02",
+   "created": "2026-01-01T00:00:00.000Z",
+   "modified": "2026-11-26T10:00:00.000Z",
+   "created_by_ref": "identity--4cb3a3f6-f16a-5935-a58d-043d1297b56f",
+   "name": "Domain: login-acme.example",
+   "description": "Independent-source consensus (CR27): 2 independent upstream families (feed_a, feed_b) inside the decay window",
+   "indicator_types": [
+    "malicious-activity"
+   ],
+   "pattern": "[domain-name:value = 'login-acme.example']",
+   "pattern_type": "stix",
+   "pattern_version": "2.1",
+   "valid_from": "2026-11-20T00:00:00.000Z",
+   "confidence": 70,
+   "labels": [
+    "malicious",
+    "phishing"
+   ],
+   "external_references": [
+    {
+     "source_name": "v3lum",
+     "external_id": "c0cr270000000001",
+     "description": "V3LUM correlation id"
+    }
+   ],
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ],
+   "valid_until": "2027-02-18T00:00:00.000Z"
+  },
+  {
+   "type": "note",
+   "spec_version": "2.1",
+   "id": "note--0b338595-a5c7-51c3-95fd-93f1e1a625b1",
+   "created": "2026-01-01T00:00:00.000Z",
+   "modified": "2026-11-26T10:00:00.000Z",
+   "created_by_ref": "identity--4cb3a3f6-f16a-5935-a58d-043d1297b56f",
+   "abstract": "[HIGH/confirmed] Sandbox verdict: V3lumTestLoader dropper",
+   "content": "Dropper sample.\nCriterion: sandbox verdict",
+   "confidence": 90,
+   "object_refs": [
+    "file--44e59b2a-24f4-54dd-a422-98670c7af7c4"
+   ],
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ]
+  },
+  {
+   "type": "note",
+   "spec_version": "2.1",
+   "id": "note--2b3c1a08-c589-5be3-ae68-75f91a36831c",
+   "created": "2026-01-01T00:00:00.000Z",
+   "modified": "2026-11-26T10:00:00.000Z",
+   "created_by_ref": "identity--4cb3a3f6-f16a-5935-a58d-043d1297b56f",
+   "abstract": "[HIGH/probable] Phishing page targeting joao.silva@acme-corp.example",
+   "content": "Registrant joao.silva@acme-corp.example (CPF ***.982.247-**, tel +55 11 98765-4321) per WHOIS.\nCriterion: listed by feed A",
+   "confidence": 70,
+   "object_refs": [
+    "domain-name--28433070-74bd-55fb-9426-628e5f6e2cc4"
+   ],
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ],
+   "external_references": [
+    {
+     "source_name": "reference",
+     "url": "https://feed-a.example/report/1"
+    }
+   ]
+  },
+  {
+   "type": "note",
+   "spec_version": "2.1",
+   "id": "note--408cdf74-2890-5e3d-ad6a-6e73f3497871",
+   "created": "2026-01-01T00:00:00.000Z",
+   "modified": "2026-11-26T10:00:00.000Z",
+   "created_by_ref": "identity--4cb3a3f6-f16a-5935-a58d-043d1297b56f",
+   "abstract": "[HIGH/probable] Listed as phishing by feed B",
+   "content": "Feed B lists the domain.\nCriterion: listed by feed B",
+   "confidence": 70,
+   "object_refs": [
+    "domain-name--28433070-74bd-55fb-9426-628e5f6e2cc4"
+   ],
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ]
+  },
+  {
+   "type": "note",
+   "spec_version": "2.1",
+   "id": "note--67a0434a-a2fe-55f2-89ff-4827d2d6d48f",
+   "created": "2026-01-01T00:00:00.000Z",
+   "modified": "2026-11-26T10:00:00.000Z",
+   "created_by_ref": "identity--4cb3a3f6-f16a-5935-a58d-043d1297b56f",
+   "abstract": "[MEDIUM/probable] 203.0.113.10 listed as malicious by 1 independent upstream family",
+   "content": "A single upstream family lists it.\nCriterion: 1 independent upstream family (feed_c) inside the decay window\nRecommendation: Corroborate first.",
+   "confidence": 70,
+   "object_refs": [
+    "ipv4-addr--570130c0-7daf-5d1e-992f-58b53b447312"
+   ],
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ]
+  },
+  {
+   "type": "note",
+   "spec_version": "2.1",
+   "id": "note--862eed8d-b28d-53b6-b8ca-13e53b76c451",
+   "created": "2026-01-01T00:00:00.000Z",
+   "modified": "2026-11-26T10:00:00.000Z",
+   "created_by_ref": "identity--4cb3a3f6-f16a-5935-a58d-043d1297b56f",
+   "abstract": "[HIGH/probable] login-acme.example listed as malicious by 2 independent upstream families",
+   "content": "Upstream families listing the entity inside the decay window: feed_a, feed_b.\nCriterion: 2 independent upstream families (feed_a, feed_b) inside the decay window\nRecommendation: Block the indicator at the perimeter/EDR.",
+   "confidence": 70,
+   "object_refs": [
+    "domain-name--28433070-74bd-55fb-9426-628e5f6e2cc4"
+   ],
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ]
+  },
+  {
+   "type": "note",
+   "spec_version": "2.1",
+   "id": "note--935ae05d-e192-5ed6-aee6-61bbe53f3951",
+   "created": "2026-01-01T00:00:00.000Z",
+   "modified": "2026-11-26T10:00:00.000Z",
+   "created_by_ref": "identity--4cb3a3f6-f16a-5935-a58d-043d1297b56f",
+   "abstract": "[MEDIUM/probable] Domain present in a breach index",
+   "content": "Employee accounts of the domain appear in a breach index.\nCriterion: breach metadata",
+   "confidence": 70,
+   "object_refs": [
+    "domain-name--28433070-74bd-55fb-9426-628e5f6e2cc4"
+   ],
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ]
+  },
+  {
+   "type": "note",
+   "spec_version": "2.1",
+   "id": "note--b8e52c1c-6637-59ff-a0ac-e8017e16b7e0",
+   "created": "2026-01-01T00:00:00.000Z",
+   "modified": "2026-11-26T10:00:00.000Z",
+   "created_by_ref": "identity--4cb3a3f6-f16a-5935-a58d-043d1297b56f",
+   "abstract": "[LOW/probable] Identity link between the e-mail and the domain",
+   "content": "The registrant e-mail is tied to the domain.\nCriterion: registrant",
+   "confidence": 70,
+   "object_refs": [
+    "domain-name--28433070-74bd-55fb-9426-628e5f6e2cc4"
+   ],
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ]
+  },
+  {
+   "type": "note",
+   "spec_version": "2.1",
+   "id": "note--c9be27ed-0069-51a6-87f3-f353d9b10413",
+   "created": "2026-01-01T00:00:00.000Z",
+   "modified": "2026-11-26T10:00:00.000Z",
+   "created_by_ref": "identity--4cb3a3f6-f16a-5935-a58d-043d1297b56f",
+   "abstract": "[MEDIUM/probable] Recurrent infrastructure",
+   "content": "The same indicator appears in 2 earlier V3LUM cases (count only).\nCriterion: earlier cases",
+   "confidence": 70,
+   "object_refs": [
+    "ipv4-addr--570130c0-7daf-5d1e-992f-58b53b447312"
+   ],
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ]
+  },
+  {
+   "type": "note",
+   "spec_version": "2.1",
+   "id": "note--f4384c48-dc1a-5655-8876-2617dcd818c4",
+   "created": "2026-01-01T00:00:00.000Z",
+   "modified": "2026-11-26T10:00:00.000Z",
+   "created_by_ref": "identity--4cb3a3f6-f16a-5935-a58d-043d1297b56f",
+   "abstract": "[LOW/confirmed] seen in 2 previous cases",
+   "content": "Earlier V3LUM cases contain the same indicator (count only: no ids, dates or verdicts).\nCriterion: case DB sightings",
+   "confidence": 90,
+   "object_refs": [
+    "ipv4-addr--570130c0-7daf-5d1e-992f-58b53b447312"
+   ],
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ]
+  },
+  {
+   "type": "relationship",
+   "spec_version": "2.1",
+   "id": "relationship--32e3a3e2-115f-5b47-96e5-a5c3f8ea3989",
+   "created": "2026-01-01T00:00:00.000Z",
+   "modified": "2026-11-26T10:00:00.000Z",
+   "created_by_ref": "identity--4cb3a3f6-f16a-5935-a58d-043d1297b56f",
+   "relationship_type": "resolves-to",
+   "source_ref": "domain-name--28433070-74bd-55fb-9426-628e5f6e2cc4",
+   "target_ref": "ipv4-addr--570130c0-7daf-5d1e-992f-58b53b447312",
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ],
+   "description": "via dns_records"
+  },
+  {
+   "type": "relationship",
+   "spec_version": "2.1",
+   "id": "relationship--36d751bc-c198-5649-bad8-d35995d84ef2",
+   "created": "2026-01-01T00:00:00.000Z",
+   "modified": "2026-11-26T10:00:00.000Z",
+   "created_by_ref": "identity--4cb3a3f6-f16a-5935-a58d-043d1297b56f",
+   "relationship_type": "based-on",
+   "source_ref": "indicator--66bc0a44-2ee3-55c3-bca9-b5d406d4f702",
+   "target_ref": "file--44e59b2a-24f4-54dd-a422-98670c7af7c4",
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ]
+  },
+  {
+   "type": "relationship",
+   "spec_version": "2.1",
+   "id": "relationship--78113481-a5b7-58a0-a7f4-f397adddcb4f",
+   "created": "2026-01-01T00:00:00.000Z",
+   "modified": "2026-11-26T10:00:00.000Z",
+   "created_by_ref": "identity--4cb3a3f6-f16a-5935-a58d-043d1297b56f",
+   "relationship_type": "indicates",
+   "source_ref": "indicator--66bc0a44-2ee3-55c3-bca9-b5d406d4f702",
+   "target_ref": "malware--119c9381-7719-578b-9137-d2bedfe83cb2",
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ]
+  },
+  {
+   "type": "relationship",
+   "spec_version": "2.1",
+   "id": "relationship--ad35bbd2-a7d9-5c94-a83d-aa1d9b26fcb5",
+   "created": "2026-01-01T00:00:00.000Z",
+   "modified": "2026-11-26T10:00:00.000Z",
+   "created_by_ref": "identity--4cb3a3f6-f16a-5935-a58d-043d1297b56f",
+   "relationship_type": "based-on",
+   "source_ref": "indicator--8e348624-95fe-5c35-8193-f89dc7262b02",
+   "target_ref": "domain-name--28433070-74bd-55fb-9426-628e5f6e2cc4",
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ]
+  },
+  {
+   "type": "relationship",
+   "spec_version": "2.1",
+   "id": "relationship--b5ae8c24-01db-5a4f-a73b-7ea6cdaf0ba3",
+   "created": "2026-01-01T00:00:00.000Z",
+   "modified": "2026-11-26T10:00:00.000Z",
+   "created_by_ref": "identity--4cb3a3f6-f16a-5935-a58d-043d1297b56f",
+   "relationship_type": "indicates",
+   "source_ref": "indicator--8e348624-95fe-5c35-8193-f89dc7262b02",
+   "target_ref": "attack-pattern--a62a8db3-f23a-4d8f-afd6-9dbc77e7813b",
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ]
+  },
+  {
+   "type": "relationship",
+   "spec_version": "2.1",
+   "id": "relationship--ca8d8e61-e7cc-5b9e-9e8b-33612fb8b12f",
+   "created": "2026-01-01T00:00:00.000Z",
+   "modified": "2026-11-26T10:00:00.000Z",
+   "created_by_ref": "identity--4cb3a3f6-f16a-5935-a58d-043d1297b56f",
+   "relationship_type": "family",
+   "source_ref": "file--44e59b2a-24f4-54dd-a422-98670c7af7c4",
+   "target_ref": "malware--119c9381-7719-578b-9137-d2bedfe83cb2",
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ],
+   "description": "via sandbox"
+  },
+  {
+   "type": "relationship",
+   "spec_version": "2.1",
+   "id": "relationship--ce8ac621-f5ee-53c6-a1ba-53daa9c6e1e7",
+   "created": "2026-01-01T00:00:00.000Z",
+   "modified": "2026-11-26T10:00:00.000Z",
+   "created_by_ref": "identity--4cb3a3f6-f16a-5935-a58d-043d1297b56f",
+   "relationship_type": "registrant-of",
+   "source_ref": "email-addr--dab64bd7-564a-5f59-a2d5-4c244b6a2fe0",
+   "target_ref": "domain-name--28433070-74bd-55fb-9426-628e5f6e2cc4",
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ],
+   "description": "via whois"
+  },
+  {
+   "type": "relationship",
+   "spec_version": "2.1",
+   "id": "relationship--d5b6477f-ae08-52e9-b9e1-d51b58f581e3",
+   "created": "2026-01-01T00:00:00.000Z",
+   "modified": "2026-11-26T10:00:00.000Z",
+   "created_by_ref": "identity--4cb3a3f6-f16a-5935-a58d-043d1297b56f",
+   "relationship_type": "attributed-to",
+   "source_ref": "malware--119c9381-7719-578b-9137-d2bedfe83cb2",
+   "target_ref": "threat-actor--11111111-2222-4333-8444-555555555555",
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ],
+   "description": "via cti"
+  },
+  {
+   "type": "relationship",
+   "spec_version": "2.1",
+   "id": "relationship--d8e8f488-b397-5cf0-92fd-61d6f050f738",
+   "created": "2026-01-01T00:00:00.000Z",
+   "modified": "2026-11-26T10:00:00.000Z",
+   "created_by_ref": "identity--4cb3a3f6-f16a-5935-a58d-043d1297b56f",
+   "relationship_type": "in-asn",
+   "source_ref": "ipv4-addr--570130c0-7daf-5d1e-992f-58b53b447312",
+   "target_ref": "autonomous-system--0a5f7072-df00-5729-9f0a-4eb18631a446",
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ],
+   "description": "via asn_context"
+  },
+  {
+   "type": "relationship",
+   "spec_version": "2.1",
+   "id": "relationship--e4699c59-ab08-514f-92aa-321086c608e6",
+   "created": "2026-01-01T00:00:00.000Z",
+   "modified": "2026-11-26T10:00:00.000Z",
+   "created_by_ref": "identity--4cb3a3f6-f16a-5935-a58d-043d1297b56f",
+   "relationship_type": "hosts-url",
+   "source_ref": "domain-name--28433070-74bd-55fb-9426-628e5f6e2cc4",
+   "target_ref": "url--899db5ff-974b-510c-8816-bd1efaa6414b",
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ],
+   "description": "via urlscan"
+  },
+  {
+   "type": "report",
+   "spec_version": "2.1",
+   "id": "report--2c1cf742-7b4c-5afe-b709-f009208bf7b8",
+   "created": "2026-11-26T10:00:00.000Z",
+   "modified": "2026-11-26T10:00:00.000Z",
+   "created_by_ref": "identity--4cb3a3f6-f16a-5935-a58d-043d1297b56f",
+   "name": "V3LUM case 20261126-100000-a1b2",
+   "description": "V3LUM case 20261126-100000-a1b2 (TLP:AMBER). Risk score withheld (personal-data subject: scores of people are never exported). Seeds: domain:login-acme.example. 2 personal seed(s) not listed. Withheld from this export: 1 personal.",
+   "published": "2026-11-26T10:00:00.000Z",
+   "report_types": [
+    "threat-report"
+   ],
+   "object_refs": [
+    "attack-pattern--a62a8db3-f23a-4d8f-afd6-9dbc77e7813b",
+    "identity--403a54f0-6dd3-5606-a2a1-ea9739ae6397",
+    "malware--119c9381-7719-578b-9137-d2bedfe83cb2",
+    "threat-actor--11111111-2222-4333-8444-555555555555",
+    "vulnerability--8b92ff00-6329-58ae-adbd-d8566ee9dec3",
+    "autonomous-system--0a5f7072-df00-5729-9f0a-4eb18631a446",
+    "domain-name--28433070-74bd-55fb-9426-628e5f6e2cc4",
+    "email-addr--dab64bd7-564a-5f59-a2d5-4c244b6a2fe0",
+    "file--44e59b2a-24f4-54dd-a422-98670c7af7c4",
+    "ipv4-addr--570130c0-7daf-5d1e-992f-58b53b447312",
+    "url--899db5ff-974b-510c-8816-bd1efaa6414b",
+    "url--a2a92f20-b874-5927-82d6-1f589aba7036",
+    "user-account--8ae63eca-47f4-539b-8d07-654d597918f1",
+    "indicator--66bc0a44-2ee3-55c3-bca9-b5d406d4f702",
+    "indicator--8e348624-95fe-5c35-8193-f89dc7262b02",
+    "note--0b338595-a5c7-51c3-95fd-93f1e1a625b1",
+    "note--2b3c1a08-c589-5be3-ae68-75f91a36831c",
+    "note--408cdf74-2890-5e3d-ad6a-6e73f3497871",
+    "note--67a0434a-a2fe-55f2-89ff-4827d2d6d48f",
+    "note--862eed8d-b28d-53b6-b8ca-13e53b76c451",
+    "note--935ae05d-e192-5ed6-aee6-61bbe53f3951",
+    "note--b8e52c1c-6637-59ff-a0ac-e8017e16b7e0",
+    "note--c9be27ed-0069-51a6-87f3-f353d9b10413",
+    "note--f4384c48-dc1a-5655-8876-2617dcd818c4",
+    "relationship--32e3a3e2-115f-5b47-96e5-a5c3f8ea3989",
+    "relationship--36d751bc-c198-5649-bad8-d35995d84ef2",
+    "relationship--78113481-a5b7-58a0-a7f4-f397adddcb4f",
+    "relationship--ad35bbd2-a7d9-5c94-a83d-aa1d9b26fcb5",
+    "relationship--b5ae8c24-01db-5a4f-a73b-7ea6cdaf0ba3",
+    "relationship--ca8d8e61-e7cc-5b9e-9e8b-33612fb8b12f",
+    "relationship--ce8ac621-f5ee-53c6-a1ba-53daa9c6e1e7",
+    "relationship--d5b6477f-ae08-52e9-b9e1-d51b58f581e3",
+    "relationship--d8e8f488-b397-5cf0-92fd-61d6f050f738",
+    "relationship--e4699c59-ab08-514f-92aa-321086c608e6"
+   ],
+   "object_marking_refs": [
+    "marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421"
+   ]
+  }
+ ]
+}

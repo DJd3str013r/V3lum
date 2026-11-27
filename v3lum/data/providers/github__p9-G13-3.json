@@ -1,0 +1,24 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "github",
+  "hosts": [],
+  "sources": {
+    "path_discovery_seclists": {
+      "title": "SecLists content-discovery wordlists (danielmiessler/SecLists, MIT) fetched by commit from raw.githubusercontent.com for path_discovery --wordlist runs",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/danielmiessler/SecLists/blob/master/LICENSE",
+        "quote": "Lists: a curated default list of <= 50 paths pinned in data/active.lock (OpenAPI/Swagger, GraphQL endpoint/UI, Spring actuator index, common admin panels). SecLists (MIT) only with an explicit --wordlist, <= 5,000 entries (A7), pinned by SHA-256 and fetched by `v3lum data update`, at <= 5 req/s per host.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "seclists",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P285 cond 4). MIT licence (research C0650). Active datasets path_discovery_seclists_<list>.txt, each pinned by SHA-256 in v3lum/data/active_locks/ at commit 01bd31a91d11025e37c776b01edfe61c58dba784 (prep live check 2026-11-26: every file 200 from raw.githubusercontent.com, git blob SHA-1 matched the tree). Fetched by commit, never by branch: SecLists reorganised its tree upstream (spring-boot.txt moved, the old branch path answers 404). Installed only by `v3lum data update` (never mid-engagement); entries are filtered by the P285 path policy (query strings, traversal, operation names, actuator dumps, GraphQL introspection dropped) and a list above 5,000 accepted entries is refused, never truncated. raft-small-directories (20,009 entries) is therefore not registered."
+    }
+  },
+  "error_markers": [],
+  "notes": "Batch p9-G13-3 extension (P285 path_discovery): the SecLists wordlist source on GitHub's raw host. Downloads go through the dataset manager only; target traffic never touches GitHub."
+}

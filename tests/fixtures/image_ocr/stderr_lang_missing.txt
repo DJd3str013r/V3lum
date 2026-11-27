@@ -1,0 +1,7 @@
+rc=1
+stdout_bytes=0
+Error opening data file <tessdata-dir>/xyz.traineddata
+Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory.
+Failed loading language 'xyz'
+Tesseract couldn't load any languages!
+Could not initialize tesseract.

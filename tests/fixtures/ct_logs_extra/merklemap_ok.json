@@ -1,0 +1,21 @@
+{
+ "count": 3,
+ "results": [
+  {
+   "hostname": "www.example.com",
+   "subject_common_name": "www.example.com",
+   "not_before": 1764633600,
+   "not_after": 1796169599
+  },
+  {
+   "hostname": "*.example.com",
+   "subject_common_name": "example.com",
+   "not_before": 1758067200,
+   "not_after": 1765662462
+  },
+  {
+   "domain": "api.example.com",
+   "subject_common_name": "api.example.com"
+  }
+ ]
+}

@@ -1,0 +1,15 @@
+{
+ "request": {
+  "method": "POST",
+  "url": "https://whois-history.whoisxmlapi.com/api/v1"
+ },
+ "response": {
+  "status": 403,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": "{\"code\": 403, \"messages\": \"Access restricted. Check the credits balance or enter the correct API key.\"}"
+ },
+ "transport_error": null,
+ "elapsed_s": null
+}

@@ -1,0 +1,51 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "nodes": [
+  {
+   "key": "ipv4:198.51.100.23",
+   "depth": 0,
+   "seed": true,
+   "findings": [
+    {
+     "title": "Known benign scanner (Shodan.io)",
+     "severity": "info",
+     "confidence": 0.7,
+     "confidence_label": "probable",
+     "criterion": "GreyNoise noise=true with classification 'benign' (Shodan.io) (synthetic)",
+     "tags": [
+      "benign_scanner"
+     ],
+     "module": "greynoise_community",
+     "source": "greynoise.community",
+     "data": {
+      "state": "benign_scanner",
+      "classification": "benign"
+     }
+    },
+    {
+     "title": "Scanner listed by an IP reputation feed",
+     "severity": "medium",
+     "confidence": 0.7,
+     "confidence_label": "probable",
+     "criterion": "listed by blocklist.de (synthetic)",
+     "tags": [
+      "scanner",
+      "blocklisted"
+     ],
+     "module": "ip_blocklists",
+     "source": "blocklist_de.all",
+     "data": {}
+    }
+   ]
+  }
+ ],
+ "edges": [],
+ "expect": {
+  "g02_scanner_intel_dampening": {
+   "min": 1,
+   "max": 1,
+   "severity": "info"
+  }
+ }
+}

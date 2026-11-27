@@ -1,0 +1,14 @@
+{
+ "_envelope": 1,
+ "_source": "GET https://photon.komoot.io/api/?q=xqzvwkjhxqzvbn&limit=5&lang=en (2026-11-26T09:43:36Z, generic client UA, datacenter egress)",
+ "status": 200,
+ "headers": {
+  "server": "nginx",
+  "content-type": "application/json",
+  "cache-control": "max-age=3600"
+ },
+ "body": {
+  "type": "FeatureCollection",
+  "features": []
+ }
+}

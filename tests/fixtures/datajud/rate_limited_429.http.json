@@ -1,0 +1,44 @@
+{
+ "request": "POST https://api-publica.datajud.cnj.jus.br/api_publica_tjdft/_search",
+ "response": {
+  "status": 429,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": {
+   "error": {
+    "root_cause": [
+     {
+      "type": "es_rejected_execution_exception",
+      "reason": "rejected execution of TimedRunnable{original=ActionRunnable#wrap[org.elasticsearch.sear..."
+     }
+    ],
+    "type": "search_phase_execution_exception",
+    "reason": "",
+    "phase": "fetch",
+    "grouped": true,
+    "failed_shards": [
+     {
+      "shard": 0,
+      "index": "api_publica_tjdft",
+      "node": "qdBrsIHAQfe4IQ0WdjTrvQ",
+      "reason": {
+       "type": "es_rejected_execution_exception",
+       "reason": "rejected execution of TimedRunnable{original=ActionRunnable#wrap[org.elasticsearch.sear..."
+      }
+     }
+    ],
+    "caused_by": {
+     "type": "es_rejected_execution_exception",
+     "reason": "rejected execution of TimedRunnable{original=org.elasticsearch.action.search.FetchSearc..."
+    }
+   },
+   "status": 429
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "observed_at": "2026-11-25T21:56:00Z",
+ "origin": "research",
+ "note": "cluster search queue full (1000 queued): RATE_LIMITED 'could not verify: DataJud overloaded', one retry"
+}

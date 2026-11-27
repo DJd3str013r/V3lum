@@ -1,0 +1,20 @@
+{
+ "_provenance": {
+  "synthetic": true
+ },
+ "request": {
+  "method": "GET",
+  "host": "app.example.com",
+  "path": "/graphiql"
+ },
+ "response": {
+  "status": 200,
+  "headers": {
+   "Content-Type": "text/html"
+  },
+  "body": "<!doctype html><html lang=\"en\"><head><title>GraphiQL</title><meta name=\"robots\" content=\"noindex\"/></head><body><div id=\"graphiql\">Loading...</div></body></html>"
+ },
+ "history": [],
+ "final_url": null,
+ "transport_error": null
+}

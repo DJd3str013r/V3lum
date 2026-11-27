@@ -1,0 +1,152 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "uuid": "5b4ee3ea-eee3-4c8e-8323-85ae32658754",
+    "name": "APT28",
+    "other-names": [
+     "APT 28",
+     "APT-C-20",
+     "APT28",
+     "ATK 5",
+     "ATK5",
+     "Blue Athena",
+     "BlueDelta",
+     "FANCY BEAR"
+    ],
+    "country": "RU",
+    "first-seen": "2004",
+    "related": [
+     {
+      "dest-uuid": "bef4c620-0787-42a8-a96d-b7eb6e85917c",
+      "type": "similar",
+      "tags": [
+       "estimative-language:likelihood-probability=\"likely\""
+      ]
+     },
+     {
+      "dest-uuid": "213cdde9-c11a-4ea9-8ce0-c868e9826fec",
+      "type": "similar",
+      "tags": [
+       "estimative-language:likelihood-probability=\"likely\""
+      ]
+     },
+     {
+      "dest-uuid": "8d84d7b0-7716-5ab3-a3a4-f373dd148347",
+      "type": "similar",
+      "tags": [
+       "estimative-language:likelihood-probability=\"likely\""
+      ]
+     }
+    ]
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     95.54761551609771,
+     59.70930171177435
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "uuid": "b2056ff0-00b9-482e-b11c-c771daa5f28a",
+    "name": "APT29",
+    "other-names": [
+     "APT 29",
+     "APT29",
+     "ATK 7",
+     "ATK7",
+     "Blue Dev 5",
+     "Blue Kitsune",
+     "BlueBravo",
+     "COZY BEAR"
+    ],
+    "country": "RU",
+    "first-seen": "2008",
+    "related": [
+     {
+      "dest-uuid": "899ce53f-13a0-479b-a0e4-67d46e241542",
+      "type": "similar",
+      "tags": [
+       "estimative-language:likelihood-probability=\"likely\""
+      ]
+     },
+     {
+      "dest-uuid": "0125ef58-2675-426f-90eb-0b189961199a",
+      "type": "uses",
+      "tags": [
+       "estimative-language:likelihood-probability=\"likely\""
+      ]
+     },
+     {
+      "dest-uuid": "f169f0b3-fe4d-40e5-a443-2561c98eb67e",
+      "type": "uses",
+      "tags": [
+       "estimative-language:likelihood-probability=\"likely\""
+      ]
+     }
+    ]
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     95.06746684950771,
+     60.98287850780574
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "uuid": "68391641-859f-4a9a-9a1e-3e5cf71ec376",
+    "name": "Lazarus Group",
+    "other-names": [
+     "APT 38",
+     "APT 45",
+     "APT-C-26",
+     "APT38",
+     "ATK 3",
+     "ATK117",
+     "ATK3",
+     "Andariel"
+    ],
+    "country": "KP",
+    "first-seen": "2014",
+    "related": [
+     {
+      "dest-uuid": "c93fccb1-e8e8-42cf-ae33-2ad1d183913a",
+      "type": "similar",
+      "tags": [
+       "estimative-language:likelihood-probability=\"likely\""
+      ]
+     },
+     {
+      "dest-uuid": "b06c3af1-0243-4428-88da-b3451c345e1e",
+      "type": "similar",
+      "tags": [
+       "estimative-language:likelihood-probability=\"likely\""
+      ]
+     },
+     {
+      "dest-uuid": "50cd027f-df14-40b2-aa22-bf5de5061163",
+      "type": "linked-to",
+      "tags": [
+       "estimative-language:likelihood-probability=\"likely\""
+      ]
+     }
+    ]
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.27607540352669,
+     40.03357436263265
+    ]
+   }
+  }
+ ]
+}

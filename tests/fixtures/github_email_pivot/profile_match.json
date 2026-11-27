@@ -1,0 +1,19 @@
+{
+ "_synthetic": "GET /users/{login} shape from the GitHub REST docs ('Get a user'); the live call was refused by this sandbox's GitHub proxy (repository-scoped sessions), so P086-FC9 re-capture from the team network is still due",
+ "login": "example-dev",
+ "id": 1000001,
+ "html_url": "https://github.com/example-dev",
+ "type": "User",
+ "site_admin": false,
+ "name": "Example Dev",
+ "company": "Example Org",
+ "blog": "https://blog.example.net",
+ "location": "Sao Paulo",
+ "email": "Dev@example.com",
+ "bio": "bio text that must be dropped",
+ "twitter_username": "exampledev",
+ "public_repos": 3,
+ "followers": 10,
+ "following": 2,
+ "created_at": "2015-01-01T00:00:00Z"
+}

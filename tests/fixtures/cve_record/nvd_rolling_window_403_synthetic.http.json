@@ -1,0 +1,18 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://services.nvd.nist.gov/rest/json/cves/2.0?cveId=CVE-2021-44228",
+  "headers": {}
+ },
+ "response": {
+  "status": 403,
+  "headers": {
+   "server": "cloudflare",
+   "content-type": "text/plain"
+  },
+  "body": ""
+ },
+ "transport_error": null,
+ "elapsed_s": 0.1,
+ "note": "SYNTHETIC: NVD documents HTTP 403 when the rolling 30 s window is exceeded (5 keyless / 50 keyed). Not triggered live (that would be abusive)."
+}

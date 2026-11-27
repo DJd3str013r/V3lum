@@ -1,0 +1,107 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "wikimedia",
+  "name": "Wikimedia APIs - meta.wikimedia.org (global accounts) and pt/en Wikipedia (contributions)",
+  "operator": "Wikimedia Foundation, Inc.",
+  "hosts": [
+    "meta.wikimedia.org",
+    "pt.wikipedia.org",
+    "en.wikipedia.org"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Wikimedia Foundation, Inc., an established non-profit with published terms of use, API etiquette and a privacy policy (A8 trusted). Council P120 cond 1: registry provider wikimedia, tier trusted, terms open.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Authoritative for the account records and edit metadata it serves (CentralAuth global accounts, usercontribs); attributing an IP edit to an organisation is low confidence (shared NAT, VPN, dynamic addressing) and IP edits are historical where logged-out editing is closed or masked."
+  },
+  "http_profile": {
+    "user_agent": "V3LUM/{version} (+{contact}) python-requests",
+    "accept": "application/json",
+    "timeout": 15.0,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [
+    {
+      "id": "wikimedia_maxlag",
+      "statuses": [200],
+      "json_path": "error.code",
+      "equals": "maxlag",
+      "regex": null,
+      "final_url_regex": null,
+      "maps_to": "rate_limited",
+      "reason_code": "rate_limited",
+      "reason": "Wikimedia API: replication lag above maxlag=5 (error object in HTTP 200): could not verify"
+    },
+    {
+      "id": "wikimedia_ratelimited",
+      "statuses": [200],
+      "json_path": "error.code",
+      "equals": "ratelimited",
+      "regex": null,
+      "final_url_regex": null,
+      "maps_to": "rate_limited",
+      "reason_code": "rate_limited",
+      "reason": "Wikimedia API: rate limit (error object in HTTP 200): could not verify"
+    },
+    {
+      "id": "wikimedia_api_error",
+      "statuses": [200],
+      "json_path": null,
+      "equals": null,
+      "regex": "\\A\\s*\\{\\s*\"error\"\\s*:\\s*\\{",
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "Wikimedia API: error object inside an HTTP 200 answer (could not verify)"
+    }
+  ],
+  "keys": {},
+  "sources": {
+    "globaluserinfo": {
+      "title": "CentralAuth meta=globaluserinfo on meta.wikimedia.org (home wiki, global registration, edit count, merged local accounts, locked flag)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use",
+        "quote": "Module username_social/wikimedia: meta.wikimedia.org/w/api.php?action=query&meta=globaluserinfo (home wiki, edit count, registration) and list=usercontribs (uclimit <= 50) on pt.wikipedia.org and en.wikipedia.org; uciprange for CIDR inputs. Hosts: meta.wikimedia.org, pt.wikipedia.org, en.wikipedia.org. Registry provider wikimedia: tier trusted, terms open.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "wikimedia",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P120 cond 1); research C0277 (verified_live 200 in the research sweep; the 2026-11-26 prep got 429 on the first request with a generic UA). guiprop=merged|unattached|editcount, formatversion=2, maxlag=5 (P120 cond 5). Only counts and dates are kept: groups, per-wiki topic data and full histories never are (P120 cond 4, LGPD art. 11). Usernames are PERSONAL_TYPES: personal_data_review before default use (A3 BR8)."
+    },
+    "usercontribs": {
+      "title": "list=usercontribs on pt.wikipedia.org and en.wikipedia.org by user, IP (ucuser) or CIDR (uciprange), uclimit <= 50, without edit summaries",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.mediawiki.org/wiki/API:Etiquette",
+        "quote": "Module username_social/wikimedia: meta.wikimedia.org/w/api.php?action=query&meta=globaluserinfo (home wiki, edit count, registration) and list=usercontribs (uclimit <= 50) on pt.wikipedia.org and en.wikipedia.org; uciprange for CIDR inputs. Hosts: meta.wikimedia.org, pt.wikipedia.org, en.wikipedia.org. Registry provider wikimedia: tier trusted, terms open.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "wikimedia",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P120 cond 1); research C0278 (only a 429 was seen from the datacenter egress with a generic UA). ucprop=ids|title|timestamp|sizediff|flags (edit summaries are never fetched), maxlag=5, continuation is reported, never followed (P120 cond 4). IP lookups only for analyst-typed IP seeds and org_profile CIDRs, never for pivot IPs (P120 cond 3); CIDR ranges broader than /16 (IPv4) or /32 (IPv6) are refused by the API (apierror-cidrtoobroad). Content is CC BY-SA: only metadata (titles, dates, sizes) is kept."
+    }
+  },
+  "notes": "Owned by batch p3-G05-3 (module wikimedia, P120). BINDING PROFILE_REQUIREMENTS (*.wikipedia.org, *.wikimedia.org): user_agent 'V3LUM/{version} (+{contact}) python-requests' (Wikimedia User-Agent policy, P326), sent only to these hosts; {contact} is setting contact_email (a team role mailbox, never an analyst's personal address); without it the module is SKIPPED reason_code 'config' (P120 cond 2). 1 request/s (min_interval 1.0, concurrency 1; P120 cond 5); 429 and in-200 maxlag/ratelimited errors are RATE_LIMITED (could not verify, never absent); a Retry-After above 15 s is never waited for. Wikidata (wikidata.org, www.wikidata.org, query.wikidata.org) is the separate provider wikidata."
+}

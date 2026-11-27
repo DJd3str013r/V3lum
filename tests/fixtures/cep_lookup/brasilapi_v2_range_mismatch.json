@@ -1,0 +1,20 @@
+{
+ "cep": "99999999",
+ "state": "PR",
+ "city": "Sarandi",
+ "neighborhood": "Jardim Centro Cívico",
+ "street": "Avenida das Torres",
+ "service": "open-cep",
+ "ibge": {
+  "city": "4126256",
+  "state": "41"
+ },
+ "timezoneName": "America/Sao_Paulo",
+ "location": {
+  "type": "Point",
+  "coordinates": {
+   "longitude": "-51.87389",
+   "latitude": "-23.44361"
+  }
+ }
+}

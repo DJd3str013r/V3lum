@@ -1,0 +1,110 @@
+{
+ "build_id": null,
+ "capped": [],
+ "comment": [],
+ "dynamic": {},
+ "errors": [],
+ "exports": [],
+ "exports_total": 0,
+ "go_buildinfo": false,
+ "header": {
+  "abiversion": 0,
+  "class": "ELFCLASS64",
+  "data": "ELFDATA2LSB",
+  "entry": 4194544,
+  "flags": 0,
+  "machine": "EM_X86_64",
+  "machine_arch": "x64",
+  "osabi": "ELFOSABI_SYSV",
+  "phentsize": 56,
+  "phnum": 3,
+  "phoff": 64,
+  "shentsize": 64,
+  "shnum": 4,
+  "shoff": 352,
+  "shstrndx": 3,
+  "type": "ET_EXEC"
+ },
+ "imports": [],
+ "imports_total": 0,
+ "interpreter": null,
+ "sections": [
+  {
+   "addr": 0,
+   "flags": 0,
+   "name": "",
+   "offset": 0,
+   "size": 0,
+   "type": "SHT_NULL"
+  },
+  {
+   "addr": 4194544,
+   "entropy": 0.0,
+   "flags": 6,
+   "name": ".text",
+   "offset": 240,
+   "oob": false,
+   "size": 64,
+   "type": "SHT_PROGBITS"
+  },
+  {
+   "addr": 4194608,
+   "entropy": 1.7058,
+   "flags": 2,
+   "name": ".v3lum_oob",
+   "offset": 304,
+   "oob": true,
+   "size": 2147483647,
+   "type": "SHT_PROGBITS"
+  },
+  {
+   "addr": 0,
+   "entropy": 3.8518,
+   "flags": 0,
+   "name": ".shstrtab",
+   "offset": 320,
+   "oob": false,
+   "size": 28,
+   "type": "SHT_STRTAB"
+  }
+ ],
+ "segments": [
+  {
+   "entropy": 1.4158,
+   "filesz": 320,
+   "flags": 5,
+   "memsz": 320,
+   "offset": 0,
+   "oob": false,
+   "type": "PT_LOAD",
+   "vaddr": 4194304
+  },
+  {
+   "filesz": 0,
+   "flags": 6,
+   "memsz": 0,
+   "offset": 320,
+   "type": "PT_LOAD",
+   "vaddr": 4194624
+  },
+  {
+   "filesz": 0,
+   "flags": 6,
+   "memsz": 0,
+   "offset": 0,
+   "type": "PT_GNU_STACK",
+   "vaddr": 4194304
+  }
+ ],
+ "size": 608,
+ "source": "pyelftools",
+ "symtab": {
+  "present": false
+ },
+ "upx": {
+  "info_banner": false,
+  "magic_offsets": [],
+  "version": null
+ },
+ "version": "0.33"
+}

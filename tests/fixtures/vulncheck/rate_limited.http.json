@@ -1,0 +1,18 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.vulncheck.com/v3/index/vulncheck-kev?cve=CVE-2021-44228",
+  "headers": {}
+ },
+ "response": {
+  "status": 429,
+  "headers": {
+   "content-type": "application/json",
+   "retry-after": "60"
+  },
+  "body": "{\"error\": true, \"errors\": [\"too many requests\"]}"
+ },
+ "transport_error": null,
+ "elapsed_s": 0.2,
+ "note": "DOC-SHAPED: VulnCheck error envelope {error: true, errors: [...]} with 429."
+}

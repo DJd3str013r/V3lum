@@ -1,0 +1,116 @@
+{
+ "batch": "p2-G07-2",
+ "modules": [
+  {
+   "name": "siem_search",
+   "file": "v3lum/modules/cti_framework/siem_search.py",
+   "proposal": "P349",
+   "category": "cti_framework",
+   "opsec": "passive",
+   "default_enabled": false,
+   "terms": "open",
+   "provider_tier": "n/a",
+   "keys": [
+    "siem"
+   ],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute siem_sighting",
+    "tag seen_in_logs"
+   ],
+   "live_check": "not live-checkable: the team's internal SIEM is not reachable from the datacenter egress (A12: synthetic OpenSearch/Elasticsearch and Splunk 10.6 fixtures); V3LUM_LIVE=1 run on 2026-11-26 confirmed that without siem_url/key/templates the module contacts nothing (NEEDS_KEY/SKIPPED config, 0 requests)"
+  },
+  {
+   "name": "offline_hash_sets",
+   "file": "v3lum/modules/malware_hash/offline_hash_sets.py",
+   "proposal": "P350",
+   "category": "malware_hash",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "license",
+   "provider_tier": "n/a",
+   "keys": [
+    "abusech (optional_keys; existing key, used by the dataset manager download, never by the module)"
+   ],
+   "datasets": [
+    "abusech_malwarebazaar_recent.csv (local copy shared with P156 threat_intel_ioc/abusech; not registered: keyed export templates are a core request)"
+   ],
+   "pivot_packs": [
+    "threat_intel_g07 (existing pack, link bazaar_sha256_search on hits)"
+   ],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute hash_set_hits"
+   ],
+   "live_check": "V3LUM_LIVE=1 run on 2026-11-26 (4 passed): the legacy keyless export https://bazaar.abuse.ch/export/csv/recent/ answers 410 and export_problem() refuses that body as a copy; https://bazaar.abuse.ch/export/ answers 200 HTML (refused as a copy); the module itself is offline (UNAVAILABLE 'dataset' without a local copy, 0 requests, no hosts). The keyed v2 export was not called (no Auth-Key in this environment)"
+  }
+ ],
+ "proposals_not_done": [],
+ "core_requests": [
+  "datasets: keyed URL templates in the dataset manager (e.g. register_dataset(name, 'https://mb-api.abuse.ch/v2/files/exports/{AUTH_KEY}/recent.csv', key='abusech', ttl=3600, validate=...)) substituting the configured key at download time and redacting it in MANIFEST.json, errors and events (AR01); then ONE registration of 'abusech_malwarebazaar_recent.csv' (source abusech.malwarebazaar, terms license, validator v3lum.modules.malware_hash.offline_hash_sets.export_problem) shared by abusech (P156) and offline_hash_sets (P350 C1/C5)",
+  "datasets: a row-returning index persisted next to the datasets (DatasetIndex.lookup(value) -> rows, SQLite) so offline_hash_sets/abusech/ioc_feeds_offline stop rebuilding in-memory indexes per process (P350 C1 'indexed into SQLite'; same request as p1-G07-1 for P159)",
+  "datasets: a compact on-disk index (sorted 8-byte prefix file or mmap Bloom reader) and size-confirmed 'v3lum data fetch <name>' for the VirusShare MD5 corpus (~1.4 GB, 512 lists) and the CIRCL hashlookup Bloom (1.0 GB) (P350 C3/C4; then a separate default-off virusshare_corpus module and a SHA-1 prefilter)",
+  "audit: a module-facing case-audit hook (e.g. ctx.audit(kind, payload) with a kind allow-list) so siem_search writes 'siem_query' rows (analyst, case id, ticket, template id/version, value HMAC, outcome) next to case_start; today the query log is in the run evidence (raw.query_log) and the live feed (P349 C6)",
+  "cli/context: ScanOptions.covert / ScanOptions.no_internal set by --covert / --no-internal (P348 C8, P349 C7); siem_search and the internal TIP adapters read them with getattr and skip every internal lookup (SKIPPED policy)",
+  "engine/context: a scan-scoped budget facility (e.g. ctx.scan_budget(name, cap)) for 'at most N queries per scan' limits; siem_search counts its <= 20 queries per case id in a module-level counter (P349 C4)",
+  "policy: PERSONAL_TYPES has no user_agent, but P349 C6 treats a user agent tied to a person as personal; siem_search enforces seed + case id + purpose + ticket for email/username/user_agent itself, the POL-07 purpose rule could cover user_agent for internal platforms too",
+  "reports (WP14/WP20): render the attribute siem_sighting.line ('seen in our logs: N events, first ..., last ...') in the first-screen/header block next to the 'known internally' line (P349 C4 'shown near the top'); findings carry the tags internal_sighting and seen_in_logs",
+  "exports (P303): map siem_sighting (count, first/last seen, index patterns) to a STIX 2.1 sighting (where_sighted = the organisation) and never export raw events (P349 C5)"
+ ],
+ "files": [
+  "v3lum/modules/cti_framework/siem_search.py",
+  "v3lum/modules/malware_hash/offline_hash_sets.py",
+  "v3lum/data/providers/internal_siem.json",
+  "v3lum/data/vocab/p2-G07-2.json",
+  "tests/modules/test_siem_search.py",
+  "tests/modules/test_offline_hash_sets.py",
+  "tests/live/test_p2_g07_2.py",
+  "tests/fixtures/acceptance/sha256/offline_hash_sets.json",
+  "docs/backlog/p2-G07-2.md",
+  "tests/fixtures/siem_search/es_bad_request.http.json",
+  "tests/fixtures/siem_search/es_capped.json",
+  "tests/fixtures/siem_search/es_empty.json",
+  "tests/fixtures/siem_search/es_forbidden.http.json",
+  "tests/fixtures/siem_search/es_html_login.http.json",
+  "tests/fixtures/siem_search/es_index_not_found.http.json",
+  "tests/fixtures/siem_search/es_malformed.txt",
+  "tests/fixtures/siem_search/es_ok.json",
+  "tests/fixtures/siem_search/es_rate_limited.http.json",
+  "tests/fixtures/siem_search/es_search_phase_failure.http.json",
+  "tests/fixtures/siem_search/es_shard_failures.json",
+  "tests/fixtures/siem_search/es_timed_out.json",
+  "tests/fixtures/siem_search/es_unauthorized.http.json",
+  "tests/fixtures/siem_search/opensearch_ok_int_total.json",
+  "tests/fixtures/siem_search/opensearch_unauthorized.http.json",
+  "tests/fixtures/siem_search/splunk_dispatch_ok.json",
+  "tests/fixtures/siem_search/splunk_dispatch_ok.xml",
+  "tests/fixtures/siem_search/splunk_forbidden.http.json",
+  "tests/fixtures/siem_search/splunk_job_done.json",
+  "tests/fixtures/siem_search/splunk_job_failed.json",
+  "tests/fixtures/siem_search/splunk_job_finalized.json",
+  "tests/fixtures/siem_search/splunk_job_queued.json",
+  "tests/fixtures/siem_search/splunk_job_running.json",
+  "tests/fixtures/siem_search/splunk_quota.http.json",
+  "tests/fixtures/siem_search/splunk_results_empty.json",
+  "tests/fixtures/siem_search/splunk_results_extra_fields.json",
+  "tests/fixtures/siem_search/splunk_results_ok.json",
+  "tests/fixtures/siem_search/splunk_results_partial.json",
+  "tests/fixtures/siem_search/splunk_saved_search_def.json",
+  "tests/fixtures/siem_search/splunk_saved_search_not_found.http.json",
+  "tests/fixtures/siem_search/splunk_unauthorized.http.json",
+  "tests/fixtures/siem_search/templates_approved_es.json",
+  "tests/fixtures/siem_search/templates_approved_splunk.json",
+  "tests/fixtures/siem_search/templates_rejected_es.json",
+  "tests/fixtures/siem_search/templates_rejected_splunk.json",
+  "tests/fixtures/offline_hash_sets/mb_export_docs_html.http.json",
+  "tests/fixtures/offline_hash_sets/mb_export_legacy_410.http.json",
+  "tests/fixtures/offline_hash_sets/mb_export_recent_header_only.csv",
+  "tests/fixtures/offline_hash_sets/mb_export_recent_ok.csv",
+  "tests/fixtures/offline_hash_sets/mb_export_recent_reordered.csv",
+  "tests/fixtures/offline_hash_sets/mb_export_recent_truncated.csv",
+  "tests/fixtures/offline_hash_sets/mb_unauthorized_401.http.json"
+ ],
+ "notes": "P349 siem_search: final condition 1 places it in cti_framework (the spec metadata said threat_intel_ioc; the binding final condition wins), next to the P348 TIP adapters. New provider internal_siem (internal: true, tier trusted, host only from module setting siem_url = env V3LUM_SIEM_URL, key 'siem' = env V3LUM_SIEM_TOKEN, http_profile concurrency 1, min_interval 1 s, retries 0, ttl 0). SOC-approved versioned template file (setting siem_search_templates, schema v3lum.siem_templates/1, one backend per file = primary SIEM, refused when group/world-writable); ES/OpenSearch: V3LUM builds term-only JSON DSL (size 0, track_total_hits 1000, min/max aggs, now-30d, allow_partial_search_results=false), Splunk: saved-search dispatch only (strict-charset IP/domain/hash/e-mail args, dispatchAs=user, trigger_actions=0, <=8 polls, results v2/v1) plus a daily read-only lint of the saved-search definition (ctx.state). Every request passes a read-only allow-list; hostile values (x\" OR * | delete, bare *, $args, subsearch, backticks, control chars) are tested. Output: counts + first/last seen only (siem_sighting, internal_sightings entry, info finding tagged internal_sighting/seen_in_logs, marking amber+strict by default), no pivots (max_pivots 0). Personal identifiers (email/username/user_agent) only for analyst-typed seeds of a case with purpose + ticket, HR/performance purposes refused, query log with analyst/case id/HMAC of the value in evidence. Covert flag of P348 honoured. <= 20 queries per scan (QUOTA beyond), 15 s default timeout, never above 30 s, window 30 d default capped at 90 d. P350 offline_hash_sets: offline (disclosure none), terms license (off under corporate until licence-cleared; policy gate verified: SKIPPED licence), default_enabled True. Reads the local copy abusech_malwarebazaar_recent.csv shared with P156 (never downloads; UNAVAILABLE dataset while missing), validates it (410/Unauthorized/HTML/truncated copies are errors, never empty), indexes sha256/sha1/md5 per dataset version, hit = medium 'known MalwareBazaar sample: <signature>, first seen <date>' with dataset dates in the finding and in the EMPTY coverage reason; file inputs hashed locally. VirusShare corpus and CIRCL Bloom deferred by P350 C3 (backlog with live-verified formats). No LIGHT/ACTIVE variants requested. Gates: tests/modules/test_siem_search.py + test_offline_hash_sets.py green; registry contract green for both modules; P327 lint clean on both files; ruff clean. Failures seen in the full suite belong to other in-progress batches (see test_result)."
+}

@@ -1,0 +1,55 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "apisguru",
+  "name": "APIs.guru OpenAPI directory",
+  "operator": "APIs.guru (open-source community project, github.com/APIs-guru/openapi-directory)",
+  "hosts": [
+    "api.apis.guru"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Long-running open-source community directory with an identifiable maintainer team and a public repository (A8 community); P069 chair rationale: 'Tier community for APIs.guru'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Community-curated directory of public OpenAPI definitions: entries are real public API descriptions, but the directory has been frozen since 2023-04 (newest 'updated' date seen 2026-11-26), so hits are old and coverage is partial."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "ttl": 86400,
+    "timeout": 60,
+    "retries": 1,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "directory": {
+      "title": "APIs.guru directory: v2/list.json (every provider, API version and spec URL) and v2/metrics.json, downloaded daily and matched locally",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/APIs-guru/openapi-directory",
+        "quote": "APIs.guru: CC0 data",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "apis.guru",
+      "sanitizer": null,
+      "dataset": "public_api_exposure.apisguru_list",
+      "notes": "Quote: research record C0179 terms (verified_live 200). list.json is 8.86 MB (> 5 MB: large, `v3lum data update public_api_exposure.apisguru_list` only, never mid-scan, A6 BR9 / AR10); a conditional GET answers 304 (ETag + Last-Modified). metrics.json (about 1 KB) is the small companion dataset public_api_exposure.apisguru_metrics (entry-count cross-check). The per-provider spec files are never requested: matching is local, so the target never reaches APIs.guru (P069 cond 1). Contact names and e-mails inside the directory are never read. Used by public_api_exposure."
+    }
+  },
+  "notes": "Owned by batch p3-G03-1 (P069 public_api_exposure)."
+}

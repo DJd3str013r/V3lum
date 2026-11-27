@@ -1,0 +1,14 @@
+{
+ "Status": 5,
+ "TC": false,
+ "RD": true,
+ "RA": true,
+ "AD": false,
+ "CD": false,
+ "Question": [
+  {
+   "name": "malware-test.example.net",
+   "type": 1
+  }
+ ]
+}

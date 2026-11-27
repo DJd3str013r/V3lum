@@ -1,0 +1,87 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "hybrid_analysis",
+  "name": "Hybrid Analysis (API v2 hash search and report summaries)",
+  "operator": "CrowdStrike, Inc. (Hybrid Analysis, formerly Payload Security)",
+  "hosts": [
+    "hybrid-analysis.com",
+    "www.hybrid-analysis.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Public malware sandbox operated by CrowdStrike, Inc., an established company with published terms and a business offering (A8 trusted); P174 final condition 3: 'Registry: tier trusted (CrowdStrike), terms key-terms'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Sandbox detonation verdicts with a threat score; contacted infrastructure includes benign OS/PKI/telemetry traffic, so contacted hosts are filtered through warninglists and kept at confidence <= 0.5 (P174 cond 5)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "ttl": 86400,
+    "min_interval": 2.0,
+    "retries": 0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {
+    "hybridanalysis": {
+      "description": "Hybrid Analysis API v2 key (api-key header; search/hash and report summaries only, never submissions)",
+      "signup_url": "https://www.hybrid-analysis.com/my-account?tab=%23api-key-tab",
+      "env": [
+        "V3LUM_HYBRIDANALYSIS_KEY",
+        "V3LUM_HYBRID_KEY",
+        "HYBRID_ANALYSIS_API_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "the terms page is JS-only (unverified 2026-11-26): record 'business' (key_plans.hybridanalysis) only when legal confirms the team's vetted free key permits corporate use; otherwise a CrowdStrike licence is required (P174 cond 3)"
+    }
+  },
+  "sources": {
+    "search": {
+      "title": "Hybrid Analysis API v2: POST /api/v2/search/hash and GET /api/v2/report/{id}/summary (read-only)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://www.hybrid-analysis.com/terms",
+        "quote": "Licence (legal floor): the terms page is JS-only (unverified 2026-11-26): legal records whether the team's vetted free key permits corporate use (key_plans.hybridanalysis='business'); otherwise a CrowdStrike licence is required before it runs under the corporate profile.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "hybrid_analysis",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P174 cond 3). Read-only by construction: POST /api/v2/search/hash (form hash=) and GET /api/v2/report/{id}/summary only; no /submit/* or /quick-scan/* endpoint is ever built (a public-sandbox submission publishes and detonates the sample, rule 7). Without a key: 403 {'message': 'API key is missing...'} (research); an invalid key: 403 'Your API key is incompatible with API v2'. 404 or [] = EMPTY. Submitted file names and submission records are never copied (personal-data risk). Provider data is not redistributed (x_redistribution).",
+      "licensed_alternative": "A CrowdStrike licence, or legal's written confirmation that the team's vetted free key permits corporate use (key_plans.hybridanalysis = 'business'); meanwhile the manual page threat_intel_g07_p2:hybrid_analysis_search."
+    },
+    "web_links": {
+      "title": "Hybrid Analysis sample and search pages (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.hybrid-analysis.com/terms",
+        "quote": "otherwise a CrowdStrike licence is required before it runs under the corporate profile.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "hybrid_analysis",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P174 cond 3). Search and report pages only (a JS application, not fetched); never the submission pages. V3LUM never fetches pivot links itself (P311)."
+    }
+  },
+  "x_redistribution": {
+    "external_exports": "verdict, link and source name only",
+    "basis": "P174 / A1: provider data stays internal; exports shared outside the company carry the verdict, the link and the source name"
+  },
+  "notes": "Owned by batch p2-G07-1 (P174). The key 'hybridanalysis' is the legacy config.KNOWN_KEYS entry; this fragment adds the aliases V3LUM_HYBRIDANALYSIS_KEY and V3LUM_HYBRID_KEY (P174 cond 1). No P334 quota block: the free key's limits are not published (an 'api-limits' response header is unverified); the module's daily_quota (200) is the interim budget until a team-key capture shows the real limits."
+}

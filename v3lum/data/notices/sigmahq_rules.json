@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "sigmahq_rules",
+  "source_url": "https://github.com/SigmaHQ/sigma",
+  "version": "sigma_core.zip release asset, downloaded at run time (test slice from release r2026-07-01)",
+  "sha256": "",
+  "licence": "DRL-1.1",
+  "attribution": "Sigma rules by the SigmaHQ contributors, Detection Rule License (DRL) 1.1 (https://github.com/SigmaHQ/Detection-Rule-License). V3LUM indexes rule metadata locally at run time and links each rule upstream; no Sigma-derived index is bundled. The test slice keeps metadata of 11 rules at their upstream paths and ids, without detection logic, authors credited upstream (see its NOTICE.txt).",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/cti_framework/technique_detections_tests.py",
+    "tests/fixtures/technique_detections_tests/sigma_core_slice.zip"
+  ]
+}

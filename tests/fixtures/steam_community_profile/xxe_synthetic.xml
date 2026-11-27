@@ -1,0 +1,3 @@
+<?xml version="1.0"?>
+<!DOCTYPE profile [<!ENTITY x "xx"><!ENTITY y "&x;&x;&x;&x;">]>
+<profile><steamID64>76561190000000002</steamID64><steamID>&y;</steamID></profile>

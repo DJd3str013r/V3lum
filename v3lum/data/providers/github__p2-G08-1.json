@@ -1,0 +1,24 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "github",
+  "hosts": [],
+  "sources": {
+    "osv_ghsa_advisories": {
+      "title": "GitHub REST API GET /advisories?cve_id={cve} (global security advisories; osv_ghsa through the P111 shared client)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+        "quote": "Abuse or excessively frequent requests to GitHub via the API may result in the temporary or permanent suspension of your Account's access to the API. [...] You may not share API tokens to exceed GitHub's rate limitations.",
+        "checked_at": "2026-11-26",
+        "reviewer": "batch p2-G08-1 (council-1 class kept: P185 cond 2 'GHSA through the GitHub REST API key-terms (as P111)')",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "ghsa",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "GitHub Terms of Service section H (API Terms), the same quote as github.github_user_api (P111). Advisory data: GitHub Advisory Database, CC BY 4.0 (attribution). Runs through the one GitHub client and budget of v3lum/modules/username_social/github_user.py (P111 cond 3): key 'github' from a team machine account with no scopes (cond 4), keyless only for analyst-typed CVEs (cond 5: 60 requests/h per egress IP shared by every GitHub module). Under the corporate profile it runs only once legal records free_plan_business_use for the GitHub API terms or key_plans.github = 'business'; OSV (osv.vulns) runs without it (P185 cond 2). Not verified from the research egress: the sandbox's GitHub proxy answered 403 'sessions are bound to their configured repositories' (the proxy, not GitHub); P185 cond 1 asks for a re-test from the team network before merge. Credits (GitHub logins) are never read."
+    }
+  },
+  "error_markers": [],
+  "notes": "Batch p2-G08-1 (P185 osv_ghsa): the GHSA REST source. The provider-wide marker github.github_user_rate_limit (p1-G05-1) already turns GitHub's 403/429 rate-limit answers into RATE_LIMITED for this source."
+}

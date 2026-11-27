@@ -1,0 +1,60 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "options": {
+  "mode": "passive",
+  "tlp": "amber",
+  "depth": 1
+ },
+ "nodes": [
+  {
+   "key": "username:example-dev",
+   "depth": 0,
+   "seed": true,
+   "attributes": {
+    "ssh_keys": [
+     {
+      "value": [
+       {
+        "type": "ssh-ed25519",
+        "fingerprint": "SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU",
+        "bits": 256
+       },
+       {
+        "type": "ecdsa-sha2-nistp256",
+        "fingerprint": "SHA256:p2QAMXNIC1TJYWeIOttrVc98/R1BUFWu3/LiyKgUfQM",
+        "bits": 256
+       }
+      ],
+      "source": "gitlab_user"
+     }
+    ]
+   }
+  },
+  {
+   "key": "username:example-dev-2",
+   "depth": 1,
+   "seed": false,
+   "attributes": {
+    "ssh_keys": [
+     {
+      "value": [
+       {
+        "type": "ssh-ed25519",
+        "fingerprint": "SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU",
+        "bits": 256
+       },
+       {
+        "type": "ecdsa-sha2-nistp256",
+        "fingerprint": "SHA256:p2QAMXNIC1TJYWeIOttrVc98/R1BUFWu3/LiyKgUfQM",
+        "bits": 256
+       }
+      ],
+      "source": "gitlab_user"
+     }
+    ]
+   }
+  }
+ ],
+ "edges": []
+}

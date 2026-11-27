@@ -1,0 +1,58 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "internet_archive",
+  "hosts": [],
+  "sources": {
+    "web_archives_cdx": {
+      "title": "Wayback CDX server web.archive.org/cdx/search/cdx as queried by web_archives (per-source status apart from the availability API)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://archive.org/about/terms",
+        "quote": "Registry terms (A1 BR3): the Internet Archive (Wayback CDX and availability), Arquivo.pt (FCT public service), Common Crawl (free terms of use) and CarbonDate (ODU academic service) are 'open', each recorded by legal with evidence; the Internet Archive grants access for research, so legal records internal CTI research as the purpose.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "archive.org",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P059 cond 10). Same endpoint family as internet_archive.wayback, split out so coverage reports the CDX apart from the availability API (P059 cond 4: per-source status). collapse=urlkey, fl=original,timestamp,statuscode,mimetype, limit/resumeKey, total row cap 20,000; a truncated body is partial, never complete. web.archive.org reset every connection from the datacenter egress on 2026-11-25/26 (research C0144): resets and timeouts are 'archive unreachable', never 'no captures'."
+    }
+  },
+  "error_markers": [
+    {
+      "id": "web_archives_ia_no_url",
+      "statuses": [200],
+      "json_path": null,
+      "equals": null,
+      "regex": "^\\s*Error: no url parameter",
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "Internet Archive: 'Error: no url parameter' inside an HTTP 200 answer (request rejected): could not verify"
+    },
+    {
+      "id": "web_archives_ia_blocked_site",
+      "statuses": [200, 403],
+      "json_path": null,
+      "equals": null,
+      "regex": "AdministrativeAccessControlException|Blocked Site Error",
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "Internet Archive: the site is excluded from the Wayback Machine (Blocked Site Error): could not verify, never 'no captures'"
+    },
+    {
+      "id": "web_archives_ia_robots",
+      "statuses": [200, 403],
+      "json_path": null,
+      "equals": null,
+      "regex": "RobotAccessControlException",
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "Internet Archive: captures excluded by robots.txt: could not verify, never 'no captures'"
+    }
+  ],
+  "notes": "Batch p1-G01-2 extension (P059): the CDX source of web_archives and the Internet Archive error-in-200 / exclusion markers (P321), each with a trimmed fixture under tests/fixtures/web_archives/."
+}

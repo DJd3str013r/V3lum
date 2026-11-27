@@ -1,0 +1,7 @@
+{
+ "request": "GET https://registro.br/v2/ajax/avail/raw/<name>.com.br",
+ "response": null,
+ "transport_error": "curl: (28) Operation timed out after 20001 milliseconds with 0 bytes received",
+ "elapsed_s": 20.0,
+ "note": "timeout -> could not verify (ERROR reason_code timeout), never EMPTY"
+}

@@ -1,0 +1,56 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "myssl",
+  "name": "MySSL subdomain discovery API (myssl.com)",
+  "operator": "TrustAsia Technologies (MySSL.com, China)",
+  "hosts": [
+    "myssl.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "Terms not reviewed; CN operator (queried domains are disclosed to a service in China: OPSEC and data residency). Chair decision P016: myssl.com is a separate toggle with terms 'unknown' and stays unknown tier until a promotion is recorded.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Hosts seen in MySSL's own TLS scans (with IP, port and TLS grade); the answer is per registrable domain and looked static between two days."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 15,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 2.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "discover_sub_domain": {
+      "title": "MySSL subdomain discovery (GET /api/v1/discover_sub_domain?domain={domain} -> {code, data[{domain, ip, port, level_str, is_sslvpn, evaluate_date}]})",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://myssl.com/",
+        "quote": "myssl.com (CN operator, terms not reviewed) and RapidDNS (HTML scraping) are separate toggles with terms 'unknown' until legal records them",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "myssl",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P016 cond 3). Research C0035; code != 0 is a partial/error flag (P016 cond 5). IPs and TLS grades are kept as attributes only, never pivoted. Off unless setting subdomains_passive_extra_myssl is enabled and legal records the terms."
+    }
+  },
+  "notes": "Owned by batch p2-G01-3 (P016, module subdomains_passive_extra, toggle subdomains_passive_extra_myssl)."
+}

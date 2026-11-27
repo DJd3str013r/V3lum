@@ -1,0 +1,38 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p1-G02-2",
+  "title": "Names used by batch p1-G02-2 (Tor relays, Shodan InternetDB, offline IP datasets, IP blocklists)",
+  "owner": "batch p1-G02-2 (P040, P043, P047, P149)",
+  "attributes": {
+    "is_tor_relay": "bool: the IP is an address of a running Tor relay (Onionoo running-relay summary or details)",
+    "tor_relay": "list of Tor relay facts for the IP from Onionoo {nickname, fingerprint, flags, running, first_seen, last_seen, asn, as_name, country, exit} (operator contact fields are never kept)",
+    "tor_exit_history": "list of dated Tor exit answers {date, source, state, text, observed_first, observed_last, fingerprints}: 'was an exit on <date>, CollecTor', relay periods from the mthcht history, or 'history not downloaded'",
+    "dataset_age": "list of 'dataset, fetched YYYY-MM-DD (age)' lines for the local datasets an offline answer used",
+    "network_type": "network class of the AS: 'eyeball', 'hosting', 'transit' or 'unknown' (bgp.tools class mapping)",
+    "as_class": "bgp.tools class label of the AS ('Eyeball', 'Content', 'Carrier', 'Unknown')",
+    "as_country": "ISO-3166 alpha-2 country the AS is registered in (IPtoASN / bgp.tools), not a geolocation",
+    "announced": "bool: the address lies in a BGP-announced range (IPtoASN 'Not routed' = false)",
+    "ip_range": "address range 'first-last' that contains the IP in the source dataset",
+    "as_range_count": "number of dataset ranges announced by the AS (IPtoASN)",
+    "as_ipv4_addresses": "number of IPv4 addresses in the ranges announced by the AS (IPtoASN)",
+    "continent": "continent code of the IP (offline geolocation database; country-level context only)",
+    "in_eu": "bool: the country of the IP is in the European Union (offline geolocation database)",
+    "blocklist_hits": "list of local blocklist hits {feed, name, family, listed_at, feed_age, currency, stale, fidelity, provenance {feed, fetched_at, sha256}, attribution, terms, restricted}",
+    "blocklist_families": "independent upstream families that list the entity (consensus votes: aggregates count as the families they embed)",
+    "ipsum_count": "number of public blocklists that list the IP according to IPsum",
+    "shared_ip": "bool: CDN / shared-edge / shared-hosting address (reputation capped, co-hosted names are not the target)",
+    "verdict_lifetime_days": "days a reputation verdict on this address stays valid (IaaS addresses are reassigned)",
+    "tls_self_signed": "bool: a TLS service on the host presents a self-signed certificate (scanner tag)",
+    "eol_software": "bool: end-of-life product or OS observed on the host (scanner tag, version-inferred)",
+    "is_honeypot": "bool: the scanner classifies the host as a honeypot",
+    "is_ics": "bool: industrial control system protocol exposed (scanner tag)",
+    "is_scanner": "bool: the address is classified as an internet scanner by the source",
+    "internetdb_status": "Shodan InternetDB answer state: 'seen' or 'not seen by Shodan scanners' (404 'No information available', never 'no open ports')"
+  },
+  "tags": {
+    "anonymizer": "anonymity infrastructure (Tor exit, anonymizing proxy): traffic from many users, no attribution possible - context, never malicious on its own",
+    "blocklisted": "listed on downloadable IP/ASN/certificate blocklists matched locally (see blocklist_hits for feeds and dates)",
+    "hijacked_netblock": "inside a netblock or AS that Spamhaus DROP/ASN-DROP lists as hijacked or operated by criminals"
+  },
+  "relations": {}
+}

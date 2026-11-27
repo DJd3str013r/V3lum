@@ -10,8 +10,9 @@ Module-author contract v2, section 6 (frozen in docs/MODULE_GUIDE.md):
   clock, cancel flag and event bus.
 * ``Context`` - the ``ctx`` a module receives: ``ctx.http`` (ScopedHttp carrying the module's
   metadata: host allow-list, request cap, deadline, error markers), ``ctx.dns`` (Resolver over a
-  per-run core DoH scope), ``ctx.net`` (core socket connector, target modules only), ``ctx.data``,
-  ``ctx.org``, ``ctx.state`` and the properties of the run.
+  per-run core DoH scope), ``ctx.net`` (core socket connector, target modules only), ``ctx.data``
+  (DataView bound to ``ctx.http``: ad-hoc ``fetch(name, url)`` downloads go through the module's own
+  scope), ``ctx.org``, ``ctx.state`` and the properties of the run.
 
 Modules never choose proxies, user agents or resolvers: everything network-related comes from here.
 """
@@ -278,6 +279,10 @@ class Runtime:
         self._quota_lock = threading.Lock()
         #: run-level facts collected by the engine (licence profile, egress, deadlines...).
         self.meta: dict[str, Any] = {}
+        #: the dataset registration sequence when the running scan started (None outside a scan): a
+        #: dataset registered after it is not a reviewed, import-time registration (P327 cond 5)
+        self.scan_dataset_seq: int | None = None
+        self._in_scan = False
         #: True while Engine.investigate runs (datasets are not downloaded then, AR10).
         self.in_scan = False
         #: objects with on_case_start / on_before_finish / on_case_end hooks (Engine.investigate).
@@ -368,6 +373,25 @@ class Runtime:
     def quota(self, value: Any) -> None:
         with self._quota_lock:
             self._quota = value
+
+    @property
+    def in_scan(self) -> bool:
+        """True while ``Engine.investigate`` (or a watch cycle) runs: datasets are not downloaded then
+        (AR10). Setting it True records :attr:`scan_dataset_seq` (the dataset registration sequence at
+        the start of the scan): a dataset registered later is not reviewed and the store never downloads
+        it mid-scan outside the module's own scope (P327 cond 5, A7)."""
+        return self._in_scan
+
+    @in_scan.setter
+    def in_scan(self, value: bool) -> None:
+        from v3lum.core.datasets import _registration_seq
+
+        value = bool(value)
+        if value and not self._in_scan:
+            self.scan_dataset_seq = _registration_seq()
+        elif not value:
+            self.scan_dataset_seq = None
+        self._in_scan = value
 
     @property
     def health(self) -> Any:
@@ -533,7 +557,10 @@ class Context:
             http=self.http, run=self.run, scope=scope,
             org=_org_of(runtime) if disclosure == "target" else None,  # third_party_hosted exclusion of ACTIVE network probes (A11 BR7)
         )
-        self.data = runtime.data.scoped()
+        # ad-hoc downloads (ctx.data.fetch(name, url) with an unregistered name) go through this run's
+        # own ScopedHttp: refused exactly like ctx.http (host, disclosure 'none', ACTIVE scope, egress -
+        # P327 cond 5, A7); registered datasets keep their reviewed dataset scope
+        self.data = runtime.data.scoped(http=self.http)
         self._state: ModuleState | None = None
 
     # ---- construction helpers ----------------------------------------------------------

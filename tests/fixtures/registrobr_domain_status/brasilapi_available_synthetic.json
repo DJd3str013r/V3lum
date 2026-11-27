@@ -1,0 +1,11 @@
+{
+ "status_code": 0,
+ "status": "AVAILABLE",
+ "fqdn": "v3lum-fixture-livre.com.br",
+ "fqdnace": "",
+ "exempt": false,
+ "suggestions": [
+  "app.br",
+  "net.br"
+ ]
+}

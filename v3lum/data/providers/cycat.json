@@ -1,0 +1,38 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "cycat",
+  "name": "CyCat - Cybersecurity Resource Catalogue (CIRCL)",
+  "operator": "CIRCL - Computer Incident Response Center Luxembourg",
+  "hosts": ["api.cycat.org"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Operated by CIRCL, the Luxembourg national CERT named by A8 among the trusted CSIRTs.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "C", "justification": "Catalogue of resources and MISP galaxy objects; no own assessment of actors."},
+  "http_profile": {"user_agent": "neutral", "accept": "application/json", "ttl": 86400},
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "api": {
+      "title": "CyCat API /search/<keyword> and /lookup/<uuid>",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://www.cycat.org/",
+        "quote": "",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "cycat",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "P295 cond 3: excluded. Research C0672 'CIRCL/CyCat open data (verify per item)': no single published terms text, so 'unknown' until reviewed. A fixture exists now (search APT28: 54 of 72 results are MISP galaxy uuids already bundled, 18 are CIRCL OSINT feed events); enabling it needs a chair decision because the keyword goes to a third party. Not used by any module."
+    }
+  },
+  "notes": "Owned by batch p1-G11-1 (P295). Recorded so the exclusion and its review queue entry are visible (doctor --licences); see docs/backlog/p1-G11-1.md."
+}

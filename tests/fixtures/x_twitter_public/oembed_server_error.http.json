@@ -1,0 +1,8 @@
+{
+ "_fixture": "SYNTHETIC: 503 from the edge",
+ "status": 503,
+ "headers": {
+  "content-type": "text/html"
+ },
+ "body": "<html><body>Over capacity</body></html>"
+}

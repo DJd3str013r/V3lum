@@ -1,0 +1,13 @@
+{
+ "_fixture": "REAL transport outcome 2026-11-26: web.archive.org reset the CDX connection (no HTTP response)",
+ "_meta": {
+  "url": "https://web.archive.org/cdx/search/cdx?url=twitter.com%2Fgithub%2Fstatus%2F%2A&output=json&fl=original%2Ctimestamp%2Cstatuscode&collapse=urlkey&filter=statuscode%3A200&limit=5",
+  "user_agent": "fixture-check/0.1",
+  "captured": "2026-11-26T09:14:45Z",
+  "elapsed_s": 10.015
+ },
+ "status": null,
+ "headers": {},
+ "body": null,
+ "error": "URLError: <urlopen error [Errno 104] Connection reset by peer>"
+}

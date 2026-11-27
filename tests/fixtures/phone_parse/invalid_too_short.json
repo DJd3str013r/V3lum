@@ -1,0 +1,26 @@
+{
+ "generator": "phonenumbers 9.0.44 facts (collect_phone_facts schema), batch p1-G06-1 prep 2026-11-26",
+ "lib": "phonenumbers",
+ "lib_version": "9.0.44",
+ "region_hint": "BR",
+ "result": {
+  "input": "+55 11 1234",
+  "region_hint": "BR",
+  "country_code": 55,
+  "national_number": "111234",
+  "valid": false,
+  "possible": false,
+  "possible_reason": 2,
+  "region": "BR",
+  "type": "UNKNOWN",
+  "e164": "+55111234",
+  "international": "+55 111234",
+  "national": "111234",
+  "geo_pt": "",
+  "carrier_pt": "",
+  "timezones": [
+   "Etc/Unknown"
+  ],
+  "ndc_len": 0
+ }
+}

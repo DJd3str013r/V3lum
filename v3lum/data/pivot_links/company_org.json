@@ -1,0 +1,136 @@
+{
+  "schema": "v3lum.pivot_pack/1",
+  "pack": "company_org",
+  "title": "Company registers, sanctions search and reverse WHOIS (P231)",
+  "notes": "Batch p2-G14-2 (pack only, no module). Order (P231 cond 6): company search (OpenSanctions, Companies House, OpenCorporates, GLEIF) first, then ViewDNS reverse WHOIS. Person-name and e-mail templates are privacy=true: rendered only for analyst-typed seeds of a case with a recorded purpose that opted in, never for discovered QSA partners, registrants, employees or customers (P231 cond 10, enforced by v3lum.core.links and the engine). Reverse-WHOIS results are ownership candidates for the analyst, never scope or own-asset evidence (P231 cond 11); ViewDNS reverseip and iphistory are not in this pack.",
+  "links": [
+    {
+      "id": "opensanctions_company",
+      "label": "OpenSanctions - sanctions/PEP web search (manual; screening needs P222)",
+      "template": "https://www.opensanctions.org/search/?q={q}",
+      "entity_types": [
+        "company_name"
+      ],
+      "category": "company",
+      "host": "www.opensanctions.org",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Research C0539: free to browse per the FAQ; routine screening goes through the licensed P222 path."
+    },
+    {
+      "id": "opensanctions_person",
+      "label": "OpenSanctions - sanctions/PEP web search for a person (case purpose required)",
+      "template": "https://www.opensanctions.org/search/?q={q}",
+      "entity_types": [
+        "person_name"
+      ],
+      "category": "company",
+      "host": "www.opensanctions.org",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": true,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "privacy=true: analyst-typed person seeds of a case with a recorded purpose and the opt-in only."
+    },
+    {
+      "id": "companies_house_search",
+      "label": "UK Companies House - company search",
+      "template": "https://find-and-update.company-information.service.gov.uk/search/companies?q={q}",
+      "entity_types": [
+        "company_name"
+      ],
+      "category": "company",
+      "host": "find-and-update.company-information.service.gov.uk",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Research C0540; 'Company search results' (2026-11-26)."
+    },
+    {
+      "id": "opencorporates_search",
+      "label": "OpenCorporates - company search (manual alternative to the paid API)",
+      "template": "https://opencorporates.com/companies?q={q}",
+      "entity_types": [
+        "company_name"
+      ],
+      "category": "company",
+      "host": "opencorporates.com",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "Anti-bot 403 for scripts (C0527): unverified until checked in a browser (P231 cond 9)."
+    },
+    {
+      "id": "gleif_search",
+      "label": "GLEIF - LEI search (manual alternative to the API)",
+      "template": "https://search.gleif.org/#/search/simpleSearch={q}",
+      "entity_types": [
+        "company_name"
+      ],
+      "category": "company",
+      "host": "search.gleif.org",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Single-page app: the value travels in the fragment; route to confirm in a browser (P231 cond 9)."
+    },
+    {
+      "id": "viewdns_rwhois_org",
+      "label": "ViewDNS - reverse WHOIS (ownership candidates, not scope)",
+      "template": "https://viewdns.info/reversewhois/?q={q}",
+      "entity_types": [
+        "company_name",
+        "domain"
+      ],
+      "category": "company",
+      "host": "viewdns.info",
+      "verified": true,
+      "checked_at": "2026-11-25",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "Results are ownership candidates for the analyst, never scope or own-asset evidence (P231 cond 11). Research C0537 200 on 2026-11-25; Cloudflare managed challenge for curl on 2026-11-26: re-check in a browser."
+    },
+    {
+      "id": "viewdns_rwhois_person",
+      "label": "ViewDNS - reverse WHOIS by person or e-mail (case purpose required)",
+      "template": "https://viewdns.info/reversewhois/?q={q}",
+      "entity_types": [
+        "person_name",
+        "email"
+      ],
+      "category": "company",
+      "host": "viewdns.info",
+      "verified": true,
+      "checked_at": "2026-11-25",
+      "privacy": true,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "privacy=true (P231 cond 10): analyst-typed seeds of a case with a recorded purpose that opted in; never discovered QSA partners, registrants, employees or customers. Results are ownership candidates for the analyst, never scope or own-asset evidence."
+    }
+  ]
+}

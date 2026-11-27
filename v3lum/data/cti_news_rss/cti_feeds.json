@@ -1,0 +1,465 @@
+{
+ "schema": "v3lum.cti_feeds/1",
+ "version": 1,
+ "checked_at": "2026-11-26",
+ "description": "Team-curated CTI news / advisory feed list of module cti_news_rss (P298 cond 1). Validated in CI by tests/modules/test_cti_news_rss.py (validate_feed_list). URLs are the final URLs after the redirects observed live on 2026-11-26; hosts are exact names owned by the provider of 'source'. Every feed stays enabled=false while its terms class is 'unknown' (A1, cond 3); a feed whose health is 'blocked' (anti-bot challenge) is never fetched (rule 1, A9) until the team network re-verifies it.",
+ "legal_decision_template": "feed-reader: poll <= hourly; headline + link + date only; no full text; no redistribution (FC3) - to be recorded per feed by legal with class and evidence",
+ "feeds": [
+  {
+   "id": "therecord",
+   "name": "The Record (Recorded Future News)",
+   "source": "therecord.rss",
+   "url": "https://therecord.media/feed",
+   "hosts": [
+    "therecord.media"
+   ],
+   "kind": "news",
+   "format": "rss",
+   "language": "en",
+   "tier": "trusted",
+   "tier_note": "P298 cond 9",
+   "terms": {
+    "class": "unknown",
+    "note": "feed carries 'Copyright (c) 2026 | The Record from Recorded Future News'; headline + link only",
+    "evidence_url": "https://therecord.media/feed",
+    "legal_decision": null
+   },
+   "health": {
+    "state": "ok",
+    "last_ok": "2026-11-26",
+    "checked_at": "2026-11-26",
+    "note": "200, 5 items, no ETag/Last-Modified (Cache-Control s-maxage=60)"
+   },
+   "min_interval_s": 3600,
+   "max_items": 200,
+   "max_bytes": 2097152,
+   "enabled": false,
+   "context": []
+  },
+  {
+   "id": "bleepingcomputer",
+   "name": "BleepingComputer",
+   "source": "bleepingcomputer.rss",
+   "url": "https://www.bleepingcomputer.com/feed/",
+   "hosts": [
+    "www.bleepingcomputer.com"
+   ],
+   "kind": "news",
+   "format": "rss",
+   "language": "en",
+   "tier": "community",
+   "tier_note": "proposed community: registry reviewer confirms (P298 cond 9: feed tiers drive the label and the A3 default only)",
+   "terms": {
+    "class": "unknown",
+    "note": "publisher feed; headline + link only",
+    "evidence_url": null,
+    "legal_decision": null
+   },
+   "health": {
+    "state": "ok",
+    "last_ok": "2026-11-26",
+    "checked_at": "2026-11-26",
+    "note": "200 via Cloudflare (no challenge for the feed), 15 items, ETag + Last-Modified"
+   },
+   "min_interval_s": 3600,
+   "max_items": 200,
+   "max_bytes": 2097152,
+   "enabled": false,
+   "context": []
+  },
+  {
+   "id": "dfirreport",
+   "name": "The DFIR Report",
+   "source": "thedfirreport.atom",
+   "url": "https://thedfirreport.com/feed/atom/",
+   "hosts": [
+    "thedfirreport.com"
+   ],
+   "kind": "news",
+   "format": "atom",
+   "language": "en",
+   "tier": "community",
+   "tier_note": "proposed community: registry reviewer confirms (P298 cond 9: feed tiers drive the label and the A3 default only)",
+   "terms": {
+    "class": "unknown",
+    "note": "publisher feed; headline + link only",
+    "evidence_url": null,
+    "legal_decision": null
+   },
+   "health": {
+    "state": "stale",
+    "last_ok": "2026-11-26",
+    "checked_at": "2026-11-26",
+    "note": "200 (301 from /feed/atom), newest entry 2026-08-24 = 93 days: publishes every 1-3 months, so the 90-day rule flags it; P298 cond 9 fixed 90-day rule: per-feed stale_days needs a chair decision (backlog)"
+   },
+   "min_interval_s": 3600,
+   "max_items": 200,
+   "max_bytes": 2097152,
+   "enabled": false,
+   "context": []
+  },
+  {
+   "id": "krebs",
+   "name": "KrebsOnSecurity",
+   "source": "krebsonsecurity.rss",
+   "url": "https://krebsonsecurity.com/feed/",
+   "hosts": [
+    "krebsonsecurity.com"
+   ],
+   "kind": "news",
+   "format": "rss",
+   "language": "en",
+   "tier": "community",
+   "tier_note": "proposed community: registry reviewer confirms (P298 cond 9: feed tiers drive the label and the A3 default only)",
+   "terms": {
+    "class": "unknown",
+    "note": "publisher feed with full article text (content:encoded, 125 KB): only headline + link + date are kept",
+    "evidence_url": null,
+    "legal_decision": null
+   },
+   "health": {
+    "state": "ok",
+    "last_ok": "2026-11-26",
+    "checked_at": "2026-11-26",
+    "note": "200, 10 items, Last-Modified"
+   },
+   "min_interval_s": 3600,
+   "max_items": 200,
+   "max_bytes": 2097152,
+   "enabled": false,
+   "context": []
+  },
+  {
+   "id": "helpnetsecurity",
+   "name": "Help Net Security",
+   "source": "helpnetsecurity.rss",
+   "url": "https://www.helpnetsecurity.com/feed/",
+   "hosts": [
+    "www.helpnetsecurity.com"
+   ],
+   "kind": "news",
+   "format": "rss",
+   "language": "en",
+   "tier": "community",
+   "tier_note": "proposed community: registry reviewer confirms (P298 cond 9: feed tiers drive the label and the A3 default only)",
+   "terms": {
+    "class": "unknown",
+    "note": "publisher feed; headline + link only",
+    "evidence_url": null,
+    "legal_decision": null
+   },
+   "health": {
+    "state": "ok",
+    "last_ok": "2026-11-26",
+    "checked_at": "2026-11-26",
+    "note": "200, 10 items, Last-Modified"
+   },
+   "min_interval_s": 3600,
+   "max_items": 200,
+   "max_bytes": 2097152,
+   "enabled": false,
+   "context": []
+  },
+  {
+   "id": "darkreading",
+   "name": "Dark Reading",
+   "source": "darkreading.rss",
+   "url": "https://www.darkreading.com/rss_simple.asp",
+   "hosts": [
+    "www.darkreading.com"
+   ],
+   "kind": "news",
+   "format": "rss",
+   "language": "en",
+   "tier": "community",
+   "tier_note": "proposed community: registry reviewer confirms (P298 cond 9: feed tiers drive the label and the A3 default only)",
+   "terms": {
+    "class": "unknown",
+    "note": "publisher feed; headline + link only",
+    "evidence_url": null,
+    "legal_decision": null
+   },
+   "health": {
+    "state": "blocked",
+    "last_ok": null,
+    "checked_at": "2026-11-26",
+    "note": "403 Cloudflare managed challenge (cf-mitigated: challenge) from the datacenter egress; never bypassed (FC4/A9). Re-check from the team network; if still challenged, ship as a manual link only"
+   },
+   "min_interval_s": 3600,
+   "max_items": 200,
+   "max_bytes": 2097152,
+   "enabled": false,
+   "context": []
+  },
+  {
+   "id": "cyberscoop",
+   "name": "CyberScoop (threats)",
+   "source": "cyberscoop.rss",
+   "url": "https://cyberscoop.com/news/threats/feed/",
+   "hosts": [
+    "cyberscoop.com",
+    "www.cyberscoop.com"
+   ],
+   "kind": "news",
+   "format": "rss",
+   "language": "en",
+   "tier": "community",
+   "tier_note": "proposed community: registry reviewer confirms (P298 cond 9: feed tiers drive the label and the A3 default only)",
+   "terms": {
+    "class": "unknown",
+    "note": "publisher feed; headline + link only",
+    "evidence_url": null,
+    "legal_decision": null
+   },
+   "health": {
+    "state": "ok",
+    "last_ok": "2026-11-26",
+    "checked_at": "2026-11-26",
+    "note": "200 after 301 from www.cyberscoop.com/news/threats/feed; 10 items; ETag + Last-Modified"
+   },
+   "min_interval_s": 3600,
+   "max_items": 200,
+   "max_bytes": 2097152,
+   "enabled": false,
+   "context": []
+  },
+  {
+   "id": "schneier",
+   "name": "Schneier on Security",
+   "source": "schneier.atom",
+   "url": "https://www.schneier.com/feed/atom/",
+   "hosts": [
+    "www.schneier.com"
+   ],
+   "kind": "news",
+   "format": "atom",
+   "language": "en",
+   "tier": "community",
+   "tier_note": "proposed community: registry reviewer confirms (P298 cond 9: feed tiers drive the label and the A3 default only)",
+   "terms": {
+    "class": "unknown",
+    "note": "author feed; headline + link only",
+    "evidence_url": null,
+    "legal_decision": null
+   },
+   "health": {
+    "state": "ok",
+    "last_ok": "2026-11-26",
+    "checked_at": "2026-11-26",
+    "note": "200, 10 entries, ETag + Last-Modified"
+   },
+   "min_interval_s": 3600,
+   "max_items": 200,
+   "max_bytes": 2097152,
+   "enabled": false,
+   "context": []
+  },
+  {
+   "id": "darkfeed",
+   "name": "DarkFeed (public RSS)",
+   "source": "darkfeed.rss",
+   "url": "https://darkfeed.io/feed/",
+   "hosts": [
+    "darkfeed.io"
+   ],
+   "kind": "darkweb_news",
+   "format": "rss",
+   "language": "en",
+   "tier": "unknown",
+   "label": "unverified source",
+   "tier_note": "P298 cond 9 (anonymous/unverified operator)",
+   "terms": {
+    "class": "unknown",
+    "note": "titles are ransomware group names; victim details are behind a login ('You must login to view this content')",
+    "evidence_url": null,
+    "legal_decision": null
+   },
+   "health": {
+    "state": "stale",
+    "last_ok": "2026-11-26",
+    "checked_at": "2026-11-26",
+    "note": "200 but newest item 2026-07-22 (126 days): public feed no longer updated"
+   },
+   "min_interval_s": 3600,
+   "max_items": 200,
+   "max_bytes": 2097152,
+   "enabled": false,
+   "context": [
+    "ransomware"
+   ]
+  },
+  {
+   "id": "darkwebinformer",
+   "name": "Dark Web Informer",
+   "source": "darkwebinformer.rss",
+   "url": "https://darkwebinformer.com/rss/",
+   "hosts": [
+    "darkwebinformer.com"
+   ],
+   "kind": "darkweb_news",
+   "format": "rss",
+   "language": "en",
+   "tier": "unknown",
+   "label": "unverified source",
+   "tier_note": "P298 cond 9 (anonymous/unverified operator)",
+   "terms": {
+    "class": "unknown",
+    "note": "Ghost feed with full article text (content:encoded): only headline + link + date are kept",
+    "evidence_url": null,
+    "legal_decision": null
+   },
+   "health": {
+    "state": "ok",
+    "last_ok": "2026-11-26",
+    "checked_at": "2026-11-26",
+    "note": "200, 15 items, weak ETag, ttl 60"
+   },
+   "min_interval_s": 3600,
+   "max_items": 200,
+   "max_bytes": 2097152,
+   "enabled": false,
+   "context": []
+  },
+  {
+   "id": "ichi",
+   "name": "ICHI critical vulnerability advisories",
+   "source": "ichi.alerts",
+   "url": "https://ichi.global/api/alerts",
+   "hosts": [
+    "ichi.global"
+   ],
+   "kind": "advisory",
+   "format": "rss",
+   "language": "en",
+   "tier": "unknown",
+   "label": "unverified source",
+   "tier_note": "P298 cond 9 (anonymous/unverified operator)",
+   "terms": {
+    "class": "unknown",
+    "note": "free public feed; terms on ichi.global not reviewed",
+    "evidence_url": "https://ichi.global/",
+    "legal_decision": null
+   },
+   "health": {
+    "state": "ok",
+    "last_ok": "2026-11-26",
+    "checked_at": "2026-11-26",
+    "note": "200, 36 items, complete valid XML (the research sample was truncated at 30,000 bytes); no ETag/Last-Modified"
+   },
+   "min_interval_s": 3600,
+   "max_items": 200,
+   "max_bytes": 2097152,
+   "enabled": false,
+   "context": []
+  },
+  {
+   "id": "databreaches",
+   "name": "DataBreaches.net",
+   "source": "databreaches.rss",
+   "url": "https://databreaches.net/feed/",
+   "hosts": [
+    "databreaches.net"
+   ],
+   "kind": "breach_news",
+   "format": "rss",
+   "language": "en",
+   "tier": "unknown",
+   "label": "unverified source",
+   "tier_note": "P298 cond 9 (anonymous/unverified operator)",
+   "terms": {
+    "class": "unknown",
+    "note": "Site content (c) DataBreaches.net: headlines + links only",
+    "evidence_url": "https://databreaches.net/",
+    "legal_decision": null
+   },
+   "health": {
+    "state": "ok",
+    "last_ok": "2026-11-26",
+    "checked_at": "2026-11-26",
+    "note": "200, 10 items, ETag + Last-Modified, conditional GET -> 304 verified"
+   },
+   "min_interval_s": 3600,
+   "max_items": 200,
+   "max_bytes": 2097152,
+   "enabled": false,
+   "context": []
+  },
+  {
+   "id": "certbr",
+   "name": "CERT.br novidades",
+   "source": "cert_br.rss",
+   "url": "https://cert.br/rss/certbr-rss.xml",
+   "hosts": [
+    "cert.br",
+    "www.cert.br"
+   ],
+   "kind": "cert",
+   "format": "rss",
+   "language": "pt-BR",
+   "tier": "trusted",
+   "tier_note": "P298 cond 9",
+   "terms": {
+    "class": "unknown",
+    "note": "the feed itself declares <copyright>CC BY-NC-ND 4.0</copyright>: likely 'noncommercial' for corporate use - legal must classify (FC3 drops feeds whose terms forbid business use)",
+    "evidence_url": "https://cert.br/rss/certbr-rss.xml",
+    "legal_decision": null
+   },
+   "health": {
+    "state": "ok",
+    "last_ok": "2026-11-26",
+    "checked_at": "2026-11-26",
+    "note": "www.cert.br answers 301 to cert.br; 14 items; ETag + Last-Modified; conditional GET -> 304 verified"
+   },
+   "min_interval_s": 3600,
+   "max_items": 200,
+   "max_bytes": 2097152,
+   "enabled": false,
+   "context": []
+  }
+ ],
+ "pending": [
+  {
+   "id": "ctir_gov",
+   "name": "CTIR Gov alertas",
+   "url": "https://www.gov.br/ctir/pt-br/assuntos/alertas-e-recomendacoes/alertas",
+   "hosts": [
+    "www.gov.br"
+   ],
+   "kind": "cert",
+   "status": "re-verify from the team network (FC2)",
+   "observed": "2026-11-25 and 2026-11-26: HTML 200 'Estamos em manutencao' page (no RSS endpoint confirmed)",
+   "source": "govbr.ctir_alerts"
+  },
+  {
+   "id": "cais_rnp",
+   "name": "CAIS/RNP alertas",
+   "url": "https://alertas.cais.rnp.br/feed/",
+   "hosts": [
+    "alertas.cais.rnp.br"
+   ],
+   "kind": "cert",
+   "status": "re-verify from the team network (FC2)",
+   "observed": "2026-11-25 and 2026-11-26: egress proxy CONNECT 502 (upstream unreachable)",
+   "source": "rnp.cais_alerts"
+  }
+ ],
+ "excluded": [
+  {
+   "id": "thehack",
+   "url": "https://www.thehack.com.br/rss/",
+   "reason": "stale: newest item 2022-05-16 although the channel lastBuildDate is current (FC2)"
+  },
+  {
+   "id": "cisoadvisor",
+   "url": "https://www.cisoadvisor.com.br/feed/",
+   "reason": "Cloudflare managed challenge (FC2, A9): manual link only"
+  }
+ ],
+ "not_in_fc1": [
+  {
+   "id": "securityweek",
+   "url": "https://feeds.feedburner.com/securityweek",
+   "note": "listed in the C0669 research record and feeds.feedburner.com is in the proposal hosts, but FC1 does not list SecurityWeek; 2026-11-26 it answered 301 to https://www.securityweek.com/feed/ (200, 10 items). Drop the host or ask the chair to add the feed (then declare www.securityweek.com too)"
+  }
+ ]
+}

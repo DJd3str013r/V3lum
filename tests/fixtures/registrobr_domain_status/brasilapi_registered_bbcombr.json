@@ -1,0 +1,20 @@
+{
+ "status_code": 2,
+ "status": "REGISTERED",
+ "fqdn": "bb.com.br",
+ "fqdnace": "",
+ "exempt": false,
+ "hosts": [
+  "dns1.bb.com.br",
+  "dns2.bb.com.br",
+  "dns3.bb.com.br",
+  "dns4.bb.com.br"
+ ],
+ "publication-status": "published",
+ "expires-at": "2028-03-04T00:00:00-03:00",
+ "suggestions": [
+  "agr.br",
+  "art.br",
+  "esp.br"
+ ]
+}

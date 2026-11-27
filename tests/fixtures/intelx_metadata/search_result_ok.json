@@ -1,0 +1,264 @@
+{
+ "_synthetic": "synthetic: IntelX API shape documented in the IntelligenceX SDK client vendored by h8mail (search start -> id/status; result -> records|selectors + status 0 results, 1 done, 2 id not found, 3 pending); documentation values only. P139-FC6: replace with a trimmed real answer before merge. Bucket names: documented IntelX buckets plus two invented leaves (leaks.private.examplesite, leaks.public.adultsite) to exercise P139-FC4 masking",
+ "records": [
+  {
+   "systemid": "11111111-2222-4333-8444-555555555551",
+   "owner": "",
+   "storageid": "0000000000000000000000000000000000000000000000000000000000abc001",
+   "instore": true,
+   "size": 1024,
+   "accesslevel": 0,
+   "type": 1,
+   "media": 24,
+   "added": "2021-03-05T10:11:12.345Z",
+   "date": "2021-03-04T00:00:00Z",
+   "name": "fixture-item-1.txt",
+   "description": "",
+   "xscore": 51,
+   "simhash": 1001,
+   "bucket": "leaks.public.general",
+   "keyvalues": null,
+   "tags": [
+    {
+     "class": 0,
+     "value": "fixture"
+    }
+   ],
+   "relations": [],
+   "accesslevelh": "Public",
+   "mediah": "Text File",
+   "simhashh": "00000000000003e9",
+   "typeh": "Plain Text",
+   "tagsh": [
+    {
+     "class": 0,
+     "classh": "Fixture",
+     "value": "fixture",
+     "valueh": "fixture"
+    }
+   ],
+   "randomid": "99999999-8888-4777-8666-555555555551",
+   "bucketh": "Data Leaks: Public",
+   "group": "",
+   "indexfile": "",
+   "historyfile": "",
+   "perfectmatch": false
+  },
+  {
+   "systemid": "11111111-2222-4333-8444-555555555552",
+   "owner": "",
+   "storageid": "0000000000000000000000000000000000000000000000000000000000abc002",
+   "instore": true,
+   "size": 2048,
+   "accesslevel": 0,
+   "type": 1,
+   "media": 1,
+   "added": "2023-07-01T08:05:00Z",
+   "date": "2023-07-01T08:00:00Z",
+   "name": "fixture-item-2.txt",
+   "description": "",
+   "xscore": 52,
+   "simhash": 1002,
+   "bucket": "pastes",
+   "keyvalues": null,
+   "tags": [
+    {
+     "class": 0,
+     "value": "fixture"
+    }
+   ],
+   "relations": [],
+   "accesslevelh": "Public",
+   "mediah": "Paste Document",
+   "simhashh": "00000000000003ea",
+   "typeh": "Plain Text",
+   "tagsh": [
+    {
+     "class": 0,
+     "classh": "Fixture",
+     "value": "fixture",
+     "valueh": "fixture"
+    }
+   ],
+   "randomid": "99999999-8888-4777-8666-555555555552",
+   "bucketh": "Pastes",
+   "group": "",
+   "indexfile": "",
+   "historyfile": "",
+   "perfectmatch": true
+  },
+  {
+   "systemid": "11111111-2222-4333-8444-555555555553",
+   "owner": "",
+   "storageid": "0000000000000000000000000000000000000000000000000000000000abc003",
+   "instore": true,
+   "size": 3072,
+   "accesslevel": 0,
+   "type": 1,
+   "media": 9,
+   "added": "2024-01-15T12:00:00Z",
+   "date": "0001-01-01T00:00:00Z",
+   "name": "fixture-item-3.txt",
+   "description": "",
+   "xscore": 53,
+   "simhash": 1003,
+   "bucket": "darknet.tor",
+   "keyvalues": null,
+   "tags": [
+    {
+     "class": 0,
+     "value": "fixture"
+    }
+   ],
+   "relations": [],
+   "accesslevelh": "Public",
+   "mediah": "HTML Copy of Website",
+   "simhashh": "00000000000003eb",
+   "typeh": "Plain Text",
+   "tagsh": [
+    {
+     "class": 0,
+     "classh": "Fixture",
+     "value": "fixture",
+     "valueh": "fixture"
+    }
+   ],
+   "randomid": "99999999-8888-4777-8666-555555555553",
+   "bucketh": "Darknet: Tor",
+   "group": "",
+   "indexfile": "",
+   "historyfile": "",
+   "perfectmatch": false
+  },
+  {
+   "systemid": "11111111-2222-4333-8444-555555555554",
+   "owner": "",
+   "storageid": "0000000000000000000000000000000000000000000000000000000000abc004",
+   "instore": true,
+   "size": 4096,
+   "accesslevel": 0,
+   "type": 1,
+   "media": 24,
+   "added": "2025-02-20T00:00:00Z",
+   "date": "2025-02-15T00:00:00Z",
+   "name": "fixture-item-4.txt",
+   "description": "",
+   "xscore": 54,
+   "simhash": 1004,
+   "bucket": "leaks.logs",
+   "keyvalues": null,
+   "tags": [
+    {
+     "class": 0,
+     "value": "fixture"
+    }
+   ],
+   "relations": [],
+   "accesslevelh": "Public",
+   "mediah": "Text File",
+   "simhashh": "00000000000003ec",
+   "typeh": "Plain Text",
+   "tagsh": [
+    {
+     "class": 0,
+     "classh": "Fixture",
+     "value": "fixture",
+     "valueh": "fixture"
+    }
+   ],
+   "randomid": "99999999-8888-4777-8666-555555555554",
+   "bucketh": "Leaks: Logs",
+   "group": "",
+   "indexfile": "",
+   "historyfile": "",
+   "perfectmatch": true
+  },
+  {
+   "systemid": "11111111-2222-4333-8444-555555555555",
+   "owner": "",
+   "storageid": "0000000000000000000000000000000000000000000000000000000000abc005",
+   "instore": true,
+   "size": 5120,
+   "accesslevel": 0,
+   "type": 1,
+   "media": 24,
+   "added": "2019-06-02T00:00:00Z",
+   "date": "2019-06-01T00:00:00Z",
+   "name": "fixture-item-5.txt",
+   "description": "",
+   "xscore": 55,
+   "simhash": 1005,
+   "bucket": "leaks.private.examplesite",
+   "keyvalues": null,
+   "tags": [
+    {
+     "class": 0,
+     "value": "fixture"
+    }
+   ],
+   "relations": [],
+   "accesslevelh": "Public",
+   "mediah": "Text File",
+   "simhashh": "00000000000003ed",
+   "typeh": "Plain Text",
+   "tagsh": [
+    {
+     "class": 0,
+     "classh": "Fixture",
+     "value": "fixture",
+     "valueh": "fixture"
+    }
+   ],
+   "randomid": "99999999-8888-4777-8666-555555555555",
+   "bucketh": "Data Leaks: Example Site",
+   "group": "",
+   "indexfile": "",
+   "historyfile": "",
+   "perfectmatch": false
+  },
+  {
+   "systemid": "11111111-2222-4333-8444-555555555556",
+   "owner": "",
+   "storageid": "0000000000000000000000000000000000000000000000000000000000abc006",
+   "instore": true,
+   "size": 6144,
+   "accesslevel": 0,
+   "type": 1,
+   "media": 24,
+   "added": "2018-01-02T00:00:00Z",
+   "date": "2018-01-01T00:00:00Z",
+   "name": "fixture-item-6.txt",
+   "description": "",
+   "xscore": 56,
+   "simhash": 1006,
+   "bucket": "leaks.public.adultsite",
+   "keyvalues": null,
+   "tags": [
+    {
+     "class": 0,
+     "value": "fixture"
+    }
+   ],
+   "relations": [],
+   "accesslevelh": "Public",
+   "mediah": "Text File",
+   "simhashh": "00000000000003ee",
+   "typeh": "Plain Text",
+   "tagsh": [
+    {
+     "class": 0,
+     "classh": "Fixture",
+     "value": "fixture",
+     "valueh": "fixture"
+    }
+   ],
+   "randomid": "99999999-8888-4777-8666-555555555556",
+   "bucketh": "Data Leaks: Adult Site",
+   "group": "",
+   "indexfile": "",
+   "historyfile": "",
+   "perfectmatch": true
+  }
+ ],
+ "status": 0
+}

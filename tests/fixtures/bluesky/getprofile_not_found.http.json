@@ -1,0 +1,22 @@
+{
+ "_meta": {
+  "module": "bluesky",
+  "case": "not_found",
+  "source": "C0231 public.api.bsky.app",
+  "request": {
+   "method": "GET",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=qz7k2v9m4p1w8n3x5c6b.bsky.social"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "LIVE",
+  "elapsed_s": 0.099,
+  "note": "random 20-char control handle that belongs to nobody"
+ },
+ "status": 400,
+ "headers": {
+  "content-type": "application/json; charset=utf-8",
+  "cache-control": "public, max-age=5",
+  "server": "BunnyCDN-IL1-941"
+ },
+ "body": "{\"error\":\"InvalidRequest\",\"message\":\"Profile not found\"}"
+}

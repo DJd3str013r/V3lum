@@ -1,0 +1,54 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "internal_esplora",
+  "name": "Self-hosted Esplora / electrs instance of the organisation (BTC, LTC)",
+  "operator": "The organisation running V3LUM (settings btc_explorers_esplora_url, btc_explorers_esplora_ltc_url)",
+  "hosts": [],
+  "hosts_from_settings": [
+    "btc_explorers_esplora_url",
+    "btc_explorers_esplora_ltc_url"
+  ],
+  "internal": true,
+  "tier": "trusted",
+  "tier_rationale": "Instance operated by the company or a contracted processor (A12: disclosure 'internal'); P211 cond 1 'a configured self-hosted esplora_url is always tried first' and the btc_esplora_internal class for TLP:AMBER+ and RED cases.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Own Esplora/electrs index of the public ledger: chain facts, as fresh as the node's sync state."
+  },
+  "http_profile": {
+    "accept": "application/json",
+    "timeout": 5.0,
+    "retries": 0,
+    "ttl": 3600
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "esplora": {
+      "title": "Self-hosted Esplora REST API (same paths as blockstream.info/api)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/Blockstream/esplora",
+        "quote": "a configured self-hosted esplora_url is always tried first. With one disclosure class per module (A8 BR7), the self-hosted path is also a class btc_esplora_internal (disclosure 'internal', no public failover) for TLP:AMBER+ and RED cases.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "self_hosted_esplora",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P211 cond 1). Esplora server software is MIT-licensed (research C0474) and runs on the organisation's own infrastructure: no third party receives the address. https base URLs only (hosts_from_settings): btc_explorers_esplora_url for BTC, btc_explorers_esplora_ltc_url for LTC (e.g. https://esplora.corp.example/api). Used by btc_explorers (first adapter) and btc_esplora_internal (only adapter)."
+    }
+  },
+  "notes": "Owned by batch p2-G09-2 (P211). Virtual internal provider: hosts come from the two https URL settings only; without them btc_esplora_internal is SKIPPED config."
+}

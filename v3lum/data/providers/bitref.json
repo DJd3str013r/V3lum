@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "bitref",
+  "name": "BitRef (Bitcoin address pages)",
+  "operator": "BitRef (operator not identified)",
+  "hosts": [
+    "bitref.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "Operator and terms not identified (A8 unknown); P216 cond 5: 'unknown - bitref.com'. Crypto addresses are IOC values, so the link only needs the 'unknown operator' badge (P216 chair rationale).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "F",
+    "justification": "Explorer of an unidentified operator: balances are chain facts but the operator cannot be judged."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "address_pages": {
+      "title": "BitRef address page /{btc_address} (manual pivot links)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://bitref.com/",
+        "quote": null,
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "bitref",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0503 (verified 2026-11-26: title holds the address). IOC values only (btc_address). Used by pivots_crypto."
+    }
+  },
+  "notes": "Manual pivot links only (batch p2-G14-2): V3LUM never fetches them (P311). Unknown tier: IOC values only (A8 BR4)."
+}

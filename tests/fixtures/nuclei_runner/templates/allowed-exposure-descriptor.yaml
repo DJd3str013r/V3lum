@@ -1,0 +1,25 @@
+id: git-config
+info:
+  name: Git Configuration - Detect
+  author: redacted
+  severity: medium
+  description: Git configuration was detected via the pattern /.git/config on passed URLs.
+  classification:
+    cwe-id: CWE-200
+  metadata:
+    max-request: 1
+  tags: config,git,exposure
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/.git/config"
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "[core]"
+      - type: status
+        status:
+          - 200
+# digest: 490a00463044022034a9525ce9da531319a29b323ef0bf50586206b952ac5dba38e22db9e414d933022000b10ca1e351a14c6c31591d5cd709039f17a8acd63774bd474418075f388c96:922c64590222798bb761d5b6d8e72950

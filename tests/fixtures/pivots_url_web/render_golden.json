@@ -1,0 +1,138 @@
+[
+ {
+  "ref": "urlscan_search:domain",
+  "renderer": "core",
+  "type": "domain",
+  "value": "example.com",
+  "url": "https://urlscan.io/domain/example.com",
+  "source": "live"
+ },
+ {
+  "ref": "urlscan_search:ip",
+  "renderer": "core",
+  "type": "ipv4",
+  "value": "8.8.8.8",
+  "url": "https://urlscan.io/ip/8.8.8.8",
+  "source": "live"
+ },
+ {
+  "ref": "urlscan_search:ip",
+  "renderer": "core",
+  "type": "ipv6",
+  "value": "2001:4860:4860::8888",
+  "url": "https://urlscan.io/ip/2001:4860:4860::8888",
+  "source": "live"
+ },
+ {
+  "ref": "url_web:builtwith_profile",
+  "renderer": "core",
+  "type": "domain",
+  "value": "example.com",
+  "url": "https://builtwith.com/example.com",
+  "source": "live"
+ },
+ {
+  "ref": "url_web:builtwith_relationships",
+  "renderer": "core",
+  "type": "domain",
+  "value": "google.com",
+  "url": "https://builtwith.com/relationships/google.com",
+  "source": "live"
+ },
+ {
+  "ref": "url_web:builtwith_tag",
+  "renderer": "core",
+  "type": "analytics_id",
+  "value": "GTM-5F22G6",
+  "url": "https://builtwith.com/relationships/tag/GTM-5F22G6",
+  "source": "live"
+ },
+ {
+  "ref": "url_web:netcraft_site_report",
+  "renderer": "core",
+  "type": "domain",
+  "value": "example.com",
+  "url": "https://sitereport.netcraft.com/?url=https%3A%2F%2Fexample.com",
+  "source": "live"
+ },
+ {
+  "ref": "url_web:scamadviser",
+  "renderer": "module",
+  "type": "domain",
+  "value": "example.com",
+  "url": "https://www.scamadviser.com/check-website/example.com",
+  "source": "spec"
+ },
+ {
+  "ref": "url_web:aa419",
+  "renderer": "core",
+  "type": "domain",
+  "value": "example.com",
+  "url": "https://db.aa419.org/fakebankslist.php?psearch=example.com",
+  "source": "live"
+ },
+ {
+  "ref": "url_web:aa419",
+  "renderer": "core",
+  "type": "keyword",
+  "value": "banco do brasil",
+  "url": "https://db.aa419.org/fakebankslist.php?psearch=banco%20do%20brasil",
+  "source": "encoded"
+ },
+ {
+  "ref": "url_web:w3techs",
+  "renderer": "core",
+  "type": "domain",
+  "value": "example.com",
+  "url": "https://w3techs.com/sites/info/example.com",
+  "source": "live"
+ },
+ {
+  "ref": "url_web:webtechsurvey",
+  "renderer": "core",
+  "type": "domain",
+  "value": "example.com",
+  "url": "https://webtechsurvey.com/website/example.com",
+  "source": "live"
+ },
+ {
+  "ref": "url_web:website_informer",
+  "renderer": "core",
+  "type": "domain",
+  "value": "example.com",
+  "url": "https://website.informer.com/example.com",
+  "source": "live"
+ },
+ {
+  "ref": "url_web:crawlgraph",
+  "renderer": "core",
+  "type": "domain",
+  "value": "example.com",
+  "url": "https://crawlgraph.com/backlinks/example.com",
+  "source": "live"
+ },
+ {
+  "ref": "url_web:ghostarchive",
+  "renderer": "core",
+  "type": "domain",
+  "value": "example.com",
+  "url": "https://ghostarchive.org/search?term=example.com",
+  "source": "live"
+ },
+ {
+  "ref": "url_web:securityheaders",
+  "renderer": "module",
+  "type": "domain",
+  "value": "example.com",
+  "url": "https://securityheaders.com/?q=example.com&hide=on&followRedirects=on",
+  "source": "spec"
+ },
+ {
+  "ref": "url_web:google_play_search",
+  "renderer": "core",
+  "type": "keyword",
+  "value": "banco do brasil",
+  "url": "https://play.google.com/store/search?q=banco%20do%20brasil&c=apps&hl=pt_BR&gl=BR",
+  "source": "spec"
+ }
+]

@@ -1,0 +1,81 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "urlquery",
+  "name": "urlquery.net (report search API v2)",
+  "operator": "urlquery AS (urlquery.net)",
+  "hosts": [
+    "api.urlquery.net"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Small company with an identifiable operator, public API documentation (docs.urlquery.net, public-v2 OpenAPI), published plans, retention and visibility rules; P078 chair rationale: 'Tier community (urlDNA, urlquery are small companies)'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Alerts (IDS, urlquery and analyzer verdicts) of dated reports made by other users: one vote in consensus, never ground truth; an empty alert list is not a verdict of safety (P078 cond 6)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "ttl": 86400,
+    "min_interval": 1.5,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "key",
+    "hour": 500,
+    "day": 500,
+    "published": true,
+    "evidence_url": "https://docs.urlquery.net/docs/concepts/plans",
+    "safety_margin": 0.8
+  },
+  "error_markers": [
+    {
+      "id": "urlquery_success_false",
+      "statuses": [200],
+      "json_path": "success",
+      "equals": false,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "urlquery: HTTP 200 with success=false (could not verify)"
+    }
+  ],
+  "keys": {
+    "urlquery": {
+      "description": "urlquery.net API key (header 'x-apikey'); report search only",
+      "signup_url": "https://urlquery.net/",
+      "env": [
+        "V3LUM_URLQUERY_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "the company-owned key whose plan legal recorded as business-compatible (key_plans.urlquery = 'business', P078 cond 4); every admitted request counts against the plan (RateLimit-Policy header)"
+    }
+  },
+  "sources": {
+    "search": {
+      "title": "urlquery GET /public/v2/reports/search (existing report overviews, visibility-filtered); no submission",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://docs.urlquery.net/docs/getting-started/safe-use",
+        "quote": "veto_lift: company-owned keys (urldna, urlquery in config.KNOWN_KEYS) with terms recorded by legal (key-terms). Registry terms per source (A1 BR3): urlDNA and urlquery are key-terms (company keys, plans recorded by legal).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "urlquery",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P078 cond 4-5). Research C0185: v1 keyless -> 401 with an empty body (observed 2026-11-25) = NEEDS_KEY; v1 is deprecated, v2 (servers https://api.urlquery.net/public/v2) documents 401 MISSING_API_KEY, 403 INVALID_API_KEY/FORBIDDEN, 429 RATE_LIMIT_EXCEEDED + Retry-After, 503 RATE_LIMIT_UNAVAILABLE and the {success, data|error} envelope. Search is filtered by visibility after matching: items [] with total_hits > 0 means 'matches not visible to this key', never 'not found'. /submissions, /reports/{id} DELETE and /detection/* are never built (P078 cond 1, test-asserted)."
+    }
+  },
+  "notes": "Owned by batch p9-G03-3 (P078 url_scanners_third_party). Report search only: no submission path exists (flags false)."
+}

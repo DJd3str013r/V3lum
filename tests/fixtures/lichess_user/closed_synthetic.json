@@ -1,0 +1,6 @@
+{
+ "_fixture": "SYNTHETIC (Lichess API docs: closed accounts return id, username and disabled=true)",
+ "id": "exampleclosed",
+ "username": "ExampleClosed",
+ "disabled": true
+}

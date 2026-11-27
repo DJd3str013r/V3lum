@@ -1,0 +1,52 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "binarydefense",
+  "name": "Binary Defense Artillery banlist",
+  "operator": "Binary Defense Systems, LLC",
+  "hosts": [
+    "binarydefense.com",
+    "www.binarydefense.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established security company with published terms and a commercial offering (A8 BR2).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Honeypot-observed attackers without dates or tags: a weak signal only."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "banlist": {
+      "title": "Binary Defense Artillery banlist (banlist.txt)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://binarydefense.com/banlist.txt",
+        "quote": "Note that this is for public use only. The ATIF feed may not be used for commercial resale or in products that are charging fees for such services.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "binarydefense",
+      "sanitizer": null,
+      "dataset": "ip_blocklists.binarydefense_banlist.txt",
+      "notes": "Quote: header of the feed itself (verbatim, checked 2026-11-26). Council class 'open' for internal use with no resale (P149 cond 1). www.binarydefense.com answers 301 to the apex host, so the apex URL is fetched. LOW fidelity weak tag. Used by ip_blocklists."
+    }
+  },
+  "notes": "Owned by batch p1-G02-2 (P149). Internal use only, never resold or redistributed (feed terms)."
+}

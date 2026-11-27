@@ -1,0 +1,43 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p2-G01-1",
+  "title": "Batch p2-G01-1 (host.io, NRD feeds, SecurityTrails, Digital Asset Links, gov.br list)",
+  "attributes": {
+    "official_android_apps": "list of {package, sha256} Android apps the site delegates to through its Digital Asset Links statements (package name and SHA-256 signing-certificate fingerprints, upper-case colon form): the organisation's declared official apps, never proof that other apps are fake",
+    "asset_link_sites": "web sites the domain's Digital Asset Links statements delegate to (handle_all_urls targets other than apps)",
+    "homepage_snapshot": "provider snapshot of the domain homepage {url, ip, date, rank, title, server, links, source}: 'date' is when the provider scraped it, not the current state",
+    "related_domain_counts": "number of domains sharing each value with the domain, per field {field: [{value, count}]} (host.io related: ip, ns, mx, asn, backlinks, redirects, adsense, googleanalytics, gtm...)",
+    "redirect_relations": "dated redirect relations of the domain [{from, to, observed_at, date_source}]: date_source 'hostio_web_date' (homepage scrape date) or 'fetch' (date V3LUM read the reverse-redirect list)",
+    "ip_registration_info": "registration and geo facts of the domain's addresses as reported by a provider {ip: {country, region, city, asn, as_name, route}}: registry data, never proof of physical location",
+    "shared_tracking_ids": "tracking ids of the domain seen on more than 50 domains (agency, CMS or platform ids, P061): never a same-owner link",
+    "dns_history_a": "historical A records of the domain from a DNS-history provider [{ip, first_seen, last_seen, organizations}]: past resolution, never current infrastructure",
+    "origin_ip_candidates": "historical non-CDN addresses of a CDN-fronted domain [{ip, first_seen, last_seen}]: origin-IP hypotheses, unconfirmed until passive evidence shows the address serves the site now",
+    "subdomain_count": "number of subdomains a provider reports for the domain (may exceed the names returned)",
+    "nrd_first_seen": "date the domain first appeared in a newly-registered-domain list (list date; WhoisDS names are 24-48 h old at publication): approximate registration time",
+    "nrd_hits": "matches of the org-profile brand or domain in newly registered (WhoisDS) and in-release (registro.br) lists [{domain, source, list_date, protected, technique, score, confirmed, confirmation, severity, tags}]",
+    "nrd_coverage": "NRD list coverage of one run {whoisds_days, newest_list, missing_days, registrobr_window, registrobr_generated_at, stale, wording}: what 'not found' covers",
+    "release_window": "registro.br release-process window of the list that names the domain {start, end, generated_at}: the name may have been re-registered since",
+    "official_gov_br": "exact match in the SISP official gov.br domain list {domain, registrant_cnpj, registrant, created, updated, list_date}: official status of this exact name only, never of URLs or subdomains on it",
+    "govbr_parent_listed": "listed gov.br parent of a subdomain in the SISP list: context only, no official status for the subdomain",
+    "govbr_domains": "gov.br domains registered by the CNPJ in the SISP official list (the registrant is often the IT operator, not the agency)",
+    "keyword_domains": "registered domains whose name contains the keyword (keyword search provider) [{domain, created, updated, is_dead}]: candidates to verify"
+  },
+  "tags": {
+    "in_release": "domain in the registro.br release process (expired, about to be released): re-registration risk, never 'newly registered'",
+    "official_gov_br": "exact domain listed in the SISP official gov.br domain list (federal government registration)",
+    "cdn_origin_hypothesis": "historical address of a CDN-fronted domain kept as an origin-IP hypothesis: unconfirmed, not current infrastructure",
+    "shared_tracking_id": "tracking id seen on more than 50 domains (agency or platform id): never a same-owner link (P061)"
+  },
+  "relations": {
+    "linked_from": "domain -> domain whose homepage links to it (backlink)",
+    "redirected_from": "domain -> domain whose homepage redirects to it (reverse redirect)",
+    "copied_tracking_id": "domain or tracking id -> non-own domain carrying an organisation tracking id (clone indicator, never a same-owner link)",
+    "historical_a_record": "domain -> IPv4 it resolved to in the past (DNS history, first/last seen): never current infrastructure",
+    "official_android_app": "domain -> Android package name the site delegates to (Digital Asset Links statement)",
+    "app_signing_cert": "domain -> SHA-256 fingerprint of the signing certificate of an Android app the site delegates to (Digital Asset Links)",
+    "brand_match": "brand keyword or own domain -> domain whose name matches it in a newly-registered, in-release or keyword-search list (lookalike candidate)"
+  },
+  "timeline": {
+    "nrd_first_seen": "first seen in a newly registered domains list"
+  }
+}

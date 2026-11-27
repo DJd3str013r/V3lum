@@ -1,0 +1,98 @@
+{
+ "domain": "mail.example.net",
+ "own_domain": false,
+ "expected": {
+  "findings": 1,
+  "severity": "INFO"
+ },
+ "answers": {
+  "mail.example.net TXT": {
+   "Status": 0,
+   "TC": false,
+   "RD": true,
+   "RA": true,
+   "AD": false,
+   "CD": false,
+   "Question": [
+    {
+     "name": "mail.example.net.",
+     "type": 16
+    }
+   ],
+   "Answer": [
+    {
+     "name": "mail.example.net.",
+     "type": 16,
+     "TTL": 300,
+     "data": "v=spf1 include:spf.protection.outlook.com -all"
+    }
+   ]
+  },
+  "spf.protection.outlook.com TXT": {
+   "Status": 0,
+   "TC": false,
+   "RD": true,
+   "RA": true,
+   "AD": false,
+   "CD": false,
+   "Question": [
+    {
+     "name": "spf.protection.outlook.com.",
+     "type": 16
+    }
+   ],
+   "Answer": [
+    {
+     "name": "spf.protection.outlook.com.",
+     "type": 16,
+     "TTL": 300,
+     "data": "v=spf1 ip4:40.92.0.0/15 -all"
+    }
+   ]
+  },
+  "_dmarc.mail.example.net TXT": {
+   "Status": 3,
+   "TC": false,
+   "RD": true,
+   "RA": true,
+   "AD": false,
+   "CD": false,
+   "Question": [
+    {
+     "name": "_dmarc.mail.example.net.",
+     "type": 16
+    }
+   ],
+   "Authority": [
+    {
+     "name": "mail.example.net.",
+     "type": 6,
+     "TTL": 900,
+     "data": "ns1.example.net. hostmaster.example.net. 1 7200 3600 1209600 900"
+    }
+   ]
+  },
+  "_dmarc.example.net TXT": {
+   "Status": 3,
+   "TC": false,
+   "RD": true,
+   "RA": true,
+   "AD": false,
+   "CD": false,
+   "Question": [
+    {
+     "name": "_dmarc.example.net.",
+     "type": 16
+    }
+   ],
+   "Authority": [
+    {
+     "name": "example.net.",
+     "type": 6,
+     "TTL": 900,
+     "data": "ns1.example.net. hostmaster.example.net. 1 7200 3600 1209600 900"
+    }
+   ]
+  }
+ }
+}

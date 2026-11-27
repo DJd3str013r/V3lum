@@ -1,0 +1,16 @@
+{
+ "schema": "v3lum.acceptance_routes/1",
+ "module": "favicon_hash",
+ "routes": [
+  {
+   "method": "GET",
+   "url": "https://web.archive.org/cdx/search/cdx?url=example.com%2Ffavicon.ico&output=json&fl=timestamp%2Coriginal%2Cdigest%2Cstatuscode%2Cmimetype&filter=statuscode%3A200&filter=%21mimetype%3Awarc%2Frevisit&collapse=digest&limit=500",
+   "status": 200,
+   "json": [],
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 2000
+  }
+ ]
+}

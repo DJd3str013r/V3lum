@@ -1,0 +1,1914 @@
+{
+ "schema": "v3lum.web_fingerprint.waf/1",
+ "source": "https://github.com/EnableSecurity/wafw00f (wafw00f/plugins/*.py, is_waf header/cookie checks on the NORMAL response only)",
+ "commit": "69fbe3956bba47a172cf87e40e9037535d32a130 2026-04-19T18:17:41+05:30",
+ "licence": "BSD-3-Clause",
+ "notice": "Copyright (c) 2009-2026, WAFW00F Developers. All rights reserved. Redistribution and use in source and binary forms, with or without modification, are permitted provided that the conditions of the BSD-3-Clause licence are met (see THIRD_PARTY_NOTICES.md).",
+ "semantics": "A signature matches when ANY rule matches; a rule is an expression tree of all/any over leaves. header leaf: re.search(regex, value, re.I) on the named response header (case-insensitive name); cookie leaf: re.search on each Set-Cookie header value separately. Rules that need matchContent/matchStatus/matchReason or attack=True (attack-payload probes) were dropped, never ported (FC6). kind: waf (a WAF product) or cdn_or_proxy (a proxy/CDN/load balancer front end, never reported as \"protected by WAF\"). Fixes: Shieldon header name [xx]-[pp]rotected-[bb]y (a dead regex in wafw00f) read as x-protected-by. Leading/trailing (.*)? and .* were removed from the regexes (equivalent under re.search, linear time on 8 KB header values: P072 cond 5 time budget). Two optional prefixes that made a regex quadratic were dropped: '(\\\\w+\\\\.)?airee\\\\.cloud' -> 'airee\\\\.cloud' and the CloudFront Via regex -> ' [\\\\w-]+\\\\.cloudfront\\\\.net \\\\(Cloudfront\\\\)'.",
+ "stats": {
+  "plugins": 172,
+  "unsupported": [],
+  "rules_total": 416,
+  "rules_passive": 170,
+  "plugins_with_passive": 101,
+  "bad_regex": []
+ },
+ "signatures": [
+  {
+   "name": "360PanYun (360 Technologies)",
+   "product": "360PanYun",
+   "vendor": "360 Technologies",
+   "plugin": "panyun360",
+   "priority": 0,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "panyun"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "360WangZhanBao (360 Technologies)",
+   "product": "360WangZhanBao",
+   "vendor": "360 Technologies",
+   "plugin": "wzb360",
+   "priority": 1,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "qianxin\\-waf"
+    },
+    {
+     "kind": "header",
+     "name": "wzws-ray",
+     "regex": ".+?"
+    },
+    {
+     "kind": "header",
+     "name": "x-powered-by-360wzb",
+     "regex": ".+?"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "ACE XML Gateway (Cisco)",
+   "product": "ACE XML Gateway",
+   "vendor": "Cisco",
+   "plugin": "ciscoacexml",
+   "priority": 2,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "ACE XML Gateway"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "ASPA Firewall (ASPA Engineering Co.)",
+   "product": "ASPA Firewall",
+   "vendor": "ASPA Engineering Co.",
+   "plugin": "aspa",
+   "priority": 4,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "ASPA[\\-_]?WAF"
+    },
+    {
+     "kind": "header",
+     "name": "aspa-cache-status",
+     "regex": ".+?"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "AWS Elastic Load Balancer (Amazon)",
+   "product": "AWS Elastic Load Balancer",
+   "vendor": "Amazon",
+   "plugin": "awswaf",
+   "priority": 5,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "x-amz-id",
+     "regex": ".+?"
+    },
+    {
+     "kind": "header",
+     "name": "x-amz-request-id",
+     "regex": ".+?"
+    },
+    {
+     "kind": "cookie",
+     "regex": "^aws.?alb="
+    },
+    {
+     "kind": "header",
+     "name": "x-blocked-by-waf",
+     "regex": "Blocked_by_custom_response_for_AWSManagedRules"
+    }
+   ],
+   "kind": "cdn_or_proxy"
+  },
+  {
+   "name": "AireeCDN (Airee)",
+   "product": "AireeCDN",
+   "vendor": "Airee",
+   "plugin": "airee",
+   "priority": 6,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "Airee"
+    },
+    {
+     "kind": "header",
+     "name": "x-cache",
+     "regex": "airee\\.cloud"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Airlock (Phion/Ergon)",
+   "product": "Airlock",
+   "vendor": "Phion/Ergon",
+   "plugin": "airlock",
+   "priority": 7,
+   "rules": [
+    {
+     "kind": "cookie",
+     "regex": "^al[_-]?(sess|lb)="
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Anquanbao (Anquanbao)",
+   "product": "Anquanbao",
+   "vendor": "Anquanbao",
+   "plugin": "anquanbao",
+   "priority": 11,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "x-powered-by-anquanbao",
+     "regex": ".+?"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Anubis (Techaro)",
+   "product": "Anubis",
+   "vendor": "Techaro",
+   "plugin": "anubis",
+   "priority": 12,
+   "rules": [
+    {
+     "kind": "cookie",
+     "regex": "-anubis-auth="
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "ArvanCloud (ArvanCloud)",
+   "product": "ArvanCloud",
+   "vendor": "ArvanCloud",
+   "plugin": "arvancloud",
+   "priority": 16,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "ArvanCloud"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Astra (Czar Securities)",
+   "product": "Astra",
+   "vendor": "Czar Securities",
+   "plugin": "astra",
+   "priority": 17,
+   "rules": [
+    {
+     "kind": "cookie",
+     "regex": "^cz_astra_csrf_cookie"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Azion Edge Firewall (Azion)",
+   "product": "Azion Edge Firewall",
+   "vendor": "Azion",
+   "plugin": "azion",
+   "priority": 18,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "x-azion-edge-pop",
+     "regex": ".+?"
+    },
+    {
+     "kind": "header",
+     "name": "x-azion-request-id",
+     "regex": ".+?"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Azure Front Door (Microsoft)",
+   "product": "Azure Front Door",
+   "vendor": "Microsoft",
+   "plugin": "frontdoor",
+   "priority": 20,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "x-azure-ref",
+     "regex": ".+?"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Baffin Bay (Mastercard)",
+   "product": "Baffin Bay",
+   "vendor": "Mastercard",
+   "plugin": "baffinbay",
+   "priority": 21,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "baffin-bay-inlet"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "BIG-IP AP Manager (F5 Networks)",
+   "product": "BIG-IP AP Manager",
+   "vendor": "F5 Networks",
+   "plugin": "f5bigipapm",
+   "priority": 22,
+   "rules": [
+    {
+     "any": [
+      {
+       "all": [
+        {
+         "kind": "cookie",
+         "regex": "^LastMRH_Session"
+        },
+        {
+         "kind": "cookie",
+         "regex": "^MRHSession"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "any": [
+      {
+       "kind": "cookie",
+       "regex": "^F5_fullWT"
+      },
+      {
+       "kind": "cookie",
+       "regex": "^F5_fullWT"
+      },
+      {
+       "kind": "cookie",
+       "regex": "^F5_HT_shrinked"
+      }
+     ]
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "BIG-IP AppSec Manager (F5 Networks)",
+   "product": "BIG-IP AppSec Manager",
+   "vendor": "F5 Networks",
+   "plugin": "f5bigipasm",
+   "priority": 23,
+   "rules": [
+    {
+     "kind": "cookie",
+     "regex": "TS[a-fA-F0-9]{8}=.+"
+    },
+    {
+     "kind": "cookie",
+     "regex": "TS[a-fA-F0-9]{6}=.+"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "BIG-IP Local Traffic Manager (F5 Networks)",
+   "product": "BIG-IP Local Traffic Manager",
+   "vendor": "F5 Networks",
+   "plugin": "f5bigipltm",
+   "priority": 24,
+   "rules": [
+    {
+     "kind": "cookie",
+     "regex": "^bigipserver"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Barracuda (Barracuda Networks)",
+   "product": "Barracuda",
+   "vendor": "Barracuda Networks",
+   "plugin": "barracuda",
+   "priority": 26,
+   "rules": [
+    {
+     "kind": "cookie",
+     "regex": "^barra_counter_session="
+    },
+    {
+     "kind": "cookie",
+     "regex": "^BNI__BARRACUDA_LB_COOKIE="
+    },
+    {
+     "kind": "cookie",
+     "regex": "^BNI_persistence="
+    },
+    {
+     "kind": "cookie",
+     "regex": "^BN[IE]S_.*?="
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Beluga CDN (Beluga)",
+   "product": "Beluga CDN",
+   "vendor": "Beluga",
+   "plugin": "beluga",
+   "priority": 28,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "Beluga"
+    },
+    {
+     "kind": "cookie",
+     "regex": "^beluga_request_trail="
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "BinarySec (BinarySec)",
+   "product": "BinarySec",
+   "vendor": "BinarySec",
+   "plugin": "binarysec",
+   "priority": 29,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "BinarySec"
+    },
+    {
+     "kind": "header",
+     "name": "x-binarysec-via",
+     "regex": ".+"
+    },
+    {
+     "kind": "header",
+     "name": "x-binarysec-nocache",
+     "regex": ".+"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "BlockDoS (BlockDoS)",
+   "product": "BlockDoS",
+   "vendor": "BlockDoS",
+   "plugin": "blockdos",
+   "priority": 31,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "blockdos\\.net"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Bluedon (Bluedon IST)",
+   "product": "Bluedon",
+   "vendor": "Bluedon IST",
+   "plugin": "bluedon",
+   "priority": 32,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "BDWAF"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "CacheFly CDN (CacheFly)",
+   "product": "CacheFly CDN",
+   "vendor": "CacheFly",
+   "plugin": "cachefly",
+   "priority": 34,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "bestcdn",
+     "regex": "Cachefly"
+    },
+    {
+     "kind": "cookie",
+     "regex": "^cfly_req.*="
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "CacheWall (Varnish)",
+   "product": "CacheWall",
+   "vendor": "Varnish",
+   "plugin": "cachewall",
+   "priority": 35,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "Varnish"
+    },
+    {
+     "kind": "header",
+     "name": "x-varnish",
+     "regex": ".+"
+    },
+    {
+     "kind": "header",
+     "name": "x-cachewall-action",
+     "regex": ".+?"
+    },
+    {
+     "kind": "header",
+     "name": "x-cachewall-reason",
+     "regex": ".+?"
+    }
+   ],
+   "kind": "cdn_or_proxy"
+  },
+  {
+   "name": "ChinaCache Load Balancer (ChinaCache)",
+   "product": "ChinaCache Load Balancer",
+   "vendor": "ChinaCache",
+   "plugin": "chinacache",
+   "priority": 37,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "powered-by-chinacache",
+     "regex": ".+"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Cloudflare (Cloudflare Inc.)",
+   "product": "Cloudflare",
+   "vendor": "Cloudflare Inc.",
+   "plugin": "cloudflare",
+   "priority": 41,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "cloudflare"
+    },
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "cloudflare[-_]nginx"
+    },
+    {
+     "kind": "header",
+     "name": "cf-ray",
+     "regex": ".+?"
+    },
+    {
+     "kind": "cookie",
+     "regex": "__cfduid"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Cloudfloor (Cloudfloor DNS)",
+   "product": "Cloudfloor",
+   "vendor": "Cloudfloor DNS",
+   "plugin": "cloudfloordns",
+   "priority": 42,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "CloudfloorDNS(.WAF)?"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Cloudfront (Amazon)",
+   "product": "Cloudfront",
+   "vendor": "Amazon",
+   "plugin": "cloudfront",
+   "priority": 43,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "Cloudfront"
+    },
+    {
+     "kind": "header",
+     "name": "via",
+     "regex": " [\\w-]+\\.cloudfront\\.net \\(Cloudfront\\)"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Comodo cWatch (Comodo CyberSecurity)",
+   "product": "Comodo cWatch",
+   "vendor": "Comodo CyberSecurity",
+   "plugin": "comodo",
+   "priority": 44,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "Protected by COMODO WAF(.+)?"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "CrawlProtect (Jean-Denis Brun)",
+   "product": "CrawlProtect",
+   "vendor": "Jean-Denis Brun",
+   "plugin": "crawlprotect",
+   "priority": 45,
+   "rules": [
+    {
+     "kind": "cookie",
+     "regex": "^crawlprotecttag="
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "DDoS-GUARD (DDOS-GUARD CORP.)",
+   "product": "DDoS-GUARD",
+   "vendor": "DDOS-GUARD CORP.",
+   "plugin": "ddosguard",
+   "priority": 46,
+   "rules": [
+    {
+     "kind": "cookie",
+     "regex": "^__ddg1.*?="
+    },
+    {
+     "kind": "cookie",
+     "regex": "^__ddg2.*?="
+    },
+    {
+     "kind": "cookie",
+     "regex": "^__ddgid.*?="
+    },
+    {
+     "kind": "cookie",
+     "regex": "^__ddgmark.*?="
+    },
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "ddos-guard"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "DOSarrest (DOSarrest Internet Security)",
+   "product": "DOSarrest",
+   "vendor": "DOSarrest Internet Security",
+   "plugin": "dosarrest",
+   "priority": 47,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "x-dis-request-id",
+     "regex": ".+"
+    },
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "DOSarrest"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "DataPower (IBM)",
+   "product": "DataPower",
+   "vendor": "IBM",
+   "plugin": "ibmdatapower",
+   "priority": 48,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "x-backside-transport",
+     "regex": "(OK|FAIL)"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Edgecast (Verizon Digital Media)",
+   "product": "Edgecast",
+   "vendor": "Verizon Digital Media",
+   "plugin": "edgecast",
+   "priority": 53,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "^ECD(.+)?"
+    },
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "^ECS"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Eisoo Cloud Firewall (Eisoo)",
+   "product": "Eisoo Cloud Firewall",
+   "vendor": "Eisoo",
+   "plugin": "eisoo",
+   "priority": 54,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "EisooWAF(\\-AZURE)?/?"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Envoy (EnvoyProxy)",
+   "product": "Envoy",
+   "vendor": "EnvoyProxy",
+   "plugin": "envoy",
+   "priority": 55,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "envoy"
+    },
+    {
+     "kind": "header",
+     "name": "x-envoy-upstream-service-time",
+     "regex": ".+"
+    },
+    {
+     "kind": "header",
+     "name": "x-envoy-downstream-service-cluster",
+     "regex": ".+"
+    },
+    {
+     "kind": "header",
+     "name": "x-envoy-downstream-service-node",
+     "regex": ".+"
+    },
+    {
+     "kind": "header",
+     "name": "x-envoy-external-address",
+     "regex": ".+"
+    },
+    {
+     "kind": "header",
+     "name": "x-envoy-force-trace",
+     "regex": ".+"
+    },
+    {
+     "kind": "header",
+     "name": "x-envoy-internal",
+     "regex": ".+"
+    },
+    {
+     "kind": "header",
+     "name": "x-envoy-original-dst-host",
+     "regex": ".+"
+    },
+    {
+     "kind": "header",
+     "name": "x-envoy-original-path",
+     "regex": ".+"
+    },
+    {
+     "kind": "header",
+     "name": "x-envoy-local-overloaded",
+     "regex": ".+"
+    }
+   ],
+   "kind": "cdn_or_proxy"
+  },
+  {
+   "name": "Expression Engine (EllisLab)",
+   "product": "Expression Engine",
+   "vendor": "EllisLab",
+   "plugin": "expressionengine",
+   "priority": 56,
+   "rules": [
+    {
+     "kind": "cookie",
+     "regex": "^exp_track.+?="
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Fastly (Fastly CDN)",
+   "product": "Fastly",
+   "vendor": "Fastly CDN",
+   "plugin": "fastly",
+   "priority": 57,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "x-fastly-request-id",
+     "regex": "\\w+"
+    },
+    {
+     "kind": "header",
+     "name": "x-served-by",
+     "regex": "^cache-[a-z]{3}\\d+-[A-Z]{3}"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "FirePass (F5 Networks)",
+   "product": "FirePass",
+   "vendor": "F5 Networks",
+   "plugin": "f5firepass",
+   "priority": 58,
+   "rules": [
+    {
+     "any": [
+      {
+       "all": [
+        {
+         "kind": "cookie",
+         "regex": "^VHOST"
+        },
+        {
+         "kind": "header",
+         "name": "location",
+         "regex": "\\/my\\.logon\\.php3"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "any": [
+      {
+       "all": [
+        {
+         "kind": "cookie",
+         "regex": "^F5_fire.+?"
+        },
+        {
+         "kind": "cookie",
+         "regex": "^F5_passid_shrinked"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Google Cloud App Armor (Google Cloud)",
+   "product": "Google Cloud App Armor",
+   "vendor": "Google Cloud",
+   "plugin": "gcparmor",
+   "priority": 63,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "via",
+     "regex": "1.1 google"
+    }
+   ],
+   "kind": "cdn_or_proxy"
+  },
+  {
+   "name": "Greywizard (Grey Wizard)",
+   "product": "Greywizard",
+   "vendor": "Grey Wizard",
+   "plugin": "greywizard",
+   "priority": 64,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "greywizard"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Huawei Cloud Firewall (Huawei)",
+   "product": "Huawei Cloud Firewall",
+   "vendor": "Huawei",
+   "plugin": "huaweicloud",
+   "priority": 65,
+   "rules": [
+    {
+     "kind": "cookie",
+     "regex": "^HWWAFSESID="
+    },
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "HuaweiCloudWAF"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "HyperGuard (Art of Defense)",
+   "product": "HyperGuard",
+   "vendor": "Art of Defense",
+   "plugin": "hyperguard",
+   "priority": 66,
+   "rules": [
+    {
+     "kind": "cookie",
+     "regex": "^WODSESSION="
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Imunify360 (CloudLinux)",
+   "product": "Imunify360",
+   "vendor": "CloudLinux",
+   "plugin": "imunify360",
+   "priority": 68,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "imunify360.{0,10}?"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Incapsula (Imperva Inc.)",
+   "product": "Incapsula",
+   "vendor": "Imperva Inc.",
+   "plugin": "incapsula",
+   "priority": 69,
+   "rules": [
+    {
+     "kind": "cookie",
+     "regex": "^incap_ses.*?="
+    },
+    {
+     "kind": "cookie",
+     "regex": "^visid_incap.*?="
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "IndusGuard (Indusface)",
+   "product": "IndusGuard",
+   "vendor": "Indusface",
+   "plugin": "indusguard",
+   "priority": 70,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "IF_WAF"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Instart DX (Instart Logic)",
+   "product": "Instart DX",
+   "vendor": "Instart Logic",
+   "plugin": "instartdx",
+   "priority": 71,
+   "rules": [
+    {
+     "any": [
+      {
+       "kind": "header",
+       "name": "x-instart-request-id",
+       "regex": ".+"
+      },
+      {
+       "kind": "header",
+       "name": "x-instart-cache",
+       "regex": ".+"
+      },
+      {
+       "kind": "header",
+       "name": "x-instart-wl",
+       "regex": ".+"
+      }
+     ]
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Jiasule (Jiasule)",
+   "product": "Jiasule",
+   "vendor": "Jiasule",
+   "plugin": "jiasule",
+   "priority": 73,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "jiasule\\-waf"
+    },
+    {
+     "kind": "cookie",
+     "regex": "^jsl_tracking(.+)?="
+    },
+    {
+     "kind": "cookie",
+     "regex": "__jsluid="
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "KeyCDN (KeyCDN)",
+   "product": "KeyCDN",
+   "vendor": "KeyCDN",
+   "plugin": "keycdn",
+   "priority": 76,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "KeyCDN"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Kona SiteDefender (Akamai)",
+   "product": "Kona SiteDefender",
+   "vendor": "Akamai",
+   "plugin": "kona",
+   "priority": 77,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "AkamaiGHost"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "LimeLight CDN (LimeLight)",
+   "product": "LimeLight CDN",
+   "vendor": "LimeLight",
+   "plugin": "limelight",
+   "priority": 78,
+   "rules": [
+    {
+     "kind": "cookie",
+     "regex": "^limelight"
+    },
+    {
+     "kind": "cookie",
+     "regex": "^l[mg]_sessid="
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Link11 WAAP (Link11)",
+   "product": "Link11 WAAP",
+   "vendor": "Link11",
+   "plugin": "link11",
+   "priority": 79,
+   "rules": [
+    {
+     "any": [
+      {
+       "kind": "header",
+       "name": "server",
+       "regex": "rhino-core-shield"
+      }
+     ]
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "MaxCDN (MaxCDN)",
+   "product": "MaxCDN",
+   "vendor": "MaxCDN",
+   "plugin": "maxcdn",
+   "priority": 82,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "x-cdn",
+     "regex": "maxcdn"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Mission Control Shield (Mission Control)",
+   "product": "Mission Control Shield",
+   "vendor": "Mission Control",
+   "plugin": "missioncontrol",
+   "priority": 83,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "Mission Control Application Shield"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "NAXSI (NBS Systems)",
+   "product": "NAXSI",
+   "vendor": "NBS Systems",
+   "plugin": "naxsi",
+   "priority": 85,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "x-data-origin",
+     "regex": "^naxsi(.+)?"
+    },
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "naxsi(.+)?"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "NSFocus (NSFocus Global Inc.)",
+   "product": "NSFocus",
+   "vendor": "NSFocus Global Inc.",
+   "plugin": "nsfocus",
+   "priority": 86,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "NSFocus"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "NetContinuum (Barracuda Networks)",
+   "product": "NetContinuum",
+   "vendor": "Barracuda Networks",
+   "plugin": "netcontinuum",
+   "priority": 88,
+   "rules": [
+    {
+     "kind": "cookie",
+     "regex": "^NCI__SessionId="
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "NetScaler AppFirewall (Citrix Systems)",
+   "product": "NetScaler AppFirewall",
+   "vendor": "Citrix Systems",
+   "plugin": "netscaler",
+   "priority": 89,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "via",
+     "regex": "NS\\-CACHE"
+    },
+    {
+     "kind": "cookie",
+     "regex": "^(ns_af=|citrix_ns_id|NSC_)"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "NevisProxy (AdNovum)",
+   "product": "NevisProxy",
+   "vendor": "AdNovum",
+   "plugin": "nevisproxy",
+   "priority": 90,
+   "rules": [
+    {
+     "kind": "cookie",
+     "regex": "^Navajo"
+    },
+    {
+     "kind": "cookie",
+     "regex": "^NP_ID"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Newdefend (NewDefend)",
+   "product": "Newdefend",
+   "vendor": "NewDefend",
+   "plugin": "newdefend",
+   "priority": 91,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "Newdefend"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "NullDDoS Protection (NullDDoS)",
+   "product": "NullDDoS Protection",
+   "vendor": "NullDDoS",
+   "plugin": "nullddos",
+   "priority": 94,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "NullDDoS(.System)?"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "OnMessage Shield (BlackBaud)",
+   "product": "OnMessage Shield",
+   "vendor": "BlackBaud",
+   "plugin": "onmessage",
+   "priority": 95,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "x-engine",
+     "regex": "onMessage Shield"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "PentaWAF (Global Network Services)",
+   "product": "PentaWAF",
+   "vendor": "Global Network Services",
+   "plugin": "pentawaf",
+   "priority": 100,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "PentaWaf(/[0-9\\.]+)?"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "PowerCDN (PowerCDN)",
+   "product": "PowerCDN",
+   "vendor": "PowerCDN",
+   "plugin": "powercdn",
+   "priority": 102,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "via",
+     "regex": "powercdn.com"
+    },
+    {
+     "kind": "header",
+     "name": "x-cache",
+     "regex": "powercdn.com"
+    },
+    {
+     "kind": "header",
+     "name": "x-cdn",
+     "regex": "PowerCDN"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Profense (ArmorLogic)",
+   "product": "Profense",
+   "vendor": "ArmorLogic",
+   "plugin": "profense",
+   "priority": 103,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "Profense"
+    },
+    {
+     "kind": "cookie",
+     "regex": "^PLBSID="
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Puhui (Puhui)",
+   "product": "Puhui",
+   "vendor": "Puhui",
+   "plugin": "puhui",
+   "priority": 104,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "Puhui[\\-_]?WAF"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Qiniu (Qiniu CDN)",
+   "product": "Qiniu",
+   "vendor": "Qiniu CDN",
+   "plugin": "qiniu",
+   "priority": 106,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "x-qiniu-cdn",
+     "regex": "\\d+?"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Qrator (Qrator)",
+   "product": "Qrator",
+   "vendor": "Qrator",
+   "plugin": "qrator",
+   "priority": 107,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "QRATOR"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "RayWAF (WebRay Solutions)",
+   "product": "RayWAF",
+   "vendor": "WebRay Solutions",
+   "plugin": "webray",
+   "priority": 109,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "WebRay\\-WAF"
+    },
+    {
+     "kind": "header",
+     "name": "drivedby",
+     "regex": "RaySrv.RayEng/[0-9\\.]+?"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Reblaze (Reblaze)",
+   "product": "Reblaze",
+   "vendor": "Reblaze",
+   "plugin": "reblaze",
+   "priority": 110,
+   "rules": [
+    {
+     "any": [
+      {
+       "kind": "cookie",
+       "regex": "^rbzid"
+      },
+      {
+       "kind": "header",
+       "name": "server",
+       "regex": "Reblaze Secure Web Gateway"
+      }
+     ]
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Safe3 Web Firewall (Safe3)",
+   "product": "Safe3 Web Firewall",
+   "vendor": "Safe3",
+   "plugin": "safe3",
+   "priority": 115,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "Safe3 Web Firewall"
+    },
+    {
+     "kind": "header",
+     "name": "x-powered-by",
+     "regex": "Safe3WAF/[\\.0-9]+?"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Safedog (SafeDog)",
+   "product": "Safedog",
+   "vendor": "SafeDog",
+   "plugin": "safedog",
+   "priority": 116,
+   "rules": [
+    {
+     "kind": "cookie",
+     "regex": "^safedog\\-flow\\-item="
+    },
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "Safedog"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Scutum (Secure Sky Technology Inc.)",
+   "product": "Scutum",
+   "vendor": "Secure Sky Technology Inc.",
+   "plugin": "scutum",
+   "priority": 118,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "Scutum"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "SecKing (SecKing)",
+   "product": "SecKing",
+   "vendor": "SecKing",
+   "plugin": "secking",
+   "priority": 119,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "secking(.?waf)?"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Secure Entry (United Security Providers)",
+   "product": "Secure Entry",
+   "vendor": "United Security Providers",
+   "plugin": "secureentry",
+   "priority": 121,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "Secure Entry Server"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "ServerDefender VP (Port80 Software)",
+   "product": "ServerDefender VP",
+   "vendor": "Port80 Software",
+   "plugin": "serverdefender",
+   "priority": 123,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "x-pint",
+     "regex": "p(ort\\-)?80"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Shieldon Firewall (Shieldon.io)",
+   "product": "Shieldon Firewall",
+   "vendor": "Shieldon.io",
+   "plugin": "shieldon",
+   "priority": 126,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "x-protected-by",
+     "regex": "shieldon.io"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "SonicWall (Dell)",
+   "product": "SonicWall",
+   "vendor": "Dell",
+   "plugin": "sonicwall",
+   "priority": 130,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "SonicWALL"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Squarespace (Squarespace)",
+   "product": "Squarespace",
+   "vendor": "Squarespace",
+   "plugin": "squarespace",
+   "priority": 131,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "Squarespace"
+    },
+    {
+     "kind": "cookie",
+     "regex": "^SS_ANALYTICS_ID="
+    },
+    {
+     "kind": "cookie",
+     "regex": "^SS_MATTR="
+    },
+    {
+     "kind": "cookie",
+     "regex": "^SS_MID="
+    },
+    {
+     "kind": "cookie",
+     "regex": "SS_CVT="
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Sucuri CloudProxy (Sucuri Inc.)",
+   "product": "Sucuri CloudProxy",
+   "vendor": "Sucuri Inc.",
+   "plugin": "sucuri",
+   "priority": 134,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "x-sucuri-id",
+     "regex": ".+?"
+    },
+    {
+     "kind": "header",
+     "name": "x-sucuri-cache",
+     "regex": ".+?"
+    },
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "Sucuri(\\-Cloudproxy)?"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Teros (Citrix Systems)",
+   "product": "Teros",
+   "vendor": "Citrix Systems",
+   "plugin": "teros",
+   "priority": 136,
+   "rules": [
+    {
+     "kind": "cookie",
+     "regex": "^st8id="
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Trafficshield (F5 Networks)",
+   "product": "Trafficshield",
+   "vendor": "F5 Networks",
+   "plugin": "f5trafficshield",
+   "priority": 138,
+   "rules": [
+    {
+     "kind": "cookie",
+     "regex": "^ASINFO="
+    },
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "F5-TrafficShield"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "TransIP Web Firewall (TransIP)",
+   "product": "TransIP Web Firewall",
+   "vendor": "TransIP",
+   "plugin": "transip",
+   "priority": 139,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "x-transip-backend",
+     "regex": ".+"
+    },
+    {
+     "kind": "header",
+     "name": "x-transip-balancer",
+     "regex": ".+"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "UEWaf (UCloud)",
+   "product": "UEWaf",
+   "vendor": "UCloud",
+   "plugin": "uewaf",
+   "priority": 140,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "uewaf(/[0-9\\.]+)?"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "URLMaster SecurityCheck (iFinity/DotNetNuke)",
+   "product": "URLMaster SecurityCheck",
+   "vendor": "iFinity/DotNetNuke",
+   "plugin": "urlmaster",
+   "priority": 141,
+   "rules": [
+    {
+     "any": [
+      {
+       "kind": "header",
+       "name": "x-urlmaster-debug",
+       "regex": ".+"
+      },
+      {
+       "kind": "header",
+       "name": "x-urlmaster-ex",
+       "regex": ".+"
+      }
+     ]
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Variti (Variti)",
+   "product": "Variti",
+   "vendor": "Variti",
+   "plugin": "variti",
+   "priority": 144,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "Variti(?:\\/[a-z0-9\\.\\-]+)?"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "WTS-WAF (WTS)",
+   "product": "WTS-WAF",
+   "vendor": "WTS",
+   "plugin": "wts",
+   "priority": 150,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "wts/[0-9\\.]+?"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Wallarm (Wallarm Inc.)",
+   "product": "Wallarm",
+   "vendor": "Wallarm Inc.",
+   "plugin": "wallarm",
+   "priority": 151,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "nginx[\\-_]wallarm"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "WatchGuard (WatchGuard Technologies)",
+   "product": "WatchGuard",
+   "vendor": "WatchGuard Technologies",
+   "plugin": "watchguard",
+   "priority": 152,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "WatchGuard"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "WebLand (WebLand)",
+   "product": "WebLand",
+   "vendor": "WebLand",
+   "plugin": "webland",
+   "priority": 155,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "protected by webland"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "WebSEAL (IBM)",
+   "product": "WebSEAL",
+   "vendor": "IBM",
+   "plugin": "webseal",
+   "priority": 156,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "WebSEAL"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "West263 CDN (West263CDN)",
+   "product": "West263 CDN",
+   "vendor": "West263CDN",
+   "plugin": "west263cdn",
+   "priority": 158,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "x-cache",
+     "regex": "WS?T263CDN"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Wordfence (Defiant)",
+   "product": "Wordfence",
+   "vendor": "Defiant",
+   "plugin": "wordfence",
+   "priority": 159,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "wf[_\\-]?WAF"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "XLabs Security WAF (XLabs)",
+   "product": "XLabs Security WAF",
+   "vendor": "XLabs",
+   "plugin": "xlabssecuritywaf",
+   "priority": 160,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "x-cdn",
+     "regex": "XLabs Security"
+    },
+    {
+     "kind": "header",
+     "name": "secured",
+     "regex": "^By XLabs Security"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "YXLink (YxLink Technologies)",
+   "product": "YXLink",
+   "vendor": "YxLink Technologies",
+   "plugin": "yxlink",
+   "priority": 162,
+   "rules": [
+    {
+     "kind": "cookie",
+     "regex": "^yx_ci_session="
+    },
+    {
+     "kind": "cookie",
+     "regex": "^yx_language="
+    },
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "Yxlink([\\-_]?WAF)?"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Yundun (Yundun)",
+   "product": "Yundun",
+   "vendor": "Yundun",
+   "plugin": "yundun",
+   "priority": 163,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "YUNDUN"
+    },
+    {
+     "kind": "header",
+     "name": "x-cache",
+     "regex": "YUNDUN"
+    },
+    {
+     "kind": "cookie",
+     "regex": "^yd_cookie="
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Yunjiasu (Baidu Cloud Computing)",
+   "product": "Yunjiasu",
+   "vendor": "Baidu Cloud Computing",
+   "plugin": "baidu",
+   "priority": 164,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "yunjiasu"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Yunsuo (Yunsuo)",
+   "product": "Yunsuo",
+   "vendor": "Yunsuo",
+   "plugin": "yunsuo",
+   "priority": 165,
+   "rules": [
+    {
+     "kind": "cookie",
+     "regex": "^yunsuo_session="
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "ZScaler (Accenture)",
+   "product": "ZScaler",
+   "vendor": "Accenture",
+   "plugin": "zscaler",
+   "priority": 166,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "ZScaler"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "Zenedge (Zenedge)",
+   "product": "Zenedge",
+   "vendor": "Zenedge",
+   "plugin": "zenedge",
+   "priority": 167,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "server",
+     "regex": "ZENEDGE"
+    },
+    {
+     "kind": "header",
+     "name": "x-zen-fury",
+     "regex": ".+?"
+    }
+   ],
+   "kind": "waf"
+  },
+  {
+   "name": "aeSecure (aeSecure)",
+   "product": "aeSecure",
+   "vendor": "aeSecure",
+   "plugin": "aesecure",
+   "priority": 168,
+   "rules": [
+    {
+     "kind": "header",
+     "name": "aesecure-code",
+     "regex": ".+?"
+    }
+   ],
+   "kind": "waf"
+  }
+ ]
+}

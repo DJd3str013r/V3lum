@@ -1,0 +1,26 @@
+{
+ "generator": "phonenumbers 9.0.44 facts (collect_phone_facts schema), batch p1-G06-1 prep 2026-11-26",
+ "lib": "phonenumbers",
+ "lib_version": "9.0.44",
+ "region_hint": "BR",
+ "result": {
+  "input": "+1 415-555-0100",
+  "region_hint": "BR",
+  "country_code": 1,
+  "national_number": "4155550100",
+  "valid": true,
+  "possible": true,
+  "possible_reason": 0,
+  "region": "US",
+  "type": "FIXED_LINE_OR_MOBILE",
+  "e164": "+14155550100",
+  "international": "+1 415-555-0100",
+  "national": "(415) 555-0100",
+  "geo_pt": "San Francisco, CA",
+  "carrier_pt": "",
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "ndc_len": 3
+ }
+}

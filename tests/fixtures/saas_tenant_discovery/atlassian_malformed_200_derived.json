@@ -1,0 +1,17 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://ecosystem.atlassian.net/_edge/tenant_info"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "content-type": "application/json",
+      "server": "AtlassianEdge"
+    },
+    "body": "{\"cloudId\": \"fff89a1a-52c8-11e5"
+  },
+  "class": "derived",
+  "captured_at": "2026-11-26T00:00:00Z",
+  "notes": "malformed JSON in a 200 -> unknown"
+}

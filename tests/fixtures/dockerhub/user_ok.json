@@ -1,0 +1,12 @@
+{
+ "id": "0123456789abcdef0123456789abcdef",
+ "username": "example-dev",
+ "full_name": "Example Dev",
+ "location": "Sao Paulo, BR",
+ "company": "Example Ltd",
+ "profile_url": "https://example.com",
+ "date_joined": "2019-01-15T12:00:00.000000Z",
+ "gravatar_url": "https://www.gravatar.com/avatar/be9d18f611892a738e54f2a3a171e2f9?s=80&r=g&d=mm",
+ "gravatar_email": "",
+ "type": "User"
+}

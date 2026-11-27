@@ -1,0 +1,13 @@
+{
+ "schema": "v3lum.notice/1",
+ "name": "lol_datasets_loldrivers",
+ "source_url": "https://github.com/magicsword-io/LOLDrivers",
+ "version": "runtime download of https://www.loldrivers.io/api/drivers.json (weekly; 713 drivers on 2026-11-26)",
+ "sha256": "",
+ "licence": "Apache-2.0",
+ "attribution": "LOLDrivers (Living Off The Land Drivers) by magicsword-io and contributors, https://www.loldrivers.io/, licensed under the Apache License, Version 2.0.",
+ "bundled": false,
+ "files": [
+  "v3lum/modules/malware_hash/lol_datasets.py"
+ ]
+}

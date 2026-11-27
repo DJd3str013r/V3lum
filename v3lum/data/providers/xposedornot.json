@@ -1,0 +1,108 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "xposedornot",
+  "name": "XposedOrNot (breach names per e-mail, breach analytics, breach catalogue, own-domain breaches)",
+  "operator": "XposedOrNot (open-source breach-notification project, xposedornot.com)",
+  "hosts": ["api.xposedornot.com"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Well-known open-source community project with public API documentation, published terms and more than two years of public track record (A8 community); P137 chair: 'XposedOrNot is a community project: tier community'.",
+  "tier_reviewer": "council-1 (A8, P137)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": true},
+  "personal_data_review": null,
+  "reliability": {"grade": "C", "justification": "Community project re-serving public breach corpora: breach ids join its own catalogue (dates, data classes, verified/sensitive flags); some entries are unverified or combolists, and generic addresses list hundreds of breaches (test@example.com -> 216)."},
+  "http_profile": {"user_agent": "neutral", "accept": "application/json", "timeout": 20, "ttl": 604800, "min_interval": 0.5, "concurrency": 1, "retries": 0},
+  "quota": {"scope": "egress_ip", "hour": 25, "day": 100, "rate_per_second": 2, "burst": 1, "published": true, "evidence_url": "https://xposedornot.com/api_doc", "safety_margin": 0.8},
+  "error_markers": [
+    {"id": "xposedornot_limit_body", "statuses": [200], "json_path": "Error", "equals": null, "regex": "(?i)rate limit|too many|limit exceeded", "final_url_regex": null, "maps_to": "rate_limited", "reason_code": "rate_limited", "reason": "XposedOrNot: keyless limit reached (2/s, 25/h, 100/day per IP): could not verify - a xonAPI+ key lifts it"},
+    {"id": "xposedornot_throttled", "statuses": [429], "json_path": null, "equals": null, "regex": null, "final_url_regex": "^https://api\\.xposedornot\\.com/", "maps_to": "rate_limited", "reason_code": "rate_limited", "reason": "XposedOrNot: keyless limit reached (HTTP 429; 2/s, 25/h, 100/day per IP): could not verify - a xonAPI+ key lifts it"}
+  ],
+  "keys": {
+    "xon": {
+      "description": "XposedOrNot API key (x-api-key header): domain-breaches for the account's verified own domains; xonAPI+/xonEnterprise+ plans for business use",
+      "signup_url": "https://xposedornot.com/",
+      "env": ["V3LUM_XON_KEY"],
+      "multi_key": false,
+      "plan_hint": "an account created under the corporate identity with the organisation's domains verified (DNS/HTML/e-mail); business use needs a paid plan (xonEnterprise+ for own-domain monitoring, xonAPI+ for API workloads): record it with key_plans.xon = 'business' (P137 cond 1)"
+    }
+  },
+  "sources": {
+    "api": {
+      "title": "XposedOrNot keyless API: GET /v1/check-email/{email} (breach ids) and GET /v1/breach-analytics?email= (per-breach metadata, risk, paste count)",
+      "terms": {
+        "class": "noncommercial",
+        "evidence_url": "https://xposedornot.com/",
+        "quote": "Commercial use of our data requires a proper licensing agreement",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "xposedornot",
+      "sanitizer": {
+        "keep": [
+          "breaches", "email", "status", "Error",
+          "ExposedBreaches.breaches_details[].breach", "ExposedBreaches.breaches_details[].domain",
+          "ExposedBreaches.breaches_details[].industry", "ExposedBreaches.breaches_details[].xposed_date",
+          "ExposedBreaches.breaches_details[].xposed_records", "ExposedBreaches.breaches_details[].xposed_data",
+          "ExposedBreaches.breaches_details[].password_risk", "ExposedBreaches.breaches_details[].verified",
+          "ExposedBreaches.breaches_details[].searchable", "ExposedBreaches.breaches_details[].added",
+          "BreachesSummary.site", "BreachMetrics.risk[].risk_label", "BreachMetrics.risk[].risk_score",
+          "BreachMetrics.yearwise_details[].*", "PastesSummary.cnt"
+        ],
+        "notes": "P137 cond 5 / P145: breach ids, per-breach metadata (domain, industry, year, records, data classes, password FORM, verified/searchable, added), the risk label/score, year counts and the paste COUNT survive before the HTTP cache. Logos, descriptions, reference URLs, paste lists, password-strength statistics and any future field are dropped; password_risk is kept only as the normalised password_form (core form renaming)."
+      },
+      "dataset": null,
+      "notes": "A1 initial class: XposedOrNot keyless = 'noncommercial' (P137 cond 1, quote verified 2026-11-26): off under the corporate profile until licence-cleared; keyless use only through licence_allow or the research profile. Limits 2 req/s, 25/hour, 100/day per egress IP (quota block; P137 cond 4). A never-seen address answers HTTP 200 {'Error': 'Not found', 'email': null} (live 2026-11-26; the research saw a 404): both are the declared absence 'not found in XposedOrNot'. The address is lower-cased and URL-encoded (P137 cond 2). Research C0306 (verified_live 200). Used by xposedornot.",
+      "licensed_alternative": "xonAPI+ (key-terms, business plan from US$9/month, P137 cond 1) or the company-paid HIBP subscription (hibp.account)."
+    },
+    "catalogue": {
+      "title": "XposedOrNot breach catalogue GET /v1/breaches (~645 KB, daily dataset xposedornot_breaches.json; a ?domain= answer means 'this service was breached')",
+      "terms": {
+        "class": "noncommercial",
+        "evidence_url": "https://xposedornot.com/",
+        "quote": "Commercial use of our data requires a proper licensing agreement",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "xposedornot",
+      "sanitizer": {
+        "keep": [
+          "status", "message",
+          "exposedBreaches[].breachID", "exposedBreaches[].breachedDate", "exposedBreaches[].addedDate",
+          "exposedBreaches[].domain", "exposedBreaches[].industry", "exposedBreaches[].exposedData",
+          "exposedBreaches[].exposedRecords", "exposedBreaches[].passwordRisk", "exposedBreaches[].searchable",
+          "exposedBreaches[].sensitive", "exposedBreaches[].verified", "exposedBreaches[].breachType"
+        ],
+        "notes": "P137 cond 5 / P145: catalogue metadata only. Logos (external images, never loaded), exposure descriptions and reference URLs are dropped before the dataset copy is stored; passwordRisk survives only as the normalised password_form."
+      },
+      "dataset": "xposedornot_breaches.json",
+      "notes": "Same terms as the keyless API (P137 cond 1). Downloaded once a day as a registered dataset and joined offline (P137 cond 2): ids from check-email get dates, data classes and the sensitive flag; sensitive breaches are masked by default (P137 cond 5). A domain lookup in the catalogue means 'this service was breached', never 'accounts at this domain'. Research C0307 (verified_live 200, 801 entries). Used by xposedornot and xposedornot_domain."
+    },
+    "domain_breaches": {
+      "title": "XposedOrNot POST /v1/domain-breaches/ with x-api-key: breached addresses of the account's verified own domains (run_on own_assets_only)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://plus.xposedornot.com/",
+        "quote": "xonEnterprise+ From $25/mo Monitor your domains, get alerted when staff credentials leak.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "xposedornot",
+      "sanitizer": {
+        "keep": [
+          "status", "detail",
+          "metrics.Breaches_Details[].domain", "metrics.Breaches_Details[].email", "metrics.Breaches_Details[].breach",
+          "metrics.Domain_Summary.*", "metrics.Yearly_Metrics.*"
+        ],
+        "notes": "P137 cond 2 / P145: per exposed own-domain address only the domain, the address and the breach name survive before the HTTP cache (the answer lists employees' addresses: access restricted to the case); every other field is dropped."
+      },
+      "dataset": null,
+      "notes": "P137 cond 2: only with key 'xon' for txt_verified/attested own domains (run_on own_assets_only, A11 BR4), because it returns employees' e-mails. Key-terms: under the corporate profile it runs only with key_plans.xon = 'business' (xonEnterprise+ for own-domain monitoring, P137 cond 1). 401 {'detail': 'Invalid or missing API key'} = NEEDS_KEY (P137 cond 8). Research C0314 (verified_needs_key 401); the success schema follows the XposedOrNot API documentation and is to be re-captured with the team key. Used by xposedornot_domain_breaches."
+    }
+  },
+  "notes": "Owned by batch p2-G04-1 (P137 xposedornot, xposedornot_domain, xposedornot_domain_breaches). Sensitive provider (A4/P137 cond 5): every source has an allow-list sanitizer applied before the HTTP cache (TTL <= 7 days); metadata only; logos are never loaded. personal_data_review must be recorded before default use (P137 cond 6)."
+}

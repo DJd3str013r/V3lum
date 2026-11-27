@@ -1,0 +1,3 @@
+version: STSv2
+mode: enforce
+ mx: mail.example.com

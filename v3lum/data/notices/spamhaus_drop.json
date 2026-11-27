@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "spamhaus_drop",
+  "source_url": "https://www.spamhaus.org/drop/terms/",
+  "version": "DROP drop_v4.json, drop_v6.json and asndrop.json (runtime downloads, checked 2026-11-26)",
+  "sha256": "",
+  "licence": "LicenseRef-Spamhaus-DROP-terms",
+  "attribution": "Spamhaus DROP lists (c) The Spamhaus Project SLU - https://www.spamhaus.org/drop/terms/ (free for network protection, no resale).",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/threat_intel_ioc/ip_blocklists.py"
+  ]
+}

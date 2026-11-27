@@ -1,0 +1,23 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "github",
+  "hosts": [],
+  "sources": {
+    "telegram_channel_watch_deepdarkcti": {
+      "title": "deepdarkCTI Telegram lists (fastfire/deepdarkCTI main: telegram_threat_actors.md, telegram_infostealer.md)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/fastfire/deepdarkCTI",
+        "quote": "deepdarkCTI Telegram entries marked ONLINE/VALID (GPL-3.0, runtime download, parser shared with P198)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1, P357 cond 2: 'GPL lists used at runtime are 'open' under the A1 definitions')",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "deepdarkcti",
+      "sanitizer": null,
+      "dataset": "telegram_channel_watch_ddc_threat_actors",
+      "notes": "Quote: binding council text (P357 cond 2 and chair rationale). Research C0460 (verified_live 200): raw.githubusercontent.com/fastfire/deepdarkCTI/main/{telegram_threat_actors,telegram_infostealer}.md, GPL-3.0: fetched and parsed at runtime by the dataset manager (weekly, conditional GET verified 304), never copied into V3LUM. Datasets telegram_channel_watch_ddc_threat_actors and telegram_channel_watch_ddc_infostealer. Only public handles marked ONLINE/VALID are used as channels to watch (VALID marks invite links only: never previewed or joined). The lists contain links to illicit markets: data only, never fetched. No investigated value ever leaves the machine. Used by telegram_channel_watch."
+    }
+  },
+  "error_markers": []
+}

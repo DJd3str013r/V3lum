@@ -1,0 +1,23 @@
+{
+ "_meta": {
+  "module": "devto_user",
+  "case": "blocked",
+  "source": "C0247 dev.to",
+  "request": {
+   "method": "GET",
+   "url": "https://dev.to/api/users/by_username?url=thepracticaldev"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "LIVE",
+  "elapsed_s": 0.073,
+  "note": "reason phrase 'Forbidden Bots' (Varnish edge); UA was a generic script UA ('fixture-check/1.0 (python-urllib)'); recorded, not retried"
+ },
+ "status": 403,
+ "headers": {
+  "content-length": "0",
+  "server": "Varnish",
+  "retry-after": "0",
+  "via": "1.1 varnish"
+ },
+ "body": ""
+}

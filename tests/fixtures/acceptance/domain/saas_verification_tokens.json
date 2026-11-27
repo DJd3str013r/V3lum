@@ -1,0 +1,45 @@
+{
+ "schema": "v3lum.acceptance_routes/1",
+ "module": "saas_verification_tokens",
+ "routes": [
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "example.com.",
+      "type": 16
+     }
+    ],
+    "Answer": [
+     {
+      "name": "example.com.",
+      "type": 16,
+      "TTL": 300,
+      "data": "_EXAMPLE000000000000000000000047"
+     },
+     {
+      "name": "example.com.",
+      "type": 16,
+      "TTL": 300,
+      "data": "v=spf1 -all"
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0",
+    "Comment": "Response from 172.64.35.228."
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 458
+  }
+ ]
+}

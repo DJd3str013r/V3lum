@@ -1,0 +1,27 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p9-G03-2",
+  "title": "Light/archived web fingerprint, third-party posture graders and site contacts (batch p9-G03-2: P072, P076, P077)",
+  "owner": "batch p9-G03-2 (web_fingerprint, web_fingerprint_archive, posture_third_party, ssllabs_assess, site_contacts, site_contacts_archive)",
+  "notes": "Core names are reused where they fit: technologies, http_status, title, server, waf, archive_snapshot, third_party_counts; relations redirects_to, cname_to, has_vuln, same_analytics, contact_email, phone_of, company_of, pix_key_of, links_to; tags version_inferred, kev, phishing, privacy, inconclusive.",
+  "attributes": {
+    "waf_cdn": "passive WAF/CDN attribution [{name, kind waf|cdn_or_proxy|cdn, evidence, source header|cookie|cname}]: wafw00f header/cookie subset (BSD-3) on a normal response plus CNAME suffixes, never an attack probe (P072 cond 6)",
+    "fingerprint_verdict": "whether a fetched or archived page could be fingerprinted {verdict ok|not_html|inconclusive|proxy_error|challenge|corporate_proxy, reason, vendor, http_status, final_url}: 4xx/5xx and proxy error bodies are inconclusive (P072 cond 7)",
+    "redirect_chain": "hop URLs of a LIGHT homepage fetch, in order (each hop re-checked by the core guard, at most 5)",
+    "cpe_guesses": "CPE 2.3 guesses from a detected technology version [{technology, version, cpe}] (CR16: low confidence, input for CVE lookups)",
+    "technology_cves": "version-inferred CVEs kept as context instead of findings (hostile pages, archived snapshots) [{technology, version, cve_count, cve_ids, max_cvss, max_severity, kev, label}]",
+    "own_rule_hits": "V3LUM own (MIT) phishing-kit / panel signature hits on a page [{name, kind phishing_kit|panel, hits}] (P072 cond 4)",
+    "fingerprint_db": "technology fingerprint data used for a match {source webappanalyzer|bundled_test, technologies, patterns, compiled, skipped, budget_skipped, ignored_keys, time_budget_hit}: GPL-3.0 data downloaded at runtime, never bundled",
+    "hsts_preload": "HSTS preload list state from hstspreload.org /api/v2/status {status, preloaded, via_parent, preloaded_domain, bulk, checked_at}",
+    "ssllabs_endpoints": "SSL Labs grades per endpoint [{ip, grade, grade_trust_ignored, has_warnings, status_message, protocols, vulnerabilities, hsts_status, forward_secrecy, cert_chain_issues, assessed_at, cached}]: a cached second opinion next to tls_inspect/security_headers, dated by the SSL Labs assessment time",
+    "ssllabs_assessment": "one SSL Labs assessment {host, status, start_time, test_time, engine_version, criteria_version, polls, publish off}: ACTIVE ssllabs_assess only",
+    "posture_sources": "per-grader outcome of posture_third_party {source: ok | empty | no_cached_grade | could_not_verify | skipped_licence | manual_link}",
+    "site_contacts": "organisational contacts published by a site {emails [{address, relation}], phones [{number, kind}], whatsapp [{number, kind}], social [{platform, handle, url}], invites [{kind, url}], cnpjs, pix_keys [{type, value}]}: role/corporate contacts and official profiles only (P077 cond 4-5)",
+    "privacy_mentions": "personal contacts of natural persons kept as privacy-tagged mentions (org-profile own sites, or hostile sites with a recorded purpose) [{type, value, kind, privacy}]: CPF only masked, never pivoted (P077 cond 6)",
+    "crawl_summary": "bounded same-site crawl of site_contacts {pages_planned, pages_fetched, pages, refused [{url, reason}] (e-mail or token paths withheld), capped, robots, site_class}"
+  },
+  "tags": {},
+  "relations": {
+    "site_social_profile": "site/domain -> social profile URL or account the site itself links as its official profile (self-declared on the site, never verified ownership)"
+  }
+}

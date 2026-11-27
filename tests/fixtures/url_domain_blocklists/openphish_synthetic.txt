@@ -1,0 +1,4 @@
+https://login.payout.example.org/
+http://secure-update.example.net/verify/index.php
+https://contoso-example.sharepoint.com/sites/Finance/Shared%20Documents/invoice.pdf
+https://docs.google.com/forms/d/e/1FAIpQLSeExampleFormId0123456789/viewform

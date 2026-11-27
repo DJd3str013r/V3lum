@@ -1,0 +1,15 @@
+{
+ "ip": "2606:4700:4700::1111",
+ "success": true,
+ "type": "IPv6",
+ "country": "United States",
+ "country_code": "US",
+ "region": "California",
+ "city": "San Francisco",
+ "connection": {
+  "asn": 13335,
+  "org": "Cloudflare, Inc.",
+  "isp": "Cloudflare, Inc.",
+  "domain": "cloudflare.com"
+ }
+}

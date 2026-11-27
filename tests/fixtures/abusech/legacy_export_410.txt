@@ -1,0 +1,7 @@
+410 Gone: legacy URLhaus file exports are no longer available at this URL.
+
+Since 21 October 2026, abuse.ch file exports need an Auth-Key.
+Get a free Auth-Key at https://auth.abuse.ch/ and switch to the new export URLs:
+https://urlhaus.abuse.ch/api/
+
+Help: https://contact.abuse.ch/

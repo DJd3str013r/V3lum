@@ -1,0 +1,153 @@
+{
+  "batch": "p3-G03-1",
+  "modules": [
+    {
+      "name": "public_api_exposure",
+      "file": "v3lum/modules/url_web/public_api_exposure.py",
+      "proposal": "P069",
+      "category": "url_web",
+      "opsec": "passive",
+      "default_enabled": false,
+      "terms": "unknown",
+      "provider_tier": "community",
+      "keys": [],
+      "datasets": [
+        "public_api_exposure.apisguru_list",
+        "public_api_exposure.apisguru_metrics"
+      ],
+      "pivot_packs": [
+        "public_api_exposure"
+      ],
+      "correlation_rules": [],
+      "new_vocabulary": [
+        "attribute:public_api_locations",
+        "attribute:public_api_search",
+        "attribute:public_api_directory",
+        "attribute:public_api_directory_info",
+        "relation:public_api_location",
+        "relation:api_spec_url"
+      ],
+      "live_check": "2026-11-26 from this egress: APIs.guru list.json (2,529 entries, sha256 dfac835d2d1f..., newest updated 2023-04-21) and metrics.json downloaded through `v3lum data update`; github.com -> OK, 20 directory entries (api.github.com subdomain pivot), inpe.br -> OK (x-origin spec URL + queimadas.dgi.inpe.br), example.com -> EMPTY (health-check expectation), no request about the target. Postman search not called live: terms unknown, disabled until legal records them (P069 cond 2); prep checks of 2026-11-26 saw 200 JSON without Origin/Referer."
+    },
+    {
+      "name": "builtwith",
+      "file": "v3lum/modules/url_web/builtwith.py",
+      "proposal": "P073",
+      "category": "url_web",
+      "opsec": "passive",
+      "default_enabled": false,
+      "terms": "key-terms",
+      "provider_tier": "trusted",
+      "keys": [
+        "builtwith"
+      ],
+      "datasets": [],
+      "pivot_packs": [
+        "url_web (existing: builtwith_relationships, builtwith_tag)"
+      ],
+      "correlation_rules": [],
+      "new_vocabulary": [
+        "attribute:builtwith_groups",
+        "attribute:builtwith_profile",
+        "attribute:builtwith_identifiers",
+        "attribute:builtwith_budget"
+      ],
+      "live_check": "not run: the module requires the team key (none exists). Prep checks of 2026-11-26 (keyless / documentation placeholder key) recorded HTTP 200 with Errors[] code -2 on free1, v21 and rv5: the module maps it to NEEDS_KEY (offline tests on the real captures)."
+    },
+    {
+      "name": "phishtank_checkurl",
+      "file": "v3lum/modules/url_web/phishtank_checkurl.py",
+      "proposal": "P075",
+      "category": "url_web",
+      "opsec": "passive",
+      "default_enabled": false,
+      "terms": "open",
+      "provider_tier": "community (existing phishtank provider of p1-G03-1; council: trusted - see notes)",
+      "keys": [
+        "phishtank (optional, existing key of the phishtank provider)"
+      ],
+      "datasets": [],
+      "pivot_packs": [],
+      "correlation_rules": [],
+      "new_vocabulary": [
+        "attribute:phishtank_verdict",
+        "attribute:phishtank_limits"
+      ],
+      "live_check": "2026-11-26 from this egress: POST checkurl for http://example.com/ with UA phishtank/v3lum -> HTTP 200 JSON, status OK, verdict 'unverified' (in_database=true, verified=false, phish_id 4866807: the P075 quirk, no finding), X-Request-Limit 250 per 300 s (count 1). No Cloudflare challenge this time (another sweep saw 403 on 2026-11-25: BLOCKED is tested offline on that capture)."
+    }
+  ],
+  "proposals_not_done": [],
+  "core_requests": [
+    "P075 c1: render the provider UA placeholder {app} from a setting (e.g. phishtank_app_name = the team's own registered PhishTank username/app name, default 'v3lum') instead of the constant 'v3lum' (v3lum/core/http.py _render_template); modules may not set a UA themselves",
+    "P075 c5: a read-only view of the run entity's case-graph tags in ctx (e.g. ctx.entity_tags) so phishtank_checkurl can accept pivots tagged phishing/suspicious; today it accepts analyst-typed seeds and provenance relation listed_phishing_url only",
+    "P075 c5 / P073 c2: feed provider-announced limits from response headers (PhishTank X-Request-Limit/-Interval/-Count, BuiltWith X-API-CREDITS-REMAINING / X-RATELIMIT-*) into the P334 quota book; the modules keep a local window/credit budget in ctx.state meanwhile",
+    "P069 c5: a per-scan budget API (quota book reserve(scope='run') or similar) for module-level per-case query caps; public_api_exposure keeps a per-case counter in ctx.state meanwhile",
+    "P073 c5: accept UA account-level ids ('UA-123456', as BuiltWith reports them) in entities.normalize(ANALYTICS_ID), or document that they stay labels; today they cannot become analytics_id entities",
+    "P073 (A15/P379): a key self-test hook (HealthCheck selftest for keys) so builtwith can check the key with the no-credit whoamiv1 call",
+    "cross-batch (not core): the phishtank provider fragment owned by p1-G03-1 should take tier 'trusted' (P075 chair), a quota block for the 250/300 s per-IP window and the env alias V3LUM_PHISHTANK_APPKEY; the builtwith seed should carry the team plan's day/credit figures in its quota block"
+  ],
+  "files": [
+    "v3lum/modules/url_web/public_api_exposure.py",
+    "v3lum/modules/url_web/builtwith.py",
+    "v3lum/modules/url_web/phishtank_checkurl.py",
+    "tests/modules/test_public_api_exposure.py",
+    "tests/modules/test_builtwith.py",
+    "tests/modules/test_phishtank_checkurl.py",
+    "tests/live/test_p3_g03_1.py",
+    "tests/fixtures/builtwith/credits_exhausted.json",
+    "tests/fixtures/builtwith/domain_badkey_error_in_200.http.json",
+    "tests/fixtures/builtwith/domain_ok_documented.json",
+    "tests/fixtures/builtwith/domain_pii_returned.json",
+    "tests/fixtures/builtwith/domain_v26_documented.json",
+    "tests/fixtures/builtwith/free_badkey_error_in_200.json",
+    "tests/fixtures/builtwith/free_nokey_error_in_200.json",
+    "tests/fixtures/builtwith/free_ok_documented.json",
+    "tests/fixtures/builtwith/html_error_page.html",
+    "tests/fixtures/builtwith/invalid_domain.json",
+    "tests/fixtures/builtwith/one_lookup_at_a_time.json",
+    "tests/fixtures/builtwith/plan_upgrade.json",
+    "tests/fixtures/builtwith/relationship_types.json",
+    "tests/fixtures/builtwith/relationships_badkey_error_in_200.json",
+    "tests/fixtures/builtwith/relationships_fanout.json",
+    "tests/fixtures/builtwith/relationships_ok_documented.json",
+    "tests/fixtures/builtwith/whoami_documented.json",
+    "tests/fixtures/phishtank_checkurl/challenge_403.html",
+    "tests/fixtures/phishtank_checkurl/challenge_403.http.json",
+    "tests/fixtures/phishtank_checkurl/error_in_200.json",
+    "tests/fixtures/phishtank_checkurl/in_database_unverified.json",
+    "tests/fixtures/phishtank_checkurl/in_database_unverified_live.http.json",
+    "tests/fixtures/phishtank_checkurl/not_in_database.json",
+    "tests/fixtures/phishtank_checkurl/rate_limited_509.http.json",
+    "tests/fixtures/phishtank_checkurl/verified_not_valid.json",
+    "tests/fixtures/phishtank_checkurl/verified_valid_documented.json",
+    "tests/fixtures/phishtank_checkurl/verified_valid_recent.json",
+    "tests/fixtures/phishtank_checkurl/xml_default_documented.xml",
+    "tests/fixtures/public_api_exposure/apisguru_list_html.html",
+    "tests/fixtures/public_api_exposure/apisguru_list_ok.json",
+    "tests/fixtures/public_api_exposure/apisguru_list_truncated.json",
+    "tests/fixtures/public_api_exposure/apisguru_list_wrong_type.json",
+    "tests/fixtures/public_api_exposure/apisguru_metrics.json",
+    "tests/fixtures/public_api_exposure/apisguru_metrics_live.json",
+    "tests/fixtures/public_api_exposure/postman_challenge_403.html",
+    "tests/fixtures/public_api_exposure/postman_empty.json",
+    "tests/fixtures/public_api_exposure/postman_error_envelope.json",
+    "tests/fixtures/public_api_exposure/postman_headers_ok.http.json",
+    "tests/fixtures/public_api_exposure/postman_html_spa_200.html",
+    "tests/fixtures/public_api_exposure/postman_nohit_fuzzy.json",
+    "tests/fixtures/public_api_exposure/postman_ok_cloudflare.json",
+    "tests/fixtures/public_api_exposure/postman_ok_example.json",
+    "tests/fixtures/public_api_exposure/postman_page2_example.json",
+    "tests/fixtures/public_api_exposure/postman_public_search.json",
+    "tests/fixtures/public_api_exposure/postman_schema_changed.json",
+    "tests/fixtures/public_api_exposure/postman_schema_changed_items.json",
+    "tests/fixtures/public_api_exposure/postman_secret_in_url.json",
+    "v3lum/data/providers/postman.json",
+    "v3lum/data/providers/apisguru.json",
+    "v3lum/data/providers/phishtank__p3-G03-1.json",
+    "v3lum/data/providers/builtwith__p3-G03-1.json",
+    "v3lum/data/vocab/p3-G03-1.json",
+    "v3lum/data/pivot_links/public_api_exposure.json",
+    "docs/backlog/p3-G03-1.md"
+  ],
+  "notes": "All three modules are PASSIVE, third_party, default_enabled=False; no LIGHT/ACTIVE variant is asked. public_api_exposure is one aggregator with two sources: postman.public_search (terms unknown -> POL-04 keeps it out of ctx.allowed_sources under every licence profile; manual link public_api_exposure:postman_search) and apisguru.directory (CC0, open; the 8.9 MB list.json is a large dataset matched locally, never downloaded by a lookup; POL-14 gives UNAVAILABLE dataset until `v3lum data update public_api_exposure.apisguru_list`). Postman queries only org_profile domains/brands, one query per entity, 2 pages, 6 per case, 50/day provider budget; hits kept only on request-host or publisher ties; request URLs shown with every query value masked and secret types only (key renamed exposed_kinds because the sanitizer masks values under 'secret' keys); Postman answers are never cached. builtwith: free mode (free1) by default, domain mode (v21 + rv5 page 1) by setting builtwith_mode; NOPII=yes and HIDETEXT=yes on every call; KEY= in the URL masked by the central redactor (AR01); Errors[] markers added in builtwith__p3-G03-1.json (-3 credits -> QUOTA, deliberately the contract-v2 budget status instead of FC4's RATE_LIMITED so the quota book stops paid lookups; -7 -> RATE_LIMITED); -2/-5 -> NEEDS_KEY and the rest ERROR in the module; P061 shared-id, pivot-cap, overlap and clone rules applied (possible-clone findings never tag the own site hostile). P073 c6 (merge only with a real team-key success fixture) cannot be met: success fixtures are BuiltWith's documented samples, recorded in the backlog. phishtank_checkurl: checkurl.phishtank.com is mapped to no provider in owners.json but the provider id derived from the domain (phishtank) exists (p1-G03-1), so it is extended (phishtank__p3-G03-1.json: host, source phishtank.phishtank_checkurl, markers meta.status error -> ERROR and HTTP 509 -> RATE_LIMITED; phishtank.org/www.phishtank.com registered for the manual links). The UA is the core-bound profile 'phishtank/{app}' -> 'phishtank/v3lum' (see core_requests for the setting). The derived trust tier is community because the existing provider says so (council: trusted). Block streak and per-IP window live in ctx.state; after 5 consecutive BLOCKED runs automatic runs are link-only (SKIPPED demoted). Prep parsers (code/parsers.py) were ported and adapted to contract v2; fixtures re-checked (documentation values only, PhishTank request ids redacted). P327 lint, ruff and the registry contract test are clean for the batch files."
+}

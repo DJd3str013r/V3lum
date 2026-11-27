@@ -1,0 +1,69 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "intelx",
+  "name": "Intelligence X (selector metadata only: intelligent search and phonebook)",
+  "operator": "Kleissner Investments s.r.o., Prague, Czech Republic (Intelligence X)",
+  "hosts": ["free.intelx.io", "intelx.io"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company (Kleissner Investments s.r.o., registered with the Municipal Court in Prague) with published terms of service, a privacy policy and paid business plans (A8 trusted; P139 chair: 'Intelligence X is an established company: tier trusted'). intelx.io is listed only for the analyst link https://intelx.io/?did=<systemid> (P139 cond 6): V3LUM never requests it.",
+  "tier_reviewer": "council-1 (A8, P139)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": true},
+  "personal_data_review": null,
+  "reliability": {"grade": "C", "justification": "Full-text index of pastes, leaks, darknet and web documents: a hit means the selector string appears in an indexed item (its bucket and date), not that the item concerns the organisation or that the item is genuine; V3LUM never reads the items (P139 cond 1/4)."},
+  "http_profile": {"user_agent": "neutral", "accept": "application/json", "timeout": 20, "ttl": 0, "min_interval": 1.0, "concurrency": 1, "retries": 0},
+  "quota": {"scope": "key", "day": 50, "published": true, "evidence_url": "https://intelx.io/product", "safety_margin": 0.8},
+  "error_markers": [
+    {"id": "intelx_no_credits", "statuses": [402], "json_path": null, "equals": null, "regex": "^", "final_url_regex": null, "maps_to": "quota", "reason_code": "quota", "reason": "Intelligence X: HTTP 402 payment required (no credits left on the plan for today): could not verify"}
+  ],
+  "keys": {
+    "intelx": {
+      "description": "Intelligence X API key (x-key header): selector metadata only - intelligent search and phonebook with result polling; file preview/view/read/download are never called",
+      "signup_url": "https://intelx.io/signup",
+      "env": ["V3LUM_INTELX_KEY"],
+      "multi_key": false,
+      "plan_hint": "business = a company/team Intelligence X plan (API, Identity Portal or Enterprise licence, or Intelligence X's written consent) recorded by legal before it runs under the corporate profile: the free tier may not implement the API into services without written consent (terms of service, checked 2026-11-26; P139 cond 2)"
+    }
+  },
+  "sources": {
+    "search": {
+      "title": "Intelligence X intelligent search: POST /intelligent/search, GET /intelligent/search/result, GET /intelligent/search/terminate (system id, bucket and date of each item only)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://intelx.io/terms-of-service",
+        "quote": "Free users may not make bulk requests or implement the API of SES into any services without prior written consent of Intelligence X.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1, P139)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "intelx",
+      "sanitizer": {
+        "keep": ["id", "status", "softselectorwarning", "records[].systemid", "records[].bucket", "records[].date", "records[].added"],
+        "notes": "P139 cond 4 / P145: only the search id and state, and per item the system id, bucket, date and indexing date survive before the HTTP cache and the module; item names (leaked file titles), descriptions, storage ids, media, tags, relations, sizes and scores are dropped. Bucket names are masked by the module (sensitive categories and unknown leaves)."
+      },
+      "dataset": null,
+      "notes": "Research C0311 (verified_needs_key: GET /authenticate/info without a key -> 401, 2026-11-25). Free keys use free.intelx.io (paid keys use 2.intelx.io, not declared). Endpoint allow-list (P139 cond 1): only the three paths above; /file/preview, /file/view, /file/read, /intelligent/search/export and /authenticate/info can never be built (module test). Bounded polling: <= 5 result polls in <= 30 s, then a terminate call (P139 cond 3). Free tier (intelx.io/product, checked 2026-11-26): 'Selector Search 50 /day'; the quota block counts requests (a search is 2-7 requests), so it never exceeds the published search budget; HTTP 402 marks the provider exhausted for the day (marker intelx_no_credits). ttl 0: search ids are single use and third-party selectors stay out of http_cache.db. Used by intelx_metadata."
+    },
+    "phonebook": {
+      "title": "Intelligence X phonebook: POST /phonebook/search, GET /phonebook/search/result, GET /intelligent/search/terminate (e-mail, domain and URL selectors of an own domain only)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://intelx.io/terms-of-service",
+        "quote": "Free users may not make bulk requests or implement the API of SES into any services without prior written consent of Intelligence X.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1, P139)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "intelx",
+      "sanitizer": {
+        "keep": ["id", "status", "softselectorwarning", "selectors[].selectorvalue", "selectors[].selectortype", "selectors[].selectortypeh"],
+        "notes": "P139 cond 4-5 / P145: only the search id and state and the selector value/type survive; the module keeps e-mail, domain and URL selectors on verified own domains only (URLs without userinfo, query and fragment) and counts everything else (third-party selectors are never kept: people-search over leaks, rule 4)."
+      },
+      "dataset": null,
+      "notes": "Research C0312 (unverified: no key). Own-asset-only (P139 cond 5, A11 BR4): run_on='own_assets_only' (txt_verified or attested org-profile domains). Phonebook lookups are not part of the free tier ('Phonebook Lookups' only on paid/academic plans, intelx.io/product checked 2026-11-26): a free key answers 401/402 (NEEDS_KEY/QUOTA, never EMPTY). Same allow-list, polling bounds and quota as the search source. Used by intelx_phonebook."
+    }
+  },
+  "notes": "Owned by batch p3-G04-2 (P139 intelx_metadata + intelx_phonebook). Sensitive provider (A4): the sanitizer schemas apply before the HTTP cache and before the module reads a body; ttl 0 (no-store). Key-terms with free_plan_business_use false: under the corporate profile the modules run only after legal records a business plan (key_plans.intelx = 'business'). Tier trusted. Leaked content is never fetched (rule 3)."
+}

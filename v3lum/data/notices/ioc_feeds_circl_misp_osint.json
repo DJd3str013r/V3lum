@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "ioc_feeds_circl_misp_osint",
+  "source_url": "https://www.circl.lu/doc/misp/feed-osint/",
+  "version": "manifest.json and hashes.csv, runtime download (`v3lum data update`), checked 2026-11-26",
+  "sha256": "",
+  "licence": "LicenseRef-CIRCL-OSINT-TLP-CLEAR",
+  "attribution": "CIRCL MISP OSINT feed (https://www.circl.lu/doc/misp/feed-osint/) by CIRCL - Computer Incident Response Center Luxembourg, TLP:CLEAR. Attribute CIRCL when listings are reported.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/threat_intel_ioc/ioc_feeds_offline.py"
+  ]
+}

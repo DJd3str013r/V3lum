@@ -1,0 +1,21 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "virusshare",
+  "hosts": [],
+  "sources": {},
+  "error_markers": [
+    {
+      "id": "virusshare_rate_limit_204",
+      "statuses": [
+        204
+      ],
+      "json_path": null,
+      "equals": null,
+      "regex": "^",
+      "final_url_regex": null,
+      "maps_to": "rate_limited",
+      "reason_code": "rate_limited",
+      "reason": "VirusShare: request rate limit or quota exceeded (HTTP 204; repeated 204 answers get the key blocked, so the host is not asked again in this run)"
+    }
+  ]
+}

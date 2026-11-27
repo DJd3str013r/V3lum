@@ -1,0 +1,15 @@
+{
+ "_note": "design_pivots_and_js.json redirect_chain (2026-11-25)",
+ "hops": [
+  {
+   "url": "https://google.com/",
+   "status": 301,
+   "location": "https://www.google.com/"
+  },
+  {
+   "url": "https://www.google.com/",
+   "status": 200,
+   "location": null
+  }
+ ]
+}

@@ -1,0 +1,102 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "$comment": "A shared (multi-tenant) certificate, a third-party pivot and SANs that are all own names: nothing",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "org_profile": {
+    "org": {
+      "name": "Acme"
+    },
+    "domains": [
+      {
+        "name": "acme-corp.example",
+        "verification": "txt_verified",
+        "criticality": "high"
+      }
+    ],
+    "cidrs": [
+      {
+        "value": "203.0.113.0/24",
+        "criticality": "high"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "key": "domain:www.acme-corp.example",
+      "depth": 0,
+      "seed": true,
+      "ownership": "own_asset",
+      "tags": [
+        "own_asset"
+      ],
+      "attributes": {
+        "cert_sans": [
+          {
+            "value": [
+              "www.acme-corp.example",
+              "acme-corp.example"
+            ],
+            "source": "ct_logs"
+          }
+        ]
+      }
+    },
+    {
+      "key": "domain:status.acme-corp.example",
+      "depth": 1,
+      "seed": false,
+      "ownership": "own_asset",
+      "tags": [
+        "own_asset"
+      ],
+      "attributes": {
+        "shared_cert": [
+          {
+            "value": [
+              {
+                "issuer": "CDN CA",
+                "san_count": 120
+              }
+            ],
+            "source": "ct_logs"
+          }
+        ],
+        "cert_sans": [
+          {
+            "value": [
+              "customer-a.example",
+              "customer-b.example"
+            ],
+            "source": "ct_logs"
+          }
+        ]
+      }
+    },
+    {
+      "key": "domain:vendor-portal.example",
+      "depth": 1,
+      "seed": false,
+      "ownership": "third_party",
+      "tags": [
+        "third_party"
+      ],
+      "attributes": {
+        "cert_sans": [
+          {
+            "value": [
+              "vendor-portal.example",
+              "vendor-other.example"
+            ],
+            "source": "ct_logs"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": []
+}

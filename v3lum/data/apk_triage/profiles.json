@@ -1,0 +1,56 @@
+{
+  "schema": "v3lum.apk_profiles/1",
+  "name": "apk_triage",
+  "source": "V3LUM-authored (batch p1-G12-1) from the Android permission reference and public reporting on Brazilian banking trojans (PixPirate, GoPix, BrasDex style); P364 c4/c5 make the profile and the noise list data so the council can tune them.",
+  "licence": "own work (V3LUM)",
+  "checked_at": "2026-11-26",
+  "banker_profile": {
+    "name": "consistent with Brazilian banking trojans",
+    "all_of": ["accessibility_service", "overlay", "sms", "device_admin"],
+    "any_of_permissions": ["android.permission.REQUEST_INSTALL_PACKAGES", "android.permission.QUERY_ALL_PACKAGES"]
+  },
+  "permission_plain": {
+    "android.permission.SYSTEM_ALERT_WINDOW": "draw over other apps (overlay screens)",
+    "android.permission.RECEIVE_SMS": "receive SMS messages",
+    "android.permission.READ_SMS": "read SMS messages",
+    "android.permission.SEND_SMS": "send SMS messages",
+    "android.permission.REQUEST_INSTALL_PACKAGES": "install other apps",
+    "android.permission.QUERY_ALL_PACKAGES": "list all installed apps (e.g. to find banking apps)",
+    "android.permission.BIND_ACCESSIBILITY_SERVICE": "accessibility service (reads the screen and acts for the user)",
+    "android.permission.BIND_DEVICE_ADMIN": "device administrator (lock/wipe, resists uninstall)",
+    "android.permission.BIND_NOTIFICATION_LISTENER_SERVICE": "read every notification (one-time codes)",
+    "android.permission.RECEIVE_BOOT_COMPLETED": "start at boot",
+    "android.permission.READ_CONTACTS": "read contacts",
+    "android.permission.CALL_PHONE": "place calls",
+    "android.permission.RECORD_AUDIO": "record audio",
+    "android.permission.READ_PHONE_STATE": "read phone identity and state",
+    "android.permission.FOREGROUND_SERVICE": "run a persistent foreground service",
+    "android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS": "stay running (ignore battery optimisation)",
+    "android.permission.USE_FULL_SCREEN_INTENT": "show full-screen windows",
+    "android.permission.MANAGE_EXTERNAL_STORAGE": "read and write all files",
+    "android.permission.INTERNET": "internet access"
+  },
+  "trait_plain": {
+    "accessibility_service": "accessibility service (reads the screen and acts for the user)",
+    "overlay": "draw over other apps (overlay screens)",
+    "sms": "read/receive/send SMS messages",
+    "device_admin": "device administrator (lock/wipe, resists uninstall)",
+    "notification_listener": "read every notification (one-time codes)"
+  },
+  "sdk_noise": {
+    "firebase": ["firebaseio.com", "firebase.google.com", "firebaseinstallations.googleapis.com", "firebaseremoteconfig.googleapis.com", "firebasestorage.googleapis.com", "firebaselogging.googleapis.com", "firebase-settings.crashlytics.com", "fcm.googleapis.com", "firebasedynamiclinks.googleapis.com"],
+    "crashlytics": ["crashlytics.com"],
+    "google-analytics": ["google-analytics.com", "analytics.google.com", "googletagmanager.com"],
+    "app-measurement": ["app-measurement.com"],
+    "ads": ["doubleclick.net", "googlesyndication.com", "googleadservices.com", "admob.com"],
+    "schema": ["schemas.android.com", "www.w3.org", "w3.org", "xmlpull.org", "ns.adobe.com", "xml.org", "schemas.xmlsoap.org", "schemas.microsoft.com", "purl.org"],
+    "licence": ["www.apache.org", "apache.org", "opensource.org", "www.gnu.org", "creativecommons.org"],
+    "android-sdk": ["developer.android.com", "android.com", "source.android.com", "play.google.com", "goo.gl", "issuetracker.google.com", "kotlinlang.org"],
+    "cdn": ["gstatic.com", "fonts.googleapis.com", "ajax.googleapis.com", "cdn.jsdelivr.net", "cdnjs.cloudflare.com", "unpkg.com"]
+  },
+  "packer_hints": {
+    "libjiagu": "Qihoo 360 Jiagu", "libsecexe": "Bangcle", "libsecmain": "Bangcle", "libdexhelper": "SecNeo", "libprotectclass": "Qihoo/ijiami",
+    "libexec.so": "ijiami", "libexecmain": "ijiami", "libmobisec": "Alibaba", "libtup": "Tencent", "libshell": "Tencent Legu",
+    "libnqshield": "NQ Shield", "libapkprotect": "APKProtect"
+  }
+}

@@ -1,0 +1,27 @@
+{
+ "_meta": {
+  "module": "gitlab_user",
+  "case": "users_empty",
+  "source": "C0238 gitlab.com",
+  "request": {
+   "method": "GET",
+   "url": "https://gitlab.com/api/v4/users?username=qz7k2v9m4p1w8n3x5c6b"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "LIVE",
+  "elapsed_s": 0.456,
+  "note": "random 20-char control handle that belongs to nobody"
+ },
+ "status": 200,
+ "headers": {
+  "content-type": "application/json",
+  "ratelimit-name": "throttle_unauthenticated_api",
+  "ratelimit-limit": "500",
+  "ratelimit-observed": "1",
+  "ratelimit-remaining": "499",
+  "ratelimit-reset": "1795676340",
+  "x-total": "0",
+  "server": "cloudflare"
+ },
+ "body": "[]"
+}

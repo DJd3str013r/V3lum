@@ -1,0 +1,18 @@
+{
+ "_fixture": "REAL live capture 2026-11-26: first request from this egress with a generic UA (no contact) -> 429 text/plain (request-id zeroed)",
+ "_meta": {
+  "url": "https://meta.wikimedia.org/w/api.php?action=query&meta=globaluserinfo&guiuser=Example&guiprop=merged%7Cunattached%7Ceditcount&format=json&formatversion=2&maxlag=5",
+  "user_agent": "fixture-check/0.1",
+  "captured": "2026-11-26T09:14:32Z",
+  "elapsed_s": 0.109
+ },
+ "status": 429,
+ "headers": {
+  "content-type": "text/plain",
+  "retry-after": "28",
+  "server": "envoy",
+  "vary": "User-Agent",
+  "x-cache-status": "pass"
+ },
+ "body": "You are making too many requests to the API.\nPlease follow the best practices at https://www.mediawiki.org/wiki/Wikimedia_APIs/Rate_limits.\nIf you are unsure how to get the access you need, contact bot-traffic@wikimedia.org.\n\nrequest-id: 00000000-0000-4000-8000-000000000000"
+}

@@ -1,0 +1,56 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "whoisds",
+  "name": "WhoisDS newly registered domains (free daily list)",
+  "operator": "WhoisDS.com (commercial WHOIS and newly-registered-domain data vendor)",
+  "hosts": [
+    "www.whoisds.com",
+    "whoisds.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Identifiable commercial data vendor with published terms of use, a pricing page and a multi-year public track record; P005 chair: 'Tier community for the WhoisDS list operator; no value is sent.' The list is only downloaded (dataset): no investigated value ever reaches the operator.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Free daily sample of newly registered names (capped at 70,000 names per day on 2026-11-26, gTLDs plus some ccTLDs, names 24-48 h old at publication): presence is a strong signal, absence proves nothing."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "timeout": 60,
+    "retries": 1,
+    "min_interval": 1.5,
+    "concurrency": 1,
+    "max_bytes": 52428800
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "nrd_daily": {
+      "title": "WhoisDS free daily newly-registered-domains zip (domain-names.txt, last 4 list dates)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.whoisds.com/newly-registered-domains",
+        "quote": "The data provided below is daily list of Newly Registered Domains without whois database downloaded free of charge; except where otherwise stated, they may be reused, including for commercial purposes, without a license and without any payment.",
+        "checked_at": "2026-11-26",
+        "reviewer": "batch p2-G01-1",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "whoisds",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0022, re-verified on the listing page 2026-11-26 (quote above). Download URL https://www.whoisds.com//whois-database/newly-registered-domains/{base64('YYYY-MM-DD.zip')}/nrd; the free page keeps the last 4 list dates (a date outside that window answers HTTP 200 text/html with an empty body). One dataset per list date (registered as whoisds_nrd.YYYY-MM-DD), fetched by `v3lum data update` only and matched locally by nrd_feeds (P005): the lists are never redistributed (terms of use: 'NO REDISTRIBUTION: You may NOT redistribute our data to other parties'). No ETag/Last-Modified: no conditional GET."
+    }
+  },
+  "notes": "Owned by batch p2-G01-1 (P005 nrd_feeds). Dataset-only provider: nothing is sent but the static list URL. min_interval 1.5 s between list downloads; max_bytes 50 MB (P005 cond 6 uncompressed cap; the zip is about 0.6 MB)."
+}

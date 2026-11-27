@@ -1,0 +1,14 @@
+{
+ "_id": "~3112",
+ "_createdAt": 1767225600000,
+ "login": "v3lum-readonly@example.com",
+ "name": "V3LUM read-only service",
+ "hasKey": true,
+ "hasPassword": false,
+ "hasMFA": false,
+ "locked": false,
+ "profile": "read-only",
+ "permissions": [],
+ "organisation": "EXAMPLE-CSIRT",
+ "type": "Service"
+}

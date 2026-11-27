@@ -1,0 +1,59 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "$comment": "An authorised destination and one whose authorization lookup failed (null = could not verify): nothing",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "nodes": [
+    {
+      "key": "domain:acme-corp.example",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "spf_status": [
+          {
+            "value": "ok",
+            "source": "email_security_posture"
+          }
+        ],
+        "spf": [
+          {
+            "value": "v=spf1 -all",
+            "source": "email_security_posture"
+          }
+        ],
+        "dmarc": [
+          {
+            "value": "v=DMARC1; p=reject; rua=mailto:r@ok-vendor.example",
+            "source": "email_security_posture"
+          }
+        ],
+        "dmarc_policy": [
+          {
+            "value": "reject",
+            "source": "email_security_posture"
+          }
+        ],
+        "dmarc_rua_external": [
+          {
+            "value": [
+              {
+                "dest_domain": "ok-vendor.example",
+                "authorized": true
+              },
+              {
+                "dest_domain": "slow-vendor.example",
+                "authorized": null
+              }
+            ],
+            "source": "email_security_posture"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": []
+}

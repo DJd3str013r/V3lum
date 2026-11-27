@@ -1,0 +1,20 @@
+{
+ "_provenance": {
+  "synthetic": true
+ },
+ "request": {
+  "method": "GET",
+  "host": "app.example.com",
+  "path": "/v3/api-docs"
+ },
+ "response": {
+  "status": 200,
+  "headers": {
+   "Content-Type": "application/json"
+  },
+  "body": "{\"openapi\":\"3.0.1\",\"info\":{\"title\":\"OpenAPI definition\",\"version\":\"v0\"},\"servers\":[{\"url\":\"https://app.example.com\",\"description\":\"Generated server url\"}],\"paths\":{\"/api/v1/status\":{\"get\":{\"tags\":[\"status-controller\"],\"operationId\":\"status\",\"responses\":{\"200\":{\"description\":\"OK\"}}}}}}"
+ },
+ "history": [],
+ "final_url": null,
+ "transport_error": null
+}

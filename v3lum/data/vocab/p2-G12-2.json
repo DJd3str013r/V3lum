@@ -1,0 +1,33 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p2-G12-2",
+  "title": "ID timestamps, MAC OUI, JWT, OCR and script-decoding names of batch p2-G12-2 (id_timestamp_decoders, mac_oui, mac_oui_online, jwt_analysis, image_ocr, script_decoder)",
+  "owner": "batch p2-G12-2 (P314, P315, P316, P363, P366)",
+  "attributes": {
+    "created_epoch": "how the 'created' value was decoded from an id (P314 c5): the platform epoch and bit layout used, e.g. 'X snowflake epoch 1288834974657 ms: (id >> 22) + epoch'",
+    "id_timestamps": "creation times decoded offline from platform ids found in recognised URLs or after an explicit 'snowflake:' prefix (P314): list {platform, component, id, status, created, epoch, rendered, primary, source, ambiguous_platform}; status other than ok means 'not decoded' (pre-snowflake, out of window, unsupported), never a date",
+    "mac_vendor": "organisation the IEEE Registration Authority assigned the MAC address block to (offline IEEE registry, or the opt-in online relay when the prefix is missing locally)",
+    "mac_oui": "IEEE registry match of a MAC address (P315): {status, prefix, bits, registry MA-L|MA-M|MA-S|IAB, country_hint, private_registrant, alternatives, fallback_prefix}",
+    "mac_flags": "address-bit facts of a MAC (P315 c2): {eui, locally_administered, multicast, broadcast, null, slap_quadrant, lookup_allowed, reason}; local/multicast/random MACs are never looked up or sent anywhere",
+    "mac_online_lookup": "answer of the opt-in online MAC prefix relay (P315 c3): {source, prefix_sent, block_type, block_size, country, updated}; only the 6/7/9-hex registry prefix was sent, never the full MAC",
+    "jwt_redacted": "the only persisted form of a JWT (P316 c2): {sha256 of the token, alg, header and claims with sensitive values masked, signature {present, b64_length, sha256}, display}; the full token exists only in memory",
+    "jwt_issues": "structural JWT checks (P316 c3, CR22): list {code, severity, title, attack}; alg none, missing exp, excessive lifetime, external jku/x5u/kid URLs, embedded jwk, kid injection hints, personal-data claim names",
+    "jwt_known_default_check": "result of the bounded known-default HMAC secret test (P316 c4-c5; not cracking): {status matched|not_matched|skipped, entry (list number only, never the secret), checked, reason}",
+    "ocr_summary": "facts of an offline OCR run (P363): {engine, langs, isolation, pages, text_layer_pages, ocr_pages, skipped_pages, words, mean_confidence, truncated}; the full OCR text stays in case evidence only",
+    "ocr_snippets": "OCR snippet around each extracted indicator (P363 c7): list {type, display, snippet (CPFs masked), confidence, misread_risk, checksum_ok}",
+    "decoded_layers": "static de-obfuscation layers of a script or command line (P366 c4): list {n, technique, label, count, bytes, truncated, preview (defanged, truncated)}; the complete redacted layer text is in evidence",
+    "decode_path": "decoding chain of a script, e.g. 'L1:ps_encodedcommand>L2:frombase64string' (P366 c5 provenance), with the stop reason",
+    "download_cradles": "download-cradle API names seen in decoded script layers (P366 c6: DownloadString, Invoke-WebRequest, certutil -urlcache...); their URLs are hostile IOCs for passive modules only, never contacted"
+  },
+  "tags": {
+    "decoded": "indicator found only after statically decoding an obfuscated script layer (P366 c5)",
+    "download_cradle": "indicator taken from a decoded download cradle: hostile, for passive modules only, never contacted by any automatic step (P366 c6)",
+    "ocr": "value or finding derived from OCR text: confusable glyphs (0/O, l/1, rn/m) possible (P363 c6)",
+    "unconfirmed": "needs analyst confirmation before it is expanded or used for lookalike/typosquat/tampering findings (P363 c6)",
+    "random_mac": "locally administered, multicast or randomised MAC address: a vendor lookup is not meaningful (P315 c2)"
+  },
+  "relations": {
+    "jwt_key_url": "JWT -> URL or host named by its jku/x5u/kid header (never fetched, P316 c3)",
+    "jwt_issuer": "JWT -> URL or host named by its iss claim (never fetched)"
+  }
+}

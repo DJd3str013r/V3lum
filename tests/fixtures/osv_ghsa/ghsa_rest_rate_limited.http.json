@@ -1,0 +1,22 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.github.com/advisories?cve_id=CVE-2021-44228",
+  "headers": {}
+ },
+ "response": {
+  "status": 403,
+  "headers": {
+   "content-type": "application/json; charset=utf-8",
+   "x-ratelimit-limit": "60",
+   "x-ratelimit-remaining": "0",
+   "x-ratelimit-reset": "1795680000",
+   "x-ratelimit-used": "60",
+   "x-ratelimit-resource": "core"
+  },
+  "body": "{\"message\": \"API rate limit exceeded for 203.0.113.10. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)\", \"documentation_url\": \"https://docs.github.com/rest/overview/rate-limits-for-the-rest-api\", \"status\": \"403\"}"
+ },
+ "transport_error": null,
+ "elapsed_s": 0.2,
+ "note": "DOC-SHAPED: GitHub anonymous core limit (60/h) exhausted; P111 FC3: 403 with rate-limit headers = RATE_LIMITED, never absent."
+}

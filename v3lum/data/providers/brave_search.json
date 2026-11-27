@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "brave_search",
+  "name": "Brave Search API",
+  "operator": "Brave Software, Inc.",
+  "hosts": ["api.search.brave.com"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "P307 cond 5 and P287 cond 7: Brave trusted - established company with its own web index, published API terms, plans and privacy policy (A8).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "B", "justification": "First-party web index; results are URL/title leads to verify, never facts about the target."},
+  "http_profile": {"user_agent": "neutral", "accept": "application/json", "timeout": 15, "retries": 0, "ttl": 0, "min_interval": 1.0, "concurrency": 1},
+  "quota": {"scope": "key", "month": 1000, "rate_per_second": 1, "burst": 1, "published": true, "evidence_url": "https://brave.com/search/api/", "safety_margin": 0.8},
+  "error_markers": [
+    {"id": "brave_quota_limited", "statuses": [429], "json_path": "error.code", "equals": "QUOTA_LIMITED", "regex": null, "final_url_regex": null,
+     "maps_to": "quota", "reason_code": "quota", "reason": "Brave Search: plan quota or monthly credits exhausted"},
+    {"id": "brave_rate_limited", "statuses": [429], "json_path": "error.code", "equals": "RATE_LIMITED", "regex": null, "final_url_regex": null,
+     "maps_to": "rate_limited", "reason_code": "rate_limited", "reason": "Brave Search: rate limited"}
+  ],
+  "keys": {
+    "brave_search": {
+      "description": "Brave Search API subscription token (sent in the X-Subscription-Token header)",
+      "signup_url": "https://brave.com/search/api/",
+      "env": ["V3LUM_BRAVE_KEY"],
+      "multi_key": false,
+      "plan_hint": "company account; record the business plan in key_plans (P307 cond 2)"
+    }
+  },
+  "sources": {
+    "web": {
+      "title": "Brave web search /res/v1/web/search (X-Subscription-Token)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://brave.com/search/api/",
+        "quote": "veto_lift (2): engines are limited to first-party APIs with their own index and business-compatible terms: Brave Search API (preferred; X-Subscription-Token header; class key-terms, business plan recorded in key_plans)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "brave_search",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P307 cond 2). P307 cond 6: results are never cached raw (http_profile ttl 0) and only URL + title of returned results are kept (no snippets) unless a storage-rights plan is recorded. Without a token the API answers 422 VALIDATION naming the x-subscription-token header (research p3-G14-1, 2026-11-26): that is NEEDS_KEY, never an absence; 401/402/403 likewise. 429 RATE_LIMITED / QUOTA_LIMITED codes come from the provider documentation (not observed without a key). Free plan: US$5 credits per month (~1,000 queries), 1 query/s."
+    }
+  },
+  "notes": "Created by batch p9-G13-3 for P287's search fallback ('only through P307's Brave Search source', P287 cond 3) from the p3-G14-1 prep registry draft, so P307 web_search_api and P289 employee_xray extend it (brave_search__<batch>.json) instead of declaring the host again. No SerpApi or other CAPTCHA-solving SERP service exists in the registry (P307 cond 1). Search engines are never scraped."
+}

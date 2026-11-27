@@ -1,0 +1,15 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.whoisfreaks.com/v1.0/whois?whois=historical&domainName=example.com"
+ },
+ "response": {
+  "status": 429,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": "{\"timestamp\": \"2026-11-26T08:40:00.000+00:00\", \"path\": \"/v1.0/whois\", \"status\": 429, \"error\": \"Too Many Requests\", \"message\": \"Please slow down. Your maximum request limit per minute is reached.\"}"
+ },
+ "transport_error": null,
+ "elapsed_s": null
+}

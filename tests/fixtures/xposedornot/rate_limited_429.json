@@ -1,0 +1,11 @@
+{
+ "_envelope": 1,
+ "_synthetic": "keyless limit 2/s, 25/h, 100/day not provoked; body text unknown",
+ "status": 429,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": {
+  "Error": "Too many requests"
+ }
+}

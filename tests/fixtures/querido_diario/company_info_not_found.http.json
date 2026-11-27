@@ -1,0 +1,17 @@
+{
+ "request": "GET https://api.queridodiario.org.br/company/info/98765012000101",
+ "response": {
+  "status": 404,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": {
+   "detail": "Company not found."
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": 1.780706,
+ "observed_at": "2026-11-26T09:05:00+00:00",
+ "origin": "live",
+ "note": "synthetic DV-valid CNPJ 98.765.012/0001-01 (not registered): QD answers 404 'Company not found.' for an unknown numeric CNPJ"
+}

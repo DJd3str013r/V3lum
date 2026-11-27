@@ -1,0 +1,10 @@
+{
+ "_envelope": 1,
+ "_source": "GET https://raw.githubusercontent.com/kitabisa/teler-resources/master/db/does-not-exist.txt (2026-11-26T09:45:59Z, generic client UA, datacenter egress)",
+ "status": 404,
+ "headers": {
+  "content-type": "text/plain; charset=utf-8",
+  "x-cache": "MISS"
+ },
+ "body": "404: Not Found"
+}

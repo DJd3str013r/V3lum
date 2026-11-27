@@ -1,0 +1,20 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://epss.empiricalsecurity.com/epss_scores-current.csv.gz",
+  "headers": {}
+ },
+ "response": {
+  "status": 302,
+  "headers": {
+   "server": "CloudFront",
+   "date": "Thu, 26 Nov 2026 05:17:22 GMT",
+   "location": "epss_scores-2026-11-25.csv.gz",
+   "x-cache": "LambdaGeneratedResponse from cloudfront"
+  },
+  "body": ""
+ },
+ "transport_error": null,
+ "elapsed_s": 0.280503,
+ "note": "Current alias: 302 from a CloudFront Lambda with a RELATIVE Location (epss_scores-2026-11-25.csv.gz): resolve it against the request URL."
+}

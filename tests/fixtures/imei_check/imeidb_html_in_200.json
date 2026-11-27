@@ -1,0 +1,9 @@
+{
+ "_envelope": 1,
+ "_synthetic": "trimmed head of the real imeidb.xyz home page (2026-11-26) standing for an HTML answer where JSON is expected",
+ "status": 200,
+ "headers": {
+  "content-type": "text/html; charset=UTF-8"
+ },
+ "body": "<!DOCTYPE html><html><head><title>Mobile IMEI Decoder and Lookup</title></head><body>...</body></html>"
+}

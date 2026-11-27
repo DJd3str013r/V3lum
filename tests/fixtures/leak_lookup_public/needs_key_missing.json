@@ -1,0 +1,10 @@
+{
+ "_envelope": 1,
+ "_source": "research live check 2026-11-25 (tmp_gh_people/live2.json, slug leaklookup_nokey): POST https://leak-lookup.com/api/search with key= (empty), type=email_address, query=test@example.com; HTTP 200, 44 bytes; no rate-limit headers recorded",
+ "status": 200,
+ "headers": {},
+ "body": {
+  "error": "true",
+  "message": "MISSING API KEY"
+ }
+}

@@ -1,0 +1,124 @@
+{
+ "schema": "v3lum.acceptance_routes/1",
+ "module": "protective_dns",
+ "routes": [
+  {
+   "method": "GET",
+   "url": "https://cloudflare-dns.com/dns-query?name=example.com&type=A",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "example.com",
+      "type": 1
+     }
+    ],
+    "Answer": [
+     {
+      "name": "example.com",
+      "type": 1,
+      "TTL": 300,
+      "data": "172.66.147.243"
+     },
+     {
+      "name": "example.com",
+      "type": 1,
+      "TTL": 300,
+      "data": "104.20.23.154"
+     }
+    ]
+   },
+   "headers": {
+    "content-type": "application/dns-json"
+   },
+   "latency_ms": 464
+  },
+  {
+   "method": "GET",
+   "url": "https://security.cloudflare-dns.com/dns-query?name=example.com&type=A",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "example.com",
+      "type": 1
+     }
+    ],
+    "Answer": [
+     {
+      "name": "example.com",
+      "type": 1,
+      "TTL": 224,
+      "data": "172.66.147.243"
+     },
+     {
+      "name": "example.com",
+      "type": 1,
+      "TTL": 224,
+      "data": "104.20.23.154"
+     }
+    ]
+   },
+   "headers": {
+    "content-type": "application/dns-json"
+   },
+   "latency_ms": 581
+  },
+  {
+   "method": "GET",
+   "url": "https://family.cloudflare-dns.com/dns-query?name=example.com&type=A",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "example.com",
+      "type": 1
+     }
+    ],
+    "Answer": [
+     {
+      "name": "example.com",
+      "type": 1,
+      "TTL": 139,
+      "data": "172.66.147.243"
+     },
+     {
+      "name": "example.com",
+      "type": 1,
+      "TTL": 139,
+      "data": "104.20.23.154"
+     }
+    ]
+   },
+   "headers": {
+    "content-type": "application/dns-json"
+   },
+   "latency_ms": 586
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.quad9.net/dns-query?dns=AAABAAABAAAAAAAAB2V4YW1wbGUDY29tAAABAAE",
+   "status": 505,
+   "body_b64": "PGh0bWw+PGJvZHk+VGhpcyBzZXJ2ZXIgaW1wbGVtZW50cyBSRkMgODQ4NCAtIEROUyBRdWVyaWVzIG92ZXIgSFRUUCwgYW5kIHJlcXVpcmVzIEhUVFAvMiBpbiBhY2NvcmRhbmNlIHdpdGggc2VjdGlvbiA1LjIgb2YgdGhlIFJGQy48L2JvZHk+PC9odG1sPg0K",
+   "latency_ms": 563
+  }
+ ]
+}

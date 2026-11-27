@@ -1,0 +1,23 @@
+{
+ "query_status": "ok",
+ "data": {
+  "metadata": {
+   "file_size": 68,
+   "file_type_mime": "text/plain",
+   "first_seen": "2022-06-29 20:19:34 UTC",
+   "last_seen": "2026-10-10 23:15:57 UTC",
+   "sightings": 279,
+   "sha256_hash": "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f",
+   "md5_hash": "44d88612fea8a8f36de82e1278abb02f",
+   "sha1_hash": "3395856ce81f2b7382dee72602f798b642f14140",
+   "sha3_384": "143a2bbe00b1e0074ef409aabb83b2e4d8e1edbfd6fd3befdd1f27b2ac22aad8b073a3e3a8680c3944d29f0f31657270",
+   "imphash": "",
+   "ssdeep": "3:a+JraNvsgzsVqSwHq9:tJuOgzsko",
+   "tlsh": "T141A022003B0EEE2BA20B00200032E8B00808020E2CE00A3820A020B8C83308803EC228",
+   "telfhash": null,
+   "gimphash": null,
+   "dhash_icon": null
+  },
+  "tasks": []
+ }
+}

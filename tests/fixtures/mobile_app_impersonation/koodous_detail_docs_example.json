@@ -1,0 +1,23 @@
+{
+  "id": "bMo71eaEM2m1xR3g",
+  "url": "https://developer.koodous.com/apks/ca9139a9978f306d07da26d6b299661af67f99e6b1e2f1c19f29b11fb44eb429/",
+  "sha256": "ca9139a9978f306d07da26d6b299661af67f99e6b1e2f1c19f29b11fb44eb429",
+  "md5": "9ec448a9b5826bff5f67deb78a332109",
+  "sha1": "47b198defd13935a8cf8a44d66ab752feda5c810",
+  "app": "Sticker Center",
+  "package_name": "com.samsung.android.stickercenter",
+  "company": "Samsung Corporation",
+  "version": "2.2.00.16",
+  "image": null,
+  "size": 8485692,
+  "tags": [],
+  "is_trusted": false,
+  "is_installed": false,
+  "rating": 0,
+  "is_detected": false,
+  "is_corrupted": false,
+  "is_static_analyzed": false,
+  "is_dynamic_analyzed": false,
+  "last_yara_analysis_at": null,
+  "created_at": "2022-01-14T09:41:01.648728+01:00"
+}

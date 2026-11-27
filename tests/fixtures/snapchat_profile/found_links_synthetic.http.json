@@ -1,0 +1,8 @@
+{
+ "_fixture": "SYNTHETIC: publicProfileInfo layout of the real NASA capture with sameAsLinks/address populated (doc values)",
+ "status": 200,
+ "headers": {
+  "content-type": "text/html; charset=utf-8"
+ },
+ "body": "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>Example Shop (@exampleshop)</title></head><body><div id=\"__next\"></div><script id=\"__NEXT_DATA__\" type=\"application/json\">{\"props\":{\"pageProps\":{\"userProfile\":{\"$case\":\"publicProfileInfo\",\"publicProfileInfo\":{\"username\":\"exampleshop\",\"title\":\"Example Shop\",\"badge\":0,\"subscriberCount\":\"1200\",\"bio\":\"Official Example Shop\",\"websiteUrl\":\"shop.example.com\",\"sameAsLinks\":[\"https://www.instagram.com/exampleshop\",{\"url\":\"https://x.com/exampleshop\"},\"javascript:alert(1)\"],\"address\":\"Example Street 1, Example City\",\"creationTimestampMs\":{\"value\":\"1609459200000\"},\"lastUpdateTimestampMs\":{\"value\":\"1790000000000\"},\"hostUserId\":\"00000000-0000-4000-8000-000000000001\",\"relatedAccountsInfo\":[{\"publicProfileInfo\":{\"username\":\"other-shop\"}}]}},\"pageMetadata\":{\"pageType\":18,\"pageTitle\":\"Example Shop (@exampleshop)\"}},\"status\":0},\"page\":\"/at/[username]\",\"query\":{\"username\":\"@exampleshop\"},\"buildId\":\"synthetic\"}</script></body></html>"
+}

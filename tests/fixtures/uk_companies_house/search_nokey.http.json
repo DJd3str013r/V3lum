@@ -1,0 +1,11 @@
+{
+ "_note": "live: 401 {error: Empty Authorization header, type: ch:service} -> NEEDS_KEY (FC1)",
+ "status": 401,
+ "headers": {
+  "content-type": "application/json",
+  "content-length": "58",
+  "ch-authentication-error": "Empty Authorization header",
+  "www-authenticate": "Invalid or no Authorisation header has been provided"
+ },
+ "body": "{\"error\":\"Empty Authorization header\",\"type\":\"ch:service\"}"
+}

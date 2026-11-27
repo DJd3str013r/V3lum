@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "sanctions_eu_fsf",
+  "source_url": "https://webgate.ec.europa.eu/fsd/fsf/public/files/csvFullSanctionsList_1_1/content",
+  "version": "runtime download by the dataset manager (CSV 1.1 with the Commission's public token; TTL 3 days); format checked 2026-11-26 (fileGenerationDate 20/11/2026)",
+  "sha256": "",
+  "licence": "European Commission reuse notice (Commission Decision 2011/833/EU; data.europa.eu licence COM_REUSE)",
+  "attribution": "EU Financial Sanctions Files (FSF), European Commission - reused under the European Commission reuse notice (Decision 2011/833/EU).",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/company_org/sanctions_lists.py",
+    "v3lum/modules/company_org/sanctions_data.py"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "dns_bruteforce",
+  "source_url": "https://github.com/danielmiessler/SecLists",
+  "version": "SecLists Discovery/DNS/subdomains-top1million-5000 (reviewed 2026-11-26); alterx/dnsgen permutation ideas re-implemented offline",
+  "sha256": "e331367c140298cb179114fdeefa78f58f696219f0dec017a28bb79487cfcf19",
+  "licence": "MIT",
+  "attribution": "SecLists (c) 2018 Daniel Miessler (MIT), bundled as the default subdomain brute-force wordlist (pinned by SHA-256 in v3lum/data/dns_bruteforce/manifest.json, A7). Subdomain permutation patterns are re-implemented from the ideas of alterx (MIT) and dnsgen (MIT, (c) 2025 Aleph Null); no permutation code is copied or vendored (A6).",
+  "bundled": true,
+  "files": [
+    "v3lum/modules/pentest_recon/dns_bruteforce.py",
+    "v3lum/data/dns_bruteforce/subdomains-top1million-5000.txt",
+    "v3lum/data/dns_bruteforce/manifest.json"
+  ]
+}

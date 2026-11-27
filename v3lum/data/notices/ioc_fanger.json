@@ -1,0 +1,11 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "ioc_fanger",
+  "source_url": "https://pypi.org/project/ioc-fanger/",
+  "version": "5.1.1 (sdist fang/defang pattern data, studied on 2026-11-25)",
+  "sha256": "",
+  "licence": "MIT",
+  "attribution": "Fang patterns (fxp/ftp, [dot]/(dot)/{dot}, fullwidth and ideographic dots, http:\\\\ forms) are adapted from ioc-fanger by Floyd Hightower, MIT licence. ioc-fanger is not a dependency.",
+  "bundled": true,
+  "files": ["v3lum/core/ioc.py"]
+}

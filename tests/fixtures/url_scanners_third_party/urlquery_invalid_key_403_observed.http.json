@@ -1,0 +1,27 @@
+{
+ "_meta": {
+  "provenance": "observed",
+  "recorded": "2026-11-26",
+  "request": {
+   "method": "GET",
+   "url": "https://api.urlquery.net/public/v2/reports/search",
+   "params": {
+    "query": "url.domain:example.com",
+    "limit": 1
+   }
+  },
+  "note": "x-apikey set to a dummy non-key value (no real key)."
+ },
+ "status": 403,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": {
+  "success": false,
+  "error": {
+   "http_code": 403,
+   "error": "INVALID_API_KEY",
+   "message": "API key is invalid or disabled"
+  }
+ }
+}

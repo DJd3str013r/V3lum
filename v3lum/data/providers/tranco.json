@@ -1,0 +1,70 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "tranco",
+  "name": "Tranco research-oriented top-sites ranking (daily top-1M list)",
+  "operator": "Tranco research project (DistriNet, KU Leuven, with TU Delft and Grenoble INP authors)",
+  "hosts": [
+    "tranco-list.eu"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Academic research project with a peer-reviewed methodology (Le Pochat et al., NDSS 2019), identifiable university operators and public documentation (A8 trusted: established academic institutions). 'Tranco is an academic project: tier trusted, terms open' (P010 chair rationale).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Popularity aggregate of five providers (CrUX, Farsight, Majestic, Radar, Umbrella) over 30 days, hardened against manipulation; popularity is never evidence of benignness (P010 cond 3: a dampener only, never an allow-list)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "timeout": 120,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 2.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "top1m": {
+      "title": "Tranco daily top-1M list (top-1m.csv.zip: rank,domain; registrable domains only)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://tranco-list.eu/",
+        "quote": "Free; cite Le Pochat et al. (NDSS 2019)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "tranco",
+      "sanitizer": null,
+      "dataset": "tranco_rank.top1m",
+      "notes": "Research C0042 terms 'Free; cite Le Pochat et al. (NDSS 2019)'. Fetched only by `v3lum data update tranco_rank.top1m` (9.7 MB zip, 22.7 MB expanded: never during a scan, A6/AR10), extracted with the core safe_extract and indexed on disk (SQLite) at refresh time; lookups never load the list into memory (P010 cond 1). No ranks-API fallback is ever built: a missing list is UNAVAILABLE 'dataset' (P010 cond 2). https://tranco-list.eu/top-1m.csv.zip answers a relative 307 to /download/daily/top-1m.csv.zip on the same host (observed 2026-11-26)."
+    },
+    "list_id": {
+      "title": "Tranco id of the latest daily list (GET /top-1m-id, e.g. 947P2): provenance of the downloaded list",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://tranco-list.eu/",
+        "quote": "Free; cite Le Pochat et al. (NDSS 2019)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "tranco",
+      "sanitizer": null,
+      "dataset": "tranco_rank.top1m_id",
+      "notes": "A 5-byte text answer refreshed together with the list by `v3lum data update` (fetched right after the zip: datasets update in name order), so findings and evidence cite the list id and date (P010 cond 2). The id-addressed list page https://tranco-list.eu/list/<id> is the reference Tranco asks users to cite."
+    }
+  },
+  "notes": "Owned by batch p2-G01-2 (P010, module tranco_rank). Dataset-only provider: tranco_rank has disclosure 'none' and never sends an investigated value anywhere; only `v3lum data update` contacts tranco-list.eu (2 requests per refresh). The Le Pochat et al. NDSS 2019 citation is the dataset attribution (v3lum/data/notices/tranco.json, report footer when Tranco data is used, P010 cond 7)."
+}

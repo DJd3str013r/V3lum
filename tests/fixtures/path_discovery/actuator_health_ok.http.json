@@ -1,0 +1,20 @@
+{
+ "_provenance": {
+  "synthetic": true
+ },
+ "request": {
+  "method": "GET",
+  "host": "app.example.com",
+  "path": "/actuator/health"
+ },
+ "response": {
+  "status": 200,
+  "headers": {
+   "Content-Type": "application/vnd.spring-boot.actuator.v3+json"
+  },
+  "body": "{\"status\":\"UP\"}"
+ },
+ "history": [],
+ "final_url": null,
+ "transport_error": null
+}

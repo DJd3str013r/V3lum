@@ -1,0 +1,7 @@
+{
+ "error": "ELFError",
+ "message": "Magic number does not match",
+ "size": 43,
+ "source": "pyelftools",
+ "version": "0.33"
+}

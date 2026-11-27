@@ -1,0 +1,8 @@
+{
+ "_note": "synthetic: documented Companies House API shape; FC6 requires replacing it with a capture made with the team key; declared absent -> EMPTY (cacheable)",
+ "status": 404,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": "{\"errors\": [{\"error\": \"company-profile-not-found\", \"type\": \"ch:service\"}]}"
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+
+  <channel>
+    <title>Novidades do CERT.br</title>
+    <link>https://cert.br/</link>
+    <description>Centro de Estudos, Resposta e Tratamento de Incidentes de Segurança no Brasil</description>
+    <language>pt-br</language>
+    <copyright>CC BY-NC-ND 4.0</copyright>
+    <atom:link href="https://cert.br/rss/certbr-rss.xml" rel="self" type="application/rss+xml" />
+
+    <!-- begin items -->
+
+    <item>
+      <title>Cursos: Agenda 2027 e Regras do Processo Seletivo</title>
+      <link>https://cursos.cert.br/</link>
+      <guid isPermaLink="false">462c0cdd-a9ae-4967-9308-93d36e3415cd</guid>
+      <author>cert@example.com (CERT.br)</author>
+      <pubDate>Thu, 05 Nov 2026 11:20:00 +0000</pubDate>
+
+      </item>
+<item>
+      <title>Novos Fascículos sobre Golpes</title>
+      <link>https://cartilha.cert.br/</link>
+      <guid isPermaLink="false">30b6aa52-e051-472b-acb9-3e45bdd1e27b</guid>
+      <author>cert@example.com (CERT.br)</author>
+      <pubDate>Tue, 31 Mar 2026 15:45:00 +0000</pubDate>
+
+      </item>
+<item>
+      <title>Slides de Boas Práticas sobre Ransomware</title>
+      <link>https://cert.br/docs/ransomware/#divulgacao</link>
+      <guid isPermaLink="false">b86ed984-4b2b-4243-849d-bbae38e0a815</guid>
+      <author>cert@example.com (CERT.br)</author>
+      <pubDate>Fri, 31 Oct 2025 19:00:00 +0000</pubDate>
+
+      </item>
+    <!-- end items -->
+
+  </channel>
+</rss>

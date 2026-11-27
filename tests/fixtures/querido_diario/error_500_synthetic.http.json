@@ -1,0 +1,17 @@
+{
+ "request": "GET https://api.queridodiario.org.br/gazettes?querystring=%2200.000.000%2F0001-91%22&size=10",
+ "response": {
+  "status": 500,
+  "headers": {
+   "content-type": "text/plain; charset=utf-8",
+   "server": "cloudflare"
+  },
+  "body_kind": "text",
+  "body": "Internal Server Error"
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "observed_at": null,
+ "origin": "synthetic",
+ "note": "synthetic: uvicorn/FastAPI default 500 body; not observed live"
+}

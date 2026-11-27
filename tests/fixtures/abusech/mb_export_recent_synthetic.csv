@@ -1,0 +1,10 @@
+################################################################
+# MalwareBazaar recent malware samples (CSV)                   #
+# Last updated: 2026-11-26 05:00:01 UTC                        #
+#                                                              #
+# Terms Of Use: https://bazaar.abuse.ch/faq/#tos               #
+# For questions please contact bazaar [at] abuse.ch            #
+################################################################
+#
+# "first_seen_utc","sha256_hash","md5_hash","sha1_hash","reporter","file_name","file_type_guess","mime_type","signature","clamav","vtpercent","imphash","ssdeep","tlsh"
+"2026-11-26 04:58:01","275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f","44d88612fea8a8f36de82e1278abb02f","3395856ce81f2b7382dee72602f798b642f14140","reporter_a","sample.exe","exe","application/x-dosexec","ExampleFamily","n/a","n/a","f34d5f2d4577ed6d9ceec516c1f5a744","n/a","n/a"

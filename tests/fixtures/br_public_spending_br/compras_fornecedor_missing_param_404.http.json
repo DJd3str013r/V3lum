@@ -1,0 +1,21 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://dadosabertos.compras.gov.br/modulo-fornecedor/1_consultarFornecedor?pagina=1&tamanhoPagina=10&cnpj=00000000000191",
+  "headers": {}
+ },
+ "response": {
+  "status": 404,
+  "headers": {
+   "content-type": "application/json",
+   "content-length": "54",
+   "x-cache": "CONFIG_NOCACHE"
+  },
+  "body": "{ \"statusCode\": 404, \"message\": \"Resource not found\" }"
+ },
+ "transport_error": null,
+ "elapsed_s": 1.372501,
+ "observed_at": "2026-11-26T09:43:12Z",
+ "origin": "live",
+ "note": "without the required 'ativo' param -> 404 'Resource not found' (the research read this as egress filtering)"
+}

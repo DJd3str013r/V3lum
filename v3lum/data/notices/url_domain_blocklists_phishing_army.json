@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "url_domain_blocklists_phishing_army",
+  "source_url": "https://phishing.army/",
+  "version": "phishing_army_blocklist.txt (runtime download)",
+  "sha256": "",
+  "licence": "CC-BY-NC-4.0",
+  "attribution": "Phishing Army blocklist (https://phishing.army), Creative Commons Attribution-NonCommercial 4.0: off under the corporate licence profile until licence-cleared.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/url_web/url_domain_blocklists.py"
+  ]
+}

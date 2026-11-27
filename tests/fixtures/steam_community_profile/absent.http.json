@@ -1,0 +1,17 @@
+{
+ "_fixture": "REAL live capture 2026-11-26, minimised: random control vanity; Steam answers 200 with <error>",
+ "_meta": {
+  "url": "https://steamcommunity.com/id/vsnrr8ych1ryfgwsp7pb/?xml=1",
+  "user_agent": "V3LUM/dev",
+  "captured": "2026-11-26T08:32:36Z",
+  "elapsed_s": 0.513,
+  "bytes_original": 144
+ },
+ "status": 200,
+ "headers": {
+  "server": "nginx",
+  "content-type": "text/xml;charset=UTF-8",
+  "cache-control": "public,max-age=3600"
+ },
+ "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><response><error><![CDATA[The specified profile could not be found.]]></error></response>"
+}

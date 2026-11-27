@@ -1,0 +1,42 @@
+{
+ "_meta": {
+  "provenance": "observed",
+  "source": "research/samples/caipora_apis_cti__urldna_api_nokey.json",
+  "request": {
+   "method": "POST",
+   "url": "https://api.urldna.io/v1/search",
+   "json": {
+    "query": "domain = example.com",
+    "max_results": 32
+   }
+  },
+  "recorded": "2026-11-25",
+  "note": "No Authorization header. The detail list repeats the same item twice, as observed."
+ },
+ "status": 422,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": {
+  "detail": [
+   {
+    "type": "missing",
+    "loc": [
+     "header",
+     "authorization"
+    ],
+    "msg": "Field required",
+    "input": null
+   },
+   {
+    "type": "missing",
+    "loc": [
+     "header",
+     "authorization"
+    ],
+    "msg": "Field required",
+    "input": null
+   }
+  ]
+ }
+}

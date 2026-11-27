@@ -1,0 +1,25 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "kaspersky",
+  "hosts": [],
+  "sources": {
+    "kaspersky_opentip_search": {
+      "title": "Kaspersky OpenTIP API GET /api/v1/search/{hash|ip|domain|url}?request= (x-api-key; never the file scan/upload endpoints; URLs without query string or userinfo)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://opentip.kaspersky.com/Help/Doc_data/",
+        "quote": "P162 cond 1-3 (binding council text): default_enabled False and disabled until compliance records that the company's vendor/sanctions policy permits sending IOCs to Kaspersky (provider-registry flag vendor_policy_ok, set centrally by legal/compliance and shown in doctor) and legal records the OpenTIP API terms for corporate use (page JS-only, unverified). Registry: tier trusted, terms key-terms.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "kaspersky",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0360 (verified_needs_key: 401 with an EMPTY body, with and without a bad key: handled by status code). Official client KasperskyLab/OpenTIP-scanner 1.2 read as text: base /api/v1/, search/<type>?request=, 404 = lookup results not found; the same client uploads unknown files by default (POST /api/v1/scan/file), which V3LUM never builds (rule 7). Help snippets (JS-only pages): 403 = quota or request limit exceeded, 2,000 requests/day for registered users. Zones: Red malicious (high), Orange suspicious (low), Grey no finding, Green known_good for file hashes only. Foreign provider (RU): vendor policy gate (x_vendor_policy_ok on the kaspersky provider). Batch p3-G07-1, module kaspersky_opentip.",
+      "licensed_alternative": "Company OpenTIP API access recorded as key_plans.opentip='business' after compliance sets vendor_policy_ok; meanwhile the manual OpenTIP pages at TLP:CLEAR (kaspersky.opentip_pages)."
+    }
+  },
+  "error_markers": [],
+  "notes": "Batch p3-G07-1 (P162): the OpenTIP API source; the host opentip.kaspersky.com is already declared by the kaspersky fragment (p2-G14-3). The key 'opentip' (x-api-key), the P334 daily quota and the vendor_policy_ok flag cannot be declared in a provider-ext fragment: requested from the core and from the kaspersky owner; until then the module uses Module.daily_quota=1600 (80% of the documented 2,000/day) and stays skipped (policy) while the flag is absent."
+}

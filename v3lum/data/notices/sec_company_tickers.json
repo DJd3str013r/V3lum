@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "sec_company_tickers",
+  "source_url": "https://www.sec.gov/os/accessing-edgar-data",
+  "version": "https://www.sec.gov/files/company_tickers.json (runtime dataset sec_company_tickers, refreshed daily) plus data.sec.gov submissions and EDGAR full-text search, checked 2026-11-26",
+  "sha256": "",
+  "licence": "Public domain (U.S. federal government work); SEC fair access policy (declared User-Agent with contact, <= 10 requests/second)",
+  "attribution": "U.S. Securities and Exchange Commission EDGAR (https://www.sec.gov/edgar). Filing text and metadata are U.S. government public records.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/company_org/sec_edgar.py"
+  ]
+}

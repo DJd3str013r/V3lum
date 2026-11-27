@@ -1,0 +1,234 @@
+{
+ "batch": "p2-G07-1",
+ "modules": [
+  {
+   "name": "crowdsec_cti",
+   "file": "v3lum/modules/threat_intel_ioc/crowdsec_cti.py",
+   "proposal": "P152",
+   "category": "threat_intel_ioc",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "key-terms",
+   "provider_tier": "trusted",
+   "keys": [
+    "crowdsec (required, V3LUM_CROWDSEC_KEY, header x-api-key; provider crowdsec, source crowdsec.smoke key-terms, free_plan_business_use false: runs under the corporate profile only with key_plans.crowdsec=business)"
+   ],
+   "datasets": [],
+   "pivot_packs": [
+    "threat_intel_g07_p2 (crowdsec_cti_ip)"
+   ],
+   "correlation_rules": [
+    "feeds CR27 consensus via tags malicious/c2/botnet/bruteforce/exploit_attempt/crawler/dos/backdoor; benign/false-positive dampening via attribute allowlisted"
+   ],
+   "new_vocabulary": [
+    "attribute:crowdsec",
+    "attribute:export_restriction",
+    "attribute:allowlisted (existing)",
+    "tag:bruteforce",
+    "tag:exploit_attempt",
+    "tag:crawler",
+    "tag:dos",
+    "tag:backdoor",
+    "relation:attempted_exploit (CVE, never has_vuln)"
+   ],
+   "live_check": "2026-11-26 not called live: no team key; live test asserts NEEDS_KEY with zero requests (PASS). Offline: 22 tests incl. 404 EMPTY, 429 quota vs rate, 403 NEEDS_KEY, monthly budget floor(120*0.8), CIDR single-host only, licence gate"
+  },
+  {
+   "name": "abuseipdb",
+   "file": "v3lum/modules/threat_intel_ioc/abuseipdb.py",
+   "proposal": "P157",
+   "category": "threat_intel_ioc",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "key-terms",
+   "provider_tier": "trusted",
+   "keys": [
+    "abuseipdb (required, V3LUM_ABUSEIPDB_KEY / ABUSEIPDB_API_KEY, header Key; provider abuseipdb, source abuseipdb.check key-terms, free_plan_business_use false)"
+   ],
+   "datasets": [],
+   "pivot_packs": [
+    "threat_intel_g07_p2 (abuseipdb_check_ip, antibot)"
+   ],
+   "correlation_rules": [
+    "feeds CR27 consensus via tags malicious/suspicious; whitelisted/CDN/Search Engine Spider dampen via allowlisted"
+   ],
+   "new_vocabulary": [
+    "attribute:abuseipdb",
+    "attribute:abuseipdb_block"
+   ],
+   "live_check": "2026-11-26 not called live: no team key; live test asserts NEEDS_KEY with zero requests (PASS). Offline: 19 tests incl. 402 SKIPPED config, 422 ERROR, errors[] in 200 ERROR, 429 daily limit quota, check-block budget per plan, report comments never copied"
+  },
+  {
+   "name": "virustotal",
+   "file": "v3lum/modules/threat_intel_ioc/virustotal.py",
+   "proposal": "P158",
+   "category": "threat_intel_ioc",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "noncommercial",
+   "provider_tier": "trusted",
+   "keys": [
+    "virustotal (required, legacy config key: V3LUM_KEY_VIRUSTOTAL / VT_API_KEY / VIRUSTOTAL_API_KEY, header x-apikey; core-seeded provider virustotal, source virustotal.api noncommercial: SKIPPED 'licence' with manual link under the corporate profile unless licence_allow)"
+   ],
+   "datasets": [],
+   "pivot_packs": [
+    "threat_intel_g07_p2 (vt_ip, vt_domain, vt_file, vt_search)"
+   ],
+   "correlation_rules": [
+    "feeds CR27 consensus via tags malicious/phishing/malware (>=5 engines or trusted vendor); 1-2 engines weak_signal only"
+   ],
+   "new_vocabulary": [
+    "attribute:virustotal",
+    "attribute:vt_relationships"
+   ],
+   "live_check": "2026-11-26 not called live: no team key and noncommercial terms; live test asserts NEEDS_KEY with zero requests (PASS). Offline: 41 tests incl. GET-only allow-list, url_id, engine bands, EICAR test_file, quota 429 QuotaExceededError, pacer defers instead of waiting, seeds-first case budget, relationship pivots"
+  },
+  {
+   "name": "hybrid_analysis",
+   "file": "v3lum/modules/malware_hash/hybrid_analysis.py",
+   "proposal": "P174",
+   "category": "malware_hash",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "key-terms",
+   "provider_tier": "trusted",
+   "keys": [
+    "hybridanalysis (required, V3LUM_HYBRIDANALYSIS_KEY / V3LUM_HYBRID_KEY / HYBRID_ANALYSIS_API_KEY, header api-key; provider hybrid_analysis, source hybrid_analysis.search key-terms, free_plan_business_use unknown: needs key_plans.hybridanalysis=business under corporate)"
+   ],
+   "datasets": [],
+   "pivot_packs": [
+    "threat_intel_g07_p2 (hybrid_analysis_search, hybrid_analysis_sample)"
+   ],
+   "correlation_rules": [
+    "feeds CR27 consensus via tags malicious/malware; contacted hosts as communicates_with pivots (expand only when marked compromised_hosts)"
+   ],
+   "new_vocabulary": [
+    "attribute:hybrid_analysis"
+   ],
+   "live_check": "2026-11-26 not called live: no team key; live test asserts NEEDS_KEY with zero requests (PASS). Offline: 28 tests incl. submission endpoints refused by allow-list, 403 key messages NEEDS_KEY, error-in-200, challenge BLOCKED, sandbox-benign host filtering, EICAR"
+  },
+  {
+   "name": "lol_datasets",
+   "file": "v3lum/modules/malware_hash/lol_datasets.py",
+   "proposal": "P268",
+   "category": "malware_hash",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "open",
+   "provider_tier": "community",
+   "keys": [],
+   "datasets": [
+    "lol_datasets.loldrivers.json (large, ~36 MB, only via v3lum data update, validated)",
+    "lol_datasets.lolbas.json (GPL-3.0, runtime only)",
+    "lol_datasets.hijacklibs.json (GPL-3.0, runtime only)",
+    "lol_datasets.lolrmm.json"
+   ],
+   "pivot_packs": [],
+   "correlation_rules": [
+    "malicious-driver hit feeds CR27 (tags malicious/malware); vulnerable driver/LOLBAS/HijackLibs/LOLRMM are context_only (never vote)"
+   ],
+   "new_vocabulary": [
+    "attribute:loldrivers_hits",
+    "attribute:lol_context",
+    "tag:lolbas",
+    "tag:hijacklibs",
+    "tag:lolrmm",
+    "tag:byovd",
+    "tag:vulnerable_driver",
+    "tag:malicious_driver"
+   ],
+   "live_check": "2026-11-26 V3LUM_LIVE=1 PASS: rt.data.update refreshed lolbas (368b0a0d6022), hijacklibs (d15593221e30), lolrmm (499e61523e25), loldrivers (b820cc978ac4, 36 MB) through validators; slim index drivers 713 / samples 2430 / hashes 12362; certutil.exe -> LOLBAS context, sqlite.dll -> HijackLibs, AnyDesk -> LOLRMM rmm_tool, iqvw64e.sys sha256 -> 'Known vulnerable driver - BYOVD (LOLDrivers)'"
+  }
+ ],
+ "proposals_not_done": [],
+ "core_requests": [
+  "providers/quota (P334): a setting-driven override of a provider quota block for a recorded paid plan, and per-endpoint windows (crowdsec monthly plan above Community 120; abuseipdb Basic/Premium daily limits and check-block budgets)",
+  "config/WP02: add V3LUM_VT_KEY as an env alias of key virustotal (the core-seeded virustotal fragment has no keys block; extensions cannot add keys)",
+  "http (HttpClient._spend_rate_wait): an opt-out so a provider can defer (QUOTA) instead of waiting one provider slot in the worker; virustotal carries its own pacer meanwhile (P158 c3 'the scan never waits on VT')",
+  "report/exports (P303): honour provider x_redistribution and the export_restriction attribute (export verdict, link and source only for crowdsec/abuseipdb/virustotal/hybrid_analysis)",
+  "models: Pivot tags (e.g. hostile) for the P376 guard; sandbox-contacted hosts use note 'hostile: ...' until then",
+  "datasets: a dataset-manager hook to build and persist derived indexes at 'v3lum data update' (LOLDrivers slim projection, ~1.5 MB > ctx.state cap)",
+  "keys wizard (WP25/P379): never offer the public VirusTotal key under the corporate profile (A15/P158 c6)",
+  "doctor/health (P337): approve GET /v2/info as crowdsec_cti health check instead of spending a monthly lookup on a probe IP",
+  "orgprofile: an ownership notion for file hashes so a vulnerable-driver hit on an org asset can be HIGH without the subject_roles workaround",
+  "optional: list 'crowdsec' in config.KNOWN_KEYS (currently registered via the provider fragment keys block)"
+ ],
+ "files": [
+  "docs/backlog/p2-G07-1.md",
+  "tests/fixtures/abuseipdb/check_block_docs.json",
+  "tests/fixtures/abuseipdb/empty_unreported_synthetic.json",
+  "tests/fixtures/abuseipdb/invalid_422_docs.json",
+  "tests/fixtures/abuseipdb/needs_key_401.json",
+  "tests/fixtures/abuseipdb/ok_malicious_synthetic.json",
+  "tests/fixtures/abuseipdb/ok_mobile_isp_synthetic.json",
+  "tests/fixtures/abuseipdb/ok_single_reporter_docs.json",
+  "tests/fixtures/abuseipdb/ok_whitelisted_cdn_synthetic.json",
+  "tests/fixtures/abuseipdb/quota_429_docs.json",
+  "tests/fixtures/abuseipdb/verbose_reports_docs.json",
+  "tests/fixtures/acceptance/sha256/lol_datasets.json",
+  "tests/fixtures/crowdsec_cti/benign_crawler_synthetic.json",
+  "tests/fixtures/crowdsec_cti/needs_key_403.json",
+  "tests/fixtures/crowdsec_cti/noise_scanner_synthetic.json",
+  "tests/fixtures/crowdsec_cti/not_found_404_synthetic.json",
+  "tests/fixtures/crowdsec_cti/ok_malicious_synthetic.json",
+  "tests/fixtures/crowdsec_cti/quota_429_synthetic.json",
+  "tests/fixtures/crowdsec_cti/rate_limited_429_synthetic.json",
+  "tests/fixtures/hybrid_analysis/empty_synthetic.json",
+  "tests/fixtures/hybrid_analysis/incompatible_key_403_synthetic.json",
+  "tests/fixtures/hybrid_analysis/needs_key_403.json",
+  "tests/fixtures/hybrid_analysis/no_specific_threat_synthetic.json",
+  "tests/fixtures/hybrid_analysis/rate_limited_429_synthetic.json",
+  "tests/fixtures/hybrid_analysis/report_summary_synthetic.json",
+  "tests/fixtures/hybrid_analysis/search_hash_eicar_synthetic.json",
+  "tests/fixtures/hybrid_analysis/search_hash_lean_synthetic.json",
+  "tests/fixtures/hybrid_analysis/search_hash_ok_synthetic.json",
+  "tests/fixtures/lol_datasets/hijacklibs_not_found_404.html",
+  "tests/fixtures/lol_datasets/hijacklibs_ok.json",
+  "tests/fixtures/lol_datasets/lolbas_empty_synthetic.json",
+  "tests/fixtures/lol_datasets/lolbas_ok.json",
+  "tests/fixtures/lol_datasets/loldrivers_not_found_404.html",
+  "tests/fixtures/lol_datasets/loldrivers_ok.json",
+  "tests/fixtures/lol_datasets/loldrivers_truncated.json",
+  "tests/fixtures/lol_datasets/lolrmm_ok.json",
+  "tests/fixtures/lol_datasets/lolrmm_truncated.json",
+  "tests/fixtures/virustotal/communicating_files_synthetic.json",
+  "tests/fixtures/virustotal/domain_ok_docs.json",
+  "tests/fixtures/virustotal/file_eicar_synthetic.json",
+  "tests/fixtures/virustotal/file_malicious_synthetic.json",
+  "tests/fixtures/virustotal/file_suspicious_docs.json",
+  "tests/fixtures/virustotal/ip_ok_docs.json",
+  "tests/fixtures/virustotal/needs_key_401.json",
+  "tests/fixtures/virustotal/not_found_404_docs.json",
+  "tests/fixtures/virustotal/quota_429_synthetic.json",
+  "tests/fixtures/virustotal/resolutions_ip_synthetic.json",
+  "tests/fixtures/virustotal/subdomains_synthetic.json",
+  "tests/fixtures/virustotal/too_many_429_synthetic.json",
+  "tests/fixtures/virustotal/url_malicious_synthetic.json",
+  "tests/fixtures/virustotal/wrong_key_401_synthetic.json",
+  "tests/live/test_p2_g07_1.py",
+  "tests/modules/test_abuseipdb.py",
+  "tests/modules/test_crowdsec_cti.py",
+  "tests/modules/test_hybrid_analysis.py",
+  "tests/modules/test_lol_datasets.py",
+  "tests/modules/test_virustotal.py",
+  "v3lum/data/notices/lol_datasets_hijacklibs.json",
+  "v3lum/data/notices/lol_datasets_lolbas.json",
+  "v3lum/data/notices/lol_datasets_loldrivers.json",
+  "v3lum/data/notices/lol_datasets_lolrmm.json",
+  "v3lum/data/pivot_links/threat_intel_g07_p2.json",
+  "v3lum/data/providers/abuseipdb.json",
+  "v3lum/data/providers/crowdsec.json",
+  "v3lum/data/providers/hijacklibs.json",
+  "v3lum/data/providers/hybrid_analysis.json",
+  "v3lum/data/providers/lolbas.json",
+  "v3lum/data/providers/loldrivers.json",
+  "v3lum/data/providers/lolrmm.json",
+  "v3lum/data/vocab/p2-G07-1.json",
+  "v3lum/modules/malware_hash/hybrid_analysis.py",
+  "v3lum/modules/malware_hash/lol_datasets.py",
+  "v3lum/modules/threat_intel_ioc/abuseipdb.py",
+  "v3lum/modules/threat_intel_ioc/crowdsec_cti.py",
+  "v3lum/modules/threat_intel_ioc/virustotal.py"
+ ],
+ "notes": "All five proposals delivered as contract-v2 modules; no existing file modified (only batch-owned new files). Deviations/choices: crowdsec CVEs are attempted_exploit pivots (never has_vuln) per final condition C6; lol_datasets category malware_hash per final condition; hybrid_analysis domain input not served (search/terms outside c1, backlog); virustotal relationships only for depth-0 seeds and only when the provider slot is free now (public key 4/min => deferred), URL objects read without relationships; abuseipdb categories not produced (need verbose, forbidden by c1; backlog); settings: crowdsec_monthly_quota, crowdsec_case_budget, abuseipdb_plan, virustotal_case_budget, virustotal_trusted_vendors, virustotal_page_size. LINT-09 pragma (justified) on the 'bruteforce' label in crowdsec_cti; P327 blocking() empty. Keyed-module success/404/429 fixtures are documented shapes or synthetic (real captures only for keyless 401/403), pending team keys (backlog). Full offline suite: 7 failures, all in other batches' WIP files (bcb_authorized_institutions x2, typosquat BCB wording, cep_lookup stale notice in test_notice_fragments_parse, plus transient pivots_brazil/pivots_company_org/test_every_module_class_is_registered which pass on re-run); batch + lint/providers/links tests 463 passed; registry contract for the 5 modules 5 passed; ruff clean."
+}

@@ -1,0 +1,38 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "proton",
+  "name": "Proton Mail public key server (HKP index)",
+  "operator": "Proton AG",
+  "hosts": ["api.protonmail.ch", "mail-api.proton.me"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms, a privacy policy and a business offering (A8 trusted): 'Proton: tier trusted, terms open.' (P092 chair rationale).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "B", "justification": "Authoritative for keys published by Proton for its own addresses; the key creation date only approximates the account creation date (P092 cond 4)."},
+  "http_profile": {"user_agent": "neutral", "accept": "text/plain", "ttl": 86400, "max_bytes": 262144, "min_interval": 2.0, "concurrency": 1},
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "pks": {
+      "title": "Proton public key server HKP index (GET https://api.protonmail.ch/pks/lookup?op=index&search=<address>)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://proton.me/legal/terms",
+        "quote": "Proton: tier trusted, terms open.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "proton",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0211 (verified_live 200). text/plain, CRLF lines: 'info:1:N', 'pub:<fpr>:<algo>:<bits>:<created epoch>::', 'uid:...'. 'info:1:0' = no public key published (never 'no account'); an invalid input also answers info:1:0 with 200, so the module validates first. mail-api.proton.me serves the same answers (listed here because it is a Proton key-server host; the module calls api.protonmail.ch only). A public key-discovery directory, not a registration or reset flow: the account.proton.me users/available registration oracle is never implemented (rule 2, P092 cond 5). Endpoint adapted from ProtOSINT (MIT, notice protosint_pks). Used by proton_pks."
+    }
+  },
+  "notes": "Owned by batch p3-G04-1 (P092 proton_pks). Receives an e-mail address (PERSONAL_TYPES): enters the default set only after personal_data_review is recorded (A3 BR8, P092 cond 6)."
+}

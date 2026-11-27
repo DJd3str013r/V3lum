@@ -1,0 +1,13 @@
+{
+ "results": [
+  {
+   "entity": {
+    "kind": "workspace",
+    "title": "Example"
+   }
+  }
+ ],
+ "meta": {
+  "query": "example.com"
+ }
+}

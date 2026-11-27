@@ -1,0 +1,30 @@
+{
+ "Zone": "Red",
+ "FileGeneralInfo": {
+  "FileStatus": "Malware",
+  "Sha1": "3395856CE81F2B7382DEE72602F798B642F14140",
+  "Md5": "44D88612FEA8A8F36DE82E1278ABB02F",
+  "Sha256": "275A021BBFB6489E54D471899F7DB9D1663FC695EC2FE2A2C4538AABF651FD0F",
+  "FirstSeen": "2013-12-03T19:06:00Z",
+  "LastSeen": "2026-11-25T23:10:00Z",
+  "Size": 68,
+  "Type": "Com",
+  "HitsCount": 100000
+ },
+ "DetectionsInfo": [
+  {
+   "LastDetectDate": "2026-11-25T23:10:00Z",
+   "Zone": "Red",
+   "DetectionName": "EICAR-Test-File",
+   "DetectionMethod": "",
+   "DescriptionUrl": "https://threats.kaspersky.com/en/threat/EICAR-Test-File/"
+  }
+ ],
+ "DynamicDetections": [
+  {
+   "Zone": "Red",
+   "DetectionName": "Trojan-Ransom.Win32.Example.a",
+   "Count": 1
+  }
+ ]
+}

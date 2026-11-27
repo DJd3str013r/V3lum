@@ -1,0 +1,20 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "telegram",
+  "hosts": [],
+  "sources": {},
+  "error_markers": [
+    {
+      "id": "telegram_public_generic_page",
+      "statuses": [200],
+      "json_path": null,
+      "equals": null,
+      "regex": "(?s)^(?!.*class=\"tgme_page_title)(?!.*tgme_channel_history).*class=\"tgme_username_link\"",
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "Telegram: generic 'Contact @x' page without tgme_page_title - private or missing: could not read"
+    }
+  ],
+  "notes": "Batch p1-G05-1 (P112 cond 2): t.me/{name} answers HTTP 200 for any handle; the generic 'Telegram: Contact @x' page (no tgme_page_title, a tgme_username_link) means 'private or missing: could not read', never ABSENT. Fixture: tests/fixtures/telegram_public/generic_contact.html (real capture of a random control handle, 2026-11-26)."
+}

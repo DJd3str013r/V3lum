@@ -1,0 +1,71 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "adguard",
+  "name": "AdGuard DNS public filtering resolvers (JSON DoH)",
+  "operator": "AdGuard Software Ltd.",
+  "hosts": [
+    "dns.adguard-dns.com",
+    "family.adguard-dns.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms, a privacy policy and a business offering (A8 trusted). The terms class stays 'unknown' until legal records them (P020 cond 2).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Ad/tracker and adult-content filter lists: a block is a content category, never a maliciousness signal (P020 cond 4, 6). The JSON answers carry no Authority section, so an AdGuard NXDOMAIN cannot be told apart from a filter NXDOMAIN: sink addresses only."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/dns-json",
+    "timeout": 5,
+    "retries": 0,
+    "ttl": 3600,
+    "concurrency": 2
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "default": {
+      "title": "AdGuard DNS default filter (dns.adguard-dns.com /resolve, ads and trackers): content-filter verdicts",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://adguard-dns.io/en/public-dns.html",
+        "quote": "Opt-in module protective_dns_extra (default_enabled=False) holds AdGuard (dns.adguard-dns.com, family.adguard-dns.com), OpenDNS (doh.opendns.com) and CleanBrowsing. AdGuard and OpenDNS stay terms 'unknown' until legal records their terms",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "protective_dns",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P020 cond 2). Category ads (cond 4). Block form 0.0.0.0 / :: (default blocking mode) or 94.140.14.35 (block page, research, unverified live)."
+    },
+    "family": {
+      "title": "AdGuard DNS family filter (family.adguard-dns.com /resolve, ads + adult content + safe search): content-filter verdicts",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://adguard-dns.io/en/public-dns.html",
+        "quote": "Opt-in module protective_dns_extra (default_enabled=False) holds AdGuard (dns.adguard-dns.com, family.adguard-dns.com), OpenDNS (doh.opendns.com) and CleanBrowsing. AdGuard and OpenDNS stay terms 'unknown' until legal records their terms",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "protective_dns",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P020 cond 2). Category family/adult (cond 4); safe-search CNAME rewrites are not blocks."
+    }
+  },
+  "notes": "Owned by batch p2-G01-3 (P020, module protective_dns_extra). JSON DoH /resolve answers use content-type application/x-javascript and names with a trailing dot (live 2026-11-26)."
+}

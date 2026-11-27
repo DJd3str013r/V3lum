@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "cep_lookup_ibge_municipios",
+  "source_url": "https://servicodados.ibge.gov.br/api/v1/localidades/municipios?view=nivelado",
+  "version": "IBGE Localidades API v1, view=nivelado, retrieved 2026-11-26 (5571 municipalities; code, name and UF only)",
+  "sha256": "",
+  "licence": "Brazilian open government data (IBGE, Decreto 8.777/2016, Lei 12.527/2011)",
+  "attribution": "Fonte: IBGE - API de Localidades (municipios). Not endorsed by IBGE.",
+  "bundled": true,
+  "files": [
+    "v3lum/data/cep_lookup/ibge_municipios.json",
+    "v3lum/modules/brazil_public_data/cep_lookup.py"
+  ]
+}

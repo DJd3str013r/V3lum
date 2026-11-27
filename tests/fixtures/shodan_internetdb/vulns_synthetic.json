@@ -1,0 +1,1 @@
+{"cpes":["cpe:/a:apache:http_server:2.4.49","cpe:/a:openbsd:openssh:7.4"],"hostnames":[],"ip":"45.33.32.156","ports":[22,80,443,3389],"tags":["cloud","eol-product","self-signed"],"vulns":["CVE-2021-41773","CVE-2021-42013","CVE-2021-40438","CVE-2021-44790","CVE-2022-22720","CVE-2017-15906","CVE-2018-15473"]}

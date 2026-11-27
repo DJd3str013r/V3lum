@@ -1,0 +1,20 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p2-G03-2",
+  "title": "Batch p2-G03-2 (P346 mobile_app_impersonation: brand app discovery and look-alike apps)",
+  "attributes": {
+    "official_apps": "known_good list of the organisation's official store apps found by the app-store brand check [{store, name, seller, bundle_id, track_id, store_url, official_by, cert_sha256}]: official = developer id, seller name or exact bundle id listed in org_profile, or an Android package plus signing certificate listed in the official domain's Digital Asset Links (P346 c6)",
+    "lookalike_apps": "capped review list (at most 20) of store apps using an organisation brand term in their name with a seller that does not match the organisation and not listed in the official domain's Digital Asset Links [{store, category, name, seller, bundle_id, track_id, store_url, seller_url, score, reasons, dal, koodous}]: candidates for analyst review, never a verdict (P346 c6-c7)",
+    "app_store_coverage": "what one app-store brand check covered {terms_searched, sources {source: status}, dal_domains, dal_state, review_total, review_shown, official, unrelated}: an empty review list covers only these searches"
+  },
+  "tags": {
+    "lookalike_app": "store app using an organisation brand term with a seller that does not match the organisation: listed for analyst review, never a verdict (P346 c7)",
+    "unverified_app": "store app that can be confirmed neither as official nor as a look-alike (official package name without a comparable signing certificate): analyst review",
+    "apk_link": "URL of an .apk file found in a page or message: recorded as a url entity only, never downloaded automatically (P346 c8)"
+  },
+  "relations": {
+    "app_bundle_id": "brand, company or domain -> bundle id or Android package of a store app listed for review (expand=False)",
+    "app_seller_site": "brand, company or domain -> seller web site of a store app listed for review when it is not an organisation domain (expand=False)",
+    "apk_sample": "brand, company or domain -> SHA-256 of an APK sample (Koodous) listed for review (expand=False)"
+  }
+}

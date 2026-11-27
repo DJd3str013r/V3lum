@@ -1,0 +1,14 @@
+<response>
+ <meta>
+  <timestamp>2006-10-01T03:00:00+00:00</timestamp>
+ </meta>
+ <results>
+  <url0>
+   <url>https://www.example.org/</url>
+   <in_database>true</in_database>
+   <phish_id>11728</phish_id>
+   <verified>true</verified>
+   <valid>true</valid>
+  </url0>
+ </results>
+</response>

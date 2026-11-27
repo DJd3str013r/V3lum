@@ -1,0 +1,75 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber"
+  },
+  "nodes": [
+    {
+      "key": "domain:acme.example",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "saas_tenant_checks": [
+          {
+            "value": [
+              {
+                "vendor": "okta",
+                "candidate": "acme",
+                "tenant_host": "acme.okta.com",
+                "url": "https://acme.okta.com/",
+                "state": "exists",
+                "label": "candidate tenant",
+                "http_status": 200,
+                "marker": "openid_configuration_issuer",
+                "reason": null,
+                "ids": {
+                  "issuer": "https://acme.okta.com"
+                },
+                "stop": false,
+                "corroboration": [],
+                "confidence": "candidate"
+              },
+              {
+                "vendor": "zendesk",
+                "candidate": "acme",
+                "tenant_host": "acme.zendesk.com",
+                "url": "https://acme.zendesk.com/",
+                "state": "exists",
+                "label": "candidate tenant",
+                "http_status": 200,
+                "marker": "hc_locale_redirect",
+                "reason": null,
+                "ids": {},
+                "stop": false,
+                "corroboration": [],
+                "confidence": "candidate"
+              }
+            ],
+            "source": "saas_tenant_discovery"
+          }
+        ],
+        "saas_vendors": [
+          {
+            "value": [
+              "Atlassian"
+            ],
+            "source": "saas_verification_tokens"
+          }
+        ],
+        "m365_identity_provider": [
+          {
+            "value": {
+              "host": "sso.acme.example",
+              "kind": "adfs",
+              "url": "https://sso.acme.example/adfs/ls/"
+            },
+            "source": "m365_tenant"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": []
+}

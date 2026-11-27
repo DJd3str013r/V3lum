@@ -1,0 +1,16 @@
+1.0.0.0	1.0.0.255	13335	US	CLOUDFLARENET - Cloudflare, Inc.
+1.0.1.0	1.0.3.255	0	None	Not routed
+1.1.0.0	1.1.0.255	0	None	Not routed
+1.1.1.0	1.1.1.255	13335	US	CLOUDFLARENET - Cloudflare, Inc.
+1.1.2.0	1.1.7.255	0	None	Not routed
+8.8.7.0	8.8.7.255	3356	US	LEVEL3 - Level 3 Parent, LLC
+8.8.8.0	8.8.8.255	15169	US	GOOGLE - Google LLC
+8.8.9.0	8.8.10.255	3356	US	LEVEL3 - Level 3 Parent, LLC
+9.0.0.0	9.9.8.255	0	None	Not routed
+9.9.9.0	9.9.9.255	19281	US	QUAD9-AS-1 - Quad9
+9.9.10.0	9.127.255.255	0	None	Not routed
+27.123.33.0	27.123.35.255	10310	US	YAHOO-1 - Yahoo Holdings Inc.
+66.196.64.0	66.196.71.255	10310	US	YAHOO-1 - Yahoo Holdings Inc.
+200.159.240.0	200.159.255.255	1916	BR	AS1916 - Rede Nacional de Ensino e Pesquisa
+200.160.0.0	200.160.15.255	22548	BR	AS22548 - Nucleo de Inf. e Coord. do Ponto BR - NIC.BR
+200.160.16.0	200.160.31.255	22148	BR	AS22148 - MPS Informatica

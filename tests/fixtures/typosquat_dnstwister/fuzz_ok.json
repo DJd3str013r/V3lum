@@ -1,0 +1,80 @@
+{
+ "domain": "example.com",
+ "domain_as_hexadecimal": "6578616d706c652e636f6d",
+ "fuzzy_domains": [
+  {
+   "domain": "example.com",
+   "domain_as_hexadecimal": "6578616d706c652e636f6d",
+   "fuzzer": "Original"
+  },
+  {
+   "domain": "dxample.com",
+   "domain_as_hexadecimal": "6478616d706c652e636f6d",
+   "fuzzer": "Bitsquatting"
+  },
+  {
+   "domain": "gxample.com",
+   "domain_as_hexadecimal": "6778616d706c652e636f6d",
+   "fuzzer": "Bitsquatting"
+  },
+  {
+   "domain": "xn--xample-9ua.com",
+   "domain_as_hexadecimal": "786e2d2d78616d706c652d3975612e636f6d",
+   "fuzzer": "Homoglyph"
+  },
+  {
+   "domain": "cxample.com",
+   "domain_as_hexadecimal": "6378616d706c652e636f6d",
+   "fuzzer": "Homoglyph"
+  },
+  {
+   "domain": "ezxample.com",
+   "domain_as_hexadecimal": "657a78616d706c652e636f6d",
+   "fuzzer": "Insertion"
+  },
+  {
+   "domain": "xample.com",
+   "domain_as_hexadecimal": "78616d706c652e636f6d",
+   "fuzzer": "Omission"
+  },
+  {
+   "domain": "xeample.com",
+   "domain_as_hexadecimal": "7865616d706c652e636f6d",
+   "fuzzer": "Transposition"
+  },
+  {
+   "domain": "example.br",
+   "domain_as_hexadecimal": "6578616d706c652e6272",
+   "fuzzer": "Common TLDs"
+  },
+  {
+   "domain": "example.online",
+   "domain_as_hexadecimal": "6578616d706c652e6f6e6c696e65",
+   "fuzzer": "Common TLDs"
+  },
+  {
+   "domain": "example.xyz",
+   "domain_as_hexadecimal": "6578616d706c652e78797a",
+   "fuzzer": "Common TLDs"
+  },
+  {
+   "domain": "wwexample.com",
+   "domain_as_hexadecimal": "77776578616d706c652e636f6d",
+   "fuzzer": "Various"
+  },
+  {
+   "domain": "e.xample.com",
+   "domain_as_hexadecimal": "652e78616d706c652e636f6d",
+   "fuzzer": "Subdomain"
+  },
+  {
+   "domain": "login-example.com",
+   "domain_as_hexadecimal": "6c6f67696e2d6578616d706c652e636f6d"
+  },
+  {
+   "domain": "login-redirect-example.com",
+   "domain_as_hexadecimal": "6c6f67696e2d72656469726563742d6578616d706c652e636f6d"
+  }
+ ],
+ "_minimised": "15 of 298 entries kept; per-entry *_url fields dropped"
+}

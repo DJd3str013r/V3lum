@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "cloudflare",
+  "name": "Cloudflare published IP ranges",
+  "operator": "Cloudflare, Inc.",
+  "hosts": [
+    "www.cloudflare.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms, a privacy policy and a business offering (A8 BR2); P034 chair rationale: 'the cloud providers are trusted'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "The operator's own publication of its address ranges: authoritative for which ranges it operates (labels are V3LUM-authored roles)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "ips": {
+      "title": "Cloudflare ips-v4 / ips-v6: the CDN/WAF edge ranges (one CIDR per line)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.cloudflare.com/ips/",
+        "quote": "Download official range files (ip-ranges.amazonaws.com, gstatic cloud.json, Cloudflare ips-v4/v6, Fastly public-ip-list, Oracle OCI...) ... Tier community is the lowest dataset provider (cloudcheck); the cloud providers are trusted. Terms open (public provider data; AGPL data met by runtime download, A1 BR19).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "cloudflare",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P034). https://www.cloudflare.com/ips-v4/ and /ips-v6/ (15 + 7 lines on 2026-11-26), datasets cloud_ranges_cloudflare_v4.txt and cloud_ranges_cloudflare_v6.txt: shared CDN edges (noise). The page sets a cookie: the core never stores or replays cookies."
+    }
+  },
+  "notes": "Owned by batch p1-G02-1 (module cloud_ranges, P034): only the dataset manager downloads this file (daily refresh, validated before it replaces the cached copy, the last good copy is kept on failure); no investigated value is ever sent."
+}

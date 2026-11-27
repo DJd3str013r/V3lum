@@ -1,0 +1,60 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "nodes": [
+  {
+   "key": "cnpj:11222333000181",
+   "depth": 0,
+   "seed": true,
+   "findings": [
+    {
+     "title": "Listed in CEIS (in force)",
+     "severity": "high",
+     "confidence": 0.95,
+     "confidence_label": "confirmed",
+     "criterion": "exact 14-character CNPJ match in the CGU CEIS file of 2026-11-25 (synthetic)",
+     "tags": [
+      "sanctions"
+     ],
+     "module": "cgu_sanctions_bulk",
+     "source": "transparencia.cgu_sanctions_bulk_ceis",
+     "key": "ceis:900001:11222333000181",
+     "data": {
+      "list": "ceis",
+      "match_type": "exact_cnpj",
+      "sanction_id": "900001",
+      "dedup_key": "ceis|11222333000181|900001",
+      "file_date": "2026-11-25"
+     }
+    },
+    {
+     "title": "CEIS: record found (TCU certificate CONSTA)",
+     "severity": "high",
+     "confidence": 0.95,
+     "confidence_label": "confirmed",
+     "criterion": "TCU certificate situacao CONSTA for CEIS (synthetic)",
+     "tags": [
+      "sanctions"
+     ],
+     "module": "tcu_certidoes",
+     "source": "tcu.certidoes_ceis",
+     "key": "ceis",
+     "data": {
+      "list": "ceis",
+      "match_type": "exact_cnpj",
+      "dedup_key": "ceis|11222333000181|"
+     }
+    }
+   ]
+  }
+ ],
+ "edges": [],
+ "expect": {
+  "g10_sanction_dedup": {
+   "min": 1,
+   "max": 1,
+   "severity": "info",
+   "confidence_label": "confirmed"
+  }
+ }
+}

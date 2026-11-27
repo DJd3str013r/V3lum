@@ -1,0 +1,14 @@
+{
+ "request": "GET https://www.iana.org/domains/root/db/zz.html",
+ "response": {
+  "status": 404,
+  "headers": {
+   "content-type": "text/html; charset=utf-8",
+   "server": "cloudflare"
+  },
+  "body": "This page does not exist"
+ },
+ "transport_error": null,
+ "elapsed_s": 0.198951,
+ "note": "unknown TLD: 404 'This page does not exist' (24 bytes)"
+}

@@ -1,0 +1,52 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "bitcoinwhoswho",
+  "name": "BitcoinWhosWho (address report pages)",
+  "operator": "BitcoinWhosWho",
+  "hosts": [
+    "bitcoinwhoswho.com",
+    "www.bitcoinwhoswho.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Long-running address reputation site with public documentation and a paid API (A8 community); P216 cond 5: 'community - mempool.space, WalletExplorer, BitcoinWhosWho, Ethplorer'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Scam reports, web mentions and tags contributed by users and crawlers: leads, never proof."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "address_pages": {
+      "title": "BitcoinWhosWho address report /address/{btc_address} (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.bitcoinwhoswho.com/",
+        "quote": "The pack is offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "bitcoinwhoswho",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P216 cond 1). Research C0504 terms 'Free web UI; provider ToS apply (manual analyst use)'. On 2026-11-26 curl got 302 to the plain-http home page: the link is unverified until a browser re-check. The API needs a key and is not used. Used by pivots_crypto (pack crypto.json)."
+    }
+  },
+  "notes": "Manual pivot links only (batch p2-G14-2): V3LUM never fetches them (P311)."
+}

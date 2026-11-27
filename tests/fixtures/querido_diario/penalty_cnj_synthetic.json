@@ -1,0 +1,45 @@
+{
+ "total_gazettes": 3,
+ "gazettes": [
+  {
+   "territory_id": "3550308",
+   "date": "2026-10-02",
+   "url": "https://data.queridodiario.ok.org.br/3550308/2026-10-02/0000000000000000000000000000000000000001.pdf",
+   "territory_name": "São Paulo",
+   "state_code": "SP",
+   "edition": "100",
+   "is_extra_edition": false,
+   "txt_url": "https://data.queridodiario.ok.org.br/3550308/2026-10-02/0000000000000000000000000000000000000001.txt",
+   "excerpts": [
+    "\nDESPACHO DO SECRETÁRIO\n\nAPLICAÇÃO DE PENALIDADE. Processo SEI nº 6016.2026/0000001-1. À vista do contido nos autos, APLICO à empresa EMPRESA EXEMPLO LTDA, CNPJ 12.ABC.345/01DE-35, a penalidade de MULTA de 10% sobre o valor do contrato e a SUSPENSÃO temporária de participar em licitação, com RESCISÃO unilateral do ajuste firmado com o BANCO DO BRASIL S.A., CNPJ 00.000.000/0001-91, interveniente. Responsável: Pessoa Exemplo Sete, CPF 123.456.789-09. Publique-se e cumpra-se. Esta portaria entra em vigor na data de sua publicação, revogadas as disposições em contrário, ficando a contratada notificada para os fins do art. 156 da Lei Federal nº 14.133/2021."
+   ]
+  },
+  {
+   "territory_id": "3304557",
+   "date": "2026-09-15",
+   "url": "https://data.queridodiario.ok.org.br/3304557/2026-09-15/0000000000000000000000000000000000000002.pdf",
+   "territory_name": "Rio de Janeiro",
+   "state_code": "RJ",
+   "edition": "200",
+   "is_extra_edition": true,
+   "txt_url": "https://data.queridodiario.ok.org.br/3304557/2026-09-15/0000000000000000000000000000000000000002.txt",
+   "excerpts": [
+    "PROCURADORIA GERAL DO MUNICÍPIO. Execução fiscal nº 0700055-10.2018.8.01.0022 e autos 07000551020188010022 (repetição sem máscara), em face de BANCO DO BRASIL S/A (CNPJ 00000000000191). Número inválido 0700055-11.2018.8.01.0022 não deve ser extraído."
+   ]
+  },
+  {
+   "territory_id": "3157005",
+   "date": "2026-11-20",
+   "url": "https://data.queridodiario.ok.org.br/3157005/2026-11-20/0000000000000000000000000000000000000003.pdf",
+   "territory_name": "Salinas",
+   "state_code": "MG",
+   "edition": null,
+   "is_extra_edition": false,
+   "txt_url": null,
+   "excerpts": [
+    "Objeto: prestação de serviços de arrecadação de multas de trânsito. Contratada: BANCO DO BRASIL S.A., inscrita no CNPJ nº. 00.000.000/0001-91. Valor Total: R$ 57.000,00.",
+    "Segundo trecho do mesmo diário com o CNPJ 00.000.000/0001-91 e CNPJ com dígito errado 00.000.000/0001-92."
+   ]
+  }
+ ]
+}

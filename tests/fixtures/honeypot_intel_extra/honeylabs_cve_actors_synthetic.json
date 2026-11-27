@@ -1,0 +1,328 @@
+{
+ "cve_id": "CVE-2021-44228",
+ "title": "Apache Log4j2 JNDI remote code execution (Log4Shell)",
+ "severity": "critical",
+ "actively_exploited": true,
+ "known": true,
+ "patterns": [
+  "jndi%3a",
+  "jndi:"
+ ],
+ "events": 15570,
+ "unique_ips": 1029,
+ "actors": [
+  {
+   "ip": "203.0.113.1",
+   "events": 864,
+   "country_code": "IT",
+   "asn": 8220,
+   "asn_org": "COLT Technology Services Group Limited",
+   "rdns": "",
+   "last_seen": "2026-11-25 19:23:06.056000",
+   "verdict": null,
+   "scanner_tag": null
+  },
+  {
+   "ip": "203.0.113.2",
+   "events": 786,
+   "country_code": "SG",
+   "asn": 152194,
+   "asn_org": "CTG Server Limited",
+   "rdns": "",
+   "last_seen": "2026-11-25 06:02:39.650000",
+   "verdict": null,
+   "scanner_tag": null
+  },
+  {
+   "ip": "203.0.113.3",
+   "events": 620,
+   "country_code": "IR",
+   "asn": 215930,
+   "asn_org": "Cipher Operations Doo Beograd - Novi Beograd",
+   "rdns": "",
+   "last_seen": "2026-11-25 21:38:46.504000",
+   "verdict": null,
+   "scanner_tag": null
+  },
+  {
+   "ip": "203.0.113.4",
+   "events": 592,
+   "country_code": "IR",
+   "asn": 215930,
+   "asn_org": "Cipher Operations Doo Beograd - Novi Beograd",
+   "rdns": "",
+   "last_seen": "2026-11-25 21:39:52.549000",
+   "verdict": null,
+   "scanner_tag": null
+  },
+  {
+   "ip": "203.0.113.5",
+   "events": 454,
+   "country_code": "TW",
+   "asn": 3462,
+   "asn_org": "Data Communication Business Group",
+   "rdns": "",
+   "last_seen": "2026-11-22 07:10:23.725000",
+   "verdict": null,
+   "scanner_tag": null
+  },
+  {
+   "ip": "203.0.113.6",
+   "events": 447,
+   "country_code": "RO",
+   "asn": 47890,
+   "asn_org": "Unmanaged Ltd",
+   "rdns": "",
+   "last_seen": "2026-11-25 21:29:41.742000",
+   "verdict": null,
+   "scanner_tag": null
+  },
+  {
+   "ip": "203.0.113.7",
+   "events": 442,
+   "country_code": "CN",
+   "asn": 140309,
+   "asn_org": "CHINATELECOM Guangdong province Zhongshan 5G network",
+   "rdns": "",
+   "last_seen": "2026-11-21 02:25:46.208000",
+   "verdict": null,
+   "scanner_tag": null
+  },
+  {
+   "ip": "203.0.113.8",
+   "events": 438,
+   "country_code": "CN",
+   "asn": 58854,
+   "asn_org": "Kaopu Cloud",
+   "rdns": "",
+   "last_seen": "2026-11-24 19:19:53.546000",
+   "verdict": null,
+   "scanner_tag": null
+  },
+  {
+   "ip": "203.0.113.9",
+   "events": 436,
+   "country_code": "CN",
+   "asn": 55990,
+   "asn_org": "Huawei Cloud Service data center",
+   "rdns": "",
+   "last_seen": "2026-11-19 04:04:22.402000",
+   "verdict": null,
+   "scanner_tag": null
+  },
+  {
+   "ip": "203.0.113.10",
+   "events": 435,
+   "country_code": "CN",
+   "asn": 4837,
+   "asn_org": "CHINA UNICOM China169 Backbone",
+   "rdns": "",
+   "last_seen": "2026-11-25 10:18:28.831000",
+   "verdict": null,
+   "scanner_tag": null
+  },
+  {
+   "ip": "203.0.113.11",
+   "events": 432,
+   "country_code": "VN",
+   "asn": 150895,
+   "asn_org": "EZ TECHNOLOGY COMPANY LIMITED",
+   "rdns": "",
+   "last_seen": "2026-11-19 21:27:52.354000",
+   "verdict": null,
+   "scanner_tag": null
+  },
+  {
+   "ip": "203.0.113.12",
+   "events": 432,
+   "country_code": "SG",
+   "asn": 150436,
+   "asn_org": "Byteplus Pte. Ltd.",
+   "rdns": "",
+   "last_seen": "2026-11-19 17:02:13.999000",
+   "verdict": null,
+   "scanner_tag": null
+  },
+  {
+   "ip": "203.0.113.13",
+   "events": 432,
+   "country_code": "FR",
+   "asn": 16276,
+   "asn_org": "OVH SAS",
+   "rdns": "",
+   "last_seen": "2026-11-22 15:10:00.858000",
+   "verdict": null,
+   "scanner_tag": {
+    "key": "ovh",
+    "label": "OVHcloud",
+    "category": "hosting_provider",
+    "url": "https://www.ovhcloud.com/"
+   }
+  },
+  {
+   "ip": "203.0.113.14",
+   "events": 426,
+   "country_code": "KR",
+   "asn": 135377,
+   "asn_org": "UCLOUD INFORMATION TECHNOLOGY (HK) LIMITED",
+   "rdns": "",
+   "last_seen": "2026-11-20 00:38:35.060000",
+   "verdict": null,
+   "scanner_tag": null
+  },
+  {
+   "ip": "203.0.113.15",
+   "events": 423,
+   "country_code": "CN",
+   "asn": 4811,
+   "asn_org": "China Telecom (Group)",
+   "rdns": "",
+   "last_seen": "2026-11-21 18:40:55.169000",
+   "verdict": null,
+   "scanner_tag": null
+  },
+  {
+   "ip": "203.0.113.16",
+   "events": 338,
+   "country_code": "CN",
+   "asn": 4134,
+   "asn_org": "Chinanet",
+   "rdns": "",
+   "last_seen": "2026-11-24 16:02:19.675000",
+   "verdict": null,
+   "scanner_tag": null
+  },
+  {
+   "ip": "203.0.113.17",
+   "events": 321,
+   "country_code": "RO",
+   "asn": 47890,
+   "asn_org": "Unmanaged Ltd",
+   "rdns": "",
+   "last_seen": "2026-11-25 21:26:30.267000",
+   "verdict": null,
+   "scanner_tag": null
+  },
+  {
+   "ip": "203.0.113.18",
+   "events": 316,
+   "country_code": "RO",
+   "asn": 47890,
+   "asn_org": "Unmanaged Ltd",
+   "rdns": "",
+   "last_seen": "2026-11-25 20:40:42.664000",
+   "verdict": null,
+   "scanner_tag": null
+  },
+  {
+   "ip": "203.0.113.19",
+   "events": 262,
+   "country_code": "GB",
+   "asn": 403092,
+   "asn_org": "HOSTRAM",
+   "rdns": "",
+   "last_seen": "2026-11-20 20:21:20.558000",
+   "verdict": null,
+   "scanner_tag": null
+  },
+  {
+   "ip": "203.0.113.20",
+   "events": 239,
+   "country_code": "GB",
+   "asn": 403092,
+   "asn_org": "HOSTRAM",
+   "rdns": "",
+   "last_seen": "2026-11-20 20:32:23.389000",
+   "verdict": null,
+   "scanner_tag": null
+  },
+  {
+   "ip": "203.0.113.21",
+   "events": 239,
+   "country_code": "RO",
+   "asn": 204428,
+   "asn_org": "SS-Net",
+   "rdns": "",
+   "last_seen": "2026-11-20 20:29:32.823000",
+   "verdict": null,
+   "scanner_tag": null
+  },
+  {
+   "ip": "203.0.113.22",
+   "events": 232,
+   "country_code": "US",
+   "asn": 36352,
+   "asn_org": "HostPapa",
+   "rdns": "",
+   "last_seen": "2026-11-19 20:25:53.870000",
+   "verdict": null,
+   "scanner_tag": null
+  },
+  {
+   "ip": "203.0.113.23",
+   "events": 222,
+   "country_code": "RO",
+   "asn": 204428,
+   "asn_org": "SS-Net",
+   "rdns": "",
+   "last_seen": "2026-11-20 20:32:58.548000",
+   "verdict": null,
+   "scanner_tag": null
+  },
+  {
+   "ip": "203.0.113.24",
+   "events": 200,
+   "country_code": "CH",
+   "asn": 53667,
+   "asn_org": "FranTech Solutions",
+   "rdns": "",
+   "last_seen": "2026-11-25 17:18:50.970000",
+   "verdict": null,
+   "scanner_tag": null
+  },
+  {
+   "ip": "203.0.113.25",
+   "events": 196,
+   "country_code": "US",
+   "asn": 11668,
+   "asn_org": "WEST COAST INTERNET INCORPORATED",
+   "rdns": "",
+   "last_seen": "2026-11-24 00:05:20.358000",
+   "verdict": null,
+   "scanner_tag": null
+  }
+ ],
+ "top_asns": [
+  {
+   "asn": 215930,
+   "org": "Cipher Operations Doo Beograd - Novi Beograd",
+   "events": 1212,
+   "ips": 2
+  },
+  {
+   "asn": 47890,
+   "org": "Unmanaged Ltd",
+   "events": 1095,
+   "ips": 5
+  },
+  {
+   "asn": 8220,
+   "org": "COLT Technology Services Group Limited",
+   "events": 864,
+   "ips": 1
+  }
+ ],
+ "top_countries": [],
+ "window_hours": 168,
+ "kev_date_added": "2021-12-10",
+ "kev": {
+  "date_added": "2021-12-10",
+  "vulnerability_name": "Apache Log4j2 Remote Code Execution Vulnerability",
+  "known_ransomware_campaign_use": "Known"
+ },
+ "window_notice": {
+  "requested_days": 90,
+  "returned_days": 7
+ },
+ "_synthetic": "body of the live CVE-2021-44228 answer; actors (IPs replaced by 203.0.113.x, rDNS blanked) copied from the real keyless /api/port/22 answer because no keyless CVE answer in the 7-day window had actors; the CVE endpoint's actor shape is unverified"
+}

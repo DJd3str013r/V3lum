@@ -1,0 +1,11 @@
+{
+ "_fixture": "synthetic Google API 503 (google.rpc UNAVAILABLE shape): could not verify",
+ "status": 503,
+ "body": {
+  "error": {
+   "code": 503,
+   "status": "UNAVAILABLE",
+   "message": "The service is currently unavailable."
+  }
+ }
+}

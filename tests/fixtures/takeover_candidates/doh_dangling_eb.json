@@ -1,0 +1,64 @@
+{
+ "qname": "app.example.com",
+ "google": {
+  "Status": 3,
+  "TC": false,
+  "RD": true,
+  "RA": true,
+  "AD": false,
+  "CD": false,
+  "Question": [
+   {
+    "name": "app.example.com.",
+    "type": 1
+   }
+  ],
+  "Answer": [
+   {
+    "name": "app.example.com.",
+    "type": 5,
+    "TTL": 300,
+    "data": "exemplo-app.us-east-1.elasticbeanstalk.com."
+   }
+  ],
+  "Authority": [
+   {
+    "name": "us-east-1.elasticbeanstalk.com.",
+    "type": 6,
+    "TTL": 60,
+    "data": "ns-1.awsdns-01.org. awsdns-hostmaster.amazon.com. 1 7200 900 1209600 60"
+   }
+  ],
+  "edns_client_subnet": "0.0.0.0/0"
+ },
+ "cloudflare": {
+  "Status": 3,
+  "TC": false,
+  "RD": true,
+  "RA": true,
+  "AD": false,
+  "CD": false,
+  "Question": [
+   {
+    "name": "app.example.com",
+    "type": 1
+   }
+  ],
+  "Answer": [
+   {
+    "name": "app.example.com",
+    "type": 5,
+    "TTL": 300,
+    "data": "exemplo-app.us-east-1.elasticbeanstalk.com."
+   }
+  ],
+  "Authority": [
+   {
+    "name": "us-east-1.elasticbeanstalk.com",
+    "type": 6,
+    "TTL": 60,
+    "data": "ns-1.awsdns-01.org. awsdns-hostmaster.amazon.com. 1 7200 900 1209600 60"
+   }
+  ]
+ }
+}

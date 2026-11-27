@@ -1,0 +1,61 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "ransomfeed",
+  "name": "Ransomfeed (ransomware leak-site claims: RSS feed and REST API, CC BY 4.0)",
+  "operator": "Ransomfeed (Dario Fadda, ransomfeed.it)",
+  "hosts": ["ransomfeed.it", "api.ransomfeed.it"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Community tracker with an identifiable operator, a published licence (CC BY 4.0, site footer), public API documentation (api.ransomfeed.it/docs) and a public track record since 2022 (A8 community); P356 cond 4 'Registry provider ransomfeed: tier community, terms open'.",
+  "tier_reviewer": "council-1 (A8, P356)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": true},
+  "personal_data_review": null,
+  "reliability": {"grade": "C", "justification": "Leak-site posts collected by a tracker: actor claims, unverified until corroborated (P356 cond 2-3); the website field is sometimes a placeholder (example.com, N/D)."},
+  "http_profile": {"user_agent": "neutral", "timeout": 30, "ttl": 21600, "min_interval": 13.0, "concurrency": 1, "retries": 1},
+  "quota": {"scope": "egress_ip", "rate_per_second": 0.0833, "burst": 1, "published": true, "evidence_url": "https://api.ransomfeed.it/docs", "safety_margin": 0.8},
+  "error_markers": [
+    {"id": "ransomfeed_error_field", "statuses": [200], "json_path": "error", "equals": null, "regex": "^(?!(?:false|null|0)$)\\S", "final_url_regex": null, "maps_to": "error", "reason_code": "error", "reason": "Ransomfeed: error field in a 200 answer (could not verify)"}
+  ],
+  "keys": {},
+  "sources": {
+    "rss": {
+      "title": "RSS feed ransomfeed.it/rss-complete.php (about 600 recent claims; dataset, refreshed at most hourly)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://ransomfeed.it/",
+        "quote": "Ransomfeed © 2026 by Dario Fadda is licensed under CC BY 4.0",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1, P356 cond 4)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "ransomfeed",
+      "sanitizer": {
+        "keep": ["query", "data_as_of", "counts.*", "claims[].victim", "claims[].group", "claims[].claimed_at", "claims[].attack_date", "claims[].website", "claims[].country", "claims[].sector", "claims[].record_id", "claims[].source_url", "claims[].match_type", "claims[].query_match"],
+        "notes": "P356 cond 3 / A4: evidence keeps claim metadata only (victim, group, dates, website, country, sector, record id, permalink); the feed carries no description text (template only) and its matomo tracking image is never fetched."
+      },
+      "dataset": "ransomfeed_rss",
+      "notes": "Quote: site footer (research C0738, verified 2026-11-25/26; P356 cond 4). Served as text/xml;charset=iso-8859-1 while the bytes and the XML prolog are UTF-8: the module parses the raw bytes with expat (no DTD, no entities). Fetched through the dataset manager at most hourly (P356 cond 1) and matched offline for watch and supplier screening."
+    },
+    "api": {
+      "title": "REST API api.ransomfeed.it/search/{text} and /ganginfo/{gang} (analyst-typed or org_profile names only)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://ransomfeed.it/",
+        "quote": "Ransomfeed © 2026 by Dario Fadda is licensed under CC BY 4.0",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1, P356 cond 4)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "ransomfeed",
+      "sanitizer": {
+        "keep": ["[].id", "[].date", "[].victim", "[].gang", "[].country", "[].website", "[].description", "[].work_sector", "error", "message", "name", "description", "locations[].fqdn", "locations[].available", "locations[].type", "locations[].lastscrape", "profile[]", "query", "data_as_of", "counts.*", "claims[].victim", "claims[].group", "claims[].claimed_at", "claims[].attack_date", "claims[].website", "claims[].country", "claims[].sector", "claims[].record_id", "claims[].source_url", "claims[].match_type", "claims[].query_match", "card.name", "card.onions[]", "card.profile_links[]"],
+        "notes": "P356 cond 3 / A4: claim rows keep id, date, victim, gang, country, website, sector and the description (read for the <= 300-char excerpt and the domain/CNPJ evidence, never stored whole); actor cards keep name, description, leak-site onion locations and reference links. The post hash, city, region and the other fields are dropped before the HTTP cache."
+      },
+      "dataset": null,
+      "notes": "Quote: site footer (research C0738). api.ransomfeed.it/docs (2026-11-26): 5 requests per 60 s per IP (429 with X-RateLimit-* and Retry-After), default 100 / max 1000 rows. /search covers victim, description, city, region and work_sector (not the website). API dates are Italian local time. Used only for analyst-typed seeds and org_profile names (P356 cond 1)."
+    }
+  },
+  "notes": "Owned by batch p1-G09-1 (P356 ransomfeed). CC BY 4.0: attribution 'Source: Ransomfeed (CC BY 4.0, Dario Fadda)' in reports and exports (cond 4). flags.sensitive: leak-site claims (A4, as the shared ransomlook seed): allow-list sanitizers per source, cache sanitized, ttl 6 h. Politeness: min_interval 13 s and a 5-per-minute token bucket (documented limit). Claim and onion links are never visited (cond 3)."
+}

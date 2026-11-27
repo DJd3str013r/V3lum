@@ -1,0 +1,14 @@
+{
+ "ipVersion": null,
+ "ipAddress": null,
+ "countryName": null,
+ "countryCode": null,
+ "cityName": null,
+ "regionName": null,
+ "regionCode": null,
+ "continent": null,
+ "continentCode": null,
+ "asn": null,
+ "asnOrganization": null,
+ "isProxy": false
+}

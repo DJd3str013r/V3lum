@@ -1,0 +1,450 @@
+{
+ "_meta": {
+  "note": "FC6 rule-2 lint fixtures: real dataset entries (handles scrubbed) that must be dropped and logged",
+  "datasets": {
+   "wmn": "wmn-data.json sha256 a8b8385b...",
+   "maigret": "data.json sha256 0872e6d2...",
+   "sherlock": "data.json sha256 3fdfc669..."
+  },
+  "licence": "WhatsMyName entries: Trimmed copy of the WhatsMyName dataset (https://github.com/WebBreacher/WhatsMyName, archived 2026-11-09), Copyright (C) 2015-2026 Micah Hoffman, CC BY-SA 4.0. Modified for tests: entries trimmed and the 'known' handles replaced by example values. Test fixture only: never shipped in the package (A6, notice username_check_wmn). Maigret and Sherlock entries: MIT (Copyright (c) 2020-2026 Soxoj; Copyright (c) 2019 Sherlock Project); handles replaced by example values."
+ },
+ "wmn": [
+  {
+   "name": "X",
+   "uri_check": "https://api.x.com/i/users/username_available.json?username={account}",
+   "uri_pretty": "https://x.com/{account}",
+   "e_code": 200,
+   "e_string": "\"reason\":\"taken\"",
+   "m_string": "\"reason\":\"available\"",
+   "m_code": 200,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "social"
+  },
+  {
+   "name": "Discord (User)",
+   "uri_check": "https://discord.com/api/v9/unique-username/username-attempt-unauthed",
+   "post_body": "{\"username\":\"{account}\"}",
+   "headers": {
+    "Content-Type": "application/json"
+   },
+   "e_code": 200,
+   "e_string": "\"taken\":true",
+   "m_string": "\"taken\":false",
+   "m_code": 200,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "social"
+  },
+  {
+   "name": "Fiverr",
+   "uri_check": "https://www.fiverr.com/validate_username",
+   "uri_pretty": "https://www.fiverr.com/{account}",
+   "post_body": "{\"username\": \"{account}\"}",
+   "headers": {
+    "Content-Type": "application/json"
+   },
+   "e_code": 201,
+   "e_string": "\"errorKeys\":[[\"username\",\"user_taken\"]]",
+   "m_string": "\"status\":\"success\"",
+   "m_code": 201,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "shopping"
+  },
+  {
+   "name": "Roblox",
+   "uri_check": "https://auth.roblox.com/v1/usernames/validate?username={account}&birthday=2019-12-31T23:00:00.000Z",
+   "uri_pretty": "https://www.roblox.com/search/users?keyword={account}",
+   "e_code": 200,
+   "e_string": "Username is already in use",
+   "m_string": "Username is valid",
+   "m_code": 200,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "gaming"
+  },
+  {
+   "name": "Steemit",
+   "uri_check": "https://signup.steemit.com/api/check_username",
+   "uri_pretty": "https://steemit.com/@{account}",
+   "post_body": "{\"username\":\"{account}\"}",
+   "headers": {
+    "Content-Type": "application/json"
+   },
+   "e_code": 200,
+   "e_string": "\"type\":\"error_api_username_used\"",
+   "m_string": "\"success\":true",
+   "m_code": 200,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "social"
+  },
+  {
+   "name": "Pikabu",
+   "uri_check": "https://pikabu.ru/ajax.php",
+   "uri_pretty": "https://pikabu.ru/@{account}",
+   "post_body": "route=signup/check-username&username={account}",
+   "headers": {
+    "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+   },
+   "e_code": 200,
+   "e_string": "\"result\":false",
+   "m_string": "\"result\":true",
+   "m_code": 200,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "social",
+   "protection": [
+    "ddos-guard"
+   ]
+  },
+  {
+   "name": "Quizlet",
+   "uri_check": "https://quizlet.com/webapi/3.2/users/check-username?username={account}",
+   "uri_pretty": "https://quizlet.com/user/{account}/sets",
+   "e_code": 200,
+   "e_string": "\"identifier\":\"username_is_taken\"",
+   "m_string": "\"success\":true",
+   "m_code": 200,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "hobby",
+   "protection": [
+    "cloudflare"
+   ]
+  },
+  {
+   "name": "WordPress.org (Profiles)",
+   "uri_check": "https://login.wordpress.org/wp-json/wporg/v1/username-available/{account}",
+   "uri_pretty": "https://profiles.wordpress.org/{account}/",
+   "e_code": 200,
+   "e_string": "\"error\":\"That username is already in use.",
+   "m_string": "\"available\":true",
+   "m_code": 200,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "blog"
+  },
+  {
+   "name": "Minds",
+   "uri_check": "https://www.minds.com/api/v3/register/validate?username={account}",
+   "uri_pretty": "https://www.minds.com/{account}/",
+   "e_code": 200,
+   "e_string": "\"valid\":false",
+   "m_string": "\"valid\":true",
+   "m_code": 200,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "social"
+  },
+  {
+   "name": "Buy Me a Coffee",
+   "uri_check": "https://app.buymeacoffee.com/api/v1/check_availability",
+   "uri_pretty": "https://buymeacoffee.com/{account}",
+   "post_body": "{\"project_slug\":\"{account}\"}",
+   "headers": {
+    "Content-Type": "application/json"
+   },
+   "e_code": 200,
+   "e_string": "\"available\":false",
+   "m_string": "\"available\":true",
+   "m_code": 200,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "finance",
+   "protection": [
+    "cloudflare"
+   ]
+  },
+  {
+   "name": "lichess.org",
+   "uri_check": "https://lichess.org/api/player/autocomplete?term={account}&exists=1",
+   "uri_pretty": "https://lichess.org/@/{account}",
+   "e_code": 200,
+   "e_string": "true",
+   "m_string": "false",
+   "m_code": 200,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "gaming"
+  },
+  {
+   "name": "TryHackMe",
+   "uri_check": "https://tryhackme.com/api/user/exist/{account}",
+   "uri_pretty": "https://tryhackme.com/r/p/{account}",
+   "e_code": 200,
+   "e_string": "\"success\":true",
+   "m_string": "\"success\":false",
+   "m_code": 200,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "tech"
+  },
+  {
+   "name": "Etoro",
+   "uri_check": "https://www.etoro.com/api/logininfo/v1.1/users/{account}",
+   "uri_pretty": "https://www.etoro.com/people/{account}",
+   "e_code": 200,
+   "e_string": "\"gcid\":",
+   "m_string": "\"ErrorCode\":\"NotFound\"",
+   "m_code": 404,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "finance",
+   "protection": [
+    "cloudflare"
+   ]
+  },
+  {
+   "name": "COLOURlovers",
+   "uri_check": "https://www.colourlovers.com/ajax/check-username-availability",
+   "uri_pretty": "https://www.colourlovers.com/lover/{account}",
+   "post_body": "userName={account}",
+   "headers": {
+    "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+   },
+   "e_code": 200,
+   "e_string": "\"_status\":\"unavailable\"",
+   "m_string": "\"_status\":\"available\"",
+   "m_code": 200,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "hobby",
+   "protection": [
+    "cloudflare"
+   ]
+  },
+  {
+   "name": "Wikimapia",
+   "uri_check": "https://wikimapia.org/user/register/?check=username&value={account}",
+   "uri_pretty": "https://wikimapia.org/user/tools/users_rating/?username={account}",
+   "e_code": 200,
+   "e_string": "\"ok\":false",
+   "m_string": "\"ok\":true",
+   "m_code": 200,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "social"
+  },
+  {
+   "name": "Folkd",
+   "uri_check": "https://www.folkd.com/?app=core&module=system&controller=ajax&do=usernameExists&input={account}",
+   "uri_pretty": "https://www.folkd.com/search/?q={account}&quick=1&type=core_members",
+   "e_code": 200,
+   "e_string": "\"message\":\"That display name is in use by another member.\"",
+   "m_string": "\"result\":\"ok\"",
+   "m_code": 200,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "social",
+   "protection": [
+    "other"
+   ]
+  }
+ ],
+ "maigret": {
+  "Discord": {
+   "url": "https://discord.com",
+   "urlMain": "https://discord.com/",
+   "urlProbe": "https://discord.com/api/v9/unique-username/username-attempt-unauthed",
+   "regexCheck": "^[^\\u3040-\\u30ff\\u3400-\\u4dbf\\u4e00-\\u9fff\\uac00-\\ud7af\\uf900-\\ufaff]{2,32}$",
+   "checkType": "message",
+   "absenceStrs": [
+    "{\"taken\":false}"
+   ],
+   "headers": {
+    "Content-Type": "application/json"
+   },
+   "usernameClaimed": "example-claimed",
+   "usernameUnclaimed": "noonewouldeverusethis7",
+   "alexaRank": 133,
+   "requestMethod": "POST",
+   "requestPayload": {
+    "username": "{username}"
+   },
+   "errors": {
+    "The resource is being rate limited": "Rate limited",
+    "You are being rate limited": "Rate limited",
+    "rate_limited": "Rate limited",
+    "BASE_TYPE_BAD_LENGTH": "Invalid username length",
+    "Must be between 2 and 32 in length": "Invalid username length"
+   },
+   "tags": [
+    "gaming",
+    "messaging",
+    "social"
+   ]
+  },
+  "ProtonMail": {
+   "checkType": "message",
+   "presenseStrs": [
+    "Username already used"
+   ],
+   "absenceStrs": [
+    "\"Code\":1000"
+   ],
+   "headers": {
+    "X-Pm-Appversion": "web-account@5.0.398.1"
+   },
+   "activation": {
+    "method": "proton",
+    "url": "REDACTED"
+   },
+   "urlMain": "https://proton.me/",
+   "url": "https://account.proton.me/api/users/available?Name={username}",
+   "usernameClaimed": "example-claimed",
+   "usernameUnclaimed": "noonewouldeverusethis7"
+  },
+  "Omg.lol": {
+   "url": "https://{username}.omg.lol",
+   "urlMain": "https://home.omg.lol",
+   "urlProbe": "https://api.omg.lol/address/{username}/availability",
+   "checkType": "message",
+   "presenseStrs": [
+    "\"available\": false"
+   ],
+   "absenceStrs": [
+    "\"available\": true"
+   ],
+   "usernameClaimed": "example-claimed",
+   "usernameUnclaimed": "noonewouldeverusethis7",
+   "tags": [
+    "social"
+   ],
+   "regexCheck": "^[^.]+$"
+  },
+  "Diskusjon.no": {
+   "url": "https://www.diskusjon.no",
+   "urlMain": "https://www.diskusjon.no",
+   "urlProbe": "https://www.diskusjon.no/?app=core&module=system&controller=ajax&do=usernameExists&input={username}",
+   "checkType": "message",
+   "absenceStrs": [
+    "{\"result\":\"ok\"}"
+   ],
+   "regexCheck": "^[a-zA-Z0-9_.-]{3,40}$",
+   "usernameClaimed": "example-claimed",
+   "usernameUnclaimed": "noonewouldeverusethis7",
+   "alexaRank": 293242,
+   "tags": [
+    "forum",
+    "no"
+   ]
+  },
+  "Kvinneguiden": {
+   "url": "https://forum.kvinneguiden.no",
+   "urlMain": "https://forum.kvinneguiden.no",
+   "urlProbe": "https://forum.kvinneguiden.no/?app=core&module=system&controller=ajax&do=usernameExists&input={username}",
+   "checkType": "message",
+   "absenceStrs": [
+    "{\"result\":\"ok\"}"
+   ],
+   "regexCheck": "^[a-zA-Z0-9_.-]{3,18}$",
+   "usernameClaimed": "example-claimed",
+   "usernameUnclaimed": "noonewouldeverusethis7",
+   "tags": [
+    "dating",
+    "forum",
+    "no",
+    "social"
+   ]
+  },
+  "partner-login.altaitechnologies.com": {
+   "tags": [
+    "business",
+    "discussion",
+    "forum"
+   ],
+   "urlMain": "https://partner-login.altaitechnologies.com",
+   "usernameClaimed": "example-claimed",
+   "usernameUnclaimed": "noonewouldeverusethis7",
+   "url": "https://partner-login.altaitechnologies.com/user/{username}",
+   "checkType": "status_code"
+  }
+ },
+ "engines": {},
+ "sherlock": {
+  "BoardGameGeek": {
+   "errorMsg": "\"isValid\":true",
+   "errorType": "message",
+   "url": "https://boardgamegeek.com/user/{}",
+   "urlMain": "https://boardgamegeek.com/",
+   "urlProbe": "https://api.geekdo.com/api/accounts/validate/username?username={}",
+   "username_claimed": "example-claimed"
+  },
+  "dailykos": {
+   "errorMsg": "{\"result\":true,\"message\":null}",
+   "errorType": "message",
+   "url": "https://www.dailykos.com/user/{}",
+   "urlMain": "https://www.dailykos.com",
+   "urlProbe": "https://www.dailykos.com/signup/check_nickname?nickname={}",
+   "username_claimed": "example-claimed"
+  },
+  "minds": {
+   "errorMsg": "\"valid\":true",
+   "errorType": "message",
+   "url": "https://www.minds.com/{}/",
+   "urlMain": "https://www.minds.com",
+   "urlProbe": "https://www.minds.com/api/v3/register/validate?username={}",
+   "username_claimed": "example-claimed"
+  },
+  "omg.lol": {
+   "errorMsg": "\"available\": true",
+   "errorType": "message",
+   "url": "https://{}.omg.lol",
+   "urlMain": "https://home.omg.lol",
+   "urlProbe": "https://api.omg.lol/address/{}/availability",
+   "username_claimed": "example-claimed"
+  },
+  "Diskusjon.no": {
+   "errorMsg": "{\"result\":\"ok\"}",
+   "errorType": "message",
+   "regexCheck": "^[a-zA-Z0-9_.-]{3,40}$",
+   "urlProbe": "https://www.diskusjon.no/?app=core&module=system&controller=ajax&do=usernameExists&input={}",
+   "url": "https://www.diskusjon.no",
+   "urlMain": "https://www.diskusjon.no",
+   "username_claimed": "example-claimed"
+  },
+  "Kvinneguiden": {
+   "errorMsg": "{\"result\":\"ok\"}",
+   "errorType": "message",
+   "regexCheck": "^[a-zA-Z0-9_.-]{3,18}$",
+   "urlProbe": "https://forum.kvinneguiden.no/?app=core&module=system&controller=ajax&do=usernameExists&input={}",
+   "url": "https://forum.kvinneguiden.no",
+   "urlMain": "https://forum.kvinneguiden.no",
+   "username_claimed": "example-claimed"
+  }
+ }
+}

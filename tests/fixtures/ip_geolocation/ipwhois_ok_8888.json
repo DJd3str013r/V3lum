@@ -1,0 +1,15 @@
+{
+ "ip": "8.8.8.8",
+ "success": true,
+ "type": "IPv4",
+ "country": "United States",
+ "country_code": "US",
+ "region": "California",
+ "city": "San Jose",
+ "connection": {
+  "asn": 15169,
+  "org": "Google LLC",
+  "isp": "Google LLC",
+  "domain": "google.com"
+ }
+}

@@ -1,0 +1,186 @@
+[
+ {
+  "Name": "Certutil.exe",
+  "Description": "Windows binary used for handling certificates",
+  "Created": "2018-05-25",
+  "url": "https://lolbas-project.github.io/lolbas/Binaries/Certutil/",
+  "Commands": [
+   {
+    "Usecase": "Download file from Internet",
+    "Category": "Download",
+    "Privileges": "User",
+    "MitreID": "T1105",
+    "OperatingSystem": "Windows vista, Windows 7, Windows 8, Windows 8.1, Windows 10, Windows 11"
+   },
+   {
+    "Usecase": "Download file from Internet",
+    "Category": "Download",
+    "Privileges": "User",
+    "MitreID": "T1105",
+    "OperatingSystem": "Windows vista, Windows 7, Windows 8, Windows 8.1, Windows 10, Windows 11"
+   },
+   {
+    "Usecase": "Download file from Internet and save it in an NTFS Alternate Data Stream",
+    "Category": "ADS",
+    "Privileges": "User",
+    "MitreID": "T1564.004",
+    "OperatingSystem": "Windows vista, Windows 7, Windows 8, Windows 8.1, Windows 10, Windows 11"
+   },
+   {
+    "Usecase": "Download file from Internet",
+    "Category": "Download",
+    "Privileges": "User",
+    "MitreID": "T1105",
+    "OperatingSystem": "Windows 10, Windows 11"
+   }
+  ],
+  "Full_Path": [
+   {
+    "Path": "C:\\Windows\\System32\\certutil.exe"
+   },
+   {
+    "Path": "C:\\Windows\\SysWOW64\\certutil.exe"
+   }
+  ]
+ },
+ {
+  "Name": "Rundll32.exe",
+  "Description": "Used by Windows to execute dll files",
+  "Created": "2018-05-25",
+  "url": "https://lolbas-project.github.io/lolbas/Binaries/Rundll32/",
+  "Commands": [
+   {
+    "Usecase": "Execute DLL file",
+    "Category": "Execute",
+    "Privileges": "User",
+    "MitreID": "T1218.011",
+    "OperatingSystem": "Windows vista, Windows 7, Windows 8, Windows 8.1, Windows 10, Windows 11"
+   },
+   {
+    "Usecase": "Execute DLL from SMB share.",
+    "Category": "Execute",
+    "Privileges": "User",
+    "MitreID": "T1218.011",
+    "OperatingSystem": "Windows vista, Windows 7, Windows 8, Windows 8.1, Windows 10, Windows 11"
+   },
+   {
+    "Usecase": "Execute code from Internet",
+    "Category": "Execute",
+    "Privileges": "User",
+    "MitreID": "T1218.011",
+    "OperatingSystem": "Windows vista, Windows 7, Windows 8, Windows 8.1, Windows 10, Windows 11"
+   },
+   {
+    "Usecase": "Execute code from alternate data stream",
+    "Category": "ADS",
+    "Privileges": "User",
+    "MitreID": "T1564.004",
+    "OperatingSystem": "Windows vista, Windows 7, Windows 8, Windows 8.1, Windows 10, Windows 11"
+   }
+  ],
+  "Full_Path": [
+   {
+    "Path": "C:\\Windows\\System32\\rundll32.exe"
+   },
+   {
+    "Path": "C:\\Windows\\SysWOW64\\rundll32.exe"
+   }
+  ]
+ },
+ {
+  "Name": "Advpack.dll",
+  "Description": "Utility for installing software and drivers with rundll32.exe",
+  "Created": "2018-05-25",
+  "url": "https://lolbas-project.github.io/lolbas/Libraries/Advpack/",
+  "Commands": [
+   {
+    "Usecase": "Run local or remote script(let) code through INF file specification.",
+    "Category": "AWL Bypass",
+    "Privileges": "User",
+    "MitreID": "T1218.011",
+    "OperatingSystem": "Windows 10, Windows 11"
+   },
+   {
+    "Usecase": "Run local or remote script(let) code through INF file specification.",
+    "Category": "AWL Bypass",
+    "Privileges": "User",
+    "MitreID": "T1218.011",
+    "OperatingSystem": "Windows 10, Windows 11"
+   },
+   {
+    "Usecase": "Load a DLL payload.",
+    "Category": "Execute",
+    "Privileges": "User",
+    "MitreID": "T1218.011",
+    "OperatingSystem": "Windows 10, Windows 11"
+   },
+   {
+    "Usecase": "Run an executable payload.",
+    "Category": "Execute",
+    "Privileges": "User",
+    "MitreID": "T1218.011",
+    "OperatingSystem": "Windows 10, Windows 11"
+   }
+  ],
+  "Full_Path": [
+   {
+    "Path": "c:\\windows\\system32\\advpack.dll"
+   },
+   {
+    "Path": "c:\\windows\\syswow64\\advpack.dll"
+   }
+  ]
+ },
+ {
+  "Name": "Dfshim.dll",
+  "Description": "ClickOnce engine in Windows used by .NET",
+  "Created": "2018-05-25",
+  "url": "https://lolbas-project.github.io/lolbas/Libraries/Dfshim/",
+  "Commands": [
+   {
+    "Usecase": "Use binary to bypass Application whitelisting",
+    "Category": "AWL Bypass",
+    "Privileges": "User",
+    "MitreID": "T1127.002",
+    "OperatingSystem": "Windows Vista, Windows 7, Windows 8, Windows 8.1, Windows 10, Windows 11"
+   }
+  ],
+  "Full_Path": [
+   {
+    "Path": "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\Dfsvc.exe"
+   },
+   {
+    "Path": "C:\\Windows\\Microsoft.NET\\Framework64\\v2.0.50727\\Dfsvc.exe"
+   },
+   {
+    "Path": "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\Dfsvc.exe"
+   }
+  ]
+ },
+ {
+  "Name": "AddinUtil.exe",
+  "Description": ".NET Tool used for updating cache files for Microsoft Office Add-Ins.",
+  "Created": "2023-10-05",
+  "url": "https://lolbas-project.github.io/lolbas/Binaries/Addinutil/",
+  "Commands": [
+   {
+    "Usecase": "Proxy execution of malicious serialized payload",
+    "Category": "Execute",
+    "Privileges": "User",
+    "MitreID": "T1218",
+    "OperatingSystem": "Windows Vista, Windows 7, Windows 8, Windows 8.1, Windows 10, Windows 11"
+   }
+  ],
+  "Full_Path": [
+   {
+    "Path": "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\AddinUtil.exe"
+   },
+   {
+    "Path": "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\AddinUtil.exe"
+   },
+   {
+    "Path": "C:\\Windows\\Microsoft.NET\\Framework\\v3.5\\AddInUtil.exe"
+   }
+  ]
+ }
+]

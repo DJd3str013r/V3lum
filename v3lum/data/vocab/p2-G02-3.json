@@ -1,0 +1,18 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p2-G02-3",
+  "title": "Names used by batch p2-G02-3 (GreyNoise Community, SANS ISC / DShield, LeakIX)",
+  "owner": "batch p2-G02-3 (P148, P151, P274)",
+  "attributes": {
+    "greynoise": "GreyNoise Community answer for the IP {state (not_observed | riot | noise | no_flags), noise, riot, classification, name, last_seen, link}; 'not_observed' means not observed scanning by GreyNoise sensors, never 'benign'",
+    "dshield_reports": "SANS ISC / DShield sensor reports of the IP {reports, targets, first_seen, last_seen, updated, maxrisk, comment, network}: opportunistic scanning seen by volunteer firewalls, not targeted activity",
+    "isc_threatfeeds": "SANS ISC threat-feed memberships of the IP [{feed, first_seen, last_seen, note}] (re-published third-party lists: context, never a verdict or an independent family)",
+    "isc_research_scanner": "SANS ISC threat category 'research' entry for the IP {type (scanner operator, e.g. qualys, shodan), added, last_seen}: a known benign research scanner",
+    "isc_asn_reports": "SANS ISC per-AS report summary {asn, listed (count of reported addresses returned), reports, targets, top [{ip, reports, targets, first_seen, last_seen}]} (reported addresses are third parties: listed, never auto-expanded)",
+    "leakix_summary": "LeakIX metadata counts for the looked-up entity {lookup, detail (full | counts), services, leaks, leaks_by_severity, leaks_by_kind, historical_leaks, unattributed, third_party_counts}; never leaked content",
+    "leakix_exposures": "LeakIX leak events reduced to the P274 allowlist and grouped per target/port/plugin [{attribute_to, host, port, protocol, plugin, kind, leak_type, leakix_severity, paths, first_seen, last_seen, events, historical, own_asset}]",
+    "leakix_services": "LeakIX service events reduced to the P274 allowlist and grouped per target/port/plugin [{attribute_to, host, port, protocol, plugin, first_seen, last_seen, events}]"
+  },
+  "tags": {},
+  "relations": {}
+}

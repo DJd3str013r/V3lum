@@ -1,0 +1,9 @@
+{
+ "_envelope": 1,
+ "_synthetic": "binlist.net docs: 'Requests are throttled at 5 per hour with a burst allowance of 5 ... the service will return a 429 http status code' (body not documented; not provoked on purpose)",
+ "status": 429,
+ "headers": {
+  "server": "cloudflare"
+ },
+ "body": ""
+}

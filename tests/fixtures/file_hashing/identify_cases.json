@@ -1,0 +1,234 @@
+[
+ {
+  "input": "c05d3d3710a689ffeca944d8b7b66fb3",
+  "primary": "md5",
+  "readings": [
+   "md5"
+  ],
+  "ambiguous": false,
+  "alternatives": [
+   "ntlm",
+   "imphash"
+  ],
+  "label_only": false
+ },
+ {
+  "input": "C05D3D3710A689FFECA944D8B7B66FB3",
+  "primary": "md5",
+  "readings": [
+   "md5"
+  ],
+  "ambiguous": false,
+  "alternatives": [
+   "ntlm",
+   "imphash"
+  ],
+  "label_only": false
+ },
+ {
+  "input": "c6f66b3028065704d4aec217e96a01eceebbefba",
+  "primary": "sha1",
+  "readings": [
+   "sha1"
+  ],
+  "ambiguous": false,
+  "alternatives": [
+   "cert_fingerprint",
+   "ripemd160"
+  ],
+  "label_only": false
+ },
+ {
+  "input": "24e83223784cc48161c336b28ed8d285b0ccb1a9cd1e6c802442efe60014937d",
+  "primary": "sha256",
+  "readings": [
+   "sha256",
+   "cert_fingerprint"
+  ],
+  "ambiguous": true,
+  "label_only": false
+ },
+ {
+  "input": "24:E8:32:23:78:4C:C4:81:61:C3:36:B2:8E:D8:D2:85:B0:CC:B1:A9:CD:1E:6C:80:24:42:EF:E6:00:14:93:7D",
+  "primary": "cert_fingerprint",
+  "readings": [
+   "cert_fingerprint",
+   "sha256"
+  ],
+  "ambiguous": true,
+  "label_only": false,
+  "value": "24e83223784cc48161c336b28ed8d285b0ccb1a9cd1e6c802442efe60014937d"
+ },
+ {
+  "input": "c6 f6 6b 30 28 06 57 04 d4 ae c2 17 e9 6a 01 ec ee bb ef ba",
+  "primary": "cert_fingerprint",
+  "readings": [
+   "cert_fingerprint",
+   "sha1"
+  ],
+  "ambiguous": true,
+  "label_only": false,
+  "value": "c6f66b3028065704d4aec217e96a01eceebbefba"
+ },
+ {
+  "input": "267de1853441571284758450b818a8dcaad68440b1815fffe1feda5aa4a0772ff4c3052d38af8c425c9928f3691bb1c10523d0cb6e5f69bffa082f54aa34270e",
+  "primary": "sha512",
+  "readings": [
+   "sha512"
+  ],
+  "ambiguous": false,
+  "alternatives": [
+   "sha3_512",
+   "blake2b_512",
+   "whirlpool"
+  ],
+  "label_only": false
+ },
+ {
+  "input": "3e94a76721a9acef0bbc81b92e709feba177e7b3d090ad89dc44ce573899ca4f1a8b6685e23dea5512be308741781907",
+  "primary": "sha384",
+  "readings": [],
+  "ambiguous": false,
+  "label_only": true
+ },
+ {
+  "input": "53cd6884dc7ab822ad34dbe65f9cf200736caff0bce1f9581606d73e",
+  "primary": "sha224",
+  "readings": [],
+  "ambiguous": false,
+  "label_only": true
+ },
+ {
+  "input": "3:a+JraNvsgzsVqSwHq9:tJuOgzsko",
+  "primary": "ssdeep",
+  "readings": [
+   "ssdeep"
+  ],
+  "ambiguous": false,
+  "label_only": false
+ },
+ {
+  "input": "T141A022003B0EEE2BA20B00200032E8B00808020E2CE00A3820A020B8C83308803EC228",
+  "primary": "tlsh",
+  "readings": [
+   "tlsh"
+  ],
+  "ambiguous": false,
+  "label_only": false
+ },
+ {
+  "input": "41A022003B0EEE2BA20B00200032E8B00808020E2CE00A3820A020B8C83308803EC228",
+  "primary": "tlsh_legacy",
+  "readings": [],
+  "ambiguous": false,
+  "label_only": true
+ },
+ {
+  "input": "imphash:c05d3d3710a689ffeca944d8b7b66fb3",
+  "primary": "imphash",
+  "readings": [
+   "imphash"
+  ],
+  "ambiguous": false,
+  "label_only": false,
+  "explicit": true,
+  "value": "c05d3d3710a689ffeca944d8b7b66fb3"
+ },
+ {
+  "input": "sha256:24E83223784CC48161C336B28ED8D285B0CCB1A9CD1E6C802442EFE60014937D",
+  "primary": "sha256",
+  "readings": [
+   "sha256"
+  ],
+  "ambiguous": false,
+  "label_only": false,
+  "explicit": true,
+  "value": "24e83223784cc48161c336b28ed8d285b0ccb1a9cd1e6c802442efe60014937d"
+ },
+ {
+  "input": "$2b$12$stoKJyOnfioCPtjrU2p5S8Rf2F89J2WCdOP3N/G4mUUwihzfKfSgt",
+  "primary": "bcrypt",
+  "readings": [],
+  "ambiguous": false,
+  "label_only": true,
+  "password_hash": "bcrypt"
+ },
+ {
+  "input": "$1$qdQ1TfCr$bRFb72ZdHv4//OUxQ57eQ8",
+  "primary": "md5crypt",
+  "readings": [],
+  "ambiguous": false,
+  "label_only": true,
+  "password_hash": "md5crypt"
+ },
+ {
+  "input": "$6$3V60LX2wbGvUTHGf$Rq4jmo2PFlkl4XO2OKZgITvgadQjPM1uHkQOmSPbjkkxsDBi0ymWtuG/.dxAgGEfRq4jmo2PFlkl4XO2OKZgIT",
+  "primary": "sha512crypt",
+  "readings": [],
+  "ambiguous": false,
+  "label_only": true,
+  "password_hash": "sha512crypt"
+ },
+ {
+  "input": "$y$j9T$ynhxWEGdIaWePOHBJAFG5q$I5pzUhPBklwuJK9/PLX1xcNyUMu4z953QRPykonNCJt",
+  "primary": "yescrypt",
+  "readings": [],
+  "ambiguous": false,
+  "label_only": true,
+  "password_hash": "yescrypt"
+ },
+ {
+  "input": "$argon2id$v=19$m=65536,t=3,p=4$ZnaFLgq642gPJsfaAH4zKe$DadfCN8KF7ZJVuG7PYbLzm20iYP7taXOwo4v8xc1uu7",
+  "primary": "argon2",
+  "readings": [],
+  "ambiguous": false,
+  "label_only": true,
+  "password_hash": "argon2"
+ },
+ {
+  "input": "user:1001:aad3b435b51404eeaad3b435b51404ee:c05d3d3710a689ffeca944d8b7b66fb3:::",
+  "primary": "pwdump",
+  "readings": [],
+  "ambiguous": false,
+  "label_only": true,
+  "password_hash": "pwdump"
+ },
+ {
+  "input": "*C6F66B3028065704D4AEC217E96A01ECEEBBEFBA",
+  "primary": "mysql41",
+  "readings": [],
+  "ambiguous": false,
+  "label_only": true,
+  "password_hash": "mysql41"
+ },
+ {
+  "input": "pbkdf2_sha256$600000$HLhfGVmaf4M0yyZFYvFwqq$XA37nj0W7mMUzGMD7bYD2gJQObulNAtO3mP.2btfSX2=",
+  "primary": "django_pbkdf2",
+  "readings": [],
+  "ambiguous": false,
+  "label_only": true,
+  "password_hash": "django_pbkdf2"
+ },
+ {
+  "input": "{SSHA}VjLzmMv56g/Sh8sdhUYs/wwb4fnquYvW",
+  "primary": "ldap_hash",
+  "readings": [],
+  "ambiguous": false,
+  "label_only": true,
+  "password_hash": "ldap_hash"
+ },
+ {
+  "input": "c05d3d37",
+  "primary": "crc32",
+  "readings": [],
+  "ambiguous": false,
+  "label_only": true
+ },
+ {
+  "input": "not a hash at all",
+  "primary": null,
+  "readings": [],
+  "ambiguous": false,
+  "label_only": false
+ }
+]

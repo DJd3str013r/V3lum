@@ -1,0 +1,131 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "$comment": "Two independent families (PhishStats, Google Web Risk) list the phishing URL: the packet is announced with registrar (RDAP), RIR abuse-c and Abusix contacts ranked in that order (P345 cond 2-3)",
+  "nodes": [
+    {
+      "key": "url:https://examplebank-secure.example/acesso/login.php?email=victim%40example.com",
+      "depth": 0,
+      "seed": true,
+      "findings": [
+        {
+          "title": "Listed by PhishStats as phishing",
+          "severity": "high",
+          "confidence": 0.7,
+          "criterion": "source verdict",
+          "tags": [
+            "phishing"
+          ],
+          "module": "phishstats",
+          "source": "phishstats.api",
+          "observed_last": "2026-11-25T00:00:00Z"
+        },
+        {
+          "title": "Listed on Google's Safe Browsing lists",
+          "severity": "high",
+          "confidence": 0.7,
+          "criterion": "source verdict",
+          "tags": [
+            "phishing",
+            "malicious"
+          ],
+          "module": "google_safe_browsing",
+          "source": "google_webrisk.uris_search",
+          "observed_last": "2026-11-25T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "key": "domain:examplebank-secure.example",
+      "depth": 1,
+      "attributes": {
+        "registrar": [
+          {
+            "value": "Example Registrar, Inc.",
+            "source": "rdap"
+          }
+        ],
+        "registrar_iana_id": [
+          {
+            "value": "9999",
+            "source": "rdap"
+          }
+        ],
+        "abuse_contact": [
+          {
+            "value": "abuse@registrar.example",
+            "source": "rdap"
+          }
+        ],
+        "abuse_phone": [
+          {
+            "value": "+1.5555550100",
+            "source": "rdap"
+          }
+        ]
+      }
+    },
+    {
+      "key": "ipv4:198.51.100.10",
+      "depth": 2,
+      "attributes": {
+        "abuse_contacts": [
+          {
+            "value": [
+              {
+                "email": "abuse@hosting.example",
+                "kind": "hosting_abuse_c",
+                "authority_rank": 2,
+                "authority": "RIR abuse-c (ARIN)",
+                "source": "ripestat.data_api",
+                "resource": "198.51.100.10",
+                "retrieved_at": "2026-11-26T10:00:00Z"
+              },
+              {
+                "email": "network-abuse@hosting.example",
+                "kind": "abusix_contact",
+                "authority_rank": 3,
+                "authority": "Abusix Abuse Contact DB",
+                "source": "abusix.contacts",
+                "resource": "198.51.100.10",
+                "retrieved_at": "2026-11-26T10:00:05Z"
+              }
+            ],
+            "source": "ripestat"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "src": "url:https://examplebank-secure.example/acesso/login.php?email=victim%40example.com",
+      "dst": "domain:examplebank-secure.example",
+      "relation": "url_host",
+      "module": "url_parse",
+      "confidence": 0.9,
+      "expand": true
+    },
+    {
+      "src": "domain:examplebank-secure.example",
+      "dst": "ipv4:198.51.100.10",
+      "relation": "resolves_to",
+      "module": "dns_records",
+      "confidence": 0.9,
+      "expand": true
+    }
+  ],
+  "expect": {
+    "g03_takedown_packet_ready": {
+      "min": 1,
+      "max": 1,
+      "severity": "info",
+      "confidence_label": "probable"
+    }
+  }
+}

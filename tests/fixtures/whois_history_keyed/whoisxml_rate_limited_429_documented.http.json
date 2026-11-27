@@ -1,0 +1,15 @@
+{
+ "request": {
+  "method": "POST",
+  "url": "https://reverse-whois.whoisxmlapi.com/api/v2"
+ },
+ "response": {
+  "status": 429,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": "{\"code\": 429, \"messages\": \"Too Many Requests. Try your call again later.\"}"
+ },
+ "transport_error": null,
+ "elapsed_s": null
+}

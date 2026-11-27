@@ -1,0 +1,211 @@
+{
+ "has_more": false,
+ "limit": 50,
+ "result": [
+  {
+   "artifact_id": "70000000000000001",
+   "id": "70000000000000001",
+   "community": "default",
+   "country": "",
+   "created": "2025-01-10T08:00:00.000000",
+   "first_seen": "2019-04-12T18:13:30.215000",
+   "last_seen": "2026-11-20T10:00:00.000000",
+   "last_scanned": "2025-01-10T08:01:00.000000",
+   "detections": {
+    "benign": 2,
+    "malicious": 9,
+    "total": 11
+   },
+   "extended_type": "EICAR virus test files",
+   "failed": false,
+   "filename": "eicar.com",
+   "mimetype": "text/plain",
+   "md5": "44d88612fea8a8f36de82e1278abb02f",
+   "sha1": "3395856ce81f2b7382dee72602f798b642f14140",
+   "sha256": "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f",
+   "size": 68,
+   "type": "FILE",
+   "polyscore": 0.91,
+   "window_closed": true,
+   "upload_url": null,
+   "votes": [],
+   "assertions": [
+    {
+     "author": "0x00000000000000000000000000000000000000a1",
+     "author_name": "EngineA",
+     "engine": {
+      "name": "EngineA",
+      "description": null
+     },
+     "mask": true,
+     "verdict": true,
+     "metadata": {
+      "malware_family": "EICAR-Test-File",
+      "product": "EngineA"
+     }
+    },
+    {
+     "author": "0x00000000000000000000000000000000000000b2",
+     "author_name": "EngineB",
+     "engine": {
+      "name": "EngineB",
+      "description": null
+     },
+     "mask": true,
+     "verdict": true,
+     "metadata": {
+      "malware_family": "Eicar_test_file",
+      "product": "EngineB"
+     }
+    },
+    {
+     "author": "0x00000000000000000000000000000000000000c3",
+     "author_name": "EngineC",
+     "engine": {
+      "name": "EngineC",
+      "description": null
+     },
+     "mask": true,
+     "verdict": false,
+     "metadata": {}
+    },
+    {
+     "author": "0x00000000000000000000000000000000000000d4",
+     "author_name": "EngineD",
+     "engine": {
+      "name": "EngineD",
+      "description": null
+     },
+     "mask": false,
+     "verdict": null,
+     "metadata": {}
+    }
+   ],
+   "metadata": [
+    {
+     "tool": "hash",
+     "tool_metadata": {
+      "md5": "44d88612fea8a8f36de82e1278abb02f",
+      "sha1": "3395856ce81f2b7382dee72602f798b642f14140",
+      "sha256": "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f",
+      "ssdeep": "3:a+JraNvsgzsVqSwHq9:tJuOgzsko",
+      "tlsh": "T141A022003B0EEE2BA20B00200032E8B00808020E2CE00A3820A020B8C83308803EC228"
+     }
+    },
+    {
+     "tool": "polyunite",
+     "tool_metadata": {
+      "malware_family": "EICAR",
+      "labels": [
+       "test"
+      ]
+     }
+    }
+   ],
+   "known_good": null
+  },
+  {
+   "artifact_id": "84019208628034990",
+   "id": "84019208628034990",
+   "community": "default",
+   "country": "",
+   "created": "2026-11-20T10:00:00.000000",
+   "first_seen": "2019-04-12T18:13:30.215000",
+   "last_seen": "2026-11-20T10:00:00.000000",
+   "last_scanned": "2026-11-20T10:01:30.000000",
+   "detections": {
+    "benign": 1,
+    "malicious": 12,
+    "total": 13
+   },
+   "extended_type": "EICAR virus test files",
+   "failed": false,
+   "filename": "eicar.com",
+   "mimetype": "text/plain",
+   "md5": "44d88612fea8a8f36de82e1278abb02f",
+   "sha1": "3395856ce81f2b7382dee72602f798b642f14140",
+   "sha256": "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f",
+   "size": 68,
+   "type": "FILE",
+   "polyscore": 0.9997,
+   "window_closed": true,
+   "upload_url": null,
+   "votes": [],
+   "assertions": [
+    {
+     "author": "0x00000000000000000000000000000000000000a1",
+     "author_name": "EngineA",
+     "engine": {
+      "name": "EngineA",
+      "description": null
+     },
+     "mask": true,
+     "verdict": true,
+     "metadata": {
+      "malware_family": "EICAR-Test-File",
+      "product": "EngineA"
+     }
+    },
+    {
+     "author": "0x00000000000000000000000000000000000000b2",
+     "author_name": "EngineB",
+     "engine": {
+      "name": "EngineB",
+      "description": null
+     },
+     "mask": true,
+     "verdict": true,
+     "metadata": {
+      "malware_family": "Eicar_test_file",
+      "product": "EngineB"
+     }
+    },
+    {
+     "author": "0x00000000000000000000000000000000000000c3",
+     "author_name": "EngineC",
+     "engine": {
+      "name": "EngineC",
+      "description": null
+     },
+     "mask": true,
+     "verdict": false,
+     "metadata": {}
+    },
+    {
+     "author": "0x00000000000000000000000000000000000000d4",
+     "author_name": "EngineD",
+     "engine": {
+      "name": "EngineD",
+      "description": null
+     },
+     "mask": false,
+     "verdict": null,
+     "metadata": {}
+    }
+   ],
+   "metadata": [
+    {
+     "tool": "hash",
+     "tool_metadata": {
+      "md5": "44d88612fea8a8f36de82e1278abb02f",
+      "sha1": "3395856ce81f2b7382dee72602f798b642f14140",
+      "sha256": "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f",
+      "ssdeep": "3:a+JraNvsgzsVqSwHq9:tJuOgzsko",
+      "tlsh": "T141A022003B0EEE2BA20B00200032E8B00808020E2CE00A3820A020B8C83308803EC228"
+     }
+    },
+    {
+     "tool": "polyunite",
+     "tool_metadata": {
+      "malware_family": "EICAR",
+      "labels": [
+       "test"
+      ]
+     }
+    }
+   ],
+   "known_good": null
+  }
+ ],
+ "status": "OK"
+}

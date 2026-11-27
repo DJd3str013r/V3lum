@@ -1,0 +1,98 @@
+{
+ "schema": "v3lum.acceptance_routes/1",
+ "module": "isc_dshield",
+ "routes": [
+  {
+   "method": "GET",
+   "url": "https://isc.sans.edu/api/ip/8.8.8.8?json",
+   "status": 200,
+   "json": {
+    "ip": {
+     "number": "8.8.8.8",
+     "count": null,
+     "attacks": null,
+     "maxdate": null,
+     "mindate": null,
+     "updated": null,
+     "comment": "Google public recursive name server",
+     "maxrisk": 0,
+     "asabusecontact": "network-abuse@google.com",
+     "as": 15169,
+     "asname": "GOOGLE",
+     "ascountry": "US",
+     "assize": 13298176,
+     "network": "8.8.8.0/24",
+     "threatfeeds": {
+      "mastodon": {
+       "lastseen": "2026-11-10",
+       "firstseen": "2026-10-03"
+      },
+      "miner": {
+       "lastseen": "2026-11-26",
+       "firstseen": "2022-02-04"
+      },
+      "myip": {
+       "lastseen": "2026-11-10",
+       "firstseen": "2022-10-25"
+      },
+      "openresolver": {
+       "lastseen": "2026-11-26",
+       "firstseen": "2022-02-04"
+      }
+     }
+    }
+   },
+   "headers": {
+    "content-type": "text/json;charset=UTF-8"
+   },
+   "latency_ms": 490
+  },
+  {
+   "method": "GET",
+   "url": "https://isc.sans.edu/api/threatcategory/research?json",
+   "status": 200,
+   "json": [
+    {
+     "ipv4": "4.16.74.81",
+     "added": "2020-07-18",
+     "lastseen": "2026-11-25",
+     "type": "scorecard"
+    },
+    {
+     "ipv4": "4.16.74.113",
+     "added": "2020-07-18",
+     "lastseen": "2026-11-25",
+     "type": "scorecard"
+    },
+    {
+     "ipv4": "52.73.169.169",
+     "added": "2018-06-13",
+     "lastseen": "2026-11-25",
+     "type": "cybergreen"
+    },
+    {
+     "ipv4": "52.211.122.16",
+     "added": "2018-06-13",
+     "lastseen": "2026-11-25",
+     "type": "cybergreen"
+    },
+    {
+     "ipv4": "64.39.102.73",
+     "added": "2022-01-14",
+     "lastseen": "2026-11-25",
+     "type": "qualys"
+    },
+    {
+     "ipv4": "64.39.102.74",
+     "added": "2022-01-14",
+     "lastseen": "2026-11-25",
+     "type": "qualys"
+    }
+   ],
+   "headers": {
+    "content-type": "text/json;charset=UTF-8"
+   },
+   "latency_ms": 300
+  }
+ ]
+}

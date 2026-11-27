@@ -1,0 +1,10 @@
+{
+ "_status": 400,
+ "_observed": "live Thu, 26 Nov 2026 08:24:23 GMT (raw/na_check_invalid)",
+ "body": {
+  "error": {
+   "code": "invalid_value",
+   "message": "Not a valid domain name or IP address."
+  }
+ }
+}

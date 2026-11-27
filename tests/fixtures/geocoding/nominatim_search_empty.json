@@ -1,0 +1,9 @@
+{
+ "_envelope": 1,
+ "_synthetic": "documented Nominatim /search answer for no match (an empty JSON array); the live search attempts of this prep were refused with HTTP 629 at the CDN edge",
+ "status": 200,
+ "headers": {
+  "content-type": "application/json; charset=utf-8"
+ },
+ "body": []
+}

@@ -1,0 +1,168 @@
+{
+ "batch": "p3-G09-1",
+ "modules": [
+  {
+   "name": "ens_resolver",
+   "file": "v3lum/modules/crypto/ens_resolver.py",
+   "proposal": "P209",
+   "category": "crypto",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "open",
+   "provider_tier": "community",
+   "keys": [],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [
+    "p3g091_ens_claim_linked_back"
+   ],
+   "new_vocabulary": [
+    "attr:ens_primary_name",
+    "attr:ens_reverse_verified",
+    "attr:ens_reverse_record",
+    "attr:ens_text_records",
+    "attr:ens_wallets",
+    "attr:ens_profile",
+    "attr:ens_rejected_records",
+    "rel:ens_text_record",
+    "rel:ens_address_record"
+   ],
+   "live_check": "passed 2026-11-26: ens.eth -> ENS DAO wallet (ens_resolves_to) with POSSIBLE text-record claims; Ethereum Foundation wallet -> EMPTY 'no reverse record (says nothing about the wallet)'"
+  },
+  {
+   "name": "ransomwhere",
+   "file": "v3lum/modules/crypto/ransomwhere.py",
+   "proposal": "P210",
+   "category": "crypto",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "open",
+   "provider_tier": "n/a",
+   "keys": [],
+   "datasets": [
+    "ransomwhere_export"
+   ],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attr:ransomwhere_status",
+    "attr:ransomware_payments",
+    "tag:crowdsourced"
+   ],
+   "live_check": "passed 2026-11-26: v3lum data update ransomwhere_export installed the 5.6 MB export (sha256 182ef70144fd...), Conti address matched offline (historical finding + Conti attributed_to pivot, 0 requests), Bitcoin wiki example address -> EMPTY 'a miss means nothing'"
+  },
+  {
+   "name": "ton_explorer",
+   "file": "v3lum/modules/crypto/ton_explorer.py",
+   "proposal": "P214",
+   "category": "crypto",
+   "opsec": "passive",
+   "default_enabled": false,
+   "terms": "open",
+   "provider_tier": "community",
+   "keys": [
+    "toncenter"
+   ],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attr:ton_address_forms",
+    "attr:ton_wallet",
+    "attr:ton_collectible",
+    "tag:collectible_owner",
+    "rel:current_nft_owner"
+   ],
+   "live_check": "passed 2026-11-26 keyless: TON Foundation wallet (walletInformation + transactions, counterparties expand=False); @github collectible username (organisation handle, fraud-subject gate with purpose) -> current NFT owner wallet, PROBABLE, expand=False, transfer date"
+  },
+  {
+   "name": "crypto_tx_graph",
+   "file": "v3lum/modules/crypto/crypto_tx_graph.py",
+   "proposal": "P213",
+   "category": "crypto",
+   "opsec": "passive",
+   "default_enabled": false,
+   "terms": "n/a",
+   "provider_tier": "n/a",
+   "keys": [],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [
+    "p3g091_money_trail"
+   ],
+   "new_vocabulary": [],
+   "live_check": "not applicable: engine policy library + correlation rule, no host and no request (council: 'not a module with its own BFS'); no registered Module class"
+  }
+ ],
+ "proposals_not_done": [
+  {
+   "id": "P213",
+   "reason": "Partially delivered: the policy (plan_expansion: opt-in, depth 1/2, top-N, stop-nodes, victims, budget), the 'where the money went' summary (rule p3g091_money_trail) and the JSON/GraphML export functions are delivered, but the engine wiring (settings crypto_expand / crypto_case_budget, flag --crypto-depth, Engine._should_expand calling plan_expansion) and an export command are core work (see core_requests, docs/backlog/p3-G09-1.md). The current behaviour equals the opt-in default: every explorer emits transacted_with with expand=False."
+  }
+ ],
+ "core_requests": [
+  "P213: register settings crypto_expand (bool, default false), crypto_case_budget (int, default 50), crypto_depth (1|2, default 1) and the CLI flag --crypto-depth 2; in Engine._should_expand route transacted_with pivots through v3lum.modules.crypto.crypto_tx_graph.plan_expansion(focus, edges=case_inputs(graph)['edges'], crypto_expand=..., depth=..., depth_flag=..., labels/sanctioned/degrees from case_inputs(graph), budget_left=...) and expand only plan['expand'] (stop-nodes and possible victims never).",
+  "P213: an export command (v3lum export --format graphml|money-trail-json) calling crypto_tx_graph.case_inputs() + graph_export() + graph_to_graphml() per investigated wallet.",
+  "P214: move the TON user-friendly address codec (ton_explorer.decode_ton_address/encode_ton_address/crc16_xmodem) into v3lum/core/validators.crypto_address_info (chain 'ton') and let the other_crypto_address normaliser accept valid friendly TON forms containing '-'/'_' (canonicalise to raw 'wc:HEX'); today such inputs cannot be typed.",
+  "P214: entities.normalize_phone refuses +888 Fragment numbers when phonenumbers is installed ('impossible phone number'): accept +888 followed by 4 or 8 digits so +888 subjects can be typed.",
+  "P214: a CLI/ScanOptions way to record a fraud/threat subject role (e.g. --subject-role fraud|threat -> ScanOptions.subject_roles[seed.key]); today only --incident-victim sets subject_roles, so collectible owner lookups are refused (SKIPPED privacy) from the CLI.",
+  "P209: let a correlation raise an edge's confidence label (one level, recorded like Finding.upgrade) so the ens_text_record edge itself becomes PROBABLE when p3g091_ens_claim_linked_back fires.",
+  "P213: explorer modules (owned by p1/p2 batches) should report a counterparty_count attribute; crypto_tx_graph uses tx_count as the high-degree proxy meanwhile."
+ ],
+ "files": [
+  "v3lum/modules/crypto/ens_resolver.py",
+  "v3lum/modules/crypto/ransomwhere.py",
+  "v3lum/modules/crypto/ton_explorer.py",
+  "v3lum/modules/crypto/crypto_tx_graph.py",
+  "v3lum/correlations/p3_g09_1.py",
+  "v3lum/data/providers/ensdata.json",
+  "v3lum/data/providers/toncenter.json",
+  "v3lum/data/providers/ransomwhere.json",
+  "v3lum/data/providers/tonapi.json",
+  "v3lum/data/providers/getgems.json",
+  "v3lum/data/vocab/p3-G09-1.json",
+  "v3lum/data/notices/ransomwhere_dataset.json",
+  "v3lum/data/notices/a_ton_of_privacy.json",
+  "tests/modules/test_ens_resolver.py",
+  "tests/modules/test_ransomwhere.py",
+  "tests/modules/test_ton_explorer.py",
+  "tests/modules/test_crypto_tx_graph.py",
+  "tests/live/test_p3_g09_1.py",
+  "docs/backlog/p3-G09-1.md",
+  "tests/fixtures/ens_resolver/address_not_found_404.json",
+  "tests/fixtures/ens_resolver/address_ok.json",
+  "tests/fixtures/ens_resolver/challenge_derived.html",
+  "tests/fixtures/ens_resolver/error_in_200_derived.json",
+  "tests/fixtures/ens_resolver/hostile_records_derived.json",
+  "tests/fixtures/ens_resolver/invalid_name_400.json",
+  "tests/fixtures/ens_resolver/malformed_truncated.json",
+  "tests/fixtures/ens_resolver/name_not_found_404.json",
+  "tests/fixtures/ens_resolver/name_ok.json",
+  "tests/fixtures/ens_resolver/name_text_records_derived.json",
+  "tests/fixtures/ransomwhere/api_error_403.json",
+  "tests/fixtures/ransomwhere/export_empty.json",
+  "tests/fixtures/ransomwhere/export_ok.json",
+  "tests/fixtures/ransomwhere/export_truncated_malformed.json",
+  "tests/fixtures/ton_explorer/invalid_address_422.json",
+  "tests/fixtures/ton_explorer/masterchain_info_ok.json",
+  "tests/fixtures/ton_explorer/nft_collections_ok.json",
+  "tests/fixtures/ton_explorer/nft_items_not_found.json",
+  "tests/fixtures/ton_explorer/nft_items_number_derived.json",
+  "tests/fixtures/ton_explorer/nft_items_on_sale_derived.json",
+  "tests/fixtures/ton_explorer/nft_items_username_ok.json",
+  "tests/fixtures/ton_explorer/nft_transfers_ok.json",
+  "tests/fixtures/ton_explorer/rate_limited_429_derived.json",
+  "tests/fixtures/ton_explorer/transactions_empty_derived.json",
+  "tests/fixtures/ton_explorer/transactions_ok.json",
+  "tests/fixtures/ton_explorer/wallet_information_not_wallet_409.json",
+  "tests/fixtures/ton_explorer/wallet_information_ok.json",
+  "tests/fixtures/crypto_tx_graph/edges_empty.json",
+  "tests/fixtures/crypto_tx_graph/edges_ok_synthetic.json",
+  "tests/fixtures/crypto_tx_graph/labels_synthetic.json",
+  "tests/fixtures/rules/p3g091_money_trail/negative_incoming_only.json",
+  "tests/fixtures/rules/p3g091_money_trail/positive_exchange_reached.json",
+  "tests/fixtures/rules/p3g091_ens_claim_linked_back/negative_claim_only.json",
+  "tests/fixtures/rules/p3g091_ens_claim_linked_back/positive_profile_points_back.json"
+ ],
+ "notes": "No partial files from an earlier attempt existed; everything was written fresh. Providers: hosts api.ensdata.net, toncenter.com, api.ransomwhe.re, tonapi.io and api.getgems.io were mapped to null in owners.json, so this batch owns ensdata, toncenter, ransomwhere (offline dataset source, tier community, CC BY 4.0) and the two held review-queue entries tonapi/getgems (tier unknown, terms unknown, never declared by a module: P214 cond 4). P213 is delivered as an engine-policy library (v3lum/modules/crypto/crypto_tx_graph.py, no @register class, same pattern as other helper files under v3lum/modules) plus the correlation rule p3g091_money_trail; the engine wiring is a core request. P209 PROBABLE upgrade is the correlation p3g091_ens_claim_linked_back. ENS name lookups accept domain/keyword inputs only when they end in .eth; the health check probes keyword ens.eth (the DOMAIN central benign value example.com would never be sent). P210 is offline (disclosure none), dataset large=True (5.6 MB, weekly via v3lum data update, UNAVAILABLE 'dataset' during scans when missing; a single v3lum run may download it); the index is built by the dataset validator at refresh and memoised per file version. Its 'ransomware'-tagged findings now satisfy p2-G09-1's chainabuse corroboration rule (that batch's backlog row 'No Ransomwhere module exists yet' can be closed by its owner). P214: default_enabled False; collectible lookups gated on +888/collectible format (not_applicable) and on analyst-typed seed + subject role fraud/threat + purpose (privacy); comments/memos of TON transactions are counted, never stored; the friendly forms with base64url characters and +888 phone entities need core changes (core_requests). a_TON_of_privacy (MIT) attribution in v3lum/data/notices/a_ton_of_privacy.json and the module docstring; no code copied. Live run 2026-11-26 (V3LUM_LIVE=1): 4/4 passed with real answers (no blocks). No LIGHT/ACTIVE variant was requested. No acceptance golden-path fixture applies (none of the modules accepts the golden-path values: example.com is not an ENS name). Tests: 86 batch unit tests green (tests/modules/test_ens_resolver.py, test_ransomwhere.py, test_ton_explorer.py, test_crypto_tx_graph.py) plus 4 rule fixtures (tests/test_rule_fixtures.py) and the registry contract for ens_resolver/ransomwhere/ton_explorer; P327 lint clean on all batch sources, tests/test_lint.py shipped-tree gate green; ruff clean. Full offline suite (~15.7k tests): 12 failures, none in batch files, re-run once: still failing are core/other-batch items in progress (test_rule_api legacy-rule count, test_engine_status_mapping rule-context identity, test_engine_suppression breach, test_permissions report naming, windows_artifact_triage, and timing-sensitive lint/sanitize perf tests under the shared load); test_every_module_class_is_registered, test_typosquat, safety cancel and test_datasets passed on re-run (transient)."
+}

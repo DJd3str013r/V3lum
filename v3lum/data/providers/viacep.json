@@ -1,0 +1,55 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "viacep",
+  "name": "ViaCEP",
+  "operator": "ViaCEP free public CEP web service (viacep.com.br)",
+  "hosts": [
+    "viacep.com.br"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Long-running free public CEP web service with public documentation, widely used by Brazilian systems (A8 community): 'Tiers (A8): BrasilAPI and ViaCEP community, IBGE trusted.' (P234 cond 4).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Community relay of the Correios CEP base: street-level data for a CEP is usually right; the documented {'erro': true} marker (sent live as the string 'true') is its only absence signal (P234 cond 5)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 5,
+    "ttl": 2592000,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "cep": {
+      "title": "ViaCEP /ws/{cep}/json/ and reverse address search /ws/{UF}/{city}/{street}/json/",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://viacep.com.br/",
+        "quote": "Tiers (A8): BrasilAPI and ViaCEP community, IBGE trusted.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "correios",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P234 cond 4); research C0555 terms 'Free public service' / 'ViaCEP free service.' Unknown CEP = HTTP 200 {'erro': true} (EMPTY, P234 cond 5; seen live 2026-11-26 as the string 'true'); a malformed CEP answers 400 HTML. Reverse search needs >= 3 characters per segment and returns at most 50 CEPs; it is used only for an analyst-typed address (P234 cond 7). No published limit, abusive volume gets the IP blocked: min_interval 1 s, 30-day cache (P234 cond 9). Used by cep_lookup."
+    }
+  },
+  "notes": "Owned by batch p2-G10-1 (P234 cep_lookup). Upstream family 'correios' like BrasilAPI CEP: a ViaCEP answer and a BrasilAPI answer relayed from ViaCEP are not independent. ttl 2592000 = 30 days (P234 cond 9), always capped by cache_max_age_days and retention_days. .br hosts default to Accept-Language pt-BR."
+}

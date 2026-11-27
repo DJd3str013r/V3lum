@@ -1,0 +1,32 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p2-G07-1",
+  "title": "Keyed reputation lookups and LOL datasets (batch p2-G07-1: crowdsec_cti, abuseipdb, virustotal, hybrid_analysis, lol_datasets)",
+  "owner": "batch p2-G07-1 (P152, P157, P158, P174, P268)",
+  "attributes": {
+    "crowdsec": "CrowdSec CTI smoke facts of an IP {reputation, confidence, background_noise, background_noise_score, behaviors, classifications, false_positives, attack_details, target_countries, scores, ip_range_24, ip_range_24_reputation, references, link}: provider data, internal use only (never exported outside the company)",
+    "abuseipdb": "AbuseIPDB check facts of an IP {abuse_confidence_score, distinct_reporters, total_reports, last_reported_at, usage_type, isp, domain, country_code, is_tor, is_whitelisted, max_age_days} (no report comments): provider data, internal use only",
+    "abuseipdb_block": "AbuseIPDB check-block summary of a range <= /24 {network, hosts, reported (addresses with reports, score, last report), max_score, max_age_days}: provider data, internal use only",
+    "virustotal": "VirusTotal object facts {type, verdict, wording 'N/M engines flagged (last analysis <date>)', analysis counts, top_labels, reputation, votes, tags, categories, threat_label}: provider data, internal use only",
+    "vt_relationships": "VirusTotal relationship pages read for the object {relationship: {read, filtered, count, more}}: one capped page each, cursors not followed",
+    "hybrid_analysis": "Hybrid Analysis sandbox facts of a sample {verdict, threat_score, threat_level, av_detect, vx_family, environments, reports, analysis_start_time, tags} (never submitted file names): provider data, internal use only",
+    "loldrivers_hits": "LOLDrivers catalogue entries the hash matches [{driver_id, name, category, verified, match (file or Authenticode hash kind), cves, techniques, link}]",
+    "lol_context": "name and hash context from LOLBAS, HijackLibs and LOLRMM [{dataset, name, matched, categories, types, techniques, link}]: context only, never scored (file names collide; legitimate use is common)",
+    "export_restriction": "the source's data may not be redistributed {source, redistributable: false, external_exports: 'verdict, link and source name only', verdict, link}: STIX/MISP/JSON exports shared outside the company carry only these"
+  },
+  "tags": {
+    "lolbas": "binary listed by the LOLBAS project (living-off-the-land binary or script): name match, context only",
+    "hijacklibs": "DLL listed by HijackLibs as a side-loading/search-order hijack candidate: name match, context only",
+    "lolrmm": "remote monitoring and management tool listed by LOLRMM: legitimate IT use is common, context only",
+    "byovd": "bring your own vulnerable driver: a known vulnerable kernel driver that attackers load to gain kernel access",
+    "vulnerable_driver": "kernel driver with known vulnerabilities (LOLDrivers 'vulnerable driver' category)",
+    "malicious_driver": "kernel driver catalogued as malicious (LOLDrivers 'malicious' category)",
+    "bruteforce": "the address was reported for credential brute-force attempts (SSH, RDP, web logins)",
+    "exploit_attempt": "the address was reported for exploitation attempts against public services",
+    "crawler": "the address was reported for crawling web content (aggressive or SEO crawling)",
+    "dos": "the address was reported for denial-of-service traffic",
+    "backdoor": "the address was reported for backdoor or web-shell activity"
+  },
+  "relations": {},
+  "notes": "Relations are the core vocabulary: uses_technique (ATT&CK ids of CrowdSec, Hybrid Analysis and LOLDrivers), attempted_exploit (CrowdSec CVEs: an attempt by the address, never has_vuln, so own-asset vulnerability rules such as CR15 never fire, P152 cond 6), communicates_with (sandbox-contacted hosts, VirusTotal contacted_*), contacted_by (VirusTotal communicating_files), resolves_to, hosted_domain and subdomain (VirusTotal relationships)."
+}

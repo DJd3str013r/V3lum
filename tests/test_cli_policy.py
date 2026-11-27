@@ -433,6 +433,28 @@ def test_pasted_text_blob_is_scrubbed_before_the_seed_is_created(env, capsys):
     assert any(n.startswith("sensitive data in pasted text") for n in data["notes"])
 
 
+def test_pasted_card_numbers_are_truncated_on_every_input_path(env, tmp_path, capsys):
+    """Wave-3 integration (WP17 -> WP13, P323 cond 5): text seeds, `extract` and the shell history
+    go through ioc.scrub, so a card number is stored as BIN6...last4, never as the full PAN."""
+    pan = "4111111111111111"
+    blob = f"fraud report\ncard used: {pan}\nC2 203.0.113.80"
+    assert main(["scan", blob, "--json", "-f", "", "-M", "ioc_extract"]) == 0
+    data = json.loads(capsys.readouterr().out)
+    assert pan not in json.dumps(data) and data["seeds"][0].startswith("text_blob:")
+    assert "411111" in data["seeds"][0] and "1111" in data["seeds"][0]
+    assert pan not in json.dumps(Store().get_case(data["case_id"]))
+    src = tmp_path / "note.txt"
+    src.write_text(blob, encoding="utf-8")
+    assert main(["extract", str(src), "--json"]) == 0
+    captured = capsys.readouterr()
+    assert pan not in captured.out and pan not in captured.err
+    console = make_console(no_color=True, width=200)
+    sh = Shell(App(console, fx=False), console, build_parser())
+    assert sh.remember(f"lookup {pan} please") is not None
+    sh.save_history()
+    assert pan not in (paths.home() / "shell_history").read_text(encoding="utf-8")
+
+
 def test_confirm_url_lets_only_the_confirmed_url_through(env, capsys):
     first = "https://evil.example.test/t/9f8e7d6c5b4a39281706f5e4d3c2b1a0"
     second = "https://evil.example.test/t/0a1b2c3d4e5f60718293a4b5c6d7e8f9"

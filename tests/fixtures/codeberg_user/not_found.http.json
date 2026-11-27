@@ -1,0 +1,22 @@
+{
+ "_meta": {
+  "module": "codeberg_user",
+  "case": "not_found",
+  "source": "C0245 codeberg.org",
+  "request": {
+   "method": "GET",
+   "url": "https://codeberg.org/api/v1/users/qz7k2v9m4p1w8n3x5c6b"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "LIVE",
+  "elapsed_s": 0.473,
+  "note": "random 20-char control handle that belongs to nobody"
+ },
+ "status": 404,
+ "headers": {
+  "content-type": "application/json;charset=utf-8",
+  "ratelimit-policy": "\"baseline\";q=2000;w=600",
+  "ratelimit": "\"baseline\";r=1995;t=600"
+ },
+ "body": "{\"message\":\"user redirect does not exist [name: qz7k2v9m4p1w8n3x5c6b]\",\"url\":\"https://codeberg.org/api/swagger\"}"
+}

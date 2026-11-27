@@ -1,0 +1,4 @@
+[
+ {"id": "imeidb_api_docs", "gap": 4, "max_bytes": 1000000, "url": "https://imeidb.xyz/api"},
+ {"id": "imeidb_terms", "gap": 4, "max_bytes": 1000000, "url": "https://imeidb.xyz/terms-and-conditions"}
+]

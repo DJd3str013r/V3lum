@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "cisa_kev",
+  "source_url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
+  "version": "runtime dataset cisa_kev (refreshed every 6 h); catalogue 2026.11.25 trimmed in the test fixtures",
+  "sha256": "",
+  "licence": "U.S. Government work (public domain)",
+  "attribution": "CISA Known Exploited Vulnerabilities Catalog (https://www.cisa.gov/known-exploited-vulnerabilities-catalog), U.S. Government work.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/vulnerability_cve/cisa_kev.py",
+    "tests/fixtures/cisa_kev/catalog_ok.json"
+  ]
+}

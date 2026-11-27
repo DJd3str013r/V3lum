@@ -1,0 +1,19 @@
+{
+ "Zone": "Green",
+ "DomainGeneralInfo": {
+  "Domain": "example.com",
+  "FilesCount": 0,
+  "UrlsCount": 2,
+  "HitsCount": 5000,
+  "Ipv4Count": 2,
+  "Categories": [
+   "Information technologies"
+  ],
+  "CategoriesWithZone": [
+   {
+    "Name": "Information technologies",
+    "Zone": "Grey"
+   }
+  ]
+ }
+}

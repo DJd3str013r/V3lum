@@ -1,0 +1,21 @@
+{
+ "_meta": {
+  "module": "discord_invite",
+  "case": "edge_rate_limited",
+  "source": "C0233 discord.com",
+  "request": {
+   "method": "GET",
+   "url": "https://discord.com/api/v10/invites/AbCd2345?with_counts=true&with_expiration=true"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "DOC-SHAPED",
+  "note": "Cloudflare edge ban (error 1015) as documented by Cloudflare: no JSON retry_after"
+ },
+ "status": 429,
+ "headers": {
+  "content-type": "text/plain; charset=UTF-8",
+  "server": "cloudflare",
+  "retry-after": "600"
+ },
+ "body": "error code: 1015"
+}

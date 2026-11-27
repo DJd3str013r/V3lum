@@ -1,0 +1,52 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "$comment": "A non-sending domain (null MX '0 .') with no SPF and no DMARC: MEDIUM with the no-mail advice",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "nodes": [
+    {
+      "key": "domain:parked-brand.example",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "spf_status": [
+          {
+            "value": "none",
+            "source": "email_security_posture"
+          }
+        ],
+        "mx": [
+          {
+            "value": [
+              "."
+            ],
+            "source": "dns_records"
+          }
+        ],
+        "email_posture": [
+          {
+            "value": {
+              "spf": "absent",
+              "dmarc": "absent",
+              "mx": "null MX (no mail)"
+            },
+            "source": "email_security_posture"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [],
+  "expect": {
+    "spoofable_email_domain": {
+      "min": 1,
+      "max": 1,
+      "severity": "medium",
+      "confidence_label": "confirmed"
+    }
+  }
+}

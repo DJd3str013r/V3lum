@@ -1,0 +1,25 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p1-G10-3",
+  "title": "BCB/CVM authorised institutions and verified domains (bcb_authorized_institutions, cvm_person_registry)",
+  "owner": "batch p1-G10-3 (P360)",
+  "attributes": {
+    "bcb_verified_domain": "BCB-verified domain matched by a domain or URL host (Olinda DominiosVerificados; exact host or label-wise subdomain below the PSL registrable domain): {domain, match exact|subdomain, host, registrable_domain, institutions [{cnpj_root, legal_name, domain_type, segments, conglomerate}], registrant_cnpj_roots, conglomerate_member_roots, as_of}",
+    "bcb_cvm_authorisation": "one-line answer to 'is this company authorised by BCB/CVM?': 'authorised by BCB/CVM: yes (<segments>)' or 'authorised by BCB/CVM: not found as of <date>' (absence is never a fraud signal)",
+    "bcb_institutions": "authorised institutions (BCB Olinda Instituicoes_em_funcionamento) matched by a CNPJ or company name: [{cnpj_root, legal_name, segments, conglomerate, verified_domains, has_verified_domain}]",
+    "cvm_registrations": "CVM cadastral registrations of a company: [{registry, segment, category, status active|cancelled|liquidation|suspended|special|pending|denied|unknown, status_since, cnpj}]; only 'active' counts as registered and operating",
+    "redirect_targets": "hosts named as redirect targets in a URL's query or fragment (open-redirect pattern): IOCs, never known-good",
+    "cvm_person_registrations": "possible matches of an analyst-typed full name in the CVM registries of natural-person portfolio managers and securities advisers (explicit due diligence only; POSSIBLE: the same name does not prove identity; never keyed by CPF): [{registry, segment, category, status, status_since}]"
+  },
+  "tags": {
+    "redirect_via_verified_domain": "URL on a BCB-verified institution domain whose query or fragment names a redirect target on another host (open-redirect pattern): never known-good",
+    "verified_domain_in_userinfo": "URL whose userinfo (before '@') shows a BCB-verified institution domain while the real host is another one (deceptive URL)"
+  },
+  "relations": {
+    "bcb_verified_domain_of": "domain/URL -> head-office CNPJ (derived from the BCB root, order /0001) of the authorised institution the domain is BCB-verified for",
+    "bcb_verified_domain": "CNPJ/company name -> a domain the BCB verified for that authorised institution (Olinda DominiosVerificados)",
+    "declared_website": "company/CNPJ -> website host it declared to a regulator (BCB Sedes*, CVM cadastre): self-declared, never verified, never known-good",
+    "redirect_target": "URL -> host named as a redirect target in its query or fragment (open-redirect pattern; an IOC)",
+    "registry_name_match": "company name -> CNPJ of an authorised institution or CVM-registered company with the same normalised legal or trade name (exact match only, never fuzzy)"
+  }
+}

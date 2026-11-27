@@ -1,0 +1,48 @@
+{
+ "request": "POST https://api-publica.datajud.cnj.jus.br/api_publica_tjac/_search (no Authorization header)",
+ "response": {
+  "status": 401,
+  "headers": {
+   "content-type": "application/json",
+   "content-length": "507",
+   "www-authenticate": [
+    "Basic realm=\"security\" charset=\"UTF-8\"",
+    "Bearer realm=\"security\"",
+    "ApiKey"
+   ],
+   "x-found-handling-cluster": "ab77d9b257f54e4a8a2761fae16016ee"
+  },
+  "body": {
+   "error": {
+    "root_cause": [
+     {
+      "type": "security_exception",
+      "reason": "missing authentication credentials for REST request [/api_publica_tjac/_search]",
+      "header": {
+       "WWW-Authenticate": [
+        "Basic realm=\"security\" charset=\"UTF-8\"",
+        "Bearer realm=\"security\"",
+        "ApiKey"
+       ]
+      }
+     }
+    ],
+    "type": "security_exception",
+    "reason": "missing authentication credentials for REST request [/api_publica_tjac/_search]",
+    "header": {
+     "WWW-Authenticate": [
+      "Basic realm=\"security\" charset=\"UTF-8\"",
+      "Bearer realm=\"security\"",
+      "ApiKey"
+     ]
+    }
+   },
+   "status": 401
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": 1.022603,
+ "observed_at": "2026-11-26T07:31:49Z",
+ "origin": "live",
+ "note": "fast (1.0 s) Elasticsearch security_exception: triggers the one-per-run key refresh"
+}

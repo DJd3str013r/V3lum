@@ -1,0 +1,70 @@
+{
+  "batch": "p9-G01-1",
+  "modules": [
+    {
+      "name": "domain_ownership",
+      "file": "v3lum/correlations/ownership.py",
+      "proposal": "P013",
+      "category": "domain_dns",
+      "opsec": "light (council record); the deliverable is a correlation pack (FC1): no Module class, no host, no key, zero network calls - live homepage facts exist only when the LIGHT producers (web_fingerprint / site_contacts) ran on analyst-typed seeds",
+      "default_enabled": true,
+      "terms": "n/a",
+      "provider_tier": "n/a",
+      "keys": [],
+      "datasets": [],
+      "pivot_packs": [],
+      "correlation_rules": [
+        "domain_ownership",
+        "domain_ownership_cnpj_mismatch",
+        "domain_ownership_invalid_cnpj",
+        "domain_ownership_person"
+      ],
+      "new_vocabulary": [
+        "attribute cert_organizations",
+        "tag clone_indicator",
+        "tag ownership",
+        "tag org_seed_candidate",
+        "tag natural_person (WP22 correlate.PERSON_TAG, undeclared until now)"
+      ],
+      "live_check": "not applicable: correlation rule over graph facts with no client and no network call (FC1); verified offline by test_rules_make_zero_network_calls (socket spy) and the P327 lint (module and code profiles clean). No target or third-party host contacted."
+    }
+  ],
+  "proposals_not_done": [],
+  "core_requests": [
+    "Register setting 'ownership_archive_in_passive' (bool, default False, owner domain_ownership) in config.SETTINGS_META so `v3lum config` lists it; the rule reads it via rctx.setting / rctx.meta (FC5 vs FC7 reading, architect decision).",
+    "commands.org.seed_proposals: also propose the registrable domains of domain_ownership correlations tagged 'org_seed_candidate' (CONFIRMED/PROBABLE org verdicts for domains not in the profile; proposal also in Correlation.why), analyst confirmation, never an ACTIVE scope (FC7).",
+    "Engine/scoring: apply the marks carried as tags by CONFIRMED domain_ownership verdicts (own_asset + known_good for the org subject, known_good for a queried company) to the domain node; never from PROBABLE/POSSIBLE (FC2).",
+    "P001 ct_logs owner (and P044 Censys / P275 tls_inspect): emit attribute 'cert_organizations' [{o, validation, names, source, given_name, surname}] (declared in v3lum/data/vocab/p9-G01-1.json), e.g. from Cert Spotter expand=cert_der; without a producer PROBABLE via certificate O= is unreachable in a default run (FC3).",
+    "P003/P001 rdap owner, after an architect + legal_dpo decision: keep a minimised 'registrant_person' {name, cpf_masked} only for analyst-typed person seeds in a case with a recorded purpose (FC6); today the person rule can only use IV certificate subjects.",
+    "P059 web_archives / P072 web_fingerprint* / P077 site_contacts* owners: add 'invalid_cnpjs' and 'commerce_markers' (or 'commercial') to the homepage facts (homepage_indicators / site_contacts) so domain_ownership_invalid_cnpj can fire (FC4); web_archives drops invalid CNPJs today.",
+    "P378 org profile schema: a 'legal_names' list (certificate O= and RDAP registrant-name matching use the profile name plus cnpj_lookup legal_name facts today)."
+  ],
+  "files": [
+    "v3lum/correlations/ownership.py",
+    "v3lum/data/vocab/p9-G01-1.json",
+    "docs/backlog/p9-G01-1.md",
+    "tests/fixtures/rules/domain_ownership/negative_no_evidence.json",
+    "tests/fixtures/rules/domain_ownership/negative_passive_footer_excluded.json",
+    "tests/fixtures/rules/domain_ownership/negative_shared_mail_provider_only.json",
+    "tests/fixtures/rules/domain_ownership/positive_confirmed_own_domain.json",
+    "tests/fixtures/rules/domain_ownership/positive_confirmed_rdap_org_root.json",
+    "tests/fixtures/rules/domain_ownership/positive_possible_archived_footer_light.json",
+    "tests/fixtures/rules/domain_ownership/positive_possible_self_declared_registrant.json",
+    "tests/fixtures/rules/domain_ownership/positive_possible_tenancy_only.json",
+    "tests/fixtures/rules/domain_ownership/positive_probable_cert_o.json",
+    "tests/fixtures/rules/domain_ownership/positive_probable_cert_o_and_tenant.json",
+    "tests/fixtures/rules/domain_ownership/positive_queried_company_registered_to_other.json",
+    "tests/fixtures/rules/domain_ownership_cnpj_mismatch/negative_footer_matches_registrant.json",
+    "tests/fixtures/rules/domain_ownership_cnpj_mismatch/negative_old_domain_or_passive.json",
+    "tests/fixtures/rules/domain_ownership_cnpj_mismatch/negative_own_profile_domain_own_cnpj.json",
+    "tests/fixtures/rules/domain_ownership_cnpj_mismatch/negative_passive_mode.json",
+    "tests/fixtures/rules/domain_ownership_cnpj_mismatch/positive_copied_footer_new_domain.json",
+    "tests/fixtures/rules/domain_ownership_cnpj_mismatch/positive_rdap_contradicts_footer.json",
+    "tests/fixtures/rules/domain_ownership_invalid_cnpj/negative_invalid_cnpj_not_commercial.json",
+    "tests/fixtures/rules/domain_ownership_invalid_cnpj/positive_invalid_cnpj_commercial.json",
+    "tests/fixtures/rules/domain_ownership_person/negative_no_purpose_or_not_seed.json",
+    "tests/fixtures/rules/domain_ownership_person/positive_registrant_name_possible.json",
+    "tests/modules/test_domain_ownership.py"
+  ],
+  "notes": "P013 is delivered as the correlation pack v3lum/correlations/ownership.py (FC1 architect floor): four rules, all INFO/MEDIUM/LOW correlations, no module, no provider fragment, no host, no key. Inputs read from the graph: rdap (registered, cnpj_roots, registrant, registrant_kind, created, domain_age_days, privacy_proxy; a blocked/rate-limited/error rdap run is 'could not verify', never a contradiction), cert_organizations + trusted tls_certificate subjects (O= only from OV/EV; DV, self-signed or unverified chains ignored), mx/spf/spf_includes and m365_tenant_id (shared Microsoft 365 / Google Workspace mail never evidence; tenancy anchored on org-profile domains, app_ids and registry-confirmed domains of the subject), homepage_indicators / site_contacts and CNPJ pivots from web_archives* / web_fingerprint* / site_contacts* (live facts only on analyst-typed seeds; passive mode excludes homepage facts unless ownership_archive_in_passive). Subjects: the org profile (cnpj_roots, domains, m365 app_ids, name + cnpj_lookup legal_name of its roots) and up to 5 analyst-typed cnpj / company_name seeds. Levels and confidences follow the prep table: CONFIRMED 0.95 (RDAP CNPJ root or profile domain; only level with own_asset/known_good tags), PROBABLE 0.60/0.75 (OV/EV O= match, +tenancy; RDAP registrant organisation name), POSSIBLE 0.35-0.45 ('unconfirmed link': tenancy and/or site CNPJ), registry contradiction caps at POSSIBLE and voids the site CNPJ. Emission policy to avoid noise: org verdicts only with a level (profile-domain verdicts only for analyst seeds); queried-company verdicts also 'no ownership evidence' / 'registered to another company' / 'not registered' for analyst-typed or adjacent domains. FC4 findings are subject-independent rules (domain_ownership_cnpj_mismatch MEDIUM fraud+clone_indicator; domain_ownership_invalid_cnpj LOW suspicious, site CNPJs re-validated with validators.cnpj_valid incl. alphanumeric). FC6 person rule declared person=True (WP22 P258 cap), purpose + analyst-typed seed gate, tags privacy/natural_person, seed CPF never in output. Evidence ids: 'ev:' + producing run's evidence_sha256[:12] or a deterministic hash. Prep fixtures (raw RDAP/DoH/M365/DER/HTML samples) were not copied: the rule reads normalised graph facts only, so its tests use synthetic graph fixtures (documentation values: *.example, CNPJ 11.222.333/0001-81 and root 99888777, masked CPF ***.555.010-**, seed CPF 12355501000 with failing check digits, placeholder name 'Fulano de Tal'). The batch header's LIGHT/ACTIVE items (default_enabled False, health_check, safety suite) do not apply: nothing here contacts a target. Tests: tests/modules/test_domain_ownership.py 45 passed; the 19 graph fixtures pass check_fixture/test_rule_fixtures; registry-contract rule/vocab checks report nothing for this batch (test_correlation_rules_have_no_errors and test_non_legacy_rules_ship_fixtures green); P327 lint clean (module and code profiles); ruff clean. Full offline suite: 17 failures, none in this batch's files (criminalip, fofa, pivots_crypto, script_decoder, typosquat, windows_artifact_triage, links/lint/pivot-pack email_keys_calendar, lint_patterns, permissions, registry-contract module registration, and WP22's legacy-rule removal in test_rule_api/test_engine_suppression). Review (adversarial pass): (1) an RDAP registrant organisation name is PROBABLE only when the registry vets the holder (registro.br / .br, read from rdap_server); a self-declared gTLD registrant organisation (anyone can type a victim's name) is at most POSSIBLE 'unconfirmed link' and never an org_seed_candidate (PROBABLE 0.75 only with a CA-vetted OV/EV O=); (2) domain_ownership_cnpj_mismatch no longer names the displayed (usually victim's) CNPJ as an entity of a MEDIUM fraud correlation (scoring uplift would have flagged the copied company): the CNPJ is shown in the description; (3) an org-profile own domain printing only the org's own CNPJ is never a clone (new own domains under thin registries were flagged MEDIUM fraud); (4) a refused/rate-limited/failed registry gives the queried-company verdict 'could not verify (registry unavailable)' instead of 'no ownership evidence', and a refused homepage producer gives homepage state 'could_not_verify:<status>' with its own note; (5) IV certificate subjects for another registrable domain are ignored by the person rule. Fixtures added: domain_ownership/positive_possible_self_declared_registrant.json, domain_ownership_cnpj_mismatch/negative_own_profile_domain_own_cnpj.json; tests 45 -> 49 (incl. IV certificate of another domain ignored by the person rule)."
+}

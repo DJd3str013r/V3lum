@@ -1,0 +1,24 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "cvm",
+  "hosts": [],
+  "sources": {
+    "cnpj_name_resolver_cia_aberta": {
+      "title": "CVM register of listed companies (cad_cia_aberta.csv: issuers' legal and trade names, CNPJ, registration status)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://dados.cvm.gov.br/dataset/cia_aberta-cad",
+        "quote": "Open Database License (ODbL) per CKAN metadata: internal use fine; share-alike only if a derived database is redistributed.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "cvm",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: research C0744 terms (CKAN license_id odc-odbl confirmed live in package_show on 2026-11-26, fixture tests/fixtures/cnpj_name_resolver/cvm_ckan_package_show_ok.json). Dataset cvm_cia_aberta.csv (https://dados.cvm.gov.br/dados/CIA_ABERTA/CAD/DADOS/cad_cia_aberta.csv, ';', ISO-8859-1, ~1.5 MB) downloaded by `v3lum data update`, never during a scan, parsed by the shared loader `cvm_registries.parse_cvm_csv(..., 'cia_aberta')`: only names, CNPJ and status are imported (officer, phone, e-mail, address and auditor columns never leave the parser). A separate source keeps it out of the datasets that gate bcb_authorized_institutions through the policy dataset gate (POL-14), as batch p1-G10-3 asked. Attribution CVM. Used by cnpj_name_resolver (P361)."
+    }
+  },
+  "error_markers": [],
+  "notes": "Batch p2-G10-3 (P361 cnpj_name_resolver): the listed-company register source."
+}

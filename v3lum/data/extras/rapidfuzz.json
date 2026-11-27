@@ -1,0 +1,9 @@
+{
+  "schema": "v3lum.extra/1",
+  "package": "rapidfuzz",
+  "pip": "rapidfuzz>=3.6",
+  "extra": "full",
+  "licence": "MIT",
+  "justification": "Optional accelerator of the per-pair Jaro-Winkler of the shared name matcher (v3lum/modules/company_org/namematch.py, P219 cond 6): identical scores to the pure-Python reference (both paths tested), so screening works and gives the same results without it.",
+  "notes": "Optional extra of batch p1-G10-1. No module lists it in requires_packages: the matcher falls back to pure Python."
+}

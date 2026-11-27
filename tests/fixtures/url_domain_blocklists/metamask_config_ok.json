@@ -1,0 +1,30 @@
+{
+ "version": 2,
+ "tolerance": 1,
+ "fuzzylist": [
+  "cryptokitties.co",
+  "etherscan.io",
+  "launchpad.ethereum.org",
+  "makerfoundation.com",
+  "metamask.io",
+  "myetherwallet.com",
+  "opensea.io",
+  "satoshilabs.com"
+ ],
+ "whitelist": [
+  "metamask.io",
+  "opensea.io",
+  "etherscan.io",
+  "myetherwallet.com",
+  "walletconnect.com",
+  "opensea.pro"
+ ],
+ "blacklist": [
+  "breakoutpropfirm.com",
+  "m-breakout-cap-cc.pages.dev",
+  "coolify.breakoutventures.tech",
+  "jsbreakouts.org",
+  "breakout-alert.pages.dev",
+  "cow.sushi-meme.cc"
+ ]
+}

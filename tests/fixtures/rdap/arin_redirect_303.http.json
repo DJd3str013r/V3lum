@@ -1,0 +1,21 @@
+{
+ "request": "GET https://rdap.arin.net/registry/ip/1.1.1.1",
+ "response": {
+  "status": 303,
+  "headers": {
+   "location": "https://rdap.apnic.net/ip/1.1.1.1",
+   "content-type": "application/rdap+json"
+  },
+  "body": {
+   "objectClassName": "ip network",
+   "handle": "NET-1-0-0-0-1",
+   "startAddress": "1.0.0.0",
+   "endAddress": "1.255.255.255",
+   "name": "APNIC-1",
+   "port43": "whois.apnic.net"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "out-of-region IP: 303 See Other to rdap.apnic.net WITH a body describing the whole APNIC-1 /8 - never the answer"
+}

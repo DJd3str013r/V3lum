@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "cloud_ranges_aws",
+  "source_url": "https://ip-ranges.amazonaws.com/ip-ranges.json",
+  "version": "runtime download refreshed daily by the dataset manager (checked 2026-11-26)",
+  "sha256": "",
+  "licence": "AWS public IP address ranges (public provider publication, no licence stated)",
+  "attribution": "AWS IP address ranges (https://ip-ranges.amazonaws.com/ip-ranges.json), Amazon Web Services",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/ip_network/cloud_ranges.py"
+  ]
+}

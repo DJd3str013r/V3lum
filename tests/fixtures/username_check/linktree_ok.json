@@ -1,0 +1,23 @@
+{
+ "_meta": {
+  "module": "username_check",
+  "case": "linktree_ok",
+  "source": "C0274/C0228 Linktree",
+  "request": {
+   "method": "GET",
+   "url": "https://linktr.ee/linktree",
+   "user_agent": "V3LUM/dev",
+   "redirects": "not followed"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "live check, this sandbox's datacenter egress",
+  "elapsed_s": 0.253,
+  "minimised": true,
+  "note": "official account; __NEXT_DATA__ reduced to the account block and its one link; featured creators dropped"
+ },
+ "status": 200,
+ "headers": {
+  "content-type": "text/html; charset=utf-8"
+ },
+ "body": "<!DOCTYPE html><html><head><title data-next-head=\"\">https://linktr.ee/linktr.ee via Linktree</title>\n<meta property=\"og:title\" content=\"Linktree | Linktree\" data-next-head=\"\"/>\n<meta property=\"og:url\" content=\"https://linktr.ee/linktree\" data-next-head=\"\"/>\n<meta property=\"og:type\" content=\"profile\" data-next-head=\"\"/>\n<script id=\"__NEXT_DATA__\" type=\"application/json\">{\"props\":{\"pageProps\":{\"account\":{\"uuid\":\"00000000-0000-4000-8000-000000000001\",\"username\":\"linktree\",\"pageTitle\":\"Linktree\"},\"username\":\"linktree\",\"pageTitle\":\"Linktree\",\"isProfileVerified\":true,\"links\":[{\"id\":\"589138106\",\"title\":\"Linktree's Linktree\",\"url\":\"https://linktr.ee/linktr.ee\",\"type\":\"CLASSIC\"}]}},\"page\":\"/[profile]\"}</script></head><body></body></html>"
+}

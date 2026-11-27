@@ -1,0 +1,18 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://vulnerability.circl.lu/api/vulnerability/CVE-2021-9999999",
+  "headers": {}
+ },
+ "response": {
+  "status": 404,
+  "headers": {
+   "content-type": "application/json",
+   "server": "gunicorn"
+  },
+  "body": "{\"message\": \"Vulnerability not found.\"}"
+ },
+ "transport_error": null,
+ "elapsed_s": 0.2,
+ "note": "SYNTHETIC: FC1 wording (404 -> EMPTY). Not observed: the live service answered 200 {} instead."
+}

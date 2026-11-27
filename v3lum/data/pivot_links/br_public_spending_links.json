@@ -1,0 +1,40 @@
+{
+  "schema": "v3lum.pivot_pack/1",
+  "pack": "br_public_spending_links",
+  "title": "Brazilian public procurement by supplier CNPJ (manual, BR egress)",
+  "notes": "Owned by batch p3-G10-2 (P246 br_public_spending / br_public_spending_br cond 2-3). PNCP and the Compras.gov.br API are automated only from the team's own Brazilian egress (requires_egress BR, A9); otherwise - and whenever a request is blocked, challenged, geo-blocked or answered with an empty reply - these manual links are emitted instead, never 'no contracts'. V3LUM never fetches them for the analyst.",
+  "links": [
+    {
+      "id": "pncp_contracts",
+      "label": "PNCP - contracts and tenders search by CNPJ (manual)",
+      "template": "https://pncp.gov.br/app/contratos?q={cnpj_digits}",
+      "entity_types": ["cnpj"],
+      "category": "company",
+      "host": "pncp.gov.br",
+      "verified": false,
+      "checked_at": "2026-11-26",
+      "privacy": true,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Public PNCP contract search page (app route /app/contratos?q=...). Not verified: pncp.gov.br gave an empty reply / timeout to the research and prep egress (non-BR datacenter); check it from a Brazilian network. Opening it sends the CNPJ to PNCP."
+    },
+    {
+      "id": "compras_sicaf_supplier",
+      "label": "Compras.gov.br - SICAF supplier record by CNPJ (manual, JSON)",
+      "template": "https://dadosabertos.compras.gov.br/modulo-fornecedor/1_consultarFornecedor?pagina=1&tamanhoPagina=10&ativo=true&cnpj={cnpj_digits}",
+      "entity_types": ["cnpj"],
+      "category": "company",
+      "host": "dadosabertos.compras.gov.br",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": true,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Compras.gov.br open-data API supplier query (ativo is a required parameter: without it the API answers 404 'Resource not found'). Answered 200 to the prep run on 2026-11-26. Opening it sends the CNPJ to Compras.gov.br."
+    }
+  ]
+}

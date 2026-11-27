@@ -1,0 +1,170 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "include": [
+      "cdn_origin_hypothesis",
+      "securitytrails"
+    ]
+  },
+  "nodes": [
+    {
+      "key": "domain:example.org",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "a_records": [
+          {
+            "value": [
+              "198.51.100.30"
+            ],
+            "source": "dns_records"
+          }
+        ],
+        "dns_history_a": [
+          {
+            "value": [
+              {
+                "ip": "198.51.100.30",
+                "first_seen": "2018-01-10",
+                "last_seen": "2026-11-25",
+                "organizations": []
+              },
+              {
+                "ip": "203.0.113.77",
+                "first_seen": "2014-02-01",
+                "last_seen": "2016-03-01",
+                "organizations": []
+              }
+            ],
+            "source": "securitytrails"
+          }
+        ],
+        "favicon_mmh3": [
+          {
+            "value": -1335209478,
+            "source": "favicon_hash"
+          }
+        ],
+        "title": [
+          {
+            "value": "Example Org Intranet",
+            "source": "web_fingerprint"
+          }
+        ]
+      }
+    },
+    {
+      "key": "ipv4:198.51.100.30",
+      "depth": 1,
+      "noise": true,
+      "noise_kind": "cdn",
+      "tags": [
+        "cdn"
+      ],
+      "attributes": {
+        "is_cloud": [
+          {
+            "value": true,
+            "source": "cloud_ranges"
+          }
+        ],
+        "is_cdn": [
+          {
+            "value": true,
+            "source": "cloud_ranges"
+          }
+        ],
+        "cloud_provider": [
+          {
+            "value": "Cloudflare",
+            "source": "cloud_ranges"
+          }
+        ],
+        "cloud_role": [
+          {
+            "value": "cdn_edge",
+            "source": "cloud_ranges"
+          }
+        ],
+        "cloud_label": [
+          {
+            "value": "Cloudflare CDN edge",
+            "source": "cloud_ranges"
+          }
+        ]
+      }
+    },
+    {
+      "key": "ipv4:192.0.2.44",
+      "depth": 1,
+      "attributes": {
+        "services": [
+          {
+            "value": [
+              {
+                "port": 443,
+                "http_title": "Example Org Intranet",
+                "favicon_hash": -1335209478
+              }
+            ],
+            "source": "shodan_api"
+          }
+        ]
+      }
+    },
+    {
+      "key": "ipv4:198.51.100.200",
+      "depth": 1,
+      "attributes": {
+        "cert_sans": [
+          {
+            "value": [
+              "*.example.org",
+              "example.org",
+              "shared-host.example.net"
+            ],
+            "source": "censys"
+          }
+        ],
+        "cohosting": [
+          {
+            "value": {
+              "count": 180,
+              "mode": "count_only",
+              "reason": "more than 50 names",
+              "sources": [
+                "mnemonic"
+              ],
+              "exclude_from_shared_infra": true
+            },
+            "source": "passive_dns"
+          }
+        ],
+        "asn": [
+          {
+            "value": "AS64501",
+            "source": "censys"
+          }
+        ],
+        "as_org": [
+          {
+            "value": "EXAMPLE-SHARED-HOSTING",
+            "source": "censys"
+          }
+        ]
+      }
+    }
+  ],
+  "expect": {
+    "cdn_origin_hypothesis": {
+      "min": 3,
+      "max": 3,
+      "severity": "info",
+      "confidence_label": "possible"
+    }
+  },
+  "edges": []
+}

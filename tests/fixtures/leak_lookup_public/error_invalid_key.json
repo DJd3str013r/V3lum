@@ -1,0 +1,5 @@
+{
+ "_source": "error-in-200 body; message text documented at https://leak-lookup.com/docs/search (checked 2026-11-26) ('INVALID API KEY - API key provided is invalid')",
+ "error": "true",
+ "message": "INVALID API KEY"
+}

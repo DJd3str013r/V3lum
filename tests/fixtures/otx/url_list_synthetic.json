@@ -1,0 +1,40 @@
+{
+ "url_list": [
+  {
+   "url": "http://www.example.com/login.php",
+   "date": "2026-11-20T10:00:00",
+   "domain": "example.com",
+   "hostname": "www.example.com",
+   "httpcode": 200,
+   "gsb": [],
+   "encoded": "http%3A//www.example.com/login.php",
+   "result": {
+    "urlworker": {
+     "ip": "192.0.2.10",
+     "http_code": 200
+    },
+    "safebrowsing": {
+     "matches": []
+    }
+   }
+  },
+  {
+   "url": "http://www.example.com/a.exe",
+   "date": "2026-11-19T09:00:00",
+   "domain": "example.com",
+   "hostname": "www.example.com",
+   "httpcode": 404,
+   "result": {
+    "urlworker": {
+     "ip": "192.0.2.10"
+    }
+   }
+  }
+ ],
+ "page_num": 1,
+ "limit": 100,
+ "paged": true,
+ "has_next": false,
+ "full_size": 2,
+ "actual_size": 2
+}

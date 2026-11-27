@@ -1,0 +1,37 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "ieee",
+  "name": "IEEE Registration Authority (OUI/MA-L, MA-M, MA-S, IAB and CID public listings)",
+  "operator": "IEEE Standards Association, Registration Authority",
+  "hosts": ["standards-oui.ieee.org"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "The IEEE Registration Authority assigns the MAC address blocks themselves (A8 trusted: internet registries and standards bodies with published terms); P315 council: provider tier trusted for the IEEE registry path.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "A", "justification": "Authoritative registry of MAC address block assignments; the public CSV listings are regenerated daily by the IEEE RA."},
+  "http_profile": {"user_agent": "neutral", "ttl": 86400, "timeout": 60},
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "oui_registries": {
+      "title": "IEEE RA public registry listings oui.csv, mam.csv, oui36.csv, iab.csv and cid.csv (whole files through the dataset manager; matched offline)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://standards.ieee.org/products-programs/regauth/",
+        "quote": "Offline module (disclosure 'none', runs at TLP:RED): IEEE MA-L, MA-M, MA-S (and CID) CSVs from standards-oui.ieee.org through the dataset manager (monthly; sent with the V3LUM UA because IEEE may block generic library UAs) [P315 cond 1; research C0708 terms 'IEEE public registry']",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "ieee_ra",
+      "sanitizer": null,
+      "dataset": "ieee_oui_ma_l",
+      "notes": "Datasets ieee_oui_ma_l (oui/oui.csv, ~3.9 MB), ieee_oui_ma_m (oui28/mam.csv), ieee_oui_ma_s (oui36/oui36.csv), ieee_oui_iab (iab/iab.csv: IAB blocks are not repeated in oui36.csv) and ieee_oui_cid (cid/cid.csv); each < 5 MB, 5.7 MB together, monthly TTL. Live 2026-11-26: all 200 application/octet-stream with the V3LUM UA, Last-Modified = the same day (the files are regenerated daily), ETag '<mtime>-<size>', no rate-limit headers. Only whole files are downloaded: no MAC address or prefix is ever sent to the IEEE. Used by mac_oui (and read locally by mac_oui_online to decide that a prefix is missing)."
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.msrc.microsoft.com/cvrf/v3.0/cvrf/2099-Jan",
+  "headers": {
+   "Accept": "application/json"
+  }
+ },
+ "response": {
+  "status": 404,
+  "headers": {
+   "content-type": "application/json; charset=utf-8",
+   "cache-control": "no-store",
+   "pragma": "no-cache",
+   "x-cache": "CONFIG_NOCACHE"
+  },
+  "body": "\"Unable to find the specified file.\""
+ },
+ "transport_error": null,
+ "elapsed_s": 0.412197,
+ "observed_at": "2026-11-26T07:23:47Z",
+ "note": "Unknown month id -> 404 application/json with a bare JSON string."
+}

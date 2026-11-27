@@ -1,0 +1,6 @@
+{
+ "error": {
+  "code": "NotFoundError",
+  "message": "URL \"thisurlidmakesnosenseatall\" not found"
+ }
+}

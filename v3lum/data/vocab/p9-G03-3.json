@@ -1,0 +1,32 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p9-G03-3",
+  "title": "Third-party URL scanner lookups, TLS certificate inspection and headless page capture (batch p9-G03-3: P078, P275, P347)",
+  "owner": "batch p9-G03-3 (url_scanners_third_party, url_scanners_lookyloo, tls_inspect, page_capture)",
+  "notes": "Core names are reused where they fit: tls_certificate and intercepted_by (read by CR17), cert_sans and shared_cert (read by CR31), title, login_form, technologies, asn, country; relations cert_san, redirects_to; tags historical, inconclusive, phishing, malicious, suspicious, context_only, third_party, own_asset.",
+  "attributes": {
+    "third_party_scans": "dated records of EXISTING third-party scanner captures of the value [{source, scan_id|report_id, status, verdict (urlDNA: malicious|safe) or verdict_summary (urlquery: malicious|suspicious|no_alerts), verdicts, alert_counts, scan_date, age_days, historical (> 30 days), report_url, title, final_url (e-mails/tokens redacted), ip, asn, country_code, private_scan}]: third-party opinions, never ground truth (P078 cond 6)",
+    "third_party_scan_votes": "consensus input of the third-party scanners {votes [{source, vote, scan_date}], ground_truth false}: the newest non-historical vote of each source, one vote per source (P078 cond 6)",
+    "third_party_scan_summary": "per-source lookup summary {source: {total, returned, hidden_matches, partial, checked_at}}: hidden_matches = matches the key may not see (urlquery visibility filter), never 'not found'",
+    "lookyloo_captures": "existing CIRCL Lookyloo captures whose tree contains the URL/host [{capture_uuid, title, scan_date, age_days, historical, tree_url, capture_url (the URL the capture was made of, e-mails/tokens redacted), final_url, redirect_count, subject_role (captured | redirect | resource | unknown: how the looked-up value appears in that capture)}]: captures only, Lookyloo gives no verdict; pivots come only from captures of the value itself (captured/redirect), never from other sites that merely load or link it; no capture is ever submitted (P078 cond 1)",
+    "tls_handshake": "facts of one live TLS handshake (LIGHT tls_inspect) {host, port, server_name, verified, verify_code, verify_error, version, cipher, chain_length, egress_profile, interception_check (done | not_applicable_private_target | unavailable), parser (cryptography | stdlib_der | getpeercert)}",
+    "tls_phishing_signals": "phishing-relevant certificate signals on a hostile host [{signal cert_issued_lt_7d | free_dv_cert_on_lookalike, detail}]: correlation input, never a verdict by itself (P275 cond 8)",
+    "page_capture": "court-usable evidence record of a headless page capture {seed_url, final_url, redirect_chain, captured_at_utc, captured_at_sao_paulo, sha256 {screenshot, dom, har}, egress_profile, tlp, verdict, indicators, request_count, blocked_requests, budget_violations}: case evidence under case retention (P347 cond 9)",
+    "page_screenshot": "screenshot of a headless capture embedded as a JPEG data URI of at most 1.5 MB {data_uri, caption (source, egress, time), sha256, bytes}; rendered in the self-contained HTML report only (P347 cond 9)",
+    "capture_verdict": "plain-words outcome of a headless capture: 'phishing indicators observed' or 'inconclusive (possible cloaking/geofencing)' - never 'benign' (P347 cond 8)"
+  },
+  "tags": {
+    "third_party_verdict": "a verdict another scanner recorded for an existing capture: one vote, never ground truth (P078)",
+    "tls_interception": "TLS interception detected on the egress path: certificate findings suppressed (P275 cond 4-5)",
+    "cloaking_possible": "a capture that showed nothing hostile: possible cloaking/geofencing, never evidence of benign (P347 cond 8)"
+  },
+  "relations": {
+    "scanner_final_url": "URL -> final URL a third-party scanner recorded after redirects in an existing capture",
+    "scanner_final_host": "URL/domain -> host of the final URL a third-party scanner recorded",
+    "scanner_server_ip": "URL/domain -> server IPv4 a third-party scanner recorded for the final page",
+    "handshake_certificate": "host -> SHA-256 fingerprint of the leaf certificate it served in a live TLS handshake (LIGHT tls_inspect)",
+    "capture_final_url": "URL -> final URL of a headless page capture after redirects",
+    "capture_form_action_host": "URL -> host a form on the captured page posts to on another registrable domain (credential-harvesting endpoint candidate; never submitted)",
+    "capture_server_ip": "URL -> server address the final document of a headless capture came from (resolved through the egress profile)"
+  }
+}

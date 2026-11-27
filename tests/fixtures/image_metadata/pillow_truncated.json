@@ -1,0 +1,5 @@
+{
+ "source": "pillow",
+ "error": "OSError",
+ "message": "Truncated File Read"
+}

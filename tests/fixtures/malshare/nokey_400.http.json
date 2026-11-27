@@ -1,0 +1,15 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://malshare.com/api.php?action=details&hash=44d88612fea8a8f36de82e1278abb02f",
+  "headers": {}
+ },
+ "response": {
+  "status": 400,
+  "headers": {},
+  "body": "No key specified in `api_key` GET variable"
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "research: request without api_key; the research record kept the body text only"
+}

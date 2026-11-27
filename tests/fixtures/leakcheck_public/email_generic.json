@@ -1,0 +1,87 @@
+{
+ "_source": "live check 2026-11-26 from this datacenter egress: /api/public?check=test@example.com (14 of 229 sources kept)",
+ "success": true,
+ "found": 1715,
+ "fields": [
+  "city",
+  "ip2",
+  "first_name",
+  "username",
+  "ssn",
+  "id",
+  "gender",
+  "dob",
+  "phone",
+  "address",
+  "ip1",
+  "password",
+  "ip",
+  "company_name",
+  "zip",
+  "profile_name",
+  "name",
+  "origin",
+  "state",
+  "middle_name",
+  "country",
+  "last_name"
+ ],
+ "sources": [
+  {
+   "name": "Zomato.com",
+   "date": "2017-05"
+  },
+  {
+   "name": "8Tracks.com",
+   "date": "2017-06"
+  },
+  {
+   "name": "000webhost.com",
+   "date": "2015-03"
+  },
+  {
+   "name": "Collection 1",
+   "date": "2019-01"
+  },
+  {
+   "name": "Stealer Logs",
+   "date": ""
+  },
+  {
+   "name": "Havenly.com",
+   "date": "2020-05"
+  },
+  {
+   "name": "Havenly.com (2021)",
+   "date": "2020-11"
+  },
+  {
+   "name": "Twitter.com (scraping data)",
+   "date": "2022-01"
+  },
+  {
+   "name": "Hjedd.com",
+   "date": "2021-11"
+  },
+  {
+   "name": "Corevin.com",
+   "date": ""
+  },
+  {
+   "name": "CouponMom / ArmorGames",
+   "date": "2014-02"
+  },
+  {
+   "name": "Zacks.com (2024)",
+   "date": "2024-06"
+  },
+  {
+   "name": "Morele.net",
+   "date": "2018-10"
+  },
+  {
+   "name": "Regme",
+   "date": "2022-08"
+  }
+ ]
+}

@@ -1,0 +1,188 @@
+{
+ "version": "0.3.0",
+ "sample": {
+  "id": "261121-v3lumsynth",
+  "target": "invoice.exe",
+  "size": 241664,
+  "md5": "3efc2543cc833a797281a3467f1e1ead",
+  "sha1": "767a8711a77321fa3415dd2236743cea405615e4",
+  "sha256": "7854a196c32610db487a0b7226da730a94952776af5d577848754ecde8d68690",
+  "created": "2026-11-21T09:00:00Z",
+  "completed": "2026-11-21T09:06:10Z",
+  "iocs": {
+   "urls": [
+    "http://www.microsoft.com/pki/crl/products/MicCodSigPCA_08-31-2010.crl"
+   ],
+   "domains": [
+    "www.microsoft.com",
+    "c2.example.net"
+   ],
+   "ips": [
+    "192.0.2.80"
+   ]
+  }
+ },
+ "tasks": [
+  {
+   "sample": "261121-v3lumsynth-behavioral1",
+   "kind": "behavioral",
+   "status": "reported",
+   "tags": [
+    "family:agenttesla",
+    "keylogger",
+    "spyware",
+    "stealer"
+   ],
+   "score": 10,
+   "ttp": [
+    "T1056.001",
+    "T1552.001"
+   ],
+   "target": "invoice.exe",
+   "platform": "windows10-2004_x64"
+  },
+  {
+   "sample": "261121-v3lumsynth-static1",
+   "kind": "static",
+   "status": "reported"
+  }
+ ],
+ "analysis": {
+  "score": 10,
+  "family": [
+   "agenttesla"
+  ],
+  "tags": [
+   "family:agenttesla",
+   "keylogger",
+   "spyware",
+   "stealer"
+  ]
+ },
+ "targets": [
+  {
+   "tasks": [
+    "behavioral1"
+   ],
+   "target": "invoice.exe",
+   "sha256": "7854a196c32610db487a0b7226da730a94952776af5d577848754ecde8d68690",
+   "family": [
+    "agenttesla"
+   ],
+   "tags": [
+    "family:agenttesla",
+    "keylogger"
+   ],
+   "signatures": [
+    {
+     "name": "AgentTesla",
+     "label": "agenttesla",
+     "score": 10,
+     "tags": [
+      "family:agenttesla"
+     ]
+    },
+    {
+     "name": "Reads user/profile data of web browsers",
+     "score": 8,
+     "ttp": [
+      "T1552.001"
+     ]
+    },
+    {
+     "name": "Checks computer location settings",
+     "score": 3,
+     "ttp": [
+      "T1614"
+     ]
+    }
+   ]
+  }
+ ],
+ "signatures": [
+  {
+   "name": "AgentTesla",
+   "score": 10
+  }
+ ],
+ "extracted": [
+  {
+   "tasks": [
+    "behavioral1"
+   ],
+   "resource": "behavioral1/memory/1234-1-0x0000-memory.dmp",
+   "config": {
+    "family": "agenttesla",
+    "rule": "AgentTesla",
+    "botnet": "example-botnet",
+    "campaign": "nov26",
+    "c2": [
+     "https://c2.example.net/gate.php",
+     "c2.example.org:587",
+     "[2001:db8::10]:8080",
+     "203.0.113.45",
+     "198.51.100.45:443",
+     "198.51.100.45:443",
+     "127.0.0.1:8080",
+     "not a host at all",
+     "999.1.2.3:80"
+    ],
+    "credentials": [
+     {
+      "protocol": "smtp",
+      "host": "smtp.example.com",
+      "port": 587,
+      "username": "exfil@example.com",
+      "password": "example-password-not-real",
+      "email_to": "drop@example.com"
+     }
+    ],
+    "mutex": [
+     "Global\\example-mutex"
+    ]
+   }
+  },
+  {
+   "tasks": [
+    "behavioral1"
+   ],
+   "dropper": {
+    "family": "example-dropper",
+    "language": "ps1",
+    "urls": [
+     {
+      "type": "url",
+      "url": "http://198.51.100.20/payload.bin"
+     }
+    ]
+   }
+  },
+  {
+   "tasks": [
+    "behavioral1"
+   ],
+   "ransom_note": {
+    "family": "example-ransom",
+    "emails": [
+     "decrypt@example.com"
+    ],
+    "wallets": [
+     "bc1qexampleexampleexampleexampleexample00"
+    ],
+    "note": "Your files ..."
+   }
+  },
+  {
+   "tasks": [
+    "behavioral1"
+   ],
+   "credentials": {
+    "protocol": "ftp",
+    "host": "ftp.example.com",
+    "port": 21,
+    "username": "victim-user",
+    "password": "example-password-not-real"
+   }
+  }
+ ]
+}

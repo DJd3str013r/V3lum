@@ -1,0 +1,23 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.polyswarm.network/v3/search/hash/sha256?hash=0000000000000000000000000000000000000000000000000000000000000000&community=default",
+  "headers": {
+   "Authorization": "<KEY>"
+  }
+ },
+ "response": {
+  "status": 404,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": {
+   "status": "error",
+   "errors": null,
+   "result": "No results found"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "synthetic: hash not known to PolySwarm (body layout follows the documented error envelope)"
+}

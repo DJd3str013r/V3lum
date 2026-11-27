@@ -1,0 +1,15 @@
+{
+ "request": "GET https://cl0q.com/api/favicon?hash=708578229",
+ "response": {
+  "status": 400,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": {
+   "error": "malformed hash"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "documented: 'A malformed hash returns 400' - e.g. an mmh3 value sent where SHA-256 is expected"
+}

@@ -1,0 +1,191 @@
+{
+ "$v3lum_fixture": "Trimmed copy of the Sherlock site manifest (https://github.com/sherlock-project/sherlock, data.json sha256 3fdfc669...), Copyright (c) 2019 Sherlock Project, MIT. username_claimed replaced by example values.",
+ "$schema": "data.schema.json",
+ "Linktree": {
+  "errorMsg": "\"statusCode\":404",
+  "errorType": "message",
+  "regexCheck": "^[\\w\\.]{2,30}$",
+  "url": "https://linktr.ee/{}",
+  "urlMain": "https://linktr.ee/",
+  "username_claimed": "example-claimed"
+ },
+ "Reddit": {
+  "errorMsg": "Sorry, nobody on Reddit goes by that name.",
+  "errorType": "message",
+  "headers": {
+   "accept-language": "en-US,en;q=0.9"
+  },
+  "url": "https://www.reddit.com/user/{}",
+  "urlMain": "https://www.reddit.com/",
+  "username_claimed": "example-claimed"
+ },
+ "mercadolivre": {
+  "errorType": "status_code",
+  "url": "https://www.mercadolivre.com.br/perfil/{}",
+  "urlMain": "https://www.mercadolivre.com.br",
+  "username_claimed": "example-claimed"
+ },
+ "HackerNews": {
+  "__comment__": "First errMsg invalid, second errMsg rate limited. Not ideal. Adjust for better rate limit filtering.",
+  "errorMsg": [
+   "No such user.",
+   "Sorry."
+  ],
+  "errorType": "message",
+  "url": "https://news.ycombinator.com/user?id={}",
+  "urlMain": "https://news.ycombinator.com/",
+  "username_claimed": "example-claimed"
+ },
+ "Archive.org": {
+  "__comment__": "'The resource could not be found' relates to archive downtime",
+  "errorMsg": [
+   "could not fetch an account with user item identifier",
+   "The resource could not be found",
+   "Internet Archive services are temporarily offline"
+  ],
+  "errorType": "message",
+  "url": "https://archive.org/details/@{}",
+  "urlMain": "https://archive.org",
+  "urlProbe": "https://archive.org/details/@{}?noscript=true",
+  "username_claimed": "example-claimed"
+ },
+ "GeeksforGeeks": {
+  "errorMsg": "false   | GeeksforGeeks Profile",
+  "errorType": "message",
+  "url": "https://auth.geeksforgeeks.org/user/{}",
+  "urlMain": "https://www.geeksforgeeks.org/",
+  "username_claimed": "example-claimed"
+ },
+ "Dribbble": {
+  "errorMsg": "Whoops, that page is gone.",
+  "errorType": "message",
+  "regexCheck": "^[a-zA-Z][a-zA-Z0-9_-]*$",
+  "url": "https://dribbble.com/{}",
+  "urlMain": "https://dribbble.com/",
+  "username_claimed": "example-claimed"
+ },
+ "Kaggle": {
+  "errorType": "status_code",
+  "url": "https://www.kaggle.com/{}",
+  "urlMain": "https://www.kaggle.com/",
+  "username_claimed": "example-claimed"
+ },
+ "Gravatar": {
+  "errorType": "status_code",
+  "regexCheck": "^((?!\\.).)*$",
+  "url": "http://en.gravatar.com/{}",
+  "urlMain": "http://en.gravatar.com/",
+  "username_claimed": "example-claimed"
+ },
+ "About.me": {
+  "errorType": "status_code",
+  "url": "https://about.me/{}",
+  "urlMain": "https://about.me/",
+  "username_claimed": "example-claimed"
+ },
+ "BoardGameGeek": {
+  "errorMsg": "\"isValid\":true",
+  "errorType": "message",
+  "url": "https://boardgamegeek.com/user/{}",
+  "urlMain": "https://boardgamegeek.com/",
+  "urlProbe": "https://api.geekdo.com/api/accounts/validate/username?username={}",
+  "username_claimed": "example-claimed"
+ },
+ "dailykos": {
+  "errorMsg": "{\"result\":true,\"message\":null}",
+  "errorType": "message",
+  "url": "https://www.dailykos.com/user/{}",
+  "urlMain": "https://www.dailykos.com",
+  "urlProbe": "https://www.dailykos.com/signup/check_nickname?nickname={}",
+  "username_claimed": "example-claimed"
+ },
+ "minds": {
+  "errorMsg": "\"valid\":true",
+  "errorType": "message",
+  "url": "https://www.minds.com/{}/",
+  "urlMain": "https://www.minds.com",
+  "urlProbe": "https://www.minds.com/api/v3/register/validate?username={}",
+  "username_claimed": "example-claimed"
+ },
+ "omg.lol": {
+  "errorMsg": "\"available\": true",
+  "errorType": "message",
+  "url": "https://{}.omg.lol",
+  "urlMain": "https://home.omg.lol",
+  "urlProbe": "https://api.omg.lol/address/{}/availability",
+  "username_claimed": "example-claimed"
+ },
+ "Diskusjon.no": {
+  "errorMsg": "{\"result\":\"ok\"}",
+  "errorType": "message",
+  "regexCheck": "^[a-zA-Z0-9_.-]{3,40}$",
+  "urlProbe": "https://www.diskusjon.no/?app=core&module=system&controller=ajax&do=usernameExists&input={}",
+  "url": "https://www.diskusjon.no",
+  "urlMain": "https://www.diskusjon.no",
+  "username_claimed": "example-claimed"
+ },
+ "Kvinneguiden": {
+  "errorMsg": "{\"result\":\"ok\"}",
+  "errorType": "message",
+  "regexCheck": "^[a-zA-Z0-9_.-]{3,18}$",
+  "urlProbe": "https://forum.kvinneguiden.no/?app=core&module=system&controller=ajax&do=usernameExists&input={}",
+  "url": "https://forum.kvinneguiden.no",
+  "urlMain": "https://forum.kvinneguiden.no",
+  "username_claimed": "example-claimed"
+ },
+ "xHamster": {
+  "errorType": "status_code",
+  "isNSFW": true,
+  "url": "https://xhamster.com/users/{}",
+  "urlMain": "https://xhamster.com",
+  "urlProbe": "https://xhamster.com/users/{}?old_browser=true",
+  "username_claimed": "example-claimed"
+ },
+ "GitHub": {
+  "errorType": "status_code",
+  "regexCheck": "^[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,38}$",
+  "url": "https://www.github.com/{}",
+  "urlMain": "https://www.github.com/",
+  "username_claimed": "example-claimed"
+ },
+ "Twitter": {
+  "errorMsg": [
+   "<div class=\"error-panel\"><span>User ",
+   "<title>429 Too Many Requests</title>"
+  ],
+  "errorType": "message",
+  "regexCheck": "^[a-zA-Z0-9_]{1,15}$",
+  "url": "https://x.com/{}",
+  "urlMain": "https://x.com/",
+  "urlProbe": "https://nitter.privacydev.net/{}",
+  "username_claimed": "example-claimed"
+ },
+ "Telegram": {
+  "errorMsg": [
+   "<title>Telegram Messenger</title>",
+   "If you have <strong>Telegram</strong>, you can contact <a class=\"tgme_username_link\" href=\"tg://resolve?domain="
+  ],
+  "errorType": "message",
+  "regexCheck": "^[a-zA-Z0-9_]{3,32}[^_]$",
+  "url": "https://t.me/{}",
+  "urlMain": "https://t.me/",
+  "username_claimed": "example-claimed"
+ },
+ "Chess": {
+  "errorMsg": "Username is valid",
+  "errorType": "message",
+  "regexCheck": "^[a-zA-Z0-9_]{3,25}$",
+  "url": "https://www.chess.com/member/{}",
+  "urlMain": "https://www.chess.com/",
+  "urlProbe": "https://www.chess.com/callback/user/valid?username={}",
+  "username_claimed": "example-claimed"
+ },
+ "Pinterest": {
+  "errorType": "status_code",
+  "errorUrl": "https://www.pinterest.com/",
+  "url": "https://www.pinterest.com/{}/",
+  "urlProbe": "https://www.pinterest.com/oembed.json?url=https://www.pinterest.com/{}/",
+  "urlMain": "https://www.pinterest.com/",
+  "username_claimed": "example-claimed"
+ }
+}

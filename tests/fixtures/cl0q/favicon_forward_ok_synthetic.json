@@ -1,0 +1,13 @@
+{
+ "domain": "example.com",
+ "hash": "0f7e861db0a2eeb3045c061b5fa6e4afdecd9828ff44f4a53d418d8fac55f080",
+ "count": 41,
+ "sample": [
+  {
+   "domain": "example.net"
+  },
+  {
+   "domain": "example.org"
+  }
+ ]
+}

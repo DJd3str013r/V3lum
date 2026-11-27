@@ -1,0 +1,22 @@
+{
+ "_meta": {
+  "module": "codeberg_user",
+  "case": "rate_limited",
+  "source": "C0245 codeberg.org",
+  "request": {
+   "method": "GET",
+   "url": "https://codeberg.org/api/v1/users/example-dev"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "DOC-SHAPED",
+  "note": "RateLimit headers in the form observed live (IETF draft structured fields); body unverified"
+ },
+ "status": 429,
+ "headers": {
+  "content-type": "text/plain; charset=utf-8",
+  "ratelimit-policy": "\"baseline\";q=2000;w=600",
+  "ratelimit": "\"baseline\";r=0;t=120",
+  "retry-after": "120"
+ },
+ "body": "Too Many Requests"
+}

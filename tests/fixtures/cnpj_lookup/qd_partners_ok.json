@@ -1,0 +1,56 @@
+{
+ "total_partners": 38,
+ "partners": [
+  {
+   "cnpj_basico": "00000000",
+   "cnpj_ordem": "0001",
+   "cnpj_dv": "91",
+   "cnpj_completo": "00.000.000/0001-91",
+   "cnpj_completo_apenas_numeros": "00000000000191",
+   "identificador_socio": "2 - PESSOA FÍSICA",
+   "razao_social": "FULANO DE TAL",
+   "cnpj_cpf_socio": "***123456**",
+   "qualificacao_socio": "10 - Diretor",
+   "data_entrada_sociedade": "02/01/2020",
+   "pais_socio_estrangeiro": "105 - BRASIL",
+   "numero_cpf_representante_legal": "***000000**",
+   "nome_representante_legal": "",
+   "qualificacao_representante_legal": "00 - Não informada",
+   "faixa_etaria": "6 - 51 a 60 anos"
+  },
+  {
+   "cnpj_basico": "00000000",
+   "cnpj_ordem": "0001",
+   "cnpj_dv": "91",
+   "cnpj_completo": "00.000.000/0001-91",
+   "cnpj_completo_apenas_numeros": "00000000000191",
+   "identificador_socio": "2 - PESSOA FÍSICA",
+   "razao_social": "BELTRANO DA SILVA",
+   "cnpj_cpf_socio": "***234567**",
+   "qualificacao_socio": "10 - Diretor",
+   "data_entrada_sociedade": "03/02/2021",
+   "pais_socio_estrangeiro": "105 - BRASIL",
+   "numero_cpf_representante_legal": "***000000**",
+   "nome_representante_legal": "",
+   "qualificacao_representante_legal": "00 - Não informada",
+   "faixa_etaria": "6 - 51 a 60 anos"
+  },
+  {
+   "cnpj_basico": "00000000",
+   "cnpj_ordem": "0001",
+   "cnpj_dv": "91",
+   "cnpj_completo": "00.000.000/0001-91",
+   "cnpj_completo_apenas_numeros": "00000000000191",
+   "identificador_socio": "2 - PESSOA FÍSICA",
+   "razao_social": "CICLANO SOUZA",
+   "cnpj_cpf_socio": "***345678**",
+   "qualificacao_socio": "10 - Diretor",
+   "data_entrada_sociedade": "04/03/2022",
+   "pais_socio_estrangeiro": "105 - BRASIL",
+   "numero_cpf_representante_legal": "***000000**",
+   "nome_representante_legal": "",
+   "qualificacao_representante_legal": "00 - Não informada",
+   "faixa_etaria": "6 - 51 a 60 anos"
+  }
+ ]
+}

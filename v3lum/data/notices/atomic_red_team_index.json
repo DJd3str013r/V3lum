@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "atomic_red_team_index",
+  "source_url": "https://github.com/redcanaryco/atomic-red-team",
+  "version": "atomics/Indexes/Indexes-CSV/index.csv (master), downloaded at run time (test fixture: first 51 rows of the 2026-11-26 copy)",
+  "sha256": "",
+  "licence": "MIT",
+  "attribution": "Atomic Red Team, Copyright (c) 2018 Red Canary, MIT License. Test names and GUIDs are shown as links only; V3LUM never executes a test.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/cti_framework/technique_detections_tests.py",
+    "tests/fixtures/technique_detections_tests/atomic_index_head.csv"
+  ]
+}

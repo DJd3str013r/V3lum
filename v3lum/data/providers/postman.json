@@ -1,0 +1,79 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "postman",
+  "name": "Postman public API network (public workspace / collection search)",
+  "operator": "Postman, Inc.",
+  "hosts": [
+    "www.postman.com",
+    "postman.com",
+    "api.getpostman.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Postman, Inc. is an established company with published terms, a privacy policy and a business offering (A8 trusted); P069 chair rationale: 'Tier community for APIs.guru (Postman is trusted)'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Postman's own public search index: accurate about what is published, but the search is fuzzy (a random token still returns hits, same-named workspaces of unrelated users) and the endpoint is an undocumented website API that may change; only hits tied to the target by publisher or request host are kept (P069 cond 3)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "ttl": 86400,
+    "timeout": 20,
+    "retries": 1,
+    "min_interval": 2.0,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "day": 50,
+    "published": false,
+    "evidence_url": "",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "public_search": {
+      "title": "Postman public workspace / collection / request search: POST www.postman.com/_api/ws/proxy (service search, path /search-all, domain public) - metadata only",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://www.postman.com/legal/terms/",
+        "quote": "Postman's search is an undocumented website API: terms 'unknown', so the Postman source stays disabled in every profile until legal records its terms (A1); meanwhile the Postman public search page is a manual pivot link.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "postman",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P069 cond 2). Research C0636 (verified_live 200 from a datacenter egress, 2026-11-25/26); prep live checks 2026-11-26: 200 JSON in 0.3-0.8 s, no rate-limit headers, Cloudflare + CloudFront, identical answers with and without the web app's Origin/Referer (not sent). Queries are limited to org_profile domains and brands, at most 2 pages (body.from += 25) per query and a per-case query cap; hits not tied to the target by publisher or request host are discarded (P069 cond 3, 5). Responses are never cached (they can carry third-party secrets in request URLs); only redacted metadata is kept (P069 cond 4). The quota block is the module team's own politeness budget (observed, not published). Used by public_api_exposure."
+    },
+    "api": {
+      "title": "Postman API api.getpostman.com (workspaces, collections, environments; X-Api-Key) - deep mode, deferred",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://www.postman.com/legal/terms/",
+        "quote": "No collection/environment downloads: deep mode is deferred to BACKLOG.md.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "postman",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P069 cond 1). Registered so the host has an owner; no module uses it in this build (deep mode deferred: docs/backlog/p3-G03-1.md). Its key (V3LUM_POSTMAN_KEY) is not registered until deep mode is approved."
+    }
+  },
+  "notes": "Owned by batch p3-G03-1 (P069 public_api_exposure). www.postman.com serves the undocumented public search API and the manual search page (pivot pack public_api_exposure: postman_search); postman.com is the apex of the same site; api.getpostman.com is the keyed Postman API of the deferred deep mode. bbot's Postman modules (AGPL-3.0) were not copied: the request was rebuilt from the research record (P069 cond 6)."
+}

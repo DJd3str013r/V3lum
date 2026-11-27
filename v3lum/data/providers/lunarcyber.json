@@ -1,0 +1,57 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "lunarcyber",
+  "name": "Lunar domain exposure API (Webz.io): 12-month aggregate infostealer and breach counts per domain",
+  "operator": "Webz.io (Lunar)",
+  "hosts": ["api.lunarcyber.com"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Webz.io is an established data company with a business offering and public documentation (docs.webz.io); P136 chair: 'Webz.io is an established company: tier trusted'.",
+  "tier_reviewer": "council-1 (A8, P136)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": true},
+  "personal_data_review": null,
+  "reliability": {"grade": "C", "justification": "Aggregates of infostealer logs and breach/combolist corpora: an exposure context, not the compromise of a specific account; junk and test domains (example.com) show implausible volumes (P136 cond 4)."},
+  "http_profile": {"user_agent": "neutral", "accept": "application/json", "timeout": 30, "ttl": 86400, "min_interval": 3.0, "concurrency": 1, "retries": 0},
+  "quota": null,
+  "error_markers": [
+    {"id": "lunar_rate_limited_body", "statuses": [200, 400], "json_path": "error", "equals": null, "regex": "(?i)rate|too many|limit", "final_url_regex": null, "maps_to": "rate_limited", "reason_code": "rate_limited", "reason": "Lunar: rate-limit message in the answer (could not verify)"},
+    {"id": "lunar_error_body", "statuses": [200], "json_path": "error", "equals": null, "regex": "\\S", "final_url_regex": null, "maps_to": "error", "reason_code": "error", "reason": "Lunar: error message inside a 200 answer (could not verify)"}
+  ],
+  "keys": {},
+  "sources": {
+    "domain_exposure": {
+      "title": "Lunar GET /domain-exposure?domain=<domain>: 12-month aggregate counts (events, stealer families, OS, antivirus, months, breach-source split)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://webz.io/terms",
+        "quote": "Terms 'unknown': the only Webz.io terms found (webz.io/terms, for its free News API Lite) limit data derivatives to non-commercial use and none cover the Lunar endpoint. Disabled in every profile until Webz.io confirms in writing or legal records the terms (A1).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "lunar",
+      "sanitizer": {
+        "keep": [
+          "domain", "status", "periodFrom", "periodTo", "error",
+          "report.generated_at",
+          "report.summary.total_events", "report.summary.infostealer_events", "report.summary.data_breach_events",
+          "report.summary.employee_events", "report.summary.client_events", "report.summary.first_seen", "report.summary.last_seen",
+          "report.monthly_timeline[].month", "report.monthly_timeline[].total_events", "report.monthly_timeline[].infostealer_events",
+          "report.monthly_timeline[].data_breach_events",
+          "report.malware_family_breakdown[].family", "report.malware_family_breakdown[].events",
+          "report.os_breakdown[].os_family", "report.os_breakdown[].infostealer_events",
+          "report.antivirus_breakdown[].antivirus", "report.antivirus_breakdown[].events",
+          "report.data_breach_summary.known_breach_sources_count", "report.data_breach_summary.events_from_known_breach_sources",
+          "report.data_breach_summary.events_from_combolist_sources"
+        ],
+        "notes": "P136 cond 3 / P145: aggregate counts only (12-month totals, stealer families, OS, antivirus, months, breach-source split) survive before the HTTP cache; countries, service classification, per-family shares, top_login_urls (login URL paths can carry masked user names; the core second net drops every key with the token 'login' anyway) and any record-level or future field are dropped."
+      },
+      "dataset": null,
+      "notes": "Research C0305 (verified_live 200; keyless, unpublished rate limit). A domain asked for the first time answers status GENERATING_REPORT with report null; the report is ready a few seconds later (live check 2026-11-26), so the module polls at most twice more, 3 s apart, and never caches a GENERATING answer. Invalid domains answer HTTP 400 {'error': 'Invalid domain.'}. Results are confidential case data with a minimum marking of TLP:AMBER (P136 cond 5). Cache 24 h (P136 cond 6). Used by lunar_domain_exposure.",
+      "licensed_alternative": "Hudson Rock search-by-domain (own domains, also terms unknown) or a licensed infostealer-intelligence feed for own-domain exposure counts."
+    }
+  },
+  "notes": "Owned by batch p2-G04-1 (P136 lunar_domain_exposure). Sensitive provider (A4/P136 cond 3): aggregate fields only, sanitized before the HTTP cache. Terms unknown: default_enabled False (A3 BR2). No published limit: the module adds a politeness budget of 50 lookups per day (daily_quota) and 3 s between requests."
+}

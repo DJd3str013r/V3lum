@@ -1,0 +1,10 @@
+{
+ "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+ "overall_verdict": "unknown",
+ "fuzzyhash": {
+  "hash": null,
+  "verdict": "unknown"
+ },
+ "mdcloud": null,
+ "filescan_reports": []
+}

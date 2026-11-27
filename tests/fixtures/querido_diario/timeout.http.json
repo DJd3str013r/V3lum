@@ -1,0 +1,9 @@
+{
+ "request": "GET https://api.queridodiario.org.br/gazettes?querystring=%22Banco%20do%20Brasil%20S.A.%22&published_since=2024-11-26&published_until=2026-11-26&excerpt_size=500&number_of_excerpts=3&size=10&offset=0&sort_by=descending_date",
+ "response": null,
+ "transport_error": "TimeoutError: The read operation timed out",
+ "elapsed_s": 20.46,
+ "observed_at": "2026-11-26T07:14:33Z",
+ "origin": "live",
+ "note": "company-name phrase query; client timeout 20 s, no response headers"
+}

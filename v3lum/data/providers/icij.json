@@ -1,0 +1,77 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "icij",
+  "name": "ICIJ Offshore Leaks Database (reconciliation API and bulk CSV)",
+  "operator": "International Consortium of Investigative Journalists (ICIJ)",
+  "hosts": [
+    "offshoreleaks.icij.org",
+    "offshoreleaks-data.icij.org"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established non-profit journalism consortium publishing the database with documented reconciliation API and bulk download, ODbL/CC BY-SA terms (A8 trusted); P221 provider tier trusted.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Journalistically curated leak-derived records (Panama, Paradise, Pandora Papers, Offshore and Bahamas Leaks); presence is not evidence of wrongdoing and homonyms are common, so name matches stay POSSIBLE (P221 cond 6)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 20.0,
+    "ttl": 604800,
+    "min_interval": 2.0,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "day": 250,
+    "published": false,
+    "evidence_url": "https://offshoreleaks.icij.org/docs/reconciliation",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "reconcile": {
+      "title": "ICIJ Offshore Leaks reconciliation API (POST /api/v1/reconcile, OpenRefine protocol; entity-typed, at most 5 candidates)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://offshoreleaks.icij.org/pages/database",
+        "quote": "ODbL/CC BY-SA are met by runtime download and attribution, so terms are open (A1).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "icij_offshore_leaks",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P221 chair rationale). Research C0516: POST answers 201 with scored candidates {id, name, description (the leak), score, match, types}. Used only by icij_offshore_api, without the local index and only at TLP:CLEAR/GREEN or on explicit selection (P221 cond 4). The web search page (202 + AWS WAF JS challenge) is never fetched (cond 7). Undocumented limits: self-imposed 250 POSTs/day (80% = 200) and 2 s between requests. Batch p3-G10-1."
+    },
+    "bulk": {
+      "title": "ICIJ Offshore Leaks bulk CSV (full-oldb.LATEST.zip: entities, officers, intermediaries, relationships)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://offshoreleaks.icij.org/pages/database",
+        "quote": "Local first: the bulk CSV (ODbL database + CC BY-SA contents, several hundred MB) is imported into SQLite only by `v3lum data update icij` through the dataset manager, never bundled (A6) and never downloaded during a scan.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "icij_offshore_leaks",
+      "sanitizer": null,
+      "dataset": "icij",
+      "notes": "Quote: binding council text (P221 cond 3). offshoreleaks-data.icij.org/offshoreleaks/csv/full-oldb.LATEST.zip (~72 MB compressed, ~626 MB of CSV, generated 2026-09-09). The address member is never imported (cond 2). Used by icij_offshore (disclosure none). Batch p3-G10-1."
+    }
+  },
+  "notes": "Owned by batch p3-G10-1 (P221). Attribution (ODbL database + CC BY-SA contents) travels with every result (attribute data_attribution) and the notice fragment icij_offshore_leaks."
+}

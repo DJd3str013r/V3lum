@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "deepdarkcti",
+  "source_url": "https://github.com/fastfire/deepdarkCTI",
+  "version": "branch main, runtime download weekly (`v3lum data update`), checked 2026-11-26",
+  "sha256": "",
+  "licence": "GPL-3.0-only",
+  "attribution": "deepdarkCTI by fastfire (https://github.com/fastfire/deepdarkCTI), GPL-3.0. The markdown lists are downloaded at run time and parsed locally; they are never bundled or modified in V3LUM (A6). Listed sites are hostile infrastructure: shown defanged, never fetched.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/darkweb_ransomware/deepdarkcti_index.py"
+  ]
+}

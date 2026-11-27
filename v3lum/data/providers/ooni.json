@@ -1,0 +1,89 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "ooni",
+  "name": "OONI API (Open Observatory of Network Interference measurements and aggregation)",
+  "operator": "Open Observatory of Network Interference (OONI)",
+  "hosts": [
+    "api.ooni.io",
+    "explorer.ooni.org"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established non-profit internet-measurement project with open methodology and published data policy (A8 trusted); P023 chair rationale: 'OONI is an established non-profit measurement project: tier trusted'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Volunteer probe measurements with automated analysis: 'confirmed' is a fingerprinted block page, single anomalies are often network noise (live 30-day data shows sporadic anomalies where nothing is blocked)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "ttl": 86400,
+    "min_interval": 1.0
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "day": 250,
+    "rate_per_second": 1.0,
+    "burst": 1,
+    "published": false,
+    "evidence_url": "https://api.ooni.io/apidocs/",
+    "safety_margin": 0.8
+  },
+  "error_markers": [
+    {
+      "id": "ooni_error_in_200",
+      "statuses": [200],
+      "json_path": "error",
+      "equals": null,
+      "regex": "\\S",
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "OONI API: error message inside an HTTP 200 answer (could not verify)"
+    }
+  ],
+  "keys": {},
+  "sources": {
+    "api": {
+      "title": "OONI API v1 /measurements?domain=&probe_cc=&limit= (metadata.next_url pagination) and /aggregation?domain=&probe_cc=&since=&until=",
+      "terms": {
+        "class": "noncommercial",
+        "evidence_url": "https://github.com/ooni/license/blob/ce329e1d6a2a0d0922d27557123e07e463b7c1e9/data/LICENSE.md",
+        "quote": "This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.",
+        "checked_at": "2026-11-26",
+        "reviewer": "batch p3-G01-2 (P023 cond 3: evidence for legal)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "ooni",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0049 (verified_live 200). P023 cond 3: the council header said 'open' pending the exact Creative Commons variant; the OONI data licence is CC BY-NC-SA 4.0 (github.com/ooni/license data/LICENSE.md at commit ce329e1d, linked as 'Data License' from ooni.org/data/; data/Readme.md: 'This license applies to all published OONI data ... on https://api.ooni.io and https://explorer.ooni.io'). Per cond 3 the source is therefore classed noncommercial and is off under the corporate profile until licence-cleared (licence_allow entry, e.g. a provider_grant: OONI's licence README invites requests for other terms at contact@openobservatory.org). Attribution: report footer + notice ooni_data. Keyless; an invalid probe_cc answers 200 with an empty list (validated before sending); x-ratelimit-remaining ~4000 units per egress IP observed (undocumented). Used by ooni."
+    },
+    "explorer_pages": {
+      "title": "OONI Explorer pages (explorer.ooni.org/m/<measurement_uid>, /domain/<host>): manual links only, never fetched",
+      "terms": {
+        "class": "noncommercial",
+        "evidence_url": "https://github.com/ooni/license/blob/ce329e1d6a2a0d0922d27557123e07e463b7c1e9/data/LICENSE.md",
+        "quote": "This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.",
+        "checked_at": "2026-11-26",
+        "reviewer": "batch p3-G01-2 (P023 cond 3: evidence for legal)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "ooni",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "explorer.ooni.org answered 429 then 403 with a Vercel Security Checkpoint (x-vercel-mitigated: challenge) to scripted requests from a datacenter egress (2026-11-26): manual links for the analyst's browser only, never requested (A9)."
+    }
+  },
+  "notes": "Owned by batch p3-G01-2 (P023 ooni). Context only: OONI anomalies and confirmed blocks are shown as info and never contribute to the risk score (P023 cond 2). No published rate limit: the quota block is a conservative per-egress budget (250/day at 80%, about one request per 1.25 s)."
+}

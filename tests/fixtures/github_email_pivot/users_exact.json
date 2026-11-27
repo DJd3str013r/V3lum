@@ -1,0 +1,15 @@
+{
+ "_synthetic": "search/users shape of the live answers with one documentation account",
+ "total_count": 1,
+ "incomplete_results": false,
+ "items": [
+  {
+   "login": "example-dev",
+   "id": 1000001,
+   "html_url": "https://github.com/example-dev",
+   "type": "User",
+   "site_admin": false,
+   "score": 1.0
+  }
+ ]
+}

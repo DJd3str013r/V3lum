@@ -1,0 +1,16 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://okta.okta.com/.well-known/openid-configuration"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "content-type": "text/html"
+    },
+    "body": "<!DOCTYPE html><html><head><title>Network notice</title></head><body>Please accept the terms</body></html>"
+  },
+  "class": "derived",
+  "captured_at": "2026-11-26T00:00:00Z",
+  "notes": "HTML with 200 instead of the JSON document -> unknown"
+}

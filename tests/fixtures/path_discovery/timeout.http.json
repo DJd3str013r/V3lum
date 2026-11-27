@@ -1,0 +1,14 @@
+{
+ "_provenance": {
+  "synthetic": true
+ },
+ "request": {
+  "method": "GET",
+  "host": "app.example.com",
+  "path": "/api"
+ },
+ "response": null,
+ "history": [],
+ "final_url": null,
+ "transport_error": "ReadTimeout: read timed out after 10 s"
+}

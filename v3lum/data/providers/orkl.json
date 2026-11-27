@@ -1,0 +1,69 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "orkl",
+  "name": "ORKL CTI report library",
+  "operator": "ORKL community project (orkl.eu; operator not verified)",
+  "hosts": [
+    "orkl.eu"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "P293 cond 2 (A8): 'unknown until the registry reviewer records otherwise'. Community-run library whose operator and terms could not be read from the research egress (JS-only site).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Indexes public CTI reports from their publishers (Malpedia, MITRE, ETDA, VX-Underground mirrors); search is fuzzy, so only exact matches are shown."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "ttl": 604800,
+    "min_interval": 1.0,
+    "concurrency": 1,
+    "max_bytes": 4194304
+  },
+  "quota": null,
+  "error_markers": [
+    {
+      "id": "orkl_status_error",
+      "statuses": [
+        200
+      ],
+      "json_path": "status",
+      "equals": "error",
+      "regex": null,
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "ORKL: error envelope inside an HTTP 200 answer (status 'error')"
+    }
+  ],
+  "keys": {},
+  "sources": {
+    "library": {
+      "title": "ORKL library search /api/v1/library/search and entry /api/v1/library/entry/{id}",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://orkl.eu/",
+        "quote": "Legal floor (A1): ORKL publishes no terms readable from the research egress (JS-only site), so terms='unknown': the module runs in no profile until legal records the terms in the provider registry.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "orkl",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P293 cond 1). Research C0663 (verified_live 200). Observed 2026-11-26: x-ratelimit-limit 300 per 60 s per IP, no ETag; 'data': null = empty; HTTP 406 {status: 'error'} for an empty query. Reports keep their publishers' copyright: titles, dates and publisher links only; the archive.orkl.eu report files are never linked or downloaded (P293 cond 4). While the tier is unknown only CVE and ATT&CK ids are sent (cond 2)."
+    }
+  },
+  "notes": "Owned by batch p2-G11-1 (P293 orkl). Unknown tier: never default, excluded at TLP:AMBER and above, neutral UA only. ttl 7 days (P293 cond 3). No quota block: the observed 300/min/IP is far above the module's own min_interval 1 s and daily_quota 500."
+}

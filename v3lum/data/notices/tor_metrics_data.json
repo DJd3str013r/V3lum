@@ -1,0 +1,15 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "tor_metrics_data",
+  "source_url": "https://metrics.torproject.org/",
+  "version": "TorDNSEL bulk exit list, Onionoo running-relay summary and CollecTor monthly exit-list archives (runtime downloads, checked 2026-11-26)",
+  "sha256": "",
+  "licence": "CC0-1.0",
+  "attribution": "Tor network data from The Tor Project, Inc. (Tor Metrics: https://metrics.torproject.org/): data on Tor Metrics is freely available under a CC0 no copyright declaration; credit to The Tor Project kept in findings and reports.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/ip_network/tor_exit_local.py",
+    "v3lum/modules/ip_network/tor_onionoo.py",
+    "v3lum/modules/ip_network/tor_exit_history.py"
+  ]
+}

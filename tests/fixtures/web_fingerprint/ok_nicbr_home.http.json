@@ -1,0 +1,23 @@
+{
+ "url": "https://nic.br/",
+ "status": 200,
+ "headers": [
+  [
+   "Server",
+   "Apache"
+  ],
+  [
+   "Strict-Transport-Security",
+   "max-age=31536000"
+  ],
+  [
+   "ETag",
+   "\"c1d3-660f2e77fcfd5\""
+  ],
+  [
+   "Content-Type",
+   "text/html"
+  ]
+ ],
+ "body": "<!DOCTYPE html>\n<html lang=\"pt-br\">\n<head>\n<meta charset=\"utf-8\">\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n<meta name=\"viewport\" content=\"initial-scale = 1.0,maximum-scale = 1.0\" />\n<meta name=\"keywords\" content=\"nic, nic.br, internet no brasil, network information center, núcleo de informação e coordenação do ponto br N&uacute;cleo de Informa&ccedil;&atilde;o e Coordena&ccedil;&atilde;o do Ponto BR - Início\" />\n<meta name=\"description\"\n    content=\"O Núcleo de Informação e Coordenação do Ponto BR é uma entidade civil, sem fins lucrativos, que desde dezembro de 2005 implementa as decisões e projetos do Comitê Gestor da Internet no Brasil.\">\n<meta name=\"google-site-verification\" content=\"nDjnC4ZPe8Y4pwASduuch-a3oTA4HuDW-sSVJnO022w\" />\n<meta property=\"og:locale\" content=\"pt_BR\" />\n<meta property=\"og:url\" content=\"https://nic.br\">\n<meta property=\"og:site_name\" content=\"NIC.br - Núcleo de Informação e Coordenação do Ponto BR\" />\n<meta property=\"og:type\" content=\"website\" />\n<meta property=\"og:title\" content=\"N&uacute;cleo de Informa&ccedil;&atilde;o e Coordena&ccedil;&atilde;o do Ponto BR - Início\" />\n<meta property=\"og:description\"\n      content=\"O Núcleo de Informação e Coordenação do Ponto BR é uma entidade civil, sem fins lucrativos, que desde dezembro de 2005 implementa as decisões e projetos do Comitê Gestor da Internet no Brasil.N&uacute;cleo de Informa&ccedil;&atilde;o e Coordena&ccedil;&atilde;o do Ponto BR - Início\" />\n<meta property=\"og:image\" content=\"https://nic.br/media/imgs/social-network.jpg\" />\n<meta name=\"twitter:card\" content=\"summary_large_image\">\n<meta name=\"twitter:description\"\n      content=\"O Núcleo de Informação e Coordenação do Ponto BR é uma entidade civil, sem fins lucrativos, que desde dezembro de 2005 implementa as decisões e projetos do Comitê Gestor da Internet no Brasil.N&uacute;cleo de Informa&ccedil;&atilde;o e Coordena&ccedil;&atilde;o do Ponto BR - Início\" />\n<meta name=\"twitter:image:src\" content=\"https://nic.br/media/imgs/social-network.jpg\">\n<meta property=\"twitter:title\" content=\"N&uacute;cleo de Informa&ccedil;&atilde;o e Coordena&ccedil;&atilde;o do Ponto BR - Início\" />\n<title>NIC.br - N&uacute;cleo de Informa&ccedil;&atilde;o e Coordena&ccedil;&atilde;o do Ponto BR - Início</title>\n<link href=\"/docs-assets/css/normalize.css\" rel=\"stylesheet\">\n<link href=\"/dist/css/bootstrap.min.css\" rel=\"stylesheet\">\n<link href=\"/docs-assets/css/theme.css?ver=5.2\" rel=\"stylesheet\">\n<link href=\"/docs-assets/css/component.css\" rel=\"stylesheet\">\n<link href=\"/docs-assets/css/cs-select.css\" rel=\"stylesheet\">\n<link href=\"/docs-assets/css/cs-skin-boxes.css\" rel=\"stylesheet\">\n<script src=\"/docs-assets/js/modernizr.custom.js\"></script>\n<script src=\"./docs-assets/js/ie8-responsive-file-warning.js\"></script>\n<script src=\"https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js\"></script>\n<script src=\"https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js\"></script>\n<script type=\"text/javascript\" src=\"/docs-assets/js/jquery-1.10.2.min.js\"></script>\n<script type=\"text/javascript\" src=\"/dist/js/bootstrap.min.js\"></script>\n<script type=\"text/javascript\" src=\"/docs-assets/js/node_modules/readmore-js/readmore.js\"></script>\n<script type=\"text/javascript\" src=\"/docs-assets/js/main.js?v=1795446138\"></script>\n<script type=\"text/javascript\" src=\"/docs-assets/js/busca.js?v=1795446138\"></script>\n<script type=\"text/javascript\" src=\"/docs-assets/js/classie.js\"></script>\n<script type=\"text/javascript\" src=\"/docs-assets/js/selectFx.js\"></script>\n<script type=\"text/javascript\" src=\"/docs-assets/js/fullscreenForm.js\"></script>\n<script type=\"text/javascript\" src=\"/docs-assets/js/bootstrap.youtubepopup.js\"></script>\n<script type=\"text/javascript\" src=\"/docs-assets/js/surveynic.js\"></script>\n</head>\n<body><!-- body trimmed for the fixture --></body>\n</html>\n"
+}

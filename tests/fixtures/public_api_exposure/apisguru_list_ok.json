@@ -1,0 +1,256 @@
+{
+ "inpe.br:dados-abertos": {
+  "added": "2021-01-22T08:22:52.703Z",
+  "preferred": "1.0",
+  "versions": {
+   "1.0": {
+    "added": "2021-01-22T08:22:52.703Z",
+    "updated": "2021-07-19T09:27:57.385Z",
+    "swaggerUrl": "https://api.apis.guru/v2/specs/inpe.br/dados-abertos/1.0/swagger.json",
+    "link": "https://api.apis.guru/v2/specs/inpe.br:dados-abertos/1.0.json",
+    "openapiVer": "2.0",
+    "info": {
+     "title": "Dados Abertos - API",
+     "x-providerName": "inpe.br",
+     "x-serviceName": "dados-abertos",
+     "x-apisguru-categories": [
+      "location"
+     ],
+     "x-origin": [
+      {
+       "format": "swagger",
+       "url": "http://queimadas.dgi.inpe.br/queimadas/dados-abertos/api/swagger.json"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "github.com": {
+  "added": "2021-06-18T13:57:32.889Z",
+  "preferred": "1.1.4",
+  "versions": {
+   "1.1.4": {
+    "added": "2021-06-18T13:57:32.889Z",
+    "updated": "2023-02-15T18:23:37.750Z",
+    "swaggerUrl": "https://api.apis.guru/v2/specs/github.com/1.1.4/openapi.json",
+    "link": "https://api.apis.guru/v2/specs/github.com/1.1.4.json",
+    "openapiVer": "3.0.3",
+    "info": {
+     "title": "GitHub v3 REST API",
+     "x-providerName": "github.com",
+     "x-serviceName": "api.github.com",
+     "x-apisguru-categories": [
+      "collaboration",
+      "developer_tools"
+     ],
+     "x-origin": [
+      {
+       "format": "openapi",
+       "url": "https://raw.githubusercontent.com/github/rest-api-description/main/descriptions/api.github.com/api.github.com.json"
+      }
+     ],
+     "contact": {
+      "url": "https://support.github.com/contact?tags=dotcom-rest-api"
+     }
+    }
+   },
+   "v0.1": {
+    "added": "2023-03-04T15:39:44.475Z",
+    "updated": "2023-03-04T15:39:44.475Z",
+    "swaggerUrl": "https://api.apis.guru/v2/specs/github.com/v0.1/openapi.json",
+    "link": "https://api.apis.guru/v2/specs/github.com/v0.1.json",
+    "openapiVer": "3.0.0",
+    "info": {
+     "title": "Eqivo API",
+     "x-providerName": "github.com",
+     "x-apisguru-categories": [
+      "collaboration",
+      "developer_tools"
+     ],
+     "x-origin": [
+      {
+       "format": "openapi",
+       "url": "https://eqivo.org/openapi.yaml"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "github.com:api.github.com": {
+  "added": "2020-07-28T11:39:09.998Z",
+  "preferred": "1.1.4",
+  "versions": {
+   "1.1.4": {
+    "added": "2020-07-28T11:39:09.998Z",
+    "updated": "2023-02-15T18:23:37.750Z",
+    "swaggerUrl": "https://api.apis.guru/v2/specs/github.com/api.github.com/1.1.4/openapi.json",
+    "link": "https://api.apis.guru/v2/specs/github.com:api.github.com/1.1.4.json",
+    "openapiVer": "3.0.3",
+    "info": {
+     "title": "GitHub v3 REST API",
+     "x-providerName": "github.com",
+     "x-serviceName": "api.github.com",
+     "x-apisguru-categories": [
+      "collaboration",
+      "developer_tools"
+     ],
+     "x-origin": [
+      {
+       "format": "openapi",
+       "url": "https://raw.githubusercontent.com/github/rest-api-description/main/descriptions/api.github.com/api.github.com.json"
+      }
+     ],
+     "contact": {
+      "url": "https://support.github.com/contact?tags=dotcom-rest-api"
+     }
+    }
+   }
+  }
+ },
+ "googleapis.com:my-business": {
+  "added": "2021-04-15T13:00:14.190Z",
+  "preferred": "v4",
+  "versions": {
+   "v4": {
+    "added": "2021-04-15T13:00:14.190Z",
+    "updated": "2021-11-04T23:09:19.244Z",
+    "swaggerUrl": "https://api.apis.guru/v2/specs/googleapis.com/my-business/v4/openapi.json",
+    "link": "https://api.apis.guru/v2/specs/googleapis.com:my-business/v4.json",
+    "openapiVer": "3.0.0",
+    "info": {
+     "title": "Google My Business API",
+     "x-providerName": "googleapis.com",
+     "x-serviceName": "my-business",
+     "x-apisguru-categories": [
+      "analytics",
+      "media",
+      "location"
+     ],
+     "x-origin": [
+      {
+       "format": "google",
+       "url": "https://developers.google.com/my-business/samples/mybusiness_google_rest_v4p9.json"
+      }
+     ],
+     "contact": {
+      "url": "https://google.com"
+     }
+    }
+   }
+  }
+ },
+ "google.com": {
+  "added": "2023-03-04T15:32:55.006Z",
+  "preferred": "v3",
+  "versions": {
+   "v3": {
+    "added": "2023-03-04T15:32:55.006Z",
+    "updated": "2023-03-06T07:12:59.965Z",
+    "swaggerUrl": "https://api.apis.guru/v2/specs/google.com/v3/openapi.json",
+    "link": "https://api.apis.guru/v2/specs/google.com/v3.json",
+    "openapiVer": "3.0.0",
+    "info": {
+     "title": "Travel Partner API",
+     "x-providerName": "google.com",
+     "x-origin": [
+      {
+       "format": "google",
+       "url": "https://travelpartner.googleapis.com/$discovery/rest?version=v3"
+      }
+     ],
+     "contact": {
+      "url": "https://google.com"
+     }
+    }
+   }
+  }
+ },
+ "amazonaws.com:iotwireless": {
+  "added": "2021-01-15T15:07:17.488Z",
+  "preferred": "2020-11-22",
+  "versions": {
+   "2020-11-22": {
+    "added": "2021-01-15T15:07:17.488Z",
+    "updated": "2021-01-15T15:07:17.488Z",
+    "swaggerUrl": "https://api.apis.guru/v2/specs/amazonaws.com/iotwireless/2020-11-22/openapi.json",
+    "link": "https://api.apis.guru/v2/specs/amazonaws.com:iotwireless/2020-11-22.json",
+    "openapiVer": "3.0.0",
+    "info": {
+     "title": "AWS IoT Wireless",
+     "x-providerName": "amazonaws.com",
+     "x-serviceName": "iotwireless",
+     "x-apisguru-categories": [
+      "cloud"
+     ],
+     "x-origin": [
+      {
+       "url": "https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/iotwireless-2020-11-22.normal.json"
+      }
+     ],
+     "contact": {
+      "url": "https://github.com/example-org/aws2openapi"
+     }
+    }
+   }
+  }
+ },
+ "1password.local:connect": {
+  "added": "2021-04-16T15:56:45.939Z",
+  "preferred": "1.5.7",
+  "versions": {
+   "1.5.7": {
+    "added": "2021-04-16T15:56:45.939Z",
+    "updated": "2023-02-27T15:07:17.542Z",
+    "swaggerUrl": "https://api.apis.guru/v2/specs/1password.local/connect/1.5.7/openapi.json",
+    "link": "https://api.apis.guru/v2/specs/1password.local:connect/1.5.7.json",
+    "openapiVer": "3.0.2",
+    "info": {
+     "title": "1Password Connect",
+     "x-providerName": "1password.local",
+     "x-serviceName": "connect",
+     "x-apisguru-categories": [
+      "security"
+     ],
+     "x-origin": [
+      {
+       "format": "openapi",
+       "url": "https://i.1password.com/media/1password-connect/1password-connect-api.yaml"
+      }
+     ],
+     "contact": {
+      "url": "https://support.1password.com/"
+     }
+    }
+   }
+  }
+ },
+ "microsoft.com:graph": {
+  "added": "2021-04-26T07:51:28.825Z",
+  "preferred": "1.0.1",
+  "versions": {
+   "1.0.1": {
+    "added": "2021-04-26T07:51:28.825Z",
+    "updated": "2023-02-17T11:41:15.564Z",
+    "swaggerUrl": "https://api.apis.guru/v2/specs/microsoft.com/graph/1.0.1/openapi.json",
+    "link": "https://api.apis.guru/v2/specs/microsoft.com:graph/1.0.1.json",
+    "openapiVer": "3.0.1",
+    "info": {
+     "title": "OData Service for namespace microsoft.graph",
+     "x-providerName": "microsoft.com",
+     "x-serviceName": "graph",
+     "x-apisguru-categories": [
+      "developer_tools"
+     ],
+     "x-origin": [
+      {
+       "format": "openapi",
+       "url": "https://raw.githubusercontent.com/microsoftgraph/msgraph-metadata/master/openapi/v1.0/openapi.yaml"
+      }
+     ]
+    }
+   }
+  }
+ }
+}

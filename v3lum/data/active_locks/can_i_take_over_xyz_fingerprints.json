@@ -1,0 +1,8 @@
+{
+  "schema": "v3lum.active_lock/1",
+  "name": "can_i_take_over_xyz_fingerprints",
+  "sha256": "a108bf6e6d10d4e4861c4293eef8c224a0fd243ec4f3a39de321de69f284c64f",
+  "url": "https://raw.githubusercontent.com/EdOverflow/can-i-take-over-xyz/5bd4e12837911c8475486f1da922c9b9c706e632/fingerprints.json",
+  "commit": "5bd4e12837911c8475486f1da922c9b9c706e632",
+  "reason": "P276 cond 2: fingerprints.json (76 services: 36 Vulnerable, 14 Edge case, 26 Not vulnerable; 30804 bytes) downloaded at the pinned commit and reviewed by batch p9-G13-1 on 2026-11-26; identical bytes to master at that date. CC BY 4.0."
+}

@@ -1,0 +1,13 @@
+{
+ "meta": {
+  "asn": "abc"
+ },
+ "response": {
+  "asn_description": {},
+  "ranking": {
+   "rank": 0.0,
+   "position": null,
+   "total_known_asns": 4993
+  }
+ }
+}

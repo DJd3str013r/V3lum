@@ -1,0 +1,17 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://www.example.com/.git/HEAD",
+  "headers": {
+   "Range": "bytes=0-1023"
+  }
+ },
+ "response": {
+  "status": 403,
+  "headers": {
+   "content-type": "text/html",
+   "server": "nginx"
+  },
+  "body": "<html><head><title>403 Forbidden</title></head><body><center><h1>403 Forbidden</h1></center><hr><center>nginx</center></body></html>\n"
+ }
+}

@@ -1,0 +1,9 @@
+{
+  "schema": "v3lum.extra/1",
+  "package": "olefile",
+  "pip": "olefile>=0.46",
+  "extra": "full",
+  "licence": "BSD-2-Clause",
+  "justification": "Reads OLE/CFB containers: the transport-headers stream of Outlook .msg files for email_header_analyzer_msg (P085 cond 9). Optional: .eml and pasted headers need only the standard library; without it the .msg module reports UNAVAILABLE 'package'.",
+  "notes": "Batch p1-G04-1. Used unmodified as an optional pip dependency; extract-msg (GPL) is never used (A6)."
+}

@@ -1,0 +1,25 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "spamhaus",
+  "hosts": [
+    "check.spamhaus.org"
+  ],
+  "sources": {
+    "pivots_unverified_check_pages": {
+      "title": "Spamhaus IP and domain reputation checker results/?query= (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://check.spamhaus.org/",
+        "quote": "Free web UI; provider ToS apply (manual analyst use)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "spamhaus",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0405 (Cloudflare challenge for scripts). Manual links only, never fetched (P304 cond 1); the DNSBL zones stay DNS-only (P045). Batch p2-G14-3."
+    }
+  },
+  "error_markers": []
+}

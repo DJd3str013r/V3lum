@@ -1,0 +1,40 @@
+{
+ "subject": [
+  [
+   [
+    "commonName",
+    "portal.example.com"
+   ]
+  ]
+ ],
+ "issuer": [
+  [
+   [
+    "countryName",
+    "BR"
+   ]
+  ],
+  [
+   [
+    "organizationName",
+    "Example Test PKI"
+   ]
+  ],
+  [
+   [
+    "commonName",
+    "Example Issuing ECC CA 3"
+   ]
+  ]
+ ],
+ "version": 3,
+ "serialNumber": "1004",
+ "notBefore": "Jun 29 12:00:00 2026 GMT",
+ "notAfter": "Oct  1 12:00:00 2026 GMT",
+ "subjectAltName": [
+  [
+   "DNS",
+   "portal.example.com"
+  ]
+ ]
+}

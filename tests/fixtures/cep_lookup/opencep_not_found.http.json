@@ -1,0 +1,11 @@
+{
+ "status": 404,
+ "headers": {
+  "content-type": "application/json",
+  "cache-control": "public, max-age=2678400",
+  "server": "cloudflare",
+  "age": "2315031",
+  "cf-cache-status": "HIT"
+ },
+ "body": "{\r\n  \"error\": true\r\n}\r\n"
+}

@@ -1,0 +1,28 @@
+{
+ "comment": "Free Service!, Do not abuse",
+ "processed_domain": "example.com",
+ "matching_records": 20766,
+ "domains": [
+  {
+   "domain": "server2.example.com",
+   "last_seen_on": "2025-05-03"
+  },
+  {
+   "domain": "test17.example.com",
+   "last_seen_on": "2025-05-03"
+  },
+  {
+   "domain": "test3.example.com",
+   "last_seen_on": "2025-05-03"
+  },
+  {
+   "domain": "text.example.com",
+   "last_seen_on": "2025-05-03"
+  },
+  {
+   "domain": "*.example.com",
+   "last_seen_on": "2024-12-11"
+  }
+ ],
+ "next_page_state": "000354012af07ffffff5f07ffffff5"
+}

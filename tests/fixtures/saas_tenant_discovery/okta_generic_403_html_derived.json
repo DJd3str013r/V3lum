@@ -1,0 +1,17 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://thisorgdoesnotexist0000x.okta.com/.well-known/openid-configuration"
+  },
+  "response": {
+    "status": 403,
+    "headers": {
+      "content-type": "text/html",
+      "server": "AkamaiGHost"
+    },
+    "body": "<HTML><HEAD><TITLE>Access Denied</TITLE></HEAD><BODY><H1>Access Denied</H1>You don't have permission to access this resource.</BODY></HTML>"
+  },
+  "class": "derived",
+  "captured_at": "2026-11-26T00:00:00Z",
+  "notes": "a generic 403 = unknown (FC4)"
+}

@@ -1,0 +1,22 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.salic.cultura.gov.br/api/v1/incentivadores?cgccpf=00000000000000",
+  "headers": {}
+ },
+ "response": {
+  "status": 404,
+  "headers": {
+   "content-type": "application/json",
+   "server": "cloudflare",
+   "x-powered-by": "PHP/8.2.35",
+   "cache-control": "no-cache, private"
+  },
+  "body": "{\"message\":\"No donator was found with your criteria\",\"message_code\":11}"
+ },
+ "transport_error": null,
+ "elapsed_s": 7.544755,
+ "observed_at": "2026-11-26T09:48:45Z",
+ "origin": "live",
+ "note": "no sponsor -> 404 {message, message_code 11} after 7.5 s"
+}

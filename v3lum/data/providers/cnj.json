@@ -1,0 +1,91 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "cnj",
+  "name": "CNJ DataJud public API (court process metadata)",
+  "operator": "Conselho Nacional de Justica (CNJ)",
+  "hosts": [
+    "api-publica.datajud.cnj.jus.br",
+    "datajud-wiki.cnj.jus.br"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Government body (A8 trusted): the National Council of Justice publishes the DataJud public API (Portaria CNJ 160/2020) and its documentation wiki; P241 provider tier trusted.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "Official national court statistics base fed by every tribunal; metadata only (no parties since the LGPD cleanup), sealed processes absent, and the cluster is often overloaded (26-31 s answers, shard rejections): an overload is 'could not verify', never 'no case'."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 60,
+    "retries": 0,
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "hour": null,
+    "day": null,
+    "month": null,
+    "rate_per_second": 2.0,
+    "burst": 2,
+    "published": true,
+    "evidence_url": "https://www.cnj.jus.br/sistemas/datajud/api-publica/termos-de-uso/",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {
+    "datajud": {
+      "description": "DataJud public API key ('APIKey atual' published by CNJ on datajud-wiki.cnj.jus.br/api-publica/acesso; Authorization: APIKey <key>). Optional: without it the module reads the published key from that official page once per run.",
+      "signup_url": "https://datajud-wiki.cnj.jus.br/api-publica/acesso/",
+      "env": ["V3LUM_DATAJUD_KEY"],
+      "multi_key": false,
+      "plan_hint": "a public key CNJ publishes for everyone (not a personal account); the API terms are noncommercial (Termo de Uso v1.2 3.3/3.8): corporate use needs a licence_allow entry"
+    }
+  },
+  "sources": {
+    "datajud": {
+      "title": "DataJud public API: POST /api_publica_<tribunal>/_search by validated CNJ process number (Elasticsearch DSL, metadata only)",
+      "terms": {
+        "class": "noncommercial",
+        "evidence_url": "https://www.cnj.jus.br/sistemas/datajud/api-publica/termos-de-uso/",
+        "quote": "Termo de Uso v1.2 (27/11/2023) 3.3: a API e disponibilizada exclusivamente para fins legais, nao comerciais e autorizados; 3.8: e vedada a exploracao comercial dos dados.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1, P241 cond 1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "cnj_datajud",
+      "sanitizer": null,
+      "dataset": null,
+      "licensed_alternative": "a written CNJ confirmation, or a recorded legal opinion that internal incident/litigation-risk analysis is not commercial use, as a licence_allow entry for cnj.datajud (P241 cond 2)",
+      "notes": "Queries only by a validated CNJ number routed by J.TR to one of the 91 api_publica_<alias> indices; never by party, name, CNPJ or CPF (terms 3.11, 4.2). Rate <= 120 req/min (terms 3.13): rate_per_second 2. Observed 2026-11-25/26: 26-31 s answers, HTTP 429 search_phase_execution_exception / es_rejected_execution_exception (queue capacity 1000) after 29.9 s, and HTTP 200 with _shards.failed 2/3 and empty hits (could not verify, never not found); 401 security_exception without a key. DataJud-derived data is never shared with third parties or exported to STIX/MISP (terms 4.6, P241 cond 8). Used by datajud."
+    },
+    "datajud_key_page": {
+      "title": "DataJud wiki access page (datajud-wiki.cnj.jus.br/api-publica/acesso): the published 'APIKey atual', read at most once per run after a 401",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://datajud-wiki.cnj.jus.br/api-publica/acesso/",
+        "quote": "Terms classes (definitions for every chair file and registry entry): 'open' = free use, internal business use included (public domain, CC0, CC BY, open government data, and permissive or copyleft licences whose obligations V3LUM meets by runtime download and attribution, A6)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "cnj_datajud",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Official public documentation page; robots.txt answers 404 (no restriction, prep 2026-11-26). Only the key is read (strict 'APIKey atual' + Elasticsearch API key shape), never logged or cached (the page body is fetched with ttl 0), registered with the redactor (AR01). Last-Modified 2026-11-17, ETag \"6afccc16-395b\" on 2026-11-26; published key unchanged since 2026-11-25 (sha256 prefix a2c606ad6489)."
+    }
+  },
+  "notes": "Owned by batch p2-G10-2 (P241 datajud). Off under the corporate licence profile until licence-cleared (noncommercial, P241 cond 2). Timeout 60 s (P241 cond 7 per-run deadline) and no automatic retries in the client: the module retries an overload answer once itself, inside the deadline."
+}

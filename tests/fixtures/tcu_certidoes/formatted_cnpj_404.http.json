@@ -1,0 +1,16 @@
+{
+ "request": "GET https://certidoes-apf.apps.tcu.gov.br/api/rest/publico/certidoes/00.000.000%2F0001-91?seEmitirPDF=false",
+ "response": {
+  "status": 404,
+  "headers": {
+   "content-length": "243",
+   "content-type": "text/html; charset=iso-8859-1"
+  },
+  "body": "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>404 Not Found</title>\n</head><body>\n<h1>Not Found</h1>\n<p>The requested URL /api/rest/publico/certidoes/00.000.000/0001-91 was not found on this server.</p>\n</body></html>\n"
+ },
+ "transport_error": null,
+ "elapsed_s": 1.397487,
+ "observed_at": "2026-11-26T05:20:56+00:00",
+ "origin": "live",
+ "note": ""
+}

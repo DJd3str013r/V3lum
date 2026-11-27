@@ -1,0 +1,27 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "ibm_xforce",
+  "hosts": [
+    "api.xforce.ibmcloud.com"
+  ],
+  "sources": {
+    "ibm_xforce_lookup": {
+      "title": "IBM X-Force Threat Intelligence API lookups GET /api/ipr/{ip}, /api/url/{url}, /api/malware/{hash} (HTTP Basic key:password; never collections, casefiles, uploads, TAXII or key management)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://api.xforce.ibmcloud.com/doc/",
+        "quote": "Your use of the IBM X-Force Threat Intelligence is governed by the IBM Cloud Services Agreement and the accompanying Service Description. (OpenAPI description, 2026-11-26) - P155 cond 3 (binding council text): the key comes from a company account on a plan legal records as business-compatible (IBM sells a separate X-Force Exchange Commercial API; the free-tier terms page is JS-only, unverified): under corporate it runs only with key_plans.xforce='business'. Registry provider ibm_xforce: tier trusted, terms key-terms.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "ibm-xforce",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0356 (verified_needs_key: 401 {\"error\":\"Not authorized.\"}). OpenAPI (2026-11-26): 402 = monthly quota of records returned exceeded (QUOTA, module marker), 403 'Access denied.', 404 'Not found.' (EMPTY 'not in X-Force', never clean), at most 3,000 requests per minute. IP score 1-10 and URL score 0-9: >= 7 malicious, 4-6 suspicious (P155 cond 4); malware reports carry risk high/medium/low. Batch p3-G07-1, module ibm_xforce.",
+      "licensed_alternative": "An IBM X-Force Threat Intelligence (Exchange Commercial API) subscription held by the company and recorded as key_plans.xforce='business'; meanwhile the manual X-Force Exchange pages (ibm_xforce.exchange_pages)."
+    }
+  },
+  "error_markers": [],
+  "notes": "Batch p3-G07-1 (P155): the X-Force API host and lookup source. The credential key 'xforce' ('key:password', P155 cond 2) and the P334 monthly quota block cannot be declared in a provider-ext fragment: requested from the core (config.KNOWN_KEYS) and from the ibm_xforce owner (p2-G14-3); until then the module counts records per month in ctx.state (setting ibm_xforce_month_limit) and maps 402 to QUOTA."
+}

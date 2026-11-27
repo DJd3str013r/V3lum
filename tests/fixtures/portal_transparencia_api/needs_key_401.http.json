@@ -1,0 +1,9 @@
+{
+ "status": 401,
+ "headers": {
+  "content-type": "application/json;charset=ISO-8859-1",
+  "cache-control": "public, max-age=7200, must-revalidate",
+  "x-cache": "Error from cloudfront"
+ },
+ "body_b64": "eyJFcnJvIG5hIEFQSSI6IkNoYXZlIGRlIEFQSSBu428gaW5mb3JtYWRhISBQYXJhIG9idGVyIGEgY2hhdmUgYWNlc3NlIGh0dHA6Ly93d3cucG9ydGFsZGF0cmFuc3BhcmVuY2lhLmdvdi5ici9hcGktZGUtZGFkb3MvY2FkYXN0cmFyLWVtYWlsIn0="
+}

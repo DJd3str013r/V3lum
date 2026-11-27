@@ -1,0 +1,213 @@
+%YAML 1.1
+---
+title: Graphsense Actors
+creator: Graphsense Core Team
+description: A curated list of cryptocurrency actors.
+lastmod: '2026-10-14'
+actors:
+- id: binance
+  label: Binance
+  uri: binance.com
+  categories:
+  - organization
+  - exchange
+  - mining_service
+  jurisdictions:
+  - MT
+  - CA
+  - US
+  - FR
+  - LT
+  - PL
+  - AE
+  - BH
+  - CY
+  - AU
+  - NZ
+  - IT
+  - KY
+  - ES
+  - KZ
+  - ZA
+  aliases:
+  - binanceus
+  - binance_us
+  context:
+    legal_name: Binance Holdings Limited
+    active: true
+    refs:
+    - api.coingecko.com/api/v3/exchanges/binance_dex_mini
+    - www.crunchbase.com/organization/binance
+- id: okex
+  label: OKX
+  uri: okx.com
+  categories:
+  - organization
+  - exchange
+  - mining_service
+  - miner
+  jurisdictions:
+  - SC
+  - BS
+  aliases:
+  - okx
+  context:
+    refs:
+    - api.llama.fi/protocol/okx
+    - api.coingecko.com/api/v3/exchanges/okex
+- id: huobi
+  label: Huobi
+  uri: huobi.com
+  categories:
+  - organization
+  - exchange
+  - mining_service
+  jurisdictions:
+  - SC
+  aliases:
+  - htx
+  context:
+    legal_name: Huobi Global Limited
+    active: true
+    refs:
+    - www.cryptowisser.com/exchange/huobi/
+    - api.coingecko.com/api/v3/exchanges/huobi
+- id: kucoin
+  label: KuCoin & KuCoin Futures
+  uri: kucoin.com
+  categories:
+  - organization
+  - exchange
+  - mining_service
+  - miner
+  jurisdictions:
+  - SC
+  context:
+    legal_name: Mek Global Limited
+    active: true
+    refs:
+    - api.coingecko.com/api/v3/exchanges/kucoin
+    - www.crunchbase.com/organization/kucoin
+- id: mercadobitcoin
+  label: Mercado Bitcoin
+  uri: mercadobitcoin.com.br
+  categories:
+  - organization
+  - exchange
+  jurisdictions:
+  - BR
+  aliases:
+  - mercado_bitcoin
+  context:
+    legal_name: Mercado Bitcoin Serviços Digitais Ltda.
+    active: true
+    refs:
+    - www.crunchbase.com/organization/mercado-bitcoin
+    - www.walletexplorer.com/wallet/MercadoBitcoin.com.br
+- id: foxbit
+  label: Foxbit
+  uri: foxbit.com.br
+  categories:
+  - exchange
+  jurisdictions:
+  - BR
+  context:
+    legal_name: Foxbit Serviços Digitais
+    active: true
+    refs:
+    - api.coingecko.com/api/v3/exchanges/foxbit
+    - www.crunchbase.com/organization/foxbit
+- id: novadax
+  label: NovaDAX
+  uri: www.novadax.com.br
+  categories:
+  - exchange
+  jurisdictions:
+  - BR
+  context:
+    active: true
+    refs:
+    - www.crunchbase.com/organization/novadax
+    - api.coingecko.com/api/v3/exchanges/novadax
+- id: garantex
+  label: Garantex Russia
+  uri: garantex.io
+  categories:
+  - exchange
+  jurisdictions:
+  - RU
+  context:
+    active: false
+    refs:
+    - golden.com/wiki/Garantex-EKMYW54
+    - glasschain.org/provider/Garantex%20Russia
+- id: lazarusgroup
+  label: Lazarus Group
+  uri: https://home.treasury.gov/news/press-releases/sm774
+  categories:
+  - phishing
+  - ransomware
+  - sanction
+  - service_hack
+- id: tornado
+  label: Tornado Cash
+  uri: tornado.cash
+  categories:
+  - organization
+  - mixing_service
+  jurisdictions: []
+  aliases:
+  - tornadocash
+  context:
+    refs:
+    - api.llama.fi/protocol/tornado-cash
+    - home.treasury.gov/policy-issues/financial-sanctions/recent-actions/20220808
+- id: gmojapan
+  label: GMO Japan
+  uri: coin.z.com
+  categories:
+  - exchange
+  jurisdictions:
+  - JP
+  context:
+    same_as:
+    - gmocoin
+    refs:
+    - api.coingecko.com/api/v3/exchanges/gmo_japan
+    - cer.live/exchange/gmo_japan
+- id: gmocoin
+  label: Gmo Coin
+  uri: https://www.gmo.jp/en/service/search/4/
+  categories: []
+  jurisdictions: []
+  aliases:
+  - gmo_coin
+- id: bitstamp
+  label: Bitstamp
+  uri: bitstamp.net
+  categories:
+  - exchange
+  jurisdictions:
+  - GB
+  - LU
+  context:
+    legal_name: Bitstamp Limited
+    active: true
+    refs:
+    - www.crunchbase.com/organization/bitstamp
+    - api.coingecko.com/api/v3/exchanges/bitstamp
+- id: 1inch
+  label: 1inch Network
+  uri: 1inch.io
+  categories:
+  - exchange
+  - defi_dex
+  jurisdictions:
+  - KN
+  aliases:
+  - 1inch_lop
+  - 1inchlop
+  context:
+    refs:
+    - api.llama.fi/protocol/1inch-network
+    - api.coingecko.com/api/v3/exchanges/one_inch_liquidity_protocol

@@ -1,0 +1,27 @@
+{
+  "schema": "v3lum.pivot_pack/1",
+  "pack": "url_reporting_g03",
+  "title": "Google Safe Browsing site status (manual)",
+  "notes": "Owned by batch p2-G03-1 (P067 cond 3): the unofficial Transparency Report status endpoint is not automated (undocumented internal API); the public Site Status page is the manual pivot link of the URL link pack and the manual link of google_safe_browsing. Viewing the page never submits a report.",
+  "links": [
+    {
+      "id": "safe_browsing_status",
+      "label": "Google Safe Browsing site status",
+      "template": "https://transparencyreport.google.com/safe-browsing/search?url={qp}",
+      "entity_types": [
+        "url",
+        "domain"
+      ],
+      "category": "reputation",
+      "host": "transparencyreport.google.com",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Public Site Status page (SPA, verified 200 for example.com on 2026-11-26) for a URL or a domain. Shows Google's current verdict; a page without a verdict reads 'no data', never 'safe'."
+    }
+  ]
+}

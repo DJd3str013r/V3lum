@@ -1,0 +1,19 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://doh.cleanbrowsing.org/doh/security-filter/dns-query?name=example.com&type=A",
+  "headers": {}
+ },
+ "response": {
+  "status": 400,
+  "headers": {
+   "content-type": "text/plain"
+  },
+  "body": "400 Bad Request"
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "observed_at": null,
+ "origin": "synthetic",
+ "note": "research 2026-11-25: CleanBrowsing answers 400 to JSON queries (wire format only); body text not recorded. Not re-checked live: free filters are 'for parents, not organizations'"
+}

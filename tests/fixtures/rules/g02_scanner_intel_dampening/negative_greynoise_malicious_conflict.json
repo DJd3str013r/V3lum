@@ -1,0 +1,64 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "nodes": [
+  {
+   "key": "ipv4:203.0.113.66",
+   "depth": 0,
+   "seed": true,
+   "findings": [
+    {
+     "title": "Opportunistic mass scanner (GreyNoise)",
+     "severity": "medium",
+     "confidence": 0.7,
+     "confidence_label": "probable",
+     "criterion": "GreyNoise noise=true with classification 'malicious' (synthetic)",
+     "tags": [
+      "scanner"
+     ],
+     "module": "greynoise_community",
+     "source": "greynoise.community",
+     "data": {
+      "state": "mass_scanner",
+      "classification": "malicious",
+      "riot": true
+     }
+    },
+    {
+     "title": "Known good service (Google Public DNS)",
+     "severity": "info",
+     "confidence": 0.7,
+     "confidence_label": "probable",
+     "criterion": "GreyNoise riot=true for this IP (Google Public DNS) (synthetic)",
+     "tags": [
+      "known_good"
+     ],
+     "module": "greynoise_community",
+     "source": "greynoise.community",
+     "data": {
+      "state": "riot",
+      "service": "Google Public DNS",
+      "suppression_rule": "greynoise_riot",
+      "scope": "ip"
+     }
+    },
+    {
+     "title": "Listed on 2 IP blocklists",
+     "severity": "medium",
+     "confidence": 0.7,
+     "confidence_label": "probable",
+     "criterion": "listed by FireHOL level1 (synthetic)",
+     "tags": [
+      "blocklisted"
+     ],
+     "module": "ip_blocklists",
+     "source": "firehol.level1",
+     "data": {
+      "hits": 2
+     }
+    }
+   ]
+  }
+ ],
+ "edges": []
+}

@@ -1,0 +1,55 @@
+{
+  "batch": "p3-G09-2",
+  "modules": [
+    {
+      "name": "solana_rpc",
+      "file": "v3lum/modules/crypto/solana_rpc.py",
+      "proposal": "P215",
+      "category": "crypto",
+      "opsec": "passive",
+      "default_enabled": false,
+      "terms": "open",
+      "provider_tier": "trusted",
+      "keys": [],
+      "datasets": [],
+      "pivot_packs": [],
+      "correlation_rules": [],
+      "new_vocabulary": [
+        "attributes: recent_signatures, more_history, rpc_context (v3lum/data/vocab/p3-G09-2.json)"
+      ],
+      "live_check": "V3LUM_LIVE=1 tests/live/test_p3_g09_2.py: 2 passed (2026-11-26, datacenter egress). sol:<System Program> -> OK: balance 1 lamport, 25 real signatures parsed (9 failed, page full -> more_history), slot ~474166800, apiVersion 4.4.0, node pit186, tier free. Canary self-test (USDC mint) -> 'dead': the public RPC still answers 0 lamports for an account that holds >= 1,461,600 (false empty from this egress, prep warning 1), which is exactly what the health check flags."
+    }
+  ],
+  "proposals_not_done": [],
+  "core_requests": [
+    "entities/detect (P217): add 'sol'/'solana' as type aliases of other_crypto_address that keep the chain tag (or carry a chain hint) so 'sol:<address>' typed alone is read as a Solana address with confidence 1.0; today only wallet:sol:<address> / other_crypto_address:sol:<address> work and the forced value gets confidence 0.4 because no chain checksum validates it (_forced_weakness).",
+    "quota (P334 FC8): accept a provider-reported budget signal per response (x-ratelimit-<bucket>-limit/-remaining, 'unlimited' buckets and negative remaining ignored) so an exhausted provider bucket throttles later entities, not only the current run (solana_rpc reads the headers itself and stops before its second call).",
+    "doctor v2 (P337, WP25): run Module.health_check().selftest for passive modules that provide one (solana_rpc canary: getBalance of Circle's USDC mint must be >= 1,461,600 lamports) and feed A3 demotion.",
+    "Arriving-later names not used: none needed (lint_module_source and the policy gate exist)."
+  ],
+  "files": [
+    "v3lum/modules/crypto/solana_rpc.py",
+    "v3lum/data/providers/solana_foundation.json",
+    "v3lum/data/providers/internal_solana_rpc.json",
+    "v3lum/data/vocab/p3-G09-2.json",
+    "tests/modules/test_solana_rpc.py",
+    "tests/live/test_p3_g09_2.py",
+    "tests/fixtures/solana_rpc/balance_ok.json",
+    "tests/fixtures/solana_rpc/balance_ok_live.json",
+    "tests/fixtures/solana_rpc/balance_zero_known_account.json",
+    "tests/fixtures/solana_rpc/balance_zero_unused.json",
+    "tests/fixtures/solana_rpc/blocked_403_derived.json",
+    "tests/fixtures/solana_rpc/challenge_vercel.html",
+    "tests/fixtures/solana_rpc/disabled_410_derived.json",
+    "tests/fixtures/solana_rpc/error_invalid_param.json",
+    "tests/fixtures/solana_rpc/headers_live.json",
+    "tests/fixtures/solana_rpc/malformed_truncated.json",
+    "tests/fixtures/solana_rpc/node_behind_derived.json",
+    "tests/fixtures/solana_rpc/rate_limited_429_derived.json",
+    "tests/fixtures/solana_rpc/signatures_empty.json",
+    "tests/fixtures/solana_rpc/signatures_full_page_derived.json",
+    "tests/fixtures/solana_rpc/signatures_ok_derived.json",
+    "docs/backlog/p3-G09-2.md"
+  ],
+  "notes": "One module, one source family. FC1: getBalance + getSignaturesForAddress (limit clamped 1..25, one page) as JSON-RPC POST through ctx.http with ttl=3600 and a cache_if veto (only answers with data are cached; JSON-RPC errors in HTTP 200, zero balances and empty lists never are; the HttpClient cache key includes the POST body, verified by test). Configurable RPC: module setting solana_rpc_url -> virtual internal provider internal_solana_rpc (hosts_from_settings, like p2-G09-2's internal_esplora); https host names only, no userinfo/fragment/IP literal/devnet/testnet, URLs with a credential are SKIPPED config (keyed commercial RPCs backlogged); a configured node is used exclusively. Limits: provider quota block rate 1.0/s x 0.8 (observed getSignaturesForAddress method limit 10, published=false) + day 1000, http_profile min_interval 1.0 and concurrency 1, module min_interval 1.0, daily_quota 1000, max_requests 2; the provider's x-ratelimit rps/conn/connrate buckets stop the run before the second call (partial, rate_limited). Provider error markers: JSON-RPC 429 / 'Too many requests' -> rate_limited, 403 / 'blocked from this endpoint' -> blocked challenge, 410 -> error; other JSON-RPC errors, HTML and malformed bodies, id mismatches and wrong result shapes -> ERROR could not verify. FC2: values with a sol:/solana: prefix (analyst-typed seeds), bare 32-byte base58 keys only when the analyst selected the module explicitly (options.include: -M / v3lum run), pivots only from SOLANA_SPECIFIC_SOURCES (empty in this build); everything else SKIPPED not_applicable before any request; non-32-byte values fail applies(). FC3: balance (SOL + lamports), up to 25 recent signatures (signature, slot, block_time, failed, confirmation_status; memos dropped at parse time), activity window, rpc context; no pivots (produces empty, max_pivots 0); one info finding (confidence probable). Zero balance + no signatures = EMPTY with hedged wording (public RPC false empties). Health check: canary USDC mint (HealthCheck etype/value + selftest returning dead below the rent-exempt minimum). default_enabled False as decided; no LIGHT/ACTIVE variant requested. Fixtures: 15 files from the prep run (live bodies verbatim: protocol/organisation accounts and a synthetic key; derived error bodies; the 429 body's operator role mailbox replaced by support@example.com). Full-suite failures outside this batch (e.g. maltiverse, hackernews, ens_resolver/ransomwhere registry entries, typosquat) belong to batches still in progress."
+}

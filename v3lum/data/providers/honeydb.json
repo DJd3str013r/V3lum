@@ -1,0 +1,73 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "honeydb",
+  "name": "HoneyDB API",
+  "operator": "HoneyDB (community honeypot project)",
+  "hosts": [
+    "honeydb.io"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Identifiable operator, public API documentation and terms, more than two years of public track record (A8 community; P147 chair: tier community).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Sightings of a community honeypot network; it also relays third-party lists, which never count as HoneyDB votes."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "ttl": 86400,
+    "min_interval": 1.0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {
+    "honeydb_api_id": {
+      "description": "HoneyDB API id (sent in the X-HoneyDb-ApiId header together with honeydb_api_key)",
+      "signup_url": "https://honeydb.io/",
+      "env": [
+        "V3LUM_HONEYDB_API_ID"
+      ],
+      "multi_key": false,
+      "plan_hint": "the community tier is non-commercial; record 'business' only for a commercial HoneyDB plan"
+    },
+    "honeydb_api_key": {
+      "description": "HoneyDB API key (sent in the X-HoneyDb-ApiKey header together with honeydb_api_id)",
+      "signup_url": "https://honeydb.io/",
+      "env": [
+        "V3LUM_HONEYDB_API_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "the community tier is non-commercial; record 'business' only for a commercial HoneyDB plan"
+    }
+  },
+  "sources": {
+    "api": {
+      "title": "HoneyDB API (GET /api/ip/{ip}: network info, threat info, internet_scanner, ip_history, cve)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://honeydb.io/docs/api",
+        "quote": "P147 cond 1 (binding council text): HoneyDB (free for research/defensive use: key-terms, company key) as a separate adapter with its own status.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "honeydb",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P147 cond 1). Research C0355: no key -> 401 'Invalid API Credentials'; the old /api/netinfo/lookup answers 410 endpoint_deprecated (removed 2026-09-28): the client follows the current API documentation (Postman collection, GET /api/ip/{ip} with headers X-HoneyDb-ApiId / X-HoneyDb-ApiKey). The current documentation reads 'free access to the API for non-commercial purposes' for the community tier: business use only with key_plans.honeydb_api_key = business. threat_info.threat_lists are relays of other feeds: display only, never a vote (P171). Used by honeypot_intel.",
+      "licensed_alternative": "A HoneyDB commercial plan recorded as key_plans.honeydb_api_key = business."
+    }
+  },
+  "notes": "Owned by batch p2-G02-2 (P147). One credential in two parts (API id + API key, both required by the API): two key names of one provider, never a second account. No quota block: the free account's monthly quota is shown only on the dashboard (not recorded); a quota answer is 'could not verify'."
+}

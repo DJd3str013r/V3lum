@@ -1,0 +1,31 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p3-G10-2",
+  "title": "IANA PEN, BR risk lists, BR public spending and ANAC RAB vocabulary (P228 iana_pen, P244 br_cnpj_risk_lists, P246 br_public_spending, P248 anac_rab)",
+  "owner": "batch p3-G10-2",
+  "notes": "Reused: cvm_registrations (p1-G10-3; br_cnpj_risk_lists adds the rows of the listed-company register and the BrasilAPI broker list with registry 'cia_aberta' / 'brasilapi_corretoras'), homonym_risk and name_only_match (p1-G10-2), dataset_age (core review additions), context_only (core).",
+  "attributes": {
+    "iana_pen": "IANA Private Enterprise Numbers matched for a company name, domain, PEN number or OID text: [{number, oid (1.3.6.1.4.1.<n>), organization (null for an individual registrant: the name is a person's and is withheld), status assigned|individual|placeholder|unassigned, match exact|possible|domain|domain_suffix|number|oid, email_domains, form (oid text form)}] - organisation-level data only: contact names and full e-mail addresses are never kept",
+    "iana_pen_registry": "local IANA PEN registry copy an answer used {dataset, updated (the registry's 'last updated' date), records, fetched_at, stale}",
+    "risk_lists": "BR risk-list rows matched for a company (only matched rows enter the case): [{list mte_lista_suja|cvm_sancionador|pgfn_divida_ativa, severity, title, date, amount_band, match exact|root|name_exact|name_possible, as_of}]",
+    "risk_lists_screening": "per-list screening state of a CNPJ or company name: {list: {state listed|no_record|not_screened, as_of, line}}; 'not screened against <list> (<date>)' means a missing or stale copy and is never 'clean'",
+    "cvm_authorisation": "one-line answer to 'is this broker, adviser or platform authorised by CVM?' from the local CVM registries and the BrasilAPI broker list: 'registered with CVM: active (<registries>)', 'no active CVM registration as of <date>: ...' or 'not found in CVM registries as of <date>' (an absence is never fraud)",
+    "pgfn_debts": "PGFN divida ativa summary of a company per debt nature (previdenciaria, FGTS, demais) from the local opt-in index: [{nature, count, total_band, situations, judicial, latest, match exact|root, ref_month}] (amount bands, never the exact debt of an inscription)",
+    "risk_lists_persons": "possible name-only matches of an analyst-typed person in the BR risk lists (only with br_cnpj_risk_lists_include_persons set, a recorded purpose and an analyst-typed seed): [{list, name, cpf_masked, match possible, homonym_risk}] - a CPF is never a lookup key and never pivoted",
+    "public_funding": "public financing and incentive operations of a CNPJ (at most 20 per provider): [{source bndes|salic, operation_id, organ, value, disbursed, date, product, status, match exact|masked_partial, url, dedup_key}]",
+    "public_funding_coverage": "per-provider outcome of a public-spending lookup {provider: {state ok|empty|blocked|rate_limited|quota|error|not_queried, reason}} - a blocked or failed provider reads 'could not verify', never 'no contracts'",
+    "sicaf_supplier": "Compras.gov.br SICAF supplier record of a CNPJ {active, qualified, uf, city, cnae, legal_nature, size, supply_lines} (partners, e-mail and phone are never kept)",
+    "aircraft": "aircraft of the ANAC RAB matched by registration mark, owner/operator CNPJ or exact company name: [{mark, model, manufacturer, year, owners [company names], operators [company names], registration registered|cancelled|reserved|provisional, since, lien, match mark|cnpj|root|company_exact}] - natural-person owners and operators are dropped at import",
+    "anac_rab_date": "date of the ANAC RAB copy an answer used (the 'Atualizado em' line of dados_aeronaves.csv)"
+  },
+  "tags": {
+    "esg_labour": "listed in the MTE 'lista suja' (Cadastro de Empregadores: employers caught using labour analogous to slavery): labour/ESG red flag",
+    "tax_debt": "registered in the PGFN divida ativa (federal tax, social-security or FGTS debt): context, debt is common among legitimate companies",
+    "cvm_proceeding": "named in a CVM sanctioning proceeding (the outcome - acquitted, convicted, settlement, pending - is stated in the title)"
+  },
+  "relations": {
+    "iana_pen_contact_domain": "company/domain/PEN -> organisation-level contact e-mail DOMAIN of its IANA PEN registration (expand=False; never webmail, never a full address)",
+    "aircraft_owner": "aircraft mark or company -> CNPJ of a company owning an aircraft in the ANAC RAB (expand=False)",
+    "aircraft_operator": "aircraft mark or company -> CNPJ of a company operating an aircraft in the ANAC RAB (expand=False)"
+  }
+}

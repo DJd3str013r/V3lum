@@ -1,0 +1,17 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://www.example.com/.svn/entries",
+  "headers": {
+   "Range": "bytes=0-1023"
+  }
+ },
+ "response": {
+  "status": 200,
+  "headers": {
+   "content-type": "text/plain",
+   "content-length": "3"
+  },
+  "body": "12\n"
+ }
+}

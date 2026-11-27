@@ -1,0 +1,113 @@
+{
+ "batch": "p1-G06-1",
+ "modules": [
+  {
+   "name": "phone_parse",
+   "file": "v3lum/modules/phone/phone_parse.py",
+   "proposal": "P126",
+   "category": "phone",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "open",
+   "provider_tier": "n/a",
+   "keys": [],
+   "datasets": [
+    "phone_parse/br_ddd.json (bundled; generated from Anatel's CNL public download by phone_parse.main; notice phone_parse_br_ddd)",
+    "brasilapi_ddd (P127, batch p3-G06-1: read only when registered and already downloaded, never fetched; not declared as a source so POL-14 never blocks the module offline)"
+   ],
+   "pivot_packs": [],
+   "correlation_rules": [
+    "phone_ddd_region_consistency"
+   ],
+   "new_vocabulary": [
+    "phone_formats",
+    "phone_geodescription",
+    "phone_br",
+    "phone_ddd",
+    "phone_invalid_reason",
+    "original_carrier"
+   ],
+   "live_check": "tests/live/test_p1_G06_1.py::test_phone_parse_live passed with V3LUM_LIVE=1 (offline module, disclosure none: real engine + phonenumbers 9.0.44 on Banco do Brasil's public 0800 729 0001 -> toll_free/non-geographic, and a text with two public numbers -> expand=False phone pivots; no HTTP call). Data verification 2026-11-26: Anatel CNL public download (sistemas.anatel.gov.br AreaArea, 27 UF files, 51,237 localities) used to generate br_ddd.json; IBGE SIDRA table 4709 (one GET) used to review the 40 non-capital main cities; dadosabertos.anatel.gov.br still CONNECT 502 and www.gov.br/anatel still an F5 TSPD CAPTCHA wall (FC6 stays deferred, not bypassed)."
+  },
+  {
+   "name": "pivots_phone",
+   "file": "v3lum/modules/phone/pivots_phone.py",
+   "proposal": "P128",
+   "category": "phone",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "open",
+   "provider_tier": "n/a",
+   "keys": [],
+   "datasets": [],
+   "pivot_packs": [
+    "phone"
+   ],
+   "correlation_rules": [],
+   "new_vocabulary": [],
+   "live_check": "tests/live/test_p1_G06_1.py::test_pivots_phone_live passed with V3LUM_LIVE=1 (offline: spamcalls.net and ABR Telecom links rendered for 0800 729 0001, no HTTP call). Templates verified by hand on 2026-11-26 and recorded in tests/fixtures/pivots_phone/verified_templates.json (spamcalls /en/num/{digits} 410 no-reports page, a literal '+' decoded as a space; wa.me 302 generic redirect; t.me/+ 200 generic page; ABR Consulta Numero 200 with a reCAPTCHA POST form). V3LUM never fetches them and the live test does not either."
+  }
+ ],
+ "proposals_not_done": [],
+ "core_requests": [
+  "core/links.py (P311): support setting-gated pack links (e.g. a 'requires_setting' field) so P128's off-by-default WhatsApp/Telegram links (setting phone_messaging_links) can live in v3lum/data/pivot_links/phone.json; pivots_phone emits them meanwhile.",
+  "core/links.py (P311): accept placeholder-less pack links for static manual-entry pages behind a CAPTCHA (e.g. x_manual_entry with antibot=true): ABR Telecom's Consulta Numero takes no URL parameter, and today only an inline Module.manual_link may lack a placeholder; pivots_phone emits it as an inline-pack PivotLink rendered through links.render.",
+  "Renderers (WP13/WP14, P311 cond 5, A2): apply the TLP presentation to every case link including module res.link entries (non-clickable text with 'opening sends <value> to <host>' at AMBER and above, hidden at RED except in `v3lum links`). ModuleResult.link carries only (label, url), so pivots_phone writes the warning into the label and emits nothing at RED.",
+  "Engine/links: no core path renders privacy pack links yet (_finish and `v3lum links` use links_for, which excludes them). Wire pivot_links_for(entity, include_privacy=True) for analyst-typed seeds of an opted-in case, and expose that opt-in as one core helper: pivots_phone mirrors engine._manual_link's rule (is_seed and show_personal and purpose).",
+  "core/datasets.py: feed BUNDLED_LICENCES from the notices registry (P330) so bundled-file citations carry their licence; phone_parse/br_ddd.json is cited with licence ''.",
+  "WP17/P172 (core/ioc.py): reuse v3lum.modules.phone.phone_parse.extract_phones for P172 cond 6, or move it into core/ioc.py. It runs PhoneNumberMatcher over candidate windows with a cap of 100 and withholds CPF-shaped 11-digit strings. The whole-text matcher silently stops after 65,535 failed candidates.",
+  "core/entities.py normalize_phone reads os.environ V3LUM_DEFAULT_REGION, not the configured default_region setting: a region set with `v3lum config set default_region` does not reach phone entity normalisation (phone_parse's text extraction reads ctx.setting('default_region')).",
+  "A6 dependency licence check (WP29): phonenumbers (Apache-2.0) is the core extra 'full' used by phone_parse and entities.normalize_phone; list it in THIRD_PARTY_NOTICES. This batch added no fragment for it, to avoid a duplicate of the core's."
+ ],
+ "files": [
+  "docs/backlog/p1-G06-1.md",
+  "tests/fixtures/phone_parse/br_ddd_table_malformed.json",
+  "tests/fixtures/phone_parse/brasilapi_ddd_malformed.json",
+  "tests/fixtures/phone_parse/brasilapi_ddd_not_found.json",
+  "tests/fixtures/phone_parse/brasilapi_ddd_ok_df.json",
+  "tests/fixtures/phone_parse/brasilapi_ddd_ok_sp.json",
+  "tests/fixtures/phone_parse/cnl_lopub_trimmed.txt",
+  "tests/fixtures/phone_parse/extract_cap.txt",
+  "tests/fixtures/phone_parse/extract_cap_matches.json",
+  "tests/fixtures/phone_parse/extract_formats.txt",
+  "tests/fixtures/phone_parse/extract_formats_matches.json",
+  "tests/fixtures/phone_parse/extract_ok.txt",
+  "tests/fixtures/phone_parse/extract_ok_matches.json",
+  "tests/fixtures/phone_parse/invalid_8digit_mobile.json",
+  "tests/fixtures/phone_parse/invalid_too_short.json",
+  "tests/fixtures/phone_parse/invalid_unallocated_ddd.json",
+  "tests/fixtures/phone_parse/not_a_number.json",
+  "tests/fixtures/phone_parse/ok_br_landline.json",
+  "tests/fixtures/phone_parse/ok_br_landline_df.json",
+  "tests/fixtures/phone_parse/ok_br_landline_tz_quirk_81.json",
+  "tests/fixtures/phone_parse/ok_br_mobile.json",
+  "tests/fixtures/phone_parse/ok_br_mobile_carrier.json",
+  "tests/fixtures/phone_parse/ok_br_mobile_national_format.json",
+  "tests/fixtures/phone_parse/ok_br_premium_0900.json",
+  "tests/fixtures/phone_parse/ok_br_shared_cost_4004.json",
+  "tests/fixtures/phone_parse/ok_br_telemarketing_0303.json",
+  "tests/fixtures/phone_parse/ok_br_tollfree_0800.json",
+  "tests/fixtures/phone_parse/ok_gb_drama.json",
+  "tests/fixtures/phone_parse/ok_us_fictional.json",
+  "tests/fixtures/phone_parse/too_long.json",
+  "tests/fixtures/pivots_phone/verified_templates.json",
+  "tests/fixtures/rules/phone_ddd_region_consistency/negative_multi_state_ddd_and_unlinked.json",
+  "tests/fixtures/rules/phone_ddd_region_consistency/negative_same_state.json",
+  "tests/fixtures/rules/phone_ddd_region_consistency/positive_company_and_cep_differ.json",
+  "tests/fixtures/rules/phone_ddd_region_consistency/positive_cpf_region_differs.json",
+  "tests/live/test_p1_G06_1.py",
+  "tests/modules/test_phone_parse.py",
+  "tests/modules/test_pivots_phone.py",
+  "v3lum/correlations/p1_g06_1.py",
+  "v3lum/data/notices/phone_parse_br_ddd.json",
+  "v3lum/data/phone_parse/br_ddd.json",
+  "v3lum/data/pivot_links/phone.json",
+  "v3lum/data/providers/abrtelecom.json",
+  "v3lum/data/providers/spamcalls.json",
+  "v3lum/data/providers/whatsapp.json",
+  "v3lum/data/vocab/p1-G06-1.json",
+  "v3lum/modules/phone/phone_parse.py",
+  "v3lum/modules/phone/pivots_phone.py"
+ ],
+ "notes": "P126 phone_parse is an offline module (disclosure none, requires_packages phonenumbers = core extra 'full', no registry source). Phone entities (the core E.164; FC1 no re-normalisation) get these attributes: valid, line_type, phone_formats, country, region (DDD UF), city (landline city-level geodescription only), phone_geodescription, timezone, phone_br, phone_ddd (uf/ufs/main_city, the city list only from brasilapi_ddd, else coverage 'city list unavailable (run v3lum data update brasilapi_ddd)'), original_carrier {name, label 'original carrier (portability not reflected)'}, plus info findings: not valid, non-geographic (0800/0300/0303/0500/0900/400x), and the time-zone caveat (libphonenumber gives DDD 81 Noronha UTC-2). text_blob/file inputs (FC4) run PhoneNumberMatcher with the default_region setting over candidate windows, capped at 100 distinct numbers; the pivots are phone, relation mentions, expand=False with the AR07 note, and the engine lists them in case.pending_personal. FC3: v3lum/data/phone_parse/br_ddd.json was GENERATED by the maintainer entry point phone_parse.main from Anatel's Cadastro Nacional de Localidades public download (sistemas.anatel.gov.br, LoPubCNL layout; the CN comes from the 'Cod.Nacional' fields). Main city = the state capital when it is an area centre of the DDD, else MAIN_CITY_OVERRIDES: the most populous Anatel area centre per IBGE Censo 2022, reviewed. ufs = main UF plus bordering UFs (DDD 61 DF+GO; 42/47/49 PR+SC border towns). Two CNL anomalies are excluded and listed (Bariri/SP in 48, Boa Esperanca do Norte/MT in 51). The table is registered in notice phone_parse_br_ddd (sha256 recorded), and a trimmed real CNL fixture regenerates it exactly in the tests. FC5: correlation rule phone_ddd_region_consistency (v3lum/correlations/p1_g06_1.py) compares a phone's DDD states with a linked CPF's fiscal region (validators.cpf_region, offline; CPF shown masked and keyed by hash) and the 'region' state of a linked CEP/CNPJ node. It reports mismatches only, with severity info, confidence possible and tags weak_signal and context_only: never a fraud verdict. FC6 (Anatel numbering open data) is deferred by the council and re-checked unreachable/walled: docs/backlog/p1-G06-1.md. P128: data pack v3lum/data/pivot_links/phone.json (spamcalls_num, https://spamcalls.net/en/num/{e164} where the core {e164} = digits without '+', labelled 'user reports, unverified', privacy=true). The pivots_phone module (offline, run_on seeds) registers setting phone_messaging_links (default false) and, for analyst-typed seeds of an opted-in case (show_personal + purpose; else SKIPPED privacy), emits the pack link, ABR Telecom's static Consulta Numero page for +55 numbers and, when enabled, wa.me/{digits} and t.me/+{digits} with the FC2 notice. At AMBER and above the labels carry 'opening sends <number> to <host>'; at RED nothing is emitted (SKIPPED tlp). Every link goes through links.render (P311 lint, registry tiers). Provider fragments created: spamcalls (community, reuses_queries=true; publishes_queries pending a legal_dpo decision on its public request counters), whatsapp (wa.me, trusted), abrtelecom (trusted); t.me uses the seeded telegram provider (source phone_links). With the wave-2 policy gate both modules need a recorded --purpose for phone seeds (POL-07, core rule). No LIGHT/ACTIVE variant was requested. No proposal is undone; deferrals and deviations are in docs/backlog/p1-G06-1.md."
+}

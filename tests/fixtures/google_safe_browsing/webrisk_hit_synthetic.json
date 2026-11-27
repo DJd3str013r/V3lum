@@ -1,0 +1,12 @@
+{
+ "_fixture": "synthetic Web Risk uris.search hit (documented response shape: threat.threatTypes + expireTime)",
+ "status": 200,
+ "body": {
+  "threat": {
+   "threatTypes": [
+    "SOCIAL_ENGINEERING"
+   ],
+   "expireTime": "2026-11-26T03:42:10.123456789Z"
+  }
+ }
+}

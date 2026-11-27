@@ -1,0 +1,19 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.msrc.microsoft.com/cvrf/v3.0/cvrf/2026-Nov",
+  "headers": {}
+ },
+ "response": {
+  "status": 200,
+  "headers": {
+   "content-type": "text/html; charset=utf-8",
+   "cache-control": "no-store"
+  },
+  "body": "<!DOCTYPE html><html><head><title>Service unavailable</title></head><body><h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible.</p></body></html>\n"
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "observed_at": null,
+ "note": "NOT observed: an edge error page served with 200 (error_in_200) instead of the CVRF JSON."
+}

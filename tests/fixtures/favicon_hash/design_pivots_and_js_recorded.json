@@ -1,0 +1,20 @@
+{
+ "_note": "minimised research sample design_pivots_and_js.json (2026-11-25): pivot-link checks; it holds no favicon bytes or hashes",
+ "pivot::web_check": {
+  "template": "https://web-check.xyz/check/{domain}",
+  "status": 429,
+  "title": "Vercel Security Checkpoint",
+  "echoes_input": false
+ },
+ "pivot::crtsh_identity": {
+  "template": "https://crt.sh/?q={domain}",
+  "status": 502,
+  "title": "502 Bad Gateway"
+ },
+ "pivot::dnsviz": {
+  "template": "https://dnsviz.net/d/{domain}/dnssec/",
+  "status": 200,
+  "title": "example.com | DNSViz",
+  "echoes_input": true
+ }
+}

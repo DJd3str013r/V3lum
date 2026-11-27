@@ -109,16 +109,35 @@ def test_reports_written(case_dict, tmp_path):
 def test_stix_bundle(case_dict):
     b = bundle(case_dict)
     types = {o["type"] for o in b["objects"]}
-    assert {"identity", "domain-name", "ipv4-addr", "vulnerability", "indicator", "relationship", "report"} <= types
+    assert {"marking-definition", "identity", "domain-name", "ipv4-addr", "vulnerability", "relationship", "report"} <= types
     dom = next(o for o in b["objects"] if o["type"] == "domain-name")
     # deterministic SCO id (same value -> same id, any case)
     again = next(o for o in bundle(case_dict)["objects"] if o["type"] == "domain-name")
     assert dom["id"] == again["id"]
-    ind = next(o for o in b["objects"] if o["type"] == "indicator")
-    assert ind["pattern"] == "[domain-name:value = 'evil.example']"
+    # indicator gating (P303 cond 5): a single-module finding is an observable, not an indicator
+    assert "indicator" not in types
     ids = {o["id"] for o in b["objects"]}
     for rel in (o for o in b["objects"] if o["type"] == "relationship"):
         assert rel["source_ref"] in ids and rel["target_ref"] in ids
+    # every object carries the case TLP marking (A2)
+    marking = b["objects"][0]["id"]
+    assert all(o["object_marking_refs"] == [marking] for o in b["objects"] if o["type"] != "marking-definition")
+
+
+def test_stix_bundle_consensus_is_an_indicator(case_dict):
+    case = dict(case_dict)
+    case["correlations"] = [*case_dict["correlations"], {
+        "id": "cr27consensus01", "rule": "multi_source_malicious", "severity": "high", "confidence_label": "probable",
+        "title": "evil.example listed as malicious by 2 independent upstream families", "entities": ["domain:evil.example"],
+        "tags": ["malicious"], "criterion": "2 independent upstream families (feed_a, feed_b) inside the decay window", "evidence": [],
+    }]
+    b = bundle(case)
+    ind = [o for o in b["objects"] if o["type"] == "indicator"]
+    assert [o["pattern"] for o in ind] == ["[domain-name:value = 'evil.example']"]
+    assert ind[0]["confidence"] == 70 and ind[0]["valid_until"] > ind[0]["valid_from"]
+    dom = next(o for o in b["objects"] if o["type"] == "domain-name")
+    assert any(r["relationship_type"] == "based-on" and r["source_ref"] == ind[0]["id"] and r["target_ref"] == dom["id"]
+               for r in b["objects"] if r["type"] == "relationship")
 
 
 def test_unknown_format(case_dict, tmp_path):

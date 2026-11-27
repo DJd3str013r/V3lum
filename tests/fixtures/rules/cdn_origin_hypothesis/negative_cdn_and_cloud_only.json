@@ -1,0 +1,189 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "preset": "deep"
+  },
+  "nodes": [
+    {
+      "key": "domain:example.com",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "a_records": [
+          {
+            "value": [
+              "198.51.100.10"
+            ],
+            "source": "dns_records"
+          }
+        ],
+        "dns_history_a": [
+          {
+            "value": [
+              {
+                "ip": "198.51.100.10",
+                "first_seen": "2024-03-01",
+                "last_seen": "2026-11-25",
+                "organizations": []
+              },
+              {
+                "ip": "198.51.100.20",
+                "first_seen": "2020-01-01",
+                "last_seen": "2024-02-28",
+                "organizations": []
+              },
+              {
+                "ip": "203.0.113.200",
+                "first_seen": "2018-01-01",
+                "last_seen": "2019-12-31",
+                "organizations": []
+              }
+            ],
+            "source": "securitytrails"
+          }
+        ]
+      }
+    },
+    {
+      "key": "ipv4:198.51.100.10",
+      "depth": 1,
+      "noise": true,
+      "noise_kind": "cdn",
+      "tags": [
+        "cdn"
+      ],
+      "attributes": {
+        "is_cloud": [
+          {
+            "value": true,
+            "source": "cloud_ranges"
+          }
+        ],
+        "is_cdn": [
+          {
+            "value": true,
+            "source": "cloud_ranges"
+          }
+        ],
+        "cloud_provider": [
+          {
+            "value": "Cloudflare",
+            "source": "cloud_ranges"
+          }
+        ],
+        "cloud_role": [
+          {
+            "value": "cdn_edge",
+            "source": "cloud_ranges"
+          }
+        ],
+        "cloud_label": [
+          {
+            "value": "Cloudflare CDN edge",
+            "source": "cloud_ranges"
+          }
+        ]
+      }
+    },
+    {
+      "key": "ipv4:198.51.100.20",
+      "depth": 1,
+      "noise": true,
+      "noise_kind": "cdn",
+      "tags": [
+        "cdn"
+      ],
+      "attributes": {
+        "is_cloud": [
+          {
+            "value": true,
+            "source": "cloud_ranges"
+          }
+        ],
+        "is_cdn": [
+          {
+            "value": true,
+            "source": "cloud_ranges"
+          }
+        ],
+        "cloud_provider": [
+          {
+            "value": "Fastly",
+            "source": "cloud_ranges"
+          }
+        ],
+        "cloud_role": [
+          {
+            "value": "cdn_edge",
+            "source": "cloud_ranges"
+          }
+        ],
+        "cloud_label": [
+          {
+            "value": "Fastly CDN edge",
+            "source": "cloud_ranges"
+          }
+        ]
+      }
+    },
+    {
+      "key": "ipv4:203.0.113.200",
+      "depth": 1,
+      "attributes": {
+        "is_cloud": [
+          {
+            "value": true,
+            "source": "cloud_ranges"
+          }
+        ],
+        "is_cdn": [
+          {
+            "value": false,
+            "source": "cloud_ranges"
+          }
+        ],
+        "cloud_provider": [
+          {
+            "value": "AWS",
+            "source": "cloud_ranges"
+          }
+        ],
+        "cloud_role": [
+          {
+            "value": "iaas",
+            "source": "cloud_ranges"
+          }
+        ],
+        "cloud_label": [
+          {
+            "value": "AWS us-east-1 EC2",
+            "source": "cloud_ranges"
+          }
+        ]
+      }
+    },
+    {
+      "key": "cert_fingerprint:3f1e0000000000000000000000000000000000000000000000000000000000a1",
+      "depth": 1
+    }
+  ],
+  "edges": [
+    {
+      "src": "domain:example.com",
+      "dst": "cert_fingerprint:3f1e0000000000000000000000000000000000000000000000000000000000a1",
+      "relation": "has_certificate",
+      "module": "ct_logs",
+      "confidence": 1.0
+    },
+    {
+      "src": "ipv4:198.51.100.20",
+      "dst": "cert_fingerprint:3f1e0000000000000000000000000000000000000000000000000000000000a1",
+      "relation": "serves_certificate",
+      "module": "censys",
+      "confidence": 0.7
+    }
+  ]
+}

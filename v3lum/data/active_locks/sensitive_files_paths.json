@@ -1,0 +1,8 @@
+{
+  "schema": "v3lum.active_lock/1",
+  "name": "sensitive_files_paths",
+  "sha256": "2ebed11ff80dfdabb79f00174a255ed179f014a54ecd0561ce2140338e9ccf1b",
+  "url": "",
+  "commit": "bundled v3lum/data/sensitive_files/paths.json (batch p9-G13-1)",
+  "reason": "P279 cond 4: the fixed list of 23 forced-browsing paths (< 30) reviewed by batch p9-G13-1 on 2026-11-26; the module refuses to run when the bundled list no longer matches this pin. Forbidden follow-ups (.git/objects, .git/index, packed refs, whole backups) are never listed."
+}

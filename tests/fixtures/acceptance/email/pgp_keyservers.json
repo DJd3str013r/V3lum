@@ -1,0 +1,27 @@
+{
+ "schema": "v3lum.acceptance_routes/1",
+ "module": "pgp_keyservers",
+ "routes": [
+  {
+   "method": "GET",
+   "url": "https://keyserver.ubuntu.com/pks/lookup?op=index&options=mr&search=someone%40example.com",
+   "status": 200,
+   "text": "info:1:6\npub:961C5B0AE921C16657EF52C2771CFD80DC9D462B:1:4096:1447004541::\npub:BADEEBC79AEEAC3871EDA384F630B076BAAE842D:1:4096:1471229574::\nuid:Example Person 2 <someone@example.com>:1471229574::\npub:3640A0AA7DE2A6686027DBF0948DA42D4E021F54:1:4096:1679168691::\nuid:Example Person 3 <example-handle-3@example.com>:1764802685:1956635939:\npub:4E68C70980FCD7CBC575B19188C1F666E47808F0:1:1024:1360220353::\nuid:Example Person 4 <someone@example.com>:1360220353::\npub:921C9371E54DAC06188D9C948AE096853A66DE58:1:2048:1445990333::\nuid:Example Person 5 <testuser@example.com>:1445991450::\nuid:Example Person 5 <someone@example.com>:1445990333::\n",
+   "headers": {
+    "content-type": "text/plain",
+    "server": "Hockeypuck/2.2"
+   },
+   "latency_ms": 1034
+  },
+  {
+   "method": "GET",
+   "url": "https://keys.openpgp.org/vks/v1/by-email/someone%40example.com",
+   "status": 404,
+   "text": "No key found for email address someone@example.com",
+   "headers": {
+    "content-type": "text/html; charset=utf-8"
+   },
+   "latency_ms": 500
+  }
+ ]
+}

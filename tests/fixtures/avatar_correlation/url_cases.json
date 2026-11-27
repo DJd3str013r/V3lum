@@ -1,0 +1,83 @@
+{
+ "cases": [
+  {
+   "url": "https://avatars.githubusercontent.com/u/23456789?v=4",
+   "allowed": true
+  },
+  {
+   "url": "https://secure.gravatar.com/avatar/0000000000000000000000000000000000000000000000000000000000000000?s=80",
+   "allowed": true
+  },
+  {
+   "url": "http://0.gravatar.com/avatar/00000000000000000000000000000000",
+   "allowed": true
+  },
+  {
+   "url": "https://cdn.bsky.app/img/avatar/plain/did:plc:example/bafkexample@jpeg",
+   "allowed": true
+  },
+  {
+   "url": "https://pbs.twimg.com/profile_images/1/example_400x400.jpg",
+   "allowed": false,
+   "reason": "host",
+   "note": "not in this build: X and Telegram CDN terms not reviewed (backlog)"
+  },
+  {
+   "url": "https://gitlab.com/uploads/-/system/user/avatar/1786152/avatar.png?v=1",
+   "allowed": true
+  },
+  {
+   "url": "https://gitlab.com/example-dev",
+   "allowed": false,
+   "reason": "path"
+  },
+  {
+   "url": "https://codeberg.org/avatars/dae8ab126a96f6fbd6942cf08ab92382",
+   "allowed": true
+  },
+  {
+   "url": "https://cdn-avatars.huggingface.co/v1/production/uploads/x/y.png",
+   "allowed": true
+  },
+  {
+   "url": "https://www.example.com/me.jpg",
+   "allowed": false,
+   "reason": "host"
+  },
+  {
+   "url": "https://avatars.githubusercontent.com.example.net/u/1",
+   "allowed": false,
+   "reason": "host"
+  },
+  {
+   "url": "https://user:pass@avatars.githubusercontent.com/u/1",
+   "allowed": false,
+   "reason": "userinfo"
+  },
+  {
+   "url": "https://avatars.githubusercontent.com:8443/u/1",
+   "allowed": false,
+   "reason": "port"
+  },
+  {
+   "url": "ftp://avatars.githubusercontent.com/u/1",
+   "allowed": false,
+   "reason": "scheme"
+  },
+  {
+   "url": "https://192.0.2.10/avatar.png",
+   "allowed": false,
+   "reason": "host"
+  },
+  {
+   "url": "https://secure.gravatar.com/avatar/x.svg",
+   "allowed": false,
+   "reason": "svg"
+  },
+  {
+   "url": "data:image/png;base64,AAAA",
+   "allowed": false,
+   "reason": "scheme"
+  }
+ ]
+}

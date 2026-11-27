@@ -1,0 +1,34 @@
+{
+ "threat_info": {
+  "is_bogon": false,
+  "is_tor": false,
+  "is_threat": true,
+  "threat_lists": {
+   "is_sansip": false,
+   "is_ciarmy": false,
+   "is_et_compromised": true,
+   "is_pallebone": false,
+   "is_threatfox": false,
+   "is_blocklist_net_ua": true,
+   "is_blocklist_de": true,
+   "is_brute_force_blocker": true,
+   "is_etnetera": false,
+   "is_greensnow": false,
+   "is_nubi": false,
+   "is_sblam": false,
+   "is_interserver": true,
+   "is_liquid_binary": false,
+   "is_nginx_bad_bot": true,
+   "is_isx_fr": false,
+   "is_myip_ms": false,
+   "is_feodo_tracker": false,
+   "is_ipsum": true,
+   "is_redstout": true,
+   "is_ustc_ip_bl": false,
+   "is_url_haus": false,
+   "is_viriback_c2": false,
+   "is_james_brine": true,
+   "is_risk_db": false
+  }
+ }
+}

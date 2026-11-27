@@ -1,0 +1,23 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://www.onyphe.io/api/v2/summary/ip/198.51.100.20"
+ },
+ "response": {
+  "status": 401,
+  "headers": {
+   "Content-Type": "application/json"
+  },
+  "body": {
+   "count": 0,
+   "error": 1,
+   "myip": "203.0.113.10",
+   "status": "nok",
+   "text": "Invalid API key",
+   "took": 0,
+   "total": 0
+  }
+ },
+ "observed": "synthetic",
+ "note": "Bad key. Only error code 2 is verified; this code and status are guesses."
+}

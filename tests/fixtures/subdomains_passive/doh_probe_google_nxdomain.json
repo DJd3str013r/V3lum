@@ -1,0 +1,24 @@
+{
+ "Status": 3,
+ "TC": false,
+ "RD": true,
+ "RA": true,
+ "AD": false,
+ "CD": false,
+ "Question": [
+  {
+   "name": "q7v3k9x2m4p8t1z6.google.com.",
+   "type": 1
+  }
+ ],
+ "Authority": [
+  {
+   "name": "google.com.",
+   "type": 6,
+   "TTL": 60,
+   "data": "ns1.google.com. dns-admin.google.com. 1028908002 900 900 1800 60"
+  }
+ ],
+ "edns_client_subnet": "0.0.0.0/0",
+ "Comment": "Response from 216.239.34.10."
+}

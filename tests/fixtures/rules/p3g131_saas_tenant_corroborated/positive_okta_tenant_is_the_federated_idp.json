@@ -1,0 +1,75 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber"
+  },
+  "nodes": [
+    {
+      "key": "domain:acme.example",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "saas_tenant_checks": [
+          {
+            "value": [
+              {
+                "vendor": "okta",
+                "candidate": "acme",
+                "tenant_host": "acme.okta.com",
+                "url": "https://acme.okta.com/",
+                "state": "exists",
+                "label": "candidate tenant",
+                "http_status": 200,
+                "marker": "openid_configuration_issuer",
+                "reason": null,
+                "ids": {
+                  "issuer": "https://acme.okta.com"
+                },
+                "stop": false,
+                "corroboration": [],
+                "confidence": "candidate"
+              },
+              {
+                "vendor": "atlassian",
+                "candidate": "acme",
+                "tenant_host": "acme.atlassian.net",
+                "url": "https://acme.atlassian.net/",
+                "state": "absent",
+                "label": null,
+                "http_status": 200,
+                "marker": "edge_404_page_unavailable",
+                "reason": null,
+                "ids": {},
+                "stop": false,
+                "corroboration": [],
+                "confidence": null
+              }
+            ],
+            "source": "saas_tenant_discovery"
+          }
+        ],
+        "m365_identity_provider": [
+          {
+            "value": {
+              "host": "acme.okta.com",
+              "kind": "okta",
+              "url": "https://acme.okta.com/app/office365/sso/wsfed/passive"
+            },
+            "source": "m365_tenant"
+          }
+        ]
+      }
+    }
+  ],
+  "expect": {
+    "p3g131_saas_tenant_corroborated": {
+      "min": 1,
+      "max": 1,
+      "severity": "info",
+      "confidence_label": "probable"
+    }
+  },
+  "edges": []
+}

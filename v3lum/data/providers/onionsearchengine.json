@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "onionsearchengine",
+  "name": "OnionSearchEngine (clearnet onion search pages)",
+  "operator": "OnionSearchEngine (operator not identified)",
+  "hosts": [
+    "onionsearchengine.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "Operator, terms and privacy policy not identified (A8 unknown); P203 cond 5: 'unknown - onionsearchengine.com'. IOC values only (domain, onion), 'unknown operator' badge, hidden from reports at TLP:AMBER+ (P203 cond 10).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "F",
+    "justification": "Search index of .onion pages run by an unidentified operator: results cannot be judged; illicit content possible (P203 cond 11)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "search_pages": {
+      "title": "OnionSearchEngine clearnet search search.php?search= (manual pivot links)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://onionsearchengine.com/",
+        "quote": null,
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "onionsearchengine",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0472 terms 'site ToS' (not reviewed). Template https://onionsearchengine.com/search.php?search={q} for domain and onion values only; the research form also sent '&submit=Search', dropped here because the P327 submission lint rejects the token. Cloudflare 'Attention Required' block (403) for curl on 2026-11-26: unverified until a browser re-check. Used by pivots_darkweb (rendered only at TLP:CLEAR/GREEN, with the CSAM warning of P203 cond 11)."
+    }
+  },
+  "notes": "Manual pivot links only (batch p2-G14-2): V3LUM never fetches them (P311). Unknown tier: never default for automated use, never PERSONAL_TYPES, CNPJ, company names or keywords (A8 BR4)."
+}

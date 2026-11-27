@@ -1,0 +1,60 @@
+% SYNTHETIC FIXTURE (p2-G01-4 prep): documented whois.registro.br layout; domain facts from the live RDAP/who-dat answer for registro.br (2026-11-26); contact blocks and handles are documentation values; ownerid is NIC.br's public CNPJ from the research RDAP sample
+% Copyright (c) Nic.br
+%  The use of the data below is only permitted as described in
+%  full by the Use and Privacy Policy at https://registro.br/upp ,
+%  being prohibited its distribution, commercialization or
+%  reproduction, in particular, to use it for advertising or
+%  any similar purpose.
+%  2026-11-26T03:09:10-03:00 - IP: 192.0.2.10
+
+domain:      registro.br
+owner:       Núcleo de Inf. e Coord. do Ponto BR - NIC.BR
+ownerid:     05.506.560/0001-36
+responsible: Example Responsible Person
+country:     BR
+owner-c:     EXA01
+tech-c:      EXA02
+nserver:     a.dns.br
+nsstat:      20261125 AA
+nslastaa:    20261125
+nserver:     b.dns.br
+nsstat:      20261125 AA
+nslastaa:    20261125
+nserver:     c.dns.br
+nsstat:      20261125 AA
+nslastaa:    20261125
+nserver:     d.dns.br
+nsstat:      20261125 AA
+nslastaa:    20261125
+nserver:     e.dns.br
+nsstat:      20261125 AA
+nslastaa:    20261125
+dsrecord:    59973 ECDSA-SHA-256 17A233B59FE51E6205205E0556343DB121AB5023663A1B5628133AFFEA95A5C9
+dsstatus:    20261125 DSOK
+dslastok:    20261125
+saci:        yes
+created:     19990221 #11026
+changed:     20180402
+status:      published
+
+nic-hdl-br:  EXA01
+person:      Example Owner Contact
+e-mail:      owner-contact@example.com
+country:     BR
+created:     20020101
+changed:     20240101
+
+nic-hdl-br:  EXA02
+person:      Example Tech Contact
+e-mail:      tech-contact@example.com
+country:     BR
+created:     20020101
+changed:     20240101
+
+% Security and mail abuse issues should also be addressed to
+% cert.br, http://www.cert.br/ , respectively to cert@cert.br
+% and mail-abuse@cert.br
+%
+% whois.registro.br accepts only direct match queries. Types
+% of queries are: domain (.br), registrant (tax ID), ticket,
+% provider, CIDR block, IP and ASN.

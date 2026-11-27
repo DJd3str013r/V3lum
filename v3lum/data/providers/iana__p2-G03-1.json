@@ -1,0 +1,24 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "iana",
+  "hosts": [],
+  "sources": {
+    "takedown_packet_registrar_ids": {
+      "title": "IANA Registrar IDs registry (https://www.iana.org/assignments/registrar-ids/registrar-ids-1.csv): IANA id -> registrar name, status, RDAP base URL",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.iana.org/assignments/registrar-ids/registrar-ids.xhtml",
+        "quote": "Tier trusted, terms open (IANA registry dataset).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "iana",
+      "sanitizer": null,
+      "dataset": "iana.registrar_ids",
+      "notes": "Quote: binding council text (P345 chair rationale). Research C0776 (verified_live 200/206, 280,766 bytes, 4,509 rows: Accredited, Terminated, Reserved). Weekly dataset read locally by the takedown packet exporter (P345 cond 1): registrar id -> registrar RDAP base URL for the abuse contact; never downloaded at report time. Registrar abuse e-mails come from the registrar's RDAP answers (rdap module), not from this file."
+    }
+  },
+  "error_markers": [],
+  "notes": "Batch p2-G03-1 extension (P345 takedown_packet): the registrar-ids registry on the existing www.iana.org host."
+}

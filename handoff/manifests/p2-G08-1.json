@@ -1,0 +1,208 @@
+{
+  "batch": "p2-G08-1",
+  "modules": [
+    {
+      "name": "circl_vulnlookup",
+      "file": "v3lum/modules/vulnerability_cve/circl_vulnlookup.py",
+      "proposal": "P181",
+      "category": "vulnerability_cve",
+      "opsec": "passive",
+      "default_enabled": true,
+      "terms": "open",
+      "provider_tier": "trusted",
+      "keys": [
+        "circl_vuln"
+      ],
+      "datasets": [],
+      "pivot_packs": [],
+      "correlation_rules": [
+        "g08_cve_card"
+      ],
+      "new_vocabulary": [
+        "circl_sightings",
+        "linked_advisories",
+        "advisory_aliases",
+        "relation:advisory_alias",
+        "relation:linked_advisory"
+      ],
+      "live_check": "passed 2026-11-26 (V3LUM_LIVE=1): CVE-2021-44228 -> 200 CVE JSON 5 record (shared cve_record parser: PUBLISHED, CVSS 10.0), timeline 2,094 sightings complete, exploited['circl'] = 2021-12-10, never kev; EPSS 0.99999 (2026-11-25) relayed by CIRCL because the fresh home has no EPSS file; 3 requests, host vulnerability.circl.lu only, ~8 s (3.86 MB timeline). GHSA-jfh8-c2jp-5v3q keyword -> OSV record with alias CVE-2021-44228."
+    },
+    {
+      "name": "osv_ghsa",
+      "file": "v3lum/modules/vulnerability_cve/osv_ghsa.py",
+      "proposal": "P185",
+      "category": "vulnerability_cve",
+      "opsec": "passive",
+      "default_enabled": true,
+      "terms": "key-terms",
+      "provider_tier": "trusted",
+      "keys": [
+        "github"
+      ],
+      "datasets": [],
+      "pivot_packs": [],
+      "correlation_rules": [
+        "g08_cve_card"
+      ],
+      "new_vocabulary": [
+        "distro_fixes",
+        "package_ranges",
+        "advisory_aliases",
+        "withdrawn_advisories"
+      ],
+      "live_check": "passed 2026-11-26 (V3LUM_LIVE=1): CVE-2021-44228 -> OSV CVE + DEBIAN-CVE + UBUNTU-CVE records 200 (6 distro fixes, 8 compact package ranges, GHSA alias); GitHub REST advisories?cve_id= refused 403 by this sandbox's egress proxy (not GitHub): keyless -> source BLOCKED 'challenge', with the sandbox GITHUB_TOKEN alias -> NEEDS_KEY; the OSV GHSA mirror answered instead (P185 cond 1 re-test from the team network is in the backlog)."
+    },
+    {
+      "name": "vulncheck",
+      "file": "v3lum/modules/vulnerability_cve/vulncheck.py",
+      "proposal": "P186",
+      "category": "vulnerability_cve",
+      "opsec": "passive",
+      "default_enabled": false,
+      "terms": "key-terms",
+      "provider_tier": "trusted",
+      "keys": [
+        "vulncheck"
+      ],
+      "datasets": [],
+      "pivot_packs": [],
+      "correlation_rules": [
+        "g08_cve_card"
+      ],
+      "new_vocabulary": [
+        "exploitation_refs",
+        "vulncheck_kev"
+      ],
+      "live_check": "not run: keyed source (key 'vulncheck' from a company account); offline tests use the research keyless 401 and doc-shaped success fixtures (P186 cond 4 capture with the team key is in the backlog)."
+    },
+    {
+      "name": "securitycontext_cve",
+      "file": "v3lum/modules/vulnerability_cve/securitycontext_cve.py",
+      "proposal": "P188",
+      "category": "vulnerability_cve",
+      "opsec": "passive",
+      "default_enabled": false,
+      "terms": "unknown",
+      "provider_tier": "unknown",
+      "keys": [],
+      "datasets": [],
+      "pivot_packs": [],
+      "correlation_rules": [
+        "g08_cve_secondary_conflicts"
+      ],
+      "new_vocabulary": [
+        "cve_secondary",
+        "nuclei_templates",
+        "relation:public_exploit"
+      ],
+      "live_check": "passed 2026-11-26 (V3LUM_LIVE=1, benign CVE-2021-44228 only, the value the prep already sent): 200 in 0.5 s, schema check passed, cve_secondary CVSS 10.0 / EPSS 0.99999 / KEV lists cisa+vulncheck, dataset 2026-11-26T10:28:13Z; no 429 or challenge seen. The policy gate keeps it off in every profile (terms and tier unknown)."
+    },
+    {
+      "name": "endoflife",
+      "file": "v3lum/modules/vulnerability_cve/endoflife.py",
+      "proposal": "P187",
+      "category": "vulnerability_cve",
+      "opsec": "passive",
+      "default_enabled": true,
+      "terms": "open",
+      "provider_tier": "n/a",
+      "keys": [],
+      "datasets": [
+        "endoflife.<slug> (68 weekly datasets, one per pinned slug of v3lum/data/endoflife/eol_products.json)"
+      ],
+      "pivot_packs": [],
+      "correlation_rules": [
+        "g08_endoflife"
+      ],
+      "new_vocabulary": [
+        "tag:end_of_life"
+      ],
+      "live_check": "passed 2026-11-26 (V3LUM_LIVE=1): `data update endoflife.nginx` downloaded and validated the product (schema 1.2.x); nginx 1.18.0 from a Server header on an own asset -> cycle 1.18 EOL. The 68 pinned slugs were checked against the live product list (490 products) once."
+    }
+  ],
+  "proposals_not_done": [],
+  "core_requests": [
+    "Exporters (P303, STIX/MISP/JSON for third parties): drop every attribute recorded by module 'vulncheck' except exploited['vulncheck_kev'] (CVE id + flag only, P186 cond 3); helper v3lum.modules.vulnerability_cve.vulncheck.vulncheck_export_view shows the allowed shape.",
+    "Dataset manager (AR10): a two-step authenticated download (index call with a Bearer key, then a pre-signed URL that is never logged, cached or stored, sha256 checked) so P186's preferred offline vulncheck-kev backup module can exist (P186 cond 1).",
+    "Seeded provider circl_vulnlookup (core-owned): CIRCL's .well-known/api-policy.json asks for a User-Agent with a contact URL or e-mail; switch http_profile.user_agent to 'contact' once a generic contact_url default exists (P326). Also honour x-ratelimit-remaining/x-ratelimit-reset (CIRCL: absolute epoch; SecurityContext: relative seconds) as provider signals in the QuotaBook (P334) - circl_vulnlookup stops its own later calls on remaining 0 meanwhile.",
+    "RuleContext: a documented read-only accessor for local dataset copies (no download, citation recorded) and an engine preload hook; g08_endoflife reads DataStore(None).path(...) like attack_surface does and accepts pre-loaded documents in rctx.meta['endoflife_products'] (graph fixtures).",
+    "Renderers (WP14/WP20): show the g08_cve_secondary_conflicts lines next to the g08_cve_card of the same CVE, and render cve_secondary / circl_sightings / distro_fixes as card sub-sections.",
+    "Engine (P183 cond 3 follow-up, shared with p1-G08-1): KEV/EPSS-ranked fan-out scheduling - circl_vulnlookup, osv_ghsa, vulncheck and securitycontext_cve use cve_record.cve_fanout_allows (first come, QUOTA 'quota' = deferred) until the engine schedules in plan_cve_fanout order."
+  ],
+  "files": [
+    "docs/backlog/p2-G08-1.md",
+    "tests/fixtures/circl_vulnlookup/api_policy.json",
+    "tests/fixtures/circl_vulnlookup/epss_not_found.http.json",
+    "tests/fixtures/circl_vulnlookup/epss_ok.json",
+    "tests/fixtures/circl_vulnlookup/html_error.http.json",
+    "tests/fixtures/circl_vulnlookup/rate_limited.http.json",
+    "tests/fixtures/circl_vulnlookup/sighting_empty.json",
+    "tests/fixtures/circl_vulnlookup/sighting_ok.json",
+    "tests/fixtures/circl_vulnlookup/timeline_no_sightings.json",
+    "tests/fixtures/circl_vulnlookup/timeline_ok.json",
+    "tests/fixtures/circl_vulnlookup/vuln_csaf_ok.json",
+    "tests/fixtures/circl_vulnlookup/vuln_cve_ok.json",
+    "tests/fixtures/circl_vulnlookup/vuln_ghsa_ok.http.json",
+    "tests/fixtures/circl_vulnlookup/vuln_not_found.http.json",
+    "tests/fixtures/circl_vulnlookup/vuln_not_found_404.http.json",
+    "tests/fixtures/endoflife/product_log4j.json",
+    "tests/fixtures/endoflife/product_nginx.json",
+    "tests/fixtures/endoflife/product_not_found.http.json",
+    "tests/fixtures/endoflife/product_php.json",
+    "tests/fixtures/endoflife/product_schema_drift.json",
+    "tests/fixtures/endoflife/products_index.json",
+    "tests/fixtures/osv_ghsa/ghsa_rest_blocked_proxy.http.json",
+    "tests/fixtures/osv_ghsa/ghsa_rest_empty.json",
+    "tests/fixtures/osv_ghsa/ghsa_rest_ok.json",
+    "tests/fixtures/osv_ghsa/ghsa_rest_rate_limited.http.json",
+    "tests/fixtures/osv_ghsa/osv_cve_ok.json",
+    "tests/fixtures/osv_ghsa/osv_debian_ok.json",
+    "tests/fixtures/osv_ghsa/osv_ghsa_ok.json",
+    "tests/fixtures/osv_ghsa/osv_malformed.txt",
+    "tests/fixtures/osv_ghsa/osv_not_found.http.json",
+    "tests/fixtures/osv_ghsa/osv_ubuntu_ok.json",
+    "tests/fixtures/rules/g08_cve_secondary_conflicts/negative_agreement.json",
+    "tests/fixtures/rules/g08_cve_secondary_conflicts/negative_no_secondary.json",
+    "tests/fixtures/rules/g08_cve_secondary_conflicts/positive_cvss_epss_kev_cwe.json",
+    "tests/fixtures/rules/g08_endoflife/negative_distro_backport.json",
+    "tests/fixtures/rules/g08_endoflife/negative_no_local_copy.json",
+    "tests/fixtures/rules/g08_endoflife/negative_supported_and_unmapped.json",
+    "tests/fixtures/rules/g08_endoflife/positive_own_asset_header.json",
+    "tests/fixtures/rules/g08_endoflife/positive_third_party_info.json",
+    "tests/fixtures/rules/g08_endoflife/positive_version_inferred_cpe.json",
+    "tests/fixtures/securitycontext_cve/bad_input.http.json",
+    "tests/fixtures/securitycontext_cve/challenge.http.json",
+    "tests/fixtures/securitycontext_cve/cve_ok.json",
+    "tests/fixtures/securitycontext_cve/not_found.http.json",
+    "tests/fixtures/securitycontext_cve/rate_limited.http.json",
+    "tests/fixtures/securitycontext_cve/schema_drift.json",
+    "tests/fixtures/vulncheck/backup_ok.json",
+    "tests/fixtures/vulncheck/kev_empty.json",
+    "tests/fixtures/vulncheck/kev_nokey_401.http.json",
+    "tests/fixtures/vulncheck/kev_ok.json",
+    "tests/fixtures/vulncheck/rate_limited.http.json",
+    "tests/live/test_p2_g08_1.py",
+    "tests/modules/test_circl_vulnlookup.py",
+    "tests/modules/test_endoflife.py",
+    "tests/modules/test_osv_ghsa.py",
+    "tests/modules/test_securitycontext_cve.py",
+    "tests/modules/test_vulncheck.py",
+    "v3lum/correlations/g08_cve_secondary.py",
+    "v3lum/correlations/g08_endoflife.py",
+    "v3lum/data/endoflife/eol_products.json",
+    "v3lum/data/providers/circl_vulnlookup__p2-G08-1.json",
+    "v3lum/data/providers/endoflife.json",
+    "v3lum/data/providers/github__p2-G08-1.json",
+    "v3lum/data/providers/osv.json",
+    "v3lum/data/providers/securitycontext.json",
+    "v3lum/data/providers/vulncheck.json",
+    "v3lum/data/vocab/p2-G08-1.json",
+    "v3lum/modules/vulnerability_cve/circl_vulnlookup.py",
+    "v3lum/modules/vulnerability_cve/endoflife.py",
+    "v3lum/modules/vulnerability_cve/g08_advisories.py",
+    "v3lum/modules/vulnerability_cve/osv_ghsa.py",
+    "v3lum/modules/vulnerability_cve/securitycontext_cve.py",
+    "v3lum/modules/vulnerability_cve/vulncheck.py"
+  ],
+  "notes": "Five proposals, four registered modules plus the endoflife dataset family and two correlation rules. circl_vulnlookup (P181): record via the ONE shared CVE JSON 5 parser of cve_record (cve5_attributes include_kev=False), OSV records for GHSA/PySec ids, CSAF for vendor ids; keywords are sent only when they are advisory ids; 404 and the live 200 {} are EMPTY; sightings from the oldest-first timeline (8 MiB cap, never cached: third-party handles/post texts stay in memory, evidence keeps counts/dates/families) with a fallback to the newest-first sighting list (first date only when complete); seen/exploited/confirmed -> exploited['circl'] (setting circl_vulnlookup_exploited_types), never kev; EPSS from CIRCL only when the local EPSS file cannot answer; optional key circl_vuln as X-API-KEY; per-endpoint sources via extension circl_vulnlookup__p2-G08-1.json so coverage shows a sightings/EPSS failure while the record answered. osv_ghsa (P185): OSV CVE/GHSA + DEBIAN-/UBUNTU-CVE distro records, GitHub REST through the P111 shared client (github_user.GitHubClient, keyless for analyst-typed CVEs only), OSV GHSA mirror when GitHub is not cleared or fails; per-source filtering via ctx.allowed_sources; no package queries; compact ranges in evidence. vulncheck (P186): per-CVE module (the offline backup variant waits for the team key and a core two-step download - backlog); hits -> exploited['vulncheck_kev'] + exploitation_refs/exploit_refs, never kev; 401/402/403 NEEDS_KEY; error envelope in 200 -> ERROR via module marker. securitycontext_cve (P188): GET /v1/cves/{id} only, CVE input only (keywords are not IOC_TYPES), schema check, comparison-only attribute cve_secondary + rule g08_cve_secondary_conflicts; terms/tier unknown -> off everywhere. endoflife (P187): no Module class by design (cond 1); 68 datasets endoflife.<slug> registered from v3lum/data/endoflife/eol_products.json (74 names + 76 CPE vendor:product keys, pinned) and rule g08_endoflife (explicit versions -> medium/low on own/in-scope assets, info on third-party, version-inferred CPE/fingerprints info <= 0.4, distro builds never upstream EOL, one grouped correlation per asset). Interpretations: the mapping file lives at v3lum/data/endoflife/eol_products.json (batch-owned data path) for FC1's data/eol_products.json; FC1's '404 -> EMPTY' also covers CIRCL's live 200 {}. Shared helper v3lum/modules/vulnerability_cve/g08_advisories.py (advisory ids, CVSS from vectors, OSV/CSAF parsers, alias de-duplication, OSV vocabulary attributes). Fixtures: prep fixtures re-checked (no e-mail, token, personal handle or researcher URL; the VulnCheck doc-shaped clone_ssh_url was removed; osv_malformed renamed .txt because it is intentionally invalid JSON). Gates: registry contract green for the four modules; P327 lint (lint_module_source/lint_data_file) 0 issues on every batch file; ruff clean; batch tests 111 passed (5 module test files) + 9 rule graph fixtures; live 5/5 passed. Registry-contract failures seen meanwhile belong to other batches in progress (btc_esplora_internal, codeberg_user, devto_user, huggingface_user, npm_maintainer, pypi_package, virustotal, lol_datasets notices). Live note: an ad-hoc capture outside pytest picked up this sandbox's GITHUB_TOKEN (a documented alias of key 'github'); it was sent only to api.github.com, whose egress proxy refused it. Full offline suite (2026-11-26, shared machine): 9485 passed, 10 failed, 191 skipped, 14 xfailed with tests/modules/test_btc_explorers.py ignored (batch p2-G09-2 work in progress hangs on a lock in btc_explorers._circuit_table). The 10 failures are other batches' or core work in progress: test_bcb_authorized_institutions x2 and test_typosquat::test_bcb_rows_and_dataset_discovery (BCB dataset naming), test_evm_explorers x3, tests/safety/test_cancel (kill switch timing under load), test_ioc_perf (10 MB under 10 s under load), test_registry_contract::test_every_module_class_is_registered and [pivots_brazil] (batch p2-G14-2). None names a p2-G08-1 file."
+}

@@ -1,0 +1,83 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "$comment": "Own subdomain CNAME to an Azure App Service name whose NXDOMAIN a second resolver confirmed (dns_records 'valid' false): HIGH candidate",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "org_profile": {
+    "org": {
+      "name": "Acme"
+    },
+    "domains": [
+      {
+        "name": "acme-corp.example",
+        "verification": "txt_verified",
+        "criticality": "high"
+      }
+    ],
+    "cidrs": [
+      {
+        "value": "203.0.113.0/24",
+        "criticality": "high"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "key": "domain:shop.acme-corp.example",
+      "depth": 0,
+      "seed": true,
+      "ownership": "own_asset",
+      "tags": [
+        "own_asset"
+      ]
+    },
+    {
+      "key": "domain:acme-shop-legacy.azurewebsites.net",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "valid": [
+          {
+            "value": false,
+            "source": "dns_records"
+          }
+        ]
+      },
+      "findings": [
+        {
+          "title": "Domain does not resolve (NXDOMAIN)",
+          "severity": "info",
+          "confidence": 0.8,
+          "criterion": "NXDOMAIN (Status 3) confirmed by a second resolver",
+          "tags": [
+            "info"
+          ],
+          "module": "dns_records",
+          "source": "core_doh.resolvers",
+          "confidence_label": "confirmed"
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "src": "domain:shop.acme-corp.example",
+      "dst": "domain:acme-shop-legacy.azurewebsites.net",
+      "relation": "cname_to",
+      "module": "dns_records",
+      "confidence": 0.9
+    }
+  ],
+  "expect": {
+    "subdomain_takeover_candidate": {
+      "min": 1,
+      "max": 1,
+      "severity": "high",
+      "confidence_label": "probable"
+    }
+  }
+}

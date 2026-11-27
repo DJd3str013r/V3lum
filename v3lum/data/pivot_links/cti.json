@@ -1,0 +1,136 @@
+{
+  "schema": "v3lum.pivot_pack/1",
+  "pack": "cti",
+  "title": "MITRE ATT&CK, Malpedia and D3FEND reference pages (P300)",
+  "notes": "Batch p2-G14-2, module pivots_cti. Links under x_module_links need a value transformation, a TLP ceiling or a warning that the frozen core link model does not carry yet: the pack's module renders them (linted like pack links, fail closed). ATT&CK technique pages use {mitre_path} (T1059.001 -> T1059/001: the dotted path answers 404); group and software pages use the G/S id and Malpedia the id from the P295 alias index, never the raw name (an umbrella or ambiguous name gets no link). Order (P300 cond 6): ATT&CK, Malpedia, D3FEND.",
+  "links": [
+    {
+      "id": "d3fend_technique",
+      "label": "MITRE D3FEND - defences for an ATT&CK technique",
+      "template": "https://d3fend.mitre.org/offensive-technique/attack/{q}/",
+      "entity_types": [
+        "mitre_technique"
+      ],
+      "category": "other",
+      "host": "d3fend.mitre.org",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Dotted ids work (T1059.001, verified 2026-11-26); an unknown id answers 404. Technique ids only: a tactic, mitigation or data-source id (TA/M/DS) has no D3FEND offensive-technique page.",
+      "x_accepts": [
+        "attack:technique"
+      ]
+    }
+  ],
+  "x_module_links": [
+    {
+      "id": "attack_technique",
+      "label": "MITRE ATT&CK - technique page",
+      "template": "https://attack.mitre.org/techniques/{mitre_path}/",
+      "entity_types": [
+        "mitre_technique"
+      ],
+      "category": "other",
+      "host": "attack.mitre.org",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "T1059.001 -> /techniques/T1059/001/ (verified; the dotted path is 404). A revoked id links its replacement (v3lum.core.attack.canonical) and the label says 'revoked -> replaced by'.",
+      "x_accepts": [
+        "attack:technique"
+      ]
+    },
+    {
+      "id": "attack_group",
+      "label": "MITRE ATT&CK - group page",
+      "template": "https://attack.mitre.org/groups/{attack_id}/",
+      "entity_types": [
+        "threat_actor"
+      ],
+      "category": "other",
+      "host": "attack.mitre.org",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "G id from the P295 alias index (G0007 verified); umbrella or ambiguous names get no link.",
+      "x_accepts": [
+        "attack:group"
+      ]
+    },
+    {
+      "id": "attack_software",
+      "label": "MITRE ATT&CK - software page",
+      "template": "https://attack.mitre.org/software/{attack_id}/",
+      "entity_types": [
+        "malware_family"
+      ],
+      "category": "other",
+      "host": "attack.mitre.org",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "S id from the P295 alias index (S0367 verified).",
+      "x_accepts": [
+        "attack:software"
+      ]
+    },
+    {
+      "id": "malpedia_family",
+      "label": "Malpedia - malware family page",
+      "template": "https://malpedia.caad.fkie.fraunhofer.de/details/{malpedia_id}",
+      "entity_types": [
+        "malware_family"
+      ],
+      "category": "other",
+      "host": "malpedia.caad.fkie.fraunhofer.de",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Family id '<platform>.<name>' from the P295 alias index (win.emotet verified), never the raw name (P300 cond 9). Manual browsing is unaffected by the API's CC BY-NC-SA licence.",
+      "x_accepts": [
+        "malpedia:family"
+      ]
+    },
+    {
+      "id": "malpedia_actor",
+      "label": "Malpedia - threat actor page",
+      "template": "https://malpedia.caad.fkie.fraunhofer.de/actor/{malpedia_id}",
+      "entity_types": [
+        "threat_actor"
+      ],
+      "category": "other",
+      "host": "malpedia.caad.fkie.fraunhofer.de",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Actors live under /actor/{id} (apt28, lazarus_group verified); /details/apt28 answers 404, so P300 cond 9's 'details/{slug}' applies to families only.",
+      "x_accepts": [
+        "malpedia:actor"
+      ]
+    }
+  ]
+}

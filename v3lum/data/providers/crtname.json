@@ -1,0 +1,65 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "crtname",
+  "name": "crt.name Certificate Transparency hostname index",
+  "operator": "crt.name (operator not identified in the research sweep)",
+  "hosts": [
+    "crt.name"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "No identifiable operator, published terms or privacy policy was found for crt.name (A8 unknown) until a promotion is recorded; P001 cond 1: 'crt.name and MerkleMap, whose operators are unknown tier (A8)', excluded at AMBER and above, --allow-unknown at CLEAR/GREEN.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Hostname index derived from public Certificate Transparency logs by an unidentified operator; completeness and freshness are undocumented."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "text/plain",
+    "timeout": 20,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 1.0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {
+    "crtname": {
+      "description": "crt.name API key (optional; Authorization: Bearer)",
+      "signup_url": "https://crt.name/",
+      "env": [
+        "V3LUM_CRTNAME_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "terms unknown: the source stays disabled under every licence profile until legal reviews it (A1)"
+    }
+  },
+  "sources": {
+    "search": {
+      "title": "crt.name /v1/search?apex={domain} (text/plain, one hostname per line)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://crt.name/",
+        "quote": "",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "ct-logs",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Binding council text (P001 cond 2): 'crt.name unknown'. Research C0026 (verified 2026-11-26): 200 text/plain, one hostname per line (71 KB / 3090 names for example.com); a name that is not an apex answers 400 'invalid apex: not an apex (eTLD+1 is example.com)'; X-Ratelimit-Limit 100 (window unknown). Used only by ct_logs_extra (default_enabled=False)."
+    }
+  },
+  "notes": "Owned by batch p1-G01-1 (P001 ct_logs_extra). Unknown tier and unknown terms: never default (A3), excluded at TLP:AMBER and above (A8), and licence-blocked in every profile until reviewed (A1)."
+}

@@ -1,0 +1,67 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "domainsdb",
+  "name": "DomainsDB.info domain search API",
+  "operator": "DomainsDB.info (operator to be identified by the reviewer before any promotion)",
+  "hosts": [
+    "api.domainsdb.info"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "P005 cond 4: 'domainsdb_search's provider is unknown tier until reviewed' - an unknown-tier provider may receive only IOC_TYPES values (A8 BR4) and a brand keyword is not one, so the module runs only after a recorded promotion to community tier.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": true,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "D",
+    "justification": "Unreviewed registered-domain index (create/update dates and DNS records of unknown freshness); keyword hits are candidates to verify."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 20,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 1,
+    "max_bytes": 5242880
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {
+    "domainsdb": {
+      "description": "DomainsDB.info API key ('Authorization: Bearer <key>')",
+      "signup_url": "https://domainsdb.info/",
+      "env": [
+        "V3LUM_DOMAINSDB_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "a company/team account on a plan whose terms permit internal business use, recorded as key_plans.domainsdb (P005 cond 3: key-terms); the provider must first be promoted from unknown tier (cond 4)"
+    }
+  },
+  "sources": {
+    "search": {
+      "title": "DomainsDB /v1/domains/search?domain={keyword}&zone={tld} (registered domains containing a keyword)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://api.domainsdb.info/v1/",
+        "quote": "DomainsDB keyword search discloses the brand: a separate module domainsdb_search, key-terms, default_enabled=False, keywords only from org_profile brands.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "domainsdb",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P005 cond 3). Research C0046: anonymous access disabled since 2026 (HTTP 401 {\"error\":\"API key required\",\"message\":\"Anonymous access is disabled. Please sign in to obtain an API key ... 'Authorization: Bearer <key>' or the 'api-key' header.\"}). reuses_queries is set fail closed (P005 cond 4): the searched brand stays excluded at TLP:AMBER and above even after a promotion."
+    }
+  },
+  "notes": "Owned by batch p2-G01-1 (P005 cond 3-4, module domainsdb_search). Unknown tier until a reviewer records a promotion to community (tier_rationale/tier_reviewer/tier_date): until then the policy gate refuses keywords (A8 BR4) and the module never runs. No published quota: one request per brand, 1 s apart, 24 h cache."
+}

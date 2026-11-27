@@ -1,0 +1,126 @@
+{
+ "module": "pivots_threat_intel",
+ "pack": "threat_intel_ioc",
+ "note": "Maintainer verification of the pack templates (batch p2-G14-1): status, date and size only, no page bodies or headers. V3LUM never requests these URLs; values are benign public ones.",
+ "checks": [
+  {
+   "check": "nerd__ok",
+   "url": "https://nerd.cesnet.cz/nerd/ip/8.8.8.8",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 75843
+  },
+  {
+   "check": "fortiguard__ok",
+   "url": "https://www.fortiguard.com/search?q=8.8.8.8&engine=8",
+   "status": 500,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 39119
+  },
+  {
+   "check": "greynoise__ok",
+   "url": "https://viz.greynoise.io/ips/8.8.8.8",
+   "status": 403,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 919
+  },
+  {
+   "check": "honeylabs__ok",
+   "url": "https://honeylabs.net/lookup/8.8.8.8",
+   "status": 401,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 99
+  },
+  {
+   "check": "multirbl__ok",
+   "url": "https://multirbl.valli.org/lookup/8.8.8.8.html",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 9381
+  },
+  {
+   "check": "multirbl_domain__ok",
+   "url": "https://multirbl.valli.org/lookup/example.com.html",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 3762
+  },
+  {
+   "check": "urlvoid__home",
+   "url": "https://www.urlvoid.com/",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 5522
+  },
+  {
+   "check": "cct__not_found",
+   "url": "https://cybercrime-tracker.net/index.php?search=example.com",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 3610
+  },
+  {
+   "check": "cct__google",
+   "url": "https://cybercrime-tracker.net/index.php?search=google.com",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 3818
+  },
+  {
+   "check": "threatbook__redirect",
+   "url": "https://threatbook.io/ip/8.8.8.8",
+   "status": 301,
+   "at": "2026-11-26",
+   "redirect": "https://i.threatbook.io/ip/8.8.8.8",
+   "bytes": 0
+  },
+  {
+   "check": "honeylabs__html",
+   "url": "https://honeylabs.net/lookup/8.8.8.8",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 3354
+  },
+  {
+   "check": "multirbl_ip6__ok",
+   "url": "https://multirbl.valli.org/lookup/2001%3A4860%3A4860%3A%3A8888.html",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 5060
+  },
+  {
+   "check": "threatbook__i",
+   "url": "https://i.threatbook.io/ip/8.8.8.8",
+   "status": 502,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 150
+  },
+  {
+   "check": "threatbook__i_retry",
+   "url": "https://i.threatbook.io/ip/8.8.8.8",
+   "status": 502,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 150
+  },
+  {
+   "check": "cybercrime_tracker_url_form",
+   "url": "https://cybercrime-tracker.net/index.php?search=example.com%2Fpanel%2Fgate.php",
+   "status": 200,
+   "at": "2026-11-26",
+   "observed": "No result for: example.com/panel/gate.php (host/path search form)"
+  }
+ ]
+}

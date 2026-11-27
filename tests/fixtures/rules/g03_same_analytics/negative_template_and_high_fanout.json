@@ -1,0 +1,85 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "$comment": "A template id left in two themes and an id whose reverse lookup returned 1234 domains: 'shared ID', no same-owner correlation (P061 cond 5)",
+  "nodes": [
+    {
+      "key": "domain:shop-one.example.org",
+      "depth": 0,
+      "seed": true
+    },
+    {
+      "key": "domain:shop-two.example.net",
+      "depth": 1
+    },
+    {
+      "key": "domain:client-a.example.com",
+      "depth": 1
+    },
+    {
+      "key": "domain:client-b.example.info",
+      "depth": 1
+    },
+    {
+      "key": "analytics_id:UA-000000-1",
+      "depth": 1
+    },
+    {
+      "key": "analytics_id:G-AGENCY0001",
+      "depth": 1,
+      "attributes": {
+        "analytics_shared_id": [
+          {
+            "value": {
+              "id": "G-AGENCY0001",
+              "domains": 1234,
+              "shared": true,
+              "label": "shared ID",
+              "reason": "reverse lookup returned 1234 domains (> 50)"
+            },
+            "source": "hackertarget"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "src": "domain:shop-one.example.org",
+      "dst": "analytics_id:UA-000000-1",
+      "relation": "same_analytics",
+      "module": "hostio",
+      "confidence": 0.7,
+      "expand": false
+    },
+    {
+      "src": "domain:shop-two.example.net",
+      "dst": "analytics_id:UA-000000-1",
+      "relation": "same_analytics",
+      "module": "hostio",
+      "confidence": 0.7,
+      "expand": false
+    },
+    {
+      "src": "domain:client-a.example.com",
+      "dst": "analytics_id:G-AGENCY0001",
+      "relation": "same_analytics",
+      "module": "hostio",
+      "confidence": 0.7,
+      "expand": false
+    },
+    {
+      "src": "domain:client-b.example.info",
+      "dst": "analytics_id:G-AGENCY0001",
+      "relation": "same_analytics",
+      "module": "hostio",
+      "confidence": 0.7,
+      "expand": false
+    }
+  ]
+}

@@ -1,0 +1,320 @@
+{
+  "schema": "v3lum.pivot_pack/1",
+  "pack": "domain_dns",
+  "title": "Domain & DNS tools (verified templates)",
+  "notes": "Offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them; it renders them for the analyst (P311). Rendering follows A2: at TLP:AMBER and above every link is non-clickable text with 'opening sends <value> to <host>', at RED third-party links are hidden from reports and listed only by `v3lum links`; links are never auto-opened. Links in 'links' are rendered by the core (v3lum.core.links); entries in 'x_module_links' need a gate the frozen core link model does not carry (TLP ceiling, analyst-typed values only, public-value filter, vetted encoder) and are rendered by the pack's module through v3lum.modules.utility.pivot_gated_links. File order is the curated analyst-value order (cond 6). Verified links carry checked_at; pivot_gated_links.recheck_report() lists unverified links and links older than 180 days (cond 7, the data of `v3lum doctor --links`).",
+  "x_batch": "p2-G14-1",
+  "x_proposal": "P026",
+  "x_module": "pivots_domain_dns",
+  "x_served_by": [
+    {
+      "ref": "ct_rdap_lookups:crtsh_domain",
+      "entry": "crt.sh HTML search (P026 cond 8)",
+      "template": "https://crt.sh/?q={domain}",
+      "note": "C0058, verified again 2026-11-26 (?q=registro.br, 200). An identical template here would be dropped by the core loader or displace the other pack's link (modules reference it as manual_link): referenced, not duplicated. Its curated place is first in the certificate/history group."
+    }
+  ],
+  "links": [
+    {
+      "id": "dnsviz",
+      "label": "DNSViz: DNSSEC chain analysis (stored analysis; its 'Update now'/'Analyze' button runs and publishes a fresh analysis)",
+      "template": "https://dnsviz.net/d/{q}/dnssec/",
+      "entity_types": [
+        "domain"
+      ],
+      "category": "other",
+      "host": "dnsviz.net",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0059. Verified 2026-11-26 (200, 'Updated: ...'). Never linked to /analyze/ (P026 cond 10).",
+      "x_group": "dns"
+    },
+    {
+      "id": "whoxy",
+      "label": "Whoxy: current WHOIS and WHOIS history",
+      "template": "https://www.whoxy.com/whois/{q}",
+      "entity_types": [
+        "domain"
+      ],
+      "category": "history",
+      "host": "www.whoxy.com",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0062. /{domain} answers 301 to /whois/{domain}: the final form is linked (verified 2026-11-26, 200).",
+      "x_group": "whois"
+    },
+    {
+      "id": "hostio",
+      "label": "host.io: IP, ASN, links in/out, analytics IDs and related domains",
+      "template": "https://host.io/{q}",
+      "entity_types": [
+        "domain"
+      ],
+      "category": "other",
+      "host": "host.io",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0060. Verified 2026-11-26 (200).",
+      "x_group": "hosting"
+    },
+    {
+      "id": "mxtoolbox_spf",
+      "label": "MXToolbox: SPF record check (MXToolbox queries the domain's DNS live)",
+      "template": "https://mxtoolbox.com/SuperTool.aspx?action=spf%3a{q}&run=toolpage",
+      "entity_types": [
+        "domain"
+      ],
+      "category": "other",
+      "host": "mxtoolbox.com",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": true,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0070. Verified 2026-11-26 (200; results render client-side).",
+      "x_group": "mail"
+    },
+    {
+      "id": "mxtoolbox_dmarc",
+      "label": "MXToolbox: DMARC record check (MXToolbox queries the domain's DNS live)",
+      "template": "https://mxtoolbox.com/SuperTool.aspx?action=dmarc%3a{q}&run=toolpage",
+      "entity_types": [
+        "domain"
+      ],
+      "category": "other",
+      "host": "mxtoolbox.com",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": true,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0070 dmarc: action. Verified 2026-11-26 (200).",
+      "x_group": "mail"
+    },
+    {
+      "id": "mxtoolbox_mx",
+      "label": "MXToolbox: MX lookup (MXToolbox queries the domain's DNS live)",
+      "template": "https://mxtoolbox.com/SuperTool.aspx?action=mx%3a{q}&run=toolpage",
+      "entity_types": [
+        "domain"
+      ],
+      "category": "other",
+      "host": "mxtoolbox.com",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": true,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0070 mx: action. Verified 2026-11-26 (200).",
+      "x_group": "mail"
+    },
+    {
+      "id": "dmarcian",
+      "label": "dmarcian DMARC Inspector (dmarcian queries the domain's DNS live)",
+      "template": "https://dmarcian.com/dmarc-inspector/?domain={q}",
+      "entity_types": [
+        "domain"
+      ],
+      "category": "other",
+      "host": "dmarcian.com",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": true,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0065. Verified 2026-11-26 (200; results render client-side).",
+      "x_group": "mail"
+    },
+    {
+      "id": "completedns",
+      "label": "CompleteDNS: nameserver change history since 2002",
+      "template": "https://completedns.com/dns-history/?domain={q}",
+      "entity_types": [
+        "domain"
+      ],
+      "category": "history",
+      "host": "completedns.com",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0057. Verified 2026-11-26 (200). The history page only: its /dns-history/ajax/ endpoint is never linked or called (P026 cond 8).",
+      "x_group": "dns_history"
+    },
+    {
+      "id": "domaintools_reverse_ip",
+      "label": "DomainTools: reverse IP (domains on the same IP; the full list needs an account)",
+      "template": "https://reverseip.domaintools.com/search/?q={q}",
+      "entity_types": [
+        "domain"
+      ],
+      "category": "other",
+      "host": "reverseip.domaintools.com",
+      "verified": true,
+      "checked_at": "2026-11-25",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "C0067. Verified 2026-11-25 (200); on 2026-11-26 automated clients got 500 'reference error #4311': open it in a browser.",
+      "x_group": "hosting"
+    },
+    {
+      "id": "intodns",
+      "label": "intoDNS: DNS and mail server health report (intoDNS queries the domain's DNS live)",
+      "template": "https://intodns.com/{q}",
+      "entity_types": [
+        "domain"
+      ],
+      "category": "other",
+      "host": "intodns.com",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": true,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0069. Verified 2026-11-26 (200).",
+      "x_group": "dns"
+    },
+    {
+      "id": "verisign_dnssec_debugger",
+      "label": "Verisign Labs DNSSEC Debugger (queries the zone's name servers live)",
+      "template": "https://dnssec-debugger.verisignlabs.com/{q}",
+      "entity_types": [
+        "domain"
+      ],
+      "category": "other",
+      "host": "dnssec-debugger.verisignlabs.com",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": true,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0071. Verified 2026-11-26 (200).",
+      "x_group": "dns"
+    },
+    {
+      "id": "whois_is",
+      "label": "Who.is: WHOIS record",
+      "template": "https://who.is/whois/{q}",
+      "entity_types": [
+        "domain"
+      ],
+      "category": "other",
+      "host": "who.is",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0072. Verified 2026-11-26 (200). DNS records sit on a separate tab: not touches_target.",
+      "x_group": "whois"
+    },
+    {
+      "id": "whois_com",
+      "label": "Whois.com: WHOIS lookup",
+      "template": "https://www.whois.com/whois/{q}",
+      "entity_types": [
+        "domain"
+      ],
+      "category": "other",
+      "host": "www.whois.com",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0073. Verified 2026-11-26 (200; server-rendered WHOIS).",
+      "x_group": "whois"
+    },
+    {
+      "id": "domaintools_whois",
+      "label": "DomainTools: WHOIS (CAPTCHA for automated clients: open it in a browser)",
+      "template": "https://whois.domaintools.com/{q}",
+      "entity_types": [
+        "domain"
+      ],
+      "category": "other",
+      "host": "whois.domaintools.com",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "C0067. Served a CAPTCHA to curl, so never requested here: unverified until a browser check, ranked last in its group (P026 cond 11).",
+      "x_group": "whois"
+    }
+  ],
+  "x_module_links": [
+    {
+      "id": "crtsh_cert_sha256",
+      "label": "crt.sh: certificate by SHA-256 fingerprint (CT log entries)",
+      "template": "https://crt.sh/?q={q}",
+      "entity_types": [
+        "cert_fingerprint"
+      ],
+      "category": "history",
+      "host": "crt.sh",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0058. Verified 2026-11-26: ?q=<SHA-256 of ISRG Root X1> answered the certificate page (crt.sh ID 9314791) after one 502 (crt.sh is unstable). Rendered by pivots_domain_dns for 64-hex values only; SHA-1 and other forms get no link from this pack (cond 9).",
+      "x_group": "certificates",
+      "x_value_re": "^[0-9a-f]{64}$",
+      "x_value_rule": "crt.sh certificate lookup only for 64-hex SHA-256 fingerprints (P026 cond 9)"
+    }
+  ],
+  "x_excluded": [
+    {
+      "id": "completedns_ajax",
+      "host": "completedns.com",
+      "reason": "undocumented AJAX endpoint behind the history page (a paid API exists): never linked or called (P026 cond 8)"
+    },
+    {
+      "id": "dnsviz_analyze",
+      "host": "dnsviz.net",
+      "reason": "/d/<domain>/analyze/ runs and publishes a fresh analysis: never linked (P026 cond 10)"
+    }
+  ]
+}

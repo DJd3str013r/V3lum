@@ -1,0 +1,46 @@
+{
+ "info": {
+  "name": "example-pkg",
+  "version": "1.2.0",
+  "summary": "Example package",
+  "author": "Example Dev",
+  "author_email": "Example Dev <dev@example.com>, Other Author <other@example.org>",
+  "maintainer": null,
+  "maintainer_email": "co-maintainer-1@example.org",
+  "home_page": null,
+  "project_url": "https://pypi.org/project/example-pkg/",
+  "project_urls": {
+   "Source": "https://github.com/example-dev/example-pkg",
+   "Homepage": "https://example.com/example-pkg"
+  }
+ },
+ "ownership": {
+  "organization": null,
+  "roles": [
+   {
+    "role": "Owner",
+    "user": "example-dev"
+   },
+   {
+    "role": "Maintainer",
+    "user": "co-maintainer-1"
+   }
+  ]
+ },
+ "releases": {
+  "1.0.0": [
+   {
+    "packagetype": "sdist",
+    "upload_time_iso_8601": "2022-01-10T10:00:00.000000Z"
+   }
+  ],
+  "1.2.0": [
+   {
+    "packagetype": "bdist_wheel",
+    "upload_time_iso_8601": "2024-05-05T10:00:00.000000Z"
+   }
+  ],
+  "0.0.1": []
+ },
+ "last_serial": 1
+}

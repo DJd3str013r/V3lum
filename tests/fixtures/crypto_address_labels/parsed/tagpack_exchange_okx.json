@@ -1,0 +1,34 @@
+{
+ "ok": true,
+ "doc": {
+  "title": "OKX reserve wallets",
+  "creator": "GraphSense Core Team",
+  "confidence": "service_data",
+  "category": "exchange",
+  "label": "okx reserves wallets",
+  "source": "https://twitter.com/okx/status/1590812545346330624",
+  "lastmod": "2022-11-15",
+  "is_cluster_definer": true,
+  "actor": "okex",
+  "tags": [
+   {
+    "address": "13jTtHxBPFwZkaCdm6BwJMMJkqvTpBZccw",
+    "currency": "BTC"
+   },
+   {
+    "address": "1LnoZawVFFQihU8d8ntxLMpYheZUfyeVAK",
+    "currency": "BTC"
+   },
+   {
+    "address": "0x5041ed759dd4afc3a72b8192c143f72f4724081a",
+    "currency": "ETH",
+    "label": "okx ERC20 reserves"
+   },
+   {
+    "address": "0xcba38020cd7b6f51df6afaf507685add148f6ab6",
+    "currency": "ETH",
+    "label": "okx ERC20 reserves"
+   }
+  ]
+ }
+}

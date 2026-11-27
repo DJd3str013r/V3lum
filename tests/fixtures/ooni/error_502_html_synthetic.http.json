@@ -1,0 +1,16 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.ooni.io/api/v1/aggregation?domain=example.com&probe_cc=BR"
+ },
+ "response": {
+  "status": 502,
+  "headers": {
+   "content-type": "text/html",
+   "server": "nginx/1.18.0"
+  },
+  "body": "<html><head><title>502 Bad Gateway</title></head><body><center><h1>502 Bad Gateway</h1></center><hr><center>nginx/1.18.0</center></body></html>"
+ },
+ "transport_error": null,
+ "elapsed_s": null
+}

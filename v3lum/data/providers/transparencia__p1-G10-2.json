@@ -1,0 +1,98 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "transparencia",
+  "hosts": [
+    "dadosabertos-download.cgu.gov.br"
+  ],
+  "sources": {
+    "cgu_sanctions_bulk_ceis": {
+      "title": "CGU bulk file CEIS (daily zip /download-de-dados/ceis/{YYYYMMDD})",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://portaldatransparencia.gov.br/download-de-dados/ceis",
+        "quote": "Terms classes (definitions for every chair file and registry entry): 'open' = free use, internal business use included (public domain, CC0, CC BY, open government data, and permissive or copyleft licences whose obligations V3LUM meets by runtime download and attribution, A6)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "cgu",
+      "sanitizer": null,
+      "dataset": "cgu_sanctions_bulk.ceis",
+      "notes": "Quote: binding A1 definition of 'open' (open government data, research C0548). Daily zip with one ';' cp1252 CSV member {date}_CEIS.csv (about 23,600 rows, 33 MB); the portal answers 302 to dadosabertos-download.cgu.gov.br for any date and S3 answers 403 AccessDenied for a file not published yet (prep H2). Natural-person rows publish full CPFs: they are masked to ***.456.789-** at ingestion and never stored in clear (P240 cond 6, AR24). Fetched only by the dataset manager, never during a scan (P240 cond 1)."
+    },
+    "cgu_sanctions_bulk_cnep": {
+      "title": "CGU bulk file CNEP (daily zip /download-de-dados/cnep/{YYYYMMDD})",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://portaldatransparencia.gov.br/download-de-dados/cnep",
+        "quote": "Terms classes (definitions for every chair file and registry entry): 'open' = free use, internal business use included (public domain, CC0, CC BY, open government data, and permissive or copyleft licences whose obligations V3LUM meets by runtime download and attribution, A6)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "cgu",
+      "sanitizer": null,
+      "dataset": "cgu_sanctions_bulk.cnep",
+      "notes": "Daily zip {date}_CNEP.csv (about 1,900 rows; most fines have no end date and are in force by absence). Same handling as CEIS."
+    },
+    "cgu_sanctions_bulk_cepim": {
+      "title": "CGU bulk file CEPIM (daily zip /download-de-dados/cepim/{YYYYMMDD})",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://portaldatransparencia.gov.br/download-de-dados/cepim",
+        "quote": "Terms classes (definitions for every chair file and registry entry): 'open' = free use, internal business use included (public domain, CC0, CC BY, open government data, and permissive or copyleft licences whose obligations V3LUM meets by runtime download and attribution, A6)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "cgu",
+      "sanitizer": null,
+      "dataset": "cgu_sanctions_bulk.cepim",
+      "notes": "Daily zip {date}_CEPIM.csv (non-profit entities impeded from agreements; no dates and no sanction id: in force while listed, the agreement number is the dedup id). Published the day after its file date (prep: CEPIM lags a day)."
+    },
+    "cgu_sanctions_bulk_leniencia": {
+      "title": "CGU bulk file Acordos de Leniencia (daily zip /download-de-dados/acordos-leniencia/{YYYYMMDD})",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://portaldatransparencia.gov.br/download-de-dados/acordos-leniencia",
+        "quote": "Terms classes (definitions for every chair file and registry entry): 'open' = free use, internal business use included (public domain, CC0, CC BY, open government data, and permissive or copyleft licences whose obligations V3LUM meets by runtime download and attribution, A6)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "cgu",
+      "sanitizer": null,
+      "dataset": "cgu_sanctions_bulk.acordos_leniencia",
+      "notes": "Daily zip with TWO members {date}_Acordos.csv and {date}_Efeitos.csv (prep H3): the expected member set is checked exactly. A leniency agreement is not a sanction by itself: 'Em Execucao' is shown as in force, 'Cumprido' as INFO (prep H6, to confirm by the council)."
+    },
+    "cgu_sanctions_bulk_pep": {
+      "title": "CGU bulk file PEP (monthly zip /download-de-dados/pep/{YYYYMM})",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://portaldatransparencia.gov.br/download-de-dados/pep",
+        "quote": "Terms classes (definitions for every chair file and registry entry): 'open' = free use, internal business use included (public domain, CC0, CC BY, open government data, and permissive or copyleft licences whose obligations V3LUM meets by runtime download and attribution, A6)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "cgu",
+      "sanitizer": null,
+      "dataset": "cgu_sanctions_bulk.pep",
+      "notes": "Monthly zip {YYYYMM}_PEP.csv (natural persons only, CPF published masked ***.999.999-**), published in the middle of the next month (prep H5): the walk-back steps by month and staleness counts from the publication date. Matches are INFO 'PEP (possible match)' context, only for typed persons or QSA partners in a purpose-recorded case (P240 cond 5, 7)."
+    }
+  },
+  "error_markers": [
+    {
+      "id": "cgu_sanctions_bulk_not_published",
+      "statuses": [403],
+      "json_path": null,
+      "equals": null,
+      "regex": "<Code>AccessDenied</Code>",
+      "final_url_regex": "^https://dadosabertos-download\\.cgu\\.gov\\.br/",
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "CGU open-data downloads: file not published yet (S3 AccessDenied)"
+    }
+  ],
+  "notes": "Extension by batch p1-G10-2 (P240): the portal's /download-de-dados redirects (302) to the S3 host dadosabertos-download.cgu.gov.br, a single-batch host added here, never as a second CGU provider (transparencia seed notes). One source per bulk list so coverage reads 'not screened against <list> (<date>)' per list (P240 cond 8). The marker turns S3's 403 AccessDenied for a file that is not published yet into a classified 'not published' error, which the walk-back treats like a 404 (P240 cond 1, prep H2)."
+}

@@ -1,0 +1,46 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "$comment": "No endoflife.date copy downloaded yet (v3lum data update): the rule stays silent, it never downloads.",
+ "now": "2026-11-26T12:00:00Z",
+ "options": {
+  "mode": "passive",
+  "tlp": "amber",
+  "depth": 1
+ },
+ "org_profile": {
+  "name": "Corp",
+  "domains": [
+   {
+    "name": "corp.example",
+    "verification": "txt_verified"
+   }
+  ]
+ },
+ "meta": {},
+ "nodes": [
+  {
+   "key": "domain:corp.example",
+   "depth": 0,
+   "seed": true,
+   "noise": false,
+   "noise_kind": "",
+   "tlp": "amber",
+   "path_confidence": 1.0,
+   "tags": [
+    "own_asset"
+   ],
+   "attributes": {
+    "server": [
+     {
+      "value": "nginx/1.24.0",
+      "source": "hostio"
+     }
+    ]
+   },
+   "findings": [],
+   "ownership": "own_asset"
+  }
+ ],
+ "edges": [],
+ "results": []
+}

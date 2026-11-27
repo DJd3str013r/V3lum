@@ -1,0 +1,6 @@
+{
+ "error": {
+  "name": "serverError",
+  "message": "Something went wrong while processing your request."
+ }
+}

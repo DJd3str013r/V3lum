@@ -1,0 +1,18 @@
+{
+ "request": {
+  "method": "POST",
+  "url": "https://mb-api.abuse.ch/api/v1/",
+  "form": {
+   "query": "get_info",
+   "hash": "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f"
+  }
+ },
+ "response": {
+  "status": 401,
+  "headers": {
+   "content-type": "application/octet-stream"
+  },
+  "body": "{\"error\": \"Unauthorized\"}"
+ },
+ "note": "no-key answer of the MalwareBazaar API (research 2026-11-25). The v2 export answer to a missing/invalid Auth-Key was NOT observed (no key; keyed endpoint not called): treat 401/403 and this body as needs_key"
+}

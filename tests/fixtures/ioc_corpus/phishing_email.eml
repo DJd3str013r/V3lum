@@ -1,0 +1,19 @@
+Received: from mail.bad-sender.example.net (mail.bad-sender.example.net [192.0.2.45])
+	by mx.acme.example.com with ESMTPS id 4XyZ1234
+Return-Path: <billing@bad-sender.example.net>
+From: "Acme Billing" <billing@bad-sender.example.net>
+To: "Ana Victim" <ana.victim@acme.example.com>
+Cc: finance-team@acme.example.com
+Subject: Fatura em atraso - acao necessaria
+Date: Thu, 26 Nov 2026 09:14:02 -0300
+Message-ID: <20261126091402.7f3a@bad-sender.example.net>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Prezada cliente, sua fatura vence hoje.</p>
+<p><a href="https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fpagamento-acme.example.org%2Ffatura%3Fid%3D88&amp;data=05%7C01">Ver fatura</a></p>
+<p>Se o link nao abrir, copie: aHR0cHM6Ly9iYWNrdXAtcGF5LmV4YW1wbGUuY29tL2xvZ2lu</p>
+<p>Suporte: <a href="https://suporte&#46;acme-billing&#46;example&#46;net/chat">chat</a></p>
+<img src="https://track.mailer.example.net/open.gif" width="1" height="1">
+</body></html>

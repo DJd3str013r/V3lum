@@ -1,0 +1,21 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://dadosabertos.bndes.gov.br/api/3/action/datastore_search?resource_id=6f56b78c-510f-44b6-8274-78a5b7e931f4&filters=%7B%22cnpj%22%3A%2200.000.000%2F0001-91%22%7D&limit=20",
+  "headers": {}
+ },
+ "response": {
+  "status": 403,
+  "headers": {
+   "server": "Apache",
+   "content-length": "199",
+   "content-type": "text/html; charset=iso-8859-1"
+  },
+  "body": "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>403 Forbidden</title>\n</head><body>\n<h1>Forbidden</h1>\n<p>You don't have permission to access this resource.</p>\n</body></html>\n"
+ },
+ "transport_error": null,
+ "elapsed_s": 1.490874,
+ "observed_at": "2026-11-26T10:46:56Z",
+ "origin": "live",
+ "note": "filters={JSON} on datastore_search -> Apache 403 HTML (front WAF; the CKAN app answers via nginx)"
+}

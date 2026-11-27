@@ -1,0 +1,19 @@
+{
+ "value": "example.com",
+ "type": "domain",
+ "listed_now": false,
+ "listed_ever": false,
+ "matched_value": null,
+ "first_seen": null,
+ "last_seen": null,
+ "block_reason": null,
+ "threat_type": null,
+ "registrar": null,
+ "note": "Not in the current or historical compromised feed.",
+ "lists": {
+  "page": "https://netapi.com/compromised-urls/",
+  "current": "https://netapi.com/api2/?method=compromised&dataset_type=url",
+  "all_time": "https://netapi.com/api2/?method=compromised&dataset_type=url-all"
+ },
+ "source": "NetAPI compromised feed, updated daily (CC BY 4.0)"
+}

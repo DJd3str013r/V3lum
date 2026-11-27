@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "dnsviz",
+  "name": "DNSViz DNSSEC analysis pages",
+  "operator": "DNSViz project (Sandia National Laboratories, Verisign Labs, Casey Deccio)",
+  "hosts": [
+    "dnsviz.net"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Academic/research DNSSEC tool with a long public track record; P026 cond 5: 'trusted - DNSViz (Sandia/Verisign Labs)'. The footer credits Sandia (2010-14), Verisign (2014-16) and Casey Deccio (2016-23): the registry reviewer confirms the tier.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Shows the last stored DNSSEC analysis; manual context only."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "pivot_pages": {
+      "title": "DNSViz /d/{domain}/dnssec/ (manual pivot link)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://dnsviz.net/",
+        "quote": "The pack is offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "dnsviz",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (cond 1 of the proposal). Research C0059 (verified 2026-11-26, 200, 'Updated: ...' stored analysis). The page's 'Update now'/'Analyze' button (GET /d/<domain>/analyze/) runs and publishes a fresh analysis: the link label warns about it (P026 cond 10) and no template points to /analyze/. Used by pivots_domain_dns (pack domain_dns.json)."
+    }
+  },
+  "notes": "Manual pivot links only (batch p2-G14-1): V3LUM never fetches them (P311)."
+}

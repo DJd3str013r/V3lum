@@ -1,0 +1,13 @@
+{
+ "schema": "v3lum.notice/1",
+ "name": "lol_datasets_lolrmm",
+ "source_url": "https://github.com/magicsword-io/LOLRMM",
+ "version": "runtime download of https://lolrmm.io/api/rmm_tools.json (weekly; 358 tools on 2026-11-26)",
+ "sha256": "",
+ "licence": "Apache-2.0",
+ "attribution": "LOLRMM by magicsword-io and contributors, https://lolrmm.io/, licensed under the Apache License, Version 2.0.",
+ "bundled": false,
+ "files": [
+  "v3lum/modules/malware_hash/lol_datasets.py"
+ ]
+}

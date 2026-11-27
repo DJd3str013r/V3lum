@@ -1,0 +1,25 @@
+{
+ "query": "does-not-exist-0000.com.br",
+ "domain": "does-not-exist-0000.com.br",
+ "domainUnicode": null,
+ "id": null,
+ "tld": "br",
+ "isRegistered": false,
+ "registrar": null,
+ "status": [],
+ "nameservers": [],
+ "dnssec": null,
+ "dates": {
+  "created": null,
+  "updated": null,
+  "expires": null
+ },
+ "contacts": null,
+ "meta": {
+  "source": "rdap",
+  "server": "https://rdap.registro.br",
+  "referral": null,
+  "fetchedAt": "2026-11-26T06:30:00Z",
+  "cached": false
+ }
+}

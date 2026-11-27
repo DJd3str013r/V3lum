@@ -1,0 +1,24 @@
+{
+ "_meta": {
+  "module": "bluesky",
+  "case": "rate_limited",
+  "source": "C0231 public.api.bsky.app",
+  "request": {
+   "method": "GET",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=bsky.app"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "DOC-SHAPED",
+  "note": "AT Protocol XRPC error name and RateLimit-* headers from the atproto spec; no rate-limit header was seen on 200/400 answers from this egress"
+ },
+ "status": 429,
+ "headers": {
+  "content-type": "application/json; charset=utf-8",
+  "ratelimit-limit": "3000",
+  "ratelimit-remaining": "0",
+  "ratelimit-reset": "1795676400",
+  "ratelimit-policy": "3000;w=300",
+  "retry-after": "120"
+ },
+ "body": "{\"error\":\"RateLimitExceeded\",\"message\":\"Rate Limit Exceeded\"}"
+}

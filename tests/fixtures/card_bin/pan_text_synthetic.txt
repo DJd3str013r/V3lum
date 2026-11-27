@@ -1,0 +1,5 @@
+# synthetic test text (P318-FC1) - public test card numbers only
+Pedido 2026-11-26: cartão 4111 1111 1111 1111 validade 12/30; reserva 5555-5555-5555-4444.
+Amex de teste 378282246310005. Elo de teste 6362970000457013.
+Não são cartões: CNPJ 00.000.000/0001-91, telefone +55 11 5555-0123, protocolo 1234567890123 (Luhn inválido),
+valor 1.234.567.890.123,45.

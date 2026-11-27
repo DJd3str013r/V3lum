@@ -1,0 +1,1 @@
+{"token":{"name":"Example Honeypot Token","symbol":"EXHP","decimals":18,"address":"0x2222222222222222222222222222222222222222","totalHolders":812},"summary":{"risk":"unknown","riskLevel":null,"flags":[]},"simulationSuccess":false,"simulationError":"execution reverted","flags":[],"chain":{"id":"1","name":"Ethereum","shortName":"eth","currency":"ETH"}}

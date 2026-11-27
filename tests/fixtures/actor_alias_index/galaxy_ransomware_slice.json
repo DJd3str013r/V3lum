@@ -1,0 +1,46 @@
+{
+ "category": "tool",
+ "name": "Ransomware",
+ "source": "Various",
+ "type": "ransomware",
+ "uuid": "10cf658b-5d32-4c4b-bb32-61760a640372",
+ "version": 174,
+ "description": "Ransomware galaxy based on different sources and maintained by the MISP Project.",
+ "values": [
+  {
+   "value": "Conti",
+   "uuid": "201eff54-d41e-4f70-916c-5dfb9301730a",
+   "meta": {
+    "country": "RU",
+    "attribution-confidence": "100"
+   },
+   "related": [
+    {
+     "dest-uuid": "9db5f425-fe49-4137-8598-840e7290ed0f",
+     "type": "parent-of",
+     "tags": [
+      "estimative-language:likelihood-probability=\"likely\""
+     ]
+    }
+   ]
+  },
+  {
+   "value": "BlackBasta",
+   "uuid": "9db5f425-fe49-4137-8598-840e7290ed0f",
+   "meta": {
+    "refs": [
+     "https://malpedia.caad.fkie.fraunhofer.de/details/win.blackbasta"
+    ]
+   },
+   "related": [
+    {
+     "dest-uuid": "201eff54-d41e-4f70-916c-5dfb9301730a",
+     "type": "successor-of",
+     "tags": [
+      "estimative-language:likelihood-probability=\"likely\""
+     ]
+    }
+   ]
+  }
+ ]
+}

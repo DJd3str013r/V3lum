@@ -1,0 +1,93 @@
+{
+ "qid": null,
+ "iid": 900001,
+ "indicator": "203.0.113.50",
+ "type": "ip",
+ "risk": "high",
+ "risk_recommended": "high",
+ "manualrisk": 0,
+ "retired": null,
+ "stamp_added": "2026-10-02 11:00:00",
+ "stamp_updated": "2026-11-24 09:30:00",
+ "stamp_seen": "2026-11-24 09:30:00",
+ "stamp_probed": "2026-11-20 06:00:00",
+ "stamp_retired": null,
+ "recent": 1,
+ "submissions": 3,
+ "umbrella_rank": 0,
+ "umbrella_domain": "",
+ "riskfactors": [
+  {
+   "rfid": 60,
+   "description": "found in threat feeds",
+   "risk": "medium"
+  },
+  {
+   "rfid": 50,
+   "description": "hosted on common ISP",
+   "risk": "none"
+  }
+ ],
+ "redirects": {
+  "from": [],
+  "to": []
+ },
+ "threats": [
+  {
+   "tid": 900002,
+   "name": "Cobalt Strike",
+   "category": "malware",
+   "risk": "high",
+   "stamp_linked": "2026-11-20 06:00:00"
+  },
+  {
+   "tid": 900003,
+   "name": "Example Group",
+   "category": "group",
+   "risk": "high",
+   "stamp_linked": "2026-11-21 06:00:00"
+  },
+  {
+   "tid": 39,
+   "name": "SSH Brute Force",
+   "category": "general",
+   "risk": "low",
+   "stamp_linked": "2026-11-21 06:00:00"
+  }
+ ],
+ "feeds": [
+  {
+   "fid": 900004,
+   "name": "Feodo Tracker",
+   "category": "malware",
+   "organization": "abuse.ch",
+   "pricing": "free",
+   "stamp_linked": "2026-11-20 06:00:00"
+  },
+  {
+   "fid": 4,
+   "name": "C&C IPs",
+   "category": "malware",
+   "organization": "Bambenek Consulting",
+   "pricing": null,
+   "stamp_linked": "2026-11-21 06:00:00"
+  }
+ ],
+ "comments": [],
+ "attributes": {
+  "port": [
+   "443",
+   "8080"
+  ],
+  "protocol": [
+   "HTTPS"
+  ],
+  "technology": []
+ },
+ "properties": {
+  "geo": {
+   "countrycode": "BR",
+   "asn": "AS64496"
+  }
+ }
+}

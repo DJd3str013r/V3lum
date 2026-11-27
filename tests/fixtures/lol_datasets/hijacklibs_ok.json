@@ -1,0 +1,117 @@
+[
+ {
+  "Name": "sqlite.dll",
+  "Created": "2024-04-15",
+  "Vendor": "Adobe",
+  "CVE": null,
+  "ExpectedLocations": [
+   "%PROGRAMFILES%\\Adobe\\Acrobat Reader DC\\Reader",
+   "%PROGRAMFILES%\\Adobe\\Acrobat DC\\Acrobat"
+  ],
+  "url": "https://hijacklibs.net/entries/3rd_party/adobe/sqlite.html",
+  "VulnerableExecutables": [
+   {
+    "Path": "%PROGRAMFILES%\\Adobe\\Acrobat Reader DC\\Reader\\AcroBroker.exe",
+    "Type": "Sideloading",
+    "SHA256": [
+     "1f64f01063b26bf05d4b076d54816e54dacd08b7fd6e5bc9cc5d11a548ff2215"
+    ]
+   }
+  ]
+ },
+ {
+  "Name": "sqlite.dll",
+  "Created": "2024-05-06",
+  "Vendor": "SoftPerfect",
+  "CVE": null,
+  "ExpectedLocations": [
+   "%PROGRAMFILES%\\NetWorx"
+  ],
+  "url": "https://hijacklibs.net/entries/3rd_party/softperfect/sqlite.html",
+  "VulnerableExecutables": [
+   {
+    "Path": "%PROGRAMFILES%\\NetWorx\\networx.exe",
+    "Type": "Sideloading",
+    "SHA256": [
+     "29345d9c6ff0106c9032b15e2c88f17bc8972ed843d1b5c044cf17d00f1d45c5"
+    ]
+   }
+  ]
+ },
+ {
+  "Name": "dal_keepalives.dll",
+  "Created": "2025-02-15",
+  "Vendor": "Audinate",
+  "CVE": "CVE-2022-23748",
+  "ExpectedLocations": [
+   "%PROGRAMFILES%\\audinate\\shared files"
+  ],
+  "url": "https://hijacklibs.net/entries/3rd_party/audinate/dal_keepalives.html",
+  "VulnerableExecutables": [
+   {
+    "Path": "%PROGRAMFILES%\\audinate\\shared files\\mDnsResponder.exe",
+    "Type": "Sideloading",
+    "SHA256": [
+     "8360c2391f373c9de46c5b37fef952c2309be34e62127777ad7358ddb1d437ff"
+    ]
+   }
+  ]
+ },
+ {
+  "Name": "providers.dll",
+  "Created": "2022-08-01",
+  "Vendor": "npm",
+  "CVE": "CVE-2022-32223",
+  "ExpectedLocations": null,
+  "url": "https://hijacklibs.net/entries/3rd_party/npm/providers.html",
+  "VulnerableExecutables": [
+   {
+    "Path": "%PROGRAMFILES%\\nodejs\\node.exe",
+    "Type": "Phantom",
+    "Condition": "Node.js versions earlier than 16.16.0 (LTS) and 14.20.0 on Windows"
+   }
+  ]
+ },
+ {
+  "Name": "bcrypt.dll",
+  "Created": "2022-05-21",
+  "Vendor": "Microsoft",
+  "CVE": null,
+  "ExpectedLocations": [
+   "%SYSTEM32%",
+   "%SYSWOW64%"
+  ],
+  "url": "https://hijacklibs.net/entries/microsoft/built-in/bcrypt.html",
+  "VulnerableExecutables": [
+   {
+    "Path": "%SYSTEM32%\\shellappruntime.exe",
+    "Type": "Environment Variable",
+    "Variable": "SYSTEMROOT"
+   },
+   {
+    "Path": "%SYSTEM32%\\wordpad.exe",
+    "Type": "Environment Variable",
+    "Variable": "SYSTEMROOT"
+   }
+  ]
+ },
+ {
+  "Name": "kerneltracecontrol.dll",
+  "Created": "2026-09-08",
+  "Vendor": "ABBYY",
+  "CVE": null,
+  "ExpectedLocations": [
+   "%PROGRAMFILES%\\ABBYY FineReader"
+  ],
+  "url": "https://hijacklibs.net/entries/3rd_party/abbyy/kerneltracecontrol.html",
+  "VulnerableExecutables": [
+   {
+    "Path": "%PROGRAMFILES%\\ABBYY FineReader\\AbbyySti.exe",
+    "Type": "Sideloading",
+    "SHA256": [
+     "916f8e392c49684ffd5ed97525c52682a6d19f6eefbe02dc4a10e01de25976ec"
+    ]
+   }
+  ]
+ }
+]

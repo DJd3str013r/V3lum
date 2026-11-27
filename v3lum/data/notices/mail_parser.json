@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "mail_parser",
+  "source_url": "https://github.com/SpamScope/mail-parser",
+  "version": "commit 2e5ec17ee986e2fb53ab83e76e9d4d3bbf9a2dcc (2026-11-25): src/mailparser/const.py (REGXIP, REGXIP6, IPv6-tag blanking, SendGrid date pattern), src/mailparser/received.py (split_received lexical scanner, helo_argument_spans), src/mailparser/core.py (_sender_ip_candidates)",
+  "sha256": "",
+  "licence": "Apache-2.0",
+  "attribution": "Received-header tokenization adapted from mail-parser (https://github.com/SpamScope/mail-parser). Copyright 2016 Fedele Mantuano (https://twitter.com/fedelemantuano). Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0. Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. V3LUM modifications: the stamp date is split on the LAST top-level ';' (P085), lexical problems are returned instead of raised, IPv4 matches get digit boundaries and every candidate is validated with ipaddress.",
+  "bundled": true,
+  "files": [
+    "v3lum/modules/email/email_header_analyzer.py"
+  ]
+}

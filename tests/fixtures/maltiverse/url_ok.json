@@ -1,0 +1,80 @@
+{
+ "url": "http://example.com",
+ "urlchecksum": "f0e6a6a97042a4f1f1c87f5f7d44315b2d852c2df5c7991cc66241bf7072d1c4",
+ "hostname": "example.com",
+ "domain": "example.com",
+ "tld": "com",
+ "type": "url",
+ "classification": "malicious",
+ "score": 10.0,
+ "creation_time": "2026-02-11 19:03:51",
+ "modification_time": "2026-11-17 13:57:04",
+ "last_online_time": "2026-11-17 13:57:04",
+ "is_alive": false,
+ "is_cnc": false,
+ "is_distributing_malware": false,
+ "is_iot_threat": false,
+ "is_phishing": false,
+ "tag": [
+  "discovery",
+  "persistence",
+  "ransomware",
+  "bootkit",
+  "defense_evasion",
+  "adware"
+ ],
+ "blacklist": [
+  {
+   "source": "Triage",
+   "description": "Redline",
+   "first_seen": "2026-03-08 03:24:14",
+   "last_seen": "2026-03-08 03:24:14",
+   "count": 1,
+   "labels": [
+    "malicious-activity"
+   ],
+   "ref": [
+    21745
+   ]
+  },
+  {
+   "source": "Triage",
+   "description": "Malicious URL",
+   "first_seen": "2026-02-11 19:03:51",
+   "last_seen": "2026-03-31 00:27:18",
+   "count": 12,
+   "labels": [
+    "malicious-activity"
+   ],
+   "ref": [
+    21745
+   ]
+  },
+  {
+   "source": "Triage",
+   "description": "Mintsloader",
+   "first_seen": "2026-09-16 14:25:58",
+   "last_seen": "2026-11-17 13:03:58",
+   "count": 8,
+   "labels": [
+    "malicious-activity"
+   ],
+   "ref": [
+    21745
+   ]
+  },
+  {
+   "source": "Triage",
+   "description": "Wannacry",
+   "first_seen": "2026-10-28 19:44:02",
+   "last_seen": "2026-10-28 19:44:02",
+   "count": 1,
+   "labels": [
+    "malicious-activity"
+   ],
+   "ref": [
+    21745
+   ]
+  }
+ ]
+}

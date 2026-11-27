@@ -1,0 +1,11 @@
+{
+ "request": {"method": "GET", "url": "https://api.example.com/v1/status", "headers": {"Origin": "https://r4nd0m.v3lum-probe.invalid"}},
+ "response": {
+  "status": 200,
+  "headers": {"content-type": "application/json"},
+  "body": "{\"status\":\"ok\"}"
+ },
+ "class": "synthetic",
+ "origin": "synthetic (no CORS)",
+ "notes": "No ACAO header => not observed (none). Not a finding."
+}

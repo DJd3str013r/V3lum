@@ -1,0 +1,181 @@
+{
+ "type": "bundle",
+ "id": "bundle--00000000-0000-4000-8000-000000000000",
+ "objects": [
+  {
+   "spec_version": "2.1",
+   "created": "2026-09-01T12:00:00.000Z",
+   "modified": "2026-09-01T12:00:00.000Z",
+   "type": "identity",
+   "id": "identity--00000000-0000-4000-8000-000000000001",
+   "name": "Example CERT (synthetic)",
+   "identity_class": "organization"
+  },
+  {
+   "spec_version": "2.1",
+   "created": "2026-09-01T12:00:00.000Z",
+   "modified": "2026-09-01T12:00:00.000Z",
+   "type": "report",
+   "id": "report--00000000-0000-4000-8000-000000000099",
+   "name": "AA99-001A #StopRansomware: Examplelocker Ransomware",
+   "published": "2026-09-01T12:00:00Z",
+   "report_types": [
+    "threat-report"
+   ],
+   "object_refs": [
+    "malware--00000000-0000-4000-8000-000000000002",
+    "tool--00000000-0000-4000-8000-000000000003",
+    "attack-pattern--00000000-0000-4000-8000-000000000004",
+    "attack-pattern--00000000-0000-4000-8000-000000000005",
+    "vulnerability--00000000-0000-4000-8000-000000000006",
+    "indicator--00000000-0000-4000-8000-000000000010",
+    "indicator--00000000-0000-4000-8000-000000000011",
+    "indicator--00000000-0000-4000-8000-000000000012",
+    "indicator--00000000-0000-4000-8000-000000000013",
+    "indicator--00000000-0000-4000-8000-000000000014",
+    "indicator--00000000-0000-4000-8000-000000000015"
+   ]
+  },
+  {
+   "spec_version": "2.1",
+   "created": "2026-09-01T12:00:00.000Z",
+   "modified": "2026-09-01T12:00:00.000Z",
+   "type": "malware",
+   "id": "malware--00000000-0000-4000-8000-000000000002",
+   "name": "Examplelocker",
+   "is_family": true,
+   "malware_types": [
+    "ransomware"
+   ]
+  },
+  {
+   "spec_version": "2.1",
+   "created": "2026-09-01T12:00:00.000Z",
+   "modified": "2026-09-01T12:00:00.000Z",
+   "type": "tool",
+   "id": "tool--00000000-0000-4000-8000-000000000003",
+   "name": "PsExec"
+  },
+  {
+   "spec_version": "2.1",
+   "created": "2026-09-01T12:00:00.000Z",
+   "modified": "2026-09-01T12:00:00.000Z",
+   "type": "attack-pattern",
+   "id": "attack-pattern--00000000-0000-4000-8000-000000000004",
+   "name": "Data Encrypted for Impact",
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "T1486",
+     "url": "https://attack.mitre.org/techniques/T1486/"
+    }
+   ]
+  },
+  {
+   "spec_version": "2.1",
+   "created": "2026-09-01T12:00:00.000Z",
+   "modified": "2026-09-01T12:00:00.000Z",
+   "type": "attack-pattern",
+   "id": "attack-pattern--00000000-0000-4000-8000-000000000005",
+   "name": "Remote Access Tools",
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "T1219"
+    }
+   ]
+  },
+  {
+   "spec_version": "2.1",
+   "created": "2026-09-01T12:00:00.000Z",
+   "modified": "2026-09-01T12:00:00.000Z",
+   "type": "vulnerability",
+   "id": "vulnerability--00000000-0000-4000-8000-000000000006",
+   "name": "CVE-2023-4966"
+  },
+  {
+   "spec_version": "2.1",
+   "created": "2026-09-01T12:00:00.000Z",
+   "modified": "2026-09-01T12:00:00.000Z",
+   "type": "indicator",
+   "id": "indicator--00000000-0000-4000-8000-000000000010",
+   "name": "Examplelocker encryptor (EICAR test-file hash used as a stand-in)",
+   "pattern": "[file:hashes.'SHA-256' = '275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f']",
+   "pattern_type": "stix",
+   "valid_from": "2026-09-01T12:00:00Z",
+   "indicator_types": [
+    "malicious-activity"
+   ]
+  },
+  {
+   "spec_version": "2.1",
+   "created": "2026-09-01T12:00:00.000Z",
+   "modified": "2026-09-01T12:00:00.000Z",
+   "type": "indicator",
+   "id": "indicator--00000000-0000-4000-8000-000000000011",
+   "name": "Examplelocker C2 server",
+   "pattern": "[ipv4-addr:value = '203.0.113.10']",
+   "pattern_type": "stix",
+   "valid_from": "2026-09-01T12:00:00Z",
+   "indicator_types": [
+    "malicious-activity"
+   ]
+  },
+  {
+   "spec_version": "2.1",
+   "created": "2026-09-01T12:00:00.000Z",
+   "modified": "2026-09-01T12:00:00.000Z",
+   "type": "indicator",
+   "id": "indicator--00000000-0000-4000-8000-000000000012",
+   "name": "Exfiltration domain",
+   "pattern": "[domain-name:value = 'exfil.example.net']",
+   "pattern_type": "stix",
+   "valid_from": "2026-09-01T12:00:00Z",
+   "indicator_types": [
+    "malicious-activity"
+   ]
+  },
+  {
+   "spec_version": "2.1",
+   "created": "2026-09-01T12:00:00.000Z",
+   "modified": "2026-09-01T12:00:00.000Z",
+   "type": "indicator",
+   "id": "indicator--00000000-0000-4000-8000-000000000013",
+   "name": "PsExec (legitimate Sysinternals tool used for lateral movement)",
+   "pattern": "[file:name = 'PsExec.exe']",
+   "pattern_type": "stix",
+   "valid_from": "2026-09-01T12:00:00Z",
+   "indicator_types": [
+    "malicious-activity"
+   ]
+  },
+  {
+   "spec_version": "2.1",
+   "created": "2026-09-01T12:00:00.000Z",
+   "modified": "2026-09-01T12:00:00.000Z",
+   "type": "indicator",
+   "id": "indicator--00000000-0000-4000-8000-000000000014",
+   "name": "DNS resolver queried by the encryptor",
+   "pattern": "[ipv4-addr:value = '8.8.8.8']",
+   "pattern_type": "stix",
+   "valid_from": "2026-09-01T12:00:00Z",
+   "indicator_types": [
+    "malicious-activity"
+   ]
+  },
+  {
+   "spec_version": "2.1",
+   "created": "2026-09-01T12:00:00.000Z",
+   "modified": "2026-09-01T12:00:00.000Z",
+   "type": "indicator",
+   "id": "indicator--00000000-0000-4000-8000-000000000015",
+   "name": "Empty file dropped as a marker",
+   "pattern": "[file:hashes.'SHA-256' = 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855']",
+   "pattern_type": "stix",
+   "valid_from": "2026-09-01T12:00:00Z",
+   "indicator_types": [
+    "malicious-activity"
+   ]
+  }
+ ]
+}

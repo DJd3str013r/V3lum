@@ -1,0 +1,25 @@
+{
+ "_provenance": {
+  "synthetic": true
+ },
+ "request": {
+  "method": "GET",
+  "host": "app.example.com",
+  "path": "/admin/"
+ },
+ "response": {
+  "status": 200,
+  "headers": {
+   "Content-Type": "text/html; charset=utf-8"
+  },
+  "body": "<!DOCTYPE html><html><head><title>Log in | Django site admin</title></head><body><form method=\"post\"><input type=\"password\" name=\"password\"></form></body></html>"
+ },
+ "history": [
+  {
+   "status": 302,
+   "location": "/admin/login/?next=/admin/"
+  }
+ ],
+ "final_url": "https://app.example.com/admin/login/?next=/admin/",
+ "transport_error": null
+}

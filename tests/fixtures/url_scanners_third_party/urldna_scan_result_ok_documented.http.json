@@ -1,0 +1,92 @@
+{
+ "_meta": {
+  "provenance": "documented",
+  "source": "api.urldna.io/openapi.json (GET /v1/scan/{scan_id} -> ScanResult)",
+  "request": {
+   "method": "GET",
+   "url": "https://api.urldna.io/v1/scan/6745aa00c0ffee0000000001"
+  },
+  "note": "Existing (cached) scan result. Victim e-mail in a result URL on purpose: the core redactor must mask it before evidence (P078 condition 6)."
+ },
+ "status": 200,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": {
+  "scan": {
+   "id": "6745aa00c0ffee0000000001",
+   "submitted_url": "https://login.example.com/secure/",
+   "domain": "login.example.com",
+   "target_url": "https://login.example.com/secure/index.php",
+   "protocol": "HTTPS",
+   "device": "DESKTOP",
+   "origin": "API",
+   "private_scan": false,
+   "status": "DONE",
+   "submitted_date": "2026-11-20T10:15:00Z",
+   "submitter_tags": [
+    "phishing"
+   ],
+   "error_code": null
+  },
+  "classification": {
+   "verdict": "MALICIOUS"
+  },
+  "ip_address": {
+   "ip": "192.0.2.10",
+   "asn": "AS64500",
+   "country_code": "BR",
+   "isp": "Example ISP",
+   "org": "Example Hosting",
+   "type": "hosting"
+  },
+  "certificate": {
+   "issuer": "CN=R11,O=Let's Encrypt,C=US",
+   "subject": "CN=login.example.com",
+   "not_before": "2026-11-18T00:00:00Z",
+   "not_after": "2027-02-16T00:00:00Z",
+   "serial_number": "04a1b2c3d4",
+   "version": 3
+  },
+  "page": {
+   "title": "Entrar - Example Bank",
+   "ssdeep": null,
+   "outgoing_links": [
+    "https://cdn.example.net/app.js",
+    "mailto:user@example.com"
+   ]
+  },
+  "redirect_chains": [
+   {
+    "redirect_url": "https://login.example.com/secure/",
+    "status": "302",
+    "elapsed_time": 120.0
+   },
+   {
+    "redirect_url": "https://login.example.com/secure/index.php?u=user%40example.com",
+    "status": "200",
+    "elapsed_time": 340.0
+   }
+  ],
+  "technologies": [
+   {
+    "category": "Web servers",
+    "name": "nginx",
+    "version": "1.24"
+   }
+  ],
+  "screenshot": {
+   "format": "png",
+   "mimetype": "image/png",
+   "phash": "c3c3c3c33c3c3c3c",
+   "blob_uri": "https://example.com/blob/expires-in-30-min",
+   "width": 1280,
+   "height": 800
+  },
+  "favicon": null,
+  "cookies": [],
+  "http_transactions": [],
+  "console_messages": [],
+  "dom": null
+ }
+}

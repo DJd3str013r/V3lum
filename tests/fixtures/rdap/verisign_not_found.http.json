@@ -1,0 +1,13 @@
+{
+ "request": "GET https://rdap.verisign.com/com/v1/domain/www.example.com",
+ "response": {
+  "status": 404,
+  "headers": {
+   "content-type": "application/rdap+json"
+  },
+  "body": ""
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "authoritative 404 with an EMPTY body (Verisign): 'not registered' only because the server is authoritative"
+}

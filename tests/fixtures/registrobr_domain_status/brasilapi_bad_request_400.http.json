@@ -1,0 +1,18 @@
+{
+ "request": "GET https://brasilapi.com.br/api/registrobr/v1/<malformed name>",
+ "response": {
+  "status": 400,
+  "headers": {
+   "content-type": "application/json; charset=utf-8",
+   "server": "cloudflare"
+  },
+  "body": {
+   "message": "O domínio não foi informado corretamente!",
+   "type": "bad_request",
+   "name": "BadRequestError"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "body = the documented example of schema REGISTROBR_BAD_REQUEST (brasilapi.com.br/docs OpenAPI); not observed live (no malformed value was sent)"
+}

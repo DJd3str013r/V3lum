@@ -1,0 +1,22 @@
+{
+ "request": {
+  "method": "POST",
+  "url": "https://ip.thc.org/api/v1/lookup/subdomains",
+  "headers": {}
+ },
+ "response": {
+  "status": 429,
+  "headers": {
+   "content-type": "text/plain",
+   "x-ratelimit-limit": "250",
+   "x-ratelimit-remaining": "0",
+   "retry-after": "60"
+  },
+  "body": "Too Many Requests"
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "observed_at": null,
+ "origin": "synthetic",
+ "note": "429 documented by the research (theHarvester backs off); real body/headers not observed (remaining stayed 247-249 of 250 here)"
+}

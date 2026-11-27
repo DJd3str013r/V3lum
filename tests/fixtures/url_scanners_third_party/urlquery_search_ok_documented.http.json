@@ -1,0 +1,286 @@
+{
+ "_meta": {
+  "provenance": "documented",
+  "source": "docs.urlquery.net/docs/api/reports (overview example) + openapi/public-v2.yaml",
+  "request": {
+   "method": "GET",
+   "url": "https://api.urlquery.net/public/v2/reports/search",
+   "params": {
+    "query": "url.domain:example.com AND date:[2026-10-27 TO 2026-11-26]",
+    "limit": 25
+   }
+  },
+  "note": "Second item is a documented-shape variant: older than 30 days -> historical."
+ },
+ "status": 200,
+ "headers": {
+  "content-type": "application/json",
+  "RateLimit-Policy": "50;w=60, 500;w=3600, 500;w=86400",
+  "RateLimit-Limit": "50",
+  "RateLimit-Remaining": "49",
+  "RateLimit-Reset": "27"
+ },
+ "body": {
+  "success": true,
+  "data": {
+   "query": "url.domain:example.com AND date:[2026-10-27 TO 2026-11-26]",
+   "items": [
+    {
+     "report_id": "00000000-0000-4000-8000-000000000001",
+     "version": 6,
+     "status": "done",
+     "tags": [
+      "phishing"
+     ],
+     "date": "2026-11-20T12:00:00Z",
+     "url": {
+      "schema": "https",
+      "addr": "example.com/login",
+      "fqdn": "example.com",
+      "domain": "example.com",
+      "tld": "com"
+     },
+     "ip": {
+      "addr": "192.0.2.10",
+      "port": 443,
+      "asn": 64500,
+      "as": "Example AS",
+      "country": "Norway",
+      "country_code": "NO"
+     },
+     "final": {
+      "url": {
+       "schema": "https",
+       "addr": "example.com/login",
+       "fqdn": "example.com",
+       "domain": "example.com",
+       "tld": "com"
+      },
+      "title": "Sign in"
+     },
+     "submit": {
+      "url": {
+       "schema": "https",
+       "addr": "example.com/login",
+       "fqdn": "example.com",
+       "domain": "example.com",
+       "tld": "com"
+      },
+      "ip": {
+       "addr": "192.0.2.10",
+       "asn": 64500,
+       "as": "Example AS",
+       "country": "Norway",
+       "country_code": "NO"
+      },
+      "tags": [],
+      "meta": null
+     },
+     "settings": {
+      "access": "public",
+      "device_type": "desktop",
+      "expires_at": "",
+      "useragent": "Mozilla/5.0 ...",
+      "referer": "",
+      "cookies": null,
+      "exit_node": "NO"
+     },
+     "detection": {
+      "ids": [],
+      "analyzer": [
+       {
+        "sensor_name": "Example Blocklist",
+        "alert": "Listed",
+        "trigger": "example.com",
+        "verdict": "phishing",
+        "severity": "medium",
+        "scan_date": "2026-11-20T11:59:00Z"
+       }
+      ],
+      "urlquery": [
+       {
+        "sensor_name": "urlquery",
+        "alert": "Phishing - Example kit",
+        "trigger": "example.com",
+        "verdict": "malicious",
+        "severity": "3",
+        "comment": "",
+        "tags": [
+         "phishing"
+        ],
+        "meta": {}
+       }
+      ]
+     },
+     "hosts": [
+      {
+       "fqdn": "example.com",
+       "ips": [
+        {
+         "addr": "192.0.2.10",
+         "asn": 64500,
+         "as": "Example AS",
+         "country": "Norway",
+         "country_code": "NO"
+        }
+       ],
+       "domain_rank": 0,
+       "domain_registered": "2026-09-28",
+       "first_seen": "2026-09-29T08:00:00Z",
+       "last_seen": "2026-10-01T12:00:00Z",
+       "request_count": 14,
+       "sent_data": 2048,
+       "received_data": 512000,
+       "fingerprints": [
+        {
+         "name": "nginx",
+         "categories": [
+          "Web servers"
+         ]
+        }
+       ]
+      },
+      {
+       "fqdn": "cdn.example.net",
+       "ips": [
+        {
+         "addr": "198.51.100.7",
+         "asn": 64501,
+         "as": "Example CDN",
+         "country": "United States",
+         "country_code": "US"
+        }
+       ],
+       "domain_rank": 1200,
+       "domain_registered": "",
+       "first_seen": "",
+       "last_seen": "",
+       "request_count": 3,
+       "sent_data": 300,
+       "received_data": 9000,
+       "fingerprints": []
+      }
+     ]
+    },
+    {
+     "report_id": "00000000-0000-4000-8000-000000000002",
+     "version": 6,
+     "status": "done",
+     "tags": [],
+     "date": "2026-08-01T09:30:00Z",
+     "url": {
+      "schema": "https",
+      "addr": "example.com/login",
+      "fqdn": "example.com",
+      "domain": "example.com",
+      "tld": "com"
+     },
+     "ip": {
+      "addr": "192.0.2.10",
+      "port": 443,
+      "asn": 64500,
+      "as": "Example AS",
+      "country": "Norway",
+      "country_code": "NO"
+     },
+     "final": {
+      "url": {
+       "schema": "https",
+       "addr": "example.com/login",
+       "fqdn": "example.com",
+       "domain": "example.com",
+       "tld": "com"
+      },
+      "title": "Sign in"
+     },
+     "submit": {
+      "url": {
+       "schema": "https",
+       "addr": "example.com/login",
+       "fqdn": "example.com",
+       "domain": "example.com",
+       "tld": "com"
+      },
+      "ip": {
+       "addr": "192.0.2.10",
+       "asn": 64500,
+       "as": "Example AS",
+       "country": "Norway",
+       "country_code": "NO"
+      },
+      "tags": [],
+      "meta": null
+     },
+     "settings": {
+      "access": "restricted",
+      "device_type": "desktop",
+      "expires_at": "",
+      "useragent": "Mozilla/5.0 ...",
+      "referer": "",
+      "cookies": null,
+      "exit_node": "NO"
+     },
+     "detection": {
+      "ids": [],
+      "analyzer": [],
+      "urlquery": []
+     },
+     "hosts": [
+      {
+       "fqdn": "example.com",
+       "ips": [
+        {
+         "addr": "192.0.2.10",
+         "asn": 64500,
+         "as": "Example AS",
+         "country": "Norway",
+         "country_code": "NO"
+        }
+       ],
+       "domain_rank": 0,
+       "domain_registered": "2026-09-28",
+       "first_seen": "2026-09-29T08:00:00Z",
+       "last_seen": "2026-10-01T12:00:00Z",
+       "request_count": 14,
+       "sent_data": 2048,
+       "received_data": 512000,
+       "fingerprints": [
+        {
+         "name": "nginx",
+         "categories": [
+          "Web servers"
+         ]
+        }
+       ]
+      },
+      {
+       "fqdn": "cdn.example.net",
+       "ips": [
+        {
+         "addr": "198.51.100.7",
+         "asn": 64501,
+         "as": "Example CDN",
+         "country": "United States",
+         "country_code": "US"
+        }
+       ],
+       "domain_rank": 1200,
+       "domain_registered": "",
+       "first_seen": "",
+       "last_seen": "",
+       "request_count": 3,
+       "sent_data": 300,
+       "received_data": 9000,
+       "fingerprints": []
+      }
+     ]
+    }
+   ],
+   "page": {
+    "limit": 25,
+    "offset": 0,
+    "total_hits": 2
+   }
+  }
+ }
+}

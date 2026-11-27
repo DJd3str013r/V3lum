@@ -1,0 +1,52 @@
+{
+ "ioc": [
+  {
+   "lseen": "2026-09-19T00:00Z",
+   "fseen": "2026-09-19T00:00Z",
+   "@timestamp": "2026-09-19T00:00Z",
+   "domain": "192.0.2.1",
+   "fp": {
+    "descr": "Resource is unavailable",
+    "alarm": "true"
+   },
+   "tags": [
+    "malware"
+   ],
+   "score": {
+    "total": 17.0,
+    "src": 67.37,
+    "tags": 0.26,
+    "frequency": 1.0
+   },
+   "url": "http://192.0.2.1/probe-does-not-exist-test"
+  }
+ ],
+ "domains": [
+  "_dc-mx.0a1b2c3d4e5f.example.com",
+  "nyc.example.net",
+  "www.example.org",
+  "mail.example.com"
+ ],
+ "domains_count": 23219,
+ "privacy": {
+  "is_vpn": false,
+  "is_proxy": false,
+  "is_tor": false
+ },
+ "ip": "192.0.2.1",
+ "type": "ip",
+ "source": [
+  {
+   "id": 1038,
+   "availability": "public",
+   "type": "domains",
+   "scan_label": "2026-10-01",
+   "scan_started_at": "2026-10-01T00:00:00Z",
+   "scan_ended_at": "2026-10-21T18:43:44.575000Z",
+   "is_default": true,
+   "speed": "fast",
+   "state": "full",
+   "count": 3026952876
+  }
+ ]
+}

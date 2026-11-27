@@ -1,0 +1,19 @@
+{
+ "request": "GET https://api.certspotter.com/v1/issuances?domain=example.com&include_subdomains=true&expand=dns_names&expand=issuer",
+ "response": {
+  "status": 429,
+  "headers": {
+   "content-type": "application/json",
+   "retry-after": "1800",
+   "x-ratelimit-limit": "10",
+   "x-ratelimit-remaining": "0"
+  },
+  "body": {
+   "code": "rate_limited",
+   "message": "You have exceeded the rate limit. Retry after 1800 seconds."
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "not observed live (allowance 10/h not exhausted by 3 requests); shape per research ('HTTP 429 + Retry-After') - body text is a placeholder"
+}

@@ -1,0 +1,31 @@
+{
+ "ip": "8.8.8.8",
+ "is_bogon": false,
+ "is_tor": false,
+ "is_relay": false,
+ "is_bot": false,
+ "is_anycast": true,
+ "is_ssh": false,
+ "is_smtp": false,
+ "is_web": true,
+ "is_dns_resolver": true,
+ "is_bittorrent": false,
+ "asn": {
+  "asn": 15169,
+  "name": "Google LLC",
+  "domain": "google.com",
+  "type": "hosting",
+  "prefix": "8.8.8.0/24"
+ },
+ "location": {
+  "country": "US"
+ },
+ "hostname": "dns.google",
+ "company": {
+  "name": "Google LLC",
+  "domain": "google.com"
+ },
+ "abuse": {
+  "email": "network-abuse@google.com"
+ }
+}

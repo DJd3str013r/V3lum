@@ -1,0 +1,23 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.securitycontext.com/v1/cves/CVE-2021-44228",
+  "headers": {}
+ },
+ "response": {
+  "status": 429,
+  "headers": {
+   "content-type": "application/json",
+   "server": "cloudflare",
+   "x-ratelimit-limit": "60",
+   "x-ratelimit-remaining": "0",
+   "x-ratelimit-reset": "42",
+   "x-ratelimit-scope": "anonymous",
+   "retry-after": "42"
+  },
+  "body": "{\"error\": \"rate limit exceeded\", \"code\": \"rate_limited\"}"
+ },
+ "transport_error": null,
+ "elapsed_s": 0.2,
+ "note": "DOC-SHAPED: 429 + Retry-After as described by the research (vulnx waits short limits, aborts long ones); header names/values as observed on the live 404/400. Not triggered live."
+}

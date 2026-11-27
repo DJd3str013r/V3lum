@@ -1,0 +1,1561 @@
+{
+ "built": "2026-11-26",
+ "bundle": "warninglists/misp_warninglists.json.gz",
+ "bundle_sha256": "d6a5bf77533760e6b0cac6dd83842567f3366319d51c7ce4e067aa77759f4202",
+ "commit": "922dbb3e33f078a1b646eff702e7f77e76734b29",
+ "lists": {
+  "a10networks-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "A10 Networks (a10protects.com / a10networks.com) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "academyforinternetresearch-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Academy for Internet Research (academyforinternetresearch.org) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "adscore-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Adscore (adscore.com) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "akamai": {
+   "category": "cdn",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Akamai IP ranges",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "alibaba-cloud": {
+   "category": "cloud",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Alibaba Cloud IP address ranges",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "alphastrike-research-nt-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Alphastrike research IP Ranges Used for Scanning",
+   "outcome": "tag",
+   "version_date": null
+  },
+  "alphastrike-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Alpha Strike Labs IP Ranges Used for Scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "amazon-aws": {
+   "category": "cloud",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Amazon AWS IP address ranges",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "apple": {
+   "category": "vendor_service",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Apple IP ranges",
+   "outcome": "tag",
+   "version_date": "2024-10-23"
+  },
+  "apple-domains": {
+   "category": "known_vendor_domain",
+   "kind": "host",
+   "licence": "CC0-1.0",
+   "name": "List of known Apple hosts for enterprise networks",
+   "outcome": "top_site",
+   "version_date": "2026-11-23"
+  },
+  "apple-ipv4": {
+   "category": "vendor_service",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Apple IPv4 ranges",
+   "outcome": "tag",
+   "version_date": "2026-08-29"
+  },
+  "apple-ipv6": {
+   "category": "vendor_service",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Apple IPv6 ranges",
+   "outcome": "tag",
+   "version_date": "2026-08-29"
+  },
+  "automated-malware-analysis": {
+   "category": "malware_analysis_service",
+   "kind": "host",
+   "licence": "CC0-1.0",
+   "name": "List of known domains used by automated malware analysis services & security vendors",
+   "outcome": "tag",
+   "version_date": "2026-09-04"
+  },
+  "bank-website": {
+   "category": "bank_website",
+   "kind": "host",
+   "licence": "CC0-1.0",
+   "name": "List of known bank domains",
+   "outcome": "tag",
+   "version_date": "2026-04-14"
+  },
+  "binaryedge-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "BinaryEdge (binaryedge.io / binaryedge.ninja) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "bitsight-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "BitSight Technologies Inc. / Internet Census Group (bitsight.com / internet-census.org) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "bufferover-nt-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Bufferover IP Ranges Used for Scanning",
+   "outcome": "tag",
+   "version_date": null
+  },
+  "bufferoverrun-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "bufferover.run / erbbysam (bufferover.run) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "bunny-net": {
+   "category": "cdn",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Bunny.net CDN ranges",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "cachefly": {
+   "category": "cdn",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known CacheFly IP address ranges",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "captive-portals": {
+   "category": "vendor_service",
+   "kind": "host_string",
+   "licence": "CC0-1.0",
+   "name": "Captive Portal Detection Hostnames",
+   "outcome": "tag",
+   "version_date": "2023-01-30"
+  },
+  "cdn77": {
+   "category": "cdn",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known CDN77 IP address ranges",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "censys-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Censys IP Ranges Used for Scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "check-host-net": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known check-host.net IP address ranges",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "circl-security-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "CIRCL IP address used for security scanning",
+   "outcome": "tag",
+   "version_date": null
+  },
+  "circl-ssh-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "CIRCL IP address used for SSH scanning",
+   "outcome": "tag",
+   "version_date": null
+  },
+  "cisco_top10k": {
+   "category": "popular_site",
+   "kind": "host_string",
+   "licence": "CC0-1.0",
+   "name": "Top 10 000 websites from Cisco Umbrella",
+   "outcome": "top_site",
+   "version_date": "2026-11-23"
+  },
+  "cloudflare": {
+   "category": "cdn",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Cloudflare IP ranges",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "cloudflare-top10k": {
+   "category": "popular_site",
+   "kind": "host_string",
+   "licence": "CC0-1.0",
+   "name": "Top 10,000 domains from Cloudflare Radar",
+   "outcome": "top_site",
+   "version_date": "2026-08-10"
+  },
+  "coalition-signals-intelligence-nt-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Coalition signals intelligence IP Ranges Used for Scanning",
+   "outcome": "tag",
+   "version_date": null
+  },
+  "common-ioc-false-positive": {
+   "category": "known_fp",
+   "kind": "hash",
+   "licence": "CC0-1.0",
+   "name": "List of known hashes with common false-positives (based on Florian Roth input list)",
+   "outcome": "tag",
+   "version_date": "2020-04-03"
+  },
+  "coreweave": {
+   "category": "cloud",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known CoreWeave IP address ranges",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "criminalip-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Criminal IP / AiSpera (criminalip.com / aispera.com) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "crl-hostname": {
+   "category": "vendor_service",
+   "kind": "host_string",
+   "licence": "CC0-1.0",
+   "name": "CRL and OCSP domains",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "crl-ip": {
+   "category": "vendor_service",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "CRL and OCSP IP addresses",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "crowdstrikefalconsurface-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "CrowdStrike Falcon Surface (crowdstrike.com) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "cybcube-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "CyberCube (cybcube.com) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "cybergreen-nt-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Cybergreen IP Ranges Used for Scanning",
+   "outcome": "tag",
+   "version_date": null
+  },
+  "cybergreen-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "CyberGreen Institute (cybergreen.net) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "cyberok-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "CyberOK (cyberok.ru) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "cyberresilience-nt-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Cyberresilience IP Ranges Used for Scanning",
+   "outcome": "tag",
+   "version_date": null
+  },
+  "cyberresilience-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "CyberResilience (cyberresilience.io) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "cypex-nt-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Cypex IP Ranges Used for Scanning",
+   "outcome": "tag",
+   "version_date": null
+  },
+  "cypex-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Cypex (cypex.ai) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "datacenter-ipv4": {
+   "category": "datacenter",
+   "kind": "ip",
+   "licence": "MIT",
+   "name": "List of known IPv4 networks belonging to datacenters and VPN providers",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "datacenter-ipv6": {
+   "category": "datacenter",
+   "kind": "ip",
+   "licence": "MIT",
+   "name": "List of known IPv6 networks belonging to datacenters and VPN providers",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "dataplane-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Dataplane.org (dataplane.org) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "deepfield-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Nokia Deepfield (deepfield.net) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "detectify-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Detectify (detectify.com) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "digitalocean": {
+   "category": "cloud",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known DigitalOcean IP address ranges",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "digitalside": {
+   "category": "known_vendor_domain",
+   "kind": "host",
+   "licence": "CC0-1.0",
+   "name": "OSINT.DigitalSide.IT Warning List",
+   "outcome": "top_site",
+   "version_date": "2026-08-11"
+  },
+  "disposable-email": {
+   "category": "disposable_mail",
+   "kind": "host",
+   "licence": "CC0-1.0",
+   "name": "List of disposable email domains",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "driftnet": {
+   "category": "listed",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Driftnet / Internet-Measurement IP ranges (https://internet-measurement.com/)",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "dynamic-dns": {
+   "category": "dynamic_dns",
+   "kind": "host",
+   "licence": "CC0-1.0",
+   "name": "List of known dynamic DNS domains",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "edgewatch-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Edgewatch Security Intelligence (edgewatch.com) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "eicar.com": {
+   "category": "test_file",
+   "kind": "hash",
+   "licence": "CC0-1.0",
+   "name": "List of hashes for EICAR test virus",
+   "outcome": "tag",
+   "version_date": "2020-04-03"
+  },
+  "empty-hashes": {
+   "category": "empty_file_hash",
+   "kind": "hash",
+   "licence": "CC0-1.0",
+   "name": "List of known hashes for empty files",
+   "outcome": "suppress",
+   "version_date": "2020-04-03"
+  },
+  "eset-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "ESET Research (eset.com) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "f6-nt-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "F6 IP Ranges Used for Scanning",
+   "outcome": "tag",
+   "version_date": null
+  },
+  "fastly": {
+   "category": "cdn",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Fastly IP address ranges",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "findip-host": {
+   "category": "vendor_service",
+   "kind": "host",
+   "licence": "CC0-1.0",
+   "name": "List of known hostname used for querying your source IP. This can be used as exclusion for your Passive DNS lookup.",
+   "outcome": "tag",
+   "version_date": "2026-08-09"
+  },
+  "fofa-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "FOFA Search Engine (fofa.info) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "gcore": {
+   "category": "cdn",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Gcore CDN IP address ranges",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "github": {
+   "category": "cloud",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known GitHub IP ranges (https://api.github.com/meta)",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "godaddy": {
+   "category": "cloud",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known GoDaddy IP address ranges",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "google": {
+   "category": "known_vendor_domain",
+   "kind": "host",
+   "licence": "CC0-1.0",
+   "name": "List of known google domains",
+   "outcome": "top_site",
+   "version_date": "2026-11-23"
+  },
+  "google-gcp": {
+   "category": "cloud",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known GCP (Google Cloud Platform) IP address ranges",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "google-gmail-sending-ips": {
+   "category": "mail_infrastructure",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Gmail sending IP ranges",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "google-vpn": {
+   "category": "vpn",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known VPN by Google egress IP address ranges",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "googlebot": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Googlebot IP ranges (https://developers.google.com/search/apis/ipranges/googlebot.json)",
+   "outcome": "tag",
+   "version_date": "2026-09-01"
+  },
+  "groupib-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Group-IB (rnd.group-ib.com) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "hackertarget-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Hacker Target Pty Ltd (hackertarget.com / hackertarget.io) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "hadrian-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Hadrian (hdrn.nu / hadrian.io) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "huawei-cloud": {
+   "category": "cloud",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Huawei Cloud IP address ranges",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "hunter-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Hunter Search Engine (hunter.how / hunter.qianxin.com) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "ibm-cloud": {
+   "category": "cloud",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known IBM Cloud IP address ranges",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "icloud-private-relay": {
+   "category": "vpn",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known iCloud Private Relay egress IP address ranges",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "imperva": {
+   "category": "cdn",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Imperva (Incapsula) IP address ranges",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "infrawatch-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Infrawatch (infrawat.ch / infrawatch.com / infrawatch.app) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "internet-census-nt-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Internet census IP Ranges Used for Scanning",
+   "outcome": "tag",
+   "version_date": null
+  },
+  "internetcleanup-scanner": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of published IP address ranges for Internet Cleanup Foundation scanners",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "internetmeasurementresearch-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Internet Measurement Research (internetmeasurementresearch.com) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "internetmetrics-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Internet Metrics (internet-metrics.com) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "internetresearchproject-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Internet Research Project (internet-research-project.net) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "internettl-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "InterneTTL (internettl.org) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "intrinsec-nt-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Intrinsec IP Ranges Used for Scanning",
+   "outcome": "tag",
+   "version_date": null
+  },
+  "intrinsec-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Intrinsec (intrinsec.com) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "intruder-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Intruder (intruder.io) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "ipinfo-nt-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Ipinfo IP Ranges Used for Scanning",
+   "outcome": "tag",
+   "version_date": null
+  },
+  "ipinfo-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "IPinfo Internet Census Data Collection (ipinfo.io) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "ipip-nt-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Ipip IP Ranges Used for Scanning",
+   "outcome": "tag",
+   "version_date": null
+  },
+  "ipip-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "IPIP (ipip.net) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "ipv6-linklocal": {
+   "category": "reserved_range",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of IPv6 link local blocks",
+   "outcome": "suppress",
+   "version_date": "2022-07-05"
+  },
+  "ki3-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "KI3 (ki3.org.cn) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "knoq-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Knoq (knoq.nl) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "leakix-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "LeakIX (leakix.org / leakix.net) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "leaseweb": {
+   "category": "cloud",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Leaseweb IP address ranges",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "link-in-bio": {
+   "category": "user_content_hosting",
+   "kind": "host",
+   "licence": "CC0-1.0",
+   "name": "List of known link in Bio domains",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "linode": {
+   "category": "cloud",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Linode (Akamai Connected Cloud) IP address ranges",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "lots-project": {
+   "category": "user_content_hosting",
+   "kind": "host",
+   "licence": "CC0-1.0",
+   "name": "List of LOTS (Living Off Trusted Sites) Project Domains",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "mandiantasm-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Mandiant ASM / GTI (mandiant.com) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "microsoft": {
+   "category": "known_vendor_domain",
+   "kind": "host",
+   "licence": "CC0-1.0",
+   "name": "List of known microsoft domains",
+   "outcome": "top_site",
+   "version_date": "2026-11-23"
+  },
+  "microsoft-attack-simulator": {
+   "category": "attack_simulation",
+   "kind": "host",
+   "licence": "CC0-1.0",
+   "name": "List of known Office 365 Attack Simulator used for phishing awareness campaigns",
+   "outcome": "tag",
+   "version_date": "2026-04-05"
+  },
+  "microsoft-azure": {
+   "category": "cloud",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Microsoft Azure Datacenter IP Ranges",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "microsoft-azure-china": {
+   "category": "cloud",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Microsoft Azure China Datacenter IP Ranges",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "microsoft-azure-germany": {
+   "category": "cloud",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Microsoft Azure Germany Datacenter IP Ranges",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "microsoft-azure-us-gov": {
+   "category": "cloud",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Microsoft Azure US Government Cloud Datacenter IP Ranges",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "microsoft-mdca-proxy": {
+   "category": "vendor_service",
+   "kind": "host",
+   "licence": "CC0-1.0",
+   "name": "List of known Microsoft Defender for Cloud Apps (MDCA/MCAS) proxy hostnames",
+   "outcome": "tag",
+   "version_date": "2026-08-19"
+  },
+  "microsoft-office365": {
+   "category": "known_vendor_domain",
+   "kind": "host",
+   "licence": "CC0-1.0",
+   "name": "List of known Office 365 URLs",
+   "outcome": "top_site",
+   "version_date": "2026-11-23"
+  },
+  "microsoft-office365-cn": {
+   "category": "cloud",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Office 365 IP address ranges in China",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "microsoft-office365-ip": {
+   "category": "cloud",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Office 365 IP address ranges",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "microsoft-win10-connection-endpoints": {
+   "category": "known_vendor_domain",
+   "kind": "host",
+   "licence": "CC0-1.0",
+   "name": "List of known Windows 10 connection endpoints",
+   "outcome": "top_site",
+   "version_date": "2026-10-22"
+  },
+  "microsoft-win11-connection-endpoints": {
+   "category": "known_vendor_domain",
+   "kind": "host",
+   "licence": "CC0-1.0",
+   "name": "List of known Windows 11 connection endpoints",
+   "outcome": "top_site",
+   "version_date": "2026-10-22"
+  },
+  "modat-nt-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Modat IP Ranges Used for Scanning",
+   "outcome": "tag",
+   "version_date": null
+  },
+  "modat-scanner": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of published IP address ranges for Modat Scanner",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "multicast": {
+   "category": "reserved_range",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of RFC 5771 multicast CIDR blocks",
+   "outcome": "suppress",
+   "version_date": "2024-04-22"
+  },
+  "netlas-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Netlas (netlas.io) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "netscout-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "NETSCOUT (internet-albedo.net) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "netsecscan-nt-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Netsecscan IP Ranges Used for Scanning",
+   "outcome": "tag",
+   "version_date": null
+  },
+  "netsecscan-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "NetSecScan IP-Ranges, pot. used for Scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "odin-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Cyble ODIN (odin.io) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "onlyscans-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "ONLYSCANS (onlyscans.com / onlyscans.net) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "onyphe-nt-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Onyphe IP Ranges Used for Scanning",
+   "outcome": "tag",
+   "version_date": null
+  },
+  "onyphe-scanner": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of published IP address ranges for Onyphe Scanner",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "openai-gptbot": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known IP address ranges for OpenAI GPT crawler bot",
+   "outcome": "tag",
+   "version_date": "2026-10-05"
+  },
+  "oracle-oci": {
+   "category": "cloud",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Oracle Cloud Infrastructure (OCI) IP address ranges",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "ovh-cluster": {
+   "category": "cloud",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known OVH Cluster IPs",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "palo-alto-networks-cortex-cloud": {
+   "category": "cloud",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Palo Alto Cortex Cloud IP ranges",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "palo-alto-networks-cortex-xpanse": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known IP address ranges for Palo Alto Networks Cortex Xpanse",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "parking-domain": {
+   "category": "parked",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Parking domains",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "parking-domain-ns": {
+   "category": "parked",
+   "kind": "host",
+   "licence": "CC0-1.0",
+   "name": "Parking domains name server",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "personal-email-domains": {
+   "category": "mail_infrastructure",
+   "kind": "host",
+   "licence": "CC0-1.0",
+   "name": "List of personal email domains",
+   "outcome": "tag",
+   "version_date": "2026-10-04"
+  },
+  "pocnroll-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "pocnroll (pocnroll.com) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "probethenet-nt-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Probethenet IP Ranges Used for Scanning",
+   "outcome": "tag",
+   "version_date": null
+  },
+  "probethenet-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "ProbeTheNet Project / mThreat Technology Inc. (probethenet.com) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "public-dns-hostname": {
+   "category": "public_resolver",
+   "kind": "host",
+   "licence": "CC0-1.0",
+   "name": "List of known public DNS resolvers expressed as hostname",
+   "outcome": "suppress",
+   "version_date": "2024-06-15"
+  },
+  "public-dns-v4": {
+   "category": "public_resolver",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known IPv4 public DNS resolvers",
+   "outcome": "suppress",
+   "version_date": "2026-08-29"
+  },
+  "public-dns-v6": {
+   "category": "public_resolver",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known IPv6 public DNS resolvers",
+   "outcome": "suppress",
+   "version_date": "2026-08-29"
+  },
+  "public-ipfs-gateways": {
+   "category": "user_content_hosting",
+   "kind": "host",
+   "licence": "CC0-1.0",
+   "name": "List of known public IPFS gateways",
+   "outcome": "tag",
+   "version_date": "2026-10-22"
+  },
+  "quake-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "360 Quake (quake.360.net) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "rackspace": {
+   "category": "cloud",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Rackspace IP address ranges",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "rapid7-nt-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Rapid7 IP Ranges Used for Scanning",
+   "outcome": "tag",
+   "version_date": null
+  },
+  "rapid7-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Rapid7 Project Sonar (rapid7.com) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "recordedfuture-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Recorded Future / SecurityTrails (securitytrails.com) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "recyber-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Recyber (recyber.net) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "research-scanner-nt-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Research scanner IP Ranges Used for Scanning",
+   "outcome": "tag",
+   "version_date": null
+  },
+  "researchscanner-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Research Scanner (research-scanner.com) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "rfc1918": {
+   "category": "reserved_range",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of RFC 1918 CIDR blocks",
+   "outcome": "suppress",
+   "version_date": "2022-07-05"
+  },
+  "rfc3849": {
+   "category": "reserved_range",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of RFC 3849 CIDR blocks",
+   "outcome": "suppress",
+   "version_date": "2022-07-05"
+  },
+  "rfc5735": {
+   "category": "reserved_range",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of RFC 5735 CIDR blocks",
+   "outcome": "suppress",
+   "version_date": "2022-07-05"
+  },
+  "rfc6598": {
+   "category": "reserved_range",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of RFC 6598 CIDR blocks",
+   "outcome": "suppress",
+   "version_date": "2022-07-05"
+  },
+  "rfc6761": {
+   "category": "special_use_domain",
+   "kind": "host",
+   "licence": "CC0-1.0",
+   "name": "List of RFC 6761 Special-Use Domain Names",
+   "outcome": "suppress",
+   "version_date": "2026-10-22"
+  },
+  "rootevidence-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Root Evidence (rootevidence.com) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "salesforce": {
+   "category": "cloud",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Salesforce IP address ranges",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "scaleway": {
+   "category": "cloud",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Scaleway IP address ranges",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "security-provider-blogpost": {
+   "category": "known_vendor_domain",
+   "kind": "host",
+   "licence": "CC0-1.0",
+   "name": "List of known security providers/vendors blog domain",
+   "outcome": "top_site",
+   "version_date": "2024-12-04"
+  },
+  "securityresearch-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "securityresearch.net IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "shadowforce-nt-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Shadowforce IP Ranges Used for Scanning",
+   "outcome": "tag",
+   "version_date": null
+  },
+  "shadowforce-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Shadowforce IP-Ranges, pot. used for Scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "shadowserver": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Shadowserver IP-Ranges, pot. used for Scanning",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "shadowserver-nt-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Shadowserver IP Ranges Used for Scanning",
+   "outcome": "tag",
+   "version_date": null
+  },
+  "shodan-nt-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Shodan IP Ranges Used for Scanning",
+   "outcome": "tag",
+   "version_date": null
+  },
+  "shodan-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Shodan IP-Ranges, pot. used for Scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "sinkholes": {
+   "category": "sinkhole",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known sinkholes",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "skipa-nt-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Skipa IP Ranges Used for Scanning",
+   "outcome": "tag",
+   "version_date": null
+  },
+  "smtp-receiving-ips": {
+   "category": "mail_infrastructure",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known SMTP receiving IP addresses",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "smtp-sending-ips": {
+   "category": "mail_infrastructure",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known SMTP sending IP ranges",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "stretchoid-nt-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Stretchoid IP Ranges Used for Scanning",
+   "outcome": "tag",
+   "version_date": null
+  },
+  "stretchoid-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Stretchoid (stretchoid.com) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "sucuri": {
+   "category": "cdn",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Sucuri (Website Firewall) IP address ranges",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "telegram-ips": {
+   "category": "vendor_service",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Telegram IP address ranges",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "tenable-cloud-ipv4": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Tenable Cloud Sensors IPv4",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "tenable-cloud-ipv6": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Tenable Cloud Sensors IPv6",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "tenableasm-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Tenable ASM (tenable.com / tenable.io) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "tencent-cloud": {
+   "category": "cloud",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Tencent Cloud IP address ranges",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "ti-falsepositives": {
+   "category": "known_fp",
+   "kind": "hash",
+   "licence": "CC0-1.0",
+   "name": "Hashes that are often included in IOC lists but are false positives.",
+   "outcome": "tag",
+   "version_date": "2025-12-16"
+  },
+  "tor-exit-nodes": {
+   "category": "tor_exit",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Tor exit nodes",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "tranco10k": {
+   "category": "popular_site",
+   "kind": "host",
+   "licence": "CC0-1.0",
+   "name": "Top 10K most-used sites from Tranco",
+   "outcome": "top_site",
+   "version_date": "2026-11-23"
+  },
+  "umbrella-blockpage-hostname": {
+   "category": "vendor_service",
+   "kind": "host",
+   "licence": "CC0-1.0",
+   "name": "cisco-umbrella-blockpage-hostname",
+   "outcome": "tag",
+   "version_date": "2026-08-11"
+  },
+  "umbrella-blockpage-v4": {
+   "category": "vendor_service",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "cisco-umbrella-blockpage-ipv4",
+   "outcome": "tag",
+   "version_date": "2026-08-11"
+  },
+  "umbrella-blockpage-v6": {
+   "category": "vendor_service",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "cisco-umbrella-blockpage-ipv6",
+   "outcome": "tag",
+   "version_date": "2026-08-11"
+  },
+  "umich-cse-connection-attempts": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "University of Michigan CSE connection-attempt network ranges",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "university-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "Scanners from various universities IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "url-shortener": {
+   "category": "url_shortener",
+   "kind": "host",
+   "licence": "CC0-1.0",
+   "name": "List of known URL Shorteners domains",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "visionheight-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "VisionHeight (visionheight.com) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "vpn-ipv4": {
+   "category": "vpn",
+   "kind": "ip",
+   "licence": "MIT",
+   "name": "List of known IPv4 networks belonging to common VPN providers",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "vpn-ipv6": {
+   "category": "vpn",
+   "kind": "ip",
+   "licence": "MIT",
+   "name": "List of known IPv6 networks belonging to common VPN providers",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "vultr": {
+   "category": "cloud",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Vultr IP address ranges",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "whats-my-ip": {
+   "category": "vendor_service",
+   "kind": "host",
+   "licence": "CC0-1.0",
+   "name": "List of known domains to know external IP",
+   "outcome": "tag",
+   "version_date": "2026-08-09"
+  },
+  "wikimedia": {
+   "category": "cdn",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Wikimedia address ranges",
+   "outcome": "tag",
+   "version_date": "2026-08-19"
+  },
+  "xmco-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "XMCO Serenety (xmco.fr) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "zern-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "ZERN (zern.io) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  },
+  "zoomeye-scanning": {
+   "category": "benign_scanner",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "ZoomEye (zoomeye.ai) IP ranges used for scanning",
+   "outcome": "tag",
+   "version_date": "2026-10-14"
+  },
+  "zscaler": {
+   "category": "vendor_service",
+   "kind": "ip",
+   "licence": "CC0-1.0",
+   "name": "List of known Zscaler IP address ranges",
+   "outcome": "tag",
+   "version_date": "2026-11-23"
+  }
+ },
+ "schema": "v3lum.misp_warninglists_manifest/1"
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "rfb",
+  "hosts": [],
+  "sources": {
+    "cnpj_name_resolver_name_index": {
+      "title": "RFB light company-name index (Empresas + Estabelecimentos of the monthly CNPJ dump) built locally by `v3lum data import-rfb --names` and searched offline",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://dados.gov.br/dados/conjuntos-dados/cadastro-nacional-da-pessoa-juridica---cnpj",
+        "quote": "Terms classes (definitions for every chair file and registry entry): 'open' = free use, internal business use included (public domain, CC0, CC BY, open government data, and permissive or copyleft licences whose obligations V3LUM meets by runtime download and attribution, A6)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "rfb",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding A1 definition of 'open' (open government data); research C0743 terms 'RFB open data (free reuse).' P361 FC2-FC4: the SQLite index (FTS5 when the runtime SQLite has it, a normalised-token table otherwise) is built only by the shared P238 importer (`v3lum data import-rfb --names`: Empresas + Estabelecimentos only, ~6.8 GB compressed, streaming, resumable, disk-space check), never during a scan; MEI/EI names are stripped of CPF digit sequences before indexing and the index serves company-name search only (never person search). A separate source keeps it apart from the full P238 QSA import (rfb.cnpj_open_data) so a missing QSA dump never gates the name resolver. Used by cnpj_name_resolver."
+    }
+  },
+  "error_markers": [],
+  "notes": "Batch p2-G10-3 (P361 cnpj_name_resolver): the local name-index source of the RFB provider (seeded by p2-G10-2/p2-G10-3)."
+}

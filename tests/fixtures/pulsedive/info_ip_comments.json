@@ -1,0 +1,151 @@
+{
+ "qid": null,
+ "iid": 111601,
+ "indicator": "8.8.8.8",
+ "type": "ip",
+ "risk": "none",
+ "risk_recommended": "none",
+ "manualrisk": 0,
+ "retired": null,
+ "stamp_added": "2017-10-18 04:03:08",
+ "stamp_updated": "2026-11-25 12:17:04",
+ "stamp_seen": "2026-11-25 12:17:04",
+ "stamp_probed": "2026-11-10 00:48:44",
+ "stamp_retired": null,
+ "recent": 0,
+ "submissions": 105,
+ "umbrella_rank": 512,
+ "umbrella_domain": "dns.google",
+ "riskfactors": [
+  {
+   "rfid": 71,
+   "description": "common resource or infrastructure",
+   "risk": "none"
+  },
+  {
+   "rfid": 50,
+   "description": "hosted on common ISP",
+   "risk": "none"
+  },
+  {
+   "rfid": 62,
+   "description": "linked to top 100k domain",
+   "risk": "none"
+  },
+  {
+   "rfid": 61,
+   "description": "linked to top 10k domain",
+   "risk": "none"
+  },
+  {
+   "rfid": 63,
+   "description": "linked to top 1k domain",
+   "risk": "none"
+  },
+  {
+   "rfid": 1,
+   "description": "returns PTR record",
+   "risk": "none"
+  }
+ ],
+ "threats": [
+  {
+   "tid": 431,
+   "name": "CryptoMining",
+   "category": "general",
+   "risk": "low",
+   "stamp_linked": "2020-10-15 13:23:37"
+  },
+  {
+   "tid": 108,
+   "name": "JS Crypto Miner",
+   "category": "general",
+   "risk": "unknown",
+   "stamp_linked": "2018-07-16 07:16:42"
+  },
+  {
+   "tid": 109,
+   "name": "Monero",
+   "category": "abuse",
+   "risk": "unknown",
+   "stamp_linked": "2018-05-02 06:48:24"
+  },
+  {
+   "tid": 67,
+   "name": "Phishing",
+   "category": "general",
+   "risk": "high",
+   "stamp_linked": "2018-02-20 03:51:59"
+  },
+  {
+   "tid": 39,
+   "name": "SSH Brute Force",
+   "category": "general",
+   "risk": "low",
+   "stamp_linked": "2018-01-21 17:17:46"
+  }
+ ],
+ "redirects": {
+  "from": [],
+  "to": [
+   {
+    "iid": 275897,
+    "indicator": "http://www.google.com/"
+   }
+  ]
+ },
+ "feeds": [
+  {
+   "fid": 69,
+   "name": "Brute Force Hosts",
+   "category": "botnet",
+   "organization": "Example Feed Operator",
+   "pricing": null,
+   "stamp_linked": "2023-10-19 10:03:11"
+  },
+  {
+   "fid": 65,
+   "name": "Example Mining IPs Feed",
+   "category": "abuse",
+   "organization": "Example Feed Operator",
+   "pricing": null,
+   "stamp_linked": "2020-10-15 13:23:37"
+  }
+ ],
+ "comments": [
+  {
+   "cid": 556438,
+   "username": null,
+   "title": null,
+   "comment": "null'||DBMS_PIPE.RECEIVE_MESSAGE(CHR(98)||CHR(98)||CHR(98),15)||'",
+   "stamp_added": "2024-12-23 00:46:24",
+   "stamp_updated": "2024-12-23 00:46:24"
+  }
+ ],
+ "attributes": {
+  "hosttype": [
+   "Name Server"
+  ],
+  "port": [
+   "443",
+   "53",
+   "80"
+  ],
+  "protocol": [
+   "DNS",
+   "DNS-over-TLS",
+   "FILE"
+  ],
+  "technology": [
+   "Apache",
+   "Google Web Server",
+   "HSTS"
+  ]
+ },
+ "properties": {
+  "geo": {
+   "countrycode": "US",
+   "asn": "AS15169"
+  }
+ }
+}

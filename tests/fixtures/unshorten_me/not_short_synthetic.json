@@ -1,0 +1,7 @@
+{
+ "requested_url": "www.example.com/",
+ "success": true,
+ "resolved_url": "https://www.example.com/",
+ "usage_count": 3,
+ "remaining_calls": 9
+}

@@ -1,0 +1,55 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "valve",
+  "name": "Steam Community profile XML",
+  "operator": "Valve Corporation",
+  "hosts": [
+    "steamcommunity.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Valve Corporation, an established company with the published Steam Subscriber Agreement, a privacy policy and a business offering (A8 trusted); P116 FC9 lists Valve (Steam) as trusted.",
+  "tier_reviewer": "council-1 (A8, P116 FC9)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "The platform's own answer is authoritative for the existence and public fields of its accounts; profile fields (names, links, bios) are self-declared by the owner."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/xml, text/xml;q=0.9",
+    "ttl": 86400,
+    "min_interval": 2.0,
+    "concurrency": 1,
+    "max_bytes": 1048576
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "steam_community_xml": {
+      "title": "Steam Community profile XML (steamcommunity.com/id/{vanity}/?xml=1, /profiles/{steamid64}/?xml=1)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://store.steampowered.com/subscriber_agreement/",
+        "quote": "P116 FC4 (binding council text): documented public APIs (Chess.com PubAPI, Lichess, Mojang, Steam Community XML, Medium RSS, Pinterest widget, Stack Exchange API, Twitch Helix with the team's app) are 'open' once recorded; Snapchat __NEXT_DATA__ and the Disqus profile page are 'unknown' and stay disabled in every profile until legal records them (A1).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "steam",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0258 (2026-11-25/26): always HTTP 200; FOUND iff <steamID64>, the <error> 'The specified profile could not be found.' = ABSENT, any other <error> is an error-in-200 (could not verify). Parsed with the module's safe XML helper (no DTD/entities). Vanity names are first-come: never assume brand ownership. Polite use (bursts may get 429). The Steam Web API key (V3LUM_STEAM_KEY) is not used by this build (no Web API call; docs/backlog/p3-G05-2.md)."
+    }
+  },
+  "notes": "Batch p3-G05-2 (P116 steam_community_profile). Unpublished rate limit: 2 s between requests, one at a time. personal_data_review to be recorded before default use (A3 BR8)."
+}

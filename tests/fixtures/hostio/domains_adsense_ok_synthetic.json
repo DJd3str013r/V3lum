@@ -1,0 +1,9 @@
+{
+ "adsense": "pub-1234567890123456",
+ "total": 3,
+ "domains": [
+  "example.com",
+  "example-shop.example",
+  "examplebank.example"
+ ]
+}

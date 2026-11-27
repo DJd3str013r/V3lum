@@ -1,0 +1,72 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "sourcegraph",
+  "name": "Sourcegraph public code search (stream API)",
+  "operator": "Sourcegraph, Inc.",
+  "hosts": [
+    "sourcegraph.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published ToS, AUP, privacy policy and paid plans (A8 BR2; P305 cond 1: all code search sources trusted).",
+  "tier_reviewer": "batch p2-G14-3 (council-1 P304 cond 5: initial tiers, reviewer confirms)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Indexes public repositories; the index can lag and the public instance degrades (backend-missing), so an empty answer with warnings is 'could not verify'."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "text/event-stream",
+    "ttl": 0,
+    "timeout": 30,
+    "retries": 0
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "day": 200,
+    "rate_per_second": 0.5,
+    "burst": 1,
+    "published": false,
+    "evidence_url": "https://sourcegraph.com/terms/aup",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {
+    "sourcegraph": {
+      "description": "Sourcegraph.com access token (optional: raises the anonymous limits; header only)",
+      "signup_url": "https://sourcegraph.com/user/settings/tokens",
+      "env": [
+        "V3LUM_SOURCEGRAPH_TOKEN"
+      ],
+      "multi_key": false,
+      "plan_hint": "business = a token of a company/team account whose plan permits internal business use (P305 cond 2)"
+    }
+  },
+  "sources": {
+    "public_stream_search": {
+      "title": "sourcegraph.com/.api/search/stream (text/event-stream; keyless, optional token)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://sourcegraph.com/terms/tos",
+        "quote": "3.1 ... license to access and use the Services in order to review and analyze Code Data ... solely for your internal business purposes.",
+        "checked_at": "2026-11-26",
+        "reviewer": "batch p2-G14-3 (P305 cond 2: ToS evidence recorded, legal_dpo confirms)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "sourcegraph",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "ToS last modified 2026-07-22 (s.3.1 internal business purposes; Self-Serve use subject to reasonable use) and AUP 2026-06-12 ('You may not use Sourcegraph to engage in automatic or excessive bulk activity'): bounded use only (P305 cond 3: <= 3 queries per entity, seed/org-asset scope, 20 s budget). If legal rules business use out, set the class to 'unknown' and the policy gate skips the source (reason_code 'licence'). Streams are read with max_bytes 2 MB and a 30 s deadline; raw bodies are never cached (ttl 0, P305 cond 6). Used by code_search."
+    }
+  },
+  "notes": "Owned by batch p2-G14-3 (P305, module code_search). No published anonymous limit and no rate-limit headers were seen (prep run 2026-11-26): a conservative observed budget of 200 queries a day at 0.5 request/s (80% margin applied by the quota book). The optional token goes only in the Authorization header ('token <t>'), never in a URL or log (AR01)."
+}

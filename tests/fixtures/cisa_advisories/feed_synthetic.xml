@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- _synthetic: shape of the CISA advisories RSS for parser tests only. Replace with a capture from the team
+     network before merge (P374 FC1). Advisory ids AA99-*, the family 'Examplelocker' and all values are fictional. -->
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Cybersecurity Advisories (synthetic)</title>
+    <link>https://www.cisa.gov/news-events/cybersecurity-advisories</link>
+    <description>Synthetic test feed</description>
+    <language>en</language>
+    <item>
+      <title>#StopRansomware: Examplelocker Ransomware</title>
+      <link>https://www.cisa.gov/news-events/cybersecurity-advisories/aa99-001a</link>
+      <description>Examplelocker affiliates exploited CVE-2023-4966 for initial access. IOC files: STIX JSON.</description>
+      <pubDate>Tue, 01 Sep 2026 12:00:00 +0000</pubDate>
+      <guid isPermaLink="false">aa99-001a</guid>
+    </item>
+    <item>
+      <title>Examplelocker Actors Exploit CVE-2024-1709 in Remote Monitoring Software</title>
+      <link>https://www.cisa.gov/news-events/cybersecurity-advisories/aa99-002a</link>
+      <description>Joint advisory (synthetic).</description>
+      <pubDate>Mon, 01 Jun 2026 12:00:00 +0000</pubDate>
+      <guid isPermaLink="false">aa99-002a</guid>
+    </item>
+    <item>
+      <title>CISA Releases Two Example Industrial Control Systems Advisories</title>
+      <link>https://www.cisa.gov/news-events/ics-advisories/icsa-99-001-01</link>
+      <pubDate>Thu, 26 Nov 2026 06:00:00 +0000</pubDate>
+      <guid isPermaLink="false">icsa-99-001-01</guid>
+    </item>
+  </channel>
+</rss>

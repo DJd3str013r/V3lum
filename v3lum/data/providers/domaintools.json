@@ -1,0 +1,52 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "domaintools",
+  "name": "DomainTools Whois and Reverse IP pages",
+  "operator": "DomainTools, LLC",
+  "hosts": [
+    "reverseip.domaintools.com",
+    "whois.domaintools.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms and a business offering; P026 cond 5: 'trusted - DomainTools'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Commercial WHOIS/hosting data; free pages show partial results."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "pivot_pages": {
+      "title": "DomainTools reverse IP search and WHOIS page (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.domaintools.com/company/legal/terms-of-service/",
+        "quote": "The pack is offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "domaintools",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (cond 1 of the proposal). Research C0067. Reverse IP verified 2026-11-25 (200); on 2026-11-26 this egress got 500 'reference error #4311' (automated clients blocked): antibot=true. whois.domaintools.com served a CAPTCHA to curl: antibot=true, unverified until a browser check, ranked last in its group (P026 cond 11). Never requested by V3LUM. Used by pivots_domain_dns (pack domain_dns.json)."
+    }
+  },
+  "notes": "Manual pivot links only (batch p2-G14-1): V3LUM never fetches them (P311)."
+}

@@ -1,0 +1,23 @@
+{
+ "domain": "example.com",
+ "hosts": [
+  "www.example.com",
+  "api.example.com",
+  "WWW.EXAMPLE.COM",
+  "dev.example.com",
+  "example.com",
+  "cdn.example.net",
+  "*.static.example.com"
+ ],
+ "message": "",
+ "metadata": {
+  "all_results_count": 250,
+  "available_results_for_user": 100,
+  "domain": "example.com",
+  "last_scanned": 1764000000,
+  "max_results_for_user": 100,
+  "timestamp": 1764100000,
+  "user_plan": "community"
+ },
+ "status": 200
+}

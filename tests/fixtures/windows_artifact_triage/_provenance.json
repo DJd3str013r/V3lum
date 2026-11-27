@@ -1,0 +1,89 @@
+{
+ "files": {
+  "lnk_bad_clsid.lnk": {
+   "builder": "tests/modules/test_p2_g12_3.py:build_lnk_bad_clsid",
+   "bytes": 1993,
+   "origin": "synthetic",
+   "sha256": "34031afd121f00b24ccd31cf0fdbb3b18f5d31c41fd0c91c8c5d640375daf2f0"
+  },
+  "lnk_long_description.lnk": {
+   "builder": "tests/modules/test_p2_g12_3.py:build_lnk_long_description",
+   "bytes": 883,
+   "origin": "synthetic",
+   "sha256": "58e40612961539a61a172351ba8c113b3f6214abd2a8e0853f087443db1856c0"
+  },
+  "lnk_malformed.lnk": {
+   "builder": "tests/modules/test_p2_g12_3.py:build_lnk_malformed",
+   "bytes": 60,
+   "origin": "synthetic",
+   "sha256": "a77cf8f46ed94e8d3ed8f5997f86a69de329ed2c137dd4ee8819f33842079451"
+  },
+  "lnk_ok.lnk": {
+   "builder": "tests/modules/test_p2_g12_3.py:build_lnk_ok",
+   "bytes": 1993,
+   "origin": "synthetic",
+   "sha256": "8ea76055a2fce304946cbf67f2bad659efc060d2dea5f8ba2c0b36cd1516c16d"
+  },
+  "lnk_padded_overlay.lnk": {
+   "builder": "tests/modules/test_p2_g12_3.py:build_lnk_padded_overlay",
+   "bytes": 1215,
+   "origin": "synthetic",
+   "sha256": "576c9c0f516a3be4a96c9d8fcb6f00b0f105909ae0456dcd811fc837bbf20826"
+  },
+  "lnk_webdav.lnk": {
+   "builder": "tests/modules/test_p2_g12_3.py:build_lnk_webdav",
+   "bytes": 359,
+   "origin": "synthetic",
+   "sha256": "8e5ddf4da33f1c537be8f4ef431e5cdfee70f2142b3c75fcf8c5d9c66dd374f9"
+  },
+  "msi_bad_tables.msi": {
+   "builder": "tests/modules/test_p2_g12_3.py:build_msi_bad_tables",
+   "bytes": 6144,
+   "origin": "synthetic",
+   "sha256": "276292cfa98739455dbadb72bd1205a039712204ff394fc87cb1748276208965"
+  },
+  "msi_benign.msi": {
+   "builder": "tests/modules/test_p2_g12_3.py:build_msi_benign",
+   "bytes": 4096,
+   "origin": "synthetic",
+   "sha256": "b45fc3b7cb48e4cf94b80731f46a6460d01e92809c35679948c615010af8a1df"
+  },
+  "msi_malformed.msi": {
+   "builder": "tests/modules/test_p2_g12_3.py:build_msi_malformed",
+   "bytes": 1536,
+   "origin": "synthetic",
+   "sha256": "9709b56f9bb80515fd6b332d0c6042a1832213cd9d4f04d44b1457f3be81e590"
+  },
+  "msi_ok.msi": {
+   "builder": "tests/modules/test_p2_g12_3.py:build_msi_ok",
+   "bytes": 6144,
+   "origin": "synthetic",
+   "sha256": "6f3bd19bd29efcbb0dc0f7e3b5749a7f1b6657399d2709ff0c54bb2f953c043e"
+  },
+  "not_artifact.txt": {
+   "builder": "tests/modules/test_p2_g12_3.py:<lambda>",
+   "bytes": 76,
+   "origin": "synthetic",
+   "sha256": "adaebc1c01fcefa464a8af1a16a37d88fa5abde8dff50844283bd85b4ef734f6"
+  },
+  "onenote_empty.one": {
+   "builder": "tests/modules/test_p2_g12_3.py:build_onenote_empty",
+   "bytes": 1088,
+   "origin": "synthetic",
+   "sha256": "af9594ca999d3b1d981423f1c49e7619b87a65c528326f378385cb99861b7a19"
+  },
+  "onenote_malformed.one": {
+   "builder": "tests/modules/test_p2_g12_3.py:build_onenote_malformed",
+   "bytes": 1120,
+   "origin": "synthetic",
+   "sha256": "38515059a90fe304c4892f73ba9e3a4d0c9e968660b57143a49b71573d266c8b"
+  },
+  "onenote_ok.one": {
+   "builder": "tests/modules/test_p2_g12_3.py:build_onenote_ok",
+   "bytes": 1664,
+   "origin": "synthetic",
+   "sha256": "f3d4101211a329ab64a4af1fbbf8eb3a714afa14e41c46c48acb4f8f06eb00f3"
+  }
+ },
+ "schema_note": "synthetic inputs of windows_artifact_triage built by tests/modules/test_p2_g12_3.py (P367 c8); *.child.json are the reports the real LnkParse3 1.6.0 / olefile 0.47 / pymsi 0.0.0rc1 produced on them (prep capture, 2026-11-26)"
+}

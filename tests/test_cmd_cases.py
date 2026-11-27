@@ -371,6 +371,32 @@ def test_list_show_report(modules, http, tmp_path, capsys):
     assert main(["cases", "show", "no-such-case"]) == 1
 
 
+def test_list_masks_personal_seeds_and_never_prints_clean(capsys, monkeypatch):
+    """Wave-3 integration (WP14 -> WP18/WP13): `cases list` and App.cases_table read v1 'clean'
+    as 'no findings' and show seeds through ui.safe.entity_display (a full CPF never appears, AR24;
+    control characters and markup in a stored case stay inert)."""
+    from rich.console import Console
+
+    from v3lum.app import App
+    from v3lum.ui.theme import THEME
+
+    rows = [
+        {"id": "c-v1", "created": "2025-01-01T00:00:00", "seeds": ["cpf:529.982.247-25", "domain:ok.example"], "risk_level": "clean",
+         "risk_score": 0, "tlp": "amber", "legal_hold": 0, "engagement": 0, "findings": 0, "entities": 1},
+        {"id": "c-v2\x1b]8;;x\x07", "created": "2026-11-26T00:00:00", "seeds": ["domain:[bold]evil.example"], "risk_level": "high",
+         "risk_score": 70, "tlp": "red", "legal_hold": 1, "engagement": 0, "findings": 2, "entities": 3},
+    ]
+    monkeypatch.setattr(Store, "list_cases", lambda self, limit=30, search="": rows)
+    assert main(["cases", "list"]) == 0
+    out = _out(capsys)[0]
+    console = Console(record=True, width=250, theme=THEME)
+    console.print(App(console, offline=True).cases_table())
+    for text in (out, console.export_text()):
+        assert "529.982.247-25" not in text and "52998224725" not in text
+        assert "clean" not in text and "no findings 0" in text and "high 70" in text
+        assert "\x1b" not in text and "[bold]evil.example" in text
+
+
 def test_feedback_outside_a_terminal_records_nothing_and_says_so(modules, http, capsys):
     case_id = _scan(reports=False)["case_id"]
     assert main(["cases", "feedback", case_id]) == 0

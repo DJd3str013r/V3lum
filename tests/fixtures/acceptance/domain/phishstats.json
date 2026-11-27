@@ -1,0 +1,19 @@
+{
+ "schema": "v3lum.acceptance_routes/1",
+ "module": "phishstats",
+ "routes": [
+  {
+   "method": "GET",
+   "url": "https://api.phishstats.info/api/phishing?_where=%28host%2Ceq%2Cexample.com%29&_sort=-id&_size=100",
+   "status": 200,
+   "json": [],
+   "headers": {
+    "content-type": "application/json; charset=utf-8",
+    "ratelimit-limit": "20",
+    "ratelimit-remaining": "19",
+    "ratelimit-reset": "40"
+   },
+   "latency_ms": 250
+  }
+ ]
+}

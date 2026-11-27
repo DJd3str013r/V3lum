@@ -1,0 +1,13 @@
+{
+ "messages": [],
+ "data_call_name": "network-info",
+ "data_call_status": "supported",
+ "cached": false,
+ "status": "ok",
+ "status_code": 200,
+ "time": "2026-11-26T04:34:14.960184",
+ "data": {
+  "asns": [],
+  "prefix": ""
+ }
+}

@@ -1,0 +1,141 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "nodes": [
+  {
+   "key": "email:analyst@acme.com.br",
+   "depth": 0,
+   "seed": true,
+   "ownership": "own_asset",
+   "findings": [
+    {
+     "title": "Listed in breach: 8tracks",
+     "severity": "medium",
+     "confidence": 0.7,
+     "confidence_label": "probable",
+     "criterion": "hibp_account: the address is listed in this breach (synthetic fixture)",
+     "tags": [
+      "breach",
+      "privacy"
+     ],
+     "module": "hibp_account",
+     "source": "hibp.account",
+     "key": "8tracks",
+     "data": {
+      "name": "8tracks",
+      "breach_key": "8tracks",
+      "data_classes": [
+       "Email addresses",
+       "Passwords"
+      ],
+      "password_form": "hashed: sha-1",
+      "verified": true,
+      "sensitive": false,
+      "counted": true,
+      "date": "2017-06-27",
+      "sources": [
+       "hibp.account"
+      ]
+     }
+    },
+    {
+     "title": "Listed in breach: Adobe",
+     "severity": "medium",
+     "confidence": 0.7,
+     "confidence_label": "probable",
+     "criterion": "xposedornot: the address is listed in this breach (synthetic fixture)",
+     "tags": [
+      "breach",
+      "privacy"
+     ],
+     "module": "xposedornot",
+     "source": "xposedornot.api",
+     "key": "adobe",
+     "data": {
+      "name": "Adobe",
+      "breach_key": "adobe",
+      "data_classes": [
+       "Email addresses",
+       "Passwords"
+      ],
+      "password_form": "hashed: sha-1",
+      "verified": true,
+      "sensitive": false,
+      "counted": true,
+      "date": "2013-10",
+      "sources": [
+       "xposedornot.api"
+      ]
+     }
+    },
+    {
+     "title": "Listed in breach: Zomato",
+     "severity": "low",
+     "confidence": 0.4,
+     "confidence_label": "possible",
+     "criterion": "leakcheck_public: the address is listed in this breach (synthetic fixture)",
+     "tags": [
+      "breach",
+      "privacy"
+     ],
+     "module": "leakcheck_public",
+     "source": "leakcheck.public",
+     "key": "zomato",
+     "data": {
+      "name": "Zomato.com",
+      "breach_key": "zomato",
+      "data_classes": [
+       "Email addresses",
+       "Passwords"
+      ],
+      "password_form": "hashed: sha-1",
+      "verified": true,
+      "sensitive": false,
+      "counted": true,
+      "date": "2017-05",
+      "sources": [
+       "leakcheck.public"
+      ]
+     }
+    },
+    {
+     "title": "Listed in breach: Zomato",
+     "severity": "low",
+     "confidence": 0.4,
+     "confidence_label": "possible",
+     "criterion": "leakcheck_public: the address is listed in this breach (synthetic fixture)",
+     "tags": [
+      "breach",
+      "privacy"
+     ],
+     "module": "leakcheck_public",
+     "source": "leakcheck.public",
+     "key": "zomato#2",
+     "data": {
+      "name": "Zomato.com",
+      "breach_key": "zomato",
+      "data_classes": [
+       "Email addresses",
+       "Passwords"
+      ],
+      "password_form": "hashed: sha-1",
+      "verified": true,
+      "sensitive": false,
+      "counted": true,
+      "date": "2017-05",
+      "sources": [
+       "leakcheck.public"
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "edges": [],
+ "expect": {
+  "p2g04_breach_merge": {
+   "min": 0,
+   "max": 0
+  }
+ }
+}

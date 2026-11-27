@@ -1,0 +1,72 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "purpose": ""
+  },
+  "nodes": [
+    {
+      "key": "cnpj:11222333000181",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "legal_name": [
+          {
+            "value": "EXEMPLO COMERCIO LTDA",
+            "source": "cnpj_lookup"
+          }
+        ]
+      }
+    },
+    {
+      "key": "domain:exemplo-outlet.example",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "registered": [
+          {
+            "value": true,
+            "source": "rdap"
+          }
+        ],
+        "registrant_kind": [
+          {
+            "value": "org",
+            "source": "rdap"
+          }
+        ],
+        "created": [
+          {
+            "value": "2015-03-04T12:00:00Z",
+            "source": "rdap"
+          }
+        ],
+        "cnpj_roots": [
+          {
+            "value": [
+              "99888777"
+            ],
+            "source": "rdap"
+          }
+        ],
+        "registrant": [
+          {
+            "value": "OUTRA EMPRESA EXEMPLO LTDA",
+            "source": "rdap"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [],
+  "expect": {
+    "domain_ownership": {
+      "min": 1,
+      "max": 1,
+      "severity": "info",
+      "confidence_label": "probable"
+    }
+  }
+}

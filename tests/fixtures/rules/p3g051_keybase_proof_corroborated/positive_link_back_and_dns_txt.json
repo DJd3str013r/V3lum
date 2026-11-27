@@ -1,0 +1,154 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "options": {
+  "mode": "passive",
+  "tlp": "amber",
+  "depth": 2
+ },
+ "nodes": [
+  {
+   "key": "username:exampleorg",
+   "depth": 0,
+   "seed": true,
+   "attributes": {
+    "keybase_profile": [
+     {
+      "value": [
+       {
+        "username": "exampleorg",
+        "uid": "0d3a4f5e6b7c8d9e0f1a2b3c4d5e6f19",
+        "has_sigchain": true,
+        "proof_count": 3,
+        "pgp_fingerprints": [
+         "05038F7802BB049DE654DA1751C59484928D2719"
+        ],
+        "banner": "Keybase is in maintenance mode: historical, self-asserted evidence"
+       }
+      ],
+      "source": "keybase"
+     }
+    ],
+    "keybase_proofs": [
+     {
+      "value": [
+       {
+        "username": "exampleorg",
+        "proof_type": "github",
+        "nametag": "exampleorg",
+        "state": 1,
+        "state_name": "ok",
+        "ok": true,
+        "service_url": null,
+        "label": "historical",
+        "confidence": "probable",
+        "wording": "Keybase-verified proof, signed on or before 2019-06-01 (historical)"
+       },
+       {
+        "username": "exampleorg",
+        "proof_type": "dns",
+        "nametag": "example.com",
+        "state": 1,
+        "state_name": "ok",
+        "ok": true,
+        "service_url": null,
+        "label": "historical",
+        "confidence": "probable",
+        "wording": "Keybase-verified proof, signed on or before 2019-06-01 (historical)"
+       },
+       {
+        "username": "exampleorg",
+        "proof_type": "generic_web_site",
+        "nametag": "www.example.com",
+        "state": 1,
+        "state_name": "ok",
+        "ok": "https://www.example.com",
+        "service_url": null,
+        "label": "historical",
+        "confidence": "probable",
+        "wording": "Keybase-verified proof, signed on or before 2019-06-01 (historical)"
+       }
+      ],
+      "source": "keybase"
+     }
+    ]
+   }
+  },
+  {
+   "key": "social_account:github:exampleorg",
+   "depth": 1
+  },
+  {
+   "key": "pgp_fingerprint:05038F7802BB049DE654DA1751C59484928D2719",
+   "depth": 1
+  },
+  {
+   "key": "domain:example.com",
+   "depth": 1,
+   "attributes": {
+    "txt": [
+     {
+      "value": [
+       "v=spf1 -all",
+       "keybase-site-verification=AbCdEfGhIjKlMnOpQrStUvWxYz0123456789abcdEFG"
+      ],
+      "source": "dns_records"
+     }
+    ]
+   }
+  },
+  {
+   "key": "domain:www.example.com",
+   "depth": 1
+  },
+  {
+   "key": "social_account:keybase:exampleorg",
+   "depth": 2
+  }
+ ],
+ "edges": [
+  {
+   "src": "username:exampleorg",
+   "dst": "social_account:github:exampleorg",
+   "relation": "keybase_proof",
+   "module": "keybase",
+   "confidence": 0.7
+  },
+  {
+   "src": "username:exampleorg",
+   "dst": "domain:example.com",
+   "relation": "keybase_proof",
+   "module": "keybase",
+   "confidence": 0.7
+  },
+  {
+   "src": "username:exampleorg",
+   "dst": "domain:www.example.com",
+   "relation": "keybase_proof",
+   "module": "keybase",
+   "confidence": 0.7
+  },
+  {
+   "src": "username:exampleorg",
+   "dst": "pgp_fingerprint:05038F7802BB049DE654DA1751C59484928D2719",
+   "relation": "pgp_key",
+   "module": "keybase",
+   "confidence": 0.7
+  },
+  {
+   "src": "social_account:github:exampleorg",
+   "dst": "social_account:keybase:exampleorg",
+   "relation": "has_account",
+   "module": "github_user",
+   "confidence": 0.7
+  }
+ ],
+ "expect": {
+  "p3g051_keybase_proof_corroborated": {
+   "min": 2,
+   "max": 2,
+   "severity": "info",
+   "confidence_label": "confirmed"
+  }
+ }
+}

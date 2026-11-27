@@ -1,0 +1,19 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://cvedb.shodan.io/cve/CVE-2021-44228",
+  "headers": {}
+ },
+ "response": {
+  "status": 403,
+  "headers": {
+   "server": "cloudflare",
+   "content-type": "text/html; charset=UTF-8",
+   "cf-mitigated": "challenge"
+  },
+  "body": "<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta name=\"robots\" content=\"noindex,nofollow\"></head><body><div class=\"main-wrapper\" role=\"main\"><div class=\"main-content\"><noscript><div class=\"h2\"><span id=\"challenge-error-text\">Enable JavaScript and cookies to continue</span></div></noscript></div></div><script>(function(){window._cf_chl_opt = {cvId: '3',cZone: 'ipapi.co',cType: 'managed',cRay: '0000000000000000',cH: 'REDACTED',cN: 'REDACTED'};var a = document.createElement('script');a.src = '/cdn-cgi/challenge-platform/h/g/orchestrate/chl_page/v1?ray=0000000000000000';document.getElementsByTagName('head')[0].appendChild(a);}());</script></body></html>"
+ },
+ "transport_error": null,
+ "elapsed_s": 0.2,
+ "note": "DERIVED: Cloudflare managed-challenge template (research capture from another Cloudflare host, tokens replaced, as in p1-G08-1). cvedb.shodan.io is served by Cloudflare (server: cloudflare) but did not challenge this egress; the page is what a challenge would look like."
+}

@@ -1,0 +1,7 @@
+{"rrname":"example.com","rrdata":"elliott.ns.cloudflare.com","rrtype":"NS","time_first":1642103570,"time_last":1795640494,"count":8}
+{"rrname":"example.com","rrdata":"hera.ns.cloudflare.com","rrtype":"NS","time_first":1642103570,"time_last":1795640494,"count":8}
+{"rrname":"example.com","rrdata":"2606:4700:10::6814:179a","rrtype":"AAAA","time_first":1775807518,"time_last":1795640494,"count":8}
+{"rrname":"example.com","rrdata":"2606:4700:10::ac42:93f3","rrtype":"AAAA","time_first":1775807518,"time_last":1795640494,"count":8}
+{"rrname":"example.com","rrdata":"104.20.23.154","rrtype":"A","time_first":1775807518,"time_last":1795640494,"count":8}
+{not json at all}
+{"rrname":"example.com","rrdata":"172.66.147.243","rrtype":"

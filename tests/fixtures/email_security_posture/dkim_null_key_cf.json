@@ -1,0 +1,22 @@
+{
+ "Status": 0,
+ "TC": false,
+ "RD": true,
+ "RA": true,
+ "AD": true,
+ "CD": false,
+ "Question": [
+  {
+   "name": "selector1._domainkey.example.com",
+   "type": 16
+  }
+ ],
+ "Answer": [
+  {
+   "name": "selector1._domainkey.example.com",
+   "type": 16,
+   "TTL": 300,
+   "data": "\"v=DKIM1; p=\""
+  }
+ ]
+}

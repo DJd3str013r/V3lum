@@ -1,0 +1,12 @@
+{
+ "_note": "research: 202 + x-amzn-waf-action: challenge, empty body: the web search page is never fetched (FC7); same marker on the API host = BLOCKED challenge",
+ "status": 202,
+ "headers": {
+  "server": "CloudFront",
+  "content-length": "0",
+  "x-amzn-waf-action": "challenge",
+  "cache-control": "no-store, max-age=0",
+  "content-type": "text/html; charset=UTF-8"
+ },
+ "body": ""
+}

@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "jamesbrine_feeds",
+  "source_url": "https://jamesbrine.com.au/",
+  "version": "iplist.txt and /csv (runtime downloads, checked 2026-11-26)",
+  "sha256": "",
+  "licence": "LicenseRef-unknown-no-licence-published",
+  "attribution": "Threat feeds published at jamesbrine.com.au. No licence published; the site FAQ (2026-11-26) reads 'TLP:White and free to use in any form for non-commercial purposes, use for commercial purposes requires prior approval'. Used only by the opt-in honeypot_intel_extra module, disabled until legal records the terms; never bundled or redistributed.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/threat_intel_ioc/honeypot_intel_extra.py",
+    "v3lum/data/providers/jamesbrine.json"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+ "_meta": {
+  "module": "org_code_footprint",
+  "case": "gh_public_members_count",
+  "source": "C0758 api.github.com",
+  "request": {
+   "method": "GET",
+   "url": "https://api.github.com/orgs/example-org/public_members?per_page=1"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "DOC-SHAPED",
+  "note": "count = last page with per_page=1 (37); member login is a documentation value"
+ },
+ "status": 200,
+ "headers": {
+  "content-type": "application/json; charset=utf-8",
+  "link": "<https://api.github.com/organizations/23456789/public_members?per_page=1&page=2>; rel=\"next\", <https://api.github.com/organizations/23456789/public_members?per_page=1&page=37>; rel=\"last\"",
+  "x-ratelimit-limit": "60",
+  "x-ratelimit-remaining": "55",
+  "x-ratelimit-resource": "core"
+ },
+ "body": "[\n  {\n    \"login\": \"example-member\",\n    \"id\": 1000001,\n    \"type\": \"User\",\n    \"site_admin\": false,\n    \"html_url\": \"https://github.com/example-member\"\n  }\n]"
+}

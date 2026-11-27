@@ -1,0 +1,34 @@
+{
+ "fixture_docprops.docx": {
+  "magic": "ooxml-docx",
+  "meta": {
+   "AppVersion": "16.0000",
+   "Application": "Microsoft Office Word",
+   "Company": "ACME Ltda",
+   "Template": "Normal.dotm",
+   "created": "2026-11-01T10:00:00Z",
+   "creator": "jdoe",
+   "external_rels": [],
+   "has_macros": false,
+   "lastModifiedBy": "CORP\\analyst01",
+   "revision": "3"
+  },
+  "sha256": "f06a554ce2d28d2daf07b13c52d9ab9796002519a84340377d866a544444deb9"
+ },
+ "fixture_meta.pdf": {
+  "magic": "pdf",
+  "meta": {
+   "encrypted": false,
+   "has_xmp": false,
+   "info": {
+    "/Author": "V3LUM Test Author",
+    "/CreationDate": "D:20261125120000-03'00'",
+    "/Creator": "V3LUM fixture generator",
+    "/Producer": "pypdf",
+    "/Title": "fixture"
+   },
+   "pages": 1
+  },
+  "sha256": "229fbd88fc0ee0f28da5dc878a2bc07916ce201f83dfb8476166496ac8ffd0b3"
+ }
+}

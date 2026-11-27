@@ -1,0 +1,15 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://help.example.com/"
+ },
+ "response": {
+  "status": 403,
+  "headers": {
+   "content-type": "text/html; charset=UTF-8",
+   "cf-mitigated": "challenge",
+   "server": "cloudflare"
+  },
+  "body": "<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta name=\"robots\" content=\"noindex,nofollow\"></head><body><noscript>Enable JavaScript and cookies to continue</noscript><script>(function(){window._cf_chl_opt={};/* tokens removed */}());</script><script src=\"/cdn-cgi/challenge-platform/h/b/orchestrate/chl_page/v1\"></script></body></html>"
+ }
+}

@@ -1,0 +1,22 @@
+{
+ "isValid": false,
+ "requestDate": "2026-11-26T09:15:06.247Z",
+ "userError": "MS_MAX_CONCURRENT_REQ",
+ "name": "---",
+ "address": "---",
+ "requestIdentifier": "",
+ "originalVatNumber": "00177041",
+ "vatNumber": "00177041",
+ "viesApproximate": {
+  "name": "---",
+  "street": "---",
+  "postalCode": "---",
+  "city": "---",
+  "companyType": "---",
+  "matchName": 3,
+  "matchStreet": 3,
+  "matchPostalCode": 3,
+  "matchCity": 3,
+  "matchCompanyType": 3
+ }
+}

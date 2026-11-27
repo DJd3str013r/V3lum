@@ -1,0 +1,73 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "$comment": "RDP on an own address observed 6 days ago: HIGH, PROBABLE",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "org_profile": {
+    "org": {
+      "name": "Acme"
+    },
+    "domains": [
+      {
+        "name": "acme-corp.example",
+        "verification": "txt_verified",
+        "criticality": "high"
+      }
+    ],
+    "cidrs": [
+      {
+        "value": "203.0.113.0/24",
+        "criticality": "high"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "key": "ipv4:203.0.113.10",
+      "depth": 0,
+      "seed": true,
+      "ownership": "own_asset",
+      "tags": [
+        "own_asset"
+      ],
+      "attributes": {
+        "open_ports": [
+          {
+            "value": [
+              443,
+              3389
+            ],
+            "source": "shodan_api"
+          }
+        ]
+      },
+      "findings": [
+        {
+          "title": "Open ports observed by Shodan",
+          "severity": "info",
+          "confidence": 0.8,
+          "criterion": "source verdict",
+          "tags": [
+            "exposure"
+          ],
+          "module": "shodan_api",
+          "source": "shodan.api",
+          "observed_last": "2026-11-20T00:00:00Z"
+        }
+      ]
+    }
+  ],
+  "edges": [],
+  "expect": {
+    "exposed_remote_admin": {
+      "min": 1,
+      "max": 1,
+      "severity": "high",
+      "confidence_label": "probable"
+    }
+  }
+}

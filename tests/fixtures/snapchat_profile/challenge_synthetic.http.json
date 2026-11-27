@@ -1,0 +1,10 @@
+{
+ "_fixture": "SYNTHETIC: managed challenge shape (markers of the real medium.com capture)",
+ "status": 403,
+ "headers": {
+  "content-type": "text/html; charset=UTF-8",
+  "server": "cloudflare",
+  "cf-mitigated": "challenge"
+ },
+ "body": "<!DOCTYPE html><html><head><title>Just a moment...</title></head><body><script>window._cf_chl_opt={cType:'managed'};</script></body></html>"
+}

@@ -1,0 +1,39 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "$comment": "Only a past exit period is known (tor_exit_history): INFO context",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "nodes": [
+    {
+      "key": "ipv4:203.0.113.34",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "tor_exit_history": [
+          {
+            "value": [
+              {
+                "date": "2026-03-01",
+                "source": "collector",
+                "state": "exit"
+              }
+            ],
+            "source": "tor_exit_history"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [],
+  "expect": {
+    "anonymized_infrastructure": {
+      "min": 1,
+      "max": 1,
+      "severity": "info"
+    }
+  }
+}

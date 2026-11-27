@@ -1,0 +1,26 @@
+{
+ "self": "http://carbondate.cs.odu.edu/cd/example.com",
+ "uri": "http://example.com",
+ "estimated-creation-date": "2002-01-20T14:25:10",
+ "earliest-sources": [
+  "archives"
+ ],
+ "sources": {
+  "archives": {
+   "earliest": "2002-01-20T14:25:10"
+  },
+  "google.com": {
+   "earliest": ""
+  },
+  "pubdate": {
+   "earliest": ""
+  },
+  "last-modified": {
+   "earliest": "2005-11-15T13:24:10"
+  },
+  "bitly.com": {
+   "earliest": ""
+  }
+ },
+ "_fixture": "SYNTHETIC: live answers on 2026-11-26 were empty for every source"
+}

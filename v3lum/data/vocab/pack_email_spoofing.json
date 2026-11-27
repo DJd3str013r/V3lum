@@ -1,0 +1,16 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "pack_email_spoofing",
+  "title": "E-mail spoofing pack (P027, CR01-CR03)",
+  "owner": "core WP23",
+  "notes": "P027 cond 3: the DNS facts CR01-CR03 consume (produced by email_security_posture/dns_records; first declared by batch p1-G01-1 with the same descriptions). Only NOERROR/NXDOMAIN-backed facts are written; could-not-verify answers leave them unset (rule 5).",
+  "attributes": {
+    "spf_lookups": "int: DNS-mechanism lookups of the SPF evaluation (include, a, mx, ptr, exists, redirect; RFC 7208 limit 10)",
+    "spf_void_lookups": "int: void lookups (NXDOMAIN or no records) of the SPF evaluation (RFC 7208 limit 2)",
+    "dmarc_pct": "int: DMARC pct= tag (0-100) of the applicable policy",
+    "dmarc_sp": "DMARC sp= tag (subdomain policy): none | quarantine | reject",
+    "dmarc_rua_external": "list of {dest_domain, authorized}: DMARC rua/ruf destinations outside the organisational domain and whether <domain>._report._dmarc.<dest> authorises them (true/false; null = could not verify)"
+  },
+  "tags": {},
+  "relations": {}
+}

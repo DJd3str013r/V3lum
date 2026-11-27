@@ -1,0 +1,33 @@
+{
+ "objectClassName": "domain",
+ "ldhName": "bb.com.br",
+ "entities": [
+  {
+   "objectClassName": "entity",
+   "handle": "00000000000191",
+   "roles": [
+    "registrant"
+   ],
+   "publicIds": [
+    {
+     "type": "cnpj",
+     "identifier": "00.000.000/0001-91"
+    }
+   ]
+  }
+ ],
+ "events": [
+  {
+   "eventAction": "registration",
+   "eventDate": "1998-03-04T19:54:24Z"
+  },
+  {
+   "eventAction": "last changed",
+   "eventDate": "2026-05-29T12:00:10Z"
+  },
+  {
+   "eventAction": "expiration",
+   "eventDate": "2028-03-04T19:54:24Z"
+  }
+ ]
+}

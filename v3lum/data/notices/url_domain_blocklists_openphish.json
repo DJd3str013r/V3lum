@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "url_domain_blocklists_openphish",
+  "source_url": "https://openphish.com/terms.html",
+  "version": "public_feed/feed.txt (runtime download; used only with OpenPhish's written consent recorded)",
+  "sha256": "",
+  "licence": "OpenPhish Community Feed terms (non-commercial; organisational use needs written consent)",
+  "attribution": "OpenPhish community phishing feed (https://openphish.com). Not used for organisational security operations without OpenPhish's prior written consent (P071 cond 3).",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/url_web/url_domain_blocklists.py"
+  ]
+}

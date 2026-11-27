@@ -1,0 +1,22 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.platform.censys.io/v3/global/asset/host/8.8.8.8"
+ },
+ "response": {
+  "status": 401,
+  "headers": {
+   "Content-Type": "application/json"
+  },
+  "body": {
+   "error": {
+    "code": 401,
+    "status": "Unauthorized",
+    "request": "00000000000000000000000000000000",
+    "message": "Access credentials are invalid"
+   }
+  }
+ },
+ "observed": "research_sample",
+ "note": "No/invalid Bearer PAT -> 401 {error:{code,status,request,message}} (SDK AuthenticationErrorDetail also allows 'reason'). Request id zeroed."
+}

@@ -1,0 +1,641 @@
+{
+ "gap": "G13 pentest_active / G01 - SaaS tenant discovery (organisation level)",
+ "slug": "saas_tenants",
+ "collected_at": "2026-11-26T00:01:07Z",
+ "notes": "Recorded research sample gaps__saas_tenants (P342 FC5), minimised to its DoH TXT request (the Okta, Atlassian-tenant and Zendesk probes of the sample are tenant discovery, not P342). The research stored only a json_extract summary (Status 0, Answer.len 98) for atlassian.com. 'rerecorded' is the identical request sent again on 2026-11-26T09:12:16Z (Status 0, 98 records, same content-length 12925 as recorded); every verification-token value was replaced by a deterministic placeholder (prefixes, separators, quoting, duplicates, record count and the SPF policy record kept).",
+ "requests": [
+  {
+   "label": "doh_txt_atlassian_com",
+   "url": "https://cloudflare-dns.com/dns-query?name=atlassian.com&type=TXT",
+   "method": "GET",
+   "http_status": 200,
+   "headers": {
+    "content-type": "application/dns-json",
+    "content-length": "12925",
+    "server": "cloudflare"
+   },
+   "elapsed_s": 0.38,
+   "body_kind": "json_extract",
+   "body": {
+    "Status": 0,
+    "Answer.len": 98
+   }
+  }
+ ],
+ "rerecorded": {
+  "label": "doh_txt_atlassian_com",
+  "url": "https://cloudflare-dns.com/dns-query?name=atlassian.com&type=TXT",
+  "method": "GET",
+  "observed_at": "2026-11-26T09:12:16Z",
+  "http_status": 200,
+  "headers": {
+   "server": "cloudflare",
+   "content-type": "application/dns-json"
+  },
+  "body_kind": "json",
+  "body": {
+   "Status": 0,
+   "TC": false,
+   "RD": true,
+   "RA": true,
+   "AD": false,
+   "CD": false,
+   "Question": [
+    {
+     "name": "atlassian.com",
+     "type": 16
+    }
+   ],
+   "Answer": [
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"00000000-0000-4000-8000-000000000001\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"EXAMPLE0000000000000000000000002\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"MS=ms00000003\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"SFMC-EXAMPLE000000000000000000000000000000004\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"SFMC-EXAMPLE000000000000000000000000000000005\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"SFMC-EXAMPLE000000000000000000000000000000006\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"SFMC-EXAMPLE000000000000000000000000000000007\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"EXAMPLE000000000000000000000000000000000008=\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"_EXAMPLE000000000000000000000009\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"_EXAMPLE000000000000000000000010\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"0000000000000000000000000000000b\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"adobe-idp-site-verification=000000000000000000000000000000000000000000000000000000000000000c\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"airtable-verification=0000000000000000000000000000000d\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"anodot-domain-verification=000000000000000000000000000000000000000000000000000000000000000e\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"anthropic-domain-verification-abc123=EXAMPLE000000000000000015\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"apperio-domain-verification=00000000000000000000000000000010\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"apple-domain-verification=EXAMPLE000000017\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"atlassian-domain-verification=EXAMPLE000000000000000000000000000000000000000000000000000000018\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"atlassian-domain-verification=EXAMPLE000000000000000000000000000000000000000000000000000000019\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"atlassian-domain-verification=EXAMPLE000000000000000000000000000000000000000000000000000000020\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"atlassian-domain-verification=EXAMPLE000000000000000000000000000000000000000000000000000000021\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"atlassian-domain-verification=EXAMPLE000000000000000000000000000000000000000000000000000000022\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"atlassian-domain-verification=EXAMPLE000000000000000000000000000000000000000000000000000000023\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"atlassian-domain-verification=EXAMPLE000000000000000000000000000000000000000000000000000000024\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"atlassian-domain-verification=EXAMPLE000000000000000000000000000000000000000000000000000000025\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"atlassian-domain-verification=EXAMPLE000000000000000000000000000000000000000000000000000000026\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"atlassian-domain-verification=EXAMPLE000000000000000000000000000000000000000000000000000000027\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"atlassian-domain-verification=EXAMPLE000000000000000000000000000000000000000000000000000000028\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"atlassian-domain-verification=EXAMPLE000000000000000000000000000000000000000000000000000000029\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"atlassian-domain-verification=EXAMPLE000000000000000000000000000000000000000000000000000000030\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"atlassian-domain-verification=EXAMPLE000000000000000000000000000000000000000000000000000000031\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"atlassian-domain-verification=EXAMPLE000000000000000000000000000000000000000000000000000000032\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"atlassian-domain-verification=EXAMPLE000000000000000000000000000000000000000000000000000000033\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"atlassian-sending-domain-verification=00000000-0000-4000-8000-000000000034\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"atlassian-sending-domain-verification=00000000-0000-4000-8000-000000000035\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"bugcrowd-verification=00000000000000000000000000000024\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"canva-site-verification=EXAMPLE000000000000037\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"cursor-domain-verification-abc123=EXAMPLE000000000000000038\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"EXAMPLE0000000000000000000039\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"docusign=00000000-0000-4000-8000-000000000040\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"docusign=00000000-0000-4000-8000-000000000041\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"docusign=00000000-0000-4000-8000-000000000042\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"dropbox-domain-verification=EXAMPLE00043\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"facebook-domain-verification=EXAMPLE00000000000000000000044\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"google-site-verification=EXAMPLE000000000000000000000000000000000045\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"google-site-verification=EXAMPLE000000000000000000000000000000000046\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"google-site-verification=EXAMPLE000000000000000000000000000000000047\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"google-site-verification=EXAMPLE000000000000000000000000000000000048\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"google-site-verification=EXAMPLE000000000000000000000000000000000049\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"google-site-verification=EXAMPLE000000000000000000000000000000000050\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"google-site-verification=EXAMPLE000000000000000000000000000000000051\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"google-site-verification=EXAMPLE000000000000000000000000000000000052\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"google-site-verification=EXAMPLE000000000000000000000000000000000053\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"google-site-verification=EXAMPLE000000000000000000000000000000000054\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"google-site-verification=EXAMPLE000000000000000000000000000000000055\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"google-site-verification=EXAMPLE000000000000000000000000000000000056\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"google-site-verification=EXAMPLE000000000000000000000000000000000057\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"google-site-verification=EXAMPLE000000000000000000000000000000000058\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"google-site-verification=EXAMPLE000000000000000000000000000000000059\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"google-site-verification=EXAMPLE000000000000000000000000000000000060\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"google-site-verification=EXAMPLE000000000000000000000000000000000061\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"hubspot-developer-verification=EXAMPLE00000000000000000000000000000000000000062\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"hubspot-developer-verification=EXAMPLE00000000000000000000000000000000000000063\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"jamf-site-verification=EXAMPLE000000000000064\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"knowbe4-site-verification=00000000000000000000000000000041\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"krisp-domain-verification=EXAMPLE0000000000000000000000066\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"lastpass-verification-code=EXAMPLE00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000067\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"miro-verification=0000000000000000000000000000000000000044\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"mongodb-site-verification=EXAMPLE0000000000000000000000069\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"notion-domain-verification=EXAMPLE000000000000000000000000000000000070\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"onetrust-domain-verification=00000000000000000000000000000047\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"openai-domain-verification=EXAMPLE00000000000000000072\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"pardot000000=0000000000000000000000000000000000000000000000000000000000000049\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"pendo-domain-verification=00000000-0000-4000-8000-000000000074\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"postman-domain-verification=0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004b\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"ppe-000000000000000000000000000000000000004c\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"profound-domain-verification-abc123=EXAMPLE000000000000000077\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"segment-site-verification=EXAMPLE0000000000000000000000078\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"status-page-domain-verification=EXAMPLE00079\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"stripe-verification=0000000000000000000000000000000000000000000000000000000000000050\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"stripe-verification=0000000000000000000000000000000000000000000000000000000000000051\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"stripe-verification=0000000000000000000000000000000000000000000000000000000000000052\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"stripe-verification=0000000000000000000000000000000000000000000000000000000000000053\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"stripe-verification=0000000000000000000000000000000000000000000000000000000000000054\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"stripe-verification=0000000000000000000000000000000000000000000000000000000000000055\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"stripe-verification=0000000000000000000000000000000000000000000000000000000000000056\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"stripe-verification=0000000000000000000000000000000000000000000000000000000000000057\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"stripe-verification=0000000000000000000000000000000000000000000000000000000000000058\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"stripe-verification=0000000000000000000000000000000000000000000000000000000000000059\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"stripe-verification=000000000000000000000000000000000000000000000000000000000000005a\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"stripe-verification=000000000000000000000000000000000000000000000000000000000000005b\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"stripe-verification=000000000000000000000000000000000000000000000000000000000000005c\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"twilio-domain-verification=0000000000000000000000000000005d\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"v=EXAMPLE00000000000000000000000000000000000000000000000000000094=\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"v=spf1 ip4:54.85.255.245 ip4:54.241.191.3 include:_spf.google.com include:cust-spf.exacttarget.com include:spf-001d9801.pphosted.com include:amazonses.com include:spf1.atlassian.com include:spf3.atlassian.com ip4:54.71.147.74 ip4:54.71.63.106 ip4:54.70.13.32 ~all\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"EXAMPLE0000000000000000095\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"zoom-domain-verification=00000000-0000-4000-8000-000000000096\""
+    },
+    {
+     "name": "atlassian.com",
+     "type": 16,
+     "TTL": 3600,
+     "data": "\"zoom-domain-verification=EXAMPLE0000000000000000000000000000000000097\""
+    }
+   ]
+  }
+ }
+}

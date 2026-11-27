@@ -1,0 +1,22 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p3-G13-1",
+  "title": "CDN origin-IP hypotheses and organisation SaaS tenant discovery (batch p3-G13-1: P278, P371)",
+  "owner": "batch p3-G13-1 (correlation rules cdn_origin_hypothesis and p3g131_saas_tenant_corroborated, modules cdn_origin_hypothesis and saas_tenant_discovery)",
+  "notes": "Core and pack names are reused where they fit: identity_provider (relation, P011), dns_history_a / origin_ip_candidates (P006), passive_dns (P015), cert_sha256 / cert_sans / favicon_mmh3 / title (scan engines, P062), saas_vendors (P342), m365_identity_provider (P011), presence, hypothesis, cdn_origin_hypothesis (tags). The names below carry the tri-state tenant rows of P371 and the hypothesis relation of P278.",
+  "attributes": {
+    "saas_tenant_checks": "one tri-state row per vendor and candidate name of the P371 SaaS tenant discovery {vendor okta | atlassian | zendesk, candidate, tenant_host, url, state exists | absent | unknown, label ('candidate tenant' when exists), http_status, marker, reason, ids {issuer | cloud_id | locale}, stop, corroboration [{kind dns_verification | idp_issuer | org_profile, detail}], confidence candidate | corroborated}: 'absent' only on the vendor's exact absence marker, 403/429/challenges/timeouts are 'unknown'",
+    "saas_tenants": "tenants found by the P371 discovery [{vendor, kind identity_provider | helpdesk_itsm, tenant_host, confidence candidate | corroborated, corroboration, ids}]: a candidate tenant is a name match only, never attributed to the organisation until corroborated (DNS verification record, IdP issuer metadata or the org profile)",
+    "identity_provider_hosts": "identity-provider tenant hosts of the organisation found by the P371 discovery (e.g. acme.okta.com): pivots for passive modules only, never contacted by the discovering module beyond its one well-known request, never a LIGHT/ACTIVE seed"
+  },
+  "tags": {
+    "origin_candidate": "a correlation naming an IP as a possible origin server behind a CDN (P278): a hypothesis from passive facts, never connected to, never expanded and never a LIGHT/ACTIVE seed",
+    "candidate_tenant": "a SaaS tenant found under an organisation name by the P371 discovery: a name match only until corroborated",
+    "saas_tenant": "finding or correlation about an organisation's SaaS tenant (identity provider, helpdesk/ITSM)",
+    "abuse_aid": "carries an abuse-reporting aid (candidate hoster/ASN and the fronting CDN's abuse form) for a hostile site (P278 FC4): manual follow-up only"
+  },
+  "relations": {
+    "origin_candidate": "domain -> IP hypothesised as the origin server behind the domain's CDN (P278: historical A records, certificate, favicon or title matches on a non-CDN IP): 'possible origin (hypothesis)', never expanded, never contacted, never a LIGHT/ACTIVE seed",
+    "saas_tenant": "organisation domain/name -> candidate SaaS tenant host under its name (Atlassian, Zendesk; P371): a name match until corroborated, pivots for passive modules only"
+  }
+}

@@ -1,0 +1,22 @@
+{
+ "_meta": {
+  "module": "discord_invite",
+  "case": "rate_limited_short",
+  "source": "C0233 discord.com",
+  "request": {
+   "method": "GET",
+   "url": "https://discord.com/api/v10/invites/AbCd2345?with_counts=true&with_expiration=true"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "DOC-SHAPED",
+  "note": "Discord API rate-limit documentation shape"
+ },
+ "status": 429,
+ "headers": {
+  "content-type": "application/json",
+  "retry-after": "3",
+  "x-ratelimit-remaining": "0",
+  "x-ratelimit-reset-after": "2.5"
+ },
+ "body": "{\"message\":\"You are being rate limited.\",\"retry_after\":2.5,\"global\":false}"
+}

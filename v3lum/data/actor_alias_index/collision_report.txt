@@ -1,0 +1,409 @@
+AMBIGUOUS alias 'aesddos' (malware): synonym of several entries in misp-galaxy/malpedia
+AMBIGUOUS alias 'alphv' (malware): synonym of several entries in misp-galaxy/malpedia
+AMBIGUOUS alias 'andariel' (actor): synonym of several entries in misp-galaxy/threat-actor
+AMBIGUOUS alias 'apt27' (actor): synonym of several entries in misp-galaxy/microsoft-activity-group, mstic
+AMBIGUOUS alias 'apt28' (actor): synonym of several entries in misp-galaxy/microsoft-activity-group
+AMBIGUOUS alias 'berserkbear' (actor): synonym of several entries in misp-galaxy/mitre-intrusion-set
+AMBIGUOUS alias 'cadetblizzard' (actor): synonym of several entries in misp-galaxy/threat-actor
+AMBIGUOUS alias 'chopstick' (malware): synonym of several entries in misp-galaxy/malpedia
+AMBIGUOUS alias 'chromeloader' (malware): synonym of several entries in misp-galaxy/malpedia
+AMBIGUOUS alias 'circletyphoon' (actor): synonym of several entries in misp-galaxy/threat-actor
+AMBIGUOUS alias 'cobaltgypsy' (actor): synonym of several entries in misp-galaxy/threat-actor
+AMBIGUOUS alias 'cridex' (malware): synonym of several entries in misp-galaxy/banker
+AMBIGUOUS alias 'cryakl' (malware): synonym of several entries in misp-galaxy/ransomware
+AMBIGUOUS alias 'cryptprojectxxx' (malware): synonym of several entries in misp-galaxy/ransomware
+AMBIGUOUS alias 'crypvault' (malware): synonym of several entries in misp-galaxy/ransomware
+AMBIGUOUS alias 'darkhalo' (actor): synonym of several entries in misp-galaxy/mitre-intrusion-set
+AMBIGUOUS alias 'darkhotel' (actor): synonym of several entries in misp-galaxy/microsoft-activity-group
+AMBIGUOUS alias 'defray777' (malware): synonym of several entries in misp-galaxy/malpedia
+AMBIGUOUS alias 'dnsmessenger' (malware): synonym of several entries in misp-galaxy/mitre-malware
+AMBIGUOUS alias 'dymalloy' (actor): synonym of several entries in misp-galaxy/mitre-intrusion-set
+AMBIGUOUS alias 'emissarypanda' (actor): synonym of several entries in misp-galaxy/microsoft-activity-group, mstic
+AMBIGUOUS alias 'fancybear' (actor): synonym of several entries in misp-galaxy/microsoft-activity-group
+AMBIGUOUS alias 'fin6' (actor): synonym of several entries in misp-galaxy/microsoft-activity-group
+AMBIGUOUS alias 'friedex' (malware): synonym of several entries in misp-galaxy/ransomware
+AMBIGUOUS alias 'goldenchickens' (actor): synonym of several entries in misp-galaxy/threat-actor
+AMBIGUOUS alias 'h0lygh0st' (malware): synonym of several entries in misp-galaxy/malpedia
+AMBIGUOUS alias 'holylocker' (malware): synonym of several entries in misp-galaxy/malpedia
+AMBIGUOUS alias 'hydra' (malware): synonym of several entries in misp-galaxy/malpedia
+AMBIGUOUS alias 'iencrypt' (malware): synonym of several entries in misp-galaxy/ransomware
+AMBIGUOUS alias 'imperialkitten' (actor): synonym of several entries in misp-galaxy/microsoft-activity-group, misp-galaxy/threat-actor, mstic
+AMBIGUOUS alias 'indrikspider' (actor): synonym of several entries in misp-galaxy/microsoft-activity-group, mstic
+AMBIGUOUS alias 'interplanetarystorm' (malware): synonym of several entries in misp-galaxy/malpedia
+AMBIGUOUS alias 'ironliberty' (actor): synonym of several entries in misp-galaxy/mitre-intrusion-set
+AMBIGUOUS alias 'jhuhugit' (malware): synonym of several entries in misp-galaxy/malpedia
+AMBIGUOUS alias 'jkeyskw' (malware): synonym of several entries in misp-galaxy/malpedia
+AMBIGUOUS alias 'kaos' (actor): synonym of several entries in misp-galaxy/microsoft-activity-group, mstic
+AMBIGUOUS alias 'kaptoxa' (malware): synonym of several entries in misp-galaxy/malpedia
+AMBIGUOUS alias 'kraken' (malware): synonym of several entries in misp-galaxy/malpedia
+AMBIGUOUS alias 'mintsandstorm' (actor): synonym of several entries in misp-galaxy/threat-actor
+AMBIGUOUS alias 'njw0rm' (malware): synonym of several entries in misp-galaxy/rat
+AMBIGUOUS alias 'nobelium' (actor): synonym of several entries in misp-galaxy/mitre-intrusion-set, misp-galaxy/threat-actor
+AMBIGUOUS alias 'noberus' (malware): synonym of several entries in misp-galaxy/malpedia
+AMBIGUOUS alias 'onedrivetools' (malware): synonym of several entries in misp-galaxy/malpedia
+AMBIGUOUS alias 'operationtroy' (actor): synonym of several entries in misp-galaxy/threat-actor
+AMBIGUOUS alias 'orb07' (actor): synonym of several entries in misp-galaxy/microsoft-activity-group
+AMBIGUOUS alias 'planavy' (actor): synonym of several entries in misp-galaxy/threat-actor
+AMBIGUOUS alias 'purgeransomware' (malware): synonym of several entries in misp-galaxy/ransomware
+AMBIGUOUS alias 'qbot' (malware): synonym of several entries in misp-galaxy/malpedia
+AMBIGUOUS alias 'qrat' (malware): synonym of several entries in misp-galaxy/rat
+AMBIGUOUS alias 'redbike' (malware): synonym of several entries in misp-galaxy/malpedia
+AMBIGUOUS alias 'sapphiresleet' (actor): synonym of several entries in misp-galaxy/threat-actor
+AMBIGUOUS alias 'sednit' (actor): synonym of several entries in misp-galaxy/microsoft-activity-group
+AMBIGUOUS alias 'skeletonspider' (actor): synonym of several entries in misp-galaxy/microsoft-activity-group
+AMBIGUOUS alias 'smokesandstorm' (actor): synonym of several entries in misp-galaxy/threat-actor
+AMBIGUOUS alias 'sofacy' (actor): synonym of several entries in misp-galaxy/microsoft-activity-group
+AMBIGUOUS alias 'sofacy' (malware): synonym of several entries in misp-galaxy/tool
+AMBIGUOUS alias 'spandextempest' (actor): synonym of several entries in misp-galaxy/threat-actor
+AMBIGUOUS alias 'splm' (malware): synonym of several entries in misp-galaxy/malpedia
+AMBIGUOUS alias 'sysupdate' (malware): synonym of several entries in misp-galaxy/malpedia
+AMBIGUOUS alias 'trojan.encoder.6491' (malware): synonym of several entries in misp-galaxy/ransomware
+AMBIGUOUS alias 'tsarteam' (actor): synonym of several entries in misp-galaxy/microsoft-activity-group
+AMBIGUOUS alias 'uac0056' (actor): synonym of several entries in misp-galaxy/mitre-intrusion-set
+AMBIGUOUS alias 'ursnif' (malware): synonym of several entries in misp-galaxy/malpedia
+AMBIGUOUS alias 'velvetchollima' (actor): synonym of several entries in misp-galaxy/microsoft-activity-group, mstic
+AMBIGUOUS alias 'weaselstore' (malware): synonym of several entries in misp-galaxy/malpedia
+AMBIGUOUS alias 'wickedpanda' (actor): synonym of several entries in misp-galaxy/microsoft-activity-group, mstic
+AMBIGUOUS alias 'wizardspider' (actor): synonym of several entries in misp-galaxy/microsoft-activity-group, mstic
+AMBIGUOUS alias 'xdealer' (malware): synonym of several entries in misp-galaxy/malpedia
+CONFLICT alias 'allanite' (actor) maps to G0035, G1000
+CONFLICT alias 'aurora' (malware) maps to S0203, win.9002, win.aurora
+CONFLICT alias 'bitpaymer' (malware) maps to S0570, win.doppelpaymer, win.friedex
+CONFLICT alias 'blacktech' (actor) maps to G0011, G0098
+CONFLICT alias 'canarytyphoon' (actor) maps to G0011, G0098
+CONFLICT alias 'charcoaltyphoon' (actor) maps to G0143, G1006
+CONFLICT alias 'chromium' (actor) maps to G0143, G1006
+CONFLICT alias 'circuitpanda' (actor) maps to G0011, G0098
+CONFLICT alias 'coinminer' (malware) maps to win.coinminer, win.monero_miner
+CONFLICT alias 'controlx' (actor) maps to G0143, G1006
+CONFLICT alias 'crisis' (malware) maps to osx.crisis, win.rcs
+CONFLICT alias 'cryptofortress' (malware) maps to win.crypt0l0cker, win.crypto_fortress
+CONFLICT alias 'cyclops' (malware) maps to win.cyclops, win.knight
+CONFLICT alias 'darkmoon' (malware) maps to S0012, win.darkcomet, win.darkmoon
+CONFLICT alias 'deeppanda' (actor) maps to G0009, G0073
+CONFLICT alias 'diskcoder.c' (malware) maps to S0368, S0606, win.eternal_petya
+CONFLICT alias 'doppelpaymer' (malware) maps to win.doppelpaymer, win.friedex
+CONFLICT alias 'eda2' (malware) maps to win.eda2_ransom, win.hiddentear
+CONFLICT alias 'exobot' (malware) maps to S0522, apk.exobot, apk.marcher
+CONFLICT alias 'expetr' (malware) maps to S0368, S0606, win.eternal_petya
+CONFLICT alias 'filecoder' (malware) maps to apk.filecoder, osx.patcher
+CONFLICT alias 'fireant' (actor) maps to G0129, G1030
+CONFLICT alias 'formbook' (malware) maps to S1207, osx.xloader, win.formbook
+CONFLICT alias 'fynloski' (malware) maps to S0012, S0334, win.darkcomet
+CONFLICT alias 'goziisfb' (malware) maps to S0386, win.dreambot, win.isfb
+CONFLICT alias 'graftor' (malware) maps to win.graftor, win.yayih
+CONFLICT alias 'gresim' (malware) maps to S0069, S0672, win.blackcoffee
+CONFLICT alias 'heavypot' (malware) maps to S0626, S0627, win.sodamaster
+CONFLICT alias 'jrat' (malware) maps to S0283, jar.adwind, jar.jrat
+CONFLICT alias 'keyboy' (malware) maps to S0387, win.keyboy, win.yahoyah
+CONFLICT alias 'lightspy' (malware) maps to S1185, apk.dragonegg, ios.lightspy
+CONFLICT alias 'loki' (malware) maps to apk.loki, win.lokipws
+CONFLICT alias 'lokibot' (malware) maps to S0447, apk.lokibot, win.lokipws
+CONFLICT alias 'lorec53' (actor) maps to G1003, G1031
+CONFLICT alias 'lotusblossom' (actor) maps to G0013, G0030
+CONFLICT alias 'lotuspanda' (actor) maps to G0013, G0030
+CONFLICT alias 'luminousmoth' (actor) maps to G0129, G1014
+CONFLICT alias 'macma' (malware) maps to S1016, osx.cdds, osx.dazzle_spy
+CONFLICT alias 'netwire' (malware) maps to S0198, osx.netwire, win.netwire
+CONFLICT alias 'notpetya' (malware) maps to S0368, S0606, win.eternal_petya, win.goldeneye
+CONFLICT alias 'nyetya' (malware) maps to S0368, S0606, win.eternal_petya, win.goldeneye
+CONFLICT alias 'palmerworm' (actor) maps to G0011, G0098
+CONFLICT alias 'petrwrap' (malware) maps to S0368, win.goldeneye, win.petrwrap
+CONFLICT alias 'pony' (malware) maps to S0453, S0499, win.hancitor, win.pony
+CONFLICT alias 'qilin' (malware) maps to S1242, elf.qilin, win.agendacrypt
+CONFLICT alias 'radium' (actor) maps to G0013, G0030
+CONFLICT alias 'raspberrytyphoon' (actor) maps to G0013, G0030
+CONFLICT alias 'rbdoor' (malware) maps to win.highnoon, win.winnti
+CONFLICT alias 'rotor' (malware) maps to win.rakhni, win.rotorcrypt
+CONFLICT alias 'sasfis' (malware) maps to S0138, win.oldbait, win.sasfis
+CONFLICT alias 'seduploader' (malware) maps to S0044, osx.komplex, win.seduploader
+CONFLICT alias 'sidecopy' (actor) maps to G0134, G1008
+CONFLICT alias 'snake' (malware) maps to S0022, S0605, win.snake, win.uroburos
+CONFLICT alias 'snifula' (malware) maps to win.gozi, win.snifula
+CONFLICT alias 'spicyomelette' (malware) maps to S0284, S0646, js.more_eggs
+CONFLICT alias 'storm0587' (actor) maps to G1003, G1031
+CONFLICT alias 'ta471' (actor) maps to G1003, G1031
+CONFLICT alias 'tag22' (actor) maps to G0143, G1006
+CONFLICT alias 'teerac' (malware) maps to win.crypt0l0cker, win.torrentlocker
+CONFLICT alias 'terraloader' (malware) maps to S0284, js.more_eggs, win.terra_loader
+CONFLICT alias 'tg2754' (actor) maps to G0005, G1023
+CONFLICT alias 'thrip' (actor) maps to G0030, G0076
+CONFLICT alias 'tsukuba' (malware) maps to S0281, osx.retefe, win.retefe
+CONFLICT alias 'werdlod' (malware) maps to S0281, osx.retefe, win.retefe
+CONFLICT alias 'winos' (malware) maps to win.valley_rat, win.winos
+CONFLICT alias 'xbot' (malware) maps to S0298, apk.xbot, win.tinynuke
+CONFLICT alias 'xloader' (malware) maps to S1207, apk.moqhao, osx.xloader
+CONFLICT alias 'zoxpng' (malware) maps to S0069, S0672, win.blackcoffee
+REFUSED alias 'amextroll': would join ids apk.amextroll, apk.brata
+REFUSED alias 'bruteratel': would join ids elf.brute_ratel, win.brute_ratel_c4
+REFUSED alias 'concipit1248': would join ids S0425, S0426
+REFUSED alias 'copybara': would join ids apk.brata, apk.copybara
+REFUSED alias 'coronaupdates': would join ids S0425, S0426
+REFUSED alias 'dinodasrat': would join ids elf.linodas, win.dinodas_rat
+REFUSED alias 'dofloo': would join ids elf.dofloo, elf.mrblack
+REFUSED alias 'ghostrat': would join ids S0032, elf.angryrebel, win.ghost_rat
+REFUSED alias 'googledriverat': would join ids win.driveocean, win.google_drive_rat
+REFUSED alias 'jumpall': would join ids win.jumpall, win.winnti
+REFUSED alias 'manuscrypt': would join ids S0181, osx.manuscrypt, win.volgmer
+REFUSED alias 'mmon': would join ids win.blackpos, win.mmon
+REFUSED alias 'poscardstealer': would join ids win.poscardstealer, win.punkey_pos
+REFUSED alias 'rogue': would join ids apk.darkshades, apk.rogue
+REFUSED alias 'scoringmathtea': would join ids win.forest_tiger, win.scoring_math_tea
+REFUSED alias 'soulsearcher': would join ids win.soul, win.soulsearcher
+REFUSED alias 'spybanker': would join ids apk.connic, apk.spybanker
+REFUSED alias 'stration': would join ids win.stration, win.warezov
+REFUSED alias 'wroba': would join ids apk.moqhao, apk.wroba
+UMBRELLA entry misp-galaxy/backdoor 'BOLDMOVE' carries elf.boldmove, win.boldmove
+UMBRELLA entry misp-galaxy/malpedia 'CloudEyE' carries win.cloudeye, win.guloader
+UMBRELLA entry misp-galaxy/malpedia 'pyback' carries py.pyback, py.unidentified_001
+UMBRELLA entry misp-galaxy/ransomware 'AvosLocker' carries elf.avoslocker, win.avos_locker
+UMBRELLA entry misp-galaxy/threat-actor 'APT17' carries G0001, G0025
+UMBRELLA entry misp-galaxy/threat-actor 'APT19' carries G0009, G0073
+UMBRELLA entry misp-galaxy/threat-actor 'APT41' carries G0044, G0096
+UMBRELLA entry misp-galaxy/threat-actor 'DragonOK' carries G0002, G0017
+UMBRELLA entry misp-galaxy/threat-actor 'FIN7' carries G0008, G0046
+UMBRELLA entry misp-galaxy/threat-actor 'Lazarus Group' carries G0032, G0082
+UMBRELLA entry misp-galaxy/threat-actor 'Naikon' carries G0013, G0019
+UNANCHORED alias '0ktapus' (actor) in 3 sources without a shared id
+UNANCHORED alias 'acecard' (malware) in 2 sources without a shared id
+UNANCHORED alias 'aeon' (actor) in 2 sources without a shared id
+UNANCHORED alias 'akbot' (malware) in 3 sources without a shared id
+UNANCHORED alias 'alluringpisces' (actor) in 2 sources without a shared id
+UNANCHORED alias 'alphaspider' (actor) in 3 sources without a shared id
+UNANCHORED alias 'apothecaryspider' (actor) in 3 sources without a shared id
+UNANCHORED alias 'apt26' (actor) in 3 sources without a shared id
+UNANCHORED alias 'apt4' (actor) in 3 sources without a shared id
+UNANCHORED alias 'apt45' (actor) in 3 sources without a shared id
+UNANCHORED alias 'apt6' (actor) in 3 sources without a shared id
+UNANCHORED alias 'aptc50' (actor) in 2 sources without a shared id
+UNANCHORED alias 'aptc60' (actor) in 3 sources without a shared id
+UNANCHORED alias 'atg2' (actor) in 2 sources without a shared id
+UNANCHORED alias 'atg26' (actor) in 2 sources without a shared id
+UNANCHORED alias 'backdoor.win32.poisonivy' (malware) in 2 sources without a shared id
+UNANCHORED alias 'bankosy' (malware) in 2 sources without a shared id
+UNANCHORED alias 'bearclaw' (actor) in 2 sources without a shared id
+UNANCHORED alias 'blackartemis' (actor) in 2 sources without a shared id
+UNANCHORED alias 'blackchollima' (actor) in 2 sources without a shared id
+UNANCHORED alias 'bluecharlie' (actor) in 3 sources without a shared id
+UNANCHORED alias 'bohrium' (actor) in 2 sources without a shared id
+UNANCHORED alias 'bowser' (actor) in 2 sources without a shared id
+UNANCHORED alias 'callisto' (actor) in 2 sources without a shared id
+UNANCHORED alias 'candiru' (actor) in 2 sources without a shared id
+UNANCHORED alias 'cerium' (actor) in 3 sources without a shared id
+UNANCHORED alias 'cesium' (actor) in 2 sources without a shared id
+UNANCHORED alias 'chattyspider' (actor) in 3 sources without a shared id
+UNANCHORED alias 'clsta0969' (actor) in 2 sources without a shared id
+UNANCHORED alias 'coinbasecartel' (actor) in 3 sources without a shared id
+UNANCHORED alias 'contiteam1' (actor) in 2 sources without a shared id
+UNANCHORED alias 'copycop' (actor) in 3 sources without a shared id
+UNANCHORED alias 'covertnetwork1658' (actor) in 3 sources without a shared id
+UNANCHORED alias 'curlyspider' (actor) in 3 sources without a shared id
+UNANCHORED alias 'cyberroot' (actor) in 2 sources without a shared id
+UNANCHORED alias 'darkseoul' (actor) in 2 sources without a shared id
+UNANCHORED alias 'darkshadow' (actor) in 3 sources without a shared id
+UNANCHORED alias 'deepclif' (actor) in 3 sources without a shared id
+UNANCHORED alias 'dev0146' (actor) in 2 sources without a shared id
+UNANCHORED alias 'dev0196' (actor) in 2 sources without a shared id
+UNANCHORED alias 'dev0215' (actor) in 2 sources without a shared id
+UNANCHORED alias 'dev0234' (actor) in 3 sources without a shared id
+UNANCHORED alias 'dev0236' (actor) in 2 sources without a shared id
+UNANCHORED alias 'dev0257' (actor) in 2 sources without a shared id
+UNANCHORED alias 'dev0291' (actor) in 2 sources without a shared id
+UNANCHORED alias 'dev0322' (actor) in 3 sources without a shared id
+UNANCHORED alias 'dev0336' (actor) in 2 sources without a shared id
+UNANCHORED alias 'dev0343' (actor) in 3 sources without a shared id
+UNANCHORED alias 'dev0504' (actor) in 3 sources without a shared id
+UNANCHORED alias 'dev0530' (actor) in 2 sources without a shared id
+UNANCHORED alias 'dev0605' (actor) in 3 sources without a shared id
+UNANCHORED alias 'dev0665' (actor) in 3 sources without a shared id
+UNANCHORED alias 'dev0796' (actor) in 3 sources without a shared id
+UNANCHORED alias 'dev0832' (actor) in 3 sources without a shared id
+UNANCHORED alias 'dev0950' (actor) in 3 sources without a shared id
+UNANCHORED alias 'dragnetpanda' (actor) in 3 sources without a shared id
+UNANCHORED alias 'dragonbridge' (actor) in 3 sources without a shared id
+UNANCHORED alias 'dragonforce' (actor) in 2 sources without a shared id
+UNANCHORED alias 'dsirf' (actor) in 2 sources without a shared id
+UNANCHORED alias 'etherealpanda' (actor) in 3 sources without a shared id
+UNANCHORED alias 'exfilsquad' (actor) in 2 sources without a shared id
+UNANCHORED alias 'famoussparrow' (actor) in 3 sources without a shared id
+UNANCHORED alias 'fin11' (actor) in 2 sources without a shared id
+UNANCHORED alias 'gatak' (actor) in 2 sources without a shared id
+UNANCHORED alias 'gen:trojan.heur.pt' (malware) in 2 sources without a shared id
+UNANCHORED alias 'ghostemperor' (actor) in 3 sources without a shared id
+UNANCHORED alias 'gingersnap' (actor) in 2 sources without a shared id
+UNANCHORED alias 'gmbot' (malware) in 2 sources without a shared id
+UNANCHORED alias 'gold' (actor) in 2 sources without a shared id
+UNANCHORED alias 'gtg1002' (actor) in 2 sources without a shared id
+UNANCHORED alias 'h0lygh0st' (actor) in 2 sources without a shared id
+UNANCHORED alias 'hassium' (actor) in 3 sources without a shared id
+UNANCHORED alias 'haywirekitten' (actor) in 3 sources without a shared id
+UNANCHORED alias 'hippo' (actor) in 2 sources without a shared id
+UNANCHORED alias 'hive0163' (actor) in 2 sources without a shared id
+UNANCHORED alias 'hunter' (malware) in 2 sources without a shared id
+UNANCHORED alias 'incendiaryjackal' (actor) in 3 sources without a shared id
+UNANCHORED alias 'invisimole' (actor) in 3 sources without a shared id
+UNANCHORED alias 'iodine' (actor) in 2 sources without a shared id
+UNANCHORED alias 'isoon' (actor) in 3 sources without a shared id
+UNANCHORED alias 'jadepuffer' (actor) in 2 sources without a shared id
+UNANCHORED alias 'jadesleet' (actor) in 3 sources without a shared id
+UNANCHORED alias 'jerseymikes' (actor) in 3 sources without a shared id
+UNANCHORED alias 'karst' (actor) in 2 sources without a shared id
+UNANCHORED alias 'knotweed' (actor) in 2 sources without a shared id
+UNANCHORED alias 'lacetempest' (actor) in 3 sources without a shared id
+UNANCHORED alias 'laundrybear' (actor) in 3 sources without a shared id
+UNANCHORED alias 'lawrencium' (actor) in 3 sources without a shared id
+UNANCHORED alias 'lead' (actor) in 2 sources without a shared id
+UNANCHORED alias 'leopardtyphoon' (actor) in 2 sources without a shared id
+UNANCHORED alias 'liminalpanda' (actor) in 3 sources without a shared id
+UNANCHORED alias 'lummastealer' (actor) in 2 sources without a shared id
+UNANCHORED alias 'mana' (actor) in 2 sources without a shared id
+UNANCHORED alias 'maverickpanda' (actor) in 3 sources without a shared id
+UNANCHORED alias 'mintedsoil' (actor) in 3 sources without a shared id
+UNANCHORED alias 'monti' (actor) in 2 sources without a shared id
+UNANCHORED alias 'narwhalspider' (actor) in 3 sources without a shared id
+UNANCHORED alias 'neptunium' (actor) in 3 sources without a shared id
+UNANCHORED alias 'okiru' (malware) in 2 sources without a shared id
+UNANCHORED alias 'operatorpanda' (actor) in 3 sources without a shared id
+UNANCHORED alias 'oro0lxy' (actor) in 3 sources without a shared id
+UNANCHORED alias 'parasite' (actor) in 2 sources without a shared id
+UNANCHORED alias 'parinacota' (actor) in 2 sources without a shared id
+UNANCHORED alias 'payrollpirates' (actor) in 2 sources without a shared id
+UNANCHORED alias 'quadream' (actor) in 2 sources without a shared id
+UNANCHORED alias 'reddiablo' (actor) in 2 sources without a shared id
+UNANCHORED alias 'redkobold' (actor) in 2 sources without a shared id
+UNANCHORED alias 'romcom' (actor) in 3 sources without a shared id
+UNANCHORED alias 'rybar' (actor) in 2 sources without a shared id
+UNANCHORED alias 'salmontyphoon' (actor) in 3 sources without a shared id
+UNANCHORED alias 'sedkit' (malware) in 2 sources without a shared id
+UNANCHORED alias 'sneakycheff' (actor) in 2 sources without a shared id
+UNANCHORED alias 'sodium' (actor) in 3 sources without a shared id
+UNANCHORED alias 'sourgum' (actor) in 2 sources without a shared id
+UNANCHORED alias 'spamouflage' (actor) in 2 sources without a shared id
+UNANCHORED alias 'spyagent' (malware) in 2 sources without a shared id
+UNANCHORED alias 'storm0062' (actor) in 3 sources without a shared id
+UNANCHORED alias 'storm0113' (actor) in 3 sources without a shared id
+UNANCHORED alias 'storm0216' (actor) in 3 sources without a shared id
+UNANCHORED alias 'storm0257' (actor) in 2 sources without a shared id
+UNANCHORED alias 'storm0287' (actor) in 2 sources without a shared id
+UNANCHORED alias 'storm0302' (actor) in 3 sources without a shared id
+UNANCHORED alias 'storm0558' (actor) in 3 sources without a shared id
+UNANCHORED alias 'storm0569' (actor) in 3 sources without a shared id
+UNANCHORED alias 'storm0852' (actor) in 2 sources without a shared id
+UNANCHORED alias 'storm0919' (actor) in 3 sources without a shared id
+UNANCHORED alias 'storm0954' (actor) in 2 sources without a shared id
+UNANCHORED alias 'storm0978' (actor) in 3 sources without a shared id
+UNANCHORED alias 'storm1516' (actor) in 3 sources without a shared id
+UNANCHORED alias 'storm1679' (actor) in 3 sources without a shared id
+UNANCHORED alias 'storm1841' (actor) in 2 sources without a shared id
+UNANCHORED alias 'storm1849' (actor) in 2 sources without a shared id
+UNANCHORED alias 'storm1852' (actor) in 2 sources without a shared id
+UNANCHORED alias 'storm2416' (actor) in 2 sources without a shared id
+UNANCHORED alias 'storm3168' (actor) in 2 sources without a shared id
+UNANCHORED alias 'ta544' (actor) in 3 sources without a shared id
+UNANCHORED alias 'taffetatyphoon' (actor) in 3 sources without a shared id
+UNANCHORED alias 'tag100' (actor) in 3 sources without a shared id
+UNANCHORED alias 'technetium' (actor) in 3 sources without a shared id
+UNANCHORED alias 'tg0055' (actor) in 2 sources without a shared id
+UNANCHORED alias 'tg2633' (actor) in 2 sources without a shared id
+UNANCHORED alias 'tg3279' (actor) in 2 sources without a shared id
+UNANCHORED alias 'thorium' (actor) in 2 sources without a shared id
+UNANCHORED alias 'tropicalscorpius' (actor) in 3 sources without a shared id
+UNANCHORED alias 'tunnelspider' (actor) in 3 sources without a shared id
+UNANCHORED alias 'turbinepanda' (actor) in 3 sources without a shared id
+UNANCHORED alias 'twistedspider' (actor) in 2 sources without a shared id
+UNANCHORED alias 'uat4356' (actor) in 2 sources without a shared id
+UNANCHORED alias 'unc1151' (actor) in 2 sources without a shared id
+UNANCHORED alias 'unc2198' (actor) in 3 sources without a shared id
+UNANCHORED alias 'unc2596' (actor) in 2 sources without a shared id
+UNANCHORED alias 'unc6040' (actor) in 2 sources without a shared id
+UNANCHORED alias 'unc6671' (actor) in 2 sources without a shared id
+UNANCHORED alias 'undergroundteam' (actor) in 2 sources without a shared id
+UNANCHORED alias 'unksweetspecter' (actor) in 2 sources without a shared id
+UNANCHORED alias 'viceleaker' (actor) in 3 sources without a shared id
+UNANCHORED alias 'vicesociety' (actor) in 3 sources without a shared id
+UNANCHORED alias 'vicespider' (actor) in 3 sources without a shared id
+UNANCHORED alias 'winetempest' (actor) in 2 sources without a shared id
+ALARM cluster 'APT-C-23' holds 2 entries of misp-galaxy/threat-actor: AridViper, Pinstripe Lightning
+ALARM cluster 'APT28' holds 2 entries of misp-galaxy/microsoft-activity-group: Forest Blizzard, STRONTIUM
+ALARM cluster 'APT29' holds 2 entries of misp-galaxy/mitre-intrusion-set: APT29, UNC2452
+ALARM cluster 'APT29' holds 3 entries of misp-galaxy/threat-actor: APT29, UNC2452, UNC3524
+ALARM cluster 'APT38' holds 2 entries of misp-galaxy/threat-actor: STARDUST CHOLLIMA, UNC1069
+ALARM cluster 'APT39' holds 2 entries of misp-galaxy/threat-actor: APT39, Cadelle
+ALARM cluster 'APT41' holds 2 entries of misp-galaxy/microsoft-activity-group: BARIUM, Brass Typhoon
+ALARM cluster 'APT5' holds 2 entries of misp-galaxy/threat-actor: APT5, UNC2630
+ALARM cluster 'Ajax Security Team' holds 2 entries of misp-galaxy/threat-actor: Flying Kitten, Rocket Kitten
+ALARM cluster 'Bandarchor' holds 2 entries of misp-galaxy/ransomware: Bandarchor, Rakhni
+ALARM cluster 'Bashlite' holds 2 entries of misp-galaxy/tool: BASHLITE, Gafgyt
+ALARM cluster 'CHOPSTICK' holds 2 entries of misp-galaxy/tool: CHOPSTICK, X-Agent
+ALARM cluster 'CURIUM' holds 2 entries of misp-galaxy/microsoft-activity-group: Crimson Sandstorm, Cuboid Sandstorm
+ALARM cluster 'CURIUM' holds 2 entries of misp-galaxy/threat-actor: Cuboid Sandstorm, Tortoiseshell
+ALARM cluster 'CURIUM' holds 2 entries of mstic: Crimson Sandstorm, Cuboid Sandstorm
+ALARM cluster 'Charming Kitten' holds 2 entries of misp-galaxy/mitre-intrusion-set: Charming Kitten, Magic Hound
+ALARM cluster 'Charming Kitten' holds 3 entries of misp-galaxy/threat-actor: APT35, Charming Kitten, TA453
+ALARM cluster 'Contagious Interview' holds 2 entries of misp-galaxy/threat-actor: Contagious Interview, WageMole
+ALARM cluster 'CryLocker' holds 2 entries of misp-galaxy/ransomware: Central Security Treatment Organization, CryLocker
+ALARM cluster 'CryptXXX 3.0' holds 2 entries of misp-galaxy/ransomware: CryptXXX 3.0, UltraCrypter
+ALARM cluster 'CryptoBit' holds 2 entries of misp-galaxy/ransomware: CryptoBit, Mobef
+ALARM cluster 'CryptoLocker3 Ransomware' holds 2 entries of misp-galaxy/ransomware: CryptoLocker3 Ransomware, FakeCryptoLocker
+ALARM cluster 'Daggerfly' holds 2 entries of misp-galaxy/threat-actor: BRONZE HIGHLAND, Evasive Panda
+ALARM cluster 'Darkhotel' holds 2 entries of misp-galaxy/microsoft-activity-group: DUBNIUM, Zigzag Hail
+ALARM cluster 'Darkmoon' holds 2 entries of misp-galaxy/mitre-malware: Darkmoon, PoisonIvy
+ALARM cluster 'Dragonfly' holds 2 entries of misp-galaxy/mitre-intrusion-set: Dragonfly, Dragonfly 2.0
+ALARM cluster 'Elise' holds 2 entries of misp-galaxy/tool: Elise Backdoor, Esile
+ALARM cluster 'Ember Bear' holds 2 entries of misp-galaxy/threat-actor: DEV-0586, SaintBear
+ALARM cluster 'FIN6' holds 2 entries of misp-galaxy/microsoft-activity-group: Camouflage Tempest, Storm-0538
+ALARM cluster 'FakeM' holds 2 entries of misp-galaxy/android: Fakem Rat, Fakemrat
+ALARM cluster 'FindZip' holds 3 entries of misp-galaxy/ransomware: FileCoder, FindZip, Patcher
+ALARM cluster 'Free-Freedom' holds 2 entries of misp-galaxy/ransomware: Free-Freedom, Roga
+ALARM cluster 'GALLIUM' holds 2 entries of misp-galaxy/microsoft-activity-group: GALLIUM, Granite Typhoon
+ALARM cluster 'GALLIUM' holds 2 entries of misp-galaxy/threat-actor: GALLIUM, Operation Soft Cell
+ALARM cluster 'GNL Locker' holds 2 entries of misp-galaxy/ransomware: GNL Locker, Zyklon
+ALARM cluster 'GlobeImposter' holds 2 entries of misp-galaxy/ransomware: Fake Globe Ransomware, GlobeImposter
+ALARM cluster 'Gooligan' holds 2 entries of misp-galaxy/android: Ghost Push, Ghostpush
+ALARM cluster 'HAFNIUM' holds 2 entries of misp-galaxy/microsoft-activity-group: HAFNIUM, Silk Typhoon
+ALARM cluster 'HawkEye Keylogger' holds 2 entries of misp-galaxy/rat: HawkEye, Predator Pain
+ALARM cluster 'HawkEye Keylogger' holds 2 entries of misp-galaxy/tool: hawkeye, predatorpain
+ALARM cluster 'Igexin' holds 2 entries of misp-galaxy/android: IcicleGum, Igexin
+ALARM cluster 'Indrik Spider' holds 2 entries of misp-galaxy/threat-actor: Evil Corp, INDRIK SPIDER
+ALARM cluster 'JHUHUGIT' holds 2 entries of misp-galaxy/tool: DownRage, GAMEFISH
+ALARM cluster 'Java NotDharma' holds 2 entries of misp-galaxy/ransomware: Java NotDharma, Phobos
+ALARM cluster 'KEYPASS' holds 2 entries of misp-galaxy/ransomware: Djvu, KEYPASS
+ALARM cluster 'Ke3chang' holds 2 entries of misp-galaxy/threat-actor: APT15, GREF
+ALARM cluster 'Kimsuky' holds 2 entries of misp-galaxy/microsoft-activity-group: Emerald Sleet, Opal Sleet
+ALARM cluster 'Kimsuky' holds 2 entries of misp-galaxy/mitre-intrusion-set: Kimsuky, Stolen Pencil
+ALARM cluster 'Kimsuky' holds 2 entries of mstic: Emerald Sleet, Opal Sleet
+ALARM cluster 'Kimsuky' holds 3 entries of misp-galaxy/threat-actor: APT43, Kimsuky, Opal Sleet
+ALARM cluster 'Leviathan' holds 2 entries of misp-galaxy/microsoft-activity-group: GADOLINIUM, Gingham Typhoon
+ALARM cluster 'MM Locker' holds 2 entries of misp-galaxy/ransomware: Booyah, MM Locker
+ALARM cluster 'Mallox' holds 2 entries of misp-galaxy/ransomware: Mallox, fargo
+ALARM cluster 'Muhstik' holds 2 entries of misp-galaxy/ransomware: Amnesia, Muhstik
+ALARM cluster 'Mustang Panda' holds 4 entries of misp-galaxy/threat-actor: Camaro Dragon, MUSTANG PANDA, RedDelta, UNC6384
+ALARM cluster 'Mustard Tempest' holds 2 entries of misp-galaxy/threat-actor: GOLD PRELUDE, Mustard Tempest
+ALARM cluster 'NIMBUS MANTICORE' holds 2 entries of misp-galaxy/threat-actor: TA455, UNC1549
+ALARM cluster 'OilRig' holds 2 entries of misp-galaxy/mitre-intrusion-set: APT34, OilRig
+ALARM cluster 'OilRig' holds 3 entries of misp-galaxy/threat-actor: CHRYSENE, Greenbug, OilRig
+ALARM cluster 'PLATINUM' holds 2 entries of misp-galaxy/microsoft-activity-group: Fallow Squall, PLATINUM
+ALARM cluster 'PROMETHIUM' holds 2 entries of misp-galaxy/microsoft-activity-group: Magenta Dust, PROMETHIUM
+ALARM cluster 'Patchwork' holds 2 entries of misp-galaxy/mitre-intrusion-set: MONSOON, Patchwork
+ALARM cluster 'Patchwork' holds 2 entries of misp-galaxy/threat-actor: QUILTED TIGER, VICEROY TIGER
+ALARM cluster 'QuantumLocker' holds 3 entries of misp-galaxy/ransomware: Mount Locker, QuantumLocker, mountlocker
+ALARM cluster 'Sandworm Team' holds 2 entries of misp-galaxy/threat-actor: IRIDIUM, Sandworm
+ALARM cluster 'Silence' holds 2 entries of misp-galaxy/tool: Silence, Truebot
+ALARM cluster 'Star Blizzard' holds 2 entries of misp-galaxy/threat-actor: Callisto, Cold River
+ALARM cluster 'SuppoBox' holds 2 entries of misp-galaxy/botnet: Bayrob, Suppobox
+ALARM cluster 'TA505' holds 2 entries of misp-galaxy/threat-actor: MONTY SPIDER, TA505
+ALARM cluster 'Threat Group-3390' holds 2 entries of misp-galaxy/threat-actor: APT27, UNC215
+ALARM cluster 'TorrentLocker' holds 2 entries of misp-galaxy/ransomware: Crypt0L0cker, TorrentLocker
+ALARM cluster 'Turla' holds 2 entries of misp-galaxy/threat-actor: Turla, White Bear
+ALARM cluster 'VOID MANTICORE' holds 3 entries of misp-galaxy/threat-actor: BANISHED KITTEN, HomeLand Justice, Void Manticore
+ALARM cluster 'Virus-Encoder' holds 2 entries of misp-galaxy/ransomware: Virus-Encoder, Wadhrama
+ALARM cluster 'Volatile Cedar' holds 2 entries of misp-galaxy/threat-actor: Amethyst Rain, Volatile Cedar
+ALARM cluster 'Wizard Spider' holds 3 entries of misp-galaxy/microsoft-activity-group: Periwinkle Tempest, Pistachio Tempest, Storm-0230
+ALARM cluster 'Wizard Spider' holds 3 entries of misp-galaxy/threat-actor: GRIM SPIDER, UNC1878, WIZARD SPIDER
+ALARM cluster 'Wizard Spider' holds 3 entries of mstic: Periwinkle Tempest, Pistachio Tempest, Storm-0230
+ALARM cluster 'ZIRCONIUM' holds 2 entries of misp-galaxy/microsoft-activity-group: Violet Typhoon, ZIRCONIUM
+ALARM cluster 'Zlader' holds 2 entries of misp-galaxy/ransomware: VaultCrypt, Zlader
+ALARM cluster 'arcane' holds 2 entries of misp-galaxy/ransomware: Sabbath, arcane
+ALARM cluster 'gh0st RAT' holds 2 entries of misp-galaxy/tool: Gh0st Rat, Moudoor
+ALARM cluster 'grinch' holds 3 entries of misp-galaxy/ransomware: Tycoon, grinch, thanos
+ALARM cluster 'jRAT' holds 3 entries of misp-galaxy/android: Adwind, Alienspy, Sockrat

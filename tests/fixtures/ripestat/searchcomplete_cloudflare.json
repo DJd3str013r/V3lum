@@ -1,0 +1,56 @@
+{
+ "messages": [],
+ "data_call_name": "searchcomplete",
+ "data_call_status": "supported",
+ "cached": false,
+ "status": "ok",
+ "status_code": 200,
+ "time": "2026-11-25T21:23:39.832237",
+ "data": {
+  "categories": [
+   {
+    "category": "ASNs",
+    "suggestions": [
+     {
+      "label": "AS13335",
+      "value": "AS13335",
+      "description": "CLOUDFLARENET - Cloudflare, Inc."
+     },
+     {
+      "label": "AS14789",
+      "value": "AS14789",
+      "description": "CLOUDFLARENET - Cloudflare, Inc."
+     },
+     {
+      "label": "AS22061",
+      "value": "AS22061",
+      "description": "CLOUDFLARE-MTC-CA - Cloudflare,"
+     },
+     {
+      "label": "AS132892",
+      "value": "AS132892",
+      "description": "CLOUDFLARE - Cloudflare, Inc."
+     }
+    ]
+   },
+   {
+    "category": "Domains",
+    "suggestions": [
+     {
+      "value": "cloudflare.com",
+      "label": "cloudflare.com",
+      "description": "cloudflare.com ranks #220 on Alexa.com"
+     },
+     {
+      "value": "cloudflare-ipfs.com",
+      "label": "cloudflare-ipfs.com",
+      "description": "cloudflare-ipfs.com ranks #3862 on Alexa.com"
+     }
+    ]
+   }
+  ],
+  "query_term": "cloudflare",
+  "limit": 50,
+  "query_time": "2026-11-25T21:23:00"
+ }
+}

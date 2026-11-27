@@ -1,0 +1,11 @@
+{
+ "_note": "research sample design_security_headers.json: github.com answered 400 to the non-browser client",
+ "url": "https://github.com/",
+ "status": 400,
+ "headers": [
+  [
+   "Content-Type",
+   "text/html"
+  ]
+ ]
+}

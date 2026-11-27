@@ -1,0 +1,67 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "gstatic",
+  "name": "Google IP range publications (gstatic.com ipranges)",
+  "operator": "Google LLC",
+  "hosts": [
+    "www.gstatic.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms, a privacy policy and a business offering (A8 BR2); P034 chair rationale: 'the cloud providers are trusted'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "The operator's own publication of its address ranges: authoritative for which ranges it operates (labels are V3LUM-authored roles)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400,
+    "accept": "application/json"
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "cloud_ip_ranges": {
+      "title": "Google Cloud cloud.json: customer-usable Google Cloud ranges per region (scope)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://cloud.google.com/compute/docs/faq",
+        "quote": "Download official range files (ip-ranges.amazonaws.com, gstatic cloud.json, Cloudflare ips-v4/v6, Fastly public-ip-list, Oracle OCI...) ... Tier community is the lowest dataset provider (cloudcheck); the cloud providers are trusted. Terms open (public provider data; AGPL data met by runtime download, A1 BR19).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "google",
+      "sanitizer": null,
+      "dataset": "cloud_ranges_gcp_cloud.json",
+      "notes": "Quote: binding council text (P034). https://www.gstatic.com/ipranges/cloud.json (1,153 prefixes on 2026-11-26): rented compute, labelled iaas (not noise)."
+    },
+    "google_ip_ranges": {
+      "title": "Google goog.json: every Google range; an address in goog.json but not in cloud.json is a Google front end / Google service",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://support.google.com/a/answer/10026322",
+        "quote": "Download official range files (ip-ranges.amazonaws.com, gstatic cloud.json, Cloudflare ips-v4/v6, Fastly public-ip-list, Oracle OCI...) ... Tier community is the lowest dataset provider (cloudcheck); the cloud providers are trusted. Terms open (public provider data; AGPL data met by runtime download, A1 BR19).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "google",
+      "sanitizer": null,
+      "dataset": "cloud_ranges_google_goog.json",
+      "notes": "Quote: binding council text (P034 cond 6 names 'Google front ends' as shared edges). https://www.gstatic.com/ipranges/goog.json (148 prefixes on 2026-11-26)."
+    }
+  },
+  "notes": "Owned by batch p1-G02-1 (module cloud_ranges, P034): only the dataset manager downloads this file (daily refresh, validated before it replaces the cached copy, the last good copy is kept on failure); no investigated value is ever sent."
+}

@@ -1,0 +1,147 @@
+{
+ "qid": null,
+ "iid": 156731,
+ "indicator": "example.com",
+ "type": "domain",
+ "risk": "none",
+ "risk_recommended": "none",
+ "manualrisk": 0,
+ "retired": null,
+ "stamp_added": "2017-10-27 03:00:01",
+ "stamp_updated": "2026-11-26 00:28:44",
+ "stamp_seen": "2026-11-26 00:28:43",
+ "stamp_probed": "2026-11-22 07:52:09",
+ "stamp_retired": null,
+ "recent": 0,
+ "submissions": 21,
+ "umbrella_rank": 3516,
+ "umbrella_domain": "example.com",
+ "riskfactors": [
+  {
+   "rfid": 71,
+   "description": "common resource or infrastructure",
+   "risk": "none"
+  },
+  {
+   "rfid": 74,
+   "description": "SPF record present",
+   "risk": "none"
+  },
+  {
+   "rfid": 58,
+   "description": "top 100k domain",
+   "risk": "none"
+  },
+  {
+   "rfid": 57,
+   "description": "top 10k domain",
+   "risk": "none"
+  }
+ ],
+ "threats": [
+  {
+   "tid": 235,
+   "name": "Adposhel",
+   "category": "general",
+   "risk": "unknown",
+   "stamp_linked": "2020-04-14 07:25:56"
+  },
+  {
+   "tid": 68,
+   "name": "Dridex",
+   "category": "malware",
+   "risk": "high",
+   "stamp_linked": "2018-06-26 03:15:44"
+  },
+  {
+   "tid": 164,
+   "name": "Emotet",
+   "category": "malware",
+   "risk": "high",
+   "stamp_linked": "2018-08-06 02:05:27"
+  },
+  {
+   "tid": 377,
+   "name": "Magic Hound",
+   "category": "group",
+   "risk": "unknown",
+   "stamp_linked": "2026-03-04 16:00:03"
+  },
+  {
+   "tid": 67,
+   "name": "Phishing",
+   "category": "general",
+   "risk": "high",
+   "stamp_linked": "2018-10-04 11:19:34"
+  },
+  {
+   "tid": 39,
+   "name": "SSH Brute Force",
+   "category": "general",
+   "risk": "low",
+   "stamp_linked": "2018-01-22 16:14:06"
+  },
+  {
+   "tid": 3,
+   "name": "Tor Proxy",
+   "category": "tool",
+   "risk": "medium",
+   "stamp_linked": "2018-01-17 14:37:50"
+  },
+  {
+   "tid": 26,
+   "name": "TrickBot",
+   "category": "malware",
+   "risk": "high",
+   "stamp_linked": "2018-01-23 00:09:07"
+  }
+ ],
+ "redirects": {
+  "from": [],
+  "to": [
+   {
+    "iid": 9257430,
+    "indicator": "http://example.com/"
+   },
+   {
+    "iid": 10460281,
+    "indicator": "https://example.com/"
+   }
+  ]
+ },
+ "feeds": [],
+ "comments": [],
+ "attributes": {
+  "port": [
+   "207",
+   "2078",
+   "2083"
+  ],
+  "protocol": [
+   "HTTP",
+   "HTTPS",
+   "SSH"
+  ],
+  "technology": [
+   "Amazon ECS",
+   "Amazon Web Services",
+   "Apache"
+  ]
+ },
+ "properties": {
+  "dns": {
+   "a": [
+    "104.20.23.154",
+    "172.66.147.243"
+   ],
+   "aaaa": [
+    "2606:4700:10::6814:179a",
+    "2606:4700:10::ac42:93f3"
+   ],
+   "ns": [
+    "hera.ns.cloudflare.com",
+    "elliott.ns.cloudflare.com"
+   ]
+  }
+ }
+}

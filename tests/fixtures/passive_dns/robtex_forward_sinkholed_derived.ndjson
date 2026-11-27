@@ -1,0 +1,3 @@
+{"rrname":"bad.example.net","rrdata":"143.215.130.5","rrtype":"A","time_first":1794000000,"time_last":1795600000,"count":40}
+{"rrname":"bad.example.net","rrdata":"203.0.113.7","rrtype":"A","time_first":1790000000,"time_last":1793900000,"count":12}
+{"rrname":"bad.example.net","rrdata":"ns1.example.org","rrtype":"NS","time_first":1790000000,"time_last":1795600000,"count":5}

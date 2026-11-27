@@ -1,0 +1,65 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "merklemap",
+  "name": "MerkleMap Certificate Transparency search API",
+  "operator": "MerkleMap (small operator; promotion from unknown tier not recorded yet)",
+  "hosts": [
+    "api.merklemap.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "P001 cond 1: 'crt.name and MerkleMap, whose operators are unknown tier (A8) until a promotion is recorded': excluded at AMBER and above, --allow-unknown at CLEAR/GREEN.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Hostname search over public Certificate Transparency logs; operator track record not yet reviewed (unknown tier)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 20,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 1.0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {
+    "merklemap": {
+      "description": "MerkleMap API key (required; Authorization: Bearer)",
+      "signup_url": "https://www.merklemap.com/",
+      "env": [
+        "V3LUM_MERKLEMAP_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "company account only (P001 cond 2: MerkleMap key-terms on a company account); record key_plans.merklemap = business"
+    }
+  },
+  "sources": {
+    "search": {
+      "title": "MerkleMap /v1/search?query=*.{domain}&page={n} (Bearer key)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://www.merklemap.com/terms",
+        "quote": "MerkleMap key-terms on a company account.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "ct-logs",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P001 cond 2). Research C0032: verified_needs_key (HTTP 401 without a key). The response shape is UNVERIFIED (no keyed sample): the parser accepts {count, results: [{hostname|domain|name|subject_common_name}]} or a bare list; re-record a fixture with the team key. Used only by ct_logs_extra (default_enabled=False)."
+    }
+  },
+  "notes": "Owned by batch p1-G01-1 (P001 ct_logs_extra). Unknown tier: never default (A3), excluded at TLP:AMBER and above (A8)."
+}

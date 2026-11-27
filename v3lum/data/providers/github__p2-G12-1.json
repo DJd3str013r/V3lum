@@ -1,0 +1,83 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "github",
+  "hosts": [],
+  "sources": {
+    "yara_scan_forge_core": {
+      "title": "YARA Forge core rule package (github.com/YARAHQ/yara-forge releases/latest/download/yara-forge-rules-core.zip): the rules whose own licence is permissive (MIT, BSD, Apache-2.0, ISC, CC0, CC BY) or DRL 1.1",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/YARAHQ/yara-forge",
+        "quote": "YARA Forge aggregates rules from many repos - each rule keeps its own license in meta (e.g. Neo23x0 signature-base = Detection Rule License 1.1 with attribution; some sources non-commercial) -> check before redistribution.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "yara_forge",
+      "sanitizer": null,
+      "dataset": "yara_scan.forge_core",
+      "notes": "P272 c2-c5 (module yara_scan, disclosure none). Research C0621 (verified_live: 302 github.com -> 302 release-assets.githubusercontent.com -> 200, 1,720,630 B, sha256 f88eb4ea...3737 for build 20261122). Downloaded at runtime through the dataset manager (`v3lum data update yara_scan.forge_core`), never bundled or redistributed (A6); rules are compiled locally from source, never loaded compiled from the network. The zip mixes licences per rule: this source is the class-open subset (permissive and DRL 1.1 rules, author attribution kept); GPL/CC BY-SA rules are github.yara_scan_rules_license, Malpedia and NC rules github.yara_scan_rules_noncommercial, and rules with an unknown or missing licence are never loaded in any profile (P272 c4). Upstream: YARA Forge, a community project (council provider tier 'community'; the hosting provider github is trusted)."
+    },
+    "yara_scan_rules_license": {
+      "title": "YARA Forge rules under copyleft or source-available licences (GPL-3.0, GPL-2.0, AGPL, LGPL, CC BY-SA, Elastic): load only with a licence_allow decision",
+      "terms": {
+        "class": "license",
+        "evidence_url": "https://github.com/YARAHQ/yara-forge",
+        "quote": "YARA Forge aggregates rules from many repos - each rule keeps its own license in meta (e.g. Neo23x0 signature-base = Detection Rule License 1.1 with attribution; some sources non-commercial) -> check before redistribution.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "yara_forge",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "P272 c3 names permissive, DRL 1.1 and non-commercial rules only; the copyleft rules of the package (CAPE and craiu GPL-3.0, 129 rules in core 20261122) wait for a legal decision: class 'license' (A1: runs only with an active licence_allow entry). Same download as github.yara_scan_forge_core; this source names the rule subset."
+    },
+    "yara_scan_rules_noncommercial": {
+      "title": "YARA Forge rules with non-commercial terms (Malpedia rules, CC BY-NC): off under the corporate profile until licence-cleared",
+      "terms": {
+        "class": "noncommercial",
+        "evidence_url": "https://github.com/YARAHQ/yara-forge",
+        "quote": "YARA Forge aggregates rules from many repos - each rule keeps its own license in meta (e.g. Neo23x0 signature-base = Detection Rule License 1.1 with attribution; some sources non-commercial) -> check before redistribution.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "yara_forge",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "P272 c3 + A1 aggregator rule: the module's class is 'noncommercial' because of these rules (1,621 Malpedia rules in core 20261122; A1 binds Malpedia as noncommercial whatever its CC BY-SA meta says). Same download as github.yara_scan_forge_core; this source names the rule subset."
+    },
+    "yara_scan_forge_extended": {
+      "title": "YARA Forge extended rule package (yara-forge-rules-extended.zip): only by flag (setting yara_scan_package = extended)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/YARAHQ/yara-forge",
+        "quote": "YARA Forge aggregates rules from many repos - each rule keeps its own license in meta (e.g. Neo23x0 signature-base = Detection Rule License 1.1 with attribution; some sources non-commercial) -> check before redistribution.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "yara_forge",
+      "sanitizer": null,
+      "dataset": "yara_scan.forge_extended",
+      "notes": "P272 c5: the core package is the default (lowest false-positive rate); extended/full only by flag. The same per-rule licence filter applies (classes allowed through the module's declared sources). Not downloaded during the research."
+    },
+    "yara_scan_forge_full": {
+      "title": "YARA Forge full rule package (yara-forge-rules-full.zip): only by flag (setting yara_scan_package = full)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/YARAHQ/yara-forge",
+        "quote": "YARA Forge aggregates rules from many repos - each rule keeps its own license in meta (e.g. Neo23x0 signature-base = Detection Rule License 1.1 with attribution; some sources non-commercial) -> check before redistribution.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "yara_forge",
+      "sanitizer": null,
+      "dataset": "yara_scan.forge_full",
+      "notes": "P272 c5: only by flag; highest false-positive rate. The same per-rule licence filter applies. Not downloaded during the research."
+    }
+  },
+  "error_markers": []
+}

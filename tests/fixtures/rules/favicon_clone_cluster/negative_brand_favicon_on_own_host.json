@@ -1,0 +1,46 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "$comment": "The brand favicon on the organisation's own (young) subdomain is not a clone",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "org_profile": {
+    "org": {
+      "name": "Acme"
+    },
+    "domains": [
+      {
+        "name": "acme-corp.example",
+        "verification": "txt_verified"
+      }
+    ],
+    "favicon_hashes": [
+      "-1234567890"
+    ]
+  },
+  "nodes": [
+    {
+      "key": "domain:new.acme-corp.example",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "favicon_mmh3": [
+          {
+            "value": "-1234567890",
+            "source": "urlscan_search"
+          }
+        ],
+        "domain_age_days": [
+          {
+            "value": 3,
+            "source": "rdap"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": []
+}

@@ -1,0 +1,10 @@
+From: "IT Service Desk" <helpdesk@example.com>
+To: analyst@example.org
+Subject: Action required: mailbox quota
+Date: Thu, 26 Nov 2026 08:00:00 -0300
+X-Synthetic: yes (V3LUM test fixture, documentation values only)
+
+Your mailbox is almost full. Validate your account within 24 hours:
+https://sites.google.com/view/example-mailbox-validation/login?ref=quota
+
+Support line: +55 11 5555-0100 - resolver 8.8.8.8 - www.google.com

@@ -1,0 +1,599 @@
+{
+ "_meta": {
+  "note": "Trimmed copy of the WhatsMyName dataset (https://github.com/WebBreacher/WhatsMyName, archived 2026-11-09), Copyright (C) 2015-2026 Micah Hoffman, CC BY-SA 4.0. Modified for tests: entries trimmed and the 'known' handles replaced by example values. Test fixture only: never shipped in the package (A6, notice username_check_wmn).",
+  "upstream_sha256": "a8b8385bee4b4c79f1fcdd458749ec89ba9d8dab94230353d09020b90b436324"
+ },
+ "license": [
+  "Copyright (C) 2015-2026 WhatsMyName authors (name scrubbed)",
+  "This work is licensed under the Creative Commons Attribution-ShareAlike",
+  "4.0 International License. To view a copy of this license, visit",
+  "http://creativecommons.org/licenses/by-sa/4.0/ or send a letter to",
+  "Creative Commons, PO Box 1866, Mountain View, CA 94042, USA."
+ ],
+ "authors": [
+  "scrubbed"
+ ],
+ "categories": [
+  "archived",
+  "art",
+  "blog",
+  "business",
+  "coding",
+  "dating",
+  "finance",
+  "gaming",
+  "health",
+  "hobby",
+  "images",
+  "misc",
+  "music",
+  "news",
+  "political",
+  "search",
+  "shopping",
+  "social",
+  "tech",
+  "video",
+  "xx NSFW xx"
+ ],
+ "sites": [
+  {
+   "name": "about.me",
+   "uri_check": "https://about.me/{account}",
+   "e_code": 200,
+   "e_string": " | about.me",
+   "m_string": "<title>about.me</title>",
+   "m_code": 404,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "social"
+  },
+  {
+   "name": "Dribbble",
+   "uri_check": "https://dribbble.com/{account}",
+   "e_code": 200,
+   "e_string": " | Dribbble",
+   "m_string": "(404)</title>",
+   "m_code": 404,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "art"
+  },
+  {
+   "name": "Gravatar",
+   "uri_check": "https://en.gravatar.com/{account}.json",
+   "uri_pretty": "https://en.gravatar.com/{account}",
+   "e_code": 200,
+   "e_string": "{\"entry\":",
+   "m_string": "\"User not found\"",
+   "m_code": 404,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "social"
+  },
+  {
+   "name": "Linktree",
+   "uri_check": "https://linktr.ee/{account}",
+   "e_code": 200,
+   "e_string": "\"uuid\":",
+   "m_string": "\"statusCode\":404",
+   "m_code": 404,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "social"
+  },
+  {
+   "name": "Kaggle",
+   "uri_check": "https://www.kaggle.com/{account}",
+   "e_code": 200,
+   "e_string": "property=\"og:username\"",
+   "m_string": "<title>Kaggle: Your Home for Data Science</title>",
+   "m_code": 404,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "coding"
+  },
+  {
+   "name": "TikTok",
+   "uri_check": "https://www.tiktok.com/oembed?url=https://www.tiktok.com/@{account}",
+   "uri_pretty": "https://www.tiktok.com/@{account}?lang=en",
+   "e_code": 200,
+   "e_string": "\"author_url\":",
+   "m_string": "\"code\":400",
+   "m_code": 400,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "social"
+  },
+  {
+   "name": "Pinterest",
+   "uri_check": "https://www.pinterest.com/{account}/",
+   "e_code": 200,
+   "e_string": " - Profile | Pinterest",
+   "m_string": "id=\"home-main-title",
+   "m_code": 301,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "social"
+  },
+  {
+   "name": "Medium",
+   "uri_check": "https://medium.com/@{account}/about",
+   "strip_bad_char": ".",
+   "e_code": 200,
+   "e_string": "Medium member since",
+   "m_string": "Out of nothing, something",
+   "m_code": 404,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "news"
+  },
+  {
+   "name": "Alura",
+   "uri_check": "https://cursos.alura.com.br/user/{account}",
+   "e_code": 200,
+   "e_string": "Perfil de",
+   "m_string": "\"error\":\"Not Found\"",
+   "m_code": 404,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "tech"
+  },
+  {
+   "name": "35photo",
+   "uri_check": "https://35photo.pro/@{account}/",
+   "e_code": 200,
+   "e_string": "userNameBlock",
+   "m_string": "",
+   "m_code": 302,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "hobby"
+  },
+  {
+   "name": "7cup",
+   "uri_check": "https://www.7cups.com/@{account}",
+   "e_code": 200,
+   "e_string": "Profile - 7 Cups",
+   "m_string": "Oops! The content you're attempting to access could not be found.",
+   "m_code": 404,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "social",
+   "valid": false
+  },
+  {
+   "name": "AdmireMe.VIP",
+   "uri_check": "https://admireme.vip/{account}/",
+   "e_code": 200,
+   "e_string": "creator-stat subscriber",
+   "m_string": "<title>Page Not Found |",
+   "m_code": 404,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "xx NSFW xx"
+  },
+  {
+   "name": "FriendFinder-X",
+   "uri_check": "https://www.friendfinder-x.com/profile/{account}",
+   "e_code": 200,
+   "e_string": "'s Dating Profile on FriendFinder-x",
+   "m_string": "The document has moved",
+   "m_code": 302,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "dating"
+  },
+  {
+   "name": "AmericanThinker",
+   "uri_check": "https://www.americanthinker.com/author/{account}/",
+   "e_code": 200,
+   "e_string": "class=\"author_image\"",
+   "m_string": "title>404 Not Found</title>",
+   "m_code": 404,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "political"
+  },
+  {
+   "name": "PatientsLikeMe",
+   "uri_check": "https://www.patientslikeme.com/members/{account}",
+   "e_code": 200,
+   "e_string": "s profile | PatientsLikeMe</title>",
+   "m_string": "",
+   "m_code": 302,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "health"
+  },
+  {
+   "name": "Discord (User)",
+   "uri_check": "https://discord.com/api/v9/unique-username/username-attempt-unauthed",
+   "post_body": "{\"username\":\"{account}\"}",
+   "headers": {
+    "Content-Type": "application/json"
+   },
+   "e_code": 200,
+   "e_string": "\"taken\":true",
+   "m_string": "\"taken\":false",
+   "m_code": 200,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "social"
+  },
+  {
+   "name": "X",
+   "uri_check": "https://api.x.com/i/users/username_available.json?username={account}",
+   "uri_pretty": "https://x.com/{account}",
+   "e_code": 200,
+   "e_string": "\"reason\":\"taken\"",
+   "m_string": "\"reason\":\"available\"",
+   "m_code": 200,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "social"
+  },
+  {
+   "name": "Fiverr",
+   "uri_check": "https://www.fiverr.com/validate_username",
+   "uri_pretty": "https://www.fiverr.com/{account}",
+   "post_body": "{\"username\": \"{account}\"}",
+   "headers": {
+    "Content-Type": "application/json"
+   },
+   "e_code": 201,
+   "e_string": "\"errorKeys\":[[\"username\",\"user_taken\"]]",
+   "m_string": "\"status\":\"success\"",
+   "m_code": 201,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "shopping"
+  },
+  {
+   "name": "Roblox",
+   "uri_check": "https://auth.roblox.com/v1/usernames/validate?username={account}&birthday=2019-12-31T23:00:00.000Z",
+   "uri_pretty": "https://www.roblox.com/search/users?keyword={account}",
+   "e_code": 200,
+   "e_string": "Username is already in use",
+   "m_string": "Username is valid",
+   "m_code": 200,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "gaming"
+  },
+  {
+   "name": "Steemit",
+   "uri_check": "https://signup.steemit.com/api/check_username",
+   "uri_pretty": "https://steemit.com/@{account}",
+   "post_body": "{\"username\":\"{account}\"}",
+   "headers": {
+    "Content-Type": "application/json"
+   },
+   "e_code": 200,
+   "e_string": "\"type\":\"error_api_username_used\"",
+   "m_string": "\"success\":true",
+   "m_code": 200,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "social"
+  },
+  {
+   "name": "Pikabu",
+   "uri_check": "https://pikabu.ru/ajax.php",
+   "uri_pretty": "https://pikabu.ru/@{account}",
+   "post_body": "route=signup/check-username&username={account}",
+   "headers": {
+    "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+   },
+   "e_code": 200,
+   "e_string": "\"result\":false",
+   "m_string": "\"result\":true",
+   "m_code": 200,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "social",
+   "protection": [
+    "ddos-guard"
+   ]
+  },
+  {
+   "name": "GitHub (User)",
+   "uri_check": "https://api.github.com/users/{account}",
+   "uri_pretty": "https://github.com/{account}",
+   "headers": {
+    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:147.0) Gecko/20100101 Firefox/147.0"
+   },
+   "e_code": 200,
+   "e_string": "\"id\":",
+   "m_string": "\"status\": \"404\"",
+   "m_code": 404,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "coding",
+   "protection": [
+    "user-agent"
+   ]
+  },
+  {
+   "name": "Mastodon-Defcon",
+   "uri_check": "https://defcon.social/@{account}",
+   "e_code": 200,
+   "e_string": "- DEF CON Social</title>",
+   "m_string": "The page you are looking for isn&#39;t here.",
+   "m_code": 404,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "social"
+  },
+  {
+   "name": "Fosstodon.org (Mastodon Instance)",
+   "uri_check": "https://fosstodon.org/api/v1/accounts/lookup?acct={account}",
+   "uri_pretty": "https://fosstodon.org/@{account}",
+   "e_code": 200,
+   "e_string": "display_name",
+   "m_string": "Record not found",
+   "m_code": 404,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "social"
+  },
+  {
+   "name": "YouTube User2",
+   "uri_check": "https://www.youtube.com/@{account}",
+   "e_code": 200,
+   "e_string": "canonicalBaseUrl",
+   "m_string": "<title>404 Not Found</title>",
+   "m_code": 404,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "video"
+  },
+  {
+   "name": "HudsonRock",
+   "uri_check": "https://cavalier.hudsonrock.com/api/json/v2/osint-tools/search-by-username?username={account}",
+   "e_code": 200,
+   "e_string": "This username is associated with a computer that was infected by an info-stealer",
+   "m_string": "This username is not associated with a computer infected by an info-stealer",
+   "m_code": 200,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "tech"
+  },
+  {
+   "name": "Disqus",
+   "uri_check": "https://disqus.com/api/3.0/users/details?user=username:{account}&api_key=REDACTED",
+   "uri_pretty": "https://disqus.com/by/{account}/",
+   "e_code": 200,
+   "e_string": "\"code\":0",
+   "m_string": "\"code\":2",
+   "m_code": 400,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "social"
+  },
+  {
+   "name": "VirusTotal",
+   "uri_check": "https://www.virustotal.com/ui/users/{account}",
+   "uri_pretty": "https://www.virustotal.com/gui/user/{account}",
+   "headers": {
+    "Accept-Language": "en-US",
+    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:127.0) Gecko/20100101 Firefox/127.0",
+    "X-Tool": "vt-ui-main",
+    "X-VT-Anti-Abuse-Header": "REDACTED"
+   },
+   "e_code": 200,
+   "e_string": "\"data\"",
+   "m_string": "\"code\": \"NotFoundError\"",
+   "m_code": 404,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "misc"
+  },
+  {
+   "name": "Fotolog Archived Profile",
+   "uri_check": "https://archive.org/wayback/available?url=https://www.fotolog.com/{account}",
+   "uri_pretty": "https://web.archive.org/web/2/fotolog.com/{account}",
+   "e_code": 200,
+   "e_string": "\"archived_snapshots\": {\"closest\"",
+   "m_string": "\"archived_snapshots\": {}",
+   "m_code": 200,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "archived"
+  },
+  {
+   "name": "Twitter archived profile",
+   "uri_check": "http://archive.org/wayback/available?url=https://twitter.com/{account}",
+   "uri_pretty": "https://web.archive.org/web/2/https://twitter.com/{account}",
+   "e_code": 200,
+   "e_string": "\"archived_snapshots\": {\"closest\"",
+   "m_string": "\"archived_snapshots\": {}",
+   "m_code": 200,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "archived"
+  },
+  {
+   "name": "Chess.com",
+   "uri_check": "https://api.chess.com/pub/player/{account}",
+   "uri_pretty": "https://www.chess.com/member/{account}",
+   "e_code": 200,
+   "e_string": "\"player_id\":",
+   "m_string": "\"code\":0",
+   "m_code": 404,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "gaming",
+   "protection": [
+    "cloudflare"
+   ]
+  },
+  {
+   "name": "Duolingo",
+   "uri_check": "https://www.duolingo.com/2017-06-30/users?username={account}&_=1628308619574",
+   "uri_pretty": "https://www.duolingo.com/profile/{account}",
+   "e_code": 200,
+   "e_string": "joinedClassroomIds",
+   "m_string": "\"users\" : []",
+   "m_code": 200,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "hobby"
+  },
+  {
+   "name": "Apex Legends",
+   "uri_check": "https://api.tracker.gg/api/v2/apex/standard/profile/origin/{account}",
+   "uri_pretty": "https://apex.tracker.gg/apex/profile/origin/{account}/overview",
+   "headers": {
+    "Accept-Language": "en-US,en;q=0.5",
+    "Origin": "https://apex.tracker.gg",
+    "Referer": "https://apex.tracker.gg/",
+    "TE": "trailers",
+    "User-Agent": "Mozilla/5.0 (X11; Linux i686; rv:128.0) Gecko/20100101 Firefox/128.0"
+   },
+   "e_code": 200,
+   "e_string": "platformInfo",
+   "m_string": "CollectorResultStatus::NotFound",
+   "m_code": 404,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "gaming"
+  },
+  {
+   "name": "HackerOne",
+   "uri_check": "https://hackerone.com/graphql",
+   "uri_pretty": "https://hackerone.com/{account}",
+   "post_body": "{\"query\":\"query($url: URI!) {\\n        resource(url: $url) {\\n            ... on User { username }\\n        }\\n    }\",\"variables\":{\"url\":\"{account}\"}}",
+   "headers": {
+    "Content-Type": "application/json"
+   },
+   "e_code": 200,
+   "e_string": "\"username\":",
+   "m_string": "\"type\":\"NOT_FOUND\"",
+   "m_code": 200,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "tech"
+  },
+  {
+   "name": "Instagram",
+   "uri_check": "https://www.instagram.com/{account}/",
+   "e_code": 200,
+   "e_string": "Posts - See Instagram photos and videos from",
+   "m_string": "\"routePath\":null",
+   "m_code": 200,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "social"
+  },
+  {
+   "name": "Telegram",
+   "uri_check": "https://t.me/{account}",
+   "e_code": 200,
+   "e_string": "tgme_page_title",
+   "m_string": "noindex, nofollow",
+   "m_code": 200,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "social"
+  },
+  {
+   "name": "Steam",
+   "uri_check": "https://steamcommunity.com/id/{account}",
+   "e_code": 200,
+   "e_string": "g_rgProfileData =",
+   "m_string": "Steam Community :: Error",
+   "m_code": 200,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "gaming"
+  },
+  {
+   "name": "Snapchat",
+   "uri_check": "https://www.snapchat.com/@{account}",
+   "e_code": 200,
+   "e_string": "is on Snapchat!",
+   "m_string": "NOT_FOUND",
+   "m_code": 200,
+   "known": [
+    "example-claimed-1",
+    "example-claimed-2"
+   ],
+   "cat": "social"
+  }
+ ]
+}

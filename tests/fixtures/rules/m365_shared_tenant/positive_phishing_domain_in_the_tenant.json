@@ -1,0 +1,28 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "nodes": [
+    {
+      "key": "domain:login-contoso.example",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "m365_tenant_id": [{"value": "99999999-8888-4777-8666-555555555555", "source": "m365_tenant"}]
+      },
+      "findings": [
+        {"title": "Listed as phishing", "severity": "high", "confidence": 0.8, "confidence_label": "probable",
+         "criterion": "phishing feed listing", "tags": ["phishing"], "module": "url_domain_blocklists", "source": "openphish.feed"}
+      ]
+    },
+    {
+      "key": "domain:contoso-billing.example",
+      "depth": 1,
+      "attributes": {
+        "m365_tenant_id": [{"value": "99999999-8888-4777-8666-555555555555", "source": "m365_tenant_azmap"}],
+        "m365_tenant_name": [{"value": "contosobilling", "source": "m365_tenant_azmap"}]
+      }
+    }
+  ],
+  "edges": [],
+  "expect": {"m365_shared_tenant": {"min": 1, "max": 1, "severity": "low", "confidence_label": "probable"}}
+}

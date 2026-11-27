@@ -1,0 +1,373 @@
+{
+ "_meta": {
+  "generator": "gen_tls_fixtures.py (cryptography, prep-time only)",
+  "note": "keys were never written; documentation names only",
+  "now": "2026-11-26T12:00:00+00:00"
+ },
+ "cases": {
+  "expired_chain": [
+   {
+    "curve": null,
+    "issuer": "CN=Example Issuing ECC CA 3,O=Example Test PKI,C=BR",
+    "key_size": 2048,
+    "key_type": "RSA",
+    "not_after": "2026-10-01T12:00:00+00:00",
+    "not_before": "2026-06-29T12:00:00+00:00",
+    "san_dns": [
+     "portal.example.com"
+    ],
+    "serial": "0x1004",
+    "sha1": "4c97cc8f2818064d457d90908916f8d333fb9b87",
+    "sha256": "3e9232f3a2835f720a8e57fbe226cd6623328d1abbbd4450a790f4eee5c5afda",
+    "sig_hash": "sha256",
+    "subject": "CN=portal.example.com"
+   },
+   {
+    "curve": "secp256r1",
+    "issuer": "CN=Example Test Root CA,O=Example Test PKI,C=BR",
+    "key_size": 256,
+    "key_type": "EC",
+    "not_after": "2031-01-04T12:00:00+00:00",
+    "not_before": "2024-12-26T12:00:00+00:00",
+    "san_dns": [],
+    "serial": "0x1002",
+    "sha1": "6b61c1e9d07c423207f0483aa8714b3c0c9afc55",
+    "sha256": "834cb161d4f68b5ebfab82b3702d1fac9541e78cb6b068186d4091d1a4e99424",
+    "sig_hash": "sha256",
+    "subject": "CN=Example Issuing ECC CA 3,O=Example Test PKI,C=BR"
+   }
+  ],
+  "expires_10d_chain": [
+   {
+    "curve": "secp256r1",
+    "issuer": "CN=Example Issuing ECC CA 3,O=Example Test PKI,C=BR",
+    "key_size": 256,
+    "key_type": "EC",
+    "not_after": "2026-12-06T12:00:00+00:00",
+    "not_before": "2026-09-07T12:00:00+00:00",
+    "san_dns": [
+     "vpn.example.com"
+    ],
+    "serial": "0x1005",
+    "sha1": "6aa3f005a13c2be2ed56306f7e653e2bbc2030c1",
+    "sha256": "e667650f591f4d9a156da229cea7c2518f3bdcb3f6ff04645fd83beae074b860",
+    "sig_hash": "sha256",
+    "subject": "CN=vpn.example.com"
+   },
+   {
+    "curve": "secp256r1",
+    "issuer": "CN=Example Test Root CA,O=Example Test PKI,C=BR",
+    "key_size": 256,
+    "key_type": "EC",
+    "not_after": "2031-01-04T12:00:00+00:00",
+    "not_before": "2024-12-26T12:00:00+00:00",
+    "san_dns": [],
+    "serial": "0x1002",
+    "sha1": "6b61c1e9d07c423207f0483aa8714b3c0c9afc55",
+    "sha256": "834cb161d4f68b5ebfab82b3702d1fac9541e78cb6b068186d4091d1a4e99424",
+    "sig_hash": "sha256",
+    "subject": "CN=Example Issuing ECC CA 3,O=Example Test PKI,C=BR"
+   }
+  ],
+  "expires_20d_chain": [
+   {
+    "curve": "secp256r1",
+    "issuer": "CN=Example Issuing ECC CA 3,O=Example Test PKI,C=BR",
+    "key_size": 256,
+    "key_type": "EC",
+    "not_after": "2026-12-16T12:00:00+00:00",
+    "not_before": "2026-09-17T12:00:00+00:00",
+    "san_dns": [
+     "mail.example.com"
+    ],
+    "serial": "0x1006",
+    "sha1": "b2800c1c90e40c3b058f4634b3f8a7ef3081c902",
+    "sha256": "094f20bd99ccb66e0415bb33a2085a993be150b067fd6da2c7500a0f76a8d935",
+    "sig_hash": "sha256",
+    "subject": "CN=mail.example.com"
+   },
+   {
+    "curve": "secp256r1",
+    "issuer": "CN=Example Test Root CA,O=Example Test PKI,C=BR",
+    "key_size": 256,
+    "key_type": "EC",
+    "not_after": "2031-01-04T12:00:00+00:00",
+    "not_before": "2024-12-26T12:00:00+00:00",
+    "san_dns": [],
+    "serial": "0x1002",
+    "sha1": "6b61c1e9d07c423207f0483aa8714b3c0c9afc55",
+    "sha256": "834cb161d4f68b5ebfab82b3702d1fac9541e78cb6b068186d4091d1a4e99424",
+    "sig_hash": "sha256",
+    "subject": "CN=Example Issuing ECC CA 3,O=Example Test PKI,C=BR"
+   }
+  ],
+  "intercepted_chain": [
+   {
+    "curve": null,
+    "issuer": "CN=Example TLS Inspection CA,O=Example Corp",
+    "key_size": 2048,
+    "key_type": "RSA",
+    "not_after": "2027-11-25T12:00:00+00:00",
+    "not_before": "2026-11-25T12:00:00+00:00",
+    "san_dns": [
+     "www.example.org"
+    ],
+    "serial": "0x100e",
+    "sha1": "031e855b7b3b00c96a30d8eb44d1d2b3c1e40f13",
+    "sha256": "7ce1ae9ff3662eb91cef50370664057433b0aeb5325ac70d2959c0efa1161e9d",
+    "sig_hash": "sha256",
+    "subject": "CN=www.example.org"
+   },
+   {
+    "curve": null,
+    "issuer": "CN=Example TLS Inspection CA,O=Example Corp",
+    "key_size": 2048,
+    "key_type": "RSA",
+    "not_after": "2035-02-12T12:00:00+00:00",
+    "not_before": "2025-10-22T12:00:00+00:00",
+    "san_dns": [],
+    "serial": "0x100d",
+    "sha1": "45d4226761afb7e2357f7ded10ed30b544f85d93",
+    "sha256": "4e03ba34ac9428cd983d09f05752517ee723aea0303778bae6754c6ee76be23c",
+    "sig_hash": "sha256",
+    "subject": "CN=Example TLS Inspection CA,O=Example Corp"
+   }
+  ],
+  "mismatch_chain": [
+   {
+    "curve": "secp256r1",
+    "issuer": "CN=Example Issuing ECC CA 3,O=Example Test PKI,C=BR",
+    "key_size": 256,
+    "key_type": "EC",
+    "not_after": "2027-02-14T12:00:00+00:00",
+    "not_before": "2026-11-16T12:00:00+00:00",
+    "san_dns": [
+     "other.example.net"
+    ],
+    "serial": "0x100b",
+    "sha1": "4365e5182c63fa9991561e7ddccb0a86164e1bd2",
+    "sha256": "8dce247795e6780e6110863e91ecbd88ea254a3d2102cf0d37799c5d3a9ab34d",
+    "sig_hash": "sha256",
+    "subject": "CN=other.example.net"
+   },
+   {
+    "curve": "secp256r1",
+    "issuer": "CN=Example Test Root CA,O=Example Test PKI,C=BR",
+    "key_size": 256,
+    "key_type": "EC",
+    "not_after": "2031-01-04T12:00:00+00:00",
+    "not_before": "2024-12-26T12:00:00+00:00",
+    "san_dns": [],
+    "serial": "0x1002",
+    "sha1": "6b61c1e9d07c423207f0483aa8714b3c0c9afc55",
+    "sha256": "834cb161d4f68b5ebfab82b3702d1fac9541e78cb6b068186d4091d1a4e99424",
+    "sig_hash": "sha256",
+    "subject": "CN=Example Issuing ECC CA 3,O=Example Test PKI,C=BR"
+   }
+  ],
+  "ok_chain": [
+   {
+    "curve": "secp256r1",
+    "issuer": "CN=Example Issuing ECC CA 3,O=Example Test PKI,C=BR",
+    "key_size": 256,
+    "key_type": "EC",
+    "not_after": "2027-02-22T23:53:08+00:00",
+    "not_before": "2026-11-24T23:48:34+00:00",
+    "san_dns": [
+     "example.com",
+     "*.example.com"
+    ],
+    "serial": "0x1003",
+    "sha1": "09fa38318920efb529e78226b87ff40157c6e5e2",
+    "sha256": "64cecf8167f3a7720934e064b0c5607936f9c1a6a77c8cca72acefe3f4dd996f",
+    "sig_hash": "sha256",
+    "subject": "CN=example.com"
+   },
+   {
+    "curve": "secp256r1",
+    "issuer": "CN=Example Test Root CA,O=Example Test PKI,C=BR",
+    "key_size": 256,
+    "key_type": "EC",
+    "not_after": "2031-01-04T12:00:00+00:00",
+    "not_before": "2024-12-26T12:00:00+00:00",
+    "san_dns": [],
+    "serial": "0x1002",
+    "sha1": "6b61c1e9d07c423207f0483aa8714b3c0c9afc55",
+    "sha256": "834cb161d4f68b5ebfab82b3702d1fac9541e78cb6b068186d4091d1a4e99424",
+    "sig_hash": "sha256",
+    "subject": "CN=Example Issuing ECC CA 3,O=Example Test PKI,C=BR"
+   }
+  ],
+  "phish_new_dv_chain": [
+   {
+    "curve": "secp256r1",
+    "issuer": "CN=R11,O=Let's Encrypt,C=US",
+    "key_size": 256,
+    "key_type": "EC",
+    "not_after": "2027-02-22T12:00:00+00:00",
+    "not_before": "2026-11-24T12:00:00+00:00",
+    "san_dns": [
+     "examplebank-seguranca.example",
+     "www.examplebank-seguranca.example"
+    ],
+    "serial": "0x1010",
+    "sha1": "d7d37eab9dfcd7b90b25ffc3ac354ef650a1e991",
+    "sha256": "35de5dd04dbc2d5ba5287263b347f9daee680b05805e9451b4d8d183f4f271e3",
+    "sig_hash": "sha256",
+    "subject": "CN=examplebank-seguranca.example"
+   },
+   {
+    "curve": "secp256r1",
+    "issuer": "CN=Example Test Root CA,O=Example Test PKI,C=BR",
+    "key_size": 256,
+    "key_type": "EC",
+    "not_after": "2028-04-09T12:00:00+00:00",
+    "not_before": "2025-04-05T12:00:00+00:00",
+    "san_dns": [],
+    "serial": "0x100f",
+    "sha1": "2ad17f82af407fb8b6fe9d914705a7d0fce53a5a",
+    "sha256": "d1f41b9a5a3f51d256355d5f6287f5346eb0b0a344f5f5df4136fd4402c38e6d",
+    "sig_hash": "sha256",
+    "subject": "CN=R11,O=Let's Encrypt,C=US"
+   }
+  ],
+  "self_signed": [
+   {
+    "curve": null,
+    "issuer": "CN=intranet.example.com,O=Example Corp",
+    "key_size": 2048,
+    "key_type": "RSA",
+    "not_after": "2028-10-26T12:00:00+00:00",
+    "not_before": "2026-10-27T12:00:00+00:00",
+    "san_dns": [
+     "intranet.example.com"
+    ],
+    "serial": "0x1007",
+    "sha1": "b3e2edacad69291fde21675160efcd7da9f6bb58",
+    "sha256": "9ff7fe618f51837ddc4966a5965d0ade1f8ab747e4cc545fbd56dddcd965e89e",
+    "sig_hash": "sha256",
+    "subject": "CN=intranet.example.com,O=Example Corp"
+   }
+  ],
+  "shared_san_chain": [
+   {
+    "curve": "secp256r1",
+    "issuer": "CN=Example Issuing ECC CA 3,O=Example Test PKI,C=BR",
+    "key_size": 256,
+    "key_type": "EC",
+    "not_after": "2027-02-04T12:00:00+00:00",
+    "not_before": "2026-11-06T12:00:00+00:00",
+    "san_dns": [
+     "sni.cdn.example.net",
+     "shop-a.example",
+     "www.shop-a.example",
+     "cdn.shop-a.example",
+     "img.shop-a.example",
+     "shop-b.example",
+     "www.shop-b.example",
+     "cdn.shop-b.example",
+     "img.shop-b.example",
+     "shop-c.example",
+     "www.shop-c.example",
+     "cdn.shop-c.example",
+     "img.shop-c.example",
+     "news-d.example",
+     "www.news-d.example",
+     "cdn.news-d.example",
+     "img.news-d.example",
+     "blog-e.example",
+     "www.blog-e.example",
+     "cdn.blog-e.example",
+     "img.blog-e.example",
+     "mail-f.example",
+     "www.mail-f.example",
+     "app-g.example",
+     "www.app-g.example"
+    ],
+    "serial": "0x100c",
+    "sha1": "c586b0efecf23e5e57d8237ffed9bf00fdf2180f",
+    "sha256": "5dd60a220bbe2a12ac9a1ea6f28aee724a2d049f53e1d7561f56f435543b7e55",
+    "sig_hash": "sha256",
+    "subject": "CN=sni.cdn.example.net"
+   },
+   {
+    "curve": "secp256r1",
+    "issuer": "CN=Example Test Root CA,O=Example Test PKI,C=BR",
+    "key_size": 256,
+    "key_type": "EC",
+    "not_after": "2031-01-04T12:00:00+00:00",
+    "not_before": "2024-12-26T12:00:00+00:00",
+    "san_dns": [],
+    "serial": "0x1002",
+    "sha1": "6b61c1e9d07c423207f0483aa8714b3c0c9afc55",
+    "sha256": "834cb161d4f68b5ebfab82b3702d1fac9541e78cb6b068186d4091d1a4e99424",
+    "sig_hash": "sha256",
+    "subject": "CN=Example Issuing ECC CA 3,O=Example Test PKI,C=BR"
+   }
+  ],
+  "weak_ec224_chain": [
+   {
+    "curve": "secp224r1",
+    "issuer": "CN=Example Issuing ECC CA 3,O=Example Test PKI,C=BR",
+    "key_size": 224,
+    "key_type": "EC",
+    "not_after": "2027-02-14T12:00:00+00:00",
+    "not_before": "2026-11-16T12:00:00+00:00",
+    "san_dns": [
+     "iot.example.com"
+    ],
+    "serial": "0x100a",
+    "sha1": "b48038e351cddbe00c42258cde2dcffb689514c0",
+    "sha256": "f0ed9b3582bab02e5e682705bc3779907c20a0c24fa9c88de082320c4a20cf11",
+    "sig_hash": "sha256",
+    "subject": "CN=iot.example.com"
+   },
+   {
+    "curve": "secp256r1",
+    "issuer": "CN=Example Test Root CA,O=Example Test PKI,C=BR",
+    "key_size": 256,
+    "key_type": "EC",
+    "not_after": "2031-01-04T12:00:00+00:00",
+    "not_before": "2024-12-26T12:00:00+00:00",
+    "san_dns": [],
+    "serial": "0x1002",
+    "sha1": "6b61c1e9d07c423207f0483aa8714b3c0c9afc55",
+    "sha256": "834cb161d4f68b5ebfab82b3702d1fac9541e78cb6b068186d4091d1a4e99424",
+    "sig_hash": "sha256",
+    "subject": "CN=Example Issuing ECC CA 3,O=Example Test PKI,C=BR"
+   }
+  ],
+  "weak_rsa1024_sha1_chain": [
+   {
+    "curve": null,
+    "issuer": "CN=Example Legacy CA,O=Example Test PKI,C=BR",
+    "key_size": 1024,
+    "key_type": "RSA",
+    "not_after": "2027-06-14T12:00:00+00:00",
+    "not_before": "2026-08-18T12:00:00+00:00",
+    "san_dns": [
+     "legacy.example.com"
+    ],
+    "serial": "0x1009",
+    "sha1": "2047d8664f0e5531852b5c108f6b6f9bd55adbd7",
+    "sha256": "7800223a5ae7176d6443386f1f8017c2a5748d3b04a66e84f98e5aee1d58371d",
+    "sig_hash": "sha1",
+    "subject": "CN=legacy.example.com"
+   },
+   {
+    "curve": null,
+    "issuer": "CN=Example Legacy CA,O=Example Test PKI,C=BR",
+    "key_size": 2048,
+    "key_type": "RSA",
+    "not_after": "2035-02-12T12:00:00+00:00",
+    "not_before": "2018-09-09T12:00:00+00:00",
+    "san_dns": [],
+    "serial": "0x1008",
+    "sha1": "93089323b92b35fea8b960f5e5aa45897f00c53f",
+    "sha256": "fcf0190e075f3116d99a87ed8e43153000d25a4bd387185f96cde6c685f6ee53",
+    "sig_hash": "sha256",
+    "subject": "CN=Example Legacy CA,O=Example Test PKI,C=BR"
+   }
+  ]
+ }
+}

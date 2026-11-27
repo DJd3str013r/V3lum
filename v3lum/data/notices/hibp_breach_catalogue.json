@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "hibp_breach_catalogue",
+  "source_url": "https://haveibeenpwned.com/API/v3",
+  "version": "runtime download of /api/v3/breaches and /api/v3/dataclasses (24 h datasets hibp_breaches.json, hibp_dataclasses.json); terms checked 2026-11-26",
+  "sha256": "",
+  "licence": "CC-BY-4.0",
+  "attribution": "Breach catalogue data from Have I Been Pwned (https://haveibeenpwned.com/), licensed under the Creative Commons Attribution 4.0 International licence (CC BY 4.0). Shown with the attribution 'Have I Been Pwned' and a link wherever results are shown (P132 cond 7).",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/breach_leak/hibp_catalog.py"
+  ]
+}

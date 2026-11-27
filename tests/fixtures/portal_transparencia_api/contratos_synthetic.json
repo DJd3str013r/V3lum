@@ -1,0 +1,254 @@
+[
+ {
+  "id": 1,
+  "numero": "000012026",
+  "objeto": "Servico A",
+  "numeroProcesso": "PROC-1",
+  "fundamentoLegal": "Lei 14.133/2021",
+  "compra": {
+   "numero": "0001/2026",
+   "objeto": "Servico A",
+   "numeroProcesso": "PROC-1",
+   "contatoResponsavel": ""
+  },
+  "situacaoContrato": "Publicado",
+  "modalidadeCompra": "Pregão",
+  "unidadeGestora": {
+   "codigo": "160001",
+   "nome": "UNIDADE GESTORA EXEMPLO",
+   "descricaoPoder": "Executivo"
+  },
+  "dataAssinatura": "2024-03-10",
+  "dataPublicacaoDOU": "2024-03-10",
+  "dataInicioVigencia": "2024-03-10",
+  "dataFimVigencia": "2027-12-31",
+  "fornecedor": {
+   "id": 0,
+   "cpfFormatado": "",
+   "cnpjFormatado": "11.222.333/0001-81",
+   "numeroInscricaoSocial": "",
+   "nome": "EMPRESA EXEMPLO ALFA LTDA",
+   "razaoSocialReceita": "EMPRESA EXEMPLO ALFA LTDA",
+   "nomeFantasiaReceita": "",
+   "tipo": "Pessoa Jurídica"
+  },
+  "valorInicialCompra": 12000.0,
+  "valorFinalCompra": 12000.0
+ },
+ {
+  "id": 2,
+  "numero": "000022026",
+  "objeto": "Servico B",
+  "numeroProcesso": "PROC-2",
+  "fundamentoLegal": "Lei 14.133/2021",
+  "compra": {
+   "numero": "0001/2026",
+   "objeto": "Servico B",
+   "numeroProcesso": "PROC-2",
+   "contatoResponsavel": ""
+  },
+  "situacaoContrato": "Publicado",
+  "modalidadeCompra": "Pregão",
+  "unidadeGestora": {
+   "codigo": "160001",
+   "nome": "UNIDADE GESTORA EXEMPLO",
+   "descricaoPoder": "Executivo"
+  },
+  "dataAssinatura": "2026-05-02",
+  "dataPublicacaoDOU": "2026-05-02",
+  "dataInicioVigencia": "2026-05-02",
+  "dataFimVigencia": "2027-12-31",
+  "fornecedor": {
+   "id": 0,
+   "cpfFormatado": "",
+   "cnpjFormatado": "11.222.333/0001-81",
+   "numeroInscricaoSocial": "",
+   "nome": "EMPRESA EXEMPLO ALFA LTDA",
+   "razaoSocialReceita": "EMPRESA EXEMPLO ALFA LTDA",
+   "nomeFantasiaReceita": "",
+   "tipo": "Pessoa Jurídica"
+  },
+  "valorInicialCompra": 55000.5,
+  "valorFinalCompra": 55000.5
+ },
+ {
+  "id": 3,
+  "numero": "000032026",
+  "objeto": "Servico C",
+  "numeroProcesso": "PROC-3",
+  "fundamentoLegal": "Lei 14.133/2021",
+  "compra": {
+   "numero": "0001/2026",
+   "objeto": "Servico C",
+   "numeroProcesso": "PROC-3",
+   "contatoResponsavel": ""
+  },
+  "situacaoContrato": "Publicado",
+  "modalidadeCompra": "Pregão",
+  "unidadeGestora": {
+   "codigo": "160001",
+   "nome": "UNIDADE GESTORA EXEMPLO",
+   "descricaoPoder": "Executivo"
+  },
+  "dataAssinatura": "2025-11-20",
+  "dataPublicacaoDOU": "2025-11-20",
+  "dataInicioVigencia": "2025-11-20",
+  "dataFimVigencia": "2027-12-31",
+  "fornecedor": {
+   "id": 0,
+   "cpfFormatado": "",
+   "cnpjFormatado": "11.222.333/0001-81",
+   "numeroInscricaoSocial": "",
+   "nome": "EMPRESA EXEMPLO ALFA LTDA",
+   "razaoSocialReceita": "EMPRESA EXEMPLO ALFA LTDA",
+   "nomeFantasiaReceita": "",
+   "tipo": "Pessoa Jurídica"
+  },
+  "valorInicialCompra": 8000.0,
+  "valorFinalCompra": 8000.0
+ },
+ {
+  "id": 4,
+  "numero": "000042026",
+  "objeto": "Servico D",
+  "numeroProcesso": "PROC-4",
+  "fundamentoLegal": "Lei 14.133/2021",
+  "compra": {
+   "numero": "0001/2026",
+   "objeto": "Servico D",
+   "numeroProcesso": "PROC-4",
+   "contatoResponsavel": ""
+  },
+  "situacaoContrato": "Publicado",
+  "modalidadeCompra": "Pregão",
+  "unidadeGestora": {
+   "codigo": "160001",
+   "nome": "UNIDADE GESTORA EXEMPLO",
+   "descricaoPoder": "Executivo"
+  },
+  "dataAssinatura": "2026-09-15",
+  "dataPublicacaoDOU": "2026-09-15",
+  "dataInicioVigencia": "2026-09-15",
+  "dataFimVigencia": "2027-12-31",
+  "fornecedor": {
+   "id": 0,
+   "cpfFormatado": "",
+   "cnpjFormatado": "11.222.333/0001-81",
+   "numeroInscricaoSocial": "",
+   "nome": "EMPRESA EXEMPLO ALFA LTDA",
+   "razaoSocialReceita": "EMPRESA EXEMPLO ALFA LTDA",
+   "nomeFantasiaReceita": "",
+   "tipo": "Pessoa Jurídica"
+  },
+  "valorInicialCompra": 1000.0,
+  "valorFinalCompra": 1000.0
+ },
+ {
+  "id": 5,
+  "numero": "000052026",
+  "objeto": "Servico E",
+  "numeroProcesso": "PROC-5",
+  "fundamentoLegal": "Lei 14.133/2021",
+  "compra": {
+   "numero": "0001/2026",
+   "objeto": "Servico E",
+   "numeroProcesso": "PROC-5",
+   "contatoResponsavel": ""
+  },
+  "situacaoContrato": "Publicado",
+  "modalidadeCompra": "Pregão",
+  "unidadeGestora": {
+   "codigo": "160001",
+   "nome": "UNIDADE GESTORA EXEMPLO",
+   "descricaoPoder": "Executivo"
+  },
+  "dataAssinatura": "2023-01-05",
+  "dataPublicacaoDOU": "2023-01-05",
+  "dataInicioVigencia": "2023-01-05",
+  "dataFimVigencia": "2027-12-31",
+  "fornecedor": {
+   "id": 0,
+   "cpfFormatado": "",
+   "cnpjFormatado": "11.222.333/0001-81",
+   "numeroInscricaoSocial": "",
+   "nome": "EMPRESA EXEMPLO ALFA LTDA",
+   "razaoSocialReceita": "EMPRESA EXEMPLO ALFA LTDA",
+   "nomeFantasiaReceita": "",
+   "tipo": "Pessoa Jurídica"
+  },
+  "valorInicialCompra": 300000.0,
+  "valorFinalCompra": 300000.0
+ },
+ {
+  "id": 6,
+  "numero": "000062026",
+  "objeto": "Servico F",
+  "numeroProcesso": "PROC-6",
+  "fundamentoLegal": "Lei 14.133/2021",
+  "compra": {
+   "numero": "0001/2026",
+   "objeto": "Servico F",
+   "numeroProcesso": "PROC-6",
+   "contatoResponsavel": ""
+  },
+  "situacaoContrato": "Publicado",
+  "modalidadeCompra": "Pregão",
+  "unidadeGestora": {
+   "codigo": "160001",
+   "nome": "UNIDADE GESTORA EXEMPLO",
+   "descricaoPoder": "Executivo"
+  },
+  "dataAssinatura": "2026-10-30",
+  "dataPublicacaoDOU": "2026-10-30",
+  "dataInicioVigencia": "2026-10-30",
+  "dataFimVigencia": "2027-12-31",
+  "fornecedor": {
+   "id": 0,
+   "cpfFormatado": "",
+   "cnpjFormatado": "11.222.333/0001-81",
+   "numeroInscricaoSocial": "",
+   "nome": "EMPRESA EXEMPLO ALFA LTDA",
+   "razaoSocialReceita": "EMPRESA EXEMPLO ALFA LTDA",
+   "nomeFantasiaReceita": "",
+   "tipo": "Pessoa Jurídica"
+  },
+  "valorInicialCompra": 2500.25,
+  "valorFinalCompra": 2500.25
+ },
+ {
+  "id": 7,
+  "numero": "000072026",
+  "objeto": "Servico G",
+  "numeroProcesso": "PROC-7",
+  "fundamentoLegal": "Lei 14.133/2021",
+  "compra": {
+   "numero": "0001/2026",
+   "objeto": "Servico G",
+   "numeroProcesso": "PROC-7",
+   "contatoResponsavel": ""
+  },
+  "situacaoContrato": "Publicado",
+  "modalidadeCompra": "Pregão",
+  "unidadeGestora": {
+   "codigo": "160001",
+   "nome": "UNIDADE GESTORA EXEMPLO",
+   "descricaoPoder": "Executivo"
+  },
+  "dataAssinatura": "2025-07-07",
+  "dataPublicacaoDOU": "2025-07-07",
+  "dataInicioVigencia": "2025-07-07",
+  "dataFimVigencia": "2027-12-31",
+  "fornecedor": {
+   "id": 0,
+   "cpfFormatado": "",
+   "cnpjFormatado": "11.222.333/0001-81",
+   "numeroInscricaoSocial": "",
+   "nome": "EMPRESA EXEMPLO ALFA LTDA",
+   "razaoSocialReceita": "EMPRESA EXEMPLO ALFA LTDA",
+   "nomeFantasiaReceita": "",
+   "tipo": "Pessoa Jurídica"
+  },
+  "valorInicialCompra": 40000.0,
+  "valorFinalCompra": 40000.0
+ }
+]

@@ -1,0 +1,38 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "aptmap",
+  "name": "APTmap (geo map and relations of APT groups, GitHub Pages)",
+  "operator": "Andrea Cristaldi (individual maintainer, github.com/andreacristaldi/APTmap)",
+  "hosts": ["andreacristaldi.github.io"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "Individual maintainer; P295 chair rationale: 'its operator tier is unreviewed'. Unknown until a reviewer records a promotion (A8 BR3); never default, never at AMBER and above.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "D", "justification": "Derived from the MISP galaxy, MITRE and ETDA (816/816 features reuse galaxy threat-actor uuids); adds map coordinates only."},
+  "http_profile": {"user_agent": "neutral", "ttl": 86400},
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "dataset": {
+      "title": "APTmap apt.json / apt_rel.json / hashes.json (GitHub Pages; the raw.githubusercontent 'main' path is 404)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/andreacristaldi/APTmap#license",
+        "quote": "This work is licensed under a Creative Commons Attribution 4.0 International License.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "aptmap",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "P295 cond 3: optional dataset outside the default update set. apt.json is 69 MB raw / 8.4 MB gzip (Last-Modified 2026-01-31). Not registered yet: the dataset manager has no 'optional' registration flag (a registered dataset is part of every plain `v3lum data update`); the parser is ready and tested. otx_* fields (AlienVault OTX data) are ignored."
+    }
+  },
+  "notes": "Owned by batch p1-G11-1 (P295). Unused until the optional-dataset flag exists and a reviewer records the operator tier; see docs/backlog/p1-G11-1.md."
+}

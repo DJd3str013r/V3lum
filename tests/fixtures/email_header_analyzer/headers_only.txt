@@ -1,0 +1,33 @@
+Delivered-To: recipient@example.com
+Received: by 2001:db8:a05:6a00:1a2b::15 with SMTP id a1b2c3d4e5f6;
+        Tue, 24 Nov 2026 05:00:03 -0800 (PST)
+X-Received: by 2001:db8:a05:6a00:1a2b::15 with SMTP id g7h8i9j0;
+        Tue, 24 Nov 2026 05:00:03 -0800 (PST)
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@mailer.example.net header.s=s2 header.b=FIXTURE;
+       spf=pass (google.com: domain of bounce@mailer.example.net designates 2001:db8:4864:20::32 as permitted sender) smtp.mailfrom=bounce@mailer.example.net;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=mailer.example.net
+Return-Path: <bounce@mailer.example.net>
+Received: from mail-relay.mailer.example.net (mail-relay.mailer.example.net. [2001:db8:4864:20::32])
+        by mx.google.com with ESMTPS id abc123.4
+        for <recipient@example.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 24 Nov 2026 05:00:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounce@mailer.example.net designates 2001:db8:4864:20::32 as permitted sender) client-ip=2001:db8:4864:20::32;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@mailer.example.net header.s=s2 header.b=FIXTURE;
+       spf=pass (google.com: domain of bounce@mailer.example.net designates 2001:db8:4864:20::32 as permitted sender) smtp.mailfrom=bounce@mailer.example.net;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=mailer.example.net
+Received: from [IPv6:2001:db8:85a3::8a2e:370:7334] (unknown [IPv6:2001:db8:85a3::8a2e:370:7334])
+	by mail-relay.mailer.example.net (Postfix) with ESMTPSA id 4Q5R6S
+	for <recipient@example.com>; Tue, 24 Nov 2026 13:00:01 +0000 (UTC)
+Received: by filterdrecv-example-1 with SMTP id filterdrecv-example-1-1-6B07B319-2D 2026-11-24 13:00:00.480137614 +0000 UTC m=+1053648.523017659
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailer.example.net; s=s2;
+ h=from:to:subject; bh=FIXTURE=; b=FIXTURE=
+From: Mailer Example News <news@mailer.example.net>
+To: recipient@example.com
+Subject: Newsletter de exemplo
+Date: Tue, 24 Nov 2026 13:00:00 +0000
+Message-ID: <abc.123@mailer.example.net>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8

@@ -1,0 +1,79 @@
+{
+ "_synthetic": "GET /v2/domain/report/{scan_id} data keys as parsed by theHarvester (discovery/criminalip.py, read 2026-11-26); values invented.",
+ "data": {
+  "certificates": [
+   {
+    "subject": "www.example.com",
+    "issuer": "Example Issuing CA"
+   }
+  ],
+  "connected_domain_subdomain": [
+   {
+    "main_domain": {
+     "domain": "example.com"
+    },
+    "subdomains": [
+     {
+      "domain": "www.example.com"
+     },
+     {
+      "domain": "cdn.example.com"
+     }
+    ]
+   }
+  ],
+  "connected_ip_info": [
+   {
+    "ip": "198.51.100.30",
+    "asn": 64500,
+    "domain_list": [
+     {
+      "domain": "www.example.com"
+     }
+    ]
+   }
+  ],
+  "dns_record": {
+   "dns_record_type_a": {
+    "ipv4": [
+     {
+      "ip": "198.51.100.30"
+     }
+    ],
+    "ipv6": []
+   }
+  },
+  "html_page_link_domains": [
+   {
+    "domain": "partner.example.net",
+    "mapped_ips": [
+     {
+      "ip": "198.51.100.31"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "url": "https://www.example.com/login"
+   }
+  ],
+  "page_redirections": [
+   [
+    {
+     "url": "http://www.example.com/"
+    },
+    {
+     "url": "https://www.example.com/"
+    }
+   ]
+  ],
+  "subdomains": [
+   {
+    "subdomain_name": "mail.example.com"
+   }
+  ]
+ },
+ "message": "api success",
+ "status": 200
+}

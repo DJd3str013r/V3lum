@@ -1,0 +1,7 @@
+{
+ "cycat-oid": "0b4a7184-f55e-59a8-b98f-027442167bb4",
+ "github:description": "Pythonic way to work with the warning lists defined there: https://github.com/MISP/misp-warninglists",
+ "github:html_url": "https://github.com/MISP/PyMISPWarningLists",
+ "github:name": "PyMISPWarningLists",
+ "_cycat_type": "Project"
+}

@@ -1,0 +1,15 @@
+{
+ "request": "GET https://api.dnsdumpster.com/domain/example.com",
+ "response": {
+  "status": 429,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": {
+   "error": "Rate limit exceeded"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "documented on dnsdumpster.com/developer/ ('1 request per 2 seconds ... 429 ... {\"error\":\"Rate limit exceeded\"}') and quoted by the research record"
+}

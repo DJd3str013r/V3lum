@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "networksdb",
+  "name": "NetworksDB.io (organisation, IP and network registry search, keyed)",
+  "operator": "NetworksDB.io",
+  "hosts": ["networksdb.io"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Small identifiable operator with public API documentation and plans (P218 chair rationale: 'NetworksDB is a small identifiable operator: tier community').",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "C", "justification": "Registry (WHOIS) derived ranges, but the organisation search is fuzzy: ranges stay candidates until RDAP (P003) or NIC.br (P038) confirm them (P218 FC3)."},
+  "http_profile": {"user_agent": "neutral", "accept": "application/json", "ttl": 604800, "min_interval": 1.0, "retries": 0},
+  "quota": {"scope": "key", "month": 1000, "published": true, "evidence_url": "https://networksdb.io/api/docs", "safety_margin": 0.8},
+  "error_markers": [
+    {"id": "networksdb_quota", "statuses": [200, 403, 429], "json_path": "error", "regex": "(?i)limit|quota|exceeded|credits", "maps_to": "quota", "reason_code": "quota",
+     "reason": "NetworksDB: monthly request quota exhausted"},
+    {"id": "networksdb_error_body", "statuses": [200], "json_path": "error", "regex": "\\S", "maps_to": "error", "reason_code": "error",
+     "reason": "NetworksDB: error object in an HTTP 200 body"}
+  ],
+  "keys": {
+    "networksdb": {
+      "description": "NetworksDB.io API key (sent only in the X-Api-Key header, never as the apikey parameter)",
+      "signup_url": "https://networksdb.io/api/plans",
+      "env": ["V3LUM_NETWORKSDB_KEY"],
+      "multi_key": false,
+      "plan_hint": "business = a company/team NetworksDB account on a plan whose terms permit internal business use, recorded by legal (P218 FC2)"
+    }
+  },
+  "sources": {
+    "api": {
+      "title": "NetworksDB.io API (org-search, org-networks, ip-info; X-Api-Key header): organisation -> IP ranges, IP -> owner network",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://networksdb.io/api/docs",
+        "quote": "Key-terms: a company/team account on a plan whose terms permit internal business use, recorded by legal before it runs under corporate. Monthly quota through the P334 block.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "networksdb",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P218 FC2). No key: HTTP 400 {error:'required header `X-Api-Key` or query parameter `apikey` missing'} -> NEEDS_KEY (FC1). Free keys: 1,000 requests/month, page 1 only. The flow (org-search -> org-networks) is re-implemented from the vendor documentation; no corptrace (AGPL) code is used (FC4). org-info address/phone fields are never read."
+    }
+  },
+  "notes": "Owned by batch p3-G02-2 (P218 networksdb)."
+}

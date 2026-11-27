@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "blocklist_de",
+  "source_url": "https://www.blocklist.de/",
+  "version": "lists/all.txt (runtime download, noncommercial use only, checked 2026-11-26)",
+  "sha256": "",
+  "licence": "LicenseRef-blocklist.de-NC",
+  "attribution": "Attack reports from www.blocklist.de (free for non-commercial use, attribution required): off under the corporate profile until licence-cleared.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/threat_intel_ioc/ip_blocklists.py"
+  ]
+}

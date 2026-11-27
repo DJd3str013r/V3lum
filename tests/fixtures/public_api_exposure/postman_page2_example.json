@@ -1,0 +1,57 @@
+{
+ "data": [
+  {
+   "score": 0.016129032258064516,
+   "document": {
+    "entityType": "request",
+    "documentType": "request",
+    "id": "14760314-a3e1d2c8-3d39-4bee-911e-8346bbcf1f5b",
+    "name": "Begin",
+    "publisherHandle": "postman",
+    "publisherName": "Postman",
+    "publisherType": "team",
+    "isPublisherVerified": true,
+    "isPublic": true,
+    "workspaceId": "34f3a42c-18a7-4ad6-83fb-2c05767d63a7",
+    "workspaceName": "Postman Team Collections",
+    "workspaceSlug": "postman-team-collections",
+    "workspaceVisibilityStatus": "public",
+    "url": "http://example.com",
+    "method": "GET",
+    "customHostName": [],
+    "collection": {
+     "id": "14760314-7502b784-2132-4d33-92b3-a7c7aef099c5",
+     "name": "TvShows Bot"
+    },
+    "workspaces": [
+     {
+      "id": "34f3a42c-18a7-4ad6-83fb-2c05767d63a7",
+      "name": "Postman Team Collections",
+      "slug": "postman-team-collections",
+      "visibilityStatus": "public"
+     }
+    ]
+   }
+  }
+ ],
+ "meta": {
+  "queryText": "example.com",
+  "total": {
+   "team": 0,
+   "user": 0,
+   "workspace": 571,
+   "document": 0,
+   "api": 0,
+   "apiDefinition": 0,
+   "specification": 0,
+   "collection": 37,
+   "request": 10000,
+   "history": 0,
+   "environment": 0,
+   "mock": 0,
+   "dataset": 0,
+   "flow": 0,
+   "privateNetworkFolder": 0
+  }
+ }
+}

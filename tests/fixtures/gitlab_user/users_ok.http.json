@@ -1,0 +1,26 @@
+{
+ "_meta": {
+  "module": "gitlab_user",
+  "case": "users_ok",
+  "source": "C0238 gitlab.com",
+  "request": {
+   "method": "GET",
+   "url": "https://gitlab.com/api/v4/users?username=gitlab-bot"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "LIVE",
+  "elapsed_s": 0.155
+ },
+ "status": 200,
+ "headers": {
+  "content-type": "application/json",
+  "ratelimit-name": "throttle_unauthenticated_api",
+  "ratelimit-limit": "500",
+  "ratelimit-observed": "1",
+  "ratelimit-remaining": "499",
+  "ratelimit-reset": "1795676280",
+  "x-total": "1",
+  "server": "cloudflare"
+ },
+ "body": "[{\"id\":1786152,\"username\":\"gitlab-bot\",\"public_email\":\"\",\"name\":\"🤖 GitLab Bot 🤖\",\"state\":\"active\",\"locked\":false,\"avatar_url\":\"https://gitlab.com/uploads/-/system/user/avatar/1786152/avatar.png?v=1795675634\",\"web_url\":\"https://gitlab.com/gitlab-bot\"}]"
+}

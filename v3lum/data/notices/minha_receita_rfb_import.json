@@ -1,0 +1,11 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "minha_receita_rfb_import",
+  "source_url": "https://github.com/cuducos/minha-receita",
+  "version": "behavioural reference read 2026-11-26 (main branch; no code copied)",
+  "sha256": "",
+  "licence": "MIT",
+  "attribution": "RFB CNPJ open-data import behaviour (WebDAV PROPFIND listing of the public share, monthly file layout of Empresas/Estabelecimentos/Socios/Simples and the code tables, latin-1 ';' CSV without header) re-implemented in v3lum.modules.brazil_public_data.rfb_import after minha-receita, Copyright (c) Eduardo Cuducos, MIT License. No minha-receita code or share token is copied: the token comes only from the link RFB publishes on its official page (P238 cond 2).",
+  "bundled": true,
+  "files": ["v3lum/modules/brazil_public_data/rfb_import.py"]
+}

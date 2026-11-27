@@ -1,0 +1,8 @@
+{
+ "_fixture": "SYNTHETIC: Wayback CDX output=json rows (fl=original,timestamp,statuscode) shaped after the IA CDX docs; ids match the REAL oEmbed captures (507185938620219395 available, 1 unavailable). Re-record from an egress where web.archive.org answers",
+ "status": 200,
+ "headers": {
+  "content-type": "text/plain"
+ },
+ "body": "[[\"original\",\"timestamp\",\"statuscode\"],[\"https://twitter.com/Interior/status/1\",\"20100105000000\",\"200\"],[\"https://twitter.com/Interior/status/507185938620219395\",\"20140903160102\",\"200\"],[\"https://twitter.com/Interior/status/507185938620219395/photo/1\",\"20140904101010\",\"200\"],[\"https://twitter.com/Interior/status/507185938620219395?lang=pt\",\"20150101000000\",\"200\"],[\"https://twitter.com/Interior/status/notanid\",\"20160101000000\",\"200\"]]"
+}

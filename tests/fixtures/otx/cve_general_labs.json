@@ -1,0 +1,260 @@
+{
+ "indicator": "CVE-2021-44228",
+ "type_title": "CVE",
+ "sections": [
+  "general",
+  "nids_list",
+  "malware"
+ ],
+ "false_positive": [],
+ "cve": "CVE-2021-44228",
+ "cwe": "CWE-20",
+ "seen_wild": true,
+ "epss": 0.99999,
+ "date_created": "2021-12-10T10:15:09.143000",
+ "date_modified": "2026-08-11T19:33:44.513000",
+ "cvssv3": {
+  "cvssV3": {
+   "baseScore": 10.0,
+   "baseSeverity": "CRITICAL",
+   "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H"
+  }
+ },
+ "pulse_info": {
+  "count": 50,
+  "pulses": [
+   {
+    "id": "6b0000000000000000000001",
+    "name": "DragonForce Ransomware Profile: From Affiliate Program to Cybercrime Cartel",
+    "modified": "2026-11-14T13:04:32.904000",
+    "created": "2026-10-15T13:58:54.797000",
+    "tags": [
+     "cve-2021-44228",
+     "conti",
+     "lockbit 3.0",
+     "dragonforce"
+    ],
+    "references": [
+     "https://www.bitsight.com/blog/threat-actor-profile-dragonforce-ransomware-group"
+    ],
+    "adversary": "DragonForce",
+    "targeted_countries": [
+     "United States of America",
+     "United Kingdom of Great Britain and Northern Ireland"
+    ],
+    "malware_families": [
+     {
+      "id": "DragonForce",
+      "display_name": "DragonForce",
+      "target": null
+     },
+     {
+      "id": "LockBit 3.0 - S1202",
+      "display_name": "LockBit 3.0 - S1202",
+      "target": null
+     },
+     {
+      "id": "LockBit Black",
+      "display_name": "LockBit Black",
+      "target": null
+     },
+     {
+      "id": "Conti - S0575",
+      "display_name": "Conti - S0575",
+      "target": null
+     },
+     {
+      "id": "Cobalt Strike - S0154",
+      "display_name": "Cobalt Strike - S0154",
+      "target": null
+     }
+    ],
+    "attack_ids": [
+     {
+      "id": "T1053.005",
+      "name": "Scheduled Task",
+      "display_name": "T1053.005 - Scheduled Task"
+     },
+     {
+      "id": "T1543.003",
+      "name": "Windows Service",
+      "display_name": "T1543.003 - Windows Service"
+     },
+     {
+      "id": "T1082",
+      "name": "System Information Discovery",
+      "display_name": "T1082 - System Information Discovery"
+     },
+     {
+      "id": "T1190",
+      "name": "Exploit Public-Facing Application",
+      "display_name": "T1190 - Exploit Public-Facing Application"
+     },
+     {
+      "id": "T1070.001",
+      "name": "Clear Windows Event Logs",
+      "display_name": "T1070.001 - Clear Windows Event Logs"
+     }
+    ],
+    "industries": [
+     "Manufacturing",
+     "Professional Services"
+    ],
+    "TLP": "white",
+    "cloned_from": null,
+    "author": {
+     "username": "AlienVault",
+     "id": "2"
+    },
+    "indicator_count": 12,
+    "subscriber_count": 416387,
+    "public": 1
+   },
+   {
+    "id": "6b0000000000000000000002",
+    "name": "Supply chain attack: BO Team in a software developer's infrastructure",
+    "modified": "2026-11-05T20:27:31.610000",
+    "created": "2026-11-05T10:52:25.634000",
+    "tags": [
+     "backdoor persistence",
+     "credential theft",
+     "software developer",
+     "vmware vcenter"
+    ],
+    "references": [
+     "https://ics-cert.kaspersky.com/publications/reports/2026/11/05/supply-chain-attack-bo-team-in-a-software-developers-infrastructure/?utm_source=ics-cert.kaspersky.com&utm_medium=rss&utm_campaign=main"
+    ],
+    "adversary": "Black Owl (BO Team",
+    "targeted_countries": [],
+    "malware_families": [
+     {
+      "id": "Nanodump",
+      "display_name": "Nanodump",
+      "target": null
+     },
+     {
+      "id": "Global Socket",
+      "display_name": "Global Socket",
+      "target": null
+     },
+     {
+      "id": "ReverseSSH",
+      "display_name": "ReverseSSH",
+      "target": null
+     }
+    ],
+    "attack_ids": [
+     {
+      "id": "T1110.001",
+      "name": "Password Guessing",
+      "display_name": "T1110.001 - Password Guessing"
+     },
+     {
+      "id": "T1133",
+      "name": "External Remote Services",
+      "display_name": "T1133 - External Remote Services"
+     },
+     {
+      "id": "T1003.002",
+      "name": "Security Account Manager",
+      "display_name": "T1003.002 - Security Account Manager"
+     },
+     {
+      "id": "T1053.003",
+      "name": "Cron",
+      "display_name": "T1053.003 - Cron"
+     },
+     {
+      "id": "T1070.002",
+      "name": "Clear Linux or Mac System Logs",
+      "display_name": "T1070.002 - Clear Linux or Mac System Logs"
+     }
+    ],
+    "industries": [
+     "Technology"
+    ],
+    "TLP": "white",
+    "cloned_from": null,
+    "author": {
+     "username": "AlienVault",
+     "id": "2"
+    },
+    "indicator_count": 19,
+    "subscriber_count": 416386,
+    "public": 1
+   },
+   {
+    "id": "6b0000000000000000000003",
+    "name": "Community pulse 01",
+    "modified": "2026-11-25T20:46:17.335000",
+    "created": "2026-11-25T20:46:17.335000",
+    "tags": [
+     "actively_exploited_kev"
+    ],
+    "references": [],
+    "adversary": "",
+    "targeted_countries": [],
+    "malware_families": [],
+    "attack_ids": [],
+    "industries": [],
+    "TLP": "white",
+    "cloned_from": null,
+    "author": {
+     "username": "community-user-a",
+     "id": "0"
+    },
+    "indicator_count": 1795,
+    "subscriber_count": 197,
+    "public": 1
+   }
+  ],
+  "references": [
+   "https://ics-cert.kaspersky.com/publications/reports/2026/11/05/supply-chain-attack-bo-team-in-a-software-developers-infrastructure/",
+   "https://aws.amazon.com/security/security-bulletins/rss/2026-098-aws/"
+  ],
+  "related": {
+   "alienvault": {
+    "adversary": [
+     "DragonForce",
+     "Black Owl (BO Team"
+    ],
+    "malware_families": [
+     "Lockbit black",
+     "Reversessh",
+     "Cobalt strike - s0154",
+     "Conti - s0575",
+     "Mimikatz"
+    ],
+    "industries": [
+     "Manufacturing",
+     "Transportation",
+     "Healthcare",
+     "Government",
+     "Retail"
+    ]
+   },
+   "other": {
+    "adversary": [
+     "DragonForce",
+     "Black Owl (BO Team",
+     "BO Team",
+     "actor-handle-x"
+    ],
+    "malware_families": [
+     "Agent.gg",
+     "Agent.ge",
+     "Lockbit black",
+     "Reversessh",
+     "Cobalt strike - s0154"
+    ],
+    "industries": [
+     "Manufacturing",
+     "Transportation",
+     "Healthcare",
+     "Government",
+     "Retail"
+    ]
+   }
+  }
+ }
+}

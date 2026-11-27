@@ -1,0 +1,30 @@
+{
+ "request": {
+  "method": "POST",
+  "url": "https://siem.example.com:9200/logs-proxy-*,logs-dns-*/_search",
+  "headers": {
+   "Authorization": "<ApiKey value not stored>",
+   "Content-Type": "application/json"
+  }
+ },
+ "response": {
+  "status": 403,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": {
+   "error": {
+    "root_cause": [
+     {
+      "type": "security_exception",
+      "reason": "action [indices:data/read/search] is unauthorized for user [svc-v3lum-ro] with effective roles [v3lum_read] on indices [logs-mail-2026.11.25], this action is granted by the index privileges [read,all]"
+     }
+    ],
+    "type": "security_exception",
+    "reason": "action [indices:data/read/search] is unauthorized for user [svc-v3lum-ro] with effective roles [v3lum_read] on indices [logs-mail-2026.11.25], this action is granted by the index privileges [read,all]"
+   },
+   "status": 403
+  }
+ },
+ "note": "read-only role lacks one index of the pattern -> could not verify (configuration)"
+}

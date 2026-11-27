@@ -1,0 +1,19 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.platform.censys.io/v3/global/asset/host/203.0.113.99"
+ },
+ "response": {
+  "status": 404,
+  "headers": {
+   "Content-Type": "application/problem+json"
+  },
+  "body": {
+   "title": "Not Found",
+   "status": 404,
+   "detail": "host not found"
+  }
+ },
+ "observed": "synthetic",
+ "note": "RFC 7807 problem+json for 404 is documented by the SDK (ErrorModel for 400/403/404/422/500); the wording and whether an unknown host is 404 or an empty resource are not verified."
+}

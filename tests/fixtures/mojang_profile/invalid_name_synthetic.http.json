@@ -1,0 +1,8 @@
+{
+ "_fixture": "SYNTHETIC: invalid-name answer (the module never sends names failing the handle regex)",
+ "status": 400,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": "{\"path\": \"/users/profiles/minecraft/bad name\", \"errorMessage\": \"getProfileName.name: Invalid profile name\"}"
+}

@@ -1,0 +1,196 @@
+{
+ "_source": "live check 2026-11-26 from this datacenter egress: domain-exposure?domain=example.com (sections trimmed to a few rows)",
+ "domain": "example.com",
+ "periodFrom": "2025-11-01",
+ "periodTo": "2026-10-31",
+ "status": "REPORT_READY",
+ "report": {
+  "domain": "example.com",
+  "generated_at": "2026-11-01T06:46:40.171566309",
+  "period": {
+   "from": "2025-11-01",
+   "to": "2026-10-31"
+  },
+  "summary": {
+   "total_events": 993941,
+   "infostealer_events": 182637,
+   "data_breach_events": 811304,
+   "employee_events": 801894,
+   "client_events": 192047,
+   "first_seen": "2025-11-03",
+   "last_seen": "2026-10-31"
+  },
+  "monthly_timeline": [
+   {
+    "month": "2026-08",
+    "total_events": 106366,
+    "infostealer_events": 16603,
+    "data_breach_events": 89763,
+    "employee": {
+     "total_events": 77568,
+     "infostealer_events": 11380,
+     "data_breach_events": 66188
+    }
+   },
+   {
+    "month": "2026-09",
+    "total_events": 110530,
+    "infostealer_events": 22894,
+    "data_breach_events": 87636,
+    "employee": {
+     "total_events": 72944,
+     "infostealer_events": 16809,
+     "data_breach_events": 56135
+    }
+   },
+   {
+    "month": "2026-10",
+    "total_events": 69593,
+    "infostealer_events": 19340,
+    "data_breach_events": 50253,
+    "employee": {
+     "total_events": 48738,
+     "infostealer_events": 13797,
+     "data_breach_events": 34941
+    }
+   }
+  ],
+  "infostealer_summary": {
+   "total_events": 182637,
+   "employee_events": 130806,
+   "client_events": 51831,
+   "malware_families_observed": 19,
+   "events_with_os_context": 101720,
+   "first_seen": "2025-11-03",
+   "last_seen": "2026-10-31"
+  },
+  "malware_family_breakdown": [
+   {
+    "family": "Vidar",
+    "events": 27677,
+    "employee_events": 17111,
+    "client_events": 10566,
+    "share_of_infostealer_events_percent": 15.2,
+    "first_seen": "2025-11-03",
+    "last_seen": "2026-10-31"
+   },
+   {
+    "family": "Rhadamanthys",
+    "events": 18107,
+    "employee_events": 14022,
+    "client_events": 4085,
+    "share_of_infostealer_events_percent": 9.9,
+    "first_seen": "2025-11-03",
+    "last_seen": "2026-10-31"
+   },
+   {
+    "family": "Acreed",
+    "events": 15070,
+    "employee_events": 11366,
+    "client_events": 3704,
+    "share_of_infostealer_events_percent": 8.3,
+    "first_seen": "2025-11-03",
+    "last_seen": "2026-10-31"
+   }
+  ],
+  "os_breakdown": [
+   {
+    "os_family": "Windows 11",
+    "infostealer_events": 14915,
+    "employee_events": 11415,
+    "client_events": 3500,
+    "share_of_infostealer_events_percent": 8.2
+   },
+   {
+    "os_family": "Windows 11 Home Single Language 25H2 (Build 26200)",
+    "infostealer_events": 6714,
+    "employee_events": 4072,
+    "client_events": 2642,
+    "share_of_infostealer_events_percent": 3.7
+   }
+  ],
+  "data_breach_summary": {
+   "total_events": 811304,
+   "employee_events": 671088,
+   "client_events": 140216,
+   "known_breach_sources_count": 147,
+   "events_from_known_breach_sources": 221390,
+   "events_from_combolist_sources": 589914,
+   "first_seen": "2025-11-04",
+   "last_seen": "2026-10-31"
+  },
+  "antivirus_breakdown": [
+   {
+    "antivirus": "Windows Defender",
+    "events": 18774,
+    "employee_events": 11623,
+    "client_events": 7151,
+    "share_of_infostealer_events_percent": 10.3
+   },
+   {
+    "antivirus": "Malwarebytes",
+    "events": 555,
+    "employee_events": 457,
+    "client_events": 98,
+    "share_of_infostealer_events_percent": 0.3
+   }
+  ],
+  "service_classification_breakdown": [
+   {
+    "service": "WordPress",
+    "events": 10212,
+    "employee_events": 10072,
+    "client_events": 140,
+    "share_of_total_events_percent": 1
+   }
+  ],
+  "top_login_urls": [
+   {
+    "url": "http://example.com",
+    "events": 15728,
+    "employee_events": 2,
+    "client_events": 15726
+   },
+   {
+    "url": "example.com",
+    "events": 11419,
+    "employee_events": 3486,
+    "client_events": 7933
+   },
+   {
+    "url": "http://gateway.example.com/loginpages/********tml",
+    "events": 10883,
+    "employee_events": 0,
+    "client_events": 10883
+   },
+   {
+    "url": "gateway.example.com",
+    "events": 10171,
+    "employee_events": 0,
+    "client_events": 10171
+   },
+   {
+    "url": "gateway.example.com/loginpages/********tml",
+    "events": 8180,
+    "employee_events": 0,
+    "client_events": 8180
+   },
+   {
+    "url": "android://hbzct04P3Q2fOHofzIvb2a0sKipXaOLILa-05h3akGDfw1clZt_qAXLEhSO8BVxWHTjIEO55sJYU_o47lcawBQ==@com.example.betplay/",
+    "events": 2003,
+    "employee_events": 0,
+    "client_events": 2003
+   }
+  ],
+  "country_breakdown": [
+   {
+    "country": "India",
+    "events": 30321
+   },
+   {
+    "country": "Indonesia",
+    "events": 7112
+   }
+  ]
+ }
+}

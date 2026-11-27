@@ -1,0 +1,18 @@
+{
+ "Status": 3,
+ "TC": false,
+ "Question": [
+  {
+   "name": "8.8.8.8.bl.spamcop.net",
+   "type": 1
+  }
+ ],
+ "Authority": [
+  {
+   "name": "bl.spamcop.net",
+   "type": 6,
+   "TTL": 0,
+   "data": "bl.spamcop.net. hostmaster.admin.spamcop.net. 1795671271 3600 1800 3600 0"
+  }
+ ]
+}

@@ -1,0 +1,15 @@
+{
+ "ip": "192.0.2.10",
+ "history": [],
+ "subnets": [],
+ "cats": {},
+ "score": 1,
+ "geo": {
+  "country": "United States",
+  "countrycode": "US"
+ },
+ "reason": "Regional Internet Registry",
+ "reasonDescription": "One of the five RIRs announced a (new) location mapping of the IP.",
+ "categoryDescriptions": {},
+ "tags": []
+}

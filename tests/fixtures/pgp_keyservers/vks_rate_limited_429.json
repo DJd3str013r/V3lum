@@ -1,0 +1,9 @@
+{
+ "_envelope": 1,
+ "_synthetic": "keys.openpgp.org per-IP rate limit (documented, not observed)",
+ "status": 429,
+ "headers": {
+  "content-type": "text/plain; charset=utf-8"
+ },
+ "body": "Rate limit exceeded\n"
+}

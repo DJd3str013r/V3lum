@@ -1,0 +1,50 @@
+[
+ {
+  "full_name": "example-owner-a/ok-repo",
+  "html_url": "https://github.com/example-owner-a/ok-repo",
+  "description": "\u001b[31mred\u001b[0m [/bold] text‮",
+  "stargazers_count": "12",
+  "forks_count": null,
+  "pushed_at": "2026-01-02T03:04:05Z",
+  "created_at": "not-a-date"
+ },
+ {
+  "full_name": "x/js",
+  "html_url": "javascript:alert(1)",
+  "stargazers_count": 99999
+ },
+ {
+  "full_name": "x/http",
+  "html_url": "http://github.com/x/http",
+  "stargazers_count": 5
+ },
+ {
+  "full_name": "x/evil",
+  "html_url": "https://github.com.evil.example/x/evil",
+  "stargazers_count": 5
+ },
+ {
+  "full_name": "x/dots",
+  "html_url": "https://github.com/x/../../evil",
+  "stargazers_count": 5
+ },
+ {
+  "full_name": "x/deep",
+  "html_url": "https://github.com/x/deep/tree/main/exploit",
+  "stargazers_count": 5
+ },
+ {
+  "full_name": "x/cred",
+  "html_url": "https://user:pass@github.com/x/cred",
+  "stargazers_count": 5
+ },
+ "not-a-dict",
+ null,
+ 42,
+ {
+  "full_name": "Example-Owner-A/OK-Repo",
+  "html_url": "https://github.com/Example-Owner-A/OK-Repo",
+  "stargazers_count": -3,
+  "description": null
+ }
+]

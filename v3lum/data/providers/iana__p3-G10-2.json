@@ -1,0 +1,24 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "iana",
+  "hosts": [],
+  "sources": {
+    "iana_pen_enterprise_numbers": {
+      "title": "IANA Private Enterprise Numbers registry (https://www.iana.org/assignments/enterprise-numbers.txt): PEN -> organisation and contact e-mail domain",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.iana.org/assignments/enterprise-numbers/",
+        "quote": "Opt-in (default_enabled=False). IANA public registry.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "iana",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P228 cond 5); research C0532 terms 'IANA public registry' (verified_live 200; 5,194,984 B, 67,814 records, conditional GET answers 304). Monthly dataset (`v3lum data update iana_enterprise_numbers.txt`; > 5 MB, never during a scan) parsed offline: P228 cond 2 keeps only the PEN number, the organisation name and the contact e-mail DOMAIN; contact names and full addresses are dropped at parse time and never reach the index, evidence or reports (an individual registrant's 'organisation' is a person's name and is withheld too). The registry date is the '(last updated YYYY-MM-DD)' line (Last-Modified is the CDN fetch time). Used by iana_pen."
+    }
+  },
+  "error_markers": [],
+  "notes": "Batch p3-G10-2 extension (P228 iana_pen): the PEN registry file on the existing www.iana.org host."
+}

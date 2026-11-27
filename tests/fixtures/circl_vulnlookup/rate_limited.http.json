@@ -1,0 +1,22 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://vulnerability.circl.lu/api/vulnerability/CVE-2021-44228/timeline",
+  "headers": {}
+ },
+ "response": {
+  "status": 429,
+  "headers": {
+   "content-type": "application/json",
+   "server": "gunicorn",
+   "x-ratelimit-limit": "20",
+   "x-ratelimit-remaining": "0",
+   "x-ratelimit-reset": "1795677621",
+   "retry-after": "37"
+  },
+  "body": "{\"message\": \"20 per 1 minute\"}"
+ },
+ "transport_error": null,
+ "elapsed_s": 0.2,
+ "note": "DOC-SHAPED: .well-known/api-policy.json says 429 responses carry Retry-After and X-RateLimit-*; anonymous 20/min per IP. Not triggered live (that would be abusive)."
+}

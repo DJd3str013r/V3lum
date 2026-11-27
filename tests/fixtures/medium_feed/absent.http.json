@@ -1,0 +1,17 @@
+{
+ "_fixture": "REAL live capture 2026-11-26, minimised: random control; normal 404 page that embeds Cloudflare's passive precursor script (NOT a challenge)",
+ "_meta": {
+  "url": "https://medium.com/feed/@blwuoyzpj4db7ad4izq9",
+  "user_agent": "V3LUM/dev",
+  "captured": "2026-11-26T08:32:49Z",
+  "elapsed_s": 0.204,
+  "bytes_original": 64021
+ },
+ "status": 404,
+ "headers": {
+  "content-type": "text/html; charset=utf-8",
+  "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+  "server": "cloudflare"
+ },
+ "body": "<!doctype html><html lang=\"en\"><head><title>Not Found – Medium</title><meta property=\"og:title\" content=\"Not Found – Medium\"></head><body><div class=\"u-textUppercase u-fontSize16\">Page Not Found</div><script>window.__CF$cv$params={r:'REDACTED',t:'REDACTED',u:'REDACTED',ut:'REDACTED',i:60};(function(){if(!document.body)return;var l=window.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/precursor/main.js?ray=REDACTED',s=document.createElement('script');s.src=o?new URL(u,o).href:u;document.head.appendChild(s);})();</script></body></html>"
+}

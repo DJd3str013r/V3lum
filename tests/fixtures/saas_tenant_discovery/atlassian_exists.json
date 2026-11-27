@@ -1,0 +1,17 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://ecosystem.atlassian.net/_edge/tenant_info"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "content-type": "application/json",
+      "server": "AtlassianEdge"
+    },
+    "body": "{\"cloudId\":\"fff89a1a-52c8-11e5-91b2-3c15c2bd8caa-ecosystem\"}"
+  },
+  "class": "live",
+  "captured_at": "2026-11-26T11:00:38Z",
+  "notes": "Atlassian's public 'ecosystem' site; body verbatim (61 B)"
+}

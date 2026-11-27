@@ -1,0 +1,38 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "threatview",
+  "name": "Threatview.io free threat feeds",
+  "operator": "Threatview.io",
+  "hosts": ["threatview.io"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "Free downloadable IOC feeds from a small operator; no terms or privacy policy recorded by legal yet and the track record was not reviewed (A8 unknown). Datasets only: no investigated value is ever sent to this host.",
+  "tier_reviewer": "batch p1-G07-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "C", "justification": "Automated hunting feeds; the IP list carries junk entries (0.0.0.2, 1.0.0.0, zero-padded octets) and the Cobalt Strike list was last updated 2026-02-08."},
+  "http_profile": {"user_agent": "neutral", "ttl": 86400},
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "feeds": {
+      "title": "Threatview.io high-confidence IP/domain/MD5 lists and the Cobalt Strike C2 feed (threatview.io/Downloads/)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://threatview.io/",
+        "quote": "",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "threatview",
+      "sanitizer": null,
+      "dataset": "threatview_ip_high.txt",
+      "notes": "P159 cond 3: 'unknown' until its site terms are recorded; used only by ioc_feeds_unreviewed (default off in every profile). Headers are defanged (refanged before use); bogons and junk are dropped at load; the 11 MB domain list is fetched by `v3lum data update` only (A6 BR9)."
+    }
+  },
+  "notes": "Owned by batch p1-G07-1 (P159). Dataset downloads only (`v3lum data update`): no module sends a value here."
+}

@@ -1,0 +1,44 @@
+{
+ "schema": "v3lum.acceptance_routes/1",
+ "module": "takeover_candidates",
+ "routes": [
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=example.com&type=A&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "example.com.",
+      "type": 1
+     }
+    ],
+    "Answer": [
+     {
+      "name": "example.com.",
+      "type": 1,
+      "TTL": 17,
+      "data": "104.20.23.154"
+     },
+     {
+      "name": "example.com.",
+      "type": 1,
+      "TTL": 17,
+      "data": "172.66.147.243"
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0"
+   },
+   "headers": {
+    "content-type": "application/json; charset=UTF-8"
+   },
+   "latency_ms": 1692
+  }
+ ]
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "hibp",
+  "hosts": [],
+  "sources": {
+    "hibp_catalog_dataclasses": {
+      "title": "HIBP keyless /api/v3/dataclasses (list of data-class names): dataset hibp_dataclasses.json",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://haveibeenpwned.com/TermsOfUse",
+        "quote": "for any lawful purpose, including within commercial products",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "hibp",
+      "sanitizer": {"keep": ["[]"], "notes": "A list of data-class names (strings): the whole list is kept; any object element would still lose second-net fields."},
+      "dataset": "hibp_dataclasses.json",
+      "notes": "Same terms as hibp.catalog (P132 cond 1: /dataclasses is one of the keyless catalogue endpoints). A separate source only because its body is a list of strings, which needs its own P145 keep schema ('[]') next to the breach-object schema of hibp.catalog. Data CC BY 4.0, attribution 'Have I Been Pwned'. Used by hibp_catalog."
+    }
+  },
+  "error_markers": [],
+  "notes": "Batch p1-G04-1 (P132 hibp_catalog)."
+}

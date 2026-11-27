@@ -1,0 +1,21 @@
+{
+ "name": "Top 10 000 websites from Cisco Umbrella",
+ "type": "string",
+ "version": 20261123,
+ "description": "Event contains one or more entries from the top 10 000 of the most used websites (Cisco Umbrella).",
+ "matching_attributes": [
+  "hostname",
+  "domain",
+  "url",
+  "domain|ip"
+ ],
+ "list": [
+  "cloudflare.com",
+  "docs.google.com",
+  "drive.google.com",
+  "example.com",
+  "google.com",
+  "sites.google.com",
+  "storage.googleapis.com"
+ ]
+}

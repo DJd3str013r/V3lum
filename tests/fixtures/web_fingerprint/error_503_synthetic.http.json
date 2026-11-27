@@ -1,0 +1,6 @@
+{
+ "origin": "synthetic: default nginx 503 page shape",
+ "status": 503,
+ "headers": [["Server", "nginx/1.18.0"], ["Content-Type", "text/html"], ["Set-Cookie", "__cf_bm=REDACTED; path=/; secure; HttpOnly"]],
+ "body": "<html>\r\n<head><title>503 Service Temporarily Unavailable</title></head>\r\n<body>\r\n<center><h1>503 Service Temporarily Unavailable</h1></center>\r\n<hr><center>nginx/1.18.0</center>\r\n<script src=\"/wp-includes/js/jquery/jquery.min.js\"></script>\r\n</body>\r\n</html>\r\n"
+}

@@ -1,0 +1,21 @@
+{
+ "messages": [],
+ "data_call_name": "abuse-contact-finder",
+ "data_call_status": "supported",
+ "cached": true,
+ "status": "ok",
+ "status_code": 200,
+ "time": "2026-11-26T08:15:52.610583",
+ "data": {
+  "abuse_contacts": [
+   "network-abuse@google.com"
+  ],
+  "authoritative_rir": "arin",
+  "latest_time": "2026-11-25T08:26:05",
+  "earliest_time": "2026-11-25T08:26:05",
+  "parameters": {
+   "resource": "8.8.8.8",
+   "cache": null
+  }
+ }
+}

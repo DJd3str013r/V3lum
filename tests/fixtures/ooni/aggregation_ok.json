@@ -1,0 +1,11 @@
+{
+ "v": 0,
+ "dimension_count": 0,
+ "result": {
+  "anomaly_count": 152,
+  "confirmed_count": 0,
+  "failure_count": 62,
+  "ok_count": 23540,
+  "measurement_count": 23754
+ }
+}

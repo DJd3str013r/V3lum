@@ -1,0 +1,66 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "github",
+  "hosts": [],
+  "sources": {
+    "github_user_api": {
+      "title": "GitHub REST API users/{u}, users/{u}/events/public and repos/{r}/commits?author= (P111 shared client)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+        "quote": "Abuse or excessively frequent requests to GitHub via the API may result in the temporary or permanent suspension of your Account's access to the API. [...] You may not share API tokens to exceed GitHub's rate limitations. You may not use the API to download data or Content from GitHub for spamming purposes, including for the purposes of selling GitHub users' personal information, such as to recruiters, headhunters, and job boards.",
+        "checked_at": "2026-11-26",
+        "reviewer": "batch p1-G05-1 (council-1 class kept)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "github",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "GitHub Terms of Service section H (API Terms), checked 2026-11-26. Council class 'key-terms' (P111 cond 9; the chair keeps it for every GitHub REST user of the chunk: P115, P185, P359): under the corporate profile it runs only once legal records free_plan_business_use for the GitHub API terms or key_plans.github = 'business'. Key 'github' from a team machine account or GitHub App, never an analyst's personal token (P111 cond 4). Budget: 60 requests/h keyless per egress IP, 5,000/h with the key, search 10/min (keyless) or 30/min (keyed); X-RateLimit-Remaining is honoured by the shared client in v3lum/modules/username_social/github_user.py (P111 cond 3). 403/429 with a rate-limit message = RATE_LIMITED (marker github_user_rate_limit), 404 = ABSENT. Commit e-mails are case-bound personal data (GitHub AUP s.8 purpose limit): kept no longer than retention_days and never sent to breach modules automatically (P111 cond 7)."
+    },
+    "github_user_web": {
+      "title": "github.com/{u}.keys, github.com/{u}.gpg and github.com/{o}/{r}/commit/{sha}.patch plain-text GETs (1 MB cap)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://docs.github.com/en/site-policy/acceptable-use-policies/github-acceptable-use-policies",
+        "quote": "You may not use information from the Service (whether scraped, collected through our API, or obtained otherwise) for spamming purposes, including for the purposes of sending unsolicited emails to users or selling personal information, such as to recruiters, headhunters, and job boards. Your use of information from the Service must comply with the GitHub Privacy Statement.",
+        "checked_at": "2026-11-26",
+        "reviewer": "batch p1-G05-1 (council-1 class kept)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "github",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "GitHub Acceptable Use Policies s.7-8, checked 2026-11-26. Plain-text public-key and patch endpoints only (P111 cond 1): never github.com/search or any other HTML page (AUP s.7). Keys are stored as SHA-256 fingerprints and GPG UIDs (P111 cond 8); patches are read for the author header only. Same class as the REST source (council: 'key-terms' for every GitHub user source of the chunk)."
+    },
+    "github_user_search": {
+      "title": "GitHub REST API search/users (person_name candidates, opt-in github_user_search)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+        "quote": "You may not use the API to download data or Content from GitHub for spamming purposes, including for the purposes of selling GitHub users' personal information, such as to recruiters, headhunters, and job boards. All use of the GitHub API is subject to these Terms of Service and the GitHub Privacy Statement.",
+        "checked_at": "2026-11-26",
+        "reviewer": "batch p1-G05-1 (council-1 class kept)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "github",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "P111 cond 2: person_name inputs go only to the opt-in module github_user_search (default_enabled False, A3), REST /search/users only (never the github.com/search HTML page, AUP s.7); candidates are POSSIBLE with expand=False. Search budget 10/min keyless, 30/min keyed."
+    }
+  },
+  "error_markers": [
+    {
+      "id": "github_user_rate_limit",
+      "statuses": [403, 429],
+      "json_path": null,
+      "equals": null,
+      "regex": "(?i)api rate limit exceeded|secondary rate limit|abuse detection mechanism",
+      "final_url_regex": null,
+      "maps_to": "rate_limited",
+      "reason_code": "rate_limited",
+      "reason": "GitHub: API rate limit exceeded (HTTP 403/429 with a rate-limit message): could not verify"
+    }
+  ],
+  "notes": "Batch p1-G05-1 (P111): the GitHub REST/plain-text sources of github_user and github_user_search, shared with git_metadata_identity (P115), osv_ghsa (P185) and org_code_footprint (P359) through the one GitHub client of v3lum/modules/username_social/github_user.py. The marker turns GitHub's 403 'API rate limit exceeded' answers into RATE_LIMITED for every module of the provider (P111 cond 3: 403 with rate-limit headers = RATE_LIMITED, never absent)."
+}

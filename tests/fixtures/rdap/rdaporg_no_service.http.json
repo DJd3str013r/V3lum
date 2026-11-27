@@ -1,0 +1,20 @@
+{
+ "request": "GET https://rdap.org/domain/yandex.ru",
+ "response": {
+  "status": 404,
+  "headers": {
+   "content-type": "application/rdap+json"
+  },
+  "body": {
+   "rdapConformance": [
+    "rdap_level_0"
+   ],
+   "lang": "en",
+   "errorCode": 404,
+   "title": "No RDAP service is available for this resource"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "TLD absent from the IANA bootstrap (.ru): rdap.org 404 means 'no RDAP service', never 'not registered'"
+}

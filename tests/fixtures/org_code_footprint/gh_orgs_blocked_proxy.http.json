@@ -1,0 +1,22 @@
+{
+ "_meta": {
+  "module": "org_code_footprint",
+  "case": "gh_orgs_blocked_proxy",
+  "source": "C0758 api.github.com",
+  "request": {
+   "method": "GET",
+   "url": "https://api.github.com/orgs/microsoft"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "LIVE",
+  "elapsed_s": 0.019,
+  "note": "research egress proxy policy refusal (no x-ratelimit headers), not GitHub: blocked/could not verify, never absent. /orgs/microsoft/repos and /public_members got the same body"
+ },
+ "status": 403,
+ "headers": {
+  "content-type": "application/json; charset=utf-8",
+  "content-length": "249",
+  "connection": "close"
+ },
+ "body": "{\"message\":\"This GitHub API path is not available: sessions are bound to their configured repositories. Use repository-scoped endpoints (repos/{owner}/{repo}/...).\",\"documentation_url\":\"https://docs.anthropic.com/en/docs/claude-code/github-actions\"}"
+}

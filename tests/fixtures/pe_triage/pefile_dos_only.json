@@ -1,0 +1,5 @@
+{
+ "source": "pefile",
+ "error": "PEFormatError",
+ "message": "'NT Headers not found.'"
+}

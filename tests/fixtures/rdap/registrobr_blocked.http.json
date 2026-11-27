@@ -1,0 +1,11 @@
+{
+ "request": "GET https://rdap.registro.br/domain/registro.br (Accept application/rdap+json, curl UA)",
+ "response": {
+  "status": 403,
+  "headers": {},
+  "body": ""
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "403 with an EMPTY body from the datacenter egress; nic.br answered 200 four seconds later: BLOCKED could-not-verify, never cached, manual link"
+}

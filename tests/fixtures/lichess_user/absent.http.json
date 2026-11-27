@@ -1,0 +1,16 @@
+{
+ "_fixture": "REAL live capture 2026-11-26, minimised: random control",
+ "_meta": {
+  "url": "https://lichess.org/api/user/ryveekjj4zrjtcfulgl9",
+  "user_agent": "V3LUM/dev",
+  "captured": "2026-11-26T08:32:45Z",
+  "elapsed_s": 0.199,
+  "bytes_original": 21
+ },
+ "status": 404,
+ "headers": {
+  "content-type": "application/json",
+  "server": "cloudflare"
+ },
+ "body": "{\"error\":\"Not found\"}"
+}

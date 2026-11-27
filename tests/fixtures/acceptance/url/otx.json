@@ -1,0 +1,113 @@
+{
+ "schema": "v3lum.acceptance_routes/1",
+ "module": "otx",
+ "routes": [
+  {
+   "method": "GET",
+   "url": "https://otx.alienvault.com/api/v1/indicators/url/https://example.com//general",
+   "status": 200,
+   "json": {
+    "indicator": "https://example.com/",
+    "type": "url",
+    "type_title": "URL",
+    "sections": [
+     "general",
+     "url_list",
+     "http_scans",
+     "screenshot"
+    ],
+    "validation": [
+     {
+      "source": "akamai",
+      "message": "Akamai rank: #1608",
+      "name": "Akamai Popular Domain"
+     },
+     {
+      "source": "whitelist",
+      "message": "Whitelisted domain example.com",
+      "name": "Whitelisted domain"
+     },
+     {
+      "source": "majestic",
+      "message": "Whitelisted domain example.com",
+      "name": "Whitelisted domain"
+     }
+    ],
+    "false_positive": [],
+    "pulse_info": {
+     "count": 17,
+     "pulses": [
+      {
+       "id": "6b0000000000000000000001",
+       "name": "Community pulse 01",
+       "author": {
+        "username": "community-user-a",
+        "id": "0"
+       },
+       "created": "2023-01-25T11:11:02.458000",
+       "modified": "2026-11-24T12:38:06.615000",
+       "tags": [],
+       "references": [],
+       "adversary": "",
+       "malware_families": [],
+       "attack_ids": [],
+       "TLP": "green",
+       "cloned_from": null
+      },
+      {
+       "id": "6b0000000000000000000002",
+       "name": "Community pulse 02",
+       "author": {
+        "username": "community-user-b",
+        "id": "0"
+       },
+       "created": "2026-09-28T09:56:31.238000",
+       "modified": "2026-09-28T09:56:31.238000",
+       "tags": [],
+       "references": [],
+       "adversary": "",
+       "malware_families": [],
+       "attack_ids": [],
+       "TLP": "green",
+       "cloned_from": null
+      },
+      {
+       "id": "6b0000000000000000000003",
+       "name": "Community pulse 03",
+       "author": {
+        "username": "community-user-b",
+        "id": "0"
+       },
+       "created": "2026-09-28T09:46:44.960000",
+       "modified": "2026-09-28T09:46:44.960000",
+       "tags": [],
+       "references": [],
+       "adversary": "",
+       "malware_families": [],
+       "attack_ids": [],
+       "TLP": "green",
+       "cloned_from": null
+      }
+     ],
+     "references": [],
+     "related": {
+      "alienvault": {
+       "adversary": [],
+       "malware_families": [],
+       "industries": []
+      },
+      "other": {
+       "adversary": [],
+       "malware_families": [],
+       "industries": []
+      }
+     }
+    }
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 2073
+  }
+ ]
+}

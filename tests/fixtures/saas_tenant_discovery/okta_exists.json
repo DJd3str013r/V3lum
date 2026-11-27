@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://okta.okta.com/.well-known/openid-configuration"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "content-type": "application/json",
+      "server": "nginx",
+      "cache-control": "max-age=86400, must-revalidate"
+    },
+    "body": "{\"issuer\": \"https://okta.okta.com\", \"authorization_endpoint\": \"https://okta.okta.com/oauth2/v1/authorize\", \"jwks_uri\": \"https://okta.okta.com/oauth2/v1/keys\"}"
+  },
+  "class": "live",
+  "captured_at": "2026-11-26T11:00:38Z",
+  "notes": "openid-configuration of Okta's own tenant; minimised to issuer + 2 endpoints (31 keys live)"
+}

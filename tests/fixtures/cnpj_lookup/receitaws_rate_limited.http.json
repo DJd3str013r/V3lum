@@ -1,0 +1,17 @@
+{
+ "request": "GET https://receitaws.com.br/v1/cnpj/00000000000191",
+ "response": {
+  "status": 429,
+  "headers": {
+   "content-type": "text/html; charset=utf-8",
+   "x-ratelimit-limit": "3",
+   "x-ratelimit-remaining": "0"
+  },
+  "body": "Too many requests, please try again later."
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "observed_at": null,
+ "origin": "synthetic",
+ "note": "synthetic: not observed live (requests stayed under the limit); status and headers model the documented limit, body is a placeholder"
+}

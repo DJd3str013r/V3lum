@@ -1,0 +1,20 @@
+{
+ "_synthetic": "GET /repos/{owner}/{repo}/commits/{sha} shape from the GitHub REST docs; search results carry no verification block (live check)",
+ "sha": "a544af123662c61ae0664b4d41457639d24ed7f1",
+ "html_url": "https://github.com/example-org/example-repo/commit/a544af123662c61ae0664b4d41457639d24ed7f1",
+ "commit": {
+  "author": {
+   "name": "Example Dev",
+   "email": "dev@example.com",
+   "date": "2026-11-20T09:00:00Z"
+  },
+  "message": "Example commit message 1",
+  "verification": {
+   "verified": true,
+   "reason": "valid",
+   "signature": "-----BEGIN PGP SIGNATURE-----\nexample\n-----END PGP SIGNATURE-----",
+   "payload": "tree 0000000000000000000000000000000000000000\n",
+   "verified_at": "2026-11-20T09:00:01Z"
+  }
+ }
+}

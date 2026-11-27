@@ -1,0 +1,20 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p9-G13-3",
+  "title": "Names used by path_discovery (P285), port_scan (P286) and public_docs_discovery (P287)",
+  "owner": "batch p9-G13-3",
+  "attributes": {
+    "path_discovery": "authorized forced-browsing summary of one host (ACTIVE, P285): {base, list, list_sha256, tested, counts {confirmed, not_observed, could_not_test}, calibration, baseline_wall (auth | login_wall: random paths answered 401 or a login redirect, so answers like theirs are could_not_test), host_stop, state confirmed | not_observed | could_not_test, confirmed [{path, status, content_type, title, length, kind, detail}], actuator {endpoints, forbidden_present, sensitive_present}}; 'could_not_test' is never 'absent'",
+    "port_scan": "authorized TCP connect scan summary of one address (ACTIVE, P286): {ports_tested, counts {open, closed, filtered, could_not_test}, state (could_not_test when no port answered open or closed), egress, egress_note (uniform instant RSTs from a local firewall), open [{port, service, protocol, product, version, banner, banner_sha256, flags}], handoffs}; closed/filtered ports are counts only and 'could_not_test' is never 'closed'",
+    "software_hints": "software seen in server-first banners for the version-inferred matcher (P291): list of {port, product, version, confidence 'version-inferred', backport_possible, cpe23}; never a CVE by itself",
+    "public_docs": "aggregate of the public documents found for a domain (P287): {documents, formats, software, internal_paths (user segment redacted), authors_count, usernames_count, emails_count, companies_count, date_range, personal_minimised, author_samples, username_samples, companies} - samples only for verified own or in-scope domains",
+    "public_docs_coverage": "per-source outcome of a public-document discovery run: {wayback, commoncrawl, brave, downloads {planned, parsed, failed, skipped}} with ok | empty | could_not_verify | rate_limited | needs_key | not_queried"
+  },
+  "tags": {},
+  "relations": {
+    "discovered_path": "host -> URL of a path found by authorized forced browsing (ACTIVE; listed with expand=False, never probed further)",
+    "open_service": "IP -> network service (host:port/tcp) found open by an authorized TCP connect scan (expand=False)",
+    "public_document": "domain -> URL of a public document found in web archives (Wayback, Common Crawl) or a search API",
+    "public_document_author": "domain -> author name or account sampled from the metadata of its public documents (personal data: expand=False, never auto-checked)"
+  }
+}

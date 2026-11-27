@@ -1,0 +1,18 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://www.example.com/.git/config",
+  "headers": {
+   "Range": "bytes=0-1023"
+  }
+ },
+ "response": {
+  "status": 206,
+  "headers": {
+   "content-type": "text/plain",
+   "content-range": "bytes 0-249/250",
+   "content-length": "250"
+  },
+  "body": "[core]\n\trepositoryformatversion = 0\n\tfilemode = true\n\tbare = false\n\tlogallrefupdates = true\n[remote \"origin\"]\n\turl = https://deploy:ghp_FAKEFAKEFAKEFAKEFAKEFAKEFAKEFAKE0000@git.example.com/exemplo/app.git\n\tfetch = +refs/heads/*:refs/remotes/origin/*\n"
+ }
+}

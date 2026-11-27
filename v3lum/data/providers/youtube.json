@@ -1,0 +1,100 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "youtube",
+  "name": "YouTube (Data API v3 channels.list, channel RSS feed, oEmbed)",
+  "operator": "Google LLC (YouTube)",
+  "hosts": [
+    "youtube.googleapis.com",
+    "www.youtube.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Google LLC is an established company with published terms and a privacy policy (A8 trusted); P110 cond 6 'Registry provider youtube (Google): tier trusted'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "Authoritative for YouTube channel ids, creation dates and public counts; channel titles and descriptions are owner-written."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "timeout": 10,
+    "ttl": 604800,
+    "min_interval": 1.0
+  },
+  "quota": {
+    "scope": "key",
+    "day": 10000,
+    "published": true,
+    "evidence_url": "https://developers.google.com/youtube/v3/getting-started#quota"
+  },
+  "error_markers": [],
+  "keys": {
+    "youtube": {
+      "description": "YouTube Data API v3 key (Google Cloud project with the YouTube Data API enabled); sent as the 'key' URL parameter, masked by the central redactor (AR01). channels.list costs 1 quota unit of the 10,000 units/day default.",
+      "signup_url": "https://developers.google.com/youtube/v3/getting-started",
+      "env": [
+        "V3LUM_YOUTUBE_KEY",
+        "V3LUM_YOUTUBE_API_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "key-terms: the Data API runs under the corporate profile only once key_plans.youtube = 'business' is recorded (v3lum keys set youtube --plan business) after legal confirms the YouTube API Services terms and storage policy (P110 cond 5/6)"
+    }
+  },
+  "sources": {
+    "data_api": {
+      "title": "YouTube Data API v3 channels.list (forHandle=@<handle> or id=<UC...>, part=snippet,statistics; 1 quota unit)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://developers.google.com/youtube/terms/api-services-terms-of-service",
+        "quote": "Registry provider youtube (Google): tier trusted; Data API source 'key-terms' (plan recorded in key_plans), RSS and oEmbed sources 'open'; personal_data_review before default use for handle inputs (A3 BR8).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "youtube",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P110 cond 6). Without a key the API answers 403 PERMISSION_DENIED 'Permission denied on the service' (observed 2026-11-26 on youtube.googleapis.com and www.googleapis.com) = NEEDS_KEY; quotaExceeded = QUOTA (P110 cond 3). The dedicated service host youtube.googleapis.com (the API's discovery rootUrl) is used instead of the shared www.googleapis.com. Storage: cache_ttl <= 30 days and redacted evidence (YouTube API Services developer policies, P110 cond 5; legal confirms the reading)."
+    },
+    "rss": {
+      "title": "YouTube channel feed https://www.youtube.com/feeds/videos.xml?channel_id=UC... (Atom, 15 latest uploads, channel creation date)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.youtube.com/t/terms",
+        "quote": "Registry provider youtube (Google): tier trusted; Data API source 'key-terms' (plan recorded in key_plans), RSS and oEmbed sources 'open'; personal_data_review before default use for handle inputs (A3 BR8).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "youtube",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P110 cond 6). Published feed interface (P110 cond 2); 404 HTML for an unknown channel id (observed); the server sends Cache-Control max-age=900. The keyless youtube.com/@handle page scrape is NOT built (P110 cond 1, legal floor)."
+    },
+    "oembed": {
+      "title": "YouTube oEmbed https://www.youtube.com/oembed?url=<watch URL>&format=json (video title, channel name and URL)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://oembed.com/",
+        "quote": "Registry provider youtube (Google): tier trusted; Data API source 'key-terms' (plan recorded in key_plans), RSS and oEmbed sources 'open'; personal_data_review before default use for handle inputs (A3 BR8).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "youtube",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P110 cond 6). Video URLs only, re-sent as the canonical watch URL; an unknown well-formed video id answers 400 'Bad Request' (observed 2026-11-26), 401/403 = private or not embeddable."
+    }
+  },
+  "notes": "Owned by batch p3-G05-1 (P110 youtube). One key 'youtube' (V3LUM_KEY_YOUTUBE; V3LUM_YOUTUBE_KEY and V3LUM_YOUTUBE_API_KEY are aliases only, P110 cond 3). The quota block books the Data API's 10,000 units/day per key (P334); it is provider-wide, so keyless RSS/oEmbed requests are counted too (conservative; per-source quota blocks are a core request). Consent redirects (consent.youtube.com) and Google 'sorry' pages are BLOCKED challenge, never empty (P110 cond 4)."
+}

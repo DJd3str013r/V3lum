@@ -1,0 +1,98 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "maltiverse",
+  "name": "Maltiverse IoC lookups (api.maltiverse.com)",
+  "operator": "Maltiverse S.L.",
+  "hosts": [
+    "api.maltiverse.com",
+    "maltiverse.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms, a privacy policy and paid business plans (A8 trusted); P154 final condition 2: 'Registry provider maltiverse: tier trusted, terms key-terms'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Aggregator: classification and blacklist[] re-serve third-party feeds (abuse.ch, Spamhaus, Blocklist.de, sandboxes...) plus its own research; sandbox connectivity checks list benign hosts as malicious (http://example.com), so a listing needs corroboration (P154 cond 4)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "retries": 0
+  },
+  "quota": {
+    "scope": "key",
+    "day": 20,
+    "published": false,
+    "evidence_url": "https://github.com/maltiverse/python-maltiverse",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {
+    "maltiverse": {
+      "description": "Maltiverse API key (Authorization: Bearer; read-only lookups /ip, /hostname, /url, /sample)",
+      "signup_url": "https://app.maltiverse.com/",
+      "env": [
+        "V3LUM_MALTIVERSE_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "Use a company/team account on a plan whose terms permit internal business use and record it as key_plans.maltiverse='business' (P154 cond 2); never an analyst's personal free account (rule 1)."
+    }
+  },
+  "sources": {
+    "lookup": {
+      "title": "Maltiverse API lookups GET /ip/{ip}, /hostname/{domain}, /url/{sha256(url)}, /sample/{sha256} (keyed only; never PUT/DELETE, /ioc, /bulk, /search or login)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://maltiverse.com/terms",
+        "quote": "P154 cond 1-2 (binding council text): keyed only in this build; keyless community use stays unbuilt until legal records its terms (the terms page is JS-only, unverified 2026-11-26). The key comes from a company/team account on a plan whose terms permit internal business use, recorded by legal (key_plans.maltiverse='business'). Registry provider maltiverse: tier trusted, terms key-terms.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "maltiverse",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0341 (verified live 2026-11-26: keyless 200, RateLimit-Limit 20 per 86400 s, no RateLimit-Remaining). Unknown objects answer HTTP 200 with a neutral stub {classification, type, urlchecksum} = not in Maltiverse (EMPTY, never a neutral vote). Errors: {\"status\":\"fail\",\"message\":...} inside 200 (python-maltiverse README) -> module error markers (quota/rate/error). Aggregator (P154 cond 4): blacklist[].source and dates are kept per hit; the module states the families of its recent listings in finding data['upstream_families'] so CR27 counts Maltiverse only for listings whose source V3LUM does not query directly (embeds). Context booleans (sinkhole/tor/vpn/proxy/scanner/cdn/hosting) are tags, never malicious (cond 5).",
+      "embeds": [
+        "abuse.ch",
+        "spamhaus",
+        "stopforumspam",
+        "openphish",
+        "phishtank",
+        "google_safe_browsing",
+        "ibm-xforce",
+        "hybrid_analysis",
+        "triage",
+        "blocklist.de",
+        "cins",
+        "otx",
+        "dshield",
+        "cybercrime-tracker",
+        "honeydb",
+        "emergingthreats",
+        "greensnow",
+        "binarydefense",
+        "firehol",
+        "tor-project",
+        "myipms",
+        "virustotal",
+        "urlscan"
+      ],
+      "licensed_alternative": "A Maltiverse company plan recorded by legal as key_plans.maltiverse='business'; meanwhile the direct feeds it re-serves (abuse.ch, Spamhaus, Blocklist.de...) and the manual Maltiverse search page."
+    }
+  },
+  "x_quota_note": "The day block is the observed keyless limit (RateLimit-Limit: 20 per 86400 s, 2026-11-26; published: false), kept as the fail-safe budget until legal records the company plan's limit (P154 cond 3, P334): replace it with the recorded plan. A 429 whose RateLimit-Reset is beyond one hour, or a fail message naming a quota, is QUOTA (module markers).",
+  "notes": "Owned by batch p3-G07-1 (P154, module threat_intel_ioc/maltiverse). Keyed only (NEEDS_KEY without key 'maltiverse'); keyless lookups are never sent. Cache 24 h (cond 3). The web host maltiverse.com is listed for the manual pivot links of pack threat_intel_g07_p3 only (never fetched by V3LUM)."
+}

@@ -1,0 +1,21 @@
+{
+ "width": 769,
+ "height": 80,
+ "results": [
+  {
+   "format": "ITF",
+   "content_type": "Text",
+   "text": "00194166100000123450000001234567000000000117",
+   "text_len": 44,
+   "bytes_hex": "3030313934313636313030303030313233343530303030303031323334353637303030303030303030313137",
+   "bytes_len": 44,
+   "truncated": false,
+   "valid": true,
+   "error": null,
+   "symbology_identifier": "]I0",
+   "ec_level": "",
+   "orientation": 0,
+   "position": "24x10 744x10 744x69 24x69"
+  }
+ ]
+}

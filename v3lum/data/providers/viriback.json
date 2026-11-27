@@ -1,0 +1,38 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "viriback",
+  "name": "ViriBack C2 Tracker",
+  "operator": "ViriBack (individual researcher project)",
+  "hosts": ["tracker.viriback.com"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "Individual operator without published terms or privacy policy (A8 unknown; A1 BR16 classes ViriBack 'unknown'). Dataset download only: no investigated value is ever sent to this host.",
+  "tier_reviewer": "batch p1-G07-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "C", "justification": "Tracked C2 panels with family and first-seen date; the IP column includes CDN edges (Cloudflare) that must not be read as C2 hosts."},
+  "http_profile": {"user_agent": "neutral", "ttl": 86400},
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "c2_tracker": {
+      "title": "ViriBack C2 Tracker dump (Family,URL,IP,FirstSeen CSV, tracker.viriback.com/dump.php)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://tracker.viriback.com/",
+        "quote": "",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "viriback",
+      "sanitizer": null,
+      "dataset": "viriback_c2_dump.csv",
+      "notes": "A1 BR16 / P159 cond 3: no published terms -> 'unknown'; used only by ioc_feeds_unreviewed (default off in every profile) until legal records a class. Panel URLs are live attacker infrastructure: parsed, never visited; CDN IPs are suppressed by the noise stage."
+    }
+  },
+  "notes": "Owned by batch p1-G07-1 (P159). Dataset download only (`v3lum data update`): no module sends a value here."
+}

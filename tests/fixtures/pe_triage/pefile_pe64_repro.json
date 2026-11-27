@@ -1,0 +1,125 @@
+{
+ "source": "pefile",
+ "size": 2560,
+ "parse_error": null,
+ "machine": 34404,
+ "number_of_sections": 4,
+ "timestamp": 1977952033,
+ "characteristics": 34,
+ "magic": 523,
+ "subsystem": 3,
+ "dll_characteristics": 33120,
+ "entry_point": 4096,
+ "image_base": 5368709120,
+ "checksum": 0,
+ "size_of_image": 69632,
+ "size_of_headers": 1024,
+ "sections": [
+  {
+   "name": ".text",
+   "virtual_address": 4096,
+   "virtual_size": 64,
+   "raw_size": 512,
+   "raw_offset": 1024,
+   "characteristics": 1610612768,
+   "entropy": 0.6144
+  },
+  {
+   "name": ".rdata",
+   "virtual_address": 20480,
+   "virtual_size": 336,
+   "raw_size": 512,
+   "raw_offset": 1536,
+   "characteristics": 1073741888,
+   "entropy": 2.757
+  },
+  {
+   "name": ".data",
+   "virtual_address": 36864,
+   "virtual_size": 64,
+   "raw_size": 512,
+   "raw_offset": 2048,
+   "characteristics": 3221225536,
+   "entropy": 0.2882
+  },
+  {
+   "name": ".rsrc",
+   "virtual_address": 53248,
+   "virtual_size": 0,
+   "raw_size": 0,
+   "raw_offset": 0,
+   "characteristics": 1073741888,
+   "entropy": 0.0
+  }
+ ],
+ "imports": [
+  {
+   "dll": "KERNEL32.dll",
+   "functions": [
+    {
+     "name": "ExitProcess",
+     "ordinal": null
+    }
+   ]
+  },
+  {
+   "dll": "msvcrt.dll",
+   "functions": [
+    {
+     "name": "printf",
+     "ordinal": null
+    }
+   ]
+  }
+ ],
+ "exports": [],
+ "debug": [
+  {
+   "type": 2,
+   "timestamp": 1977952033,
+   "size": 65,
+   "pdb": "D:\\a\\_work\\1\\s\\out\\Release\\example64.pdb",
+   "cv_signature": "RSDS",
+   "age": 1,
+   "guid": "00000000-0000-4000-8000-000000000003"
+  },
+  {
+   "type": 16,
+   "timestamp": 1977952033,
+   "size": 36
+  }
+ ],
+ "resources": [],
+ "warnings": [],
+ "imphash": "23285270545de4353386c2c1c9ed45a4",
+ "rich": {
+  "key_hex": "d9ef104c",
+  "checksum": 1276178393,
+  "clear_md5": "5ed0bcbe96aeaa3dfa8afb0ce41512c1",
+  "entries": [
+   [
+    17069508,
+    7
+   ],
+   [
+    17003972,
+    12
+   ],
+   [
+    17135044,
+    3
+   ],
+   [
+    16741828,
+    1
+   ]
+  ]
+ },
+ "security_dir": {
+  "offset": 0,
+  "size": 0
+ },
+ "overlay": null,
+ "md5": "df3bff6809e5c9bc0b9104c8dd136c27",
+ "sha256": "26a5a51292c93fb1385969adbfef07bc363b3bc4179172ed1500524fc66a3abe"
+}

@@ -1,0 +1,17 @@
+{
+ "name": "List of known IPv6 public DNS resolvers",
+ "type": "cidr",
+ "version": 20260829,
+ "description": "Event contains one or more public IPv6 DNS resolvers as attribute with an IDS flag set",
+ "matching_attributes": [
+  "ip-src",
+  "ip-dst",
+  "domain|ip",
+  "ip-src|port",
+  "ip-dst|port"
+ ],
+ "list": [
+  "2001:4860:4860::8888",
+  "2606:4700:4700::1111"
+ ]
+}

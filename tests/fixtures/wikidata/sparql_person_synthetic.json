@@ -1,0 +1,4 @@
+{"head": {"vars": ["item", "itemLabel", "isHuman", "rel", "value"]}, "results": {"bindings": [
+ {"item": {"type": "uri", "value": "http://www.wikidata.org/entity/Q99999911"}, "itemLabel": {"type": "literal", "value": "Example Public Figure"}, "isHuman": {"type": "literal", "value": "true"}, "rel": {"type": "literal", "value": "P856"}, "value": {"type": "uri", "value": "https://figure.example.org/"}},
+ {"item": {"type": "uri", "value": "http://www.wikidata.org/entity/Q99999911"}, "itemLabel": {"type": "literal", "value": "Example Public Figure"}, "isHuman": {"type": "literal", "value": "true"}, "rel": {"type": "literal", "value": "none"}}
+]}}

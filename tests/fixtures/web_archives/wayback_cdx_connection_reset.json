@@ -1,0 +1,12 @@
+{
+ "_fixture": "recorded transport outcome (no HTTP response was received)",
+ "source": "wayback_cdx",
+ "request_url": "https://web.archive.org/cdx/search/cdx?url=example.com&matchType=domain&output=json&fl=original,timestamp,statuscode,mimetype&collapse=urlkey&limit=5&showResumeKey=true",
+ "observed_utc": "2026-11-26T04:36:08Z",
+ "attempts_from_this_egress": "5 of 5 (cdx x4 incl. 1 retry, id_ snapshot x1), all reset",
+ "http_status": null,
+ "curl_exit": 35,
+ "error": "curl: (35) Recv failure: Connection reset by peer",
+ "elapsed_s": 10.06,
+ "agent_proxy": "ws_closed_mid_exchange (the tunnel to the egress proxy closed before the exchange completed)"
+}

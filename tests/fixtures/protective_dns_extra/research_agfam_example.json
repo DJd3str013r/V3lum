@@ -1,0 +1,31 @@
+{
+ "Question": [
+  {
+   "name": "example.com.",
+   "type": 1
+  }
+ ],
+ "Answer": [
+  {
+   "name": "example.com.",
+   "data": "104.20.23.154",
+   "TTL": 3,
+   "type": 1,
+   "class": 1
+  },
+  {
+   "name": "example.com.",
+   "data": "172.66.147.243",
+   "TTL": 3,
+   "type": 1,
+   "class": 1
+  }
+ ],
+ "Extra": null,
+ "TC": false,
+ "RD": true,
+ "RA": true,
+ "AD": false,
+ "CD": false,
+ "Status": 0
+}

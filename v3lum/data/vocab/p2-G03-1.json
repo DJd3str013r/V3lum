@@ -1,0 +1,31 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p2-G03-1",
+  "title": "Analytics ids and GTM expansion, Google Web Risk / Safe Browsing, PhishStats, RetireJS and the takedown packet (batch p2-G03-1: P061, P067, P074, P344, P345)",
+  "owner": "batch p2-G03-1 (analytics_ids, gtm_expand, google_safe_browsing, phishstats, retirejs_check, takedown_packet)",
+  "notes": "Core names are reused where they fit: analytics_ids, shared_tracking_ids, analytics_shared_id, abuse_contacts, registrar, registrar_iana_id, country, asn, isp, title, data_attribution; relations mentions, same_analytics, copied_tracking_id, resolves_to, has_vuln; tags phishing, suspicious, malicious, brand_abuse, shared_tracking_id, version_inferred, vulnerable, kev, context_only.",
+  "attributes": {
+    "analytics_sightings": "tracking ids found in a body already in hand [{id, kind ua|ga4|gtm|adsense, key, count, where text|file|url|live|archive|urlscan, seen_at, snapshot, template}] (P061 cond 2, 7, 8): local extraction, never a request",
+    "analytics_id_info": "facts about one tracking id {id, kind, key (UA account / AdSense publisher grouping), template, shared, reason, expandable_by}: template/placeholder ids are 'shared ID', info only (P061 cond 5)",
+    "gtm_container": "Google Tag Manager container facts {container, found, version, macro_count, tag_count, fetched_at, truncated}: 'not found' decided from the content (generic runtime without macros/tags), never from the HTTP status (P061 cond 3)",
+    "gtm_loaded_ids": "measurement and advertising ids configured in a GTM container [{id, kind ga4|ua|aw|dc|gtm, via, derived, template}] (quoted, case-sensitive; P061 cond 2-3)",
+    "gtm_linker_domains": "cross-domain linker domains configured in a GTM container (context only: never a same-owner pivot)",
+    "gtm_host_map": "host -> measurement id lookup table configured in a GTM container (context only)",
+    "gtm_script_hosts": "hosts of custom scripts loaded by GTM custom HTML tags (context only)",
+    "gtm_pixel_ids": "Facebook pixel ids configured in GTM custom HTML tags (context only, not an analytics_id entity)",
+    "google_safe_browsing": "Google list check {api web_risk|safe_browsing_v4, status hit|miss, threat_types, checked_at, expire_time, text, url_sent_reduced, reasons}: a miss reads 'not on Google's lists at <time>', never 'safe' (P067 cond 5)",
+    "lookup_minimisation": "what was removed from a URL before it was sent to a provider {reduced, reasons}: recipient identifiers and token-like values cut the URL to scheme://host/path (P067 cond 4, A7 BR15)",
+    "phishstats_records": "PhishStats phishing records (redacted) [{id, url, url_host, ip, score, verdict phishing|suspicious, date, date_update, title, tags, google_safebrowsing, virus_total, domain_age_days, times_seen, asn, isp, countrycode, url_redactions}]: victims' e-mails and tokens are removed before storage (P074 cond 3)",
+    "phishstats_query": "PhishStats filter actually used {field host|ip|url, op eq|like, value, dropped_mismatch, truncated, cached}: exact filters first, records re-checked against the filter",
+    "js_libraries": "front-end libraries recognised by the RetireJS repository [{library, version, detection uri|filename|filecontent|filecontentreplace|hash, confidence, version_inferred, npm, advisories}] (P344 cond 2, 5)",
+    "retirejs_repository": "RetireJS repository used for a scan {source dataset|bundled, sha256, libraries, skipped_func, pattern_errors, fetched_at}: Apache-2.0, notice in v3lum/data/notices/retirejs.json"
+  },
+  "tags": {
+    "possible_clone": "a non-own site carries a tracking id used by an org-profile own site: 'possible clone of <brand> (copied tracking ID)', a phishing indicator, never a same-owner link (P061 cond 6)",
+    "takedown_ready": "the case holds a hostile URL or host with a consensus-backed (or analyst-confirmed) finding >= HIGH: a takedown packet can be exported (P345 cond 2)"
+  },
+  "relations": {
+    "gtm_loads": "GTM container id -> measurement or advertising id configured in the container (gtm_expand; expand=True so the reverse-lookup modules can run on it)",
+    "listed_phishing_url": "domain, IP or keyword -> phishing URL listed by a phishing feed for it (URL-level verdict only, never propagated to shared platforms or IPs)"
+  }
+}

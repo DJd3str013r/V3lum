@@ -1,0 +1,30 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p3-G09-1",
+  "title": "ENS resolution, Ransomwhere payment addresses, TON explorer and the transaction-graph policy (batch p3-G09-1)",
+  "owner": "batch p3-G09-1 (P209 ens_resolver, P210 ransomwhere, P213 crypto_tx_graph, P214 ton_explorer)",
+  "attributes": {
+    "ens_primary_name": "ENS primary name (reverse record) set by the owner of the resolved Ethereum address, as reported by ENSData",
+    "ens_reverse_verified": "bool: the ENS name and the primary name of the address it resolves to agree (forward and reverse records match)",
+    "ens_reverse_record": "reverse-record status of an Ethereum address on ENS, e.g. 'no ENS primary name set (says nothing about the wallet)'",
+    "ens_text_records": "ENS text records as set by the name owner (self-asserted, unverified): {record key: cleaned text <= 300 chars}",
+    "ens_wallets": "multichain address records of an ENS name set by its owner: {chain: address} (self-asserted except the resolved ETH address)",
+    "ens_profile": "descriptive ENS records of a name (description, avatar, header, pgp, contentHash, resolverAddress...), cleaned and capped at 300 chars",
+    "ens_rejected_records": "ENS text records that were not usable identifiers (javascript: URLs, invalid handles, non-strings): list of {record, reason}",
+    "ransomwhere_status": "result of the offline Ransomwhere match, e.g. 'not in the Ransomwhere dataset (dataset last updated 2024-10-29); a miss means nothing'",
+    "ransomware_payments": "historical ransomware payments to an address per Ransomwhere: {family, tx_count, total_btc, total_usd, first_payment, last_payment, balance_btc, transactions [<= 5 {hash, time, btc, usd}]}",
+    "ton_address_forms": "forms of a TON address: {raw ('wc:HEX'), bounceable (EQ...), non_bounceable (UQ...), workchain, testnet}",
+    "ton_wallet": "TON wallet state from Toncenter walletInformation: {balance_ton, wallet_type, seqno, status, last_transaction_lt}",
+    "ton_collectible": "Telegram collectible (Fragment NFT) behind a +888 number or a collectible username: {kind, token, nft_item, collection, on_sale, sale_contract, owner, transfer_date, transfer_date_note}"
+  },
+  "tags": {
+    "crowdsourced": "the data comes from a crowdsourced dataset (user submissions, partial and skewed coverage)",
+    "collectible_owner": "current owner wallet of a Telegram collectible (+888 number or username NFT): a dated lead, ownership can change, never identity proof"
+  },
+  "relations": {
+    "ens_text_record": "ENS name or wallet -> identifier its owner wrote into an ENS text record (twitter, github, url, email...): self-asserted, unverified",
+    "ens_address_record": "ENS name -> address of another chain its owner set as an ENS address record (self-asserted)",
+    "current_nft_owner": "Telegram collectible (+888 number or collectible username) -> TON wallet that currently owns its NFT (ownership can change; a lead, never identity proof)"
+  },
+  "timeline": {}
+}

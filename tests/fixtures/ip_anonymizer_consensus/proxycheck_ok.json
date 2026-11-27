@@ -1,0 +1,13 @@
+{
+ "status": "ok",
+ "8.8.8.8": {
+  "asn": "AS15169",
+  "range": "8.8.8.0/24",
+  "provider": "Google LLC",
+  "organisation": "Level 3",
+  "isocode": "US",
+  "proxy": "no",
+  "type": "Business",
+  "risk": 0
+ }
+}

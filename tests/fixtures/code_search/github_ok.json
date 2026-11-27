@@ -1,0 +1,83 @@
+{
+ "total_count": 2,
+ "incomplete_results": false,
+ "items": [
+  {
+   "name": "settings.py",
+   "path": "app/settings.py",
+   "sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+   "url": "https://api.github.com/repositories/1000001/contents/app/settings.py?ref=1111111111111111111111111111111111111111",
+   "git_url": "https://api.github.com/repositories/1000001/git/blobs/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+   "html_url": "https://github.com/example-org/example-app/blob/1111111111111111111111111111111111111111/app/settings.py",
+   "repository": {
+    "id": 1000001,
+    "name": "example-app",
+    "full_name": "example-org/example-app",
+    "private": false,
+    "fork": false,
+    "html_url": "https://github.com/example-org/example-app",
+    "owner": {
+     "login": "example-org",
+     "id": 1,
+     "type": "Organization"
+    }
+   },
+   "score": 1.0,
+   "text_matches": [
+    {
+     "object_url": "https://api.github.com/repositories/1000001/contents/app/settings.py?ref=1111111111111111111111111111111111111111",
+     "object_type": "FileContent",
+     "property": "content",
+     "fragment": "API_HOST = \"api.example.com\"\nSMTP_PASSWORD = \"example-not-a-real-secret-0002\"",
+     "matches": [
+      {
+       "text": "example.com",
+       "indices": [
+        16,
+        27
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "README.md",
+   "path": "README.md",
+   "sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+   "url": "https://api.github.com/repositories/1000002/contents/README.md?ref=2222222222222222222222222222222222222222",
+   "git_url": "https://api.github.com/repositories/1000002/git/blobs/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+   "html_url": "https://github.com/example-user/example-mirror/blob/2222222222222222222222222222222222222222/README.md",
+   "repository": {
+    "id": 1000002,
+    "name": "example-mirror",
+    "full_name": "example-user/example-mirror",
+    "private": false,
+    "fork": true,
+    "html_url": "https://github.com/example-user/example-mirror",
+    "owner": {
+     "login": "example-user",
+     "id": 2,
+     "type": "User"
+    }
+   },
+   "score": 0.5,
+   "text_matches": [
+    {
+     "object_type": "FileContent",
+     "property": "content",
+     "fragment": "Mirror of the example.com docs (portal.example.com)",
+     "matches": [
+      {
+       "text": "example.com",
+       "indices": [
+        14,
+        25
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,23 @@
+{
+ "resultCount": 3,
+ "results": [
+  {
+   "trackName": "BB: Banco, Cartão, Crédito",
+   "bundleId": "com.bb.bbapp",
+   "sellerName": "Banco do Brasil",
+   "artistName": "Banco do Brasil",
+   "sellerUrl": "http://www.bb.com.br",
+   "trackId": 330984271
+  },
+  {
+   "trackName": "Ourocard - Cartão de crédito.",
+   "bundleId": "com.bb.ourocard",
+   "sellerName": "Banco do Brasil"
+  },
+  {
+   "trackName": "Banco Bradesco",
+   "bundleId": "br.com.bradescora.app",
+   "sellerName": "BANCO BRADESCO S.A."
+  }
+ ]
+}

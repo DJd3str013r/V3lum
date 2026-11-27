@@ -1,0 +1,17 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://ecosystem.atlassian.net/_edge/tenant_info"
+  },
+  "response": {
+    "status": 503,
+    "headers": {
+      "content-type": "text/html",
+      "server": "AtlassianEdge"
+    },
+    "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Atlassian Cloud Notifications - Page Unavailable</title>\n</head>\n<body>\n<h1>Page unavailable</h1>\n<p>Your Atlassian Cloud site is currently unavailable.</p>\n</body>\n</html>\n"
+  },
+  "class": "derived",
+  "captured_at": "2026-11-26T00:00:00Z",
+  "notes": "the 'Page Unavailable' page is also the outage page: only a 404 means absent"
+}

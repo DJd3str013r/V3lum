@@ -1,0 +1,11 @@
+{
+ "_envelope": 1,
+ "_synthetic": "documented Nominatim /reverse answer when no OSM object is near the point (e.g. open sea); not observed live in this prep",
+ "status": 200,
+ "headers": {
+  "content-type": "application/json; charset=utf-8"
+ },
+ "body": {
+  "error": "Unable to geocode"
+ }
+}

@@ -1,0 +1,37 @@
+{
+ "origin": "synthetic",
+ "note": "resolver-agnostic RFC 8914 Extended DNS Error 15 (Blocked) on an NXDOMAIN (EDE seen as a block signal when the reference resolves)",
+ "request": {
+  "url": "https://dns.quad9.net/dns-query?dns=<b64url>",
+  "qname": "malware-test.example.net.",
+  "qtype": "A"
+ },
+ "http_status": 200,
+ "content_type": "application/dns-message",
+ "wire_b64": "AACBgwABAAAAAAABDG1hbHdhcmUtdGVzdAdleGFtcGxlA25ldAAAAQABAAApBNAAAAAAAA0ADwAJAA9CbG9ja2Vk",
+ "decoded": {
+  "id": 0,
+  "rcode": "NXDOMAIN",
+  "flags": [
+   "QR",
+   "RD",
+   "RA"
+  ],
+  "question": [
+   {
+    "name": "malware-test.example.net.",
+    "type": "A"
+   }
+  ],
+  "answer": [],
+  "authority": [],
+  "additional": [],
+  "edns": true,
+  "ede": [
+   {
+    "code": 15,
+    "text": "Blocked"
+   }
+  ]
+ }
+}

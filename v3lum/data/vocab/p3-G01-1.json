@@ -1,0 +1,18 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p3-G01-1",
+  "title": "Keyed subdomain sources, cl0q favicon/ASN pivots and registro.br availability (batch p3-G01-1: P007, P018, P021)",
+  "owner": "batch p3-G01-1 (subdomains_keyed, subdomains_keyed_minor, cl0q, registrobr_domain_status)",
+  "notes": "The keyed subdomain modules reuse the passive-subdomain names of p2-G01-3 (subdomains, subdomain_provenance, subdomain_coverage, dns_wildcard, subdomain_wildcards, subdomains_unconfirmed, subdomains_historical, subdomains_unresolved) so the graph merges every source into one list. registro.br availability names never carry registration dates or a CNPJ (rdap, P003, owns those).",
+  "attributes": {
+    "mobile_app_urls": "in-apex URLs extracted from Android app (APK) assets that reference the domain (BeVigil): list of {url, redacted_params, source}; key-like query values replaced by REDACTED, user-info and fragments dropped; never fetched (fetching would be LIGHT)",
+    "favicon_sha256": "SHA-256 of the site's favicon bytes as indexed by a content-addressed favicon index (cl0q): the pivot value for other sites serving the identical icon",
+    "favicon_shared": "favicon reverse-pivot summary {sha256, shared_count, listed, truncated, source}: other indexed sites serving the identical favicon bytes (hypotheses: same operator, framework default or phishing kit; never ownership)",
+    "asn_domain_sample": "capped sample of registrable domains an open-web index sees hosted in the AS {asn, listed, more, source}: hypotheses, never ownership",
+    "registrobr_status": "registro.br availability status of an individual .br name from a normal API answer: registered | available | in_release | unavailable | invalid (absent when no source answered: could not verify)",
+    "registrobr_availability": "registro.br availability record {status, status_code, status_label, release_phase (waiting | open | competitive), concurrent_tickets, exempt, publication_status, checked_name, source}: availability and release-process status only (no registration dates, no CNPJ)",
+    "registrobr_expires_at": "expiry date (UTC ISO) reported by the registro.br availability service: a fallback for when rdap.registro.br cannot be verified; the RDAP 'expires' attribute is authoritative"
+  },
+  "tags": {},
+  "relations": {}
+}

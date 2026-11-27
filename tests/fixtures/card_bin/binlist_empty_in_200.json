@@ -1,0 +1,14 @@
+{
+ "_envelope": 1,
+ "_source": "GET https://lookup.binlist.net/100000 (2026-11-26T10:42:27Z, generic client UA, datacenter egress) with Accept-Version: 3: HTTP 200 with every field empty",
+ "status": 200,
+ "headers": {
+  "content-type": "application/json; charset=utf-8",
+  "server": "cloudflare"
+ },
+ "body": {
+  "number": null,
+  "country": {},
+  "bank": {}
+ }
+}

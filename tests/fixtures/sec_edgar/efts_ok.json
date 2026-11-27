@@ -1,0 +1,401 @@
+{
+ "took": 313,
+ "timed_out": false,
+ "hits": {
+  "total": {
+   "value": 73,
+   "relation": "eq"
+  },
+  "max_score": 22.195671,
+  "hits": [
+   {
+    "_index": "edgar_file",
+    "_id": "0001193125-24-011295:d708866d8k.htm",
+    "_score": 16.092113,
+    "_source": {
+     "ciks": [
+      "0000789019"
+     ],
+     "period_ending": "2024-01-17",
+     "file_num": [
+      "001-37845"
+     ],
+     "display_names": [
+      "MICROSOFT CORP  (MSFT)  (CIK 0000789019)"
+     ],
+     "xsl": null,
+     "sequence": 1,
+     "root_forms": [
+      "8-K"
+     ],
+     "file_date": "2024-01-19",
+     "biz_states": [
+      "WA"
+     ],
+     "sics": [
+      "7372"
+     ],
+     "form": "8-K",
+     "adsh": "0001193125-24-011295",
+     "film_num": [
+      "24546127"
+     ],
+     "biz_locations": [
+      "Redmond, WA"
+     ],
+     "file_type": "8-K",
+     "file_description": "8-K",
+     "inc_states": [
+      "WA"
+     ],
+     "items": [
+      "1.05",
+      "7.01",
+      "9.01"
+     ]
+    }
+   },
+   {
+    "_index": "edgar_file",
+    "_id": "0001193125-24-062997:d808756d8ka.htm",
+    "_score": 15.985036,
+    "_source": {
+     "ciks": [
+      "0000789019"
+     ],
+     "period_ending": "2024-01-17",
+     "file_num": [
+      "001-37845"
+     ],
+     "display_names": [
+      "MICROSOFT CORP  (MSFT)  (CIK 0000789019)"
+     ],
+     "xsl": null,
+     "sequence": 1,
+     "root_forms": [
+      "8-K"
+     ],
+     "file_date": "2024-03-08",
+     "biz_states": [
+      "WA"
+     ],
+     "sics": [
+      "7372"
+     ],
+     "form": "8-K/A",
+     "adsh": "0001193125-24-062997",
+     "film_num": [
+      "24732464"
+     ],
+     "biz_locations": [
+      "Redmond, WA"
+     ],
+     "file_type": "8-K/A",
+     "file_description": "8-K/A",
+     "inc_states": [
+      "WA"
+     ],
+     "items": [
+      "1.05",
+      "7.01",
+      "9.01"
+     ]
+    }
+   },
+   {
+    "_index": "edgar_file",
+    "_id": "0001193125-26-104431:d101097d8k.htm",
+    "_score": 22.195671,
+    "_source": {
+     "ciks": [
+      "0000310764"
+     ],
+     "period_ending": "2026-03-12",
+     "file_num": [
+      "001-13149"
+     ],
+     "display_names": [
+      "STRYKER CORP  (SYK)  (CIK 0000310764)"
+     ],
+     "xsl": null,
+     "sequence": 1,
+     "root_forms": [
+      "8-K"
+     ],
+     "file_date": "2026-03-12",
+     "biz_states": [
+      "MI"
+     ],
+     "sics": [
+      "3841"
+     ],
+     "form": "8-K",
+     "adsh": "0001193125-26-104431",
+     "film_num": [
+      "26748923"
+     ],
+     "biz_locations": [
+      "Portage, MI"
+     ],
+     "file_type": "8-K",
+     "file_description": "8-K",
+     "inc_states": [
+      "MI"
+     ],
+     "items": [
+      "7.01"
+     ]
+    }
+   },
+   {
+    "_index": "edgar_file",
+    "_id": "0001067491-25-000004:exv99w02.htm",
+    "_score": 19.960327,
+    "_source": {
+     "ciks": [
+      "0001067491"
+     ],
+     "period_ending": "2024-12-31",
+     "file_num": [
+      "001-35754"
+     ],
+     "display_names": [
+      "Infosys Ltd  (INFY)  (CIK 0001067491)"
+     ],
+     "xsl": null,
+     "sequence": "3",
+     "root_forms": [
+      "6-K"
+     ],
+     "file_date": "2025-01-21",
+     "biz_states": [
+      "K7"
+     ],
+     "sics": [
+      "7371"
+     ],
+     "form": "6-K",
+     "adsh": "0001067491-25-000004",
+     "film_num": [
+      "25540755"
+     ],
+     "biz_locations": [
+      "Bangalore, K7"
+     ],
+     "file_type": "EX-99.2 BYLAWS",
+     "file_description": "IFRS INR PRESS RELEASE",
+     "inc_states": [],
+     "items": []
+    }
+   },
+   {
+    "_index": "edgar_file",
+    "_id": "0001067491-25-000002:exv99w02.htm",
+    "_score": 19.946003,
+    "_source": {
+     "ciks": [
+      "0001067491"
+     ],
+     "period_ending": "2025-01-16",
+     "file_num": [
+      "001-35754"
+     ],
+     "display_names": [
+      "Infosys Ltd  (INFY)  (CIK 0001067491)"
+     ],
+     "xsl": null,
+     "sequence": "3",
+     "root_forms": [
+      "6-K"
+     ],
+     "file_date": "2025-01-16",
+     "biz_states": [
+      "K7"
+     ],
+     "sics": [
+      "7371"
+     ],
+     "form": "6-K",
+     "adsh": "0001067491-25-000002",
+     "film_num": [
+      "25535001"
+     ],
+     "biz_locations": [
+      "Bangalore, K7"
+     ],
+     "file_type": "EX-99.2 BYLAWS",
+     "file_description": "IFRS USD PRESS RELEASE",
+     "inc_states": [],
+     "items": []
+    }
+   },
+   {
+    "_index": "edgar_file",
+    "_id": "0001104659-26-087534:tm2621444d1_ex99-1.htm",
+    "_score": 17.499197,
+    "_source": {
+     "ciks": [
+      "0001708055"
+     ],
+     "period_ending": "2026-07-28",
+     "file_num": [
+      "001-38267"
+     ],
+     "display_names": [
+      "Ribbon Communications Inc.  (RBBN)  (CIK 0001708055)"
+     ],
+     "xsl": null,
+     "sequence": "2",
+     "root_forms": [
+      "8-K"
+     ],
+     "file_date": "2026-07-28",
+     "biz_states": [
+      "TX"
+     ],
+     "sics": [
+      "7373"
+     ],
+     "form": "8-K",
+     "adsh": "0001104659-26-087534",
+     "film_num": [
+      "261211942"
+     ],
+     "biz_locations": [
+      "Plano, TX"
+     ],
+     "file_type": "EX-99.1",
+     "file_description": "EXHIBIT 99.1",
+     "inc_states": [
+      "DE"
+     ],
+     "items": [
+      "2.02",
+      "9.01"
+     ]
+    }
+   },
+   {
+    "_index": "edgar_file",
+    "_id": "0001193125-25-054446:d852367dex991.pdf",
+    "_score": 5.829879,
+    "_source": {
+     "ciks": [
+      "0000938323"
+     ],
+     "period_ending": "2025-03-14",
+     "file_num": [
+      "001-16055"
+     ],
+     "display_names": [
+      "PEARSON PLC  (PSO, PSORF)  (CIK 0000938323)"
+     ],
+     "xsl": null,
+     "sequence": "2",
+     "root_forms": [
+      "6-K"
+     ],
+     "file_date": "2025-03-14",
+     "biz_states": [
+      "X0"
+     ],
+     "sics": [
+      "2731"
+     ],
+     "form": "6-K",
+     "adsh": "0001193125-25-054446",
+     "film_num": [
+      "25737683"
+     ],
+     "biz_locations": [
+      "London England, X0"
+     ],
+     "file_type": "EX-99.1",
+     "file_description": "EX-99.1",
+     "inc_states": [
+      "X0"
+     ],
+     "items": []
+    }
+   }
+  ]
+ },
+ "query": {
+  "_source": {
+   "exclude": [
+    "doc_text"
+   ]
+  },
+  "query": {
+   "bool": {
+    "must": [
+     {
+      "match_phrase": {
+       "doc_text": "Microsoft"
+      }
+     }
+    ],
+    "must_not": [],
+    "should": [
+     {
+      "match_phrase": {
+       "doc_text": "Item 1.05"
+      }
+     },
+     {
+      "match_phrase": {
+       "doc_text": "cybersecurity incident"
+      }
+     }
+    ],
+    "filter": [
+     {
+      "terms": {
+       "root_forms": [
+        "8-K",
+        "6-K"
+       ]
+      }
+     },
+     {
+      "range": {
+       "file_date": {
+        "gte": "2023-12-18",
+        "lte": "2026-11-26"
+       }
+      }
+     }
+    ],
+    "minimum_should_match": 1
+   }
+  },
+  "from": 0,
+  "size": 100,
+  "aggregations": {
+   "form_filter": {
+    "terms": {
+     "field": "root_forms",
+     "size": 30
+    }
+   },
+   "entity_filter": {
+    "terms": {
+     "field": "display_names.raw",
+     "size": 30
+    }
+   },
+   "sic_filter": {
+    "terms": {
+     "field": "sics",
+     "size": 30
+    }
+   },
+   "biz_states_filter": {
+    "terms": {
+     "field": "biz_states",
+     "size": 30
+    }
+   }
+  }
+ }
+}

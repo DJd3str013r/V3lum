@@ -1,0 +1,38 @@
+{
+ "@odata.context": "https://was-p.bcnet.bcb.gov.br/olinda/servico/Instituicoes_em_funcionamento/versao/v1/odata$metadata#SedesConsorcios",
+ "value": [
+  {
+   "CNPJ": "06043050",
+   "NOME_INSTITUICAO": "BB ADMINISTRADORA DE CONSORCIOS S.A.",
+   "MUNICIPIO": "BRASÍLIA",
+   "UF": "DF",
+   "DDD": "11",
+   "TELEFONE": "55550111",
+   "E_MAIL": "contato@example.com",
+   "SITIO_NA_INTERNET": "HTTPS://WWW.BB.COM.BR/SITE/PRA-VOCE/CONSORCIOS",
+   "MUNICIPIO_IBGE": "5300108"
+  },
+  {
+   "CNPJ": "51855716",
+   "NOME_INSTITUICAO": "RODOBENS ADMINISTRADORA DE CONSÓRCIOS LTDA.",
+   "MUNICIPIO": "SÃO JOSÉ DO RIO PRETO",
+   "UF": "SP",
+   "DDD": "11",
+   "TELEFONE": "55550112",
+   "E_MAIL": "contato@example.com",
+   "SITIO_NA_INTERNET": "RODOBENS.COM.BR",
+   "MUNICIPIO_IBGE": "3549805"
+  },
+  {
+   "CNPJ": "09111444",
+   "NOME_INSTITUICAO": "PROMOVE ADMINISTRADORA DE CONSÓRCIO LTDA.",
+   "MUNICIPIO": "CABEDELO",
+   "UF": "PB",
+   "DDD": "11",
+   "TELEFONE": "55550113",
+   "E_MAIL": "contato@example.com",
+   "SITIO_NA_INTERNET": null,
+   "MUNICIPIO_IBGE": "2503209"
+  }
+ ]
+}

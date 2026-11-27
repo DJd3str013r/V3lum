@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- _synthetic: FC6/FC7 matching cases (pt-BR common-word brands, context terms, CVE exact match); links are documentation values -->
+<rss version="2.0"><channel><title>Synthetic matching cases</title><link>https://example.com/</link>
+<item><title>Ficou claro que o golpe usou phishing por SMS</title><link>https://example.com/news/a1</link><pubDate>Wed, 25 Nov 2026 08:00:00 +0000</pubDate></item>
+<item><title>Claro: especialistas recomendam MFA para contas corporativas</title><link>https://example.com/news/a2</link><pubDate>Wed, 25 Nov 2026 09:00:00 +0000</pubDate></item>
+<item><title>Operadora Claro investiga vazamento de dados de clientes</title><link>https://example.com/news/a3</link><pubDate>Wed, 25 Nov 2026 10:00:00 +0000</pubDate></item>
+<item><title>Claro S.A. confirma instabilidade após ataque</title><link>https://example.com/news/a4</link><pubDate>Wed, 25 Nov 2026 11:00:00 +0000</pubDate></item>
+<item><title>Clientes relatam falha no app da claro.com.br</title><link>https://example.com/news/a5</link><pubDate>Wed, 25 Nov 2026 12:00:00 +0000</pubDate></item>
+<item><title>Claro Brasil publica comunicado sobre incidente</title><link>https://example.com/news/a6</link><pubDate>Wed, 25 Nov 2026 13:00:00 +0000</pubDate></item>
+<item><title>Banco Inter corrige falha em API de pagamentos</title><link>https://example.com/news/a7</link><pubDate>Wed, 25 Nov 2026 14:00:00 +0000</pubDate></item>
+<item><title>Inter de Milão anuncia novo patrocinador</title><link>https://example.com/news/a8</link><pubDate>Wed, 25 Nov 2026 15:00:00 +0000</pubDate></item>
+<item><title>Vivo e Oi testam 5G em São Paulo</title><link>https://example.com/news/a9</link><pubDate>Wed, 25 Nov 2026 16:00:00 +0000</pubDate></item>
+<item><title>Exploração ativa da CVE-2021-44228 em servidores expostos</title><link>https://example.com/news/a10</link><pubDate>Wed, 25 Nov 2026 17:00:00 +0000</pubDate></item>
+<item><title>Falha CVE-2021-442281 não relacionada ao Log4Shell</title><link>https://example.com/news/a11</link><pubDate>Wed, 25 Nov 2026 18:00:00 +0000</pubDate></item>
+<item><title>Grupo LockBit reivindica ataque à fornecedora Exemplo Logística</title><link>https://example.com/news/a12</link><pubDate>Wed, 25 Nov 2026 19:00:00 +0000</pubDate></item>
+<item><title>NATURA divulga resultados do trimestre</title><link>https://example.com/news/a13</link><pubDate>Wed, 25 Nov 2026 08:00:00 +0000</pubDate></item>
+<item><title>Natura &amp;Co S.A. divulga fato relevante sobre incidente</title><link>https://example.com/news/a14</link><pubDate>Wed, 25 Nov 2026 09:00:00 +0000</pubDate></item>
+<item><title>Google Play remove apps maliciosos</title><link>https://example.com/news/a15</link><pubDate>Wed, 25 Nov 2026 10:00:00 +0000</pubDate></item>
+<item><title>Play ransomware gang leaks data of a manufacturer</title><link>https://example.com/news/a16</link><pubDate>Wed, 25 Nov 2026 11:00:00 +0000</pubDate></item>
+</channel></rss>

@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "cloud_ranges_google",
+  "source_url": "https://www.gstatic.com/ipranges/cloud.json",
+  "version": "runtime download refreshed daily by the dataset manager (checked 2026-11-26); also https://www.gstatic.com/ipranges/goog.json",
+  "sha256": "",
+  "licence": "Google IP range publications (public provider publication, no licence stated)",
+  "attribution": "Google Cloud and Google IP ranges (https://www.gstatic.com/ipranges/cloud.json, https://www.gstatic.com/ipranges/goog.json), Google LLC",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/ip_network/cloud_ranges.py"
+  ]
+}

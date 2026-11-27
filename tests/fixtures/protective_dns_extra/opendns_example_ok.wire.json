@@ -1,0 +1,45 @@
+{
+ "origin": "live",
+ "note": "doh.opendns.com RFC 8484 GET A example.com",
+ "request": {
+  "url": "https://doh.opendns.com/dns-query?dns=AAABAAABAAAAAAAAB2V4YW1wbGUDY29tAAABAAE",
+  "qname": "example.com.",
+  "qtype": "A"
+ },
+ "http_status": 200,
+ "content_type": "application/dns-message",
+ "wire_b64": "AACBgAABAAIAAAAAB2V4YW1wbGUDY29tAAABAAHADAABAAEAAADhAASsQpPzwAwAAQABAAAA4QAEaBQXmg==",
+ "decoded": {
+  "id": 0,
+  "rcode": "NOERROR",
+  "flags": [
+   "QR",
+   "RD",
+   "RA"
+  ],
+  "question": [
+   {
+    "name": "example.com.",
+    "type": "A"
+   }
+  ],
+  "answer": [
+   {
+    "name": "example.com.",
+    "type": "A",
+    "ttl": 225,
+    "data": "172.66.147.243"
+   },
+   {
+    "name": "example.com.",
+    "type": "A",
+    "ttl": 225,
+    "data": "104.20.23.154"
+   }
+  ],
+  "authority": [],
+  "additional": [],
+  "edns": false,
+  "ede": []
+ }
+}

@@ -1,0 +1,36 @@
+{
+ "_synthetic": "documented Hunter API v2 response shape (hunter.io/api-documentation/v2), filled with documentation values; P090-FC6 requires a trimmed real success fixture captured with the team key before merge",
+ "data": {
+  "total": 37,
+  "personal_emails": 30,
+  "generic_emails": 7,
+  "department": {
+   "executive": 2,
+   "it": 9,
+   "finance": 4,
+   "management": 0,
+   "sales": 6,
+   "legal": 1,
+   "support": 3,
+   "hr": 2,
+   "marketing": 3,
+   "communication": 0,
+   "education": 0,
+   "design": 0,
+   "health": 0,
+   "operations": 0
+  },
+  "seniority": {
+   "junior": 11,
+   "senior": 9,
+   "executive": 2
+  }
+ },
+ "meta": {
+  "params": {
+   "domain": "example.com",
+   "company": null,
+   "type": null
+  }
+ }
+}

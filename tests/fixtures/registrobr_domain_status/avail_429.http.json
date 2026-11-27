@@ -1,0 +1,15 @@
+{
+ "request": "GET https://registro.br/v2/ajax/avail/raw/<name>.com.br",
+ "response": {
+  "status": 429,
+  "headers": {
+   "server": "nginx",
+   "content-type": "text/html",
+   "retry-after": "60"
+  },
+  "body": "<html>\r\n<head><title>429 Too Many Requests</title></head>\r\n<body>\r\n<center><h1>429 Too Many Requests</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "registro.br per-IP throttling: not observed (limits undocumented); stock nginx 429 page"
+}

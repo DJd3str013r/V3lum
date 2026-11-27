@@ -1,0 +1,34 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p2-G09-1",
+  "title": "deepdarkCTI index, onion lookup and safety filter, Chainabuse, GoPlus, WalletExplorer (batch p2-G09-1)",
+  "owner": "batch p2-G09-1 (P198 deepdarkcti_index, P199 onion_lookup, P204 chainabuse, P206 goplus_security, P208 walletexplorer)",
+  "attributes": {
+    "ddc_listings": "deepdarkCTI curated-list entries matching an onion host or Telegram handle: list of {list, category, group, status, status_text, list_date, historical, display (defanged)}; context, not attribution - listed addresses are hostile and never fetched",
+    "ddc_group_summary": "what the deepdarkCTI lists hold for a group name: {group, onion, telegram, active, lists, examples (defanged; onions on Ahmia's banned list withheld)}",
+    "onion_titles": "plain-text page titles a crawler (AIL) recorded for an onion service: untrusted text with control/bidi characters removed, never rendered as HTML",
+    "languages": "languages a crawler detected on an onion service or page, as the source reports them (ISO 639-1 codes)",
+    "chainabuse_reports": "Chainabuse community scam reports for a wallet or domain (user-submitted, unverified): {count, categories, first_report, last_report, checked, trusted, chains, excerpts (personal data masked, <= 120 chars), related, page_cap_reached, wording}",
+    "goplus_flags": "GoPlus address-security flags cast to booleans, per chain: {chain_id: {flag: bool}} - informative third-party labels (one consensus vote); 'sanctioned' is not authoritative",
+    "goplus_data_sources": "reporting sources GoPlus names for its address flags (e.g. SlowMist, BlockSec)",
+    "goplus_contract": "GoPlus token-security facts of a contract: {chain_id, name, symbol, holders, buy_tax, sell_tax, transfer_tax, owner, creator, cex_list, top_holders_percent, trusted_listing, features {flag: bool}} - features such as mintable or pausable are normal for stablecoins",
+    "goplus_phishing_site": "GoPlus phishing_site verdict for a URL or domain with crypto context: {flagged, url_sent (stripped of query, fragment and userinfo unless the analyst opted in), removed, website_contracts}",
+    "wallet_cluster": "WalletExplorer cluster of a Bitcoin address: {wallet_id, label, category, legal_request_lead, updated_to_block, note} - the label database is not updated since 2016: a label is a lead for a legal request, not proof of ownership"
+  },
+  "tags": {
+    "theft": "crypto theft: an address linked to stealing attacks, wallet drainers or hack proceeds (third-party label)",
+    "cybercrime": "linked to cybercrime by a third-party label or curated list (forums, markets, malware-as-a-service, exploit trade, threat-actor channels)",
+    "money_laundering": "linked to money laundering by a third-party label",
+    "extortion": "linked to blackmail, sextortion or other extortion by a third-party label or community report",
+    "exchange": "wallet cluster labelled as a cryptocurrency exchange: a stop-node for graph expansion and a lead for a legal request to the exchange",
+    "mixer": "wallet cluster or address labelled as a mixer/tumbler: a stop-node for graph expansion",
+    "darknet_market": "dark-web market: a curated-list entry or a wallet cluster labelled as a market",
+    "crypto_service": "wallet cluster labelled as a known crypto service (pool, gambling, payment or other service): a stop-node for graph expansion",
+    "stop_node": "known service wallet: automatic graph expansion stops here (P213); follow up through a legal request, not by expanding transactions",
+    "banned_onion": "onion on Ahmia's abuse (banned) list: details withheld, never displayed in full, enriched or fetched"
+  },
+  "relations": {
+    "listed_for_actor": "onion host or Telegram channel -> threat actor/group a curated list or crawler tag names for it (deepdarkCTI, AIL galaxy tags): context, not attribution; hostile infrastructure, never fetched"
+  },
+  "timeline": {}
+}

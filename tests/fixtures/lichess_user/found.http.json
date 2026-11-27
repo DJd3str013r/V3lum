@@ -1,0 +1,16 @@
+{
+ "_fixture": "REAL live capture 2026-11-26, minimised: official Lichess account; perfs/count/playTime dropped",
+ "_meta": {
+  "url": "https://lichess.org/api/user/lichess",
+  "user_agent": "V3LUM/dev",
+  "captured": "2026-11-26T08:32:43Z",
+  "elapsed_s": 0.188,
+  "bytes_original": 944
+ },
+ "status": 200,
+ "headers": {
+  "content-type": "application/json",
+  "server": "cloudflare"
+ },
+ "body": "{\"id\": \"lichess\", \"username\": \"Lichess\", \"createdAt\": 1290460176000, \"seenAt\": 1795681915932, \"url\": \"https://lichess.org/@/Lichess\", \"verified\": true, \"patron\": true, \"profile\": {\"location\": \"Internet, Lichess.org\", \"bio\": \"https://i.imgur.com/2HhZd2d.jpg\", \"links\": \"www.youtube.com/channel/UCr6RfQga70yMM9-nuzAYTsA\\r\\ntwitch.tv/lichessdotorg\\r\\ndiscord.gg/lichess\\r\\nhttps://www.instagram.com/lichessdotorg/\\r\\nhttps://t.me/lichessdotorg\"}}"
+}

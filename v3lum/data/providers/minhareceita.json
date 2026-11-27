@@ -1,0 +1,55 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "minhareceita",
+  "name": "Minha Receita (public CNPJ API)",
+  "operator": "Minha Receita open-source project (cuducos/minha-receita, Codeberg)",
+  "hosts": [
+    "minhareceita.org"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Well-known open-source community project (MIT, moved from GitHub to Codeberg) that ingests the Receita Federal CNPJ open-data dump; identifiable maintainer, public documentation and a multi-year public track record (A8 community). 'Tiers: BrasilAPI, Minha Receita, CNPJ.ws and Querido Diario (Open Knowledge Brasil) community.' (P236 cond 1).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Community relay of the monthly RFB CNPJ dump: values are as good as the snapshot it serves (dump month published at /updated); companies opened after the last dump are missing (P236 cond 6)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 8,
+    "ttl": 259200,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "cnpj": {
+      "title": "Minha Receita CNPJ lookup /{cnpj} and RFB dump month /updated",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://codeberg.org/cuducos/minha-receita",
+        "quote": "Sources at release (class open, legal_dpo): BrasilAPI and Minha Receita (MIT code, RFB open data; one shared parser), publica.cnpj.ws public API (only free source of state IE) and Querido Diario company/partners.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "rfb",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P236 cond 1). Research C0510 terms 'MIT (moved from GitHub to Codeberg)' / 'Code MIT; data = RFB open data.' Endpoints https://minhareceita.org/{cnpj} (same schema as BrasilAPI CNPJ v1, one parser; 404 {message} for an unknown or alphanumeric CNPJ, 400 for a wrong check digit) and https://minhareceita.org/updated ({message: 'YYYY-MM'}, the dump month used for freshness ranking and the not-found wording, P236 cond 5-6). BrasilAPI relays this service (identical bodies): both are one ingestion pipeline for the two-upstream not-found rule. No published limit: be gentle (min_interval 1 s, concurrency 1); 8 s per provider in the chain (P236 cond 3); cache 72 h (P236 cond 7). Used by cnpj_lookup."
+    }
+  },
+  "notes": "Owned by batch p1-G10-2 (P236). Single-batch host (owners.json maps minhareceita.org to no provider). ttl 259200 = CNPJ class (P326 cond 7)."
+}

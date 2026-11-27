@@ -1,0 +1,33 @@
+{
+ "links": {},
+ "origin": "https://splunk.example.com:8089/servicesNS/nobody/soc_v3lum/saved/searches",
+ "generator": {
+  "build": "0000000000aa",
+  "version": "10.6.0"
+ },
+ "entry": [
+  {
+   "name": "v3lum_ioc_ip",
+   "author": "nobody",
+   "acl": {
+    "app": "soc_v3lum",
+    "owner": "nobody",
+    "sharing": "app"
+   },
+   "content": {
+    "search": "search (index=proxy OR index=dns) (src_ip=\"$args.value$\" OR dest_ip=\"$args.value$\" OR answer=\"$args.value$\") | stats count min(_time) as first_seen max(_time) as last_seen",
+    "dispatch.earliest_time": "-30d",
+    "dispatch.latest_time": "now",
+    "is_scheduled": false,
+    "actions": "",
+    "description": "V3LUM IOC look-back, IP (SOC-approved v2026.11.1)"
+   }
+  }
+ ],
+ "paging": {
+  "total": 1,
+  "perPage": 30,
+  "offset": 0
+ },
+ "messages": []
+}

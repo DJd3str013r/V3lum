@@ -1,0 +1,31 @@
+{
+ "system_store": {
+  "verified": true,
+  "version": "TLSv1.3",
+  "cipher": [
+   "TLS_AES_128_GCM_SHA256",
+   "TLSv1.3",
+   128
+  ],
+  "alpn": null,
+  "ms": 150,
+  "subject": "CN=www.example.org",
+  "issuer": "O=Example Corp,CN=Example TLS Inspection CA",
+  "not_before": "2026-11-25T20:41:05+00:00",
+  "not_after": "2027-11-25T21:41:05+00:00",
+  "serial": "0x01",
+  "sig_alg": "sha256",
+  "key_type": "RSAPublicKey",
+  "key_size": 2048,
+  "san": [
+   "www.example.org"
+  ],
+  "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "sha1": "0000000000000000000000000000000000000000"
+ },
+ "mozilla_store_only": {
+  "verified": false,
+  "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1035)"
+ },
+ "_note": "Real interception observation (2026-11-25, research egress): host, issuer and fingerprints scrubbed to documentation values; the Mozilla-only error string is verbatim."
+}

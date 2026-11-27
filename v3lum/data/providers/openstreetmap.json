@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "openstreetmap",
+  "name": "OpenStreetMap website (map links)",
+  "operator": "OpenStreetMap Foundation (UK)",
+  "hosts": [
+    "openstreetmap.org",
+    "www.openstreetmap.org"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Non-profit foundation with published terms of use and ODbL data (A8; P260 cond 5: 'trusted - ... OpenStreetMap Foundation').",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "F",
+    "justification": "Manual reverse-image or map pages whose content is third-party or user-generated: reliability cannot be judged at provider level (manual links only)."
+  },
+  "http_profile": {
+    "user_agent": "neutral"
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "map_marker": {
+      "title": "OpenStreetMap ?mlat=&mlon= marker links (manual map links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://osmfoundation.org/wiki/Terms_of_Use",
+        "quote": "The pack is offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "openstreetmap",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0615 terms 'ODbL.' (www.openstreetmap.org/?mlat={lat}&mlon={lon}; 200, client-rendered marker; live 2026-11-26). The research template's #map= fragment is replaced by &zoom=18 (P311: the value only in path/query). Coordinates are personal data: privacy links shown only for coordinates already in the case after the analyst opts in (P260 cond 11). Used by pivots_geo_image."
+    }
+  },
+  "notes": "Seeded by batch p2-G12-1 (P260) for the map website only. nominatim.openstreetmap.org (geocoding API, contact UA bound by PROFILE_REQUIREMENTS) is not a host of this provider: a batch that needs it adds its own provider or extends this one."
+}

@@ -1,0 +1,108 @@
+{
+ "checked_at": "2026-11-26",
+ "egress": "datacenter (agent proxy)",
+ "values": "Marco Zero coordinates (public landmark) and the public google.com logo URL",
+ "checks": {
+  "osm": {
+   "url_shape": "https://www.openstreetmap.org/?mlat=-23.550278&mlon=-46.633889",
+   "status": 200,
+   "elapsed_s": 0.859,
+   "bytes": 31605,
+   "headers": {
+    "content-type": "text/html; charset=utf-8",
+    "cache-control": "max-age=0, private, must-revalidate",
+    "server": "Apache",
+    "x-frame-options": "SAMEORIGIN",
+    "referrer-policy": "strict-origin-when-cross-origin"
+   },
+   "sets_cookies": true,
+   "title": "OpenStreetMap",
+   "challenge_marker": false,
+   "embeds_image_from_target_host": [],
+   "referrer_meta": null,
+   "cbir_markers": null
+  },
+  "gmaps": {
+   "url_shape": "https://www.google.com/maps/search/?api=1&query=-23.550278%2C-46.633889",
+   "status": 200,
+   "elapsed_s": 0.106,
+   "bytes": 226022,
+   "headers": {
+    "content-type": "text/html; charset=UTF-8",
+    "cache-control": "private, max-age=0",
+    "server": "gws",
+    "x-frame-options": "SAMEORIGIN"
+   },
+   "sets_cookies": true,
+   "title": "Google Maps",
+   "challenge_marker": false,
+   "embeds_image_from_target_host": [],
+   "referrer_meta": null,
+   "cbir_markers": null
+  },
+  "tineye": {
+   "url_shape": "https://tineye.com/search?url=<encoded google.com logo URL>",
+   "status": 200,
+   "elapsed_s": 0.161,
+   "bytes": 4423,
+   "headers": {
+    "content-type": "text/html",
+    "cache-control": [
+     "no-cache",
+     "no-store, no-cache, must-revalidate, max-age=0"
+    ],
+    "server": "cloudflare"
+   },
+   "sets_cookies": false,
+   "title": "TinEye Reverse Image Search",
+   "challenge_marker": false,
+   "embeds_image_from_target_host": [],
+   "referrer_meta": null,
+   "cbir_markers": null
+  },
+  "imgops": {
+   "url_shape": "https://imgops.com/<google.com logo URL>",
+   "status": 200,
+   "elapsed_s": 0.27,
+   "bytes": 44718,
+   "headers": {
+    "content-type": "text/html; charset=UTF-8",
+    "cache-control": "no-store, no-cache, must-revalidate, max-age=0",
+    "server": "cloudflare",
+    "x-frame-options": "sameorigin"
+   },
+   "sets_cookies": false,
+   "title": "ImgOps: url - &#30011;",
+   "challenge_marker": false,
+   "embeds_image_from_target_host": [
+    "//www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
+   ],
+   "referrer_meta": "never",
+   "cbir_markers": null
+  },
+  "yandex": {
+   "url_shape": "https://yandex.com/images/search?rpt=imageview&url=<encoded google.com logo URL>",
+   "status": 200,
+   "elapsed_s": 2.921,
+   "bytes": 483995,
+   "headers": {
+    "content-type": [
+     "text/html; charset=utf-8",
+     "text/html; charset=utf-8"
+    ],
+    "cache-control": "private, max-age=3600",
+    "x-frame-options": "DENY"
+   },
+   "sets_cookies": true,
+   "title": "Yandex Images",
+   "challenge_marker": false,
+   "embeds_image_from_target_host": [],
+   "referrer_meta": null,
+   "cbir_markers": 694
+  },
+  "google_lens": {
+   "status": null,
+   "note": "not re-checked: uploadbyurl is an upload-type endpoint (Google fetches and keeps the image for the search session); research record 2026-11-25: 303 to google.com/search?vsrid=..."
+  }
+ }
+}

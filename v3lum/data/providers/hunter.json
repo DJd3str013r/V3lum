@@ -1,0 +1,117 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "hunter",
+  "name": "Hunter.io e-mail discovery API v2 (keyed; domain-search, email-count, email-finder only)",
+  "operator": "Hunter Web Services, Inc. (Hunter.io)",
+  "hosts": ["api.hunter.io"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms, a privacy policy and a business offering (A8 trusted): 'Hunter is an established company: tier trusted.' (P090 chair rationale).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": true},
+  "personal_data_review": null,
+  "reliability": {"grade": "C", "justification": "Addresses Hunter found published on the web, with its own confidence score; guessed (finder) addresses are hypotheses (P090 cond 3)."},
+  "http_profile": {"user_agent": "neutral", "accept": "application/json", "ttl": 604800, "min_interval": 1.0, "concurrency": 1, "retries": 0},
+  "quota": {"scope": "key", "month": 25, "published": true, "evidence_url": "https://hunter.io/pricing", "safety_margin": 0.8},
+  "error_markers": [],
+  "keys": {
+    "hunter": {
+      "description": "Hunter.io API key (api_key query parameter: masked by the central redaction, AR01)",
+      "signup_url": "https://hunter.io/api-keys",
+      "env": ["V3LUM_HUNTER_KEY"],
+      "multi_key": false,
+      "plan_hint": "business = a company/team Hunter account on a plan recorded by legal before it runs under the corporate profile (P090 cond 5); the free plan has 25 searches per month"
+    }
+  },
+  "sources": {
+    "domain_search": {
+      "title": "Hunter domain-search (GET https://api.hunter.io/v2/domain-search?domain=&limit=10&api_key=): address pattern and addresses of a domain - verified own domains only",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://hunter.io/terms-of-service",
+        "quote": "Key-terms: a company/team account on a plan recorded by legal before it runs under corporate. Monthly credits (free plan 25 searches/month) via the P334 block.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "hunter",
+      "sanitizer": {
+        "keep": [
+          "data.domain",
+          "data.organization",
+          "data.pattern",
+          "data.emails[].value",
+          "data.emails[].type",
+          "data.emails[].confidence",
+          "data.emails[].department",
+          "data.emails[].sources[].extracted_on",
+          "data.emails[].sources[].last_seen_on",
+          "meta.results",
+          "errors[].id",
+          "errors[].code",
+          "errors[].details"
+        ],
+        "notes": "P090 cond 4 minimisation before the HTTP cache: names, positions, seniority, phone numbers, LinkedIn/Twitter handles, source URLs, company profile fields and Hunter's own verification/accept_all verdicts (SMTP checks on its side) are dropped; only the address, its type, confidence, department and the first/last-seen dates of its sources survive."
+      },
+      "dataset": null,
+      "notes": "Research C0208 (verified_needs_key: 401 authentication_failed without a key). Own-asset-only (A11 BR4, P090 cond 2): the module runs with run_on='own_assets_only' (txt_verified/attested org-profile entries). Key 'hunter' (config.KNOWN_KEYS, env HUNTER_API_KEY / V3LUM_HUNTER_KEY) travels as api_key= in the query string: the central redaction (AR01) masks it in every URL that is cached, logged, emitted or stored (P090 cond 5). Used by hunter_io."
+    },
+    "email_count": {
+      "title": "Hunter email-count (GET https://api.hunter.io/v2/email-count?domain=|company=&api_key=): address counts by type, department and seniority - no addresses",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://hunter.io/terms-of-service",
+        "quote": "Third-party domains get email-count only (counts, no addresses), inside a case with a recorded purpose.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "hunter",
+      "sanitizer": {
+        "keep": [
+          "data.total",
+          "data.personal_emails",
+          "data.generic_emails",
+          "data.department.*",
+          "data.seniority.*",
+          "errors[].id",
+          "errors[].code",
+          "errors[].details"
+        ],
+        "notes": "Counts only (P090 cond 2)."
+      },
+      "dataset": null,
+      "notes": "Hunter documents email-count as free of credits; the formerly keyless call answers 401 authentication_failed (research 2026-11-25), so the key is required. Used by hunter_io (own domains) and hunter_io_count (third-party domains and company names, case with a recorded purpose)."
+    },
+    "email_finder": {
+      "title": "Hunter email-finder (GET https://api.hunter.io/v2/email-finder?domain=&first_name=&last_name=&api_key=): one guessed address for a named person",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://hunter.io/terms-of-service",
+        "quote": "email-finder only for a person the analyst typed inside a case with a recorded purpose; person_name modules are never default (A3).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "hunter",
+      "sanitizer": {
+        "keep": [
+          "data.email",
+          "data.score",
+          "data.domain",
+          "data.sources[].extracted_on",
+          "data.sources[].last_seen_on",
+          "errors[].id",
+          "errors[].code",
+          "errors[].details"
+        ],
+        "notes": "P090 cond 3/4: the echoed name, position, phone, social handles, company and Hunter's verification verdict are dropped; the guessed address is a generated value (expand=False)."
+      },
+      "dataset": null,
+      "notes": "HTTP 451 'unavailable_for_legal_reasons' = the person asked Hunter not to process their data (honoured: no result is kept). Used by hunter_io_finder. The email-verifier endpoint is never wired (rule 2: SMTP probing on our behalf, P090 cond 1)."
+    }
+  },
+  "notes": "Owned by batch p3-G04-1 (P090 hunter_io, hunter_io_count, hunter_io_finder; the offline hunter_sender_check needs no provider). flags.sensitive: a people-data provider (employee addresses, names, phones; A4 BR1) - the per-source P145 schemas run before the HTTP cache (TTL <= 7 days) and the module only ever sees the kept fields. The key 'hunter' is the legacy config.KNOWN_KEYS entry; this block adds the V3LUM_HUNTER_KEY alias and the plan hint."
+}

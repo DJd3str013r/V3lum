@@ -1,0 +1,55 @@
+{
+ "kind": "officer-list",
+ "total_results": 3,
+ "active_count": 2,
+ "resigned_count": 1,
+ "items_per_page": 35,
+ "items": [
+  {
+   "name": "EXAMPLE, Person One",
+   "officer_role": "director",
+   "appointed_on": "2001-02-03",
+   "date_of_birth": {
+    "month": 1,
+    "year": 1970
+   },
+   "nationality": "British",
+   "occupation": "Director",
+   "country_of_residence": "England",
+   "address": {
+    "address_line_1": "1 Example Street",
+    "locality": "London",
+    "postal_code": "EC1A 1AA"
+   },
+   "links": {
+    "officer": {
+     "appointments": "/officers/EXAMPLEAPPOINTMENTS1/appointments"
+    }
+   }
+  },
+  {
+   "name": "EXAMPLE, Person Two",
+   "officer_role": "secretary",
+   "appointed_on": "2001-02-03",
+   "resigned_on": "2012-12-31",
+   "nationality": "Irish",
+   "address": {
+    "address_line_1": "2 Example Road",
+    "locality": "Dublin"
+   }
+  },
+  {
+   "name": "EXAMPLE COMPANY SECRETARIES LIMITED",
+   "officer_role": "corporate-secretary",
+   "appointed_on": "2013-01-01",
+   "identification": {
+    "identification_type": "uk-limited-company",
+    "registration_number": "00000003"
+   },
+   "address": {
+    "address_line_1": "3 Example Avenue",
+    "locality": "Leeds"
+   }
+  }
+ ]
+}

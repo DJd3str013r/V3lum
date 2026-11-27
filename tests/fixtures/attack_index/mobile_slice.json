@@ -1,0 +1,821 @@
+{
+ "type": "bundle",
+ "id": "bundle--fixture-mobile-slice",
+ "objects": [
+  {
+   "type": "x-mitre-collection",
+   "id": "x-mitre-collection--dac0d2d7-8653-445c-9bff-82f934c1e858",
+   "name": "Mobile ATT&CK",
+   "x_mitre_version": "20.1",
+   "created": "2018-01-17T12:56:55.080Z",
+   "modified": "2026-11-05T05:02:21.441Z",
+   "x_mitre_attack_spec_version": "3.3.0",
+   "description": "ATT&CK for Mobile is a matrix of adversary behavior against mobile devices (smartphones and tablets running the Android or iOS/iPadOS operating systems).",
+   "x_mitre_contents": [
+    {
+     "object_ref": "attack-pattern--039bc59c-ecc7-4997-b2b4-4ab728bd91aa",
+     "object_modified": "2025-10-24T17:48:20.267Z"
+    },
+    {
+     "object_ref": "attack-pattern--0d95940f-9583-4e0f-824c-a42c1be47fad",
+     "object_modified": "2025-10-24T17:48:23.643Z"
+    },
+    {
+     "object_ref": "attack-pattern--11bd699b-f2c2-4e48-bf46-fb3f8acd9799",
+     "object_modified": "2025-10-24T17:48:25.548Z"
+    },
+    {
+     "object_ref": "attack-pattern--1ff89c1b-7615-4fe8-b9cb-63aaf52e6dee",
+     "object_modified": "2025-10-24T17:48:30.394Z"
+    },
+    {
+     "object_ref": "attack-pattern--51636761-2e35-44bf-9e56-e337adf97174",
+     "object_modified": "2026-05-12T15:12:00.632Z"
+    },
+    {
+     "object_ref": "attack-pattern--6c49d50f-494d-4150-b774-a655022d20a6",
+     "object_modified": "2026-05-12T15:12:00.640Z"
+    },
+    {
+     "object_ref": "attack-pattern--d13fa042-8f26-44e1-a2a8-af0bf8e2ac9a",
+     "object_modified": "2026-05-12T15:12:00.717Z"
+    },
+    {
+     "object_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+     "object_modified": "2026-05-12T16:33:30.227Z"
+    },
+    {
+     "object_ref": "intrusion-set--0ec2f388-bf0f-4b5c-97b1-fc736d26c25f",
+     "object_modified": "2026-07-31T20:48:24.117Z"
+    },
+    {
+     "object_ref": "malware--037f44f0-0c07-4c7f-b40e-0325b5b228a9",
+     "object_modified": "2026-09-02T18:56:22.541Z"
+    },
+    {
+     "object_ref": "malware--5aff44ab-5a41-49bb-b5d1-b4876d0437f4",
+     "object_modified": "2024-04-17T17:06:28.821Z"
+    },
+    {
+     "object_ref": "x-mitre-matrix--5104d5f0-16b7-4aec-8ae3-0a90cd5494fc",
+     "object_modified": "2025-04-18T18:00:50.259Z"
+    }
+   ]
+  },
+  {
+   "type": "intrusion-set",
+   "id": "intrusion-set--0ec2f388-bf0f-4b5c-97b1-fc736d26c25f",
+   "created": "2019-08-26T15:03:02.577Z",
+   "revoked": false,
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "G0094",
+     "url": "https://attack.mitre.org/groups/G0094"
+    }
+   ],
+   "modified": "2026-07-31T20:48:24.117Z",
+   "name": "Kimsuky",
+   "aliases": [
+    "Kimsuky",
+    "Black Banshee",
+    "Velvet Chollima",
+    "Emerald Sleet",
+    "THALLIUM",
+    "APT43",
+    "TA427",
+    "Springtail",
+    "Earth Kumiho",
+    "PatheticSlug"
+   ],
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "enterprise-attack",
+    "mobile-attack"
+   ],
+   "x_mitre_version": "5.2"
+  },
+  {
+   "type": "malware",
+   "id": "malware--037f44f0-0c07-4c7f-b40e-0325b5b228a9",
+   "created": "2020-06-26T15:32:24.569Z",
+   "revoked": false,
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "S0480",
+     "url": "https://attack.mitre.org/software/S0480"
+    }
+   ],
+   "modified": "2026-09-02T18:56:22.541Z",
+   "name": "Cerberus",
+   "is_family": true,
+   "x_mitre_platforms": [
+    "Android"
+   ],
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "mobile-attack"
+   ],
+   "x_mitre_version": "1.1",
+   "x_mitre_aliases": [
+    "Cerberus"
+   ]
+  },
+  {
+   "modified": "2024-04-17T17:06:28.821Z",
+   "name": "BRATA",
+   "is_family": true,
+   "x_mitre_platforms": [
+    "Android"
+   ],
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "mobile-attack"
+   ],
+   "x_mitre_version": "1.0",
+   "x_mitre_aliases": [
+    "BRATA"
+   ],
+   "type": "malware",
+   "id": "malware--5aff44ab-5a41-49bb-b5d1-b4876d0437f4",
+   "created": "2023-12-18T18:06:22.975Z",
+   "revoked": false,
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "S1094",
+     "url": "https://attack.mitre.org/software/S1094"
+    }
+   ]
+  },
+  {
+   "type": "attack-pattern",
+   "id": "attack-pattern--039bc59c-ecc7-4997-b2b4-4ab728bd91aa",
+   "created": "2019-10-30T15:37:55.029Z",
+   "revoked": true,
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "T1540",
+     "url": "https://attack.mitre.org/techniques/T1540"
+    }
+   ],
+   "modified": "2025-10-24T17:48:20.267Z",
+   "name": "Code Injection",
+   "kill_chain_phases": [
+    {
+     "kill_chain_name": "mitre-mobile-attack",
+     "phase_name": "persistence"
+    },
+    {
+     "kill_chain_name": "mitre-mobile-attack",
+     "phase_name": "privilege-escalation"
+    },
+    {
+     "kill_chain_name": "mitre-mobile-attack",
+     "phase_name": "defense-evasion"
+    }
+   ],
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "mobile-attack"
+   ],
+   "x_mitre_is_subtechnique": false,
+   "x_mitre_platforms": [
+    "Android",
+    "iOS"
+   ],
+   "x_mitre_version": "1.0",
+   "description": "Adversaries may use code injection attacks to implant arbitrary code into the address space of a running application."
+  },
+  {
+   "type": "attack-pattern",
+   "id": "attack-pattern--0d95940f-9583-4e0f-824c-a42c1be47fad",
+   "created": "2018-10-17T00:14:20.652Z",
+   "revoked": false,
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "T1474",
+     "url": "https://attack.mitre.org/techniques/T1474"
+    }
+   ],
+   "modified": "2025-10-24T17:48:23.643Z",
+   "name": "Supply Chain Compromise",
+   "kill_chain_phases": [
+    {
+     "kill_chain_name": "mitre-mobile-attack",
+     "phase_name": "initial-access"
+    }
+   ],
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "mobile-attack"
+   ],
+   "x_mitre_is_subtechnique": false,
+   "x_mitre_platforms": [
+    "Android",
+    "iOS"
+   ],
+   "x_mitre_version": "2.1",
+   "description": "Adversaries may manipulate products or product delivery mechanisms prior to receipt by a final consumer for the purpose of data or system compromise."
+  },
+  {
+   "type": "attack-pattern",
+   "id": "attack-pattern--11bd699b-f2c2-4e48-bf46-fb3f8acd9799",
+   "created": "2017-10-25T14:48:30.462Z",
+   "revoked": true,
+   "external_references": [
+    {
+     "source_name": "mitre-mobile-attack",
+     "external_id": "T1425",
+     "url": "https://attack.mitre.org/techniques/T1425"
+    }
+   ],
+   "modified": "2025-10-24T17:48:25.548Z",
+   "name": "Insecure Third-Party Libraries",
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "mobile-attack"
+   ],
+   "x_mitre_is_subtechnique": false,
+   "x_mitre_version": "1.0"
+  },
+  {
+   "type": "attack-pattern",
+   "id": "attack-pattern--1ff89c1b-7615-4fe8-b9cb-63aaf52e6dee",
+   "created": "2022-03-30T19:05:17.048Z",
+   "revoked": false,
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "T1631.001",
+     "url": "https://attack.mitre.org/techniques/T1631/001"
+    }
+   ],
+   "modified": "2025-10-24T17:48:30.394Z",
+   "name": "Ptrace System Calls",
+   "kill_chain_phases": [
+    {
+     "kill_chain_name": "mitre-mobile-attack",
+     "phase_name": "defense-evasion"
+    },
+    {
+     "kill_chain_name": "mitre-mobile-attack",
+     "phase_name": "privilege-escalation"
+    }
+   ],
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "mobile-attack"
+   ],
+   "x_mitre_is_subtechnique": true,
+   "x_mitre_platforms": [
+    "Android",
+    "iOS"
+   ],
+   "x_mitre_version": "1.1",
+   "description": "Adversaries may inject malicious code into processes via ptrace (process trace) system calls in order to evade process-based defenses as well as possibly elevat"
+  },
+  {
+   "type": "attack-pattern",
+   "id": "attack-pattern--51636761-2e35-44bf-9e56-e337adf97174",
+   "created": "2022-03-30T19:20:37.864Z",
+   "revoked": false,
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "T1406.002",
+     "url": "https://attack.mitre.org/techniques/T1406/002"
+    }
+   ],
+   "modified": "2026-05-12T15:12:00.632Z",
+   "name": "Software Packing",
+   "kill_chain_phases": [
+    {
+     "kill_chain_name": "mitre-mobile-attack",
+     "phase_name": "defense-evasion"
+    }
+   ],
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "mobile-attack"
+   ],
+   "x_mitre_is_subtechnique": true,
+   "x_mitre_platforms": [
+    "Android",
+    "iOS"
+   ],
+   "x_mitre_version": "1.1",
+   "description": "Adversaries may perform software packing to conceal their code."
+  },
+  {
+   "type": "attack-pattern",
+   "id": "attack-pattern--6c49d50f-494d-4150-b774-a655022d20a6",
+   "created": "2017-10-25T14:48:14.460Z",
+   "revoked": false,
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "T1407",
+     "url": "https://attack.mitre.org/techniques/T1407"
+    }
+   ],
+   "modified": "2026-05-12T15:12:00.640Z",
+   "name": "Download New Code at Runtime",
+   "kill_chain_phases": [
+    {
+     "kill_chain_name": "mitre-mobile-attack",
+     "phase_name": "defense-evasion"
+    }
+   ],
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "mobile-attack"
+   ],
+   "x_mitre_is_subtechnique": false,
+   "x_mitre_platforms": [
+    "Android",
+    "iOS"
+   ],
+   "x_mitre_version": "1.5",
+   "description": "Adversaries may download and execute dynamic code not included in the original application package after installation."
+  },
+  {
+   "type": "attack-pattern",
+   "id": "attack-pattern--d13fa042-8f26-44e1-a2a8-af0bf8e2ac9a",
+   "created": "2017-10-25T14:48:32.328Z",
+   "revoked": false,
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "T1406",
+     "url": "https://attack.mitre.org/techniques/T1406"
+    }
+   ],
+   "modified": "2026-05-12T15:12:00.717Z",
+   "name": "Obfuscated Files or Information",
+   "kill_chain_phases": [
+    {
+     "kill_chain_name": "mitre-mobile-attack",
+     "phase_name": "defense-evasion"
+    }
+   ],
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "mobile-attack"
+   ],
+   "x_mitre_is_subtechnique": false,
+   "x_mitre_platforms": [
+    "Android",
+    "iOS"
+   ],
+   "x_mitre_version": "3.1",
+   "description": "Adversaries may attempt to make a payload or file difficult to discover or analyze by encrypting, encoding, or otherwise obfuscating its contents on the device "
+  },
+  {
+   "type": "x-mitre-matrix",
+   "id": "x-mitre-matrix--5104d5f0-16b7-4aec-8ae3-0a90cd5494fc",
+   "created": "2018-10-17T00:14:20.652Z",
+   "revoked": false,
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "mobile-attack",
+     "url": "https://attack.mitre.org/matrices/mobile-attack"
+    }
+   ],
+   "modified": "2025-04-18T18:00:50.259Z",
+   "name": "Network-Based Effects",
+   "tactic_refs": [
+    "x-mitre-tactic--9eb4c21e-4fa8-44c9-b167-dbfc455f9210",
+    "x-mitre-tactic--e78d7d60-41b5-49b7-b0a9-5c5d4cbabe17"
+   ],
+   "x_mitre_deprecated": true,
+   "x_mitre_domains": [
+    "mobile-attack"
+   ],
+   "x_mitre_version": "1.0"
+  },
+  {
+   "type": "x-mitre-matrix",
+   "id": "x-mitre-matrix--a382db5e-d009-4135-b893-0e0ff021c95b",
+   "created": "2018-10-17T00:14:20.652Z",
+   "revoked": false,
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "mobile-attack",
+     "url": "https://attack.mitre.org/matrices/mobile"
+    }
+   ],
+   "modified": "2026-07-31T20:48:58.758Z",
+   "name": "Mobile ATT&CK",
+   "tactic_refs": [
+    "x-mitre-tactic--0a93fd8e-4a83-4c15-8203-db290e5f2ac6",
+    "x-mitre-tactic--4a800987-a3a8-4d56-a1bd-0d7171431756",
+    "x-mitre-tactic--363bbeff-bb2a-4734-ac74-d6d37202fe54",
+    "x-mitre-tactic--3e962de5-3280-43b7-bc10-334fbc1d6fa8",
+    "x-mitre-tactic--987cda6d-eb77-406b-bf68-bcb5f3d2e1df",
+    "x-mitre-tactic--6fcb36b8-3776-483b-8699-42215714fb10",
+    "x-mitre-tactic--d418cdeb-1b9f-4a6b-a15d-2f89f549f8c1",
+    "x-mitre-tactic--7be441c2-0095-4b1e-8125-fa8ffda29b0f",
+    "x-mitre-tactic--7a0d25d3-f0c0-40bf-bf90-c743871b19ba",
+    "x-mitre-tactic--3f660805-fa2e-42e8-8851-57f9e9b653e3",
+    "x-mitre-tactic--10fa8d8d-1b04-4176-917e-738724239981",
+    "x-mitre-tactic--6ebce653-294a-444a-bffb-14c04c8d137e"
+   ],
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "mobile-attack"
+   ],
+   "x_mitre_version": "2.0"
+  },
+  {
+   "type": "x-mitre-tactic",
+   "id": "x-mitre-tactic--0a93fd8e-4a83-4c15-8203-db290e5f2ac6",
+   "created": "2018-10-17T00:14:20.652Z",
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "TA0027",
+     "url": "https://attack.mitre.org/tactics/TA0027"
+    }
+   ],
+   "modified": "2025-04-25T14:40:48.923Z",
+   "name": "Initial Access",
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "mobile-attack"
+   ],
+   "x_mitre_version": "1.0",
+   "x_mitre_shortname": "initial-access"
+  },
+  {
+   "type": "x-mitre-tactic",
+   "id": "x-mitre-tactic--10fa8d8d-1b04-4176-917e-738724239981",
+   "created": "2018-10-17T00:14:20.652Z",
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "TA0036",
+     "url": "https://attack.mitre.org/tactics/TA0036"
+    }
+   ],
+   "modified": "2025-04-25T14:40:49.291Z",
+   "name": "Exfiltration",
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "mobile-attack"
+   ],
+   "x_mitre_version": "1.0",
+   "x_mitre_shortname": "exfiltration"
+  },
+  {
+   "type": "x-mitre-tactic",
+   "id": "x-mitre-tactic--363bbeff-bb2a-4734-ac74-d6d37202fe54",
+   "created": "2018-10-17T00:14:20.652Z",
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "TA0028",
+     "url": "https://attack.mitre.org/tactics/TA0028"
+    }
+   ],
+   "modified": "2025-04-25T14:40:49.660Z",
+   "name": "Persistence",
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "mobile-attack"
+   ],
+   "x_mitre_version": "1.0",
+   "x_mitre_shortname": "persistence"
+  },
+  {
+   "type": "x-mitre-tactic",
+   "id": "x-mitre-tactic--3e962de5-3280-43b7-bc10-334fbc1d6fa8",
+   "created": "2018-10-17T00:14:20.652Z",
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "TA0029",
+     "url": "https://attack.mitre.org/tactics/TA0029"
+    }
+   ],
+   "modified": "2025-04-25T14:40:50.023Z",
+   "name": "Privilege Escalation",
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "mobile-attack"
+   ],
+   "x_mitre_version": "1.0",
+   "x_mitre_shortname": "privilege-escalation"
+  },
+  {
+   "type": "x-mitre-tactic",
+   "id": "x-mitre-tactic--3f660805-fa2e-42e8-8851-57f9e9b653e3",
+   "created": "2018-10-17T00:14:20.652Z",
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "TA0037",
+     "url": "https://attack.mitre.org/tactics/TA0037"
+    }
+   ],
+   "modified": "2025-04-25T14:40:50.386Z",
+   "name": "Command and Control",
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "mobile-attack"
+   ],
+   "x_mitre_version": "1.0",
+   "x_mitre_shortname": "command-and-control"
+  },
+  {
+   "type": "x-mitre-tactic",
+   "id": "x-mitre-tactic--4a800987-a3a8-4d56-a1bd-0d7171431756",
+   "created": "2020-01-27T14:00:49.089Z",
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "TA0041",
+     "url": "https://attack.mitre.org/tactics/TA0041"
+    }
+   ],
+   "modified": "2025-04-25T14:40:50.761Z",
+   "name": "Execution",
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "mobile-attack"
+   ],
+   "x_mitre_version": "1.0",
+   "x_mitre_shortname": "execution"
+  },
+  {
+   "type": "x-mitre-tactic",
+   "id": "x-mitre-tactic--6ebce653-294a-444a-bffb-14c04c8d137e",
+   "created": "2018-10-17T00:14:20.652Z",
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "TA0034",
+     "url": "https://attack.mitre.org/tactics/TA0034"
+    }
+   ],
+   "modified": "2025-04-25T14:40:51.127Z",
+   "name": "Impact",
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "mobile-attack"
+   ],
+   "x_mitre_version": "1.0",
+   "x_mitre_shortname": "impact"
+  },
+  {
+   "type": "x-mitre-tactic",
+   "id": "x-mitre-tactic--6fcb36b8-3776-483b-8699-42215714fb10",
+   "created": "2018-10-17T00:14:20.652Z",
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "TA0031",
+     "url": "https://attack.mitre.org/tactics/TA0031"
+    }
+   ],
+   "modified": "2025-04-25T14:40:51.482Z",
+   "name": "Credential Access",
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "mobile-attack"
+   ],
+   "x_mitre_version": "1.0",
+   "x_mitre_shortname": "credential-access"
+  },
+  {
+   "type": "x-mitre-tactic",
+   "id": "x-mitre-tactic--7a0d25d3-f0c0-40bf-bf90-c743871b19ba",
+   "created": "2018-10-17T00:14:20.652Z",
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "TA0035",
+     "url": "https://attack.mitre.org/tactics/TA0035"
+    }
+   ],
+   "modified": "2025-04-25T14:40:51.847Z",
+   "name": "Collection",
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "mobile-attack"
+   ],
+   "x_mitre_version": "1.0",
+   "x_mitre_shortname": "collection"
+  },
+  {
+   "type": "x-mitre-tactic",
+   "id": "x-mitre-tactic--7be441c2-0095-4b1e-8125-fa8ffda29b0f",
+   "created": "2018-10-17T00:14:20.652Z",
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "TA0033",
+     "url": "https://attack.mitre.org/tactics/TA0033"
+    }
+   ],
+   "modified": "2025-04-25T14:40:52.207Z",
+   "name": "Lateral Movement",
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "mobile-attack"
+   ],
+   "x_mitre_version": "1.0",
+   "x_mitre_shortname": "lateral-movement"
+  },
+  {
+   "type": "x-mitre-tactic",
+   "id": "x-mitre-tactic--987cda6d-eb77-406b-bf68-bcb5f3d2e1df",
+   "created": "2018-10-17T00:14:20.652Z",
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "TA0030",
+     "url": "https://attack.mitre.org/tactics/TA0030"
+    }
+   ],
+   "modified": "2025-04-25T14:40:52.568Z",
+   "name": "Defense Evasion",
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "mobile-attack"
+   ],
+   "x_mitre_version": "1.0",
+   "x_mitre_shortname": "defense-evasion"
+  },
+  {
+   "type": "x-mitre-tactic",
+   "id": "x-mitre-tactic--9eb4c21e-4fa8-44c9-b167-dbfc455f9210",
+   "created": "2018-10-17T00:14:20.652Z",
+   "revoked": false,
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "TA0038",
+     "url": "https://attack.mitre.org/tactics/TA0038"
+    }
+   ],
+   "modified": "2025-04-18T18:00:48.173Z",
+   "name": "Network Effects",
+   "x_mitre_deprecated": true,
+   "x_mitre_domains": [
+    "mobile-attack"
+   ],
+   "x_mitre_version": "1.0",
+   "x_mitre_shortname": "network-effects"
+  },
+  {
+   "type": "x-mitre-tactic",
+   "id": "x-mitre-tactic--d418cdeb-1b9f-4a6b-a15d-2f89f549f8c1",
+   "created": "2018-10-17T00:14:20.652Z",
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "TA0032",
+     "url": "https://attack.mitre.org/tactics/TA0032"
+    }
+   ],
+   "modified": "2025-04-25T14:40:53.105Z",
+   "name": "Discovery",
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "mobile-attack"
+   ],
+   "x_mitre_version": "1.0",
+   "x_mitre_shortname": "discovery"
+  },
+  {
+   "type": "x-mitre-tactic",
+   "id": "x-mitre-tactic--e78d7d60-41b5-49b7-b0a9-5c5d4cbabe17",
+   "created": "2018-10-17T00:14:20.652Z",
+   "revoked": false,
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "TA0039",
+     "url": "https://attack.mitre.org/tactics/TA0039"
+    }
+   ],
+   "modified": "2025-04-18T18:00:48.346Z",
+   "name": "Remote Service Effects",
+   "x_mitre_deprecated": true,
+   "x_mitre_domains": [
+    "mobile-attack"
+   ],
+   "x_mitre_version": "1.0",
+   "x_mitre_shortname": "remote-service-effects"
+  },
+  {
+   "type": "identity",
+   "id": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+   "name": "The MITRE Corporation",
+   "identity_class": "organization"
+  },
+  {
+   "type": "marking-definition",
+   "id": "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168",
+   "definition_type": "statement",
+   "definition": {
+    "statement": "Copyright 2015-2026, The MITRE Corporation. MITRE ATT&CK and ATT&CK are registered trademarks of The MITRE Corporation."
+   },
+   "created": "2017-06-01T00:00:00.000Z"
+  },
+  {
+   "type": "relationship",
+   "id": "relationship--11113fa5-150e-4574-89fc-5db66479e268",
+   "relationship_type": "uses",
+   "source_ref": "malware--5aff44ab-5a41-49bb-b5d1-b4876d0437f4",
+   "target_ref": "attack-pattern--6c49d50f-494d-4150-b774-a655022d20a6",
+   "revoked": false,
+   "x_mitre_deprecated": false,
+   "created": "2023-12-18T18:13:28.074Z",
+   "modified": "2026-04-29T14:23:05.927Z"
+  },
+  {
+   "type": "relationship",
+   "id": "relationship--37123a8d-5c03-459c-bd0b-c17e2ee75a10",
+   "relationship_type": "uses",
+   "source_ref": "malware--037f44f0-0c07-4c7f-b40e-0325b5b228a9",
+   "target_ref": "attack-pattern--6c49d50f-494d-4150-b774-a655022d20a6",
+   "revoked": false,
+   "x_mitre_deprecated": false,
+   "created": "2020-06-26T15:32:25.074Z",
+   "modified": "2026-09-02T18:56:23.231Z"
+  },
+  {
+   "type": "relationship",
+   "id": "relationship--386b0a9f-9951-4717-8bce-30c8fbe05050",
+   "relationship_type": "uses",
+   "source_ref": "malware--037f44f0-0c07-4c7f-b40e-0325b5b228a9",
+   "target_ref": "attack-pattern--d13fa042-8f26-44e1-a2a8-af0bf8e2ac9a",
+   "revoked": false,
+   "x_mitre_deprecated": false,
+   "created": "2020-06-26T15:32:24.955Z",
+   "modified": "2026-09-02T21:35:35.887Z"
+  },
+  {
+   "type": "relationship",
+   "id": "relationship--48552acc-5f1a-422f-90fa-37108446f36d",
+   "relationship_type": "revoked-by",
+   "source_ref": "attack-pattern--039bc59c-ecc7-4997-b2b4-4ab728bd91aa",
+   "target_ref": "attack-pattern--1ff89c1b-7615-4fe8-b9cb-63aaf52e6dee",
+   "revoked": false,
+   "x_mitre_deprecated": false,
+   "created": "2022-03-30T19:14:20.374Z",
+   "modified": "2026-04-29T14:23:06.024Z"
+  },
+  {
+   "type": "relationship",
+   "id": "relationship--5fb59cf9-9af5-4dd5-9878-dda2ba228ae5",
+   "relationship_type": "uses",
+   "source_ref": "malware--5aff44ab-5a41-49bb-b5d1-b4876d0437f4",
+   "target_ref": "attack-pattern--d13fa042-8f26-44e1-a2a8-af0bf8e2ac9a",
+   "revoked": false,
+   "x_mitre_deprecated": false,
+   "created": "2023-12-18T18:12:37.010Z",
+   "modified": "2026-09-02T21:35:35.991Z"
+  },
+  {
+   "type": "relationship",
+   "id": "relationship--6661823b-4fdd-4879-ad5d-64c9a4b12519",
+   "relationship_type": "subtechnique-of",
+   "source_ref": "attack-pattern--51636761-2e35-44bf-9e56-e337adf97174",
+   "target_ref": "attack-pattern--d13fa042-8f26-44e1-a2a8-af0bf8e2ac9a",
+   "revoked": false,
+   "x_mitre_deprecated": false,
+   "created": "2022-04-05T17:03:53.457Z",
+   "modified": "2026-09-02T21:35:36.015Z"
+  },
+  {
+   "type": "relationship",
+   "id": "relationship--cc49561f-8364-4908-9111-ad3a6dcd922c",
+   "relationship_type": "revoked-by",
+   "source_ref": "attack-pattern--11bd699b-f2c2-4e48-bf46-fb3f8acd9799",
+   "target_ref": "attack-pattern--0d95940f-9583-4e0f-824c-a42c1be47fad",
+   "revoked": false,
+   "x_mitre_deprecated": false,
+   "created": "2018-10-17T00:14:20.652Z",
+   "modified": "2026-04-29T14:23:06.204Z"
+  },
+  {
+   "type": "relationship",
+   "id": "relationship--dfdf329f-8fc3-4dcb-89b4-c3f1095cd77a",
+   "relationship_type": "uses",
+   "source_ref": "malware--5aff44ab-5a41-49bb-b5d1-b4876d0437f4",
+   "target_ref": "attack-pattern--51636761-2e35-44bf-9e56-e337adf97174",
+   "revoked": false,
+   "x_mitre_deprecated": false,
+   "created": "2023-12-18T18:14:41.248Z",
+   "modified": "2026-04-29T14:23:06.230Z"
+  }
+ ]
+}

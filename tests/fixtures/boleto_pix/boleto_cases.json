@@ -1,0 +1,92 @@
+{
+ "today": "2026-11-26",
+ "cases": [
+  {
+   "id": "bancario_ok_new_cycle",
+   "line": "34191.09008 00012.345674 89001.234569 4 16470000123456",
+   "bank_code": "341",
+   "amount_cents": 123456,
+   "due_chosen": "2026-12-01",
+   "cycle": "new",
+   "ambiguous": false
+  },
+  {
+   "id": "bancario_old_cycle",
+   "line": "00190000090200000012134567890172397430000009990",
+   "bank_code": "001",
+   "amount_cents": 9990,
+   "due_chosen": "2024-06-10",
+   "cycle": "old",
+   "ambiguous": false
+  },
+  {
+   "id": "bancario_ambiguous_factor",
+   "line": "23790000090000000000000000000018950000000050000",
+   "bank_code": "237",
+   "due_factor": 5000,
+   "ambiguous": true
+  },
+  {
+   "id": "bancario_no_due_no_amount",
+   "line": "10490000010000000000000000000026200000000000000",
+   "bank_code": "104",
+   "due_factor": 0
+  },
+  {
+   "id": "bancario_tampered_value",
+   "line": "34191090080001234567489001234569416470000999999",
+   "check_digits_ok": false
+  },
+  {
+   "id": "bancario_typo_field1",
+   "line": "34151090080001234567489001234569416470000123456",
+   "check_digits_ok": false
+  },
+  {
+   "id": "barcode_44",
+   "line": "34194164700001234561090000012345678900123456",
+   "bank_code": "341",
+   "amount_cents": 123456
+  },
+  {
+   "id": "arrecadacao_mod10_energy",
+   "line": "836700000000987601234568789012345672890123456786",
+   "segment": "3",
+   "amount_cents": 9876
+  },
+  {
+   "id": "arrecadacao_mod11_cnpj",
+   "line": "868300000006500000000002000012345679890123456785",
+   "segment": "6",
+   "cnpj_root": "00000000",
+   "amount_cents": 5000
+  },
+  {
+   "id": "arrecadacao_tampered",
+   "line": "836700000000987601231568789012345672890123456786",
+   "check_digits_ok": false
+  },
+  {
+   "id": "not_a_boleto",
+   "line": "1234 5678",
+   "ok": false
+  }
+ ],
+ "claimed_bank_texts": [
+  {
+   "text": "BANCO DO BRASIL S.A. - Pagavel em qualquer banco ate o vencimento",
+   "line_id": "bancario_ok_new_cycle",
+   "mismatch": true
+  },
+  {
+   "text": "Itaú Unibanco - Ficha de compensação",
+   "line_id": "bancario_ok_new_cycle",
+   "mismatch": false
+  },
+  {
+   "text": "Recibo do pagador",
+   "line_id": "bancario_ok_new_cycle",
+   "mismatch": false
+  }
+ ]
+}

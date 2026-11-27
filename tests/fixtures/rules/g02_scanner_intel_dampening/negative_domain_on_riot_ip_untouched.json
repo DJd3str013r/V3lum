@@ -1,0 +1,60 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "nodes": [
+  {
+   "key": "ipv4:8.8.8.8",
+   "depth": 1,
+   "seed": false,
+   "findings": [
+    {
+     "title": "Known good service (Google Public DNS)",
+     "severity": "info",
+     "confidence": 0.7,
+     "confidence_label": "probable",
+     "criterion": "GreyNoise riot=true for this IP (Google Public DNS) (synthetic)",
+     "tags": [
+      "known_good"
+     ],
+     "module": "greynoise_community",
+     "source": "greynoise.community",
+     "data": {
+      "state": "riot",
+      "service": "Google Public DNS",
+      "suppression_rule": "greynoise_riot",
+      "scope": "ip"
+     }
+    }
+   ]
+  },
+  {
+   "key": "domain:dns.example.com",
+   "depth": 0,
+   "seed": true,
+   "findings": [
+    {
+     "title": "Domain listed on a blocklist",
+     "severity": "medium",
+     "confidence": 0.7,
+     "confidence_label": "probable",
+     "criterion": "listed by a domain blocklist (synthetic)",
+     "tags": [
+      "blocklisted"
+     ],
+     "module": "domain_blocklists",
+     "source": "firehol.level1",
+     "data": {}
+    }
+   ]
+  }
+ ],
+ "edges": [
+  {
+   "src": "domain:dns.example.com",
+   "dst": "ipv4:8.8.8.8",
+   "relation": "resolves_to",
+   "module": "dns_records",
+   "confidence": 0.9
+  }
+ ]
+}

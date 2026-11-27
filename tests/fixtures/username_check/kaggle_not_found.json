@@ -1,0 +1,23 @@
+{
+ "_meta": {
+  "module": "username_check",
+  "case": "kaggle_not_found",
+  "source": "V3LUM calibration capture (P113 FC2), Kaggle",
+  "request": {
+   "method": "GET",
+   "url": "https://www.kaggle.com/qz7wkd0tr3mxl1vbn5ha",
+   "user_agent": "V3LUM/dev",
+   "redirects": "not followed"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "live check, this sandbox's datacenter egress",
+  "elapsed_s": 0.11,
+  "minimised": true,
+  "note": "random 20-char control; the 404 page embeds 'site-wide-recaptcha' (weak captcha words on a 404 are not a block, P321) and the generic site og:image; nonces and the reCAPTCHA site key redacted"
+ },
+ "status": 404,
+ "headers": {
+  "content-type": "text/html; charset=utf-8"
+ },
+ "body": "<!DOCTYPE html><html lang=\"en\"><head><title>Kaggle: Your Home for Data Science</title>\n<script nonce=\"REDACTED\" id=\"site-wide-recaptcha\" src=\"https://www.google.com/recaptcha/enterprise.js?render=REDACTED\" async defer></script>\n<meta name=\"description\" content=\"Discover what actually works in AI. Join millions of builders, researchers, and labs evaluating agents, models, and frontier technology through crowdsourced benchmarks, competitions, and hackathons.\" />\n<meta property=\"og:image\" content=\"https://www.kaggle.com/static/images/kaggle-wordmark-gradient.png\" />\n<meta name=\"twitter:site\" content=\"@Kaggle\" /></head><body></body></html>"
+}

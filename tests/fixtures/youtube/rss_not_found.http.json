@@ -1,0 +1,9 @@
+{
+ "origin": "live check 2026-11-26 from the research datacenter egress (well-formed random channel id; CSS stripped)",
+ "status": 404,
+ "headers": {
+  "content-type": "text/html; charset=UTF-8",
+  "server": "YouTube RSS Feeds server"
+ },
+ "body": "<!DOCTYPE html>\n<html lang=en>\n  <meta charset=utf-8>\n  <meta name=viewport content=\"initial-scale=1, minimum-scale=1, width=device-width\">\n  <title>Error 404 (Not Found)!!1</title>\n  <style></style>\n  <a href=//www.google.com/><span id=logo aria-label=Google></span></a>\n  <p><b>404.</b> <ins>That’s an error.</ins>\n  <p>The requested URL <code>/feeds/videos.xml?channel_id=UCqz7k2v9m4p1w8n3x5c6b9a</code> was not found on this server.  <ins>That’s all we know.</ins>\n"
+}

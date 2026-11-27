@@ -1,0 +1,43 @@
+{
+ "meta": {
+  "goldenCopy": {
+   "publishDate": "2026-11-25T08:00:00Z"
+  }
+ },
+ "data": {
+  "type": "lei-records",
+  "id": "QE0Q0253K88YAGNPE356",
+  "attributes": {
+   "lei": "QE0Q0253K88YAGNPE356",
+   "entity": {
+    "legalName": {
+     "name": "BANCO DO BRASIL SA",
+     "language": "pt"
+    },
+    "otherNames": [],
+    "registeredAt": {
+     "id": "RA000041",
+     "other": null
+    },
+    "registeredAs": "00.000.000/0001-91",
+    "jurisdiction": "BR",
+    "category": "GENERAL",
+    "legalForm": {
+     "id": "X0SD",
+     "other": null
+    },
+    "status": "ACTIVE",
+    "legalAddress": {
+     "city": "BRASILIA",
+     "region": "BR-DF",
+     "country": "BR"
+    }
+   },
+   "registration": {
+    "initialRegistrationDate": "2012-06-06T15:52:00Z",
+    "lastUpdateDate": "2026-08-07T07:20:59Z",
+    "status": "ISSUED"
+   }
+  }
+ }
+}

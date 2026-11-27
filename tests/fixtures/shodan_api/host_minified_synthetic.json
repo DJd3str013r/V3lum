@@ -1,0 +1,23 @@
+{
+ "_synthetic": "minify=true host answer: general host info and port list, no banners (documented behaviour).",
+ "ip_str": "203.0.113.10",
+ "asn": "AS64500",
+ "org": "Example Hosting",
+ "isp": "Example Hosting",
+ "hostnames": [
+  "web.example.com"
+ ],
+ "domains": [
+  "example.com"
+ ],
+ "ports": [
+  443,
+  8080
+ ],
+ "tags": [],
+ "last_update": "2026-11-20T10:00:00.000000",
+ "country_code": "BR",
+ "vulns": [
+  "CVE-2021-44228"
+ ]
+}

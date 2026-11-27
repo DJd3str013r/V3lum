@@ -1,0 +1,16 @@
+{
+ "_synthetic": "/api-info answer shape (documented fields); replace with a capture made with the team key before merge (P039 FC8).",
+ "scan_credits": 0,
+ "usage_limits": {
+  "scan_credits": 0,
+  "query_credits": 100,
+  "monitored_ips": 16
+ },
+ "plan": "dev",
+ "https": false,
+ "unlocked": true,
+ "query_credits": 87,
+ "monitored_ips": null,
+ "unlocked_left": 87,
+ "telnet": false
+}

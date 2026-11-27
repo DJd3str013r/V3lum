@@ -1,0 +1,52 @@
+{
+  "schema": "v3lum.provider/1",
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "id": "botvrij",
+  "name": "Botvrij.eu blocklist",
+  "operator": "Botvrij.eu",
+  "hosts": [
+    "botvrij.eu",
+    "www.botvrij.eu"
+  ],
+  "tier": "community",
+  "tier_rationale": "Public anti-botnet initiative publishing MISP-derived indicator lists with documentation (A8 community); the P071 chair rates list maintainers community.",
+  "reliability": {
+    "grade": "C",
+    "justification": "MISP-derived indicators with event context; the full blocklist has not changed since 2021-10-06 (Last-Modified), so every hit is historical."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400
+  },
+  "sources": {
+    "blocklist_full": {
+      "title": "Botvrij.eu full domain blocklist (CSV: value, decay score, type, event id, event info)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.botvrij.eu/",
+        "quote": "Per-feed terms: CERT.PL Hole (any use incl. commercial; trusted), Phishing.Database (MIT), StevenBlack (MIT), MetaMask eth-phishing-detect (permissive), spmedia (MIT), Botvrij, CyberCrime-Tracker and Procon-SP run with attribution. HaGeZi TIF and ScamSniffer are GPL-3.0 data: runtime download only, never bundled or used as fixtures (A6).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "botvrij",
+      "sanitizer": null,
+      "dataset": "url_domain_blocklists.botvrij.csv",
+      "notes": "Quote: binding council text (P071 cond 2: run with attribution). https://www.botvrij.eu/data/blocklist/blocklist_full.csv (~385 KB); frozen since 2021-10-06, so hits are always historical (P071 cond 8)."
+    }
+  },
+  "notes": "Owned by batch p1-G03-1 (P071). Matched locally (disclosure 'none')."
+}

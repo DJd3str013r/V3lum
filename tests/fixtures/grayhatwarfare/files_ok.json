@@ -1,0 +1,68 @@
+{
+ "_synthetic": "GrayhatWarfare API v2 shape (field names from the public v2 docs and the v1 clients: bucket, fileCount, type, filename, fullPath, url, size, lastModified; meta.results), documentation values; P138-FC5 requires a trimmed real success fixture captured with the team key before merge (file names carry CPF, e-mail, phone, person-name and CV patterns built from documentation values to exercise P138-FC3 masking)",
+ "query": {
+  "keywords": "exemplo",
+  "start": 0,
+  "limit": 100
+ },
+ "meta": {
+  "results": 5
+ },
+ "files": [
+  {
+   "id": 9001,
+   "bucket": "exemplo-backup.s3.amazonaws.com",
+   "bucketId": 1001,
+   "filename": "relatorio_123.456.789-00.pdf",
+   "fullPath": "rh/relatorio_123.456.789-00.pdf",
+   "url": "https://exemplo-backup.s3.amazonaws.com/rh/relatorio_123.456.789-00.pdf",
+   "size": 48213,
+   "type": "aws",
+   "lastModified": 1767225600
+  },
+  {
+   "id": 9002,
+   "bucket": "exemplo-backup.s3.amazonaws.com",
+   "bucketId": 1001,
+   "filename": "export_user@example.com.csv",
+   "fullPath": "exports/export_user@example.com.csv",
+   "url": "https://exemplo-backup.s3.amazonaws.com/exports/export_user@example.com.csv",
+   "size": 1048,
+   "type": "aws",
+   "lastModified": 1764547200
+  },
+  {
+   "id": 9003,
+   "bucket": "exemplo-backup.s3.amazonaws.com",
+   "bucketId": 1001,
+   "filename": "Maria_Souza_contrato.docx",
+   "fullPath": "juridico/Maria_Souza_contrato.docx",
+   "url": "https://exemplo-backup.s3.amazonaws.com/juridico/Maria_Souza_contrato.docx",
+   "size": 22100,
+   "type": "aws",
+   "lastModified": 1735689600
+  },
+  {
+   "id": 9004,
+   "bucket": "exemplostorage.blob.core.windows.net/public",
+   "bucketId": 1002,
+   "filename": "curriculo-joao.pdf",
+   "fullPath": "public/curriculo-joao.pdf",
+   "url": "https://exemplostorage.blob.core.windows.net/public/curriculo-joao.pdf",
+   "size": 90211,
+   "type": "azure",
+   "lastModified": 1704067200
+  },
+  {
+   "id": 9005,
+   "bucket": "exemplostorage.blob.core.windows.net/public",
+   "bucketId": 1002,
+   "filename": "logo.png",
+   "fullPath": "public/logo.png",
+   "url": "https://exemplostorage.blob.core.windows.net/public/logo.png",
+   "size": 5120,
+   "type": "azure",
+   "lastModified": 1704067200
+  }
+ ]
+}

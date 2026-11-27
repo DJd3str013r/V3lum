@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "ipinfo_lite",
+  "source_url": "https://ipinfo.io/developers/lite-api",
+  "version": "IPinfo Lite API answers fetched per lookup with the team token (case data only; verified 2026-11-26)",
+  "sha256": "",
+  "licence": "CC-BY-SA-4.0",
+  "attribution": "IP address data powered by IPinfo (https://ipinfo.io). IPinfo Lite data is licensed under the Creative Commons Attribution-ShareAlike 4.0 International licence (CC BY-SA 4.0). Stored as case data only, never bundled, and not redistributed outside the team unless under the same licence.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/ip_network/ipinfo.py"
+  ]
+}

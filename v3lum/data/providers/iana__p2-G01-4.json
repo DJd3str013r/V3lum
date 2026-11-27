@@ -1,0 +1,24 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "iana",
+  "hosts": [],
+  "sources": {
+    "whois_fallback_root_db": {
+      "title": "IANA root zone database page of one TLD (https://www.iana.org/domains/root/db/<tld>.html): registry WHOIS server, RDAP base URLs and registry website",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.iana.org/domains/root/db",
+        "quote": "Default module tier trusted (IANA and registries), terms open.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "iana",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P343 chair rationale). P343 FC2: the page only receives the TLD (never the domain); whois_fallback keeps the parsed WHOIS server and website for 7 days in its module state (one request per TLD per week). Pages are cut to the 'Additional Information' rows at parse time; the TLD-manager contact sections are never kept. A 404 means the TLD is not delegated."
+    }
+  },
+  "error_markers": [],
+  "notes": "Batch p2-G01-4 extension (P343 whois_fallback): IANA root zone database pages on the existing www.iana.org host."
+}

@@ -1,0 +1,15 @@
+{
+ "request": "GET https://cl0q.com/api/favicon?hash=<sha256>&limit=100",
+ "response": {
+  "status": 429,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": {
+   "error": "daily limit reached (1000/day)"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "free key 1,000/day (docs); body PLACEHOLDER -> QUOTA (FC5)"
+}

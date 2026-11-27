@@ -1,0 +1,21 @@
+{
+ "_provenance": {
+  "synthetic": true
+ },
+ "request": {
+  "method": "GET",
+  "host": "app.example.com",
+  "path": "/api/graphql"
+ },
+ "response": {
+  "status": 405,
+  "headers": {
+   "Content-Type": "application/json",
+   "Allow": "POST"
+  },
+  "body": "{\"timestamp\":\"2026-11-26T12:00:00.000+00:00\",\"status\":405,\"error\":\"Method Not Allowed\",\"path\":\"/api/graphql\"}"
+ },
+ "history": [],
+ "final_url": null,
+ "transport_error": null
+}

@@ -1,0 +1,47 @@
+{
+ "_synthetic": "POST /v1/domain-breaches/ success shape from the XposedOrNot API documentation (keyed endpoint, not called: P137 cond 2 re-capture with the team key is due); documentation addresses only",
+ "status": "success",
+ "metrics": {
+  "Yearly_Metrics": {
+   "2013": 1,
+   "2017": 2,
+   "2021": 1
+  },
+  "Domain_Summary": {
+   "example.com": 3,
+   "other.example.net": 1
+  },
+  "Breach_Summary": {
+   "Adobe": 1,
+   "8tracks": 2,
+   "Zomato": 1
+  },
+  "Breaches_Details": [
+   {
+    "domain": "example.com",
+    "email": "user1@example.com",
+    "breach": "Adobe"
+   },
+   {
+    "domain": "example.com",
+    "email": "user1@example.com",
+    "breach": "8tracks"
+   },
+   {
+    "domain": "example.com",
+    "email": "user2@example.com",
+    "breach": "8tracks"
+   },
+   {
+    "domain": "other.example.net",
+    "email": "user3@other.example.net",
+    "breach": "Zomato"
+   },
+   {
+    "domain": "example.com",
+    "email": "not-an-address",
+    "breach": "Adobe"
+   }
+  ]
+ }
+}

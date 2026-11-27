@@ -1,0 +1,15 @@
+% SYNTHETIC FIXTURE (p2-G01-4 prep): documented whois.denic.de layout for '-T dn,ace <domain>'; values invented (format only)
+% Restricted rights.
+%
+% Terms and Conditions of Use
+%
+% The above data may only be used within the scope of technical or
+% administrative necessities of Internet operation or to remedy legal
+% problems.
+
+Domain: example.de
+Nserver: ns1.example.de
+Nserver: ns2.example.de
+Dnskey: 257 3 13 AAAAEXAMPLEKEY0000000000000000000000000000000000000000000000000000000000000000000000000
+Status: connect
+Changed: 2020-01-01T10:00:00+01:00

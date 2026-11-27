@@ -1,0 +1,9 @@
+Laudo de vistoria cautelar - EXEMPLO SINTETICO (documentacao, sem dados reais)
+Cliente: Fulano de Tal - contato@example.com - +55 11 5555-0100
+Veiculo VW Gol 1997, Chassi: 9BWZZZ377VTEXAMPL
+Nº do chassi 9BD178169XBEXAMP0 conferido no motor.
+VIN: 1HGCM82633A004352 (importado)
+vin:93HGE6850AZEXAMPL
+Chassis remarcado? Chassi: 9BWZZZ377VTEXAMPO (leitura com letra O - invalido)
+Codigo de rastreio AB12CD34EF56GH78J e protocolo 1HGCM82633A004352X sem rotulo.
+Token solto 1HGCM82633A004352 sem rotulo nao deve virar VIN.

@@ -1,0 +1,92 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "$comment": "Two own sites share an id (no clone) and a lookalike only carries a template GTM id: nothing",
+  "org_profile": {
+    "org": {
+      "name": "ExampleBank"
+    },
+    "domains": [
+      {
+        "name": "brand.example",
+        "verification": "txt_verified"
+      },
+      {
+        "name": "brand-cards.example",
+        "verification": "attested",
+        "attested_by": "fixture",
+        "attested_date": "2026-11-01"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "key": "domain:brand.example",
+      "depth": 0,
+      "seed": true,
+      "ownership": "own_asset",
+      "tags": [
+        "own_asset"
+      ]
+    },
+    {
+      "key": "domain:brand-cards.example",
+      "depth": 1,
+      "ownership": "own_asset",
+      "tags": [
+        "own_asset"
+      ]
+    },
+    {
+      "key": "domain:examplebank-login.example.net",
+      "depth": 1
+    },
+    {
+      "key": "analytics_id:G-TEST0002AB",
+      "depth": 1
+    },
+    {
+      "key": "analytics_id:GTM-XXXX",
+      "depth": 1
+    }
+  ],
+  "edges": [
+    {
+      "src": "domain:brand.example",
+      "dst": "analytics_id:G-TEST0002AB",
+      "relation": "same_analytics",
+      "module": "hostio",
+      "confidence": 0.7,
+      "expand": false
+    },
+    {
+      "src": "domain:brand-cards.example",
+      "dst": "analytics_id:G-TEST0002AB",
+      "relation": "same_analytics",
+      "module": "hostio",
+      "confidence": 0.7,
+      "expand": false
+    },
+    {
+      "src": "domain:brand.example",
+      "dst": "analytics_id:GTM-XXXX",
+      "relation": "mentions",
+      "module": "analytics_ids",
+      "confidence": 0.7,
+      "expand": false
+    },
+    {
+      "src": "domain:examplebank-login.example.net",
+      "dst": "analytics_id:GTM-XXXX",
+      "relation": "mentions",
+      "module": "analytics_ids",
+      "confidence": 0.7,
+      "expand": false
+    }
+  ]
+}

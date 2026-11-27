@@ -1,0 +1,182 @@
+{
+ "objects": [
+  {
+   "package": {
+    "name": "event-stream",
+    "version": "4.0.1",
+    "description": "construct pipes of streams of events",
+    "date": "2018-09-29T06:55:49.107Z",
+    "links": {
+     "npm": "https://www.npmjs.com/package/event-stream",
+     "homepage": "http://github.com/example-owner/event-stream",
+     "repository": "git://github.com/example-owner/event-stream.git"
+    },
+    "publisher": {
+     "username": "co-maintainer-1",
+     "email": "co-maintainer-1@example.org"
+    },
+    "maintainers": [
+     {
+      "username": "npm",
+      "email": "npm@npmjs.com"
+     }
+    ]
+   }
+  },
+  {
+   "package": {
+    "name": "appium",
+    "version": "4.0.1",
+    "description": "Automation for Apps.",
+    "date": "2026-11-23T18:13:12.777Z",
+    "links": {
+     "npm": "https://www.npmjs.com/package/appium",
+     "homepage": "https://appium.io",
+     "repository": "git+https://github.com/appium/appium.git"
+    },
+    "publisher": {
+     "username": "GitHub Actions",
+     "email": "publisher-oidc@example.org",
+     "trustedPublisher": {
+      "id": "github"
+     }
+    },
+    "maintainers": [
+     {
+      "username": "co-maintainer-2",
+      "email": "co-maintainer-2@example.org"
+     },
+     {
+      "username": "co-maintainer-3",
+      "email": "co-maintainer-3@example.org"
+     },
+     {
+      "username": "co-maintainer-4",
+      "email": "co-maintainer-4@example.org"
+     },
+     {
+      "username": "co-maintainer-5",
+      "email": "co-maintainer-5@example.org"
+     },
+     {
+      "username": "npm",
+      "email": "npm@npmjs.com"
+     },
+     {
+      "username": "co-maintainer-6",
+      "email": "co-maintainer-6@example.org"
+     },
+     {
+      "username": "co-maintainer-7",
+      "email": "co-maintainer-7@example.org"
+     },
+     {
+      "username": "co-maintainer-8",
+      "email": "co-maintainer-8@example.org"
+     }
+    ]
+   }
+  },
+  {
+   "package": {
+    "name": "@npm/types",
+    "version": "2.1.0",
+    "description": "Typescript definitions for npm registry content",
+    "date": "2025-04-28T20:18:14.734Z",
+    "links": {
+     "npm": "https://www.npmjs.com/package/@npm/types",
+     "homepage": "https://github.com/npm/types#readme",
+     "repository": "git+https://github.com/npm/types.git"
+    },
+    "publisher": {
+     "username": "co-maintainer-9",
+     "email": "co-maintainer-9@example.org"
+    },
+    "maintainers": [
+     {
+      "username": "npm",
+      "email": "npm@npmjs.com"
+     },
+     {
+      "username": "npmci",
+      "email": "npmci@example.org"
+     },
+     {
+      "username": "co-maintainer-10",
+      "email": "co-maintainer-10@example.org"
+     },
+     {
+      "username": "co-maintainer-11",
+      "email": "co-maintainer-11@example.org"
+     },
+     {
+      "username": "co-maintainer-12",
+      "email": "co-maintainer-12@example.org"
+     },
+     {
+      "username": "co-maintainer-13",
+      "email": "co-maintainer-13@example.org"
+     },
+     {
+      "username": "co-maintainer-14",
+      "email": "co-maintainer-14@example.org"
+     },
+     {
+      "username": "co-maintainer-9",
+      "email": "co-maintainer-9@example.org"
+     },
+     {
+      "username": "co-maintainer-15",
+      "email": "co-maintainer-15@example.org"
+     },
+     {
+      "username": "co-maintainer-16",
+      "email": "co-maintainer-16@example.org"
+     },
+     {
+      "username": "co-maintainer-17",
+      "email": "co-maintainer-17@example.org"
+     },
+     {
+      "username": "co-maintainer-18",
+      "email": "co-maintainer-18@example.org"
+     },
+     {
+      "username": "co-maintainer-19",
+      "email": "co-maintainer-19@example.org"
+     },
+     {
+      "username": "co-maintainer-20",
+      "email": "co-maintainer-20@example.org"
+     },
+     {
+      "username": "co-maintainer-21",
+      "email": "co-maintainer-21@example.org"
+     },
+     {
+      "username": "co-maintainer-22",
+      "email": "co-maintainer-22@example.org"
+     },
+     {
+      "username": "co-maintainer-23",
+      "email": "co-maintainer-23@example.org"
+     },
+     {
+      "username": "co-maintainer-24",
+      "email": "co-maintainer-24@example.org"
+     },
+     {
+      "username": "co-maintainer-25",
+      "email": "co-maintainer-25@example.org"
+     },
+     {
+      "username": "co-maintainer-26",
+      "email": "co-maintainer-26@example.org"
+     }
+    ]
+   }
+  }
+ ],
+ "total": 1624,
+ "time": "2026-11-26T06:56:35.892Z"
+}

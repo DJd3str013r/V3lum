@@ -1,0 +1,22 @@
+{
+ "_documented": "Response shape from the official fofa-py client docstring (search -> /api/v1/search/all; results is a list of rows ordered like the 'fields' parameter). Values invented; fields requested: host,ip,port,title. No paid-key capture exists (condition 6).",
+ "error": false,
+ "mode": "extended",
+ "query": "domain=\"example.com\"",
+ "page": 1,
+ "size": 2,
+ "results": [
+  [
+   "https://www.example.com",
+   "198.51.100.40",
+   "443",
+   "Example Domain"
+  ],
+  [
+   "example.com",
+   "198.51.100.41",
+   "80",
+   "Example Domain"
+  ]
+ ]
+}

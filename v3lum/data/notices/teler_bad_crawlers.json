@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "teler_bad_crawlers",
+  "source_url": "https://github.com/kitabisa/teler-resources",
+  "version": "runtime download of db/bad-crawlers.txt by the dataset manager (teler_bad_crawlers.txt, TTL 7 days); format checked 2026-11-26 (1,741 patterns)",
+  "sha256": "",
+  "licence": "CC-BY-4.0",
+  "attribution": "teler-resources bad-crawlers.txt by kitabisa, CC BY 4.0 (https://github.com/kitabisa/teler-resources); patterns derived from JayBizzle/Crawler-Detect (MIT).",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/utility/user_agent_analysis.py"
+  ]
+}

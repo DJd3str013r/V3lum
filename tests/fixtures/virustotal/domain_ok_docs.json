@@ -1,0 +1,96 @@
+{
+ "data": {
+  "attributes": {
+   "categories": {
+    "Forcepoint ThreatSeeker": "information technology",
+    "BitDefender": "computersandsoftware"
+   },
+   "creation_date": 1106675546,
+   "last_analysis_date": 1671691600,
+   "last_analysis_results": {
+    "ADMINUSLabs": {
+     "category": "harmless",
+     "engine_name": "ADMINUSLabs",
+     "method": "blacklist",
+     "result": "clean"
+    },
+    "AegisLab WebGuard": {
+     "category": "harmless",
+     "engine_name": "AegisLab WebGuard",
+     "method": "blacklist",
+     "result": "clean"
+    },
+    "AlienVault": {
+     "category": "harmless",
+     "engine_name": "AlienVault",
+     "method": "blacklist",
+     "result": "clean"
+    }
+   },
+   "last_analysis_stats": {
+    "harmless": 3,
+    "malicious": 0,
+    "suspicious": 0,
+    "timeout": 0,
+    "undetected": 0
+   },
+   "last_dns_records": [
+    {
+     "expire": 1814400,
+     "minimum": 600,
+     "refresh": 3600,
+     "retry": 300,
+     "rname": "hostmaster.example.com",
+     "serial": 2020061203,
+     "ttl": 1799,
+     "type": "SOA",
+     "value": "ns1.example.com"
+    },
+    {
+     "ttl": 1162,
+     "type": "A",
+     "value": "192.0.2.8"
+    },
+    {
+     "ttl": 299,
+     "type": "AAAA",
+     "value": "2001:db8::6f"
+    },
+    {
+     "priority": 1,
+     "ttl": 1545,
+     "type": "MX",
+     "value": "mx.example.com"
+    }
+   ],
+   "last_dns_records_date": 1591833767,
+   "last_modification_date": 1591889814,
+   "last_update_date": 1577183919,
+   "popularity_ranks": {
+    "Alexa": {
+     "rank": 47288,
+     "timestamp": 1591630561
+    },
+    "Cisco Umbrella": {
+     "rank": 338,
+     "timestamp": 1591803361
+    }
+   },
+   "registrar": "MarkMonitor Inc.",
+   "reputation": 0,
+   "tags": [
+    "dga"
+   ],
+   "total_votes": {
+    "harmless": 0,
+    "malicious": 0
+   },
+   "whois": "Domain Name: EXAMPLE.COM (whois text is never kept by the parser)"
+  },
+  "id": "www.example.com",
+  "links": {
+   "self": "https://www.virustotal.com/api/v3/domains/www.example.com"
+  },
+  "type": "domain"
+ }
+}

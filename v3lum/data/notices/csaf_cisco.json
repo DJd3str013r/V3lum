@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "csaf_cisco",
+  "source_url": "https://www.cisco.com/.well-known/csaf/provider-metadata.json",
+  "version": "CSAF 2.0 documents synced out of band into the local CSAF index; cisco-sa-apache-log4j-qRuKNEbd (minimised) in the test fixtures",
+  "sha256": "",
+  "licence": "Cisco public security advisory (Cisco legal disclaimer)",
+  "attribution": "Cisco Security Advisories (Cisco PSIRT), https://sec.cloudapps.cisco.com/security/center/. Cisco legal disclaimer: 'A standalone copy or paraphrase of the text of this document that omits the distribution URL is an uncontrolled copy and may lack important information or contain factual errors.' V3LUM keeps the distribution URL with every excerpt and never redistributes documents (P354 cond 4).",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/vulnerability_cve/csaf_advisories.py",
+    "tests/fixtures/csaf_advisories/cisco_doc.json"
+  ]
+}

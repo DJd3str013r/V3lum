@@ -24,6 +24,32 @@ def wide_console(monkeypatch):
     monkeypatch.setenv("COLUMNS", "250")  # rich wraps table cells at 80 columns otherwise
 
 
+@pytest.fixture(autouse=True)
+def github_probe_source():
+    """The core seed fragment 'github' has no sources (module batches add theirs with extension
+    fragments). Core tests never rely on batch data, so this test registers its own open source
+    for the data-free api.github.com/zen probe and restores the registry afterwards."""
+    from v3lum.core import providers as providers_mod
+
+    state = providers_mod.snapshot()
+    terms = {
+        "class": "open", "evidence_url": "https://terms.example.test/", "quote": "synthetic source for the doctor tests",
+        "checked_at": "2026-11-26", "reviewer": "tests", "free_plan_business_use": None,
+    }
+    providers_mod.register(
+        {
+            "schema": providers_mod.SCHEMA_EXTENSION,
+            "extends": "github",
+            "sources": {"wp18_doctor_probe": {"title": "doctor probe (tests)", "terms": terms, "upstream_family": "github", "sanitizer": None, "dataset": None, "notes": ""}},
+        },
+        origin="tests/test_cmd_doctor.py",
+    )
+    try:
+        yield
+    finally:
+        providers_mod.restore(state)
+
+
 @pytest.fixture()
 def http(monkeypatch):
     """Every runtime the App builds goes over this FakeHttp (the App's own config)."""

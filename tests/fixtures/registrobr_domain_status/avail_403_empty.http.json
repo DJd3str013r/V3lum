@@ -1,0 +1,14 @@
+{
+ "request": "GET https://registro.br/v2/ajax/avail/raw/<name>.com.br",
+ "response": {
+  "status": 403,
+  "headers": {
+   "server": "nginx",
+   "content-length": "0"
+  },
+  "body": ""
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "403 with an EMPTY body, the shape rdap.registro.br returned to this egress (p1-G01-1 live)"
+}

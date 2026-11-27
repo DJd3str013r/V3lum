@@ -1,0 +1,14 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "http://v3lum-rnd-41c9e0.example.com/"
+ },
+ "response": {
+  "status": 404,
+  "headers": {
+   "content-type": "application/xml",
+   "server": "AmazonS3"
+  },
+  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>NoSuchBucket</Code><Message>The specified bucket does not exist</Message><BucketName>v3lum-rnd-41c9e0.example.com</BucketName></Error>"
+ }
+}

@@ -1,0 +1,94 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "$comment": "6 lookups; a could-not-verify evaluation; a temperror chain below the limit: nothing",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "nodes": [
+    {
+      "key": "domain:fine.example",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "spf_status": [
+          {
+            "value": "ok",
+            "source": "email_security_posture"
+          }
+        ],
+        "spf": [
+          {
+            "value": "v=spf1 include:x.example -all",
+            "source": "email_security_posture"
+          }
+        ],
+        "spf_lookups": [
+          {
+            "value": 6,
+            "source": "email_security_posture"
+          }
+        ],
+        "spf_void_lookups": [
+          {
+            "value": 0,
+            "source": "email_security_posture"
+          }
+        ]
+      }
+    },
+    {
+      "key": "domain:servfail.example",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "spf_status": [
+          {
+            "value": "could_not_verify",
+            "source": "email_security_posture"
+          }
+        ],
+        "spf_lookups": [
+          {
+            "value": 3,
+            "source": "email_security_posture"
+          }
+        ]
+      }
+    },
+    {
+      "key": "domain:partial.example",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "spf_status": [
+          {
+            "value": "temperror",
+            "source": "email_security_posture"
+          }
+        ],
+        "spf": [
+          {
+            "value": "v=spf1 include:y.example -all",
+            "source": "email_security_posture"
+          }
+        ],
+        "spf_lookups": [
+          {
+            "value": 9,
+            "source": "email_security_posture"
+          }
+        ],
+        "spf_void_lookups": [
+          {
+            "value": 0,
+            "source": "email_security_posture"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": []
+}

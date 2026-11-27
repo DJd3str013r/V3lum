@@ -1,0 +1,4 @@
+https://www.example.com/a
+https://www.example.com/b
+ftp://www.example.com/c
+https://other.example.net/x

@@ -1,0 +1,34 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p3-G10-1",
+  "title": "ICIJ Offshore Leaks, OpenSanctions, SEC EDGAR, Wikidata, EU VIES and UK Companies House (P221 icij_offshore, P222 opensanctions, P223 sec_edgar, P224 wikidata, P225 eu_vies, P227 uk_companies_house)",
+  "owner": "batch p3-G10-1",
+  "notes": "Reused: data_attribution, homonym_risk, legal_name (core and earlier batches); tags name_only_match, context_only, sanctions, pep; relation company_of (P224 cond 5/6). Name matches against leak-derived or sanctions data are possible matches, never verdicts (P221 cond 6, P222 cond 6).",
+  "attributes": {
+    "offshore_leaks_matches": "possible matches of a company name in the ICIJ Offshore Leaks Database (entities only, P221) [{node_id, name, matched_alias, score, leak, leak_detail, jurisdiction, status, incorporation_date, inactivation_date, struck_off_date, intermediaries, linked_officers, related_entities, node_url, source local|api}]: 'appears in ICIJ Offshore Leaks - not evidence of wrongdoing'",
+    "offshore_leaks_screening": "state of the ICIJ Offshore Leaks screening {state matched|no_match|not_screened, source local|api, index_generated_on, threshold, reason}",
+    "opensanctions_matches": "OpenSanctions possible matches (licensed bulk data or Screening API, P222) [{entity_id, caption, schema, score, threshold, datasets, listing sanction|pep|other, countries, url, match_type name|exact_wallet}]: candidates to confirm, never a 'sanctioned' verdict on a natural person",
+    "opensanctions_screening": "state of the OpenSanctions screening {state matched|no_match|not_screened, path bulk|api, version, threshold, reason}",
+    "sec_company": "SEC EDGAR registrant matched for a company name (P223) {cik, name, tickers, exchanges, sic, sic_description, state_of_incorporation, former_names, match ticker|name_exact|name_core, confidence}",
+    "sec_cyber_disclosures": "SEC filings disclosing a material cybersecurity incident (8-K/8-K/A Item 1.05, 6-K of the registrant) [{form, filing_date, company, cik, relation own_cik|own_ticker|own_name|mention, confidence, url, index_url}]: metadata and links only, never filing bodies",
+    "sec_search_coverage": "coverage of the SEC EDGAR lookups {efts_total, efts_total_relation, efts_returned, first_page_only, submissions_checked, older_filing_pages}",
+    "wikidata_item": "Wikidata organisation item accepted for a company name or domain (P224) {qid, label, description, link cnpj|label|website, confidence, cnpj, websites, parents, subsidiaries, url}: community-edited, CC0",
+    "wikidata_summary": "one line about the Wikidata lookup (P224 cond 6), ending in 'CC0'; 'no item' is never a signal (about 2,900 items carry a CNPJ)",
+    "vat_validation": "EU VIES answer for a VAT number (P225) {vat, country, state valid|invalid, request_date, holder legal_entity|possible_sole_trader|unknown, legal_form, name (legal entities only), address (legal entities only)}",
+    "uk_company": "UK Companies House company profile (P227) {company_number, name, status, type, jurisdiction, created, ceased, sic_codes, previous_names, has_insolvency_history, has_charges, accounts_overdue, confirmation_overdue, url}",
+    "uk_company_candidates": "UK Companies House search hits for a company name that are not exact matches [{company_number, title, status, type, created, ceased}] (at most 5; hypotheses only)",
+    "uk_officers": "UK Companies House officers of the company, minimised at parse time to [{name, role, appointed_on, resigned_on, corporate}] (no date of birth, nationality, occupation or address)",
+    "uk_psc": "UK Companies House persons with significant control, minimised to [{name, kind, natures_of_control, notified_on, ceased_on, corporate}] (no date of birth, nationality or address)"
+  },
+  "tags": {
+    "offshore_leaks": "appears in the ICIJ Offshore Leaks Database: context only, never evidence of wrongdoing, never scored above LOW (P221)",
+    "cyber_incident_disclosure": "the registrant disclosed a material cybersecurity incident to the SEC (8-K Item 1.05): supplier-incident context",
+    "community_edited": "value taken from a community-edited source (Wikidata): a hint that never sets known-good or own-asset status"
+  },
+  "relations": {
+    "officer_of": "company -> officer (person or corporate officer) listed by a company register (UK Companies House): name, role and dates only; expand=False, never auto-pivoted into person modules",
+    "psc_of": "company -> person or entity with significant control listed by UK Companies House: name, kind and dates only; expand=False, never auto-pivoted into person modules",
+    "vat_holder": "EU VAT number -> registered holder name returned by VIES (legal entities only, never sole traders); expand=False"
+  },
+  "timeline": {}
+}

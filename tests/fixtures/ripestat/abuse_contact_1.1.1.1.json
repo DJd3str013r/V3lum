@@ -1,0 +1,21 @@
+{
+ "messages": [],
+ "data_call_name": "abuse-contact-finder",
+ "data_call_status": "supported",
+ "cached": true,
+ "status": "ok",
+ "status_code": 200,
+ "time": "2026-11-25T21:23:20.127692",
+ "data": {
+  "abuse_contacts": [
+   "helpdesk@apnic.net"
+  ],
+  "authoritative_rir": "apnic",
+  "latest_time": "2026-11-25T08:34:38",
+  "earliest_time": "2026-11-25T08:34:38",
+  "parameters": {
+   "resource": "1.1.1.1",
+   "cache": null
+  }
+ }
+}

@@ -1,0 +1,25 @@
+{
+ "status": 1,
+ "domain_name": "example.com",
+ "query_time": "2026-10-25 12:57:45",
+ "whois_server": "whois.iana.org",
+ "domain_registered": "yes",
+ "create_date": "1995-08-14",
+ "update_date": "2026-08-14",
+ "expiry_date": "2027-08-13",
+ "domain_registrar": {
+  "iana_id": 376,
+  "registrar_name": "RESERVED-Internet Assigned Numbers Authority",
+  "whois_server": "whois.iana.org",
+  "website_url": "http://res-dom.iana.org"
+ },
+ "name_servers": [
+  "elliott.ns.cloudflare.com",
+  "hera.ns.cloudflare.com"
+ ],
+ "domain_status": [
+  "clientDeleteProhibited",
+  "clientTransferProhibited",
+  "clientUpdateProhibited"
+ ]
+}

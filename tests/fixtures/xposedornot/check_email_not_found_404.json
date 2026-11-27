@@ -1,0 +1,11 @@
+{
+ "_envelope": 1,
+ "_synthetic": "the 404 form recorded by the research (2026-11-25); the live answer is now 200",
+ "status": 404,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": {
+  "Error": "Not found"
+ }
+}

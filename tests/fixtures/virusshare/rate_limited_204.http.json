@@ -1,0 +1,15 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://virusshare.com/apiv2/file?apikey=<KEY>&hash=44d88612fea8a8f36de82e1278abb02f",
+  "headers": {}
+ },
+ "response": {
+  "status": 204,
+  "headers": {},
+  "body": ""
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "documentation: 204 = request rate limit exceeded or quota exhausted; excessive 204s get the client automatically blocked: stop at the first 204"
+}

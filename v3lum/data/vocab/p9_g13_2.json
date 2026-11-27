@@ -1,0 +1,12 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p9_g13_2",
+  "title": "Vocabulary: batch p9-G13-2 (ACTIVE pentest_recon: axfr, cloud_buckets, cors_probe)",
+  "description": "Attributes the ACTIVE modules of batch p9-G13-2 record. cloud_buckets and cors_results/cors_acao are owned by pack_web_hygiene (WP24) and only reused here. Values are names, counts, states and flags only: never zone secrets, bucket object names or contents, cookie or credential values.",
+  "owner": "p9-G13-2",
+  "attributes": {
+    "zone_transfer": "list of per-nameserver AXFR attempts the ACTIVE axfr module made {ns, ns_ip, state (confirmed | refused | could_not_test | skipped), record_count, reason}: zone data stays in the case only, never exported; a confirmed transfer is a misconfiguration (T1590.002)",
+    "cloud_bucket_scan": "ACTIVE cloud_buckets run summary {providers (s3|gcs|do), tested (count of candidate names probed), existing (count), could_not_test (count)}: existence only, absent names are never listed individually",
+    "cors_endpoints_tested": "number of in-scope known endpoints the ACTIVE cors_probe checked (the endpoints themselves are listed in cors_results)"
+  }
+}

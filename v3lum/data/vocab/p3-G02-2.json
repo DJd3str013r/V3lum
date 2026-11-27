@@ -1,0 +1,17 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p3-G02-2",
+  "title": "Names used by batch p3-G02-2 (keyless IP geolocation votes, IPQualityScore, ZoomEye, IPGuardian/NetAPI, NetworksDB)",
+  "owner": "batch p3-G02-2 (P051, P052, P053, P150, P218)",
+  "attributes": {
+    "geo_votes": "approximate network geolocation of an IP voted by independent keyless providers {line, country, country_votes ('BR - 2/2 providers'), asn, asn_votes, isp, city ('<city> - approximate (<provider>)' with disagreements), approximate, providers, could_not_verify}: context only, never a person's location or a risk factor",
+    "ipqs_ip": "IPQualityScore IP reputation facts {fraud_score (0-100), vote (suspicious | no_signal), recent_abuse, abuse_velocity, connection_type, proxy, vpn, tor, bot_status, isp, asn}: one vote, never 'malicious' on its own",
+    "ipqs_url": "IPQualityScore URL scanner facts {risk_score (0-100), vote, unsafe, phishing, malware, suspicious, category, domain_age, redirected, final_url}: one vote, never 'malicious' on its own",
+    "zoomeye_assets": "ZoomEye asset rows for an IOC selector (capped): list of {ip, port, service, product, title, domain, update_time, honeypot} plus the total the search reported",
+    "ipguardian_lists": "public blocklists IPGuardian reports for the IP after deduplication against the local P149 feeds {new_lists, covered_by_p149, context_lists, ignored_lists, network_type}",
+    "netapi_compromised": "NetAPI compromised-feed state of the value {listed_now, listed_ever, first_seen, last_seen, threat_type, evidence, via (local feed | check API), feed}: one vote at most, sinkhole rows are context"
+  },
+  "relations": {
+    "candidate_netblock": "company name or IP -> CIDR a fuzzy registry search (NetworksDB) attributes to the organisation: candidate only (expand=False, confidence <= 0.4) until RDAP (P003) or NIC.br (P038) confirm it; never an ACTIVE scope by itself"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "toncenter",
+  "name": "Toncenter (TON blockchain HTTP API v3)",
+  "operator": "Toncenter (public TON blockchain API run by the TON Core team)",
+  "hosts": [
+    "toncenter.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Public, documented TON blockchain API operated by the TON Core team since 2019 with published rate limits and API keys issued through @tonapibot; council decision P214 cond 4 'Registry provider toncenter: tier community, terms open' (A8 community).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Indexes public TON blockchain state: authoritative for balances, transactions and current NFT ownership at query time; NFT ownership can change at any time and the indexer can lag."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 15,
+    "ttl": 3600,
+    "concurrency": 1,
+    "retries": 1
+  },
+  "quota": null,
+  "error_markers": [
+    {
+      "id": "toncenter_ratelimit_in_body",
+      "statuses": [200, 429],
+      "json_path": "code",
+      "equals": 429,
+      "maps_to": "rate_limited",
+      "reason_code": "rate_limited",
+      "reason": "Toncenter: rate limit exceeded ({'ok': false, 'code': 429}; keyless 1 request/s)"
+    }
+  ],
+  "keys": {
+    "toncenter": {
+      "description": "Toncenter API key (X-API-Key header, never in a URL): raises the keyless 1 request/s limit to 10 requests/s",
+      "signup_url": "https://t.me/tonapibot",
+      "env": [
+        "V3LUM_TONCENTER_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "a team key issued by @tonapibot to a company/team Telegram account (never a personal account)"
+    }
+  },
+  "sources": {
+    "api_v3": {
+      "title": "Toncenter API v3: walletInformation, transactions, nft/items, nft/transfers, masterchainInfo",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://toncenter.com/",
+        "quote": "Registry provider toncenter: tier community, terms open (council-1 P214 cond 4, binding council text; free public API, keyless 1 request per second, a free key from @tonapibot raises it to 10).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "toncenter",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P214 cond 4); research C0495 verified_live 200 (2026-11-26, masterchainInfo, nft/collections, nft/items, nft/transfers, walletInformation, transactions). 409 {'error': 'not a wallet'} for contract addresses; 422 'failed to decode' for malformed addresses; {'nft_items': []} for an unminted index. Collectible lookups send the decimal sha256 of the Telegram username/number (Telemint item index): treat it as disclosing the identifier (P214 cond 2-3). Used by ton_explorer."
+    }
+  },
+  "notes": "Owned by batch p3-G09-1 (P214). On-chain resolution goes through Toncenter only; tonapi.io and api.getgems.io stay held (P214 cond 4, A8). Politeness is set by the module: 1.1 s keyless, 0.11 s with the key. personal_data_review pending: the module is default_enabled=False and phone/username lookups need an explicit selection with --purpose (POL-07)."
+}

@@ -1,0 +1,26 @@
+{
+ "request": "GET https://brasilapi.com.br/api/cnpj/v1/12ABC34501DE35",
+ "response": {
+  "status": 404,
+  "headers": {
+   "content-type": "application/json; charset=utf-8",
+   "content-length": "96",
+   "age": "0",
+   "cache-control": "max-age=0, public",
+   "etag": "\"13vk89z7g1p2n\"",
+   "server": "cloudflare",
+   "x-vercel-cache": "MISS",
+   "cf-cache-status": "DYNAMIC"
+  },
+  "body": {
+   "message": "CNPJ 12.ABC.345/01DE-35 não encontrado.",
+   "type": "not_found",
+   "name": "NotFoundError"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": 0.928491,
+ "observed_at": "2026-11-26T05:19:52+00:00",
+ "origin": "live",
+ "note": ""
+}

@@ -1,0 +1,11 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://cvedb.shodan.io/cve/CVE-2021-9999999",
+  "headers": {}
+ },
+ "response": null,
+ "transport_error": "timeout: no response within 20 s",
+ "elapsed_s": 20.002,
+ "note": "Valid syntax, unassigned id CVE-2021-9999999: no byte in 20 s (curl exit 28). Not an absence: ERROR 'timeout' (could not verify), never EMPTY."
+}

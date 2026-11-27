@@ -1,0 +1,111 @@
+{
+ "schema": "v3lum.siem_templates/1",
+ "version": "2026.11.1",
+ "approved_by": "SOC change CHG-0001 (example)",
+ "approved_at": "2026-11-20",
+ "backend": "elasticsearch",
+ "templates": [
+  {
+   "id": "ioc_ip_proxy_dns",
+   "entity_types": [
+    "ipv4",
+    "ipv6"
+   ],
+   "index_patterns": [
+    "logs-proxy-*",
+    "logs-dns-*"
+   ],
+   "fields": [
+    "source.ip",
+    "destination.ip"
+   ],
+   "time_field": "@timestamp",
+   "personal": false
+  },
+  {
+   "id": "ioc_domain_dns_proxy",
+   "entity_types": [
+    "domain"
+   ],
+   "index_patterns": [
+    "logs-dns-*",
+    "logs-proxy-*"
+   ],
+   "fields": [
+    "dns.question.name",
+    "url.domain"
+   ],
+   "time_field": "@timestamp",
+   "personal": false,
+   "filters": [
+    {
+     "field": "event.category",
+     "value": "network"
+    }
+   ]
+  },
+  {
+   "id": "ioc_url_proxy",
+   "entity_types": [
+    "url"
+   ],
+   "index_patterns": [
+    "logs-proxy-*"
+   ],
+   "fields": [
+    "url.full"
+   ],
+   "time_field": "@timestamp",
+   "personal": false
+  },
+  {
+   "id": "ioc_hash_edr",
+   "entity_types": [
+    "md5",
+    "sha256"
+   ],
+   "index_patterns": [
+    "logs-edr-*"
+   ],
+   "fields": [
+    "file.hash.md5",
+    "file.hash.sha256",
+    "process.hash.sha256"
+   ],
+   "time_field": "@timestamp",
+   "personal": false
+  },
+  {
+   "id": "person_email_mail",
+   "entity_types": [
+    "email"
+   ],
+   "index_patterns": [
+    "logs-mail-*"
+   ],
+   "fields": [
+    "email.from.address",
+    "email.to.address"
+   ],
+   "time_field": "@timestamp",
+   "personal": true
+  },
+  {
+   "id": "person_user_auth",
+   "entity_types": [
+    "username",
+    "user_agent"
+   ],
+   "index_patterns": [
+    "logs-auth-*",
+    "logs-proxy-*"
+   ],
+   "fields": [
+    "user.name",
+    "user_agent.original"
+   ],
+   "time_field": "@timestamp",
+   "personal": true
+  }
+ ]
+}

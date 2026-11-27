@@ -1,0 +1,24 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "huggingface",
+  "hosts": ["cdn-avatars.huggingface.co"],
+  "sources": {
+    "avatar_correlation_avatars": {
+      "title": "Hugging Face avatar CDN cdn-avatars.huggingface.co (one GET per avatar URL already found on a profile, P114)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://huggingface.co/terms-of-service",
+        "quote": "Registry: npm (GitHub), PyPI (PSF), DEV/Forem and Hugging Face tier trusted, Codeberg e.V. community; all terms open; personal_data_review before default use (A3 BR8).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "huggingface",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "P114: public avatar images hashed in memory (SHA-256 + whole-image dHash) and discarded; never cached or stored (cond 4)."
+    }
+  },
+  "error_markers": [],
+  "notes": "Batch p2-G05-2: the Hugging Face avatar CDN host for avatar_correlation (P114)."
+}

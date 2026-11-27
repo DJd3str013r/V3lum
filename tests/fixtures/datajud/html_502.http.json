@@ -1,0 +1,15 @@
+{
+ "request": "POST https://api-publica.datajud.cnj.jus.br/api_publica_tjsp/_search",
+ "response": {
+  "status": 502,
+  "headers": {
+   "content-type": "text/html"
+  },
+  "body": "<html><head><title>502 Bad Gateway</title></head><body><center><h1>502 Bad Gateway</h1></center></body></html>"
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "observed_at": null,
+ "origin": "synthetic",
+ "note": "synthetic: HTML gateway error instead of JSON"
+}

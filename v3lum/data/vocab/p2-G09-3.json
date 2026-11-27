@@ -1,0 +1,18 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p2-G09-3",
+  "title": "Crypto address attribution labels (batch p2-G09-3)",
+  "owner": "batch p2-G09-3 (P358 crypto_address_labels)",
+  "attributes": {
+    "crypto_labels": "attribution labels of a wallet address shown side by side, one entry per source label: {source (graphsense | por:<exchange> | team), label, category, abuse, entity_class, risk_class, confidence (effective), confidence_base, downgraded, age_months, label_date, date_source, source_url, actor, institution, network, provenance} - no label overrides another",
+    "crypto_label_status": "plain-words outcome of a local label lookup: the labelled classes and sources, or 'no label in the local sources' with the coverage note ('no label' never means unhosted or self-custodied)",
+    "court_order_target": "the one institution (exchange/custodial service) a wallet label names as the recipient of a legal request: {name, legal_name, actor, jurisdictions, uri, cnpj, legal_contact, sources, best_confidence, newest_date, wording} - a lead, not proof of who holds the funds",
+    "label_conflict": "conflicting attributions of one address (more than one institution/actor named by the labels), listed side by side without an automatic choice",
+    "crypto_label_coverage": "label coverage of the local sources for the address family: {family, labelled_addresses, exchange_addresses, newest_exchange_date, sources, thin} - used to word 'no label' honestly"
+  },
+  "tags": {},
+  "relations": {
+    "label_attributed_to": "wallet address -> institution (exchange/custodial service) a public, proof-of-reserves or team label attributes it to: a lead for a legal request, not proof of ownership; listed with expand=False"
+  },
+  "timeline": {}
+}

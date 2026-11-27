@@ -1,0 +1,19 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.criminalip.io/v1/asset/ip/report?ip=8.8.8.8"
+ },
+ "response": {
+  "status": 200,
+  "headers": {
+   "Content-Type": "application/json"
+  },
+  "body": {
+   "data": {},
+   "message": "check access failed",
+   "status": 403
+  }
+ },
+ "observed": "research_sample",
+ "note": "No x-api-key: HTTP 200 with body status 403 'check access failed' (error in 200)."
+}

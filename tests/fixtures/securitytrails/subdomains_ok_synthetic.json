@@ -1,0 +1,15 @@
+{
+ "endpoint": "/v1/domain/example.com/subdomains",
+ "meta": {
+  "limit_reached": false
+ },
+ "subdomain_count": 6,
+ "subdomains": [
+  "www",
+  "mail",
+  "Dev",
+  "*.cdn",
+  "bad_label!",
+  "www"
+ ]
+}

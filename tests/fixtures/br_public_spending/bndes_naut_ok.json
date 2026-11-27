@@ -1,0 +1,139 @@
+{
+ "help": "https://dadosabertos.bndes.gov.br/api/3/action/help_show?name=datastore_search",
+ "success": true,
+ "result": {
+  "include_total": true,
+  "limit": 2,
+  "q": null,
+  "records_format": "objects",
+  "resource_id": "6f56b78c-510f-44b6-8274-78a5b7e931f4",
+  "records": [
+   {
+    "_id": 1,
+    "cliente": "MUNICIPIO DE RIBEIRAO PRETO",
+    "cnpj": "56.024.581/0001-56",
+    "descricao_do_projeto": "PROGRAMA DE MODERNIZACAO DA ADMINISTRACAO TRIBUTARIA E DA   GESTAO DOS SETORES SOCIAIS BASICOS                          ",
+    "uf": "SP",
+    "municipio": "RIBEIRAO PRETO",
+    "numero_do_contrato": 1247021,
+    "data_da_contratacao": "2002-01-02T00:00:00",
+    "valor_contratado_reais": 9090000.0,
+    "valor_desembolsado_reais": 9007445.1,
+    "modalidade_de_apoio": "REEMBOLSÁVEL",
+    "forma_de_apoio": "DIRETA",
+    "produto": "BNDES FINEM",
+    "instrumento_financeiro": "BNDES PMAT",
+    "porte_do_cliente": "GRANDE",
+    "natureza_do_cliente": "ADMINISTRAÇÃO PÚBLICA DIRETA - GOVERNO MUNICIPAL",
+    "instituicao_financeira_credenciada": "----------",
+    "cnpj_da_instituicao_financeira_credenciada": "----------",
+    "situacao_do_contrato": "LIQUIDADO"
+   },
+   {
+    "_id": 2,
+    "cliente": "INSTITUTO DE DESENVOLVIMENTO SUSTENTAVEL DO BAIXO SUL D",
+    "cnpj": "02.275.306/0001-86",
+    "descricao_do_projeto": "PROJETO DIREITO E CIDADANIA; PROJETO DEMONSTRATIVO DA CADEIA PRODUTIVA DE MARICULTURA; E SISTEMATIZACAO DA METODOLOGIA DO PROGRAMA JOVEM EMPRESARIO.                                ",
+    "uf": "BA",
+    "municipio": "ITUBERA",
+    "numero_do_contrato": 1247221,
+    "data_da_contratacao": "2002-01-03T00:00:00",
+    "valor_contratado_reais": 706600.0,
+    "valor_desembolsado_reais": 745030.36,
+    "modalidade_de_apoio": "NÃO REEMBOLSÁVEL",
+    "forma_de_apoio": "DIRETA",
+    "produto": "BNDES NÃO REEMBOLSÁVEL",
+    "instrumento_financeiro": "BNDES FUNDO SOCIOAMBIENTAL",
+    "porte_do_cliente": "MICRO",
+    "natureza_do_cliente": "PRIVADA             ",
+    "instituicao_financeira_credenciada": "----------",
+    "cnpj_da_instituicao_financeira_credenciada": "----------",
+    "situacao_do_contrato": "LIQUIDADO"
+   }
+  ],
+  "fields": [
+   {
+    "id": "_id",
+    "type": "int"
+   },
+   {
+    "id": "cliente",
+    "type": "text"
+   },
+   {
+    "id": "cnpj",
+    "type": "text"
+   },
+   {
+    "id": "descricao_do_projeto",
+    "type": "text"
+   },
+   {
+    "id": "uf",
+    "type": "text"
+   },
+   {
+    "id": "municipio",
+    "type": "text"
+   },
+   {
+    "id": "numero_do_contrato",
+    "type": "numeric"
+   },
+   {
+    "id": "data_da_contratacao",
+    "type": "timestamp"
+   },
+   {
+    "id": "valor_contratado_reais",
+    "type": "numeric"
+   },
+   {
+    "id": "valor_desembolsado_reais",
+    "type": "numeric"
+   },
+   {
+    "id": "modalidade_de_apoio",
+    "type": "text"
+   },
+   {
+    "id": "forma_de_apoio",
+    "type": "text"
+   },
+   {
+    "id": "produto",
+    "type": "text"
+   },
+   {
+    "id": "instrumento_financeiro",
+    "type": "text"
+   },
+   {
+    "id": "porte_do_cliente",
+    "type": "text"
+   },
+   {
+    "id": "natureza_do_cliente",
+    "type": "text"
+   },
+   {
+    "id": "instituicao_financeira_credenciada",
+    "type": "text"
+   },
+   {
+    "id": "cnpj_da_instituicao_financeira_credenciada",
+    "type": "text"
+   },
+   {
+    "id": "situacao_do_contrato",
+    "type": "text"
+   }
+  ],
+  "_links": {
+   "start": "/api/3/action/datastore_search?resource_id=6f56b78c-510f-44b6-8274-78a5b7e931f4&limit=2",
+   "next": "/api/3/action/datastore_search?resource_id=6f56b78c-510f-44b6-8274-78a5b7e931f4&limit=2&offset=2"
+  },
+  "total": 24035,
+  "total_was_estimated": false
+ }
+}

@@ -1,0 +1,64 @@
+{
+ "_documented": "SearchQueryResponse/SearchQueryHit shape from censys-sdk-python (host_v1 = HostAssetWithMatchedServices, certificate_v1 = CertificateAsset, webproperty_v1 fields NOT checked). Values invented.",
+ "result": {
+  "hits": [
+   {
+    "host_v1": {
+     "resource": {
+      "ip": "198.51.100.20",
+      "autonomous_system": {
+       "asn": 64500,
+       "name": "EXAMPLE-AS"
+      },
+      "dns": {
+       "names": [
+        "www.example.com"
+       ]
+      }
+     },
+     "matched_services": [
+      {
+       "port": 443,
+       "protocol": "HTTP",
+       "transport_protocol": "tcp"
+      }
+     ],
+     "extensions": {}
+    }
+   },
+   {
+    "certificate_v1": {
+     "resource": {
+      "fingerprint_sha256": "f1315fa063454bb3303d41c3b6c222afc9ec7c47880c2f63caa647d9d290e200",
+      "names": [
+       "example.com",
+       "www.example.com"
+      ],
+      "parsed": {
+       "subject_dn": "CN=www.example.com",
+       "issuer_dn": "C=US, O=Example CA, CN=Example Issuing CA",
+       "validity_period": {
+        "not_before": "2026-09-01T00:00:00Z",
+        "not_after": "2026-11-30T00:00:00Z"
+       }
+      }
+     },
+     "extensions": {}
+    }
+   },
+   {
+    "webproperty_v1": {
+     "resource": {
+      "hostname": "www.example.com",
+      "port": 443
+     },
+     "extensions": {}
+    }
+   }
+  ],
+  "total_hits": 3.0,
+  "next_page_token": "",
+  "previous_page_token": "",
+  "query_duration_millis": 41
+ }
+}

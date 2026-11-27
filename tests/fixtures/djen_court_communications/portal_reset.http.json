@@ -1,0 +1,9 @@
+{
+ "request": "GET https://comunica.pje.jus.br/",
+ "response": null,
+ "transport_error": "URLError: <urlopen error [Errno 104] Connection reset by peer>",
+ "elapsed_s": 11.01,
+ "observed_at": "2026-11-26T07:17:06Z",
+ "origin": "live",
+ "note": "portal comunica.pje.jus.br reset the connection (research: curl (35) after 10.7 s)"
+}

@@ -1,0 +1,52 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "cisco",
+  "name": "Cisco PSIRT CSAF 2.0 advisories (www.cisco.com/.well-known/csaf)",
+  "operator": "Cisco Systems, Inc. (Cisco PSIRT)",
+  "hosts": [
+    "www.cisco.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms, a privacy policy and a business offering; CSAF trusted provider of its own product advisories (A8 BR2, P354).",
+  "tier_reviewer": "batch p3-G08-1 (council-1 A8 definitions; chair files P191/P354/P355)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "Vendor PSIRT advisories about the vendor's own products (fixed releases, affected versions): the authoritative source for them."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400,
+    "min_interval": 0.5
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "csaf": {
+      "title": "Cisco CSAF 2.0 provider-metadata, directory changes.csv and advisory documents (+ .sha512)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.cisco.com/.well-known/csaf/provider-metadata.json",
+        "quote": "A standalone copy or paraphrase of the text of this document that omits the distribution URL is an uncontrolled copy and may lack important information or contain factual errors.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "cisco_psirt",
+      "sanitizer": null,
+      "dataset": "csaf_advisories.cisco_changes",
+      "notes": "P354: synced out of band into the local CSAF index (csaf_advisories); documents only from www.cisco.com (https), <= 2,000 per sync, <= 5 MB each, .sha512 checked (.sha256 is a 404 page). Reports keep the distribution URL with every excerpt (Cisco legal disclaimer). www.cisco.com sets tracking cookies on every answer: the core never stores or replays cookies."
+    }
+  },
+  "notes": "Owned by batch p3-G08-1 (P354). Only the CSAF tree is fetched; canonical advisory pages (sec.cloudapps.cisco.com) are links only."
+}

@@ -1,0 +1,14 @@
+{
+ "server": "silent",
+ "probe": "tls10",
+ "trust": "self_signed_ca",
+ "ok": false,
+ "stage": "handshake",
+ "version": null,
+ "cipher": null,
+ "error_type": "TimeoutError",
+ "reason": null,
+ "library": null,
+ "verify_code": null,
+ "str": "_ssl.c:1018: The handshake operation timed out"
+}

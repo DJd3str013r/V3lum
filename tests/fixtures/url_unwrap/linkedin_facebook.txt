@@ -1,0 +1,4 @@
+LinkedIn: https://www.linkedin.com/safety/go?url=https%3A%2F%2Fpayout.example.org%2Flogin&trk=flagship-messaging-web&messageThreadUrn=urn%3Ali%3AmessagingThread%3A2-ZXhhbXBsZVRocmVhZElk&lipi=urn%3Ali%3Apage%3Ad_flagship3_messaging
+LinkedIn2: https://www.linkedin.com/redir/redirect?url=https%3A%2F%2Fpayout.example.org%2Fjobs&urlhash=Ab1C&trk=public_profile
+Facebook: https://l.facebook.com/l.php?u=https%3A%2F%2Fpayout.example.org%2Fpromo%3Ffbclid%3DIwAR0Example&h=AT0ExampleLinkShimHashToken0123456789abcd&s=1
+Instagram: https://l.instagram.com/?u=https%3A%2F%2Fpayout.example.org%2Fbio&e=AT1ExampleInstagramToken0123456789

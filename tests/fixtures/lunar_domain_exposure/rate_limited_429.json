@@ -1,0 +1,11 @@
+{
+ "_envelope": 1,
+ "_synthetic": "unpublished limit, not provoked; body text unknown",
+ "status": 429,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": {
+  "error": "Too many requests, please slow down."
+ }
+}

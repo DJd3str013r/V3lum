@@ -1,0 +1,65 @@
+{
+ "@odata.context": "https://was-p.bcnet.bcb.gov.br/olinda/servico/Instituicoes_em_funcionamento/versao/v1/odata$metadata#SedesSociedades",
+ "value": [
+  {
+   "CNPJ": "18236120",
+   "NOME_INSTITUICAO": "NU PAGAMENTOS S.A. - INSTITUIÇÃO DE PAGAMENTO",
+   "SEGMENTO": "Instituição de Pagamento",
+   "MUNICIPIO": "SÃO PAULO",
+   "UF": "SP",
+   "DDD": "11",
+   "TELEFONE": "55550106",
+   "E_MAIL": "contato@example.com",
+   "SITIO_NA_INTERNET": "WWW.NUBANK.COM.BR",
+   "MUNICIPIO_IBGE": "3550308"
+  },
+  {
+   "CNPJ": "62169875",
+   "NOME_INSTITUICAO": "NU INVESTIMENTOS S.A. - CORRETORA DE TÍTULOS E VALORES MOBILIÁRIOS",
+   "SEGMENTO": "Sociedade Corretora de TVM",
+   "MUNICIPIO": "SÃO PAULO",
+   "UF": "SP",
+   "DDD": "11",
+   "TELEFONE": "55550107",
+   "E_MAIL": "contato@example.com",
+   "SITIO_NA_INTERNET": "HTTPS://WWW.NUINVEST.COM.BR/",
+   "MUNICIPIO_IBGE": "3550308"
+  },
+  {
+   "CNPJ": "30822936",
+   "NOME_INSTITUICAO": "BB GESTÃO DE RECURSOS - DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS S.A.",
+   "SEGMENTO": "Sociedade Distribuidora de TVM",
+   "MUNICIPIO": "RIO DE JANEIRO",
+   "UF": "RJ",
+   "DDD": "11",
+   "TELEFONE": "55550108",
+   "E_MAIL": "contato@example.com",
+   "SITIO_NA_INTERNET": "WWW.BB.COM.BR/BBASSET",
+   "MUNICIPIO_IBGE": "3304557"
+  },
+  {
+   "CNPJ": "16854999",
+   "NOME_INSTITUICAO": "SINGRATUR CORRETORA DE CÂMBIO LTDA",
+   "SEGMENTO": "Sociedade Corretora de Câmbio",
+   "MUNICIPIO": "MARINGÁ",
+   "UF": "PR",
+   "DDD": "11",
+   "TELEFONE": "55550109",
+   "E_MAIL": "contato@example.com",
+   "SITIO_NA_INTERNET": "WWW.SINGRATUR. COM.BR",
+   "MUNICIPIO_IBGE": "4115200"
+  },
+  {
+   "CNPJ": "17904906",
+   "NOME_INSTITUICAO": "BRX SOCIEDADE CORRETORA DE CÂMBIO S.A.",
+   "SEGMENTO": "Sociedade Corretora de Câmbio",
+   "MUNICIPIO": "RIO DE JANEIRO",
+   "UF": "RJ",
+   "DDD": "11",
+   "TELEFONE": "55550110",
+   "E_MAIL": "contato@example.com",
+   "SITIO_NA_INTERNET": "WWW:/BRXCAMBIO.COM.BR",
+   "MUNICIPIO_IBGE": "3304557"
+  }
+ ]
+}

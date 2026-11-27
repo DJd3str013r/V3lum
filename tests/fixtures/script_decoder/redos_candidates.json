@@ -1,0 +1,137 @@
+[
+ {
+  "unit": "A",
+  "repeat": 200000,
+  "suffix": "!"
+ },
+ {
+  "unit": "-enc ",
+  "repeat": 20000,
+  "suffix": ""
+ },
+ {
+  "unit": "[char]",
+  "repeat": 30000,
+  "suffix": "x"
+ },
+ {
+  "unit": "[char]65+",
+  "repeat": 20000,
+  "suffix": "x"
+ },
+ {
+  "unit": "[char[]](1,",
+  "repeat": 15000,
+  "suffix": "x"
+ },
+ {
+  "unit": "String.fromCharCode(",
+  "repeat": 8000,
+  "suffix": "1,2"
+ },
+ {
+  "unit": "Chr(65) & ",
+  "repeat": 20000,
+  "suffix": "Chr("
+ },
+ {
+  "unit": "Chr(",
+  "repeat": 40000,
+  "suffix": ""
+ },
+ {
+  "unit": "unescape('",
+  "repeat": 15000,
+  "suffix": "%u00"
+ },
+ {
+  "unit": "%u0041",
+  "repeat": 30000,
+  "suffix": "%"
+ },
+ {
+  "unit": "\\x41",
+  "repeat": 40000,
+  "suffix": "\\xZ"
+ },
+ {
+  "unit": "FromBase64String('",
+  "repeat": 10000,
+  "suffix": "AAAA"
+ },
+ {
+  "unit": "'a' + ",
+  "repeat": 30000,
+  "suffix": "'b"
+ },
+ {
+  "unit": "'",
+  "repeat": 100000,
+  "suffix": ""
+ },
+ {
+  "unit": "a-",
+  "repeat": 100000,
+  "suffix": "."
+ },
+ {
+  "unit": "1.",
+  "repeat": 100000,
+  "suffix": "x"
+ },
+ {
+  "unit": "0x4",
+  "repeat": 50000,
+  "suffix": "g"
+ },
+ {
+  "unit": "eyJ",
+  "repeat": 60000,
+  "suffix": ".eyJ"
+ },
+ {
+  "unit": "eyJa.",
+  "repeat": 40000,
+  "suffix": "eyJ"
+ },
+ {
+  "unit": "https://x.com/",
+  "repeat": 12000,
+  "suffix": "status/"
+ },
+ {
+  "unit": "https://www.linkedin.com/posts/",
+  "repeat": 6000,
+  "suffix": "-activity-"
+ },
+ {
+  "unit": "snowflake:",
+  "repeat": 20000,
+  "suffix": "1"
+ },
+ {
+  "unit": "123.456.",
+  "repeat": 30000,
+  "suffix": "789-"
+ },
+ {
+  "unit": "` ",
+  "repeat": 100000,
+  "suffix": ""
+ },
+ {
+  "unit": "a^",
+  "repeat": 100000,
+  "suffix": ""
+ },
+ {
+  "unit": " ",
+  "repeat": 200000,
+  "suffix": "x"
+ },
+ {
+  "unit": "\t,",
+  "repeat": 100000,
+  "suffix": ""
+ }
+]

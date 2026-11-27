@@ -1,0 +1,16 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://www.example.com/server-status",
+  "headers": {
+   "Range": "bytes=0-1023"
+  }
+ },
+ "response": {
+  "status": 503,
+  "headers": {
+   "content-type": "text/html"
+  },
+  "body": "<html><body>Service Unavailable</body></html>"
+ }
+}

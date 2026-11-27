@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "opencorporates",
+  "name": "OpenCorporates (company search pages)",
+  "operator": "OpenCorporates Ltd",
+  "hosts": [
+    "opencorporates.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms, a privacy policy and a business offering (A8 trusted); P231 cond 5: 'trusted - OpenSanctions, UK Companies House, OpenCorporates, GLEIF'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Aggregated official company registers; register extracts remain the authority."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "search_pages": {
+      "title": "OpenCorporates company search /companies?q= (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://opencorporates.com/terms-of-use",
+        "quote": "The pack is offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "opencorporates",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P231 cond 1). Manual alternative to the paid API (P231 cond 9): verified=false until checked in a browser, antibot=true (the website answers anti-bot 403 to scripts, C0527). Used by pivots_company_org (pack company_org.json)."
+    }
+  },
+  "notes": "Manual pivot links only (batch p2-G14-2): V3LUM never fetches them (P311)."
+}

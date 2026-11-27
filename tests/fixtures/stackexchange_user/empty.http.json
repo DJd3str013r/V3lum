@@ -1,0 +1,17 @@
+{
+ "_fixture": "REAL live capture 2026-11-26, minimised: random control inname search",
+ "_meta": {
+  "url": "https://api.stackexchange.com/2.3/users?order=desc&sort=name&inname=jo6rxa78qvs5pa0n1r8h&site=stackoverflow",
+  "user_agent": "V3LUM/dev",
+  "captured": "2026-11-26T08:33:12Z",
+  "elapsed_s": 0.467,
+  "bytes_original": 67
+ },
+ "status": 200,
+ "headers": {
+  "content-type": "application/json; charset=utf-8",
+  "cache-control": "private",
+  "server": "cloudflare"
+ },
+ "body": "{\"items\":[],\"has_more\":false,\"quota_max\":300,\"quota_remaining\":270}"
+}

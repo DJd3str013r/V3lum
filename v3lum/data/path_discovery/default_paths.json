@@ -1,0 +1,213 @@
+{
+ "schema": "v3lum.path_list/1",
+ "name": "path_discovery_default",
+ "licence": "V3LUM-authored (Apache-2.0 with the project); paths taken from public vendor and standard documentation, one source per entry",
+ "notes": "P285 cond 4/9: curated default list of <= 50 paths (OpenAPI/Swagger, GraphQL endpoint/UI, Spring actuator index, common admin panels and status pages). Written from the documentation named per entry; theHarvester's GPL-2.0 API-prefix list was study material only and nothing was copied (A6). Panels are listed by the page they serve directly: a redirect to a login page is a miss (P285 cond 3). The SHA-256 of this file is pinned in path_discovery.DEFAULT_LIST_SHA256: any change needs a review of the list and a new pin.",
+ "paths": [
+  {
+   "path": "/openapi.json",
+   "family": "openapi",
+   "source": "OpenAPI 3 convention; FastAPI default"
+  },
+  {
+   "path": "/openapi.yaml",
+   "family": "openapi",
+   "source": "OpenAPI 3 convention"
+  },
+  {
+   "path": "/swagger.json",
+   "family": "openapi",
+   "source": "Swagger 2.0 convention"
+  },
+  {
+   "path": "/swagger.yaml",
+   "family": "openapi",
+   "source": "Swagger 2.0 convention"
+  },
+  {
+   "path": "/v3/api-docs",
+   "family": "openapi",
+   "source": "springdoc-openapi default"
+  },
+  {
+   "path": "/v2/api-docs",
+   "family": "openapi",
+   "source": "springfox default"
+  },
+  {
+   "path": "/api-docs",
+   "family": "openapi",
+   "source": "swagger-node/express convention"
+  },
+  {
+   "path": "/swagger/v1/swagger.json",
+   "family": "openapi",
+   "source": "Swashbuckle (ASP.NET Core) default document"
+  },
+  {
+   "path": "/swagger-ui.html",
+   "family": "openapi_ui",
+   "source": "springdoc/springfox UI"
+  },
+  {
+   "path": "/swagger-ui/index.html",
+   "family": "openapi_ui",
+   "source": "springdoc v2 UI"
+  },
+  {
+   "path": "/swagger/index.html",
+   "family": "openapi_ui",
+   "source": "Swashbuckle UI"
+  },
+  {
+   "path": "/docs",
+   "family": "openapi_ui",
+   "source": "FastAPI Swagger UI"
+  },
+  {
+   "path": "/redoc",
+   "family": "openapi_ui",
+   "source": "FastAPI ReDoc"
+  },
+  {
+   "path": "/application.wadl",
+   "family": "wadl",
+   "source": "Jersey WADL default"
+  },
+  {
+   "path": "/.well-known/openid-configuration",
+   "family": "oidc",
+   "source": "OpenID Connect Discovery 1.0"
+  },
+  {
+   "path": "/.well-known/oauth-authorization-server",
+   "family": "oidc",
+   "source": "RFC 8414"
+  },
+  {
+   "path": "/api",
+   "family": "api_root",
+   "source": "generic API root"
+  },
+  {
+   "path": "/api/v1",
+   "family": "api_root",
+   "source": "generic versioned API root"
+  },
+  {
+   "path": "/api/v2",
+   "family": "api_root",
+   "source": "generic versioned API root"
+  },
+  {
+   "path": "/rest",
+   "family": "api_root",
+   "source": "generic REST root"
+  },
+  {
+   "path": "/graphql",
+   "family": "graphql",
+   "source": "GraphQL over HTTP convention (GET without a query; no introspection)"
+  },
+  {
+   "path": "/api/graphql",
+   "family": "graphql",
+   "source": "common GraphQL mount"
+  },
+  {
+   "path": "/v1/graphql",
+   "family": "graphql",
+   "source": "Hasura default endpoint"
+  },
+  {
+   "path": "/graphiql",
+   "family": "graphql_ui",
+   "source": "GraphiQL IDE"
+  },
+  {
+   "path": "/actuator",
+   "family": "actuator",
+   "source": "Spring Boot actuator discovery page (index)"
+  },
+  {
+   "path": "/actuator/health",
+   "family": "actuator",
+   "source": "Spring Boot health endpoint"
+  },
+  {
+   "path": "/actuator/info",
+   "family": "actuator",
+   "source": "Spring Boot info endpoint"
+  },
+  {
+   "path": "/wp-login.php",
+   "family": "admin_panel",
+   "source": "WordPress login page (served directly; viewed, never submitted)"
+  },
+  {
+   "path": "/administrator/",
+   "family": "admin_panel",
+   "source": "Joomla administrator"
+  },
+  {
+   "path": "/phpmyadmin/",
+   "family": "admin_panel",
+   "source": "phpMyAdmin"
+  },
+  {
+   "path": "/adminer.php",
+   "family": "admin_panel",
+   "source": "Adminer"
+  },
+  {
+   "path": "/manager/html",
+   "family": "admin_panel",
+   "source": "Apache Tomcat Manager (401 Basic)"
+  },
+  {
+   "path": "/host-manager/html",
+   "family": "admin_panel",
+   "source": "Apache Tomcat Host Manager (401 Basic)"
+  },
+  {
+   "path": "/console/",
+   "family": "admin_panel",
+   "source": "Oracle WebLogic admin console default"
+  },
+  {
+   "path": "/h2-console/",
+   "family": "admin_panel",
+   "source": "Spring Boot H2 console default path"
+  },
+  {
+   "path": "/app/kibana",
+   "family": "admin_panel",
+   "source": "Kibana UI"
+  },
+  {
+   "path": "/solr/",
+   "family": "admin_panel",
+   "source": "Apache Solr admin UI"
+  },
+  {
+   "path": "/admin/",
+   "family": "admin_panel",
+   "source": "generic admin root"
+  },
+  {
+   "path": "/server-status",
+   "family": "status_page",
+   "source": "Apache mod_status"
+  },
+  {
+   "path": "/server-info",
+   "family": "status_page",
+   "source": "Apache mod_info"
+  },
+  {
+   "path": "/nginx_status",
+   "family": "status_page",
+   "source": "nginx stub_status (common config)"
+  }
+ ]
+}

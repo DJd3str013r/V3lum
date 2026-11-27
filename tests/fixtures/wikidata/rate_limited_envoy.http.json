@@ -1,0 +1,14 @@
+{
+ "_note": "live: API gateway 429 text/plain + x-envoy-ratelimited + retry-after 28 -> RATE_LIMITED, never EMPTY",
+ "status": 429,
+ "headers": {
+  "x-envoy-ratelimited": "true",
+  "content-length": "274",
+  "retry-after": "28",
+  "content-type": "text/plain",
+  "server": "envoy",
+  "x-cache-status": "pass",
+  "x-client-ip": "203.0.113.10"
+ },
+ "body": "You are making too many requests to the API.\nPlease follow the best practices at https://www.mediawiki.org/wiki/Wikimedia_APIs/Rate_limits.\nIf you are unsure how to get the access you need, contact bot-traffic@wikimedia.org.\n\nrequest-id: 00000000-0000-0000-0000-000000000000"
+}

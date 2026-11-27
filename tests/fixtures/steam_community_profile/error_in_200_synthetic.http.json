@@ -1,0 +1,8 @@
+{
+ "_fixture": "SYNTHETIC: Steam's transient XML error text (error-in-200, never ABSENT)",
+ "status": 200,
+ "headers": {
+  "content-type": "text/xml;charset=UTF-8"
+ },
+ "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><response><error><![CDATA[Failed loading profile data, please try your request again later.]]></error></response>"
+}

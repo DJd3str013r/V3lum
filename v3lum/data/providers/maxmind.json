@@ -1,0 +1,71 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "maxmind",
+  "name": "MaxMind GeoLite2",
+  "operator": "MaxMind, Inc.",
+  "hosts": [
+    "download.maxmind.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms (GeoLite2 EULA), a privacy policy and a commercial offering (A8 BR2).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Widely used geolocation vendor; GeoLite2 is the free, less accurate edition."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {
+    "maxmind_account_id": {
+      "description": "MaxMind account id (GeoLite2 downloads, HTTP Basic auth user)",
+      "signup_url": "https://www.maxmind.com/en/geolite2/signup",
+      "env": [
+        "V3LUM_MAXMIND_ACCOUNT_ID"
+      ],
+      "multi_key": false,
+      "plan_hint": "the company's MaxMind account with the GeoLite2 EULA accepted by legal (licence_allow entry)"
+    },
+    "maxmind_license": {
+      "description": "MaxMind licence key (GeoLite2 downloads, HTTP Basic auth password)",
+      "signup_url": "https://www.maxmind.com/en/accounts/current/license-key",
+      "env": [
+        "V3LUM_MAXMIND_LICENSE"
+      ],
+      "multi_key": false,
+      "plan_hint": "the licence key of the company's MaxMind account (GeoLite2 EULA accepted by legal)"
+    }
+  },
+  "sources": {
+    "geolite2": {
+      "title": "MaxMind GeoLite2 Country and ASN databases (tar.gz permalinks, HTTP Basic auth)",
+      "terms": {
+        "class": "license",
+        "evidence_url": "https://www.maxmind.com/en/geolite2/eula",
+        "quote": "Registry terms: DB-IP Lite CC BY 4.0 (open), IPtoASN PDDL (open), bgp.tools free use with descriptive UA (open), GeoLite2 EULA (license).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "maxmind",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P047 cond 7); research C0122 (verified_needs_key, HTTP 401 without credentials). Optional and 'license': the company's MaxMind account with the EULA accepted by legal and recorded in licence_allow (off under the corporate profile until licence-cleared, P047 cond 6). Account id and licence key are two registered keys sent with HTTP Basic auth, never ?license_key=. Not wired yet: keyed dataset downloads are a core request (docs/backlog/p1-G02-2.md).",
+      "licensed_alternative": "DB-IP Lite (source dbip.lite, CC BY 4.0, open) covers country and ASN without an account."
+    }
+  },
+  "notes": "Owned by batch p1-G02-2 (P047). The GeoLite2 module waits for keyed dataset downloads in the core dataset manager (backlog)."
+}

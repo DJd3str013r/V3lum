@@ -1,0 +1,74 @@
+[
+ {
+  "_id": "~41160",
+  "_type": "Observable",
+  "_createdBy": "analyst@example.com",
+  "_updatedBy": "analyst@example.com",
+  "_createdAt": 1792252800000,
+  "_updatedAt": 1793836800000,
+  "dataType": "ip",
+  "data": "198.51.100.23",
+  "startDate": 1792252800000,
+  "tlp": 2,
+  "tlpLabel": "Amber",
+  "pap": 2,
+  "papLabel": "Amber",
+  "tags": [
+   "c2",
+   "phishing"
+  ],
+  "ioc": true,
+  "sighted": true,
+  "sightedAt": 1793836800000,
+  "reports": {
+   "AbuseIPDB_2_0": {
+    "taxonomies": [
+     {
+      "level": "malicious",
+      "namespace": "AbuseIPDB",
+      "predicate": "Records",
+      "value": "12"
+     }
+    ]
+   }
+  },
+  "message": "C2 seen in proxy logs (synthetic)",
+  "extraData": {},
+  "ignoreSimilarity": false
+ },
+ {
+  "_id": "~41987",
+  "_type": "Observable",
+  "_createdBy": "analyst@example.com",
+  "_createdAt": 1793664000000,
+  "dataType": "ip",
+  "data": "198.51.100.23",
+  "startDate": 1793664000000,
+  "tlp": 3,
+  "pap": 2,
+  "papLabel": "Amber",
+  "tags": [],
+  "ioc": false,
+  "sighted": false,
+  "reports": {},
+  "message": "",
+  "extraData": {},
+  "ignoreSimilarity": false
+ },
+ {
+  "_id": "~42001",
+  "_type": "Observable",
+  "_createdAt": 1793664000000,
+  "dataType": "ip",
+  "data": "198.51.100.230",
+  "tlp": 2,
+  "tlpLabel": "Amber",
+  "pap": 2,
+  "papLabel": "Amber",
+  "tags": [],
+  "ioc": false,
+  "sighted": false,
+  "reports": {},
+  "extraData": {}
+ }
+]

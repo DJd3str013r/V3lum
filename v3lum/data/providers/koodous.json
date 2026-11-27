@@ -1,0 +1,80 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "koodous",
+  "name": "Koodous APK intelligence API",
+  "operator": "Koodous (Hispasec Sistemas S.L.)",
+  "hosts": ["developer.koodous.com"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Identifiable operator (Hispasec), public API documentation and plans, years of public track record as a collaborative Android malware platform (A8 community): 'Tier community (Koodous; Apple and Google are trusted).' (P346 chair rationale).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Community platform: APK metadata (package, app name, company as declared in the APK) plus community detections and votes; detections are context, never a verdict on their own (P346 c7)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "ttl": 86400,
+    "max_bytes": 262144,
+    "timeout": 15,
+    "retries": 1,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "key",
+    "day": 15,
+    "rate_per_second": 1.66,
+    "burst": 1,
+    "published": true,
+    "evidence_url": "https://docs.koodous.com/quotas.html"
+  },
+  "error_markers": [
+    {
+      "id": "koodous_throttled_plan_limit",
+      "statuses": [429],
+      "json_path": "detail",
+      "regex": "(?i)request was throttled\\. expected available in [0-9]{4,} seconds",
+      "maps_to": "quota",
+      "reason_code": "quota",
+      "reason": "Koodous: plan limit reached (throttled for more than 15 minutes): could not verify"
+    }
+  ],
+  "keys": {
+    "koodous": {
+      "description": "Koodous API token of the company account (Authorization: Token <token>): APK package/hash lookups of mobile_app_impersonation (P346 c5)",
+      "signup_url": "https://koodous.com/",
+      "env": ["V3LUM_KOODOUS_TOKEN"],
+      "multi_key": false,
+      "plan_hint": "company account; record the plan with `v3lum keys set koodous --plan business` once the Koodous terms are reviewed for business use (free API plan: 15 searches/day, 4 details/min)"
+    }
+  },
+  "sources": {
+    "apks": {
+      "title": "Koodous APK search and detail (GET /apks/?search=, GET /apks/<sha256>/): read endpoints only",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://docs.koodous.com/quotas.html",
+        "quote": "Koodous only with a company token (key 'koodous', terms recorded, real fixture), for APK hash/package lookups; keyless 401 gives NEEDS_KEY. (P346 final condition 5; Koodous usage limits: Free API 15 searches/day, Fan, Research and Corporate API plans, overall limit of 100 requests per minute)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "koodous",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0781 (keyless GET /apks/?search= -> HTTP 401 'Authentication credentials were not provided.', www-authenticate: Token). Business use is decided by key_plans.koodous (company token). Only the search and detail read endpoints are called: analyze_static/analyze_dynamic/analyze_yara, download, get_upload_url, votes and comments (GET endpoints that change state or move files) are never called. The API answer shape with a token is still to be captured as a real fixture (backlog p2-G03-2)."
+    }
+  },
+  "notes": "Owned by batch p2-G03-2 (P346). reuses_queries false: the module only searches and reads APK reports (no upload, analysis request, vote or comment); the terms review of query reuse is in docs/backlog/p2-G03-2.md."
+}

@@ -1,0 +1,47 @@
+{
+ "matches": [
+  {
+   "rule": "V3LUM_TEST_MIT_MAL_ExampleFam_Marker",
+   "namespace": "V3LUM Test MIT",
+   "tags": [
+    "FILE"
+   ],
+   "meta": {
+    "description": "Detects the ExampleFam test marker (synthetic family rule)",
+    "author": "V3LUM test suite",
+    "date": "2026-11-26",
+    "modified": "2026-11-26",
+    "reference": "https://example.com/rules/examplefam",
+    "source_url": "https://github.com/example/v3lum-test-rules-mit/blob/1111111111111111111111111111111111111111/examplefam.yar#L1-L20",
+    "license_url": "https://github.com/example/v3lum-test-rules-mit/blob/1111111111111111111111111111111111111111/LICENSE",
+    "malware_family": "Trojan:W32/ExampleFam",
+    "score": 80,
+    "quality": 80,
+    "tags": "FILE"
+   },
+   "strings": [
+    {
+     "identifier": "$marker",
+     "count": 1,
+     "offsets": [
+      23
+     ]
+    },
+    {
+     "identifier": "$re",
+     "count": 1,
+     "offsets": [
+      23
+     ]
+    },
+    {
+     "identifier": "$hex",
+     "count": 1,
+     "offsets": [
+      23
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "poc_in_github",
+  "source_url": "https://github.com/nomi-sec/PoC-in-GitHub",
+  "version": "per-CVE runtime lookups {year}/{CVE}.json (checked 2026-11-26); 8 repository objects trimmed in the test fixtures, owners replaced",
+  "sha256": "",
+  "licence": "CC0-1.0",
+  "attribution": "PoC-in-GitHub (nomi-sec), CC0 1.0 Universal; used as a link index only (top links and a count), never redistributed.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/vulnerability_cve/poc_index.py",
+    "tests/fixtures/poc_index/nomi_ok.json"
+  ]
+}

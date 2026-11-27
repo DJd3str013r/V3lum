@@ -1,0 +1,5 @@
+{
+ "message": "Erro ao consultar o registro.br",
+ "type": "service_error",
+ "name": "ServiceError"
+}

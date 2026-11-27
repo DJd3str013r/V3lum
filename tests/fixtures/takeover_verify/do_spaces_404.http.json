@@ -1,0 +1,13 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "http://files.example.com/"
+ },
+ "response": {
+  "status": 404,
+  "headers": {
+   "content-type": "application/xml"
+  },
+  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Error><Code>NoSuchBucket</Code><Message>The specified bucket does not exist</Message><Resource>exemplo-files</Resource></Error>"
+ }
+}

@@ -1,0 +1,54 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "thedfirreport",
+  "name": "The DFIR Report (Atom)",
+  "operator": "The DFIR Report (community intrusion-analysis project)",
+  "hosts": [
+    "thedfirreport.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Community project with a multi-year public track record of intrusion reports; proposed community (registry reviewer confirms).",
+  "tier_reviewer": "council-1 (A8); proposal of batch p2-G11-1, registry reviewer confirms",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Detailed first-hand intrusion analyses; headline-level use only."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "max_bytes": 2097152,
+    "ttl": 3600,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "atom": {
+      "title": "The DFIR Report Atom feed /feed/atom/ (intrusion report headlines)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://thedfirreport.com/feed/atom/",
+        "quote": "Licence (A1, legal floor): feed terms are 'unknown' until legal reviews them, so nothing runs yet in any profile. Legal's feed-reader decision (poll <= hourly; headline + link + date only; no full text; no redistribution) is recorded per kept feed with its class and evidence; a feed whose terms forbid business use or automated reading is dropped.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "thedfirreport",
+      "sanitizer": null,
+      "dataset": "cti_news_rss.dfirreport",
+      "notes": "Quote: binding council text (P298 cond 3). Feed https://thedfirreport.com/feed/atom/; read by module cti_news_rss through the dataset manager (TTL 3600 s, conditional GET, 2 MiB cap, <= 200 items; headline + link + date only, descriptions discarded). Live 2026-11-26: /feed/atom answers 301 to /feed/atom/ (registered URL), 200 Atom, 10 entries; newest entry 2026-08-24 (publishes every 1-3 months, so the 90-day stale rule of P298 cond 9 can flag it)."
+    }
+  },
+  "notes": "Owned by batch p2-G11-1 (P298 cti_news_rss). Feed downloads carry no investigated value (module disclosure 'none'); terms 'unknown' keep the feed off in every profile until legal records the feed-reader decision (A1). ttl 3600 keeps polling at most hourly. No quota block: no published or observed figure."
+}

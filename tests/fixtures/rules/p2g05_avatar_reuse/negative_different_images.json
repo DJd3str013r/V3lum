@@ -1,0 +1,78 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "$comment": "Two avatars more than 8 bits apart: different images, nothing to report.",
+ "options": {
+  "mode": "passive",
+  "tlp": "amber",
+  "depth": 2
+ },
+ "nodes": [
+  {
+   "key": "url:https://github.com/example-dev",
+   "depth": 0,
+   "seed": true,
+   "attributes": {}
+  },
+  {
+   "key": "url:https://gitlab.com/example-dev",
+   "depth": 0,
+   "seed": true,
+   "attributes": {}
+  },
+  {
+   "key": "url:https://avatars.githubusercontent.com/u/1000001?v=4",
+   "depth": 1,
+   "seed": false,
+   "attributes": {
+    "avatar_dhash": [
+     {
+      "value": "002070c860630300",
+      "source": "avatar_correlation"
+     }
+    ],
+    "avatar_sha256": [
+     {
+      "value": "b41a537b623156a9e4e8d758b08c68a51483e13f5adfed30d41bb2b51dcff93a",
+      "source": "avatar_correlation"
+     }
+    ]
+   }
+  },
+  {
+   "key": "url:https://gitlab.com/uploads/-/system/user/avatar/1000002/avatar.png",
+   "depth": 1,
+   "seed": false,
+   "attributes": {
+    "avatar_dhash": [
+     {
+      "value": "0c0f2b6171333314",
+      "source": "avatar_correlation"
+     }
+    ],
+    "avatar_sha256": [
+     {
+      "value": "e0098b586766da00d56a0aa4fbfbfd9a0321f65023b023a8b0020548393ed551",
+      "source": "avatar_correlation"
+     }
+    ]
+   }
+  }
+ ],
+ "edges": [
+  {
+   "src": "url:https://github.com/example-dev",
+   "dst": "url:https://avatars.githubusercontent.com/u/1000001?v=4",
+   "relation": "has_avatar",
+   "module": "github_user",
+   "confidence": 0.9
+  },
+  {
+   "src": "url:https://gitlab.com/example-dev",
+   "dst": "url:https://gitlab.com/uploads/-/system/user/avatar/1000002/avatar.png",
+   "relation": "has_avatar",
+   "module": "gitlab_user",
+   "confidence": 0.9
+  }
+ ]
+}

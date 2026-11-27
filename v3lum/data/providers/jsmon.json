@@ -1,0 +1,73 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "jsmon",
+  "name": "jsmon subdomains API (subdomains.jsmon.sh)",
+  "operator": "Jsmon Inc.",
+  "hosts": [
+    "subdomains.jsmon.sh"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "Young service whose terms and privacy pages have not been reviewed by legal; council P007 cond 1 (legal_dpo floor) keeps jsmon unknown tier: opt-in module, excluded at TLP:AMBER and above (A8).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "D",
+    "justification": "Small subdomain index; the Free plan returns at most 100 results per query."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 20,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "key",
+    "day": 3,
+    "burst": 1,
+    "published": true,
+    "evidence_url": "https://subdomains.jsmon.sh/",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {
+    "jsmon": {
+      "description": "jsmon subdomains API key (Api-Key header)",
+      "signup_url": "https://subdomains.jsmon.sh/",
+      "env": [
+        "V3LUM_JSMON_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "business = a company/team account on a plan whose terms permit internal business use, recorded by legal (never an analyst's personal free account, P007 cond 3); key_plans.jsmon='business' unlocks it under the corporate profile"
+    }
+  },
+  "sources": {
+    "domain": {
+      "title": "jsmon subdomains of a domain (GET /api/domain/{domain})",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://subdomains.jsmon.sh/",
+        "quote": "P007 cond 3 (binding council text): key-terms per adapter - a company/team account, never an analyst's personal free account, on a plan whose terms permit internal business use; legal records the plan and the terms URL in the registry before the adapter runs under the corporate profile (A1).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "jsmon",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0048 (verified_needs_key, 401 without key). Landing page (read 2026-11-26): {domain, total, subdomains[]}; Free 3 queries/day and 100 results/query (quota block), Pro 5,000 queries/month and 10,000 results; paginated with unpublished parameter names (total above the names returned = partial). Used by subdomains_keyed_minor."
+    }
+  },
+  "notes": "Owned by batch p3-G01-1 (P007, module subdomains_keyed_minor)."
+}

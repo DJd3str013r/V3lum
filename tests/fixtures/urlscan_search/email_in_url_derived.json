@@ -1,0 +1,58 @@
+{
+ "results": [
+  {
+   "task": {
+    "visibility": "public",
+    "method": "api",
+    "domain": "toperstoffshore.org",
+    "apexDomain": "toperstoffshore.org",
+    "time": "2026-11-26T03:59:33.615Z",
+    "uuid": "01a21602-004d-735f-8b2d-91c198ecb29e",
+    "url": "https://login.payout.example.org/auth/?email=victim%40example.com&session=Zk9xQ2xWbU1hTkJ0eUR5WkE3cTN4&lang=pt",
+    "tags": [
+     "@analyst-example",
+     "possiblethreat",
+     "phishing"
+    ]
+   },
+   "stats": {
+    "uniqIPs": 2,
+    "uniqCountries": 2,
+    "dataLength": 2956,
+    "requests": 3
+   },
+   "page": {
+    "server": "cloudflare",
+    "redirected": "off-domain",
+    "ip": "104.20.23.154",
+    "apexDomainAgeDays": 4367,
+    "mimeType": "text/html",
+    "title": "Example Domain",
+    "url": "https://login.payout.example.org/verify/dmljdGltQGV4YW1wbGUuY29t/step2?u=victim@example.com",
+    "tlsValidDays": 90,
+    "tlsAgeDays": 1,
+    "domainAgeDays": 4367,
+    "tlsValidFrom": "2026-11-24T23:48:34.000Z",
+    "domain": "example.com",
+    "umbrellaRank": 3449,
+    "apexDomain": "example.com",
+    "asnname": "CLOUDFLARENET - Cloudflare, Inc., US",
+    "asn": "AS13335",
+    "tlsIssuer": "Cloudflare TLS Issuing ECC CA 3",
+    "status": "200"
+   },
+   "_id": "01a21602-004d-735f-8b2d-91c198ecb29e",
+   "sort": [
+    1795665573615,
+    "01a21602-004d-735f-8b2d-91c198ecb29e"
+   ],
+   "result": "https://urlscan.io/api/v1/result/01a21602-004d-735f-8b2d-91c198ecb29e/",
+   "screenshot": "https://urlscan.io/screenshots/01a21602-004d-735f-8b2d-91c198ecb29e.png"
+  }
+ ],
+ "total": 1908,
+ "took": 73,
+ "has_more": false,
+ "search_date_limit_days": 30,
+ "_note": "derived fixture: real urlscan result shape (2026-11-26) with injected documentation e-mail/token values"
+}

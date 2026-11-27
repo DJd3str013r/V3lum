@@ -1,0 +1,14 @@
+{
+ "request": "GET https://dns.google/resolve?name=example.com&type=TXT&edns_client_subnet=0.0.0.0/0",
+ "response": {
+  "status": 429,
+  "headers": {
+   "content-type": "text/html; charset=UTF-8",
+   "retry-after": "30"
+  },
+  "body": "<html><head><title>429 Too Many Requests</title></head><body>Too Many Requests</body></html>"
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "429 from the DoH resolver: RATE_LIMITED, could not verify"
+}

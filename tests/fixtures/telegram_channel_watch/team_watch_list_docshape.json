@@ -1,0 +1,53 @@
+{
+ "version": 1,
+ "channels": [
+  {
+   "handle": "example_fraud_br",
+   "justification": "Fraud panel advertising clones of the organisation's brand (synthetic)",
+   "owner": "cti-team",
+   "review_date": "2027-05-01",
+   "reviewed_by": {
+    "cti_lead": "2026-11-01",
+    "legal": "2026-11-03"
+   }
+  },
+  {
+   "handle": "example_bins_br",
+   "justification": "BIN lists naming the organisation's card BINs (synthetic)",
+   "owner": "cti-team",
+   "review_date": "2026-10-01",
+   "reviewed_by": {
+    "cti_lead": "2026-04-01",
+    "legal": "2026-04-02"
+   }
+  },
+  {
+   "handle": "https://t.me/+InviteOnly123",
+   "justification": "invite links cannot be previewed",
+   "owner": "cti-team",
+   "review_date": "2027-05-01",
+   "reviewed_by": {
+    "cti_lead": "2026-11-01",
+    "legal": "2026-11-03"
+   }
+  },
+  {
+   "handle": "example_nojust",
+   "owner": "cti-team",
+   "review_date": "2027-05-01",
+   "reviewed_by": {
+    "cti_lead": "2026-11-01"
+   }
+  },
+  {
+   "handle": "Example_Market",
+   "justification": "Market reselling stolen cards of Brazilian banks (synthetic)",
+   "owner": "cti-team",
+   "review_date": "2027-02-01",
+   "reviewed_by": {
+    "cti_lead": "2026-11-01",
+    "legal": "2026-11-03"
+   }
+  }
+ ]
+}

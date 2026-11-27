@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "nicbr_asn_blk",
+  "source_url": "https://ftp.registro.br/pub/numeracao/origin/nicbr-asn-blk-latest.txt",
+  "version": "runtime download refreshed daily by the dataset manager (checked 2026-11-26)",
+  "sha256": "",
+  "licence": "NIC.br public registry data (registro.br terms of use; never redistributed)",
+  "attribution": "NIC.br ASN block list (https://ftp.registro.br/pub/numeracao/origin/), Nucleo de Informacao e Coordenacao do Ponto BR. The bundled provider list v3lum/data/nicbr_asn/br_network_providers.json is V3LUM-authored from these public registry facts.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/ip_network/nicbr_asn.py",
+    "v3lum/data/nicbr_asn/br_network_providers.json"
+  ]
+}

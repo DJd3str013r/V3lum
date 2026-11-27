@@ -1,0 +1,5 @@
+{
+ "status": "denied",
+ "message": "1,000 Free queries exhausted. Please try the API again tomorrow or purchase a higher paid plan.",
+ "_synthetic": "documented proxycheck.io 'denied' shape (status + message inside an HTTP 200 body); not recorded live"
+}

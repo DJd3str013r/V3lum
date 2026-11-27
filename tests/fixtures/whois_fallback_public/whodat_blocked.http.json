@@ -1,0 +1,15 @@
+{
+ "request": "GET https://who-dat.as93.net/example.com",
+ "response": {
+  "status": 403,
+  "headers": {
+   "content-type": "text/html; charset=utf-8",
+   "server": "Vercel",
+   "x-vercel-mitigated": "challenge"
+  },
+  "body": "<!DOCTYPE html><html><head><title>Vercel Security Checkpoint</title></head><body>We're verifying your browser</body></html>"
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "Vercel checkpoint on the public instance: BLOCKED challenge, host short-circuited, never bypassed (A9)"
+}

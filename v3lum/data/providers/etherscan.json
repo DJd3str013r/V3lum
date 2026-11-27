@@ -1,0 +1,114 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "etherscan",
+  "name": "Etherscan API V2 (multichain, chainid parameter)",
+  "operator": "Etherscan (Etherscan.io, Ethereum Block Explorer)",
+  "hosts": [
+    "api.etherscan.io"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Etherscan, an established company with published API terms, a privacy policy and paid plans (A8 trusted). Tiers: Etherscan, OKLink, PublicNode trusted; Blockscout, Ethplorer community.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Explorer API over its own nodes: balances, transactions and contract creation are chain facts."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 5.0,
+    "ttl": 3600,
+    "min_interval": 0.34,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "key",
+    "day": 100000,
+    "rate_per_second": 5,
+    "burst": 1,
+    "published": true,
+    "evidence_url": "https://docs.etherscan.io/resources/rate-limits",
+    "safety_margin": 0.8
+  },
+  "error_markers": [
+    {
+      "id": "evm_explorers_etherscan_rate_limited",
+      "statuses": [
+        200
+      ],
+      "json_path": "result",
+      "equals": null,
+      "regex": "(?i)rate limit|max calls per|too many",
+      "final_url_regex": null,
+      "maps_to": "rate_limited",
+      "reason_code": "rate_limited",
+      "reason": "Etherscan: status '0' rate limit inside HTTP 200 (could not verify)"
+    },
+    {
+      "id": "evm_explorers_etherscan_quota",
+      "statuses": [
+        200
+      ],
+      "json_path": "result",
+      "equals": null,
+      "regex": "(?i)daily|credit|quota|plan limit",
+      "final_url_regex": null,
+      "maps_to": "quota",
+      "reason_code": "quota",
+      "reason": "Etherscan: status '0' quota/credits exhausted inside HTTP 200"
+    },
+    {
+      "id": "evm_explorers_etherscan_notok",
+      "statuses": [
+        200
+      ],
+      "json_path": "message",
+      "equals": null,
+      "regex": "^NOTOK$",
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "Etherscan: status '0' NOTOK inside HTTP 200 (e.g. Missing/Invalid API Key): could not verify"
+    }
+  ],
+  "keys": {
+    "etherscan": {
+      "description": "Etherscan API key (one key for every EVM chain of the V2 API via chainid)",
+      "signup_url": "https://etherscan.io/myapikey",
+      "env": [
+        "V3LUM_ETHERSCAN_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "business = an Etherscan API plan held by the company whose terms allow its use (recorded with `v3lum keys set etherscan --plan business`)"
+    }
+  },
+  "sources": {
+    "api": {
+      "title": "Etherscan API V2 /v2/api?chainid=1: account balance/txlist, contract getcontractcreation",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://etherscan.io/terms",
+        "quote": "Per-adapter classes (A1 BR3): Blockscout keyless and PublicNode RPC 'open' (free public APIs, terms recorded, as in P205 and P211); Etherscan, Ethplorer and OKLink 'key-terms' (company keys on recorded plans).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "etherscan",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P212 cond 5). 'Etherscan's terms page sits behind a Cloudflare challenge (rule 1), so legal records it by another channel' (P212 cond 5): the evidence URL answered 403 to the prep check; legal keeps the terms copy. Research C0476 (verified_needs_key): keyless {'status':'0','message':'NOTOK','result':'Missing/Invalid API Key'} inside HTTP 200 - status '0' is ERROR/RATE_LIMITED/QUOTA (P321 markers here), never empty, except the documented 'No transactions found' family with an empty result. The key travels as apikey= (AR01 redaction). Used by evm_explorers only with key 'etherscan'.",
+      "licensed_alternative": "An Etherscan API plan recorded as key_plans.etherscan='business'; Blockscout (open) and the PublicNode RPC keep keyless coverage."
+    }
+  },
+  "notes": "Owned by batch p2-G09-2 (P212). Free key ~5 calls/s and ~100k calls/day (research C0476; check the plan): quota per key with the 80 % margin, 0.34 s politeness."
+}

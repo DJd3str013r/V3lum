@@ -1,0 +1,9 @@
+{
+ "_fixture": "DOC-SHAPED: invalid user name parameter in HTTP 200 (ParamValidator user type)",
+ "status": 200,
+ "headers": {
+  "content-type": "application/json; charset=utf-8",
+  "mediawiki-api-error": "baduser"
+ },
+ "body": "{\"error\": {\"code\": \"baduser\", \"info\": \"Invalid value \\\"Foo#Bar\\\" for user parameter \\\"ucuser\\\".\", \"docref\": \"See https://en.wikipedia.org/w/api.php for API usage. Subscribe to the mediawiki-api-announce mailing list at &lt;https://lists.wikimedia.org/postorius/lists/mediawiki-api-announce.lists.wikimedia.org/&gt; for notice of API deprecations and breaking changes.\"}, \"servedby\": \"mw-api-ext.example\"}"
+}

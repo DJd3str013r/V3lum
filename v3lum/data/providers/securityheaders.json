@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "securityheaders",
+  "name": "securityheaders.com header reports",
+  "operator": "Snyk Ltd (securityheaders.com, operated with Probely)",
+  "hosts": [
+    "securityheaders.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms; P083 cond 5: 'trusted - securityheaders.com (Snyk)'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": true,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Header grade computed by a live third-party scan; manual context only."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "pivot_pages": {
+      "title": "securityheaders.com /?q={value}&hide=on&followRedirects=on (manual pivot link, scan trigger)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://securityheaders.com/",
+        "quote": "The pack is offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "securityheaders",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (cond 1 of the proposal). Research C0195. Opening the page makes the service fetch the site live (fetches_target, touches_target). Without hide=on the scan is listed on the public recent-scans page: every template carries &hide=on (P083 cond 9, P327 lint 'securityheaders_public'), so publishes_queries stays false. Rendered by pivots_url_web only for analyst-typed values at TLP:CLEAR/GREEN (P083 cond 11). Homepage answered a Cloudflare managed challenge (403) to curl on 2026-11-26: antibot=true. Used by pivots_url_web (module link of pivots_url_web)."
+    }
+  },
+  "notes": "Manual pivot links only (batch p2-G14-1): V3LUM never fetches them (P311)."
+}

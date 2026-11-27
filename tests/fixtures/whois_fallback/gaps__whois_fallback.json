@@ -1,0 +1,114 @@
+{
+ "gap": "G01 domain_dns - WHOIS for TLDs without RDAP (+ registro.br fallback)",
+ "slug": "whois_fallback",
+ "collected_at": "2026-11-25T23:56:56Z",
+ "requests": [
+  {
+   "label": "whodat_yandex_ru",
+   "url": "https://who-dat.as93.net/yandex.ru",
+   "method": "GET",
+   "http_status": 200,
+   "elapsed_s": 0.22,
+   "body_kind": "json_extract",
+   "body": {
+    "domain": "yandex.ru",
+    "tld": "ru",
+    "isRegistered": true,
+    "registrar.name": "Regional Network Information Center",
+    "registrar.whoisServer": null,
+    "dates": {
+     "created": "1997-09-23T09:45:07Z",
+     "updated": null,
+     "expires": "2027-09-30T21:00:00Z"
+    },
+    "contacts.registrant.redacted": true,
+    "meta.source": "rdap",
+    "meta.server": "https://cctld.ru/tci-ripn-rdap",
+    "meta.cached": true
+   }
+  },
+  {
+   "label": "whodat_registro_br",
+   "url": "https://who-dat.as93.net/registro.br",
+   "method": "GET",
+   "http_status": 200,
+   "elapsed_s": 0.18,
+   "body_kind": "json_extract",
+   "body": {
+    "domain": "registro.br",
+    "tld": "br",
+    "isRegistered": true,
+    "registrar.name": null,
+    "registrar.whoisServer": "whois.registro.br",
+    "dates": {
+     "created": "1999-02-21T12:00:00Z",
+     "updated": "2018-04-02T12:19:10Z",
+     "expires": null
+    },
+    "contacts.registrant.redacted": false,
+    "meta.source": "rdap",
+    "meta.server": "https://rdap.registro.br",
+    "meta.cached": false,
+    "contacts.registrant.name": "Núcleo de Inf. e Coord. do Ponto BR - NIC.BR"
+   }
+  },
+  {
+   "label": "whodat_example_com",
+   "url": "https://who-dat.as93.net/example.com",
+   "method": "GET",
+   "http_status": 200,
+   "elapsed_s": 0.13,
+   "body_kind": "json_extract",
+   "body": {
+    "domain": "example.com",
+    "tld": "com",
+    "isRegistered": true,
+    "registrar.name": "RESERVED-Internet Assigned Numbers Authority",
+    "registrar.whoisServer": null,
+    "dates": {
+     "created": "1995-08-14T04:00:00Z",
+     "updated": "2026-08-14T08:01:43Z",
+     "expires": "2027-08-13T04:00:00Z"
+    },
+    "contacts.registrant.redacted": true,
+    "meta.source": "rdap",
+    "meta.server": "https://rdap.verisign.com/com/v1",
+    "meta.cached": false
+   }
+  },
+  {
+   "label": "iana_root_db_ru",
+   "url": "https://www.iana.org/domains/root/db/ru.html",
+   "method": "GET",
+   "http_status": 200,
+   "elapsed_s": 1.03,
+   "body_kind": "html_grep",
+   "body": {
+    "title": ".ru Top-Level Domain",
+    "matches": {
+     "WHOIS Server:? ?[a-z0-9.-]+": [
+      "Additional Information Website http://www.cctld.ru/en RDAP Base URLs - WHOIS Server whois.tcinet.ru Technical Status Delegated NS a.dns.ripn.net 193.232.128.6, 2001:678:17:0:193:232:128:6 NS b.dns.ripn.net 194.85.252.62, 2001:678:16:0:194:85:252:62 NS c.tld-servers.ru "
+     ],
+     "RDAP Server": []
+    }
+   }
+  },
+  {
+   "label": "iana_root_db_cn",
+   "url": "https://www.iana.org/domains/root/db/cn.html",
+   "method": "GET",
+   "http_status": 200,
+   "elapsed_s": 0.14,
+   "body_kind": "html_grep",
+   "body": {
+    "title": ".cn Top-Level Domain",
+    "matches": {
+     "WHOIS Server:? ?[a-z0-9.-]+": [
+      "Additional Information Website http://www.cnnic.cn/ RDAP Base URLs - WHOIS Server whois.cnnic.cn Technical Status Delegated NS a.dns.cn 203.119.25.1, 2001:dc7:0:0:0:0:0:1 NS b.dns.cn 203.119.26.1, 2001:dc7:1:0:0:0:0:1 NS c.dns.cn 203.119.27.1, 2001:dc7:2:0:0:0:0:1 N"
+     ],
+     "RDAP Server": []
+    }
+   }
+  }
+ ]
+}

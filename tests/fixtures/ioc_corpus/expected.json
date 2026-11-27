@@ -1,0 +1,50 @@
+{
+  "_comment": "Hand-written expected entity keys per corpus file (P172 cond 12). A key ending in '*' matches by prefix (header blocks, secret fingerprints). 'forbidden' keys must never be extracted.",
+  "cti_report_excerpt.txt": {
+    "expected": [
+      "cve:CVE-2021-44228", "cve:CVE-2023-4966",
+      "mitre_technique:T1190", "mitre_technique:T1059.001", "mitre_technique:T1053.005", "mitre_technique:T1566.001",
+      "url:https://update-check.kettle-cdn.example.net/api/v2/ping", "domain:update-check.kettle-cdn.example.net",
+      "ipv4:198.51.100.23", "url:http://203.0.113.77/panel/login.php", "ipv4:203.0.113.77",
+      "domain:kettle-sync.example.org", "domain:files-kettle.example.com",
+      "onion:duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion",
+      "md5:44d88612fea8a8f36de82e1278abb02f", "sha1:3395856ce81f2b7382dee72602f798b642f14140",
+      "sha256:275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f",
+      "btc_address:bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq", "other_crypto_address:TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t",
+      "eth_address:0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae",
+      "url:https://www.example.org/blog/kettleloader-analysis", "domain:www.example.org"
+    ],
+    "forbidden": ["ipv4:13.1.49.15", "domain:statement_oct.pdf", "domain:invoice.zip", "ipv6:11:42:07"]
+  },
+  "phishing_email.eml": {
+    "expected": [
+      "email_headers:*", "ipv4:192.0.2.45", "domain:mail.bad-sender.example.net", "domain:mx.acme.example.com",
+      "email:billing@bad-sender.example.net", "domain:bad-sender.example.net",
+      "url:https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fpagamento-acme.example.org%2Ffatura%3Fid%3D88&data=05%7C01",
+      "domain:eur02.safelinks.protection.outlook.com",
+      "url:https://pagamento-acme.example.org/fatura?id=88", "domain:pagamento-acme.example.org",
+      "url:https://backup-pay.example.com/login", "domain:backup-pay.example.com",
+      "url:https://suporte.acme-billing.example.net/chat", "domain:suporte.acme-billing.example.net",
+      "url:https://track.mailer.example.net/open.gif", "domain:track.mailer.example.net"
+    ],
+    "forbidden": ["email:ana.victim@acme.example.com", "email:finance-team@acme.example.com",
+                  "email:20261126091402.7f3a@bad-sender.example.net"]
+  },
+  "ptbr_sms_whatsapp.txt": {
+    "expected": [
+      "phone:+5511987654321", "phone:+5511912345678", "phone:+558001234567", "phone:+552134567890",
+      "url:https://banco-exemplo-seguro.com/liberar", "domain:banco-exemplo-seguro.com",
+      "telegram_handle:central_seguranca_bx", "telegram_invite:QwErTy123456", "discord_invite:bxsuporte",
+      "social_account:instagram:bancoexemplo.suporte", "payment_card:411111…1111", "cnpj:11222333000181"
+    ],
+    "forbidden": ["cpf:11144477735", "payment_card:4111111111111111", "domain:t.me", "domain:wa.me", "domain:instagram.com"]
+  },
+  "analyst_notes.txt": {
+    "expected": [
+      "ipv4:10.20.30.40", "ipv4:45.33.32.156", "ipv6:2001:db8:85a3::8a2e:370:7334", "cidr:192.168.10.0/24",
+      "mac_address:00:1A:2B:3C:4D:5E", "url:http://stage2.example.net/p.bin", "domain:stage2.example.net",
+      "domain:ip-api.example.com", "secret:github_token:*", "email:kettle.ops@mailbox.example.org", "cve:CVE-2024-3400"
+    ],
+    "forbidden": ["ipv4:2.4.1.7", "ipv4:6.1.0.3", "domain:os.path", "ipv6:10:42"]
+  }
+}

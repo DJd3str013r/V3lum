@@ -1,0 +1,113 @@
+{
+ "items": [
+  {
+   "id": "EUVD-2025-211117",
+   "enisaUuid": "61335613-5a15-33a9-8839-637580b58f93",
+   "description": "The Management Console and product files expose sensitive data, including remote log server credentials, truststore passwords, and keystore passwords, in plain text. This occurs because the system does not sufficiently protect or obscure these credentials when the remote logging feature is enabled.\n\nAn attacker with administrative access to the Management Console or direct access to product files ",
+   "datePublished": "Oct 19, 2026, 4:38:01 PM",
+   "dateUpdated": "Oct 20, 2026, 7:33:23 PM",
+   "baseScore": 4.9,
+   "baseScoreVersion": "3.1",
+   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N",
+   "assigner": "WSO2",
+   "epss": 0.25,
+   "references": "https://security.docs.wso2.com/en/latest/security-announcements/security-advisories/2026/WSO2-2025-4369/\n",
+   "aliases": "GHSA-h7jm-p2j6-phjf\nCVE-2025-7203\n",
+   "enisaIdProduct": [
+    {
+     "id": "002222f3-dd72-3575-97f4-ef035bdeb283",
+     "product": {
+      "name": "WSO2 Carbon Identity API Server Configs V1",
+      "vendor": {
+       "name": "WSO2"
+      }
+     },
+     "product_version": "1.2.176 <1.2.176.16"
+    },
+    {
+     "id": "0e4e67a8-43fd-31aa-a1ab-b2c13ad5a653",
+     "product": {
+      "name": "WSO2 API Manager",
+      "vendor": {
+       "name": "WSO2"
+      }
+     },
+     "product_version": "4.3.0 <4.3.0.97"
+    }
+   ],
+   "enisaIdVendor": [
+    {
+     "id": "fffab762-a546-3e2b-8ed0-6d9b3402b233",
+     "vendor": {
+      "name": "WSO2"
+     }
+    }
+   ]
+  },
+  {
+   "id": "EUVD-2020-0263",
+   "enisaUuid": "1d797d18-e860-363d-86c1-401b5402b97a",
+   "description": "In Apache Log4j 2.x before 2.8.2, when using the TCP socket server or UDP socket server to receive serialized log events from another application, a specially crafted binary payload can be sent that, when deserialized, can execute arbitrary code.",
+   "datePublished": "Apr 17, 2017, 9:00:00 PM",
+   "dateUpdated": "Oct 8, 2026, 9:14:06 PM",
+   "baseScore": null,
+   "assigner": "apache",
+   "epss": 88.69,
+   "references": "https://access.redhat.com/errata/RHSA-2017:2888\n",
+   "aliases": "CVE-2017-5645\nGHSA-fxph-q3j8-mv87\n",
+   "enisaIdProduct": [
+    {
+     "id": "bc13248c-e566-3ff7-b439-3ef051916494",
+     "product": {
+      "name": "Apache Log4j",
+      "vendor": {
+       "name": "Apache Software Foundation"
+      }
+     },
+     "product_version": "All versions between 2.0-alpha1 and 2.8.1"
+    }
+   ],
+   "enisaIdVendor": [
+    {
+     "id": "511facdc-d618-395f-8476-f80b04a2e67a",
+     "vendor": {
+      "name": "Apache Software Foundation"
+     }
+    }
+   ]
+  },
+  {
+   "id": "EUVD-2019-0750",
+   "enisaUuid": "25069146-b851-3692-bdb6-f3fb69d7a78a",
+   "description": "A Polymorphic Typing issue was discovered in FasterXML jackson-databind 2.0.0 through 2.9.10. When Default Typing is enabled (either globally or for a specific property) for an externally exposed JSON endpoint and the service has the apache-log4j-extra (version 1.2.x) jar in the classpath, and an attacker can provide a JNDI service to access, it is possible to make the service execute a malicious ",
+   "datePublished": "Oct 12, 2019, 8:07:34 PM",
+   "dateUpdated": "Oct 8, 2026, 8:53:03 PM",
+   "baseScore": null,
+   "assigner": "mitre",
+   "epss": 5.37,
+   "references": "https://lists.apache.org/thread.html/b3c90d38f99db546de60fea65f99a924d540fae2285f014b79606ca5%40%3Ccommits.pulsar.apache.org%3E\n",
+   "aliases": "GHSA-gjmw-vf9h-g25v\nCVE-2019-17531\n",
+   "enisaIdProduct": [
+    {
+     "id": "197fde1d-ecfe-369d-be33-ea0b818d70bb",
+     "product": {
+      "name": "n/a",
+      "vendor": {
+       "name": "n/a"
+      }
+     },
+     "product_version": "n/a"
+    }
+   ],
+   "enisaIdVendor": [
+    {
+     "id": "7c80ac5c-fa60-37bd-99c0-6d921d2f7623",
+     "vendor": {
+      "name": "n/a"
+     }
+    }
+   ]
+  }
+ ],
+ "total": 37
+}

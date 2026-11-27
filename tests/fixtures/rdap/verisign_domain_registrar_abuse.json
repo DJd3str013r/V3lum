@@ -1,0 +1,124 @@
+{
+ "objectClassName": "domain",
+ "handle": "1264983250_DOMAIN_COM-VRSN",
+ "ldhName": "GITHUB.COM",
+ "status": [
+  "client delete prohibited",
+  "client transfer prohibited",
+  "client update prohibited"
+ ],
+ "entities": [
+  {
+   "objectClassName": "entity",
+   "handle": "292",
+   "roles": [
+    "registrar"
+   ],
+   "links": [
+    {
+     "href": "http://www.markmonitor.com",
+     "type": "text/html",
+     "value": "https://rdap.markmonitor.com/rdap/",
+     "rel": "about"
+    }
+   ],
+   "publicIds": [
+    {
+     "type": "IANA Registrar ID",
+     "identifier": "292"
+    }
+   ],
+   "vcardArray": [
+    "vcard",
+    [
+     [
+      "version",
+      {},
+      "text",
+      "4.0"
+     ],
+     [
+      "fn",
+      {},
+      "text",
+      "MarkMonitor Inc."
+     ]
+    ]
+   ],
+   "entities": [
+    {
+     "objectClassName": "entity",
+     "roles": [
+      "abuse"
+     ],
+     "vcardArray": [
+      "vcard",
+      [
+       [
+        "version",
+        {},
+        "text",
+        "4.0"
+       ],
+       [
+        "fn",
+        {},
+        "text",
+        ""
+       ],
+       [
+        "tel",
+        {
+         "type": "voice"
+        },
+        "uri",
+        "tel:+55.1155550101"
+       ],
+       [
+        "email",
+        {},
+        "text",
+        "abuse@example.com"
+       ]
+      ]
+     ]
+    }
+   ]
+  }
+ ],
+ "events": [
+  {
+   "eventAction": "registration",
+   "eventDate": "2007-10-09T18:20:50Z"
+  },
+  {
+   "eventAction": "expiration",
+   "eventDate": "2028-10-09T18:20:50Z"
+  },
+  {
+   "eventAction": "last changed",
+   "eventDate": "2026-09-07T09:22:52Z"
+  },
+  {
+   "eventAction": "last update of RDAP database",
+   "eventDate": "2026-11-25T21:24:02Z"
+  }
+ ],
+ "secureDNS": {
+  "delegationSigned": false
+ },
+ "nameservers": [
+  {
+   "objectClassName": "nameserver",
+   "ldhName": "DNS1.P08.NSONE.NET"
+  },
+  {
+   "objectClassName": "nameserver",
+   "ldhName": "DNS2.P08.NSONE.NET"
+  },
+  {
+   "objectClassName": "nameserver",
+   "ldhName": "DNS3.P08.NSONE.NET"
+  }
+ ]
+}

@@ -1,0 +1,51 @@
+{
+ "sha256": "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f",
+ "overall_verdict": "malicious",
+ "fuzzyhash": {
+  "hash": "9c766f9ff6593eb46e05081cb967cd10f6a4c89525140c5de0226ed023007bb7",
+  "verdict": "unknown"
+ },
+ "mdcloud": {
+  "total_av_engines": 16,
+  "detected_av_engines": 13,
+  "scan_time": "2026-11-26T03:52:38.770000"
+ },
+ "filescan_reports": [
+  {
+   "verdict": "malicious",
+   "report_date": "12/31/2022, 01:15:32",
+   "report_id": "211baaf5-801a-4279-88f5-7958e130d7db",
+   "flow_id": "63af8afe0e926711fd75e445"
+  },
+  {
+   "verdict": "malicious",
+   "report_date": "12/30/2023, 10:01:02",
+   "report_id": "28abb1d8-e711-4240-bbd7-c18bab48fc8e",
+   "flow_id": "658fea5bb290743934f0246b"
+  },
+  {
+   "verdict": "malicious",
+   "report_date": "11/26/2026, 08:55:16",
+   "report_id": "48abf1f8-8bc9-4f37-97f4-21849775a4a3",
+   "flow_id": "6b07f3f3593e7bf2de23d3b1"
+  },
+  {
+   "verdict": "malicious",
+   "report_date": "08/22/2021, 23:04:07",
+   "report_id": "c93459dc-4cb6-4baa-b256-008ef50f6e02",
+   "flow_id": "6122ae2ce632af95676b13be"
+  },
+  {
+   "verdict": "suspicious",
+   "report_date": "07/07/2022, 01:25:56",
+   "report_id": "b1686ece-2126-45d3-8c6e-1c48a848088e",
+   "flow_id": "62c63146dd037e27033529cb"
+  },
+  {
+   "verdict": "suspicious",
+   "report_date": "07/03/2022, 01:15:37",
+   "report_id": "c50f4233-2702-40bf-ad99-d265276888cc",
+   "flow_id": "62c0eb4122ab9d0aa0fcc794"
+  }
+ ]
+}

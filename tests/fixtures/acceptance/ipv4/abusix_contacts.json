@@ -1,0 +1,38 @@
+{
+ "schema": "v3lum.acceptance_routes/1",
+ "module": "abusix_contacts",
+ "routes": [
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=8.8.8.8.abuse-contacts.abusix.zone&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": false,
+    "CD": false,
+    "Question": [
+     {
+      "name": "8.8.8.8.abuse-contacts.abusix.zone.",
+      "type": 16
+     }
+    ],
+    "Answer": [
+     {
+      "name": "8.8.8.8.abuse-contacts.abusix.zone.",
+      "type": 16,
+      "TTL": 300,
+      "data": "network-abuse@google.com"
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0"
+   },
+   "headers": {
+    "content-type": "application/x-javascript; charset=UTF-8"
+   },
+   "latency_ms": 340
+  }
+ ]
+}

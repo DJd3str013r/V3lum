@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "pack_threat_intel",
+  "title": "Threat-intel consensus pack (P171, CR27-CR30)",
+  "owner": "core WP23",
+  "notes": "Names the CR27-CR30 rules read; modules that report them use exactly these meanings. The rules only read the graph.",
+  "attributes": {
+    "jarm": "JARM TLS fingerprint (62 hex characters) of a TLS service of the host, from indexed scan data (a string, a list, or {port, jarm} items); a live JARM probe is ACTIVE and runs only on in-scope authorized targets (CR30)",
+    "jarm_c2_matches": "list of {jarm, family, list, source}: known command-and-control fingerprints a source matched against the host's indexed JARM (CR30 needs an extra signal)",
+    "scanner_classification": "classification of an internet-scanner address by a scanner-intelligence source (e.g. GreyNoise): benign | malicious | unknown; 'benign' (research/search-engine scanners) downgrades CR27 consensus, never deletes it"
+  },
+  "tags": {},
+  "relations": {}
+}

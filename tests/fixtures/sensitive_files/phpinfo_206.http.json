@@ -1,0 +1,18 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://www.example.com/phpinfo.php",
+  "headers": {
+   "Range": "bytes=0-1023"
+  }
+ },
+ "response": {
+  "status": 206,
+  "headers": {
+   "content-type": "text/html; charset=UTF-8",
+   "content-range": "bytes 0-1023/95000",
+   "content-length": "1024"
+  },
+  "body": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\"><head>\n<style type=\"text/css\">\nbody {background-color: #fff; color: #222; font-family: sans-serif;}\npre {margin: 0; font-family: monospace;}\na {color: inherit;}\na:hover {text-decoration: none;}\ntable {border-collapse: collapse; border: 0; width: 934px; box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);}\n.center {text-align: center;}\n.center table {margin: 1em auto; text-align: left;}\n.center th {text-align: center !important;}\ntd, th {border: 1px solid #666; font-size: 75%; vertical-align: baseline; padding: 4px 5px;}\nth {position: sticky; top: 0; background: inherit;}\nh1 {font-size: 150%;}\nh2 {font-size: 125%;}\nh2 > a {text-decoration: none;}\nh2 > a:hover {text-decoration: underline;}\n.p {text-align: left;}\n.e {background-color: #ccf; width: 300px; font-weight: bold;}\n.h {background-color: #99c; font-weight: bold;}\n.v {background-color: #ddd; max-width: 300px; overflow-x: auto; wo"
+ }
+}

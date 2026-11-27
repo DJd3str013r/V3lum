@@ -1,0 +1,2 @@
+sha256_hash,md5_hash,sha1_hash,first_seen_utc,signature,file_type_guess,mime_type,tags
+8348a0588ce681428a89e559d6ddf89f7a6cd425dac606dacc6c333d59e67d59,d3f192fe9af7e32ac26565fed9629f9b,a2fc3ddf175ed561e721807a92aea744d1db9147,2026-11-26 05:02:44,RemcosRAT,exe,application/x-dosexec,"remcos,rat"

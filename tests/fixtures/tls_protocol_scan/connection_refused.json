@@ -1,0 +1,14 @@
+{
+ "server": "closed_port",
+ "probe": "tls10",
+ "trust": "self_signed_ca",
+ "ok": false,
+ "stage": "connect",
+ "version": null,
+ "cipher": null,
+ "error_type": "ConnectionRefusedError",
+ "reason": null,
+ "library": null,
+ "verify_code": null,
+ "str": "[Errno 111] Connection refused"
+}

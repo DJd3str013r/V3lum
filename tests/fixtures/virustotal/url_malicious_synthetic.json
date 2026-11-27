@@ -1,0 +1,95 @@
+{
+ "data": {
+  "attributes": {
+   "categories": {
+    "Forcepoint ThreatSeeker": "phishing and other frauds"
+   },
+   "first_submission_date": 1795000000,
+   "last_analysis_date": 1795500000,
+   "last_analysis_results": {
+    "Fortinet": {
+     "category": "malicious",
+     "engine_name": "Fortinet",
+     "method": "blacklist",
+     "result": "phishing"
+    },
+    "Kaspersky": {
+     "category": "malicious",
+     "engine_name": "Kaspersky",
+     "method": "blacklist",
+     "result": "phishing"
+    },
+    "BitDefender": {
+     "category": "malicious",
+     "engine_name": "BitDefender",
+     "method": "blacklist",
+     "result": "phishing"
+    },
+    "ESET": {
+     "category": "malicious",
+     "engine_name": "ESET",
+     "method": "blacklist",
+     "result": "phishing"
+    },
+    "Sophos": {
+     "category": "malicious",
+     "engine_name": "Sophos",
+     "method": "blacklist",
+     "result": "phishing"
+    },
+    "G-Data": {
+     "category": "malicious",
+     "engine_name": "G-Data",
+     "method": "blacklist",
+     "result": "phishing"
+    },
+    "Avira": {
+     "category": "suspicious",
+     "engine_name": "Avira",
+     "method": "blacklist",
+     "result": "suspicious"
+    },
+    "Webroot": {
+     "category": "harmless",
+     "engine_name": "Webroot",
+     "method": "blacklist",
+     "result": "clean"
+    }
+   },
+   "last_analysis_stats": {
+    "harmless": 1,
+    "malicious": 6,
+    "suspicious": 1,
+    "timeout": 0,
+    "undetected": 60
+   },
+   "last_final_url": "https://malicious.example.net/login/verify.php?step=2",
+   "last_http_response_code": 200,
+   "last_http_response_headers": {
+    "content-type": "text/html; charset=UTF-8"
+   },
+   "redirection_chain": [
+    "http://malicious.example.net/login/verify.php"
+   ],
+   "reputation": -12,
+   "tags": [
+    "phishing"
+   ],
+   "threat_names": [
+    "Phishing.Generic"
+   ],
+   "times_submitted": 4,
+   "title": "Sign in - Example Bank",
+   "total_votes": {
+    "harmless": 0,
+    "malicious": 3
+   },
+   "url": "http://malicious.example.net/login/verify.php"
+  },
+  "id": "d617d8057600d1806bdf3e4172846893774e22913803178b7c447e432c443d73",
+  "links": {
+   "self": "https://www.virustotal.com/api/v3/urls/d617d8057600d1806bdf3e4172846893774e22913803178b7c447e432c443d73"
+  },
+  "type": "url"
+ }
+}

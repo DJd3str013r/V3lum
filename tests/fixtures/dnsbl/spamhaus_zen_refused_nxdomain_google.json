@@ -1,0 +1,19 @@
+{
+ "Status": 3,
+ "TC": false,
+ "Question": [
+  {
+   "name": "2.0.0.127.zen.spamhaus.org.",
+   "type": 1
+  }
+ ],
+ "Authority": [
+  {
+   "name": "zen.spamhaus.org.",
+   "type": 6,
+   "TTL": 10,
+   "data": "need.to.know.only. hostmaster.spamhaus.org. 2611260558 3600 600 432000 10"
+  }
+ ],
+ "Comment": "Response from 209.126.100.155."
+}

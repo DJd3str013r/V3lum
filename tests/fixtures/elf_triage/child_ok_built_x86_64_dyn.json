@@ -1,0 +1,249 @@
+{
+ "build_id": "000102030405060708090a0b0c0d0e0f10111213",
+ "capped": [],
+ "comment": [
+  "GCC: (V3LUM fixture builder) 0.1"
+ ],
+ "dynamic": {
+  "flags_1": 134217728,
+  "needed": [
+   "libc.so.6"
+  ],
+  "rpath": null,
+  "runpath": null,
+  "soname": null
+ },
+ "errors": [],
+ "exports": [
+  {
+   "bind": "STB_GLOBAL",
+   "name": "v3lum_fixture_export",
+   "type": "STT_FUNC"
+  }
+ ],
+ "exports_total": 1,
+ "go_buildinfo": false,
+ "header": {
+  "abiversion": 0,
+  "class": "ELFCLASS64",
+  "data": "ELFDATA2LSB",
+  "entry": 704,
+  "flags": 0,
+  "machine": "EM_X86_64",
+  "machine_arch": "x64",
+  "osabi": "ELFOSABI_SYSV",
+  "phentsize": 56,
+  "phnum": 7,
+  "phoff": 64,
+  "shentsize": 64,
+  "shnum": 11,
+  "shoff": 1056,
+  "shstrndx": 10,
+  "type": "ET_DYN"
+ },
+ "imports": [
+  {
+   "bind": "STB_GLOBAL",
+   "name": "puts",
+   "type": "STT_FUNC"
+  },
+  {
+   "bind": "STB_GLOBAL",
+   "name": "getenv",
+   "type": "STT_FUNC"
+  },
+  {
+   "bind": "STB_GLOBAL",
+   "name": "strlen",
+   "type": "STT_FUNC"
+  }
+ ],
+ "imports_total": 3,
+ "interpreter": "/lib64/ld-linux-x86-64.so.2",
+ "sections": [
+  {
+   "addr": 0,
+   "flags": 0,
+   "name": "",
+   "offset": 0,
+   "size": 0,
+   "type": "SHT_NULL"
+  },
+  {
+   "addr": 456,
+   "entropy": 3.9408,
+   "flags": 2,
+   "name": ".interp",
+   "offset": 456,
+   "oob": false,
+   "size": 28,
+   "type": "SHT_PROGBITS"
+  },
+  {
+   "addr": 484,
+   "entropy": 4.0018,
+   "flags": 2,
+   "name": ".note.gnu.build-id",
+   "offset": 484,
+   "oob": false,
+   "size": 36,
+   "type": "SHT_NOTE"
+  },
+  {
+   "addr": 520,
+   "entropy": 0.7442,
+   "flags": 2,
+   "name": ".dynsym",
+   "offset": 520,
+   "oob": false,
+   "size": 120,
+   "type": "SHT_DYNSYM"
+  },
+  {
+   "addr": 640,
+   "entropy": 4.2264,
+   "flags": 2,
+   "name": ".dynstr",
+   "offset": 640,
+   "oob": false,
+   "size": 51,
+   "type": "SHT_STRTAB"
+  },
+  {
+   "addr": 704,
+   "entropy": 0.0,
+   "flags": 6,
+   "name": ".text",
+   "offset": 704,
+   "oob": false,
+   "size": 64,
+   "type": "SHT_PROGBITS"
+  },
+  {
+   "addr": 768,
+   "entropy": 4.1337,
+   "flags": 2,
+   "name": ".rodata",
+   "offset": 768,
+   "oob": false,
+   "size": 25,
+   "type": "SHT_PROGBITS"
+  },
+  {
+   "addr": 800,
+   "entropy": 1.1633,
+   "flags": 3,
+   "name": ".dynamic",
+   "offset": 800,
+   "oob": false,
+   "size": 112,
+   "type": "SHT_DYNAMIC"
+  },
+  {
+   "addr": 912,
+   "entropy": 2.0,
+   "flags": 3,
+   "name": ".data",
+   "offset": 912,
+   "oob": false,
+   "size": 16,
+   "type": "SHT_PROGBITS"
+  },
+  {
+   "addr": 0,
+   "entropy": 4.4989,
+   "flags": 0,
+   "name": ".comment",
+   "offset": 928,
+   "oob": false,
+   "size": 33,
+   "type": "SHT_PROGBITS"
+  },
+  {
+   "addr": 0,
+   "entropy": 4.0468,
+   "flags": 0,
+   "name": ".shstrtab",
+   "offset": 961,
+   "oob": false,
+   "size": 92,
+   "type": "SHT_STRTAB"
+  }
+ ],
+ "segments": [
+  {
+   "filesz": 392,
+   "flags": 4,
+   "memsz": 392,
+   "offset": 64,
+   "type": "PT_PHDR",
+   "vaddr": 64
+  },
+  {
+   "filesz": 28,
+   "flags": 4,
+   "memsz": 28,
+   "offset": 456,
+   "oob": false,
+   "type": "PT_INTERP",
+   "vaddr": 456
+  },
+  {
+   "entropy": 2.4431,
+   "filesz": 793,
+   "flags": 5,
+   "memsz": 793,
+   "offset": 0,
+   "oob": false,
+   "type": "PT_LOAD",
+   "vaddr": 0
+  },
+  {
+   "entropy": 1.7253,
+   "filesz": 128,
+   "flags": 6,
+   "memsz": 128,
+   "offset": 800,
+   "oob": false,
+   "type": "PT_LOAD",
+   "vaddr": 800
+  },
+  {
+   "filesz": 112,
+   "flags": 6,
+   "memsz": 112,
+   "offset": 800,
+   "oob": false,
+   "type": "PT_DYNAMIC",
+   "vaddr": 800
+  },
+  {
+   "filesz": 36,
+   "flags": 4,
+   "memsz": 36,
+   "offset": 484,
+   "oob": false,
+   "type": "PT_NOTE",
+   "vaddr": 484
+  },
+  {
+   "filesz": 0,
+   "flags": 6,
+   "memsz": 0,
+   "offset": 0,
+   "type": "PT_GNU_STACK",
+   "vaddr": 0
+  }
+ ],
+ "size": 1760,
+ "source": "pyelftools",
+ "symtab": {
+  "present": false
+ },
+ "upx": {
+  "info_banner": false,
+  "magic_offsets": [],
+  "version": null
+ },
+ "version": "0.33"
+}

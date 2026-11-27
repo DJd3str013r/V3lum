@@ -1,0 +1,24 @@
+{
+ "success": true,
+ "result": {
+  "name": "cia_aberta-cad",
+  "title": "Cias Abertas: Informação Cadastral",
+  "license_id": "odc-odbl",
+  "license_title": "Licença Aberta para Bases de Dados (ODbL) do Open Data Commons",
+  "metadata_modified": "2026-11-25T11:00:42.042542",
+  "resources": [
+   {
+    "name": "Dicionário de Dados",
+    "format": "TXT",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/CAD/META/meta_cad_cia_aberta.txt",
+    "last_modified": null
+   },
+   {
+    "name": "Cias Abertas",
+    "format": "CSV",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/CAD/DADOS/cad_cia_aberta.csv",
+    "last_modified": "2026-11-25T08:00:41.970942"
+   }
+  ]
+ }
+}

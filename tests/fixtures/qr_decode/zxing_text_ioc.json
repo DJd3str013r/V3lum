@@ -1,0 +1,21 @@
+{
+ "width": 196,
+ "height": 196,
+ "results": [
+  {
+   "format": "QR Code",
+   "content_type": "Text",
+   "text": "Atendimento: suporte@example.com - boleto em hxxps://example[.]net/2via - IP 198.51.100.7",
+   "text_len": 89,
+   "bytes_hex": "4174656e64696d656e746f3a207375706f727465406578616d706c652e636f6d202d20626f6c65746f20656d2068787870733a2f2f6578616d706c655b2e5d6e65742f32766961202d204950203139382e35312e3130302e37",
+   "bytes_len": 89,
+   "truncated": false,
+   "valid": true,
+   "error": null,
+   "symbology_identifier": "]Q1",
+   "ec_level": "M",
+   "orientation": 0,
+   "position": "16x16 180x16 180x180 16x180"
+  }
+ ]
+}

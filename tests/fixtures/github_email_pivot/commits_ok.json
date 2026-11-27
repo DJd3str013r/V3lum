@@ -1,0 +1,125 @@
+{
+ "_source": "live check 2026-11-26 from this datacenter egress: api.github.com/search/commits?q=author-email:octocat@github.com answer (item keys ['author', 'comments_url', 'commit', 'committer', 'html_url', 'node_id', 'parents', 'repository', 'score', 'sha', 'url']), reshaped: accounts, e-mails, names, repositories and SHAs replaced by documentation values; per-item URL fields trimmed",
+ "total_count": 4,
+ "incomplete_results": false,
+ "items": [
+  {
+   "sha": "a544af123662c61ae0664b4d41457639d24ed7f1",
+   "html_url": "https://github.com/example-org/example-repo/commit/a544af123662c61ae0664b4d41457639d24ed7f1",
+   "commit": {
+    "author": {
+     "date": "2026-11-20T10:00:00.000+01:00",
+     "name": "Example Dev",
+     "email": "dev@example.com"
+    },
+    "committer": {
+     "date": "2026-11-20T10:00:00.000+01:00",
+     "name": "Example Dev",
+     "email": "dev@example.com"
+    },
+    "message": "Example commit message 1"
+   },
+   "author": {
+    "login": "example-dev",
+    "id": 1000001,
+    "html_url": "https://github.com/example-dev",
+    "type": "User",
+    "site_admin": false
+   },
+   "repository": {
+    "full_name": "example-org/example-repo",
+    "html_url": "https://github.com/example-org/example-repo",
+    "private": false,
+    "description": "example repository"
+   },
+   "score": 1.0
+  },
+  {
+   "sha": "6cd8d9c318182ea01857331f7cee7bc8b0740384",
+   "html_url": "https://github.com/example-org/another-repo/commit/6cd8d9c318182ea01857331f7cee7bc8b0740384",
+   "commit": {
+    "author": {
+     "date": "2025-03-01T09:00:00.000-03:00",
+     "name": "Example Dev",
+     "email": "Dev@Example.com "
+    },
+    "committer": {
+     "date": "2025-03-01T09:00:00.000-03:00",
+     "name": "Example Dev",
+     "email": "Dev@Example.com "
+    },
+    "message": "Example commit message 2"
+   },
+   "author": {
+    "login": "example-dev",
+    "id": 1000001,
+    "html_url": "https://github.com/example-dev",
+    "type": "User",
+    "site_admin": false
+   },
+   "repository": {
+    "full_name": "example-org/another-repo",
+    "html_url": "https://github.com/example-org/another-repo",
+    "private": false,
+    "description": "example repository"
+   },
+   "score": 1.0
+  },
+  {
+   "sha": "17d20ffda073bc843e57ebbea50406c289ced33a",
+   "html_url": "https://github.com/example-org/legacy-repo/commit/17d20ffda073bc843e57ebbea50406c289ced33a",
+   "commit": {
+    "author": {
+     "date": "2019-05-05T12:00:00.000Z",
+     "name": "Example Dev",
+     "email": "dev@example.com"
+    },
+    "committer": {
+     "date": "2019-05-05T12:00:00.000Z",
+     "name": "Example Dev",
+     "email": "dev@example.com"
+    },
+    "message": "Example commit message 3"
+   },
+   "author": null,
+   "repository": {
+    "full_name": "example-org/legacy-repo",
+    "html_url": "https://github.com/example-org/legacy-repo",
+    "private": false,
+    "description": "example repository"
+   },
+   "score": 1.0
+  },
+  {
+   "sha": "2cfb071471b3677fb3a58693c9872b8c4a16f9ba",
+   "html_url": "https://github.com/example-org/example-repo/commit/2cfb071471b3677fb3a58693c9872b8c4a16f9ba",
+   "commit": {
+    "author": {
+     "date": "2026-01-01T00:00:00.000Z",
+     "name": "Example Dev",
+     "email": "other@example.com"
+    },
+    "committer": {
+     "date": "2026-01-01T00:00:00.000Z",
+     "name": "Example Dev",
+     "email": "other@example.com"
+    },
+    "message": "Example commit message 4"
+   },
+   "author": {
+    "login": "example-other",
+    "id": 1000002,
+    "html_url": "https://github.com/example-other",
+    "type": "User",
+    "site_admin": false
+   },
+   "repository": {
+    "full_name": "example-org/example-repo",
+    "html_url": "https://github.com/example-org/example-repo",
+    "private": false,
+    "description": "example repository"
+   },
+   "score": 1.0
+  }
+ ]
+}

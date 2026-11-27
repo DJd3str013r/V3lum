@@ -1,0 +1,9 @@
+{
+ "request": "POST https://api-publica.datajud.cnj.jus.br/api_publica_tjdft/_search",
+ "response": null,
+ "transport_error": "curl: (28) Operation timed out after 25000 milliseconds with 0 bytes received",
+ "elapsed_s": 25.0,
+ "observed_at": "2026-11-25T21:35:00Z",
+ "origin": "research",
+ "note": "no byte in 25 s (and in 60 s for api_publica_trf1): could not verify"
+}

@@ -1,0 +1,19 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.ooni.io/api/v1/measurements?domain=google.com&probe_cc=BR&limit=3"
+ },
+ "response": {
+  "status": 200,
+  "headers": {
+   "server": "nginx/1.18.0",
+   "content-type": "application/json",
+   "cache-control": "max-age=60",
+   "x-ratelimit-remaining": "3956",
+   "x-cache-status": "MISS"
+  },
+  "body": "{\"metadata\":{\"count\":-1,\"current_page\":-1,\"limit\":3,\"next_url\":null,\"offset\":0,\"pages\":-1,\"query_time\":0.4287858009338379},\"results\":[]}"
+ },
+ "transport_error": null,
+ "elapsed_s": 1.1105
+}

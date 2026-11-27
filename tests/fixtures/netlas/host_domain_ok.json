@@ -1,0 +1,172 @@
+{
+ "software": [
+  {
+   "uri": "https://example.com:443/oauth2/v1/authorize",
+   "tag": [
+    {
+     "name": "http_3",
+     "fullname": "HTTP/3",
+     "category": [
+      "Miscellaneous"
+     ],
+     "http_3": {
+      "version": ""
+     }
+    },
+    {
+     "name": "cloudflare",
+     "fullname": "Cloudflare",
+     "category": [
+      "CDN"
+     ],
+     "cloudflare": {
+      "version": ""
+     }
+    }
+   ]
+  },
+  {
+   "uri": "https://example.com:443/login",
+   "tag": [
+    {
+     "name": "http_3",
+     "fullname": "HTTP/3",
+     "category": [
+      "Miscellaneous"
+     ],
+     "http_3": {
+      "version": ""
+     }
+    },
+    {
+     "name": "cloudflare",
+     "fullname": "Cloudflare",
+     "category": [
+      "CDN"
+     ],
+     "cloudflare": {
+      "version": ""
+     }
+    }
+   ]
+  }
+ ],
+ "ports": [
+  {
+   "protocol": "https",
+   "prot4": "tcp",
+   "port": 443,
+   "prot7": "http"
+  },
+  {
+   "prot4": "tcp",
+   "protocol": "http",
+   "port": 80,
+   "prot7": "http"
+  }
+ ],
+ "whois": {
+  "server": "whois.iana.org",
+  "domain": "example.com",
+  "name": "example",
+  "zone": "com",
+  "extension": "com",
+  "level": 2,
+  "created_date": "1992-01-01T00:00:00.000Z",
+  "last_updated": "2025-06-02T05:24:03.214Z",
+  "@timestamp": "2025-06-02T05:24:03.214Z"
+ },
+ "ioc": [
+  {
+   "lseen": "2024-04-27T00:00Z",
+   "fseen": "2024-04-27T00:00Z",
+   "@timestamp": "2024-07-26T00:00Z",
+   "domain": "example.com",
+   "fp": {
+    "descr": "Resource unavailable",
+    "alarm": "true"
+   },
+   "threat": [
+    "hawkeye_keylogger"
+   ],
+   "tags": [
+    "backdoor"
+   ],
+   "score": {
+    "total": 21.0,
+    "src": 71.41,
+    "tags": 1.0,
+    "frequency": 1.0
+   },
+   "url": "http://example.com/directory/logs.php"
+  },
+  {
+   "lseen": "2024-01-19T00:00Z",
+   "fseen": "2024-01-19T00:00Z",
+   "@timestamp": "2024-08-19T00:00Z",
+   "domain": "example.com",
+   "fp": {
+    "descr": "",
+    "alarm": "false"
+   },
+   "threat": [
+    "duke_group"
+   ],
+   "tags": [
+    "malware"
+   ],
+   "score": {
+    "total": 63.0,
+    "src": 71.41,
+    "tags": 0.89,
+    "frequency": 1.0
+   },
+   "url": "https://example.com/assets/index.php"
+  }
+ ],
+ "dns": {
+  "a": [
+   "104.20.23.154",
+   "172.66.147.243",
+   "8.47.69.0"
+  ],
+  "aaaa": [
+   "2606:4700:10::6814:179a",
+   "2606:4700:10::ac42:93f3"
+  ],
+  "ns": [
+   "elliott.ns.cloudflare.com",
+   "hera.ns.cloudflare.com"
+  ],
+  "txt": [
+   "v=spf1 -all",
+   "_k2n1y4vw3qtb4skdx9e7dxt97qrmmq9"
+  ],
+  "@timestamp": "2026-10-01T10:20:05.333Z",
+  "zone": "com",
+  "level": 2
+ },
+ "related_domains": [
+  "vps.example.com",
+  "host74.example.com",
+  "xdsl.example.com"
+ ],
+ "related_domains_count": 96666,
+ "related_domains_query": "(domain:*.example.com AND NOT domain:example.com)",
+ "domain": "example.com",
+ "type": "domain",
+ "source": [
+  {
+   "id": 1040,
+   "availability": "public",
+   "type": "whois_domains",
+   "scan_label": "2026-10-04",
+   "scan_started_at": "2026-10-04T00:00:00Z",
+   "scan_ended_at": "2026-11-01T00:16:27.716000Z",
+   "is_default": true,
+   "speed": "fast",
+   "state": "full",
+   "count": 744011472
+  }
+ ]
+}

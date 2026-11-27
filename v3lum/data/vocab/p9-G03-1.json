@@ -1,0 +1,36 @@
+{
+  "schema": "v3lum.vocab/1",
+  "attributes": {
+    "favicon": "favicon of a site {mmh3 (Shodan http.favicon.hash), mmh3_hex_unsigned, md5, sha256, size, format, source live|wayback, url or snapshot}: hashes only, never the icon bytes (P062)",
+    "favicon_noise": "the favicon hash is a default/blank/mass icon {reason blank|default|mass, name, category, hosts}: recorded, never pivoted (P062 cond 5)",
+    "favicon_product": "label of a known product favicon from the bundled list {name, category, source} (nuclei favicon-detect, MIT): context, still pivotable",
+    "favicon_refused_hrefs": "icon hrefs of a page the safe fetch refused [{href, reason}] (private/metadata addresses, other sites, ports, schemes): never requested (P062 cond 4)",
+    "security_headers": "offline audit of a site's homepage response {grade A+..F, score 0-100, missing[], weak[{header, issue}], monitoring_only[], optional_missing[], cookie_issues[{name, issue}], status, url, source} or {inconclusive, status, url} (P063)",
+    "info_leak_headers": "response headers of the OWASP Secure Headers 'remove' list (Server, X-Powered-By, X-AspNet-Version...) {name: value}: software/version disclosure (P063)",
+    "security_txt": "security.txt of a site (RFC 9116) {state present|absent|soft404|blocked|refused|unreachable|..., url, signed, expires, expired, contacts {emails, urls, phones (role numbers)}, fields, errors, warnings, canonical_mismatch} (P065)",
+    "robots_txt": "live robots.txt summary {state, url, groups, disallow (count), allow[], patterns[] (wildcard rules), sitemaps[], sitemaps_foreign[], crawl_delay, truncated}: paths are listed, never requested (P065)",
+    "sitemaps": "sitemap files read for a site {files [{url, state, kind, locs, reason}], urls (same-site count), capped, foreign_hosts[]} (P065)",
+    "mta_sts_policy": "MTA-STS policy (RFC 8461) {state, url, txt, valid, version, mode, mx[], max_age, errors, warnings}: the single policy fetch (P065)",
+    "wellknown_files": "outcome per well-known file of a LIGHT run {security_txt, robots_txt, sitemaps (count read), mta_sts, stopped}: could-not-verify states are never absences (P065)",
+    "js_endpoints": "endpoints and paths found in a site's JavaScript, grouped by host {by_host {host: [path?query]}, total, capped, third_party_domains {domain: count}}: listed, never requested (P068 cond 8)",
+    "js_files": "JavaScript bodies analysed {files [{url, sha256, bytes, source live|inline|source_map|wayback:<ts>, truncated, endpoints, secrets, kit}], not_fetched[{url, reason}], refused[], third_party_scripts[]}: digests only, never the body (P068)",
+    "js_source_maps": "source maps referenced by a site's JavaScript [{url, js, state, n_sources, sources[] (original paths), has_sources_content, node_modules}] (P068 cond 3)",
+    "js_firebase": "Firebase web configuration found in JavaScript {project_id, auth_domain, storage_bucket, api_key (masked)} (jsluice idea; P068)",
+    "short_link": "a short link of the bundled shortener/redirector list {host, provider, category url_shortener|ip_logger|redirector, source, never_contact, preview_url, preview_automation | flags[], js_hints[], hops_contacted, destination (masked)} (P070)",
+    "unshorten_chain": "hops of a LIGHT short-link trace, in order [{url (masked), status, contacted, method, action, reason}]: contacted hops are listed shorteners; the first other destination is recorded uncontacted unless follow-final (P070 c4-c5)",
+    "unshorten_refused": "redirect target the short-link tracer refused {url (masked), action refuse|confirm, reason}: SSRF guard, https downgrade, recipient token, IP logger or port (P070 c4-c6)",
+    "unshorten_lookup": "unshorten.me answer for a short link {service, requested (masked), resolved (masked), result, remaining_calls, usage_count}: the service fetched the link, not V3LUM (P070 c2)"
+  },
+  "tags": {
+    "redirect_refused": "a short link redirects to a target the tracer refused to contact (internal address, downgrade, token URL, IP logger): informational",
+    "phishing_kit_exfil": "credential of a phishing-kit exfiltration channel (Telegram bot, Discord webhook, SMTP account)"
+  },
+  "relations": {
+    "similar_favicon": "site -> host/IP an internet-scan engine reports with the same favicon hash: a hypothesis, expand=False, never eligible for an ACTIVE scope (P062 cond 6)",
+    "security_txt_link": "site -> URL published in its security.txt (Contact, Policy, Acknowledgments, Hiring, CSAF, Encryption key): listed, not requested",
+    "robots_path": "site -> URL path its live robots.txt disallows: listed, never requested (forced browsing is ACTIVE-only, P065 cond 7)",
+    "sitemap_url": "site -> same-site URL listed in its sitemap: listed, never requested (P065 cond 4)",
+    "js_endpoint": "site/page -> endpoint or path found in its JavaScript: a candidate, listed with expand=False and never requested (P068 cond 8)",
+    "exfil_endpoint": "page/script -> host a phishing-kit script sends captured data to (Telegram Bot API, Discord webhook, drop endpoint): the token is never a pivot (P068 cond 7)"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "companies_house_api",
+  "name": "UK Companies House public data REST API (key)",
+  "operator": "Companies House (UK government)",
+  "hosts": [
+    "api.company-information.service.gov.uk"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Government body, the UK companies registrar, with a documented public data API (A8 trusted); P227 provider tier trusted.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "Official register of UK companies, officers and persons with significant control; officer and PSC data are minimised to name, role and dates at parse time (P227 cond 4)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 20.0,
+    "ttl": 86400,
+    "min_interval": 0.5,
+    "concurrency": 2
+  },
+  "quota": {
+    "scope": "key",
+    "rate_per_second": 2.0,
+    "hour": 7200,
+    "burst": 1,
+    "published": true,
+    "evidence_url": "https://developer-specs.company-information.service.gov.uk/guides/rateLimiting",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {
+    "companies_house": {
+      "description": "Companies House REST API key (sent only as the HTTP basic-auth username, never in URLs)",
+      "signup_url": "https://developer.company-information.service.gov.uk/",
+      "env": [
+        "V3LUM_COMPANIES_HOUSE_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "a key of a company/team account created under the corporate identity, never an analyst's personal account; legal records the plan (v3lum keys set companies_house --plan business) and the terms URL before it runs under the corporate profile (P227 cond 2)"
+    }
+  },
+  "sources": {
+    "public_data_api": {
+      "title": "Companies House public data API: company search, profile, officers, persons with significant control",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://developer.company-information.service.gov.uk/",
+        "quote": "Key-terms (A1): the key belongs to a company/team account created under the corporate identity (never an analyst's personal free account) on a plan whose terms permit internal business use; legal records plan and terms URL in the provider registry (key_plans / free_plan_business_use) before it runs under the corporate profile.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "companies_house",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P227 cond 2). Data under the Open Government Licence v3.0 (attribution in data_attribution). Research C0530: keyless 401 {error: 'Empty Authorization header'}. Documented limit 600 requests per 5 minutes per key (P227 cond 5). Batch p3-G10-1."
+    }
+  },
+  "notes": "Owned by batch p3-G10-1 (P227). A separate provider from companies_house (p2-G14-2, manual find-and-update links only) because the API needs the registered key 'companies_house' and a provider extension cannot declare keys (one key per provider); the owner may merge both once extensions can carry keys (core request in docs/backlog/p3-G10-1.md)."
+}

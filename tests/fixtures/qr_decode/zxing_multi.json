@@ -1,0 +1,51 @@
+{
+ "width": 789,
+ "height": 267,
+ "results": [
+  {
+   "format": "QR Code",
+   "content_type": "Text",
+   "text": "https://example.com/v3lum-qr-fixture?ref=test",
+   "text_len": 45,
+   "bytes_hex": "68747470733a2f2f6578616d706c652e636f6d2f76336c756d2d71722d666978747572653f7265663d74657374",
+   "bytes_len": 45,
+   "truncated": false,
+   "valid": true,
+   "error": null,
+   "symbology_identifier": "]Q1",
+   "ec_level": "Q",
+   "orientation": 0,
+   "position": "22x22 121x22 121x121 22x121"
+  },
+  {
+   "format": "QR Code",
+   "content_type": "Text",
+   "text": "Atendimento: suporte@example.com - boleto em hxxps://example[.]net/2via - IP 198.51.100.7",
+   "text_len": 89,
+   "bytes_hex": "4174656e64696d656e746f3a207375706f727465406578616d706c652e636f6d202d20626f6c65746f20656d2068787870733a2f2f6578616d706c655b2e5d6e65742f32766961202d204950203139382e35312e3130302e37",
+   "bytes_len": 89,
+   "truncated": false,
+   "valid": true,
+   "error": null,
+   "symbology_identifier": "]Q1",
+   "ec_level": "M",
+   "orientation": 0,
+   "position": "175x22 298x22 298x145 175x145"
+  },
+  {
+   "format": "ITF",
+   "content_type": "Text",
+   "text": "00194166100000123450000001234567000000000117",
+   "text_len": 44,
+   "bytes_hex": "3030313934313636313030303030313233343530303030303031323334353637303030303030303030313137",
+   "bytes_len": 44,
+   "truncated": false,
+   "valid": true,
+   "error": null,
+   "symbology_identifier": "]I0",
+   "ec_level": "",
+   "orientation": 0,
+   "position": "34x187 754x187 754x246 34x246"
+  }
+ ]
+}

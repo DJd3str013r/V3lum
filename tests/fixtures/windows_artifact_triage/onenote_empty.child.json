@@ -1,0 +1,18 @@
+{
+ "error": null,
+ "header": {
+  "expected_length": 1088,
+  "ffv_last_writer": 42,
+  "file_format_ok": true,
+  "file_type": "one",
+  "guid_file": "0e9a3c55-5301-4e6f-8a9b-0c1d2e3f0001"
+ },
+ "kind": "onenote",
+ "markers": [],
+ "names": [
+  "Nota.txt"
+ ],
+ "objects": [],
+ "objects_capped": false,
+ "size": 1088
+}

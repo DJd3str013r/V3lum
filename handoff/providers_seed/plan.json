@@ -1,0 +1,3042 @@
+{
+ "providers": [
+  {
+   "id": "bcb",
+   "name": "Banco Central do Brasil (STR participants, Olinda OData)",
+   "operator": "Banco Central do Brasil",
+   "hosts": [
+    "bcb.gov.br",
+    "www.bcb.gov.br",
+    "olinda.bcb.gov.br"
+   ],
+   "batches": [
+    "p1-G10-1",
+    "p1-G10-3",
+    "p2-G10-3"
+   ],
+   "proposals": [
+    "P233",
+    "P360",
+    "P361"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "str_participants",
+     "title": "BCB STR participants CSV (bank code / ISPB table; UTF-8 BOM, ',' separator)",
+     "terms_class": "open",
+     "for_modules": [
+      "boleto_pix"
+     ]
+    },
+    {
+     "id": "olinda_institutions",
+     "title": "BCB Olinda Instituicoes_em_funcionamento v1 OData (DominiosVerificados, Sedes*)",
+     "terms_class": "open",
+     "for_modules": [
+      "bcb_authorized_institutions",
+      "cnpj_name_resolver"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "www.bcb.gov.br added: the STR CSV is served from www (research C0556). Tier: government body (A8); P233 cond 5 'BCB trusted', P360 cond 4, P361. Terms: BCB open data (dados abertos), attribution BCB. Datasets, never per-value calls: STR weekly (bundled snapshot), Olinda full sets daily matched locally; Sedes* take 3-35 s and $filter/$count are unreliable; comment-wrapped error bodies (P360 fixture) -> P321 marker. .br hosts default to Accept-Language pt-BR."
+  },
+  {
+   "id": "blockchair",
+   "name": "Blockchair (API and explorer pages)",
+   "operator": "Blockchair",
+   "hosts": [
+    "api.blockchair.com",
+    "blockchair.com"
+   ],
+   "batches": [
+    "p2-G09-2",
+    "p2-G14-2"
+   ],
+   "proposals": [
+    "P211",
+    "P216"
+   ],
+   "keys": [
+    {
+     "name": "blockchair",
+     "env": [
+      "V3LUM_BLOCKCHAIR_KEY"
+     ]
+    }
+   ],
+   "sources": [
+    {
+     "id": "api",
+     "title": "Blockchair API (address dashboards on 40+ chains)",
+     "terms_class": "key-terms",
+     "for_modules": [
+      "btc_explorers"
+     ]
+    },
+    {
+     "id": "explorer_pages",
+     "title": "Blockchair explorer address pages (manual pivot links)",
+     "terms_class": "open",
+     "for_modules": [
+      "pivots_crypto"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Tier: P211 cond 4 and P216 cond 2 'Blockchair trusted'. Terms: P211 cond 4 key-terms; cond 2: Blockchair only with a commercial key 'blockchair' (keyless use is personal/non-commercial). Keyless egress got HTTP 430 'IP temporary blacklisted ... apply for an API key' on the second call: 429/430 -> RATE_LIMITED and the host is short-circuited for the run (P211 cond 3; marker statuses [430] with the recorded body). Per-host P334 bucket; plan figures not published here."
+  },
+  {
+   "id": "brasilapi",
+   "name": "BrasilAPI",
+   "operator": "BrasilAPI open-source community project",
+   "hosts": [
+    "brasilapi.com.br"
+   ],
+   "batches": [
+    "p1-G10-1",
+    "p1-G10-2",
+    "p2-G10-1",
+    "p3-G01-1",
+    "p3-G06-1",
+    "p3-G10-2"
+   ],
+   "proposals": [
+    "P021",
+    "P127",
+    "P233",
+    "P234",
+    "P236",
+    "P244"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "cnpj",
+     "title": "BrasilAPI CNPJ v1 (Receita Federal open data relay)",
+     "terms_class": "open",
+     "for_modules": [
+      "cnpj_lookup"
+     ]
+    },
+    {
+     "id": "cep",
+     "title": "BrasilAPI CEP v2/v1",
+     "terms_class": "open",
+     "for_modules": [
+      "cep_lookup"
+     ]
+    },
+    {
+     "id": "ddd",
+     "title": "BrasilAPI DDD v1 (Anatel numbering)",
+     "terms_class": "open",
+     "for_modules": [
+      "brasilapi_ddd"
+     ]
+    },
+    {
+     "id": "banks",
+     "title": "BrasilAPI banks v1 and PIX participants",
+     "terms_class": "open",
+     "for_modules": [
+      "boleto_pix"
+     ]
+    },
+    {
+     "id": "registrobr",
+     "title": "BrasilAPI registro.br availability wrapper",
+     "terms_class": "open",
+     "for_modules": [
+      "registrobr_domain_status"
+     ]
+    },
+    {
+     "id": "cvm_brokers",
+     "title": "BrasilAPI CVM brokers (corretoras)",
+     "terms_class": "open",
+     "for_modules": [
+      "br_cnpj_risk_lists"
+     ]
+    }
+   ],
+   "tier": "community",
+   "notes": "Id and tier from P127 cond 1 'Registry provider brasilapi: tier community, terms open' (also P233, P234, P236, P244, P021). Terms: MIT code relaying public data (RFB, Correios/ViaCEP chain, Anatel, BCB, registro.br, CVM): upstream_family per source should name the upstream (e.g. cnpj -> rfb) for P236's different-upstreams rule. Community service on Vercel, no published limit: http_profile min_interval 1.0, ttl per class (CNPJ 259200). Error-in-200 bodies validated (P021 cond 2); the registrobr wrapper discloses the name to a third party (shares_input)."
+  },
+  {
+   "id": "builtwith",
+   "name": "BuiltWith (API and web profiles)",
+   "operator": "BuiltWith Pty Ltd",
+   "hosts": [
+    "api.builtwith.com",
+    "builtwith.com"
+   ],
+   "batches": [
+    "p2-G03-1",
+    "p2-G14-1",
+    "p3-G03-1"
+   ],
+   "proposals": [
+    "P061",
+    "P073",
+    "P083"
+   ],
+   "keys": [
+    {
+     "name": "builtwith",
+     "env": [
+      "V3LUM_BUILTWITH_KEY"
+     ]
+    }
+   ],
+   "sources": [
+    {
+     "id": "api",
+     "title": "BuiltWith API (free1 technology groups; v21 domain and rv2 relationships on paid credits)",
+     "terms_class": "key-terms",
+     "for_modules": [
+      "builtwith"
+     ]
+    },
+    {
+     "id": "web_profiles",
+     "title": "BuiltWith technology and relationship pages builtwith.com/{domain}, /relationships/... (manual pivot links)",
+     "terms_class": "open",
+     "for_modules": [
+      "analytics_ids",
+      "pivots_url_web"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Tier: P073 trusted, P083 cond 2 'BuiltWith' trusted. Terms: P073 cond 2 key-terms (company/team plan whose terms permit internal business use, recorded by legal before corporate use); quote it. KEY= travels in the URL: merge only after AR01 redaction. Errors[] arrays inside 200 bodies ('You need to login or create an account', credit messages) map to NEEDS_KEY/RATE_LIMITED/ERROR via P321 markers with fixtures, never EMPTY (P073 cond 3). Quota: free key ~1 req/s; Domain API paid credits as a P334 budget (scope key, plan figures). analytics_ids (P061) only links to the relationships pages (no reverse client)."
+  },
+  {
+   "id": "cert_br",
+   "name": "CERT.br (RSS and incident reporting)",
+   "operator": "CERT.br / NIC.br (Nucleo de Informacao e Coordenacao do Ponto BR)",
+   "hosts": [
+    "www.cert.br"
+   ],
+   "batches": [
+    "p2-G03-1",
+    "p2-G11-1"
+   ],
+   "proposals": [
+    "P298",
+    "P345"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "rss",
+     "title": "CERT.br RSS feed /rss/certbr-rss.xml",
+     "terms_class": "unknown",
+     "for_modules": [
+      "cti_news_rss"
+     ]
+    },
+    {
+     "id": "incident_reporting",
+     "title": "CERT.br incident notification guidance (manual; Cc cert@cert.br on takedown notifications)",
+     "terms_class": "open",
+     "for_modules": [
+      "takedown_packet"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Tier: national CERT (A8); P298 cond 4 'CERT.br ... trusted', P345 trusted. Terms: rss follows P298 cond 2 (unknown until legal reviews the feed terms; poll <= hourly, headline + link + date only); incident_reporting is the manual notification channel of P345 (open)."
+  },
+  {
+   "id": "circl",
+   "name": "CIRCL services (pDNS, MISP OSINT feed, hashlookup, BGP Ranking, Lookyloo)",
+   "operator": "CIRCL (Computer Incident Response Center Luxembourg)",
+   "hosts": [
+    "circl.lu",
+    "www.circl.lu",
+    "hashlookup.circl.lu",
+    "cra.circl.lu",
+    "bgpranking-ng.circl.lu",
+    "lookyloo.circl.lu"
+   ],
+   "batches": [
+    "p1-G07-1",
+    "p1-G07-2",
+    "p2-G01-2",
+    "p2-G02-1",
+    "p2-G07-2",
+    "p9-G03-3"
+   ],
+   "proposals": [
+    "P015",
+    "P033",
+    "P078",
+    "P159",
+    "P173",
+    "P350"
+   ],
+   "keys": [
+    {
+     "name": "circl_pdns_user",
+     "env": [
+      "V3LUM_CIRCL_PDNS_USER"
+     ]
+    },
+    {
+     "name": "circl_pdns_pass",
+     "env": [
+      "V3LUM_CIRCL_PDNS_PASS"
+     ]
+    }
+   ],
+   "sources": [
+    {
+     "id": "pdns",
+     "title": "CIRCL Passive DNS www.circl.lu/pdns/query (COF/NDJSON; CSIRT account on request)",
+     "terms_class": "license",
+     "for_modules": [
+      "passive_dns"
+     ]
+    },
+    {
+     "id": "misp_osint_feed",
+     "title": "CIRCL MISP OSINT feed (TLP:CLEAR manifest, per-event JSON, hashes.csv)",
+     "terms_class": "open",
+     "for_modules": [
+      "ioc_feeds_offline"
+     ]
+    },
+    {
+     "id": "hashlookup",
+     "title": "CIRCL hashlookup (lookup by MD5/SHA-1/SHA-256, bulk, parents/children, info)",
+     "terms_class": "open",
+     "for_modules": [
+      "circl_hashlookup"
+     ]
+    },
+    {
+     "id": "hashlookup_bloom",
+     "title": "CIRCL hashlookup full Bloom filter on cra.circl.lu (offline prefilter, 2023 snapshot, ~1 GB)",
+     "terms_class": "open",
+     "for_modules": [
+      "offline_hash_sets"
+     ]
+    },
+    {
+     "id": "bgpranking",
+     "title": "CIRCL BGP Ranking (ipasn_history, ASN ranking)",
+     "terms_class": "open",
+     "for_modules": [
+      "asn_context"
+     ]
+    },
+    {
+     "id": "lookyloo",
+     "title": "CIRCL Lookyloo public instance (capture lookups only; /submit never wired)",
+     "terms_class": "unknown",
+     "for_modules": [
+      "url_scanners_third_party"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "www.circl.lu added: pDNS and the MISP feed are served from www (research C0010/C0333). CIRCL is split only where a key or budget differs: Vulnerability-Lookup (own key circl_vuln, 20/60 s limit) is provider circl_vulnlookup; everything else is keyless or uses the pDNS account and has no published limit, so quota stays null (never add a provider-wide quota here). P173 cond 1 names this provider 'circl' (national CERT, trusted). Keys: ONE credential, the team's vetted pDNS account (HTTP basic auth, Authorization header only), stored under the two key names P015 cond 5 requires; multi_key false. Terms: P015 cond 1 'CIRCL pDNS = license (CSIRT access granted on request)' (runs only with a licence_allow entry recording the CIRCL grant; CIRCL TLP/handling rules: records never exported outside the team); P159 cond 1 MISP feed open (TLP:CLEAR, attribute CIRCL); P173 hashlookup open; P350 cond 3 Bloom open data (prefilter, never known_good); P033 cond 1 BGP Ranking open; Lookyloo stays unknown until legal records CIRCL's terms for that instance (P078 cond 2), then reclassify. Flags all false (no submission path to Lookyloo). hashlookup: 404 = not in hashlookup (module absent_statuses)."
+  },
+  {
+   "id": "circl_vulnlookup",
+   "name": "CIRCL Vulnerability-Lookup",
+   "operator": "CIRCL (Computer Incident Response Center Luxembourg)",
+   "hosts": [
+    "vulnerability.circl.lu",
+    "cve.circl.lu"
+   ],
+   "batches": [
+    "p2-G08-1",
+    "p2-G14-1"
+   ],
+   "proposals": [
+    "P181",
+    "P194"
+   ],
+   "keys": [
+    {
+     "name": "circl_vuln",
+     "env": [
+      "V3LUM_CIRCL_VULN_KEY"
+     ]
+    }
+   ],
+   "sources": [
+    {
+     "id": "api",
+     "title": "Vulnerability-Lookup API (vulnerability by CVE/GHSA/PySec/CSAF id, EPSS, sightings, CWE; legacy cve.circl.lu alias)",
+     "terms_class": "open",
+     "for_modules": [
+      "circl_vulnlookup"
+     ]
+    },
+    {
+     "id": "vuln_pages",
+     "title": "Vulnerability-Lookup pages /vuln/{cve} (manual pivot links)",
+     "terms_class": "open",
+     "for_modules": [
+      "pivots_vulnerability"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Separate from provider circl because it has its own optional key (circl_vuln, P181 cond 1) and its own budget. Tier: P181 trusted (national CERT), P194 trusted. Terms: P181 cond 1 'terms open (CC BY 4.0 where applicable, attribution)'. Quota: x-ratelimit-limit 20 per 60 s with retry-after 60 on /vulnerability (research C0428, observed) -> scope egress_ip, published false, safety 0.8. 404 = EMPTY (module). Per-CVE calls follow the P183 fan-out budget."
+  },
+  {
+   "id": "codeberg",
+   "name": "Codeberg (Forgejo API)",
+   "operator": "Codeberg e.V.",
+   "hosts": [
+    "codeberg.org"
+   ],
+   "batches": [
+    "p1-G05-2",
+    "p2-G05-1",
+    "p2-G05-2"
+   ],
+   "proposals": [
+    "P100",
+    "P113",
+    "P359"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "api",
+     "title": "Codeberg Forgejo API v1 (users, users/search, orgs, org repos)",
+     "terms_class": "open",
+     "for_modules": [
+      "dev_profiles_pack",
+      "username_check",
+      "org_code_footprint"
+     ]
+    }
+   ],
+   "tier": "community",
+   "notes": "Tier: P100 cond 4 and P359 cond 3 'Codeberg e.V. community'. Terms open (P100 cond 4). Quota: observed ratelimit-policy 'baseline';q=2000;w=600 (2000 per 600 s) -> scope egress_ip, published false. Self-hosted Forgejo/Gitea instances are target infrastructure, never this provider. personal_data_review before default use."
+  },
+  {
+   "id": "commoncrawl",
+   "name": "Common Crawl index server",
+   "operator": "Common Crawl Foundation",
+   "hosts": [
+    "index.commoncrawl.org"
+   ],
+   "batches": [
+    "p1-G01-2",
+    "p2-G01-3"
+   ],
+   "proposals": [
+    "P059",
+    "P060"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "cdx_index",
+     "title": "Common Crawl CDX index server (collinfo.json and per-crawl indexes)",
+     "terms_class": "open",
+     "for_modules": [
+      "web_archives",
+      "archive_mining"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Tier: P059/P287 trusted (established non-profit). Terms: P059 cond 2 'Common Crawl (free terms of use) ... are open, each recorded by legal with evidence'. Overloaded index server (504/503, resets): query only the newest 2-3 crawls with backoff; http_profile retries 1, timeout ~30 s."
+  },
+  {
+   "id": "criminalip",
+   "name": "Criminal IP (asset API and search pages)",
+   "operator": "AI Spera Inc. (Criminal IP)",
+   "hosts": [
+    "api.criminalip.io",
+    "search.criminalip.io"
+   ],
+   "batches": [
+    "p2-G14-1",
+    "p3-G02-1",
+    "p9-G03-1"
+   ],
+   "proposals": [
+    "P048",
+    "P057",
+    "P062"
+   ],
+   "keys": [
+    {
+     "name": "criminalip",
+     "env": [
+      "V3LUM_CRIMINALIP_KEY"
+     ]
+    }
+   ],
+   "sources": [
+    {
+     "id": "asset_api",
+     "title": "Criminal IP asset API /v1/asset/ip/report (domain scan endpoints are active and never wired)",
+     "terms_class": "key-terms",
+     "for_modules": [
+      "criminalip"
+     ]
+    },
+    {
+     "id": "search_pages",
+     "title": "Criminal IP asset report and search pages (manual pivot links)",
+     "terms_class": "open",
+     "for_modules": [
+      "pivots_ip_network",
+      "favicon_hash"
+     ]
+    }
+   ],
+   "tier": "community",
+   "notes": "Tier: P048 says trusted, P057 cond 2 lists Criminal IP (KR) as community: the strictest (community) applies. Terms: P048 cond 1 key-terms (company/team plan recorded by legal); quote it. x-api-key header. HTTP 200 with body status 403 'check access failed' maps to NEEDS_KEY/ERROR via a P321 marker (fixture from the owning batch), never EMPTY. Monthly credits -> quota scope key (plan figures, published false until recorded). /v1/domain/scan would make the provider scan the target: not wired, so fetches_target stays false."
+  },
+  {
+   "id": "crtsh",
+   "name": "crt.sh certificate search",
+   "operator": "Sectigo Limited (crt.sh)",
+   "hosts": [
+    "crt.sh"
+   ],
+   "batches": [
+    "p1-G01-1",
+    "p2-G14-1",
+    "p9-G01-1"
+   ],
+   "proposals": [
+    "P001",
+    "P013",
+    "P026"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "search",
+     "title": "crt.sh certificate search (JSON output; identity, O=, SHA-256 queries; HTML report links)",
+     "terms_class": "open",
+     "for_modules": [
+      "ct_logs",
+      "domain_ownership",
+      "pivots_domain_dns"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Tier: P001 cond 2 'crt.sh open (Sectigo, trusted)', P026 trusted. Terms: quote P001 cond 2 (no formal API ToS; free public service). No published quota: http_profile timeout 40-60 s, retries 2 with backoff (502/503/timeouts are frequent), ttl 86400. Brand mode is opt-in (setting ct_brand_search) because the keyword query discloses the brand (P001 cond 4)."
+  },
+  {
+   "id": "cvm",
+   "name": "CVM open-data portal",
+   "operator": "Comissao de Valores Mobiliarios (CVM)",
+   "hosts": [
+    "dados.cvm.gov.br"
+   ],
+   "batches": [
+    "p1-G10-3",
+    "p2-G10-3",
+    "p3-G10-2"
+   ],
+   "proposals": [
+    "P244",
+    "P360",
+    "P361"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "cadastral",
+     "title": "CVM open data: CKAN API and cadastral registries (listed companies, intermediaries, advisers, portfolio managers, crowdfunding)",
+     "terms_class": "open",
+     "for_modules": [
+      "bcb_authorized_institutions",
+      "cnpj_name_resolver",
+      "br_cnpj_risk_lists"
+     ]
+    },
+    {
+     "id": "sanctions",
+     "title": "CVM sanctioning proceedings open data (PROCESSO/SANCIONADOR)",
+     "terms_class": "open",
+     "for_modules": [
+      "br_cnpj_risk_lists"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Tier: government regulator (A8); P244 cond 3, P360 cond 4, P361 trusted. Terms: Open Database License per CKAN metadata (research C0744): internal use fine, share-alike only if a derived database is redistributed. Whole files downloaded daily and matched locally; natural-person registries only in explicit due diligence with CPF masked, never a lookup key (P360 cond 3, rule 4)."
+  },
+  {
+   "id": "cybercrime_tracker",
+   "name": "CyberCrime-Tracker (C2 panel list and search)",
+   "operator": "CyberCrime-Tracker (anonymous operator)",
+   "hosts": [
+    "cybercrime-tracker.net"
+   ],
+   "batches": [
+    "p1-G03-1",
+    "p2-G14-1"
+   ],
+   "proposals": [
+    "P071",
+    "P170"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "panel_list",
+     "title": "CyberCrime-Tracker C2 panel list all.php (~870 KB, refresh daily)",
+     "terms_class": "open",
+     "for_modules": [
+      "url_domain_blocklists"
+     ]
+    },
+    {
+     "id": "search_pages",
+     "title": "CyberCrime-Tracker search pages index.php?search= (manual pivot links)",
+     "terms_class": "open",
+     "for_modules": [
+      "pivots_threat_intel"
+     ]
+    }
+   ],
+   "tier": "unknown",
+   "notes": "Tier: P170 cond 2 lists CyberCrime-Tracker as unknown (anonymous operator, A8); a promotion to community needs a recorded reviewer decision (also gates the malware_family template, P170 cond 5). P071 lists it among feeds that 'run with attribution' (class open). Consequence for P071 (url_domain_blocklists, default_enabled True): a default module that declares a source of an unknown-tier provider fails the A3 rule, so batch p1-G03-1 keeps this feed in a non-default module class until the promotion is recorded. Unknown-tier link hosts take IOC_TYPES values only."
+  },
+  {
+   "id": "darkfeed",
+   "name": "DarkFeed RSS",
+   "operator": "DarkFeed (operator not identified in the research record)",
+   "hosts": [
+    "darkfeed.io"
+   ],
+   "batches": [
+    "p2-G09-2",
+    "p2-G11-1"
+   ],
+   "proposals": [
+    "P298",
+    "P357"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "rss",
+     "title": "DarkFeed RSS feed /feed/ (dark-web and ransomware news headlines)",
+     "terms_class": "unknown",
+     "for_modules": [
+      "cti_news_rss",
+      "telegram_channel_watch"
+     ]
+    }
+   ],
+   "tier": "unknown",
+   "notes": "Terms: P298 cond 2 legal floor 'feed terms are unknown until legal reviews them, so nothing runs yet in any profile' (strictest of P298 unknown and P357 open). Tier: P298 cond 4 'anonymous feeds unknown, labelled unverified source'. Legal's feed-reader decision when recorded: poll <= hourly, headline + link + date only, no full text, no redistribution. Feed downloads carry no investigated value (disclosure none)."
+  },
+  {
+   "id": "darkwebinformer",
+   "name": "Dark Web Informer RSS",
+   "operator": "Dark Web Informer (pseudonymous operator)",
+   "hosts": [
+    "darkwebinformer.com"
+   ],
+   "batches": [
+    "p2-G09-2",
+    "p2-G11-1"
+   ],
+   "proposals": [
+    "P298",
+    "P357"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "rss",
+     "title": "Dark Web Informer RSS feed /rss/ (dark-web news headlines)",
+     "terms_class": "unknown",
+     "for_modules": [
+      "cti_news_rss",
+      "telegram_channel_watch"
+     ]
+    }
+   ],
+   "tier": "unknown",
+   "notes": "Same rules as darkfeed: P298 cond 2 (terms unknown until legal reviews; strictest of P298 and P357), P298 cond 4 (anonymous feed -> unknown tier). Poll <= hourly; headline + link + date only."
+  },
+  {
+   "id": "dev_to",
+   "name": "DEV Community users API",
+   "operator": "DEV Community Inc. (Forem)",
+   "hosts": [
+    "dev.to"
+   ],
+   "batches": [
+    "p1-G05-2",
+    "p2-G05-1"
+   ],
+   "proposals": [
+    "P100",
+    "P113"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "users_api",
+     "title": "DEV (Forem) users API /api/users/by_username",
+     "terms_class": "open",
+     "for_modules": [
+      "dev_profiles_pack",
+      "username_check"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Tier: P100 cond 4 'DEV/Forem ... tier trusted'. Terms open (Forem/DEV ToS, public API, polite use). personal_data_review before default use (A3 BR8)."
+  },
+  {
+   "id": "dnslytics",
+   "name": "DNSlytics (search pages)",
+   "operator": "DNSlytics (operator per the dnslytics.com terms)",
+   "hosts": [
+    "search.dnslytics.com"
+   ],
+   "batches": [
+    "p2-G03-1",
+    "p2-G14-3"
+   ],
+   "proposals": [
+    "P061",
+    "P304"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "search_pages",
+     "title": "DNSlytics domain, IP, ASN and reverse-analytics pages (manual pivot links)",
+     "terms_class": "open",
+     "for_modules": [
+      "analytics_ids",
+      "pivots_unverified"
+     ]
+    }
+   ],
+   "tier": "community",
+   "notes": "Tier: P304 cond 2 lists DNSlytics as community. Cloudflare answers 403 to scripts: manual links only (A9). analytics_ids (P061) uses it as a reverse-analytics pivot link."
+  },
+  {
+   "id": "docker_hub",
+   "name": "Docker Hub v2 API",
+   "operator": "Docker, Inc.",
+   "hosts": [
+    "hub.docker.com"
+   ],
+   "batches": [
+    "p1-G05-2",
+    "p2-G05-1",
+    "p2-G05-2"
+   ],
+   "proposals": [
+    "P102",
+    "P113",
+    "P359"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "hub_api",
+     "title": "Docker Hub v2 API (users, orgs, repositories, tags, image layer instructions)",
+     "terms_class": "open",
+     "for_modules": [
+      "dockerhub",
+      "username_check",
+      "org_code_footprint"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Id from P102 cond 1 'Registry provider docker_hub: tier trusted, terms open'. Never registry-1.docker.io or auth.docker.io (anonymous pull limit shared by the corporate NAT; P102 cond 2). Observed x-ratelimit-limit 180 per window: honour headers, quota null; <= 5 repositories, latest tag, 1 page; cache 7 days. Layer secrets pass the P145/P323 sanitizer (module level). personal_data_review before default use."
+  },
+  {
+   "id": "firehol",
+   "name": "FireHOL IP lists",
+   "operator": "FireHOL project (open-source community)",
+   "hosts": [
+    "iplists.firehol.org"
+   ],
+   "batches": [
+    "p1-G02-2",
+    "p2-G02-1"
+   ],
+   "proposals": [
+    "P035",
+    "P149"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "level1",
+     "title": "FireHOL level1 aggregate netset (and level2/3/webclient on request)",
+     "terms_class": "noncommercial",
+     "for_modules": [
+      "ip_blocklists"
+     ]
+    },
+    {
+     "id": "proxies",
+     "title": "FireHOL proxies netset (open-proxy and anonymizer aggregate)",
+     "terms_class": "noncommercial",
+     "for_modules": [
+      "ip_context_lists"
+     ]
+    }
+   ],
+   "tier": "community",
+   "notes": "Tier: P035/P149 community (well-known community aggregator). Terms: P149 cond 2 'the FireHOL level1 aggregate (it embeds noncommercial upstreams such as DShield)' is noncommercial; P035 cond 2: proxy ipsets inherit each upstream's terms and are consumed per upstream (the ipset header names it), noncommercial upstreams off under corporate, unrecorded upstreams not wired -> aggregate class noncommercial; per-upstream sources may be added by extension. Aggregator: each source lists the families it embeds (P171 cond 3) so consensus never counts FireHOL twice. Never sole evidence; refresh daily; the raw.githubusercontent.com mirror is core github (extend it)."
+  },
+  {
+   "id": "fofa",
+   "name": "FOFA (search API and result pages)",
+   "operator": "FOFA (Chinese operator; legal entity per the fofa.info terms, to be recorded by the reviewer)",
+   "hosts": [
+    "fofa.info",
+    "en.fofa.info"
+   ],
+   "batches": [
+    "p2-G14-1",
+    "p3-G02-1",
+    "p9-G03-1"
+   ],
+   "proposals": [
+    "P049",
+    "P057",
+    "P062"
+   ],
+   "keys": [
+    {
+     "name": "fofa_key",
+     "env": [
+      "V3LUM_FOFA_KEY"
+     ]
+    }
+   ],
+   "sources": [
+    {
+     "id": "search_api",
+     "title": "FOFA search API /api/v1/search/all (paid membership)",
+     "terms_class": "license",
+     "for_modules": [
+      "fofa"
+     ]
+    },
+    {
+     "id": "result_pages",
+     "title": "FOFA result pages en.fofa.info/result?qbase64= (manual pivot links)",
+     "terms_class": "open",
+     "for_modules": [
+      "pivots_ip_network",
+      "favicon_hash"
+     ]
+    }
+   ],
+   "tier": "unknown",
+   "notes": "Tier: P049 cond 2 'Registry tier unknown (Chinese operator; its query logs reveal our targets)' (stricter than P057's community): excluded at AMBER+, CLEAR/GREEN only with --allow-unknown, IOC_TYPES selectors only; a later promotion needs legal_dpo's written decision and keeps the AMBER+ exclusion. Terms: P049 cond 1 (paid licence after legal/procurement review incl. LGPD art. 33, recorded in licence_allow) -> class license; quote the binding text. Key: P049 cond 1 names fofa_email and fofa_key; one key per provider and the current API authenticates with key only (research C0100), so only fofa_key is declared (an e-mail, if still needed, is a non-secret module setting). Key travels in the URL: AR01 redaction before merge."
+  },
+  {
+   "id": "ghostarchive",
+   "name": "Ghostarchive (search pages)",
+   "operator": "Ghostarchive (anonymous operator)",
+   "hosts": [
+    "ghostarchive.org"
+   ],
+   "batches": [
+    "p2-G01-3",
+    "p2-G14-1"
+   ],
+   "proposals": [
+    "P060",
+    "P083"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "search",
+     "title": "Ghostarchive search pages search?term= (read only)",
+     "terms_class": "open",
+     "for_modules": [
+      "archive_mining",
+      "pivots_url_web"
+     ]
+    }
+   ],
+   "tier": "unknown",
+   "notes": "Tier: P083 cond 2 lists Ghostarchive as unknown (P060's module tier trusted is not a per-provider statement). IOC_TYPES values only; archive_mining (default off) and links carry the 'unknown operator' badge. Never use the archive/submit function (it would fetch and publish the target, rule 7): flags all false because no such path exists."
+  },
+  {
+   "id": "gitlab",
+   "name": "GitLab.com (API, public keys, raw files)",
+   "operator": "GitLab Inc.",
+   "hosts": [
+    "gitlab.com"
+   ],
+   "batches": [
+    "p1-G05-1",
+    "p1-G05-2",
+    "p2-G05-1",
+    "p2-G05-2",
+    "p2-G08-2",
+    "p2-G14-3"
+   ],
+   "proposals": [
+    "P103",
+    "P111",
+    "P113",
+    "P190",
+    "P305",
+    "P359"
+   ],
+   "keys": [
+    {
+     "name": "gitlab",
+     "env": [
+      "V3LUM_GITLAB_TOKEN"
+     ]
+    }
+   ],
+   "sources": [
+    {
+     "id": "users_api",
+     "title": "GitLab users API (users?username=, users/{id}) and public {user}.keys/.gpg",
+     "terms_class": "open",
+     "for_modules": [
+      "gitlab_user",
+      "username_check",
+      "github_user"
+     ]
+    },
+    {
+     "id": "groups_api",
+     "title": "GitLab groups API (top-level group search, group projects)",
+     "terms_class": "open",
+     "for_modules": [
+      "org_code_footprint"
+     ]
+    },
+    {
+     "id": "blob_search",
+     "title": "GitLab search API scope=blobs and repository file raw (token)",
+     "terms_class": "key-terms",
+     "for_modules": [
+      "code_search"
+     ]
+    },
+    {
+     "id": "exploitdb_csv",
+     "title": "Exploit-DB files_exploits.csv hosted at gitlab.com/exploit-database (CVE -> public exploit)",
+     "terms_class": "open",
+     "for_modules": [
+      "exploit_index"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Id from P103 cond 1 'Registry provider gitlab: tier trusted, terms open' (also P190, P305, P359). Shared hosting platform like core github: further dataset sources hosted on gitlab.com are added by gitlab__<batch>.json extensions. Terms: users/groups/raw open (P103, P359 cond 3); blob_search key-terms (P305 cond 2: company/team token on a plan recorded in key_plans); exploitdb_csv is GPL-2.0 runtime data, never vendored (P190 cond 3, upstream_family exploit-db). Token in a header only (never URL/logs). Quota: unauthenticated ~500/min per IP observed (ratelimit-limit 500) -> scope egress_ip, published false. .keys/.gpg capped at 1 MB, stored as fingerprints. personal_data_review before default use (A3 BR8)."
+  },
+  {
+   "id": "gleif",
+   "name": "GLEIF LEI API",
+   "operator": "Global Legal Entity Identifier Foundation (GLEIF)",
+   "hosts": [
+    "api.gleif.org"
+   ],
+   "batches": [
+    "p2-G10-1",
+    "p2-G10-3"
+   ],
+   "proposals": [
+    "P220",
+    "P361"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "lei_api",
+     "title": "GLEIF LEI API v1 (lei-records filters, fuzzycompletions, direct/ultimate parent and children)",
+     "terms_class": "open",
+     "for_modules": [
+      "gleif",
+      "cnpj_name_resolver"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Tier: P220, P361 trusted. Terms: CC0 1.0 (attribution courtesy line). One shared GLEIF client for P220 and P361. Quota: documented 60 req/min (P220 cond 1: min_interval 1 s and a registry quota) -> scope egress_ip, published true with the GLEIF API documentation URL (record it; else published false). 404 = declared absence (module)."
+  },
+  {
+   "id": "google_calendar",
+   "name": "Google Calendar public ICS",
+   "operator": "Google LLC",
+   "hosts": [
+    "calendar.google.com"
+   ],
+   "batches": [
+    "p3-G04-1"
+   ],
+   "proposals": [
+    "P093"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "public_ics",
+     "title": "Google Calendar public ICS feed /calendar/ical/{email}/public/basic.ics",
+     "terms_class": "open",
+     "for_modules": [
+      "google_calendar_ics"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Tier: P093 trusted. Terms open (Google ToS, public calendar feed). Automated but polite (separate budget from the manual-link hosts); 404 = no public calendar. The input is an e-mail address (PERSONAL_TYPES): personal_data_review before default use (P093 is default off)."
+  },
+  {
+   "id": "google_dal",
+   "name": "Google Digital Asset Links API",
+   "operator": "Google LLC",
+   "hosts": [
+    "digitalassetlinks.googleapis.com"
+   ],
+   "batches": [
+    "p2-G01-1",
+    "p2-G03-2"
+   ],
+   "proposals": [
+    "P008",
+    "P346"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "statements",
+     "title": "Digital Asset Links statements:list (web site and Android app delegations)",
+     "terms_class": "open",
+     "for_modules": [
+      "digital_asset_links",
+      "mobile_app_impersonation"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "googleapis.com is a public-suffix namespace: each Google API host is its own provider (safebrowsing/webrisk.googleapis.com belong to batch p2-G03-1). Tier: P008 trusted. Terms: Google APIs ToS, keyless (P008; P346's license class comes from Apple iTunes). Google API default quotas; 429 = RATE_LIMITED, 403/5xx = could not verify; an empty list reads 'no Digital Asset Links statements published'; cache 24 h."
+  },
+  {
+   "id": "google_lens",
+   "name": "Google Lens reverse image search",
+   "operator": "Google LLC",
+   "hosts": [
+    "lens.google.com"
+   ],
+   "batches": [
+    "p2-G12-1"
+   ],
+   "proposals": [
+    "P260"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "upload_by_url",
+     "title": "Google Lens uploadbyurl?url= (manual reverse-image links)",
+     "terms_class": "open",
+     "for_modules": [
+      "pivots_geo_image"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "flags.fetches_target true: Lens fetches the image URL on the user's behalf. Manual links only; legal floor label (no biometrics, LGPD art. 11; P260 cond 4) and no links for images extracted from documents. Tier: P260 cond 2 'Google Lens/Maps' trusted."
+  },
+  {
+   "id": "google_transparency",
+   "name": "Google Transparency Report Safe Browsing status",
+   "operator": "Google LLC",
+   "hosts": [
+    "transparencyreport.google.com"
+   ],
+   "batches": [
+    "p2-G03-1"
+   ],
+   "proposals": [
+    "P067"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "safebrowsing_status",
+     "title": "Transparency Report /transparencyreport/api/v3/safebrowsing/status (undocumented internal endpoint behind the Site Status page)",
+     "terms_class": "noncommercial",
+     "for_modules": [
+      "google_safe_browsing"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Tier: P067 trusted. Terms: P067's binding class noncommercial (Safe Browsing family; Google sends commercial users to Web Risk): quote P067 cond 2; legal may tighten it to unknown as an undocumented endpoint (cf. P253 for Google News RSS). The Safe Browsing and Web Risk APIs (safebrowsing.googleapis.com, webrisk.googleapis.com, keys V3LUM_GSB_KEY/V3LUM_WEBRISK_KEY) are other providers owned by batch p2-G03-1. Undocumented endpoint: rate limits unknown (polite use, cache 24 h)."
+  },
+  {
+   "id": "google_web",
+   "name": "Google web properties (Search, Maps, News, Play, Safe Browsing report form)",
+   "operator": "Google LLC",
+   "hosts": [
+    "google.com",
+    "www.google.com",
+    "news.google.com",
+    "play.google.com",
+    "safebrowsing.google.com"
+   ],
+   "batches": [
+    "p2-G03-1",
+    "p2-G12-1",
+    "p2-G14-1",
+    "p2-G14-3",
+    "p3-G10-3"
+   ],
+   "proposals": [
+    "P083",
+    "P253",
+    "P260",
+    "P306",
+    "P345"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "search",
+     "title": "Google Search result pages www.google.com/search?q= (dork links, manual only)",
+     "terms_class": "open",
+     "for_modules": [
+      "dork_generator"
+     ]
+    },
+    {
+     "id": "maps",
+     "title": "Google Maps URL scheme www.google.com/maps/search/?api=1 (manual links)",
+     "terms_class": "open",
+     "for_modules": [
+      "pivots_geo_image"
+     ]
+    },
+    {
+     "id": "news_search",
+     "title": "Google News search page news.google.com/search?q= (manual link; RSS never automated)",
+     "terms_class": "open",
+     "for_modules": [
+      "adverse_media_rss"
+     ]
+    },
+    {
+     "id": "play_store",
+     "title": "Google Play store search and app-details pages (manual pivot links, never fetched)",
+     "terms_class": "open",
+     "for_modules": [
+      "pivots_url_web"
+     ]
+    },
+    {
+     "id": "safebrowsing_report",
+     "title": "Safe Browsing report_phish form (manual analyst submission)",
+     "terms_class": "open",
+     "for_modules": [
+      "takedown_packet"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Manual-link-only Google hosts with no key and no budget. www.google.com added: every search/maps template is on www. Tier: P306 cond 6 'Google, Bing and DuckDuckGo, trusted', P260 cond 2 (Google Maps), P083 cond 2 (Google Play), P345. Never automated (no server-side Google automation; Google Play terms forbid scraping, P083 cond 4); Google News RSS stays unautomated (P253 cond 2: unofficial endpoint, unknown terms). Lens (fetches the URL) and the automated Calendar/Transparency Report endpoints are separate providers."
+  },
+  {
+   "id": "govbr",
+   "name": "gov.br portal pages (CTIR Gov alerts, Anatel open-data page)",
+   "operator": "Governo Federal do Brasil (gov.br portal, Secretaria de Governo Digital)",
+   "hosts": [
+    "www.gov.br"
+   ],
+   "batches": [
+    "p1-G06-1",
+    "p2-G11-1"
+   ],
+   "proposals": [
+    "P126",
+    "P298"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "ctir_alerts",
+     "title": "CTIR Gov alerts and recommendations page www.gov.br/ctir",
+     "terms_class": "unknown",
+     "for_modules": [
+      "cti_news_rss"
+     ]
+    },
+    {
+     "id": "anatel_open_data",
+     "title": "Anatel open-data page www.gov.br/anatel (numbering datasets; deferred)",
+     "terms_class": "open",
+     "for_modules": [
+      "phone_parse"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Tier from the A8 definition (government body); P126 is n/a and P298's unknown tier is the lowest of its anonymous feeds, not a statement about gov.br. Terms: ctir_alerts follows P298 cond 2 (feed terms unknown until legal reviews; page was in maintenance); anatel_open_data is Brazilian open data, deferred until the dataset URL is verified from the team network (P126 cond 2). Geo-restricted gov.br endpoints follow A9 (requires_egress BR at module level)."
+  },
+  {
+   "id": "gravatar",
+   "name": "Gravatar profiles",
+   "operator": "Automattic Inc. (Gravatar)",
+   "hosts": [
+    "gravatar.com",
+    "api.gravatar.com",
+    "en.gravatar.com"
+   ],
+   "batches": [
+    "p1-G05-2",
+    "p2-G04-1"
+   ],
+   "proposals": [
+    "P087",
+    "P113"
+   ],
+   "keys": [
+    {
+     "name": "gravatar",
+     "env": [
+      "V3LUM_GRAVATAR_KEY"
+     ]
+    }
+   ],
+   "sources": [
+    {
+     "id": "profiles",
+     "title": "Gravatar v3 profiles API (e-mail hash or username), legacy {u}.json and avatar existence d=404",
+     "terms_class": "open",
+     "for_modules": [
+      "gravatar",
+      "username_check"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Tier: P087 trusted. Terms open (Gravatar/Automattic API terms). Optional key 'gravatar' raises the limit. Quota: unauthenticated 100/h from X-RateLimit headers (observed) -> scope egress_ip, hour 100, published false; 429 = RATE_LIMITED; 404 {'error':'Profile not found'} = declared absence (module). Receives e-mail hashes (PERSONAL_TYPES): personal_data_review before default use. Not a people-data provider: sensitive false."
+  },
+  {
+   "id": "grayhatwarfare",
+   "name": "GrayhatWarfare (open bucket index)",
+   "operator": "GrayhatWarfare (operator per the grayhatwarfare.com terms)",
+   "hosts": [
+    "buckets.grayhatwarfare.com"
+   ],
+   "batches": [
+    "p2-G14-2",
+    "p3-G04-1"
+   ],
+   "proposals": [
+    "P138",
+    "P290"
+   ],
+   "keys": [
+    {
+     "name": "grayhat",
+     "env": [
+      "V3LUM_GRAYHAT_KEY"
+     ]
+    }
+   ],
+   "sources": [
+    {
+     "id": "api",
+     "title": "GrayhatWarfare API v2 (files and buckets by keyword)",
+     "terms_class": "key-terms",
+     "for_modules": [
+      "grayhatwarfare"
+     ]
+    },
+    {
+     "id": "search_pages",
+     "title": "GrayhatWarfare files search page files?keywords= (manual pivot links)",
+     "terms_class": "open",
+     "for_modules": [
+      "pivots_pentest"
+     ]
+    }
+   ],
+   "tier": "community",
+   "notes": "Key name 'grayhat' per P138 cond 1 (Bearer header; 401 = NEEDS_KEY). Tier: P138 and P290 community. Terms: P138 cond 1 key-terms (company/team plan recorded by legal). flags.sensitive true: an index of exposed bucket files (leak data, LGPD; P290 cond 4) -> sanitizer schema keeps bucket and file names only, never file links or contents (A7: no object downloads); result cap 100."
+  },
+  {
+   "id": "hacker_news",
+   "name": "Hacker News API",
+   "operator": "Y Combinator (Hacker News API hosted on Google Firebase)",
+   "hosts": [
+    "hacker-news.firebaseio.com"
+   ],
+   "batches": [
+    "p1-G05-2",
+    "p3-G05-1"
+   ],
+   "proposals": [
+    "P109",
+    "P113"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "firebase_api",
+     "title": "Hacker News Firebase API v0 (user/{u}.json, item/{id}.json)",
+     "terms_class": "open",
+     "for_modules": [
+      "hackernews",
+      "username_check"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Third-party app on firebaseio.com: belongs to its real operator. Id from P109 cond 2 'Registry providers hacker_news (Y Combinator) and algolia: tier trusted, terms open'; hn.algolia.com is provider algolia (batch p3-G05-1). A 'null' body = absent (module). Keep links, dates and matched items only (P109 cond 1). personal_data_review before default use."
+  },
+  {
+   "id": "hackerone",
+   "name": "HackerOne (public GraphQL, backlog)",
+   "operator": "HackerOne Inc.",
+   "hosts": [
+    "hackerone.com"
+   ],
+   "batches": [
+    "p2-G05-1",
+    "p2-G05-2"
+   ],
+   "proposals": [
+    "P100",
+    "P102",
+    "P359"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "graphql",
+     "title": "HackerOne public GraphQL user query (undocumented internal endpoint; BACKLOG, not in this build)",
+     "terms_class": "unknown",
+     "for_modules": [
+      "dev_profiles_pack"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Not used in this build: P100 cond 2 keeps the undocumented GraphQL in BACKLOG.md (terms unknown, no fixture), P102 removed hackerone.com, P359 declares only SaaS forges. Tier from the A8 definition (established company with published terms, privacy policy and a business offering); no council statement names a HackerOne tier."
+  },
+  {
+   "id": "hackertarget",
+   "name": "HackerTarget API",
+   "operator": "HackerTarget Pty Ltd",
+   "hosts": [
+    "api.hackertarget.com"
+   ],
+   "batches": [
+    "p2-G01-2",
+    "p2-G03-1",
+    "p9-G13-2"
+   ],
+   "proposals": [
+    "P014",
+    "P061",
+    "P281"
+   ],
+   "keys": [
+    {
+     "name": "hackertarget",
+     "env": [
+      "V3LUM_HACKERTARGET_KEY"
+     ]
+    }
+   ],
+   "sources": [
+    {
+     "id": "api",
+     "title": "HackerTarget API (hostsearch, dnslookup, reversedns, reverseiplookup, aslookup, findshareddns, analyticslookup)",
+     "terms_class": "key-terms",
+     "for_modules": [
+      "hackertarget"
+     ]
+    }
+   ],
+   "tier": "community",
+   "notes": "Tier: P014 community. Terms: P014 cond 3 key-terms (key_plans.hackertarget; keyless use under corporate needs legal to record free_plan_business_use=true from the free-tier terms). Quota: P014 cond 2 '50/day per egress IP (budget <= 80%), shared by every module calling api.hackertarget.com' -> scope egress_ip, day 50 (x-api-quota/x-api-count headers). Key in the URL (&apikey=) only through AR01. Markers (fixtures exist in the P014 batch): 'API count exceeded' -> quota, 'error check your search parameter' -> error; 'no records found' is EMPTY at module level. Not used: zonetransfer (P281 cond 2 excludes it); analytics_ids (P061) only pivots to the hackertarget module."
+  },
+  {
+   "id": "hibp",
+   "name": "Have I Been Pwned (catalogue, account API, breach pages)",
+   "operator": "Have I Been Pwned (operator per the haveibeenpwned.com terms)",
+   "hosts": [
+    "haveibeenpwned.com"
+   ],
+   "batches": [
+    "p1-G04-1",
+    "p2-G04-1",
+    "p3-G14-1"
+   ],
+   "proposals": [
+    "P132",
+    "P133",
+    "P144"
+   ],
+   "keys": [
+    {
+     "name": "hibp",
+     "env": [
+      "V3LUM_HIBP_KEY"
+     ]
+    }
+   ],
+   "sources": [
+    {
+     "id": "catalog",
+     "title": "HIBP breach catalogue /api/v3/breaches (also ?domain=), /breach/{name}, /latestbreach, /dataclasses",
+     "terms_class": "open",
+     "for_modules": [
+      "hibp_catalog"
+     ]
+    },
+    {
+     "id": "account",
+     "title": "HIBP paid-key endpoints (breachedaccount, pasteaccount, stealerlogs, breacheddomain)",
+     "terms_class": "license",
+     "for_modules": [
+      "hibp_account"
+     ]
+    },
+    {
+     "id": "breach_pages",
+     "title": "HIBP breach pages /Breach/{Name} (manual links emitted next to HIBP breach names)",
+     "terms_class": "open",
+     "for_modules": [
+      "pivots_breach_leak"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "BINDING PROFILE_REQUIREMENTS: user_agent neutral (HIBP rejects requests without a UA), flags.sensitive true, ttl <= 604800. Tier: P132/P133 trusted. Terms: catalog quote P132 cond 1 'for any lawful purpose, including within commercial products' (verified 2026-11-26); account = license (P133 cond 1: company-paid subscription in licence_allow, off under corporate until recorded); data CC BY 4.0 attribution 'Have I Been Pwned'. hibp-api-key header. Quota: Core 1 = 10 RPM (P133 cond 1) -> scope key, rate 10/60 s, Retry-After honoured (the keyless catalogue is a 24 h dataset, so it costs a few calls a day). Domain search and stealer logs are own_assets_only (A11). Sanitizer schemas mandatory (A4 keep list). personal_data_review before default use."
+  },
+  {
+   "id": "honeylabs",
+   "name": "HoneyLabs honeypot telemetry",
+   "operator": "HoneyLabs (operator not identified in the research record)",
+   "hosts": [
+    "honeylabs.net"
+   ],
+   "batches": [
+    "p2-G02-2",
+    "p2-G14-1"
+   ],
+   "proposals": [
+    "P147",
+    "P170"
+   ],
+   "keys": [
+    {
+     "name": "honeylabs",
+     "env": [
+      "V3LUM_HONEYLABS_KEY"
+     ]
+    }
+   ],
+   "sources": [
+    {
+     "id": "api",
+     "title": "HoneyLabs API (CVE, port and ASN telemetry; keyed IP lookup JSON)",
+     "terms_class": "unknown",
+     "for_modules": [
+      "honeypot_intel_extra"
+     ]
+    },
+    {
+     "id": "lookup_pages",
+     "title": "HoneyLabs IP report page /lookup/{ip} (manual pivot links, HTML)",
+     "terms_class": "open",
+     "for_modules": [
+      "pivots_threat_intel"
+     ]
+    }
+   ],
+   "tier": "unknown",
+   "notes": "Tier/terms: P147 cond 2 'HoneyLabs and James Brine feeds publish no licence: they ship as a separate module honeypot_intel_extra (default_enabled=False, terms unknown, tier unknown)'; P170 also unknown. api stays disabled in every profile until legal records its terms (no quote needed for class unknown). If cleared (P147 cond 3): keyless /api/cves/{cve} with 'actors' capped at the top 20 IPs; IP lookups need the free key. Cache CVE answers 6-24 h."
+  },
+  {
+   "id": "hostio",
+   "name": "host.io (API and domain pages)",
+   "operator": "host.io (operator per the host.io terms, to be recorded by the reviewer)",
+   "hosts": [
+    "host.io"
+   ],
+   "batches": [
+    "p2-G01-1",
+    "p2-G03-1",
+    "p2-G14-1"
+   ],
+   "proposals": [
+    "P004",
+    "P026",
+    "P061"
+   ],
+   "keys": [
+    {
+     "name": "hostio",
+     "env": [
+      "V3LUM_HOSTIO_TOKEN",
+      "V3LUM_HOSTIO_KEY"
+     ]
+    }
+   ],
+   "sources": [
+    {
+     "id": "api",
+     "title": "host.io API (web, dns, related, full; domains by ip/ns/mx/asn/backlinks/redirects/adsense/googleanalytics)",
+     "terms_class": "key-terms",
+     "for_modules": [
+      "hostio"
+     ]
+    },
+    {
+     "id": "domain_pages",
+     "title": "host.io domain pages host.io/{domain} (manual pivot links)",
+     "terms_class": "open",
+     "for_modules": [
+      "hostio",
+      "pivots_domain_dns"
+     ]
+    }
+   ],
+   "tier": "community",
+   "notes": "Tier: P004 says trusted, P026 cond 2 lists host.io as community: the strictest (community) applies. Terms: P004 cond 2 key-terms (company/team account, key_plans.hostio and terms URL recorded before corporate use). Key 'hostio' (env V3LUM_KEY_HOSTIO; V3LUM_HOSTIO_TOKEN/V3LUM_HOSTIO_KEY aliases, P004 cond 1): header if supported, else ?token= through AR01. Monthly plan budget -> quota scope key (<= 80% of the plan). Error-in-200 bodies -> P321 markers with fixtures. analytics_ids pivots to hostio, no own client."
+  },
+  {
+   "id": "huggingface",
+   "name": "Hugging Face Hub users API",
+   "operator": "Hugging Face, Inc.",
+   "hosts": [
+    "huggingface.co"
+   ],
+   "batches": [
+    "p1-G05-2",
+    "p2-G05-1"
+   ],
+   "proposals": [
+    "P100",
+    "P113"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "users_api",
+     "title": "Hugging Face Hub /api/users/{u}/overview",
+     "terms_class": "open",
+     "for_modules": [
+      "dev_profiles_pack",
+      "username_check"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Tier: P100 cond 4 'Hugging Face tier trusted'. Terms open. Joins dev_profiles_pack only once trimmed found + absent fixtures exist (P100 cond 1). personal_data_review before default use."
+  },
+  {
+   "id": "hunter_how",
+   "name": "hunter.how (search pages)",
+   "operator": "hunter.how (operator not identified in the research record)",
+   "hosts": [
+    "hunter.how"
+   ],
+   "batches": [
+    "p2-G14-3",
+    "p9-G03-1"
+   ],
+   "proposals": [
+    "P062",
+    "P304"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "search_pages",
+     "title": "hunter.how search pages list?searchValue= (manual pivot links)",
+     "terms_class": "open",
+     "for_modules": [
+      "favicon_hash",
+      "pivots_unverified"
+     ]
+    }
+   ],
+   "tier": "unknown",
+   "notes": "Tier: P304 cond 1 names hunter.how as unknown tier. Links only: 'unknown operator' badge, IOC_TYPES values only (favicon hash, IP, domain). A default-enabled module must not declare this source (A3: a provider of tier unknown is never default); link templates need only the host->provider entry."
+  },
+  {
+   "id": "ibge",
+   "name": "IBGE service APIs",
+   "operator": "Instituto Brasileiro de Geografia e Estatistica (IBGE)",
+   "hosts": [
+    "servicodados.ibge.gov.br"
+   ],
+   "batches": [
+    "p1-G10-2",
+    "p2-G10-1"
+   ],
+   "proposals": [
+    "P234",
+    "P235",
+    "P252"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "localidades",
+     "title": "IBGE Localidades API v1 (municipalities, states)",
+     "terms_class": "open",
+     "for_modules": [
+      "cep_lookup"
+     ]
+    },
+    {
+     "id": "cnae",
+     "title": "IBGE CNAE API v2 (subclasses, classes)",
+     "terms_class": "open",
+     "for_modules": [
+      "cnae_tables"
+     ]
+    },
+    {
+     "id": "nomes",
+     "title": "IBGE Nomes API v2 (Census first-name frequency and ranking)",
+     "terms_class": "open",
+     "for_modules": [
+      "ibge_name_frequency"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Tier: government body (A8); P234 cond 2 'IBGE trusted', P235, P252. Terms: IBGE open data (aggregated, cite IBGE). Undocumented limits: throttle <= 1 req/s (http_profile min_interval 1.0), cache 24 h; nomes and CNAE are datasets fetched by `v3lum data update`."
+  },
+  {
+   "id": "internet_archive",
+   "name": "Internet Archive (Wayback Machine)",
+   "operator": "Internet Archive (US non-profit)",
+   "hosts": [
+    "archive.org",
+    "web.archive.org"
+   ],
+   "batches": [
+    "p1-G01-2",
+    "p2-G01-3",
+    "p2-G14-3",
+    "p3-G05-3",
+    "p9-G13-3"
+   ],
+   "proposals": [
+    "P059",
+    "P060",
+    "P119",
+    "P287",
+    "P304"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "wayback",
+     "title": "Wayback Machine CDX server, availability API and snapshot replay (id_/if_)",
+     "terms_class": "open",
+     "for_modules": [
+      "web_archives",
+      "archive_mining",
+      "public_docs_discovery"
+     ]
+    },
+    {
+     "id": "wayback_web",
+     "title": "Wayback calendar and URL-list pages web/*/{url} (manual pivot links)",
+     "terms_class": "open",
+     "for_modules": [
+      "pivots_unverified"
+     ]
+    },
+    {
+     "id": "wayback_social",
+     "title": "Wayback CDX for deleted-post recovery of X/Twitter URLs (opt-in per run)",
+     "terms_class": "unknown",
+     "for_modules": [
+      "x_twitter_public"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Tier: P059/P287 trusted (established non-profit library). Terms: P059 cond 2 (A1 BR3): Internet Archive Wayback CDX and availability are 'open', recorded by legal with internal CTI research as the purpose. wayback_social stays 'unknown' until legal confirms the P059 decision for this use (P119 cond 3; x_twitter_public is disabled in every profile until then; P287's key-terms class comes from Brave, not from this provider). Save Page Now is never used (rule 7, P287 cond 1): flags all false. Gentle use ~15 req/min (P059 cond 1) -> quota scope egress_ip, rate_per_second 0.25, published false; CDX throttles with 429 and connection resets (RATE_LIMITED); row cap 20,000, truncated = partial. No bot UA ever (P119 cond 2)."
+  },
+  {
+   "id": "ipinfo",
+   "name": "IPinfo (API and web pages)",
+   "operator": "IPinfo Inc.",
+   "hosts": [
+    "api.ipinfo.io",
+    "ipinfo.io"
+   ],
+   "batches": [
+    "p2-G02-1",
+    "p2-G14-1"
+   ],
+   "proposals": [
+    "P036",
+    "P057"
+   ],
+   "keys": [
+    {
+     "name": "ipinfo",
+     "env": [
+      "V3LUM_IPINFO_TOKEN"
+     ]
+    }
+   ],
+   "sources": [
+    {
+     "id": "api",
+     "title": "IPinfo API (Lite /lite/{ip}, core /{ip}/json)",
+     "terms_class": "key-terms",
+     "for_modules": [
+      "ipinfo"
+     ]
+    },
+    {
+     "id": "web_pages",
+     "title": "IPinfo IP and ASN pages (manual pivot links)",
+     "terms_class": "open",
+     "for_modules": [
+      "pivots_ip_network"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Tier: P036 and P057 trusted. Terms: P036 cond 2 key-terms (company/team account; IPinfo Lite is CC BY-SA 4.0 with commercial use allowed, verified 2026-11-26); attribution to IPinfo in reports and notices. Token only in 'Authorization: Bearer', never ?token= (the cache stores URLs); keyless calls disabled (429 'Rate limit hit' from shared egress); 403 'Unknown token' = NEEDS_KEY. Lite token unlimited per vendor claim: quota null."
+  },
+  {
+   "id": "keybase",
+   "name": "Keybase user lookup API",
+   "operator": "Keybase (Zoom Video Communications, Inc.)",
+   "hosts": [
+    "keybase.io"
+   ],
+   "batches": [
+    "p1-G05-2",
+    "p2-G05-1",
+    "p2-G05-2",
+    "p3-G05-1"
+   ],
+   "proposals": [
+    "P102",
+    "P104",
+    "P113",
+    "P359"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "user_lookup",
+     "title": "Keybase user/lookup.json (basics, proofs_summary, public_keys; github=/twitter=/domain= reverse lookups)",
+     "terms_class": "open",
+     "for_modules": [
+      "keybase",
+      "username_check"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Id from P104 cond 1 'Registry provider keybase (Zoom): tier trusted, terms open'. No full sigchain download. Service in maintenance mode: results are historical, self-asserted (P104 cond 4). P102 removed keybase.io from dockerhub and P359 declares only SaaS forges, so they do not use it. personal_data_review before default use (usernames are PERSONAL_TYPES)."
+  },
+  {
+   "id": "malpedia",
+   "name": "Malpedia (API and pages)",
+   "operator": "Fraunhofer FKIE (Fraunhofer Institute for Communication, Information Processing and Ergonomics)",
+   "hosts": [
+    "malpedia.caad.fkie.fraunhofer.de"
+   ],
+   "batches": [
+    "p2-G14-2",
+    "p3-G11-1"
+   ],
+   "proposals": [
+    "P296",
+    "P300"
+   ],
+   "keys": [
+    {
+     "name": "malpedia",
+     "env": [
+      "V3LUM_MALPEDIA_TOKEN",
+      "V3LUM_MALPEDIA_KEY"
+     ]
+    }
+   ],
+   "sources": [
+    {
+     "id": "api",
+     "title": "Malpedia API (find/get/list actors and families, bibliography)",
+     "terms_class": "noncommercial",
+     "for_modules": [
+      "malpedia"
+     ]
+    },
+    {
+     "id": "pages",
+     "title": "Malpedia family and actor pages /details/{slug}, /actor/{id} (manual pivot links)",
+     "terms_class": "open",
+     "for_modules": [
+      "pivots_cti"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Tier: P296 and P300 trusted (academic institution with published terms). Terms: P296 cond 1 A1 initial class: content CC BY-NC-SA 3.0 -> api noncommercial; licence_allow needs a written Fraunhofer FKIE agreement; P300 cond 4: manual browsing is unaffected by the API licence (pages open). Optional team-account token in the Authorization header only; token-tier material carries source TLP:AMBER, stays in the case and is never exported. Cache family JSON for days."
+  },
+  {
+   "id": "mempool_space",
+   "name": "mempool.space (Esplora API and explorer pages)",
+   "operator": "mempool.space (The Mempool Open Source Project)",
+   "hosts": [
+    "mempool.space"
+   ],
+   "batches": [
+    "p2-G09-2",
+    "p2-G14-2"
+   ],
+   "proposals": [
+    "P211",
+    "P216"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "esplora_api",
+     "title": "mempool.space Esplora-compatible REST API (address, address txs)",
+     "terms_class": "open",
+     "for_modules": [
+      "btc_explorers"
+     ]
+    },
+    {
+     "id": "explorer_pages",
+     "title": "mempool.space address pages (manual pivot links)",
+     "terms_class": "open",
+     "for_modules": [
+      "pivots_crypto"
+     ]
+    }
+   ],
+   "tier": "community",
+   "notes": "Tier: P211 cond 4 and P216 cond 2 'mempool.space community'. Terms open (P211 cond 4; public API free, AGPL server code self-hostable). Undocumented limits with 429 on bursts: polite, cache; a configured self-hosted esplora_url is tried first (module)."
+  },
+  {
+   "id": "mitre",
+   "name": "MITRE (CVE Services, CWE API, ATT&CK, D3FEND)",
+   "operator": "The MITRE Corporation",
+   "hosts": [
+    "cveawg.mitre.org",
+    "cwe-api.mitre.org",
+    "attack-taxii.mitre.org",
+    "attack.mitre.org",
+    "d3fend.mitre.org"
+   ],
+   "batches": [
+    "p1-G08-1",
+    "p1-G11-1",
+    "p2-G14-2",
+    "p3-G11-1"
+   ],
+   "proposals": [
+    "P183",
+    "P292",
+    "P294",
+    "P300"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "cve_services",
+     "title": "CVE Services API cveawg /api/cve/{id} (CNA and CISA ADP containers)",
+     "terms_class": "open",
+     "for_modules": [
+      "cve_record"
+     ]
+    },
+    {
+     "id": "cwe_api",
+     "title": "CWE REST API /api/v1/cwe/weakness/{id} (dataset refresh only, never per CVE)",
+     "terms_class": "open",
+     "for_modules": [
+      "cve_record"
+     ]
+    },
+    {
+     "id": "attack_taxii",
+     "title": "MITRE ATT&CK TAXII 2.1 server (collections and objects)",
+     "terms_class": "open",
+     "for_modules": [
+      "attack_index"
+     ]
+    },
+    {
+     "id": "attack_pages",
+     "title": "ATT&CK technique pages /techniques/{T}/{sub}/ (manual pivot links)",
+     "terms_class": "open",
+     "for_modules": [
+      "pivots_cti"
+     ]
+    },
+    {
+     "id": "d3fend_api",
+     "title": "D3FEND API /api/offensive-technique/attack/{T}.json",
+     "terms_class": "open",
+     "for_modules": [
+      "d3fend"
+     ]
+    },
+    {
+     "id": "d3fend_pages",
+     "title": "D3FEND offensive-technique pages (manual pivot links)",
+     "terms_class": "open",
+     "for_modules": [
+      "pivots_cti"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Id from P183 cond 4 'Registry providers mitre and nist_nvd: tier trusted, terms open' and P292 cond 4; nist_nvd (services.nvd.nist.gov) is a separate provider owned by batch p1-G08-1. One keyless provider: the services differ only in terms text, kept per source. Terms quotes: CVE and CWE terms of use (free; copyright designation in THIRD_PARTY_NOTICES), ATT&CK Terms of Use (royalty-free, commercial use with the notice; P292 cond 1), D3FEND Terms of Use checked 2026-11-26 (P294 cond 1: royalty-free for research, development and commercial purposes with the notice). CVE Services sends RateLimit-Policy 25000;w=60: no provider quota needed. TAXII only for update checks (full loads from the raw GitHub bundle, core github)."
+  },
+  {
+   "id": "netlas",
+   "name": "Netlas.io (API and web pages)",
+   "operator": "Netlas.io (operator per the netlas.io terms, to be recorded by the reviewer)",
+   "hosts": [
+    "app.netlas.io"
+   ],
+   "batches": [
+    "p2-G14-3",
+    "p3-G02-1",
+    "p9-G03-1"
+   ],
+   "proposals": [
+    "P037",
+    "P062",
+    "P304"
+   ],
+   "keys": [
+    {
+     "name": "netlas",
+     "env": [
+      "V3LUM_NETLAS_KEY"
+     ]
+    }
+   ],
+   "sources": [
+    {
+     "id": "api",
+     "title": "Netlas API (host, responses search, domains_count, domains download)",
+     "terms_class": "noncommercial",
+     "for_modules": [
+      "netlas"
+     ]
+    },
+    {
+     "id": "web_pages",
+     "title": "Netlas host and responses pages (manual pivot links)",
+     "terms_class": "open",
+     "for_modules": [
+      "favicon_hash",
+      "pivots_unverified"
+     ]
+    }
+   ],
+   "tier": "community",
+   "notes": "Tier: P037 and P304 community. Terms: P037 cond 1 quotes the pricing FAQ (checked 2026-11-26) 'for your own personal needs (non-commercial use only)' for keyless and free Community -> noncommercial; a paid plan key is key-terms (runs under corporate only with key_plans.netlas='business' or licence_allow). X-API-Key header only. Quota: Community 50 requests/day (research C0087 live_cti) -> scope key, published false; error bodies in 200 -> P321 markers (QUOTA/RATE_LIMITED) with fixtures."
+  },
+  {
+   "id": "npm",
+   "name": "npm registry",
+   "operator": "npm, Inc. (GitHub, Inc. / Microsoft)",
+   "hosts": [
+    "registry.npmjs.org"
+   ],
+   "batches": [
+    "p2-G05-1",
+    "p2-G05-2"
+   ],
+   "proposals": [
+    "P100",
+    "P359"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "registry",
+     "title": "npm registry API (package metadata, -/v1/search maintainer queries)",
+     "terms_class": "open",
+     "for_modules": [
+      "dev_profiles_pack",
+      "org_code_footprint"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Tier: P100 cond 4 'npm (GitHub) trusted'; P359 trusted. Terms open (npm ToS, public metadata). Never fetch www.npmjs.com/~{u} (Client Challenge = BLOCKED reason challenge, P100 cond 3). Client shared by P100 and P359. personal_data_review before default use."
+  },
+  {
+   "id": "opensanctions",
+   "name": "OpenSanctions (licensed bulk data, screening API, web search)",
+   "operator": "OpenSanctions Datenbanken GmbH",
+   "hosts": [
+    "api.opensanctions.org",
+    "data.opensanctions.org",
+    "opensanctions.org",
+    "www.opensanctions.org"
+   ],
+   "batches": [
+    "p1-G10-1",
+    "p2-G14-2",
+    "p3-G10-1"
+   ],
+   "proposals": [
+    "P219",
+    "P222",
+    "P231"
+   ],
+   "keys": [
+    {
+     "name": "opensanctions",
+     "env": [
+      "V3LUM_OPENSANCTIONS_KEY"
+     ]
+    }
+   ],
+   "sources": [
+    {
+     "id": "bulk_licensed",
+     "title": "OpenSanctions bulk datasets (default collection targets and index) under a bulk data licence",
+     "terms_class": "license",
+     "for_modules": [
+      "opensanctions"
+     ]
+    },
+    {
+     "id": "screening_api",
+     "title": "OpenSanctions API /match and /search under a Screening licence",
+     "terms_class": "license",
+     "for_modules": [
+      "opensanctions"
+     ]
+    },
+    {
+     "id": "web_search",
+     "title": "OpenSanctions web search www.opensanctions.org/search (manual pivot links)",
+     "terms_class": "open",
+     "for_modules": [
+      "pivots_company_org"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "www.opensanctions.org added (web search template host, research C0539). Tier: P222 and P231 trusted. Terms: P222 cond 1 'OpenSanctions data is CC BY-NC 4.0 (class noncommercial); this module uses only the business-licensed path, registered as class license. The free data and API path is never used under corporate.' P219 sanctions_lists lists these hosts but its providers are OFAC/UN/EU only: it declares no source here (a free-path source, if ever wanted for the research profile, is added by extension with class noncommercial). Key only in the Authorization header (ApiKey); monthly query budget with a hard stop and QUOTA (P222 cond 4) -> quota scope key from the licence; bulk only via `v3lum data update opensanctions` with a bulk licence; 401 = NEEDS_KEY."
+  },
+  {
+   "id": "otx",
+   "name": "AlienVault OTX (indicator API)",
+   "operator": "LevelBlue (formerly AT&T Cybersecurity; AlienVault OTX)",
+   "hosts": [
+    "otx.alienvault.com"
+   ],
+   "batches": [
+    "p1-G07-1",
+    "p2-G01-3"
+   ],
+   "proposals": [
+    "P060",
+    "P153"
+   ],
+   "keys": [
+    {
+     "name": "otx",
+     "env": [
+      "V3LUM_OTX_KEY"
+     ]
+    }
+   ],
+   "sources": [
+    {
+     "id": "indicators",
+     "title": "OTX indicator API v1 (general, reputation, geo, malware, url_list, passive_dns, http_scans per IPv4/IPv6/domain/hostname/url/file/cve)",
+     "terms_class": "key-terms",
+     "for_modules": [
+      "otx",
+      "otx_keyless",
+      "archive_mining"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Tier: P153 cond 2 'Registry provider otx (LevelBlue): tier trusted' (also P304). Terms: the OTX terms page is JS-only and was not verified, so quote the binding P153 cond 2 text (reviewer council-1 (A1)); class key-terms is the strictest of P153 (key-terms) and P060 (open, url_list use); free_plan_business_use null (key_plans.otx decides). Key header X-OTX-API-KEY; otx needs the key, otx_keyless (default off) uses the 'general' section only. Flags all false. Quota: free key ~10,000 req/h observed (research C0324 live_cti) -> scope key, published false, safety 0.8; anonymous passive_dns answers 429 'Anonymous access to this endpoint is limited' (RATE_LIMITED, never 'not listed'); 403 with a key = bad key (NEEDS_KEY). http_profile: timeout 20 (deep preset 60 set by the module), max_bytes 5 MB, ttl 86400. Error markers only with trimmed real fixtures (P153 cond 4 lists them)."
+  },
+  {
+   "id": "publicnode",
+   "name": "PublicNode Ethereum JSON-RPC",
+   "operator": "Allnodes Inc. (PublicNode)",
+   "hosts": [
+    "ethereum-rpc.publicnode.com"
+   ],
+   "batches": [
+    "p1-G09-1",
+    "p2-G09-2"
+   ],
+   "proposals": [
+    "P205",
+    "P212"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "ethereum_rpc",
+     "title": "PublicNode Ethereum JSON-RPC (eth_call to the Chainalysis sanctions oracle, balances)",
+     "terms_class": "open",
+     "for_modules": [
+      "crypto_sanctions",
+      "evm_explorers"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Tier: P205 cond 2 and P212 cond 4 'PublicNode (Allnodes) trusted'. Terms open (P205 cond 2 / P212 cond 4: free public RPC, ToS recorded). Keyless: V3LUM_ETH_RPC in P205 is a setting for an alternative RPC URL, not a key of this provider. A result other than 0x..00/0x..01, a JSON-RPC error or a timeout = ERROR (could not verify), never 'not sanctioned' (marker on error.code with fixture)."
+  },
+  {
+   "id": "pwnedpasswords",
+   "name": "Pwned Passwords range API",
+   "operator": "Have I Been Pwned (Pwned Passwords service)",
+   "hosts": [
+    "api.pwnedpasswords.com"
+   ],
+   "batches": [
+    "p1-G04-1",
+    "p3-G04-2"
+   ],
+   "proposals": [
+    "P132",
+    "P141"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "range",
+     "title": "Pwned Passwords k-anonymity range API /range/{sha1_prefix5} (mode=ntlm)",
+     "terms_class": "open",
+     "for_modules": [
+      "pwned_passwords_internal"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Separate registrable domain and keyless budget from hibp. BINDING PROFILE_REQUIREMENTS: user_agent neutral, flags.sensitive true, ttl <= 604800. Terms CC BY 4.0 (attribution to HIBP). No documented rate limit (CDN): quota null. Only 5-character hash prefixes ever leave the machine. P132 lists the host but uses only the catalogue."
+  },
+  {
+   "id": "pypi",
+   "name": "PyPI (JSON API and organisation pages)",
+   "operator": "Python Software Foundation (PyPI)",
+   "hosts": [
+    "pypi.org"
+   ],
+   "batches": [
+    "p2-G05-1",
+    "p2-G05-2"
+   ],
+   "proposals": [
+    "P100",
+    "P359"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "json_api",
+     "title": "PyPI JSON API /pypi/{package}/json and /pypi/{package}/{version}/json",
+     "terms_class": "open",
+     "for_modules": [
+      "dev_profiles_pack",
+      "org_code_footprint"
+     ]
+    },
+    {
+     "id": "org_pages",
+     "title": "PyPI organisation pages /org/{org}/ (HTML, one polite request per org)",
+     "terms_class": "open",
+     "for_modules": [
+      "org_code_footprint"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Tier: P100 cond 4 'PyPI (PSF) trusted'; P359 trusted. Terms open (PyPI terms of use). Never fetch /user/* (JS Client Challenge): a challenge is BLOCKED reason challenge via a P321 marker, never ABSENT (P100 cond 3, P359 cond 2). CDN cached; cache org pages 7 days."
+  },
+  {
+   "id": "querido_diario",
+   "name": "Querido Diario API",
+   "operator": "Open Knowledge Brasil (Querido Diario)",
+   "hosts": [
+    "api.queridodiario.org.br"
+   ],
+   "batches": [
+    "p1-G10-2",
+    "p2-G10-3"
+   ],
+   "proposals": [
+    "P236",
+    "P243"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "gazettes",
+     "title": "Querido Diario gazette search API (/gazettes, /cities)",
+     "terms_class": "open",
+     "for_modules": [
+      "querido_diario"
+     ]
+    },
+    {
+     "id": "company",
+     "title": "Querido Diario company info and partners (/company/info, /company/partners by CNPJ)",
+     "terms_class": "open",
+     "for_modules": [
+      "cnpj_lookup"
+     ]
+    }
+   ],
+   "tier": "community",
+   "notes": "Tier: P236 cond 1 'Querido Diario (Open Knowledge Brasil) community', P243 community. Terms open (Open Knowledge Brasil open data). P243 also uses the alias host api.queridodiario.ok.org.br (single-batch, p2-G10-3): add it with a querido_diario__<batch>.json extension, not a second provider. ~3 s per query, no published limit: min_interval 1.0, cache 24 h; error-in-200 and 401/403/429 = could not verify, never cached (P243 cond 4). Person names only for typed due-diligence seeds; QSA data keeps masked CPFs (rule 4)."
+  },
+  {
+   "id": "ransomlook",
+   "name": "RansomLook (ransomware leak-site tracker)",
+   "operator": "RansomLook open-source project (operator named on ransomlook.io/about)",
+   "hosts": [
+    "ransomlook.io",
+    "www.ransomlook.io"
+   ],
+   "batches": [
+    "p1-G09-1",
+    "p2-G14-2"
+   ],
+   "proposals": [
+    "P196",
+    "P203"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "api",
+     "title": "RansomLook API /api/groups, /api/group/{name}, /api/recent, /api/last/{days}, /api/markets",
+     "terms_class": "open",
+     "for_modules": [
+      "ransomlook"
+     ]
+    },
+    {
+     "id": "group_pages",
+     "title": "RansomLook group pages /group/{group} (manual pivot links)",
+     "terms_class": "open",
+     "for_modules": [
+      "pivots_darkweb"
+     ]
+    }
+   ],
+   "tier": "community",
+   "notes": "www.ransomlook.io added: the API and pages are served from www (research C0456/C0469). Tier: P196 cond 3 'Registry provider ransomlook: tier community, terms open'; P203 community. Terms: P196 cond 3 quotes ransomlook.io/about (verified 2026-11-26): content CC BY 4.0 with commercial use allowed; attribution 'Source: RansomLook (CC BY 4.0)'; AGPL service code never copied. flags.sensitive true: a leak-site tracker carrying breach claims (council chunk B: leaked personal data from the leak trackers is scrubbed at ingestion) -> sanitizer schema mandatory (keep group, victim name/website, dates, counts), cache sanitized or no-store, TTL <= 7 days. Rule 3: claim, leak-file and download URLs are never linked."
+  },
+  {
+   "id": "rdap_org",
+   "name": "rdap.org RDAP redirector",
+   "operator": "rdap.org (volunteer-run RDAP redirector)",
+   "hosts": [
+    "rdap.org"
+   ],
+   "batches": [
+    "p1-G01-1",
+    "p9-G01-1"
+   ],
+   "proposals": [
+    "P003",
+    "P013"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "redirector",
+     "title": "rdap.org redirector /domain, /ip, /autnum, /entity (302 to the authoritative RDAP server)",
+     "terms_class": "open",
+     "for_modules": [
+      "rdap",
+      "domain_ownership"
+     ]
+    }
+   ],
+   "tier": "community",
+   "notes": "Tier: P003 cond 1 'rdap.org (community tier, volunteer-run) is only a fallback, following its 302'. Terms: quote P003 (free; registry ToS apply; per-query lookups only, no bulk harvesting). A 404 from rdap.org never means 'not registered' (P003 cond 3). Redirect targets belong to their registries' providers, which the module must declare (rdap.registro.br is in registrobr)."
+  },
+  {
+   "id": "registrobr",
+   "name": "Registro.br (RDAP, availability, public lists)",
+   "operator": "NIC.br (Nucleo de Informacao e Coordenacao do Ponto BR) - Registro.br",
+   "hosts": [
+    "registro.br",
+    "rdap.registro.br",
+    "ftp.registro.br"
+   ],
+   "batches": [
+    "p1-G01-1",
+    "p1-G02-1",
+    "p2-G01-1",
+    "p3-G01-1",
+    "p9-G01-1"
+   ],
+   "proposals": [
+    "P003",
+    "P005",
+    "P013",
+    "P021",
+    "P038"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "rdap",
+     "title": "Registro.br RDAP (domain, entity, ip, autnum)",
+     "terms_class": "open",
+     "for_modules": [
+      "rdap",
+      "domain_ownership"
+     ]
+    },
+    {
+     "id": "avail",
+     "title": "Registro.br domain availability API /v2/ajax/avail/raw/{domain}",
+     "terms_class": "open",
+     "for_modules": [
+      "registrobr_domain_status"
+     ]
+    },
+    {
+     "id": "release_list",
+     "title": "Registro.br domains-in-release list /dominio/lista-processo-liberacao.txt",
+     "terms_class": "open",
+     "for_modules": [
+      "nrd_feeds"
+     ]
+    },
+    {
+     "id": "asn_blocks",
+     "title": "NIC.br ASN block list /pub/numeracao/origin/nicbr-asn-blk-latest.txt",
+     "terms_class": "open",
+     "for_modules": [
+      "nicbr_asn"
+     ]
+    },
+    {
+     "id": "whois_web",
+     "title": "Registro.br web whois (manual link when RDAP is blocked)",
+     "terms_class": "open",
+     "for_modules": [
+      "rdap"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Tier: A8 names NIC.br/registro.br as trusted; P005 cond 1 'NIC.br, trusted', P038 trusted (P003/P021 are multi-provider: their community tier is rdap.org's/BrasilAPI's). One provider: one operator with shared per-IP limits. BINDING PROFILE_REQUIREMENTS (registro.br, rdap.registro.br): user_agent neutral, accept application/rdap+json, accept_language pt-BR, ttl <= 86400; the profile applies to every host, so modules set Accept themselves for the avail JSON and the text lists. Per-IP limits (403/429 = BLOCKED/RATE_LIMITED, never cached); avail only for <= 20 individual names per run with min_interval >= 5 s (P021 cond 1/4, module level); no bulk harvesting (NIC.br RDAP terms)."
+  },
+  {
+   "id": "rfb",
+   "name": "Receita Federal CNPJ open data",
+   "operator": "Receita Federal do Brasil (RFB)",
+   "hosts": [
+    "arquivos.receitafederal.gov.br"
+   ],
+   "batches": [
+    "p2-G10-2",
+    "p2-G10-3"
+   ],
+   "proposals": [
+    "P238",
+    "P361"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "cnpj_open_data",
+     "title": "RFB CNPJ open-data monthly dump on the WebDAV share (Empresas, Estabelecimentos, Socios and code tables)",
+     "terms_class": "open",
+     "for_modules": [
+      "rfb_cnpj_bulk",
+      "cnpj_name_resolver"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Tier: government body (A8); P238, P361 trusted. Terms: RFB open data (public by law, free reuse). Only through `v3lum data import-rfb` (never a scan): tens of GB, resumable, refuses when free space < 3x the download; one importer shared by P238 and P361. Minimisation at import (rule 4): CPF digits in MEI/EI names stripped, partner CPFs stay RFB-masked and are never join keys."
+  },
+  {
+   "id": "ripestat",
+   "name": "RIPEstat Data API",
+   "operator": "RIPE NCC",
+   "hosts": [
+    "stat.ripe.net"
+   ],
+   "batches": [
+    "p1-G02-1",
+    "p2-G03-1"
+   ],
+   "proposals": [
+    "P031",
+    "P345"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "data_api",
+     "title": "RIPEstat Data API /data/{call}/data.json (network-info, prefix-overview, as-overview, announced-prefixes, whois, abuse-contact-finder, ...)",
+     "terms_class": "open",
+     "for_modules": [
+      "ripestat",
+      "takedown_packet"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Tier: RIR (A8), P031 and P345 trusted. Terms: RIPE NCC terms (free, attribution to RIPE NCC; P031 cond 1). sourceapp=v3lum on every call; fair use, no hard limit: http_profile concurrency <= 8, ttl 86400. JSON envelope errors inside 200 (status, status_code, messages of type error) map to ERROR/RATE_LIMITED via P321 markers with fixtures (P031 cond 2)."
+  },
+  {
+   "id": "securitytrails",
+   "name": "SecurityTrails (API and web pages)",
+   "operator": "SecurityTrails (Recorded Future, Inc.)",
+   "hosts": [
+    "api.securitytrails.com",
+    "securitytrails.com"
+   ],
+   "batches": [
+    "p2-G01-1",
+    "p2-G14-3",
+    "p3-G13-1"
+   ],
+   "proposals": [
+    "P006",
+    "P278",
+    "P304"
+   ],
+   "keys": [
+    {
+     "name": "securitytrails",
+     "env": [
+      "V3LUM_SECURITYTRAILS_KEY"
+     ]
+    }
+   ],
+   "sources": [
+    {
+     "id": "api",
+     "title": "SecurityTrails API v1 (domain, subdomains, DNS history, ips/nearby)",
+     "terms_class": "key-terms",
+     "for_modules": [
+      "securitytrails"
+     ]
+    },
+    {
+     "id": "web_pages",
+     "title": "SecurityTrails web pages (manual pivot links; Cloudflare-protected)",
+     "terms_class": "open",
+     "for_modules": [
+      "pivots_unverified"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Tier: P006 and P304 trusted. Terms: P006 cond 2 key-terms (free plan targets individuals: corporate only with free_plan_business_use=true recorded or key_plans.securitytrails='business'). APIKEY header. Quota: monthly window <= 80% of the plan's published limit (free tier ~50/month observed) -> scope key, month. cdn_origin_hypothesis (P278) only consumes P006 facts and never calls this API."
+  },
+  {
+   "id": "shodan_ctl",
+   "name": "Shodan CT hostnames service (ctl.shodan.io)",
+   "operator": "Shodan LLC",
+   "hosts": [
+    "ctl.shodan.io"
+   ],
+   "batches": [
+    "p1-G01-1"
+   ],
+   "proposals": [
+    "P001"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "hostnames",
+     "title": "Shodan CT log hostnames API /api/v1/domain/{domain}/hostnames (keyless)",
+     "terms_class": "noncommercial",
+     "for_modules": [
+      "ct_logs"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Not a core host: the core provider shodan keeps api, cvedb, internetdb and www.shodan.io. Tier trusted (P001, P304: Shodan). Terms: P001 cond 2 'ctl.shodan.io = noncommercial, same licence decision as Shodan InternetDB'; cond 3: off under corporate until licence-cleared (licence_allow entry recording Shodan's permission, or a Shodan licence covering it); crt.sh alone keeps ct_logs useful. Undocumented limit: http_profile min_interval 1.0 s."
+  },
+  {
+   "id": "shodan_web",
+   "name": "Shodan apex web host (shodan.io)",
+   "operator": "Shodan LLC",
+   "hosts": [
+    "shodan.io"
+   ],
+   "batches": [
+    "p2-G14-3",
+    "p9-G03-1"
+   ],
+   "proposals": [
+    "P062",
+    "P304"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "web_pages",
+     "title": "Shodan search and host pages via the apex host (manual pivot links)",
+     "terms_class": "open",
+     "for_modules": [
+      "favicon_hash",
+      "pivots_unverified"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Owns only the apex shodan.io that P062/P304 list; the research templates use www.shodan.io, which belongs to core shodan (prefer it, and add any www source by a shodan__<batch>.json extension). Cloudflare challenge for scripts: manual links only (A9). Tier trusted (P304: Shodan)."
+  },
+  {
+   "id": "telegram",
+   "name": "Telegram public web (t.me)",
+   "operator": "Telegram FZ-LLC (Telegram Messenger)",
+   "hosts": [
+    "t.me"
+   ],
+   "batches": [
+    "p1-G05-1",
+    "p1-G06-1",
+    "p2-G09-2"
+   ],
+   "proposals": [
+    "P112",
+    "P128",
+    "P357"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "web_preview",
+     "title": "Telegram t.me/{name} public preview and t.me/s/{channel} web view (?before= paging)",
+     "terms_class": "open",
+     "for_modules": [
+      "telegram_public",
+      "telegram_channel_watch"
+     ]
+    },
+    {
+     "id": "phone_links",
+     "title": "t.me/+{e164} deep links (manual pivot links)",
+     "terms_class": "open",
+     "for_modules": [
+      "pivots_phone"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Id from P112 cond 1 'Registry provider telegram: tier trusted, terms open (public web preview)'; P128 't.me trusted'. Unauthenticated GETs only: never an account, session, bot token or Telethon (rule 1). Politeness: <= 1 req/s; channel watch >= 10 s between requests, <= 3 pages per channel (P357 cond 2, module level); the generic 'Contact @name' page = could not read (P321 marker with fixture). Handles are PERSONAL_TYPES: personal_data_review before default use; leaked personal data in channel posts is scrubbed at ingestion by the module sanitizer (Telegram itself is not a breach provider: sensitive false)."
+  },
+  {
+   "id": "torproject",
+   "name": "Tor Project metrics services",
+   "operator": "The Tor Project, Inc.",
+   "hosts": [
+    "check.torproject.org",
+    "onionoo.torproject.org",
+    "collector.torproject.org",
+    "metrics.torproject.org"
+   ],
+   "batches": [
+    "p1-G02-2",
+    "p2-G14-1"
+   ],
+   "proposals": [
+    "P040",
+    "P057"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "exit_list",
+     "title": "TorDNSEL bulk exit list check.torproject.org/torbulkexitlist",
+     "terms_class": "open",
+     "for_modules": [
+      "tor_relays"
+     ]
+    },
+    {
+     "id": "onionoo",
+     "title": "Onionoo relay search (details, summary)",
+     "terms_class": "open",
+     "for_modules": [
+      "tor_relays"
+     ]
+    },
+    {
+     "id": "collector",
+     "title": "CollecTor exit lists (recent and archive)",
+     "terms_class": "open",
+     "for_modules": [
+      "tor_relays"
+     ]
+    },
+    {
+     "id": "exonerator",
+     "title": "ExoneraTor on metrics.torproject.org (manual pivot links)",
+     "terms_class": "open",
+     "for_modules": [
+      "tor_relays",
+      "pivots_ip_network"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Tier: P040 trusted, P057 'Tor Project ExoneraTor' trusted (established non-profit). Terms: Tor Metrics data is public (CC0/CC BY per Tor metrics; research C0093/C0465). Refresh lists hourly at most; Onionoo with If-Modified-Since. dan.me.uk and the GitHub mirrors are other providers."
+  },
+  {
+   "id": "transparencia",
+   "name": "Portal da Transparencia (bulk downloads and web search)",
+   "operator": "Controladoria-Geral da Uniao (CGU)",
+   "hosts": [
+    "portaldatransparencia.gov.br"
+   ],
+   "batches": [
+    "p1-G10-2",
+    "p2-G14-2"
+   ],
+   "proposals": [
+    "P240",
+    "P250"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "bulk_sanctions",
+     "title": "CGU bulk downloads /download-de-dados/{ceis|cnep|cepim|acordos-leniencia}/{YYYYMMDD} (daily zip files)",
+     "terms_class": "open",
+     "for_modules": [
+      "cgu_sanctions_bulk"
+     ]
+    },
+    {
+     "id": "web_search",
+     "title": "Portal da Transparencia web search /busca?termo= (manual pivot links)",
+     "terms_class": "open",
+     "for_modules": [
+      "pivots_brazil"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Split from transparencia_api: the keyed API has its own key and per-key budget. Tier: P240 trusted, P250 'Portal da Transparencia (CGU)' trusted. Terms: CGU open data (LAI). Downloads answer 302 -> dadosabertos-download.cgu.gov.br, a single-batch host of P240 (batch p1-G10-2): add it with a transparencia__<batch>.json extension instead of a second CGU provider. Person rows keep the published masked CPF only (P240 cond 2)."
+  },
+  {
+   "id": "transparencia_api",
+   "name": "Portal da Transparencia API de dados",
+   "operator": "Controladoria-Geral da Uniao (CGU)",
+   "hosts": [
+    "api.portaldatransparencia.gov.br"
+   ],
+   "batches": [
+    "p2-G10-1"
+   ],
+   "proposals": [
+    "P237"
+   ],
+   "keys": [
+    {
+     "name": "transparencia",
+     "env": [
+      "V3LUM_TRANSPARENCIA_KEY",
+      "V3LUM_CGU_KEY"
+     ]
+    }
+   ],
+   "sources": [
+    {
+     "id": "api_dados",
+     "title": "Portal da Transparencia API de dados (pessoa-juridica, CEIS, CNEP, CEPIM, acordos-leniencia, contratos)",
+     "terms_class": "key-terms",
+     "for_modules": [
+      "portal_transparencia_api"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Tier: P237 trusted. Terms: P237 cond 1 key-terms with free_plan_business_use true ('CGU open data: key_plans business-compatible ... per the registry evidence'); key from the team's institutional gov.br account only. Key in the chave-api-dados header only; 401 'Chave de API nao informada' = NEEDS_KEY. Quota: documented 90 req/min (06:00-23:59) and 300 req/min (00:00-05:59) per key (P237 cond 4) -> scope key, rate 1.5/s; 429 = RATE_LIMITED. Never a CPF parameter (/peps?cpf=, ceaf?cpf=): rule 4."
+  },
+  {
+   "id": "triage",
+   "name": "Recorded Future Triage (tria.ge)",
+   "operator": "Recorded Future, Inc. (Hatching Triage)",
+   "hosts": [
+    "tria.ge"
+   ],
+   "batches": [
+    "p2-G14-1",
+    "p3-G07-2"
+   ],
+   "proposals": [
+    "P177",
+    "P180"
+   ],
+   "keys": [
+    {
+     "name": "triage",
+     "env": [
+      "V3LUM_TRIAGE_KEY"
+     ]
+    }
+   ],
+   "sources": [
+    {
+     "id": "search_api",
+     "title": "Triage API v0 search (sha256, family, tag, url queries)",
+     "terms_class": "noncommercial",
+     "for_modules": [
+      "hash_lookup_keyed"
+     ]
+    },
+    {
+     "id": "report_pages",
+     "title": "Triage report search pages /s?q= and /reports?q= (manual pivot links)",
+     "terms_class": "open",
+     "for_modules": [
+      "pivots_malware_hash"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Tier: P177 cond 4 'Recorded Future ... trusted', P180 trusted. Terms: P177 cond 2/3 (verified 2026-11-26): free Individual/Researcher licences are non-commercial and make analyses public -> search_api 'noncommercial'; a commercial Triage licence (class 'license' path) is recorded in licence_allow. P177 cond 1: one module per provider (module 'triage' inside hash_lookup_keyed), default off, Bearer header, success fixture required. Never submit samples or URLs (free plans publish analyses): flags all false because no submission path exists (same rule as P066)."
+  },
+  {
+   "id": "trm_chainabuse",
+   "name": "Chainabuse (TRM Labs scam reports)",
+   "operator": "TRM Labs, Inc. (Chainabuse)",
+   "hosts": [
+    "api.chainabuse.com",
+    "chainabuse.com",
+    "www.chainabuse.com"
+   ],
+   "batches": [
+    "p2-G09-1",
+    "p2-G14-2"
+   ],
+   "proposals": [
+    "P204",
+    "P216"
+   ],
+   "keys": [
+    {
+     "name": "chainabuse",
+     "env": [
+      "V3LUM_CHAINABUSE_KEY"
+     ]
+    }
+   ],
+   "sources": [
+    {
+     "id": "reports_api",
+     "title": "Chainabuse reports API v0 (scam reports per address or domain)",
+     "terms_class": "noncommercial",
+     "for_modules": [
+      "chainabuse"
+     ]
+    },
+    {
+     "id": "address_pages",
+     "title": "Chainabuse address pages www.chainabuse.com/address/{a} (manual pivot links, SPA)",
+     "terms_class": "open",
+     "for_modules": [
+      "pivots_crypto"
+     ]
+    }
+   ],
+   "tier": "community",
+   "notes": "Id from P204 cond 4 'Registry provider trm_chainabuse'. Tier: P204 says trusted but P304 lists Chainabuse as community: the strictest (community) applies. www.chainabuse.com added (pivot template host of P216, not in any proposal list). Terms: P204 cond 2 quotes the ToS (TRM Labs, updated 2025-01-20) 'solely for your personal, non-commercial use' -> reports_api noncommercial, off under corporate until a licence_allow entry backed by TRM Labs' written permission. Manual address pages stay open (the chainabuse module also emits them as manual_link). HTTP Basic with the key as username (verify when the key is issued); page cap; per free-key plan quota (not published here)."
+  },
+  {
+   "id": "urlscan",
+   "name": "urlscan.io (Search API, result API, web pages)",
+   "operator": "urlscan GmbH",
+   "hosts": [
+    "urlscan.io"
+   ],
+   "batches": [
+    "p1-G03-1",
+    "p2-G01-3",
+    "p2-G14-1",
+    "p9-G03-3"
+   ],
+   "proposals": [
+    "P060",
+    "P066",
+    "P083",
+    "P347"
+   ],
+   "keys": [
+    {
+     "name": "urlscan",
+     "env": [
+      "V3LUM_URLSCAN_KEY"
+     ]
+    }
+   ],
+   "sources": [
+    {
+     "id": "search",
+     "title": "urlscan.io Search API and result API (search only; no scan submission)",
+     "terms_class": "noncommercial",
+     "for_modules": [
+      "urlscan_search",
+      "archive_mining"
+     ]
+    },
+    {
+     "id": "web_pages",
+     "title": "urlscan.io domain, IP and search pages (manual pivot links)",
+     "terms_class": "open",
+     "for_modules": [
+      "urlscan_search",
+      "pivots_url_web"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "Tier: P066/P083 trusted. Terms: P066 cond 2 (ToS verified 2026-11-26: 'only for your own personal use'): free/keyless search = noncommercial, off under corporate until licence-cleared (company key under urlscan's commercial terms or written approval in licence_allow). Flags all false: P066 cond 1 'Only the submission endpoint publishes, so the search source is not flagged publishes_queries' - no POST /api/v1/scan/ path exists anywhere (test asserts it); page_capture (P347) lists urlscan.io and its key but has no urlscan submission path. API-Key header; X-Rate-Limit-* honoured; size <= 100, <= 2 search_after pages; /api/v1/result/{uuid} only with a key (403 fixture). Quota: keyless search 30/min per IP observed (Concurrency-Limit 10) -> scope egress_ip, published false."
+  },
+  {
+   "id": "viewdns",
+   "name": "ViewDNS.info (web tools)",
+   "operator": "ViewDNS.info (operator per the viewdns.info terms)",
+   "hosts": [
+    "viewdns.info"
+   ],
+   "batches": [
+    "p2-G14-2",
+    "p3-G13-1"
+   ],
+   "proposals": [
+    "P231",
+    "P278"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "web_tools",
+     "title": "ViewDNS web tools (reverse WHOIS, DNS records, reverse IP, IP history; manual pivot links)",
+     "terms_class": "open",
+     "for_modules": [
+      "pivots_company_org",
+      "cdn_origin_hypothesis"
+     ]
+    }
+   ],
+   "tier": "community",
+   "notes": "Tier: P231 cond 2 lists ViewDNS as community. Manual links only; the paid API (api.viewdns.info) is not used. cdn_origin_hypothesis (P278) emits only the iphistory link and makes no network calls. Reverse-WHOIS templates take e-mails/names: privacy=true templates on a community host only."
+  },
+  {
+   "id": "virusshare",
+   "name": "VirusShare (API and hash lists)",
+   "operator": "VirusShare.com (operator per the virusshare.com terms)",
+   "hosts": [
+    "virusshare.com"
+   ],
+   "batches": [
+    "p2-G07-2",
+    "p3-G07-2"
+   ],
+   "proposals": [
+    "P177",
+    "P350"
+   ],
+   "keys": [
+    {
+     "name": "virusshare",
+     "env": [
+      "V3LUM_VIRUSSHARE_KEY"
+     ]
+    }
+   ],
+   "sources": [
+    {
+     "id": "api",
+     "title": "VirusShare API v2 (file and quick hash lookups)",
+     "terms_class": "unknown",
+     "for_modules": [
+      "hash_lookup_keyed"
+     ]
+    },
+    {
+     "id": "hash_lists",
+     "title": "VirusShare MD5 hash lists hashfiles/VirusShare_{00000..00511}.md5 (historical corpus)",
+     "terms_class": "unknown",
+     "for_modules": [
+      "offline_hash_sets"
+     ]
+    }
+   ],
+   "tier": "community",
+   "notes": "Tier: P177 cond 4 'MalShare and VirusShare community'. Terms: P177 cond 3 and P350 cond 3 (A1 BR16): unknown until legal records the terms -> disabled in every profile (no quote needed). API: module 'virusshare' inside hash_lookup_keyed (P177 cond 1), apikey parameter (AR01 redaction), key required even though an empty key answered; free account 4 requests/minute (research C0418 calls it published: record the evidence URL, else published false), scope key. Hash lists (P350 cond 3, when added): separate default-off module worded 'present in the VirusShare corpus (historical; may include PUP/benign)', low, never malicious alone; files last modified 2022-04-07, download once."
+  },
+  {
+   "id": "virustotal",
+   "name": "VirusTotal (API v3 and GUI links)",
+   "operator": "VirusTotal (Google LLC)",
+   "hosts": [
+    "virustotal.com",
+    "www.virustotal.com"
+   ],
+   "batches": [
+    "p2-G07-1",
+    "p2-G14-3"
+   ],
+   "proposals": [
+    "P158",
+    "P304"
+   ],
+   "keys": [
+    {
+     "name": "virustotal",
+     "env": [
+      "V3LUM_VT_KEY"
+     ]
+    }
+   ],
+   "sources": [
+    {
+     "id": "api",
+     "title": "VirusTotal API v3 (files, domains, ip_addresses, urls, relationships)",
+     "terms_class": "noncommercial",
+     "for_modules": [
+      "virustotal"
+     ]
+    },
+    {
+     "id": "gui_links",
+     "title": "VirusTotal GUI deep links (manual pivot links, always emitted)",
+     "terms_class": "open",
+     "for_modules": [
+      "virustotal",
+      "pivots_unverified"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "www.virustotal.com added: every research endpoint (API v3 and /gui/ links) is on www, which no proposal lists. Terms: A1 binding initial class 'VirusTotal public API = noncommercial'; P158 cond 3: 'terms noncommercial (public API) and license (premium)' -> a premium/enterprise licence runs only through licence_allow (basis licence); public key only in the research profile. Key header x-apikey; never upload/submit files or URLs (submissions are shared). Flags all false. Provider data is never redistributed in exports (verdict, link and source name only). Quota: public key 4 req/min and 500/day (P158 cond 2) -> scope key, deferring token bucket."
+  },
+  {
+   "id": "walletexplorer",
+   "name": "WalletExplorer (API and address pages)",
+   "operator": "WalletExplorer (individual operator)",
+   "hosts": [
+    "walletexplorer.com",
+    "www.walletexplorer.com"
+   ],
+   "batches": [
+    "p2-G09-1",
+    "p2-G14-2"
+   ],
+   "proposals": [
+    "P208",
+    "P216"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "api",
+     "title": "WalletExplorer API /api/1/address-lookup and /api/1/wallet (caller id)",
+     "terms_class": "open",
+     "for_modules": [
+      "walletexplorer"
+     ]
+    },
+    {
+     "id": "address_pages",
+     "title": "WalletExplorer address pages (manual pivot links)",
+     "terms_class": "open",
+     "for_modules": [
+      "pivots_crypto"
+     ]
+    }
+   ],
+   "tier": "community",
+   "notes": "www.walletexplorer.com added: the API and pages are served from www (research C0489/C0506). Id and tier from P208 cond 1 'Registry provider walletexplorer: tier community, terms open'. The author asks for a caller id and moderate use (~1 req/s): http_profile min_interval 1.0; attribution in reports."
+  },
+  {
+   "id": "wikidata",
+   "name": "Wikidata (API and Query Service)",
+   "operator": "Wikimedia Foundation, Inc.",
+   "hosts": [
+    "wikidata.org",
+    "www.wikidata.org",
+    "query.wikidata.org"
+   ],
+   "batches": [
+    "p2-G10-3",
+    "p3-G10-1"
+   ],
+   "proposals": [
+    "P224",
+    "P361"
+   ],
+   "keys": [],
+   "sources": [
+    {
+     "id": "wbapi",
+     "title": "Wikidata API (wbsearchentities, wbgetentities, wbgetclaims) and Special:EntityData",
+     "terms_class": "open",
+     "for_modules": [
+      "wikidata",
+      "cnpj_name_resolver"
+     ]
+    },
+    {
+     "id": "sparql",
+     "title": "Wikidata Query Service SPARQL (fixed templates only, LIMIT <= 20, 20 s timeout)",
+     "terms_class": "open",
+     "for_modules": [
+      "wikidata"
+     ]
+    }
+   ],
+   "tier": "trusted",
+   "notes": "www.wikidata.org added: the API is on www (research C0523) and PROFILE_REQUIREMENTS names it. BINDING PROFILE_REQUIREMENTS (www.wikidata.org, query.wikidata.org): user_agent 'V3LUM/{version} (+{contact}) python-requests'; the profile applies to every host; SKIPPED reason_code config when contact_email is unset (P224 cond 1). Tier: P224 trusted, P361 'Wikimedia ... trusted'. Terms CC0. min_interval >= 1 s; 429 = RATE_LIMITED. meta.wikimedia.org (batch p3-G05-3) is another provider."
+  }
+ ]
+}

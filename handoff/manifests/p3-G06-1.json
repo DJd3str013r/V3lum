@@ -1,0 +1,45 @@
+{
+  "batch": "p3-G06-1",
+  "modules": [
+    {
+      "name": "brasilapi_ddd",
+      "file": "v3lum/modules/phone/brasilapi_ddd.py",
+      "proposal": "P127",
+      "category": "phone",
+      "opsec": "passive",
+      "default_enabled": true,
+      "terms": "open",
+      "provider_tier": "n/a",
+      "keys": [],
+      "datasets": [
+        "brasilapi_ddd.11 ... brasilapi_ddd.99: 67 registered parts, one per allocated DDD, each GET https://brasilapi.com.br/api/ddd/v1/<DDD> (source brasilapi.ddd, terms open, licence 'MIT (BrasilAPI code); Anatel numbering-plan data', TTL 30 days, large=True so never downloaded during a scan, essential=False, expect json, max 256 KB, validated per DDD before install, ETag-revalidated)"
+      ],
+      "pivot_packs": [],
+      "correlation_rules": [],
+      "new_vocabulary": [],
+      "live_check": "tests/live/test_p3_g06_1.py passed with V3LUM_LIVE=1 on 2026-11-26: DDD 11 and DDD 61 downloaded through the dataset manager, validated and installed; DDD 11 revalidated with its stored ETag (304 -> unchanged); offline lookups 'DDD 11: SP - São Paulo - 64 cities in DDD' and 'DDD 61: DF (also GO) - Brasília - 13 cities in DDD'. One full refresh (python -m v3lum.modules.phone.brasilapi_ddd, scratch V3LUM_HOME): 67/67 DDDs updated in 68 s (provider pacing <= 1 req/s, no 429/challenge), 5,565 names (13-223 per DDD), no name dropped by the cleaner, every BrasilAPI state matches phone_parse's bundled Anatel table and every main city is in its DDD list."
+    }
+  ],
+  "proposals_not_done": [],
+  "core_requests": [
+    "core/datasets.py (AR10, contract v2 s.9): a multi-URL dataset, e.g. register_dataset(name, url_template, builder=fn) where DataStore.update(name) calls fn(dataset_http) and installs the returned document after validate=, or a dataset group. P127 FC1 needs one dataset 'brasilapi_ddd' built from 67 GETs; until then it is 67 parts brasilapi_ddd.<DDD> (v3lum/modules/phone/brasilapi_ddd.py: ddd_fetch_plan, parse_ddd_payload and installed_records are ready for a builder).",
+    "commands/data.py (WP18): `v3lum data update <group>` selecting every registered '<group>.*' part, so phone_parse's FC2 hint 'run v3lum data update brasilapi_ddd' works; today it answers 'not registered' while `v3lum data update` (no names) or `python -m v3lum.modules.phone.brasilapi_ddd` refresh the parts.",
+    "phone_parse wiring (owner p1-G06-1 or the integrator; this batch may not edit phone_parse.py): turn phone_parse._ddd_dataset(ctx) into _ddd_dataset(ctx, ddd) returning parse_ddd_dataset(brasilapi_ddd.installed_records(ctx.data, [ddd])) so scan-time answers carry the city list (only the number's DDD part is read and cited, never downloaded); adapt tests/modules/test_phone_parse.py::test_brasilapi_dataset_is_read_only_when_registered_and_present, which registers the single name 'brasilapi_ddd' with a placeholder URL (/api/ddd/v1/all) and therefore blocks this batch from registering that name.",
+    "Renderers (WP14 terminal, WP20 HTML/Markdown): a display hint for long list attributes (collapsed <details> in HTML, full in JSON, count only in terminal/Markdown) for P127 FC3; brasilapi_ddd.ddd_report(lookup) already returns the summary 'UF + main city + N cities in DDD', the HTML toggle {label, items} and the JSON shape.",
+    "core/datasets.py: UpdateResult should carry DatasetError.reason_code (challenge, rate_limited, geo_block...) so out-of-band refresh jobs need not classify the reason text (brasilapi_ddd.update_outcome parses it today).",
+    "core/datasets.py: a local-only read (e.g. fetch*(name, local_only=True) raising DatasetUnavailable instead of downloading) so offline readers are race-free; readers check info(name).present then fetch_json(name, ttl=10 years), and outside a scan a part deleted between the two calls would be downloaded (large=True only protects scans)."
+  ],
+  "files": [
+    "v3lum/modules/phone/brasilapi_ddd.py",
+    "v3lum/data/notices/brasilapi_ddd.json",
+    "tests/modules/test_brasilapi_ddd.py",
+    "tests/fixtures/brasilapi_ddd/ok_11.http.json",
+    "tests/fixtures/brasilapi_ddd/ok_61_multi_uf.http.json",
+    "tests/fixtures/brasilapi_ddd/ok_83_large.http.json",
+    "tests/fixtures/brasilapi_ddd/not_found_404.http.json",
+    "tests/fixtures/brasilapi_ddd/not_modified_304.http.json",
+    "tests/live/test_p3_g06_1.py",
+    "docs/backlog/p3-G06-1.md"
+  ],
+  "notes": "P127 is folded into phone_parse (FC1): no scan-time Module class is registered (FC1 'no per-scan network call'; a separate module would duplicate phone_parse). The manifest entry above describes the dataset deliverable with the council metadata (default_enabled true, terms open, tier n/a at scan time, opsec passive, disclosure none for reads); provider 'brasilapi' (tier community, source brasilapi.ddd terms open, upstream family anatel, http_profile min_interval 1.0 s, concurrency 1) is the existing seed fragment, unchanged (no extension needed: the dataset validator rejects error objects, HTML and malformed bodies; core classify handles 429/challenges). FC1: 67 registered parts, URLs guarded by ddd_url_problem (only the 2-digit DDD, no query/port/userinfo), large=True so no scan ever downloads one (the DDD of an investigated number never reaches BrasilAPI on demand); refresh_parts runs the 67 updates in fixed sorted order through the dataset manager (conditional GET, validation before install, previous copy kept on failure) and stops at a challenge (A9), at a rate limit (the core backs the provider off for the run) or after 3 consecutive failures; refused inside a scan and offline. FC2: installed_part/installed_records/lookup_ddd/lookup_phone read local copies only, answer UF/UFs/main city from phone_parse's bundled table and the city list from the part, else coverage 'city list unavailable (run v3lum data update brasilapi_ddd)' (verbatim phone_parse text); stale copies are served with an age note; state mismatches are maintainer notes, never findings. FC3: ddd_report gives terminal/Markdown summary, HTML toggle and full JSON; attribution 'BrasilAPI (MIT code) over Anatel data' in notice fragment brasilapi_ddd.json (bundled false). Gaps needing core/other owners are in docs/backlog/p3-G06-1.md (single dataset name, data-update group, phone_parse wiring, renderer toggle, notices generation). Leftovers from an earlier attempt: none found (no batch files, no manifest). Observed while testing (not this batch's files, reported only): v3lum/modules/brazil_public_data/rfb_import.py main() calls App() without the required console argument. Tests: tests/modules/test_brasilapi_ddd.py 61 passed; registry contract (no module class, dataset_errors clean, notice fragment parses), P327 lint (lint_module_source/lint_data_file: no issue; tests/test_lint.py green on re-run) and ruff clean on the batch files. Full offline suite: 8 failures, none in this batch's files (leak_lookup_public provider missing -> test_every_module_class_is_registered, typosquat BCB message, windows_artifact_triage script_decoder, engine suppression, lint_patterns timing, permissions report naming, rule_api legacy count, scoring AUTOMATION_BASIS); 7 reproduced on one re-run (scoring passed), all other batches' or core waves' work in progress."
+}

@@ -1,0 +1,37 @@
+{
+ "_meta": {
+  "provenance": "documented",
+  "source": "github.com/Lookyloo/lookyloo website/web/genericapi.py get_url_occurrences + swagger.json",
+  "request": {
+   "method": "POST",
+   "url": "https://lookyloo.circl.lu/json/url_info",
+   "json": {
+    "url": "https://login.example.com/secure/",
+    "cached_captures_only": true,
+    "limit": 20
+   }
+  },
+  "note": "capture_uuid values reuse ids seen in the real recent_captures sample."
+ },
+ "status": 200,
+ "headers": {},
+ "body": {
+  "meta": {
+   "limit": 20,
+   "offset": 0,
+   "total": 2
+  },
+  "response": [
+   {
+    "capture_uuid": "9e173218-215c-4550-b302-29801096e268",
+    "start_timestamp": "2026-11-21T09:12:44.123456+00:00",
+    "title": "Entrar - Example Bank"
+   },
+   {
+    "capture_uuid": "0d6079fc-caa2-4f88-8fa2-f758bf2d7fcf",
+    "start_timestamp": "2026-07-02T17:00:01+00:00",
+    "title": ""
+   }
+  ]
+ }
+}

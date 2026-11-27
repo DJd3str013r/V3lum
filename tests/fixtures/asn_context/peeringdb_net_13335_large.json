@@ -1,0 +1,208 @@
+{
+ "data": [
+  {
+   "id": 4224,
+   "org_id": 4715,
+   "name": "Cloudflare",
+   "aka": "",
+   "name_long": "",
+   "website": "https://www.cloudflare.com",
+   "asn": 13335,
+   "looking_glass": "",
+   "route_server": "",
+   "irr_as_set": "ARIN::AS13335:AS-CLOUDFLARE",
+   "info_type": "Content",
+   "info_types": [
+    "Content"
+   ],
+   "info_prefixes4": 80000,
+   "info_prefixes6": 30000,
+   "info_traffic": "",
+   "info_ratio": "Mostly Outbound",
+   "info_scope": "Global",
+   "info_unicast": true,
+   "info_multicast": false,
+   "info_ipv6": true,
+   "info_never_via_route_servers": false,
+   "ix_count": 357,
+   "fac_count": 223,
+   "policy_url": "https://www.cloudflare.com/peering-policy/",
+   "policy_general": "Open",
+   "policy_locations": "Preferred",
+   "policy_ratio": false,
+   "policy_contracts": "Not Required",
+   "netfac_set": [
+    {
+     "id": 8720,
+     "name": "Equinix DC1-DC15,DC21-DC22 - Ashburn",
+     "city": "Ashburn",
+     "country": "US",
+     "fac_id": 1,
+     "local_asn": 13335,
+     "status": "ok"
+    },
+    {
+     "id": 8729,
+     "name": "Equinix DA1 - Dallas",
+     "city": "Dallas",
+     "country": "US",
+     "fac_id": 4,
+     "local_asn": 13335,
+     "status": "ok"
+    },
+    {
+     "id": 8722,
+     "name": "Equinix SV1/SV5/SV10 - Silicon Valley, San Jose",
+     "city": "San Jose",
+     "country": "US",
+     "fac_id": 6,
+     "local_asn": 13335,
+     "status": "ok"
+    },
+    {
+     "id": 8718,
+     "name": "Equinix CH1/CH2/CH4 - Chicago",
+     "city": "Chicago",
+     "country": "US",
+     "fac_id": 7,
+     "local_asn": 13335,
+     "status": "ok"
+    }
+   ],
+   "netixlan_set": [
+    {
+     "id": 9601,
+     "ix_id": 255,
+     "name": "Equinix Paris: Equinix IX - PA Metro",
+     "ixlan_id": 255,
+     "speed": 100000,
+     "asn": 13335,
+     "ipaddr4": "195.42.144.143",
+     "ipaddr6": "2001:7f8:43::1:3335:1",
+     "is_rs_peer": false,
+     "operational": true,
+     "updated": "2018-10-11T06:11:28Z",
+     "status": "ok"
+    },
+    {
+     "id": 9691,
+     "ix_id": 18,
+     "name": "LINX LON1: Main",
+     "ixlan_id": 18,
+     "speed": 300000,
+     "asn": 13335,
+     "ipaddr4": "195.66.225.179",
+     "ipaddr6": "2001:7f8:4::3417:1",
+     "is_rs_peer": false,
+     "operational": true,
+     "updated": "2022-04-27T21:02:31Z",
+     "status": "ok"
+    },
+    {
+     "id": 10445,
+     "ix_id": 31,
+     "name": "DE-CIX Frankfurt: DE-CIX Frankfurt Peering LAN",
+     "ixlan_id": 31,
+     "speed": 600000,
+     "asn": 13335,
+     "ipaddr4": "80.81.194.180",
+     "ipaddr6": "2001:7f8::3417:0:1",
+     "is_rs_peer": true,
+     "operational": true,
+     "updated": "2025-04-03T04:08:44Z",
+     "status": "ok"
+    },
+    {
+     "id": 11870,
+     "ix_id": 64,
+     "name": "NL-ix: Main",
+     "ixlan_id": 64,
+     "speed": 200000,
+     "asn": 13335,
+     "ipaddr4": "193.239.117.14",
+     "ipaddr6": "2001:7f8:13::a501:3335:3",
+     "is_rs_peer": false,
+     "operational": true,
+     "updated": "2026-08-07T21:19:43Z",
+     "status": "ok"
+    },
+    {
+     "id": 11883,
+     "ix_id": 94,
+     "name": "Equinix Sydney",
+     "ixlan_id": 94,
+     "speed": 100000,
+     "asn": 13335,
+     "ipaddr4": "45.127.172.154",
+     "ipaddr6": "2001:de8:6::1:3335:1",
+     "is_rs_peer": false,
+     "operational": true,
+     "updated": "2021-11-01T17:36:09Z",
+     "status": "ok"
+    },
+    {
+     "id": 12022,
+     "ix_id": 167,
+     "name": "Equinix Tokyo",
+     "ixlan_id": 167,
+     "speed": 200000,
+     "asn": 13335,
+     "ipaddr4": "203.190.230.72",
+     "ipaddr6": "2001:de8:5::1:3335:1",
+     "is_rs_peer": false,
+     "operational": true,
+     "updated": "2022-02-04T21:22:22Z",
+     "status": "ok"
+    }
+   ],
+   "poc_set": [
+    {
+     "id": 900000,
+     "role": "NOC",
+     "visible": "Public",
+     "name": "Example NOC Desk",
+     "phone": "+55 11 5555-0101",
+     "email": "noc-desk@example.com",
+     "url": "https://www.example.com/noc",
+     "status": "ok"
+    },
+    {
+     "id": 900001,
+     "role": "Policy",
+     "visible": "Public",
+     "name": "Example Policy Desk",
+     "phone": "+55 11 5555-0102",
+     "email": "policy-desk@example.com",
+     "url": "https://www.example.com/policy",
+     "status": "ok"
+    },
+    {
+     "id": 900002,
+     "role": "Abuse",
+     "visible": "Public",
+     "name": "Example Abuse Desk",
+     "phone": "+55 11 5555-0103",
+     "email": "abuse-desk@example.com",
+     "url": "https://www.example.com/abuse",
+     "status": "ok"
+    },
+    {
+     "id": 900003,
+     "role": "Policy",
+     "visible": "Public",
+     "name": "Example Policy Desk",
+     "phone": "+55 11 5555-0104",
+     "email": "policy-desk@example.com",
+     "url": "https://www.example.com/policy",
+     "status": "ok"
+    }
+   ],
+   "status_dashboard": "https://www.cloudflarestatus.com/",
+   "rir_status": "ok",
+   "created": "2011-09-06T19:40:05Z",
+   "updated": "2026-11-23T13:52:23Z",
+   "status": "ok"
+  }
+ ],
+ "meta": {}
+}

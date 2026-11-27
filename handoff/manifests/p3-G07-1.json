@@ -1,0 +1,240 @@
+{
+ "batch": "p3-G07-1",
+ "modules": [
+  {
+   "name": "maltiverse",
+   "file": "v3lum/modules/threat_intel_ioc/maltiverse.py",
+   "proposal": "P154",
+   "category": "threat_intel_ioc",
+   "opsec": "PASSIVE",
+   "default_enabled": true,
+   "terms": "key-terms",
+   "provider_tier": "trusted",
+   "keys": [
+    "maltiverse"
+   ],
+   "datasets": [],
+   "pivot_packs": [
+    "threat_intel_g07_p3"
+   ],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:maltiverse"
+   ],
+   "live_check": "not run: keyed only (P154 c1) and no team key; live test asserts NEEDS_KEY with no request (passed)"
+  },
+  {
+   "name": "ibm_xforce",
+   "file": "v3lum/modules/threat_intel_ioc/ibm_xforce.py",
+   "proposal": "P155",
+   "category": "threat_intel_ioc",
+   "opsec": "PASSIVE",
+   "default_enabled": false,
+   "terms": "key-terms",
+   "provider_tier": "trusted",
+   "keys": [
+    "xforce (key:password; not yet in the key registry, core request)"
+   ],
+   "datasets": [],
+   "pivot_packs": [
+    "unverified_reputation (existing, link xforce_ip)"
+   ],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:xforce",
+    "tag:cryptomining",
+    "tag:dynamic_ip",
+    "tag:compromised"
+   ],
+   "live_check": "not run: keyed, no team key; live test asserts NEEDS_KEY with no request (passed)"
+  },
+  {
+   "name": "pulsedive",
+   "file": "v3lum/modules/threat_intel_ioc/pulsedive.py",
+   "proposal": "P160",
+   "category": "threat_intel_ioc",
+   "opsec": "PASSIVE",
+   "default_enabled": true,
+   "terms": "key-terms",
+   "provider_tier": "community",
+   "keys": [
+    "pulsedive"
+   ],
+   "datasets": [],
+   "pivot_packs": [
+    "threat_intel_g07_p3"
+   ],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:pulsedive",
+    "tag:retired_indicator"
+   ],
+   "live_check": "not run: keyed only (P160 c1) and no team key; live test asserts NEEDS_KEY with no request (passed)"
+  },
+  {
+   "name": "kaspersky_opentip",
+   "file": "v3lum/modules/threat_intel_ioc/kaspersky_opentip.py",
+   "proposal": "P162",
+   "category": "threat_intel_ioc",
+   "opsec": "PASSIVE",
+   "default_enabled": false,
+   "terms": "key-terms",
+   "provider_tier": "trusted",
+   "keys": [
+    "opentip (not yet in the key registry, core request)"
+   ],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:opentip",
+    "tag:potentially_unwanted"
+   ],
+   "live_check": "not run: keyed and vendor_policy_ok not recorded; live test asserts SKIPPED policy with no request (passed)"
+  },
+  {
+   "name": "stopforumspam",
+   "file": "v3lum/modules/threat_intel_ioc/stopforumspam.py",
+   "proposal": "P164",
+   "category": "threat_intel_ioc",
+   "opsec": "PASSIVE",
+   "default_enabled": true,
+   "terms": "noncommercial",
+   "provider_tier": "community",
+   "keys": [],
+   "datasets": [],
+   "pivot_packs": [
+    "threat_intel_g07_p3"
+   ],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:stopforumspam"
+   ],
+   "live_check": "V3LUM_LIVE=1 2026-11-26: corporate-profile decision = refused (licence); ipv4:8.8.8.8 -> EMPTY (appears 0, AS15169); email:test@example.com (sent as MD5 55502f40...) -> OK, one INFO finding 'Reported forum spammer' (frequency 3, confidence 1.26); passed"
+  },
+  {
+   "name": "cymru_mhr",
+   "file": "v3lum/modules/malware_hash/cymru_mhr.py",
+   "proposal": "P176",
+   "category": "malware_hash",
+   "opsec": "PASSIVE",
+   "default_enabled": true,
+   "terms": "noncommercial",
+   "provider_tier": "trusted",
+   "keys": [],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:cymru_mhr"
+   ],
+   "live_check": "V3LUM_LIVE=1 2026-11-26 via core DoH: corporate-profile decision = refused (licence); EICAR MD5 and SHA-1 -> OK 'AV detection 100% (Team Cymru MHR, last seen 2026-11-25)', MEDIUM malicious; all-zero MD5 -> EMPTY (NXDOMAIN); passed"
+  }
+ ],
+ "proposals_not_done": [
+  {
+   "id": "P164 (BotScout part)",
+   "reason": "P164 final condition 1: StopForumSpam only; BotScout (low precision, small operator) is not built and has no provider entry (backlog docs/backlog/p3-G07-1.md)"
+  }
+ ],
+ "core_requests": [
+  "config.KNOWN_KEYS (or a keys block in the p2-G14-3 fragment ibm_xforce.json): register key 'xforce' = 'API key:API password' (env V3LUM_XFORCE_KEY; ideally V3LUM_XFORCE_KEY + V3LUM_XFORCE_PASSWORD combined); ibm_xforce reads V3LUM_KEY_XFORCE / the stored key meanwhile and its requires_keys turns on automatically once registered",
+  "config.KNOWN_KEYS (or a keys block in the p2-G14-3 fragment kaspersky.json): register key 'opentip' (env V3LUM_OPENTIP_KEY, x-api-key header); same interim as xforce",
+  "providers: allow keys and quota blocks in provider-ext fragments, or the p2-G14-3 owner adds quota {scope key, month N, safety_margin 0.8} to ibm_xforce.json (after legal records the plan) and {scope key, day 2000, safety_margin 0.8} to kaspersky.json; interim: ibm_xforce local monthly counter (setting ibm_xforce_month_limit) and KasperskyOpenTIP.daily_quota 1600",
+  "provider schema + policy gate + doctor: flags.vendor_policy_ok (P162 c1); kaspersky_opentip reads flags.vendor_policy_ok or x_vendor_policy_ok of provider kaspersky and fails closed (SKIPPED policy) meanwhile",
+  "context hook exposing graph network tags (P034/P035 mobile/CGNAT) to modules, so stopforumspam can demote those IPs to info (P164 c3)",
+  "core dns: propagate rate_limited from DoH HTTP 429 instead of SERVFAIL (cymru_mhr then reports RATE_LIMITED instead of ERROR)",
+  "engine note: ModuleResult.has_data counts links, so a link added before a request turns a RateLimited/QuotaExceeded exception into OK 'partial results'; modules must add links only after a usable answer (fixed in stopforumspam); consider excluding links from has_data"
+ ],
+ "files": [
+  "docs/backlog/p3-G07-1.md",
+  "tests/fixtures/acceptance/ipv4/stopforumspam.json",
+  "tests/fixtures/cymru_mhr/doh_cloudflare_md5_eicar_quoted.json",
+  "tests/fixtures/cymru_mhr/doh_cloudflare_nxdomain.json",
+  "tests/fixtures/cymru_mhr/doh_cloudflare_sha1_eicar_live.json",
+  "tests/fixtures/cymru_mhr/doh_google_empty_file_md5.json",
+  "tests/fixtures/cymru_mhr/doh_google_md5_eicar.json",
+  "tests/fixtures/cymru_mhr/doh_google_md5_eicar_live.json",
+  "tests/fixtures/cymru_mhr/doh_google_md5_eicar_malware_zone.json",
+  "tests/fixtures/cymru_mhr/doh_google_md5_eicar_malware_zone_2.json",
+  "tests/fixtures/cymru_mhr/doh_google_nxdomain.json",
+  "tests/fixtures/cymru_mhr/doh_google_sha1_eicar.json",
+  "tests/fixtures/cymru_mhr/doh_google_sha256_400.html",
+  "tests/fixtures/cymru_mhr/doh_malformed_txt_synthetic.json",
+  "tests/fixtures/cymru_mhr/doh_servfail_synthetic.json",
+  "tests/fixtures/ibm_xforce/access_denied_403_synthetic.json",
+  "tests/fixtures/ibm_xforce/ipr_low_synthetic.json",
+  "tests/fixtures/ibm_xforce/ipr_malicious_synthetic.json",
+  "tests/fixtures/ibm_xforce/ipr_suspicious_synthetic.json",
+  "tests/fixtures/ibm_xforce/malware_ok_docs.json",
+  "tests/fixtures/ibm_xforce/needs_key_401.json",
+  "tests/fixtures/ibm_xforce/not_found_404_synthetic.json",
+  "tests/fixtures/ibm_xforce/quota_402_synthetic.json",
+  "tests/fixtures/ibm_xforce/rate_limited_429_synthetic.json",
+  "tests/fixtures/ibm_xforce/url_malicious_synthetic.json",
+  "tests/fixtures/ibm_xforce/url_ok_docs.json",
+  "tests/fixtures/kaspersky_opentip/bad_key_401.txt",
+  "tests/fixtures/kaspersky_opentip/domain_green_synthetic.json",
+  "tests/fixtures/kaspersky_opentip/hash_green_synthetic.json",
+  "tests/fixtures/kaspersky_opentip/hash_grey_synthetic.json",
+  "tests/fixtures/kaspersky_opentip/hash_red_synthetic.json",
+  "tests/fixtures/kaspersky_opentip/hash_yellow_synthetic.json",
+  "tests/fixtures/kaspersky_opentip/ip_orange_synthetic.json",
+  "tests/fixtures/kaspersky_opentip/needs_key_401.txt",
+  "tests/fixtures/kaspersky_opentip/url_red_synthetic.json",
+  "tests/fixtures/maltiverse/error_in_200_synthetic.json",
+  "tests/fixtures/maltiverse/hostname_ok.json",
+  "tests/fixtures/maltiverse/ip_malicious_docs.json",
+  "tests/fixtures/maltiverse/ip_ok.json",
+  "tests/fixtures/maltiverse/malformed_truncated.json",
+  "tests/fixtures/maltiverse/quota_in_200_synthetic.json",
+  "tests/fixtures/maltiverse/sample_malicious_docs.json",
+  "tests/fixtures/maltiverse/sample_ok.json",
+  "tests/fixtures/maltiverse/url_not_found.json",
+  "tests/fixtures/maltiverse/url_ok.json",
+  "tests/fixtures/pulsedive/bad_key_401.json",
+  "tests/fixtures/pulsedive/error_in_200_synthetic.json",
+  "tests/fixtures/pulsedive/info_domain_none.json",
+  "tests/fixtures/pulsedive/info_high_synthetic.json",
+  "tests/fixtures/pulsedive/info_ip_comments.json",
+  "tests/fixtures/pulsedive/info_ip_feeds.json",
+  "tests/fixtures/pulsedive/info_retired.json",
+  "tests/fixtures/pulsedive/info_url_medium_synthetic.json",
+  "tests/fixtures/pulsedive/malformed_truncated.json",
+  "tests/fixtures/pulsedive/not_found_404_docs.json",
+  "tests/fixtures/pulsedive/rate_limited_429_docs.json",
+  "tests/fixtures/stopforumspam/emailhash_listed.json",
+  "tests/fixtures/stopforumspam/emailhash_unix.json",
+  "tests/fixtures/stopforumspam/error_503.json",
+  "tests/fixtures/stopforumspam/error_in_200_docs.json",
+  "tests/fixtures/stopforumspam/field_error_in_200.json",
+  "tests/fixtures/stopforumspam/ip_clean.json",
+  "tests/fixtures/stopforumspam/ip_email_username.json",
+  "tests/fixtures/stopforumspam/rate_limited_503_synthetic.json",
+  "tests/fixtures/stopforumspam/recent_listed_synthetic.json",
+  "tests/fixtures/stopforumspam/torexit_docs.json",
+  "tests/fixtures/stopforumspam/wildcard_255_docs.json",
+  "tests/live/test_p3_g07_1.py",
+  "tests/modules/test_cymru_mhr.py",
+  "tests/modules/test_ibm_xforce.py",
+  "tests/modules/test_kaspersky_opentip.py",
+  "tests/modules/test_maltiverse.py",
+  "tests/modules/test_pulsedive.py",
+  "tests/modules/test_stopforumspam.py",
+  "v3lum/data/pivot_links/threat_intel_g07_p3.json",
+  "v3lum/data/providers/ibm_xforce__p3-G07-1.json",
+  "v3lum/data/providers/kaspersky__p3-G07-1.json",
+  "v3lum/data/providers/maltiverse.json",
+  "v3lum/data/providers/pulsedive.json",
+  "v3lum/data/providers/stopforumspam.json",
+  "v3lum/data/providers/team_cymru.json",
+  "v3lum/data/vocab/p3-G07-1.json",
+  "v3lum/modules/malware_hash/cymru_mhr.py",
+  "v3lum/modules/threat_intel_ioc/ibm_xforce.py",
+  "v3lum/modules/threat_intel_ioc/kaspersky_opentip.py",
+  "v3lum/modules/threat_intel_ioc/maltiverse.py",
+  "v3lum/modules/threat_intel_ioc/pulsedive.py",
+  "v3lum/modules/threat_intel_ioc/stopforumspam.py"
+ ],
+ "notes": ""
+}

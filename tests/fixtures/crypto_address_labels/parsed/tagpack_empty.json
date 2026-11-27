@@ -1,0 +1,16 @@
+{
+ "ok": true,
+ "doc": {
+  "title": "GraphSense Demo TagPack",
+  "creator": "GraphSense Core Team",
+  "confidence": "service_data",
+  "is_cluster_definer": true,
+  "description": "A collection of tags commonly used for demonstrating GraphSense features",
+  "category": "organization",
+  "label": "Internet Archive",
+  "lastmod": "2021-11-12",
+  "source": "https://archive.org/donate/cryptocurrency",
+  "actor": "internet_archive",
+  "tags": []
+ }
+}

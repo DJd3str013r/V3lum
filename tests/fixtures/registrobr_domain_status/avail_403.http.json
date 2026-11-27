@@ -1,0 +1,14 @@
+{
+ "request": "GET https://registro.br/v2/ajax/avail/raw/<name>.com.br",
+ "response": {
+  "status": 403,
+  "headers": {
+   "server": "nginx",
+   "content-type": "text/html"
+  },
+  "body": "<html>\r\n<head><title>403 Forbidden</title></head>\r\n<body>\r\n<center><h1>403 Forbidden</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "FC5 403 case. Not observed on the avail endpoint (4 calls, all 200); shape = stock nginx 403 (registro.br serves nginx). rdap.registro.br DID answer 403 with an empty body to this egress on 2026-11-26 (p1-G01-1) - see the _403_empty fixture"
+}

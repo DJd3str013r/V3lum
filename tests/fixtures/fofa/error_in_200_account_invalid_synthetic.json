@@ -1,0 +1,5 @@
+{
+ "_synthetic": "fofa-py raises on HTTP 200 bodies with error:true and reads errmsg; the '[code] text' form is FOFA's, this exact code/text is not verified.",
+ "error": true,
+ "errmsg": "[-700] Account Invalid"
+}

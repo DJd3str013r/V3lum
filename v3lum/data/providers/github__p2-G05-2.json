@@ -1,0 +1,69 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "github",
+  "hosts": ["avatars.githubusercontent.com"],
+  "sources": {
+    "avatar_correlation_avatars": {
+      "title": "GitHub avatar CDN avatars.githubusercontent.com (one GET per avatar URL already found on a profile; whole-image dHash only, P114)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+        "quote": "Any User-Generated Content you post publicly, including issues, comments, and contributions to other Users' repositories, may be viewed by others.",
+        "checked_at": "2026-11-26",
+        "reviewer": "batch p2-G05-2 (council-1 P114: terms open)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "github",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "P114 (avatar_correlation): public avatar images shown on public profiles, fetched once per avatar URL per case (<= 30 per case, 512 KB cap), hashed in memory (SHA-256 + dHash) and discarded; the image is never cached, stored or uploaded anywhere (FC4). No face detection or biometric processing (LGPD art. 11)."
+    },
+    "org_code_footprint_orgs": {
+      "title": "GitHub REST API search/users?q=<name>+type:org, orgs/{org}, orgs/{org}/repos and orgs/{org}/public_members (count only), through the shared P111 client (P359)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+        "quote": "Abuse or excessively frequent requests to GitHub via the API may result in the temporary or permanent suspension of your Account's access to the API. [...] You may not share API tokens to exceed GitHub's rate limitations.",
+        "checked_at": "2026-11-26",
+        "reviewer": "batch p2-G05-2 (council-1 class kept: P359 cond 9 'GitHub REST key-terms (as P111)')",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "github",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "P359 cond 1/4/8: API only (never github.com HTML, AUP s.7), the shared P111 client and its X-RateLimit budget (v3lum/modules/username_social/github_user.py), key 'github' from a team machine account (P111 cond 4). Public members are counted from the Link header of public_members?per_page=1; usernames only on demand as expand=False pivots."
+    },
+    "org_code_footprint_archives": {
+      "title": "GitHub repository archives codeload.github.com/{owner}/{repo}/tar.gz/{ref} (deep preset only, streamed in memory, secret scan of the current tree, P359)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://docs.github.com/en/site-policy/acceptable-use-policies/github-acceptable-use-policies",
+        "quote": "You may not use information from the Service (whether scraped, collected through our API, or obtained otherwise) for spamming purposes, including for the purposes of sending unsolicited emails to users or selling personal information, such as to recruiters, headhunters, and job boards.",
+        "checked_at": "2026-11-26",
+        "reviewer": "batch p2-G05-2 (council-1 class kept: P359 cond 9)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "github",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "P359 cond 5: deep preset or -M only, org-confirmed repositories only, API size <= 50 MB, 1 MB per member, binaries skipped, never extracted to disk, never built or executed, no git binary. The token is never sent to codeload (anonymous archive download of public repositories). Archive bodies are never cached (ttl 0). Secrets found are reported with a keyed fingerprint and at most 4 characters, never validated (cond 6)."
+    },
+    "threat_actor_handles_spmedia": {
+      "title": "spmedia Threat-Actor-Usernames-Scrape forum username lists (raw.githubusercontent.com/spmedia/Threat-Actor-Usernames-Scrape/main/*.txt and README.md; weekly refresh by v3lum data update)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/spmedia/Threat-Actor-Usernames-Scrape",
+        "quote": "MIT License. Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software",
+        "checked_at": "2026-11-26",
+        "reviewer": "batch p2-G05-2 (council-1 P195: terms open, offline)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "spmedia_threat_actor_usernames",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "P195 (threat_actor_handles): runtime download only (about 10 MB in 26 files, never bundled, never redistributed or exported, cond 6); exact case-folded membership lookups only. The README is read for the per-list scrape date ranges. A listed file that answers 404 upstream (dead_forum_users_nohide_io.txt on 2026-11-26) is not registered."
+    }
+  },
+  "error_markers": [],
+  "notes": "Batch p2-G05-2: GitHub avatar CDN host for avatar_correlation (P114), the organisation REST endpoints and codeload archives of org_code_footprint / org_code_secrets (P359) and the spmedia handle lists of threat_actor_handles (P195). GitHub 403/429 rate-limit answers are RATE_LIMITED through the provider marker github_user_rate_limit (github__p1-G05-1.json)."
+}

@@ -1,0 +1,17 @@
+{
+ "hops": [
+  {
+   "url": "https://bit.ly/3Example",
+   "status": 301,
+   "location": "https://rb.gy/abc12"
+  },
+  {
+   "url": "https://rb.gy/abc12",
+   "status": 302,
+   "location": "http://promo.example.net/r?url=https%3A%2F%2Flogin.example.org%2F&u=dXNlckBleGFtcGxlLmNvbQ"
+  }
+ ],
+ "org_emails": [
+  "user@example.com"
+ ]
+}

@@ -1,0 +1,54 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "memory_lol",
+  "name": "memory.lol X/Twitter screen-name history API",
+  "operator": "Travis Brown (memory.lol project, github.com/travisbrown/memory.lol)",
+  "hosts": [
+    "api.memory.lol"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Identifiable operator, public README and source code, public track record since 2022 (A8 community); P106 cond 1 'Registry provider memory_lol: tier community'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Rebuilt from archived X/Twitter data; anonymous access covers only facts observed in the last 60 days, so an empty answer is not 'no previous handles' (P106 cond 3)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 10,
+    "ttl": 86400,
+    "min_interval": 2.0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "screen_names": {
+      "title": "GET /v1/tw/<screen_name>: numeric account ids that used the screen name and every screen name seen for them, with dates (keyless 60-day window)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://github.com/travisbrown/memory.lol",
+        "quote": "In most cases public access to the tool is currently limited to historical facts that have been observed in the past 60 days.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "memory_lol",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Terms 'unknown' (no published service terms; data rebuilt from X/Twitter archives, P106 cond 1/2): disabled in every licence profile until legal records a class (A1). Keyless only: the login/device flow (/v1/login/*) and approval-gated ranges are never used. Missing handles answer 200 {'accounts':[]} (observed); the service does not validate handles, so V3LUM does. The project's code licence (Anti-Capitalist Software License) does not apply: V3LUM reuses no code."
+    }
+  },
+  "notes": "Owned by batch p3-G05-1 (P106 memory_lol). No published rate limit: min_interval 2 s and the module's daily_quota. Handle history is personal data: case-bound, never kept beyond retention_days (P106 cond 5). The optional key 'memorylol' is NOT declared: only if the team obtains an approved account (P106 cond 2, backlog)."
+}

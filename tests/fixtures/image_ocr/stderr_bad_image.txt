@@ -1,0 +1,7 @@
+rc=1
+stdout_bytes=0
+libpng error: IEND: out of place
+Error in pixReadStreamPng: internal png error
+Error in pixReadStream: png: no pix returned
+Error in pixRead: pix not read
+Error during processing.

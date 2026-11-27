@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "profile_ids_socid_extractor",
+  "source_url": "https://github.com/soxoj/socid-extractor",
+  "version": "socid-extractor 0.1.2 (PyPI, wheel sha256 59e1891283a1429cb3942d493711c7594ff9b9892d815e01c429c08d7484cf6f), socid_extractor/schemes.py and postprocessor.py; read 2026-11-26",
+  "sha256": "",
+  "licence": "MIT",
+  "attribution": "Profile-page extraction schemes (flags, regexes and field mappings of the GitHub API, Gitlab API, Docker Hub API, Bluesky API, HuggingFace API, Gravatar, Keybase API, Telegram, Dribbble profile and Linktree schemes) and the Gravatar/e-mail postprocessors adapted from socid-extractor (https://github.com/soxoj/socid-extractor), MIT License, Copyright (c) 2020 Soxoj. The library itself is not imported (its import executes ~/.socid_extractor/plugins and one scheme fetches over plain HTTP). Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.",
+  "bundled": true,
+  "files": [
+    "v3lum/modules/username_social/profile_id_extractor.py"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+ "checked_at": "2026-11-26",
+ "note": "Maintainer verification of the P128 link templates from the batch prep (polite curl GETs from the research egress, documentation numbers only; V3LUM never fetches these links). Trimmed to status codes and observations; cookies, session ids, CSRF values and site keys were never kept.",
+ "checks": [
+  {
+   "id": "spamcalls_num",
+   "number": "+15555550100",
+   "url": "https://spamcalls.net/en/num/15555550100",
+   "http_code": 410,
+   "observation": "normal no-reports page: 'User reports for the phone number are not (no longer) available.'"
+  },
+  {
+   "id": "spamcalls_num",
+   "number": "+558007290001",
+   "url": "https://spamcalls.net/en/num/558007290001",
+   "http_code": 410,
+   "observation": "page title '+558007290001' (the template carries the number correctly)"
+  },
+  {
+   "id": "spamcalls_num_plus_variant",
+   "number": "+558007290001",
+   "url": "https://spamcalls.net/en/num/+558007290001",
+   "http_code": 410,
+   "observation": "page title '+ 558007290001': a literal '+' in the path is decoded as a space, so templates use the digits only",
+   "rejected": true
+  },
+  {
+   "id": "whatsapp_chat",
+   "number": "+15555550100",
+   "url": "https://wa.me/15555550100",
+   "http_code": 302,
+   "observation": "redirect to https://api.whatsapp.com/send/?phone=15555550100&text&type=phone_number&app_absent=0: the same generic page for any number (no presence information)"
+  },
+  {
+   "id": "telegram_chat",
+   "number": "+15555550100",
+   "url": "https://t.me/+15555550100",
+   "http_code": 200,
+   "observation": "generic 'Telegram: Contact' page 'Chat with +1 555 555 0100' (tg://resolve?phone=15555550100): no presence information"
+  },
+  {
+   "id": "abrtelecom_consulta_numero",
+   "number": "+558007290001",
+   "url": "https://consultanumero.abrtelecom.com.br/consultanumero/consulta/consultaSituacaoAtualCtg",
+   "http_code": 200,
+   "observation": "'Consulta Número': reCAPTCHA widget and a POST form (csrfTokenCN, telefone); no URL parameter carries the number: static manual link"
+  }
+ ]
+}

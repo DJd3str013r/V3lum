@@ -1,0 +1,15 @@
+{
+ "request": "GET https://tls.bufferover.run/dns?q=.example.com (x-api-key: <bad>)",
+ "response": {
+  "status": 403,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": {
+   "message": "Forbidden"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "research saw 403 without key; body = AWS API Gateway default (PLACEHOLDER)"
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "v3lum.noise/1",
+  "kind": "saas",
+  "name": "url_wrappers",
+  "source": "V3LUM-authored list of link-protection and redirect-wrapper hosts (batch p1-G03-1, P064 cond 4; 2026-11-26)",
+  "licence": "proprietary-internal (V3LUM-authored list)",
+  "description": "Link-protection / URL-rewriting service hosts (SafeLinks, Proofpoint URL Defense, Mimecast, Barracuda, social redirectors): never IOCs, never reputation-checked; url_unwrap decodes their destination offline.",
+  "domains": [
+    "safelinks.protection.outlook.com",
+    "safelinks.protection.office365.us",
+    "urldefense.com",
+    "urldefense.us",
+    "urldefense.proofpoint.com",
+    "mimecast.com",
+    "mimecastprotect.com",
+    "linkprotect.cudasvc.com",
+    "slack-redir.net",
+    "l.facebook.com",
+    "lm.facebook.com",
+    "l.messenger.com",
+    "l.instagram.com",
+    "statics.teams.cdn.office.net"
+  ]
+}

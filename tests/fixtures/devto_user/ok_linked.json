@@ -1,0 +1,12 @@
+{
+ "type_of": "user",
+ "id": 1234567,
+ "username": "example-dev",
+ "name": "Example Dev",
+ "twitter_username": "exampledev",
+ "github_username": "Example-Dev",
+ "summary": "Writes about detection engineering",
+ "location": "Sao Paulo",
+ "website_url": "https://example.com",
+ "joined_at": "Mar  5, 2021"
+}

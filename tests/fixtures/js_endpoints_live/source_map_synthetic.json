@@ -1,0 +1,15 @@
+{
+ "version": 3,
+ "file": "app.min.js",
+ "sources": [
+  "webpack:///./src/api/client.ts",
+  "webpack:///./src/config/endpoints.ts",
+  "webpack:///./node_modules/axios/lib/axios.js"
+ ],
+ "sourcesContent": [
+  "export const BASE = '/api/internal/v3';",
+  "",
+  ""
+ ],
+ "mappings": "AAAA"
+}

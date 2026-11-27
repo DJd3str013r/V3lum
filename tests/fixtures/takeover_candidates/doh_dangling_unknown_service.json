@@ -1,0 +1,48 @@
+{
+ "qname": "legacy.example.com",
+ "google": {
+  "Status": 3,
+  "TC": false,
+  "RD": true,
+  "RA": true,
+  "AD": false,
+  "CD": false,
+  "Question": [
+   {
+    "name": "legacy.example.com.",
+    "type": 1
+   }
+  ],
+  "Answer": [
+   {
+    "name": "legacy.example.com.",
+    "type": 5,
+    "TTL": 300,
+    "data": "legacy-host.example.net."
+   }
+  ],
+  "edns_client_subnet": "0.0.0.0/0"
+ },
+ "cloudflare": {
+  "Status": 3,
+  "TC": false,
+  "RD": true,
+  "RA": true,
+  "AD": false,
+  "CD": false,
+  "Question": [
+   {
+    "name": "legacy.example.com",
+    "type": 1
+   }
+  ],
+  "Answer": [
+   {
+    "name": "legacy.example.com",
+    "type": 5,
+    "TTL": 300,
+    "data": "legacy-host.example.net."
+   }
+  ]
+ }
+}

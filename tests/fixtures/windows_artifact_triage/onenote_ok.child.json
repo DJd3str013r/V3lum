@@ -1,0 +1,52 @@
+{
+ "error": null,
+ "header": {
+  "expected_length": 1664,
+  "ffv_last_writer": 42,
+  "file_format_ok": true,
+  "file_type": "one",
+  "guid_file": "0e9a3c55-5301-4e6f-8a9b-0c1d2e3f0001"
+ },
+ "kind": "onenote",
+ "markers": [],
+ "names": [
+  "imagem.png",
+  "Fatura_2026-11.hta"
+ ],
+ "objects": [
+  {
+   "declared_size": 69,
+   "encoding": null,
+   "footer_ok": true,
+   "head_hex": "89504e470d0a1a0a0000000d49484452",
+   "index": 1,
+   "kind": "png",
+   "md5": "a1cf09b59e5060f3beccdcf7a37189f0",
+   "offset": 1144,
+   "sha1": "b9b4fd1a6182928e1c34a55832c7a312422ae4de",
+   "sha256": "e878950f8091ec010cf5cc723bdea027a8539cf7147cfea199c2f666232dcd4e",
+   "size": 69,
+   "text": null,
+   "text_truncated": false,
+   "truncated": false
+  },
+  {
+   "declared_size": 335,
+   "encoding": "utf-8",
+   "footer_ok": true,
+   "head_hex": "3c68746d6c3e3c686561643e3c746974",
+   "index": 2,
+   "kind": "hta",
+   "md5": "1c3f1e2a9316bc315e8105ed885b69ac",
+   "offset": 1272,
+   "sha1": "13b1732764e52164f3198f09087ad2024ef76d6b",
+   "sha256": "06b266ac63358f0340f7664100c6597a3add873fc04964350ce48a5488826cb5",
+   "size": 335,
+   "text": "<html><head><title>NF-e</title>\r\n<HTA:APPLICATION ID=\"nfe\" WINDOWSTATE=\"minimize\" SHOWINTASKBAR=\"no\"/>\r\n<script language=\"VBScript\">\r\n' fixture only: string assignments, nothing is executed\r\nDim u : u = \"https://203.0.113.13/nfe/stage2.txt\"\r\nDim c : c = Chr(104) & Chr(116) & Chr(116) & Chr(112)\r\n</script></head><body></body></html>\r\n",
+   "text_truncated": false,
+   "truncated": false
+  }
+ ],
+ "objects_capped": false,
+ "size": 1664
+}

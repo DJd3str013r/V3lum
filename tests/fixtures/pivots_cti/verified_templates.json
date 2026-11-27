@@ -1,0 +1,148 @@
+{
+ "_doc": "Maintainer verification records for the pivots_cti links (batch p2-G14-2): request URL, status, page title and a note per check, 2026-11-25/26 from a datacenter egress. Page bodies are not kept (victim lists, PEP names and bucket file names never enter the repository). 'link' and 'entity' name the pack link and the value the URL was built from; tests render them and compare with 'url'. V3LUM itself never requests these URLs.",
+ "checks": [
+  {
+   "case": "attack_group_ok",
+   "url": "https://attack.mitre.org/groups/G0007/",
+   "status": 200,
+   "title": "APT28, IRON TWILIGHT, SNAKEMACKEREL, Swallowtail, Group 74, Sednit, Sofacy, Pawn Storm, Fancy Bear, STRONTIUM, Tsar Team",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:40:25Z",
+   "note": "title only",
+   "link": "cti:attack_group",
+   "entity": "threat_actor:APT28"
+  },
+  {
+   "case": "attack_software_ok",
+   "url": "https://attack.mitre.org/software/S0367/",
+   "status": 200,
+   "title": "Emotet, Software S0367 | MITRE ATT&CK&reg;",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:40:27Z",
+   "note": "title only",
+   "link": "cti:attack_software",
+   "entity": "malware_family:Emotet"
+  },
+  {
+   "case": "attack_technique_dotted_not_found",
+   "url": "https://attack.mitre.org/techniques/T1059.001/",
+   "status": 404,
+   "title": "404 | MITRE ATT&CK&reg;",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:40:24Z",
+   "note": "/techniques/T1059.001/ -> 404: the dotted id is not a page path",
+   "link": null,
+   "entity": null
+  },
+  {
+   "case": "attack_technique_ok",
+   "url": "https://attack.mitre.org/techniques/T1059/001/",
+   "status": 200,
+   "title": "Command and Scripting Interpreter: PowerShell, Sub-technique T1059.001 - Enterprise | MITRE ATT&CK&reg;",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:40:22Z",
+   "note": "title only",
+   "link": "cti:attack_technique",
+   "entity": "mitre_technique:T1059.001"
+  },
+  {
+   "case": "attack_technique_revoked_meta_refresh",
+   "url": "https://attack.mitre.org/techniques/T1656/",
+   "status": 200,
+   "title": "",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:40:29Z",
+   "note": "revoked T1656: 200 with a meta refresh to /techniques/T1684/001",
+   "link": null,
+   "entity": null
+  },
+  {
+   "case": "d3fend_not_found",
+   "url": "https://d3fend.mitre.org/offensive-technique/attack/T9999/",
+   "status": 404,
+   "title": "Page not found &middot; GitHub Pages",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:44:10Z",
+   "note": "unknown technique -> 404 GitHub Pages",
+   "link": null,
+   "entity": null
+  },
+  {
+   "case": "d3fend_subtechnique_dotted_ok",
+   "url": "https://d3fend.mitre.org/offensive-technique/attack/T1059.001/",
+   "status": 200,
+   "title": "Offensive Technique Details | MITRE D3FEND™",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:40:43Z",
+   "note": "server-rendered heading carries the technique id (dotted form works on D3FEND)",
+   "link": "cti:d3fend_technique",
+   "entity": "mitre_technique:T1059.001"
+  },
+  {
+   "case": "d3fend_technique_ok",
+   "url": "https://d3fend.mitre.org/offensive-technique/attack/T1059/",
+   "status": 200,
+   "title": "Offensive Technique Details | MITRE D3FEND™",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:40:41Z",
+   "note": "server-rendered heading carries the technique id (dotted form works on D3FEND)",
+   "link": "cti:d3fend_technique",
+   "entity": "mitre_technique:T1059"
+  },
+  {
+   "case": "malpedia_actor_ok",
+   "url": "https://malpedia.caad.fkie.fraunhofer.de/actor/apt28",
+   "status": 200,
+   "title": "APT28 (Threat Actor)",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:40:36Z",
+   "note": "title only",
+   "link": null,
+   "entity": null
+  },
+  {
+   "case": "malpedia_actor_underscore_ok",
+   "url": "https://malpedia.caad.fkie.fraunhofer.de/actor/lazarus_group",
+   "status": 200,
+   "title": "Lazarus Group (Threat Actor)",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:44:04Z",
+   "note": "title only",
+   "link": null,
+   "entity": null
+  },
+  {
+   "case": "malpedia_details_actor_not_found",
+   "url": "https://malpedia.caad.fkie.fraunhofer.de/details/apt28",
+   "status": 404,
+   "title": "Error",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:40:34Z",
+   "note": "/details/apt28 -> 404 'Error': actors live under /actor/{id}",
+   "link": null,
+   "entity": null
+  },
+  {
+   "case": "malpedia_family_not_found",
+   "url": "https://malpedia.caad.fkie.fraunhofer.de/details/win.v3lum_nonexistent",
+   "status": 404,
+   "title": "Error",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:40:39Z",
+   "note": "unknown family id -> 404 'Error'",
+   "link": null,
+   "entity": null
+  },
+  {
+   "case": "malpedia_family_ok",
+   "url": "https://malpedia.caad.fkie.fraunhofer.de/details/win.emotet",
+   "status": 200,
+   "title": "Emotet (Malware Family)",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:40:30Z",
+   "note": "title only",
+   "link": "cti:malpedia_family",
+   "entity": "malware_family:Emotet"
+  }
+ ]
+}

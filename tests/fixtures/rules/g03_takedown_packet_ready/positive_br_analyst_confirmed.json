@@ -1,0 +1,58 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "$comment": "One feed only, but the analyst confirmed the phishing page: the packet is announced, with CERT.br guidance for the .br domain (P345 cond 2, 4)",
+  "nodes": [
+    {
+      "key": "url:https://pagamento-boleto.example.com.br/pix",
+      "depth": 0,
+      "seed": true,
+      "findings": [
+        {
+          "title": "Listed by PhishStats as phishing",
+          "severity": "high",
+          "confidence": 0.7,
+          "criterion": "source verdict",
+          "tags": [
+            "phishing"
+          ],
+          "module": "phishstats",
+          "source": "phishstats.api",
+          "observed_last": "2026-11-25T00:00:00Z",
+          "override": {
+            "label": "confirmed",
+            "verdict": "true_positive",
+            "analyst": "fixture",
+            "reason": "page reviewed by the analyst"
+          }
+        }
+      ]
+    },
+    {
+      "key": "domain:pagamento-boleto.example.com.br",
+      "depth": 1
+    }
+  ],
+  "edges": [
+    {
+      "src": "url:https://pagamento-boleto.example.com.br/pix",
+      "dst": "domain:pagamento-boleto.example.com.br",
+      "relation": "url_host",
+      "module": "url_parse",
+      "confidence": 0.9,
+      "expand": true
+    }
+  ],
+  "expect": {
+    "g03_takedown_packet_ready": {
+      "min": 1,
+      "max": 1,
+      "severity": "info"
+    }
+  }
+}

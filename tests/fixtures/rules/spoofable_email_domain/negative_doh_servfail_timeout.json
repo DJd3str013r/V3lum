@@ -1,0 +1,130 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "$comment": "DoH SERVFAIL/timeout: could-not-verify facts never read as 'missing' (rule 5); an unevaluated SPF chain (temperror) neither - even with the readable top record (~all) and p=none that email_security_posture writes for it",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "nodes": [
+    {
+      "key": "domain:servfail.example",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "spf_status": [
+          {
+            "value": "could_not_verify",
+            "source": "email_security_posture"
+          }
+        ],
+        "email_posture": [
+          {
+            "value": {
+              "spf": "could not verify",
+              "dmarc": "could not verify",
+              "mx": "could not verify"
+            },
+            "source": "email_security_posture"
+          }
+        ]
+      }
+    },
+    {
+      "key": "domain:dmarc-timeout.example",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "spf_status": [
+          {
+            "value": "ok",
+            "source": "email_security_posture"
+          }
+        ],
+        "spf": [
+          {
+            "value": "v=spf1 ~all",
+            "source": "email_security_posture"
+          }
+        ],
+        "email_posture": [
+          {
+            "value": {
+              "spf": "valid (~all)",
+              "dmarc": "could not verify",
+              "mx": "could not verify"
+            },
+            "source": "email_security_posture"
+          }
+        ]
+      }
+    },
+    {
+      "key": "domain:temperror.example",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "spf_status": [
+          {
+            "value": "temperror",
+            "source": "email_security_posture"
+          }
+        ],
+        "spf": [
+          {
+            "value": "v=spf1 include:_spf.flaky.example ~all",
+            "source": "email_security_posture"
+          }
+        ],
+        "spf_lookups": [
+          {
+            "value": 3,
+            "source": "email_security_posture"
+          }
+        ],
+        "spf_void_lookups": [
+          {
+            "value": 0,
+            "source": "email_security_posture"
+          }
+        ],
+        "dmarc": [
+          {
+            "value": "v=DMARC1; p=none",
+            "source": "email_security_posture"
+          }
+        ],
+        "dmarc_policy": [
+          {
+            "value": "none",
+            "source": "email_security_posture"
+          }
+        ],
+        "dmarc_pct": [
+          {
+            "value": 100,
+            "source": "email_security_posture"
+          }
+        ],
+        "dmarc_sp": [
+          {
+            "value": "none",
+            "source": "email_security_posture"
+          }
+        ],
+        "email_posture": [
+          {
+            "value": {
+              "spf": "present; include chain could not be verified (~all)",
+              "dmarc": "p=none",
+              "mx": "mx.temperror.example"
+            },
+            "source": "email_security_posture"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": []
+}

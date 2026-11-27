@@ -1,0 +1,5 @@
+{
+ "_fixture": "synthetic Safe Browsing v4 miss: the documented empty answer {}",
+ "status": 200,
+ "body": {}
+}

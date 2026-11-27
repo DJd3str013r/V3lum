@@ -1,0 +1,52 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "threatbook",
+  "name": "ThreatBook research pages",
+  "operator": "ThreatBook (Beijing Weibu Online Technology Co., Ltd.)",
+  "hosts": [
+    "threatbook.io",
+    "i.threatbook.io"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Security company with public terms (CN jurisdiction); P170 cond 5: 'community - ThreatBook (CN)'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Vendor verdicts; the full view needs sign-in."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "pivot_pages": {
+      "title": "ThreatBook IP research page (pending: not rendered)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://threatbook.io/",
+        "quote": "The pack is offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "threatbook",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (cond 1 of the proposal). Research C0406. threatbook.io/ip/8.8.8.8 answered 301 to https://i.threatbook.io/ip/8.8.8.8, then nginx 502 twice (2026-11-26). P170 cond 10: kept only if its page shows a verdict without signing in; until a browser check records that, the entry stays pending with login_required=true (the P311 lint drops it). Foreign provider (CN): queries are logged abroad; max_tlp green once enabled. Used by pivots_threat_intel (pending entry of threat_intel_ioc.json)."
+    }
+  },
+  "notes": "Manual pivot links only (batch p2-G14-1): V3LUM never fetches them (P311)."
+}

@@ -1,0 +1,171 @@
+{
+ "_note": "Expected routes of route_pasted_url (P306 cond 9, port of Ceos destino()); documentation values only.",
+ "cases": [
+  {
+   "url": "https://x.com/example_user/status/1234567890",
+   "expect": {
+    "kind": "post_x",
+    "entity_type": "url",
+    "handle": "example_user",
+    "post_id": "1234567890",
+    "attach_to": [
+     "social_account",
+     "x:example_user"
+    ]
+   }
+  },
+  {
+   "url": "https://mobile.twitter.com/example_user/statuses/42",
+   "expect": {
+    "kind": "post_x",
+    "handle": "example_user",
+    "post_id": "42"
+   }
+  },
+  {
+   "url": "https://twitter.com/search?q=example",
+   "expect": {
+    "kind": "other",
+    "entity_type": "url"
+   }
+  },
+  {
+   "url": "https://x.com/explore",
+   "expect": {
+    "kind": "other"
+   }
+  },
+  {
+   "url": "https://www.instagram.com/example.user/",
+   "expect": {
+    "kind": "profile",
+    "entity_type": "social_account",
+    "value": "instagram:example.user"
+   }
+  },
+  {
+   "url": "https://www.linkedin.com/in/example-user-1a2b3c4d/",
+   "expect": {
+    "kind": "profile",
+    "entity_type": "social_account",
+    "value": "linkedin:example-user-1a2b3c4d"
+   },
+   "note": "V3LUM keeps the full public LinkedIn slug (core platform table); Ceos stripped the id suffix"
+  },
+  {
+   "url": "https://www.linkedin.com/in/example-user-team/",
+   "expect": {
+    "kind": "profile",
+    "value": "linkedin:example-user-team"
+   }
+  },
+  {
+   "url": "https://www.linkedin.com/company/example-org/",
+   "expect": {
+    "kind": "company_page",
+    "entity_type": "url",
+    "handle": "example-org"
+   }
+  },
+  {
+   "url": "https://github.com/example-user",
+   "expect": {
+    "kind": "profile",
+    "entity_type": "social_account",
+    "value": "github:example-user"
+   }
+  },
+  {
+   "url": "https://t.me/example_channel",
+   "expect": {
+    "kind": "profile",
+    "entity_type": "telegram_handle",
+    "value": "example_channel"
+   }
+  },
+  {
+   "url": "https://t.me/+AbCdEf123456",
+   "expect": {
+    "kind": "profile",
+    "entity_type": "telegram_invite"
+   }
+  },
+  {
+   "url": "https://t.me/joinchat/AbCdEf123456",
+   "expect": {
+    "kind": "profile",
+    "entity_type": "telegram_invite"
+   }
+  },
+  {
+   "url": "https://www.youtube.com/@example",
+   "expect": {
+    "kind": "profile",
+    "entity_type": "social_account",
+    "value": "youtube:example"
+   }
+  },
+  {
+   "url": "https://medium.com/@example",
+   "expect": {
+    "kind": "profile",
+    "entity_type": "social_account",
+    "value": "medium:example"
+   },
+   "note": "medium is a core social platform (v3lum.core.entities.SOCIAL_PLATFORMS)"
+  },
+  {
+   "url": "https://lattes.cnpq.br/1234567890123456",
+   "expect": {
+    "kind": "profile",
+    "entity_type": "url",
+    "id": "1234567890123456"
+   }
+  },
+  {
+   "url": "https://pastebin.com/AbCd1234",
+   "expect": {
+    "kind": "exposure",
+    "route": "exposure_triage"
+   }
+  },
+  {
+   "url": "https://www.pastebin.com/raw/AbCd1234",
+   "expect": {
+    "kind": "exposure"
+   }
+  },
+  {
+   "url": "https://example.com/page",
+   "expect": {
+    "kind": "other",
+    "entity_type": "url",
+    "route": "triage"
+   }
+  },
+  {
+   "url": "ftp://example.com/x",
+   "expect": {
+    "kind": "invalid"
+   }
+  },
+  {
+   "url": "javascript:alert(1)",
+   "expect": {
+    "kind": "invalid"
+   }
+  },
+  {
+   "url": "https://example.com/a b",
+   "expect": {
+    "kind": "invalid"
+   }
+  },
+  {
+   "url": "",
+   "expect": {
+    "kind": "invalid"
+   }
+  }
+ ]
+}

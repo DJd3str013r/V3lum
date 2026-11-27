@@ -1,0 +1,33 @@
+{
+ "_meta": {"provenance": "synthetic", "note": "What the module must pass to playwright.chromium.launch() and browser.new_context(); checked by check_launch_config()."},
+ "running_as_root": false,
+ "launch": {
+  "headless": true,
+  "chromium_sandbox": true,
+  "proxy": {"server": "socks5://proxy-light.example.net:1080"},
+  "args": [
+   "--force-webrtc-ip-handling-policy=disable_non_proxied_udp",
+   "--disable-quic",
+   "--auth-server-allowlist=_",
+   "--auth-negotiate-delegate-allowlist=_",
+   "--host-resolver-rules=MAP * ~NOTFOUND , EXCLUDE proxy-light.example.net",
+   "--disable-extensions",
+   "--disable-background-networking",
+   "--disable-component-update",
+   "--disable-sync",
+   "--no-pings",
+   "--disable-breakpad"
+  ]
+ },
+ "context": {
+  "accept_downloads": false,
+  "service_workers": "block",
+  "permissions": [],
+  "ignore_https_errors": false,
+  "bypass_csp": false,
+  "java_script_enabled": true,
+  "record_har_path": "/tmp/v3lum-capture-XXXX/capture.har",
+  "record_har_content": "embed",
+  "user_data_dir": null
+ }
+}

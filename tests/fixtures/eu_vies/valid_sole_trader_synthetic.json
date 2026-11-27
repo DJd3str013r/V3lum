@@ -1,0 +1,22 @@
+{
+ "isValid": true,
+ "requestDate": "2026-11-26T09:15:02.209Z",
+ "userError": "VALID",
+ "name": "EXEMPLO PESSOA TESTE",
+ "address": "1 EXAMPLE STREET\nL-0000 EXAMPLE",
+ "requestIdentifier": "",
+ "originalVatNumber": "10000053",
+ "vatNumber": "10000053",
+ "viesApproximate": {
+  "name": "---",
+  "street": "---",
+  "postalCode": "---",
+  "city": "---",
+  "companyType": "---",
+  "matchName": 3,
+  "matchStreet": 3,
+  "matchPostalCode": 3,
+  "matchCity": 3,
+  "matchCompanyType": 3
+ }
+}

@@ -1,0 +1,24 @@
+Threat Brief TB-2026-114 (TLP:CLEAR) - excerpt
+
+Summary. Since 2026-10-02 the operators behind the "KettleLoader" campaign have exploited
+CVE-2021-44228 (Log4Shell) and CVE-2023-4966 (Citrix Bleed) against exposed appliances running
+firmware 13.1.49.15. Initial access (T1190) was followed by PowerShell execution (T1059.001) and
+scheduled-task persistence (T1053.005). Spearphishing attachments (T1566.001) carried invoice.zip
+and Statement_Oct.pdf lures.
+
+Infrastructure. The first-stage downloader beaconed to hxxps://update-check[.]kettle-cdn[.]example[.]net/api/v2/ping
+and to the raw address 198.51.100.23 on port 8443. A fallback panel lived at hxxp://203.0.113[.]77/panel/login.php.
+Secondary domains: kettle-sync.example.org, files-kettle[.]example[.]com. The actors also kept a Tor
+mirror at duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad[.]onion for victims.
+
+Samples. The dropper (MD5 44d88612fea8a8f36de82e1278abb02f, SHA-1 3395856ce81f2b7382dee72602f798b642f14140,
+SHA-256 275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f) unpacks a DLL compiled with
+Visual Studio 14.29.30133 on 2026-09-30 11:42:07 UTC.
+
+Monetisation. Ransom notes asked for payment to bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq or, for
+USDT, the TRON wallet TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t. An Ethereum address
+0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe appeared in one variant.
+
+Detection notes. Hunt for the user agent string in proxy logs, the mutex Global\KTL_2026 and the
+registry key HKCU\Software\Kettle. See also https://www.example.org/blog/kettleloader-analysis for a
+second write-up.

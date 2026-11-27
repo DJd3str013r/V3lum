@@ -1,0 +1,46 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p1-G10-1",
+  "title": "Offline sanctions screening, Brazilian identifier validators and payment-code parsers (P219 sanctions_lists, P232 br_validators, P233 boleto_pix)",
+  "owner": "batch p1-G10-1",
+  "notes": "Core names reused where they fit: sanctioned (only for exact identifier matches: wallet, IMO, registration number, CNPJ), valid, data_attribution, dataset_age, dataset_age_days, country (attributes); sanctions, info, context_only (tags); mentions (relation). sanctions_screening, homonym_risk and name_only_match are re-declared with the exact descriptions of the sibling batch p1-G10-2 (P240/P252) so both batches share one shape. CPFs never appear unmasked in any attribute (AR24, rule 4).",
+  "attributes": {
+    "sanctions_screening": "per-list state of an offline sanctions screening {list: {state: no_record | listed | not_screened, file_date, reason}}",
+    "homonym_risk": "homonym risk of a name for name-only matches {risk: high | medium | low | unknown, factor, phrase, first_name_tier, common_surname}",
+    "sanctions_matches": "candidate entries of an offline sanctions screening (at most 5 per list): [{list, entry_id, listed_name, kind, matched_alias, score, match_type (exact_wallet | exact_cnpj | exact_imo | name), programmes, listing_date, list_date}]; name matches are possible matches to confirm, never verdicts",
+    "sanctions_designation": "designation line of a threat actor or entity matched on OFAC/UN/EU lists: '<lists> designated (<date>) - payments may be prohibited, escalate to legal'",
+    "sanctions_history": "delisting history of an offline sanctions screening: [{list, match_type (formerly_wallet | formerly_cnpj | formerly_name), entry_id, listed_name (never a natural person), programmes, last_listed (date of the last local list version that carried it), removed_by (date of the first version without it), line 'formerly listed (<date>)'}]",
+    "validity_note": "what a check-digit validation means: 'check digits valid (format only)' - never existence, registration, ownership or residence",
+    "formatted_value": "canonical punctuated form of an identifier (CNPJ 12.ABC.345/01DE-35, CEP 01001-000)",
+    "cnpj_structure": "offline CNPJ structure {root (8 characters shared by every establishment), order (0001 = head office), is_headquarters, hq_cnpj (head-office CNPJ with recomputed check digits), alphanumeric (IN RFB 2.229/2024)}",
+    "cpf_fiscal_region": "info-only cross-check 'CPF issued in fiscal region N (UFs)' from the 9th digit: the issuing fiscal region, never the residence",
+    "masked_value": "masked display of a personal identifier (CPF ***.456.789-**): the full value never appears in outputs",
+    "plate_forms": "Brazilian plate format and its equivalent in the other standard {format old | mercosul, plate, old, mercosul, search_forms}: validation and conversion only, never an owner lookup",
+    "cep_uf_hint": "approximate state (UF) of a CEP from the public range table (format check only, existence not checked)",
+    "br_entities": "Brazilian entities found in text by the BR rule set (BR Code > boleto > CNJ > CNPJ > PIX key > CPF > phone): [{type, value (never a CPF), display (CPF masked), rule, confidence, checksum_ok, span}]",
+    "pix_key_type": "PIX key type determined offline: cpf | cnpj | phone | email | evp (no DICT lookup)",
+    "pix_key": "PIX key of a BR Code (CPF keys masked ***.456.789-**)",
+    "pix_verdict": "plain-language PIX BR Code line: merchant, city, key type (masked key), txid, amount and CRC status",
+    "pix_merchant_name": "merchant name field (59) of a PIX BR Code",
+    "pix_merchant_city": "merchant city field (60) of a PIX BR Code",
+    "pix_txid": "transaction id (62/05) of a PIX BR Code",
+    "pix_amount": "amount field (54) of a PIX BR Code, formatted (R$ 1.234,56)",
+    "pix_crc_status": "CRC16/CCITT-FALSE status of a PIX BR Code: 'CRC OK', 'altered or corrupted payload' or 'could not verify (OCR)'",
+    "pix_location_url": "dynamic BR Code location as host/*** (masked; never fetched: fetching is a payer-side action that returns payee personal data)",
+    "boleto_verdict": "plain-language boleto line: check-digit status, bank, due date and amount, or 'CHECK DIGIT MISMATCH - invalid or altered code (typed or altered line)'",
+    "boleto_facts": "decoded boleto {type bancario | arrecadacao, bank_code, bank_name, currency, due {factor, chosen, cycle, old_cycle, new_cycle, ambiguous}, amount, check digits, segment and company id (arrecadacao)}",
+    "bank_tables": "bank / ISPB / PIX-participant tables used offline: [{table, source dataset | bundled snapshot, refreshed, stale}]"
+  },
+  "tags": {
+    "name_only_match": "match on a name alone, without any identifier: 'possible match', lowered by the homonym score (P252)",
+    "tampering_suspected": "payment code inconsistent with its claimed issuer or payee (possible tampering): never a malicious verdict on its own",
+    "formerly_listed": "value carried by a previous version of a sanctions list and absent from the current one ('formerly listed (<date>)'): context, never a current designation"
+  },
+  "relations": {
+    "pix_key_of": "payment code or text -> the PIX key that receives the payment (e-mail, phone or CNPJ; a CPF key is never pivoted)",
+    "pix_location_host": "dynamic PIX BR Code -> host of its payload location URL (the URL itself is never fetched nor a url entity)",
+    "pix_merchant": "PIX BR Code -> merchant company name (only for CNPJ keys or legal-suffix names, never a natural person)",
+    "headquarters": "branch CNPJ -> head-office CNPJ of the same 8-character root (computed offline)"
+  },
+  "timeline": {}
+}

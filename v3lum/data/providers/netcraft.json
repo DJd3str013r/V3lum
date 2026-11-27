@@ -1,0 +1,50 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "netcraft",
+  "name": "Netcraft phishing and malicious-site report form",
+  "operator": "Netcraft Ltd",
+  "hosts": [
+    "report.netcraft.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms (A8): 'trusted - BuiltWith, urlscan.io, Netcraft, securityheaders.com (Snyk), Google Play' (P083 cond 5).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": true,
+    "fetches_target": true,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "F",
+    "justification": "A manual report form only: V3LUM never queries it, so no verdict comes from this provider."
+  },
+  "http_profile": {
+    "user_agent": "neutral"
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "report_form": {
+      "title": "Netcraft report form https://report.netcraft.com/report (manual analyst submission listed in the takedown packet; never submitted by V3LUM)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://report.netcraft.com/report",
+        "quote": "V3LUM never sends e-mails or submits forms. Submitting a report shares the URL with the provider: the analyst decides per case and records the disclosure decision in the case audit.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "netcraft",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P345 cond 5). Research C0777 (verified_live 200). Listed as a manual link in the takedown packet (P345 cond 4); a reported URL is shared with Netcraft and its partners and checked by Netcraft (flags reuses_queries/fetches_target describe the form, which no module calls)."
+    }
+  },
+  "notes": "Owned by batch p2-G03-1 (P345 takedown packet manual links). No module sends a value to this host."
+}

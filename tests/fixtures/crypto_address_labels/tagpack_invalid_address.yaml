@@ -1,0 +1,14 @@
+title: Plus Token Scam Tagpack
+creator: GraphSense Core Team
+confidence: untrusted_transaction
+description: Addresses used for scam related to Plus Token
+abuse: scam
+currency: BTC
+label: Plus Token Scam
+lastmod: 2021-11-12
+source: https://boxmining.com/plus-token-ponzi/
+tags:
+- address: 1MFgcyJ7ZNSknbTBRaih6zWDE6V1A64tRYs
+  is_cluster_definer: false
+- address: 14bwh6gmvol5ntwbvxqjkjdtzv4y5ebtvm
+  is_cluster_definer: false

@@ -1,0 +1,35 @@
+{
+ "_fixture": "live: _where=(host,zz,example.com) (unknown operator) -> HTTP 200 with an UNRELATED record: the filter was silently ignored. Records must be re-checked against the requested filter.",
+ "request_where": "(host,zz,example.com)",
+ "status": 200,
+ "body": [
+  {
+   "id": 11604820,
+   "url": "https://checkin-arrivals.com/9GG3VC9JH",
+   "redirect_url": null,
+   "ip": "172.67.209.39",
+   "countrycode": null,
+   "asn": "AS52925",
+   "bgp": "172.67.0.0/16",
+   "isp": "Ascenty Data Centers e Telecomunicacoes SA",
+   "title": "Booking.com | Official website | Best hotels and accommodation",
+   "date": "2025-11-22T18:05:28.000Z",
+   "date_update": "2025-11-22T18:22:45.000Z",
+   "score": 8.6,
+   "host": "checkin-arrivals.com",
+   "domain": "checkin-arrivals",
+   "tld": "com",
+   "domain_registered_n_days_ago": 3,
+   "n_times_seen_ip": 450,
+   "n_times_seen_host": 1233,
+   "n_times_seen_domain": 1233,
+   "http_code": 200,
+   "google_safebrowsing": "Yes",
+   "virus_total": null,
+   "abuse_ch_malware": null,
+   "tags": "cdn",
+   "ssl_issuer": null,
+   "ssl_subject": null
+  }
+ ]
+}

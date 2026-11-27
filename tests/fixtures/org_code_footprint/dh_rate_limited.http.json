@@ -1,0 +1,24 @@
+{
+ "_meta": {
+  "module": "org_code_footprint",
+  "case": "dh_rate_limited",
+  "source": "C0234 hub.docker.com",
+  "request": {
+   "method": "GET",
+   "url": "https://hub.docker.com/v2/repositories/example-org/?page_size=5&ordering=last_updated"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "DOC-SHAPED",
+  "note": "x-ratelimit-* names as observed live (limit 180); body unverified"
+ },
+ "status": 429,
+ "headers": {
+  "content-type": "application/json",
+  "x-ratelimit-limit": "180",
+  "x-ratelimit-remaining": "0",
+  "x-ratelimit-reset": "1795678600",
+  "retry-after": "60",
+  "server": "cloudflare"
+ },
+ "body": "{\"message\": \"Too Many Requests\"}"
+}

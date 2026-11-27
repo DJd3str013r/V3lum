@@ -1,0 +1,55 @@
+{
+  "schema": "v3lum.pivot_pack/1",
+  "pack": "email_keys_calendar",
+  "title": "Public key directories and public calendars of an e-mail address (manual, privacy)",
+  "links": [
+    {
+      "id": "gcal_public_ics",
+      "label": "Google Calendar public ICS of the address (opens the calendar feed; analyst-typed seeds only)",
+      "template": "https://calendar.google.com/calendar/ical/{q}/public/basic.ics",
+      "entity_types": ["email"],
+      "category": "other",
+      "host": "calendar.google.com",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": true,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "P093 cond 3 (P311): the module google_calendar_ics stores only that a public calendar exists, the event count, the date range and the time zone; event titles, descriptions, locations, attendees and organizers are shown to the analyst only through this manual link. Use it for analyst-typed seed addresses only (privacy badge). Google answers 404 for private calendars and nonexistent accounts alike."
+    },
+    {
+      "id": "ubuntu_hkp_search",
+      "label": "keyserver.ubuntu.com - OpenPGP keys listing the value (UIDs are unverified self-published claims)",
+      "template": "https://keyserver.ubuntu.com/pks/lookup?search={q}&fingerprint=on&op=index",
+      "entity_types": ["email", "pgp_fingerprint"],
+      "category": "other",
+      "host": "keyserver.ubuntu.com",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": true,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "P091: anyone can upload a key with any user ID to this keyserver (confidence <= 0.3). A domain-wide search harvests the addresses of a whole organisation: use it only for org-profile domains or the case company's domain with a recorded purpose (P091 cond 5)."
+    },
+    {
+      "id": "vks_search",
+      "label": "keys.openpgp.org - key with e-mail-verified user IDs",
+      "template": "https://keys.openpgp.org/search?q={q}",
+      "entity_types": ["email", "pgp_fingerprint"],
+      "category": "other",
+      "host": "keys.openpgp.org",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": true,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "P091: only addresses the key owner confirmed are published (PROBABLE identity link); 'No key found' means no key published there, never that the address or person does not exist."
+    }
+  ]
+}

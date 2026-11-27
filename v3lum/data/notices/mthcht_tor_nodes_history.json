@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "mthcht_tor_nodes_history",
+  "source_url": "https://github.com/mthcht/awesome-lists",
+  "version": "Lists/TOR/tor_nodes_history.json from the main branch (runtime download by `v3lum data update`, checked 2026-11-26)",
+  "sha256": "",
+  "licence": "MIT",
+  "attribution": "Tor node history from mthcht/awesome-lists (https://github.com/mthcht/awesome-lists), MIT License, Copyright (c) mthcht; derived from Tor Project data.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/ip_network/tor_exit_history.py"
+  ]
+}

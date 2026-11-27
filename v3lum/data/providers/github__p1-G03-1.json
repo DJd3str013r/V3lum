@@ -1,0 +1,121 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "github",
+  "hosts": [],
+  "sources": {
+    "url_domain_blocklists_phishing_database_domains": {
+      "title": "Phishing.Database active phishing domains (phishing-domains-ACTIVE.txt)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/Phishing-Database/Phishing.Database/blob/master/LICENSE",
+        "quote": "Per-feed terms: CERT.PL Hole (any use incl. commercial; trusted), Phishing.Database (MIT), StevenBlack (MIT), MetaMask eth-phishing-detect (permissive), spmedia (MIT), Botvrij, CyberCrime-Tracker and Procon-SP run with attribution. HaGeZi TIF and ScamSniffer are GPL-3.0 data: runtime download only, never bundled or used as fixtures (A6).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "phishing.database",
+      "sanitizer": null,
+      "dataset": "url_domain_blocklists.phishing_database.domains.txt",
+      "notes": "Quote: binding council text (P071 cond 2). ~11 MB / ~392k domains (2026-11-26), daily; `v3lum data update` only (> 5 MB). Upstream families unconfirmed by its README: treated as possibly re-serving PhishTank/OpenPhish (embeds), so it is never counted as independent of them (P171). The list itself contains shared platforms (sites.google.com, *.sharepoint.com tenants): those never give a domain verdict (P071 cond 6).",
+      "embeds": [
+        "phishtank",
+        "openphish"
+      ]
+    },
+    "url_domain_blocklists_phishing_database_links": {
+      "title": "Phishing.Database active phishing links (phishing-links-ACTIVE.txt)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/Phishing-Database/Phishing.Database/blob/master/LICENSE",
+        "quote": "Per-feed terms: CERT.PL Hole (any use incl. commercial; trusted), Phishing.Database (MIT), StevenBlack (MIT), MetaMask eth-phishing-detect (permissive), spmedia (MIT), Botvrij, CyberCrime-Tracker and Procon-SP run with attribution. HaGeZi TIF and ScamSniffer are GPL-3.0 data: runtime download only, never bundled or used as fixtures (A6).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "phishing.database",
+      "sanitizer": null,
+      "dataset": "url_domain_blocklists.phishing_database.links.txt",
+      "notes": "Quote: binding council text (P071 cond 2). ~66 MB / ~789k URLs (2026-11-26), daily; `v3lum data update` only. URL entries match the exact normalised URL; userinfo is dropped at index time (one live row carried user:password@).",
+      "embeds": [
+        "phishtank",
+        "openphish"
+      ]
+    },
+    "url_domain_blocklists_hagezi_tif": {
+      "title": "HaGeZi Threat Intelligence Feeds (wildcard tif.txt)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/hagezi/dns-blocklists/blob/main/LICENSE",
+        "quote": "Per-feed terms: CERT.PL Hole (any use incl. commercial; trusted), Phishing.Database (MIT), StevenBlack (MIT), MetaMask eth-phishing-detect (permissive), spmedia (MIT), Botvrij, CyberCrime-Tracker and Procon-SP run with attribution. HaGeZi TIF and ScamSniffer are GPL-3.0 data: runtime download only, never bundled or used as fixtures (A6).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "hagezi",
+      "sanitizer": null,
+      "dataset": "url_domain_blocklists.hagezi_tif.txt",
+      "notes": "Quote: binding council text (P071 cond 2). GPL-3.0 data (P071 cond 2): runtime download only, never bundled or used as a fixture (A6). ~23 MB / 1.15M entries; aggregated list: LOW, tag only, never 'phishing' (P071 cond 7)."
+    },
+    "url_domain_blocklists_stevenblack": {
+      "title": "StevenBlack unified hosts (adware/malware hosts file)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/StevenBlack/hosts/blob/master/license.txt",
+        "quote": "Per-feed terms: CERT.PL Hole (any use incl. commercial; trusted), Phishing.Database (MIT), StevenBlack (MIT), MetaMask eth-phishing-detect (permissive), spmedia (MIT), Botvrij, CyberCrime-Tracker and Procon-SP run with attribution. HaGeZi TIF and ScamSniffer are GPL-3.0 data: runtime download only, never bundled or used as fixtures (A6).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "stevenblack",
+      "sanitizer": null,
+      "dataset": "url_domain_blocklists.stevenblack.hosts",
+      "notes": "Quote: binding council text (P071 cond 2). MIT (aggregated lists keep their licences). ~2.5 MB; ads/tracking blocking data: LOW, tag only, never 'phishing' (P071 cond 7)."
+    },
+    "url_domain_blocklists_scamsniffer": {
+      "title": "ScamSniffer crypto-phishing domains (blacklist/domains.json)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/scamsniffer/scam-database/blob/main/LICENSE",
+        "quote": "Per-feed terms: CERT.PL Hole (any use incl. commercial; trusted), Phishing.Database (MIT), StevenBlack (MIT), MetaMask eth-phishing-detect (permissive), spmedia (MIT), Botvrij, CyberCrime-Tracker and Procon-SP run with attribution. HaGeZi TIF and ScamSniffer are GPL-3.0 data: runtime download only, never bundled or used as fixtures (A6).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "scamsniffer",
+      "sanitizer": null,
+      "dataset": "url_domain_blocklists.scamsniffer.domains.json",
+      "notes": "Quote: binding council text (P071 cond 2). GPL-3.0 data: runtime download only (A6). domains.json only: address.json and combined.json are frozen since Feb 2024 and never used for address reputation; the public list has a 7-day delay (P071 cond 9). ~9 MB."
+    },
+    "url_domain_blocklists_metamask": {
+      "title": "MetaMask eth-phishing-detect config (blacklist, whitelist, fuzzylist, tolerance)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/MetaMask/eth-phishing-detect/blob/main/LICENSE",
+        "quote": "Per-feed terms: CERT.PL Hole (any use incl. commercial; trusted), Phishing.Database (MIT), StevenBlack (MIT), MetaMask eth-phishing-detect (permissive), spmedia (MIT), Botvrij, CyberCrime-Tracker and Procon-SP run with attribution. HaGeZi TIF and ScamSniffer are GPL-3.0 data: runtime download only, never bundled or used as fixtures (A6).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "metamask",
+      "sanitizer": null,
+      "dataset": "url_domain_blocklists.metamask.config.json",
+      "notes": "Quote: binding council text (P071 cond 2). 'Don't Be A Dick' public license (permissive). ~3.6 MB; the look-alike check (Levenshtein within tolerance against the fuzzylist crypto brands) is re-implemented, never copied (P071 cond 9)."
+    },
+    "url_domain_blocklists_spmedia": {
+      "title": "spmedia Crypto Scam and Crypto Phishing Threat Intel Feed (detected_urls.txt)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/spmedia/Crypto-Scam-and-Crypto-Phishing-Threat-Intel-Feed/blob/main/LICENSE",
+        "quote": "Per-feed terms: CERT.PL Hole (any use incl. commercial; trusted), Phishing.Database (MIT), StevenBlack (MIT), MetaMask eth-phishing-detect (permissive), spmedia (MIT), Botvrij, CyberCrime-Tracker and Procon-SP run with attribution. HaGeZi TIF and ScamSniffer are GPL-3.0 data: runtime download only, never bundled or used as fixtures (A6).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "spmedia",
+      "sanitizer": null,
+      "dataset": "url_domain_blocklists.spmedia.txt",
+      "notes": "Quote: binding council text (P071 cond 2). MIT. ~24 KB / ~1.1k entries, updated about daily: crypto scam category (MEDIUM)."
+    }
+  },
+  "error_markers": []
+}

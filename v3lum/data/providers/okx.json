@@ -1,0 +1,37 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "okx",
+  "name": "OKX (proof-of-reserves address files, manual download only)",
+  "operator": "OKX (Aux Cayes FinTech Co. Ltd. and affiliates)",
+  "hosts": ["www.okx.com"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established exchange operator with published terms, a privacy policy and a business offering (A8 BR2). V3LUM never contacts this host: the analyst downloads the proof-of-reserves file in a browser and imports it with provenance (P358 cond 2).",
+  "tier_reviewer": "batch p2-G09-3 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "A", "justification": "Exchange-published reserve addresses, each with a signed 'I am an OKX address' message (ownership claimed by the exchange itself); snapshots are dated."},
+  "http_profile": {"ttl": 86400},
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "proof_of_reserves": {
+      "title": "OKX proof-of-reserves address file (CSV: coin, network, snapshot height, address, signed message, signatures) - manual download by the analyst",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://www.okx.com/en-br/proof-of-reserves",
+        "quote": "",
+        "checked_at": "2026-11-26",
+        "reviewer": "batch p2-G09-3 (research C0788: 'Exchange website terms (manual download for internal labelling)'; not reviewed by legal)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "okx_por",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Never fetched by V3LUM (JS app; the files sit behind /en-br/proof-of-reserves/download). P358 cond 2: the analyst imports the downloaded file with exchange, PoR date and source URL (crypto_address_labels.import_por_file or the drop folder with a provenance sidecar); signed rows are CONFIRMED ('high'), every PoR label loses one confidence step after 12 months. Live 2026-11-26: the page answers 200 server-side rendered with no address data (Cloudflare __cf_bm, ratelimit-limit 202). File format documented at https://github.com/okx/proof-of-reserves. Not declared by any module as a registry source: imported files are analyst-provided local data; legal to confirm internal-labelling use of the exchange terms."
+    }
+  }
+}

@@ -1,0 +1,124 @@
+{
+ "data": [
+  {
+   "score": 266.31082,
+   "document": {
+    "entityType": "workspace",
+    "id": "70c7199b-6aee-49a6-a90f-025ad614f294",
+    "name": "Test examples in Postman",
+    "slug": "test-examples-in-postman",
+    "summary": "Collections and examples of testing in Postman",
+    "publisherHandle": "postman",
+    "publisherName": "Postman",
+    "publisherType": "team",
+    "isPublisherVerified": true,
+    "collectionCount": 17,
+    "apiCount": 1,
+    "forkCount": 0,
+    "createdAt": "2021-04-29T15:49:06",
+    "updatedAt": "2021-10-20T16:23:20",
+    "lastActivityTime": "2026-11-25T22:08:09.221Z",
+    "tags": [],
+    "isPublic": true
+   }
+  },
+  {
+   "score": 250.04869,
+   "document": {
+    "entityType": "workspace",
+    "id": "e348c5a0-2965-44cc-87ed-7b316516f38d",
+    "name": "Postman API Monitoring Examples",
+    "slug": "postman-api-monitoring-examples",
+    "summary": "Learn API monitoring with these examples using Postman collections and monitors, or share your own examples.",
+    "publisherHandle": "postman",
+    "publisherName": "Postman",
+    "publisherType": "team",
+    "isPublisherVerified": true,
+    "collectionCount": 8,
+    "apiCount": 1,
+    "forkCount": 0,
+    "createdAt": "2021-02-24T22:21:53",
+    "updatedAt": "2021-10-08T15:32:49",
+    "lastActivityTime": "2026-10-26T19:49:55.822Z",
+    "tags": [],
+    "isPublic": true
+   }
+  },
+  {
+   "score": 246.36136,
+   "document": {
+    "entityType": "workspace",
+    "id": "e9bb1adb-2f2e-4ace-a482-38c570d65275",
+    "name": "More Visualizer Examples",
+    "slug": "more-visualizer-examples",
+    "summary": "Collections that show various ways of using Postman's visualizer feature to make sense of data",
+    "publisherHandle": "postman",
+    "publisherName": "Postman",
+    "publisherType": "team",
+    "isPublisherVerified": true,
+    "collectionCount": 6,
+    "apiCount": 0,
+    "forkCount": 0,
+    "createdAt": "2021-07-05T14:10:56",
+    "updatedAt": "2021-07-13T19:22:33",
+    "lastActivityTime": "2026-11-25T20:04:57.394Z",
+    "tags": [],
+    "isPublic": true
+   }
+  }
+ ],
+ "meta": {
+  "queryText": "example.com",
+  "total": {
+   "team": 0,
+   "user": 0,
+   "workspace": 571,
+   "document": 0,
+   "api": 0,
+   "apiDefinition": 0,
+   "specification": 0,
+   "collection": 0,
+   "request": 0,
+   "history": 0,
+   "environment": 0,
+   "mock": 0,
+   "dataset": 0,
+   "flow": 0,
+   "privateNetworkFolder": 0
+  },
+  "spellCorrection": {
+   "count": {
+    "workspace": 571,
+    "all": 571
+   },
+   "correctedQueryText": null
+  },
+  "featureFlags": {
+   "relatedRequestsPrivateNetworkEnabled": false,
+   "enableSkipESRBACFilter": false,
+   "enableWorkspaceLastActivityRecencyBoost": true,
+   "queryTaggerRulesEnabled": false,
+   "queryTaggerGazetteerEnabled": true,
+   "queryTaggerPublicGazetteerEnabled": true,
+   "queryTaggerEntityBoost": false,
+   "queryTaggerNameBoostEnabled": true,
+   "queryTaggerGazetteerRerankBoostEnabled": true,
+   "enableCollectionIndexRouting": false,
+   "enableEnvironmentIndexRouting": false,
+   "enableMockIndexRouting": false,
+   "enableHistoryIndexRouting": true,
+   "v3RequestEnrichment": true,
+   "searchDecompoundingEnabled": true,
+   "queryTaggerMethodHintEnabled": true,
+   "queryTaggerSkipCollectionTags": true,
+   "vectorPublicKnnTuning": false,
+   "vectorKnnInnerFilter": false,
+   "vectorSkipTagBoosts": true,
+   "vectorSkipFunctionBoosts": false,
+   "vectorPublicHarrier": false,
+   "enableLTR": false,
+   "enableLTRLogging": true
+  }
+ },
+ "_note": "fields subset; full response ~70KB"
+}

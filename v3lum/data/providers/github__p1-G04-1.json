@@ -1,0 +1,54 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "github",
+  "hosts": [],
+  "sources": {
+    "email_hygiene_disposable": {
+      "title": "disposable-email-domains blocklist (raw.githubusercontent.com, CC0 1.0): dataset email_hygiene_disposable.conf",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/disposable-email-domains/disposable-email-domains/blob/main/LICENSE.txt",
+        "quote": "CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
+        "checked_at": "2026-11-26",
+        "reviewer": "p1-G04-1 implementer (P088 C2)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "disposable-email-domains",
+      "sanitizer": null,
+      "dataset": "email_hygiene_disposable.conf",
+      "notes": "Research C0205 (verified_live 200, 10,455 domains on 2026-11-25/26, ETag + max-age=300). Bundled copy v3lum/data/email_hygiene/disposable_email_blocklist.conf is the fallback; refreshed weekly by v3lum data update. Entries are PSL-aware: some sit below their registrable domain (agent.qq.com) or under PSL private suffixes (dynv6.net). Used by email_hygiene (P088)."
+    },
+    "email_hygiene_aftership_free": {
+      "title": "AfterShip email-verifier metadata_free.go (free e-mail providers, MIT): dataset email_hygiene_aftership_free.go",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/AfterShip/email-verifier/blob/master/LICENSE",
+        "quote": "MIT License Copyright (c) 2020 AfterShip Permission is hereby granted, free of charge, to any person obtaining a copy of this software",
+        "checked_at": "2026-11-26",
+        "reviewer": "p1-G04-1 implementer (P088 C2)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "aftership-email-verifier",
+      "sanitizer": null,
+      "dataset": "email_hygiene_aftership_free.go",
+      "notes": "Research C0215 (MIT, raw LICENSE verified). Go map literal of 4,535 free-mail domains (2026-11-26). Bundled copy v3lum/data/email_hygiene/aftership_metadata_free.go is the fallback. Used by email_hygiene and email_basics (free_provider)."
+    },
+    "email_hygiene_aftership_role": {
+      "title": "AfterShip email-verifier metadata_role.go (role-account local parts, MIT): dataset email_hygiene_aftership_role.go",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/AfterShip/email-verifier/blob/master/LICENSE",
+        "quote": "MIT License Copyright (c) 2020 AfterShip Permission is hereby granted, free of charge, to any person obtaining a copy of this software",
+        "checked_at": "2026-11-26",
+        "reviewer": "p1-G04-1 implementer (P088 C2)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "aftership-email-verifier",
+      "sanitizer": null,
+      "dataset": "email_hygiene_aftership_role.go",
+      "notes": "Go map literal of 892 role local parts (2026-11-26); merged at run time with the A4 role list of v3lum/data/generic_addresses.json (one list, P088 C2). Bundled copy v3lum/data/email_hygiene/aftership_metadata_role.go is the fallback."
+    }
+  },
+  "error_markers": [],
+  "notes": "Batch p1-G04-1 (P088 email_hygiene): CC0/MIT e-mail hygiene lists bundled and refreshable (AR10)."
+}

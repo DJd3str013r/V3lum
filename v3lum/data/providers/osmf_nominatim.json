@@ -1,0 +1,93 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "osmf_nominatim",
+  "name": "Nominatim geocoding API of OpenStreetMap (nominatim.openstreetmap.org)",
+  "operator": "OpenStreetMap Foundation (UK)",
+  "hosts": [
+    "nominatim.openstreetmap.org"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Run by the OpenStreetMap Foundation, a non-profit with a published usage policy, terms of use and privacy policy; ODbL data (A8 trusted; P262 cond 2: 'Tiers: OSMF trusted').",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Crowd-sourced OSM map data geocoded by the reference Nominatim engine: places are usually right but an address match is approximate (street/postcode/city precision) and never proof of residence (P262 cond 6)."
+  },
+  "http_profile": {
+    "user_agent": "contact",
+    "accept": "application/json",
+    "timeout": 15.0,
+    "retries": 0,
+    "ttl": 2592000,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "rate_per_second": 1.0,
+    "burst": 1,
+    "published": true,
+    "evidence_url": "https://operations.osmfoundation.org/policies/nominatim/",
+    "safety_margin": 0.8
+  },
+  "error_markers": [
+    {
+      "id": "osmf_nominatim_access_blocked",
+      "statuses": [
+        403,
+        418
+      ],
+      "json_path": null,
+      "equals": null,
+      "regex": "(?i)<title>\\s*Access (?:blocked|denied)|usage policy",
+      "final_url_regex": null,
+      "maps_to": "blocked",
+      "reason_code": "challenge",
+      "reason": "Nominatim usage-policy block (HTTP 403 'Access blocked'): the identifying User-Agent with the contact_email role mailbox is required and bulk geocoding is forbidden - could not verify, never 'no place'"
+    },
+    {
+      "id": "osmf_nominatim_bandwidth_limit",
+      "statuses": [
+        429,
+        503,
+        509
+      ],
+      "json_path": null,
+      "equals": null,
+      "regex": "(?i)Bandwidth limit exceeded|Too Many Requests",
+      "final_url_regex": null,
+      "maps_to": "rate_limited",
+      "reason_code": "rate_limited",
+      "reason": "Nominatim temporary block ('Bandwidth limit exceeded'): rate limited - could not verify"
+    }
+  ],
+  "keys": {},
+  "sources": {
+    "geocoding": {
+      "title": "Nominatim /search (structured: street, postal code, city) and /reverse (jsonv2) geocoding",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://operations.osmfoundation.org/policies/nominatim/",
+        "quote": "Requirements: No heavy uses (an absolute maximum of 1 request per second). Provide a valid HTTP Referer or User-Agent identifying the application. Clearly display attribution as suitable for your medium. Data is provided under the ODbL license which requires to share alike. [research C0600 'ODbL 1.0; attribution (c) OpenStreetMap contributors'; P262 cond 1]",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "openstreetmap",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Batch p3-G12-1 (P262 geocoding). Identifying UA with the contact_email role mailbox (PROFILE_REQUIREMENTS: contact; P326), provider bucket 1 req/s per installation, no bulk geocoding, cache 30 days (negative answers included). Live 2026-11-26 from a datacenter egress with a generic UA: /reverse 200 in 0.57 s, the three structured /search attempts and /reverse 0,0 answered HTTP 629 (Varnish edge refusal) - classified rate_limited, never an absence. Documented origin pages: 403/418 'Access blocked', 429/503/509 'Bandwidth limit exceeded'. [] and {'error': 'Unable to geocode'} are documented absences ('no OSM match', never 'address does not exist')."
+    }
+  },
+  "notes": "Owned by batch p3-G12-1 (P262). nominatim.openstreetmap.org was mapped to no provider in the owners table; the map website hosts stay with 'openstreetmap' (p2-G12-1), whose neutral UA profile cannot carry this host (PROFILE_REQUIREMENTS: contact UA)."
+}

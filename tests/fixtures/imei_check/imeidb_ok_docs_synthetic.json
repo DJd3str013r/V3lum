@@ -1,0 +1,47 @@
+{
+ "_envelope": 1,
+ "_synthetic": "response example of https://imeidb.xyz/api (fetched 2026-11-26) re-keyed to the TAC probe 353893100000000 (serial 0); device_image, bluetooth/usb/wlan/speed and frequency dropped. NOT a real token capture: P319-FC5 still needs one",
+ "status": 200,
+ "headers": {
+  "content-type": "application/json; charset=UTF-8"
+ },
+ "body": {
+  "success": true,
+  "query": 353893100000000,
+  "data": {
+   "tac": 35389310,
+   "serial": 0,
+   "controlNumber": 0,
+   "valid": true,
+   "device_id": 9846,
+   "device_spec": {
+    "sim_slots": 1,
+    "os": "iOS 13",
+    "os_family": "iOS",
+    "aliases": [
+     "A2218",
+     "A2161",
+     "A2220"
+    ],
+    "nettech": [
+     "GSM",
+     "CDMA",
+     "HSPA",
+     "EVDO",
+     "LTE"
+    ]
+   },
+   "name": "Apple iPhone 11 Pro Max",
+   "brand": "Apple",
+   "model": "iPhone 11 Pro Max",
+   "models": [
+    "iPhone 11 Pro Max"
+   ],
+   "manufacturer": "Apple Inc",
+   "type": "Smartphone",
+   "blacklist": {
+    "status": false
+   }
+  }
+ }
+}

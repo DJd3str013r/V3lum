@@ -1,0 +1,32 @@
+{
+ "ip": {
+  "number": "1.1.1.1",
+  "count": null,
+  "attacks": null,
+  "maxdate": null,
+  "mindate": null,
+  "updated": null,
+  "comment": null,
+  "maxrisk": null,
+  "asabusecontact": "abuse@cloudflare.com",
+  "as": 13335,
+  "asname": "CLOUDFLARENET",
+  "ascountry": "US",
+  "assize": 2500608,
+  "network": "1.1.1.0/24",
+  "threatfeeds": {
+   "mastodon": {
+    "lastseen": "2026-11-25",
+    "firstseen": "2023-07-13"
+   },
+   "openresolver": {
+    "lastseen": "2026-11-25",
+    "firstseen": "2022-02-04"
+   },
+   "rosti": {
+    "lastseen": "2026-11-10",
+    "firstseen": "2024-06-17"
+   }
+  }
+ }
+}

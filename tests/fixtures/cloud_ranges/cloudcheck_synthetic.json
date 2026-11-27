@@ -1,0 +1,122 @@
+{
+ "_synthetic": "cloud_providers_v3.json schema only, documentation values; no cloudcheck (AGPL-3.0 repo) data is copied (P034 FC3, A6)",
+ "Akamai": {
+  "asns": [
+   64496
+  ],
+  "cidrs": [
+   "198.51.100.0/25",
+   "2001:db8:a::/48"
+  ],
+  "domains": [
+   "example.com"
+  ],
+  "last_updated": 1795588679.0,
+  "name": "Akamai",
+  "org_ids": [
+   "ORG-EXAMPLE1-RIPE"
+  ],
+  "regexes": {},
+  "short_description": "Akamai (synthetic)",
+  "long_description": "synthetic",
+  "tags": [
+   "cloud"
+  ],
+  "v2fly_company": "akamai"
+ },
+ "DigitalOcean": {
+  "asns": [
+   64497
+  ],
+  "cidrs": [
+   "198.51.100.128/25"
+  ],
+  "domains": [
+   "example.net"
+  ],
+  "last_updated": 1795588679.0,
+  "name": "DigitalOcean",
+  "org_ids": [],
+  "regexes": {
+   "STORAGE_BUCKET_HOSTNAME": [
+    "[a-z0-9-]+\\.example\\.net"
+   ]
+  },
+  "short_description": "DigitalOcean (synthetic)",
+  "long_description": "synthetic",
+  "tags": [
+   "cloud"
+  ],
+  "v2fly_company": ""
+ },
+ "Zscaler": {
+  "asns": [],
+  "cidrs": [
+   "203.0.113.0/26"
+  ],
+  "domains": [],
+  "last_updated": 1795588679.0,
+  "name": "Zscaler",
+  "org_ids": [],
+  "regexes": {},
+  "short_description": "Zscaler (synthetic)",
+  "long_description": "synthetic",
+  "tags": [
+   "cloud"
+  ],
+  "v2fly_company": ""
+ },
+ "DoD": {
+  "asns": [],
+  "cidrs": [
+   "203.0.113.64/26"
+  ],
+  "domains": [],
+  "last_updated": 1795588679.0,
+  "name": "DoD",
+  "org_ids": [],
+  "regexes": {},
+  "short_description": "DoD (synthetic)",
+  "long_description": "synthetic",
+  "tags": [
+   "gov"
+  ],
+  "v2fly_company": ""
+ },
+ "Amazon": {
+  "asns": [],
+  "cidrs": [
+   "18.228.0.0/16",
+   "18.228.1.0/24"
+  ],
+  "domains": [],
+  "last_updated": 1795588679.0,
+  "name": "Amazon",
+  "org_ids": [],
+  "regexes": {},
+  "short_description": "Amazon (synthetic)",
+  "long_description": "synthetic",
+  "tags": [
+   "cloud"
+  ],
+  "v2fly_company": "amazon"
+ },
+ "Newcdn": {
+  "asns": [],
+  "cidrs": [
+   "203.0.113.128/26",
+   "not-a-cidr"
+  ],
+  "domains": [],
+  "last_updated": 1795588679.0,
+  "name": "Newcdn",
+  "org_ids": [],
+  "regexes": {},
+  "short_description": "unmapped CDN (synthetic)",
+  "long_description": "synthetic",
+  "tags": [
+   "cdn"
+  ],
+  "v2fly_company": ""
+ }
+}

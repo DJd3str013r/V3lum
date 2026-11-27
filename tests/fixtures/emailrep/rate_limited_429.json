@@ -1,0 +1,12 @@
+{
+ "_envelope": 1,
+ "_source": "research sample live_osint__auth_and_block_responses.json (emailrep_json, GET with Accept: application/json and no key, 2026-11-25): the anonymous API is disabled",
+ "status": 429,
+ "headers": {
+  "content-type": "application/json; charset=UTF-8"
+ },
+ "body": {
+  "status": "fail",
+  "reason": "the unauthenticated API is currently disabled. please use an API key"
+ }
+}

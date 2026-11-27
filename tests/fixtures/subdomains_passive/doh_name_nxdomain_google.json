@@ -1,0 +1,24 @@
+{
+ "Status": 3,
+ "TC": false,
+ "RD": true,
+ "RA": true,
+ "AD": true,
+ "CD": false,
+ "Question": [
+  {
+   "name": "zz-nonexistent-label-7q3.nic.br.",
+   "type": 1
+  }
+ ],
+ "Authority": [
+  {
+   "name": "nic.br.",
+   "type": 6,
+   "TTL": 900,
+   "data": "a.dns.br. hostmaster.registro.br. 2026112600 1800 900 604800 900"
+  }
+ ],
+ "edns_client_subnet": "0.0.0.0/0",
+ "Comment": "Response from 2001:12f8:4::10."
+}

@@ -37,9 +37,13 @@ entities they are scheduled. What decides, what runs and what is recorded:
 * **Coverage v2** (P328): ``case.coverage[module]`` (summary status ranked by
   :data:`COVERAGE_RANK`, per-entity rows, per-source rows), ``case.execution``, ``case.answered``,
   ``case.skips``, ``case.deferred``, ``case.licence_used`` and the manual-link fallback (P311 cond 9).
-* **Suppression stage** at the start of ``_finish`` (P322): SUP-warninglist, SUP-sinkhole and
+* **Analyst overrides** first in ``_finish`` (P322 cond 3): ``Engine(overrides=Store.overrides_for)``
+  applies the stored decisions by deterministic finding id (:meth:`Engine.apply_overrides`).
+* **Suppression stage** next (P322): SUP-warninglist, SUP-sinkhole and
   SUP-generic_address downgrade findings through ``Finding.downgrade`` (never deleting, never
-  crossing an analyst override); then correlation rules, scoring and the pack links.
+  crossing an analyst override); then correlation rules, scoring (risk model v2, P302:
+  ``scoring.score`` with ``source_reliability``, ``runtime.now()`` and the case coverage/answered
+  rows) and the pack links.
 * **Case hooks**: ``runtime.case_hooks`` objects with ``on_case_start(case)``,
   ``on_before_finish(case)`` (after the BFS, before suppression/correlation/scoring) and
   ``on_case_end(case)``.
@@ -58,7 +62,7 @@ import threading
 import time
 import traceback
 from collections import Counter
-from collections.abc import Iterable
+from collections.abc import Callable, Iterable, Mapping
 from concurrent.futures import FIRST_COMPLETED, Future, ThreadPoolExecutor, wait
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -229,7 +233,7 @@ class CaseResult:
             "options": self.options.to_dict(),
             "summary": {
                 "risk_score": self.risk.get("score", 0.0),
-                "risk_level": self.risk.get("level", "clean"),
+                "risk_level": self.risk.get("level", scoring.NO_FINDINGS),
                 "entities": len(self.graph.nodes),
                 "investigated": sum(1 for n in self.graph.nodes.values() if n.investigated),
                 "relations": len(self.graph.edges),
@@ -489,12 +493,26 @@ class _Job:
 class Engine:
     """Runs modules on entities through the policy gate and investigates seeds (see the module doc)."""
 
-    def __init__(self, runtime: Runtime, options: ScanOptions | None = None, *, reliability: dict[str, float] | None = None) -> None:
+    def __init__(
+        self,
+        runtime: Runtime,
+        options: ScanOptions | None = None,
+        *,
+        reliability: dict[str, float] | None = None,
+        source_reliability: Mapping[str, float] | None = None,
+        overrides: Callable[[list[str]], Mapping[str, Mapping[str, Any]]] | None = None,
+    ) -> None:
+        """``reliability``: v1 ``{module: weight}`` (``Store.reliability()``); ``source_reliability``:
+        ``{source_id: weight}`` (``Store.source_reliability()``, P302 R_src); ``overrides``:
+        ``callable(finding_ids) -> {finding_id: override dict}`` (``Store.overrides_for``), applied by
+        ``_finish`` before suppression, correlations and scoring (P322 cond 3)."""
         self.runtime = runtime
         self.options = options or ScanOptions()
         if self.options.include_disabled and self.options.preset != "deep":
             self.options.preset = "deep"  # --all-modules is an alias of --preset deep (A3)
         self.reliability = reliability or {}
+        self.source_reliability = dict(source_reliability) if source_reliability is not None else None
+        self.overrides = overrides
         self._pctx: Any = None  # the PolicyContext of the running investigation
         self._pctx_error = ""
         load_modules(extra_dirs=[str(paths.plugins_dir())])
@@ -884,6 +902,44 @@ class Engine:
                 except Exception as exc:  # noqa: BLE001
                     log.warning("health state not saved: %s", type(exc).__name__)
 
+    def apply_overrides(self, case: CaseResult) -> int:
+        """Apply the stored analyst decisions (``overrides(finding_ids)``) to the case findings through
+        ``Finding.apply_override`` - before suppression, correlations and scoring, so the analyst's
+        decision wins and survives re-runs (P322 cond 3). Returns how many findings got one; a failing
+        lookup leaves the findings unchanged and adds a case note (never breaks the scan)."""
+        lookup = self.overrides
+        if not callable(lookup):
+            return 0
+        findings = case.graph.findings()
+        if not findings:
+            return 0
+        ids = [f.ensure_id() for f in findings]
+        try:
+            decisions = lookup(ids) or {}
+        except Exception as exc:  # noqa: BLE001 - the case DB is optional for a scan
+            log.warning("analyst overrides unavailable: %s", type(exc).__name__)
+            case.notes.append(f"analyst overrides not applied: lookup failed ({type(exc).__name__})")
+            return 0
+        applied = 0
+        for f in findings:
+            decision = decisions.get(f.id) if isinstance(decisions, Mapping) else None
+            if not isinstance(decision, Mapping) or not decision:
+                continue
+            try:
+                f.apply_override(
+                    label=decision.get("label") or None,
+                    severity=decision.get("severity") or None,
+                    verdict=decision.get("verdict") or None,
+                    analyst=str(decision.get("analyst") or ""),
+                    note=str(decision.get("note") or ""),
+                    at=str(decision.get("at") or ""),
+                )
+            except (KeyError, TypeError, ValueError) as exc:
+                log.warning("analyst override of %s not applied: %s", f.id, type(exc).__name__)
+                continue
+            applied += 1
+        return applied
+
     def rule_context(self) -> correlate.RuleContext:
         """The RuleContext handed to correlation rules after the BFS."""
         rt = self.runtime
@@ -901,14 +957,23 @@ class Engine:
         )
 
     def _finish(self, case: CaseResult) -> None:
-        """Suppression stage, correlation rules, scoring and the manual pivot links."""
+        """Analyst overrides, suppression stage, correlation rules, scoring (P302) and the manual
+        pivot links."""
         graph = case.graph
+        self.apply_overrides(case)
         suppress(case)
         _inconclusive_note(case)
         case.correlations = correlate.run_rules(graph, case.results, rctx=self.rule_context())
         for corr in case.correlations:
             self.runtime.events.emit("correlation", correlation=corr)
-        case.risk = scoring.score(graph, case.correlations, self.reliability)
+        case.risk = scoring.score(
+            graph,
+            case.correlations,
+            self.reliability,
+            source_reliability=self.source_reliability,
+            now=self.runtime.now(),
+            coverage={"coverage": case.coverage, "answered": case.answered},
+        )
         # Manual pivot links for the most relevant entities, with the metadata the renderers need
         # (P311 cond 5-8: host, touches_target, privacy, badge...). privacy=true links only for
         # analyst-typed seeds of a case that opted in (P311 cond 6), never for discovered entities.
@@ -942,7 +1007,9 @@ class _Scan:
         if not _CASE_ID_RE.match(case_id):  # it names a directory: never a path
             raise ValueError(f"invalid case id {case_id!r}")
         self.case_dir = paths.cases_dir() / case_id
-        self.evidence = EvidenceStore(self.case_dir, now=rt.now) if opts.save_evidence else None
+        self.evidence = (
+            EvidenceStore(self.case_dir, now=rt.now, settings=getattr(rt, "config", None), case_id=case_id) if opts.save_evidence else None
+        )
         self.graph = Graph()
         self.case = CaseResult(
             case_id=case_id,
@@ -1747,7 +1814,7 @@ def _inconclusive_note(case: CaseResult) -> None:
         why.append(f"{opt_in} opt-in source module(s) not run: use --preset deep or -M <name>")
     if unverified:
         why.append(f"{unverified} run(s) could not verify")
-    case.notes.append("inconclusive: no source answered" + (f" ({'; '.join(why)})" if why else "") + " - a 'clean' risk level is not a verdict")
+    case.notes.append("inconclusive: no source answered" + (f" ({'; '.join(why)})" if why else "") + " - the risk level is not a verdict")
 
 
 def _answered(seed: Entity, results: list[ModuleResult]) -> dict[str, Any]:

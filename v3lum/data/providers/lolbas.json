@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "lolbas",
+  "name": "LOLBAS Project (Living Off The Land Binaries, Scripts and Libraries)",
+  "operator": "LOLBAS Project (community, GitHub LOLBAS-Project)",
+  "hosts": [
+    "lolbas-project.github.io"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Long-standing community project (LOLBAS-Project on GitHub since 2018) with public documentation and an open licence: A8 community. Offline use only (disclosure none: tier n/a).",
+  "tier_reviewer": "batch p2-G07-1 (A8 community definition)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Curated list of Windows binaries with documented abuse functions and ATT&CK ids; a name match says only that a binary can be abused, never that it was (P268 cond 5: context only)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "dataset": {
+      "title": "LOLBAS api/lolbas.json (binary names, commands, categories, ATT&CK ids, paths)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/LOLBAS-Project/LOLBAS/blob/master/LICENSE",
+        "quote": "GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 (LICENSE of LOLBAS-Project/LOLBAS, fetched 2026-11-26): GPL-3.0 data, downloaded at runtime only and never bundled (A6), which is 'open' under the A1 definitions.",
+        "checked_at": "2026-11-26",
+        "reviewer": "batch p2-G07-1 (licence file verified live 2026-11-26)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "lolbas",
+      "sanitizer": null,
+      "dataset": "lol_datasets.lolbas.json",
+      "notes": "https://lolbas-project.github.io/api/lolbas.json (447 KB, 246 entries on 2026-11-26). Runtime download into ~/.v3lum/datasets only (GPL-3.0, P268 cond 2); never bundled."
+    }
+  },
+  "notes": "Owned by batch p2-G07-1 (P268). Exact GitHub Pages host (a *.github.io wildcard would cover unrelated sites)."
+}

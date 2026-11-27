@@ -1,0 +1,23 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://www.onyphe.io/api/v2/summary/ip/198.51.100.20"
+ },
+ "response": {
+  "status": 429,
+  "headers": {
+   "Content-Type": "application/json"
+  },
+  "body": {
+   "count": 0,
+   "error": 4,
+   "myip": "203.0.113.10",
+   "status": "nok",
+   "text": "Rate limit reached, please slow down",
+   "took": 0,
+   "total": 0
+  }
+ },
+ "observed": "synthetic",
+ "note": "Rate limit. Code/text guessed; the marker keys on HTTP 429 and the words."
+}

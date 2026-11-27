@@ -1,0 +1,57 @@
+{
+ "0": {
+  "cik_str": 320193,
+  "ticker": "AAPL",
+  "title": "Apple Inc."
+ },
+ "1": {
+  "cik_str": 789019,
+  "ticker": "MSFT",
+  "title": "MICROSOFT CORP"
+ },
+ "2": {
+  "cik_str": 1652044,
+  "ticker": "GOOGL",
+  "title": "Alphabet Inc."
+ },
+ "148": {
+  "cik_str": 1119639,
+  "ticker": "PBR",
+  "title": "PETROBRAS - PETROLEO BRASILEIRO SA"
+ },
+ "159": {
+  "cik_str": 1477333,
+  "ticker": "NET",
+  "title": "Cloudflare, Inc."
+ },
+ "233": {
+  "cik_str": 1132597,
+  "ticker": "ITUB",
+  "title": "Itau Unibanco Holding S.A."
+ },
+ "3000": {
+  "cik_str": 2152623,
+  "ticker": "NAVI",
+  "title": "Navient Holdings, Inc."
+ },
+ "5093": {
+  "cik_str": 732026,
+  "ticker": "TRT",
+  "title": "TRIO-TECH INTERNATIONAL"
+ },
+ "7412": {
+  "cik_str": 1652044,
+  "ticker": "GOOG",
+  "title": "Alphabet Inc."
+ },
+ "7466": {
+  "cik_str": 1119639,
+  "ticker": "PBR-A",
+  "title": "PETROBRAS - PETROLEO BRASILEIRO SA"
+ },
+ "7844": {
+  "cik_str": 1641601,
+  "ticker": "RVRF",
+  "title": "River Financial Corp"
+ }
+}

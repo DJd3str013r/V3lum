@@ -1,0 +1,29 @@
+{
+ "request": {
+  "method": "POST",
+  "url": "https://misp.example.com/attributes/restSearch",
+  "headers": {
+   "Authorization": "<invalid key, value not stored>",
+   "Accept": "application/json",
+   "Content-Type": "application/json"
+  },
+  "json": {
+   "value": "198.51.100.23",
+   "limit": 50
+  }
+ },
+ "response": {
+  "status": 403,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": {
+   "name": "Authentication failed. Please make sure you pass the API key of an API enabled user along in the Authorization header.",
+   "message": "Authentication failed. Please make sure you pass the API key of an API enabled user along in the Authorization header.",
+   "url": "/attributes/restSearch"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "UnauthorizedApiErrorResponse of the MISP 2.5 OpenAPI"
+}

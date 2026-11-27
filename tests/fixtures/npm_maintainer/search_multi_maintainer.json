@@ -1,0 +1,132 @@
+{
+ "objects": [
+  {
+   "package": {
+    "name": "example-pkg-a",
+    "version": "1.4.0",
+    "description": "Example package",
+    "date": "2019-05-01T10:00:00.000Z",
+    "links": {
+     "npm": "https://www.npmjs.com/package/example-pkg-a",
+     "repository": "git+https://github.com/example-dev/example-pkg-a.git",
+     "homepage": "https://github.com/example-dev/example-pkg-a#readme"
+    },
+    "publisher": {
+     "username": "example-dev",
+     "email": "dev@example.com"
+    },
+    "maintainers": [
+     {
+      "username": "example-dev",
+      "email": "dev@example.com"
+     }
+    ]
+   }
+  },
+  {
+   "package": {
+    "name": "example-pkg-b",
+    "version": "2.0.1",
+    "description": "Example package",
+    "date": "2021-03-10T10:00:00.000Z",
+    "links": {
+     "npm": "https://www.npmjs.com/package/example-pkg-b"
+    },
+    "publisher": {
+     "username": "co-maintainer-1",
+     "email": "co1@example.org"
+    },
+    "maintainers": [
+     {
+      "username": "example-dev",
+      "email": "dev@example.com"
+     },
+     {
+      "username": "co-maintainer-1",
+      "email": "co1@example.org"
+     },
+     {
+      "username": "co-maintainer-2",
+      "email": "co2@example.net"
+     }
+    ]
+   }
+  },
+  {
+   "package": {
+    "name": "@example-org/pkg-c",
+    "version": "0.3.0",
+    "description": "Example package",
+    "date": "2024-07-01T10:00:00.000Z",
+    "links": {
+     "npm": "https://www.npmjs.com/package/@example-org/pkg-c"
+    },
+    "publisher": {
+     "username": "GitHub Actions",
+     "email": "publisher-oidc@example.org",
+     "trustedPublisher": {
+      "id": "github"
+     }
+    },
+    "maintainers": [
+     {
+      "username": "Example-Dev",
+      "email": "Dev@Work.Example.NET"
+     },
+     {
+      "username": "co-maintainer-3",
+      "email": "co3@example.org"
+     }
+    ]
+   }
+  },
+  {
+   "package": {
+    "name": "unrelated-pkg",
+    "version": "9.9.9",
+    "description": "Example package",
+    "date": "2020-01-01T10:00:00.000Z",
+    "links": {
+     "npm": "https://www.npmjs.com/package/unrelated-pkg"
+    },
+    "publisher": {
+     "username": "someone-else",
+     "email": "else@example.org"
+    },
+    "maintainers": [
+     {
+      "username": "someone-else",
+      "email": "else@example.org"
+     }
+    ]
+   }
+  },
+  {
+   "package": {
+    "name": "example-pkg-d",
+    "version": "0.0.1",
+    "description": "Example package",
+    "date": "2018-02-02T10:00:00.000Z",
+    "links": {
+     "npm": "https://www.npmjs.com/package/example-pkg-d"
+    },
+    "publisher": {
+     "username": "example-dev",
+     "email": "dev@example.com"
+    },
+    "maintainers": [
+     {
+      "username": "example-dev",
+      "email": "dev@example.com"
+     },
+     {
+      "username": "co-maintainer-1",
+      "email": "contact@example.org"
+     }
+    ]
+   }
+  }
+ ],
+ "total": 5,
+ "time": "2026-11-26T07:00:00.000Z"
+}

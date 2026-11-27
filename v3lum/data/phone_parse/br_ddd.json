@@ -1,0 +1,572 @@
+{
+ "name": "br_ddd",
+ "description": "Brazilian DDD (national code, CN) -> UF(s) and main city",
+ "source": "Anatel - Cadastro Nacional de Localidades (CNL), public download of the AreaArea system (LoPubCNL layout, one file per UF)",
+ "source_url": "https://sistemas.anatel.gov.br/areaarea/N_Download/Tela.asp?varMod=Publico&SISQSmodulo=7179",
+ "generated_at": "2026-11-26",
+ "licence": "Brazilian open government data (Anatel public information, Lei 12.527/2011)",
+ "attribution": "Fonte: Anatel (Cadastro Nacional de Localidades). Main cities of DDDs without a state capital: IBGE Censo 2022 (table 4709).",
+ "generator": "v3lum.modules.phone.phone_parse.main (build_br_ddd_table)",
+ "inputs": {
+  "files": 27,
+  "localities": 51237,
+  "sha256": "49d91f53fe0cd4d2fa14a652345008a1f4b7b2e6f56418559c61e298e8798e44"
+ },
+ "rules": "uf = UF of the main city; ufs = main UF + bordering UFs with municipalities in the DDD; main_city = state capital when it is an area centre of the DDD, else MAIN_CITY_OVERRIDES",
+ "anomalies": [
+  {
+   "ddd": "48",
+   "uf": "SP",
+   "municipio": "Bariri",
+   "reason": "SP does not border SC"
+  },
+  {
+   "ddd": "51",
+   "uf": "MT",
+   "municipio": "Boa Esperança do Norte",
+   "reason": "MT does not border RS"
+  }
+ ],
+ "ddd": {
+  "11": {
+   "uf": "SP",
+   "ufs": [
+    "SP"
+   ],
+   "main_city": "São Paulo",
+   "main_city_basis": "state capital"
+  },
+  "12": {
+   "uf": "SP",
+   "ufs": [
+    "SP"
+   ],
+   "main_city": "São José dos Campos",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "13": {
+   "uf": "SP",
+   "ufs": [
+    "SP"
+   ],
+   "main_city": "Santos",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "14": {
+   "uf": "SP",
+   "ufs": [
+    "SP"
+   ],
+   "main_city": "Bauru",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "15": {
+   "uf": "SP",
+   "ufs": [
+    "SP"
+   ],
+   "main_city": "Sorocaba",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "16": {
+   "uf": "SP",
+   "ufs": [
+    "SP"
+   ],
+   "main_city": "Ribeirão Preto",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "17": {
+   "uf": "SP",
+   "ufs": [
+    "SP"
+   ],
+   "main_city": "São José do Rio Preto",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "18": {
+   "uf": "SP",
+   "ufs": [
+    "SP"
+   ],
+   "main_city": "Presidente Prudente",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "19": {
+   "uf": "SP",
+   "ufs": [
+    "SP"
+   ],
+   "main_city": "Campinas",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "21": {
+   "uf": "RJ",
+   "ufs": [
+    "RJ"
+   ],
+   "main_city": "Rio de Janeiro",
+   "main_city_basis": "state capital"
+  },
+  "22": {
+   "uf": "RJ",
+   "ufs": [
+    "RJ"
+   ],
+   "main_city": "Campos dos Goytacazes",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "24": {
+   "uf": "RJ",
+   "ufs": [
+    "RJ"
+   ],
+   "main_city": "Petrópolis",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "27": {
+   "uf": "ES",
+   "ufs": [
+    "ES"
+   ],
+   "main_city": "Vitória",
+   "main_city_basis": "state capital"
+  },
+  "28": {
+   "uf": "ES",
+   "ufs": [
+    "ES"
+   ],
+   "main_city": "Cachoeiro de Itapemirim",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "31": {
+   "uf": "MG",
+   "ufs": [
+    "MG"
+   ],
+   "main_city": "Belo Horizonte",
+   "main_city_basis": "state capital"
+  },
+  "32": {
+   "uf": "MG",
+   "ufs": [
+    "MG"
+   ],
+   "main_city": "Juiz de Fora",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "33": {
+   "uf": "MG",
+   "ufs": [
+    "MG"
+   ],
+   "main_city": "Governador Valadares",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "34": {
+   "uf": "MG",
+   "ufs": [
+    "MG"
+   ],
+   "main_city": "Uberlândia",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "35": {
+   "uf": "MG",
+   "ufs": [
+    "MG"
+   ],
+   "main_city": "Poços de Caldas",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "37": {
+   "uf": "MG",
+   "ufs": [
+    "MG"
+   ],
+   "main_city": "Divinópolis",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "38": {
+   "uf": "MG",
+   "ufs": [
+    "MG"
+   ],
+   "main_city": "Montes Claros",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "41": {
+   "uf": "PR",
+   "ufs": [
+    "PR"
+   ],
+   "main_city": "Curitiba",
+   "main_city_basis": "state capital"
+  },
+  "42": {
+   "uf": "PR",
+   "ufs": [
+    "PR",
+    "SC"
+   ],
+   "main_city": "Ponta Grossa",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "43": {
+   "uf": "PR",
+   "ufs": [
+    "PR"
+   ],
+   "main_city": "Londrina",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "44": {
+   "uf": "PR",
+   "ufs": [
+    "PR"
+   ],
+   "main_city": "Maringá",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "45": {
+   "uf": "PR",
+   "ufs": [
+    "PR"
+   ],
+   "main_city": "Cascavel",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "46": {
+   "uf": "PR",
+   "ufs": [
+    "PR"
+   ],
+   "main_city": "Francisco Beltrão",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "47": {
+   "uf": "SC",
+   "ufs": [
+    "SC",
+    "PR"
+   ],
+   "main_city": "Joinville",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "48": {
+   "uf": "SC",
+   "ufs": [
+    "SC"
+   ],
+   "main_city": "Florianópolis",
+   "main_city_basis": "state capital"
+  },
+  "49": {
+   "uf": "SC",
+   "ufs": [
+    "SC",
+    "PR"
+   ],
+   "main_city": "Chapecó",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "51": {
+   "uf": "RS",
+   "ufs": [
+    "RS"
+   ],
+   "main_city": "Porto Alegre",
+   "main_city_basis": "state capital"
+  },
+  "53": {
+   "uf": "RS",
+   "ufs": [
+    "RS"
+   ],
+   "main_city": "Pelotas",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "54": {
+   "uf": "RS",
+   "ufs": [
+    "RS"
+   ],
+   "main_city": "Caxias do Sul",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "55": {
+   "uf": "RS",
+   "ufs": [
+    "RS"
+   ],
+   "main_city": "Santa Maria",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "61": {
+   "uf": "DF",
+   "ufs": [
+    "DF",
+    "GO"
+   ],
+   "main_city": "Brasília",
+   "main_city_basis": "state capital"
+  },
+  "62": {
+   "uf": "GO",
+   "ufs": [
+    "GO"
+   ],
+   "main_city": "Goiânia",
+   "main_city_basis": "state capital"
+  },
+  "63": {
+   "uf": "TO",
+   "ufs": [
+    "TO"
+   ],
+   "main_city": "Palmas",
+   "main_city_basis": "state capital"
+  },
+  "64": {
+   "uf": "GO",
+   "ufs": [
+    "GO"
+   ],
+   "main_city": "Rio Verde",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "65": {
+   "uf": "MT",
+   "ufs": [
+    "MT"
+   ],
+   "main_city": "Cuiabá",
+   "main_city_basis": "state capital"
+  },
+  "66": {
+   "uf": "MT",
+   "ufs": [
+    "MT"
+   ],
+   "main_city": "Rondonópolis",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "67": {
+   "uf": "MS",
+   "ufs": [
+    "MS"
+   ],
+   "main_city": "Campo Grande",
+   "main_city_basis": "state capital"
+  },
+  "68": {
+   "uf": "AC",
+   "ufs": [
+    "AC"
+   ],
+   "main_city": "Rio Branco",
+   "main_city_basis": "state capital"
+  },
+  "69": {
+   "uf": "RO",
+   "ufs": [
+    "RO"
+   ],
+   "main_city": "Porto Velho",
+   "main_city_basis": "state capital"
+  },
+  "71": {
+   "uf": "BA",
+   "ufs": [
+    "BA"
+   ],
+   "main_city": "Salvador",
+   "main_city_basis": "state capital"
+  },
+  "73": {
+   "uf": "BA",
+   "ufs": [
+    "BA"
+   ],
+   "main_city": "Itabuna",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "74": {
+   "uf": "BA",
+   "ufs": [
+    "BA"
+   ],
+   "main_city": "Juazeiro",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "75": {
+   "uf": "BA",
+   "ufs": [
+    "BA"
+   ],
+   "main_city": "Feira de Santana",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "77": {
+   "uf": "BA",
+   "ufs": [
+    "BA"
+   ],
+   "main_city": "Vitória da Conquista",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "79": {
+   "uf": "SE",
+   "ufs": [
+    "SE"
+   ],
+   "main_city": "Aracaju",
+   "main_city_basis": "state capital"
+  },
+  "81": {
+   "uf": "PE",
+   "ufs": [
+    "PE"
+   ],
+   "main_city": "Recife",
+   "main_city_basis": "state capital"
+  },
+  "82": {
+   "uf": "AL",
+   "ufs": [
+    "AL"
+   ],
+   "main_city": "Maceió",
+   "main_city_basis": "state capital"
+  },
+  "83": {
+   "uf": "PB",
+   "ufs": [
+    "PB"
+   ],
+   "main_city": "João Pessoa",
+   "main_city_basis": "state capital"
+  },
+  "84": {
+   "uf": "RN",
+   "ufs": [
+    "RN"
+   ],
+   "main_city": "Natal",
+   "main_city_basis": "state capital"
+  },
+  "85": {
+   "uf": "CE",
+   "ufs": [
+    "CE"
+   ],
+   "main_city": "Fortaleza",
+   "main_city_basis": "state capital"
+  },
+  "86": {
+   "uf": "PI",
+   "ufs": [
+    "PI"
+   ],
+   "main_city": "Teresina",
+   "main_city_basis": "state capital"
+  },
+  "87": {
+   "uf": "PE",
+   "ufs": [
+    "PE"
+   ],
+   "main_city": "Petrolina",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "88": {
+   "uf": "CE",
+   "ufs": [
+    "CE"
+   ],
+   "main_city": "Juazeiro do Norte",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "89": {
+   "uf": "PI",
+   "ufs": [
+    "PI"
+   ],
+   "main_city": "Picos",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "91": {
+   "uf": "PA",
+   "ufs": [
+    "PA"
+   ],
+   "main_city": "Belém",
+   "main_city_basis": "state capital"
+  },
+  "92": {
+   "uf": "AM",
+   "ufs": [
+    "AM"
+   ],
+   "main_city": "Manaus",
+   "main_city_basis": "state capital"
+  },
+  "93": {
+   "uf": "PA",
+   "ufs": [
+    "PA"
+   ],
+   "main_city": "Santarém",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "94": {
+   "uf": "PA",
+   "ufs": [
+    "PA"
+   ],
+   "main_city": "Parauapebas",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "95": {
+   "uf": "RR",
+   "ufs": [
+    "RR"
+   ],
+   "main_city": "Boa Vista",
+   "main_city_basis": "state capital"
+  },
+  "96": {
+   "uf": "AP",
+   "ufs": [
+    "AP"
+   ],
+   "main_city": "Macapá",
+   "main_city_basis": "state capital"
+  },
+  "97": {
+   "uf": "AM",
+   "ufs": [
+    "AM"
+   ],
+   "main_city": "Tefé",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  },
+  "98": {
+   "uf": "MA",
+   "ufs": [
+    "MA"
+   ],
+   "main_city": "São Luís",
+   "main_city_basis": "state capital"
+  },
+  "99": {
+   "uf": "MA",
+   "ufs": [
+    "MA"
+   ],
+   "main_city": "Imperatriz",
+   "main_city_basis": "reviewed override: most populous area centre (IBGE Censo 2022)"
+  }
+ }
+}

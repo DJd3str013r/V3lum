@@ -1,0 +1,24 @@
+{
+ "ip": "185.220.101.1",
+ "is_bogon": false,
+ "is_vpn": false,
+ "is_relay": false,
+ "is_tor": true,
+ "is_bot": false,
+ "is_anycast": false,
+ "tor": {
+  "confidence": "high",
+  "last_seen": "2026-11-25"
+ },
+ "asn": {
+  "asn": 60729,
+  "name": "Stiftung Erneuerbare Freiheit",
+  "domain": "zwiebelfreunde.de",
+  "type": "hosting",
+  "prefix": "185.220.101.0/24"
+ },
+ "location": {
+  "country": "DE"
+ },
+ "hostname": "berlin01.tor-exit.artikel10.org"
+}

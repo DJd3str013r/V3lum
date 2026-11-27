@@ -1,0 +1,21 @@
+{
+ "_meta": {
+  "module": "org_code_footprint",
+  "case": "pypi_org_not_found",
+  "source": "C0761 pypi.org",
+  "request": {
+   "method": "GET",
+   "url": "https://pypi.org/org/qz7k2v9m4p1w8n3x5c6b/"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "LIVE",
+  "elapsed_s": 0.13,
+  "note": "title kept, body trimmed"
+ },
+ "status": 404,
+ "headers": {
+  "content-type": "text/html; charset=UTF-8",
+  "server": "gunicorn"
+ },
+ "body": "<!DOCTYPE html><html><head><title>Page Not Found (404) · PyPI</title></head><body><h1>404</h1><p>We looked everywhere but couldn't find this page</p></body></html>"
+}

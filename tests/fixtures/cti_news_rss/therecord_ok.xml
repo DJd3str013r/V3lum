@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>The Record from Recorded Future News</title>
+        <link>https://therecord.media/feed</link>
+        <description>The Record by Recorded Future News gives exclusive, behind-the-scenes access to leaders, policymakers, researchers, and the shadows of the cyber underground.</description>
+        <lastBuildDate>Wed, 25 Nov 2026 21:18:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>The Record from Recorded Future News</generator>
+        <language>en</language>
+        <copyright>Copyright © 2026 | The Record from Recorded Future News</copyright>
+        <item>
+            <title><![CDATA[Microsoft: China’s Salt Typhoon hackers are using Artex ]]></title>
+            <link>https://therecord.media/microsoft-china-salt-typhoon-using-artex-ai-tool</link>
+            <guid>https://therecord.media/microsoft-china-salt-typhoon-using-artex-ai-tool</guid>
+            <pubDate>Wed, 25 Nov 2026 21:18:00 GMT</pubDate>
+            <description><![CDATA[An AI tool implicated in several high-profile breaches is rapidly being integrated into the hacking suites of groups from China and North Korea, Microsoft said.]]></description>
+            <category>China</category>
+            <category>Cybercrime</category>
+            <category>News</category>
+            <category>Industry</category>
+            <enclosure url="http://cms.therecord.media/uploads/microsoft_sign_pexels_altabena_efbc5ae4db.jpg" length="0" type="image/jpg"/>
+        </item>
+<item>
+            <title><![CDATA[FIFA says hackers accessed ‘limited set of personal and business information’]]></title>
+            <link>https://therecord.media/fifa-data-breach-limited</link>
+            <guid>https://therecord.media/fifa-data-breach-limited</guid>
+            <pubDate>Wed, 25 Nov 2026 20:40:00 GMT</pubDate>
+            </item>
+<item>
+            <title><![CDATA[Suspected ransomware attack disrupts cancer treatments, surgeries at Guadeloupe hospital]]></title>
+            <link>https://therecord.media/guadeloupe-ransomware-hospital-cyber</link>
+            <guid>https://therecord.media/guadeloupe-ransomware-hospital-cyber</guid>
+            <pubDate>Wed, 25 Nov 2026 13:30:00 GMT</pubDate>
+            </item>
+    </channel>
+</rss><!-- generated at 2026-11-26T07:55:53.581Z -->

@@ -1,0 +1,55 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "chesscom",
+  "name": "Chess.com Published-Data API (PubAPI)",
+  "operator": "Chess.com, LLC",
+  "hosts": [
+    "api.chess.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Chess.com, LLC, an established company with published terms, a privacy policy and a documented public API (A8 trusted); P116 FC9.",
+  "tier_reviewer": "council-1 (A8, P116 FC9)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "The platform's own answer is authoritative for the existence and public fields of its accounts; profile fields (names, links, bios) are self-declared by the owner."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 1,
+    "max_bytes": 262144
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "pubapi_player": {
+      "title": "Chess.com PubAPI player profile (api.chess.com/pub/player/{username})",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.chess.com/news/view/published-data-api",
+        "quote": "P116 FC4 (binding council text): documented public APIs (Chess.com PubAPI, Lichess, Mojang, Steam Community XML, Medium RSS, Pinterest widget, Stack Exchange API, Twitch Helix with the team's app) are 'open' once recorded; Snapchat __NEXT_DATA__ and the Disqus profile page are 'unknown' and stay disabled in every profile until legal records them (A1).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "chess.com",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0264: 404 JSON = ABSENT; serial requests are unlimited, parallel requests get 429 (documented): concurrency 1 (P116 FC5). twitch_url and streaming channels are linked accounts (expand=False)."
+    }
+  },
+  "notes": "Batch p3-G05-2 (P116 chesscom_player). Serial requests only (FC5)."
+}

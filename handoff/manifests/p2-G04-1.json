@@ -1,0 +1,268 @@
+{
+ "batch": "p2-G04-1",
+ "modules": [
+  {
+   "name": "github_email_pivot",
+   "file": "v3lum/modules/email/github_email_pivot.py",
+   "proposal": "P086",
+   "category": "email",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "key-terms",
+   "provider_tier": "trusted",
+   "keys": [
+    "github (optional; team-owned token, key_plans.github='business' under corporate)"
+   ],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:github_accounts",
+    "attribute:github_commit_search"
+   ],
+   "live_check": "2026-11-26 V3LUM_LIVE=1 someone@example.com (keyless): commit search 200 (24,674 matches, 100 exact author-email matches, all unlinked to accounts), user search 200 (1 fuzzy hit); the confirmation GET /users/{login} was refused by THIS sandbox's GitHub proxy (403) -> BLOCKED 'challenge' (could not verify, never 'no account'); re-capture from the team network is in the backlog (P086 cond 9)"
+  },
+  {
+   "name": "gravatar",
+   "file": "v3lum/modules/email/gravatar.py",
+   "proposal": "P087",
+   "category": "email",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "open",
+   "provider_tier": "trusted",
+   "keys": [
+    "gravatar (optional, raises the limit)"
+   ],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:gravatar_profile",
+    "attribute:avatar_hash"
+   ],
+   "live_check": "2026-11-26 V3LUM_LIVE=1 sha256(someone@example.com): v3 404 'Profile not found' + avatar d=404 -> EMPTY (presence absent, 'no public Gravatar profile'); username slug 'gravatar' -> OK (public profile, presence found, avatar file hash recorded, no verified accounts)"
+  },
+  {
+   "name": "hibp_account",
+   "file": "v3lum/modules/breach_leak/hibp_account.py",
+   "proposal": "P133",
+   "category": "breach_leak",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "license",
+   "provider_tier": "trusted",
+   "keys": [
+    "hibp (required, company-paid subscription)"
+   ],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [
+    "p2g04_breach_merge"
+   ],
+   "new_vocabulary": [
+    "attribute:pastes",
+    "attribute:paste_count"
+   ],
+   "live_check": "not checked live: keyed endpoints (company-paid key); offline tests use the recorded 401 and a synthetic breachedaccount answer built from 8 real catalogue objects"
+  },
+  {
+   "name": "leakcheck_public",
+   "file": "v3lum/modules/breach_leak/leakcheck_public.py",
+   "proposal": "P135",
+   "category": "breach_leak",
+   "opsec": "passive",
+   "default_enabled": false,
+   "terms": "unknown",
+   "provider_tier": "community",
+   "keys": [],
+   "datasets": [
+    "hibp_breaches.json (shared P132 catalogue of hibp_catalog, read through breach_catalog)"
+   ],
+   "pivot_packs": [],
+   "correlation_rules": [
+    "p2g04_breach_merge"
+   ],
+   "new_vocabulary": [],
+   "live_check": "2026-11-26 V3LUM_LIVE=1 test@example.com (--breach-scope all + purpose): OK, found 1715 -> generic/shared (one INFO context_only summary), 198 counted sources joined through the live HIBP catalogue dataset"
+  },
+  {
+   "name": "lunar_domain_exposure",
+   "file": "v3lum/modules/breach_leak/lunar_domain_exposure.py",
+   "proposal": "P136",
+   "category": "breach_leak",
+   "opsec": "passive",
+   "default_enabled": false,
+   "terms": "unknown",
+   "provider_tier": "trusted",
+   "keys": [],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:domain_exposure",
+    "tag:confidential"
+   ],
+   "live_check": "2026-11-26 V3LUM_LIVE=1 example.com: OK, REPORT_READY, 993,941 events (182,637 infostealer / 811,304 breach), both caveats ('implausible volume', 'IANA example/test domain'), result marked TLP:AMBER, finding INFO context_only"
+  },
+  {
+   "name": "xposedornot",
+   "file": "v3lum/modules/breach_leak/xposedornot.py",
+   "proposal": "P137",
+   "category": "breach_leak",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "noncommercial",
+   "provider_tier": "community",
+   "keys": [],
+   "datasets": [
+    "xposedornot_breaches.json (registered here, daily, noncommercial)",
+    "hibp_breaches.json (shared P132 catalogue)"
+   ],
+   "pivot_packs": [],
+   "correlation_rules": [
+    "p2g04_breach_merge"
+   ],
+   "new_vocabulary": [
+    "attribute:breach_risk"
+   ],
+   "live_check": "2026-11-26 V3LUM_LIVE=1 test@example.com (--breach-scope all + purpose): OK, 215 breach ids joined with the live XposedOrNot and HIBP catalogue datasets, generic address -> one INFO context_only summary"
+  },
+  {
+   "name": "xposedornot_domain",
+   "file": "v3lum/modules/breach_leak/xposedornot.py",
+   "proposal": "P137 (cond 2: catalogue ?domain= meaning, answered locally)",
+   "category": "breach_leak",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "noncommercial",
+   "provider_tier": "n/a",
+   "keys": [],
+   "datasets": [
+    "xposedornot_breaches.json"
+   ],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:service_breach_records"
+   ],
+   "live_check": "2026-11-26 V3LUM_LIVE=1 8tracks.com: OK from the downloaded catalogue dataset (8tracks, 2017-06), wording 'this service was breached - not accounts at this domain'; the domain itself is never sent"
+  },
+  {
+   "name": "xposedornot_domain_breaches",
+   "file": "v3lum/modules/breach_leak/xposedornot.py",
+   "proposal": "P137 (cond 2: domain-breaches, own_assets_only)",
+   "category": "breach_leak",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "key-terms",
+   "provider_tier": "community",
+   "keys": [
+    "xon (required)"
+   ],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:own_domain_breaches",
+    "relation:domain_breach_address"
+   ],
+   "live_check": "not checked live: keyed POST (key 'xon' with a verified own domain); research 401 recorded, success fixture synthetic from the API docs (backlog: re-capture)"
+  }
+ ],
+ "proposals_not_done": [],
+ "core_requests": [
+  "sanitize second net: keys holding the token 'login' are always dropped, so Lunar's report.top_login_urls (P136 cond 3 'top login hosts') never survives the sanitized cache body; accept a schema-listed host-only derivation/exemption for such aggregate keys",
+  "scoring (v3lum/core/scoring.py): findings tagged context_only still enter the per-entity noisy-OR; A4 says third-party breach context gets 'no exposure score' - skip context_only findings (and correlations) in score()",
+  "a core finding merge key: one breach reported by HIBP/XposedOrNot/LeakCheck is merged by the correlation rule p2g04_breach_merge that downgrades the duplicate findings to INFO context_only (the g10_sanction_dedup pattern); a core 'merge_key' on Finding honoured by the engine before scoring would make this independent of rule order",
+  "RUN_ON: no value for 'analyst-typed seeds OR org-profile addresses' (P086 cond 3, P087 cond 2): github_email_pivot and gravatar use run_on='seeds'",
+  "hibp provider quota (core-owned hibp.json): rate_per_second 0.1666 is fixed (Core 1 = 10 RPM); P133 cond 2 wants the interval from the plan tier - derive the quota rate from key_plans/a setting (hibp_account_rpm exists but can only slow the module down)",
+  "lint (P327) LINT-03 flags XposedOrNot's breach lookup path '/check-email/{email}' as an e-mail verification probe; a pragma with justification is used - consider a lint-table exemption for breach-lookup APIs",
+  "hibp_catalog.breach_catalog lookup is by exact normalised name only: breach_accounts.resolve() adds the domain-suffix-stripped key and the domain + year join (Ceos merge rule); moving that into the P132 helper would let every breach batch share it",
+  "Engine.run_module/policy: the in-module scope checks (own verified domain or --breach-scope all + purpose + typed seed) duplicate POL-07 own_assets for defence in depth; expose a policy helper (e.g. policy.in_breach_scope(entity, ctx)) so modules do not re-implement it"
+ ],
+ "files": [
+  "docs/backlog/p2-G04-1.md",
+  "tests/live/test_p2_g04_1.py",
+  "tests/modules/test_github_email_pivot.py",
+  "tests/modules/test_gravatar.py",
+  "tests/modules/test_hibp_account.py",
+  "tests/modules/test_leakcheck_public.py",
+  "tests/modules/test_lunar_domain_exposure.py",
+  "tests/modules/test_xposedornot.py",
+  "tests/modules/test_xposedornot_domain.py",
+  "tests/modules/test_xposedornot_domain_breaches.py",
+  "v3lum/correlations/p2_g04_1.py",
+  "v3lum/data/providers/github__p2-G04-1.json",
+  "v3lum/data/providers/hibp__p2-G04-1.json",
+  "v3lum/data/providers/leakcheck.json",
+  "v3lum/data/providers/lunarcyber.json",
+  "v3lum/data/providers/xposedornot.json",
+  "v3lum/data/vocab/p2-G04-1.json",
+  "v3lum/modules/breach_leak/breach_accounts.py",
+  "v3lum/modules/breach_leak/hibp_account.py",
+  "v3lum/modules/breach_leak/leakcheck_public.py",
+  "v3lum/modules/breach_leak/lunar_domain_exposure.py",
+  "v3lum/modules/breach_leak/xposedornot.py",
+  "v3lum/modules/email/github_email_pivot.py",
+  "v3lum/modules/email/gravatar.py",
+  "tests/fixtures/github_email_pivot/blocked_sandbox_proxy.json",
+  "tests/fixtures/github_email_pivot/commit_verified.json",
+  "tests/fixtures/github_email_pivot/commits_empty.json",
+  "tests/fixtures/github_email_pivot/commits_ok.json",
+  "tests/fixtures/github_email_pivot/commits_placeholder.json",
+  "tests/fixtures/github_email_pivot/malformed.txt",
+  "tests/fixtures/github_email_pivot/profile_match.json",
+  "tests/fixtures/github_email_pivot/profile_no_email.json",
+  "tests/fixtures/github_email_pivot/profile_other_email.json",
+  "tests/fixtures/github_email_pivot/rate_limited_primary.json",
+  "tests/fixtures/github_email_pivot/rate_limited_secondary.json",
+  "tests/fixtures/github_email_pivot/users_empty.json",
+  "tests/fixtures/github_email_pivot/users_exact.json",
+  "tests/fixtures/github_email_pivot/users_fuzzy.json",
+  "tests/fixtures/github_email_pivot/validation_failed.json",
+  "tests/fixtures/gravatar/avatar_absent.json",
+  "tests/fixtures/gravatar/avatar_found.json",
+  "tests/fixtures/gravatar/malformed.html",
+  "tests/fixtures/gravatar/not_found.json",
+  "tests/fixtures/gravatar/profile_org.json",
+  "tests/fixtures/gravatar/profile_verified.json",
+  "tests/fixtures/gravatar/rate_limited.json",
+  "tests/fixtures/hibp_account/breachedaccount_ok.json",
+  "tests/fixtures/hibp_account/forbidden_403.json",
+  "tests/fixtures/hibp_account/needs_key_401.json",
+  "tests/fixtures/hibp_account/not_found_404.json",
+  "tests/fixtures/hibp_account/pasteaccount_ok.json",
+  "tests/fixtures/hibp_account/rate_limited_429.json",
+  "tests/fixtures/hibp_account/truncated_ok.json",
+  "tests/fixtures/leakcheck_public/email_generic.json",
+  "tests/fixtures/leakcheck_public/email_small.json",
+  "tests/fixtures/leakcheck_public/error_too_short.json",
+  "tests/fixtures/leakcheck_public/hibp_catalogue_subset.json",
+  "tests/fixtures/leakcheck_public/limit_body.json",
+  "tests/fixtures/leakcheck_public/not_found.json",
+  "tests/fixtures/leakcheck_public/rate_limited_429.json",
+  "tests/fixtures/leakcheck_public/username_org.json",
+  "tests/fixtures/lunar_domain_exposure/challenge.html",
+  "tests/fixtures/lunar_domain_exposure/example_com_ready.json",
+  "tests/fixtures/lunar_domain_exposure/generating.json",
+  "tests/fixtures/lunar_domain_exposure/invalid_domain_400.json",
+  "tests/fixtures/lunar_domain_exposure/nic_br_ready.json",
+  "tests/fixtures/lunar_domain_exposure/rate_limited_429.json",
+  "tests/fixtures/rules/p2g04_breach_merge/negative_single_source_and_different_breaches.json",
+  "tests/fixtures/rules/p2g04_breach_merge/positive_three_sources_one_finding.json",
+  "tests/fixtures/xposedornot/breach_analytics_not_found.json",
+  "tests/fixtures/xposedornot/breach_analytics_ok.json",
+  "tests/fixtures/xposedornot/catalogue_subset.json",
+  "tests/fixtures/xposedornot/check_email_not_found.json",
+  "tests/fixtures/xposedornot/check_email_not_found_404.json",
+  "tests/fixtures/xposedornot/check_email_ok.json",
+  "tests/fixtures/xposedornot/hibp_catalogue_subset.json",
+  "tests/fixtures/xposedornot/malformed.txt",
+  "tests/fixtures/xposedornot/rate_limited_429.json",
+  "tests/fixtures/xposedornot_domain/catalogue_subset.json",
+  "tests/fixtures/xposedornot_domain_breaches/domain_breaches_ok.json",
+  "tests/fixtures/xposedornot_domain_breaches/needs_key_401.json"
+ ],
+ "notes": "Resumed run: the earlier attempt left only data fragments (vocab p2-G04-1.json, provider fragments leakcheck/lunarcyber/xposedornot owned by this batch for hosts owners.json maps to null, extensions github__p2-G04-1 and hibp__p2-G04-1); they were reviewed and kept (vocab gained relation domain_breach_address and updated descriptions). New: 8 modules in 6 files + the shared pure helper v3lum/modules/breach_leak/breach_accounts.py (scope, generic, catalogue join, severity, next steps, per-breach findings) and the rule p2g04_breach_merge (v3lum/correlations/p2_g04_1.py, positive/negative graph fixtures). Cross-source merge (P133 cond 7/10, P135 cond 7, P137 cond 7): every per-breach finding carries data.breach_key resolved through the shared HIBP catalogue (P132 helper breach_catalog); the rule keeps one finding of record listing all sources + the most precise date and downgrades the others to INFO context_only (test: 8tracks from HIBP + LeakCheck + XposedOrNot -> 1 scored finding with 3 sources). Sensitive breaches (IsSensitive, sensitive category, XON 'sensitive') read 'sensitive breach (name withheld)' with special-category data classes dropped; spam lists/fabricated never count; generic/role/test/shared identities get one INFO context_only summary (A4 BR6). Breach scope: run_on own_assets + in-module check (verified org domain, else typed seed with --breach-scope all + purpose, third parties capped at MEDIUM, context_only + third_party). HIBP: hibp-api-key header, truncateResponse=false, per-call min_interval from setting hibp_account_rpm (default 10 RPM = 6 s), 404 'not found in HIBP' (never 'never breached'), pastes metadata only with manual Pastebin links, P145 schema for hibp.account registered in the module (Description kept in the cache body only to derive the password FORM, left out of evidence). LeakCheck: single URL builder + allow-list checked before the request, no v2 builder (test), found>=100 generic, 'limit'/429 -> QUOTA (provider exhausted for the UTC day via markers). XposedOrNot: check-email then breach-analytics, catalogue dataset xposedornot_breaches.json (validated, month-precision dates), logos/descriptions dropped, risk as context attribute; domain catalogue lookups offline (xposedornot_domain, disclosure none); domain-breaches keyed, own_assets_only, addresses pivoted expand=False only. Lunar: polls GENERATING_REPORT twice (3 s apart, never cached), still generating -> ERROR timeout, webmail/noise domains refused, TLP:AMBER marking + confidential tag, caveats for >100k events/test domains, daily_quota 50 politeness. GitHub: shared P111 client/budget, exact matches only, fuzzy user-search hits discarded, POSSIBLE/PROBABLE rules, noreply decoded locally, placeholder addresses ignored and placeholder accounts never reported, failed confirmations are 'could not verify' (never absence). Gravatar: SHA-256 computed locally, avatar d=404 check, minimised profile, verified accounts PROBABLE (fediverse handles typed fediverse_handle), links POSSIBLE, avatar file SHA-256 only (no image, no biometrics). Fixtures: prep fixtures re-checked; a real researcher's name and address found in HIBP descriptions were replaced (researcher@example.org / 'a security researcher'). No LIGHT/ACTIVE variant was requested by this batch. Acceptance routes: none of the batch modules runs in a default scan on the golden inputs (licence/privacy gates: key-terms without business plan, license, noncommercial, unknown terms; gravatar/github receive PERSONAL_TYPES without personal_data_review), so no acceptance file. P327 lint clean on every module/data file (one LINT-03 pragma with justification on the XposedOrNot check-email constant); ruff clean. Tests 2026-11-26: batch offline tests 71 passed (8 module test files + the 2 p2g04_breach_merge rule fixtures); registry contract green for all 8 modules; V3LUM_LIVE=1 tests/live/test_p2_g04_1.py 5 passed. Full offline suite: 8061 passed, 21 failed, 153 skipped, 8 xfailed - no failure in this batch's files: ioc_extract/ransomfeed/typosquat/engine_suppression/entity_types_v2/links/pack_attack_surface/rule fixture spoofable_email_domain (other batches and core waves mid-edit), test_lint shipped tree (crowdsec_cti LINT-09, other batch), test_notice_fragments_parse (stale notices of lol_datasets/retirejs/threat_actor_handles, other batches) and test_every_module_class_is_registered (transient: passes on re-run)."
+}

@@ -1,0 +1,10 @@
+{
+ "_status": 400,
+ "_observed": "live Thu, 26 Nov 2026 08:24:23 GMT (raw/ipg_invalid)",
+ "body": {
+  "error": "Invalid IP addresses",
+  "invalid": [
+   "not-an-ip"
+  ]
+ }
+}

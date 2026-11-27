@@ -1,0 +1,21 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities_missing_probe.json",
+  "headers": {}
+ },
+ "response": {
+  "status": 403,
+  "headers": {
+   "content-type": "text/html",
+   "x-reference-error": "18.00000000.0000000000.00000000",
+   "cache-control": "max-age=0",
+   "expires": "Thu, 26 Nov 2026 05:17:27 GMT",
+   "date": "Thu, 26 Nov 2026 05:17:27 GMT"
+  },
+  "body": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;www&#46;cisa&#46;gov&#47;sites&#47;default&#47;files&#47;feeds&#47;known&#95;exploited&#95;vulnerabilities&#95;missing&#95;probe&#46;json\" on this server.<P>\nReference&#32;&#35;18&#46;00000000&#46;0000000000&#46;00000000\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;00000000&#46;0000000000&#46;00000000</P>\n</BODY>\n</HTML>\n"
+ },
+ "transport_error": null,
+ "elapsed_s": 0.136215,
+ "note": "Akamai \"Access Denied\" page (HTTP 403, text/html). Observed for a missing path under /sites/default/files/feeds/ (CISA answers unknown files with 403, not 404); Akamai serves the same template when it blocks a client. Either way: not a catalog, keep the previous copy."
+}

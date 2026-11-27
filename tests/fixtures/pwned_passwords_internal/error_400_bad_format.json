@@ -1,0 +1,9 @@
+{
+ "_envelope": 1,
+ "_source": "live 2026-11-26 09:15Z GET https://api.pwnedpasswords.com/range/5BAA",
+ "status": 400,
+ "headers": {
+  "content-type": "text/plain;charset=UTF-8"
+ },
+ "body": "The hash prefix was not in a valid format"
+}

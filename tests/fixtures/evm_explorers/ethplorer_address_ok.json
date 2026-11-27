@@ -1,0 +1,107 @@
+{
+ "address": "0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae",
+ "ETH": {
+  "balance": 4774.551794456062,
+  "rawBalance": "4774551794456062094343",
+  "price": {
+   "rate": 1688.9630692881396
+  }
+ },
+ "contractInfo": {
+  "creatorAddress": "0x5aaeb6053f3e94c9b9a09f33669435e7ef1beaed",
+  "creationTransactionHash": "0x9c81f44c29ff0226f835cd0a8a2f2a7eca6db52a711f8211b566fd15d3e0e8d4",
+  "creationTimestamp": 1439048640
+ },
+ "tokens": [
+  {
+   "tokenInfo": {
+    "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    "name": "WETH",
+    "symbol": "WETH",
+    "decimals": "18",
+    "holdersCount": 3331368,
+    "price": {
+     "rate": 1686.4,
+     "currency": "USD"
+    }
+   },
+   "balance": 214140968121600000000,
+   "rawBalance": "214140968121599991968"
+  },
+  {
+   "tokenInfo": {
+    "address": "0xb8c77482e45f1f44de1745f52c74426c631bdd52",
+    "name": "Binance Coin",
+    "symbol": "BNB",
+    "decimals": "18",
+    "holdersCount": 338996,
+    "price": {
+     "rate": 554.2791476684991,
+     "currency": "USD"
+    }
+   },
+   "balance": 42100000000000000000,
+   "rawBalance": "42100000000000000000"
+  },
+  {
+   "tokenInfo": {
+    "address": "0xd26114cd6ee289accf82350c8d8487fedb8a0c07",
+    "name": "OMG Network",
+    "symbol": "OMG",
+    "decimals": "18",
+    "holdersCount": 655059,
+    "price": {
+     "rate": 0.03699296015674248,
+     "currency": "USD"
+    }
+   },
+   "balance": 5.641929179651601e+22,
+   "rawBalance": "56419291796516003758360"
+  },
+  {
+   "tokenInfo": {
+    "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    "name": "USD Coin",
+    "symbol": "USDC",
+    "decimals": "6",
+    "holdersCount": 9247641,
+    "price": {
+     "rate": 0.999537,
+     "currency": "USD"
+    }
+   },
+   "balance": 1136601177,
+   "rawBalance": "1136601177"
+  },
+  {
+   "tokenInfo": {
+    "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+    "name": "Tether USD",
+    "symbol": "USDT",
+    "decimals": "6",
+    "holdersCount": 15565439,
+    "price": {
+     "rate": 0.99889911971057,
+     "currency": "USD"
+    }
+   },
+   "balance": 1083644119,
+   "rawBalance": "1083644119"
+  },
+  {
+   "tokenInfo": {
+    "address": "0x960fce8724aa127184b6d13af41a711755236c77",
+    "name": "henlo",
+    "symbol": "henlo",
+    "decimals": "9",
+    "holdersCount": 7940,
+    "price": {
+     "rate": 1.2618884162464883e-10,
+     "currency": "USD"
+    }
+   },
+   "balance": 751112406384615000000,
+   "rawBalance": "751112406384615000000"
+  }
+ ]
+}

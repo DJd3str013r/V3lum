@@ -9,6 +9,7 @@ import io
 import json
 import os
 import stat
+import threading
 import zipfile
 from datetime import datetime, timedelta, timezone
 
@@ -26,7 +27,7 @@ from v3lum.core.datasets import (
     register_dataset,
     safe_extract,
 )
-from v3lum.core.http import NetworkError, Response
+from v3lum.core.http import NetworkError, PolicyError, Response, ScopedHttp
 
 T0 = datetime(2026, 11, 26, 12, 0, tzinfo=timezone.utc)
 URL = "https://lists.example.test/feed.txt"
@@ -713,3 +714,187 @@ def test_active_dataset_is_never_refreshed_mid_scan():
     result = DataStore(Rt(http, in_scan=True)).update("wl_scan.txt", accept_new=True)
     assert result.status == "failed" and "never mid-scan" in result.reason
     assert http.calls == []
+
+
+# --------------------------------------------------------------------------------------
+# ad-hoc downloads go through the module's own scope (AR20 safety fix: P327 cond 5, A7)
+# --------------------------------------------------------------------------------------
+
+
+def module_scope(client, **kw):
+    """The module's own ScopedHttp (``ctx.http``) over a fake client."""
+    kw.setdefault("module", "t_ds_module")
+    return ScopedHttp(client, **kw)
+
+
+def test_dataview_sends_ad_hoc_downloads_through_the_module_scope():
+    """ctx.data.fetch(name, url) with an unregistered name goes through the view's module scope
+    (ctx.http); a registered dataset keeps its dataset scope over the runtime client."""
+    register_dataset("reg.txt", URL + "?reg", expect="lines")
+    runtime_http = FakeHttp().add("GET", URL + "?reg", text="r.example\n")
+    module_http = FakeHttp().add("GET", URL, text="a.example\n")
+    scope = module_scope(module_http)
+    view = DataStore(Rt(runtime_http)).scoped(http=scope)
+    assert view.fetch_lines("adhoc.txt", URL) == frozenset({"a.example"})
+    assert view.fetch_lines("reg.txt") == frozenset({"r.example"})
+    assert view.fetch_text("reg.txt", URL + "?reg") == "r.example\n"  # the registered URL itself: still the dataset scope
+    assert module_http.urls() == [URL] and scope.requests == 1  # counted against the module's own request cap
+    assert runtime_http.urls() == [URL + "?reg"]
+    assert [u["name"] for u in view.used] == ["adhoc.txt", "reg.txt"]  # citations unchanged
+
+
+@pytest.mark.parametrize("reader", ["fetch", "fetch_text", "fetch_json", "fetch_lines"])
+def test_every_reader_of_the_view_routes_ad_hoc_downloads_through_the_module_scope(reader):
+    runtime_http = FakeHttp().add("GET", URL, text="[1]\n")
+    offline = module_scope(FakeHttp(), disclosure="none")
+    view = DataStore(Rt(runtime_http)).scoped(http=offline)
+    with pytest.raises(PolicyError, match="no network"):
+        getattr(view, reader)("adhoc.json", url=URL)
+    assert runtime_http.calls == [] and view.used == []
+
+
+def test_a_module_scope_refusal_propagates_and_no_stale_copy_masks_it():
+    rt = Rt(FakeHttp().add("GET", URL, text="old\n"))
+    store = DataStore(rt)
+    path = store.fetch("adhoc.txt", URL, ttl=60)  # an earlier copy (v1 store call, out of band)
+    rt.advance(hours=1)
+    offline = module_scope(FakeHttp(), module="t_ds_offline", disclosure="none")
+    with pytest.raises(PolicyError, match="no network"):
+        store.scoped(http=offline).fetch_text("adhoc.txt", URL, ttl=60)
+    undeclared = FakeHttp()
+    with pytest.raises(PolicyError, match="not declared in Module.hosts"):
+        store.scoped(http=module_scope(undeclared, module="t_ds_passive", allowed_hosts=("api.example.test",))).fetch_lines("adhoc.txt", URL, ttl=60)
+    assert undeclared.calls == [] and rt.http.urls() == [URL]
+    assert path.read_text() == "old\n"
+    # a fresh local copy is served without any request (nothing is disclosed)
+    assert store.scoped(http=offline).fetch_text("adhoc.txt", URL, ttl=10**9) == "old\n"
+    # other failures of the module scope keep the v1 behaviour: the stale copy is served
+    failing = FakeHttp().add("GET", URL, status=500, text="oops")
+    assert store.scoped(http=module_scope(failing)).fetch_text("adhoc.txt", URL, ttl=60) == "old\n"
+    assert manifest()["adhoc.txt"]["stale"] is True
+
+
+def test_a_caller_http_keyword_never_replaces_the_view_binding():
+    register_dataset("reg.txt", URL + "?reg", expect="lines")
+    runtime_http = FakeHttp().add("GET", URL + "?reg", text="r\n")
+    module_http = FakeHttp().add("GET", URL, text="x\n")
+    other = FakeHttp().add("GET", URL, text="y\n").add("GET", URL + "?reg", text="z\n")
+    view = DataStore(Rt(runtime_http)).scoped(http=module_scope(module_http))
+    assert view.fetch_text("adhoc.txt", URL, http=module_scope(other)) == "x\n"
+    assert view.fetch_text("reg.txt", http=module_scope(other), registered_before=10**9) == "r\n"
+    assert other.calls == [] and module_http.urls() == [URL] and runtime_http.urls() == [URL + "?reg"]
+
+
+def test_the_store_refuses_ad_hoc_downloads_mid_scan_without_a_module_scope():
+    """The store reached around ctx.data (ctx.data.store, ctx.runtime.data) during a scan has no host,
+    scope or egress binding: an ad-hoc download is refused; registered datasets are unaffected."""
+    http = FakeHttp().add("GET", URL, text="x\n")
+    store = DataStore(Rt(http, in_scan=True))
+    with pytest.raises(PolicyError, match="ad-hoc download"):
+        store.fetch_text("adhoc.txt", URL)
+    with pytest.raises(PolicyError, match="ad-hoc download"):
+        store.scoped().fetch_text("adhoc.txt", URL)  # a view without a module scope
+    assert http.calls == []
+    register_dataset("feed.txt", URL, expect="lines")
+    assert store.fetch_lines("feed.txt") == frozenset({"x"})
+    assert DataStore(Rt(FakeHttp().add("GET", URL, text="v1\n"))).fetch_text("adhoc2.txt", URL) == "v1\n"  # outside a scan: v1
+
+
+def test_the_store_refuses_a_raw_client_or_a_core_scope_as_the_module_scope():
+    """http= must be the module's own ScopedHttp: the shared client (ctx.http.client) or a core scope
+    (ctx.doh) has no module host list, disclosure or scope binding - refused before any request."""
+    raw = FakeHttp().add("GET", URL, text="x\n")
+    store = DataStore(Rt(FakeHttp(), in_scan=True))
+    for http in (raw, module_scope(raw, core=True)):
+        with pytest.raises(PolicyError, match="module's own scope"):
+            store.fetch_text("adhoc.txt", URL, http=http)
+        with pytest.raises(PolicyError, match="module's own scope"):
+            store.scoped(http=http).fetch_lines("adhoc.txt", URL)
+    assert raw.calls == []
+
+
+def test_a_dataset_registered_after_the_run_started_goes_through_the_module_scope():
+    """register_dataset is an import-time call: a registration made during the run (e.g. a URL built
+    from the investigated value) is not reviewed, so the view downloads it through the module's own
+    scope - an offline module is refused, a passive one reaches only its declared hosts."""
+    register_dataset("early.txt", URL + "?early", expect="lines")
+    runtime_http = FakeHttp().add("GET", URL + "?early", text="e\n").add("GET", URL + "?v=example.org", text="leak\n")
+    store = DataStore(Rt(runtime_http))
+    offline = store.scoped(http=module_scope(FakeHttp(), disclosure="none"))
+    register_dataset("late.txt", URL + "?v=example.org", expect="lines")
+    with pytest.raises(PolicyError, match="no network"):
+        offline.fetch_lines("late.txt")
+    with pytest.raises(PolicyError, match="no network"):
+        offline.index("late.txt")
+    assert offline.fetch_lines("early.txt") == frozenset({"e"})  # reviewed: the dataset scope, as before
+    assert runtime_http.urls() == [URL + "?early"]
+    module_http = FakeHttp()
+    passive = store.scoped(http=module_scope(module_http, allowed_hosts=("lists.example.test",)))
+    register_dataset("later.txt", URL + "?v=example.org&x=1", expect="lines")
+    module_http.add("GET", URL + "?v=example.org&x=1", text="ok\n")
+    assert passive.fetch_lines("later.txt") == frozenset({"ok"})  # through the module's own (declared) host
+    assert module_http.urls() == [URL + "?v=example.org&x=1"] and runtime_http.urls() == [URL + "?early"]
+    fresh = store.scoped(http=module_scope(FakeHttp(), disclosure="none"))  # a later run: an import-time registration now
+    assert fresh.fetch_lines("later.txt") == frozenset({"ok"})  # the local copy is fresh: no request at all
+
+
+def test_an_identical_re_registration_keeps_its_sequence_a_changed_one_does_not():
+    register_dataset("seq.txt", URL, expect="lines", licence="CC0-1.0")
+    first = DATASETS["seq.txt"]["seq"]
+    register_dataset("seq.txt", URL, expect="lines", licence="CC0-1.0", validate=lambda p: True)  # a re-import
+    assert DATASETS["seq.txt"]["seq"] == first
+    register_dataset("seq.txt", URL, expect="lines", licence="CC0-1.0", provider="other")  # changed: a new registration
+    assert DATASETS["seq.txt"]["seq"] > first == ds._seq_of({"seq": first})
+    assert ds._registration_seq() >= DATASETS["seq.txt"]["seq"]
+
+
+def test_mid_scan_the_store_never_downloads_a_dataset_registered_during_the_scan():
+    """Reached around ctx.data (ctx.data.store.fetch/update) during a scan, a dataset registered after the
+    scan started (Runtime.scan_dataset_seq) has no reviewed scope: refused; earlier ones are unaffected."""
+    register_dataset("before.txt", URL + "?b", expect="lines")
+    http = FakeHttp().add("GET", URL + "?b", text="b\n").add("GET", URL + "?d", text="d\n")
+    rt = Rt(http, in_scan=True)
+    rt.scan_dataset_seq = ds._registration_seq()
+    store = DataStore(rt)
+    register_dataset("during.txt", URL + "?d", expect="lines")
+    with pytest.raises(PolicyError, match="ad-hoc download"):
+        store.fetch_lines("during.txt")
+    result = store.update("during.txt")
+    assert result.status == "failed" and "registered during the scan" in result.reason
+    assert store.fetch_lines("before.txt") == frozenset({"b"})
+    assert http.urls() == [URL + "?b"]
+    rt.in_scan, rt.scan_dataset_seq = False, None  # after the scan: the v1 store call works again
+    assert store.fetch_lines("during.txt") == frozenset({"d"})
+
+
+def test_concurrent_ad_hoc_fetches_through_one_view_download_once():
+    module_http = FakeHttp().add("GET", URL, text="x\n")
+    view = DataStore(Rt(FakeHttp())).scoped(http=module_scope(module_http))
+    results: list[str] = []
+    lock = threading.Lock()
+
+    def worker() -> None:
+        value = view.fetch_text("adhoc.txt", URL)
+        with lock:
+            results.append(value)
+
+    threads = [threading.Thread(target=worker) for _ in range(8)]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
+    assert results == ["x\n"] * 8 and module_http.urls() == [URL]
+    assert [u["name"] for u in view.used] == ["adhoc.txt"]
+
+
+def test_an_entry_written_into_the_registry_by_hand_is_never_reviewed():
+    """DATASETS entries come from register_dataset (they carry a sequence number): one written by hand has
+    no reviewed dataset scope - the view routes it through the module scope, the store refuses it mid-scan."""
+    runtime_http = FakeHttp().add("GET", URL + "?hand", text="h\n")
+    DATASETS["hand.txt"] = {"url": URL + "?hand", "ttl": 3600.0, "max_bytes": 1000}
+    view = DataStore(Rt(runtime_http)).scoped(http=module_scope(FakeHttp(), disclosure="none"))
+    with pytest.raises(PolicyError, match="no network"):
+        view.fetch_text("hand.txt")
+    with pytest.raises(PolicyError, match="ad-hoc download"):
+        DataStore(Rt(runtime_http, in_scan=True)).fetch_text("hand.txt")
+    assert runtime_http.calls == []

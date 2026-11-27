@@ -1,0 +1,47 @@
+{
+ "nft_items": [
+  {
+   "address": "0:53529D89A929416F5C348E0536DC2F0BBB01AAD7E7E2DA3FE3E4F0E4160D994B",
+   "init": true,
+   "index": "56511920672605298074711153798077213448509220107600605527624207783913095593321",
+   "collection_address": "0:0E41DC1DC3C9067ED24248580E12B3359818D83DEE0304FABCF80845EAFAFDB2",
+   "owner_address": "0:A49E8CF6C87386EB4540FCF6A285840B9D224815FF4DB540E6B6012AEEB503B4",
+   "content": {
+    "uri": "https://nft.fragment.com/number/88800000000.json"
+   },
+   "last_transaction_lt": "50000000000001",
+   "on_sale": false,
+   "real_owner": "0:A49E8CF6C87386EB4540FCF6A285840B9D224815FF4DB540E6B6012AEEB503B4"
+  }
+ ],
+ "address_book": {
+  "0:53529D89A929416F5C348E0536DC2F0BBB01AAD7E7E2DA3FE3E4F0E4160D994B": {
+   "user_friendly": "EQBTUp2JqSlBb1w0jgU23C8LuwGq1-fi2j_j5PDkFg2ZSwEt",
+   "domain": null,
+   "interfaces": [
+    "nft_item",
+    "teleitem"
+   ]
+  },
+  "0:A49E8CF6C87386EB4540FCF6A285840B9D224815FF4DB540E6B6012AEEB503B4": {
+   "user_friendly": "UQCknoz2yHOG60VA_PaihYQLnSJIFf9NtUDmtgEq7rUDtLIc",
+   "domain": null,
+   "interfaces": [
+    "wallet_v5r1"
+   ]
+  }
+ },
+ "metadata": {
+  "0:53529D89A929416F5C348E0536DC2F0BBB01AAD7E7E2DA3FE3E4F0E4160D994B": {
+   "is_indexed": true,
+   "token_info": [
+    {
+     "valid": true,
+     "type": "nft_items",
+     "name": "+888 0000 0000",
+     "nft_index": "56511920672605298074711153798077213448509220107600605527624207783913095593321"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,39 @@
+{
+ "_embedded": {
+  "incentivadores": [
+   {
+    "nome": "FULANO DE TAL",
+    "municipio": "São Paulo",
+    "UF": "SP",
+    "responsavel": "FULANO DE TAL",
+    "total_doado": 1500.0,
+    "tipo_pessoa": "fisica",
+    "cgccpf": "12345678909",
+    "_links": {
+     "self": "https://api.salic.cultura.gov.br/api/v1/incentivadores/87f2af9b965c3c534b62bebb3b5fb65359673f1e8ea3ebefb7498484eeec",
+     "doacoes": "https://api.salic.cultura.gov.br/api/v1/incentivadores/7f48a9a9e179f044430e3806e6bec64206cd8fc9f4eaeb038d3101656235/doacoes"
+    }
+   },
+   {
+    "nome": "EMPRESA EXEMPLO LTDA",
+    "municipio": "Brasília",
+    "UF": "DF",
+    "responsavel": " ",
+    "total_doado": 250000.0,
+    "tipo_pessoa": "juridica",
+    "cgccpf": "11222333000181",
+    "_links": {
+     "self": "https://api.salic.cultura.gov.br/api/v1/incentivadores/87f2af9b965c3c534b62bebb3b5fb65359673f1e8ea3ebefb7498484eeec",
+     "doacoes": "https://api.salic.cultura.gov.br/api/v1/incentivadores/7f48a9a9e179f044430e3806e6bec64206cd8fc9f4eaeb038d3101656235/doacoes"
+    }
+   }
+  ]
+ },
+ "_links": {
+  "self": "http://api.salic.cultura.gov.br/api/v1/incentivadores",
+  "first": "https://api.salic.cultura.gov.br/api/v1/incentivadores?cgccpf=00000000000191&limit=100&offset=0",
+  "last": "https://api.salic.cultura.gov.br/api/v1/incentivadores?cgccpf=00000000000191&limit=100&offset=0"
+ },
+ "count": 2,
+ "total": 2
+}

@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "hurricane_electric",
+  "name": "Hurricane Electric BGP Toolkit",
+  "operator": "Hurricane Electric LLC",
+  "hosts": [
+    "bgp.he.net"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established network operator with published terms; P057 cond 5: 'trusted - bgp.he.net (Hurricane Electric)'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Routing data (origin AS, prefixes, peers) for manual review; automation uses RIPEstat/Team Cymru."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "pivot_pages": {
+      "title": "bgp.he.net IP, prefix and AS pages (manual pivot links; never scraped)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://bgp.he.net/",
+        "quote": "The pack is offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "hurricane-electric",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (cond 1 of the proposal). Research C0129. /ip/{ip} and /AS{asn} verified (200). Prefix pages need a literal '/': /net/8.8.8.0%2F24 answers 404, /net/8.8.8.0/24 answers 200 (verified 2026-11-26), so the prefix link is rendered by pivots_ip_network with the vetted {cidrp} encoder. Never scraped (anti-bot; P057 cond 8). Used by pivots_ip_network (pack ip_network.json)."
+    }
+  },
+  "notes": "Manual pivot links only (batch p2-G14-1): V3LUM never fetches them (P311)."
+}

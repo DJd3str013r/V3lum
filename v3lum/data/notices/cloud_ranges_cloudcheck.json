@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "cloud_ranges_cloudcheck",
+  "source_url": "https://github.com/blacklanternsecurity/cloudcheck",
+  "version": "runtime download refreshed daily by the dataset manager (checked 2026-11-26); stable branch cloud_providers_v3.json",
+  "sha256": "",
+  "licence": "AGPL-3.0 (repository licence; the data is downloaded at run time into ~/.v3lum/datasets only, never bundled, committed or code-copied, A6)",
+  "attribution": "Cloud provider signatures from blacklanternsecurity/cloudcheck (https://github.com/blacklanternsecurity/cloudcheck), AGPL-3.0 repository; downloaded at run time, never redistributed. V3LUM reads only the provider CIDRs; roles come from a V3LUM-authored table, no cloudcheck code is used.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/ip_network/cloud_ranges.py"
+  ]
+}

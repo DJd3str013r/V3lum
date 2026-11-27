@@ -1,0 +1,42 @@
+[
+ {
+  "_id": "~98112",
+  "_type": "Case",
+  "_createdBy": "analyst@example.com",
+  "_createdAt": 1792252800000,
+  "number": 412,
+  "title": "Fake bank SMS phishing wave (synthetic)",
+  "severity": 2,
+  "severityLabel": "Medium",
+  "startDate": 1792252800000,
+  "tags": [
+   "phishing"
+  ],
+  "flag": false,
+  "tlp": 2,
+  "tlpLabel": "Amber",
+  "pap": 2,
+  "papLabel": "Amber",
+  "status": "InProgress",
+  "stage": "InProgress",
+  "assignee": "analyst@example.com"
+ },
+ {
+  "_id": "~98301",
+  "_type": "Case",
+  "_createdAt": 1793664000000,
+  "number": 431,
+  "title": "Perimeter alert triage (synthetic)",
+  "severity": 1,
+  "severityLabel": "Low",
+  "startDate": 1793664000000,
+  "endDate": 1793750400000,
+  "tags": [],
+  "tlp": 4,
+  "tlpLabel": "Red",
+  "pap": 3,
+  "papLabel": "Red",
+  "status": "Resolved",
+  "stage": "Closed"
+ }
+]

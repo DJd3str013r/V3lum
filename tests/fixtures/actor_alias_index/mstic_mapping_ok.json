@@ -1,0 +1,77 @@
+[
+ {
+  "Threat actor name": "Antique Typhoon",
+  "Origin/Threat": "China",
+  "Other names": "Storm-0558"
+ },
+ {
+  "Threat actor name": "Aqua Blizzard",
+  "Origin/Threat": "Russia",
+  "Other names": "ACTINIUM, PRIMITIVE BEAR, Gamaredon, Armageddon, UNC530, shuckworm, SectorC08"
+ },
+ {
+  "Threat actor name": "Blue Tsunami",
+  "Origin/Threat": "Israel, Private sector offensive actor",
+  "Other names": ""
+ },
+ {
+  "Threat actor name": "Brass Typhoon",
+  "Origin/Threat": "China",
+  "Other names": "BARIUM, WICKED PANDA, APT41"
+ },
+ {
+  "Threat actor name": "Citrine Sleet",
+  "Origin/Threat": "North Korea",
+  "Other names": "Storm-0139, Storm-1222, LABYRINTH CHOLLIMA, HIDDEN COBRA, AppleJeus, UNC4736"
+ },
+ {
+  "Threat actor name": "Diamond Sleet",
+  "Origin/Threat": "North Korea",
+  "Other names": "ZINC, LABYRINTH CHOLLIMA, Black Artemis, Lazarus"
+ },
+ {
+  "Threat actor name": "Emerald Sleet",
+  "Origin/Threat": "North Korea",
+  "Other names": "THALLIUM, VELVET CHOLLIMA, RGB-D5, Black Banshee, Kimsuky, Greendinosa"
+ },
+ {
+  "Threat actor name": "Forest Blizzard",
+  "Origin/Threat": "Russia",
+  "Other names": "STRONTIUM, FANCY BEAR, Sednit, ATG2, Sofacy, Blue Athena, Z-Lom Team, Operation Pawn Storm, Tsar Team, CrisisFour, HELLFIRE, APT28"
+ },
+ {
+  "Threat actor name": "Lace Tempest",
+  "Origin/Threat": "Financially motivated",
+  "Other names": "DEV-0950"
+ },
+ {
+  "Threat actor name": "Midnight Blizzard",
+  "Origin/Threat": "Russia",
+  "Other names": "NOBELIUM, COZY BEAR, UNC2452, APT29, The Dukes, Dark Halo"
+ },
+ {
+  "Threat actor name": "Moonstone Sleet",
+  "Origin/Threat": "North Korea",
+  "Other names": "Storm-1789, LABYRINTH CHOLLIMA"
+ },
+ {
+  "Threat actor name": "Onyx Sleet",
+  "Origin/Threat": "North Korea",
+  "Other names": "PLUTONIUM, SILENT CHOLLIMA, StoneFly, Tdrop2 campaign, DarkSeoul, Black Chollima, Andariel, APT45"
+ },
+ {
+  "Threat actor name": "Sangria Tempest",
+  "Origin/Threat": "Ukraine, Financially motivated",
+  "Other names": "ELBRUS, CARBON SPIDER"
+ },
+ {
+  "Threat actor name": "Sapphire Sleet",
+  "Origin/Threat": "North Korea",
+  "Other names": "COPERNICIUM, UNC1069, STARDUST CHOLLIMA, Alluring Pisces, BlueNoroff, CageyChameleon, CryptoCore"
+ },
+ {
+  "Threat actor name": "Spandex Tempest",
+  "Origin/Threat": "Financially motivated",
+  "Other names": "MONTY SPIDER, TA505"
+ }
+]

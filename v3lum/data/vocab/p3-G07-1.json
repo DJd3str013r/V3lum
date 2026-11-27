@@ -1,0 +1,23 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p3-G07-1",
+  "title": "Keyed and community IoC reputation lookups (batch p3-G07-1: maltiverse, ibm_xforce, pulsedive, kaspersky_opentip, stopforumspam, cymru_mhr)",
+  "owner": "batch p3-G07-1 (P154, P155, P160, P162, P164, P176)",
+  "attributes": {
+    "maltiverse": "Maltiverse document facts {type, classification, score, listings [{source, family, description, first_seen, last_seen, count, recent}], benign_listings, families, context_tags, threat_flags, asn, as_name, cidr, country, resolved_ips, av_ratio, file_type, size, link}: upstream provenance per listing (P154 cond 4); a neutral stub is 'not in Maltiverse', never a verdict",
+    "xforce": "IBM X-Force Exchange facts {kind ipr|url|malware, score, verdict, categories [{name, confidence}], reason, country, subnets [{subnet, asn, company}], associated, risk, families, detection_coverage, c2, download_servers, link}: provider data, internal use only",
+    "pulsedive": "Pulsedive indicator facts {risk, risk_recommended, manual_risk, retired, stamps, riskfactors, threats, feeds [{name, organization, category, family, linked}], feeds_new_families, feeds_already_counted, attributes, dns, country, asn, umbrella_rank, link} (comments, cookies, WHOIS and HTTP headers are never copied)",
+    "opentip": "Kaspersky OpenTIP facts {object hash|ip|domain|url, zone Red|Orange|Yellow|Grey|Green, file {status, md5, sha1, sha256, size, type, first_seen, last_seen, hits}, detections, families, categories, categories_with_zone, ip|domain|url block} (WHOIS blocks are never copied)",
+    "stopforumspam": "StopForumSpam answer per queried field {ip|emailhash|username: {appears, frequency, lastseen, confidence, asn, country, torexit, wildcard, error}}: forum-spam reports, a weak signal never counted in consensus; the e-mail is sent and kept only as its MD5 hash",
+    "cymru_mhr": "Team Cymru Malware Hash Registry answer {detection_pct, last_seen, last_seen_epoch, resolver, wording 'AV detection N% (Team Cymru MHR, last seen <date>)'}: NXDOMAIN is 'not in MHR', never clean"
+  },
+  "tags": {
+    "potentially_unwanted": "adware, riskware or other potentially unwanted software (e.g. Kaspersky OpenTIP Yellow zone): not a malicious verdict",
+    "retired_indicator": "the source retired the indicator (no recent activity): its old risk is history, shown as info only",
+    "cryptomining": "the source categorises the entity as cryptocurrency mining (pool, miner host or mining script)",
+    "dynamic_ip": "the source categorises the address as dynamically assigned (consumer/ISP pool): weak attribution value",
+    "compromised": "the source categorises the site or host as compromised (a legitimate asset abused by an attacker)"
+  },
+  "relations": {},
+  "notes": "Relations are the core vocabulary: family (hash/IoC -> malware family, expand=False), attributed_to (threat actor), url_host, resolves_to, communicates_with (X-Force malware C2 servers). Context booleans (sinkhole, Tor, VPN, proxy, scanner, CDN, hosting) use the core attributes is_sinkhole, is_tor_exit, is_vpn, is_proxy, is_scanner, is_cdn and is_hosting: context, never malicious (P154 cond 5)."
+}

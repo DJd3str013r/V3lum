@@ -1,0 +1,16 @@
+{
+ "_provenance": {
+  "synthetic": true
+ },
+ "status": 200,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": {
+  "type": "search",
+  "query": {
+   "original": "site:example.com (filetype:pdf OR filetype:docx OR filetype:doc OR filetype:xlsx OR filetype:xls OR filetype:pptx OR filetype:ppt)",
+   "more_results_available": false
+  }
+ }
+}

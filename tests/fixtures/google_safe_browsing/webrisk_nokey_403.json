@@ -1,0 +1,11 @@
+{
+ "_fixture": "live GET https://webrisk.googleapis.com/v1/uris:search?threatTypes=MALWARE&threatTypes=SOCIAL_ENGINEERING&threatTypes=UNWANTED_SOFTWARE&uri=http%3A%2F%2Fexample.com%2F -> HTTP 403 (2026-11-26T06:46:01Z)",
+ "status": 403,
+ "body": {
+  "error": {
+   "code": 403,
+   "message": "Method doesn't allow unregistered callers (callers without established identity). Please use API Key or other form of API consumer identity to call this API.",
+   "status": "PERMISSION_DENIED"
+  }
+ }
+}

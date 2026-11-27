@@ -1,0 +1,17 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://malshare.com/api.php?api_key=<KEY>&action=details&hash=44d88612fea8a8f36de82e1278abb02f",
+  "headers": {}
+ },
+ "response": {
+  "status": 429,
+  "headers": {
+   "content-type": "text/html; charset=UTF-8"
+  },
+  "body": "Over Request Limit.  Please wait a few minutes and try again."
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "synthetic: daily key limit exhausted (wording not documented)"
+}

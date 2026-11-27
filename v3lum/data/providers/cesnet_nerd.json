@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "cesnet_nerd",
+  "name": "CESNET NERD reputation pages",
+  "operator": "CESNET z.s.p.o. (Czech NREN)",
+  "hosts": [
+    "nerd.cesnet.cz"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "National research and education network operator with a CSIRT; P170 cond 5: 'trusted - CESNET NERD'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Reputation score aggregated from CESNET sensors and blacklists; manual context only."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "pivot_pages": {
+      "title": "NERD /nerd/ip/{ip} (manual pivot link)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://nerd.cesnet.cz/",
+        "quote": "The pack is offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "cesnet-nerd",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (cond 1 of the proposal). Research C0396 (verified 2026-11-26, 200). The API needs an account and is never used. Used by pivots_threat_intel (pack threat_intel_ioc.json)."
+    }
+  },
+  "notes": "Manual pivot links only (batch p2-G14-1): V3LUM never fetches them (P311)."
+}

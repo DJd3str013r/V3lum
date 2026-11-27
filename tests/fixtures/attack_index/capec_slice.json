@@ -1,0 +1,342 @@
+{
+ "type": "bundle",
+ "id": "bundle--36b5a045-c220-403a-96c1-02500df07699",
+ "objects": [
+  {
+   "created": "2023-01-30T20:40:28.791035Z",
+   "definition": {
+    "statement": "CAPEC is sponsored by US-CERT in the office of Cybersecurity and Communications at the U.S. Department of Homeland Security. Copyright © 2007 - 2023, The MITRE Corporation. CAPEC and the CAPEC logo are trademarks of The MITRE Corporation."
+   },
+   "definition_type": "statement",
+   "id": "marking-definition--17d82bb2-eeeb-4898-bda5-3ddbcd2b799d",
+   "spec_version": "2.1",
+   "type": "marking-definition"
+  },
+  {
+   "created": "2023-01-30T20:40:28.791901Z",
+   "id": "identity--e50ab59c-5c4f-4d40-bf6a-d58418d89bcd",
+   "identity_class": "organization",
+   "modified": "2023-01-30T20:40:28.791901Z",
+   "name": "The MITRE Corporation",
+   "object_marking_refs": [
+    "marking-definition--17d82bb2-eeeb-4898-bda5-3ddbcd2b799d"
+   ],
+   "spec_version": "2.1",
+   "type": "identity"
+  },
+  {
+   "type": "attack-pattern",
+   "id": "attack-pattern--92cdcd3d-d734-4442-afc3-4599f261498b",
+   "name": "Accessing Functionality Not Properly Constrained by ACLs",
+   "created": "2014-06-23T00:00:00.000Z",
+   "modified": "2022-09-29T00:00:00.000Z",
+   "x_capec_status": "Draft",
+   "x_capec_version": "3.9",
+   "x_capec_abstraction": "Standard",
+   "x_capec_likelihood_of_attack": "High",
+   "x_capec_typical_severity": "High",
+   "external_references": [
+    {
+     "source_name": "capec",
+     "external_id": "CAPEC-1",
+     "url": "https://capec.mitre.org/data/definitions/1.html"
+    },
+    {
+     "source_name": "cwe",
+     "external_id": "CWE-276",
+     "url": "http://cwe.mitre.org/data/definitions/276.html"
+    },
+    {
+     "source_name": "cwe",
+     "external_id": "CWE-285",
+     "url": "http://cwe.mitre.org/data/definitions/285.html"
+    },
+    {
+     "source_name": "cwe",
+     "external_id": "CWE-434",
+     "url": "http://cwe.mitre.org/data/definitions/434.html"
+    },
+    {
+     "source_name": "cwe",
+     "external_id": "CWE-693",
+     "url": "http://cwe.mitre.org/data/definitions/693.html"
+    },
+    {
+     "source_name": "cwe",
+     "external_id": "CWE-732",
+     "url": "http://cwe.mitre.org/data/definitions/732.html"
+    },
+    {
+     "source_name": "cwe",
+     "external_id": "CWE-1191",
+     "url": "http://cwe.mitre.org/data/definitions/1191.html"
+    },
+    {
+     "source_name": "cwe",
+     "external_id": "CWE-1193",
+     "url": "http://cwe.mitre.org/data/definitions/1193.html"
+    },
+    {
+     "source_name": "cwe",
+     "external_id": "CWE-1220",
+     "url": "http://cwe.mitre.org/data/definitions/1220.html"
+    },
+    {
+     "source_name": "cwe",
+     "external_id": "CWE-1297",
+     "url": "http://cwe.mitre.org/data/definitions/1297.html"
+    },
+    {
+     "source_name": "cwe",
+     "external_id": "CWE-1311",
+     "url": "http://cwe.mitre.org/data/definitions/1311.html"
+    },
+    {
+     "source_name": "cwe",
+     "external_id": "CWE-1314",
+     "url": "http://cwe.mitre.org/data/definitions/1314.html"
+    },
+    {
+     "source_name": "cwe",
+     "external_id": "CWE-1315",
+     "url": "http://cwe.mitre.org/data/definitions/1315.html"
+    },
+    {
+     "source_name": "cwe",
+     "external_id": "CWE-1318",
+     "url": "http://cwe.mitre.org/data/definitions/1318.html"
+    },
+    {
+     "source_name": "cwe",
+     "external_id": "CWE-1320",
+     "url": "http://cwe.mitre.org/data/definitions/1320.html"
+    },
+    {
+     "source_name": "cwe",
+     "external_id": "CWE-1321",
+     "url": "http://cwe.mitre.org/data/definitions/1321.html"
+    },
+    {
+     "source_name": "cwe",
+     "external_id": "CWE-1327",
+     "url": "http://cwe.mitre.org/data/definitions/1327.html"
+    },
+    {
+     "source_name": "ATTACK",
+     "external_id": "T1574.010",
+     "url": "https://attack.mitre.org/wiki/Technique/T1574/010",
+     "description": "Hijack Execution Flow: ServicesFile Permissions Weakness"
+    }
+   ]
+  },
+  {
+   "type": "attack-pattern",
+   "id": "attack-pattern--87829d14-eece-4fa3-b36f-54cc3b2262ae",
+   "name": "DEPRECATED: XSS through Log Files",
+   "created": "2014-06-23T00:00:00.000Z",
+   "modified": "2017-05-01T00:00:00.000Z",
+   "x_capec_status": "Deprecated",
+   "x_capec_version": "3.9",
+   "x_capec_abstraction": "Detailed",
+   "external_references": [
+    {
+     "source_name": "capec",
+     "external_id": "CAPEC-106",
+     "url": "https://capec.mitre.org/data/definitions/106.html"
+    }
+   ]
+  },
+  {
+   "type": "attack-pattern",
+   "id": "attack-pattern--74a4fb36-83cb-4851-b09c-370f1a408523",
+   "name": "Cause Web Server Misclassification",
+   "created": "2014-06-23T00:00:00.000Z",
+   "modified": "2022-09-29T00:00:00.000Z",
+   "x_capec_status": "Draft",
+   "x_capec_version": "3.9",
+   "x_capec_abstraction": "Detailed",
+   "x_capec_likelihood_of_attack": "Medium",
+   "x_capec_typical_severity": "High",
+   "external_references": [
+    {
+     "source_name": "capec",
+     "external_id": "CAPEC-11",
+     "url": "https://capec.mitre.org/data/definitions/11.html"
+    },
+    {
+     "source_name": "cwe",
+     "external_id": "CWE-430",
+     "url": "http://cwe.mitre.org/data/definitions/430.html"
+    },
+    {
+     "source_name": "ATTACK",
+     "external_id": "T1036.006",
+     "url": "https://attack.mitre.org/wiki/Technique/T1036/006",
+     "description": "Masquerading: Space after Filename"
+    }
+   ]
+  },
+  {
+   "type": "attack-pattern",
+   "id": "attack-pattern--a2f42e82-a184-4df7-a8bb-6fc34787d571",
+   "name": "Disable Security Software",
+   "created": "2015-11-09T00:00:00.000Z",
+   "modified": "2023-01-24T00:00:00.000Z",
+   "x_capec_status": "Usable",
+   "x_capec_version": "3.9",
+   "x_capec_abstraction": "Standard",
+   "x_capec_likelihood_of_attack": "Medium",
+   "x_capec_typical_severity": "Medium",
+   "external_references": [
+    {
+     "source_name": "capec",
+     "external_id": "CAPEC-578",
+     "url": "https://capec.mitre.org/data/definitions/578.html"
+    },
+    {
+     "source_name": "cwe",
+     "external_id": "CWE-284",
+     "url": "http://cwe.mitre.org/data/definitions/284.html"
+    },
+    {
+     "source_name": "ATTACK",
+     "external_id": "T1556.006",
+     "url": "https://attack.mitre.org/wiki/Technique/T1556/006",
+     "description": "Modify Authentication Process: Multi-Factor Authentication"
+    },
+    {
+     "source_name": "ATTACK",
+     "external_id": "T1562.001",
+     "url": "https://attack.mitre.org/wiki/Technique/T1562/001",
+     "description": "Impair Defenses: Disable or Modify Tools"
+    },
+    {
+     "source_name": "ATTACK",
+     "external_id": "T1562.002",
+     "url": "https://attack.mitre.org/wiki/Technique/T1562/002",
+     "description": "Impair Defenses: Disable Windows Event Logging"
+    },
+    {
+     "source_name": "ATTACK",
+     "external_id": "T1562.004",
+     "url": "https://attack.mitre.org/wiki/Technique/T1562/004",
+     "description": "Impair Defenses: Disable or Modify System Firewall"
+    },
+    {
+     "source_name": "ATTACK",
+     "external_id": "T1562.007",
+     "url": "https://attack.mitre.org/wiki/Technique/T1562/007",
+     "description": "Impair Defenses: Disable or Modify Cloud Firewall"
+    },
+    {
+     "source_name": "ATTACK",
+     "external_id": "T1562.008",
+     "url": "https://attack.mitre.org/wiki/Technique/T1562/008",
+     "description": "Impair Defenses: Disable Cloud Logs"
+    },
+    {
+     "source_name": "ATTACK",
+     "external_id": "T1562.009",
+     "url": "https://attack.mitre.org/wiki/Technique/T1562/009",
+     "description": "Impair Defenses: Safe Mode Boot"
+    }
+   ]
+  },
+  {
+   "type": "attack-pattern",
+   "id": "attack-pattern--140142cc-28cb-4506-bce6-b44128b7b9a7",
+   "name": "Collect Data from Screen Capture",
+   "created": "2018-07-31T00:00:00.000Z",
+   "modified": "2022-09-29T00:00:00.000Z",
+   "x_capec_status": "Draft",
+   "x_capec_version": "3.9",
+   "x_capec_abstraction": "Detailed",
+   "x_capec_likelihood_of_attack": "Medium",
+   "x_capec_typical_severity": "Medium",
+   "external_references": [
+    {
+     "source_name": "capec",
+     "external_id": "CAPEC-648",
+     "url": "https://capec.mitre.org/data/definitions/648.html"
+    },
+    {
+     "source_name": "cwe",
+     "external_id": "CWE-267",
+     "url": "http://cwe.mitre.org/data/definitions/267.html"
+    },
+    {
+     "source_name": "ATTACK",
+     "external_id": "T1113",
+     "url": "https://attack.mitre.org/wiki/Technique/T1113",
+     "description": "Screen Capture"
+    },
+    {
+     "source_name": "ATTACK",
+     "external_id": "T1513",
+     "url": "https://attack.mitre.org/wiki/Technique/T1513",
+     "description": "Screen Capture"
+    }
+   ]
+  },
+  {
+   "type": "attack-pattern",
+   "id": "attack-pattern--a00c2cc2-bd4f-4594-9ec1-b021b62ac896",
+   "name": "Phishing",
+   "created": "2014-06-23T00:00:00.000Z",
+   "modified": "2023-01-24T00:00:00.000Z",
+   "x_capec_status": "Draft",
+   "x_capec_version": "3.9",
+   "x_capec_abstraction": "Standard",
+   "x_capec_likelihood_of_attack": "High",
+   "x_capec_typical_severity": "Very High",
+   "external_references": [
+    {
+     "source_name": "capec",
+     "external_id": "CAPEC-98",
+     "url": "https://capec.mitre.org/data/definitions/98.html"
+    },
+    {
+     "source_name": "cwe",
+     "external_id": "CWE-451",
+     "url": "http://cwe.mitre.org/data/definitions/451.html"
+    },
+    {
+     "source_name": "ATTACK",
+     "external_id": "T1566",
+     "url": "https://attack.mitre.org/wiki/Technique/T1566",
+     "description": "Phishing"
+    },
+    {
+     "source_name": "ATTACK",
+     "external_id": "T1598",
+     "url": "https://attack.mitre.org/wiki/Technique/T1598",
+     "description": "Phishing for Information"
+    }
+   ]
+  },
+  {
+   "type": "course-of-action",
+   "id": "course-of-action--0d8de0b8-e9fd-44b2-8f1f-f8aae79949be",
+   "name": "coa-1-0"
+  },
+  {
+   "type": "course-of-action",
+   "id": "course-of-action--a2f0dd07-332e-41f6-951c-fa0994e302de",
+   "name": "coa-11-0"
+  },
+  {
+   "type": "relationship",
+   "id": "relationship--c796a053-8016-4098-9d01-e680e042cb24",
+   "relationship_type": "mitigates",
+   "source_ref": "course-of-action--0d8de0b8-e9fd-44b2-8f1f-f8aae79949be",
+   "target_ref": "attack-pattern--92cdcd3d-d734-4442-afc3-4599f261498b"
+  },
+  {
+   "type": "relationship",
+   "id": "relationship--22b26b12-1eff-40ab-95ab-8de26f22b487",
+   "relationship_type": "mitigates",
+   "source_ref": "course-of-action--a2f0dd07-332e-41f6-951c-fa0994e302de",
+   "target_ref": "attack-pattern--74a4fb36-83cb-4851-b09c-370f1a408523"
+  }
+ ]
+}

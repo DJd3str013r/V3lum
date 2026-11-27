@@ -1,0 +1,24 @@
+
+
+
+{
+ "resultCount": 2,
+ "results": [
+  {
+   "wrapperType": "software",
+   "kind": "software",
+   "trackId": 330984271,
+   "trackName": "BB: Banco, Cartão, Crédito",
+   "bundleId": "com.bb.bbapp",
+   "sellerName": "Banco do Brasil",
+   "artistName": "Banco do Brasil",
+   "artistId": 330984274,
+   "sellerUrl": "http://www.bb.com.br",
+   "trackViewUrl": "https://apps.apple.com/br/app/bb-banco-cart%C3%A3o-cr%C3%A9dito/id330984271?uo=4",
+   "artistViewUrl": "https://apps.apple.com/br/developer/banco-do-brasil/id330984274?uo=4",
+   "primaryGenreName": "Finance",
+   "releaseDate": "2010-01-06T04:08:33Z",
+   "currentVersionReleaseDate": "2026-11-24T14:08:24Z",
+   "version": "10.9.2",
+   "userRatingCount": 4299762,
+   "averageUserRating": 4

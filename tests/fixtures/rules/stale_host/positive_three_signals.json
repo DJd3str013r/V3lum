@@ -1,0 +1,67 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "$comment": "EOL software, an expired certificate and a self-signed certificate on an own name: MEDIUM",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "org_profile": {
+    "org": {
+      "name": "Acme"
+    },
+    "domains": [
+      {
+        "name": "acme-corp.example",
+        "verification": "txt_verified",
+        "criticality": "high"
+      }
+    ],
+    "cidrs": [
+      {
+        "value": "203.0.113.0/24",
+        "criticality": "high"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "key": "domain:legacy.acme-corp.example",
+      "depth": 0,
+      "seed": true,
+      "ownership": "own_asset",
+      "tags": [
+        "own_asset"
+      ],
+      "attributes": {
+        "eol_software": [
+          {
+            "value": true,
+            "source": "shodan_internetdb"
+          }
+        ],
+        "cert_not_after": [
+          {
+            "value": "2025-01-31",
+            "source": "tls_inspect"
+          }
+        ],
+        "tls_self_signed": [
+          {
+            "value": true,
+            "source": "shodan_internetdb"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [],
+  "expect": {
+    "stale_host": {
+      "min": 1,
+      "max": 1,
+      "severity": "medium"
+    }
+  }
+}

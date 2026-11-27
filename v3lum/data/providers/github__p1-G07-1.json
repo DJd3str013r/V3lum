@@ -1,0 +1,69 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "github",
+  "hosts": [],
+  "sources": {
+    "ioc_feeds_offline_tweetfeed": {
+      "title": "TweetFeed IOC lists (IOCs shared on X; week list on raw.githubusercontent.com/0xDanielLopez/TweetFeed)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/0xDanielLopez/TweetFeed/blob/master/LICENSE",
+        "quote": "Creative Commons Legal Code CC0 1.0 Universal",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "tweetfeed",
+      "sanitizer": null,
+      "dataset": "tweetfeed_week.csv",
+      "notes": "P159 cond 2: TweetFeed CC0 (LICENSE verified 2026-11-26). Matched locally by ioc_feeds_offline (disclosure none); 'Possible' social-media labels are low confidence (cond 6). Reporting handles are not indexed."
+    },
+    "ioc_feeds_offline_meta": {
+      "title": "Meta threat-research indicators (index.json and per-report CSVs on raw.githubusercontent.com/facebook/threat-research)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/facebook/threat-research",
+        "quote": "Feeds in this module, terms recorded in the registry, all 'open': TweetFeed (CC0, LICENSE verified 2026-11-26; today/week lists), CIRCL MISP OSINT feed (TLP:CLEAR, attribute CIRCL), Meta threat-research (MIT), Neo23x0 signature-base hash and C2 lists (DRL 1.1, attribution)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "meta",
+      "sanitizer": null,
+      "dataset": "meta_threat_research_index.json",
+      "notes": "Quote: binding council text (P159 cond 2; research C0361: MIT). Archive feed (newest report added 2023-05-03): never stale, listing age still shown. Indicators of CIB networks and malware campaigns with the Meta report URL."
+    },
+    "ioc_feeds_offline_sigbase": {
+      "title": "Neo23x0 signature-base IOC lists (iocs/hash-iocs.txt and iocs/c2-iocs.txt only)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/Neo23x0/signature-base/blob/master/LICENSE",
+        "quote": "Neo23x0 signature-base hash and C2 lists (DRL 1.1, attribution)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "signature-base",
+      "sanitizer": null,
+      "dataset": "sigbase_hash_iocs.txt",
+      "notes": "Quote: binding council text (P159 cond 2); Detection Rule License 1.1, attribution to the author (Florian Roth) required. Only the hash and C2 lists are used; filename-iocs.txt (untrusted regexes, ReDoS risk) is excluded (P159 cond 5). Blocks sourced from AlienVault OTX count as the otx family (P171)."
+    },
+    "ioc_feeds_unreviewed_c2intel": {
+      "title": "C2IntelFeeds (drb-ra): possible C2 IPs and domains from Censys queries (raw.githubusercontent.com/drb-ra/C2IntelFeeds)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://github.com/drb-ra/C2IntelFeeds",
+        "quote": "",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "c2intelfeeds",
+      "sanitizer": null,
+      "dataset": "c2intel_ipc2s_30day.csv",
+      "notes": "P159 cond 3: no LICENSE file in the repository (404, research C0349): 'unknown' until legal records a class; used only by ioc_feeds_unreviewed (default off in every profile). 'Possible ... C2' labels are low confidence; 'Fronting Domain' rows are legitimate domains, never hostile."
+    }
+  },
+  "error_markers": [],
+  "notes": "Batch p1-G07-1 (P159): dataset sources hosted on GitHub raw. Each source keeps its own terms; GitHub only hosts the files."
+}

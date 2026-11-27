@@ -1,0 +1,26 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "ransomlook",
+  "hosts": [],
+  "sources": {
+    "ransomlook_groups_index": {
+      "title": "RansomLook /api/groups: daily list of tracked group names (dataset ransomlook_groups)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.ransomlook.io/about",
+        "quote": "Licence: content CC BY 4.0 with commercial use allowed (ransomlook.io/about, verified 2026-11-26): attribution 'Source: RansomLook (CC BY 4.0)' in every report and export using it; the AGPL service code is not copied.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "ransomlook",
+      "sanitizer": {
+        "keep": ["[]", "group", "known", "canonical"],
+        "notes": "A JSON list of public group names (no victim data); the module's evidence keeps the group recognised for a threat_actor input."
+      },
+      "dataset": "ransomlook_groups",
+      "notes": "Quote: binding council text (P196 cond 7). Part of the local index synced daily through the dataset manager (P196 cond 1): /api/groups (about 8 KB, 655 names on 2026-11-25) maps a typed actor name to the group RansomLook tracks. The recent-posts half of the index (dataset ransomlook_recent_posts, /api/last/30) uses the seeded source ransomlook.api."
+    }
+  },
+  "error_markers": []
+}

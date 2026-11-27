@@ -1,0 +1,37 @@
+{
+ "schema": "v3lum.rule/1",
+ "id": "t_outlier_registrar",
+ "version": "1",
+ "title": "Rare registrar among the investigated domains",
+ "severity": "low",
+ "criterion": "test rule (outlier)",
+ "references": [
+  "https://github.com/smicallef/spiderfoot"
+ ],
+ "attack": [],
+ "false_positives": "synthetic test rule",
+ "collections": [
+  {
+   "name": "domains",
+   "entity_types": [
+    "domain"
+   ],
+   "filters": [
+    {
+     "field": "attr:registrar",
+     "op": "exists"
+    }
+   ]
+  }
+ ],
+ "analysis": {
+  "method": "outlier",
+  "minimum": 10,
+  "percentile": 10
+ },
+ "headline": "{count} domain(s) use the rare registrar {value} ({percent}% of {total})",
+ "recommendation": "Review the listed entities.",
+ "aggregation": {
+  "field": "attr:registrar"
+ }
+}

@@ -1,0 +1,10 @@
+{
+ "_synthetic": "ISC API docs (2026-11-26): 'at times of high load, you may get \"429\" responses. Please stop sending queries for 5 minutes ... obey the time specified in the \"Retry-After\" header'. Not observed live.",
+ "url": "https://isc.sans.edu/api/ip/8.8.8.8?json",
+ "status": 429,
+ "headers": {
+  "content-type": "text/html; charset=UTF-8",
+  "retry-after": "300"
+ },
+ "body": ""
+}

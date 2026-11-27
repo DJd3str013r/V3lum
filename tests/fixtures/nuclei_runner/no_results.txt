@@ -1,0 +1,4 @@
+[INF] Nuclei Engine Version: v3.11.1
+[INF] Templates loaded for current scan: 212
+[INF] Targets loaded for current scan: 1
+[INF] Scan completed in 6s. No results found.

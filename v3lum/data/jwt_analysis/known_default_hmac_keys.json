@@ -1,0 +1,24 @@
+{
+  "schema": "v3lum.jwt_known_defaults/1",
+  "title": "Publicly documented default HS256/384/512 signing values (P316 c4)",
+  "owner": "batch p2-G12-2 (P316 jwt_analysis); curated by redteam_lead before release",
+  "licence": "V3LUM-authored list of facts taken from public documentation (no third-party text copied beyond the documented values)",
+  "max_entries": 100,
+  "rules": "Misconfiguration test, not cracking (A7 BR8): only values that a named public document, README or framework ships as its default or example; no generated candidates, no wordlists, at most 100 entries. A match is reported by its 1-based entry number only, never by its value (P316 c5).",
+  "checked_at": "2026-11-26",
+  "entries": [
+    {"value": "your-256-bit-secret", "source": "jwt.io debugger default for HS256"},
+    {"value": "your-384-bit-secret", "source": "jwt.io debugger default for HS384"},
+    {"value": "your-512-bit-secret", "source": "jwt.io debugger default for HS512"},
+    {"value": "secret", "source": "PyJWT documentation usage examples; passport-jwt README (secretOrKey)"},
+    {"value": "shhhhh", "source": "node jsonwebtoken (auth0/node-jsonwebtoken) README examples"},
+    {"value": "shhhhhhared-secret", "source": "express-jwt README example"},
+    {"value": "keyboard cat", "source": "express-session README example, widely copied into JWT tutorials"},
+    {"value": "my-secret-token-to-change-in-production", "source": "JHipster generated application default (older versions)"},
+    {"value": "super-secret-jwt-token-with-at-least-32-characters-long", "source": "Supabase CLI local development default JWT signing value"},
+    {"value": "super-secret", "source": "Flask-JWT-Extended documentation basic usage (JWT_SECRET_KEY, 'Change this!')"},
+    {"value": "09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7", "source": "FastAPI tutorial 'OAuth2 with Password (and hashing), Bearer with JWT tokens' (SECRET_KEY)"},
+    {"value": "secretKey", "source": "NestJS authentication documentation, older versions (jwtConstants.secret)"},
+    {"value": "DO NOT USE THIS VALUE. INSTEAD, CREATE A COMPLEX SECRET AND KEEP IT SAFE OUTSIDE OF THE SOURCE CODE.", "source": "NestJS authentication documentation (jwtConstants.secret)"}
+  ]
+}

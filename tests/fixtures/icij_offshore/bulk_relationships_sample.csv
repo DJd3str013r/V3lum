@@ -1,0 +1,10 @@
+node_id_start,node_id_end,rel_type,link,status,start_date,end_date,sourceID
+10000035,14095990,registered_address,registered address,,,,Panama Papers
+10000063,10007006,same_as,same name and registration date as,,,,
+24000030,14035591,same_address_as,same address as,,,,Bahamas Leaks
+99200001,99000001,officer_of,shareholder of,,12-MAY-2014,,Pandora Papers - Example Provider
+99200002,99000001,officer_of,director of,,2014-05-12,2019-01-31,Pandora Papers - Example Provider
+99100001,99000001,intermediary_of,intermediary of,,,,Pandora Papers - Example Provider
+99000001,99300001,registered_address,registered address,,,,Pandora Papers - Example Provider
+99200001,99300002,registered_address,residential address,,,,Pandora Papers - Example Provider
+99000001,10000005,similar,similar name and address as,,,,

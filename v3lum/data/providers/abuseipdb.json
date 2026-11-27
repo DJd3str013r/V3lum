@@ -1,0 +1,98 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "abuseipdb",
+  "name": "AbuseIPDB (API v2 check and web pages)",
+  "operator": "Marathon Studios, Inc. (AbuseIPDB)",
+  "hosts": [
+    "api.abuseipdb.com",
+    "www.abuseipdb.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company (Marathon Studios, Inc.) with published terms, a privacy policy and paid plans (A8 trusted); P157 final condition 2: 'Registry: tier trusted, terms key-terms'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Community abuse reports aggregated into a confidence score; single reporters and CGNAT/mobile addresses produce false positives (P157 cond 4: >= 3 distinct reporters for 'malicious', Mobile ISP capped at low)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "retries": 0
+  },
+  "quota": {
+    "scope": "key",
+    "day": 1000,
+    "published": true,
+    "evidence_url": "https://docs.abuseipdb.com/#api-daily-rate-limits",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {
+    "abuseipdb": {
+      "description": "AbuseIPDB API v2 key (Key header; check endpoint only, never report)",
+      "signup_url": "https://www.abuseipdb.com/account/api",
+      "env": [
+        "V3LUM_ABUSEIPDB_KEY",
+        "ABUSEIPDB_API_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "AbuseIPDB's terms forbid commercial use of Free plans and several free accounts per organisation: record 'business' (key_plans.abuseipdb) only for a Basic or higher paid plan held by the company (P157 cond 2)"
+    }
+  },
+  "sources": {
+    "check": {
+      "title": "AbuseIPDB API v2 check (GET /api/v2/check?ipAddress=&maxAgeInDays=90, never verbose) and check-block (<= /24)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://www.abuseipdb.com/legal",
+        "quote": "Licence (legal floor): AbuseIPDB's terms (verified 2026-11-26) forbid commercial use of Free plans and several free accounts per organisation. Under corporate it runs only with a Basic or higher paid plan recorded by legal (key_plans.abuseipdb='business'); otherwise SKIPPED reason_code 'licence' with the manual AbuseIPDB link.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "abuseipdb",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P157 cond 2). Read-only: GET /api/v2/check and /api/v2/check-block only; report, bulk-report and clear-address are never called (P157 cond 1). 'verbose' is never sent, so report comments (free text that may hold personal data) are never fetched, cached or stored. Without a key: 401 errors[].detail 'Authentication failed...' (research). 429 'Daily rate limit of 1000 requests exceeded' = QUOTA, other 429 = RATE_LIMITED. Daily limits per plan: Standard 1,000 checks / 100 block checks; Basic 10,000 / 1,000 (docs 2026-11-26). Provider data is not redistributed (x_redistribution).",
+      "licensed_alternative": "An AbuseIPDB Basic (or higher) plan held by the company and recorded as key_plans.abuseipdb = 'business'; meanwhile the manual page threat_intel_g07_p2:abuseipdb_check_ip (browser only: Cloudflare check for scripts)."
+    },
+    "web_links": {
+      "title": "AbuseIPDB check pages (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.abuseipdb.com/legal",
+        "quote": "otherwise SKIPPED reason_code 'licence' with the manual AbuseIPDB link.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "abuseipdb",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P157 cond 2). www.abuseipdb.com/check/{ip} sits behind a Cloudflare challenge for scripts (research): manual opening in a browser only, never fetched by V3LUM."
+    }
+  },
+  "x_redistribution": {
+    "external_exports": "verdict, link and source name only",
+    "basis": "P157 cond 5: provider data is not redistributed; excluded from STIX/MISP/JSON exports shared outside the company"
+  },
+  "x_quota_check_block": {
+    "standard": 100,
+    "basic": 1000,
+    "premium": 5000,
+    "evidence": "docs.abuseipdb.com 'API Daily Rate Limits' (2026-11-26): check-block has its own daily counter; P334 blocks are per provider, so the module counts check-block calls per day in ctx.state against the plan of setting abuseipdb_plan (default standard: 100, 80% spent) until per-endpoint budgets exist"
+  },
+  "notes": "Owned by batch p2-G07-1 (P157). The key 'abuseipdb' is the legacy config.KNOWN_KEYS entry; this fragment adds the alias V3LUM_ABUSEIPDB_KEY and the plan hint. Quota: the Standard (free) plan's 1,000 checks per day at 80% (key scope); a recorded Basic plan's 10,000 replaces it when legal records the plan."
+}

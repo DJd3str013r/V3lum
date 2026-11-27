@@ -1,0 +1,24 @@
+{
+  "schema": "v3lum.pivot_pack/1",
+  "pack": "tor_relays",
+  "title": "Tor relay and exit pivots (P040)",
+  "notes": "Owned by batch p1-G02-2 (P040 cond 7: ExoneraTor is a manual pivot link). V3LUM never fetches it; the dated form (with timestamp=YYYY-MM-DD) is added by tor_exit_history for the date checked.",
+  "links": [
+    {
+      "id": "exonerator",
+      "label": "ExoneraTor - was this IP a Tor relay? (Tor Metrics)",
+      "template": "https://metrics.torproject.org/exonerator.html?ip={ip}&lang=en",
+      "entity_types": ["ipv4", "ipv6"],
+      "category": "history",
+      "host": "metrics.torproject.org",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Tor Metrics ExoneraTor search form pre-filled with the IP; add the date of the event on the page (or use the dated link of tor_exit_history). Research C0465 pivot."
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "v3lum_test_galaxy",
+  "source_url": "https://example.test/galaxy",
+  "version": "test",
+  "sha256": "",
+  "licence": "CC0-1.0",
+  "attribution": "Synthetic galaxy fragment of the WP21 tests.",
+  "bundled": false,
+  "files": ["tests/fixtures/stix/galaxy/test_threat_actor.json"]
+}

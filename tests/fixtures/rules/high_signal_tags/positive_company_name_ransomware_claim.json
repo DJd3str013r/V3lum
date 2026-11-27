@@ -1,0 +1,39 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 1,
+    "purpose": "AR08 fixture"
+  },
+  "nodes": [
+    {
+      "key": "company_name:Acme Comercio Exemplo Ltda",
+      "depth": 0,
+      "seed": true,
+      "findings": [
+        {
+          "title": "Victim name resembles a ransomware leak-site claim",
+          "severity": "high",
+          "confidence": 0.9,
+          "tags": [
+            "ransomware"
+          ],
+          "module": "t_leak_tracker",
+          "criterion": "fixture",
+          "confidence_label": "confirmed"
+        }
+      ]
+    }
+  ],
+  "edges": [],
+  "expect": {
+    "high_signal_tags": {
+      "min": 1,
+      "max": 1,
+      "severity": "medium",
+      "confidence_label": "possible"
+    }
+  }
+}

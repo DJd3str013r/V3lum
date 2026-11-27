@@ -1,0 +1,298 @@
+{
+ "category": "actor",
+ "name": "MITRE ATT&CK Groups",
+ "source": "https://github.com/mitre/cti",
+ "type": "mitre-intrusion-set",
+ "uuid": "10df003c-7831-11e7-bdb9-971cdd1218df",
+ "version": 45,
+ "description": "Adversary groups tracked by MITRE ATT&CK.",
+ "values": [
+  {
+   "value": "APT28 - G0007",
+   "uuid": "bef4c620-0787-42a8-a96d-b7eb6e85917c",
+   "meta": {
+    "synonyms": [
+     "APT28",
+     "SNAKEMACKEREL",
+     "Swallowtail",
+     "Group 74",
+     "Sednit",
+     "Sofacy",
+     "Pawn Storm",
+     "Fancy Bear",
+     "STRONTIUM",
+     "Tsar Team",
+     "Threat Group-4127",
+     "TG-4127"
+    ],
+    "refs": [
+     "https://attack.mitre.org/groups/G0007"
+    ],
+    "external_id": "G0007"
+   },
+   "related": [
+    {
+     "dest-uuid": "213cdde9-c11a-4ea9-8ce0-c868e9826fec",
+     "type": "similar",
+     "tags": [
+      "estimative-language:likelihood-probability=\"likely\""
+     ]
+    },
+    {
+     "dest-uuid": "5b4ee3ea-eee3-4c8e-8323-85ae32658754",
+     "type": "similar",
+     "tags": [
+      "estimative-language:likelihood-probability=\"likely\""
+     ]
+    }
+   ]
+  },
+  {
+   "value": "APT29 - G0016",
+   "uuid": "899ce53f-13a0-479b-a0e4-67d46e241542",
+   "meta": {
+    "synonyms": [
+     "APT29",
+     "IRON RITUAL",
+     "IRON HEMLOCK",
+     "NobleBaron",
+     "Dark Halo",
+     "NOBELIUM",
+     "UNC2452",
+     "YTTRIUM",
+     "The Dukes",
+     "Cozy Bear",
+     "CozyDuke",
+     "SolarStorm",
+     "Blue Kitsune",
+     "UNC3524",
+     "Midnight Blizzard"
+    ],
+    "refs": [
+     "https://attack.mitre.org/groups/G0016"
+    ],
+    "external_id": "G0016"
+   },
+   "related": [
+    {
+     "dest-uuid": "b2056ff0-00b9-482e-b11c-c771daa5f28a",
+     "type": "similar",
+     "tags": [
+      "estimative-language:likelihood-probability=\"likely\""
+     ]
+    }
+   ]
+  },
+  {
+   "value": "Lazarus Group - G0032",
+   "uuid": "c93fccb1-e8e8-42cf-ae33-2ad1d183913a",
+   "meta": {
+    "synonyms": [
+     "Lazarus Group",
+     "Labyrinth Chollima",
+     "HIDDEN COBRA",
+     "Guardians of Peace",
+     "ZINC",
+     "NICKEL ACADEMY",
+     "Diamond Sleet"
+    ],
+    "refs": [
+     "https://attack.mitre.org/groups/G0032"
+    ],
+    "external_id": "G0032"
+   },
+   "related": [
+    {
+     "dest-uuid": "68391641-859f-4a9a-9a1e-3e5cf71ec376",
+     "type": "similar",
+     "tags": [
+      "estimative-language:likelihood-probability=\"likely\""
+     ]
+    }
+   ]
+  },
+  {
+   "value": "Kimsuky - G0094",
+   "uuid": "0ec2f388-bf0f-4b5c-97b1-fc736d26c25f",
+   "meta": {
+    "synonyms": [
+     "Kimsuky",
+     "Black Banshee",
+     "Velvet Chollima",
+     "Emerald Sleet",
+     "THALLIUM",
+     "APT43",
+     "TA427",
+     "Springtail",
+     "Earth Kumiho",
+     "PatheticSlug"
+    ],
+    "refs": [
+     "https://attack.mitre.org/groups/G0094"
+    ],
+    "external_id": "G0094"
+   }
+  },
+  {
+   "value": "FIN7 - G0046",
+   "uuid": "3753cc21-2dae-4dfb-8481-d004e74502cc",
+   "meta": {
+    "synonyms": [
+     "FIN7",
+     "GOLD NIAGARA",
+     "ITG14",
+     "Carbon Spider",
+     "ELBRUS",
+     "Sangria Tempest"
+    ],
+    "refs": [
+     "https://attack.mitre.org/groups/G0046"
+    ],
+    "external_id": "G0046"
+   },
+   "related": [
+    {
+     "dest-uuid": "00220228-a5a4-4032-a30d-826bb55aa3fb",
+     "type": "similar",
+     "tags": [
+      "estimative-language:likelihood-probability=\"likely\""
+     ]
+    },
+    {
+     "dest-uuid": "72f54d66-675d-4587-9bd3-4ed09f9522e4",
+     "type": "uses",
+     "tags": []
+    }
+   ]
+  },
+  {
+   "value": "Carbanak - G0008",
+   "uuid": "55033a4d-3ffe-46b2-99b4-2c1541e9ce1c",
+   "meta": {
+    "synonyms": [
+     "Carbanak",
+     "Anunak"
+    ],
+    "refs": [
+     "https://attack.mitre.org/groups/G0008"
+    ],
+    "external_id": "G0008"
+   },
+   "related": [
+    {
+     "dest-uuid": "00220228-a5a4-4032-a30d-826bb55aa3fb",
+     "type": "similar",
+     "tags": [
+      "estimative-language:likelihood-probability=\"likely\""
+     ]
+    },
+    {
+     "dest-uuid": "72f54d66-675d-4587-9bd3-4ed09f9522e4",
+     "type": "uses",
+     "tags": []
+    }
+   ]
+  },
+  {
+   "value": "TA505 - G0092",
+   "uuid": "7eda3dd8-b09b-4705-8090-c2ad9fb8c14d",
+   "meta": {
+    "synonyms": [
+     "TA505",
+     "Hive0065",
+     "Spandex Tempest",
+     "CHIMBORAZO"
+    ],
+    "refs": [
+     "https://attack.mitre.org/groups/G0092"
+    ],
+    "external_id": "G0092"
+   }
+  },
+  {
+   "value": "APT41 - G0096",
+   "uuid": "18854f55-ac7c-4634-bd9a-352dd07613b7",
+   "meta": {
+    "synonyms": [
+     "APT41",
+     "Wicked Panda",
+     "Brass Typhoon",
+     "BARIUM"
+    ],
+    "refs": [
+     "https://attack.mitre.org/groups/G0096"
+    ],
+    "external_id": "G0096"
+   }
+  },
+  {
+   "value": "Winnti Group - G0044",
+   "uuid": "c5947e1c-1cbc-434c-94b8-27c7e3be0fff",
+   "meta": {
+    "synonyms": [
+     "Winnti Group",
+     "Blackfly"
+    ],
+    "refs": [
+     "https://attack.mitre.org/groups/G0044"
+    ],
+    "external_id": "G0044"
+   }
+  },
+  {
+   "value": "APT38 - G0082",
+   "uuid": "00f67a77-86a4-4adf-be26-1a54fc713340",
+   "meta": {
+    "synonyms": [
+     "APT38",
+     "NICKEL GLADSTONE",
+     "BeagleBoyz",
+     "Bluenoroff",
+     "Stardust Chollima",
+     "Sapphire Sleet",
+     "COPERNICIUM"
+    ],
+    "refs": [
+     "https://attack.mitre.org/groups/G0082"
+    ],
+    "external_id": "G0082"
+   }
+  },
+  {
+   "value": "Stolen Pencil - G0086",
+   "uuid": "7a0d4c09-dfe7-4fa2-965a-1a0e42fedd70",
+   "meta": {
+    "synonyms": [
+     "Stolen Pencil"
+    ],
+    "refs": [
+     "https://attack.mitre.org/groups/G0086"
+    ],
+    "external_id": "G0086"
+   },
+   "related": [
+    {
+     "dest-uuid": "0ec2f388-bf0f-4b5c-97b1-fc736d26c25f",
+     "type": "revoked-by",
+     "tags": []
+    }
+   ]
+  },
+  {
+   "value": "Andariel - G0138",
+   "uuid": "39d6890e-7f23-4474-b8ef-e7b0343c5fc8",
+   "meta": {
+    "synonyms": [
+     "Andariel",
+     "Silent Chollima",
+     "PLUTONIUM",
+     "Onyx Sleet"
+    ],
+    "refs": [
+     "https://attack.mitre.org/groups/G0138"
+    ],
+    "external_id": "G0138"
+   }
+  }
+ ]
+}

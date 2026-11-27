@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "ransomwhere_dataset",
+  "source_url": "https://api.ransomwhe.re/export",
+  "version": "runtime dataset ransomwhere_export (refreshed weekly); Zenodo record 13999026 version 1.1.0 (2024-10-27); live export 2026-11-26 (11,186 rows, last update 2024-10-29) trimmed to 8 rows in the test fixtures",
+  "sha256": "",
+  "licence": "CC-BY-4.0",
+  "attribution": "Cable, Jack. (2024). Ransomwhere: A Crowdsourced Ransomware Payment Dataset (1.1.0) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.6512122 - Ransomwhere (https://ransomwhe.re/), licensed under CC BY 4.0.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/crypto/ransomwhere.py",
+    "tests/fixtures/ransomwhere/export_ok.json"
+  ]
+}

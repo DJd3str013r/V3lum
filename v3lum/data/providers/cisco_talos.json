@@ -1,0 +1,50 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "cisco_talos",
+  "name": "Cisco Talos reputation center (web pages)",
+  "operator": "Cisco Systems, Inc. (Talos Intelligence Group)",
+  "hosts": [
+    "talosintelligence.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms and a privacy policy (A8 BR2; P304 cond 5 lists Talos as trusted).",
+  "tier_reviewer": "batch p2-G14-3 (council-1 P304 cond 5: initial tiers, reviewer confirms)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Vendor reputation (web and e-mail) from Cisco telemetry."
+  },
+  "http_profile": {
+    "user_agent": "neutral"
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "reputation_pages": {
+      "title": "Talos reputation_center/lookup?search= (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://talosintelligence.com/",
+        "quote": "Free web UI; provider ToS apply (manual analyst use)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "cisco-talos",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0394 (Cloudflare challenge for scripts). Used by pivots_unverified."
+    }
+  },
+  "notes": "Manual pivot links only (P304 cond 1): V3LUM never requests these pages, not even from doctor, and never solves their challenges; the analyst opens them in a browser. No budget. Owned by batch p2-G14-3 (module pivots_unverified); other batches extend it with <id>__<batch>.json."
+}

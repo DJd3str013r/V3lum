@@ -1,0 +1,20 @@
+{
+ "request": "GET https://minhareceita.org/12ABC34501DE35",
+ "response": {
+  "status": 404,
+  "headers": {
+   "content-type": "application/json",
+   "cache-control": "max-age=432000",
+   "server": "cloudflare",
+   "cf-cache-status": "MISS"
+  },
+  "body": {
+   "message": "CNPJ 12.ABC.345/01DE-35 não encontrado."
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": 0.338808,
+ "observed_at": "2026-11-26T05:19:54+00:00",
+ "origin": "live",
+ "note": ""
+}

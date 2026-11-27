@@ -1,0 +1,18 @@
+{
+ "user": "SFconvertbot",
+ "fullname": "Safetensors convertbot",
+ "type": "user",
+ "isPro": false,
+ "numModels": 0,
+ "numDatasets": 0,
+ "numSpaces": 0,
+ "numFollowers": 88,
+ "numFollowing": 1,
+ "createdAt": "2022-10-31T13:59:40.000Z",
+ "orgs": [
+  {
+   "name": "safetensors",
+   "fullname": "Safetensors"
+  }
+ ]
+}

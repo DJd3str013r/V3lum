@@ -1,0 +1,179 @@
+{
+ "hostname": "example.com",
+ "domain": "example.com",
+ "tld": "com",
+ "type": "hostname",
+ "classification": "whitelist",
+ "as_name": "AS15133 MCI Communications Services, Inc. d/b/a Verizon Business",
+ "as_number": "15133",
+ "creation_time": "2018-01-01 06:03:52",
+ "modification_time": "2026-11-17 13:57:04",
+ "domain_creation_time": "1995-08-14 04:00:00",
+ "last_online_time": "2026-11-17 13:57:04",
+ "number_of_offline_malicious_urls_allocated": 6,
+ "number_of_online_malicious_urls_allocated": 0,
+ "is_alive": false,
+ "is_cnc": false,
+ "is_distributing_malware": false,
+ "is_iot_threat": false,
+ "is_mining_pool": false,
+ "is_open_proxy": false,
+ "is_phishing": false,
+ "is_storing_phishing": false,
+ "is_tor_node": false,
+ "is_vpn_node": false,
+ "resolved_ip": [
+  {
+   "ip_addr": "93.184.216.34",
+   "timestamp": "2018-04-07 10:27:35"
+  },
+  {
+   "ip_addr": "2600:1406:3a00:21::173e:2e65",
+   "timestamp": "2025-08-18 11:24:51"
+  },
+  {
+   "ip_addr": "2600:1406:3a00:21::173e:2e66",
+   "timestamp": "2025-08-18 11:24:51"
+  }
+ ],
+ "nameserver": [
+  "A.IANA-SERVERS.NET",
+  "B.IANA-SERVERS.NET"
+ ],
+ "tag": [
+  "cyberpolice",
+  "ransomware",
+  "netsky",
+  "worm",
+  "unreliable subdomains",
+  "malware"
+ ],
+ "blacklist": [
+  {
+   "source": "Cisco Umbrella",
+   "description": "Safe Site",
+   "first_seen": "2022-07-14 23:34:13",
+   "last_seen": "2022-07-16 01:26:19",
+   "count": 1,
+   "labels": [
+    "benign"
+   ]
+  },
+  {
+   "source": "Maltiverse",
+   "description": "cyberpolice,ransomware",
+   "first_seen": "2018-01-01 06:03:52",
+   "last_seen": "2018-01-01 06:03:52",
+   "count": 1
+  },
+  {
+   "source": "Hybrid-Analysis",
+   "description": "Gen:Variant.Razy",
+   "first_seen": "2019-03-17 21:45:10",
+   "last_seen": "2019-08-26 13:03:02",
+   "count": 1,
+   "external_references": [
+    {
+     "description": "Razy",
+     "external_id": "razy",
+     "source_name": "maltiverse",
+     "url": "https://maltiverse.com/threat-observatory/malware/razy"
+    }
+   ]
+  },
+  {
+   "source": "Tranco",
+   "description": "Top Popularity Site",
+   "first_seen": "2026-03-15 20:56:13",
+   "last_seen": "2026-03-15 20:56:13",
+   "count": 1
+  },
+  {
+   "source": "Triage",
+   "description": "Vidar",
+   "first_seen": "2026-04-03 08:23:52",
+   "last_seen": "2026-04-03 08:23:52",
+   "count": 1,
+   "labels": [
+    "malicious-activity"
+   ],
+   "external_references": [
+    {
+     "description": "Vidar",
+     "external_id": "vidar",
+     "source_name": "maltiverse",
+     "url": "https://maltiverse.com/threat-observatory/malware/vidar"
+    }
+   ],
+   "ref": [
+    21745
+   ]
+  },
+  {
+   "source": "URLhaus Abuse.ch",
+   "description": "Malware Download",
+   "first_seen": "2025-08-18 08:05:30",
+   "last_seen": "2026-11-14 08:22:06",
+   "count": 4,
+   "labels": [
+    "malicious-activity",
+    "malware"
+   ],
+   "ref": [
+    21745
+   ]
+  },
+  {
+   "source": "Triage",
+   "description": "Mintsloader",
+   "first_seen": "2026-08-12 16:05:28",
+   "last_seen": "2026-11-17 13:03:58",
+   "count": 14,
+   "labels": [
+    "malicious-activity"
+   ],
+   "external_references": [
+    {
+     "description": "MintsLoader",
+     "external_id": "mintsloader",
+     "source_name": "maltiverse",
+     "url": "https://maltiverse.com/threat-observatory/malware/mintsloader"
+    }
+   ],
+   "ref": [
+    21745
+   ]
+  },
+  {
+   "source": "Maltiverse",
+   "description": "Matched whitelist source: Misp_rfc6761",
+   "first_seen": "2026-06-25 08:03:03",
+   "last_seen": "2026-11-14 21:13:05",
+   "count": 5,
+   "labels": [
+    "benign"
+   ]
+  },
+  {
+   "source": "Triage",
+   "description": "Wannacry",
+   "first_seen": "2026-10-28 19:44:02",
+   "last_seen": "2026-10-28 19:44:02",
+   "count": 1,
+   "labels": [
+    "anomalous-activity"
+   ],
+   "external_references": [
+    {
+     "description": "WannaCry",
+     "external_id": "S0366",
+     "source_name": "mitre-attack",
+     "url": "https://attack.mitre.org/software/S0366/"
+    }
+   ],
+   "ref": [
+    21745
+   ]
+  }
+ ]
+}

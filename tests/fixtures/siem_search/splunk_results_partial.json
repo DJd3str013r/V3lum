@@ -1,0 +1,29 @@
+{
+ "preview": false,
+ "init_offset": 0,
+ "messages": [
+  {
+   "type": "WARN",
+   "text": "Search results might be incomplete: the search process on the peer:idx02.example.com ended prematurely. Check the peer log, such as $SPLUNK_HOME/var/log/splunk/splunkd.log and as well as the search.log for the particular search."
+  }
+ ],
+ "fields": [
+  {
+   "name": "count"
+  },
+  {
+   "name": "first_seen"
+  },
+  {
+   "name": "last_seen"
+  }
+ ],
+ "results": [
+  {
+   "count": "17",
+   "first_seen": "1793491200",
+   "last_seen": "1795132800"
+  }
+ ],
+ "highlighted": {}
+}

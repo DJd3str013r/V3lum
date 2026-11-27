@@ -1,0 +1,21 @@
+{
+ "_meta": {
+  "module": "npm_maintainer",
+  "case": "challenge",
+  "source": "C0242 registry.npmjs.org",
+  "request": {
+   "method": "GET",
+   "url": "https://registry.npmjs.org/-/v1/search?text=maintainer:example-dev&size=20"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "DOC-SHAPED",
+  "note": "Cloudflare managed-challenge markers; registry.npmjs.org is served by Cloudflare. Not observed on the registry from this egress (www.npmjs.com/~user is the documented challenge, never fetched)"
+ },
+ "status": 403,
+ "headers": {
+  "content-type": "text/html; charset=UTF-8",
+  "cf-mitigated": "challenge",
+  "server": "cloudflare"
+ },
+ "body": "<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title></head><body><noscript>Enable JavaScript and cookies to continue</noscript><script>(function(){window._cf_chl_opt = {cType: 'managed', cRay: 'REDACTED'};var a = document.createElement('script');a.src = '/cdn-cgi/challenge-platform/h/g/orchestrate/chl_page/v1?ray=REDACTED';}());</script></body></html>"
+}

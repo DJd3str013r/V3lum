@@ -1,0 +1,22 @@
+[
+ {"id": "nom_search_street", "gap": 3, "max_bytes": 200000,
+  "url": "https://nominatim.openstreetmap.org/search?street=11541%20Avenida%20das%20Na%C3%A7%C3%B5es%20Unidas&city=S%C3%A3o%20Paulo&state=SP&postalcode=04578-000&countrycodes=br&format=jsonv2&addressdetails=1&limit=1"},
+ {"id": "photon_search_addr", "gap": 3, "max_bytes": 200000,
+  "url": "https://photon.komoot.io/api/?q=Avenida%20das%20Na%C3%A7%C3%B5es%20Unidas%2011541%20S%C3%A3o%20Paulo&limit=5&lang=en"},
+ {"id": "nom_search_postcode", "gap": 3, "max_bytes": 200000,
+  "url": "https://nominatim.openstreetmap.org/search?postalcode=04578-000&countrycodes=br&format=jsonv2&addressdetails=1&limit=1"},
+ {"id": "photon_search_cep", "gap": 3, "max_bytes": 200000,
+  "url": "https://photon.komoot.io/api/?q=04578-000&limit=5&lang=en"},
+ {"id": "nom_search_city", "gap": 3, "max_bytes": 200000,
+  "url": "https://nominatim.openstreetmap.org/search?city=S%C3%A3o%20Paulo&state=SP&countrycodes=br&format=jsonv2&addressdetails=1&limit=1"},
+ {"id": "photon_search_empty", "gap": 3, "max_bytes": 200000,
+  "url": "https://photon.komoot.io/api/?q=xqzvwkjhxqzvbn&limit=5&lang=en"},
+ {"id": "nom_reverse_marco_zero", "gap": 3, "max_bytes": 200000,
+  "url": "https://nominatim.openstreetmap.org/reverse?lat=-23.550278&lon=-46.633889&format=jsonv2&zoom=18&addressdetails=1"},
+ {"id": "photon_reverse_marco_zero", "gap": 3, "max_bytes": 200000,
+  "url": "https://photon.komoot.io/reverse?lat=-23.550278&lon=-46.633889&limit=1&lang=en"},
+ {"id": "nom_reverse_null_island", "gap": 3, "max_bytes": 200000,
+  "url": "https://nominatim.openstreetmap.org/reverse?lat=0&lon=0&format=jsonv2&zoom=18"},
+ {"id": "photon_reverse_bad", "gap": 3, "max_bytes": 200000,
+  "url": "https://photon.komoot.io/reverse?lat=999&lon=999"}
+]

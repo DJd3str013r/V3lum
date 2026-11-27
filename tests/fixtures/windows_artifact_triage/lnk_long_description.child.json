@@ -1,0 +1,100 @@
+{
+ "appended": null,
+ "error": null,
+ "kind": "lnk",
+ "lnk": {
+  "data": {
+   "command_line_arguments": "ows\u001e/c echo https://203.0.113.60/x",
+   "description": "Fatura NF-e 2026-11 ................................................................................................................................................................................................................................................",
+   "working_directory": ".......................................\nC:\\Win"
+  },
+  "extra": {},
+  "header": {
+   "accessed_time": null,
+   "creation_time": null,
+   "file_flags": [
+    "FILE_ATTRIBUTE_ARCHIVE"
+   ],
+   "file_size": 0,
+   "guid": "00021401-0000-0000-C000-000000000046",
+   "hotkey": "UNSET - UNSET {0x0000}",
+   "icon_index": 0,
+   "link_flags": [
+    "HasTargetIDList",
+    "HasName",
+    "HasWorkingDir",
+    "HasArguments",
+    "IsUnicode"
+   ],
+   "modified_time": null,
+   "r_file_flags": 32,
+   "r_hotkey": 0,
+   "r_link_flags": 181,
+   "windowstyle": "SW_SHOWNORMAL"
+  },
+  "link_info": {},
+  "size": 1011,
+  "target": {
+   "items": [
+    {
+     "class": "Root Folder",
+     "guid": "20D04FE0-3AEA-1069-A2D8-08002B30309D",
+     "sort_index": "My Computer",
+     "sort_index_value": 80
+    },
+    {
+     "class": "Volume Item",
+     "flags": "0xf",
+     "volume_name": "C:\\"
+    },
+    {
+     "class": "File entry",
+     "file_attribute_flags": 16,
+     "file_size": 0,
+     "flags": "Is directory",
+     "primary_name": "Windows"
+    },
+    {
+     "class": "File entry",
+     "file_attribute_flags": 16,
+     "file_size": 0,
+     "flags": "Is directory",
+     "primary_name": "System32"
+    },
+    {
+     "class": "File entry",
+     "file_attribute_flags": 32,
+     "file_size": 0,
+     "flags": "Is file",
+     "primary_name": "cmd.exe"
+    }
+   ]
+  }
+ },
+ "parser": "LnkParse3 1.6.0",
+ "precheck": null,
+ "size": 883,
+ "string_data": {
+  "end": 879,
+  "error": null,
+  "fields": {
+   "command_line_arguments": {
+    "count": 30,
+    "nul": false,
+    "text": "/c echo https://203.0.113.60/x"
+   },
+   "description": {
+    "count": 300,
+    "nul": false,
+    "text": "Fatura NF-e 2026-11 ........................................................................................................................................................................................................................................................................................"
+   },
+   "working_directory": {
+    "count": 10,
+    "nul": false,
+    "text": "C:\\Windows"
+   }
+  }
+ },
+ "unavailable": null,
+ "warnings": []
+}

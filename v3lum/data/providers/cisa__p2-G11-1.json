@@ -1,0 +1,38 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "cisa",
+  "hosts": [],
+  "sources": {
+    "advisories": {
+      "title": "CISA cybersecurity advisories feed /cybersecurity-advisories/all.xml (incl. #StopRansomware), dataset; local matching only",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.cisa.gov/about/website-policies",
+        "quote": "Advisories are indexed by actor/family through P295, ATT&CK ids through P292 and CVEs. [...] US Government work (public domain), noted in reports.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "cisa_advisories",
+      "sanitizer": null,
+      "dataset": "cisa_advisories.feed",
+      "notes": "Quote: binding council text (P374 cond 6). Research C0739: Akamai 'Access Denied' 403 for the HTML/RSS from the research egress (2026-11-25, re-checked 2026-11-26 by p2-G11-1) while the KEV JSON on the same host answered 200. A 403 or challenge is BLOCKED 'could not verify', never 'no advisory'; no UA or header games (cond 2). Polled daily through the dataset manager (cond 3). Merge gate (cond 1): real fixtures captured from the team network are still pending."
+    },
+    "advisories_ioc": {
+      "title": "CISA advisory IOC files (STIX 2.1 JSON attachments under /sites/default/files/), team-curated list, datasets; local matching only",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.cisa.gov/about/website-policies",
+        "quote": "Indicators are matched locally (disclosure 'none') and carry the advisory id and publication date; IP and domain IOCs older than 90 days become 'historical' context.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "cisa_advisories",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P374 cond 4). Attachment URLs are listed in v3lum/data/cisa_advisories/ioc_files.json (empty until captured from the team network: none could be discovered behind the Akamai block, none were guessed); each listed file is a dataset cisa_advisories.ioc.<advisory id> validated with a STIX 2.1 schema check, never executed."
+    }
+  },
+  "error_markers": []
+}

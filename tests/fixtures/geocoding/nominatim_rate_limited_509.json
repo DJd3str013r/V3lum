@@ -1,0 +1,9 @@
+{
+ "_envelope": 1,
+ "_source": "OSMF chef cookbook nominatim/files/default/website/509.html (2026-11-26T09:45:12Z); the page served for 429/503 (nginx error_page /509.html); status kept as 429",
+ "status": 429,
+ "headers": {
+  "content-type": "text/html"
+ },
+ "body": "<html>\n<head>\n<title>Bandwidth limit exceeded</title>\n</head>\n<body>\n<h1>Bandwidth limit exceeded</h1>\n\n<p>You have been temporarily blocked because you have been overusing OSM's geocoding service or because you have not provided sufficient identification of your application. This block will be automatically lifted after a while. Please take the time and adapt your scripts to reduce the number of requests and make sure that you send a valid UserAgent or Referer.</p>\n\n<p>For more information, consult the <a href=\"https://operations.osmfoundation.org/policies/nominatim/\">usage policy</a> for the OSM Nominatim server.</p>\n</body>\n</html>\n"
+}

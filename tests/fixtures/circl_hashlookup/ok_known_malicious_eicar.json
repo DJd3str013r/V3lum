@@ -1,0 +1,71 @@
+{
+ "CRC32": "6851CF3C",
+ "FileName": "eicar.com",
+ "FileSize": "68",
+ "KnownMalicious": "malshare.com",
+ "MD5": "44D88612FEA8A8F36DE82E1278ABB02F",
+ "OpSystemCode": {
+  "MfgCode": "1006",
+  "OpSystemCode": "362",
+  "OpSystemName": "TBD",
+  "OpSystemVersion": "none"
+ },
+ "ProductCode": {
+  "ApplicationType": "Desktop",
+  "Language": "English",
+  "MfgCode": "535",
+  "OpSystemCode": "51",
+  "ProductCode": "8175",
+  "ProductName": "Gentoo Linux 2005.0 Ubuntu 5.04",
+  "ProductVersion": "Iss 68 Jul 2005"
+ },
+ "RDS:package_id": "304063",
+ "SHA-1": "3395856CE81F2B7382DEE72602F798B642F14140",
+ "SHA-256": "275A021BBFB6489E54D471899F7DB9D1663FC695EC2FE2A2C4538AABF651FD0F",
+ "SHA-512": "CC805D5FAB1FD71A4AB352A9C533E65FB2D5B885518F4E565E68847223B8E6B85CB48F3AFAD842726D99239C9E36505C64B0DC9A061D9E507D833277ADA336AB",
+ "SSDEEP": "3:a+JraNvsgzsVqSwHq9:tJuOgzsko",
+ "SpecialCode": "",
+ "TLSH": "T141A022003B0EEE2BA20B00200032E8B00808020E2CE00A3820A020B8C83308803EC228",
+ "db": "nsrl_legacy",
+ "insert-timestamp": "1751766732.6429627",
+ "mimetype": "text/plain",
+ "nsrl-sha256": "rds241-sha256.zip",
+ "source": "RDS_2025.03.1_android.db",
+ "tar:gname": "root",
+ "tar:uname": "root",
+ "hashlookup:parent-total": 15,
+ "parents": [
+  {
+   "SHA-1": "58179B11178EB8FA6658579E2C51B68595D19BA7",
+   "snap-authority": "canonical",
+   "snap-id": "fELi5YZ0ASTNWal0BfXEp7IZ7OHOQQvd_1160",
+   "snap-name": "metasploit-framework"
+  },
+  {
+   "FileName": "http://mirror.math.princeton.edu/pub/blackarch/blackarch/os//aarch64//pirana-0.3.1-5-aarch64.pkg.tar.xz",
+   "MD5": "1D738C8645C35052184F7782C025E97E",
+   "SHA-1": "57C727404A5426C86A02F4B97191977184E2CEBA",
+   "SHA-256": "B0317200A5FEF5B0D8117B1B1E8B641A2ED7CF72F5A6CDCCF3E0B8FA3AF7A44F",
+   "SSDEEP": "49152:RshkGML1Sow7hRS/Oqix3ggA4ZqawoaLCgjNOCPRBpZ9LNq7w:e9i+rvF12fPz1L4c",
+   "TLSH": "T11BB53314D4078A7E25E95A11FCCAEAD2FD21AB1219C927A4CEE2D54DD3901E10F2BFC7"
+  },
+  {
+   "MD5": "E0A52B18A5797E1129E1F3DB8ADE9ED0",
+   "PackageArch": "noarch",
+   "PackageName": "perl-Net-ClamAV-Client",
+   "PackageRelease": "1.20",
+   "PackageVersion": "0.1",
+   "SHA-1": "C056B9697CA6137242E8657AF6C8129B4FB17133",
+   "SHA-256": "25C058F864CCB4BEF54F7FE2A00E3255B1BEE35A3F1FF5C23D12A185C71418F3"
+  },
+  {
+   "FileName": "http://archlinux.mirror.root.lu//pool//community//metasploit-6.0.25-1-x86_64.pkg.tar.zst",
+   "MD5": "8712C63811386A3AFC1CB46B6D633671",
+   "SHA-1": "EFD3F6CD8EC4CEEC5D11C809AD9353B4F773BE81",
+   "SHA-256": "CB40814EAD354A651F43F73A9DA97D36E725B0F00862880B023F7D14C83434B6",
+   "SSDEEP": "1572864:B5W+pzpx8BfJrYYUVQplGD7kM5x99T69IchZbCfZpa:BY+JwYmlGD7kW99mawbCfZpa",
+   "TLSH": "T168F73342E576E1E4F4A7D27C973232CCA8119C685C42ECF66B097394A3746F84EE8DB1"
+  }
+ ],
+ "hashlookup:trust": 100
+}

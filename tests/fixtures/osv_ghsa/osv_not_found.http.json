@@ -1,0 +1,20 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.osv.dev/v1/vulns/CVE-2021-9999999",
+  "headers": {}
+ },
+ "response": {
+  "status": 404,
+  "headers": {
+   "content-type": "application/json",
+   "server": "Google Frontend",
+   "content-length": "46",
+   "x-envoy-decorator-operation": "ingress GetVulnById"
+  },
+  "body": "{\"code\":5,\"message\":\"Vulnerability not found\"}"
+ },
+ "transport_error": null,
+ "elapsed_s": 0.144,
+ "note": "LIVE 2026-11-26: unknown id -> 404 {\"code\":5,\"message\":\"Vulnerability not found\"} (gRPC NOT_FOUND)"
+}

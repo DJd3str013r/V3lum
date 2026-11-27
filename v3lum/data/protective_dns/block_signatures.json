@@ -1,0 +1,98 @@
+{
+  "schema": "v3lum.protective_dns_signatures/1",
+  "version": "2026-11-26",
+  "description": "P020 cond 5: per-resolver block signatures. A name is BLOCKED by a resolver only when the filtered A answer matches its signature (every address in 'sinks', the 'nxdomain' rule, or an RFC 8914 Extended DNS Error in 'ede') AND the unfiltered core DoH reference resolves the name. 'nxdomain': null = an NXDOMAIN is never a block signature, 'any' = every NXDOMAIN is, 'no_soa' = only an NXDOMAIN without an SOA in the authority section. 'verified': 'documented' (vendor documentation), 'research' (research record, not reproduced live) or 'generic' (the generic web-check rule).",
+  "source": "V3LUM-authored from vendor documentation and the research records C0036 (2026-11-25/26); the generic sink set and the 'blocked only when the reference resolves' rule follow web-check api/block-lists.js (MIT), reimplemented, no code copied.",
+  "ede_block_codes": [15, 16, 17],
+  "resolvers": {
+    "cloudflare_security": {
+      "host": "security.cloudflare-dns.com",
+      "category": "security",
+      "protocol": "json",
+      "sinks": ["0.0.0.0", "::"],
+      "nxdomain": null,
+      "verified": "documented",
+      "evidence": "Cloudflare 1.1.1.1 for Families documentation: names blocked by 1.1.1.2 (malware) answer 0.0.0.0 (A) and :: (AAAA)."
+    },
+    "cloudflare_family": {
+      "host": "family.cloudflare-dns.com",
+      "category": "family",
+      "protocol": "json",
+      "sinks": ["0.0.0.0", "::"],
+      "nxdomain": null,
+      "verified": "documented",
+      "evidence": "Cloudflare 1.1.1.1 for Families documentation: 1.1.1.3 (malware + adult content) answers blocked names with 0.0.0.0 / ::."
+    },
+    "quad9": {
+      "host": "dns.quad9.net",
+      "category": "security",
+      "protocol": "wire",
+      "sinks": [],
+      "nxdomain": "no_soa",
+      "verified": "research",
+      "evidence": "Research gh_infra (C0036): Quad9 answers blocked names NXDOMAIN without an SOA; a real NXDOMAIN carries the zone SOA (live nic.br answer, 2026-11-26)."
+    },
+    "adguard_default": {
+      "host": "dns.adguard-dns.com",
+      "category": "ads",
+      "protocol": "json",
+      "sinks": ["0.0.0.0", "::", "94.140.14.35"],
+      "nxdomain": null,
+      "verified": "research",
+      "evidence": "AdGuard DNS default blocking mode answers 0.0.0.0 / ::; 94.140.14.35 is the block page address per the research record (not reproduced live). AdGuard JSON answers carry no Authority section, so NXDOMAIN is never a signature."
+    },
+    "adguard_family": {
+      "host": "family.adguard-dns.com",
+      "category": "family",
+      "protocol": "json",
+      "sinks": ["0.0.0.0", "::", "94.140.14.35"],
+      "nxdomain": null,
+      "verified": "research",
+      "evidence": "As AdGuard default (ads + adult content); safe-search CNAME rewrites are not blocks."
+    },
+    "opendns": {
+      "host": "doh.opendns.com",
+      "category": "security",
+      "protocol": "wire",
+      "sinks": [
+        "146.112.61.104", "146.112.61.105", "146.112.61.106", "146.112.61.107", "146.112.61.108", "146.112.61.109",
+        "146.112.61.110", "::ffff:146.112.61.104", "::ffff:146.112.61.105", "::ffff:146.112.61.106", "::ffff:146.112.61.107",
+        "::ffff:146.112.61.108", "::ffff:146.112.61.109", "::ffff:146.112.61.110"
+      ],
+      "nxdomain": null,
+      "verified": "research",
+      "evidence": "Cisco Umbrella block pages 146.112.61.104-110 (research C0036; the category of each address is not verified). OpenDNS does not hijack NXDOMAIN (live nic.br answer carries the SOA)."
+    },
+    "opendns_familyshield": {
+      "host": "doh.familyshield.opendns.com",
+      "category": "family",
+      "protocol": "wire",
+      "sinks": [
+        "146.112.61.104", "146.112.61.105", "146.112.61.106", "146.112.61.107", "146.112.61.108", "146.112.61.109",
+        "146.112.61.110", "::ffff:146.112.61.104", "::ffff:146.112.61.105", "::ffff:146.112.61.106", "::ffff:146.112.61.107",
+        "::ffff:146.112.61.108", "::ffff:146.112.61.109", "::ffff:146.112.61.110"
+      ],
+      "nxdomain": null,
+      "verified": "research",
+      "evidence": "As OpenDNS standard (Cisco Umbrella block-page range)."
+    },
+    "cleanbrowsing_security": {
+      "host": "doh.cleanbrowsing.org",
+      "category": "security",
+      "protocol": "wire",
+      "sinks": ["0.0.0.0", "::", "127.0.0.1", "::1"],
+      "nxdomain": "any",
+      "verified": "generic",
+      "evidence": "Generic web-check rule (sink addresses or NXDOMAIN while the reference resolves); not verified for CleanBrowsing, whose free filters may not be used by organisations."
+    },
+    "cleanbrowsing_family": {
+      "host": "doh.cleanbrowsing.org",
+      "category": "family",
+      "protocol": "wire",
+      "sinks": ["0.0.0.0", "::", "127.0.0.1", "::1"],
+      "nxdomain": "any",
+      "verified": "generic",
+      "evidence": "As CleanBrowsing security."
+    }
+  }
+}

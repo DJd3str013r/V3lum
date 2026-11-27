@@ -1,0 +1,115 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "tcu",
+  "name": "TCU consolidated certificates API (Certidoes APF)",
+  "operator": "Tribunal de Contas da Uniao (TCU)",
+  "hosts": [
+    "certidoes-apf.apps.tcu.gov.br"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Government body (A8 trusted): the Federal Court of Accounts issues the consolidated negative certificate (TCU inidoneos, CNJ CNIA, CEIS, CNEP) as an official public service; P239 provider tier trusted.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "Official certificate service; trusted only when seCnpjEncontradoNaBaseTcu is true (a fictitious CNPJ also gets NADA_CONSTA) and per list only when the list answered (SISTEMA_INDISPONIVEL = unknown, P239 cond 2-3)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 15,
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "certidoes": {
+      "title": "TCU consolidated certificate API /api/rest/publico/certidoes/{cnpj}?seEmitirPDF=false (one call, four lists)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://certidoes-apf.apps.tcu.gov.br/",
+        "quote": "Terms classes (definitions for every chair file and registry entry): 'open' = free use, internal business use included (public domain, CC0, CC BY, open government data, and permissive or copyleft licences whose obligations V3LUM meets by runtime download and attribution, A6)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "tcu",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding A1 definition of 'open' (official public service, research C0545 'official public service (TCU)'). One keyless GET per CNPJ with the 14-character CNPJ in the path (the formatted CNPJ with '/' is decoded by the Apache front and answers a 404 HTML page, prep H9) and seEmitirPDF=false (live-verified spelling: certidaoPDF stays null, no PDF is generated). <= 1 req/s, cache 24 h (P239 cond 1). Used by tcu_certidoes."
+    },
+    "certidoes_inidoneos": {
+      "title": "TCU certificate list: TCU Licitantes Inidoneos (state per CNPJ)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://certidoes.apps.tcu.gov.br/lista-inidoneos",
+        "quote": "Terms classes (definitions for every chair file and registry entry): 'open' = free use, internal business use included (public domain, CC0, CC BY, open government data, and permissive or copyleft licences whose obligations V3LUM meets by runtime download and attribution, A6)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "tcu",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Per-list coverage row of the TCU certificate (P239 cond 3): consta / nada_consta / unknown ('could not verify TCU Licitantes Inidoneos'). Served by the same call as tcu.certidoes."
+    },
+    "certidoes_cnia": {
+      "title": "TCU certificate list: CNJ CNIA (improbidade / inelegibilidade) as relayed by the TCU certificate",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.cnj.jus.br/improbidade_adm/consultar_requerido.php",
+        "quote": "Terms classes (definitions for every chair file and registry entry): 'open' = free use, internal business use included (public domain, CC0, CC BY, open government data, and permissive or copyleft licences whose obligations V3LUM meets by runtime download and attribution, A6)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "cnj",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Per-list coverage row (P239 cond 3). Emitter CNJ: upstream family 'cnj'. States SISTEMA_INDISPONIVEL (research 2026-11-25) and ALFANUMERICO_NAO_SUPORTADO (prep 2026-11-26) are 'unknown', never clean."
+    },
+    "certidoes_ceis": {
+      "title": "TCU certificate list: CEIS (CGU) as relayed by the TCU certificate",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://portaldatransparencia.gov.br/sancoes/ceis",
+        "quote": "Terms classes (definitions for every chair file and registry entry): 'open' = free use, internal business use included (public domain, CC0, CC BY, open government data, and permissive or copyleft licences whose obligations V3LUM meets by runtime download and attribution, A6)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "cgu",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Per-list coverage row (P239 cond 3). Emitter Portal da Transparencia (CGU): the same upstream family 'cgu' as cgu_sanctions_bulk CEIS, so the two never count as independent sources; one CEIS listing is one finding across P237/P239/P240 (dedup key list + CNPJ + sanction id, P239 cond 4)."
+    },
+    "certidoes_cnep": {
+      "title": "TCU certificate list: CNEP (CGU) as relayed by the TCU certificate",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://portaldatransparencia.gov.br/sancoes/cnep",
+        "quote": "Terms classes (definitions for every chair file and registry entry): 'open' = free use, internal business use included (public domain, CC0, CC BY, open government data, and permissive or copyleft licences whose obligations V3LUM meets by runtime download and attribution, A6)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "cgu",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Per-list coverage row (P239 cond 3); upstream family 'cgu' like cgu_sanctions_bulk CNEP."
+    }
+  },
+  "notes": "Owned by batch p1-G10-2 (P239). Single-batch host (owners.json maps certidoes-apf.apps.tcu.gov.br to no provider). ttl 86400 = sanctions class (P239 cond 1 'cache 24 h'). The answer can be TCU-cached (dataHoraEmissao a few minutes before the request): dataHoraEmissao is the 'as of' time. An alphanumeric CNPJ took 6.6 s live, hence timeout 15 s. .br host: Accept-Language pt-BR by default."
+}

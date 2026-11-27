@@ -1,0 +1,22 @@
+{
+ "_meta": {
+  "module": "org_code_footprint",
+  "case": "dh_org_not_found",
+  "source": "C0234 hub.docker.com",
+  "request": {
+   "method": "GET",
+   "url": "https://hub.docker.com/v2/orgs/qz7k2v9m4p1w8n3x5c6b"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "LIVE",
+  "elapsed_s": 0.134
+ },
+ "status": 404,
+ "headers": {
+  "content-type": "application/json",
+  "x-ratelimit-limit": "180",
+  "x-ratelimit-remaining": "180",
+  "x-ratelimit-reset": "1795677970"
+ },
+ "body": "{\"orgname\":[\"qz7k2v9m4p1w8n3x5c6b\"]}\n"
+}

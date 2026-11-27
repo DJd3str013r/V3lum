@@ -1,0 +1,25 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {"mode": "passive", "tlp": "amber", "depth": 1},
+  "nodes": [
+    {
+      "key": "sha256:314a51fcf6e37eb8550a826df085d5c88c43eb1438682f3a6c33632d36956136",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "known_good": [{"value": true, "source": "circl_hashlookup"}],
+        "known_file": [{"value": "known file: Example Hardware Utility (synthetic) 1.0 (NSRL)", "source": "circl_hashlookup"}]
+      },
+      "findings": [
+        {"title": "Known file (CIRCL hashlookup)", "severity": "info", "confidence": 0.8,
+         "criterion": "", "tags": ["known_good"], "module": "circl_hashlookup", "source": "circl.hashlookup", "data": {}},
+        {"title": "Vulnerable driver listed by LOLDrivers (BYOVD)", "severity": "medium", "confidence": 0.7,
+         "confidence_label": "probable", "criterion": "LOLDrivers category 'vulnerable driver' for this sample",
+         "tags": ["vulnerable"], "module": "lol_datasets", "source": "", "data": {"tool": "iobios64.sys"}}
+      ]
+    }
+  ],
+  "edges": [],
+  "expect": {"hashlookup_known_file_conflict": {"min": 1, "max": 1, "severity": "info", "confidence_label": "probable"}}
+}

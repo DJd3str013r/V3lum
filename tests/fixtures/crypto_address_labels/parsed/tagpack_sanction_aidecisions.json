@@ -1,0 +1,51 @@
+{
+ "ok": true,
+ "doc": {
+  "title": "AI DECISIONS - OFAC SDN crypto addresses (primary-source)",
+  "creator": "AI DECISIONS (aidecisions.ai)",
+  "description": "Public-source address labels unified by the openlabels attribution pipeline. Every tag carries the URI of the public source it was harvested from.",
+  "lastmod": "2026-09-14",
+  "confidence": "authority_data",
+  "tags": [
+   {
+    "address": "TFwjPScaJRCbSWVAywE1S1WgaUgSnyYUbD",
+    "currency": "TRX",
+    "label": "GARANTEX EUROPE OU",
+    "source": "https://www.treasury.gov/ofac/downloads/sdn.csv",
+    "category": "sanction",
+    "actor": "garantex"
+   },
+   {
+    "address": "0x098b716b8aaf21512996dc57eb0615e2383e2f96",
+    "currency": "ETH",
+    "label": "LAZARUS GROUP",
+    "source": "https://www.treasury.gov/ofac/downloads/sdn.csv",
+    "category": "sanction",
+    "actor": "lazarusgroup"
+   },
+   {
+    "address": "3K4rjdh8A5yi6LWvft2rbmyZvqEbPSSSX4",
+    "currency": "BTC",
+    "label": "HYDRA MARKET",
+    "source": "https://www.treasury.gov/ofac/downloads/sdn.csv",
+    "category": "sanction",
+    "actor": "hydramarket"
+   },
+   {
+    "address": "bc1qq7p0es3dv5hcynjjf40f2xjjr6qp5py47d2f6n847vduuq9gvnyq7y9ecd",
+    "currency": "BTC",
+    "label": "SINBAD",
+    "source": "https://www.treasury.gov/ofac/downloads/sdn.csv",
+    "category": "sanction",
+    "actor": "sinbadio"
+   },
+   {
+    "address": "TNiq9AXBp9EjUqhDhrwrfvAA8U3GUQZH81",
+    "currency": "TRX",
+    "label": "BANK MARKAZI JOMHOURI ISLAMI IRAN",
+    "source": "https://www.treasury.gov/ofac/downloads/sdn.csv",
+    "category": "sanction"
+   }
+  ]
+ }
+}

@@ -1,0 +1,7 @@
+{
+  "schema": "v3lum.lint_tables/1",
+  "name": "p1_g07_2",
+  "notes": "P267 FC3 (batch p1-G07-2): hash-type identification only - no cracking and no plaintext lookup. hashes.com and crackstation.net are core seed entries; ntlm.pw (an NTLM plaintext lookup service named by the final condition) is added here so the P327 lint (LINT-08) refuses it everywhere.",
+  "sources": ["C0706"],
+  "cracking_hosts": ["ntlm.pw"]
+}

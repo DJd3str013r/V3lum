@@ -1,0 +1,9 @@
+{
+  "org": {"name": "Google LLC"},
+  "domains": [
+    {"name": "google.com", "verification": "attested", "attested_by": "fixture", "attested_date": "2026-11-26", "criticality": "critical"},
+    {"name": "youtube.com", "verification": "confirmed", "criticality": "high"}
+  ],
+  "brands": [{"keyword": "Google", "variants": ["G00gle"]}],
+  "app_ids": [{"kind": "bundle_prefix", "value": "com.google."}]
+}

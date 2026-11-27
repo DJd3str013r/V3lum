@@ -1,0 +1,11 @@
+{
+ "ipVersion": 4,
+ "ipAddress": "1.1.1.1",
+ "countryName": "Australia",
+ "countryCode": "AU",
+ "regionName": "New South Wales",
+ "cityName": "Sydney",
+ "asn": "13335",
+ "asnOrganization": "Cloudflare, Inc.",
+ "isProxy": false
+}

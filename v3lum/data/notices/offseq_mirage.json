@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "offseq_mirage",
+  "source_url": "https://feeds.offseq.com/mirage-feed/",
+  "version": "OffSeq Mirage feed latest/ files attackers-7d.csv, known-scanners-ipv4.txt, anonymizers-7d.txt (runtime downloads, schema_version 2.2, checked 2026-11-26)",
+  "sha256": "",
+  "licence": "CC-BY-4.0",
+  "attribution": "Mirage Feed by OffSeq Mirage (https://github.com/offseq/mirage-feed), CC BY 4.0. The data is marked TLP:CLEAR and is provided as is, without warranty of any kind (LICENSE-DATA).",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/threat_intel_ioc/honeypot_intel.py",
+    "v3lum/data/providers/offseq.json"
+  ]
+}

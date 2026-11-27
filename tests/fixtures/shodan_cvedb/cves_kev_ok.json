@@ -1,0 +1,102 @@
+{
+ "cves": [
+  {
+   "cve_id": "CVE-2021-44228",
+   "summary": "Apache Log4j2 2.0-beta9 through 2.15.0 (excluding security releases 2.12.2, 2.12.3, and 2.3.1) JNDI features used in configuration, log messages, and parameters do not protect against attacker controlled LDAP and other JNDI related endpoints. An attacker who can control log messages or log message parameters can execute arbitrary code loaded from LDAP servers when message lookup substitution is enabled. From log4j 2.15.0, this behavior has been disabled by default. From version 2.16.0 (along with 2.12.2, 2.12.3, and 2.3.1), this functionality has been completely removed. Note that this vulnerability is specific to log4j-core and does not affect log4net, log4cxx, or other Apache Logging Services projects.",
+   "cvss": 10.0,
+   "cvss_version": 3.0,
+   "cvss_v2": 9.3,
+   "cvss_v3": 10.0,
+   "cvss_v4": null,
+   "epss": 0.99999,
+   "ranking_epss": 1.0,
+   "kev": true,
+   "propose_action": "Apache Log4j2 contains a vulnerability where JNDI features do not protect against attacker-controlled JNDI-related endpoints, allowing for remote code execution.",
+   "ransomware_campaign": "Known",
+   "vendor": null,
+   "product": null,
+   "version": null,
+   "published_time": "2021-12-10T10:15:09",
+   "references": [
+    "http://packetstormsecurity.com/files/165225/Apache-Log4j2-2.14.1-Remote-Code-Execution.html",
+    "http://packetstormsecurity.com/files/165260/VMware-Security-Advisory-2021-0028.html"
+   ],
+   "euvd": {
+    "id": "EUVD-2021-34768",
+    "published_time": "2021-12-10T00:00:00",
+    "cvss": 10.0,
+    "cvss_version": "3.1",
+    "epss": 1.0,
+    "assigner": "apache",
+    "products": [
+     "Apache Log4j2"
+    ],
+    "vendors": [
+     "Apache Software Foundation"
+    ]
+   },
+   "ghsa": {
+    "id": "GHSA-jfh8-c2jp-5v3q",
+    "summary": "Remote code injection in Log4j",
+    "published_time": "2021-12-10T00:40:56Z",
+    "withdrawn_time": null,
+    "cwe_ids": [
+     "CWE-20",
+     "CWE-400",
+     "CWE-502",
+     "CWE-917"
+    ],
+    "github_severity": "CRITICAL",
+    "github_reviewed": true
+   }
+  },
+  {
+   "cve_id": "CVE-2021-45046",
+   "summary": "It was found that the fix to address CVE-2021-44228 in Apache Log4j 2.15.0 was incomplete in certain non-default configurations. This could allows attackers with control over Thread Context Map (MDC) input data when the logging configuration uses a non-default Pattern Layout with either a Context Lookup (for example, $${ctx:loginId}) or a Thread Context Map pattern (%X, %mdc, or %MDC) to craft malicious input data using a JNDI Lookup pattern resulting in an information leak and remote code execution in some environments and local code execution in all environments. Log4j 2.16.0 (Java 8) and 2.12.2 (Java 7) fix this issue by removing support for message lookup patterns and disabling JNDI functionality by default.",
+   "cvss": 9.0,
+   "cvss_version": 3.0,
+   "cvss_v2": 5.1,
+   "cvss_v3": 9.0,
+   "cvss_v4": null,
+   "epss": 0.99977,
+   "ranking_epss": 0.9998,
+   "kev": true,
+   "propose_action": "Apache Log4j2 contains a deserialization of untrusted data vulnerability due to the incomplete fix of CVE-2021-44228, where the Thread Context Lookup Pattern is vulnerable to remote code execution in certain non-default configurations.",
+   "ransomware_campaign": "Known",
+   "vendor": null,
+   "product": null,
+   "version": null,
+   "published_time": "2021-12-14T19:15:07",
+   "references": [
+    "http://www.openwall.com/lists/oss-security/2021/12/14/4",
+    "http://www.openwall.com/lists/oss-security/2021/12/15/3"
+   ],
+   "euvd": {
+    "id": "EUVD-2021-34769",
+    "published_time": "2021-12-14T16:55:09",
+    "cvss": 9.0,
+    "cvss_version": "3.1",
+    "epss": 0.9998,
+    "assigner": "apache",
+    "products": [
+     "Apache Log4j"
+    ],
+    "vendors": [
+     "Apache Software Foundation"
+    ]
+   },
+   "ghsa": {
+    "id": "GHSA-7rjr-3q55-vv33",
+    "summary": "Incomplete fix for Apache Log4j vulnerability",
+    "published_time": "2021-12-14T18:01:28Z",
+    "withdrawn_time": null,
+    "cwe_ids": [
+     "CWE-502",
+     "CWE-917"
+    ],
+    "github_severity": "CRITICAL",
+    "github_reviewed": true
+   }
+  }
+ ]
+}

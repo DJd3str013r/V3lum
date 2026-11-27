@@ -1,0 +1,30 @@
+{
+ "version": "8.0",
+ "build_revision": "89598ea",
+ "relays_published": "2026-11-26 03:00:00",
+ "relays": [
+  {
+   "nickname": "ExampleRelay15",
+   "fingerprint": "2C3CCC35B53264238AE8066F3C6CAFB6031EB5CF",
+   "or_addresses": [
+    "192.0.2.10:9001",
+    "[2001:db8:ff::7]:9001"
+   ],
+   "exit_addresses": [],
+   "last_seen": "2026-11-26 03:00:00",
+   "first_seen": "2025-02-11 08:00:00",
+   "flags": [
+    "Fast",
+    "Running",
+    "Stable",
+    "Valid"
+   ],
+   "country": "us",
+   "as": "AS62744",
+   "as_name": "Quintex Alliance Consulting"
+  }
+ ],
+ "relays_truncated": 2803,
+ "bridges_published": "2026-11-26 02:58:18",
+ "bridges": []
+}

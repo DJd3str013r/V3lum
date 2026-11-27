@@ -1,0 +1,10 @@
+{
+ "_envelope": 1,
+ "_source": "live check 2026-11-26 from this datacenter egress: op=index&options=mr for a never-used @example.com address",
+ "status": 404,
+ "headers": {
+  "server": "Hockeypuck/2.2",
+  "content-type": "text/plain; charset=utf-8"
+ },
+ "body": "Not Found\n"
+}

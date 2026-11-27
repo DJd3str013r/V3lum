@@ -1,0 +1,38 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "dribbble",
+  "name": "Dribbble public profile pages",
+  "operator": "Dribbble Holdings Ltd.",
+  "hosts": ["dribbble.com"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Identifiable operator (Dribbble Holdings Ltd.) with published terms of service and a privacy policy and more than ten years of public track record as a design community (A8 community). P113 FC8 overlay record: 'major profile platform'.",
+  "tier_reviewer": "batch p1-G05-2 (P113 FC8 overlay record)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "C", "justification": "Authoritative for whether a profile exists under a handle; profile content is self-asserted, and the same handle on another site does not prove identity (P113 FC13)."},
+  "http_profile": {"user_agent": "neutral", "timeout": 10, "retries": 0, "max_bytes": 2000000, "ttl": 86400, "min_interval": 1.0, "concurrency": 1},
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "profile_page": {
+      "title": "Public profile page https://dribbble.com/{handle} (P113 username_check two-sided markers)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://dribbble.com/terms",
+        "quote": "Not reviewed by legal_dpo (A1 'unknown'). The terms (updated March 17, 2025) prohibit \"Using any automated system, including without limitation \"robots,\" \"spiders,\" \"offline readers,\" etc., to access the Website or any Services in a manner that sends more request messages to the Dribbble servers than a human can reasonably produce in the same period of time\" and \"Collecting or harvesting any personally identifiable information or User information, including account names\".",
+        "checked_at": "2026-11-26",
+        "reviewer": "batch p1-G05-2 (terms quoted for the legal_dpo review queue)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "dribbble",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "One unauthenticated GET per handle (P113 FC7/FC9). Stays out of the default pack until legal records 'open' terms with evidence (FC16), a personal_data_review exists (FC14) and the team re-calibrates it from its own egress (FC2)."
+    }
+  },
+  "notes": "Owned by batch p1-G05-2 (P113 username_check / username_check_extended): host used only by this batch (providers_seed owners.json). Hit semantics: 200 + og:type profile = profile page; 404 + the 'Sorry, the page you were looking for' title = no profile under that handle."
+}

@@ -1,0 +1,10 @@
+{
+ "note": "t.me/s/<missing or private handle> observed live 2026-11-26: empty body, 302 to t.me/<handle>",
+ "request": "GET https://t.me/s/zq7pl5ygva2csanfidw9",
+ "status": 302,
+ "headers": {
+  "location": "https://t.me/zq7pl5ygva2csanfidw9",
+  "cache-control": "no-store"
+ },
+ "body": ""
+}

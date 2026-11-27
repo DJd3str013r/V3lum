@@ -1,0 +1,4 @@
+{
+ "_synthetic": "Not observed (keyless capture only saw HTTP 401). JSON {'error': ...} is the error envelope the official client reads; the parser keys on the status code.",
+ "error": "Invalid API key"
+}

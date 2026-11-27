@@ -1,0 +1,50 @@
+{
+ "note": "Offline VIN vectors. Synthetic serials (EXAMPL/EXAMP*) identify no vehicle; 1HGCM82633A004352 is the published example VIN of the research sample. Expected values are asserted in test_parsers.py.",
+ "vectors": [
+  {
+   "id": "na_valid",
+   "vin": "1HGCM82633A004352",
+   "origin": "research sample (vPIC: check digit correct)"
+  },
+  {
+   "id": "na_bad_check_digit",
+   "vin": "1HGCM82643A004352",
+   "origin": "synthetic: na_valid with position 9 changed"
+  },
+  {
+   "id": "na_check_digit_x",
+   "vin": "1V3XMPLEXAREXAMPC",
+   "origin": "synthetic NA VIN whose check digit is 'X' (remainder 10)"
+  },
+  {
+   "id": "br_vw_failing_check_digit",
+   "vin": "9BWZZZ377VTEXAMPL",
+   "origin": "synthetic Brazilian VW (9BW) VIN; check digit deliberately wrong"
+  },
+  {
+   "id": "br_fiat_passing_check_digit",
+   "vin": "9BD178169XBEXAMP0",
+   "origin": "synthetic 9BD VIN with computed check digit"
+  },
+  {
+   "id": "br_honda",
+   "vin": "93HGE6850AZEXAMPL",
+   "origin": "synthetic 93H VIN, position 9 = 0"
+  },
+  {
+   "id": "partial_pattern",
+   "vin": "9BWZZZ37*VT",
+   "origin": "live batch pattern (not a full VIN)"
+  },
+  {
+   "id": "has_letter_o",
+   "vin": "9BWZZZ377VTEXAMPO",
+   "origin": "synthetic, contains O"
+  },
+  {
+   "id": "too_short",
+   "vin": "9BWZZZ377VTEXAMP",
+   "origin": "synthetic, 16 characters"
+  }
+ ]
+}

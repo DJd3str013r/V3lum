@@ -1,0 +1,94 @@
+{
+ "_synthetic": "Synthetic: LeakIX needs a key (none available). Wrapper and fields from the vendor docs (docs.leakix.net/docs/api/domain (same wrapper as hostdetails), fetched 2026-11-26: 'Services' and 'Leaks', arrays of l9events, null if nothing was found) and github.com/LeakIX/l9format l9event.go. Documentation values only. CANARY-* strings mark content that the P274 FC2 allowlist must drop. leak.type values are placeholders: the real vocabulary must come from the team-key capture that FC7 requires before merge. Trimmed for the module tests: only the allowlisted fields and the content fields that carry CANARY values are kept.",
+ "Services": [
+  {
+   "event_type": "service",
+   "event_source": "HttpPlugin",
+   "ip": "192.0.2.10",
+   "host": "www.example.com",
+   "port": "443",
+   "protocol": "https",
+   "time": "2026-11-20T11:25:41Z",
+   "http": {},
+   "summary": "CANARY-SUMMARY-D1"
+  },
+  {
+   "event_type": "service",
+   "event_source": "HttpPlugin",
+   "ip": "198.51.100.7",
+   "host": "cdn.example.com",
+   "port": "443",
+   "protocol": "https",
+   "time": "2026-11-21T09:00:00Z",
+   "http": {},
+   "summary": "CANARY-SUMMARY-D2"
+  },
+  {
+   "event_type": "service",
+   "event_source": "SmtpPlugin",
+   "ip": "192.0.2.25",
+   "host": "mail.example.com",
+   "port": "25",
+   "protocol": "smtp",
+   "time": "2026-11-22T09:00:00Z",
+   "http": {},
+   "summary": "CANARY-SUMMARY-D3"
+  }
+ ],
+ "Leaks": [
+  {
+   "event_type": "leak",
+   "event_source": "DotDsStoreOpenPlugin",
+   "ip": "198.51.100.7",
+   "host": "cdn.example.com",
+   "port": "443",
+   "protocol": "https",
+   "time": "2026-11-21T09:05:00Z",
+   "http": {
+    "url": "/.DS_Store",
+    "status": 200
+   },
+   "leak": {
+    "stage": "open",
+    "type": "",
+    "severity": "low",
+    "dataset": {
+     "rows": 0,
+     "files": 0,
+     "size": 0,
+     "collections": 0,
+     "infected": false,
+     "ransom_notes": null
+    }
+   },
+   "summary": "CANARY-SUMMARY-D4"
+  },
+  {
+   "event_type": "leak",
+   "event_source": "ApacheStatusHttpPlugin",
+   "ip": "198.51.100.7",
+   "host": "",
+   "port": "80",
+   "protocol": "http",
+   "time": "2026-11-21T09:06:00Z",
+   "http": {
+    "url": "/server-status",
+    "status": 200
+   },
+   "leak": {
+    "stage": "open",
+    "type": "",
+    "severity": "medium",
+    "dataset": {
+     "rows": 0,
+     "files": 0,
+     "size": 0,
+     "collections": 0,
+     "infected": false,
+     "ransom_notes": null
+    }
+   },
+   "summary": "CANARY-SUMMARY-D5"
+  }
+ ]
+}

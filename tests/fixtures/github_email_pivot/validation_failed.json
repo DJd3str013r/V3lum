@@ -1,0 +1,20 @@
+{
+ "_envelope": 1,
+ "_synthetic": "422 shape as documented by GitHub",
+ "status": 422,
+ "headers": {
+  "content-type": "application/json; charset=utf-8"
+ },
+ "body": {
+  "message": "Validation Failed",
+  "errors": [
+   {
+    "message": "The search contains only logical operators (AND / OR / NOT) without any search terms.",
+    "resource": "Search",
+    "field": "q",
+    "code": "invalid"
+   }
+  ],
+  "documentation_url": "https://docs.github.com/v3/search/"
+ }
+}

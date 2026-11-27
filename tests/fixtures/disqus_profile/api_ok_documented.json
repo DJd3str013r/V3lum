@@ -1,0 +1,17 @@
+{
+ "_fixture": "DOC-SHAPED: Disqus API 3.0 users/details response layout; documentation values (needs the team key)",
+ "code": 0,
+ "response": {
+  "id": "100000001",
+  "username": "exampleuser",
+  "name": "Example User",
+  "about": "Example bio",
+  "location": "Example City",
+  "url": "https://example.com/blog",
+  "profileUrl": "https://disqus.com/by/exampleuser/",
+  "joinedAt": "2014-03-25T18:58:35",
+  "isPrivate": false,
+  "numPosts": 42,
+  "isAnonymous": false
+ }
+}

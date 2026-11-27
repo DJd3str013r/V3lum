@@ -1,0 +1,29 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.metadefender.com/v4/hash/275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f",
+  "headers": {
+   "apikey": "<KEY>"
+  }
+ },
+ "response": {
+  "status": 429,
+  "headers": {
+   "content-type": "application/json",
+   "x-ratelimit-limit": "4000",
+   "x-ratelimit-remaining": "0",
+   "x-ratelimit-reset-in": "36000"
+  },
+  "body": {
+   "error": {
+    "code": 429001,
+    "messages": [
+     "Too many requests. API key limit exceeded"
+    ]
+   }
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "synthetic: daily hash-lookup limit exhausted; rate-limit headers as named in OPSWAT docs"
+}

@@ -1,0 +1,19 @@
+% SYNTHETIC FIXTURE (p2-G01-4 prep): documented whois.tcinet.ru layout; dates from the research who-dat/RDAP record for yandex.ru (2026-11-25); glue IPs and taxpayer-id are documentation values
+% TCI Whois Service. Terms of use:
+% https://tcinet.ru/documents/whois_ru_rf.pdf (in Russian)
+% https://tcinet.ru/documents/whois_su.pdf (in Russian)
+
+domain:        YANDEX.RU
+nserver:       ns1.yandex.ru. 192.0.2.1, 2001:db8::1
+nserver:       ns2.yandex.ru. 192.0.2.2, 2001:db8::2
+state:         REGISTERED, DELEGATED, VERIFIED
+org:           YANDEX, LLC.
+taxpayer-id:   7700000000
+registrar:     RU-CENTER-RU
+admin-contact: https://www.nic.ru/whois
+created:       1997-09-23T09:45:07Z
+paid-till:     2027-09-30T21:00:00Z
+free-date:     2027-11-01
+source:        TCI
+
+Last updated on 2026-11-26T06:01:31Z

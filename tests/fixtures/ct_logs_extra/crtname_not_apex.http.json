@@ -1,0 +1,13 @@
+{
+ "request": "GET https://crt.name/v1/search?apex=zz-nonexistent-label-7q3.example.com",
+ "response": {
+  "status": 400,
+  "headers": {
+   "content-type": "text/plain; charset=utf-8"
+  },
+  "body": "invalid apex: not an apex (eTLD+1 is example.com)\n"
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "a subdomain is rejected: crt.name only takes registrable domains"
+}

@@ -1,0 +1,11 @@
+{
+ "error": {
+  "code": "maxlag",
+  "info": "Waiting for a database server: 5.1 seconds lagged.",
+  "host": "db1",
+  "lag": 5.1,
+  "type": "db",
+  "*": "See https://www.wikidata.org/w/api.php for API usage."
+ },
+ "servedby": "mw-api-ext.example"
+}

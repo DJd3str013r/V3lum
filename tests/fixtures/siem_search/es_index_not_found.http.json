@@ -1,0 +1,36 @@
+{
+ "request": {
+  "method": "POST",
+  "url": "https://siem.example.com:9200/logs-proxy-*,logs-dns-*/_search",
+  "headers": {
+   "Authorization": "<ApiKey value not stored>",
+   "Content-Type": "application/json"
+  }
+ },
+ "response": {
+  "status": 404,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": {
+   "error": {
+    "root_cause": [
+     {
+      "type": "index_not_found_exception",
+      "reason": "no such index [logs-mail-*]",
+      "resource.type": "index_or_alias",
+      "resource.id": "logs-mail-*",
+      "index": "logs-mail-*"
+     }
+    ],
+    "type": "index_not_found_exception",
+    "reason": "no such index [logs-mail-*]",
+    "resource.type": "index_or_alias",
+    "resource.id": "logs-mail-*",
+    "index": "logs-mail-*"
+   },
+   "status": 404
+  }
+ },
+ "note": "approved index pattern no longer exists (allow_no_indices=false) -> could not verify, template needs review"
+}

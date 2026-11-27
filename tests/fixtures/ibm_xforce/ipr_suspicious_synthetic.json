@@ -1,0 +1,18 @@
+{
+ "ip": "198.51.100.44",
+ "history": [],
+ "subnets": [],
+ "score": 4.3,
+ "cats": {
+  "Scanning IPs": 43,
+  "Anonymisation Services": 43
+ },
+ "geo": {
+  "country": "Netherlands",
+  "countrycode": "NL"
+ },
+ "reason": "Content found on multihoster",
+ "reasonDescription": "",
+ "categoryDescriptions": {},
+ "tags": []
+}

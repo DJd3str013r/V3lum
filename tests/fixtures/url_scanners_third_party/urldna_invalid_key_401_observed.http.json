@@ -1,0 +1,22 @@
+{
+ "_meta": {
+  "provenance": "observed",
+  "recorded": "2026-11-26",
+  "request": {
+   "method": "POST",
+   "url": "https://api.urldna.io/v1/search",
+   "json": {
+    "query": "domain = example.com",
+    "max_results": 1
+   }
+  },
+  "note": "Authorization: Bearer <dummy non-key value> (no real key)."
+ },
+ "status": 401,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": {
+  "detail": "Unauthorized"
+ }
+}

@@ -1,0 +1,2 @@
+{"template":"http/technologies/tech-detect.yaml","type":"http","input":"https://app.example.com","address":"app.example.com:443","error":"none","kind":"api"}
+{"template":"http/misconfiguration/jaeger-ui-dashboard.yaml","type":"http","input":"https://ops.example.com","address":"ops.example.com:443","error":"none","kind":"api"}

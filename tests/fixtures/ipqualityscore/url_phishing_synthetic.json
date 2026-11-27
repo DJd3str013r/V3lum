@@ -1,0 +1,27 @@
+{
+ "_synthetic": "documentation values; flags set to exercise the one-vote mapping (FC6)",
+ "message": "Success.",
+ "success": true,
+ "unsafe": true,
+ "domain": "login-example.example",
+ "root_domain": "login-example.example",
+ "ip_address": "198.51.100.23",
+ "dns_valid": true,
+ "parking": false,
+ "spamming": false,
+ "malware": false,
+ "phishing": true,
+ "suspicious": true,
+ "adult": false,
+ "risk_score": 100,
+ "category": "Phishing",
+ "redirected": true,
+ "scanned_url": "https://login-example.example/verify",
+ "final_url": "https://login-example.example/verify",
+ "domain_age": {
+  "human": "3 days ago",
+  "timestamp": 1795392000,
+  "iso": "2026-11-23T00:00:00-03:00"
+ },
+ "request_id": "REQID00006"
+}

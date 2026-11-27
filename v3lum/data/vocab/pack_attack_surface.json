@@ -1,0 +1,16 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "pack_attack_surface",
+  "title": "Attack-surface pack (P291, CR07/CR08/CR13-CR16/CR25/CR26/CR31)",
+  "owner": "core WP23",
+  "notes": "Names the P291 rules read; dangling-DNS facts are passive (or from an ACTIVE module that ran under the gate). Takeovers are never claimed to prove them.",
+  "attributes": {
+    "takeover_fingerprint": "provider unclaimed-resource fingerprint matched for the name: {service, fingerprint, source, observed_at, url} or a list of them (an indexed page or an authorized fetch; the resource is never claimed or registered, CR07)",
+    "cname_dangling": "the CNAME target of the name does not resolve: {target, status ('NXDOMAIN'), confirmed (bool: a second resolver confirmed it), source, observed_at}; only a confirmed NXDOMAIN is dangling evidence (CR07)",
+    "vulns_verified": "list of CVE ids the source verified on the host beyond a version string (e.g. Shodan 'verified', a CVE-specific check, or an authorized ACTIVE check): CR15 'verified'"
+  },
+  "tags": {
+    "in_scope": "entity matches the ACTIVE scope file of the run (A7): set by the core only; pivots never inherit it and SAN affiliates or co-hosted names never join the scope"
+  },
+  "relations": {}
+}

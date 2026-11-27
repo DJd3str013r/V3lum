@@ -1,0 +1,155 @@
+{
+ "qid": null,
+ "iid": 100939,
+ "indicator": "1.1.1.1",
+ "type": "ip",
+ "risk": "none",
+ "risk_recommended": "none",
+ "manualrisk": 0,
+ "retired": null,
+ "stamp_added": "2017-10-18 02:34:59",
+ "stamp_updated": "2026-11-16 12:20:36",
+ "stamp_seen": "2026-11-16 12:20:36",
+ "stamp_probed": "2026-10-30 14:20:45",
+ "stamp_retired": null,
+ "recent": 0,
+ "submissions": 42,
+ "umbrella_rank": 3604,
+ "umbrella_domain": "one.one.one.one",
+ "riskfactors": [
+  {
+   "rfid": 60,
+   "description": "found in threat feeds",
+   "risk": "medium"
+  },
+  {
+   "rfid": 50,
+   "description": "hosted on common ISP",
+   "risk": "none"
+  },
+  {
+   "rfid": 62,
+   "description": "linked to top 100k domain",
+   "risk": "none"
+  },
+  {
+   "rfid": 61,
+   "description": "linked to top 10k domain",
+   "risk": "none"
+  },
+  {
+   "rfid": 1,
+   "description": "returns PTR record",
+   "risk": "none"
+  }
+ ],
+ "threats": [
+  {
+   "tid": 90,
+   "name": "Adware",
+   "category": "pup",
+   "risk": "low",
+   "stamp_linked": "2020-04-05 19:32:53"
+  },
+  {
+   "tid": 431,
+   "name": "CryptoMining",
+   "category": "general",
+   "risk": "low",
+   "stamp_linked": "2020-10-14 21:10:20"
+  },
+  {
+   "tid": 305,
+   "name": "LDAP DDoS",
+   "category": "attack",
+   "risk": "unknown",
+   "stamp_linked": "2018-12-11 19:24:14"
+  },
+  {
+   "tid": 67,
+   "name": "Phishing",
+   "category": "general",
+   "risk": "high",
+   "stamp_linked": "2018-02-21 01:52:08"
+  },
+  {
+   "tid": 546,
+   "name": "qsnatch",
+   "category": "general",
+   "risk": "unknown",
+   "stamp_linked": "2020-09-08 13:00:09"
+  }
+ ],
+ "redirects": {
+  "from": [],
+  "to": [
+   {
+    "iid": 2847056,
+    "indicator": "https://1.1.1.1/"
+   },
+   {
+    "iid": 44432883,
+    "indicator": "https://one.one.one.one/"
+   }
+  ]
+ },
+ "feeds": [
+  {
+   "fid": 11,
+   "name": "Bad IPs",
+   "category": "attack",
+   "organization": "badIPs",
+   "pricing": "free",
+   "stamp_linked": "2018-07-15 22:11:56"
+  },
+  {
+   "fid": 4,
+   "name": "C&C IPs",
+   "category": "malware",
+   "organization": "Bambenek Consulting",
+   "pricing": null,
+   "stamp_linked": "2020-09-08 13:00:09"
+  },
+  {
+   "fid": 65,
+   "name": "Example Mining IPs Feed",
+   "category": "abuse",
+   "organization": "Example Feed Operator",
+   "pricing": null,
+   "stamp_linked": "2020-10-14 21:10:20"
+  }
+ ],
+ "comments": [],
+ "attributes": {
+  "hosttype": [
+   "Name Server"
+  ],
+  "port": [
+   "443",
+   "53",
+   "80"
+  ],
+  "protocol": [
+   "DNS",
+   "DNS-over-TLS",
+   "FTP"
+  ],
+  "technology": [
+   "Amazon Web Services",
+   "CloudFlare",
+   "DigiCert"
+  ]
+ },
+ "properties": {
+  "geo": {
+   "asn": "AS13335",
+   "countrycode": [
+    "AU",
+    "ZZ"
+   ]
+  },
+  "dns": {
+   "ptr": "one.one.one.one"
+  }
+ }
+}

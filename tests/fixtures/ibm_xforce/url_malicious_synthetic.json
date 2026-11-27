@@ -1,0 +1,21 @@
+{
+ "result": {
+  "url": "login.example.net/account/verify",
+  "cats": {
+   "Phishing URLs": true,
+   "Malware": true
+  },
+  "score": 9,
+  "categoryDescriptions": {}
+ },
+ "associated": [
+  {
+   "url": "login.example.net",
+   "cats": {
+    "Phishing URLs": true
+   },
+   "score": 7
+  }
+ ],
+ "tags": []
+}

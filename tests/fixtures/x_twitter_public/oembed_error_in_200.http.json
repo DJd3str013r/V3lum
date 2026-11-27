@@ -1,0 +1,8 @@
+{
+ "_fixture": "SYNTHETIC: 200 carrying an X API error object (v1.1 'errors' shape)",
+ "status": 200,
+ "headers": {
+  "content-type": "application/json; charset=utf-8"
+ },
+ "body": "{\"errors\":[{\"message\":\"Sorry, that page does not exist\",\"code\":34}]}"
+}

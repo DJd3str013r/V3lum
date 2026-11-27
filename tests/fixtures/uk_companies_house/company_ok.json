@@ -1,0 +1,39 @@
+{
+ "company_name": "EXAMPLE TRADING LIMITED",
+ "company_number": "00000001",
+ "company_status": "active",
+ "type": "ltd",
+ "jurisdiction": "england-wales",
+ "date_of_creation": "2001-02-03",
+ "sic_codes": [
+  "62020"
+ ],
+ "registered_office_address": {
+  "address_line_1": "1 Example Street",
+  "locality": "London",
+  "postal_code": "EC1A 1AA",
+  "country": "England"
+ },
+ "has_insolvency_history": false,
+ "has_charges": true,
+ "can_file": true,
+ "previous_company_names": [
+  {
+   "name": "EXAMPLE SOFTWARE LIMITED",
+   "effective_from": "2001-02-03",
+   "ceased_on": "2010-01-01"
+  }
+ ],
+ "accounts": {
+  "overdue": false,
+  "next_due": "2027-09-30"
+ },
+ "confirmation_statement": {
+  "overdue": false
+ },
+ "links": {
+  "self": "/company/00000001",
+  "officers": "/company/00000001/officers",
+  "persons_with_significant_control": "/company/00000001/persons-with-significant-control"
+ }
+}

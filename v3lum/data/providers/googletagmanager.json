@@ -1,0 +1,55 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "googletagmanager",
+  "name": "Google Tag Manager container scripts (gtm.js)",
+  "operator": "Google LLC",
+  "hosts": [
+    "www.googletagmanager.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms (A8): 'Google is trusted; terms open (public JavaScript).' (P061 chair rationale).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Serves the container configuration exactly as the site owner published it; the ids it loads are facts about the container, not about who owns the sites that embed it (agencies reuse containers)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "*/*",
+    "ttl": 604800,
+    "max_bytes": 1048576,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "gtm_js": {
+      "title": "Google Tag Manager container script https://www.googletagmanager.com/gtm.js?id=GTM-XXXX (measurement ids configured in the container)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://marketingplatform.google.com/about/analytics/tag-manager/use-policy/",
+        "quote": "gtm_expand fetches https://www.googletagmanager.com/gtm.js?id=GTM-... from Google: disclosure third_party. [...] Google is trusted; terms open (public JavaScript).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "google_tag_manager",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P061 cond 1 and chair rationale). Research C0789 (verified_live 200, 2026-11-25/26). Google receives only the GTM container id, never the page or the target URL. Unknown containers also answer HTTP 200 with a generic ~242 KB runtime (no macros, no tags): 'not found' is decided from the content, never from the status (P061 cond 3). At most 5 containers per run, 1 MB cap, cache 7 days. Used by gtm_expand."
+    }
+  },
+  "notes": "Owned by batch p2-G03-1 (P061 gtm_expand). The gtag/js?id=G-... endpoint only echoes the measurement id (checked by the prep, not used). No published rate limit: polite pacing (1 s, one connection)."
+}

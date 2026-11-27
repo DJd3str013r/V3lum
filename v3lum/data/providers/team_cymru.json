@@ -1,0 +1,46 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "team_cymru",
+  "name": "Team Cymru Malware Hash Registry (DNS zone hash.cymru.com)",
+  "operator": "Team Cymru, Inc.",
+  "hosts": [],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established security company and community steward with published terms and a privacy policy (A8 trusted); P176 final condition 4: 'Registry provider team_cymru: tier trusted'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Aggregated antivirus detection percentage per hash with a last-seen date; known false positives exist (the empty-file MD5 answers 91%)."
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "mhr": {
+      "title": "Malware Hash Registry: TXT {md5|sha1}.hash.cymru.com through the core DoH resolver ('<last_seen_epoch> <AV detection %>'; NXDOMAIN = not in MHR)",
+      "terms": {
+        "class": "noncommercial",
+        "evidence_url": "https://www.team-cymru.com/mhr",
+        "quote": "MHR is free for non-commercial use. (team-cymru.com, verified 2026-11-26) - P176 cond 2 (binding council text): terms 'noncommercial'; off under the corporate profile until licence-cleared (a commercial MHR agreement or a licence_allow entry recorded by legal); in the research profile only with a recorded legal basis and the licence banner.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "team_cymru_mhr",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0412 (verified live 2026-11-26 through dns.google and cloudflare-dns.com). DNS only, never raw HTTP: hosts [] because the core DoH resolvers carry the query (they and Team Cymru's authoritative servers see the hash; the disclosure ledger lists the resolver hosts). SHA-256 is unsupported (64-character label > 63; Google DoH answers HTTP 400). DoH answers are cached by the core resolver, never charged to quotas.",
+      "licensed_alternative": "A commercial MHR agreement with Team Cymru or a licence_allow entry recorded by legal for team_cymru.mhr (P176 cond 2)."
+    }
+  },
+  "notes": "Owned by batch p3-G07-1 (P176, module malware_hash/cymru_mhr). Team Cymru's IP-to-ASN DNS service (team_cymru_asn) runs over core_doh with its own terms and is not part of this provider."
+}

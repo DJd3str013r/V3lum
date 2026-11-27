@@ -1,0 +1,51 @@
+{
+ "metadata": {
+  "vulnerability": "CVE-2021-44228",
+  "count": 2,
+  "kinds": {
+   "milestone": 2,
+   "sighting": 0,
+   "kev": 0,
+   "other": 0
+  },
+  "linked_omitted": 0
+ },
+ "data": [
+  {
+   "timestamp": "2021-11-26T00:00:00Z",
+   "date_only": false,
+   "value": "2021-11-26T00:00:00.000Z",
+   "kind": "milestone",
+   "label": "Reserved",
+   "source": "cvelistv5",
+   "record": "CVE-2021-44228",
+   "field": "cveMetadata.dateReserved"
+  },
+  {
+   "timestamp": "2021-12-09T23:00:00Z",
+   "date_only": false,
+   "value": "2021-12-09T23:00:00.000+00:00",
+   "kind": "milestone",
+   "label": "Published",
+   "source": "csaf_certbund · WID-SEC-W-2022-0351",
+   "record": "WID-SEC-W-2022-0351",
+   "field": "document.tracking.initial_release_date",
+   "metric_role": "disclosure",
+   "metric_basis": "recorded_event",
+   "linked_record": true
+  }
+ ],
+ "metrics": {
+  "as_of": "2026-11-26T07:18:24.346Z",
+  "anchors": {
+   "exploitation": null,
+   "exploit_publication": null
+  },
+  "time_to_exploit": {
+   "available": false,
+   "missing": [
+    "end"
+   ]
+  }
+ }
+}

@@ -1,0 +1,50 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p1-G05-1",
+  "title": "Names used by github_user, github_user_search (P111) and telegram_public (P112)",
+  "owner": "batch p1-G05-1 (group G05 username_social)",
+  "attributes": {
+    "account_id": "numeric id of the account on its platform (e.g. the GitHub user id)",
+    "account_type": "kind of account on its platform (GitHub 'User' | 'Organization'; Telegram 'channel' | 'group' | 'user' | 'bot')",
+    "company": "self-declared company / organisation text of a public profile",
+    "website": "website URL declared on a public profile",
+    "public_repos": "number of public repositories of the account",
+    "public_gists": "number of public gists of the account",
+    "following": "number of accounts the account follows",
+    "ssh_keys": "public SSH keys published on the account: list of {type, fingerprint (OpenSSH SHA256), bits}; key blobs and comments are never kept",
+    "gpg_keys": "OpenPGP keys published on the account: list of {fingerprint, key_id, sha256_id, algorithm, bits, curve, created, subkeys, uids}",
+    "commit_emails": "e-mail addresses of the seed account's own public commits grouped per address: list of {email, commits, first, last, repos, sources} (case-bound, never sent to breach modules automatically)",
+    "noreply_accounts": "GitHub accounts decoded from users.noreply.github.com addresses: list of {handle, id}",
+    "public_activity": "summary of the public events read: {events, types, first, last, contributions_window, window_days}",
+    "activity_level": "Ceos activity class from public REST events: inactive | low | active | very_active (attribute only, never a sensitive inference)",
+    "stalled_for_months": "bool: no public activity for more than 180 days",
+    "estimated_contributions_year": "contributions per year estimated from the public events window",
+    "last_activity": "ISO date of the latest public activity seen",
+    "name_search": "platform name search summary: {query, total_count, incomplete, candidates [{handle, id, type, url, score}]} (POSSIBLE candidates, never expanded)",
+    "subscribers": "subscriber count of a public channel",
+    "members": "member count of a public group",
+    "online_members": "group members online when the page was read",
+    "monthly_users": "monthly users of a bot",
+    "verified": "bool: the platform shows a verified badge on the account",
+    "has_preview": "bool: the Telegram channel has a public web preview (t.me/s)",
+    "posts_read": "number of public posts read from a web preview",
+    "ioc_summary": "one-block summary of the infrastructure indicators in public posts: {summary, counts, top} (top 5 per group, defanged)",
+    "mentioned_handles": "Telegram handles linked from post text (listed, never pivoted)",
+    "bot_webhook_exposures": "bot tokens and webhook URLs posted publicly: list of {kind, sha256_prefix, posts} (never in clear, never used)",
+    "post_scrubbing": "ingestion scrubbing applied to post text before cache, evidence and reports: {pans_truncated, cpfs_redacted, emails_redacted, phones_redacted, records_dropped, drop_reasons}",
+    "brand_mentions": "organisation-profile brand terms found in public posts: list of {term, posts}"
+  },
+  "tags": {},
+  "relations": {
+    "gpg_uid_email": "account -> e-mail in a UID of an OpenPGP key published on the account",
+    "noreply_account": "account/e-mail -> GitHub account decoded from a users.noreply.github.com address",
+    "declared_org": "account -> organisation handle declared in its profile (self-declared, unverified)",
+    "pgp_key": "account -> fingerprint of an OpenPGP key published on the account",
+    "name_search_candidate": "person name -> account returned by a platform name search (POSSIBLE, never auto-expanded)",
+    "mentioned_in_post": "public channel -> indicator mentioned in one of its posts (hostile-shaped: never visited automatically)",
+    "forwarded_from": "public channel -> channel whose posts it forwards"
+  },
+  "timeline": {
+    "last_activity": "last public activity"
+  }
+}

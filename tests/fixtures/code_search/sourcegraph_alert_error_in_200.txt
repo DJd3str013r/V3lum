@@ -1,0 +1,6 @@
+event: alert
+data: {"title":"Unable To Process Query","description":"Field count has value notanumber, notanumber is not a number","proposedQueries":null}
+
+event: done
+data: {}
+

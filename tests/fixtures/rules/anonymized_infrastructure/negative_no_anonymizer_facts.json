@@ -1,0 +1,38 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "$comment": "Explicit 'not an exit / not a VPN' answers and a hosting tag are no anonymizer facts",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "nodes": [
+    {
+      "key": "ipv4:192.0.2.15",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "is_tor_exit": [
+          {
+            "value": false,
+            "source": "tor_exit_local"
+          }
+        ],
+        "is_vpn": [
+          {
+            "value": false,
+            "source": "ip_anonymizer_consensus"
+          }
+        ],
+        "is_hosting": [
+          {
+            "value": true,
+            "source": "cloud_ranges"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": []
+}

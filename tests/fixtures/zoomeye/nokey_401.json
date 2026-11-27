@@ -1,0 +1,8 @@
+{
+ "code": 50000,
+ "error": "login_required",
+ "message": "Missing API key. Send the header \"API-KEY: <your key>\". Create or view your key at https://www.zoomeye.org/profile",
+ "details": {
+  "url": "https://zoomeye.ai/agent.md"
+ }
+}

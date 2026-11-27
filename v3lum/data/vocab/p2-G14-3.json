@@ -1,0 +1,22 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p2-G14-3",
+  "title": "Unverified pivot links, code search and dork links (batch p2-G14-3)",
+  "owner": "batch p2-G14-3 (P304 pivots_unverified, P305 code_search, P306 dork_generator)",
+  "attributes": {
+    "code_search_hits": "public code locations that mention the investigated value, one entry per repository (top 10): {repo, provenance (own_repo | third_party_repo | public_ioc_repo), wording, severity, hit_count, rules (P312 pattern ids), dedup (keyed hashes of masked matches), hits [{source, path, line, commit, link}]} - fragments are never kept and secrets are never shown, tested or reused",
+    "code_search_hostnames": "hostnames under the investigated apex found in masked public-code fragments (code_search); leads for internal names, never fetched",
+    "code_search_summary": "code search coverage of one entity: {providers (queried sources and outcome), queries, total_repos, total_hits, overflow (repositories beyond the top 10)}",
+    "br_phone_variants": "offline Brazilian phone formats derived from the E.164 value for manual search (+55 11 9xxxx-xxxx, (11) 9xxxx-xxxx, 119xxxxxxxx, with and without the mobile 9); never sent anywhere by V3LUM"
+  },
+  "tags": {
+    "public_ioc_repo": "the hit is in a public IOC or blocklist repository: context only, never an independent malicious vote (P171)",
+    "third_party_repo": "a public repository not attributed to the organisation mentions the value",
+    "own_repo": "repository of one of the organisation's own code-host accounts (setting code_search_org_accounts)"
+  },
+  "relations": {
+    "mentioned_in_code": "investigated value -> blob URL of a public code file that mentions it (repo/path/line; listed with expand=False)",
+    "code_repo_owner": "investigated value -> account owning a public repository whose code mentions it (a lead, not an identity; expand=False)"
+  },
+  "timeline": {}
+}

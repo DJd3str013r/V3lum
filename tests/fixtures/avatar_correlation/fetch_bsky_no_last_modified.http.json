@@ -1,0 +1,39 @@
+{
+ "_meta": {
+  "module": "avatar_correlation",
+  "case": "fetch_bsky_no_last_modified",
+  "source": "C0230 avatar CDN fetch",
+  "request": {
+   "method": "GET",
+   "url": "https://cdn.bsky.app/img/avatar/plain/did:plc:z72i7hdynmk6r22z27h6tvur/bafkreihwihm6kpd6zuwhhlro75p5qks5qtrcu55jp3gddbfjsieiv7wuka@jpeg"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "LIVE",
+  "elapsed_s": 0.189,
+  "note": "Bluesky CDN avatar (bsky.app): JPEG 1000x1000, 24962 B, no Last-Modified"
+ },
+ "status": 200,
+ "headers": {
+  "content-type": "image/jpeg",
+  "content-length": "24962",
+  "cache-control": "public, max-age=604800",
+  "server": "BunnyCDN-IL1-1235",
+  "content-disposition": "inline; filename=\"bafkreihwihm6kpd6zuwhhlro75p5qks5qtrcu55jp3gddbfjsieiv7wuka.jpg\""
+ },
+ "body": null,
+ "body_omitted": true,
+ "image_facts": {
+  "sha256": "7ae8978b715e73b8583fe9cc5dd8ab7af9ee1f6082729dd785439f02f2a953b3",
+  "bytes": 24962,
+  "magic": "jpeg",
+  "pil_format": "JPEG",
+  "size": [
+   1000,
+   1000
+  ],
+  "mode": "RGB",
+  "n_frames": 1,
+  "dhash": "442b33338e965428",
+  "stddev32": 60.756
+ }
+}

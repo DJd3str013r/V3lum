@@ -1,0 +1,38 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "bsky_app",
+  "name": "Bluesky (bsky.app) image CDN",
+  "operator": "Bluesky Social, PBC",
+  "hosts": ["cdn.bsky.app"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Same operator and tier as the Bluesky AppView provider (bluesky.json, batch p2-G05-1): Bluesky Social, PBC, an established company with published terms of service and a privacy policy (A8 trusted). The P114 module's lowest provider tier stays community (Codeberg).",
+  "tier_reviewer": "batch p2-G05-2 (council-1 P114)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "C", "justification": "Serves the avatar image the account owner uploaded; the image itself says nothing about who uploaded it."},
+  "http_profile": {"user_agent": "neutral", "accept": "image/jpeg,image/png,image/webp,image/gif", "ttl": 0, "max_bytes": 524288, "min_interval": 1.0, "concurrency": 2},
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "avatars": {
+      "title": "Bluesky avatar images cdn.bsky.app/img/avatar/... (one GET per avatar URL already found on a profile, P114)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://bsky.social/about/support/tos",
+        "quote": "Avatar correlation (dHash) + Gravatar/unavatar avatar hashes: council-1 approved, provider_tier community, terms open (P114).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "bluesky",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Public avatar images referenced by public Bluesky profiles (AT Protocol blobs). Fetched once per avatar URL per case, hashed in memory (SHA-256 + whole-image dHash) and discarded: ttl 0, never cached or stored (P114 cond 4). The CDN sends no Last-Modified header (measured 2026-11-26)."
+    }
+  },
+  "notes": "Owned by batch p2-G05-2 (avatar_correlation, P114). The Bluesky public API host public.api.bsky.app is not part of this provider: a batch that needs it adds it with an extension fragment (bsky_app__<suffix>.json)."
+}

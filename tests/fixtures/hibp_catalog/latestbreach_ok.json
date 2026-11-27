@@ -1,0 +1,23 @@
+{
+ "Name": "Bromcom",
+ "Title": "Bromcom",
+ "Domain": "bromcom.com",
+ "BreachDate": "2026-09-06",
+ "AddedDate": "2026-11-23T06:36:04Z",
+ "ModifiedDate": "2026-11-23T06:36:04Z",
+ "PwnCount": 355051,
+ "Description": "In September 2026, UK education software provider <a href=\"https://www.theregister.com/security/2026/10/06/legacy-sign-on-service-comes-back-to-bite-school-software-provider-bromcom/5301156\" target=\"_blank\" rel=\"noopener\">Bromcom suffered a data breach involving a legacy single sign-on (SSO) registration system</a>. The incident exposed 355k unique email addresses belonging to staff and pupils at UK schools, alongside SSO registration reference numbers. <a href=\"https://docs.bromcom.com/knowledge-base/sso-personal-data-breach-faqs/\" target=\"_blank\" rel=\"noopener\">Bromcom confirmed</a> that no passwords or authentication tokens were exposed, and that the incident did not enable access to Microsoft or Google accounts or its school management system.",
+ "DataClasses": [
+  "Email addresses"
+ ],
+ "IsVerified": true,
+ "IsFabricated": false,
+ "IsSensitive": false,
+ "IsRetired": false,
+ "IsSpamList": false,
+ "IsMalware": false,
+ "IsSubscriptionFree": false,
+ "IsStealerLog": false,
+ "Attribution": null,
+ "DisclosureUrl": "https://docs.bromcom.com/knowledge-base/sso-personal-data-breach-faqs/"
+}

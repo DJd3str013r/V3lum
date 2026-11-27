@@ -1,0 +1,12 @@
+{
+ "_envelope": 1,
+ "_source": "GET https://nominatim.openstreetmap.org/search?street=11541%20Avenida%20das%20Na%C3%A7%C3%B5es%20Unidas&city=S%C3%A3o%20Paulo&state=SP&postalcode=04578-000&countrycodes=br&format=jsonv2&addressdetails=1&limit=1 (2026-11-26T09:43:29Z, generic client UA, datacenter egress); CDN (Varnish) edge refusal: 4 of 5 requests (all 3 /search attempts and /reverse at 0,0) with a generic UA without contact e-mail, while /reverse at Marco Zero answered 200 between them",
+ "status": 629,
+ "headers": {
+  "server": "Varnish",
+  "retry-after": "0",
+  "content-type": "text/html; charset=utf-8",
+  "x-cache": "MISS"
+ },
+ "body": "\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"\n \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n<html>\n  <head>\n    <title>629 Unknown Error</title>\n  </head>\n  <body>\n    <h1>Error 629 Unknown Error</h1>\n    <p>Unknown Error</p>\n    <h3>Error 54113</h3>\n    <p>Details: cache-chi-klot8100023-CHI 1795686209 690329671</p>\n    <hr>\n    <p>Varnish cache server</p>\n  </body>\n</html>\n"
+}

@@ -1,0 +1,28 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p2-G10-2",
+  "title": "RFB CNPJ bulk index, DataJud court metadata and DOU gazette vocabulary (P238 rfb_cnpj_bulk, P241 datajud, P242 dou_search)",
+  "owner": "batch p2-G10-2",
+  "notes": "Core and p1-G10-2 names reused where they fit: legal_name, trade_name, status, status_date, cnae, cnaes_secondary, legal_nature, company_size, capital, opened, address, address_details, simples_nacional, mei, branch_type, rfb_snapshot (attributes); shared_contact, name_only_match, context_only, sanctions, info (tags); partner_of, company_of, headquarters, mentions (relations). Person data rules: masked CPFs are never attributes or pivots, faixa etaria is never stored, CNPJ pivots of reverse lookups are expand=False. export_restriction (p2-G07-1) is reused for DataJud results (P241 cond 8).",
+  "attributes": {
+    "cnj_numbers": "CNJ unified process numbers parsed from the input (at most 5): [{number, court, index, reason}] plus counts {invalid, over_limit}",
+    "court_cases": "DataJud court-process metadata (no parties): [{numero, tribunal, grau, classe, assuntos, orgao_julgador, data_ajuizamento, ultima_atualizacao, sistema, formato, movimentos_recentes (5 newest), movimentos_total}]",
+    "datajud_status": "plain-words DataJud outcome per number: 'found in public DataJud', 'not found in public DataJud' (sealed or absent: never 'no case'), 'no public DataJud index for <court>' or 'could not verify: DataJud overloaded'",
+    "dou_mentions": "local DOU dump matches {count, as_of, window, top: [{title, date, section, organ, url, excerpt (<= 300 chars), art_type, penalty_terms, match}]} (5 most relevant, penalty excerpts first)",
+    "dou_status": "plain-words DOU outcome: 'DOU dump as of <date>: N mentions' or 'not found in the local DOU dump as of <date>' (recent acts may be missing)",
+    "rfb_branches": "establishments of a CNPJ root from the local RFB index {total, shown: [{cnpj, matriz, situacao, uf, municipio}], snapshot}",
+    "rfb_hq_cnpj": "head-office CNPJ of a root taken from the RFB Estabelecimentos index (never assumed to be /0001)",
+    "rfb_shared_contacts": "contacts of a CNPJ shared by >= 20 companies in the RFB index [{kind (email | phone | address), companies, label 'possible accountant/virtual office'}]: excluded from same-owner rules",
+    "rfb_reverse_lookup": "a purpose-bound person-centric reverse lookup on the local RFB index {kind (partner_name | email | phone | address), total, shown, truncated, snapshot, purpose_recorded, case_lookups}",
+    "rfb_import_state": "state of the local RFB CNPJ index {snapshot, schema, tables, imported_at, rows}"
+  },
+  "tags": {
+    "no_export": "data whose source terms forbid sharing with third parties or STIX/MISP exports (DataJud terms 4.6): kept in the case only",
+    "penalty_term": "gazette excerpt carrying a penalty term (penalidade, inidoneidade, rescisao, multa, sancao, suspensao): ranked first, reviewed by the analyst"
+  },
+  "relations": {
+    "same_cnpj_root": "CNPJ -> another establishment (branch or head office) of the same 8-character root (RFB index)",
+    "rfb_contact_of": "e-mail/phone/CEP -> CNPJ registered with that contact or address in the RFB index (a hypothesis, never same-owner evidence)",
+    "partner_name_match": "person name -> company whose QSA lists a partner with the same normalised name (name only, always POSSIBLE)"
+  }
+}

@@ -1,0 +1,38 @@
+<html><body><h2>Evite esses Sites</h2>
+<div class="roda"><p>
+			Fonte: <b>Fundação Procon/SP</b><br>
+			Listagem atualizada em: <b>12/05/2026</b><br>
+			A listagem está em ordem alfabética pelo endereço (URL) do site, caso prefira outra ordem clique no título da coluna<br>
+			*A situação do site se refere a data da inserção na lista</p>
+		</div>
+<script>
+fields: {
+						intCodSite: {
+							key: true,
+							create: false,
+							edit: false,
+							list: false
+						},
+						strSite: {
+							title: 'Site',
+							width: '30%'
+						},
+						strEmpresa: {
+							title: 'Empresa/Responsável',
+							width: '30%'
+						},
+						strCNPJ: {
+							title: 'CNPJ/CPF',
+							width: '10%'
+						},
+						strSituacao: {
+							title: 'Situação*',
+							width: '20%',
+							options: { '1': 'NO AR', '0': 'FORA DO AR' }
+						},
+						dtInclusao: {
+							title: 'Inclusão',
+							width: '10%'
+						}
+					}
+</script></body></html>

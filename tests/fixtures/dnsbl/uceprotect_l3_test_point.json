@@ -1,0 +1,18 @@
+{
+ "Status": 0,
+ "TC": false,
+ "Question": [
+  {
+   "name": "2.0.0.127.dnsbl-3.uceprotect.net",
+   "type": 1
+  }
+ ],
+ "Answer": [
+  {
+   "name": "2.0.0.127.dnsbl-3.uceprotect.net",
+   "type": 1,
+   "TTL": 2100,
+   "data": "127.0.0.2"
+  }
+ ]
+}

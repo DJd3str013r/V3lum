@@ -1,0 +1,46 @@
+{
+ "resultado": [
+  {
+   "ativo": true,
+   "cnpj": "00000000000191",
+   "cpf": null,
+   "nomeRazaoSocialFornecedor": "BANCO DO BRASIL SA",
+   "nomeFantasia": "DIRECAO GERAL",
+   "ufSigla": "DF",
+   "nomeMunicipio": "BRASÍLIA",
+   "codigoCnae": 6422100,
+   "nomeCnae": "BANCOS MÚLTIPLOS, COM CARTEIRA COMERCIAL",
+   "naturezaJuridicaCodigoRFB": 2038,
+   "naturezaJuridicaNome": "SOCIEDADE DE ECONOMIA MISTA",
+   "porteEmpresaId": 5,
+   "porteEmpresaNome": "Demais",
+   "statusHabilitacaoGeral": "Sim",
+   "email": "contato@example.com",
+   "telefone": "1155550100",
+   "socios": [
+    {
+     "nome": "F***** D* T**",
+     "tipoPessoa": "Sócio",
+     "numeroParticipacaoAcionaria": null,
+     "dataHoraDesvinculacao": null
+    },
+    {
+     "nome": "B******* D* S****",
+     "tipoPessoa": "Sócio/Admin e Responsável Legal",
+     "numeroParticipacaoAcionaria": null,
+     "dataHoraDesvinculacao": null
+    }
+   ],
+   "linhasFornecimento": [
+    {
+     "codigoCatmat": null,
+     "codigoCatser": "13811",
+     "descricao": "Serviço Bancário"
+    }
+   ]
+  }
+ ],
+ "totalRegistros": 1,
+ "totalPaginas": 1,
+ "paginasRestantes": 0
+}

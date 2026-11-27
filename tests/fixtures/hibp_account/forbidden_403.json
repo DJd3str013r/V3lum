@@ -1,0 +1,9 @@
+{
+ "_envelope": 1,
+ "_synthetic": "HIBP API docs: 403 = no user agent specified / request forbidden",
+ "status": 403,
+ "headers": {
+  "content-type": "text/plain"
+ },
+ "body": ""
+}

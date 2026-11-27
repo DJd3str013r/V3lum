@@ -1,0 +1,87 @@
+{
+  "batch": "p9-G13-4",
+  "modules": [
+    {
+      "name": "nuclei_runner",
+      "file": "v3lum/modules/pentest_recon/nuclei_runner.py",
+      "proposal": "P369",
+      "category": "pentest_recon",
+      "opsec": "active",
+      "default_enabled": false,
+      "terms": "open",
+      "provider_tier": "n/a",
+      "keys": [],
+      "datasets": [],
+      "pivot_packs": [],
+      "correlation_rules": [],
+      "new_vocabulary": [
+        "exposure_summary"
+      ],
+      "live_check": "No target contact (no authorization for any real host; nuclei is not installed here). Live (V3LUM_LIVE=1, tests/live/test_p9_g13_4.py, passed 2026-11-26): all 17 reviewed templates downloaded from raw.githubusercontent.com at the pinned nuclei-templates v10.5.2 tag hash to their pinned SHA-256 and pass the FC8 gate over their real content; the run path without a binary is UNAVAILABLE 'package'. Offline (tests/modules/test_nuclei_runner.py): a stub nuclei on a temporary PATH records the argv and environment it really receives (fixed argv order, -rl 10, -p proxy_active, ROE -H, scrubbed PDCP_API_KEY/proxies), the SHA-256 pin (a modified file never launches), the FC8 gate (excluded/forbidden tags, interactsh, non-GET/HEAD, file read, command execution, auth bypass, SSRF, code/headless/network protocols, unsigned), findings/technology mapping, malformed/crash/proxy-dead/kill = could not test, the -tlog trace folded into the request ledger, scope/window refusals before launch."
+    },
+    {
+      "name": "dns_bruteforce",
+      "file": "v3lum/modules/pentest_recon/dns_bruteforce.py",
+      "proposal": "P370",
+      "category": "pentest_recon",
+      "opsec": "active",
+      "default_enabled": false,
+      "terms": "open",
+      "provider_tier": "n/a",
+      "keys": [],
+      "datasets": [],
+      "pivot_packs": [],
+      "correlation_rules": [],
+      "new_vocabulary": [
+        "brute_force_summary"
+      ],
+      "live_check": "Live (V3LUM_LIVE=1, tests/live/test_p9_g13_4.py, passed 2026-11-26): the FC5 wildcard profile of the IANA documentation zone example.com (3 random labels) and the existence check of www.example.com through the real core DoH resolvers (<= 12 queries, paced); no brute-force run, no target contact. Offline (tests/modules/test_dns_bruteforce.py): scope-apex/window/exclusion gates, public-DoH-only policy, pinned wordlist, wildcard (same, round-robin union, CNAME), Cloudflare NODATA, SERVFAIL/error-in-200/HTML block = unknown, resolver abort, per-parent permutation profiles, 10 q/s pacing (scope max_rps), scope budget, window-end and kill switch partial results, FC6 scope join."
+    }
+  ],
+  "proposals_not_done": [],
+  "core_requests": [
+    "P370 FC4/FC2: ctx.dns for target-contact (ACTIVE) modules sent through the module's contact egress profile (proxy_active DoH) with its own short-lived cache or none, every query written to the hash-chained P324 ledger (method DNS) and charged to ContactCeilings (case ACTIVE budget, <= 10 q/s per resolver). Today ctx.dns uses the core DoH scope (default route, shared one-hour cache, disclosure ledger only); dns_bruteforce paces at <= 10 q/s itself, caps each run at the scope's request budget and refuses dns_mode=system / an internal resolver.",
+    "P369 FC4: a dataset-manager mode that installs and pins a template TREE (a nuclei-templates release directory) under ctx.data with per-file SHA-256 against the bundled allow-list; nuclei_runner reads the analyst's checkout (setting nuclei_runner_templates_dir) and runs only files matching the bundled SHA-256 pins.",
+    "P369 FC3: a nuclei entry in data/active.lock with per-platform SHA-256 pins of reviewed releases, checked by doctor (WP25) against the binary on PATH (g134_parsers.check_binary_pin implements the comparison); the module enforces the version range only.",
+    "P369 run_tool: socks5h proxy_active URLs are passed as-is to tools that only accept socks5 (nuclei), and a fractional scope max_rps (e.g. 0.5) becomes a fractional -rl that nuclei refuses; both fail closed (ERROR could not test). A per-tool proxy-scheme map and an integer floor (>= 1) for integer rate flags would make them usable.",
+    "An architect/legal A7 clarification adopting the governing-tag interpretation of P369 FC4 (plus the red-team-lead + legal reviewed-id list) so the nuclei_runner allow-list can grow past the 17-template literal-gate subset (details in docs/backlog/p9-G13-4.md)."
+  ],
+  "files": [
+    "v3lum/modules/pentest_recon/g134_parsers.py",
+    "v3lum/modules/pentest_recon/nuclei_runner.py",
+    "v3lum/modules/pentest_recon/dns_bruteforce.py",
+    "v3lum/data/vocab/p9-G13-4.json",
+    "v3lum/data/nuclei_runner/allowlist.json",
+    "v3lum/data/dns_bruteforce/subdomains-top1million-5000.txt",
+    "v3lum/data/dns_bruteforce/manifest.json",
+    "v3lum/data/notices/nuclei_runner.json",
+    "v3lum/data/notices/dns_bruteforce.json",
+    "tests/modules/test_nuclei_runner.py",
+    "tests/modules/test_dns_bruteforce.py",
+    "tests/live/test_p9_g13_4.py",
+    "tests/fixtures/nuclei_runner/ok.jsonl",
+    "tests/fixtures/nuclei_runner/tech_only.jsonl",
+    "tests/fixtures/nuclei_runner/empty.jsonl",
+    "tests/fixtures/nuclei_runner/error_in_200.jsonl",
+    "tests/fixtures/nuclei_runner/no_results.txt",
+    "tests/fixtures/nuclei_runner/proxy_dead.txt",
+    "tests/fixtures/nuclei_runner/binary_missing.txt",
+    "tests/fixtures/nuclei_runner/trace.jsonl",
+    "tests/fixtures/nuclei_runner/reject_file_read.yaml",
+    "tests/fixtures/nuclei_runner/templates/jaeger-ui-dashboard.yaml",
+    "tests/fixtures/nuclei_runner/templates/allowed-dns.yaml",
+    "tests/fixtures/nuclei_runner/templates/allowed-exposure-descriptor.yaml",
+    "tests/fixtures/dns_bruteforce/doh_exists.json",
+    "tests/fixtures/dns_bruteforce/doh_cname.json",
+    "tests/fixtures/dns_bruteforce/doh_nodata.json",
+    "tests/fixtures/dns_bruteforce/doh_nxdomain.json",
+    "tests/fixtures/dns_bruteforce/doh_servfail.json",
+    "tests/fixtures/dns_bruteforce/doh_refused.json",
+    "tests/fixtures/dns_bruteforce/doh_wildcard_same.json",
+    "tests/fixtures/dns_bruteforce/doh_wildcard_differs.json",
+    "tests/fixtures/dns_bruteforce/doh_error_in_200.json",
+    "tests/fixtures/dns_bruteforce/doh_blocked.html",
+    "docs/backlog/p9-G13-4.md"
+  ],
+  "notes": "P369 nuclei_runner and P370 dns_bruteforce: both ACTIVE (opsec active, disclosure target, default_enabled False, run_on seeds), merge-gated behind the AR20 safety suite; P327-lint clean, ruff clean, registry contract green. Review 2026-11-26 (adversarial): nuclei_runner now runs only template files whose SHA-256 equals the bundled upstream v10.5.2 pin (verified live for all 17), re-audits them with a stronger FC8 gate (command execution, file-content matchers, auth-bypass headers/credentials, SSRF/metadata, data extraction), folds every -tlog entry into the hash-chained request ledger via ctx.net.record (plus off-target trace detection), records template ids/release/SHA-256 in the evidence, keeps low results as low findings (the reviewed jaeger-ui-dashboard misconfig is 'low' and was silently dropped as 'empty'), counts technologies per matcher (tech-detect), maps malformed output/crash/nonzero exit/deadline kill to could-not-test (never empty), keeps findings on a cancel kill, strips credentials/query from URL targets, passes the ROE user agent, refuses without a usable open scope, and probes the version with -duc. dns_bruteforce was rewritten: SHA-256 check of the bundled SecLists list at every run, public-DoH-only policy (dns_mode=system / internal resolver refused, FC4), module-side <= 10 q/s pacing (scope max_rps) that the kill switch cuts, scope request budget, scope window end as a kill switch, exclusions never queried, A-then-AAAA resolution with SERVFAIL/timeout/error-in-200 = unknown (never empty; resolver abort after 50 consecutive unknowns), wildcard = union of >= 3 random probes (round-robin and CNAME wildcards), per-parent wildcard profiles for permutations (FC5), random labels without a tool signature, partial results kept on cancel/deadline/budget (they were lost: the result was only built at the end), FC6 join through Scope.allows_contact (CDN/private addresses passive only), stable finding title. P370's A16 BR1 P3 scheduling note is superseded by the team-lead scope extension. No acceptance fixtures: ACTIVE modules never run in a default golden-path scan. LINT-09 pragmas on dns_bruteforce mark the module's own name/settings/attribute and provenance label, not a capability. Open items are in docs/backlog/p9-G13-4.md and core_requests."
+}

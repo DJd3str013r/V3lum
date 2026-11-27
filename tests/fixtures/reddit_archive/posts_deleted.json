@@ -1,0 +1,30 @@
+{
+ "data": [
+  {
+   "id": "1a2b3c",
+   "author": "[deleted]",
+   "subreddit": "example",
+   "created_utc": 1700000000,
+   "permalink": "/r/example/comments/1a2b3c/example_title/",
+   "title": "[deleted by user]",
+   "selftext": "[deleted]",
+   "url": "https://www.reddit.com/r/example/comments/1a2b3c/example_title/",
+   "domain": "self.example",
+   "is_self": true,
+   "removed_by_category": "deleted"
+  },
+  {
+   "id": "1a2b3d",
+   "author": "exampleorg_ops",
+   "subreddit": "example",
+   "created_utc": 1700000100,
+   "permalink": "/r/example/comments/1a2b3d/example_title_2/",
+   "title": "Example post",
+   "selftext": "[removed]",
+   "url": "https://www.reddit.com/r/example/comments/1a2b3d/example_title_2/",
+   "domain": "self.example",
+   "is_self": true,
+   "removed_by_category": "moderator"
+  }
+ ]
+}

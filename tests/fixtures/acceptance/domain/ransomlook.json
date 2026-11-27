@@ -1,0 +1,22 @@
+{
+  "schema": "v3lum.acceptance_routes/1",
+  "module": "ransomlook",
+  "routes": [
+    {
+      "method": "GET",
+      "url": "https://www.ransomlook.io/api/search?q=example.com",
+      "status": 200,
+      "json": {
+        "groups": [],
+        "markets": [],
+        "posts": [],
+        "leaks": [],
+        "notes": []
+      },
+      "headers": {
+        "content-type": "application/json"
+      },
+      "latency_ms": 1120
+    }
+  ]
+}

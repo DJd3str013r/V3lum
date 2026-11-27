@@ -1,0 +1,22 @@
+[
+ {
+  "basename": "config/settings",
+  "data": "host: build01.corp.example.com\npassword: example-not-a-real-secret-0003\n",
+  "path": "config/settings.yml",
+  "filename": "config/settings.yml",
+  "id": null,
+  "ref": "main",
+  "startline": 10,
+  "project_id": 1000010
+ },
+ {
+  "basename": "README",
+  "data": "See https://example.com/docs for the API\n",
+  "path": "README.md",
+  "filename": "README.md",
+  "id": null,
+  "ref": "main",
+  "startline": 3,
+  "project_id": 1000011
+ }
+]

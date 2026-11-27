@@ -1,0 +1,74 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "cl0q",
+  "name": "cl0q open-web index API (cl0q.com)",
+  "operator": "cl0q (small independent operator)",
+  "hosts": [
+    "cl0q.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "Small operator (a single support mailbox, no company identity) until a promotion is recorded; council P018 cond 1 (legal_dpo, osint_investigator): unknown tier, never default, excluded at TLP:AMBER and above, --allow-unknown at CLEAR/GREEN (A8).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "D",
+    "justification": "Open-web crawl index; shared favicons and ASN neighbours are hypotheses (framework defaults, hosting), never ownership."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 20,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 2.0,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "key",
+    "day": 1000,
+    "rate_per_second": 0.5,
+    "burst": 1,
+    "published": true,
+    "evidence_url": "https://cl0q.com/docs/",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {
+    "cl0q": {
+      "description": "cl0q API key (X-API-Key header only, never ?key=)",
+      "signup_url": "https://cl0q.com/docs/",
+      "env": [
+        "V3LUM_CL0Q_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "business = a company/team account on a plan whose terms permit internal business use, recorded by legal (never an analyst's personal free account, P007 cond 3); key_plans.cl0q='business' unlocks it under the corporate profile"
+    }
+  },
+  "sources": {
+    "api": {
+      "title": "cl0q favicon and browse APIs (GET /api/favicon?domain=|hash=, GET /api/browse/asn/{asn})",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://cl0q.com/docs/",
+        "quote": "P018 cond 2 (binding council text): key-terms - a company/team account on a plan recorded by legal before it runs under the corporate profile; the key travels only in the X-API-Key header, never as ?key= (the cache stores URLs).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "cl0q",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0025 (verified_needs_key: 401 'missing API key'; real fixture). Docs read 2026-11-26: favicons are content-addressed by the SHA-256 of the icon bytes (not mmh3); free key 30/min and 1,000/day on favicon/subdomains/domain (quota block); 400 malformed hash, 401/403 missing or invalid key, 429 rate limited, 503 maintenance. Keys are minted by POST /api/signup, an automated sign-up that is never called (accounts are created by hand under the corporate identity); POST /api/watch (stores the query), /api/feedback and /api/report are never called. Used by cl0q."
+    }
+  },
+  "notes": "Owned by batch p3-G01-1 (P018, module cl0q)."
+}

@@ -1,0 +1,39 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "github",
+  "hosts": [],
+  "sources": {
+    "cloud_ranges_meta": {
+      "title": "GitHub meta API /meta: published GitHub IP ranges per service (hooks, web, api, git, packages, pages, actions...) as a daily cloud_ranges dataset",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://docs.github.com/en/rest/meta/meta",
+        "quote": "Each provider file is a registered dataset with its own TTL (daily; Azure Service Tags weekly) and parser test: AWS ip-ranges.json, Google cloud.json, Cloudflare ips-v4/v6, Fastly public-ip-list, Oracle OCI public_ip_ranges.json, GitHub meta.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "github",
+      "sanitizer": null,
+      "dataset": "cloud_ranges_github_meta.json",
+      "notes": "Quote: binding council text (P034 cond 2); research C0080 terms '[design_ceos] public provider publications'. api.github.com/meta, keyless (60 requests/hour per egress IP for unauthenticated calls), refreshed daily by the dataset manager, never per lookup. Roles are V3LUM-authored: pages = shared hosting (noise), web/api/git/packages/hooks/importer/dependabot/copilot = shared service (noise), actions/actions_macos/codespaces = runner compute (iaas, not noise). From the research egress the path was refused by the session's own egress policy (not GitHub behaviour); the parser is tested on a schema fixture labelled synthetic."
+    },
+    "cloud_ranges_cloudcheck": {
+      "title": "cloudcheck cloud_providers_v3.json (blacklanternsecurity/cloudcheck, stable branch): consolidated cloud/CDN provider CIDRs as a daily runtime-only cloud_ranges dataset",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/blacklanternsecurity/cloudcheck",
+        "quote": "cloudcheck signatures (AGPL-3.0 repository): runtime-downloaded data only into ~/.v3lum/datasets, never bundled, committed or code-copied, with a THIRD_PARTY_NOTICES entry (A6). Terms open (public provider data; AGPL data met by runtime download, A1 BR19).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "cloudcheck",
+      "sanitizer": null,
+      "dataset": "cloud_ranges_cloudcheck.json",
+      "notes": "Quote: binding council text (P034 cond 3 and chair rationale). raw.githubusercontent.com/blacklanternsecurity/cloudcheck/refs/heads/stable/cloud_providers_v3.json (research C0081, 2.7 MB, regenerated daily by the project's CI). The data is community-maintained (tier community in the chair file; the host belongs to GitHub). Only provider CIDRs are read (domains, regexes and ASNs are ignored, P034 cond 5); roles come from a V3LUM-authored table, never from cloudcheck code. Official provider files win over it; government entries (tag gov) are skipped; providers that mix CDN edges with rented compute (Akamai incl. Linode AS63949, GitHub incl. Actions/Azure runners, Gcore, Arvancloud) are labelled provider_network (not noise) so C2 on rented compute stays visible."
+    }
+  },
+  "error_markers": [],
+  "notes": "Batch p1-G02-1 (module cloud_ranges, P034): two dataset sources hosted on GitHub. Downloads go through the dataset manager only (no per-lookup traffic); a failed refresh keeps the last good copy."
+}

@@ -1,0 +1,46 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "tronscan",
+  "name": "Tronscan API (TRON block explorer: account details and public labels)",
+  "operator": "TRON DAO (Tronscan)",
+  "hosts": ["apilist.tronscanapi.com"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "The TRON DAO's official block explorer API with published terms and a business offering (A8 trusted); P207 cond 5 'TronGrid/Tronscan (TRON DAO) tier trusted'.",
+  "tier_reviewer": "council-1 (A8, P207)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "B", "justification": "Explorer view of public TRON state; labels and tags are the explorer's own curation (published as such)."},
+  "http_profile": {"user_agent": "neutral", "accept": "application/json", "timeout": 20, "ttl": 3600, "min_interval": 1.0, "concurrency": 1, "retries": 1},
+  "quota": null,
+  "error_markers": [],
+  "keys": {
+    "tronscan": {
+      "description": "Tronscan API key (TRON-PRO-API-KEY header, never in a URL); without it the API answers 401",
+      "signup_url": "https://tronscan.org/#/developer/api",
+      "env": ["V3LUM_TRONSCAN_KEY"],
+      "multi_key": false,
+      "plan_hint": "a company/team account on a plan whose terms permit internal business use, recorded by legal in key_plans (P207 cond 5) - never a personal free account"
+    }
+  },
+  "sources": {
+    "api": {
+      "title": "Tronscan apilist.tronscanapi.com/api/accountv2?address= (labels and account details, key only)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://tronscan.org/#/developer/api",
+        "quote": "Tronscan (apilist.tronscanapi.com) only with key 'tronscan' (401 without); without that key there is no Tronscan row (labels come from P358). Key-terms: keys from a company/team account on a plan whose terms permit internal business use, recorded by legal (key_plans) before corporate use.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "tron",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P207 cond 4-5). Research C0497 (verified_needs_key: 401 openresty HTML without TRON-PRO-API-KEY, 2026-11-25). Called only when the 'tronscan' key is configured (no Tronscan row otherwise); success fixtures are captured with the team key (backlog p1-G09-1)."
+    }
+  },
+  "notes": "Owned by batch p1-G09-1 (P207 tron_explorer). Key-terms: runs under the corporate profile once key_plans.tronscan is 'business'."
+}

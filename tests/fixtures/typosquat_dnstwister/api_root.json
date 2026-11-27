@@ -1,0 +1,9 @@
+{
+ "domain_fuzzer_url": "https://dnstwister.report/api/fuzz/{domain_as_hexadecimal}",
+ "domain_to_hexadecimal_url": "https://dnstwister.report/api/to_hex/{domain}",
+ "has_mx_url": "https://dnstwister.report/api/mx/{domain_as_hexadecimal}",
+ "ip_resolution_url": "https://dnstwister.report/api/ip/{domain_as_hexadecimal}",
+ "parked_check_url": "https://dnstwister.report/api/parked/{domain_as_hexadecimal}",
+ "url": "https://dnstwister.report/api/",
+ "whois_url": "https://dnstwister.report/api/whois/{domain_as_hexadecimal}"
+}

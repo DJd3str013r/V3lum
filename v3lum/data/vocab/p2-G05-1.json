@@ -1,0 +1,42 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p2-G05-1",
+  "title": "Bluesky, developer platform enrichers, Discord invites, Docker Hub and GitLab users (P099-P103)",
+  "owner": "batch p2-G05-1 (bluesky, npm_maintainer, pypi_package, codeberg_user, devto_user, huggingface_user, discord_invite, dockerhub, gitlab_user; rule p2g051_shared_key_fingerprint)",
+  "attributes": {
+    "bsky_profile": "Bluesky account facts {did, handle, handle_valid, custom_domain, posts, labels, verified_status, indexed_at, checked_at}: handles can be transferred, so checked_at is kept (P099 cond 5)",
+    "bsky_domain_link": "custom-domain handle check {domain, did, handle, confidence confirmed|possible, basis, problems, checked_at}: CONFIRMED only when getProfile returns that handle and resolveHandle (and DNS TXT _atproto when it answers) the same DID (P099 cond 5)",
+    "handle_history": "dated handle and hosting history of an AT Protocol DID from the PLC audit log {timeline [{handle, pds, date}], entries_total, truncated, dropped, nullified_skipped, tombstoned_at}: case-bound (P099 cond 7)",
+    "self_hosted_pds": "AT Protocol PDS endpoints outside Bluesky's own hosting seen in a DID's history (infrastructure run by the account holder or a third party)",
+    "candidate_accounts": "accounts a platform name search returned for an analyst-typed term ('candidate accounts named like X'): list of {handle, did, display_name, created}; POSSIBLE, never identity links (P099 cond 8)",
+    "platform_summary": "one summary row per developer platform {platform, found, created, created_basis, count, count_kind, top (<= 5)} (P100 cond 7)",
+    "registry_packages": "packages of a public registry attributed to the investigated account: list of {name, version, date, roles, repository, url}; co-maintainers and organisations are counted, never listed (P100 cond 6)",
+    "third_party_counts": "people, addresses and packages of third parties seen in an answer but never kept (counted only), e.g. {co_maintainers, other_emails, system_publishers, not_seed_packages} (P100 cond 6, P102 cond 4)",
+    "pypi_project": "PyPI project facts {name, version, summary, first_release, last_release, release_count, organization, seed_role, role_count, project_urls}",
+    "organizations": "organisation names the account belongs to on the platform (public membership shown by the platform)",
+    "profile_url": "public profile URL of the account on its platform",
+    "public_email": "e-mail the account owner published on the profile (self-published personal data: case-bound, expand=False, never sent to breach or stealer modules automatically)",
+    "job_title": "self-declared job title of a public profile",
+    "account_state": "state of the account on its platform {state, locked} (e.g. GitLab active|blocked)",
+    "is_bot": "bool: the platform marks the account as a bot or service account",
+    "discord_invite": "resolved Discord invite {code, invite_type, guild {id, name, description, vanity_url_code, verification_level, nsfw, nsfw_level, features}, channel {id, name, type}, members, presence, expires_at, permanent, inviter {id, username, global_name, bot}} (P101 cond 4; guild text is server-owner controlled)",
+    "snowflake_dates": "creation dates decoded from Discord snowflake ids by the shared core decoder: list of {role, id, created} (P101 cond 4)",
+    "exfil_channels": "exfiltration channels found in an IOC context and never contacted: list of {kind, channel_id, fingerprint {type, preview, sha256}, requested: false} (P101 cond 5)",
+    "docker_repositories": "most recently updated public repositories of a Docker Hub namespace (<= 5, one page): list of {name, description, stars, pulls, last_updated, registered}",
+    "docker_images": "latest tag inspected per repository (Hub API only, layers never pulled): list of {repo_tag, os, architecture, digest, last_pushed, layers, base_boundary}",
+    "label_email_counts": "image LABEL/MAINTAINER e-mails {kept, discarded, inherited}: only case e-mails or addresses on the account's own verified domain are kept (P102 cond 4)",
+    "layer_exposures": "secrets seen in public image layer instructions, never validated or used: list of {type, preview, sha256, repo_tag, instruction_index, instruction_kind, variable, severity, documentation_example}; dropped passwords keep only type and index (P102 cond 5)"
+  },
+  "tags": {},
+  "relations": {
+    "official_account": "domain -> account whose verified handle is that domain (Bluesky custom-domain handle, P099 cond 3)",
+    "handle_domain": "account -> domain used as its handle (custom-domain handle): CONFIRMED only when DID-consistent, for passive modules only (P099 cond 5/8)",
+    "previous_handle": "account -> handle the same DID used before (PLC audit log): historical, expand=False, fed to username checks only on analyst confirmation (P099 cond 7)",
+    "named_like": "search term -> candidate account named like it (POSSIBLE, never an identity link, P099 cond 8)",
+    "maintainer_email": "account -> e-mail of its own maintainer/author record on a package registry or forge profile (P100 cond 5: PROBABLE only when already a case e-mail)",
+    "image_label_email": "account -> e-mail in a LABEL/MAINTAINER instruction of its own public image (P102 cond 4)",
+    "project_url": "package -> URL declared in its metadata (homepage, source, tracker)",
+    "invite_creator": "invite -> account that created it (Discord inviter, expand=False, P101 cond 4)",
+    "invite_guild": "invite -> name of the server it leads to (server-owner text, P101 cond 4)"
+  }
+}

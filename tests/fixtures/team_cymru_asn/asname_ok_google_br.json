@@ -1,0 +1,24 @@
+{
+ "Status": 0,
+ "TC": false,
+ "RD": true,
+ "RA": true,
+ "AD": false,
+ "CD": false,
+ "Question": [
+  {
+   "name": "AS22548.asn.cymru.com.",
+   "type": 16
+  }
+ ],
+ "Answer": [
+  {
+   "name": "AS22548.asn.cymru.com.",
+   "type": 16,
+   "TTL": 21600,
+   "data": "22548 | BR | lacnic | 2001-10-16 | AS22548 - Nucleo de Inf. e Coord. do Ponto BR - NIC.BR, BR"
+  }
+ ],
+ "edns_client_subnet": "0.0.0.0/0",
+ "Comment": "Response from 2620:0:6b0:202::f1:1."
+}

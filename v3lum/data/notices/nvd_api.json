@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "nvd_api",
+  "source_url": "https://nvd.nist.gov/developers/terms-of-use",
+  "version": "NVD CVE API 2.0, runtime lookups (checked 2026-11-26)",
+  "sha256": "",
+  "licence": "U.S. Government work (NIST NVD, public domain) with the required NVD notice",
+  "attribution": "This product uses data from the NVD API but is not endorsed or certified by the NVD.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/vulnerability_cve/cve_record.py",
+    "tests/fixtures/cve_record/nvd_log4shell.json"
+  ]
+}

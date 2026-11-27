@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "tellows",
+  "name": "tellows Brazil caller reputation (web pages)",
+  "operator": "tellows GmbH (DE)",
+  "hosts": [
+    "tellows.com.br",
+    "www.tellows.com.br"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Identifiable company (imprint, terms) running a community caller-reputation site for many years (A8 community; P304 cond 5 lists tellows as community).",
+  "tier_reviewer": "batch p2-G14-3 (council-1 P304 cond 5: initial tiers, reviewer confirms)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "D",
+    "justification": "Community comments and a crowd score: unverified claims about a number."
+  },
+  "http_profile": {
+    "user_agent": "neutral"
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "number_pages": {
+      "title": "tellows num/{DDD+number} (manual pivot links, privacy)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.tellows.com.br/",
+        "quote": "Free web UI; provider ToS apply (manual analyst use)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "tellows",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0298 (Cloudflare challenge). Phones are PERSONAL_TYPES: privacy=true links, analyst-typed seeds of a case that opted in only (P304 cond 11). Used by pivots_unverified."
+    }
+  },
+  "notes": "Manual pivot links only (P304 cond 1): V3LUM never requests these pages, not even from doctor, and never solves their challenges; the analyst opens them in a browser. No budget. Owned by batch p2-G14-3 (module pivots_unverified); other batches extend it with <id>__<batch>.json."
+}

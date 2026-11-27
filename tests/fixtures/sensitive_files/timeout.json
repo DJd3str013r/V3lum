@@ -1,0 +1,5 @@
+{
+ "path": "/.git/config",
+ "error": "timeout",
+ "detail": "read timed out after 10 s"
+}

@@ -168,3 +168,37 @@ def test_implicit_mx_failure_is_unknown():
     res = run(http, "x@half.example")
     assert "mx_valid" not in res.attributes
     assert not (titles(res) & ABSENCE_TITLES)
+
+
+# ------------------------------------------------------------------ P088 C1: free providers from the data files
+def test_free_providers_come_from_the_shared_data_files():
+    """The v1 hard-coded FREE_PROVIDERS moved into v3lum/data/email_hygiene (one set of data files,
+    PSL-aware): the AfterShip list plus the V3LUM supplement (Brazilian webmail, former v1 entries)."""
+    import v3lum.modules.email.email_basics as eb
+
+    assert not hasattr(eb, "FREE_PROVIDERS")
+    assert "github.email_hygiene_aftership_free" in EmailBasics.sources
+    for address in ("fulano@bol.com.br", "x@tuta.io", "x@live.com.br", "x@mail.uol.com.br"):
+        domain = address.split("@", 1)[1]
+        http = FakeHttp()
+        add_dns(http, domain, "MX", ["10 mx." + domain + "."])
+        res = run(http, address)
+        assert res.attributes["free_provider"] is True, address
+        dom = next(p for p in res.pivots if p.entity.type is T.DOMAIN)
+        assert dom.expand is False, address
+    http = FakeHttp()
+    add_dns(http, "acme-industria.com.br", "MX", ["10 mx.acme-industria.com.br."])
+    assert run(http, "joao@acme-industria.com.br").attributes["free_provider"] is False
+
+
+def test_golden_path_acceptance_route_replays():
+    """tests/fixtures/acceptance/email/email_basics.json replays the real null-MX answer of example.com."""
+    from tests.fakes import fixture
+
+    routes = fixture("acceptance/email/email_basics.json")
+    http = FakeHttp()
+    for route in routes["routes"]:
+        http.add(route["method"], route["url"], status=route["status"], json=route["json"], headers=route["headers"])
+    res = run_module(EmailBasics, "email:someone@example.com", http)
+    assert res.status is Status.OK and res.attributes["mx_valid"] is False
+    assert len(http.calls) == len(routes["routes"])

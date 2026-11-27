@@ -1,0 +1,10 @@
+################################################################
+# MalwareBazaar Code Signing Certificate Blocklist (CSCB)      #
+# Last updated: 2026-11-26 05:00:00 UTC                        #
+################################################################
+#
+# "time_stamp","serial_number","thumbprint","thumbprint_algorithm","subject_cn","issuer_cn","valid_from","valid_to","cscb_reason"
+"2026-11-20 08:33:54","0A1B2C3D4E5F60718293A4B5C6D7E8F9","3A5D2552CBCE2716D82969A0DF06A1BFCEBEA2C7AF7C62453ADCD9D48420999A","SHA256","Example Signing Ltd.","Example Code Signing CA","Jan  2 00:00:00 2026 GMT","Jan  2 23:59:59 2027 GMT","CobaltStrike"
+"2026-11-19 08:33:37","00B8164F7143E1A313003AB0C834562F","3CA66BFB098B6FA0A49A576D00E42B48364E6D37E6B799C7F09AA6B72A4E3DBC","SHA256","Example Data Inc.","Example Code Signing CA","Aug 25 00:00:00 2025 GMT","Aug 25 23:59:59 2026 GMT","TA505"
+"2026-11-18 08:33:33","E3:C7:CC:09:50:15:2E:9C:EE:AD:43:04:D0:1F:6C:89","","","Example, Komplekt OOO","Example Code Signing CA","Jun  8 00:00:00 2025 GMT","Jun  8 23:59:59 2026 GMT","Gozi"
+"broken row"

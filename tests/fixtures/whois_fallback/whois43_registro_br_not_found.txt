@@ -1,0 +1,10 @@
+% SYNTHETIC FIXTURE (p2-G01-4 prep): documented whois.registro.br no-match reply
+% Copyright (c) Nic.br
+%  The use of the data below is only permitted as described in
+%  full by the Use and Privacy Policy at https://registro.br/upp ,
+%  being prohibited its distribution, commercialization or
+%  reproduction, in particular, to use it for advertising or
+%  any similar purpose.
+%  2026-11-26T03:10:00-03:00 - IP: 192.0.2.10
+
+% No match for domain "does-not-exist-0000.com.br"

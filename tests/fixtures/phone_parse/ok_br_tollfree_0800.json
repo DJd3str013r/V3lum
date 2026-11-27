@@ -1,0 +1,29 @@
+{
+ "generator": "phonenumbers 9.0.44 facts (collect_phone_facts schema), batch p1-G06-1 prep 2026-11-26",
+ "lib": "phonenumbers",
+ "lib_version": "9.0.44",
+ "region_hint": "BR",
+ "result": {
+  "input": "0800 729 0001",
+  "region_hint": "BR",
+  "country_code": 55,
+  "national_number": "8007290001",
+  "valid": true,
+  "possible": true,
+  "possible_reason": 0,
+  "region": "BR",
+  "type": "TOLL_FREE",
+  "e164": "+558007290001",
+  "international": "+55 800 729 0001",
+  "national": "0800 729 0001",
+  "geo_pt": "Brasil",
+  "carrier_pt": "",
+  "timezones": [
+   "America/Manaus",
+   "America/Noronha",
+   "America/Rio_Branco",
+   "America/Sao_Paulo"
+  ],
+  "ndc_len": 3
+ }
+}

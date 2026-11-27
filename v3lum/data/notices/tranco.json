@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "tranco",
+  "source_url": "https://tranco-list.eu/",
+  "version": "daily top-1M list (top-1m.csv.zip) and its id (/top-1m-id), runtime downloads by `v3lum data update`; list 947P2 checked 2026-11-26",
+  "sha256": "",
+  "licence": "LicenseRef-Tranco-free-with-citation",
+  "attribution": "Victor Le Pochat, Tom Van Goethem, Samaneh Tajalizadehkhoob, Maciej Korczyński, and Wouter Joosen. 2019. \"Tranco: A Research-Oriented Top Sites Ranking Hardened Against Manipulation,\" Proceedings of the 26th Annual Network and Distributed System Security Symposium (NDSS 2019). https://doi.org/10.14722/ndss.2019.23386 - Tranco asks users to reference the specific list used: https://tranco-list.eu/list/<list id> (recorded in the tranco_list attribute and the evidence).",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/domain_dns/tranco_rank.py"
+  ]
+}

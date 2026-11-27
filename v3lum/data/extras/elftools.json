@@ -1,0 +1,9 @@
+{
+  "schema": "v3lum.extra/1",
+  "package": "elftools",
+  "pip": "pyelftools>=0.33,<0.34",
+  "extra": "full",
+  "licence": "Unlicense",
+  "justification": "ELF header, segment, section, dynamic-tag, symbol and note parsing for elf_triage (P368 c3). Optional: until core/sandbox.py exists, and without the package, elf_triage uses its own bounded standard-library ELF reader with the same output shape; pyelftools runs only inside the core file-analysis sandbox.",
+  "notes": "Batch p3-G12-2. Pure Python, public domain (Unlicense; PyPI 'License :: Public Domain', 2026-11-26), used unmodified. Pinned below 0.34 because the sandbox child keeps partial results on truncated files through the private ELFFile._get_segment_header. The telfhash package is not used (P368 c4)."
+}

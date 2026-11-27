@@ -1,0 +1,53 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "cisa",
+  "name": "CISA (Cybersecurity and Infrastructure Security Agency)",
+  "operator": "Cybersecurity and Infrastructure Security Agency (CISA), U.S. Department of Homeland Security",
+  "hosts": [
+    "www.cisa.gov",
+    "cisa.gov"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "U.S. government agency and national CERT (A8 trusted: government bodies, national CERTs/CSIRTs; CISA/NVD named among the trusted operators). Public catalogues, published terms (U.S. Government works).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "The KEV catalogue lists only vulnerabilities whose active exploitation CISA confirmed with reliable evidence; curated by the agency that issues the remediation directives (BOD 22-01)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "ttl": 21600
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "kev": {
+      "title": "Known Exploited Vulnerabilities catalogue (known_exploited_vulnerabilities.json, dataset; local lookups only)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+        "quote": "Offline module vulnerability_cve/cisa_kev: known_exploited_vulnerabilities.json from www.cisa.gov registered with register_dataset (TTL 6 h; US public domain) and indexed locally by cveID; zero per-CVE requests (disclosure none, TLP:RED-safe).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "cisa_kev",
+      "sanitizer": null,
+      "dataset": "cisa_kev",
+      "notes": "Quote: binding council text (P182 cond 1); research C0429 terms 'US Government public data' / 'US public domain' (verified_live 200, 1.9 MB, ETag/Last-Modified honoured: conditional GET gives 304). A missing file under /sites/default/files/feeds/ answers an Akamai 'Access Denied' 403 page, never 404: the dataset manager keeps the previous copy. Used by cisa_kev (batch p1-G08-1). 'kev' stays CISA-only (P182 cond 4): other exploitation evidence goes to the attribute 'exploited'."
+    }
+  },
+  "notes": "Owned by batch p1-G08-1 (P182 cisa_kev). Other batches extend it (cisa__<suffix>.json: extra sources and error markers), e.g. P374 cisa_advisories (www.cisa.gov advisories feed). No quota block: the catalogue is one bulk download refreshed every 6 h through the dataset manager (conditional GET), never a per-CVE request."
+}

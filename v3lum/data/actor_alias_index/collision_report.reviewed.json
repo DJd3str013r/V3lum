@@ -1,0 +1,9 @@
+{
+ "schema": "v3lum.alias_collision_review/1",
+ "fingerprint": "baed2b82f21d63a442a9bb405a82e700c89f891e0ef66c28777856341449ac35",
+ "lines": 409,
+ "galaxy_commit": "e04830400cfeea238124ad4e1e42267aa0f672b7",
+ "built": "2026-11-26",
+ "reviewed_by": "p1-G11-1 implementer (initial build; CTI lead review pending)",
+ "report": "v3lum/data/actor_alias_index/collision_report.txt"
+}

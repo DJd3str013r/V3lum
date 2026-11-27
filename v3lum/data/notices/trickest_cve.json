@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "trickest_cve",
+  "source_url": "https://github.com/trickest/cve",
+  "version": "per-CVE runtime lookups {year}/{CVE}.md (checked 2026-11-26); one entry trimmed in the test fixtures, owners replaced",
+  "sha256": "",
+  "licence": "MIT",
+  "attribution": "trickest/cve, MIT License, Copyright (c) 2022 Trickest; used as a link index only, never redistributed.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/vulnerability_cve/poc_index.py",
+    "tests/fixtures/poc_index/trickest_ok.md"
+  ]
+}

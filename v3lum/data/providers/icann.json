@@ -1,0 +1,50 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "icann",
+  "name": "ICANN Lookup (RDAP web front end)",
+  "operator": "Internet Corporation for Assigned Names and Numbers (ICANN)",
+  "hosts": [
+    "lookup.icann.org"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "ICANN, the coordinator of the DNS root and registries (A8 trusted: internet registries; P304 cond 5 lists ICANN as trusted).",
+  "tier_reviewer": "batch p2-G14-3 (council-1 P304 cond 5: initial tiers, reviewer confirms)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "Renders the authoritative RDAP data of the registries."
+  },
+  "http_profile": {
+    "user_agent": "neutral"
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "lookup_pages": {
+      "title": "ICANN Lookup en/lookup?name= (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://lookup.icann.org/",
+        "quote": "Free web UI; provider ToS apply (manual analyst use)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "icann",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0074 (SPA shell 200, entity rendered client-side). RDAP automation already covers this (P017); the link is for the analyst. Used by pivots_unverified."
+    }
+  },
+  "notes": "Manual pivot links only (P304 cond 1): V3LUM never requests these pages, not even from doctor, and never solves their challenges; the analyst opens them in a browser. No budget. Owned by batch p2-G14-3 (module pivots_unverified); other batches extend it with <id>__<batch>.json. Other ICANN hosts (CZDS, account API) belong to other proposals: extend this fragment."
+}

@@ -1,0 +1,11 @@
+{
+ "_envelope": 1,
+ "_source": "research sample live_osint__auth_and_block_responses.json (POST domain-breaches without key)",
+ "status": 401,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": {
+  "detail": "Invalid or missing API key"
+ }
+}

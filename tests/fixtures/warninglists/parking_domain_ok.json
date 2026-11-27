@@ -1,0 +1,19 @@
+{
+ "name": "Parking domains",
+ "type": "cidr",
+ "version": 20261014,
+ "description": "List of parking domain's ip adresses",
+ "matching_attributes": [
+  "ip-src",
+  "ip-dst",
+  "domain|ip",
+  "ip-src|port",
+  "ip-dst|port"
+ ],
+ "category": "known",
+ "list": [
+  "103.120.80.111/32",
+  "103.139.0.32/32",
+  "103.224.182.0/23"
+ ]
+}

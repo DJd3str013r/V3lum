@@ -1,0 +1,7 @@
+{
+  "Status": 3, "TC": false, "RD": true, "RA": true, "AD": false, "CD": false,
+  "Question": [{"name": "nope.example.org", "type": 1}],
+  "Authority": [
+    {"name": "example.org", "type": 6, "TTL": 3600, "data": "ns.example.org. hostmaster.example.org. 2026112601 7200 3600 1209600 3600"}
+  ]
+}

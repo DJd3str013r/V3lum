@@ -1,0 +1,28 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p2-G08-1",
+  "title": "CVE card facts of CIRCL Vulnerability-Lookup (P181), OSV/GHSA (P185), VulnCheck KEV (P186), SecurityContext (P188) and the end-of-life rule (P187)",
+  "owner": "batch p2-G08-1",
+  "notes": "Facts added to the consolidated CVE card with provenance (P183 cond 5). 'kev' stays CISA-only: CIRCL sightings and VulnCheck KEV hits go to the core attribute 'exploited' (sources 'circl' and 'vulncheck_kev'). SecurityContext values are comparison-only (cve_secondary), never the sole source of a card attribute.",
+  "attributes": {
+    "circl_sightings": "CIRCL Vulnerability-Lookup sightings summary {types: {seen|exploited|confirmed|published-proof-of-concept|...: {first, last, count, families}}, total, complete, exploited_types, kev_catalogues}: community observations (counts, dates and source families only), never CISA KEV",
+    "linked_advisories": "list of advisory ids a source links to the vulnerability (vendor CSAF, distro, GHSA records): related records, not aliases",
+    "advisory_aliases": "list of advisory ids naming the same vulnerability (CVE, GHSA, PYSEC, distro record ids): the de-duplication key across CVE sources",
+    "distro_fixes": "list of per-release distro fixes {distro, release, codename, package, fixed, status, subscription, record} from OSV distro records (backported fixes: banner revisions are checked offline by P355)",
+    "package_ranges": "list of compact affected package ranges {ecosystem, package, introduced, fixed, last_affected, limit, source} from OSV/GHSA records (never whole records)",
+    "withdrawn_advisories": "list of withdrawn advisory ids found for the vulnerability (context only, never used as facts)",
+    "exploitation_refs": "list of URLs reporting in-the-wild exploitation of a CVE (e.g. VulnCheck KEV reported exploitation): links only, never fetched",
+    "vulncheck_kev": "VulnCheck KEV entry {date_added, cisa_date_added, ransomware_use, reported_exploitation, exploits}: company community key, not redistributed - exports carry only the CVE id and the exploited flag (P186)",
+    "cve_secondary": "comparison-only CVE facts of a secondary source {provider, cvss, epss, cwe, kev_lists, exploitation_seen, public_exploits_total, patch_available, nvd_status, rejected_by_nvd, dataset_date}: never the sole source of a card attribute (P188)",
+    "nuclei_templates": "list of nuclei template ids covering the CVE: informational only, never downloaded or run (P188 cond 5)"
+  },
+  "tags": {
+    "end_of_life": "a detected software release cycle is past its end-of-life (or end-of-active-support) date per endoflife.date"
+  },
+  "relations": {
+    "advisory_alias": "vulnerability id -> another advisory id naming the same vulnerability (CVE, GHSA, PYSEC, distro record ids)",
+    "linked_advisory": "vulnerability id -> advisory a source links to it (vendor CSAF, distro, GHSA record): related, not an alias",
+    "public_exploit": "CVE -> public exploit/PoC URL listed by a source (unverified: never fetched, downloaded or run)"
+  },
+  "timeline": {}
+}

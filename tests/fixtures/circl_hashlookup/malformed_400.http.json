@@ -1,0 +1,26 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://hashlookup.circl.lu/lookup/sha1/not-a-sha1-value",
+  "headers": {
+   "Accept": "application/json"
+  }
+ },
+ "response": {
+  "status": 400,
+  "headers": {
+   "access-control-allow-origin": "https://hashlookup.circl.lu",
+   "content-length": "74",
+   "content-type": "application/json",
+   "date": "Thu, 26 Nov 2026 05:20:24 GMT",
+   "server": "Werkzeug/1.0.1 Python/3.8.10",
+   "strict-transport-security": "max-age=15768000"
+  },
+  "body": {
+   "message": "SHA1 value incorrect, expecting a SHA1 value in hex format"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": 0.600866,
+ "note": "malformed input -> 400 JSON message"
+}

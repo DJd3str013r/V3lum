@@ -1,0 +1,50 @@
+{
+ "_synthetic": "shape from the ZoomEye API v2 docs example (https://www.zoomeye.ai/doc, read 2026-11-26); values replaced by documentation values. FC5: replace with a trimmed REAL company-key capture.",
+ "code": 60000,
+ "message": "success",
+ "total": 3,
+ "query": "ip=\"192.0.2.10\"",
+ "data": [
+  {
+   "url": "https://192.0.2.10:443",
+   "ip": "192.0.2.10",
+   "domain": "www.example.com",
+   "hostname": "web01",
+   "port": 443,
+   "service": "https",
+   "title": [
+    "Example Domain"
+   ],
+   "product": "nginx",
+   "update_time": "2026-11-20T10:00:00",
+   "asn": 64500,
+   "honeypot": 0,
+   "idc": 1
+  },
+  {
+   "url": "http://192.0.2.10:80",
+   "ip": "192.0.2.10",
+   "domain": "shop.example.com",
+   "port": 80,
+   "service": "http",
+   "title": [
+    "Example Shop"
+   ],
+   "update_time": "2026-11-19T08:30:00",
+   "asn": 64500,
+   "honeypot": 0,
+   "idc": 1
+  },
+  {
+   "ip": "192.0.2.10",
+   "domain": "",
+   "port": 22,
+   "service": "ssh",
+   "banner": "SSH-2.0-OpenSSH_9.6",
+   "update_time": "2026-11-18T12:00:00",
+   "asn": 64500,
+   "honeypot": 1,
+   "idc": 1
+  }
+ ]
+}

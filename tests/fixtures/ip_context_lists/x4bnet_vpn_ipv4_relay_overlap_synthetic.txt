@@ -1,0 +1,5 @@
+# synthetic: the real X4BNet head plus an Apple Private Relay range (172.224.226.0/24, from the real
+# relay slice) so the privacy_relay suppression of VPN labels can be tested on one address.
+2.26.8.0/22
+2.26.88.0/22
+172.224.226.0/24

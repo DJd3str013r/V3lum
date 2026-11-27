@@ -1,0 +1,14 @@
+{
+ "status": 404,
+ "headers": {
+  "content-type": "application/taxii+json;version=2.1",
+  "content-length": "303"
+ },
+ "body": {
+  "title": "Collection Not Found",
+  "description": "Collection ID 'x-mitre-collection--00000000-0000-4000-8000-000000000000' not available in database",
+  "http_status": "404",
+  "error_id": "7fb9c9b4-984c-41c5-8642-be790e661539",
+  "external_details": "https://docs.oasis-open.org/cti/taxii/v2.1/os/taxii-v2.1-os.html"
+ }
+}

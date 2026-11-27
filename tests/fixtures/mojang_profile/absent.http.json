@@ -1,0 +1,15 @@
+{
+ "_fixture": "REAL live capture 2026-11-26, minimised: random control (valid 16-char name)",
+ "_meta": {
+  "url": "https://api.mojang.com/users/profiles/minecraft/vwc6ikwm4hhrsl_z",
+  "user_agent": "V3LUM/dev",
+  "captured": "2026-11-26T08:33:08Z",
+  "elapsed_s": 0.242,
+  "bytes_original": 134
+ },
+ "status": 404,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": "{\n  \"path\" : \"/users/profiles/minecraft/vwc6ikwm4hhrsl_z\",\n  \"errorMessage\" : \"Couldn't find any profile with name vwc6ikwm4hhrsl_z\"\n}"
+}

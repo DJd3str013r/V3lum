@@ -1,0 +1,88 @@
+{
+ "responses": {
+  "q0": {
+   "status": 200,
+   "total": {
+    "value": 2,
+    "relation": "eq"
+   },
+   "query": {
+    "schema": "Company",
+    "properties": {
+     "name": [
+      "Example Sanctioned Trading"
+     ]
+    }
+   },
+   "results": [
+    {
+     "id": "NK-example-company-1",
+     "caption": "Example Sanctioned Trading Co., Ltd.",
+     "schema": "Company",
+     "score": 0.97,
+     "match": true,
+     "target": true,
+     "datasets": [
+      "example_sanctions",
+      "example_consolidated"
+     ],
+     "first_seen": "2025-09-08T14:10:01",
+     "last_seen": "2026-11-25T18:53:05",
+     "last_change": "2026-09-02T02:22:05",
+     "properties": {
+      "name": [
+       "Example Sanctioned Trading Co., Ltd."
+      ],
+      "topics": [
+       "sanction"
+      ],
+      "country": [
+       "zz"
+      ],
+      "address": [
+       "Example address line (dropped by the parser)"
+      ]
+     },
+     "features": {
+      "name_literal_match": 0.97
+     }
+    },
+    {
+     "id": "NK-example-person-1",
+     "caption": "EXAMPLE PERSON ONE",
+     "schema": "Person",
+     "score": 0.91,
+     "match": false,
+     "target": true,
+     "datasets": [
+      "example_peps"
+     ],
+     "first_seen": "2024-01-01T00:00:00",
+     "last_seen": "2026-11-25T00:00:00",
+     "properties": {
+      "name": [
+       "EXAMPLE PERSON ONE"
+      ],
+      "topics": [
+       "role.pep"
+      ],
+      "birthDate": [
+       "1970-01-01"
+      ],
+      "nationality": [
+       "br"
+      ],
+      "email": [
+       "person@example.com"
+      ]
+     }
+    }
+   ]
+  }
+ },
+ "matcher": {
+  "name": "logic-v1"
+ },
+ "limit": 5,
+ "_note": "synthetic placeholder in the documented yente /match shape (P222 cond 9: replace with a capture made with the licensed key before enabling); documentation values only; personal properties (birthDate, email, address) are present to prove the parser never reads them"
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "openstreetmap_geocoding",
+  "source_url": "https://www.openstreetmap.org/copyright",
+  "version": "runtime answers of nominatim.openstreetmap.org and photon.komoot.io (never bundled); checked 2026-11-26",
+  "sha256": "",
+  "licence": "ODbL-1.0",
+  "attribution": "(c) OpenStreetMap contributors, data available under the Open Database License (ODbL 1.0); geocoding by Nominatim (OpenStreetMap Foundation) and Photon (komoot, Apache-2.0).",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/geo_image_meta/geocoding.py"
+  ]
+}

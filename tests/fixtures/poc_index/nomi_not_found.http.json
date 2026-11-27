@@ -1,0 +1,22 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://raw.githubusercontent.com/nomi-sec/PoC-in-GitHub/master/2021/CVE-2021-9999999.json",
+  "headers": {}
+ },
+ "response": {
+  "status": 404,
+  "headers": {
+   "content-type": "text/plain; charset=utf-8",
+   "x-github-request-id": "6846:F8F63:3E94EB:4BF74D:6B07DE85",
+   "x-cache": "MISS",
+   "expires": "Thu, 26 Nov 2026 07:28:51 GMT",
+   "content-length": "14"
+  },
+  "body": "404: Not Found"
+ },
+ "transport_error": null,
+ "elapsed_s": 0.114398,
+ "observed_at": "2026-11-26T07:23:51Z",
+ "note": "Unassigned id (valid syntax): 404 text/plain \"404: Not Found\" = no PoC tracked (FC2)."
+}

@@ -1,0 +1,57 @@
+{
+ "data": [
+  {
+   "score": 0.01639344262295082,
+   "document": {
+    "entityType": "request",
+    "documentType": "request",
+    "id": "00000000-0000-4000-8000-000000000001",
+    "name": "merchant group info",
+    "publisherHandle": "example-user-0001",
+    "publisherName": "Example User 0001",
+    "publisherType": "user",
+    "isPublisherVerified": false,
+    "isPublic": true,
+    "workspaceId": "00000000-0000-4000-8000-000000000002",
+    "workspaceName": "Example Workspace 1",
+    "workspaceSlug": "example-workspace-1",
+    "workspaceVisibilityStatus": "public",
+    "url": "{{testSimBaseUrl}}/groups/info",
+    "method": "POST",
+    "customHostName": [],
+    "collection": {
+     "id": "00000000-0000-4000-8000-000000000003",
+     "name": "Example collection"
+    },
+    "workspaces": [
+     {
+      "id": "00000000-0000-4000-8000-000000000002",
+      "name": "Example Workspace 1",
+      "slug": "example-workspace-1",
+      "visibilityStatus": "public"
+     }
+    ]
+   }
+  }
+ ],
+ "meta": {
+  "queryText": "v3lumprepzz0f9c2e7anohit",
+  "total": {
+   "team": 0,
+   "user": 0,
+   "workspace": 0,
+   "document": 0,
+   "api": 0,
+   "apiDefinition": 0,
+   "specification": 0,
+   "collection": 0,
+   "request": 1,
+   "history": 0,
+   "environment": 0,
+   "mock": 0,
+   "dataset": 0,
+   "flow": 0,
+   "privateNetworkFolder": 0
+  }
+ }
+}

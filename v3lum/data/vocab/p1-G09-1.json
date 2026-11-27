@@ -1,0 +1,36 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p1-G09-1",
+  "title": "Ransomware leak-site trackers, crypto sanctions and TRON explorer (batch p1-G09-1)",
+  "owner": "batch p1-G09-1 (P196 ransomlook, P197 ransomware_live, P356 ransomfeed, P205 crypto_sanctions, P207 tron_explorer)",
+  "attributes": {
+    "ransomware_listing": "plain-words leak-site listing status from one tracker: 'listed by <tracker>: N claim(s)' or 'not listed by <tracker> (data as of <date>)' - a miss is never 'not breached'",
+    "ransomware_claims": "ransomware leak-site claims matched for the entity: list of {tracker, victim, group, claimed_date, match_type, severity} (actor claims, unverified)",
+    "ransomware_mentions": "number of tracker posts that only mention the searched value in their text (a mention, not a victim match)",
+    "ransomware_group_profile": "a ransomware group as one tracker sees it: {tracker, name, known, claims_seen, latest_claim, window_days, leak_sites} (actor-controlled infrastructure is never visited)",
+    "sanctions_status": "plain-words sanctions-list status of a wallet: 'on the OFAC SDN list (US) as of <date>' or 'not on OFAC lists as of <date>' (never 'not sanctioned')",
+    "ofac_list_hits": "OFAC sanctioned-address list entries matching the wallet: list of {asset, list_date, list_sha256, dataset}",
+    "ofac_list_stale": "local OFAC address-list copies older than the 3-day freshness limit: list of 'dataset (age)' (stale lists are flagged, never silently trusted)",
+    "onchain_checks": "outcome of each sanctions or issuer-freeze check: {check: 'listed' | 'not listed' | 'frozen' | 'not frozen' | 'could not verify (<reason>)'}",
+    "issuer_frozen": "stablecoin issuers that froze (blacklisted) the wallet, e.g. 'Tether (USDT on Ethereum)': an issuer freeze, never a sanctions determination",
+    "chainalysis_identifications": "Chainalysis sanctions-screening identifications of the address: list of {category, name, description, url}",
+    "chain": "blockchain of a wallet address (e.g. 'tron', 'ethereum')",
+    "token_balances": "token balances of a wallet {symbol: amount with unit}; tokens are recognised by contract address, never by symbol",
+    "transfers_seen": "number of token transfers read from the explorer pages (bounded: not the wallet's total transaction count)",
+    "top_counterparties": "top counterparties of a wallet by stablecoin value: list of {address, usdt_in, usdt_out, transfers, label}",
+    "wallet_labels": "explorer labels/tags of a wallet (exchange, scam...) exactly as the explorer publishes them",
+    "lookalike_token_transfers": "number of transfers of look-alike tokens (a symbol one edit away from USDT on another contract: address-poisoning spam)",
+    "wallet_status": "plain-words on-chain status of a wallet, e.g. 'not activated on-chain (no account record)'"
+  },
+  "tags": {
+    "ransomware_claim": "a ransomware group's claim on its leak site (an actor statement, unverified until corroborated)",
+    "issuer_freeze": "address frozen (blacklisted) by a stablecoin issuer such as Tether or Circle: not a sanctions determination"
+  },
+  "relations": {
+    "leak_site": "victim/organisation/group -> ransomware leak-site onion where claims are posted (hostile: never visited automatically)",
+    "leak_site_of": "leak-site onion -> ransomware group that operates it (hostile: never visited automatically)",
+    "victim_website": "company/keyword -> website a tracker lists for a claimed victim (actor claim, unverified)",
+    "ransom_contact": "ransomware group -> contact printed in its ransom notes (onion, e-mail): hostile, never contacted",
+    "group_ioc": "ransomware group -> indicator a tracker publishes for the group (hostile: never contacted from the corporate egress)"
+  }
+}

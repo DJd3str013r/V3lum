@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "ip_context_lists_apple_private_relay",
+  "source_url": "https://developer.apple.com/icloud/prepare-your-network-for-icloud-private-relay/",
+  "version": "https://mask-api.icloud.com/egress-ip-ranges.csv (about 12 MB; installed weekly by `v3lum data update`, never during a run; checked 2026-11-26)",
+  "sha256": "",
+  "licence": "LicenseRef-Apple-published-egress-ranges",
+  "attribution": "iCloud Private Relay egress IP ranges published by Apple Inc. for geolocation and allow-listing (https://mask-api.icloud.com/egress-ip-ranges.csv). Runtime download only, never bundled.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/ip_network/ip_context_lists.py"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+ "preview": false,
+ "init_offset": 0,
+ "messages": [],
+ "fields": [
+  {
+   "name": "count"
+  },
+  {
+   "name": "first_seen"
+  },
+  {
+   "name": "last_seen"
+  }
+ ],
+ "results": [
+  {
+   "count": "0"
+  }
+ ],
+ "highlighted": {}
+}

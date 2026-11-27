@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "msrc_cvrf",
+  "source_url": "https://msrc.microsoft.com/update-guide/",
+  "version": "MSRC CVRF API v3 month documents indexed out of band (last 24 months); a 6-CVE cut of cvrf/2026-Nov in the test fixtures",
+  "sha256": "",
+  "licence": "Microsoft security update data (public)",
+  "attribution": "Microsoft Security Response Center (MSRC) security update data, CVRF API v3 (api.msrc.microsoft.com). Researcher acknowledgments are not stored.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/vulnerability_cve/msrc_patch_tuesday.py",
+    "tests/fixtures/msrc_patch_tuesday/month_ok.json"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+ "accounts": [
+  {
+   "id": 2222222222,
+   "screen-names": {
+    "example_old": null,
+    "example_mid": [
+     "2019-03-02"
+    ],
+    "exampleorg": [
+     "2020-01-10",
+     "2022-06-16"
+    ]
+   }
+  }
+ ]
+}

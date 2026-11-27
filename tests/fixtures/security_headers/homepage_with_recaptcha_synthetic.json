@@ -1,0 +1,36 @@
+{
+ "_note": "normal 200 homepage carrying a reCAPTCHA contact form: must NOT be treated as a challenge",
+ "url": "https://www.example.com/",
+ "status": 200,
+ "headers": [
+  [
+   "Content-Type",
+   "text/html"
+  ],
+  [
+   "Strict-Transport-Security",
+   "max-age=31536000; includeSubDomains"
+  ],
+  [
+   "Content-Security-Policy",
+   "default-src 'none'; script-src 'self'; frame-ancestors 'none'"
+  ],
+  [
+   "X-Content-Type-Options",
+   "nosniff"
+  ],
+  [
+   "Referrer-Policy",
+   "strict-origin-when-cross-origin"
+  ],
+  [
+   "Permissions-Policy",
+   "camera=()"
+  ],
+  [
+   "Cross-Origin-Opener-Policy",
+   "same-origin"
+  ]
+ ],
+ "body": "<html><head><title>Fale conosco</title></head><body><form><div class=\"g-recaptcha\" data-sitekey=\"x\"></div></form></body></html>"
+}

@@ -1,0 +1,15 @@
+{
+ "_fixture": "REAL live capture 2026-11-26: oEmbed of the U.S. Department of the Interior post used in X's oEmbed docs",
+ "_meta": {
+  "url": "https://publish.x.com/oembed?url=https%3A%2F%2Ftwitter.com%2FInterior%2Fstatus%2F507185938620219395&omit_script=true&dnt=true",
+  "user_agent": "fixture-check/0.1",
+  "captured": "2026-11-26T09:14:23Z",
+  "elapsed_s": 0.187
+ },
+ "status": 200,
+ "headers": {
+  "content-type": "application/json; charset=utf-8",
+  "cache-control": "must-revalidate, max-age=3153600000"
+ },
+ "body": "{\"url\":\"https:\\/\\/x.com\\/Interior\\/status\\/507185938620219395\",\"author_name\":\"U.S. Department of the Interior\",\"author_url\":\"https:\\/\\/x.com\\/Interior\",\"html\":\"\\u003Cblockquote class=\\\"twitter-tweet\\\" data-dnt=\\\"true\\\"\\u003E\\u003Cp lang=\\\"en\\\" dir=\\\"ltr\\\"\\u003EHappy 50th anniversary to the Wilderness Act! Here&#39;s a great wilderness photo from \\u003Ca href=\\\"https:\\/\\/x.com\\/YosemiteNPS?ref_src=twsrc%5Etfw\\\"\\u003E@YosemiteNPS\\u003C\\/a\\u003E. \\u003Ca href=\\\"https:\\/\\/x.com\\/hashtag\\/Wilderness50?src=hash&amp;ref_src=twsrc%5Etfw\\\"\\u003E#Wilderness50\\u003C\\/a\\u003E \\u003Ca href=\\\"http:\\/\\/t.co\\/HMhbyTg18X\\\"\\u003Epic.twitter.com\\/HMhbyTg18X\\u003C\\/a\\u003E\\u003C\\/p\\u003E&mdash; U.S. Department of the Interior (@Interior) \\u003Ca href=\\\"https:\\/\\/x.com\\/Interior\\/status\\/507185938620219395?ref_src=twsrc%5Etfw\\\"\\u003ESeptember 3, 2014\\u003C\\/a\\u003E\\u003C\\/blockquote\\u003E\\n\\n\",\"width\":550,\"height\":null,\"type\":\"rich\",\"cache_age\":\"3153600000\",\"provider_name\":\"X\",\"provider_url\":\"https:\\/\\/x.com\",\"version\":\"1.0\"}"
+}

@@ -1,0 +1,24 @@
+{
+ "Status": 0,
+ "TC": false,
+ "RD": true,
+ "RA": true,
+ "AD": false,
+ "CD": false,
+ "Question": [
+  {
+   "name": "3.2.160.200.origin.asn.cymru.com.",
+   "type": 16
+  }
+ ],
+ "Answer": [
+  {
+   "name": "3.2.160.200.origin.asn.cymru.com.",
+   "type": 16,
+   "TTL": 14400,
+   "data": "22548 | 200.160.0.0/20 | BR | lacnic | 2001-10-16"
+  }
+ ],
+ "edns_client_subnet": "0.0.0.0/0",
+ "Comment": "Response from 216.31.12.21."
+}

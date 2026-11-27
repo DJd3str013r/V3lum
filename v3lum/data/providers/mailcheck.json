@@ -1,0 +1,41 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "mailcheck",
+  "name": "MailCheck.ai / UserCheck domain check",
+  "operator": "UserCheck (formerly MailCheck.ai; mailcheck.ai redirects to usercheck.com, terms under Singapore law)",
+  "hosts": ["api.mailcheck.ai"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Identifiable service brand with public API documentation, published terms of service, a privacy policy, a data processing agreement and paid plans, operating since 2016 (validator.pizza -> mailcheck.ai -> UserCheck); the legal entity is not named on the terms page, so community rather than trusted (A8).",
+  "tier_reviewer": "p1-G04-1 implementer (P088 C5)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "C", "justification": "Disposable/relay/public-domain classification plus domain age and MX facts from one curated database; a second opinion next to the offline lists."},
+  "http_profile": {"user_agent": "neutral", "accept": "application/json", "ttl": 604800, "min_interval": 12.0, "concurrency": 1},
+  "quota": {"scope": "egress_ip", "hour": 5, "burst": 1, "published": true, "evidence_url": "https://www.usercheck.com/docs/api/rate-limits", "safety_margin": 0.8},
+  "error_markers": [
+    {"id": "mailcheck_status_429", "statuses": [200], "json_path": "status", "equals": 429, "regex": null, "final_url_regex": null, "maps_to": "rate_limited", "reason_code": "rate_limited", "reason": "MailCheck.ai/UserCheck: too many requests (status 429 inside the answer)"},
+    {"id": "mailcheck_status_400", "statuses": [200], "json_path": "status", "equals": 400, "regex": null, "final_url_regex": null, "maps_to": "error", "reason_code": "error", "reason": "MailCheck.ai/UserCheck: request rejected (status 400 inside the answer)"}
+  ],
+  "keys": {},
+  "sources": {
+    "domain": {
+      "title": "MailCheck.ai GET /domain/{domain} (domain only; the /email endpoint is never used)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.usercheck.com/legal/terms",
+        "quote": "Free Plan: Limited daily requests, no registration required",
+        "checked_at": "2026-11-26",
+        "reviewer": "p1-G04-1 implementer (P088 C5: terms recorded per provider before use)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "usercheck",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0214 (verified_live 200, Cloudflare). Terms (Last Updated July 9, 2025, checked 2026-11-26): the free plan needs no registration, the acceptable-use clause forbids only unlawful purposes, spam/fraud and damaging the service (no commercial-use restriction), and s.12 adds:'You may not resell, sublicense, share, or redistribute UserCheck data or API results to third parties without our written agreement' - internal use only: results must not be shared outside the organisation as a dataset. Keyless requests are limited to 5 per hour per IP and then answer 429 with Retry-After up to an hour (rate-limits page). Only the normalised domain is sent (P088 C5); the JSON 'status' field is an error-in-200 marker."
+    }
+  },
+  "notes": "Owned by batch p1-G04-1 (P088 email_hygiene_online)."
+}

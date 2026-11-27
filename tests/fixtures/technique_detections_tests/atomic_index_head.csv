@@ -1,0 +1,52 @@
+Tactic,Technique #,Technique Name,Test #,Test Name,Test GUID,Executor Name
+stealth,T1055.011,Process Injection: Extra Window Memory Injection,1,Process Injection via Extra Window Memory (EWM) x64 executable,93ca40d2-336c-446d-bcef-87f14d438018,powershell
+stealth,T1205.002,Traffic Signaling: Socket Filters,1,T1205.002 - Add Custom Firewall Rule for Traffic Signaling Simulation,c33f6e7b-87f9-45be-be0e-8eaa0616034d,powershell
+stealth,T1205.002,Traffic Signaling: Socket Filters,2,T1205.002 - Register Custom WinSock Protocol Catalog Entry,90fd1078-149b-4da4-b0f7-1113030dd8ae,powershell
+stealth,T1205.002,Traffic Signaling: Socket Filters,3,T1205.002 - Register Custom WinSock Name Space Provider (NSP) Stub,4ddd4d04-e0f9-4273-9d6f-59f18f0af5f6,powershell
+stealth,T1205.002,Traffic Signaling: Socket Filters,4,T1205.002 - Simulate Packet Capture Driver Service Registration,0284704c-59a0-44f2-b613-c10cc61b6b65,powershell
+stealth,T1205.002,Traffic Signaling: Socket Filters,5,T1205.002 - Register Custom WFP Callout Provider Registry Key,e46b7c40-2b5b-493a-a7b3-63377ae21e6c,powershell
+stealth,T1205.002,Traffic Signaling: Socket Filters,6,T1205.002 - Modify TCPIP Parameter Registry for Raw Socket Behavior,254ebca5-a2d5-4831-af33-67d669b8309a,powershell
+stealth,T1205.002,Traffic Signaling: Socket Filters,7,T1205.002 - Register Winsock Transport Filter Layer Provider,3bed0acb-e95a-492e-845d-adf05a0c4108,powershell
+stealth,T1205.002,Traffic Signaling: Socket Filters,8,T1205.002 - Inject Simulated Socket Filter Helper Key in NetworkStack,58dbc799-5344-4fcd-819d-8c3713011c1f,powershell
+stealth,T1205.002,Traffic Signaling: Socket Filters,9,T1205.002 - Register Custom WFP Sublayer Registry Key,e631d66d-ed47-4b96-9ff9-ae7bc0d9efbf,powershell
+stealth,T1205.002,Traffic Signaling: Socket Filters,10,T1205.002 - Create Raw Socket Binding Persistence Hook Registry,e69a8f7f-13d2-47fb-94cf-17471a5636a6,powershell
+stealth,T1218.011,System Binary Proxy Execution: Rundll32,1,Rundll32 execute JavaScript Remote Payload With GetObject,57ba4ce9-ee7a-4f27-9928-3c70c489b59d,command_prompt
+stealth,T1564,Hide Artifacts,2,"Create a Hidden User Called ""$""",2ec63cc2-4975-41a6-bf09-dffdfb610778,command_prompt
+stealth,T1564,Hide Artifacts,3,"Create an ""Administrator "" user (with a space on the end)",5bb20389-39a5-4e99-9264-aeb92a55a85c,powershell
+privilege-escalation,T1055.011,Process Injection: Extra Window Memory Injection,1,Process Injection via Extra Window Memory (EWM) x64 executable,93ca40d2-336c-446d-bcef-87f14d438018,powershell
+execution,T1059.001,Command and Scripting Interpreter: PowerShell,1,Mimikatz,f3132740-55bc-48c4-bcc0-758a459cd027,powershell
+execution,T1059.001,Command and Scripting Interpreter: PowerShell,2,Run BloodHound from local disk,a21bb23e-e677-4ee7-af90-6931b57b6350,powershell
+persistence,T1205.002,Traffic Signaling: Socket Filters,1,T1205.002 - Add Custom Firewall Rule for Traffic Signaling Simulation,c33f6e7b-87f9-45be-be0e-8eaa0616034d,powershell
+persistence,T1205.002,Traffic Signaling: Socket Filters,2,T1205.002 - Register Custom WinSock Protocol Catalog Entry,90fd1078-149b-4da4-b0f7-1113030dd8ae,powershell
+persistence,T1205.002,Traffic Signaling: Socket Filters,3,T1205.002 - Register Custom WinSock Name Space Provider (NSP) Stub,4ddd4d04-e0f9-4273-9d6f-59f18f0af5f6,powershell
+persistence,T1205.002,Traffic Signaling: Socket Filters,4,T1205.002 - Simulate Packet Capture Driver Service Registration,0284704c-59a0-44f2-b613-c10cc61b6b65,powershell
+persistence,T1205.002,Traffic Signaling: Socket Filters,5,T1205.002 - Register Custom WFP Callout Provider Registry Key,e46b7c40-2b5b-493a-a7b3-63377ae21e6c,powershell
+persistence,T1205.002,Traffic Signaling: Socket Filters,6,T1205.002 - Modify TCPIP Parameter Registry for Raw Socket Behavior,254ebca5-a2d5-4831-af33-67d669b8309a,powershell
+persistence,T1205.002,Traffic Signaling: Socket Filters,7,T1205.002 - Register Winsock Transport Filter Layer Provider,3bed0acb-e95a-492e-845d-adf05a0c4108,powershell
+persistence,T1205.002,Traffic Signaling: Socket Filters,8,T1205.002 - Inject Simulated Socket Filter Helper Key in NetworkStack,58dbc799-5344-4fcd-819d-8c3713011c1f,powershell
+persistence,T1205.002,Traffic Signaling: Socket Filters,9,T1205.002 - Register Custom WFP Sublayer Registry Key,e631d66d-ed47-4b96-9ff9-ae7bc0d9efbf,powershell
+persistence,T1205.002,Traffic Signaling: Socket Filters,10,T1205.002 - Create Raw Socket Binding Persistence Hook Registry,e69a8f7f-13d2-47fb-94cf-17471a5636a6,powershell
+command-and-control,T1205.002,Traffic Signaling: Socket Filters,1,T1205.002 - Add Custom Firewall Rule for Traffic Signaling Simulation,c33f6e7b-87f9-45be-be0e-8eaa0616034d,powershell
+command-and-control,T1205.002,Traffic Signaling: Socket Filters,2,T1205.002 - Register Custom WinSock Protocol Catalog Entry,90fd1078-149b-4da4-b0f7-1113030dd8ae,powershell
+command-and-control,T1205.002,Traffic Signaling: Socket Filters,3,T1205.002 - Register Custom WinSock Name Space Provider (NSP) Stub,4ddd4d04-e0f9-4273-9d6f-59f18f0af5f6,powershell
+command-and-control,T1205.002,Traffic Signaling: Socket Filters,4,T1205.002 - Simulate Packet Capture Driver Service Registration,0284704c-59a0-44f2-b613-c10cc61b6b65,powershell
+command-and-control,T1205.002,Traffic Signaling: Socket Filters,5,T1205.002 - Register Custom WFP Callout Provider Registry Key,e46b7c40-2b5b-493a-a7b3-63377ae21e6c,powershell
+command-and-control,T1205.002,Traffic Signaling: Socket Filters,6,T1205.002 - Modify TCPIP Parameter Registry for Raw Socket Behavior,254ebca5-a2d5-4831-af33-67d669b8309a,powershell
+command-and-control,T1205.002,Traffic Signaling: Socket Filters,7,T1205.002 - Register Winsock Transport Filter Layer Provider,3bed0acb-e95a-492e-845d-adf05a0c4108,powershell
+command-and-control,T1205.002,Traffic Signaling: Socket Filters,8,T1205.002 - Inject Simulated Socket Filter Helper Key in NetworkStack,58dbc799-5344-4fcd-819d-8c3713011c1f,powershell
+command-and-control,T1205.002,Traffic Signaling: Socket Filters,9,T1205.002 - Register Custom WFP Sublayer Registry Key,e631d66d-ed47-4b96-9ff9-ae7bc0d9efbf,powershell
+command-and-control,T1205.002,Traffic Signaling: Socket Filters,10,T1205.002 - Create Raw Socket Binding Persistence Hook Registry,e69a8f7f-13d2-47fb-94cf-17471a5636a6,powershell
+command-and-control,T1219,Remote Access Tools,1,TeamViewer Files Detected Test on Windows,8ca3b96d-8983-4a7f-b125-fc98cc0a2aa0,powershell
+command-and-control,T1219,Remote Access Tools,2,AnyDesk Files Detected Test on Windows,6b8b7391-5c0a-4f8c-baee-78d8ce0ce330,powershell
+command-and-control,T1219,Remote Access Tools,3,LogMeIn Files Detected Test on Windows,d03683ec-aae0-42f9-9b4c-534780e0f8e1,powershell
+command-and-control,T1219,Remote Access Tools,4,GoToAssist Files Detected Test on Windows,1b72b3bd-72f8-4b63-a30b-84e91b9c3578,powershell
+lateral-movement,T1021.002,Remote Services: SMB/Windows Admin Shares,1,Map admin share,3386975b-367a-4fbb-9d77-4dcf3639ffd3,command_prompt
+lateral-movement,T1021.002,Remote Services: SMB/Windows Admin Shares,2,Map Admin Share PowerShell,514e9cd7-9207-4882-98b1-c8f791bae3c5,powershell
+lateral-movement,T1021.002,Remote Services: SMB/Windows Admin Shares,3,Copy and Execute File with PsExec,0eb03d41-79e4-4393-8e57-6344856be1cf,command_prompt
+lateral-movement,T1021.002,Remote Services: SMB/Windows Admin Shares,4,Execute command writing output to local Admin Share,d41aaab5-bdfe-431d-a3d5-c29e9136ff46,command_prompt
+credential-access,T1003.001,OS Credential Dumping: LSASS Memory,1,Dump LSASS.exe Memory using ProcDump,0be2230c-9ab3-4ac2-8826-3199b9a0ebf8,command_prompt
+credential-access,T1003.001,OS Credential Dumping: LSASS Memory,2,Dump LSASS.exe Memory using comsvcs.dll,2536dee2-12fb-459a-8c37-971844fa73be,powershell
+impact,T1486,Data Encrypted for Impact,1,Encrypt files using gpg (FreeBSD/Linux),7b8ce084-3922-4618-8d22-95f996173765,sh
+impact,T1486,Data Encrypted for Impact,2,Encrypt files using 7z (FreeBSD/Linux),53e6735a-4727-44cc-b35b-237682a151ad,sh
+exfiltration,T1567.002,Exfiltration Over Web Service: Exfiltration to Cloud Storage,1,Exfiltrate data with rclone to cloud Storage - Mega (Windows),8529ee44-279a-4a19-80bf-b846a40dda58,powershell
+exfiltration,T1567.002,Exfiltration Over Web Service: Exfiltration to Cloud Storage,2,Exfiltrate data with rclone to cloud Storage - AWS S3,a4b74723-5cee-4300-91c3-5e34166909b4,powershell

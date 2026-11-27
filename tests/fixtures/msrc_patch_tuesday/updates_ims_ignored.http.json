@@ -1,0 +1,25 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.msrc.microsoft.com/cvrf/v3.0/updates",
+  "headers": {
+   "Accept": "application/json",
+   "If-Modified-Since": "Thu, 26 Nov 2026 07:00:00 GMT"
+  }
+ },
+ "response": {
+  "status": 200,
+  "headers": {
+   "content-type": "application/json; odata.metadata=minimal; odata.streaming=true; charset=utf-8",
+   "cache-control": "no-store",
+   "pragma": "no-cache",
+   "odata-version": "4.0",
+   "x-cache": "CONFIG_NOCACHE"
+  },
+  "body": "{\"@odata.context\": \"https://api.msrc.microsoft.com/$metadata#Updates\", \"value\": [{\"ID\": \"1999-Sep\", \"Alias\": \"1999-Sep\", \"DocumentTitle\": \"Mariner Release Notes\", \"Severity\": null, \"InitialReleaseDate\": \"1999-09-02T00:00:00Z\", \"CurrentReleaseDate\": \"2026-11-16T22:14:32Z\", \"CvrfUrl\": \"https://api.msrc.microsoft.com/cvrf/v3.0/cvrf/1999-Sep\"}, {\"ID\": \"2017-May-B\", \"Alias\": \"2017-May-B\", \"DocumentTitle\": \"May 8 2017 Security Updates\", \"Severity\": null, \"InitialReleaseDate\": \"2017-05-08T07:00:00Z\", \"CurrentReleaseDate\": \"2017-05-08T07:00:00Z\", \"CvrfUrl\": \"https://api.msrc.microsoft.com/cvrf/v3.0/cvrf/2017-May-B\"}]}"
+ },
+ "transport_error": null,
+ "elapsed_s": 0.717976,
+ "observed_at": "2026-11-26T07:23:42Z",
+ "note": "GET with If-Modified-Since newer than every CurrentReleaseDate -> still 200 + full list, Cache-Control no-store, no ETag/Last-Modified: change detection must compare CurrentReleaseDate."
+}

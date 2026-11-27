@@ -1,0 +1,19 @@
+{
+ "Status": 3,
+ "TC": false,
+ "Question": [
+  {
+   "name": "8.8.8.8.dnsbl.dronebl.org.",
+   "type": 1
+  }
+ ],
+ "Authority": [
+  {
+   "name": "dnsbl.dronebl.org.",
+   "type": 6,
+   "TTL": 300,
+   "data": "ns.scarynet.org. hostmaster.example.org. 1795672409 600 300 86400 300"
+  }
+ ],
+ "Comment": "Response from 198.27.76.209."
+}

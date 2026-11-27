@@ -1,0 +1,50 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "whatsapp",
+  "name": "WhatsApp click-to-chat links (wa.me, manual pivot links)",
+  "operator": "WhatsApp LLC (Meta Platforms, Inc.)",
+  "hosts": [
+    "wa.me"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company running a major messaging platform with published terms and a privacy policy (A8 trusted); P128 cond 5 'wa.me and t.me trusted'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": true,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "F",
+    "justification": "Generic click-to-chat page for any number: it carries no information about the number and is never read by V3LUM (manual links only)."
+  },
+  "http_profile": {
+    "user_agent": "neutral"
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "chat_links": {
+      "title": "wa.me/{digits} click-to-chat deep links (manual pivot links, off by default)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.whatsapp.com/legal/terms-of-service",
+        "quote": "Platform terms (manual use).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "whatsapp",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: research C0798 terms (verified_live: wa.me/15555550100 answered 302 to api.whatsapp.com/send/?phone=..., the same generic page for any number). Off by default (setting phone_messaging_links=false), privacy=true, analyst-typed phone seeds of an opted-in case only, with the notice 'manual: opens the app with YOUR account; nothing is sent unless you type; use a team research device'; never fetched and never a presence check (P128 cond 2 and 4, P131 rejected). Opening the link hands the number to WhatsApp/Meta (redirect to api.whatsapp.com), whose privacy policy lets it use such data to operate and improve its services: reuses_queries=true (conservative). Used by pivots_phone."
+    }
+  },
+  "notes": "Owned by batch p1-G06-1 (P128). Manual pivot links only: V3LUM never requests wa.me or api.whatsapp.com."
+}

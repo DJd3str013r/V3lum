@@ -1,0 +1,19 @@
+{
+ "_fixture": "synthetic repository entry whose filecontent regex backtracks catastrophically: the ReDoS harness must reject it before it is used.",
+ "evil-lib": {
+  "extractors": {
+   "filecontent": [
+    "(a+)+b(§§version§§)"
+   ]
+  },
+  "vulnerabilities": [
+   {
+    "below": "9.9.9",
+    "severity": "low",
+    "identifiers": {
+     "summary": "synthetic"
+    }
+   }
+  ]
+ }
+}

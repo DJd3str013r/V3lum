@@ -1,0 +1,55 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "anac",
+  "name": "ANAC open data - RAB aircraft registry (dados_aeronaves.csv)",
+  "operator": "Agencia Nacional de Aviacao Civil (ANAC)",
+  "hosts": [
+    "sistemas.anac.gov.br"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Federal civil-aviation regulator publishing the Registro Aeronautico Brasileiro as open data (government body, A8 trusted); P248 provider tier trusted.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "The regulator's own daily extract of the aircraft register (marks, models, owners/operators, status, liens)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "timeout": 240,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 2.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "rab": {
+      "title": "ANAC RAB aircraft registry daily CSV (dados_aeronaves.csv), matched locally",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.gov.br/anac/pt-br/acesso-a-informacao/dados-abertos",
+        "quote": "Opt-in (default_enabled=False). Output: mark, model, owner/operator company and registration status.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "anac",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P248 cond 4); research C0568 terms 'Open government data (ANAC)' (verified_live 206, 2026-11-26; full file 24.4 MB with ETag and a daily Last-Modified). One dataset download per day through `v3lum data update anac_rab_dados_aeronaves.csv` (a 24 MB file is never fetched during a scan; timeout 240 s: about 0.8 MB/s from the prep egress). P248 cond 2: natural-person owners and operators (masked CPFs, 'Indisponivel', short codes) are dropped when the copy is parsed; only companies identified by a CNPJ are matched or shown. Used by anac_rab."
+    }
+  },
+  "notes": "Owned by batch p3-G10-2 (P248 anac_rab). Dataset download only (disclosure 'none' module). No quota block. .br host: Accept-Language pt-BR by default."
+}

@@ -1,0 +1,18 @@
+{
+  "schema": "v3lum.attack_index/1",
+  "version": "enterprise-attack 20.1 (2026-11-05)",
+  "source": "https://github.com/mitre-attack/attack-stix-data (enterprise-attack.json)",
+  "attribution": "MITRE ATT&CK(R) is a registered trademark of The MITRE Corporation. (c) The MITRE Corporation. This work is reproduced and distributed with the permission of The MITRE Corporation (ATT&CK terms of use).",
+  "notes": "Batch p2-G12-3 (windows_artifact_triage, P367): techniques of the LNK/MSI/OneNote severity table that the core minimum set does not hold.",
+  "techniques": {
+    "T1187": {"name": "Forced Authentication", "stix_id": "attack-pattern--b77cf5f3-6060-475d-bd60-40ccbf28fdc2", "revoked": false, "deprecated": false, "replaced_by": null},
+    "T1564.003": {"name": "Hidden Window", "stix_id": "attack-pattern--cbb66055-0325-4111-aca0-40547b6ad5b0", "revoked": false, "deprecated": false, "replaced_by": null},
+    "T1036": {"name": "Masquerading", "stix_id": "attack-pattern--42e8de7b-37b2-4258-905a-6897815e58e0", "revoked": false, "deprecated": false, "replaced_by": null},
+    "T1027.009": {"name": "Embedded Payloads", "stix_id": "attack-pattern--0533ab23-3f7d-463f-9bd8-634d27e4dee1", "revoked": false, "deprecated": false, "replaced_by": null},
+    "T1218": {"name": "System Binary Proxy Execution", "stix_id": "attack-pattern--457c7820-d331-465a-915e-42f85500ccc4", "revoked": false, "deprecated": false, "replaced_by": null},
+    "T1218.005": {"name": "Mshta", "stix_id": "attack-pattern--840a987a-99bd-4a80-a5c9-0cb2baa6cade", "revoked": false, "deprecated": false, "replaced_by": null},
+    "T1218.007": {"name": "Msiexec", "stix_id": "attack-pattern--365be77f-fc0e-42ee-bac8-4faf806d9336", "revoked": false, "deprecated": false, "replaced_by": null},
+    "T1059.001": {"name": "PowerShell", "stix_id": "attack-pattern--970a3432-3237-47ad-bcca-7d8cbb217736", "revoked": false, "deprecated": false, "replaced_by": null},
+    "T1059.003": {"name": "Windows Command Shell", "stix_id": "attack-pattern--d1fcf083-a721-4223-aedf-bf8960798d62", "revoked": false, "deprecated": false, "replaced_by": null}
+  }
+}

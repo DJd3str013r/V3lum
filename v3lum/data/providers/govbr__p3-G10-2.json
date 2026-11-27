@@ -1,0 +1,24 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "govbr",
+  "hosts": [],
+  "sources": {
+    "br_cnpj_risk_lists_mte": {
+      "title": "MTE Cadastro de Empregadores ('lista suja': employers caught using slave-like labour), CSV on www.gov.br/trabalho-e-emprego",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/inspecao-do-trabalho/areas-de-atuacao/cadastro_de_empregadores.csv",
+        "quote": "Tiers: PGFN, MTE and CVM trusted, BrasilAPI community; CVM data share-alike obligations apply only if redistributed.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "mte",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P244 cond 7); research C0564 terms 'Official public register (MTE)' (verified_live 206/200, 76 KB, 506 rows: 341 CPF employers and 165 CNPJ). Weekly dataset mte_lista_suja.csv (';', ISO-8859-1, CRLF, header row, no final newline) fetched only by `v3lum data update`, never mid-scan (P244 cond 1). Natural-person employers (CPF) are dropped when the copy is parsed unless br_cnpj_risk_lists_include_persons is set and recorded; establishment addresses are never kept; MEI rows keep the CNPJ but not the entrepreneur's name (P244 cond 3). A listing is HIGH (labour/ESG, P244 cond 5). Used by br_cnpj_risk_lists."
+    }
+  },
+  "error_markers": [],
+  "notes": "Batch p3-G10-2 extension (P244 br_cnpj_risk_lists): the MTE 'lista suja' CSV on the existing www.gov.br host."
+}

@@ -1,0 +1,229 @@
+{
+ "objectClassName": "ip network",
+ "handle": "NET-8-8-8-0-2",
+ "startAddress": "8.8.8.0",
+ "endAddress": "8.8.8.255",
+ "ipVersion": "v4",
+ "name": "GOGL",
+ "type": "DIRECT ALLOCATION",
+ "parentHandle": "NET-8-0-0-0-0",
+ "status": [
+  "active"
+ ],
+ "cidr0_cidrs": [
+  {
+   "v4prefix": "8.8.8.0",
+   "length": 24
+  }
+ ],
+ "arin_originas0_originautnums": [],
+ "events": [
+  {
+   "eventAction": "last changed",
+   "eventDate": "2023-12-28T17:24:56-05:00"
+  },
+  {
+   "eventAction": "registration",
+   "eventDate": "2023-12-28T17:24:33-05:00"
+  }
+ ],
+ "entities": [
+  {
+   "entities": [
+    {
+     "handle": "ABUSE5250-ARIN",
+     "objectClassName": "entity",
+     "port43": "whois.arin.net",
+     "roles": [
+      "abuse"
+     ],
+     "status": [
+      "validated"
+     ],
+     "vcardArray": [
+      "vcard",
+      [
+       [
+        "version",
+        {},
+        "text",
+        "4.0"
+       ],
+       [
+        "adr",
+        {
+         "label": "1600 Amphitheatre Parkway\nMountain View\nCA\n94043\nUnited States"
+        },
+        "text",
+        [
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         ""
+        ]
+       ],
+       [
+        "fn",
+        {},
+        "text",
+        "Abuse"
+       ],
+       [
+        "org",
+        {},
+        "text",
+        "Google Inc."
+       ],
+       [
+        "kind",
+        {},
+        "text",
+        "group"
+       ],
+       [
+        "email",
+        {},
+        "text",
+        "network-abuse@example.com"
+       ],
+       [
+        "tel",
+        {
+         "type": [
+          "work",
+          "voice"
+         ]
+        },
+        "text",
+        "+55-11-5555-0104"
+       ]
+      ]
+     ]
+    },
+    {
+     "handle": "ZG39-ARIN",
+     "objectClassName": "entity",
+     "port43": "whois.arin.net",
+     "roles": [
+      "administrative",
+      "technical"
+     ],
+     "status": [
+      "validated"
+     ],
+     "vcardArray": [
+      "vcard",
+      [
+       [
+        "version",
+        {},
+        "text",
+        "4.0"
+       ],
+       [
+        "adr",
+        {
+         "label": "1600 Amphitheatre Parkway\nMountain View\nCA\n94043\nUnited States"
+        },
+        "text",
+        [
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         ""
+        ]
+       ],
+       [
+        "fn",
+        {},
+        "text",
+        "Google LLC"
+       ],
+       [
+        "org",
+        {},
+        "text",
+        "Google LLC"
+       ],
+       [
+        "kind",
+        {},
+        "text",
+        "group"
+       ],
+       [
+        "email",
+        {},
+        "text",
+        "arin-contact@example.com"
+       ],
+       [
+        "tel",
+        {
+         "type": [
+          "work",
+          "voice"
+         ]
+        },
+        "text",
+        "+55-11-5555-0104"
+       ]
+      ]
+     ]
+    }
+   ],
+   "handle": "GOGL",
+   "objectClassName": "entity",
+   "port43": "whois.arin.net",
+   "roles": [
+    "registrant"
+   ],
+   "vcardArray": [
+    "vcard",
+    [
+     [
+      "version",
+      {},
+      "text",
+      "4.0"
+     ],
+     [
+      "fn",
+      {},
+      "text",
+      "Google LLC"
+     ],
+     [
+      "adr",
+      {
+       "label": "1600 Amphitheatre Parkway\nMountain View\nCA\n94043\nUnited States"
+      },
+      "text",
+      [
+       "",
+       "",
+       "",
+       "",
+       "",
+       "",
+       ""
+      ]
+     ],
+     [
+      "kind",
+      {},
+      "text",
+      "org"
+     ]
+    ]
+   ]
+  }
+ ],
+ "port43": "whois.arin.net"
+}

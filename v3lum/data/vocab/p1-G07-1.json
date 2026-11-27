@@ -1,0 +1,42 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p1-G07-1",
+  "title": "Threat-intel names of batch p1-G07-1 (otx, otx_keyless, abusech, ioc_feeds_offline, ioc_feeds_unreviewed)",
+  "owner": "batch p1-G07-1 (P153, P156, P159)",
+  "attributes": {
+    "otx_pulse_count": "number of AlienVault OTX pulses listing the indicator (provider total; pulse membership alone is not a verdict)",
+    "otx_pulses": "newest OTX pulses listing the indicator: list of {name, author, date, link} (top 3)",
+    "allowlisted": "list of allow-list reasons a source gives for the entity (whitelist, known false positive, warninglist)",
+    "upstream_families": "upstream intelligence families behind a source's answer (P171: consensus counts families, never modules)",
+    "threat_actors": "threat actor / adversary names a source associates with the entity (community labels unless stated otherwise)",
+    "attack_techniques": "MITRE ATT&CK technique ids a source associates with the entity",
+    "passive_dns": "passive DNS observations: list of {hostname, address, record_type, first_seen, last_seen}",
+    "observed_urls": "URLs a source observed on the domain, IP or URL: list of {url, date, http_code}",
+    "malware_samples": "malware sample hashes a source associates with the entity: list of {hash, type, date}",
+    "cwe": "CWE weakness id(s) of a CVE",
+    "exploited_in_wild": "bool: a source reports in-the-wild exploitation of the CVE",
+    "url_status": "URLhaus status of the listed URL(s): online | offline | unknown",
+    "threat_type": "threat type assigned by the source (e.g. botnet_cc, payload_delivery, malware_download)",
+    "source_confidence": "confidence level the source assigns to its listing (0-100, e.g. ThreatFox confidence_level)",
+    "similarity_hashes": "similarity/structural hashes of a file: {imphash, tlsh, ssdeep, telfhash, gimphash, dhash_icon}",
+    "yara_rules": "YARA rule names a source reports as matching the file",
+    "av_signatures": "antivirus signature names a source reports for the file (e.g. ClamAV)",
+    "delivery_method": "how a malware sample was delivered according to the source (e.g. email_attachment, web_download)",
+    "url_count": "number of URLs a source lists for the host or payload",
+    "ioc_count": "number of indicators a source lists for the entity (e.g. the IOCs of a malware family), per source",
+    "feed_hits": "offline feed listings of the entity: list of {feed, family, actor, label, first_seen, last_seen, confidence, age_days, reference}",
+    "feed_status": "state of each offline feed consulted: {feed: {state ok | stale | unhealthy | missing, age_hours, fetched_at}}"
+  },
+  "tags": {
+    "historical": "listing or observation older than 30 days, removed or from a frozen list: not current state",
+    "abused_legit_service": "legitimate service (file hosting, CDN) abused to host malicious content: never malicious by itself"
+  },
+  "relations": {
+    "hosts_url": "domain/IP -> URL observed or listed on it (OTX URL list, URLhaus host listings)",
+    "serves_payload": "URL/host -> hash of a payload it served (URLhaus)",
+    "served_from": "file hash -> URL that distributed it (URLhaus payload listings)",
+    "contacted_by": "C2 IP/domain/URL -> malware sample hash that contacts or contacted it",
+    "same_file": "file hash -> another hash (md5/sha1/sha256) of the same file",
+    "similarity_hash": "file hash -> similarity/structural hash of the file (imphash, tlsh, ssdeep, telfhash, gimphash, icon dhash)"
+  }
+}

@@ -1,0 +1,27 @@
+{
+ "schema": "v3lum.notice/1",
+ "name": "misp_warninglists",
+ "source_url": "https://github.com/MISP/misp-warninglists",
+ "version": "commit 922dbb3e33f078a1b646eff702e7f77e76734b29 (2026-11-23), compact build of 2026-11-26 (194 lists); refreshed per list at run time as datasets warninglists.<list>",
+ "sha256": "d6a5bf77533760e6b0cac6dd83842567f3366319d51c7ce4e067aa77759f4202",
+ "licence": "CC0-1.0",
+ "attribution": "MISP warninglists (https://github.com/MISP/misp-warninglists) by the MISP Project and contributors, licensed under CC0 1.0 Universal (Public Domain Dedication). The X4BNet-derived VPN and datacenter lists keep their MIT notice (misp_warninglists_x4bnet).",
+ "bundled": true,
+ "files": [
+  "v3lum/data/warninglists/misp_warninglists.json.gz",
+  "v3lum/data/warninglists/misp_warninglists.manifest.json",
+  "v3lum/data/noise/misp_wl_benign_scanners.json",
+  "v3lum/data/noise/misp_wl_cdn.json",
+  "v3lum/data/noise/misp_wl_ipv6_linklocal.json",
+  "v3lum/data/noise/misp_wl_multicast.json",
+  "v3lum/data/noise/misp_wl_parking.json",
+  "v3lum/data/noise/misp_wl_public_dns_hostname.json",
+  "v3lum/data/noise/misp_wl_public_dns_v4.json",
+  "v3lum/data/noise/misp_wl_public_dns_v6.json",
+  "v3lum/data/noise/misp_wl_rfc1918.json",
+  "v3lum/data/noise/misp_wl_rfc5735.json",
+  "v3lum/data/noise/misp_wl_rfc6598.json",
+  "v3lum/data/noise/misp_wl_sinkholes.json",
+  "v3lum/modules/threat_intel_ioc/warninglists.py"
+ ]
+}

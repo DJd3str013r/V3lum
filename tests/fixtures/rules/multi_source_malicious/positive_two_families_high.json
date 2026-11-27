@@ -1,0 +1,54 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "$comment": "URLhaus (abuse.ch) and PhishTank list the domain inside the 90-day window: 2 families -> HIGH",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "nodes": [
+    {
+      "key": "domain:login-portal-update.example",
+      "depth": 0,
+      "seed": true,
+      "findings": [
+        {
+          "title": "Listed on URLhaus (malware host)",
+          "severity": "high",
+          "confidence": 0.8,
+          "criterion": "URLhaus listing active <= 30 days",
+          "tags": [
+            "malware",
+            "malicious"
+          ],
+          "module": "abusech",
+          "source": "abusech.urlhaus",
+          "observed_first": "2026-11-02T08:00:00Z",
+          "observed_last": "2026-11-20T10:00:00Z"
+        },
+        {
+          "title": "Listed by PhishTank (verified phish)",
+          "severity": "high",
+          "confidence": 0.8,
+          "criterion": "verified PhishTank entry",
+          "tags": [
+            "phishing"
+          ],
+          "module": "url_domain_blocklists",
+          "source": "phishtank.online_valid",
+          "observed_last": "2026-11-24T00:00:00Z"
+        }
+      ]
+    }
+  ],
+  "edges": [],
+  "expect": {
+    "multi_source_malicious": {
+      "min": 1,
+      "max": 1,
+      "severity": "high",
+      "confidence_label": "probable"
+    }
+  }
+}

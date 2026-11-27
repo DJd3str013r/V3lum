@@ -1,0 +1,48 @@
+{
+ "preview": false,
+ "init_offset": 0,
+ "messages": [],
+ "fields": [
+  {
+   "name": "index"
+  },
+  {
+   "name": "count"
+  },
+  {
+   "name": "first_seen"
+  },
+  {
+   "name": "last_seen"
+  },
+  {
+   "name": "host"
+  },
+  {
+   "name": "user"
+  },
+  {
+   "name": "_raw"
+  }
+ ],
+ "results": [
+  {
+   "index": "proxy",
+   "count": "30",
+   "first_seen": "1793178843",
+   "last_seen": "1795612364",
+   "host": "ws-0042.corp.example.com",
+   "user": "user0042",
+   "_raw": "2026-11-25T13:12:44Z proxy allow user0042 ws-0042 198.51.100.23"
+  },
+  {
+   "index": "dns",
+   "count": "12",
+   "first_seen": "1793577600",
+   "last_seen": "1795219200",
+   "host": "dns01.corp.example.com",
+   "user": "user0043"
+  }
+ ],
+ "highlighted": {}
+}

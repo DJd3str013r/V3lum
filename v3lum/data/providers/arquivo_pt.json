@@ -1,0 +1,55 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "arquivo_pt",
+  "name": "Arquivo.pt (Portuguese web archive)",
+  "operator": "Arquivo.pt, a public service of FCT (Fundacao para a Ciencia e a Tecnologia, Portugal)",
+  "hosts": [
+    "arquivo.pt"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Public web archive run by FCT, a Portuguese government research agency, with published terms (A8 trusted); P059 'All archives are established non-profits or public bodies: tier trusted'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Captures are faithful records of what was served at capture time; coverage is mostly Portuguese-language sites, so a miss is never 'never archived'."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "timeout": 15,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 2.0,
+    "concurrency": 2
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "cdx": {
+      "title": "Arquivo.pt CDX server (wayback/cdx, NDJSON) and raw replay wayback/{timestamp}id_/{url}",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://sobre.arquivo.pt/en/legal-information/terms-and-conditions/",
+        "quote": "Registry terms (A1 BR3): the Internet Archive (Wayback CDX and availability), Arquivo.pt (FCT public service), Common Crawl (free terms of use) and CarbonDate (ODU academic service) are 'open', each recorded by legal with evidence",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "arquivo.pt",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P059 cond 10). The terms page (checked 2026-11-26) reads: 'Access to the contents is available free-of-charge and is intended to support for work of an educational, scientific or research nature. Use for commercial purposes is strictly forbidden.' and asks users to cite '[source: Arquivo.pt, dd/mm/yyyy]'. The council recorded internal CTI research as the purpose (as for the Internet Archive); legal to confirm on the next doctor --licences review (backlog p1-G01-2). Endpoints: https://arquivo.pt/wayback/cdx?url={url}&output=json&limit={n} (NDJSON, empty body = no captures) and https://arquivo.pt/wayback/{timestamp}id_/{url} (research C0155, verified 2026-11-26). Queried for .br/.pt and Portuguese-language sites and as the fallback when web.archive.org is unreachable (P059 cond 2)."
+    }
+  },
+  "notes": "Owned by batch p1-G01-2 (P059, module web_archives). Polite use: 2 s between requests, 24 h cache; no published rate limit."
+}

@@ -1,0 +1,167 @@
+{
+ "seed": "syn:seed",
+ "edges": [
+  {
+   "chain": "btc",
+   "tx": "syn-tx-01",
+   "time": 1700000000,
+   "from": "syn:victim-1",
+   "to": "syn:seed",
+   "value": "1.0",
+   "asset": "BTC"
+  },
+  {
+   "chain": "btc",
+   "tx": "syn-tx-02",
+   "time": 1700000100,
+   "from": "syn:victim-2",
+   "to": "syn:seed",
+   "value": "0.5",
+   "asset": "BTC"
+  },
+  {
+   "chain": "btc",
+   "tx": "syn-tx-03",
+   "time": 1700000200,
+   "from": "syn:victim-3",
+   "to": "syn:seed",
+   "value": "0.25",
+   "asset": "BTC"
+  },
+  {
+   "chain": "btc",
+   "tx": "syn-tx-04",
+   "time": 1700001000,
+   "from": "syn:seed",
+   "to": "syn:a",
+   "value": "0.9",
+   "asset": "BTC"
+  },
+  {
+   "chain": "btc",
+   "tx": "syn-tx-05",
+   "time": 1700001500,
+   "from": "syn:seed",
+   "to": "syn:mixer",
+   "value": "0.4",
+   "asset": "BTC"
+  },
+  {
+   "chain": "btc",
+   "tx": "syn-tx-06",
+   "time": 1700002000,
+   "from": "syn:seed",
+   "to": "syn:a",
+   "value": "0.3",
+   "asset": "BTC"
+  },
+  {
+   "chain": "btc",
+   "tx": "syn-tx-07",
+   "time": 1700003000,
+   "from": "syn:seed",
+   "to": "syn:b",
+   "value": "0.2",
+   "asset": "BTC"
+  },
+  {
+   "chain": "btc",
+   "tx": "syn-tx-08",
+   "time": 1700003100,
+   "from": "syn:b",
+   "to": "syn:seed",
+   "value": "0.01",
+   "asset": "BTC"
+  },
+  {
+   "chain": "btc",
+   "tx": "syn-tx-09",
+   "time": 1700004000,
+   "from": "syn:seed",
+   "to": "syn:c",
+   "value": "0.05",
+   "asset": "BTC"
+  },
+  {
+   "chain": "btc",
+   "tx": "syn-tx-10",
+   "time": 1700004100,
+   "from": "syn:seed",
+   "to": "syn:hub",
+   "value": "0.01",
+   "asset": "BTC"
+  },
+  {
+   "chain": "btc",
+   "tx": "syn-tx-11",
+   "time": 1700004200,
+   "from": "syn:seed",
+   "to": "syn:d",
+   "value": "0.02",
+   "asset": "BTC"
+  },
+  {
+   "chain": "btc",
+   "tx": "syn-tx-12",
+   "time": 1700004300,
+   "from": "syn:seed",
+   "to": "syn:e",
+   "value": "0.03",
+   "asset": "BTC"
+  },
+  {
+   "chain": "btc",
+   "tx": "syn-tx-13",
+   "time": 1700004400,
+   "from": "syn:seed",
+   "to": "syn:f",
+   "value": "0.04",
+   "asset": "BTC"
+  },
+  {
+   "chain": "btc",
+   "tx": "syn-tx-14",
+   "time": 1700004450,
+   "from": "syn:seed",
+   "to": "syn:sanctioned",
+   "value": "0.1",
+   "asset": "BTC"
+  },
+  {
+   "chain": "btc",
+   "tx": "syn-tx-15",
+   "time": 1700004500,
+   "from": "syn:b",
+   "to": "syn:exchange-b",
+   "value": "0.19",
+   "asset": "BTC"
+  },
+  {
+   "chain": "btc",
+   "tx": "syn-tx-16",
+   "time": 1700005000,
+   "from": "syn:a",
+   "to": "syn:exchange-a",
+   "value": "1.1",
+   "asset": "BTC"
+  },
+  {
+   "chain": "btc",
+   "tx": "syn-tx-17",
+   "time": 1700005100,
+   "from": "syn:c",
+   "to": "syn:bridge",
+   "value": "0.05",
+   "asset": "BTC"
+  },
+  {
+   "chain": "btc",
+   "tx": "syn-tx-18",
+   "time": 1700006000,
+   "from": "syn:exchange-a",
+   "to": "syn:beyond-exchange",
+   "value": "5.0",
+   "asset": "BTC"
+  }
+ ]
+}

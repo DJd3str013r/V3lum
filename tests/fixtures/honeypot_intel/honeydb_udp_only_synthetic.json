@@ -1,0 +1,29 @@
+{
+ "_synthetic": "UDP-only observation case (P147 FC7/FC9): same shape as the docs example, services NTP/SNMP only",
+ "reverse_dns": "",
+ "network_info": {
+  "asn": 64500,
+  "organization": "EXAMPLE-AS",
+  "country": "Brazil"
+ },
+ "threat_info": {
+  "is_bogon": false,
+  "is_tor": false,
+  "is_threat": false,
+  "threat_lists": {}
+ },
+ "internet_scanner": false,
+ "ip_history": [
+  {
+   "date": "2026-11-20",
+   "service": "NTP",
+   "event_count": "40"
+  },
+  {
+   "date": "2026-11-21",
+   "service": "SNMP",
+   "event_count": "3"
+  }
+ ],
+ "cve": []
+}

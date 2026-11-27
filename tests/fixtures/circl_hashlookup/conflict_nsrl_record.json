@@ -1,0 +1,28 @@
+{
+ "CRC32": "5E1F0C2A",
+ "FileName": "iobios64.sys",
+ "FileSize": "21504",
+ "MD5": "D49368296A3CD000EC0CEA88C4BF7EDD",
+ "OpSystemCode": {
+  "MfgCode": "1006",
+  "OpSystemCode": "362",
+  "OpSystemName": "TBD",
+  "OpSystemVersion": "none"
+ },
+ "ProductCode": {
+  "ApplicationType": "Utility",
+  "Language": "English",
+  "MfgCode": "9999",
+  "OpSystemCode": "362",
+  "ProductCode": "999001",
+  "ProductName": "Example Hardware Utility (synthetic)",
+  "ProductVersion": "1.0"
+ },
+ "SHA-1": "FBD6C739B86AFA550187CC80AA6DC139C0790CEF",
+ "SHA-256": "314A51FCF6E37EB8550A826DF085D5C88C43EB1438682F3A6C33632D36956136",
+ "SpecialCode": "",
+ "db": "nsrl_legacy",
+ "insert-timestamp": "1751766732.0",
+ "source": "RDS_2025.03.1_modern.db",
+ "hashlookup:trust": 50
+}

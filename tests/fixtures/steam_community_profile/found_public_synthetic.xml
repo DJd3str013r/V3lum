@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><profile>
+	<steamID64>76561190000000001</steamID64>
+	<steamID><![CDATA[Example Player]]></steamID>
+	<onlineState>offline</onlineState>
+	<privacyState>public</privacyState>
+	<visibilityState>3</visibilityState>
+	<vacBanned>0</vacBanned>
+	<customURL><![CDATA[exampleplayer]]></customURL>
+	<memberSince>March 3, 2011</memberSince>
+	<headline><![CDATA[]]></headline>
+	<location><![CDATA[Example City, Example State]]></location>
+	<realname><![CDATA[Example Person]]></realname>
+	<summary><![CDATA[Streams at <a class="bb_link" href="https://steamcommunity.com/linkfilter/?u=https%3A%2F%2Fwww.twitch.tv%2Fexampleplayer" target="_blank" rel="">https://www.twitch.tv/exampleplayer</a><br>shop: shop.example.com/exampleplayer]]></summary>
+	<groups><group isPrimary="1"><groupID64>103582791400000000</groupID64></group></groups>
+</profile>

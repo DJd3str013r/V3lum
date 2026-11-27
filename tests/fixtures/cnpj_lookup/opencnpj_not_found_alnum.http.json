@@ -1,0 +1,21 @@
+{
+ "request": "GET https://api.opencnpj.org/12ABC34501DE35",
+ "response": {
+  "status": 404,
+  "headers": {
+   "content-type": "application/json; charset=utf-8",
+   "content-length": "21",
+   "cf-cache-status": "BYPASS",
+   "cache-control": "no-store",
+   "server": "cloudflare"
+  },
+  "body": {
+   "error": "not found"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": 0.237069,
+ "observed_at": "2026-11-26T05:19:56+00:00",
+ "origin": "live",
+ "note": ""
+}

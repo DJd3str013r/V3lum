@@ -1,0 +1,18 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://www.example.com/backup.zip",
+  "headers": {
+   "Range": "bytes=0-1023"
+  }
+ },
+ "response": {
+  "status": 206,
+  "headers": {
+   "content-type": "application/zip",
+   "content-range": "bytes 0-142/10485760",
+   "content-length": "143"
+  },
+  "body_b64": "UEsDBBQAAAAAAAAAIVwQIv03EQAAABEAAAAOAAAAc2l0ZS9pbmRleC5waHA8P3BocCBlY2hvICdvayc7ClBLAQIUAxQAAAAAAAAAIVwQIv03EQAAABEAAAAOAAAAAAAAAAAAAACAAQAAAABzaXRlL2luZGV4LnBocFBLBQYAAAAAAQABADwAAAA9AAAAAAA="
+ }
+}

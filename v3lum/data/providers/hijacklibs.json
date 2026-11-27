@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "hijacklibs",
+  "name": "HijackLibs (DLL hijacking candidates)",
+  "operator": "HijackLibs project (Wietze Beukema, GitHub wietze/HijackLibs)",
+  "hosts": [
+    "hijacklibs.net"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Community project with a public repository, documentation and an open licence (published since 2022): A8 community. Offline use only (disclosure none: tier n/a).",
+  "tier_reviewer": "batch p2-G07-1 (A8 community definition)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Curated list of DLLs vulnerable to side-loading/search-order hijacking with the affected executables; DLL names collide across vendors, so name matches are low-confidence context (P268 cond 5)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "dataset": {
+      "title": "HijackLibs api/hijacklibs.json (DLL names, vendors, vulnerable executables, hijack types, CVEs)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/wietze/HijackLibs/blob/main/LICENSE",
+        "quote": "GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 (LICENSE of wietze/HijackLibs, verified 2026-11-26): GPL-3.0 data, downloaded at runtime only and never bundled (A6).",
+        "checked_at": "2026-11-26",
+        "reviewer": "batch p2-G07-1 (licence file verified live 2026-11-26)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "hijacklibs",
+      "sanitizer": null,
+      "dataset": "lol_datasets.hijacklibs.json",
+      "notes": "https://hijacklibs.net/api/hijacklibs.json (983 KB, 628 entries on 2026-11-26). Runtime download only (GPL-3.0, P268 cond 2). The GitHub Pages 404 body starts with '<style': validated as JSON before it replaces a copy."
+    }
+  },
+  "notes": "Owned by batch p2-G07-1 (P268)."
+}

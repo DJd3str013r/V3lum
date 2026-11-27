@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "url_domain_blocklists_procon_sp",
+  "source_url": "https://sistemas.procon.sp.gov.br/evitesite/list/evitesites.php",
+  "version": "evitesite.php?action=list (runtime download; CPF masked and personal names dropped before storage)",
+  "sha256": "",
+  "licence": "Procon-SP public consumer-protection notice (with attribution)",
+  "attribution": "Fundacao de Protecao e Defesa do Consumidor - Procon-SP, 'Evite estes sites' (https://sistemas.procon.sp.gov.br/evitesite/list/evitesites.php).",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/url_web/url_domain_blocklists.py"
+  ]
+}

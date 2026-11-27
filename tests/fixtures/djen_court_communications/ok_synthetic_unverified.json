@@ -1,0 +1,76 @@
+{
+ "_fixture_note": "SYNTHETIC, SHAPE UNVERIFIED: built from public descriptions of the Comunica PJe API; FC1 build gate requires replacing it with a capture from the team's Brazilian egress",
+ "status": "success",
+ "message": "Sucesso",
+ "count": 4,
+ "items": [
+  {
+   "id": 1,
+   "data_disponibilizacao": "2026-11-10",
+   "siglaTribunal": "TRT2",
+   "tipoComunicacao": "Intimação",
+   "nomeOrgao": "1ª Vara do Trabalho de Exemplo",
+   "nomeClasse": "AÇÃO TRABALHISTA - RITO ORDINÁRIO",
+   "codigoClasse": "985",
+   "numero_processo": "00000019220265020001",
+   "numeroprocessocommascara": "0000001-92.2026.5.02.0001",
+   "texto": "Intimação da reclamada BANCO DO BRASIL S.A. (CNPJ 00.000.000/0001-91) para audiência. Reclamante: Pessoa Exemplo Oito. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. Texto longo. ",
+   "link": "https://comunicaapi.pje.jus.br/api/v1/comunicacao/0000000000000000/certidao",
+   "destinatarios": [
+    {
+     "nome": "PESSOA EXEMPLO OITO",
+     "polo": "A"
+    },
+    {
+     "nome": "BANCO DO BRASIL S.A.",
+     "polo": "P"
+    }
+   ],
+   "destinatarioadvogados": [
+    {
+     "advogado": {
+      "nome": "PESSOA EXEMPLO NOVE",
+      "numero_oab": "000000",
+      "uf_oab": "SP"
+     }
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "data_disponibilizacao": "2026-10-01",
+   "siglaTribunal": "TJSP",
+   "tipoComunicacao": "Intimação",
+   "nomeOrgao": "1º Juizado Especial Cível de Exemplo",
+   "nomeClasse": "PROCEDIMENTO DO JUIZADO ESPECIAL CÍVEL",
+   "codigoClasse": "436",
+   "numeroprocessocommascara": "",
+   "numero_processo": "07000551020188010022",
+   "texto": "Consumidor x BANCO DO BRASIL S/A - relação de consumo, tarifa bancária.",
+   "link": null,
+   "destinatarios": []
+  },
+  {
+   "id": 3,
+   "datadisponibilizacao": "15/08/2026",
+   "siglaTribunal": "TRF1",
+   "tipoComunicacao": "Edital",
+   "nomeOrgao": "Vara Federal de Execução Fiscal de Exemplo",
+   "nomeClasse": "EXECUÇÃO FISCAL",
+   "numeroprocessocommascara": "bad-number",
+   "texto": "Edital de citação em execução fiscal.",
+   "destinatarios": []
+  },
+  {
+   "id": 4,
+   "data_disponibilizacao": "2025-01-20",
+   "siglaTribunal": "TJDFT",
+   "tipoComunicacao": "Citação",
+   "nomeOrgao": "Vara Criminal de Exemplo",
+   "nomeClasse": "AÇÃO PENAL - PROCEDIMENTO ORDINÁRIO",
+   "numeroprocessocommascara": "0700055-10.2018.8.01.0022",
+   "texto": "Citação. Ação penal. Vítima: BANCO DO BRASIL S.A.",
+   "destinatarios": []
+  }
+ ]
+}

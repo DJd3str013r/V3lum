@@ -1,0 +1,46 @@
+{
+ "schema": "v3lum.rule/1",
+ "id": "t_first_only_ct",
+ "version": "1",
+ "title": "Host seen only in certificate transparency",
+ "severity": "low",
+ "criterion": "test rule (first_collection_only)",
+ "references": [
+  "https://github.com/smicallef/spiderfoot"
+ ],
+ "attack": [],
+ "false_positives": "synthetic test rule",
+ "collections": [
+  {
+   "name": "ct",
+   "entity_types": [
+    "domain"
+   ],
+   "filters": [
+    {
+     "field": "finding.source",
+     "op": "eq",
+     "value": "crtsh.ct"
+    }
+   ]
+  },
+  {
+   "name": "dns",
+   "entity_types": [
+    "domain"
+   ],
+   "filters": [
+    {
+     "field": "finding.source",
+     "op": "regex",
+     "value": "^dns\\."
+    }
+   ]
+  }
+ ],
+ "analysis": {
+  "method": "first_collection_only"
+ },
+ "headline": "{value} appears only in {collection}",
+ "recommendation": "Review the listed entities."
+}

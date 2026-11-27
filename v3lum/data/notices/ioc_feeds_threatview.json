@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "ioc_feeds_threatview",
+  "source_url": "https://threatview.io/",
+  "version": "Downloads/ IP, domain, MD5 and Cobalt Strike C2 lists, runtime download, checked 2026-11-26",
+  "sha256": "",
+  "licence": "LicenseRef-unknown-site-terms-not-recorded",
+  "attribution": "Threatview.io free feeds (https://threatview.io/). Site terms not recorded: used only by the disabled module ioc_feeds_unreviewed until legal records a terms class; never redistributed.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/threat_intel_ioc/ioc_feeds_offline.py"
+  ]
+}

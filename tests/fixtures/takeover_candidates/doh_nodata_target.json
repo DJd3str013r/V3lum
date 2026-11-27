@@ -1,0 +1,34 @@
+{
+ "qname": "cdn.example.com",
+ "google": {
+  "Status": 0,
+  "TC": false,
+  "RD": true,
+  "RA": true,
+  "AD": false,
+  "CD": false,
+  "Question": [
+   {
+    "name": "cdn.example.com.",
+    "type": 1
+   }
+  ],
+  "Answer": [
+   {
+    "name": "cdn.example.com.",
+    "type": 5,
+    "TTL": 300,
+    "data": "exemplo.zone-cf.example.net."
+   }
+  ],
+  "Authority": [
+   {
+    "name": "zone-cf.example.net.",
+    "type": 6,
+    "TTL": 1800,
+    "data": "elliott.ns.cloudflare.com. dns.cloudflare.com. 2421050422 10000 2400 604800 1800"
+   }
+  ],
+  "edns_client_subnet": "0.0.0.0/0"
+ }
+}

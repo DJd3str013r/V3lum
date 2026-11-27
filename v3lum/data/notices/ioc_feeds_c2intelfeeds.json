@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "ioc_feeds_c2intelfeeds",
+  "source_url": "https://github.com/drb-ra/C2IntelFeeds",
+  "version": "IPC2s-30day.csv and domainC2swithURLwithIP-30day-filter-abused.csv, runtime download, checked 2026-11-26",
+  "sha256": "",
+  "licence": "LicenseRef-unknown-no-licence-published",
+  "attribution": "C2IntelFeeds by drb-ra (https://github.com/drb-ra/C2IntelFeeds). No licence published: used only by the disabled module ioc_feeds_unreviewed until legal records a terms class; never redistributed.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/threat_intel_ioc/ioc_feeds_offline.py"
+  ]
+}

@@ -1,0 +1,8 @@
+::	::1	0	None	Not routed
+64:ff9b::1:0:0	100::ffff:ffff:ffff:ffff	0	None	Not routed
+2001:4860:480c::	2001:4860:480c:ffff:ffff:ffff:ffff:ffff	32381	US	GOOGLE CLOUD NETWORKING - Google Access LLC
+2001:4860:480d::	2001:4860:4864:ffff:ffff:ffff:ffff:ffff	15169	US	GOOGLE - Google LLC
+2001:4860:4865::	2001:4860:ffff:ffff:ffff:ffff:ffff:ffff	15169	US	GOOGLE - Google LLC
+2606:4700:4410::	2606:4700:46ff:ffff:ffff:ffff:ffff:ffff	0	None	Not routed
+2606:4700:4700::	2606:4700:4700:ffff:ffff:ffff:ffff:ffff	13335	US	CLOUDFLARENET - Cloudflare, Inc.
+2606:4700:4701::	2606:4700:6fff:ffff:ffff:ffff:ffff:ffff	0	None	Not routed

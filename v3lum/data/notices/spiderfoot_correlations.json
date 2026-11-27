@@ -1,0 +1,11 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "spiderfoot_correlations",
+  "source_url": "https://github.com/smicallef/spiderfoot",
+  "version": "commit 0f815a203afebf05c98b605dba5cf0475a0ee5fd (spiderfoot/correlation.py, correlations/*.yaml)",
+  "sha256": "",
+  "licence": "MIT",
+  "attribution": "The data correlation-rule model (collections with exact/regex filters, aggregation field, the threshold, outlier, first_collection_only, match_all_to_first_collection and both_collections analysis methods with the outlier noisy-data guard, and the headline template) is adapted from the SpiderFoot correlation engine, Copyright Steve Micallef, MIT licence.",
+  "bundled": true,
+  "files": ["v3lum/core/rules_engine.py"]
+}

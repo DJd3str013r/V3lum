@@ -1,0 +1,739 @@
+{
+ "type": "bundle",
+ "id": "bundle--fixture-ics-slice",
+ "objects": [
+  {
+   "type": "x-mitre-collection",
+   "id": "x-mitre-collection--90c00720-636b-4485-b342-8751d232bf09",
+   "name": "ICS ATT&CK",
+   "x_mitre_version": "20.1",
+   "created": "2020-10-27T14:49:39.188Z",
+   "modified": "2026-11-05T05:00:37.128Z",
+   "x_mitre_attack_spec_version": "3.3.0",
+   "description": "The ATT&CK for Industrial Control Systems (ICS) knowledge base categorizes the unique set of tactics, techniques, and procedures (TTPs) used by threat actors in",
+   "x_mitre_contents": [
+    {
+     "object_ref": "attack-pattern--32632a95-6856-47b9-9ab7-fea5cd7dce00",
+     "object_modified": "2026-10-13T17:48:37.841Z"
+    },
+    {
+     "object_ref": "attack-pattern--3e9b182e-e493-49e1-9a9b-bd0dfcd34a7c",
+     "object_modified": "2026-10-13T17:48:56.454Z"
+    },
+    {
+     "object_ref": "attack-pattern--40b300ba-f553-48bf-862e-9471b220d455",
+     "object_modified": "2026-04-20T20:58:41.104Z"
+    },
+    {
+     "object_ref": "attack-pattern--4344d1b8-968b-4697-9ab9-f9abe5f52265",
+     "object_modified": "2026-10-13T17:48:51.581Z"
+    },
+    {
+     "object_ref": "attack-pattern--5658ad88-7510-490e-a351-95d50b1bcd91",
+     "object_modified": "2026-10-13T17:48:42.708Z"
+    },
+    {
+     "object_ref": "attack-pattern--8bb4538f-f16f-49f0-a431-70b5444c7349",
+     "object_modified": "2026-04-20T20:58:48.356Z"
+    },
+    {
+     "object_ref": "attack-pattern--d67adac8-e3b9-44f9-9e6d-6c2a7d69dbe4",
+     "object_modified": "2026-10-13T17:48:43.335Z"
+    },
+    {
+     "object_ref": "attack-pattern--e17cdc00-8b58-4e5f-9d50-4cad1592c4c3",
+     "object_modified": "2026-10-13T17:48:55.183Z"
+    },
+    {
+     "object_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+     "object_modified": "2026-05-12T16:33:30.227Z"
+    },
+    {
+     "object_ref": "intrusion-set--381fcf73-60f6-4ab2-9991-6af3cbc35192",
+     "object_modified": "2026-07-31T20:48:32.342Z"
+    },
+    {
+     "object_ref": "x-mitre-matrix--575f48f4-8897-4468-897b-48bb364af6c7",
+     "object_modified": "2026-07-31T20:48:58.509Z"
+    },
+    {
+     "object_ref": "x-mitre-tactic--298fe907-7931-4fd2-8131-2814dd493134",
+     "object_modified": "2025-04-16T21:26:21.065Z"
+    }
+   ]
+  },
+  {
+   "type": "intrusion-set",
+   "id": "intrusion-set--381fcf73-60f6-4ab2-9991-6af3cbc35192",
+   "created": "2017-05-31T21:32:04.588Z",
+   "revoked": false,
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "G0034",
+     "url": "https://attack.mitre.org/groups/G0034"
+    }
+   ],
+   "modified": "2026-07-31T20:48:32.342Z",
+   "name": "Sandworm Team",
+   "aliases": [
+    "Sandworm Team",
+    "ELECTRUM",
+    "Telebots",
+    "IRON VIKING",
+    "BlackEnergy (Group)",
+    "Quedagh",
+    "Voodoo Bear",
+    "IRIDIUM",
+    "Seashell Blizzard",
+    "FROZENBARENTS",
+    "APT44"
+   ],
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "enterprise-attack",
+    "ics-attack",
+    "mobile-attack"
+   ],
+   "x_mitre_version": "4.2"
+  },
+  {
+   "type": "attack-pattern",
+   "id": "attack-pattern--32632a95-6856-47b9-9ab7-fea5cd7dce00",
+   "created": "2020-05-21T17:43:26.506Z",
+   "revoked": false,
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "T0819",
+     "url": "https://attack.mitre.org/techniques/T0819"
+    }
+   ],
+   "modified": "2026-10-13T17:48:37.841Z",
+   "name": "Exploit Public-Facing Application",
+   "kill_chain_phases": [
+    {
+     "kill_chain_name": "mitre-ics-attack",
+     "phase_name": "initial-access"
+    }
+   ],
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "ics-attack"
+   ],
+   "x_mitre_is_subtechnique": false,
+   "x_mitre_platforms": [
+    "Embedded",
+    "Windows",
+    "Linux",
+    "Network Devices"
+   ],
+   "x_mitre_version": "1.0",
+   "description": "Adversaries may leverage weaknesses to exploit internet-facing software for initial access into an industrial network."
+  },
+  {
+   "type": "attack-pattern",
+   "id": "attack-pattern--3e9b182e-e493-49e1-9a9b-bd0dfcd34a7c",
+   "created": "2026-04-20T20:50:35.222Z",
+   "revoked": false,
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "T1694",
+     "url": "https://attack.mitre.org/techniques/T1694"
+    }
+   ],
+   "modified": "2026-10-13T17:48:56.454Z",
+   "name": "Insecure Credentials",
+   "kill_chain_phases": [
+    {
+     "kill_chain_name": "mitre-ics-attack",
+     "phase_name": "persistence"
+    },
+    {
+     "kill_chain_name": "mitre-ics-attack",
+     "phase_name": "lateral-movement"
+    }
+   ],
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "ics-attack"
+   ],
+   "x_mitre_is_subtechnique": false,
+   "x_mitre_platforms": [
+    "Embedded",
+    "Windows",
+    "Linux",
+    "Network Devices"
+   ],
+   "x_mitre_version": "1.0",
+   "description": "Adversaries may target insecure credentials as a means to persist on a system or device or move laterally from one system or device to another."
+  },
+  {
+   "type": "attack-pattern",
+   "id": "attack-pattern--40b300ba-f553-48bf-862e-9471b220d455",
+   "created": "2020-05-21T17:43:26.506Z",
+   "revoked": true,
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "T0855",
+     "url": "https://attack.mitre.org/techniques/T0855"
+    }
+   ],
+   "modified": "2026-04-20T20:58:41.104Z",
+   "name": "Unauthorized Command Message",
+   "kill_chain_phases": [
+    {
+     "kill_chain_name": "mitre-ics-attack",
+     "phase_name": "impair-process-control"
+    }
+   ],
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "ics-attack"
+   ],
+   "x_mitre_is_subtechnique": false,
+   "x_mitre_platforms": [
+    "None"
+   ],
+   "x_mitre_version": "1.2",
+   "description": "Adversaries may send unauthorized command messages to instruct control system assets to perform actions outside of their intended functionality, or without the "
+  },
+  {
+   "type": "attack-pattern",
+   "id": "attack-pattern--4344d1b8-968b-4697-9ab9-f9abe5f52265",
+   "created": "2026-04-20T20:54:17.053Z",
+   "revoked": false,
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "T1692.001",
+     "url": "https://attack.mitre.org/techniques/T1692/001"
+    }
+   ],
+   "modified": "2026-10-13T17:48:51.581Z",
+   "name": "Command Message",
+   "kill_chain_phases": [
+    {
+     "kill_chain_name": "mitre-ics-attack",
+     "phase_name": "evasion"
+    },
+    {
+     "kill_chain_name": "mitre-ics-attack",
+     "phase_name": "impair-process-control"
+    }
+   ],
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "ics-attack"
+   ],
+   "x_mitre_is_subtechnique": true,
+   "x_mitre_platforms": [
+    "Embedded",
+    "Windows",
+    "Linux"
+   ],
+   "x_mitre_version": "2.0",
+   "description": "Adversaries may send unauthorized command messages to instruct control system assets to perform actions outside of their intended functionality, or without the "
+  },
+  {
+   "type": "attack-pattern",
+   "id": "attack-pattern--5658ad88-7510-490e-a351-95d50b1bcd91",
+   "created": "2026-04-20T20:54:19.020Z",
+   "revoked": false,
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "T1694.001",
+     "url": "https://attack.mitre.org/techniques/T1694/001"
+    }
+   ],
+   "modified": "2026-10-13T17:48:42.708Z",
+   "name": "Default Credentials",
+   "kill_chain_phases": [
+    {
+     "kill_chain_name": "mitre-ics-attack",
+     "phase_name": "persistence"
+    },
+    {
+     "kill_chain_name": "mitre-ics-attack",
+     "phase_name": "lateral-movement"
+    }
+   ],
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "ics-attack"
+   ],
+   "x_mitre_is_subtechnique": true,
+   "x_mitre_platforms": [
+    "Embedded",
+    "Windows",
+    "Linux",
+    "Network Devices"
+   ],
+   "x_mitre_version": "1.0",
+   "description": "Adversaries may leverage manufacturer or supplier set default credentials on control system devices."
+  },
+  {
+   "type": "attack-pattern",
+   "id": "attack-pattern--8bb4538f-f16f-49f0-a431-70b5444c7349",
+   "created": "2020-05-21T17:43:26.506Z",
+   "revoked": true,
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "T0812",
+     "url": "https://attack.mitre.org/techniques/T0812"
+    }
+   ],
+   "modified": "2026-04-20T20:58:48.356Z",
+   "name": "Default Credentials",
+   "kill_chain_phases": [
+    {
+     "kill_chain_name": "mitre-ics-attack",
+     "phase_name": "lateral-movement"
+    }
+   ],
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "ics-attack"
+   ],
+   "x_mitre_is_subtechnique": false,
+   "x_mitre_platforms": [
+    "None"
+   ],
+   "x_mitre_version": "1.0",
+   "description": "Adversaries may leverage manufacturer or supplier set default credentials on control system devices."
+  },
+  {
+   "type": "attack-pattern",
+   "id": "attack-pattern--d67adac8-e3b9-44f9-9e6d-6c2a7d69dbe4",
+   "created": "2020-05-21T17:43:26.506Z",
+   "revoked": false,
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "T0884",
+     "url": "https://attack.mitre.org/techniques/T0884"
+    }
+   ],
+   "modified": "2026-10-13T17:48:43.335Z",
+   "name": "Connection Proxy",
+   "kill_chain_phases": [
+    {
+     "kill_chain_name": "mitre-ics-attack",
+     "phase_name": "command-and-control"
+    }
+   ],
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "ics-attack"
+   ],
+   "x_mitre_is_subtechnique": false,
+   "x_mitre_platforms": [
+    "Embedded",
+    "Windows",
+    "Linux",
+    "Network Devices"
+   ],
+   "x_mitre_version": "1.1",
+   "description": "Adversaries may use a connection proxy to direct network traffic between systems or act as an intermediary for network communications."
+  },
+  {
+   "type": "attack-pattern",
+   "id": "attack-pattern--e17cdc00-8b58-4e5f-9d50-4cad1592c4c3",
+   "created": "2026-04-20T20:50:34.487Z",
+   "revoked": false,
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "T1692",
+     "url": "https://attack.mitre.org/techniques/T1692"
+    }
+   ],
+   "modified": "2026-10-13T17:48:55.183Z",
+   "name": "Unauthorized Message",
+   "kill_chain_phases": [
+    {
+     "kill_chain_name": "mitre-ics-attack",
+     "phase_name": "evasion"
+    },
+    {
+     "kill_chain_name": "mitre-ics-attack",
+     "phase_name": "impair-process-control"
+    }
+   ],
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "ics-attack"
+   ],
+   "x_mitre_is_subtechnique": false,
+   "x_mitre_platforms": [
+    "Embedded",
+    "Windows",
+    "Linux"
+   ],
+   "x_mitre_version": "1.0",
+   "description": "Adversaries may send unauthorized messages to ICS systems and devices to evade defenses or manipulate processes."
+  },
+  {
+   "type": "x-mitre-matrix",
+   "id": "x-mitre-matrix--575f48f4-8897-4468-897b-48bb364af6c7",
+   "created": "2018-10-17T00:14:20.652Z",
+   "revoked": false,
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "ics-attack",
+     "url": "https://attack.mitre.org/matrices/ics"
+    }
+   ],
+   "modified": "2026-07-31T20:48:58.509Z",
+   "name": "ATT&CK for ICS",
+   "tactic_refs": [
+    "x-mitre-tactic--69da72d2-f550-41c5-ab9e-e8255707f28a",
+    "x-mitre-tactic--93bf9a8e-b14c-4587-b6d5-9efc7c12eb45",
+    "x-mitre-tactic--78f1d2ae-a579-44c4-8fc5-3e1775c73fac",
+    "x-mitre-tactic--33752ae7-f875-4f43-bdb6-d8d02d341046",
+    "x-mitre-tactic--ddf70682-f3ce-479c-a9a4-7eadf9bfead7",
+    "x-mitre-tactic--696af733-728e-49d7-8261-75fdc590f453",
+    "x-mitre-tactic--51c25a9e-8615-40c0-8afd-1da578847924",
+    "x-mitre-tactic--b2a67b1e-913c-46f6-b219-048a90560bb9",
+    "x-mitre-tactic--97c8ff73-bd14-4b6c-ac32-3d91d2c41e3f",
+    "x-mitre-tactic--298fe907-7931-4fd2-8131-2814dd493134",
+    "x-mitre-tactic--ff048b6c-b872-4218-b68c-3735ebd1f024",
+    "x-mitre-tactic--77542f83-70d0-40c2-8a9d-ad2eb8b00279"
+   ],
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "ics-attack"
+   ],
+   "x_mitre_version": "1.0"
+  },
+  {
+   "type": "x-mitre-tactic",
+   "id": "x-mitre-tactic--298fe907-7931-4fd2-8131-2814dd493134",
+   "created": "2018-10-17T00:14:20.652Z",
+   "revoked": false,
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "TA0107",
+     "url": "https://attack.mitre.org/tactics/TA0107"
+    }
+   ],
+   "modified": "2025-04-16T21:26:21.065Z",
+   "name": "Inhibit Response Function",
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "ics-attack"
+   ],
+   "x_mitre_version": "1.0",
+   "x_mitre_shortname": "inhibit-response-function"
+  },
+  {
+   "type": "x-mitre-tactic",
+   "id": "x-mitre-tactic--33752ae7-f875-4f43-bdb6-d8d02d341046",
+   "created": "2021-04-10T17:32:33.899Z",
+   "revoked": false,
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "TA0111",
+     "url": "https://attack.mitre.org/tactics/TA0111"
+    }
+   ],
+   "modified": "2025-04-16T21:26:21.215Z",
+   "name": "Privilege Escalation",
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "ics-attack"
+   ],
+   "x_mitre_version": "1.0",
+   "x_mitre_shortname": "privilege-escalation"
+  },
+  {
+   "type": "x-mitre-tactic",
+   "id": "x-mitre-tactic--51c25a9e-8615-40c0-8afd-1da578847924",
+   "created": "2018-10-17T00:14:20.652Z",
+   "revoked": false,
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "TA0109",
+     "url": "https://attack.mitre.org/tactics/TA0109"
+    }
+   ],
+   "modified": "2025-04-16T21:26:21.394Z",
+   "name": "Lateral Movement",
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "ics-attack"
+   ],
+   "x_mitre_version": "1.0",
+   "x_mitre_shortname": "lateral-movement"
+  },
+  {
+   "type": "x-mitre-tactic",
+   "id": "x-mitre-tactic--696af733-728e-49d7-8261-75fdc590f453",
+   "created": "2018-10-17T00:14:20.652Z",
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "TA0102",
+     "url": "https://attack.mitre.org/tactics/TA0102"
+    }
+   ],
+   "modified": "2025-04-25T14:39:28.358Z",
+   "name": "Discovery",
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "ics-attack"
+   ],
+   "x_mitre_version": "1.0",
+   "x_mitre_shortname": "discovery"
+  },
+  {
+   "type": "x-mitre-tactic",
+   "id": "x-mitre-tactic--69da72d2-f550-41c5-ab9e-e8255707f28a",
+   "created": "2018-10-17T00:14:20.652Z",
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "TA0108",
+     "url": "https://attack.mitre.org/tactics/TA0108"
+    }
+   ],
+   "modified": "2025-04-25T14:39:28.727Z",
+   "name": "Initial Access",
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "ics-attack"
+   ],
+   "x_mitre_version": "1.0",
+   "x_mitre_shortname": "initial-access"
+  },
+  {
+   "type": "x-mitre-tactic",
+   "id": "x-mitre-tactic--77542f83-70d0-40c2-8a9d-ad2eb8b00279",
+   "created": "2019-03-14T18:44:44.639Z",
+   "revoked": false,
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "TA0105",
+     "url": "https://attack.mitre.org/tactics/TA0105"
+    }
+   ],
+   "modified": "2025-04-16T21:26:21.936Z",
+   "name": "Impact",
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "ics-attack"
+   ],
+   "x_mitre_version": "1.0",
+   "x_mitre_shortname": "impact"
+  },
+  {
+   "type": "x-mitre-tactic",
+   "id": "x-mitre-tactic--78f1d2ae-a579-44c4-8fc5-3e1775c73fac",
+   "created": "2018-10-17T00:14:20.652Z",
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "TA0110",
+     "url": "https://attack.mitre.org/tactics/TA0110"
+    }
+   ],
+   "modified": "2025-04-25T14:39:29.269Z",
+   "name": "Persistence",
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "ics-attack"
+   ],
+   "x_mitre_version": "1.0",
+   "x_mitre_shortname": "persistence"
+  },
+  {
+   "type": "x-mitre-tactic",
+   "id": "x-mitre-tactic--93bf9a8e-b14c-4587-b6d5-9efc7c12eb45",
+   "created": "2018-10-17T00:14:20.652Z",
+   "revoked": false,
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "TA0104",
+     "url": "https://attack.mitre.org/tactics/TA0104"
+    }
+   ],
+   "modified": "2025-04-16T21:26:22.274Z",
+   "name": "Execution",
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "ics-attack"
+   ],
+   "x_mitre_version": "1.0",
+   "x_mitre_shortname": "execution"
+  },
+  {
+   "type": "x-mitre-tactic",
+   "id": "x-mitre-tactic--97c8ff73-bd14-4b6c-ac32-3d91d2c41e3f",
+   "created": "2018-10-17T00:14:20.652Z",
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "TA0101",
+     "url": "https://attack.mitre.org/tactics/TA0101"
+    }
+   ],
+   "modified": "2025-04-25T14:39:29.812Z",
+   "name": "Command and Control",
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "ics-attack"
+   ],
+   "x_mitre_version": "1.0",
+   "x_mitre_shortname": "command-and-control"
+  },
+  {
+   "type": "x-mitre-tactic",
+   "id": "x-mitre-tactic--b2a67b1e-913c-46f6-b219-048a90560bb9",
+   "created": "2018-10-17T00:14:20.652Z",
+   "revoked": false,
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "TA0100",
+     "url": "https://attack.mitre.org/tactics/TA0100"
+    }
+   ],
+   "modified": "2025-04-16T21:26:22.653Z",
+   "name": "Collection",
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "ics-attack"
+   ],
+   "x_mitre_version": "1.0",
+   "x_mitre_shortname": "collection"
+  },
+  {
+   "type": "x-mitre-tactic",
+   "id": "x-mitre-tactic--ddf70682-f3ce-479c-a9a4-7eadf9bfead7",
+   "created": "2018-10-17T00:14:20.652Z",
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "TA0103",
+     "url": "https://attack.mitre.org/tactics/TA0103"
+    }
+   ],
+   "modified": "2025-04-25T14:39:30.353Z",
+   "name": "Evasion",
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "ics-attack"
+   ],
+   "x_mitre_version": "1.0",
+   "x_mitre_shortname": "evasion"
+  },
+  {
+   "type": "x-mitre-tactic",
+   "id": "x-mitre-tactic--ff048b6c-b872-4218-b68c-3735ebd1f024",
+   "created": "2018-10-17T00:14:20.652Z",
+   "revoked": false,
+   "external_references": [
+    {
+     "source_name": "mitre-attack",
+     "external_id": "TA0106",
+     "url": "https://attack.mitre.org/tactics/TA0106"
+    }
+   ],
+   "modified": "2025-04-16T21:26:23.006Z",
+   "name": "Impair Process Control",
+   "x_mitre_deprecated": false,
+   "x_mitre_domains": [
+    "ics-attack"
+   ],
+   "x_mitre_version": "1.0",
+   "x_mitre_shortname": "impair-process-control"
+  },
+  {
+   "type": "identity",
+   "id": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+   "name": "The MITRE Corporation",
+   "identity_class": "organization"
+  },
+  {
+   "type": "marking-definition",
+   "id": "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168",
+   "definition_type": "statement",
+   "definition": {
+    "statement": "Copyright 2015-2026, The MITRE Corporation. MITRE ATT&CK and ATT&CK are registered trademarks of The MITRE Corporation."
+   },
+   "created": "2017-06-01T00:00:00.000Z"
+  },
+  {
+   "type": "relationship",
+   "id": "relationship--119aea8f-443f-4831-8143-ec6cd43021cb",
+   "relationship_type": "revoked-by",
+   "source_ref": "attack-pattern--8bb4538f-f16f-49f0-a431-70b5444c7349",
+   "target_ref": "attack-pattern--5658ad88-7510-490e-a351-95d50b1bcd91",
+   "revoked": false,
+   "created": "2026-04-20T20:58:48.359Z",
+   "modified": "2026-04-20T20:58:48.359Z"
+  },
+  {
+   "type": "relationship",
+   "id": "relationship--2fd35996-196f-4a58-9dab-07f52c74f4d3",
+   "relationship_type": "subtechnique-of",
+   "source_ref": "attack-pattern--4344d1b8-968b-4697-9ab9-f9abe5f52265",
+   "target_ref": "attack-pattern--e17cdc00-8b58-4e5f-9d50-4cad1592c4c3",
+   "revoked": false,
+   "created": "2026-04-20T20:54:17.065Z",
+   "modified": "2026-04-20T20:54:17.065Z"
+  },
+  {
+   "type": "relationship",
+   "id": "relationship--a846dbe5-9ef3-4fb6-93d5-f764671a75c8",
+   "relationship_type": "uses",
+   "source_ref": "intrusion-set--381fcf73-60f6-4ab2-9991-6af3cbc35192",
+   "target_ref": "attack-pattern--32632a95-6856-47b9-9ab7-fea5cd7dce00",
+   "revoked": false,
+   "x_mitre_deprecated": false,
+   "created": "2021-04-11T14:06:54.109Z",
+   "modified": "2026-07-31T20:48:33.174Z"
+  },
+  {
+   "type": "relationship",
+   "id": "relationship--cd1be463-233c-43c8-b03d-fa0d6bdd8427",
+   "relationship_type": "subtechnique-of",
+   "source_ref": "attack-pattern--5658ad88-7510-490e-a351-95d50b1bcd91",
+   "target_ref": "attack-pattern--3e9b182e-e493-49e1-9a9b-bd0dfcd34a7c",
+   "revoked": false,
+   "created": "2026-04-20T20:54:19.034Z",
+   "modified": "2026-04-20T20:54:19.034Z"
+  },
+  {
+   "type": "relationship",
+   "id": "relationship--dd164aa3-1bec-4d3b-afb4-25f0e3a29f9f",
+   "relationship_type": "revoked-by",
+   "source_ref": "attack-pattern--40b300ba-f553-48bf-862e-9471b220d455",
+   "target_ref": "attack-pattern--4344d1b8-968b-4697-9ab9-f9abe5f52265",
+   "revoked": false,
+   "created": "2026-04-20T20:58:41.108Z",
+   "modified": "2026-04-20T20:58:41.108Z"
+  },
+  {
+   "type": "relationship",
+   "id": "relationship--eb1e05ef-58df-4c6d-acd7-5cc63ff7f44f",
+   "relationship_type": "uses",
+   "source_ref": "intrusion-set--381fcf73-60f6-4ab2-9991-6af3cbc35192",
+   "target_ref": "attack-pattern--d67adac8-e3b9-44f9-9e6d-6c2a7d69dbe4",
+   "revoked": false,
+   "x_mitre_deprecated": false,
+   "created": "2021-10-08T15:42:24.739Z",
+   "modified": "2026-09-03T20:28:49.114Z"
+  }
+ ]
+}

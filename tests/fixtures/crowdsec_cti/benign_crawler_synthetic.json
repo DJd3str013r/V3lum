@@ -1,0 +1,89 @@
+{
+ "ip": "198.51.100.66",
+ "reputation": "benign",
+ "confidence": "high",
+ "background_noise": "none",
+ "background_noise_score": 0,
+ "ip_range": "198.51.100.0/24",
+ "ip_range_score": 0,
+ "ip_range_24": "198.51.100.0/24",
+ "ip_range_24_reputation": "safe",
+ "ip_range_24_score": 0,
+ "as_name": "EXAMPLE-SEARCH",
+ "as_num": 64501,
+ "location": {
+  "country": "US",
+  "city": null,
+  "latitude": null,
+  "longitude": null
+ },
+ "reverse_dns": "crawl-66.example.org",
+ "behaviors": [
+  {
+   "name": "http:crawl",
+   "label": "HTTP Crawl",
+   "description": "IP has been reported for crawling web pages"
+  }
+ ],
+ "history": {
+  "first_seen": "2025-01-10T00:00:00",
+  "last_seen": "2026-11-25T08:00:00",
+  "full_age": 685,
+  "days_age": 684
+ },
+ "classifications": {
+  "false_positives": [
+   {
+    "name": "seo:crawler",
+    "label": "SEO crawler",
+    "description": "IP belongs to a known SEO crawler and should not be flagged as a threat."
+   }
+  ],
+  "classifications": []
+ },
+ "mitre_techniques": [],
+ "cves": [],
+ "attack_details": [
+  {
+   "name": "crowdsecurity/http-crawl-non_statics",
+   "label": "Aggressive crawl",
+   "description": "Detect aggressive crawl",
+   "references": []
+  }
+ ],
+ "target_countries": {
+  "US": 60,
+  "FR": 20
+ },
+ "scores": {
+  "overall": {
+   "aggressiveness": 1,
+   "threat": 0,
+   "trust": 5,
+   "anomaly": 0,
+   "total": 1
+  },
+  "last_day": {
+   "aggressiveness": 0,
+   "threat": 0,
+   "trust": 5,
+   "anomaly": 0,
+   "total": 0
+  },
+  "last_week": {
+   "aggressiveness": 1,
+   "threat": 0,
+   "trust": 5,
+   "anomaly": 0,
+   "total": 1
+  },
+  "last_month": {
+   "aggressiveness": 1,
+   "threat": 0,
+   "trust": 5,
+   "anomaly": 0,
+   "total": 1
+  }
+ },
+ "references": []
+}

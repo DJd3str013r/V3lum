@@ -1,0 +1,17 @@
+{
+ "_envelope": 1,
+ "_synthetic": "documented Hunter error envelope {errors: [{id, code, details}]}; not observed (no key) - 451 when the person asked Hunter to stop processing",
+ "status": 451,
+ "headers": {
+  "content-type": "application/json; charset=utf-8"
+ },
+ "body": {
+  "errors": [
+   {
+    "id": "unavailable_for_legal_reasons",
+    "code": 451,
+    "details": "We have chosen not to process this person's data."
+   }
+  ]
+ }
+}

@@ -1,0 +1,8 @@
+{
+ "_note": "synthetic: 422 -> ERROR (request bug), never EMPTY",
+ "status": 422,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": "{\"detail\": [{\"loc\": [\"body\", \"queries\", \"q0\", \"schema\"], \"msg\": \"field required\", \"type\": \"value_error.missing\"}]}"
+}

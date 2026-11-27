@@ -1,0 +1,289 @@
+{
+ "schema": "v3lum.threat_actor_handles_lists/1",
+ "source": "https://github.com/spmedia/Threat-Actor-Usernames-Scrape (README.md, MIT)",
+ "readme_last_updated": "July 20, 2026",
+ "captured_at": "2026-11-26",
+ "notes": "Per-list manifest (file name, forum title, active/dead section, scrape date range, amount) transcribed from the dataset README for batch p2-G05-2 (P195). Only the dates are kept from the README date-range prose. The handle lists themselves are runtime downloads (v3lum data update), never bundled. The dead-forum lists the README links (9 files) answered HTTP 404 on raw.githubusercontent.com on 2026-11-26: they are listed under missing_upstream, not registered, and reported as not covered by the module until upstream restores them.",
+ "missing_upstream": [
+  {
+   "file": "dead_forum_users_nohide_io.txt",
+   "title": "NoHide.io",
+   "status": "dead",
+   "reason": "HTTP 404 upstream on 2026-11-26 (linked by the README)"
+  },
+  {
+   "file": "dead_forum_users_breachforums_st.txt",
+   "title": "BreachForums.st",
+   "status": "dead",
+   "date_range": "2025-03 to 2025-04-15",
+   "reason": "HTTP 404 upstream on 2026-11-26 (still linked by the README at the repository root)"
+  },
+  {
+   "file": "dead_forum_users_breached_hn.txt",
+   "title": "BreachForums.hn",
+   "status": "dead",
+   "date_range": "2025-07-26 to 2025-08-11",
+   "reason": "HTTP 404 upstream on 2026-11-26 (still linked by the README at the repository root)"
+  },
+  {
+   "file": "forum_users_breachforumsBF.txt",
+   "title": "BreachForums.as",
+   "status": "dead",
+   "date_range": "2025-12-18 to 2026-03-16",
+   "reason": "HTTP 404 upstream on 2026-11-26 (still linked by the README at the repository root)"
+  },
+  {
+   "file": "dead_forum_users_breachstars.txt",
+   "title": "BreachStars.io",
+   "status": "dead",
+   "date_range": "2025-09-09 to 2026-01-24",
+   "reason": "HTTP 404 upstream on 2026-11-26 (still linked by the README at the repository root)"
+  },
+  {
+   "file": "dead_forum_users_leakbase.txt",
+   "title": "Leakbase.la",
+   "status": "dead",
+   "date_range": "2025-08-22 to 2026-03-04",
+   "reason": "HTTP 404 upstream on 2026-11-26 (still linked by the README at the repository root)"
+  },
+  {
+   "file": "dead_forum_users_umbra.txt",
+   "title": "Umbra.by",
+   "status": "dead",
+   "date_range": "2025-01-03 to 2026-04-01",
+   "reason": "HTTP 404 upstream on 2026-11-26 (still linked by the README at the repository root)"
+  },
+  {
+   "file": "dead_forum_users_ramp.txt",
+   "title": "RAMP",
+   "status": "dead",
+   "date_range": "2026-01 to 2026-01",
+   "reason": "HTTP 404 upstream on 2026-11-26 (still linked by the README at the repository root)"
+  },
+  {
+   "file": "dead_forum_users_nulled.txt",
+   "title": "Nulled",
+   "status": "dead",
+   "date_range": "2018 to 2018",
+   "reason": "HTTP 404 upstream on 2026-11-26 (still linked by the README at the repository root)"
+  }
+ ],
+ "lists": [
+  {
+   "file": "forum_users_cracked.txt",
+   "forum": "cracked",
+   "kind": "forum",
+   "title": "Cracked.sh",
+   "status": "active",
+   "date_start": "2025-05-27",
+   "date_end": null,
+   "ongoing": true,
+   "date_range": "2025-05-27 to current date",
+   "amount": 303811
+  },
+  {
+   "file": "forum_users_darkforums.txt",
+   "forum": "darkforums",
+   "kind": "forum",
+   "title": "DarkForums.as",
+   "status": "active",
+   "date_start": "2025-06-01",
+   "date_end": null,
+   "ongoing": true,
+   "date_range": "2025-06-01 to current date",
+   "amount": 91890
+  },
+  {
+   "file": "forum_users_patched.txt",
+   "forum": "patched",
+   "kind": "forum",
+   "title": "Patched.to",
+   "status": "active",
+   "date_start": "2025-08-23",
+   "date_end": null,
+   "ongoing": true,
+   "date_range": "2025-08-23 to current date",
+   "amount": 50802
+  },
+  {
+   "file": "forum_users_hackforums.txt",
+   "forum": "hackforums",
+   "kind": "forum",
+   "title": "HackForums.net",
+   "status": "active",
+   "date_start": "2025-08-25",
+   "date_end": null,
+   "ongoing": true,
+   "date_range": "2025-08-25 to current date",
+   "amount": 61730
+  },
+  {
+   "file": "forum_users_oguser.txt",
+   "forum": "oguser",
+   "kind": "forum",
+   "title": "OGUser.com/OGU",
+   "status": "active",
+   "date_start": "2025-10-07",
+   "date_end": null,
+   "ongoing": true,
+   "date_range": "2025-10-07 to current date",
+   "amount": 16164
+  },
+  {
+   "file": "forum_users_blackhatworld.txt",
+   "forum": "blackhatworld",
+   "kind": "forum",
+   "title": "BlackHatWorld",
+   "status": "active",
+   "date_start": "2025-10-09",
+   "date_end": null,
+   "ongoing": true,
+   "date_range": "2025-10-09 to current date",
+   "amount": 41519
+  },
+  {
+   "file": "forum_users_darknetarmy.txt",
+   "forum": "darknetarmy",
+   "kind": "forum",
+   "title": "DarknetArmy.io",
+   "status": "active",
+   "date_start": "2025-12-14",
+   "date_end": null,
+   "ongoing": true,
+   "date_range": "2025-12-14 to current date",
+   "amount": 106483
+  },
+  {
+   "file": "forum_users_xss.txt",
+   "forum": "xss",
+   "kind": "forum",
+   "title": "XSS.pro",
+   "status": "active",
+   "date_start": "2025-12-25",
+   "date_end": null,
+   "ongoing": true,
+   "date_range": "2025-12-25 to current date",
+   "amount": 12575
+  },
+  {
+   "file": "forum_users_dread.txt",
+   "forum": "dread",
+   "kind": "forum",
+   "title": "Dread",
+   "status": "active",
+   "date_start": "2025-12-27",
+   "date_end": null,
+   "ongoing": true,
+   "date_range": "2025-12-27 to current date",
+   "amount": 28343
+  },
+  {
+   "file": "forum_users_rehubcom.txt",
+   "forum": "rehubcom",
+   "kind": "forum",
+   "title": "Rehubcom.ag",
+   "status": "active",
+   "date_start": "2026-01-13",
+   "date_end": null,
+   "ongoing": true,
+   "date_range": "2026-01-13 to current date",
+   "amount": 2922
+  },
+  {
+   "file": "forum_users_ascarding.txt",
+   "forum": "ascarding",
+   "kind": "forum",
+   "title": "ASCarding.net",
+   "status": "active",
+   "date_start": "2026-02-05",
+   "date_end": null,
+   "ongoing": true,
+   "date_range": "2026-02-05 to current date",
+   "amount": 19938
+  },
+  {
+   "file": "forum_users_altenen.txt",
+   "forum": "altenen",
+   "kind": "forum",
+   "title": "Altenen.is",
+   "status": "active",
+   "date_start": "2026-02-07",
+   "date_end": null,
+   "ongoing": true,
+   "date_range": "2026-02-07 to current date",
+   "amount": 136864
+  },
+  {
+   "file": "forum_users_craxpro.txt",
+   "forum": "craxpro",
+   "kind": "forum",
+   "title": "CraxPro.org",
+   "status": "active",
+   "date_start": "2026-03-31",
+   "date_end": null,
+   "ongoing": true,
+   "date_range": "2026-03-31 to current date",
+   "amount": 11147
+  },
+  {
+   "file": "forum_users_xreactor.txt",
+   "forum": "xreactor",
+   "kind": "forum",
+   "title": "xReactor.org",
+   "status": "active",
+   "date_start": "2026-03-31",
+   "date_end": null,
+   "ongoing": true,
+   "date_range": "2026-03-31 to current date",
+   "amount": 17052
+  },
+  {
+   "file": "forum_users_breached2026.txt",
+   "forum": "breached2026",
+   "kind": "forum",
+   "title": "Breached.st",
+   "status": "active",
+   "date_start": "2026-05-15",
+   "date_end": null,
+   "ongoing": true,
+   "date_range": "2026-05-15 to current date",
+   "amount": 24913
+  },
+  {
+   "file": "forum_users_pwnforums.txt",
+   "forum": "pwnforums",
+   "kind": "forum",
+   "title": "PwnForums.st",
+   "status": "active",
+   "date_start": "2026-05-22",
+   "date_end": null,
+   "ongoing": true,
+   "date_range": "2026-05-22 to current date",
+   "amount": 18796
+  },
+  {
+   "file": "forum_users_tierone.txt",
+   "forum": "tierone",
+   "kind": "forum",
+   "title": "T1erOne",
+   "status": "active",
+   "date_start": "2026-06-06",
+   "date_end": null,
+   "ongoing": true,
+   "date_range": "2026-06-06 to current date",
+   "amount": 229
+  },
+  {
+   "file": "dnm_users_drughub.txt",
+   "forum": "drughub",
+   "kind": "dnm",
+   "title": "Drughub",
+   "status": "active",
+   "date_start": "2026-09-04",
+   "date_end": null,
+   "ongoing": true,
+   "date_range": "2026-09-04 to current date",
+   "amount": 1807
+  }
+ ]
+}

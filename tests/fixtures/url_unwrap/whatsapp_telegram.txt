@@ -1,0 +1,5 @@
+Atendimento: https://wa.me/551155550123?text=oi ou https://api.whatsapp.com/send?phone=551155550145&text=Ol%C3%A1
+Numero sem DDI: https://wa.me/1155550177
+Canal oficial: https://t.me/example_channel e previa https://t.me/s/example_news
+Grupo: https://t.me/+AbCdEfGhIjKlMnOp e antigo https://t.me/joinchat/AAAAAEexampleInviteCode
+Compartilhar: https://t.me/share/url?url=https%3A%2F%2Fpayout.example.org

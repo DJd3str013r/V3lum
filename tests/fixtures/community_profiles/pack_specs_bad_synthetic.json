@@ -1,0 +1,79 @@
+{
+ "_fixture": "SYNTHETIC negative cases for the FC2 lint (never real specs)",
+ "specs": [
+  {
+   "module_group": "community_profiles_pack",
+   "disclosure": "third_party",
+   "opsec": "passive",
+   "inputs": [
+    "email"
+   ],
+   "run_on": "any",
+   "default_enabled": false,
+   "max_requests": 1,
+   "id": "duolingo_email",
+   "hosts": [
+    "www.duolingo.com"
+   ],
+   "request": {
+    "method": "GET",
+    "url": "https://www.duolingo.com/2017-06-30/users?email={email}",
+    "params": {}
+   }
+  },
+  {
+   "module_group": "community_profiles_pack",
+   "disclosure": "third_party",
+   "opsec": "passive",
+   "inputs": [
+    "url"
+   ],
+   "run_on": "any",
+   "default_enabled": false,
+   "max_requests": 1,
+   "id": "duolingo_username",
+   "hosts": [
+    "www.duolingo.com"
+   ],
+   "request": {
+    "method": "GET",
+    "url": "https://www.duolingo.com/2017-06-30/users?username={username}"
+   }
+  },
+  {
+   "module_group": "community_profiles_pack",
+   "disclosure": "third_party",
+   "opsec": "passive",
+   "inputs": [
+    "url"
+   ],
+   "run_on": "any",
+   "default_enabled": false,
+   "max_requests": 1,
+   "id": "phone_param",
+   "request": {
+    "method": "GET",
+    "url": "https://api.example.com/lookup",
+    "params": {
+     "phone": "{phone}"
+    }
+   }
+  },
+  {
+   "module_group": "community_profiles_pack",
+   "disclosure": "third_party",
+   "opsec": "passive",
+   "inputs": [
+    "url"
+   ],
+   "run_on": "any",
+   "default_enabled": false,
+   "max_requests": 1,
+   "id": "templated_host",
+   "request": {
+    "method": "GET",
+    "url": "https://{host}/user/{username}"
+   }
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {"mode": "passive", "tlp": "amber"},
+  "nodes": [
+    {
+      "key": "cnpj:00000000000191",
+      "depth": 0,
+      "seed": true,
+      "attributes": {"region": [{"value": "DF", "source": "fixture_company_module"}]}
+    },
+    {
+      "key": "phone:+5521995550100",
+      "depth": 1,
+      "attributes": {
+        "phone_ddd": [{"value": {"code": "21", "allocated": true, "uf": "RJ", "ufs": ["RJ"], "main_city": "Rio de Janeiro"}, "source": "phone_parse"}]
+      }
+    },
+    {
+      "key": "cep:70040912",
+      "depth": 1,
+      "attributes": {"region": [{"value": "DF", "source": "fixture_cep_module"}]}
+    }
+  ],
+  "edges": [
+    {"src": "cnpj:00000000000191", "dst": "phone:+5521995550100", "relation": "phone_of", "module": "fixture_company_module", "confidence": 0.9},
+    {"src": "cnpj:00000000000191", "dst": "cep:70040912", "relation": "located_at", "module": "fixture_company_module", "confidence": 0.9}
+  ],
+  "expect": {"phone_ddd_region_consistency": {"min": 2, "max": 2, "severity": "info", "confidence_label": "possible"}}
+}

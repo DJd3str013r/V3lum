@@ -1,0 +1,56 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "subdomain_app",
+  "name": "subdomain.app query API (api.subdomain.app)",
+  "operator": "subdomain.app (operator not identified in public terms)",
+  "hosts": [
+    "api.subdomain.app"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "No published terms or privacy policy reviewed; operator not identified (A8 unknown). Chair decision P016: the extra feeds stay unknown tier until a promotion is recorded.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "F",
+    "justification": "Cannot be judged yet: no documentation of how the name list is collected; answers are capped (total > count means truncated)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 15,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "query": {
+      "title": "subdomain.app query API (GET /v1/query?domain={domain} -> {domain, count, total, subdomains[]})",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://api.subdomain.app/v1/query?domain=example.com",
+        "quote": "Registry terms per feed (A1 BR3): ... subdomain.app and ScanMalware get entries recorded by legal with evidence before they run",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "subdomain_app",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P016 cond 4): 'unknown' (never runs in any profile) until legal records an entry with evidence. Research C0053; live 2026-11-26: example.com {count 0, total 0}, google.com {count 10000, total 211419} -> total > count is a partial (truncated) answer."
+    }
+  },
+  "notes": "Owned by batch p2-G01-3 (P016, module subdomains_passive_extra)."
+}

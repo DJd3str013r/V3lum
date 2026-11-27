@@ -1,0 +1,45 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "spamcop",
+  "name": "SpamCop Blocking List (bl.spamcop.net)",
+  "operator": "SpamCop (Cisco Talos)",
+  "hosts": [],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Operated by Cisco Talos: an established company with published terms, a privacy policy and a business offering (A8 trusted).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Automated listing from user spam reports with a short expiry: usually right about current spam sources, never about other abuse."
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "bl": {
+      "title": "SpamCop BL (DNS A answer 127.0.0.2 = listed; TXT gives the reason)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.spamcop.net/bl.shtml",
+        "quote": "P045 cond 1 (binding council text): Per-list terms registry; a list is wired only once its entry is recorded. SpamCop and DroneBL are 'open' within their free-use terms.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "dnsbl",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P045 cond 1); research C0083 (SpamCop test point 2.0.0.127.bl.spamcop.net answered 127.0.0.2 through Cloudflare DoH, 2026-11-26). Queried through the core DoH layer (it answers public resolvers). Used by dnsbl."
+    }
+  },
+  "notes": "Owned by batch p2-G02-2 (P045). DNS only: the list is queried through DNS A lookups (core DoH layer or the system resolver), never over HTTP, so the provider has no HTTP host. Every DNSBL counts as ONE 'spam' family vote in P171 consensus (upstream_family 'dnsbl', P045 cond 8)."
+}

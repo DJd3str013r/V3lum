@@ -1,0 +1,98 @@
+{
+  "schema": "v3lum.pivot_pack/1",
+  "pack": "structural_hash_mb",
+  "title": "MalwareBazaar structural-hash searches (batch p3-G07-2: structural_hash_pivots)",
+  "notes": "Manual counterparts of the P351 remote pivots: the MalwareBazaar browse search by imphash, TLSH, telfhash, gimphash and icon dHash. Search pages only (nothing submits, uploads or downloads samples). Shown when automation is skipped (e.g. MalwareBazaar 'license' terms under the corporate profile, A1). Not opened from this egress: abuse.ch browse pages put non-browser clients behind a browser check (research C0408), hence verified false and antibot true.",
+  "links": [
+    {
+      "id": "bazaar_imphash",
+      "label": "MalwareBazaar samples sharing this imphash",
+      "template": "https://bazaar.abuse.ch/browse.php?search=imphash%3A{q}",
+      "entity_types": [
+        "imphash"
+      ],
+      "category": "search",
+      "host": "bazaar.abuse.ch",
+      "verified": false,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "MalwareBazaar browse search by imphash (read-only; P351 FC2 manual counterpart of query=get_imphash). abuse.ch browse pages send non-browser clients to a browser check, so this stays a manual link; the result list is a hypothesis, never a verdict."
+    },
+    {
+      "id": "bazaar_tlsh",
+      "label": "MalwareBazaar samples sharing this TLSH",
+      "template": "https://bazaar.abuse.ch/browse.php?search=tlsh%3A{q}",
+      "entity_types": [
+        "tlsh"
+      ],
+      "category": "search",
+      "host": "bazaar.abuse.ch",
+      "verified": false,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "MalwareBazaar browse search by tlsh (read-only; P351 FC2 manual counterpart of query=get_tlsh). abuse.ch browse pages send non-browser clients to a browser check, so this stays a manual link; the result list is a hypothesis, never a verdict."
+    },
+    {
+      "id": "bazaar_telfhash",
+      "label": "MalwareBazaar samples sharing this telfhash",
+      "template": "https://bazaar.abuse.ch/browse.php?search=telfhash%3A{q}",
+      "entity_types": [
+        "telfhash"
+      ],
+      "category": "search",
+      "host": "bazaar.abuse.ch",
+      "verified": false,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "MalwareBazaar browse search by telfhash (read-only; P351 FC2 manual counterpart of query=get_telfhash). abuse.ch browse pages send non-browser clients to a browser check, so this stays a manual link; the result list is a hypothesis, never a verdict."
+    },
+    {
+      "id": "bazaar_gimphash",
+      "label": "MalwareBazaar samples sharing this gimphash",
+      "template": "https://bazaar.abuse.ch/browse.php?search=gimphash%3A{q}",
+      "entity_types": [
+        "gimphash"
+      ],
+      "category": "search",
+      "host": "bazaar.abuse.ch",
+      "verified": false,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "MalwareBazaar browse search by gimphash (read-only; P351 FC2 manual counterpart of query=get_gimphash). abuse.ch browse pages send non-browser clients to a browser check, so this stays a manual link; the result list is a hypothesis, never a verdict."
+    },
+    {
+      "id": "bazaar_icon_dhash",
+      "label": "MalwareBazaar samples sharing this icon dHash",
+      "template": "https://bazaar.abuse.ch/browse.php?search=dhash_icon%3A{q}",
+      "entity_types": [
+        "icon_dhash"
+      ],
+      "category": "search",
+      "host": "bazaar.abuse.ch",
+      "verified": false,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "MalwareBazaar browse search by dhash_icon (read-only; P351 FC2 manual counterpart of query=get_dhash_icon). abuse.ch browse pages send non-browser clients to a browser check, so this stays a manual link; the result list is a hypothesis, never a verdict."
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+site-01.example.com	ua
+site-02.example.com	ua
+site-03.example.com	ua
+site-04.example.com	ua
+site-05.example.com	ua
+site-06.example.com	ua
+site-07.example.com	ua
+site-08.example.com	ua
+site-09.example.com	ua
+site-10.example.com	ua

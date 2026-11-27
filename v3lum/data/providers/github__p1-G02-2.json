@@ -1,0 +1,49 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "github",
+  "hosts": [],
+  "sources": {
+    "ip_blocklists_ipsum": {
+      "title": "IPsum aggregated threat IPs (stamparm/ipsum ipsum.txt: IP and number of lists)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/stamparm/ipsum/blob/master/LICENSE",
+        "quote": "This is free and unencumbered software released into the public domain.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "ipsum",
+      "sanitizer": null,
+      "dataset": "ip_blocklists.ipsum.txt",
+      "notes": "Quote: first sentence of the Unlicense in the repository LICENSE (research C0340: 'Unlicense (public domain) - LICENSE verified'). Aggregate of 30+ public lists: a hit counts as the families it embeds (P149 cond 5); count < 3 = LOW, count >= 3 = MEDIUM. The embedded families are a conservative assumption (the maintainer's list of upstream feeds is not machine-readable). Used by ip_blocklists.",
+      "embeds": [
+        "abuse.ch",
+        "binarydefense",
+        "blocklist.de",
+        "cins",
+        "dataplane",
+        "dshield",
+        "emergingthreats",
+        "greensnow",
+        "voipbl"
+      ]
+    },
+    "tor_exit_history_mthcht": {
+      "title": "mthcht awesome-lists Tor node history (tor_nodes_history.json: relay presence periods per IP)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/mthcht/awesome-lists/blob/main/LICENSE",
+        "quote": "Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "tor-project",
+      "sanitizer": null,
+      "dataset": "tor_exit_history.mthcht_tor_nodes_history.json",
+      "notes": "Quote: MIT licence of the repository (research C0465: 'mthcht/awesome-lists MIT'). 54 MB single-line JSON (296k IPs, 2007-2026): fetched only by `v3lum data update` (P040 cond 4); relay periods per IP, role at last sighting; the rDNS 'host' field is never kept. Derived from Tor Project data (family tor-project). Used by tor_exit_history."
+    }
+  },
+  "error_markers": []
+}

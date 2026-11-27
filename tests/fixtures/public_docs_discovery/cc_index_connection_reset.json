@@ -1,0 +1,12 @@
+{
+ "_fixture": "recorded transport outcome (no HTTP response was received)",
+ "source": "commoncrawl_index",
+ "request_url": "https://index.commoncrawl.org/CC-MAIN-2026-47-index?url=example.com&output=json&limit=5",
+ "observed_utc": "2026-11-26T04:36:22Z",
+ "attempts_from_this_egress": "2 of 2 index queries with results reset; collinfo.json 200 and a no-result query 404 on the same host",
+ "http_status": null,
+ "curl_exit": 35,
+ "error": "curl: (35) Recv failure: Connection reset by peer",
+ "elapsed_s": 2.07,
+ "agent_proxy": "ws_closed_mid_exchange (the tunnel to the egress proxy closed before the exchange completed)"
+}

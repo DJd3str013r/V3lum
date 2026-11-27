@@ -1,0 +1,19 @@
+{
+ "_meta": {
+  "module": "pypi_package",
+  "case": "error_in_200_challenge",
+  "source": "C0253 pypi.org",
+  "request": {
+   "method": "GET",
+   "url": "https://pypi.org/user/example-dev/"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "DERIVED",
+  "note": "head text of the research capture (live_osint__auth_and_block_responses.json, pypi_user, HTTP 200); pypi.org/user/* is never fetched by the module (FC4): the fixture tests that a challenge served with 200 on any PyPI path is BLOCKED, never data"
+ },
+ "status": 200,
+ "headers": {
+  "content-type": "text/html; charset=utf-8"
+ },
+ "body": "<!DOCTYPE html><html><head><title>Client Challenge</title><style>#loading-error { font-size: 16px; font-family: 'Inter', sans-serif; margin-top: 10px; margin-left: 10px; display: none; }</style></head><body><noscript>JavaScript is disabled in your browser. Please enable JavaScript to proceed.</noscript><div id=\"loading-error\">A required part of this site couldn’t load. This may be due to a browser extension, network issues, or browser settings.</div></body></html>"
+}

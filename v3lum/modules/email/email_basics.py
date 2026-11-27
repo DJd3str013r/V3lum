@@ -9,6 +9,11 @@ address record, or an RFC 7505 null MX). An unverified answer is recorded as the
 addresses are flagged through ``entities.generic_address_kind`` as context only (never scored, A4).
 Derived personal identifiers (the base mailbox of a sub-address, the local part as a handle) are
 pivots for analyst selection (``expand=False``): only the typed address goes to other sources.
+
+The free-webmail flag comes from the one set of e-mail hygiene data files (P088 C1): the AfterShip
+free-provider list (bundled, refreshable with ``v3lum data update``) plus the V3LUM supplement, read
+through ``email_hygiene.is_free_provider`` (PSL-aware, local copies only, never a download). The
+hard-coded FREE_PROVIDERS set of v1 moved into ``v3lum/data/email_hygiene/local_supplement.json``.
 """
 
 from __future__ import annotations
@@ -19,13 +24,8 @@ from v3lum.core.entities import Entity, generic_address_kind
 from v3lum.core.entities import EntityType as T
 from v3lum.core.models import ModuleResult, Opsec, Status
 from v3lum.core.module import Module, register
+from v3lum.modules.email.email_hygiene import SRC_FREE, is_free_provider
 
-FREE_PROVIDERS = {
-    "gmail.com", "googlemail.com", "outlook.com", "hotmail.com", "live.com", "msn.com", "yahoo.com", "yahoo.com.br",
-    "icloud.com", "me.com", "mac.com", "aol.com", "proton.me", "protonmail.com", "pm.me", "tutanota.com", "tuta.io",
-    "gmx.com", "gmx.net", "mail.com", "yandex.com", "yandex.ru", "mail.ru", "zoho.com", "uol.com.br", "bol.com.br",
-    "terra.com.br", "ig.com.br", "hotmail.com.br", "outlook.com.br", "live.com.br", "rocketmail.com", "inbox.com",
-}
 SOURCE = "core_doh.resolvers"
 BASE_MAILBOX_NOTE = "base mailbox of a sub-address (same mailbox): analyst selection required"
 
@@ -46,7 +46,7 @@ class EmailBasics(Module):
     opsec = Opsec.PASSIVE
     disclosure = "third_party"
     provider = "core_doh"
-    sources = (SOURCE,)
+    sources = (SOURCE, SRC_FREE)  # DoH + the free-provider dataset (local copy or bundled, P088 C1)
     hosts = ()
     access_model = "free_noauth_unlimited"
     max_requests = 0  # DoH only: ctx.dns is not counted
@@ -58,7 +58,7 @@ class EmailBasics(Module):
         res = self.result(entity)
         local, domain = entity.value.split("@", 1)
         base_local = local.split("+", 1)[0]
-        free = domain in FREE_PROVIDERS
+        free = is_free_provider(domain, ctx)
         generic = generic_address_kind(entity.value)
         res.attr("free_provider", free)
         raw: dict[str, Any] = {"local": local, "domain": domain, "free_provider": free, "generic_address": generic}

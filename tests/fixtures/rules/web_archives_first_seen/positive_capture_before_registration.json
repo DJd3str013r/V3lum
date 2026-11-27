@@ -1,0 +1,18 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "nodes": [
+    {
+      "key": "domain:dropped-name.example",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "created": [{"value": "2026-11-01", "source": "rdap"}],
+        "first_cert_seen": [{"value": "2026-11-02T00:00:00Z", "source": "ct_logs"}],
+        "archive_first": [{"value": "2014-03-05T10:10:10Z", "source": "web_archives"}, {"value": "2016-01-01T00:00:00Z", "source": "web_archives_deep"}]
+      }
+    }
+  ],
+  "edges": [],
+  "expect": {"web_archives_first_seen": {"min": 1, "max": 1, "severity": "info"}}
+}

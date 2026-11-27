@@ -1,0 +1,15 @@
+{
+ "request": "GET https://dns.projectdiscovery.io/dns/example.com/subdomains (Authorization: <bad key>)",
+ "response": {
+  "status": 401,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": {
+   "error": "unauthorized"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "status per research (401 without key); body text is a PLACEHOLDER (not captured)"
+}

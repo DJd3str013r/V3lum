@@ -1,0 +1,5 @@
+{
+ "source": "pefile",
+ "error": "PEFormatError",
+ "message": "'Invalid e_lfanew value, probably not a PE file'"
+}

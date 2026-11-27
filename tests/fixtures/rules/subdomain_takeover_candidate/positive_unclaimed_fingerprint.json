@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "$comment": "Analyst-typed third-party name CNAME'd to Help Scout docs with the provider's unclaimed-resource fingerprint: MEDIUM (not an own asset), labelled third_party",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "nodes": [
+    {
+      "key": "domain:docs.partner-co.example",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "takeover_fingerprint": [
+          {
+            "value": {
+              "service": "Help Scout",
+              "fingerprint": "No settings were found for this company:",
+              "source": "urlscan.search",
+              "observed_at": "2026-11-20"
+            },
+            "source": "takeover_check"
+          }
+        ]
+      }
+    },
+    {
+      "key": "domain:partnerco.helpscoutdocs.com",
+      "depth": 1,
+      "seed": false
+    }
+  ],
+  "edges": [
+    {
+      "src": "domain:docs.partner-co.example",
+      "dst": "domain:partnerco.helpscoutdocs.com",
+      "relation": "cname_to",
+      "module": "dns_records",
+      "confidence": 0.9
+    }
+  ],
+  "expect": {
+    "subdomain_takeover_candidate": {
+      "min": 1,
+      "max": 1,
+      "severity": "medium"
+    }
+  }
+}

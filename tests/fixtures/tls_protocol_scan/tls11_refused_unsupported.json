@@ -1,0 +1,14 @@
+{
+ "server": "legacy_tls10",
+ "probe": "tls11",
+ "trust": "self_signed_ca",
+ "ok": false,
+ "stage": "handshake",
+ "version": null,
+ "cipher": null,
+ "error_type": "SSLError",
+ "reason": "UNSUPPORTED_PROTOCOL",
+ "library": "SSL",
+ "verify_code": null,
+ "str": "[SSL: UNSUPPORTED_PROTOCOL] unsupported protocol (_ssl.c:1035)"
+}

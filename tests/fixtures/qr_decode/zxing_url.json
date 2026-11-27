@@ -1,0 +1,21 @@
+{
+ "width": 164,
+ "height": 164,
+ "results": [
+  {
+   "format": "QR Code",
+   "content_type": "Text",
+   "text": "https://example.com/v3lum-qr-fixture?ref=test",
+   "text_len": 45,
+   "bytes_hex": "68747470733a2f2f6578616d706c652e636f6d2f76336c756d2d71722d666978747572653f7265663d74657374",
+   "bytes_len": 45,
+   "truncated": false,
+   "valid": true,
+   "error": null,
+   "symbology_identifier": "]Q1",
+   "ec_level": "Q",
+   "orientation": 0,
+   "position": "16x16 148x16 148x148 16x148"
+  }
+ ]
+}

@@ -1,0 +1,59 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "$comment": "SSH on an own address from undated InternetDB data: LOW, confidence lowered one level (POSSIBLE)",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "org_profile": {
+    "org": {
+      "name": "Acme"
+    },
+    "domains": [
+      {
+        "name": "acme-corp.example",
+        "verification": "txt_verified",
+        "criticality": "high"
+      }
+    ],
+    "cidrs": [
+      {
+        "value": "203.0.113.0/24",
+        "criticality": "high"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "key": "ipv4:203.0.113.11",
+      "depth": 0,
+      "seed": true,
+      "ownership": "own_asset",
+      "tags": [
+        "own_asset"
+      ],
+      "attributes": {
+        "open_ports": [
+          {
+            "value": [
+              22,
+              443
+            ],
+            "source": "shodan_internetdb"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [],
+  "expect": {
+    "exposed_remote_admin": {
+      "min": 1,
+      "max": 1,
+      "severity": "low",
+      "confidence_label": "possible"
+    }
+  }
+}

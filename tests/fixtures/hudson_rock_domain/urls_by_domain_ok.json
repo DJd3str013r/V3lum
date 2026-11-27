@@ -1,0 +1,129 @@
+{
+ "message": "The following are URLs identified based on Infostealers infections, to learn more please visit www.hudsonrock.com/free-tools",
+ "data": {
+  "employees_urls": [
+   {
+    "occurrence": 44,
+    "type": "employee",
+    "url": "http://gitlab.example.com/users/sign_in"
+   },
+   {
+    "occurrence": 40,
+    "type": "employee",
+    "url": "https://mail.example.com"
+   },
+   {
+    "occurrence": 12,
+    "type": "employee",
+    "url": "https://www.example.com"
+   },
+   {
+    "occurrence": 11,
+    "type": "employee",
+    "url": "https://example.com"
+   },
+   {
+    "occurrence": 8,
+    "type": "employee",
+    "url": "http://gitlab.example.com"
+   },
+   {
+    "occurrence": 8,
+    "type": "employee",
+    "url": "https://slesai.example.com"
+   },
+   {
+    "occurrence": 7,
+    "type": "employee",
+    "url": "http://gitlab.example.com:11000/users/sign_in"
+   },
+   {
+    "occurrence": 4,
+    "type": "employee",
+    "url": "http://jira.example.com:3080/secure/Dashboard.jspa"
+   },
+   {
+    "occurrence": 4,
+    "type": "employee",
+    "url": "ftp://ftp.example.com:21"
+   },
+   {
+    "occurrence": 3,
+    "type": "employee",
+    "url": "http://n001.hdfs.example.com:8080"
+   },
+   {
+    "occurrence": 3,
+    "type": "employee",
+    "url": "http://gitlab.example.com:8090/users/sign_in"
+   },
+   {
+    "occurrence": 3,
+    "type": "employee",
+    "url": "https://sso.example.com/login?username=fixture.user&session=AbC123xYz789QwE456"
+   },
+   {
+    "occurrence": 2,
+    "type": "employee",
+    "url": "https://sso.example.com/login?username=other"
+   },
+   {
+    "occurrence": 2,
+    "type": "employee",
+    "url": "https://gitlab.example.com/users/fixture-user/emails"
+   },
+   {
+    "occurrence": 1,
+    "type": "employee",
+    "url": "https://portal.example.com/password_reset/Zk9xQ2V4YW1wbGVUb2tlbjEyMzQ1Njc4OTA"
+   },
+   {
+    "occurrence": 1,
+    "type": "employee",
+    "url": "https://fixture:secret@ftp.example.com/files/report.pdf"
+   },
+   {
+    "occurrence": 1,
+    "type": "employee",
+    "url": "https://Example.com/~fixture-user/index.html"
+   }
+  ],
+  "clients_urls": [
+   {
+    "occurrence": 13238,
+    "type": "client",
+    "url": "http://gateway.example.com/loginpages/login.shtml"
+   },
+   {
+    "occurrence": 1794,
+    "type": "client",
+    "url": "https://example.com"
+   },
+   {
+    "occurrence": 1347,
+    "type": "client",
+    "url": "http://gateway.example.com"
+   },
+   {
+    "occurrence": 1,
+    "type": "client",
+    "url": "https://mail.example.com/owa/recipient@example.com/"
+   },
+   {
+    "occurrence": 1,
+    "type": "client",
+    "url": "https://app.example.com/profile/123456789"
+   },
+   {
+    "occurrence": 1,
+    "type": "client",
+    "url": "javascript:alert(1)"
+   },
+   {
+    "occurrence": 1,
+    "type": "client",
+    "url": "https://gitlab.example.com/FixtureUser/project/-/settings"
+   }
+  ]
+ }
+}

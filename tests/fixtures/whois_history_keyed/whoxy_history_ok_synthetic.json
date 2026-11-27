@@ -1,0 +1,196 @@
+{
+ "status": 1,
+ "status_reason": "Successful",
+ "total_records_found": 3,
+ "whois_records": [
+  {
+   "num": 1,
+   "status": 1,
+   "domain_name": "example.com",
+   "query_time": "2024-02-10 09:15:00",
+   "whois_server": "whois.registrar.example",
+   "domain_registered": "yes",
+   "create_date": "2015-03-02",
+   "update_date": "2024-01-30",
+   "expiry_date": "2026-03-02",
+   "domain_registrar": {
+    "iana_id": 9999,
+    "registrar_name": "Registrar Example Ltda",
+    "whois_server": "whois.registrar.example",
+    "website_url": "https://registrar.example"
+   },
+   "registrant_contact": {
+    "full_name": "REDACTED FOR PRIVACY",
+    "company_name": "REDACTED FOR PRIVACY",
+    "mailing_address": "Rua Exemplo 100",
+    "city_name": "Sao Paulo",
+    "state_name": "SP",
+    "zip_code": "01000-000",
+    "country_name": "Brazil",
+    "country_code": "BR",
+    "email_address": "Select Request Email Form at https://registrar.example/whois/example.com",
+    "phone_number": "+55 11 5555-0101",
+    "fax_number": "+55 11 5555-0102"
+   },
+   "administrative_contact": {
+    "full_name": "Admin Example Two",
+    "company_name": "Example Holdings Ltda",
+    "mailing_address": "Rua Exemplo 100",
+    "city_name": "Sao Paulo",
+    "state_name": "SP",
+    "zip_code": "01000-000",
+    "country_name": "Brazil",
+    "country_code": "BR",
+    "email_address": "admin02@example.org",
+    "phone_number": "+55 11 5555-0101",
+    "fax_number": "+55 11 5555-0102"
+   },
+   "technical_contact": {
+    "full_name": "Tech Example Three",
+    "company_name": "",
+    "mailing_address": "Rua Exemplo 100",
+    "city_name": "Sao Paulo",
+    "state_name": "SP",
+    "zip_code": "01000-000",
+    "country_name": "Brazil",
+    "country_code": "BR",
+    "email_address": "tech03@example.org",
+    "phone_number": "+55 11 5555-0101",
+    "fax_number": "+55 11 5555-0102"
+   },
+   "name_servers": [
+    "ns1.dns-provider.example",
+    "ns2.dns-provider.example"
+   ],
+   "domain_status": [
+    "clientTransferProhibited"
+   ]
+  },
+  {
+   "num": 2,
+   "status": 1,
+   "domain_name": "example.com",
+   "query_time": "2019-07-01 11:00:00",
+   "whois_server": "whois.registrar.example",
+   "domain_registered": "yes",
+   "create_date": "2015-03-02",
+   "update_date": "2019-06-20",
+   "expiry_date": "2020-03-02",
+   "domain_registrar": {
+    "iana_id": 9999,
+    "registrar_name": "Registrar Example Ltda",
+    "whois_server": "whois.registrar.example",
+    "website_url": "https://registrar.example"
+   },
+   "registrant_contact": {
+    "full_name": "Registration Private",
+    "company_name": "Domains By Proxy, LLC",
+    "mailing_address": "Rua Exemplo 100",
+    "city_name": "Sao Paulo",
+    "state_name": "SP",
+    "zip_code": "01000-000",
+    "country_name": "United States",
+    "country_code": "US",
+    "email_address": "example.com@domainsbyproxy.com",
+    "phone_number": "+55 11 5555-0101",
+    "fax_number": "+55 11 5555-0102"
+   },
+   "administrative_contact": {
+    "full_name": "Admin Example Two",
+    "company_name": "Example Holdings Ltda",
+    "mailing_address": "Rua Exemplo 100",
+    "city_name": "Sao Paulo",
+    "state_name": "SP",
+    "zip_code": "01000-000",
+    "country_name": "Brazil",
+    "country_code": "BR",
+    "email_address": "admin02@example.org",
+    "phone_number": "+55 11 5555-0101",
+    "fax_number": "+55 11 5555-0102"
+   },
+   "technical_contact": {
+    "full_name": "Tech Example Three",
+    "company_name": "",
+    "mailing_address": "Rua Exemplo 100",
+    "city_name": "Sao Paulo",
+    "state_name": "SP",
+    "zip_code": "01000-000",
+    "country_name": "Brazil",
+    "country_code": "BR",
+    "email_address": "tech03@example.org",
+    "phone_number": "+55 11 5555-0101",
+    "fax_number": "+55 11 5555-0102"
+   },
+   "name_servers": [
+    "ns1.dns-provider.example",
+    "ns2.dns-provider.example"
+   ],
+   "domain_status": [
+    "clientTransferProhibited"
+   ]
+  },
+  {
+   "num": 3,
+   "status": 1,
+   "domain_name": "example.com",
+   "query_time": "2016-03-29 08:29:37",
+   "whois_server": "whois.registrar.example",
+   "domain_registered": "yes",
+   "create_date": "2015-03-02",
+   "update_date": "2016-02-11",
+   "expiry_date": "2017-03-02",
+   "domain_registrar": {
+    "iana_id": 9999,
+    "registrar_name": "Registrar Example Ltda",
+    "whois_server": "whois.registrar.example",
+    "website_url": "https://registrar.example"
+   },
+   "registrant_contact": {
+    "full_name": "Registrant Example One",
+    "company_name": "Example Holdings Ltda",
+    "mailing_address": "Rua Exemplo 100",
+    "city_name": "Sao Paulo",
+    "state_name": "SP",
+    "zip_code": "01000-000",
+    "country_name": "Brazil",
+    "country_code": "BR",
+    "email_address": "registrant01@example.org",
+    "phone_number": "+55 11 5555-0101",
+    "fax_number": "+55 11 5555-0102"
+   },
+   "administrative_contact": {
+    "full_name": "Admin Example Two",
+    "company_name": "Example Holdings Ltda",
+    "mailing_address": "Rua Exemplo 100",
+    "city_name": "Sao Paulo",
+    "state_name": "SP",
+    "zip_code": "01000-000",
+    "country_name": "Brazil",
+    "country_code": "BR",
+    "email_address": "admin02@example.org",
+    "phone_number": "+55 11 5555-0101",
+    "fax_number": "+55 11 5555-0102"
+   },
+   "technical_contact": {
+    "full_name": "Tech Example Three",
+    "company_name": "",
+    "mailing_address": "Rua Exemplo 100",
+    "city_name": "Sao Paulo",
+    "state_name": "SP",
+    "zip_code": "01000-000",
+    "country_name": "Brazil",
+    "country_code": "BR",
+    "email_address": "tech03@example.org",
+    "phone_number": "+55 11 5555-0101",
+    "fax_number": "+55 11 5555-0102"
+   },
+   "name_servers": [
+    "ns1.old-host.example",
+    "ns2.old-host.example"
+   ],
+   "domain_status": [
+    "ok"
+   ]
+  }
+ ]
+}

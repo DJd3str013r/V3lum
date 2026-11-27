@@ -1,0 +1,40 @@
+{
+  "schema": "v3lum.pivot_pack/1",
+  "pack": "urlscan_search",
+  "title": "urlscan.io report pages (manual)",
+  "notes": "Owned by batch p1-G03-1 (P066 urlscan_search cond 8: report links urlscan.io/domain/{domain} and urlscan.io/ip/{ip} are the manual links). Search/report pages only: never the scan-submission endpoint (rule 7).",
+  "links": [
+    {
+      "id": "domain",
+      "label": "urlscan.io domain page",
+      "template": "https://urlscan.io/domain/{domain}",
+      "entity_types": ["domain"],
+      "category": "history",
+      "host": "urlscan.io",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Public scans that hit the domain (existing scans only; viewing it never submits a scan)."
+    },
+    {
+      "id": "ip",
+      "label": "urlscan.io IP page",
+      "template": "https://urlscan.io/ip/{ip}",
+      "entity_types": ["ipv4", "ipv6"],
+      "category": "history",
+      "host": "urlscan.io",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Public scans whose pages were served from the IP (existing scans only)."
+    }
+  ]
+}

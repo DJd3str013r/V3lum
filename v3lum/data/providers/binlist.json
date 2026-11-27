@@ -1,0 +1,62 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "binlist",
+  "name": "binlist.net BIN/IIN lookup (lookup.binlist.net)",
+  "operator": "binlist.net (Paylike ApS, Denmark)",
+  "hosts": [
+    "lookup.binlist.net"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Long-running free BIN/IIN lookup service (public since 2014) run by an identifiable payments company with public API documentation and an open-data repository (A8 community; P318 provider_tier community).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Community-maintained IIN ranges: scheme and country are usually right, bank fields are often empty; a missing BIN is not 'unknown BIN' (P318 cond 4)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 15.0,
+    "retries": 0,
+    "ttl": 2592000,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "hour": 5,
+    "burst": 5,
+    "published": true,
+    "evidence_url": "https://binlist.net/",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "lookup": {
+      "title": "lookup.binlist.net/<BIN6-8> with header Accept-Version: 3 (scheme, type, brand, prepaid, country, bank)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://binlist.net/",
+        "quote": "Free BIN/IIN Lookup Web Service ... Requests are throttled at 5 per hour with a burst allowance of 5. ... Get unlimited access from EUR 0.003 per request + a subscription fee. [home page 2026-11-26; no terms of service or licence page published - P318 cond 2: 'if no business-compatible terms are found, its class becomes unknown and the module stays off']",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "binlist",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Batch p3-G12-1 (P318 card_bin). Only the BIN (6-8 digits) is ever sent. Live 2026-11-26: docs BIN 45717360 -> 200 (0.70 s, Cloudflare); BIN 100000 -> 200 with every field empty (no data); 000000 -> 400 with an empty body. Documented: 404 when no card matches, 429 after 5 requests per hour (burst 5). The binlist/data ranges.csv seed (class unknown, no licence file) and FreeBINChecker (Cloudflare Turnstile) are not part of this build (P318 cond 4)."
+    }
+  },
+  "notes": "Owned by batch p3-G12-1 (P318). Terms class 'unknown' until legal records business-compatible terms or a paid plan: the module stays off (default set and corporate profile)."
+}

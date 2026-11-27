@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p1-G02-1",
+  "title": "IP/ASN routing, registry and cloud-range names (ripestat, team_cymru_asn, cloud_ranges, nicbr_asn)",
+  "owner": "batch p1-G02-1 (P031, P032, P034, P038)",
+  "attributes": {
+    "origin_asns": "list of ASNs originating the covering prefix in BGP (more than one = MOAS: anycast, DDoS protection or a possible hijack)",
+    "bgp_announced": "bool: the resource is announced in BGP (route collectors such as RIPE RIS)",
+    "related_prefixes": "less- and more-specific prefixes related to the resource in BGP",
+    "iana_block": "IANA delegation block covering the resource with its description (e.g. '8.0.0.0/8 Administered by ARIN')",
+    "rir": "regional internet registry responsible for the resource (afrinic, apnic, arin, lacnic, ripe)",
+    "rir_registration": "minimised RIR registration record covering the resource: range, cidrs, netname, status, country, created, last_modified (person objects are never kept)",
+    "registration_country": "country of the RIR registration of the resource (RIR statistics): context only, never the host's physical location",
+    "abuse_contacts": "abuse contact records {email, kind, authority_rank, authority, source, resource, retrieved_at, attribution} ranked for takedown requests (role mailboxes, never scored)",
+    "ptr_forward_confirmed": "bool: the PTR names of the IP resolve back to it (forward-confirmed reverse DNS, resolved by the source)",
+    "announced_prefix_counts": "{total, ipv4, ipv6, pivoted, capped, truncated} of the prefixes an ASN announces (every prefix counted, a capped number pivoted)",
+    "asn_neighbour_counts": "{left, right, uncertain, unique} BGP neighbour counts of an ASN (left = upstream, right = downstream)",
+    "network_candidates": "candidate ASNs/prefixes for a company name from a fuzzy registry search: low confidence, confirm the holder before use",
+    "data_attribution": "attribution text the source's terms require for the data shown (e.g. RIPE NCC for RIPEstat)",
+    "allocated": "date the RIR allocated the prefix or ASN (YYYY-MM-DD)",
+    "upstream_asns": "list of upstream (peer/transit) ASNs adjacent to the origin AS in BGP",
+    "is_cloud": "bool: the IP/CIDR lies in a published cloud/CDN/SaaS provider range (official provider file or cloudcheck runtime data)",
+    "cloud_provider": "cloud/CDN provider of the matching range (e.g. 'AWS', 'Cloudflare', 'Google Cloud')",
+    "cloud_service": "provider service of the matching range (e.g. 'EC2', 'S3', 'CDN edge', 'OCI')",
+    "cloud_region": "provider region of the matching range (e.g. 'sa-east-1', 'southamerica-east1')",
+    "cloud_role": "V3LUM role of the matching range: cdn_edge, shared_hosting, shared_service, shared_proxy (shared: not pivoted) or iaas, provider_network (not noise: reputation applies)",
+    "cloud_label": "provider/service label shown next to the IP (e.g. 'Cloudflare CDN edge', 'AWS us-east-1 EC2')",
+    "cloud_range": "the provider range (CIDR) that matched",
+    "cloud_also": "other labels of the same provider range (e.g. S3 next to EC2 on a shared AWS block)",
+    "cloud_sources": "datasets that supplied the cloud label (official provider files win over cloudcheck)",
+    "third_party_hosted": "bool: shared CDN/cloud/SaaS front door (P378): own assets on it are third_party_hosted and never an ACTIVE network target unless the scope lists the IP or range",
+    "verdict_lifetime_days": "int: days an IP-reputation verdict on this address stays valid (rented cloud compute is reassigned: at most 14)",
+    "pivot_note": "why an entity is listed but not pivoted (e.g. 'not pivoted: shared CDN/cloud IP')",
+    "dataset_age_days": "{dataset: age in days} of the local dataset copies a lookup used (a failed refresh keeps the last good copy)",
+    "owner_cnpj": "CNPJ of the network owner in the NIC.br ASN block list (an attribute only when the owner is a network provider)",
+    "owner_kind": "network_provider (ISP/hosting/telecom: customer space, no company pivot) or registrant (the organisation the network is registered to)",
+    "owner_basis": "why the network owner was classified (bundled provider list, PeeringDB network type or owner-name keyword)",
+    "registered_prefix_counts": "{total, ipv4, ipv6, pivoted, capped} of the prefixes registered to an ASN in a registry list",
+    "owned_networks": "{match, owner, asns, prefixes, total_asns, total_prefixes, capped, candidate_own_netblocks, scope_eligible} networks registered to a company id (candidate own netblocks: analyst-confirmed, passive only)"
+  },
+  "tags": {},
+  "relations": {
+    "upstream_asn": "IP/ASN -> upstream (transit or peer) ASN adjacent to the origin AS in BGP AS paths",
+    "downstream_asn": "ASN -> downstream (customer) ASN adjacent to it in BGP AS paths",
+    "owns_network": "organisation (company name, CNPJ) -> ASN or prefix registered to it",
+    "network_provider": "IP -> ASN of the ISP/hosting/telecom provider whose customer space holds the IP (the provider is not the user of the address: no company pivot, P038)"
+  },
+  "timeline": {
+    "allocated": "allocated by the RIR"
+  }
+}

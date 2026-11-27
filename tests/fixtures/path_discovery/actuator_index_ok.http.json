@@ -1,0 +1,20 @@
+{
+ "_provenance": {
+  "synthetic": true
+ },
+ "request": {
+  "method": "GET",
+  "host": "app.example.com",
+  "path": "/actuator"
+ },
+ "response": {
+  "status": 200,
+  "headers": {
+   "Content-Type": "application/vnd.spring-boot.actuator.v3+json"
+  },
+  "body": "{\"_links\":{\"self\":{\"href\":\"http://app.example.com:8080/actuator\",\"templated\":false},\"beans\":{\"href\":\"http://app.example.com:8080/actuator/beans\",\"templated\":false},\"caches-cache\":{\"href\":\"http://app.example.com:8080/actuator/caches/{cache}\",\"templated\":true},\"caches\":{\"href\":\"http://app.example.com:8080/actuator/caches\",\"templated\":false},\"health\":{\"href\":\"http://app.example.com:8080/actuator/health\",\"templated\":false},\"health-path\":{\"href\":\"http://app.example.com:8080/actuator/health/{*path}\",\"templated\":true},\"info\":{\"href\":\"http://app.example.com:8080/actuator/info\",\"templated\":false},\"conditions\":{\"href\":\"http://app.example.com:8080/actuator/conditions\",\"templated\":false},\"configprops\":{\"href\":\"http://app.example.com:8080/actuator/configprops\",\"templated\":false},\"configprops-prefix\":{\"href\":\"http://app.example.com:8080/actuator/configprops/{prefix}\",\"templated\":true},\"env\":{\"href\":\"http://app.example.com:8080/actuator/env\",\"templated\":false},\"env-toMatch\":{\"href\":\"http://app.example.com:8080/actuator/env/{toMatch}\",\"templated\":true},\"loggers\":{\"href\":\"http://app.example.com:8080/actuator/loggers\",\"templated\":false},\"loggers-name\":{\"href\":\"http://app.example.com:8080/actuator/loggers/{name}\",\"templated\":true},\"heapdump\":{\"href\":\"http://app.example.com:8080/actuator/heapdump\",\"templated\":false},\"threaddump\":{\"href\":\"http://app.example.com:8080/actuator/threaddump\",\"templated\":false},\"metrics-requiredMetricName\":{\"href\":\"http://app.example.com:8080/actuator/metrics/{requiredMetricName}\",\"templated\":true},\"metrics\":{\"href\":\"http://app.example.com:8080/actuator/metrics\",\"templated\":false},\"sbom\":{\"href\":\"http://app.example.com:8080/actuator/sbom\",\"templated\":false},\"sbom-id\":{\"href\":\"http://app.example.com:8080/actuator/sbom/{id}\",\"templated\":true},\"scheduledtasks\":{\"href\":\"http://app.example.com:8080/actuator/scheduledtasks\",\"templated\":false},\"mappings\":{\"href\":\"http://app.example.com:8080/actuator/mappings\",\"templated\":false}}}"
+ },
+ "history": [],
+ "final_url": null,
+ "transport_error": null
+}

@@ -1,0 +1,5 @@
+{
+ "_source": "error-in-200 body; message text documented at https://leak-lookup.com/docs/search (checked 2026-11-26) ('RATE LIMIT REACHED - You have performed more than 5 requests in the last minute')",
+ "error": "true",
+ "message": "RATE LIMIT REACHED"
+}

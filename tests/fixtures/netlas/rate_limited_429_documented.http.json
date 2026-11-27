@@ -1,0 +1,20 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://app.netlas.io/api/host/198.51.100.20/"
+ },
+ "response": {
+  "status": 429,
+  "headers": {
+   "Content-Type": "application/json",
+   "Retry-After": "30"
+  },
+  "body": {
+   "type": "request_was_throttled",
+   "title": "Request was throttled",
+   "detail": "Request was throttled. Expected available in 30 seconds."
+  }
+ },
+ "observed": "documented",
+ "note": "Error shape {type,title,detail} on HTTP >= 400, type 'request_was_throttled' and the Retry-After header come from the official netlas-python SDK (helpers.check_status_code, client._request). title/detail wording is a placeholder. Not provoked live."
+}

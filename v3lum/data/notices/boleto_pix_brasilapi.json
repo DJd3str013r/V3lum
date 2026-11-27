@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "boleto_pix_brasilapi",
+  "source_url": "https://brasilapi.com.br/api/banks/v1",
+  "version": "runtime downloads by the dataset manager (/api/banks/v1 and /api/pix/v1/participants full lists, TTL 7 days); format checked 2026-11-26 (473 banks, 880 PIX participants)",
+  "sha256": "",
+  "licence": "MIT (BrasilAPI code); Banco Central do Brasil public data",
+  "attribution": "BrasilAPI (https://brasilapi.com.br, MIT licence) relaying Banco Central do Brasil data.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/brazil_public_data/boleto_pix.py"
+  ]
+}

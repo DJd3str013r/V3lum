@@ -1,0 +1,42 @@
+{
+ "status": 200,
+ "headers": {
+  "content-type": "application/taxii+json;version=2.1",
+  "content-length": "294586",
+  "x-taxii-date-added-first": "2020-10-27T14:49:39.188000Z",
+  "x-taxii-date-added-last": "2020-10-27T14:49:39.188000Z"
+ },
+ "body": {
+  "objects": [
+   {
+    "id": "x-mitre-collection--90c00720-636b-4485-b342-8751d232bf09",
+    "modified": "2026-11-05T05:00:37.128Z",
+    "created": "2020-10-27T14:49:39.188Z",
+    "type": "x-mitre-collection",
+    "spec_version": "2.1",
+    "x_mitre_attack_spec_version": "3.3.0",
+    "name": "ICS ATT&CK",
+    "x_mitre_version": "20.1",
+    "description": "The ATT&CK for Industrial Control Systems (ICS) knowledge base categorizes the unique set of tactics, techniques, and procedures (TTPs) used by threat actors in",
+    "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+    "x_mitre_contents": [
+     {
+      "object_ref": "attack-pattern--008b8f56-6107-48be-aa9f-746f927dbb61",
+      "object_modified": "2026-04-20T20:58:37.791Z"
+     },
+     {
+      "object_ref": "attack-pattern--063b5b92-5361-481a-9c3f-95492ed9a2d8",
+      "object_modified": "2026-10-13T17:48:44.278Z"
+     },
+     {
+      "object_ref": "attack-pattern--097924ce-a9a9-4039-8591-e0deedfb8722",
+      "object_modified": "2026-10-13T17:48:47.174Z"
+     }
+    ],
+    "object_marking_refs": [
+     "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+    ]
+   }
+  ]
+ }
+}

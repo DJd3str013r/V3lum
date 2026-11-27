@@ -1,0 +1,24 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "github",
+  "hosts": [],
+  "sources": {
+    "retirejs_check_jsrepository": {
+      "title": "RetireJS vulnerability repository jsrepository-v4.json (raw.githubusercontent.com/RetireJS/retire.js/master/repository/jsrepository-v4.json)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/RetireJS/retire.js/blob/master/LICENSE.md",
+        "quote": "jsrepository-v4.json (RetireJS, Apache-2.0, ~650 KB) is a weekly dataset with the NOTICE in data/NOTICE. [...] Tier community (the RetireJS project dataset; OSV is trusted); terms open.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "retirejs",
+      "sanitizer": null,
+      "dataset": "retirejs.jsrepository",
+      "notes": "Quote: binding council text (P344 cond 2 and chair rationale). Research C0791 (verified_live 200, 651,449 bytes, 78 libraries / 821 vulnerability entries, Apache-2.0 LICENSE verified). Weekly dataset retirejs.jsrepository; a snapshot ships in v3lum/data/retirejs/ with its notice (v3lum/data/notices/retirejs.json). Applied offline to JavaScript bodies already in hand: no value is ever sent (download only)."
+    }
+  },
+  "error_markers": [],
+  "notes": "Batch p2-G03-1 extension (P344 retirejs_check): one repository file on the existing raw.githubusercontent.com host."
+}

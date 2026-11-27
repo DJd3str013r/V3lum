@@ -1,0 +1,10 @@
+{
+ "ns": "ns2.example.com",
+ "ns_ip": "192.0.2.11",
+ "domain": "example.com",
+ "status": "refused",
+ "error": "REFUSED",
+ "class": "synthetic",
+ "origin": "synthetic refusal from the loopback TCP DNS server test (FC8)",
+ "notes": "Transfer refused = INFO 'zone transfer refused: good' (FC6). confirmed/not-observed, not 'could not test'."
+}

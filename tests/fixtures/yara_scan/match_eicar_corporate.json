@@ -1,0 +1,35 @@
+{
+ "matches": [
+  {
+   "rule": "V3LUM_TEST_DRL_SUSP_EICAR_Test_String",
+   "namespace": "V3LUM Test DRL",
+   "tags": [],
+   "meta": {
+    "description": "EICAR anti-virus test string (generic test rule)",
+    "author": "V3LUM test suite",
+    "date": "2026-11-26",
+    "modified": "2026-11-26",
+    "reference": "https://www.eicar.org/download-anti-malware-testfile/",
+    "license": "Detection Rule License 1.1 https://github.com/SigmaHQ/Detection-Rule-License",
+    "license_url": "https://github.com/example/v3lum-test-rules-drl/blob/2222222222222222222222222222222222222222/LICENSE",
+    "score": 60
+   },
+   "strings": [
+    {
+     "identifier": "$a",
+     "count": 1,
+     "offsets": [
+      0
+     ]
+    },
+    {
+     "identifier": "$b",
+     "count": 1,
+     "offsets": [
+      28
+     ]
+    }
+   ]
+  }
+ ]
+}

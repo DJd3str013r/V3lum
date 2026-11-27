@@ -1,0 +1,11 @@
+{
+  "schema": "v3lum.wordlist_pin/1",
+  "wordlist": "subdomains-top1million-5000.txt",
+  "source": "SecLists Discovery/DNS/subdomains-top1million-5000.txt",
+  "release": "SecLists master (reviewed 2026-11-26)",
+  "sha256": "e331367c140298cb179114fdeefa78f58f696219f0dec017a28bb79487cfcf19",
+  "licence": "MIT",
+  "attribution": "SecLists (c) 2018 Daniel Miessler (MIT). The default authorized subdomain brute-force wordlist (5000 labels), pinned by SHA-256 (A7).",
+  "cap": 5000,
+  "note": "Permutation patterns re-implemented offline from alterx (MIT) and dnsgen (MIT, 2025 Aleph Null) ideas; no code vendored (A6)."
+}

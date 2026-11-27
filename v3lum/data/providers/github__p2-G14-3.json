@@ -1,0 +1,23 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "github",
+  "hosts": [],
+  "sources": {
+    "code_search": {
+      "title": "GitHub REST code search api.github.com/search/code (team token, text-match)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+        "quote": "Key-terms (legal floor): the tokens belong to company/team accounts on plans whose terms permit internal business use, recorded in the provider registry (key_plans) before the module runs under the corporate profile.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1; P305 cond 2)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "github",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "P305 cond 1/8: API only (github.com/search is never scraped); 10 requests a minute for code search, at most 1000 results a query; budgeted by the module as a minute window of 8 (80%) until the P334 quota block gains a minute window. Token in the Authorization header only (AR01). 403 secondary limits and 429 are RATE_LIMITED (could not verify). Raw bodies never cached (ttl 0) and text-match fragments are masked before evidence (P305 cond 6). Merge gate: trimmed real fixtures captured with the team token (P305 cond 10). Used by code_search."
+    }
+  },
+  "error_markers": []
+}

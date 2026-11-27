@@ -1,0 +1,102 @@
+[
+    {
+        "Name": "AnyDesk",
+        "Category": "RMM",
+        "Created": "2023-09-29",
+        "LastModified": "2026-10-11",
+        "Description": "AnyDesk is a popular remote desktop software that enables users to access\nand control a computer or device from a remote location. It was developed with the\nprimary goal of facilitating remote work, t",
+        "Details": {
+            "Website": "https://anydesk.com/en",
+            "PEMetadata": [
+                {
+                    "Filename": "anydesk.exe",
+                    "OriginalFileName": "AnyDesk.exe",
+                    "Description": "AnyDesk",
+                    "Product": "AnyDesk"
+                }
+            ],
+            "InstallationPaths": [
+                "C:\\Program Files (x86)\\AnyDesk\\*",
+                "C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe",
+                "C:\\Program Files\\AnyDesk\\*",
+                "C:\\Program Files (x86)\\AnyDesk-*\\*",
+                "C:\\Program Files (x86)\\AnyDesk-*\\AnyDesk-*.exe",
+                "C:\\Program Files\\AnyDesk-*\\AnyDesk-*.exe"
+            ],
+            "SupportedOS": [
+                "Android",
+                "ChromeOS",
+                "IOS",
+                "Linux",
+                "Mac",
+                "Windows"
+            ]
+        },
+        "Artifacts": {
+            "Network": [
+                {
+                    "Domains": [
+                        "boot.net.anydesk.com"
+                    ],
+                    "Ports": [
+                        443
+                    ]
+                },
+                {
+                    "Domains": [],
+                    "Ports": [
+                        7070
+                    ]
+                },
+                {
+                    "Domains": [
+                        "relay-*.net.anydesk.com"
+                    ],
+                    "Ports": [
+                        80,
+                        443,
+                        6568
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "Name": "Xpra",
+        "Category": "RAT",
+        "Created": "2024-08-02",
+        "LastModified": "2024-08-02",
+        "Description": "Xpra is a remote monitoring and management (RMM) tool. More information will be added as it becomes available.",
+        "Details": {
+            "Website": "https://github.com/Xpra-org/xpra/",
+            "PEMetadata": {
+                "Filename": "",
+                "OriginalFileName": "",
+                "Description": ""
+            },
+            "InstallationPaths": [
+                "C:\\Program Files (x86)\\Xpra\\*",
+                "*\\Xpra\\*",
+                "*\\Xpra-Launcher.exe",
+                "*\\Xpra-x86_64_Setup.exe"
+            ],
+            "SupportedOS": [
+                "Windows"
+            ]
+        },
+        "Artifacts": {
+            "Network": []
+        }
+    },
+    {
+        "Name": "GetScreen",
+        "Category": "RMM",
+        "Created": "2024-08-02",
+        "LastModified": "2026-05-04",
+        "Description": "GetScreen is a remote monitoring and management (RMM) tool that enables remote\ndesktop access and unattended persistent access via service installation. It can\nbe installed via command line and regist",
+        "Details": {
+            "Website": "https://getscreen.me/",
+            "PEMetadata": {
+                "Filename": "getscreen.exe",
+                "OriginalFileName": "getscreen.exe",
+                "Description": "Getscreen.me agent (ProductName/InternalName: Getscreen.me, CompanyName: Point B Ltd). Distributed as a UPX-packed PE32 (x86) GUI executable from https://getscreen.me/download/getscreen-x86.exe. Current binaries (file version 3.5.0+) are signed by POINT B LTD (Cyprus, registered HE 430957) on a GlobalSign GCC R45 EV CodeSigning chain. Older 2020-2021 era binaries were signed by OOO \"GET SKRIN SO

@@ -1,0 +1,38 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "etda",
+  "name": "ETDA / ThaiCERT Threat Group Cards (threat actor and tool encyclopedia)",
+  "operator": "Electronic Transactions Development Agency (ETDA), ThaiCERT - Thailand",
+  "hosts": ["apt.etda.or.th"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Government agency running the Thai national CERT (A8 BR2: government bodies and national CERTs are trusted); P295 cond 8 lists ETDA/ThaiCERT among the trusted dataset providers.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "B", "justification": "Curated encyclopedia compiled from public vendor reporting; updated infrequently (export version 20250816)."},
+  "http_profile": {"user_agent": "neutral", "accept": "application/json", "ttl": 86400},
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "threat_group_cards": {
+      "title": "Threat Group Cards MISP-galaxy export (cgi-bin/getmisp.cgi?o=g groups, o=t tools) and card pages (showcard.cgi?u=<uuid>)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://apt.etda.or.th/cgi-bin/aptgroups.cgi",
+        "quote": "",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "etda",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "P295 cond 1-2: ETDA publishes no licence or terms, so its class is 'unknown' (A1) until legal records it (proposed basis: runtime fetch, attribution, no redistribution). Until then the export is NOT fetched and NOT bundled: no dataset is registered and actor_alias_index does not list this source (its terms stay 'open'). The parser is ready and tested on a synthetic fixture with the real export structure. Served through Cloudflare (no challenge seen on 2026-11-26): a challenge page is BLOCKED, never bypassed (A9). Card links use ?u=<uuid> (name pivots need the full comma-joined primary name)."
+    }
+  },
+  "notes": "Owned by batch p1-G11-1 (P295). Unused until legal records the terms class of threat_group_cards; see docs/backlog/p1-G11-1.md."
+}

@@ -1,0 +1,11 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "wafw00f_passive_signatures",
+  "source_url": "https://github.com/EnableSecurity/wafw00f",
+  "version": "commit 69fbe3956bba47a172cf87e40e9037535d32a130 (2026-04-19)",
+  "sha256": "",
+  "licence": "BSD-3-Clause",
+  "attribution": "Copyright (c) 2009-2026, WAFW00F Developers. All rights reserved. Header/cookie signatures of the wafw00f plugins (normal-response checks only) converted to a data table; redistributed under the BSD-3-Clause licence. The attack-payload probes of wafw00f are not ported (P072 final condition 6).",
+  "bundled": true,
+  "files": ["v3lum/data/web_fingerprint/wafw00f_passive.json", "v3lum/modules/url_web/web_fingerprint.py"]
+}

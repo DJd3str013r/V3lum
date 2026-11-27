@@ -1,0 +1,104 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "gopluslabs",
+  "name": "GoPlus Security API (address, token and phishing-site security checks)",
+  "operator": "GoPlus Security (GoPlus Labs)",
+  "hosts": [
+    "api.gopluslabs.io"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Company with public API documentation and a public track record since 2021 (A8 community); the council recorded 'Registry: GoPlus Security tier community' (P206 cond 6). Its terms could not be verified (documentation is JavaScript-only, 2026-11-26), so every source is 'key-terms' (P206 cond 5).",
+  "tier_reviewer": "council-1 (A8, P206 cond 6)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Aggregated security labels with a named data_source per flag (e.g. SlowMist, BlockSec); 'sanctioned' is not authoritative (P206 cond 4) and an unsupported chain answers 'ok' with all flags '0' and contract_address '-1' (not evaluated)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "ttl": 21600,
+    "min_interval": 2.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [
+    {
+      "id": "gopluslabs_request_limit",
+      "statuses": [200],
+      "json_path": "code",
+      "equals": 4029,
+      "maps_to": "rate_limited",
+      "reason_code": "rate_limited",
+      "reason": "GoPlus: request limit reached (code 4029)"
+    }
+  ],
+  "keys": {
+    "goplus": {
+      "description": "GoPlus app key and secret of a company account, as 'app_key:app_secret' (exchanged for a short-lived access token per run; higher limits)",
+      "signup_url": "https://gopluslabs.io/security-api",
+      "env": [
+        "V3LUM_GOPLUS_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "optional: keyless requests work at low volume; under the corporate profile the sources run only once legal records free_plan_business_use or the key plan is 'business' (key_plans.goplus, P206 cond 5)"
+    }
+  },
+  "sources": {
+    "address_security": {
+      "title": "GoPlus address_security/{address}?chain_id= (malicious-address flags for EVM and TRON)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://docs.gopluslabs.io/reference/api-overview",
+        "quote": "GoPlus and Honeypot.is terms could not be verified (docs JS-only, 2026-11-26): class 'key-terms'",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1, P206 cond 5)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "goplus",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P206 cond 5). Research C0477 (verified_live 200): {'code':1,'message':'ok','result':{flag:'0'|'1',..., data_source, contract_address}}; code != 1 is ERROR (P321); contract_address '-1' (unsupported chain) is 'not evaluated', never clean. GET only. Used by goplus_security."
+    },
+    "token_security": {
+      "title": "GoPlus token_security/{chain_id}?contract_addresses= (token contract risks, keyed by the lowercase contract)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://docs.gopluslabs.io/reference/api-overview",
+        "quote": "GoPlus and Honeypot.is terms could not be verified (docs JS-only, 2026-11-26): class 'key-terms'",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1, P206 cond 5)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "goplus",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P206 cond 5). Research C0477: answer keyed by the lowercase contract; a non-token answers empty name/symbol and holder_count '0' (not applicable). Queried only for EVM addresses address_security marks as contracts. Used by goplus_security."
+    },
+    "phishing_site": {
+      "title": "GoPlus phishing_site?url= (crypto phishing/drainer site flag)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://docs.gopluslabs.io/reference/api-overview",
+        "quote": "GoPlus and Honeypot.is terms could not be verified (docs JS-only, 2026-11-26): class 'key-terms'",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1, P206 cond 5)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "goplus",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P206 cond 5). Research C0477: phishing_site is an integer 0/1. Only for URLs/domains with crypto context in the case (P206 cond 1); URLs are stripped of query, fragment and userinfo unless the analyst opts in per URL (P206 cond 2). Used by goplus_security."
+    }
+  },
+  "notes": "Owned by batch p2-G09-1 (P206). Live 2026-11-26: Cloudflare-fronted, 0.3-0.8 s, no rate-limit headers; documented limit code 4029 ('request limit reached') maps to rate_limited. Keyless at low volume: min_interval 2 s, one request at a time, ttl 6 h (crypto labels change slowly; the TTL class 'crypto 1 h' is for balances)."
+}

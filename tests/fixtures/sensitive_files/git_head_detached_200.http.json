@@ -1,0 +1,17 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://www.example.com/.git/HEAD",
+  "headers": {
+   "Range": "bytes=0-1023"
+  }
+ },
+ "response": {
+  "status": 200,
+  "headers": {
+   "content-type": "text/plain",
+   "content-length": "41"
+  },
+  "body": "29e145cbe2adcf6d31aaa8e32fadc4f9b1ee31ee\n"
+ }
+}

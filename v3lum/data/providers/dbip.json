@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "dbip",
+  "name": "DB-IP",
+  "operator": "db-ip.com (DB-IP)",
+  "hosts": [
+    "download.db-ip.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms, a privacy policy and a commercial offering; the Lite databases are published under CC BY 4.0 (A8 BR2).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Commercial geolocation vendor; the Lite editions are country/ASN level and updated monthly."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "lite": {
+      "title": "DB-IP Lite country and ASN databases (mmdb, monthly)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://db-ip.com/db/lite.php",
+        "quote": "Registry terms: DB-IP Lite CC BY 4.0 (open), IPtoASN PDDL (open), bgp.tools free use with descriptive UA (open), GeoLite2 EULA (license).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "db-ip",
+      "sanitizer": null,
+      "dataset": "ip_offline_geo.dbip_country_lite.mmdb",
+      "notes": "Quote: binding council text (P047 cond 7); research C0082 terms 'CC BY 4.0 (attribution to DB-IP required)' (verified_live 200: country 4.2 MB gz, ASN 5.2 MB gz). Country + ASN only - the 86 MB city file is never fetched (P047 cond 1/8). The ASN file is dataset ip_offline_geo.dbip_asn_lite.mmdb. Attribution 'IP Geolocation by DB-IP (https://db-ip.com)' in reports and notices. Used by ip_offline_geo."
+    }
+  },
+  "notes": "Owned by batch p1-G02-2 (P047). Files are monthly (dbip-{country|asn}-lite-YYYY-MM.mmdb.gz; the new month appears on the 1st)."
+}

@@ -1,0 +1,9 @@
+{
+ "request": "GET https://certidoes-apf.apps.tcu.gov.br/api/rest/publico/certidoes/00000000000191?seEmitirPDF=false",
+ "response": null,
+ "transport_error": "timeout",
+ "elapsed_s": 10.0,
+ "observed_at": null,
+ "origin": "synthetic",
+ "note": "synthetic timeout (alnum lookup took 6.6 s live; budget it)"
+}

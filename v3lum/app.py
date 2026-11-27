@@ -21,7 +21,7 @@ import os
 import re
 import sys
 from collections import Counter
-from collections.abc import Iterable
+from collections.abc import Iterable, Mapping
 from dataclasses import dataclass, field
 from pathlib import Path
 from types import SimpleNamespace
@@ -40,7 +40,7 @@ from v3lum.config import Config
 from v3lum.core import detect as det
 from v3lum.core import licence as _licence
 from v3lum.core import policy
-from v3lum.core import sanitize as _sanitize
+from v3lum.core import ioc as _ioc
 from v3lum.core import tlp as _tlp
 from v3lum.core.context import RunInfo, Runtime, ScanOptions
 from v3lum.core.datasets import DATASETS, DataStore
@@ -167,9 +167,12 @@ class _PathEngine(Engine):
     App's path ('shell', 'extract', 'batch', 'run'...) instead of the engine default 'scan'
     (``policy.make_context(path=...)`` on every path, AR15)."""
 
-    def __init__(self, runtime: Runtime, options: ScanOptions | None = None, *, reliability: dict[str, float] | None = None, path: str = "scan") -> None:
+    def __init__(
+        self, runtime: Runtime, options: ScanOptions | None = None, *, reliability: dict[str, float] | None = None, path: str = "scan", **feedback: Any,
+    ) -> None:
+        """``feedback``: the other Engine keyword inputs (``source_reliability``, ``overrides``; WP19)."""
         self.policy_path = path if path in policy.PATHS else "scan"
-        super().__init__(runtime, options, reliability=reliability)
+        super().__init__(runtime, options, reliability=reliability, **feedback)
 
     def policy_context(self, *, graph: Any = None, path: str = "scan", explicit: Iterable[str] | None = None) -> Any:
         if path == "scan":
@@ -291,6 +294,31 @@ class App:
         """Setting ``analyst``, else the OS user (case audit, feedback, overrides)."""
         return str(self.config.get("analyst") or "").strip() or _os_user()
 
+    def _engine_feedback(self) -> dict[str, Any]:
+        """The case-DB inputs of the engine (WP19): ``reliability`` (v1 module view),
+        ``source_reliability`` (Beta per source, P302 R_src) and ``overrides`` (``Store.overrides_for``,
+        applied before suppression, correlations and scoring: analyst decisions survive re-runs,
+        P322 cond 3). A case-DB problem never blocks a scan: that input is left out (Admiralty
+        priors, no overrides) and the reason is logged."""
+        out: dict[str, Any] = {}
+        try:
+            store = self.store
+        except Exception as exc:  # noqa: BLE001 - no case DB: priors only
+            log.warning("case DB unavailable for scoring inputs: %s", type(exc).__name__)
+            return out
+        for name, method in (("reliability", "reliability"), ("source_reliability", "source_reliability")):
+            fn = getattr(store, method, None)
+            if not callable(fn):
+                continue
+            try:
+                out[name] = fn()
+            except Exception as exc:  # noqa: BLE001
+                log.warning("%s unavailable: %s", name, type(exc).__name__)
+        lookup = getattr(store, "overrides_for", None)
+        if callable(lookup):
+            out["overrides"] = lookup
+        return out
+
     def notice(self, text: str, style: str = "v.dim") -> None:
         """One analyst-facing line (stderr in machine mode: the JSON on stdout stays clean)."""
         target = self.console
@@ -384,7 +412,8 @@ class App:
     # ------------------------------------------------------------------ inputs
     def scrub_input(self, raw: str, etype: EntityType | None = None, *, hits: list[dict[str, str]] | None = None) -> str:
         """The input with credentials removed before any entity is created (P145 cond 5):
-        ``sanitize.scrub_text`` drops combos ('user@example.com:secret' -> 'user@example.com'), URL
+        ``ioc.scrub`` (``sanitize.scrub_text`` plus the P323 pattern-DB secrets and card numbers as
+        BIN6...last4, PIX BR Codes intact) drops combos ('user@example.com:secret' -> 'user@example.com'), URL
         userinfo, password hashes and masked hints and masks other secrets. Local file paths and
         inputs that ARE a secret value (JWT, token... - detect-only, persisted redacted) are kept;
         an explicit ``TYPE:`` prefix is kept. ``hits`` receives the removals."""
@@ -398,8 +427,8 @@ class App:
                 return text
         if etype is None and forced is not None:
             prefix, _, rest = text.strip().partition(":")
-            return f"{prefix}:{_sanitize.scrub_text(rest, hits=hits)}"
-        return _sanitize.scrub_text(text, hits=hits)
+            return f"{prefix}:{_ioc.scrub(rest, hits=hits)}"
+        return _ioc.scrub(text, hits=hits)
 
     def _report_scrub(self, hits: list[dict[str, str]]) -> str:
         """'sensitive data in pasted text: ...' (P145 cond 5, P323 cond 6) - printed once."""
@@ -723,11 +752,15 @@ class App:
         ``meta['sightings_lookup']`` = ``Store.sightings_for`` (WP16; policy guard and the
         case_sightings module), the case audit hook (WP15; every case - LIGHT/ACTIVE runs are
         refused without it, A7; ``audit=False`` for runs that write no case), ``meta['header_notes']``
-        (report header lines), the TLP change and the execution path."""
+        (report header lines), the TLP change, the execution path and the analyst-override hook
+        (``store.OverrideHook``, WP16/WP19: stored analyst decisions are re-applied before suppression,
+        correlations and scoring on every path, engines built without ``overrides=`` included, e.g.
+        ``cases resume``; applying a decision twice is idempotent)."""
         meta = rt.meta
         lookup = getattr(self.store, "sightings_for", None)
         if callable(lookup):
             meta["sightings_lookup"] = lookup
+        self._install_override_hook(rt)
         lines = [str(n) for n in notes if n]
         if lines:
             meta.setdefault("header_notes", [])
@@ -738,6 +771,22 @@ class App:
         meta["execution_path"] = path
         if audit:
             self.install_audit(rt, options)
+
+    def _install_override_hook(self, rt: Runtime) -> None:
+        """Add one ``store.OverrideHook`` to ``rt.case_hooks`` (P322 cond 3) when the case DB offers
+        ``overrides_for``; a missing hook class or case DB leaves the run without it (logged)."""
+        store = self.store
+        if not callable(getattr(store, "overrides_for", None)):
+            return
+        try:
+            from v3lum.core.store import OverrideHook
+        except ImportError as exc:  # pragma: no cover - the case DB of an older wave
+            log.warning("analyst override hook unavailable: %s", type(exc).__name__)
+            return
+        hooks = getattr(rt, "case_hooks", None)
+        if hooks is None or any(isinstance(h, OverrideHook) for h in hooks):
+            return
+        hooks.append(OverrideHook(store))
 
     def install_audit(self, rt: Runtime, options: ScanOptions) -> Any:
         """Add the case audit hook (WP15) to ``rt.case_hooks`` and return it. Without it LIGHT/ACTIVE
@@ -830,7 +879,7 @@ class App:
             else:
                 try:
                     with open(seed.value, encoding="utf-8", errors="replace") as fh:
-                        text = _sanitize.scrub_text(fh.read(_EXTRACT_MAX_READ))
+                        text = _ioc.scrub(fh.read(_EXTRACT_MAX_READ))
                 except OSError:
                     continue
             line, total = self.ioc_preview(text)
@@ -866,7 +915,7 @@ class App:
         feed = LiveFeed(self.console, verbosity=self.verbosity)
         rt = self.runtime(listener=feed)
         self.prepare_runtime(rt, options, path=path, notes=[*eng.notes, scrub_line])
-        engine = _PathEngine(rt, options, reliability=self.store.reliability(), path=path)
+        engine = _PathEngine(rt, options, path=path, **self._engine_feedback())
         with feed:
             case = engine.investigate(seeds, detections=chosen)
         data = case.to_dict()
@@ -927,8 +976,11 @@ class App:
             confirmed_urls=list(req.confirmed_urls),
         )
 
-    def show_case(self, data: dict[str, Any], full: bool = False) -> None:
-        render_case(self.console, data, full=full)
+    def show_case(self, data: dict[str, Any], full: bool = False, *, show_personal: bool | None = None) -> None:
+        """Render a case. ``show_personal`` is the unmasked view of THIS rendering only (AR24): the
+        post-scan view passes the request flag, ``cases show`` passes False unless asked; None keeps
+        the v1 behaviour (the flag recorded in the case options)."""
+        render_case(self.console, data, full=full, show_personal=show_personal)
         reports = data.get("reports") or {}
         if reports:
             self.console.print(Text("\n[◈] reports", style="v.accent"))
@@ -1014,7 +1066,7 @@ class App:
         options.include = {cls.name}
         rt = self.runtime()
         self.prepare_runtime(rt, options, path="run", notes=eng.notes, audit=False)
-        engine = _PathEngine(rt, options, path="run")
+        engine = _PathEngine(rt, options, path="run", **self._engine_feedback())
         decision = engine.decide_single(cls, target.entity, path="run")
         if not getattr(decision, "allowed", False):
             raise UserError(f"{cls.name} cannot run: {getattr(decision, 'reason', '') or 'refused by the policy gate'}")
@@ -1288,11 +1340,12 @@ class App:
         t.add_column("findings", justify="right")
         t.add_column("entities", justify="right")
         for c in self.store.list_cases(limit, search):
-            lvl = c.get("risk_level") or "clean"
+            lvl = _level_word(c.get("risk_level"))  # v1 'clean' is never printed (P302 cond 6, AR14)
             held = " (held)" if c.get("legal_hold") else ""
             t.add_row(
-                c["id"] + held, str(c["created"])[:19], str(c.get("tlp") or ""), _plain(", ".join(c["seeds"])[:160]),
-                Text(f"{lvl} {c.get('risk_score') or 0:.0f}", style=f"risk.{lvl}"), str(c.get("findings") or 0), str(c.get("entities") or 0),
+                Text(_plain(str(c["id"])) + held), Text(_plain(str(c["created"])[:19])), Text(_plain(str(c.get("tlp") or ""))),
+                Text(_seeds_display(c.get("seeds"))),
+                Text(f"{lvl} {c.get('risk_score') or 0:.0f}", style=_risk_style(lvl)), str(c.get("findings") or 0), str(c.get("entities") or 0),
             )
         return t
 
@@ -1317,9 +1370,9 @@ class App:
         return out
 
     def extract(self, text: str, types: set[str] | None = None, *, hits: list[dict[str, str]] | None = None) -> list[Entity]:
-        """IOCs of ``text`` after ``sanitize.scrub_text`` (P145 cond 5: combos and secrets never
-        reach the output)."""
-        clean = _sanitize.scrub_text(text, hits=hits) if text else text
+        """IOCs of ``text`` after ``ioc.scrub`` (P145 cond 5, P323 cond 5-7: combos, secrets and
+        card numbers never reach the output)."""
+        clean = _ioc.scrub(text, hits=hits) if text else text
         ents = det.extract_iocs(clean)
         if types:
             ents = [e for e in ents if e.type.value in types]
@@ -1353,8 +1406,43 @@ class App:
         return self._command_function("doctor", "doctor_table")(self)
 
 
-def level_at_least(level: str, threshold: str) -> bool:
-    return LEVEL_ORDER.index(level) >= LEVEL_ORDER.index(threshold)
+def level_at_least(level: str | Mapping[str, Any], threshold: str) -> bool:
+    """Is the case ``level`` at or above ``threshold`` (low..critical)? The lowest readings - 'no findings'
+    (risk model v2), 'inconclusive' and v1 'clean' - are below every threshold.
+
+    ``level`` may also be the case dict: the automation level ``risk['automation']['level']`` is then
+    used (P302 cond 10: scores of PERSONAL_TYPES entities never drive an automated action such as
+    ``--fail-on``), falling back to ``summary.risk_level`` for a v1 case without it."""
+    if isinstance(level, Mapping):
+        risk = level.get("risk") if isinstance(level.get("risk"), Mapping) else {}
+        auto = risk.get("automation") if isinstance(risk.get("automation"), Mapping) else None
+        summary = level.get("summary") if isinstance(level.get("summary"), Mapping) else {}
+        level = str((auto or {}).get("level") or "") if auto is not None else str(summary.get("risk_level") or risk.get("level") or "")
+    text = str(level or "").strip().lower()
+    rank = LEVEL_ORDER.index(text) if text in LEVEL_ORDER else 0
+    return rank >= LEVEL_ORDER.index(threshold)
+
+
+def _seeds_display(seeds: Any) -> str:
+    """Seed keys for a listing with personal identifiers masked (AR24; the WP18 `cases list` helper)."""
+    from v3lum.commands.cases import seeds_display
+
+    return seeds_display(seeds)
+
+
+def _level_word(level: Any) -> str:
+    """A stored risk level for display: v1 'clean' and empty read 'no findings' (P302 cond 6)."""
+    text = str(level or "").strip().lower()
+    return "no findings" if text in ("", "clean", "none", "no_findings") else text
+
+
+def _risk_style(level: str) -> str:
+    """The theme style of a displayed level ('no findings' -> risk.no_findings)."""
+    try:
+        from v3lum.ui.theme import risk_style
+    except ImportError:  # pragma: no cover - an older theme module
+        return "v.text"
+    return risk_style(level)
 
 
 def entity_type_or_none(value: str | None) -> EntityType | None:

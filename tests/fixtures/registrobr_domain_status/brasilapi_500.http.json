@@ -1,0 +1,18 @@
+{
+ "request": "GET https://brasilapi.com.br/api/registrobr/v1/<name>.com.br",
+ "response": {
+  "status": 500,
+  "headers": {
+   "content-type": "application/json; charset=utf-8",
+   "server": "cloudflare"
+  },
+  "body": {
+   "message": "Erro ao consultar o domínio",
+   "type": "service_error",
+   "name": "InternalError"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "upstream failure relayed by BrasilAPI; body shape = documented BrasilAPI error schema"
+}

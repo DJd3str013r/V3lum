@@ -1,0 +1,6 @@
+{
+ "error": {
+  "code": "AuthenticationRequiredError",
+  "message": "X-Apikey header is missing"
+ }
+}

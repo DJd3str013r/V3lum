@@ -1,0 +1,12 @@
+{
+ "_envelope": 1,
+ "_synthetic": "429 not provoked (no bursts); body text unknown",
+ "status": 429,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": {
+  "success": false,
+  "error": "Too many requests"
+ }
+}

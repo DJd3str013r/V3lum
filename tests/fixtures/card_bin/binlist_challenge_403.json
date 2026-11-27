@@ -1,0 +1,11 @@
+{
+ "_envelope": 1,
+ "_synthetic": "generic Cloudflare managed-challenge page shape (lookup.binlist.net is behind Cloudflare); not observed for binlist in this prep",
+ "status": 403,
+ "headers": {
+  "server": "cloudflare",
+  "content-type": "text/html; charset=UTF-8",
+  "cf-mitigated": "challenge"
+ },
+ "body": "<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title></head><body><noscript>Enable JavaScript and cookies to continue</noscript></body></html>"
+}

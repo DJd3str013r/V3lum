@@ -1,0 +1,18 @@
+{
+ "request": "GET https://comunicaapi.pje.jus.br/api/v1/comunicacao?texto=x",
+ "response": {
+  "status": 403,
+  "headers": {
+   "content-type": "text/html",
+   "server": "CloudFront",
+   "x-cache": "Error from cloudfront"
+  },
+  "body_kind": "text",
+  "body": "<HTML><HEAD><TITLE>ERROR: The request could not be satisfied</TITLE></HEAD><BODY><H1>403 ERROR</H1><H2>The request could not be satisfied.</H2>Request blocked.</BODY></HTML>"
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "observed_at": null,
+ "origin": "synthetic",
+ "note": "synthetic: CloudFront 403 WITHOUT the country phrase (WAF/other) -> blocked, not geo_block"
+}

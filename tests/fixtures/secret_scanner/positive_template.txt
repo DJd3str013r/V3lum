@@ -1,0 +1,14 @@
+# SYNTHETIC test vectors - <<NAME>> placeholders are filled at test time with generated fake values
+aws_access_key_id = <<AWS>>
+GITHUB_TOKEN="<<GHP>>"
+webhook: <<SLACK>>
+telegram_bot_token = "<<TG>>"
+curl -s "https://api.telegram.org/bot<<TG_URL>>/sendMessage?chat_id=-100123&text=hi"
+$discord = "<<DISCORD>>";
+auth_header = "Bearer <<JWT>>"
+<<PEM>>
+api_key = "<<GENERIC>>"
+$smtp_password = "<<SMTP_PW>>";
+MAIL_URL=smtps://mailer:<<SMTP_PW>>@smtp.example.net:465
+$mail->Password = '<<SMTP_PW>>';
+GITHUB_TOKEN_COPY="<<GHP>>"

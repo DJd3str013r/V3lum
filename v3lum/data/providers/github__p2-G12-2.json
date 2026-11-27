@@ -1,0 +1,24 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "github",
+  "hosts": [],
+  "sources": {
+    "image_ocr_tessdata_fast": {
+      "title": "tesseract-ocr/tessdata_fast por.traineddata and eng.traineddata at a pinned commit (raw.githubusercontent.com, through the dataset manager, SHA-256 pinned)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/tesseract-ocr/tessdata_fast/blob/main/LICENSE",
+        "quote": "Models: por and eng tessdata_fast (Apache-2.0, tesseract-ocr project on GitHub) through the dataset manager with SHA-256 pinning. [P363 cond 2; research C0782 'Tesseract and tessdata_fast Apache-2.0']",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "tesseract_ocr",
+      "sanitizer": null,
+      "dataset": "tessdata_fast_por.traineddata",
+      "notes": "Batch p2-G12-2 (P363 image_ocr). Commit 87416418657359cb625c412a48b6e1d6d41c29bd (tessdata_fast main on 2026-11-26); por 1,982,756 B sha256 c4932b937207a9514b7514d518b931a99938c02a28a5a5a553f8599ed58b7deb, eng 4,113,088 B sha256 7d4322bd2a7749724879683fc3912cb542f19906c83bcc1a52132556427170b2 (the ETag is not the SHA-256: the dataset manager hashes the download). Runtime download only, never bundled (6.1 MB together, each < 5 MB). Nothing about the analysed file is ever sent: the models are whole public files."
+    }
+  },
+  "error_markers": [],
+  "notes": "Batch p2-G12-2: the pinned tessdata_fast OCR models (raw.githubusercontent.com belongs to the github provider)."
+}

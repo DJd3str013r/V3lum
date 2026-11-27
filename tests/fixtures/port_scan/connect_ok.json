@@ -1,0 +1,65 @@
+{
+ "_provenance": {
+  "synthetic": true
+ },
+ "target": "198.51.100.10",
+ "egress": "proxy_active",
+ "outcomes": [
+  {
+   "port": 22,
+   "result": "connected",
+   "rtt_ms": 41.9,
+   "banner_fixture": "port_scan__banner_ssh_ok.bin"
+  },
+  {
+   "port": 25,
+   "result": "connected",
+   "rtt_ms": 42.3,
+   "banner_fixture": "port_scan__banner_smtp_postfix.bin"
+  },
+  {
+   "port": 80,
+   "result": "connected",
+   "rtt_ms": 41.7
+  },
+  {
+   "port": 443,
+   "result": "connected",
+   "rtt_ms": 41.6
+  },
+  {
+   "port": 3306,
+   "result": "connected",
+   "rtt_ms": 42.0,
+   "banner_fixture": "port_scan__banner_mysql_host_blocked.bin"
+  },
+  {
+   "port": 21,
+   "result": "refused",
+   "errno": "ECONNREFUSED",
+   "rtt_ms": 41.8
+  },
+  {
+   "port": 23,
+   "result": "refused",
+   "errno": "ECONNREFUSED",
+   "rtt_ms": 42.1
+  },
+  {
+   "port": 3389,
+   "result": "timeout",
+   "rtt_ms": 1500.0
+  },
+  {
+   "port": 445,
+   "result": "timeout",
+   "rtt_ms": 1500.0
+  },
+  {
+   "port": 139,
+   "result": "error",
+   "errno": "EHOSTUNREACH",
+   "rtt_ms": 43.0
+  }
+ ]
+}

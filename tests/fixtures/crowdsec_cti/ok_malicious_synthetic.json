@@ -1,0 +1,120 @@
+{
+ "ip": "192.0.2.10",
+ "reputation": "malicious",
+ "confidence": "high",
+ "background_noise": "low",
+ "background_noise_score": 2,
+ "ip_range": "192.0.2.0/24",
+ "ip_range_score": 2,
+ "ip_range_24": "192.0.2.0/24",
+ "ip_range_24_reputation": "malicious",
+ "ip_range_24_score": 2,
+ "as_name": "ACME",
+ "as_num": 64500,
+ "location": {
+  "country": "US",
+  "city": null,
+  "latitude": null,
+  "longitude": null
+ },
+ "reverse_dns": "host-10.example.net",
+ "behaviors": [
+  {
+   "name": "http:scan",
+   "label": "HTTP Scan",
+   "description": "IP has been reported for performing actions related to HTTP vulnerability scanning and discovery"
+  },
+  {
+   "name": "http:exploit",
+   "label": "Web Exploitation",
+   "description": "IP has been reported for exploiting web applications"
+  }
+ ],
+ "history": {
+  "first_seen": "2026-10-03T23:00:00",
+  "last_seen": "2026-11-24T23:30:00",
+  "full_age": 54,
+  "days_age": 52
+ },
+ "classifications": {
+  "false_positives": [],
+  "classifications": [
+   {
+    "name": "community-blocklist",
+    "label": "CrowdSec Community Blocklist",
+    "description": "IP belong to the CrowdSec Community Blocklist"
+   }
+  ]
+ },
+ "mitre_techniques": [
+  {
+   "name": "T1190",
+   "label": "Exploit Public-Facing Application",
+   "description": "Adversaries may attempt to exploit a weakness in an Internet-facing host or system to initially access a network."
+  },
+  {
+   "name": "T1595",
+   "label": "Active Scanning",
+   "description": "Adversaries may execute active reconnaissance scans."
+  }
+ ],
+ "cves": [
+  "CVE-2021-44228"
+ ],
+ "attack_details": [
+  {
+   "name": "crowdsecurity/http-bad-user-agent",
+   "label": "Known Bad User-Agent",
+   "description": "Detect bad user-agents",
+   "references": []
+  },
+  {
+   "name": "crowdsecurity/apache_log4j2_cve-2021-44228",
+   "label": "Log4j CVE-2021-44228",
+   "description": "Detect log4j exploitation attempts",
+   "references": []
+  }
+ ],
+ "target_countries": {
+  "US": 40,
+  "DE": 25,
+  "BR": 10
+ },
+ "scores": {
+  "overall": {
+   "aggressiveness": 4,
+   "threat": 4,
+   "trust": 2,
+   "anomaly": 1,
+   "total": 4
+  },
+  "last_day": {
+   "aggressiveness": 3,
+   "threat": 4,
+   "trust": 2,
+   "anomaly": 1,
+   "total": 3
+  },
+  "last_week": {
+   "aggressiveness": 4,
+   "threat": 4,
+   "trust": 2,
+   "anomaly": 1,
+   "total": 4
+  },
+  "last_month": {
+   "aggressiveness": 4,
+   "threat": 4,
+   "trust": 2,
+   "anomaly": 1,
+   "total": 4
+  }
+ },
+ "references": [
+  {
+   "name": "list:crowdsec_high_risk",
+   "label": "CrowdSec High Risk",
+   "description": "IP was referenced in CrowdSec High Risk"
+  }
+ ]
+}

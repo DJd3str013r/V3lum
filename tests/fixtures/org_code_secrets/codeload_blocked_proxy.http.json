@@ -1,0 +1,21 @@
+{
+ "_meta": {
+  "module": "org_code_footprint",
+  "case": "codeload_blocked_proxy",
+  "source": "C0758 codeload.github.com",
+  "request": {
+   "method": "HEAD",
+   "url": "https://codeload.github.com/github/gitignore/tar.gz/refs/heads/main"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "LIVE",
+  "elapsed_s": 0.041,
+  "note": "HEAD refused by the research egress proxy (378-byte JSON policy body on GET); archive streaming must be verified from the team network"
+ },
+ "status": 403,
+ "headers": {
+  "content-type": "application/json; charset=utf-8",
+  "content-length": "378"
+ },
+ "body": ""
+}

@@ -1,0 +1,35 @@
+{
+ "_provenance": {
+  "source": "research sample gaps__web_search_api.json 2026-11-25T23:53:53Z GET https://api.search.brave.com/res/v1/web/search?q=example (no key)",
+  "status_seen": 422,
+  "minimised": "complete 422 body",
+  "synthetic": false
+ },
+ "url": "https://api.search.brave.com/res/v1/web/search?q=example",
+ "status": 422,
+ "headers": {
+  "content-type": "application/json",
+  "server": "awselb/2.0"
+ },
+ "body": {
+  "error": {
+   "code": "VALIDATION",
+   "detail": "Unable to validate request parameter(s)",
+   "meta": {
+    "errors": [
+     {
+      "input": null,
+      "loc": [
+       "header",
+       "x-subscription-token"
+      ],
+      "msg": "Field required",
+      "type": "missing"
+     }
+    ]
+   },
+   "status": 422
+  },
+  "type": "ErrorResponse"
+ }
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "nodes": [
+    {
+      "key": "sha1:00000079fd7aac9b2f9c988c50750e1f50b27eb5",
+      "depth": 0,
+      "seed": true,
+      "attributes": {"known_good": [{"value": true, "source": "circl_hashlookup"}]},
+      "findings": [
+        {"title": "Known internally (MISP)", "severity": "info", "confidence": 0.4,
+         "criterion": "", "tags": ["internal_sighting", "context_only"], "module": "misp_sightings", "source": "internal_misp.events", "data": {}}
+      ]
+    }
+  ],
+  "edges": []
+}

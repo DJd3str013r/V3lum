@@ -1,0 +1,50 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "yandex",
+  "name": "Yandex Images reverse image search",
+  "operator": "Yandex (Russian jurisdiction)",
+  "hosts": [
+    "yandex.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms (A8; P260 cond 5: 'trusted - ... Yandex (RU jurisdiction)'). Russian operator: the link carries max_tlp green and the notice 'foreign provider (RU): the URL goes to a Russian operator' (P260 cond 10).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": true,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "F",
+    "justification": "Manual reverse-image or map pages whose content is third-party or user-generated: reliability cannot be judged at provider level (manual links only)."
+  },
+  "http_profile": {
+    "user_agent": "neutral"
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "images_url": {
+      "title": "Yandex Images search?rpt=imageview&url= (manual reverse-image links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://yandex.com/legal/termsofuse/en/",
+        "quote": "The pack is offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "yandex",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0610 terms 'Yandex ToS' (yandex.com/images/search?rpt=imageview&url={urlencoded_image_url}; 200 with CBIR results, 2.9 s, no CAPTCHA from the research egress 2026-11-26; CAPTCHA on bursts). Yandex fetches the image server-side (flags.fetches_target). Listed only by `v3lum links` at TLP:AMBER and above (x_max_tlp green). Used by pivots_geo_image."
+    }
+  },
+  "notes": "Seeded by batch p2-G12-1 (P260). Manual links only: V3LUM never requests yandex.com."
+}

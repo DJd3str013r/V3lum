@@ -1,0 +1,190 @@
+{
+ "batch": "p3-G08-1",
+ "modules": [
+  {
+   "name": "shodan_cvedb",
+   "file": "v3lum/modules/vulnerability_cve/shodan_cvedb.py",
+   "proposal": "P189",
+   "category": "vulnerability_cve",
+   "opsec": 0,
+   "default_enabled": false,
+   "terms": "noncommercial",
+   "provider_tier": "trusted",
+   "keys": [],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "cvedb_kev_relay",
+    "cvedb_search_hits"
+   ],
+   "live_check": "2026-11-26 V3LUM_LIVE=1: CVE-2021-44228 OK (CVSS 10.0, EPSS > 0.9, KEV relay -> exploited, no 'kev'); product search 'log4j' OK (CVE pivots)"
+  },
+  {
+   "name": "euvd",
+   "file": "v3lum/modules/vulnerability_cve/euvd.py",
+   "proposal": "P191",
+   "category": "vulnerability_cve",
+   "opsec": 0,
+   "default_enabled": false,
+   "terms": "open",
+   "provider_tier": "trusted",
+   "keys": [],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "euvd_record",
+    "euvd_advisories",
+    "euvd_search_hits"
+   ],
+   "live_check": "2026-11-26 V3LUM_LIVE=1: enisaid CVE-2021-44228 OK within the 1 MB cap (EUVD id as alias, exploited {euvd: 2021-12-10}, no pivots)"
+  },
+  {
+   "name": "csaf_advisories",
+   "file": "v3lum/modules/vulnerability_cve/csaf_advisories.py",
+   "proposal": "P354",
+   "category": "vulnerability_cve",
+   "opsec": 0,
+   "default_enabled": true,
+   "terms": "open",
+   "provider_tier": "n/a",
+   "keys": [],
+   "datasets": [
+    "csaf_advisories.cisco_provider_metadata",
+    "csaf_advisories.cisco_changes",
+    "csaf_advisories.siemens_provider_metadata",
+    "csaf_advisories.siemens_feed",
+    "csaf_advisories.redhat_provider_metadata",
+    "csaf_advisories.redhat_changes"
+   ],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "csaf_advisories",
+    "csaf_index",
+    "csaf_search_hits"
+   ],
+   "live_check": "2026-11-26 V3LUM_LIVE=1: sync_csaf(max_docs=1) for Cisco, Siemens and Red Hat OK (canonical provider-metadata, declared hosts only, hashes checked), then offline keyword lookup with 0 requests"
+  },
+  {
+   "name": "csaf_redhat_vex",
+   "file": "v3lum/modules/vulnerability_cve/csaf_redhat_vex.py",
+   "proposal": "P354",
+   "category": "vulnerability_cve",
+   "opsec": 0,
+   "default_enabled": true,
+   "terms": "open",
+   "provider_tier": "trusted",
+   "keys": [],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [
+    "p3g081_vex_not_affected"
+   ],
+   "new_vocabulary": [
+    "vex_statuses"
+   ],
+   "live_check": "2026-11-26 V3LUM_LIVE=1: VEX CVE-2021-44228 OK (3.6 MB decoded < 5 MB cap; fixed and not_affected counts > 0)"
+  },
+  {
+   "name": "debian_security_tracker",
+   "file": "v3lum/modules/vulnerability_cve/debian_security_tracker.py",
+   "proposal": "P355",
+   "category": "vulnerability_cve",
+   "opsec": 0,
+   "default_enabled": false,
+   "terms": "open",
+   "provider_tier": "n/a",
+   "keys": [],
+   "datasets": [
+    "debian_security_tracker"
+   ],
+   "pivot_packs": [],
+   "correlation_rules": [
+    "p3g081_debian_backport"
+   ],
+   "new_vocabulary": [
+    "debian_tracker",
+    "debian_package_status",
+    "distro_backport"
+   ],
+   "live_check": "2026-11-26 V3LUM_LIVE=1: `data update debian_security_tracker` downloaded the real export, the streaming validator built the SQLite index; CVE-2024-6387 OK (bookworm fixed 1:9.2p1-2+deb12u3), 0 requests at lookup"
+  }
+ ],
+ "proposals_not_done": [],
+ "core_requests": [
+  "v3lum data sync csaf [--vendor V] [--max-docs N] (or a post-update hook of the csaf_advisories.* datasets) calling v3lum.modules.vulnerability_cve.csaf_advisories.sync_csaf(app.runtime(), ...) daily: P354 cond 1 asks for the daily incremental sync through `v3lum data update`, whose single-URL datasets cannot fetch the 2,000 documents discovered at sync time",
+  "Streamed (stream_to) downloads for large=True datasets in DataStore: the 93 MB Debian tracker export is buffered whole in memory before the streaming validator runs (same request as p2-G08-2's CVE baseline)",
+  "attack_surface (WP23) host_vulns / CR15-CR16: skip CVEs that carry a per-CVE distro or vendor-VEX verdict (finding.data['distro_backport'] / ['vex'], or a graph-level per-CVE suppression record), and run suppression-type pack rules (p3g081_debian_backport, p3g081_vex_not_affected) before CR15/CR16 and scoring: today rules run in pack import order and only whole version-inferred findings can be suppressed",
+  "g08_cve_card (p1-G08-1): render csaf_advisories (excerpt + canonical/distribution URL), vex_statuses counts, euvd_record and cvedb_kev_relay as context lines of the consolidated card",
+  "Legal: a licence_allow entry for shodan.cvedb (internal defensive use outside 'making money', scope + review date) or a recorded Shodan enterprise licence; check whether a commercial Shodan licence bought for InternetDB covers CVEDB (P189 cond 2/3)"
+ ],
+ "files": [
+  "docs/backlog/p3-G08-1.md",
+  "tests/fixtures/csaf_advisories/cisco_changes.csv",
+  "tests/fixtures/csaf_advisories/cisco_doc.json",
+  "tests/fixtures/csaf_advisories/cisco_doc_sha512.txt",
+  "tests/fixtures/csaf_advisories/cisco_not_found.http.json",
+  "tests/fixtures/csaf_advisories/cisco_provider_metadata.json",
+  "tests/fixtures/csaf_advisories/redhat_changes.csv",
+  "tests/fixtures/csaf_advisories/redhat_doc.json",
+  "tests/fixtures/csaf_advisories/redhat_doc_sha256.txt",
+  "tests/fixtures/csaf_advisories/redhat_provider_metadata.json",
+  "tests/fixtures/csaf_advisories/siemens_doc.json",
+  "tests/fixtures/csaf_advisories/siemens_doc_sha512.txt",
+  "tests/fixtures/csaf_advisories/siemens_feed.json",
+  "tests/fixtures/csaf_advisories/siemens_provider_metadata.json",
+  "tests/fixtures/csaf_redhat_vex/changes.csv",
+  "tests/fixtures/csaf_redhat_vex/cve_ok.json",
+  "tests/fixtures/csaf_redhat_vex/not_found.http.json",
+  "tests/fixtures/debian_security_tracker/head_gzip.http.json",
+  "tests/fixtures/debian_security_tracker/malformed_truncated.json",
+  "tests/fixtures/debian_security_tracker/not_modified.http.json",
+  "tests/fixtures/debian_security_tracker/tracker_trimmed.json",
+  "tests/fixtures/euvd/enisaid_large.http.json",
+  "tests/fixtures/euvd/enisaid_not_found.http.json",
+  "tests/fixtures/euvd/enisaid_ok.json",
+  "tests/fixtures/euvd/enisaid_truncated.json",
+  "tests/fixtures/euvd/search_empty.json",
+  "tests/fixtures/euvd/search_ok.json",
+  "tests/fixtures/rules/p3g081_debian_backport/negative_no_distro_revision_nothing_changes.json",
+  "tests/fixtures/rules/p3g081_debian_backport/negative_not_debian_based.json",
+  "tests/fixtures/rules/p3g081_debian_backport/positive_fixed_in_distro_package_suppressed.json",
+  "tests/fixtures/rules/p3g081_debian_backport/positive_unfixed_raises_confidence.json",
+  "tests/fixtures/rules/p3g081_vex_not_affected/negative_affected_stays.json",
+  "tests/fixtures/rules/p3g081_vex_not_affected/negative_not_red_hat.json",
+  "tests/fixtures/rules/p3g081_vex_not_affected/positive_not_affected_lowers_match.json",
+  "tests/fixtures/shodan_cvedb/challenge.http.json",
+  "tests/fixtures/shodan_cvedb/cve_ok.json",
+  "tests/fixtures/shodan_cvedb/cves_duplicate_rows.json",
+  "tests/fixtures/shodan_cvedb/cves_kev_ok.json",
+  "tests/fixtures/shodan_cvedb/malformed_truncated.json",
+  "tests/fixtures/shodan_cvedb/not_found.http.json",
+  "tests/fixtures/shodan_cvedb/timeout_unassigned.http.json",
+  "tests/live/test_p3_g08_1.py",
+  "tests/modules/test_csaf_advisories.py",
+  "tests/modules/test_csaf_redhat_vex.py",
+  "tests/modules/test_debian_security_tracker.py",
+  "tests/modules/test_euvd.py",
+  "tests/modules/test_shodan_cvedb.py",
+  "v3lum/correlations/p3_g08_1.py",
+  "v3lum/data/notices/csaf_cisco.json",
+  "v3lum/data/notices/csaf_redhat.json",
+  "v3lum/data/notices/csaf_siemens.json",
+  "v3lum/data/notices/debian_security_tracker.json",
+  "v3lum/data/notices/euvd_enisa.json",
+  "v3lum/data/providers/cisco.json",
+  "v3lum/data/providers/debian.json",
+  "v3lum/data/providers/enisa.json",
+  "v3lum/data/providers/redhat.json",
+  "v3lum/data/providers/siemens.json",
+  "v3lum/data/vocab/p3-G08-1.json",
+  "v3lum/modules/vulnerability_cve/csaf_advisories.py",
+  "v3lum/modules/vulnerability_cve/csaf_redhat_vex.py",
+  "v3lum/modules/vulnerability_cve/debian_security_tracker.py",
+  "v3lum/modules/vulnerability_cve/euvd.py",
+  "v3lum/modules/vulnerability_cve/shodan_cvedb.py"
+ ],
+ "notes": "All four proposals delivered as five modules + two correlation rules. P189 shodan_cvedb: terms noncommercial, default off, provider shodan (existing core fragment, source shodan.cvedb; no extension needed), per-CVE calls under the shared CVE fan-out rule (cve_record.cve_fanout_allows), product/CPE search only for analyst-typed keywords with an explicit limit, rows de-duplicated, KEV relay -> exploited/cvedb_kev_relay never kev, 404 'No information available' = EMPTY, hang/timeout = ERROR, FastAPI detail-in-200 marker. P191 euvd: provider enisa (new, trusted, open), 1 MB cap (Content-Length and truncated reads = ERROR), EUVD id only in advisory_aliases, exploitedSince -> exploited {euvd}, EPSS percent converted, ENISA acknowledgement in data_notices + notice fragment euvd_enisa, keyword search size<=10 for seeds only. P354: csaf_advisories (disclosure none, default on, terms open) reads a local SQLite index built by the out-of-band sync_csaf job (provider-metadata + changes.csv/ROLIE as registered datasets; documents/hashes via a host-restricted job scope; https + declared hosts only, paths from data joined under the declared directory only, <= 2,000 docs/vendor/sync, <= 5 MB/doc, .sha256/.sha512 verified, 404 hash = 'hash not published'); results are excerpts (<= 300 chars) + canonical and distribution URLs with licence/terms; vendors in CSAF_VENDORS (Cisco, Siemens, Red Hat; providers cisco/siemens/redhat created); Red Hat bulk sync bounded to 2 path years (lagging by design). csaf_redhat_vex is the separate third-party per-CVE adapter (in-scope CVEs only: seeds and has_vuln, fan-out budget), 404 = no VEX, > 5 MB = ERROR too large; rule p3g081_vex_not_affected lowers (never deletes) version-inferred findings on RHEL hosts when VEX says known_not_affected for the host's components. P355: debian_security_tracker registers the 93 MB export as a large opt-in dataset (expect bytes, never json.load'ed; validate callback streams it with a stdlib incremental parser into SQLite, refusing truncated/HTML/implausible files and keeping the old index), own dpkg comparison (Policy 5.6.12, test vectors with epochs), banner parsing (OpenSSH/PHP; Ubuntu/Raspbian/third-party excluded); module shows results only for analyst input (seed CVE/package); rule p3g081_debian_backport applies the check to hosts known to run Debian (banner/OS/analyst setting debian_security_tracker_assets) reading distro_fixes on CVE nodes or the local index: all CVEs of a version-inferred finding fixed -> SUP-distro_backport_fixed 'fixed in distro package' (POSSIBLE, context_only), unfixed -> +1 to PROBABLE once; analyst overrides win. ijson extra not added (stdlib streaming parser suffices; backlog). No LIGHT/ACTIVE variant requested. Registry contract test green for the five modules (the only failure in that file was another batch's cymru_mhr missing its test file); P327 lint clean; ruff clean. Fixtures from the prep session (live/research 2026-11-25/26), two individual GitHub handles in the EUVD truncated body replaced with example-user1/2; only vendor PSIRT role mailboxes remain."
+}

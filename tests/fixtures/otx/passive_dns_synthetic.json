@@ -1,0 +1,44 @@
+{
+ "passive_dns": [
+  {
+   "address": "192.0.2.10",
+   "first": "2026-01-05T10:00:00",
+   "last": "2026-11-20T08:30:00",
+   "hostname": "www.example.com",
+   "record_type": "A",
+   "indicator_link": "/indicator/hostname/www.example.com",
+   "flag_url": "assets/images/flags/us.png",
+   "flag_title": "United States",
+   "asset_type": "hostname",
+   "asn": "AS64500 example-hosting"
+  },
+  {
+   "address": "2001:db8::10",
+   "first": "2026-02-01T00:00:00",
+   "last": "2026-11-21T00:00:00",
+   "hostname": "www.example.com",
+   "record_type": "AAAA",
+   "asset_type": "hostname",
+   "asn": null
+  },
+  {
+   "address": "NXDOMAIN",
+   "first": "2025-01-01T00:00:00",
+   "last": "2025-01-02T00:00:00",
+   "hostname": "old.example.com",
+   "record_type": "A",
+   "asset_type": "hostname",
+   "asn": null
+  },
+  {
+   "address": "mail.example.net",
+   "first": "2026-03-01T00:00:00",
+   "last": "2026-11-01T00:00:00",
+   "hostname": "example.com",
+   "record_type": "CNAME",
+   "asset_type": "domain",
+   "asn": null
+  }
+ ],
+ "count": 4
+}

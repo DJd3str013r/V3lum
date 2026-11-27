@@ -1,0 +1,19 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://okta.okta.com/.well-known/openid-configuration"
+  },
+  "response": {
+    "status": 429,
+    "headers": {
+      "content-type": "application/json",
+      "x-rate-limit-limit": "600",
+      "x-rate-limit-remaining": "0",
+      "x-rate-limit-reset": "1795670460"
+    },
+    "body": "{\"errorCode\": \"E0000047\", \"errorSummary\": \"API call exceeded rate limit due to too many requests.\", \"errorLink\": \"E0000047\"}"
+  },
+  "class": "derived",
+  "captured_at": "2026-11-26T00:00:00Z",
+  "notes": "not captured (forcing a rate limit is not allowed); unknown, never absent"
+}

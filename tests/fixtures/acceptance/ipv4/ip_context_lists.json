@@ -1,0 +1,76 @@
+{
+ "schema": "v3lum.acceptance_routes/1",
+ "module": "ip_context_lists",
+ "routes": [
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/X4BNet/lists_vpn/main/output/vpn/ipv4.txt",
+   "status": 200,
+   "body_b64": "Mi4yNi44LjAvMjIKMi4yNi44OC4wLzIyCjIuMjYuOTIuMC8yMwoyLjI2Ljk1LjAvMjQKMi4yNi4xNTcuMC8yNAoyLjI2LjE2NC4wLzI0CjIuMjYuMTcxLjAvMjQKMi4yNi4yNTMuMC8yNAoyLjI3LjE1MS4wLzI0CjIuMjcuMjA4LjAvMjIKMi4yNy4yMjQuMC8yMgoyLjI3LjI1MS4wLzI0Cg==",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 300
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/X4BNet/lists_vpn/main/output/vpn/ipv6.txt",
+   "status": 200,
+   "body_b64": "MjAwMTo1NTA6MWQwNTo6LzQ4CjIwMDE6OTc4OjIzMDU6Oi80OAoyMDAxOjk3ODozNDAwOjovNDgKMjAwMTphYzg6Oi8zMgoyMDAxOmRmNTo5MTgwOjovNDgKMjQwNzo5ODAwOmIwMDA6Oi80NAoyNjAyOmY3ZDg6Oi80NwoyNjAyOmY3ZDg6Mjo6LzQ4CjI2MDI6ZjdmODoxOjovNDgKMjYwMjpmYWQ0OjovNDgKMjYwMjpmYWQ0OjQ6Oi80NgoyNjAyOmZhZDQ6ODo6LzQ1CjI2MDI6ZmFkNDoxMDo6LzQ2CjI2MDI6ZmFkNDoxNDo6LzQ4CjI2MDI6ZmQ2MDoxMTo6LzQ4Cg==",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 300
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/X4BNet/lists_vpn/main/output/datacenter/ipv4.txt",
+   "status": 200,
+   "body_b64": "MS4xMi4wLjAvMTQKMS40NC45Ni4wLzI0CjEuOTIuMC4wLzE2CjEuOTQuMC4wLzE1CjEuMTE2LjAuMC8xNQoxLjExOC4zLjAvMjQKMS4xNzguMS4wLzI0CjEuMTc4LjQuMC8yMgoxLjE3OC44LjAvMjEKMS4xNzguMTcuMC8yNAoxLjE3OC4xOC4wLzIzCjEuMTc4LjIwLjAvMjIK",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 300
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/X4BNet/lists_vpn/main/output/datacenter/ipv6.txt",
+   "status": 200,
+   "body_b64": "MjAwMTozMTA6Oi8zMgoyMDAxOjQ2MDoxMDA6Oi80NgoyMDAxOjQ2ODoxZjEwOjovNDcKMjAwMTo0Njg6MWY2Njo6LzQ4CjIwMDE6NDcwOjovMzIKMjAwMTo0Zjg6Mjo6LzQ4CjIwMDE6NGY4OmI6Oi80OAoyMDAxOjRmODoxMTo6LzQ4CjIwMDE6NGY4OmZlMDA6Oi80NAoyMDAxOjUwNDo0Mzo6LzQ4CjIwMDE6NTUwOjYwMTo6LzQ4CjIwMDE6NTUwOjkwNzo6LzQ4CjIwMDE6NTUwOjFkMDU6Oi80OAoyMDAxOjU1MDoyODAxOjovNDgKMjAwMTo1NTA6NWMwMzo6LzQ4Cg==",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 300
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/mthcht/awesome-lists/main/Lists/VPN/ProtonVPN/protonvpn_ip_list.csv",
+   "status": 200,
+   "body_b64": "c3JjX2lwX2VudHJ5LHNyY19pcF9leGl0LHNyY19jb3VudHJ5X2VudHJ5LHNyY19jb3VudHJ5X2V4aXQNCjE4NS4xNTkuMTU2LjU2LDQ1LjE0LjcxLjE1LFNFLEpQDQoxODUuMTU5LjE1Ni4zNywxMDMuMTI1LjIzNS4yNyxTRSxKUA0KMTg1LjE1OS4xNTYuOTMsMTg1LjI0Ni4yMTEuMTk0LFNFLEZSDQoxODUuMTU5LjE1Ni45NCwxODUuMjQ2LjIxMS43MyxTRSxGUg0KMTg1LjE1OS4xNTYuNjgsNDUuMTI4LjEzNC4xOTcsU0UsRlINCjE4NS4xNTkuMTU2LjE2MCw3OS4xMjcuMTY5LjYwLFNFLEZSDQoxODUuMTU5LjE1Ni4xNjEsNzkuMTI3LjE2OS4zMCxTRSxGUg0KMTg1LjE1OS4xNTguMTQ4LDE4NS43Ni4xMS4xOSxJUyxFUw0K",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 300
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/mthcht/awesome-lists/main/Lists/VPN/MullVad/mullvad_relay_servers_ips_list.csv",
+   "status": 200,
+   "body_b64": "ZGVzdF9pcCxkZXN0X250X2RvbWFpbixkZXN0X3BvcnQNCjQ1LjE0Mi4yNi4yLGFsLXRpYS13Zy0wMDEucmVsYXlzLm11bGx2YWQubmV0LDUxODIwDQoyYTA0OjI3YzA6MDplOjpmMDAxLGFsLXRpYS13Zy0wMDEucmVsYXlzLm11bGx2YWQubmV0LDUxODIwDQo2Mi4xMDEuMTY1LjIsYWwtdGlhLXdnLTAwMi5yZWxheXMubXVsbHZhZC5uZXQsNTE4MjANCjJhMDQ6MjdjMDowOmY6OmYwMDEsYWwtdGlhLXdnLTAwMi5yZWxheXMubXVsbHZhZC5uZXQsNTE4MjANCjQ1LjE0Mi4yNi4xMjYsYWwtdGlhLXdnLTAwMy5yZWxheXMubXVsbHZhZC5uZXQsNTE4MjANCjJhMDQ6MjdjMDowOmM6OmYwMDEsYWwtdGlhLXdnLTAwMy5yZWxheXMubXVsbHZhZC5uZXQsNTE4MjANCjYyLjEwMS4xNjUuMTI2LGFsLXRpYS13Zy0wMDQucmVsYXlzLm11bGx2YWQubmV0LDUxODIwDQoyYTA0OjI3YzA6MDpkOjpmMDAxLGFsLXRpYS13Zy0wMDQucmVsYXlzLm11bGx2YWQubmV0LDUxODIwDQo=",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 300
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/mthcht/awesome-lists/main/Lists/VPN/SurfSharkVPN/surfshark_vpn_servers_domains_and_ips_list.csv",
+   "status": 200,
+   "body_b64": "ZGVzdF9udF9kb21haW4sZGVzdF9wb3J0LGRlc3RfaXANCmpwLXRvay5wcm9kLnN1cmZzaGFyay5jb20sMTQ0Myw4OS4xODcuMTYxLjI0DQpwdC1vcG8ucHJvZC5zdXJmc2hhcmsuY29tLDE0NDMsMTAzLjE5Mi4yMDUuMTANCmNsLXNhbi5wcm9kLnN1cmZzaGFyay5jb20sMTE5NCwxNDkuODguMTA0LjE0MQ0KdWstZ2xhLnByb2Quc3VyZnNoYXJrLmNvbSwxMTk0LDg5LjM3LjY2LjEwMw0KcGsta2hpLnByb2Quc3VyZnNoYXJrLmNvbSwxNDQzLDE1MS4yNDQuNjAuMTkNCmx2LXJpZy5wcm9kLnN1cmZzaGFyay5jb20sMTE5NCw4MC4yNDYuMzEuODANCmNoLXp1ci5wcm9kLnN1cmZzaGFyay5jb20sMTQ0Myw4NC4zOS4xMTIuOTkNCmJ0LXBiaC5wcm9kLnN1cmZzaGFyay5jb20sMTQ0Myw2Mi4xOTcuMTU3LjQxDQo=",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 300
+  }
+ ]
+}

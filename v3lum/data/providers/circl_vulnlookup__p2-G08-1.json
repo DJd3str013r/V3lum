@@ -1,0 +1,39 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "circl_vulnlookup",
+  "hosts": [],
+  "sources": {
+    "circl_vulnlookup_sightings": {
+      "title": "Vulnerability-Lookup sightings: /api/vulnerability/{id}/timeline (oldest first) and /api/sighting/?vuln_id= (fallback)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://vulnerability.circl.lu/api/",
+        "quote": "Registry provider circl: tier trusted, terms open (CC BY 4.0 where applicable, attribution).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "circl",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P181 cond 1). Community sightings (seen / exploited / confirmed / published-proof-of-concept...) go to the attribute 'exploited' with source 'circl', never to 'kev' (P181 cond 3). The bodies carry third-party account handles and post texts: they are read in memory only (no HTTP cache row, evidence keeps counts, dates and source families), capped at 8 MiB (3.86 MB observed for CVE-2021-44228)."
+    },
+    "circl_vulnlookup_epss": {
+      "title": "Vulnerability-Lookup /api/epss/{cve} (FIRST EPSS relayed; called only when the local EPSS file cannot answer)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://vulnerability.circl.lu/api/",
+        "quote": "Registry provider circl: tier trusted, terms open (CC BY 4.0 where applicable, attribution).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "epss",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P181 cond 1). The body is FIRST's EPSS envelope relayed by CIRCL (same model run as the FIRST daily file, so upstream family 'epss'); a status other than OK inside an HTTP 200 envelope is an error. FIRST attribution applies."
+    }
+  },
+  "error_markers": [],
+  "notes": "Batch p2-G08-1 (P181 circl_vulnlookup): per-endpoint sources so coverage shows a sightings or EPSS failure while the record answered (res.source_status). The record endpoint is the seeded source circl_vulnlookup.api."
+}

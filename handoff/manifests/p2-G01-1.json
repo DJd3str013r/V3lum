@@ -1,0 +1,266 @@
+{
+ "batch": "p2-G01-1",
+ "modules": [
+  {
+   "name": "hostio",
+   "file": "v3lum/modules/domain_dns/hostio.py",
+   "proposal": "P004",
+   "category": "domain_dns",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "key-terms",
+   "provider_tier": "community (seed hostio.json records the stricter P026 tier; council P004 said trusted)",
+   "keys": [
+    "hostio"
+   ],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attr homepage_snapshot",
+    "attr related_domain_counts",
+    "attr ip_registration_info",
+    "attr shared_tracking_ids",
+    "attr redirect_relations",
+    "tag shared_tracking_id",
+    "rel linked_from",
+    "rel redirected_from",
+    "rel copied_tracking_id"
+   ],
+   "live_check": "keyed, no team key: live test asserts NEEDS_KEY with zero requests (passed); offline real fixture = research 400 'API Access Token Required'"
+  },
+  {
+   "name": "securitytrails",
+   "file": "v3lum/modules/domain_dns/securitytrails.py",
+   "proposal": "P006",
+   "category": "domain_dns",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "key-terms",
+   "provider_tier": "trusted",
+   "keys": [
+    "securitytrails"
+   ],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attr dns_history_a",
+    "attr origin_ip_candidates",
+    "attr subdomain_count",
+    "tag cdn_origin_hypothesis",
+    "rel historical_a_record"
+   ],
+   "live_check": "keyed, no team key: live test asserts NEEDS_KEY with zero requests (passed); offline real fixture = research 401 'Please check user credentials'"
+  },
+  {
+   "name": "nrd_feeds",
+   "file": "v3lum/modules/domain_dns/nrd_feeds.py",
+   "proposal": "P005",
+   "category": "domain_dns",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "open",
+   "provider_tier": "n/a (disclosure none; dataset providers whoisds community, registrobr trusted)",
+   "keys": [],
+   "datasets": [
+    "whoisds_nrd.YYYY-MM-DD (one per list date, last 4 registered at import; 30-day window read in place)",
+    "registrobr_release_list.txt"
+   ],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attr nrd_coverage",
+    "attr nrd_first_seen (timeline)",
+    "attr nrd_hits",
+    "attr release_window",
+    "tag in_release",
+    "rel brand_match"
+   ],
+   "live_check": "LIVE 2026-11-26: `data update` of whoisds_nrd.2026-11-25 (real zip, safe_extract validation) and registro.br release list both installed; a real listed name -> OK nrd_first_seen 2026-11-25, untagged (no public DoH for offline modules); example.com -> EMPTY honest wording; registro.br -> EMPTY 'no NRD feed for .br: CT + permutations + DoH only; not in the registro.br release list (2026-11-11 to 2026-11-18)'"
+  },
+  {
+   "name": "nrd_smet",
+   "file": "v3lum/modules/domain_dns/nrd_feeds.py",
+   "proposal": "P005",
+   "category": "domain_dns",
+   "opsec": "passive",
+   "default_enabled": false,
+   "terms": "unknown",
+   "provider_tier": "n/a (disclosure none; provider smet unknown tier)",
+   "keys": [],
+   "datasets": [
+    "smet_nrd_today.txt (registered only once legal records a terms class other than unknown)"
+   ],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [],
+   "live_check": "never run (terms unknown): live test asserts the policy gate refuses it with reason 'licence' (passed)"
+  },
+  {
+   "name": "domainsdb_search",
+   "file": "v3lum/modules/domain_dns/domainsdb_search.py",
+   "proposal": "P005",
+   "category": "domain_dns",
+   "opsec": "passive",
+   "default_enabled": false,
+   "terms": "key-terms",
+   "provider_tier": "unknown (until a recorded promotion; reuses_queries set fail closed)",
+   "keys": [
+    "domainsdb"
+   ],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attr keyword_domains"
+   ],
+   "live_check": "keyed + unknown tier: live test asserts SKIPPED/NEEDS_KEY with zero requests (passed); offline real fixture = research 401 'API key required'"
+  },
+  {
+   "name": "digital_asset_links",
+   "file": "v3lum/modules/domain_dns/digital_asset_links.py",
+   "proposal": "P008",
+   "category": "domain_dns",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "open",
+   "provider_tier": "trusted",
+   "keys": [],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [
+    "dal_shared_signing_cert"
+   ],
+   "new_vocabulary": [
+    "attr official_android_apps",
+    "attr asset_link_sites",
+    "rel official_android_app",
+    "rel app_signing_cert"
+   ],
+   "live_check": "LIVE 2026-11-26: google.com OK (32 packages, SHA-256 fingerprints parsed); example.com EMPTY 'no Digital Asset Links statements published'"
+  },
+  {
+   "name": "govbr_domains",
+   "file": "v3lum/modules/domain_dns/govbr_domains.py",
+   "proposal": "P009",
+   "category": "domain_dns",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "open",
+   "provider_tier": "n/a (disclosure none; dataset provider sisp trusted)",
+   "keys": [],
+   "datasets": [
+    "govbr_domains.csv"
+   ],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attr official_gov_br",
+    "attr govbr_domains",
+    "attr govbr_parent_listed",
+    "tag official_gov_br"
+   ],
+   "live_check": "LIVE 2026-11-26: `data update` installed the real dominios_gov_br.csv (183,518 B, header + row floor validated); receita.gov.br -> OK official_gov_br, registrant CNPJ 33683111000107 (SERPRO) pivot 'registrant', list_date 2026-11-24; unlisted gov.br name -> EMPTY 'not in the SISP gov.br list'"
+  }
+ ],
+ "proposals_not_done": [
+  {
+   "id": "P005 (ICANN CZDS part)",
+   "reason": "deferred by P005 cond 2 to the backlog: needs core streaming download-to-disk with per-TLD caps, the company's own CZDS account and legal-accepted per-TLD terms (docs/backlog/p2-G01-1.md)"
+  }
+ ],
+ "core_requests": [
+  "hostio seed provider (v3lum/data/providers/hostio.json, core seed): add the P334 quota block {scope: key, month: <plan limit>, safety_margin: 0.8, published: true, evidence_url} once legal records key_plans.hostio; until then HostIo.daily_quota=25 is the interim budget (P004 cond 3). Extensions (v3lum.provider-ext/1) cannot carry a quota block.",
+  "core suppression stage / scoring (WP08): dampen domain-level reputation findings of a domain node carrying attribute official_gov_br (exact SISP match, govbr_domains finding tagged known_good) and never touch URL or subdomain nodes (P009 cond 3).",
+  "typosquat (P012, other batch): consume govbr_domains.protected_entries(ctx) / protected_domains(ctx) (gov.br list + BCB DominiosVerificados, build_protected_index format, local copy only) in its protected index, separate from org_profile brands (P009 cond 4).",
+  "WP26 watch engine: persist/diff nrd_feeds watch_hits (name, source, first_seen = list date) in the case DB table watch_first_seen so watch (P030) alerts only on new matches (P005 cond 7).",
+  "core datasets: a background/scheduled refresh of the registered whoisds_nrd.* and registrobr_release_list.txt datasets (P005 cond 5 'v3lum data update or a background refresh'); WhoisDS keeps only 4 list dates online.",
+  "core datasets: streaming download-to-disk with per-file caps for very large datasets, needed before ICANN CZDS zone diffs can leave the backlog (P005 cond 2).",
+  "core vocab owner: optionally fold official_android_apps (and the other p2-G01-1 fragment names) into core/vocab.py (P008 cond 2 says core/vocab.py; batches may only ship v3lum/data/vocab/p2-G01-1.json).",
+  "architect/council: allow public DoH confirmation of list hits for a disclosure-none module (only the lookalike name leaves, never the brand), or keep doh_internal as the only path (P005 cond 9)."
+ ],
+ "files": [
+  "docs/backlog/p2-G01-1.md",
+  "tests/fixtures/acceptance/cnpj/govbr_domains.json",
+  "tests/fixtures/acceptance/domain/digital_asset_links.json",
+  "tests/fixtures/acceptance/domain/govbr_domains.json",
+  "tests/fixtures/acceptance/domain/hostio.json",
+  "tests/fixtures/acceptance/domain/nrd_feeds.json",
+  "tests/fixtures/acceptance/domain/securitytrails.json",
+  "tests/fixtures/digital_asset_links/empty_statements_synthetic.json",
+  "tests/fixtures/digital_asset_links/invalid_argument_400.json",
+  "tests/fixtures/digital_asset_links/not_published_200.json",
+  "tests/fixtures/digital_asset_links/rate_limited_429_synthetic.json",
+  "tests/fixtures/digital_asset_links/redirect_error_synthetic.json",
+  "tests/fixtures/digital_asset_links/statements_ok.json",
+  "tests/fixtures/digital_asset_links/unavailable_503_synthetic.json",
+  "tests/fixtures/digital_asset_links/web_target_synthetic.json",
+  "tests/fixtures/domainsdb_search/error_needs_key.json",
+  "tests/fixtures/domainsdb_search/not_found_synthetic.json",
+  "tests/fixtures/domainsdb_search/search_ok_synthetic.json",
+  "tests/fixtures/govbr_domains/csv_bad_header.csv",
+  "tests/fixtures/govbr_domains/csv_ok.csv",
+  "tests/fixtures/govbr_domains/csv_truncated.csv",
+  "tests/fixtures/govbr_domains/s3_403_access_denied.xml",
+  "tests/fixtures/hostio/domains_adsense_ok_synthetic.json",
+  "tests/fixtures/hostio/domains_backlinks_ok_synthetic.json",
+  "tests/fixtures/hostio/domains_empty_synthetic.json",
+  "tests/fixtures/hostio/domains_googleanalytics_docs.json",
+  "tests/fixtures/hostio/domains_googleanalytics_ok_synthetic.json",
+  "tests/fixtures/hostio/domains_googleanalytics_shared_synthetic.json",
+  "tests/fixtures/hostio/domains_redirects_ok_synthetic.json",
+  "tests/fixtures/hostio/error_invalid_token_synthetic.json",
+  "tests/fixtures/hostio/error_no_details_404.json",
+  "tests/fixtures/hostio/error_quota_synthetic.json",
+  "tests/fixtures/hostio/error_rate_limited_synthetic.json",
+  "tests/fixtures/hostio/error_token_required.json",
+  "tests/fixtures/hostio/full_example_synthetic.json",
+  "tests/fixtures/hostio/full_google_docs.json",
+  "tests/fixtures/nrd_feeds/challenge_page.html",
+  "tests/fixtures/nrd_feeds/registrobr_empty.txt",
+  "tests/fixtures/nrd_feeds/registrobr_html_page.html",
+  "tests/fixtures/nrd_feeds/registrobr_ok.txt",
+  "tests/fixtures/nrd_feeds/registrobr_truncated.txt",
+  "tests/fixtures/nrd_feeds/whoisds_not_available_empty.html",
+  "tests/fixtures/nrd_feeds/whoisds_ok.zip",
+  "tests/fixtures/nrd_feeds/whoisds_too_many_members_synthetic.zip",
+  "tests/fixtures/nrd_feeds/whoisds_unsafe_member_synthetic.zip",
+  "tests/fixtures/nrd_feeds/whoisds_zip_bomb_synthetic.zip",
+  "tests/fixtures/nrd_smet/empty.txt",
+  "tests/fixtures/nrd_smet/today_ok.txt",
+  "tests/fixtures/rules/dal_shared_signing_cert/negative_distinct_certificates.json",
+  "tests/fixtures/rules/dal_shared_signing_cert/positive_two_domains.json",
+  "tests/fixtures/securitytrails/domain_cdn_synthetic.json",
+  "tests/fixtures/securitytrails/domain_ok_synthetic.json",
+  "tests/fixtures/securitytrails/error_401.txt",
+  "tests/fixtures/securitytrails/forbidden_403_synthetic.json",
+  "tests/fixtures/securitytrails/history_a_cdn_synthetic.json",
+  "tests/fixtures/securitytrails/history_a_empty_synthetic.json",
+  "tests/fixtures/securitytrails/history_a_ok_synthetic.json",
+  "tests/fixtures/securitytrails/quota_429_synthetic.json",
+  "tests/fixtures/securitytrails/subdomains_ok_synthetic.json",
+  "tests/fixtures/securitytrails/web_challenge_403.html",
+  "tests/live/test_p2_g01_1.py",
+  "tests/modules/test_digital_asset_links.py",
+  "tests/modules/test_domainsdb_search.py",
+  "tests/modules/test_govbr_domains.py",
+  "tests/modules/test_hostio.py",
+  "tests/modules/test_nrd_feeds.py",
+  "tests/modules/test_nrd_smet.py",
+  "tests/modules/test_securitytrails.py",
+  "v3lum/correlations/p2_g01_1.py",
+  "v3lum/data/providers/domainsdb.json",
+  "v3lum/data/providers/sisp.json",
+  "v3lum/data/providers/smet.json",
+  "v3lum/data/providers/whoisds.json",
+  "v3lum/data/vocab/p2-G01-1.json",
+  "v3lum/modules/domain_dns/digital_asset_links.py",
+  "v3lum/modules/domain_dns/domainsdb_search.py",
+  "v3lum/modules/domain_dns/govbr_domains.py",
+  "v3lum/modules/domain_dns/hostio.py",
+  "v3lum/modules/domain_dns/nrd_feeds.py",
+  "v3lum/modules/domain_dns/securitytrails.py"
+ ],
+ "notes": "Resumed run: every file of the earlier attempt was reviewed and kept (no leftovers removed; none found outside this list). Deviations, all recorded in docs/backlog/p2-G01-1.md: hostio uses /api/full/{domain} (documented union of /api/web, /api/related and IPinfo) plus /api/domains/{redirects,backlinks,googleanalytics,adsense,gtm}/{value} within max_requests 5; the token goes in 'Authorization: Bearer' (documented by host.io) with redirects disabled; backlinks pivot under 'linked_from' (directed inverse of links_to, expand=False) and the seed's own outbound links under links_to; redirect dates are the scrape/fetch dates (host.io publishes none). Shared-id rule: related count or reverse total > 50 -> shared id, no same_analytics link and no reverse request spent; an id on an own site and a non-own site -> clone indicator (copied_tracking_id, brand_abuse, MEDIUM/POSSIBLE), never same-owner; same_analytics pivots PROBABLE (0.7), expand=False, capped 10. Merge gates still open for keyed sources (P004 cond 7, P006 cond 8, DomainsDB): real success fixtures need the team keys; only real error bodies (host.io 400, SecurityTrails 401, DomainsDB 401) and host.io documentation samples are real, the rest is *_synthetic. Provider ownership: hostio, securitytrails, google_dal and registrobr are seeds (referenced only, no extension needed); this batch owns whoisds, smet, domainsdb and sisp fragments. CZDS hosts are not registered (deferred). No LIGHT/ACTIVE class requested or written. nrd_feeds is disclosure none: DoH confirmation only through doh_internal, so without it hits stay untagged ('could not verify'). Policy/licence: key-terms modules run under corporate only with key_plans.<key>='business'; nrd_smet is refused in every profile (terms unknown); domainsdb_search is refused while its provider is unknown tier. Resume fix: the seed domain -> analytics_id edges (relation same_analytics) were CONFIRMED; capped at PROBABLE per P004 cond 4 (test added). Tests: 106 batch unit tests green; registry contract green for all 7 modules; P327 lint clean on every batch file; ruff clean; live run (V3LUM_LIVE=1) 6/6 green. Full offline suite: ~7681 passed, 20 failed, all in other batches' or core WIP files (ransomfeed, typosquat BCB test, datasets first-run hint, links cert_fingerprint fixture, lint of xposedornot.json, noise misp, registry contract of hibp_account/leakcheck_public/xposedornot*, unregistered HibpAccount/IpContextLists, summary/cases_verify) - none names a p2-G01-1 file."
+}

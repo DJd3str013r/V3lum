@@ -1,0 +1,20 @@
+{
+ "1": {"name": "CMS", "priority": 1, "groups": [3]},
+ "10": {"name": "Analytics", "priority": 9, "groups": [8]},
+ "11": {"name": "Blogs", "priority": 1, "groups": [3]},
+ "16": {"name": "Security", "priority": 9, "groups": [16]},
+ "17": {"name": "Font scripts", "priority": 9, "groups": [9]},
+ "22": {"name": "Web servers", "priority": 8, "groups": [7]},
+ "23": {"name": "Caching", "priority": 7, "groups": [7]},
+ "27": {"name": "Programming languages", "priority": 5, "groups": [9]},
+ "28": {"name": "Operating systems", "priority": 6, "groups": [7]},
+ "30": {"name": "Webmail", "priority": 2, "groups": [4]},
+ "31": {"name": "CDN", "priority": 9, "groups": [7]},
+ "34": {"name": "Databases", "priority": 5, "groups": [7]},
+ "42": {"name": "Tag managers", "priority": 9, "groups": [8]},
+ "57": {"name": "Static site generator", "priority": 1, "groups": [9]},
+ "59": {"name": "JavaScript libraries", "priority": 9, "groups": [9]},
+ "66": {"name": "UI frameworks", "priority": 7, "groups": [9]},
+ "67": {"name": "Cookie compliance", "priority": 9, "groups": [16]},
+ "70": {"name": "SSL/TLS certificate authorities", "priority": 9, "groups": [16]}
+}

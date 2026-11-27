@@ -1,0 +1,10 @@
+{
+ "_envelope": 1,
+ "_synthetic": "Hockeypuck/nginx throttling shape; not observed (5 requests, no throttling)",
+ "status": 429,
+ "headers": {
+  "content-type": "text/plain; charset=utf-8",
+  "retry-after": "60"
+ },
+ "body": "Too Many Requests\n"
+}

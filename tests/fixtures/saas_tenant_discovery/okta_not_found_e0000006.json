@@ -1,0 +1,17 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://thisorgdoesnotexist0000x.okta.com/.well-known/openid-configuration"
+  },
+  "response": {
+    "status": 403,
+    "headers": {
+      "content-type": "application/json",
+      "server": "nginx"
+    },
+    "body": "{\"errorCode\": \"E0000006\", \"errorSummary\": \"You do not have permission to perform the requested action\", \"errorLink\": \"E0000006\"}"
+  },
+  "class": "live",
+  "captured_at": "2026-11-26T11:00:40Z",
+  "notes": "random non-existent name: 403 E0000006 (errorId/errorCauses dropped)"
+}

@@ -1,0 +1,11 @@
+{
+ "url": "https://github.com/graphsense/graphsense-tagpacks/archive/refs/heads/master.zip",
+ "observed_utc": "2026-11-26T07:35:46+00:00",
+ "status": 403,
+ "headers": {
+  "content-length": "378",
+  "content-type": "application/json; charset=utf-8"
+ },
+ "body": "{\"message\":\"GitHub access to this repository is not enabled for this session. Use add_repo to request access. If add_repo answers that read access is already available and you need GitHub API or write access, call add_repo again with access:\\\"push\\\" to attach the repository with credentials.\",\"documentation_url\":\"https://docs.anthropic.com/en/docs/claude-code/github-actions\"}",
+ "elapsed_s": 0.156
+}

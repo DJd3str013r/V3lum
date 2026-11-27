@@ -1,0 +1,9 @@
+{
+  "schema": "v3lum.extra/1",
+  "package": "pefile",
+  "pip": "pefile>=2024.8.26",
+  "extra": "full",
+  "licence": "MIT",
+  "justification": "PE header/import/export/resource/debug parsing (fast_load, capped) for pe_triage (P271 c3). Optional: without it, or until core/sandbox.py exists, pe_triage uses its own bounded standard-library PE reader with the same output shape.",
+  "notes": "Batch p2-G12-1. Pure Python, used unmodified; run only inside the core file-analysis sandbox (core/sandbox.py)."
+}

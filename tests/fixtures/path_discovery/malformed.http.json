@@ -1,0 +1,20 @@
+{
+ "_provenance": {
+  "synthetic": true
+ },
+ "request": {
+  "method": "GET",
+  "host": "app.example.com",
+  "path": "/swagger.json"
+ },
+ "response": {
+  "status": 200,
+  "headers": {
+   "Content-Type": "application/json"
+  },
+  "body": "<html><body>Oops, something went wr"
+ },
+ "history": [],
+ "final_url": null,
+ "transport_error": null
+}

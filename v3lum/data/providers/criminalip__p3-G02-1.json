@@ -1,0 +1,53 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "criminalip",
+  "hosts": [],
+  "sources": {},
+  "error_markers": [
+    {
+      "id": "criminalip_credits_in_body",
+      "statuses": [200],
+      "json_path": "message",
+      "equals": null,
+      "regex": "(?i)credit|quota|limit (?:exceeded|reached)|usage limit|exceeded",
+      "final_url_regex": null,
+      "maps_to": "quota",
+      "reason_code": "quota",
+      "reason": "Criminal IP: monthly credits of the plan used up (error body inside HTTP 200): could not verify, deferred"
+    },
+    {
+      "id": "criminalip_rate_limited_in_body",
+      "statuses": [200],
+      "json_path": "status",
+      "equals": 429,
+      "regex": null,
+      "final_url_regex": null,
+      "maps_to": "rate_limited",
+      "reason_code": "rate_limited",
+      "reason": "Criminal IP: rate limited (body status 429 inside HTTP 200): could not verify now"
+    },
+    {
+      "id": "criminalip_check_access_failed",
+      "statuses": [200],
+      "json_path": "message",
+      "equals": null,
+      "regex": "(?i)check access failed|invalid (?:api )?key|api key|unauthori[sz]ed",
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "Criminal IP: 'check access failed' (body status 403 inside HTTP 200): the key 'criminalip' is missing, invalid or its plan has no access"
+    },
+    {
+      "id": "criminalip_error_status_in_body",
+      "statuses": [200],
+      "json_path": "status",
+      "equals": null,
+      "regex": "^(?:4\\d\\d|5\\d\\d)$",
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "Criminal IP: error status inside an HTTP 200 body: could not verify, never an empty answer"
+    }
+  ],
+  "notes": "Batch p3-G02-1 (module criminalip, P048 cond 3). Criminal IP answers errors inside HTTP 200 with a body status: the recorded no-key answer (research C0099, 2026-11-25) is {\"data\": {}, \"message\": \"check access failed\", \"status\": 403} -> NEEDS_KEY (the module maps marker criminalip_check_access_failed to NEEDS_KEY: the P321 schema has no needs_key target); body status 429 -> RATE_LIMITED (theHarvester's handling; wording unverified); credit wording -> QUOTA (unverified); any other body status >= 400 -> ERROR. Never EMPTY. Fixtures: tests/fixtures/criminalip/*.http.json."
+}

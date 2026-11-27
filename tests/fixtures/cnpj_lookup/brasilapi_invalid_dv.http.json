@@ -1,0 +1,26 @@
+{
+ "request": "GET https://brasilapi.com.br/api/cnpj/v1/00000000000192",
+ "response": {
+  "status": 400,
+  "headers": {
+   "content-type": "application/json; charset=utf-8",
+   "content-length": "94",
+   "age": "0",
+   "cache-control": "max-age=0, s-maxage=86400, stale-while-revalidate, public",
+   "etag": "\"v8ngfxkse72l\"",
+   "server": "cloudflare",
+   "x-vercel-cache": "MISS",
+   "cf-cache-status": "DYNAMIC"
+  },
+  "body": {
+   "message": "CNPJ 00.000.000/0001-92 inválido.",
+   "type": "bad_request",
+   "name": "BadRequestError"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": 0.186289,
+ "observed_at": "2026-11-26T05:20:43+00:00",
+ "origin": "live",
+ "note": ""
+}

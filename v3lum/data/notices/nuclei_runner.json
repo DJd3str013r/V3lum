@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "nuclei_runner",
+  "source_url": "https://github.com/projectdiscovery/nuclei-templates",
+  "version": "nuclei-templates v10.5.2 (reviewed allow-list); nuclei engine is an external operator-installed binary",
+  "sha256": "",
+  "licence": "MIT",
+  "attribution": "nuclei and nuclei-templates (c) 2025 ProjectDiscovery, Inc. (MIT). nuclei is an external binary installed by the operator and run as a separate process; the reviewed nuclei-templates allow-list (ids + per-file sha256, release v10.5.2) is bundled as metadata only in v3lum/data/nuclei_runner/allowlist.json. Neither the engine nor template content is downloaded, installed or updated by V3LUM (A6/A7).",
+  "bundled": true,
+  "files": [
+    "v3lum/modules/pentest_recon/nuclei_runner.py",
+    "v3lum/data/nuclei_runner/allowlist.json"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.subdomain.center/?domain=example.com",
+  "headers": {}
+ },
+ "response": {
+  "status": 503,
+  "headers": {
+   "date": "Thu, 26 Nov 2026 06:15:54 GMT",
+   "content-type": "application/json; charset=utf-8",
+   "content-length": "47",
+   "cache-control": "no-store, private",
+   "retry-after": "1",
+   "server": "cloudflare",
+   "cf-cache-status": "DYNAMIC"
+  },
+  "body": "{\"error\": \"server busy (64 queries in flight)\"}"
+ },
+ "transport_error": null,
+ "elapsed_s": 0.613,
+ "observed_at": "2026-11-26T06:15:53Z",
+ "origin": "live",
+ "note": "first request of the run: 503 + Retry-After: 1 + JSON error (server overloaded); the retry 90 s later answered 200 after 17.8 s"
+}

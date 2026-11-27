@@ -1,0 +1,17 @@
+{
+ "_fixture": "REAL capture 2026-11-26 from the research datacenter egress: GET https://t.me/s/<random control> -> 302 -> generic page (missing or private channel, no preview).",
+ "request_url": "https://t.me/s/qz7k2v9m4p1w8n3x5c6b",
+ "history": [
+  {
+   "status": 302,
+   "location": "https://t.me/qz7k2v9m4p1w8n3x5c6b"
+  }
+ ],
+ "status": 200,
+ "final_url": "https://t.me/qz7k2v9m4p1w8n3x5c6b",
+ "headers": {
+  "content-type": "text/html; charset=utf-8",
+  "cache-control": "no-store"
+ },
+ "body": "<!DOCTYPE html>\n<!-- REAL capture 2026-11-26 from the research datacenter egress of the generic page for a random control handle, minimised -->\n<html>\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Telegram: Contact @qz7k2v9m4p1w8n3x5c6b</title>\n    <meta name=\"robots\" content=\"noindex, nofollow\">\n    <meta property=\"og:title\" content=\"Telegram: Contact @qz7k2v9m4p1w8n3x5c6b\">\n    <meta property=\"og:image\" content=\"https://telegram.org/img/t_logo_2x.png\">\n    <meta property=\"og:site_name\" content=\"Telegram\">\n    <meta property=\"og:description\" content=\"\">\n  </head>\n  <body class=\"no_transition\">\n    <div class=\"tgme_page_wrap\">\n<div class=\"tgme_body_wrap\">\n        <div class=\"tgme_page\">\n          <div class=\"tgme_page_icon\">\n  <i class=\"tgme_icon_user\"></i>\n</div>\n<div class=\"tgme_page_description\">\n  If you have <strong>Telegram</strong>, you can contact <a class=\"tgme_username_link\" href=\"tg://resolve?domain=qz7k2v9m4p1w8n3x5c6b\">@qz7k2v9m4p1w8n3x5c6b</a> right away.\n</div>\n<div class=\"tgme_page_action\">\n  <a class=\"tgme_action_button_new\" href=\"tg://resolve?domain=qz7k2v9m4p1w8n3x5c6b\">Send Message</a>\n</div>\n<!-- WEBOGRAM_BTN -->\n<!-- PRIVACY_BTN -->\n        </div>\n      </div>\n    </div>\n  </body>\n</html>\n"
+}

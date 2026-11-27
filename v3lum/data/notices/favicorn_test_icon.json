@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "favicorn_test_icon",
+  "source_url": "https://github.com/sharsil/favicorn",
+  "version": "tests/fixtures/test-favicon-google.ico (5,430 bytes), used only as a test vector (Shodan mmh3 708578229)",
+  "sha256": "6da5620880159634213e197fafca1dde0272153be3e4590818533fab8d040770",
+  "licence": "Apache-2.0",
+  "attribution": "Test icon copied unmodified from favicorn (https://github.com/sharsil/favicorn), licensed under the Apache License, Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0). Test fixture only; not shipped in the package.",
+  "bundled": false,
+  "files": [
+    "tests/fixtures/favicon_hash/google_favicon.ico",
+    "tests/fixtures/favicon_fetch/google_favicon.ico"
+  ]
+}

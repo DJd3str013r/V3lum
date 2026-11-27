@@ -1,0 +1,74 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "$comment": "The GA4 id of the org's own site appears on a lookalike: 'possible clone of ExampleBank (copied tracking ID)', a phishing indicator, never a same-owner link (P061 cond 6)",
+  "org_profile": {
+    "org": {
+      "name": "ExampleBank"
+    },
+    "domains": [
+      {
+        "name": "brand.example",
+        "verification": "txt_verified"
+      }
+    ],
+    "brands": [
+      {
+        "name": "ExampleBank",
+        "keywords": [
+          "examplebank"
+        ]
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "key": "domain:brand.example",
+      "depth": 0,
+      "seed": true,
+      "ownership": "own_asset",
+      "tags": [
+        "own_asset"
+      ]
+    },
+    {
+      "key": "domain:examplebank-login.example.net",
+      "depth": 1
+    },
+    {
+      "key": "analytics_id:G-TEST0001AB",
+      "depth": 1
+    }
+  ],
+  "edges": [
+    {
+      "src": "domain:brand.example",
+      "dst": "analytics_id:G-TEST0001AB",
+      "relation": "same_analytics",
+      "module": "hostio",
+      "confidence": 0.7,
+      "expand": false
+    },
+    {
+      "src": "domain:examplebank-login.example.net",
+      "dst": "analytics_id:G-TEST0001AB",
+      "relation": "same_analytics",
+      "module": "hostio",
+      "confidence": 0.7,
+      "expand": false
+    }
+  ],
+  "expect": {
+    "g03_analytics_clone": {
+      "min": 1,
+      "max": 1,
+      "severity": "medium",
+      "confidence_label": "possible"
+    }
+  }
+}

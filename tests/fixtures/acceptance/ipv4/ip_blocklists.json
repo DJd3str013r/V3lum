@@ -1,0 +1,107 @@
+{
+ "schema": "v3lum.acceptance_routes/1",
+ "module": "ip_blocklists",
+ "routes": [
+  {
+   "method": "GET",
+   "url": "https://www.spamhaus.org/drop/drop_v4.json",
+   "status": 200,
+   "text": "{\"cidr\":\"1.10.16.0/20\",\"sblid\":\"SBL256894\",\"rir\":\"apnic\"}\n{\"cidr\":\"1.19.0.0/16\",\"sblid\":\"SBL434604\",\"rir\":\"apnic\"}\n{\"cidr\":\"1.32.128.0/18\",\"sblid\":\"SBL286275\",\"rir\":\"apnic\"}\n{\"cidr\":\"2.26.75.0/24\",\"sblid\":\"SBL698389\",\"rir\":\"ripencc\"}\n{\"cidr\":\"2.27.5.0/24\",\"sblid\":\"SBL698390\",\"rir\":\"ripencc\"}\n{\"type\":\"metadata\",\"timestamp\":1795613204,\"size\":293,\"records\":5,\"copyright\":\"(c) 2026 The Spamhaus Project SLU\",\"terms\":\"https://www.spamhaus.org/drop/terms/\"}\n",
+   "headers": {
+    "content-type": "text/json"
+   },
+   "latency_ms": 238
+  },
+  {
+   "method": "GET",
+   "url": "https://feodotracker.abuse.ch/downloads/ipblocklist.json",
+   "status": 200,
+   "json": [
+    {
+     "ip_address": "198.51.100.10",
+     "port": 8080,
+     "status": "offline",
+     "hostname": null,
+     "as_number": 14061,
+     "as_name": "DIGITALOCEAN-ASN",
+     "country": "US",
+     "first_seen": "2022-06-04 21:24:53",
+     "last_online": "2026-03-07",
+     "malware": "Emotet"
+    },
+    {
+     "ip_address": "198.51.100.5",
+     "port": 443,
+     "status": "online",
+     "hostname": "c2-198-51-100-5.example.net",
+     "as_number": 14618,
+     "as_name": "AMAZON-AES",
+     "country": "US",
+     "first_seen": "2025-12-30 13:56:31",
+     "last_online": "2026-03-12",
+     "malware": "QakBot"
+    },
+    {
+     "ip_address": "198.51.100.11",
+     "port": 443,
+     "status": "offline",
+     "hostname": "c2-198-51-100-11.example.net",
+     "as_number": 14618,
+     "as_name": "AMAZON-AES",
+     "country": "US",
+     "first_seen": "2026-01-13 21:41:15",
+     "last_online": "2026-03-01",
+     "malware": "QakBot"
+    },
+    {
+     "ip_address": "198.51.100.12",
+     "port": 443,
+     "status": "offline",
+     "hostname": "c2-198-51-100-12.example.net",
+     "as_number": 14061,
+     "as_name": "DIGITALOCEAN-ASN - DigitalOcean, LLC",
+     "country": "GB",
+     "first_seen": "2026-02-17 05:41:23",
+     "last_online": "2026-02-18",
+     "malware": "QakBot"
+    },
+    {
+     "ip_address": "198.51.100.13",
+     "port": 443,
+     "status": "offline",
+     "hostname": null,
+     "as_number": 9370,
+     "as_name": "SAKURA-B SAKURA Internet Inc.",
+     "country": "JP",
+     "first_seen": "2026-03-04 14:28:39",
+     "last_online": "2026-03-05",
+     "malware": "QakBot"
+    }
+   ],
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 150
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/stamparm/ipsum/master/ipsum.txt",
+   "status": 200,
+   "text": "# IPsum Threat Intelligence Feed\n# (https://github.com/stamparm/ipsum)\n#\n# Last update: Thu, 26 Nov 2026 03:00:45 +0100\n#\n# IP\tnumber of (black)lists\n#\n198.51.100.1\t9\n198.51.100.24\t9\n198.51.100.25\t9\n198.51.100.3\t7\n198.51.100.4\t1\n198.51.100.26\t1\n",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 92
+  },
+  {
+   "method": "GET",
+   "url": "https://binarydefense.com/banlist.txt",
+   "status": 200,
+   "text": "#\n#\n#\n# Binary Defense Systems Artillery Threat Intelligence Feed and Banlist Feed\n# https://www.binarydefense.com\n#\n# Note that this is for public use only.\n# The ATIF feed may not be used for commercial resale or in products that are charging fees for such services.\n# Use of these feeds for commerical (having others pay for a service) use is strictly prohibited.\n#\n#\n#\n\n198.51.100.8\n198.51.100.22\n198.51.100.23\n198.51.100.1\n",
+   "headers": {
+    "content-type": "text/plain"
+   },
+   "latency_ms": 334
+  }
+ ]
+}

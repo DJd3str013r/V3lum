@@ -1,0 +1,20 @@
+{
+ "request": "GET https://brasilapi.com.br/api/ddd/v1/10",
+ "response": {
+  "status": 404,
+  "headers": {
+   "content-type": "application/json; charset=utf-8",
+   "etag": "W/\"ngr338zfgm22\"",
+   "cache-control": "max-age=0, public",
+   "age": "0",
+   "x-vercel-cache": "MISS",
+   "cf-cache-status": "DYNAMIC",
+   "server": "cloudflare"
+  },
+  "body": "{\"message\":\"DDD não encontrado\",\"type\":\"ddd_error\",\"name\":\"DDD_NOT_FOUND\"}"
+ },
+ "observed_at": "2026-11-26T09:31:23Z",
+ "elapsed_s": 0.223615,
+ "origin": "live: this prep (datacenter egress)",
+ "note": "unallocated DDD 10: documented 404 DDD_NOT_FOUND JSON (same body and ETag as DDD 20 in the sibling run)"
+}

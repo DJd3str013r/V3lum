@@ -1,0 +1,69 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "github",
+  "hosts": [],
+  "sources": {
+    "ip_context_lists_x4bnet": {
+      "title": "X4BNet lists_vpn generated lists (output/vpn/ipv4.txt, output/vpn/ipv6.txt, output/datacenter/ipv4.txt, output/datacenter/ipv6.txt): VPN provider and datacenter CIDRs",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/X4BNet/lists_vpn",
+        "quote": "The scripts, automation, curated source files, and generated IP lists produced by this project are licensed under the MIT License. [...] The upstream IPLocate database is licensed under CC BY-SA 4.0 [...] IP address data powered by IPLocate.io.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "x4bnet",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "P035 cond 3: 'X4BNet VPN/datacenter lists (repository licence, MIT notice)'. The repository has no LICENSE file (LICENSE and LICENSE.md answered 404 on 2026-11-26); the README carries the MIT licence ('Copyright (c) 2026 X4B (Mathew Heard)') and the IPLocate CC BY-SA 4.0 attribution (quoted from raw.githubusercontent.com/X4BNet/lists_vpn/main/README.md). Runtime downloads only, never bundled (A6); notice v3lum/data/notices/ip_context_lists_x4bnet.json. Datasets ip_context_lists.x4bnet_vpn_ipv4.txt, ip_context_lists.x4bnet_vpn_ipv6.txt, ip_context_lists.x4bnet_datacenter_ipv4.txt, ip_context_lists.x4bnet_datacenter_ipv6.txt (daily). The datacenter lists also contain the VPN networks ('anything that is not an eyeball network'). Used by ip_context_lists."
+    },
+    "ip_context_lists_mthcht_dyndns": {
+      "title": "mthcht awesome-lists Lists/DYNDNS/dyndns_list.csv: dynamic-DNS provider domains",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/mthcht/awesome-lists/blob/main/LICENSE",
+        "quote": "MIT License. Copyright (c) 2024 @mthcht thunting.io. Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files [...] The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "mthcht",
+      "sanitizer": null,
+      "dataset": "ip_context_lists.mthcht_dyndns.csv",
+      "notes": "P035 cond 3: 'mthcht awesome-lists (MIT, attribution)'. Columns dest_nt_domain, metadata_RetrievedAt, metadata_Provider (CRLF). Matched on label boundaries only (registrable domain or a parent suffix, never a substring; P035 cond 7). Daily. Used by ip_context_lists."
+    },
+    "ip_context_lists_mthcht_ua": {
+      "title": "mthcht awesome-lists Lists/suspicious_http_user_agents_list.csv: user agents of offensive tools, scanners and malware",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/mthcht/awesome-lists/blob/main/LICENSE",
+        "quote": "MIT License. Copyright (c) 2024 @mthcht thunting.io. Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files [...] The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "mthcht",
+      "sanitizer": null,
+      "dataset": "ip_context_lists.mthcht_suspicious_ua.csv",
+      "notes": "P035 cond 7: user-agent lists match exactly; rows with glob characters are set aside and not used. Daily. Used by ip_context_lists."
+    },
+    "ip_context_lists_mthcht_vpn": {
+      "title": "mthcht awesome-lists Lists/VPN: ProtonVPN entry/exit IPs, Mullvad relay IPs, Surfshark server IPs",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/mthcht/awesome-lists/blob/main/LICENSE",
+        "quote": "MIT License. Copyright (c) 2024 @mthcht thunting.io. Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files [...] The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "mthcht",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Datasets ip_context_lists.mthcht_vpn_protonvpn.csv (src_ip_entry, src_ip_exit, countries), ip_context_lists.mthcht_vpn_mullvad.csv (dest_ip, dest_nt_domain, dest_port) and ip_context_lists.mthcht_vpn_surfshark.csv (dest_nt_domain, dest_port, dest_ip); heads verified 206 on 2026-11-26 (357 KB, 65 KB, 13 KB). The NordVPN list is not wired: its rows cite drb-ra/C2IntelFeeds as their source, whose terms are not recorded (P035 cond 4 rule: upstreams with unrecorded terms are not wired). Daily. Used by ip_context_lists."
+    }
+  },
+  "error_markers": [],
+  "notes": "Batch p2-G02-1 (module ip_context_lists, P035): dataset sources hosted on GitHub. Downloads go through the dataset manager only (no per-lookup traffic); a failed or invalid refresh keeps the last good copy."
+}

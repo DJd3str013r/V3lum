@@ -1,0 +1,20 @@
+{
+ "_synthetic": "positive answer built from the documented field list and the live negative answers; values are documentation values (no listed value may be queried under the prep rules)",
+ "value": "203.0.113.7",
+ "type": "ip",
+ "listed_now": true,
+ "listed_ever": true,
+ "matched_value": "203.0.113.7",
+ "first_seen": "2026-11-20",
+ "last_seen": "2026-11-26",
+ "block_reason": "compromised host (honeypot sensors)",
+ "threat_type": "compromised",
+ "registrar": null,
+ "note": "Listed in the compromised IP feed.",
+ "lists": {
+  "page": "https://netapi.com/compromised-ips/",
+  "current": "https://netapi.com/api2/?method=compromised&dataset_type=ip",
+  "all_time": "https://netapi.com/api2/?method=compromised&dataset_type=ip-all"
+ },
+ "source": "NetAPI Nightwatch compromised IP feed, updated hourly (CC BY 4.0)"
+}

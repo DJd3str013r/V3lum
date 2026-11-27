@@ -1,0 +1,21 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {"mode": "passive", "tlp": "amber"},
+  "nodes": [
+    {
+      "key": "phone:+5511955550101",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "phone_ddd": [{"value": {"code": "11", "allocated": true, "uf": "SP", "ufs": ["SP"], "main_city": "São Paulo"}, "source": "phone_parse"}],
+        "region": [{"value": "SP", "source": "phone_parse"}]
+      }
+    },
+    {"key": "cpf:11144477735", "depth": 0, "seed": true}
+  ],
+  "edges": [
+    {"src": "cpf:11144477735", "dst": "phone:+5511955550101", "relation": "phone_of", "module": "fixture", "confidence": 0.9}
+  ],
+  "expect": {"phone_ddd_region_consistency": {"min": 1, "max": 1, "severity": "info", "confidence_label": "possible"}}
+}

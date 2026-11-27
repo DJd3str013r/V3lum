@@ -1,0 +1,6 @@
+# synthetic test text (P273-FC6) - CSV with ';' fields, one record per line
+Classificação;Nome;CPF;Município
+1;FULANO DE TAL SOUZA;000.000.001-91;Campinas
+2;BELTRANA DA SILVA;000.000.002-72;Santos
+3;DELTRANO COSTA;;Ribeirão Preto
+4;CICRANO PEREIRA LIMA;000.000.003-53;Sorocaba

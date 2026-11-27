@@ -1,0 +1,276 @@
+{
+ "_source": "live check 2026-11-26 from this datacenter egress: /v1/breaches catalogue (14 of 801 entries; logo/description/reference kept on 2)",
+ "status": "success",
+ "message": null,
+ "exposedBreaches": [
+  {
+   "breachID": "8tracks",
+   "breachedDate": "2017-06-01T00:00:00+00:00",
+   "addedDate": "2023-11-08T06:30:18+00:00",
+   "domain": "8tracks.com",
+   "industry": "Finance",
+   "passwordRisk": "hardtocrack",
+   "searchable": true,
+   "sensitive": false,
+   "verified": true,
+   "breachType": "DataBreach",
+   "exposedData": [
+    "Usernames",
+    "Passwords",
+    "Email addresses"
+   ],
+   "exposedRecords": 17978503
+  },
+  {
+   "breachID": "Zomato",
+   "breachedDate": "2017-05-01T00:00:00+00:00",
+   "addedDate": "2023-11-08T06:30:18+00:00",
+   "domain": "zomato.com",
+   "industry": "Education",
+   "passwordRisk": "easytocrack",
+   "searchable": true,
+   "sensitive": false,
+   "verified": true,
+   "breachType": "DataBreach",
+   "exposedData": [
+    "Usernames",
+    "Email addresses",
+    "Passwords"
+   ],
+   "exposedRecords": 16475717
+  },
+  {
+   "breachID": "000webhost",
+   "breachedDate": "2015-03-01T00:00:00+00:00",
+   "addedDate": "2023-12-30T12:51:22+00:00",
+   "domain": "000webhost.com",
+   "industry": "Information Technology",
+   "passwordRisk": "plaintext",
+   "searchable": true,
+   "sensitive": false,
+   "verified": true,
+   "breachType": "DataBreach",
+   "exposedData": [
+    "Email addresses",
+    "Passwords",
+    "IP addresses"
+   ],
+   "exposedRecords": 14936538
+  },
+  {
+   "breachID": "Collection-1",
+   "breachedDate": "2019-01-01T00:00:00+00:00",
+   "addedDate": "2023-11-08T06:30:23+00:00",
+   "domain": "",
+   "industry": "Information Technology",
+   "passwordRisk": "plaintext",
+   "searchable": true,
+   "sensitive": false,
+   "verified": true,
+   "breachType": "ComboList",
+   "exposedData": [
+    "Email addresses",
+    "Passwords"
+   ],
+   "exposedRecords": 790803860
+  },
+  {
+   "breachID": "Twitter-Scraped",
+   "breachedDate": "2021-01-01T00:00:00+00:00",
+   "addedDate": "2023-11-08T06:30:35+00:00",
+   "domain": "twitter.com",
+   "industry": "Information Technology",
+   "passwordRisk": "unknown",
+   "searchable": true,
+   "sensitive": false,
+   "verified": true,
+   "breachType": "DataBreach",
+   "exposedData": [
+    "Usernames",
+    "Email addresses",
+    "Names",
+    "Geographic locations",
+    "Profile photos",
+    "Phone numbers"
+   ],
+   "exposedRecords": 208918735
+  },
+  {
+   "breachID": "Morele.net",
+   "breachedDate": "2018-10-01T00:00:00+00:00",
+   "addedDate": "2023-11-08T06:30:22+00:00",
+   "domain": "morele.net",
+   "industry": "Retail",
+   "passwordRisk": "hardtocrack",
+   "searchable": true,
+   "sensitive": false,
+   "verified": true,
+   "breachType": "DataBreach",
+   "exposedData": [
+    "Names",
+    "Email addresses",
+    "Passwords"
+   ],
+   "exposedRecords": 2468612
+  },
+  {
+   "breachID": "AlienStealerLogs",
+   "breachedDate": "2025-02-01T00:00:00+00:00",
+   "addedDate": "2026-06-15T05:23:45+00:00",
+   "domain": "",
+   "industry": "Miscellaneous",
+   "passwordRisk": "plaintext",
+   "searchable": true,
+   "sensitive": false,
+   "verified": true,
+   "breachType": "StealerLogs",
+   "exposedData": [
+    "Email addresses",
+    "Passwords"
+   ],
+   "exposedRecords": 299646818
+  },
+  {
+   "breachID": "Adobe",
+   "breachedDate": "2013-10-01T00:00:00+00:00",
+   "addedDate": "2023-11-08T06:30:03+00:00",
+   "domain": "adobe.com",
+   "industry": "Information Technology",
+   "logo": "https://xposedornot.com/static/logos/Adobe.png",
+   "passwordRisk": "easytocrack",
+   "searchable": true,
+   "sensitive": false,
+   "verified": true,
+   "breachType": "DataBreach",
+   "exposedData": [
+    "Usernames",
+    "Passwords",
+    "Email addresses"
+   ],
+   "exposedRecords": 152403035,
+   "exposureDescription": "Adobe, the multinational software company, suffered a major data breach in October 2013 that initially seemed to impact nearly 3 million user accounts. However, the situation turned out to be far more severe than initially estimated, with the number of compromised accounts eventually ballooning to about 150 million. The breach occurred when attackers accessed user passwords and the source code for certain Adobe products, such as Cold Fusion. The compromised data, which included almost 150 million encrypted passwords, was subsequently found on a website frequented by cyber criminals. The Adobe data breach is considered one of the worst in history due to the massive number of records affected and the company's use of questionable encryption techniques.",
+   "referenceURL": "https://krebsonsecurity.com/2013/10/adobe-breach-impacted-at-least-38-million-users/"
+  },
+  {
+   "breachID": "NetEase",
+   "breachedDate": "2015-10-01T00:00:00+00:00",
+   "addedDate": "2023-11-08T06:30:10+00:00",
+   "domain": "163.com",
+   "industry": "Information Technology",
+   "passwordRisk": "plaintext",
+   "searchable": false,
+   "sensitive": true,
+   "verified": false,
+   "breachType": "DataBreach",
+   "exposedData": [
+    "Email addresses",
+    "Passwords"
+   ],
+   "exposedRecords": 232857074
+  },
+  {
+   "breachID": "Havenly",
+   "breachedDate": "2020-06-01T00:00:00+00:00",
+   "addedDate": "2023-11-08T06:30:31+00:00",
+   "domain": "havenly.com",
+   "industry": "Retail",
+   "passwordRisk": "unknown",
+   "searchable": true,
+   "sensitive": false,
+   "verified": true,
+   "breachType": "DataBreach",
+   "exposedData": [
+    "Usernames",
+    "Names",
+    "Email addresses",
+    "Passwords",
+    "Phone numbers",
+    "Geographic locations"
+   ],
+   "exposedRecords": 1369300
+  },
+  {
+   "breachID": "Dubsmash",
+   "breachedDate": "2018-12-01T00:00:00+00:00",
+   "addedDate": "2023-11-08T06:30:23+00:00",
+   "domain": "dubsmash.com",
+   "industry": "Entertainment",
+   "passwordRisk": "plaintext",
+   "searchable": true,
+   "sensitive": false,
+   "verified": true,
+   "breachType": "DataBreach",
+   "exposedData": [
+    "Email addresses",
+    "Usernames",
+    "Passwords"
+   ],
+   "exposedRecords": 161835382
+  },
+  {
+   "breachID": "StockX",
+   "breachedDate": "2019-07-01T00:00:00+00:00",
+   "addedDate": "2023-11-08T06:30:26+00:00",
+   "domain": "stockx.com",
+   "industry": "Retail",
+   "passwordRisk": "easytocrack",
+   "searchable": true,
+   "sensitive": false,
+   "verified": true,
+   "breachType": "DataBreach",
+   "exposedData": [
+    "Usernames",
+    "Names",
+    "Email addresses",
+    "Passwords"
+   ],
+   "exposedRecords": 6840177
+  },
+  {
+   "breachID": "Zoosk-2020",
+   "breachedDate": "2020-01-01T00:00:00+00:00",
+   "addedDate": "2026-10-14T10:52:13+00:00",
+   "domain": "zoosk.com",
+   "industry": "Entertainment",
+   "passwordRisk": "easytocrack",
+   "searchable": false,
+   "sensitive": true,
+   "verified": true,
+   "breachType": "DataBreach",
+   "exposedData": [
+    "Email addresses",
+    "Names",
+    "Dates of birth",
+    "Ethnicities",
+    "Geographic locations",
+    "Political views",
+    "Relationship statuses",
+    "Religions",
+    "Sexual orientations"
+   ],
+   "exposedRecords": 37378434
+  },
+  {
+   "breachID": "Hjedd",
+   "breachedDate": "2022-07-01T00:00:00+00:00",
+   "addedDate": "2023-11-08T06:30:38+00:00",
+   "domain": "hjedd.com",
+   "industry": "Miscellaneous",
+   "logo": "https://xposedornot.com/static/logos/combolist.png",
+   "passwordRisk": "hardtocrack",
+   "searchable": false,
+   "sensitive": true,
+   "verified": true,
+   "breachType": "DataBreach",
+   "exposedData": [
+    "Usernames",
+    "Email addresses",
+    "Passwords",
+    "IP addresses"
+   ],
+   "exposedRecords": 13188743,
+   "exposureDescription": " Hjedd, a Chinese-based adult platform had a data breach in 2022, was found to have a leaky database that exposed sensitive data linked to more than 13 million user accounts. The breach involved over 24 GB of files containing user information, with the server updating this data every second, indicating a continuous and substantial risk to user privacy.",
+   "referenceURL": ""
+  }
+ ]
+}

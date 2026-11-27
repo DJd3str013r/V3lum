@@ -1,0 +1,54 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "$comment": "Spamhaus DROP lists the IP now; a URLhaus hit last seen 60 days ago is history (IP window 30 days): one family counted -> MEDIUM",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "nodes": [
+    {
+      "key": "ipv4:192.0.2.11",
+      "depth": 0,
+      "seed": true,
+      "findings": [
+        {
+          "title": "Listed on Spamhaus DROP",
+          "severity": "high",
+          "confidence": 0.8,
+          "criterion": "source verdict",
+          "tags": [
+            "malicious",
+            "blocklisted"
+          ],
+          "module": "ip_blocklists",
+          "source": "spamhaus.drop_v4",
+          "observed_last": "2026-11-25T00:00:00Z"
+        },
+        {
+          "title": "Listed on URLhaus (malware host)",
+          "severity": "high",
+          "confidence": 0.8,
+          "criterion": "source verdict",
+          "tags": [
+            "malware",
+            "malicious",
+            "historical"
+          ],
+          "module": "abusech",
+          "source": "abusech.urlhaus",
+          "observed_last": "2026-09-27T00:00:00Z"
+        }
+      ]
+    }
+  ],
+  "edges": [],
+  "expect": {
+    "multi_source_malicious": {
+      "min": 1,
+      "max": 1,
+      "severity": "medium"
+    }
+  }
+}

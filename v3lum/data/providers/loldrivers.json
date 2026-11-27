@@ -1,0 +1,52 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "loldrivers",
+  "name": "LOLDrivers (Living Off The Land Drivers catalogue)",
+  "operator": "magicsword-io (LOLDrivers project)",
+  "hosts": [
+    "loldrivers.io",
+    "www.loldrivers.io"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Well-known community catalogue of vulnerable and malicious Windows drivers (magicsword-io, public GitHub repository and API since 2023, Apache-2.0): A8 community. Offline use only (the module has disclosure none: tier n/a).",
+  "tier_reviewer": "batch p2-G07-1 (A8 community definition)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Curated catalogue with per-entry 'Verified' flags; exact file and Authenticode hashes are the blocking indicators ('Tags are hunting names', IndicatorSemantics), so only hash matches become findings (P268 cond 4)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "dataset": {
+      "title": "LOLDrivers drivers.json (driver catalogue: category, verified, ATT&CK ids, CVEs, sample and Authenticode hashes)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/magicsword-io/LOLDrivers/blob/main/LICENSE",
+        "quote": "Apache License Version 2.0, January 2004 (LICENSE of magicsword-io/LOLDrivers, fetched 2026-11-26)",
+        "checked_at": "2026-11-26",
+        "reviewer": "batch p2-G07-1 (licence file verified live 2026-11-26)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "loldrivers",
+      "sanitizer": null,
+      "dataset": "lol_datasets.loldrivers.json",
+      "notes": "https://www.loldrivers.io/api/drivers.json (36 MB on 2026-11-26: 713 drivers, 12,362 distinct hashes). Downloaded only by `v3lum data update` (large: never during a scan, A6 BR9) and indexed into a slim hash projection (P268 cond 3); attributed in THIRD_PARTY_NOTICES (notice lol_datasets_loldrivers). Driver pages link sample binaries (drivers/<md5>.bin): never fetched."
+    }
+  },
+  "notes": "Owned by batch p2-G07-1 (P268). Dataset host only (GitHub Pages behind loldrivers.io); www.loldrivers.io is also the host of the manual driver pages (threat_intel_g07_p2:loldrivers_search)."
+}

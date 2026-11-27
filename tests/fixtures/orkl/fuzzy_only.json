@@ -1,0 +1,112 @@
+{
+ "data": [
+  {
+   "id": "4ff453cf-8958-45a4-9dd3-e226841b6984",
+   "created_at": "2026-10-09T02:02:57.902233Z",
+   "sha1_hash": "6e5b2513db746a0555102a8cd15561632167502d",
+   "title": "From Campus to C2: Tracking a Persistent Chinese Operation Against Vietnamese Universities",
+   "llm_title": "From Campus to C2: Tracking a Persistent Chinese Operation Against Vietnamese Universities",
+   "authors": "Ctrl-Alt-Intel",
+   "file_creation_date": "0001-01-01T00:00:00Z",
+   "plain_text": "",
+   "sources": [
+    "Malpedia"
+   ],
+   "origins": [
+    "web"
+   ],
+   "references": [
+    "https://ctrlaltintel.com/research/china-vietnam-campaign/"
+   ],
+   "report_names": [
+    "china-vietnam-campaign"
+   ],
+   "threat_actors": [
+    {
+     "main_name": "BRONZE SNOWDROP",
+     "aliases": [
+      "UNC5174"
+     ],
+     "source_id": "Secureworks"
+    },
+    {
+     "main_name": "Earth Lamia",
+     "aliases": [],
+     "source_id": "ETDA"
+    },
+    {
+     "main_name": "UNC5174",
+     "aliases": [
+      "Uteus"
+     ],
+     "source_id": "MISPGALAXY"
+    },
+    {
+     "main_name": "Earth Lamia",
+     "aliases": [
+      "UNC5454"
+     ],
+     "source_id": "MISPGALAXY"
+    }
+   ]
+  },
+  {
+   "id": "b63351d7-2fdd-42a0-b8a5-715b137cc944",
+   "created_at": "2023-01-12T15:01:37.087597Z",
+   "sha1_hash": "3556c8fc674504cb9da35ef62b9a7d86ff01c01d",
+   "title": "2022-08-11 - State of the Remote Access Tools, Part 1",
+   "llm_title": "State of the Remote Access Tools, Part 1",
+   "authors": "Example Researcher A, Example Researcher B",
+   "file_creation_date": "2022-10-02T12:01:39Z",
+   "plain_text": "",
+   "sources": [
+    "VXUG"
+   ],
+   "origins": [
+    "pdf"
+   ],
+   "references": [
+    "https://papers.vx-underground.org/papers/Malware Defense/Malware Analysis 2022/2022-08-11 - State of the Remote Access Tools, Part 1.pdf"
+   ],
+   "report_names": [
+    "2022-08-11 - State of the Remote Access Tools, Part 1.pdf"
+   ],
+   "threat_actors": [
+    {
+     "main_name": "Luna Moth",
+     "aliases": [
+      "Silent Ransom",
+      "TG2729",
+      "SilentRansomGroup"
+     ],
+     "source_id": "MISPGALAXY"
+    }
+   ]
+  },
+  {
+   "id": "1739d728-8629-4fa5-ae9b-8ef8e2c783e8",
+   "created_at": "2026-11-22T02:19:14.857562Z",
+   "sha1_hash": "df20cf5f04e1c8998194ed5a933e8399c6d9b2d3",
+   "title": "CVE-2021-1732 - Security Update Guide - Microsoft - Windows Win32k Elevation of Privilege Vulnerability",
+   "llm_title": "CVE-2021-1732 - Security Update Guide - Microsoft - Windows Win32k Elevation of Privilege Vulnerability",
+   "authors": "Microsoft",
+   "file_creation_date": "0001-01-01T00:00:00Z",
+   "plain_text": "",
+   "sources": [
+    "MITRE"
+   ],
+   "origins": [
+    "web"
+   ],
+   "references": [
+    "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-1732"
+   ],
+   "report_names": [
+    "CVE-2021-1732"
+   ],
+   "threat_actors": []
+  }
+ ],
+ "message": "library entry search results",
+ "status": "success"
+}

@@ -1,0 +1,13 @@
+# Dataplane.org - for operators, by operators
+# sshclient
+# 2026-11-19 04:00 - 2026-11-26 04:00
+#
+# ASN  |  ASname  |  ipaddr  |  lastseen  |  category
+#
+16509        |  AMAZON-02 - Amazon.com, Inc.    |  198.51.100.1     |  2026-11-25 23:20:58  |  sshclient
+NA           |  NA                              |  198.51.100.9     |  2026-11-25 06:29:36  |  sshclient
+14           |  COLUMBIA-GW - Columbia Univers  |  198.51.100.27     |  2026-11-26 00:24:29  |  sshclient
+#
+# Statistics
+#        ASNs: 3
+#   Addresses: 3

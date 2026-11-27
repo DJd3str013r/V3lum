@@ -1,0 +1,9 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "cert_br",
+  "hosts": [
+    "cert.br"
+  ],
+  "sources": {},
+  "error_markers": []
+}

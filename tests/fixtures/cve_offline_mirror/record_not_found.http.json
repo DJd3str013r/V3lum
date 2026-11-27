@@ -1,0 +1,22 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2021/9999xxx/CVE-2021-9999999.json",
+  "headers": {}
+ },
+ "response": {
+  "status": 404,
+  "headers": {
+   "content-type": "text/plain; charset=utf-8",
+   "x-github-request-id": "0CE8:1C91DC:3DD0AE:4B3979:6B07DE90",
+   "x-cache": "MISS",
+   "expires": "Thu, 26 Nov 2026 07:29:02 GMT",
+   "content-length": "14"
+  },
+  "body": "404: Not Found"
+ },
+ "transport_error": null,
+ "elapsed_s": 0.126009,
+ "observed_at": "2026-11-26T07:24:02Z",
+ "note": "Record path that does not exist: 404 text/plain \"404: Not Found\"."
+}

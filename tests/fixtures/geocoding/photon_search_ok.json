@@ -1,0 +1,93 @@
+{
+ "_envelope": 1,
+ "_source": "GET https://photon.komoot.io/api/?q=Avenida%20das%20Na%C3%A7%C3%B5es%20Unidas%2011541%20S%C3%A3o%20Paulo&limit=5&lang=en (2026-11-26T09:43:29Z, generic client UA, datacenter egress); first 3 of 5 features (two share osm_id: office + shop tags)",
+ "status": 200,
+ "headers": {
+  "server": "nginx",
+  "content-type": "application/json",
+  "cache-control": "max-age=3600"
+ },
+ "body": {
+  "type": "FeatureCollection",
+  "features": [
+   {
+    "type": "Feature",
+    "properties": {
+     "osm_type": "N",
+     "osm_id": 2720165956,
+     "osm_key": "office",
+     "osm_value": "telecommunication",
+     "type": "house",
+     "housenumber": "11541",
+     "name": "Brazilian Internet Steering Committee",
+     "street": "Avenida Nações Unidas",
+     "locality": "Vila Olímpia",
+     "district": "Itaim Bibi",
+     "city": "São Paulo",
+     "state": "São Paulo",
+     "country": "Brazil",
+     "postcode": "04578-000",
+     "countrycode": "BR"
+    },
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -46.6947294,
+      -23.6015163
+     ]
+    }
+   },
+   {
+    "type": "Feature",
+    "properties": {
+     "osm_type": "N",
+     "osm_id": 2720165956,
+     "osm_key": "shop",
+     "osm_value": "telecommunication",
+     "type": "house",
+     "housenumber": "11541",
+     "name": "Brazilian Internet Steering Committee",
+     "street": "Avenida Nações Unidas",
+     "locality": "Vila Olímpia",
+     "district": "Itaim Bibi",
+     "city": "São Paulo",
+     "state": "São Paulo",
+     "country": "Brazil",
+     "postcode": "04578-000",
+     "countrycode": "BR"
+    },
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -46.6947294,
+      -23.6015163
+     ]
+    }
+   },
+   {
+    "type": "Feature",
+    "properties": {
+     "osm_type": "W",
+     "osm_id": 463947013,
+     "osm_key": "highway",
+     "osm_value": "trunk",
+     "type": "street",
+     "name": "Avenida das Nações Unidas",
+     "district": "Granja Julieta",
+     "city": "São Paulo",
+     "state": "São Paulo",
+     "country": "Brazil",
+     "postcode": "04730-990",
+     "countrycode": "BR"
+    },
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -46.7191772,
+      -23.635857
+     ]
+    }
+   }
+  ]
+ }
+}

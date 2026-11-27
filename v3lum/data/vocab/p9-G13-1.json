@@ -1,0 +1,21 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p9-G13-1",
+  "title": "Typosquat live checks, subdomain takeover, TLS protocol scan and sensitive files (batch p9-G13-1: P025, P276, P277, P279)",
+  "owner": "batch p9-G13-1 (typosquat_live_checks, takeover_candidates, takeover_verify, tls_protocol_scan, sensitive_files)",
+  "notes": "Core and pack names are reused where they fit: cname_dangling, takeover_fingerprint (CR07), tls_protocols, tls_weak_ciphers (CR17), sensitive_files (CR23), title, favicon_mmh3, login_form, http_status, is_parked, intercepted_by. The names below carry the tri-state outcomes these LIGHT/ACTIVE checks add.",
+  "attributes": {
+    "takeover_check": "PASSIVE takeover check of a name {state candidate | needs_active_verify | dangling_no_fingerprint | not_reported | no_evidence | cloud_address | could_not_verify, chain, target, service, fingerprint_status, resolver_consensus, reason, wording, fingerprints}: DNS evidence only, never 'not vulnerable'",
+    "takeover_verification": "ACTIVE takeover verification of an in-scope name {state confirmed | not_observed | could_not_test, service, url, status, matched, wildcard, attempts, reason}: never 'safe'; the resource is never claimed",
+    "page_fingerprint": "features of one homepage fetched by the LIGHT typosquat_live_checks {role brand_reference | candidate, url, final_url, http_status, title, ppdeep (normalised HTML), normalised_bytes, favicon_mmh3, favicon_url, form_action_hosts, login_form, posts_offsite, fetched_at, egress_profile}: hashes and page metadata only, never the page body or form values",
+    "live_check": "per-candidate outcome of the LIGHT typosquat live check {state unregistered | no_address | parked | defensive | fetched | live_clone | unrelated | could_not_verify, reason, contacted, requests, brands, comparison {brand, brand_url, score, html_fuzzy, matched, hashes, state, wording}}: live_clone/unrelated come from the comparison with the brand reference page (made here when the brand page is already in the case, else by the p9g131 rules)",
+    "live_check_candidates": "registered lookalikes of an org-profile brand seed found in the case (at most 20) awaiting the analyst's confirmation as LIGHT seeds [{domain, state, reason}]: listed, never contacted from the brand run",
+    "mail_capability": "passive mail capability of a lookalike from DNS facts (MX, null MX, SPF, DMARC; no SMTP contact ever) {can_receive_mail true | false | possible | null, label, null_mx, mx_hosts, spf_all, dmarc_policy, source}",
+    "tls_protocol_scan": "ACTIVE protocol/cipher probe summary of one host:port {host, port, egress_profile, interception (P275 verdict for this host:port and egress), probes [{probe, label, state accepted | refused | could_not_test, side, reason, version, cipher}], client_cannot, reason}: a client-side refusal is could_not_test, never 'disabled on server'",
+    "sensitive_files_summary": "ACTIVE sensitive-file check of one host {base, paths_tested, paths_planned, confirmed, not_observed, could_not_test, denied (401/403/407), stopped (first 429, challenge, WAF block, egress-proxy error, transport failures or the kill switch), calibration, calibration_kind (shared forced-browsing engine: hard_404 | soft_404 | redirect | auth | mixed), list}: only confirmed exposures are listed; 403/429/challenges/timeouts are could_not_test, never 'absent' or 'safe'"
+  },
+  "tags": {},
+  "relations": {
+    "form_posts_to": "page/domain -> host its HTML form posts to (taken from a fetched lookalike page: an indicator for passive modules only, never contacted)"
+  }
+}

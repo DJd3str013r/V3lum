@@ -1,0 +1,71 @@
+{
+ "domain": "google.com",
+ "answers": {
+  "_smtp._tls.google.com TXT": {
+   "Status": 0,
+   "TC": false,
+   "RD": true,
+   "RA": true,
+   "AD": false,
+   "CD": false,
+   "Question": [
+    {
+     "name": "_smtp._tls.google.com.",
+     "type": 16
+    }
+   ],
+   "Answer": [
+    {
+     "name": "_smtp._tls.google.com.",
+     "type": 16,
+     "TTL": 300,
+     "data": "v=TLSRPTv1;rua=mailto:sts-reports@google.com"
+    }
+   ]
+  },
+  "default._bimi.google.com TXT": {
+   "Status": 0,
+   "TC": false,
+   "RD": true,
+   "RA": true,
+   "AD": false,
+   "CD": false,
+   "Question": [
+    {
+     "name": "default._bimi.google.com.",
+     "type": 16
+    }
+   ],
+   "Answer": [
+    {
+     "name": "default._bimi.google.com.",
+     "type": 16,
+     "TTL": 300,
+     "data": "v=BIMI1; l=; a=; lps=googlewallet-noreply-bimi"
+    }
+   ]
+  },
+  "_mta-sts.google.com TXT": {
+   "Status": 0,
+   "TC": false,
+   "RD": true,
+   "RA": true,
+   "AD": false,
+   "CD": false,
+   "Question": [
+    {
+     "name": "_mta-sts.google.com.",
+     "type": 16
+    }
+   ],
+   "Answer": [
+    {
+     "name": "_mta-sts.google.com.",
+     "type": 16,
+     "TTL": 300,
+     "data": "v=STSv1; id=20210803T010101;"
+    }
+   ]
+  }
+ }
+}

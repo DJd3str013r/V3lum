@@ -1,0 +1,68 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "iplocate",
+  "name": "IPLocate.io API",
+  "operator": "IPLocate (operator not reviewed)",
+  "hosts": [
+    "iplocate.io"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "Terms and operator not reviewed by legal (P046 cond 1: every provider is terms 'unknown' and tier unknown until legal reviews it). Unknown tier: never default, excluded at AMBER and above, --allow-unknown at CLEAR/GREEN, IOC values only (A8).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "F",
+    "justification": "Reliability cannot be judged until the operator is reviewed (A8 unknown); one vote among >= 3 independent providers (P046 cond 6)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "ttl": 86400,
+    "min_interval": 1.0
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "day": 50,
+    "published": false,
+    "evidence_url": "https://www.iplocate.io/pricing"
+  },
+  "error_markers": [],
+  "keys": {
+    "iplocate": {
+      "description": "IPLocate.io API key (optional: keyless lookups work at 50/day; the free key allows 1,000/day)",
+      "signup_url": "https://www.iplocate.io/signup",
+      "env": [
+        "V3LUM_IPLOCATE_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "unused until legal records IPLocate's terms (source iplocate.api is 'unknown', P046 cond 1)"
+    }
+  },
+  "sources": {
+    "api": {
+      "title": "IPLocate IP lookup (GET /api/lookup/{ip}: privacy.is_vpn/is_proxy/is_tor/is_hosting)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://www.iplocate.io/",
+        "quote": "P046 cond 1 (binding council text): Every provider (VPNDetection, IPQuery, IPLocate, InternetData, ipapi.is, proxycheck.io) is terms 'unknown' and tier unknown until legal reviews it: disabled in every profile until legal records its terms (A1).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "iplocate",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0107 (verified_live 200). Keyless answers carry x-ratelimit-limit: 50 (per day, reset 00:00 UTC, observed 2026-11-26); a free key raises it to 1,000/day. IPv6 answers are exploded (normalised before comparing). Used by ip_anonymizer_consensus."
+    }
+  },
+  "notes": "Owned by batch p2-G02-2 (P046). Quota block: the keyless 50/day seen in the x-ratelimit-limit header (2026-11-26); kept for keyed use too until the keyed plan is recorded."
+}

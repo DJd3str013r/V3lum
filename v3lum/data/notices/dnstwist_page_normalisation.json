@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "dnstwist_page_normalisation",
+  "source_url": "https://github.com/elceef/dnstwist",
+  "version": "commit 341395377f40761fe4152f43fd18eea757b6069a (dnstwist 20250130), dnstwist.py UrlOpener._normalize; LICENSE sha256 cb0a3c4decf390f764ae452e017c8d4b9b91eb7664e428f6ffc8d30d79a7bb3e",
+  "sha256": "",
+  "licence": "Apache-2.0",
+  "attribution": "The HTML normalisation used before fuzzy-hashing lookalike pages (collapse whitespace, blank the values of action/src/href attributes and CSS url(...)) is adapted from dnstwist by Marcin Ulikowski (https://github.com/elceef/dnstwist). Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0. Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. Changes: the greedy patterns are made per attribute (non-greedy), the input is capped at 2 MB; the dnstwist.it web app is never used. ppdeep (pure-Python ssdeep, Apache-2.0) is an optional pip dependency of the module, not vendored.",
+  "bundled": true,
+  "files": [
+    "v3lum/modules/domain_dns/typosquat_live_checks.py"
+  ]
+}

@@ -1,0 +1,157 @@
+{
+ "query_status": "ok",
+ "data": [
+  {
+   "sha256_hash": "8f0be6d78df06131865eaf72189cfa20dfec02fa8951d7294e5da0452eb97da4",
+   "sha3_384_hash": null,
+   "sha1_hash": "5d3bdc8f64e95f19a9a19dbb1ccafaae5ad5bc93",
+   "md5_hash": "c1b872cd3d8bbaf2b8a75bf0e77464c7",
+   "first_seen": "2026-11-20 10:00:00",
+   "last_seen": null,
+   "file_name": "sample.exe",
+   "file_size": 245760,
+   "file_type_mime": "application/x-dosexec",
+   "file_type": "exe",
+   "reporter": "reporter_a",
+   "anonymous": 0,
+   "signature": "CobaltStrike",
+   "imphash": "b69645f5665d98a631421535b8e7b5c4",
+   "tlsh": "T18F0BE6D78DF06131865EAF72189CFA20DFEC02FA8951D7294E5DA0452EB97DA437DB1E",
+   "telfhash": null,
+   "gimphash": null,
+   "ssdeep": "1536:W8fNit8KKDSmYxqZBONkbLp4cbtk2roset/efjs4:pXWvjJscd48opmqePNbtS+Lx",
+   "dhash_icon": null,
+   "tags": [
+    "cobaltstrike",
+    "exe"
+   ],
+   "code_sign": [
+    {
+     "subject_cn": "Example Signing Ltd.",
+     "issuer_cn": "Example Code Signing CA",
+     "algorithm": "sha256_rsa",
+     "valid_from": "2026-01-02 00:00:00",
+     "valid_to": "2027-01-02 23:59:59",
+     "serial_number": "0a1b2c3d4e5f60718293a4b5c6d7e8f9",
+     "thumbprint": "3A5D2552CBCE2716D82969A0DF06A1BFCEBEA2C7AF7C62453ADCD9D48420999A",
+     "thumbprint_algorithm": "sha256",
+     "cscb_listed": true,
+     "cscb_reason": "CobaltStrike"
+    }
+   ]
+  },
+  {
+   "sha256_hash": "d5968e05d32041ef4b597533a341157b8ed30302a2853bf7e80930055cef3b63",
+   "sha3_384_hash": null,
+   "sha1_hash": "516c8a2ca193040fb14313b6f8ad6ebee7387f22",
+   "md5_hash": "0c44555d4b57b556f2edd1a33eb649c1",
+   "first_seen": "2026-11-20 10:00:00",
+   "last_seen": null,
+   "file_name": "sample.exe",
+   "file_size": 245760,
+   "file_type_mime": "application/x-dosexec",
+   "file_type": "exe",
+   "reporter": "reporter_a",
+   "anonymous": 0,
+   "signature": "CobaltStrike",
+   "imphash": "ef34f342ced003732f805d6f8e85f345",
+   "tlsh": "T1D5968E05D32041EF4B597533A341157B8ED30302A2853BF7E80930055CEF3B635042BE",
+   "telfhash": null,
+   "gimphash": null,
+   "ssdeep": "1536:wOtw0/pWIKCUC4EGGkG1YcynOHc4gMcAVdq3qx13:UXUx5Y2ufitBpUJ1jK+dAHwW",
+   "dhash_icon": null,
+   "tags": [
+    "cobaltstrike",
+    "exe"
+   ],
+   "code_sign": [
+    {
+     "subject_cn": "Example Signing Ltd.",
+     "issuer_cn": "Example Code Signing CA",
+     "algorithm": "sha256_rsa",
+     "valid_from": "2026-01-02 00:00:00",
+     "valid_to": "2027-01-02 23:59:59",
+     "serial_number": "0a1b2c3d4e5f60718293a4b5c6d7e8f9",
+     "thumbprint": "3A5D2552CBCE2716D82969A0DF06A1BFCEBEA2C7AF7C62453ADCD9D48420999A",
+     "thumbprint_algorithm": "sha256",
+     "cscb_listed": true,
+     "cscb_reason": "CobaltStrike"
+    }
+   ]
+  },
+  {
+   "sha256_hash": "c3185d44fa5a2fe3554744d404e2de9c8401f39a72fd7acb2dd23033241ebe39",
+   "sha3_384_hash": null,
+   "sha1_hash": "153a00379274a3006ea1b252424bbf1d679a3ab9",
+   "md5_hash": "b84c304893e0710c0063b122e75eb53c",
+   "first_seen": "2026-11-20 10:00:00",
+   "last_seen": null,
+   "file_name": "sample.exe",
+   "file_size": 245760,
+   "file_type_mime": "application/x-dosexec",
+   "file_type": "exe",
+   "reporter": "reporter_a",
+   "anonymous": 0,
+   "signature": "Gozi",
+   "imphash": "7b9584baa81c8177c8cc38ca49339724",
+   "tlsh": "T1C3185D44FA5A2FE3554744D404E2DE9C8401F39A72FD7ACB2DD23033241EBE39F7E51B",
+   "telfhash": null,
+   "gimphash": null,
+   "ssdeep": "1536:HvRRNTkUBtKSEwXLu5TbAtPGJ9R4ugeu6a04lj8B:ZJzbZcAAC2I7x4JxPGtZTzym",
+   "dhash_icon": null,
+   "tags": [
+    "gozi",
+    "exe"
+   ],
+   "code_sign": [
+    {
+     "subject_cn": "Example Software LLC",
+     "issuer_cn": "Example Code Signing CA",
+     "algorithm": "sha256_rsa",
+     "valid_from": "2025-05-01 00:00:00",
+     "valid_to": "2026-05-01 23:59:59",
+     "serial_number": "11223344556677889900aabbccddeeff",
+     "cscb_listed": false,
+     "cscb_reason": null
+    }
+   ]
+  },
+  {
+   "sha256_hash": "9ae42fa7a13906654f212695bb7d243e1e2210d901ccaf88c905246966dbaa5a",
+   "sha3_384_hash": null,
+   "sha1_hash": "5628b7928c13754239b084681bdaf0ce0e0d1506",
+   "md5_hash": "b4f00ba3d73c182333bde851a0b644b5",
+   "first_seen": "2026-11-20 10:00:00",
+   "last_seen": null,
+   "file_name": "sample.exe",
+   "file_size": 245760,
+   "file_type_mime": "application/x-dosexec",
+   "file_type": "exe",
+   "reporter": "reporter_a",
+   "anonymous": 0,
+   "signature": "Qakbot",
+   "imphash": "fd2fa71e8668dbf4b71aaee920953020",
+   "tlsh": "T19AE42FA7A13906654F212695BB7D243E1E2210D901CCAF88C905246966DBAA5AE93FC7",
+   "telfhash": null,
+   "gimphash": null,
+   "ssdeep": "1536:aKJok8OUWk+5NMdy4NCSek3f2bDEISIxFqHAUHtC:H3R7FfgpRN3DmxSzIxxG8ZbI",
+   "dhash_icon": null,
+   "tags": [
+    "qakbot",
+    "exe"
+   ],
+   "code_sign": [
+    {
+     "subject_cn": "Example Software LLC",
+     "issuer_cn": "Example Code Signing CA",
+     "algorithm": "sha256_rsa",
+     "valid_from": "2025-05-01 00:00:00",
+     "valid_to": "2026-05-01 23:59:59",
+     "serial_number": "11223344556677889900aabbccddeeff",
+     "cscb_listed": false,
+     "cscb_reason": null
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "v3lum.active_lock/1",
+  "name": "path_discovery_seclists_common.txt",
+  "sha256": "47fb86ca6fb3f97e5491161581900d6d99851fb16764eacddf16aa85617c956a",
+  "url": "https://raw.githubusercontent.com/danielmiessler/SecLists/01bd31a91d11025e37c776b01edfe61c58dba784/Discovery/Web-Content/common.txt",
+  "commit": "01bd31a91d11025e37c776b01edfe61c58dba784",
+  "reason": "p9-G13-3 (P285 cond 4): SecLists file fetched by commit on 2026-11-26 from raw.githubusercontent.com; SHA-256 of the body and git blob SHA-1 checked against the commit tree; entries filtered by the P285 path policy stay under the 5,000 A7 cap. Reviewed by batch p9-G13-3."
+}

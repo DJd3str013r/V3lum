@@ -1,0 +1,14 @@
+{
+ "server": "legacy_tls10",
+ "probe": "tls10",
+ "trust": "system_store",
+ "ok": false,
+ "stage": "handshake",
+ "version": null,
+ "cipher": null,
+ "error_type": "SSLCertVerificationError",
+ "reason": "CERTIFICATE_VERIFY_FAILED",
+ "library": "SSL",
+ "verify_code": 18,
+ "str": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1035)"
+}

@@ -1,0 +1,18 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://www.example.com/wp-config.php.bak",
+  "headers": {
+   "Range": "bytes=0-1023"
+  }
+ },
+ "response": {
+  "status": 206,
+  "headers": {
+   "content-type": "application/x-trash",
+   "content-range": "bytes 0-314/315",
+   "content-length": "315"
+  },
+  "body": "<?php\n/**\n * The base configuration for WordPress\n */\n\n// ** Database settings ** //\ndefine( 'DB_NAME', 'exemplo_wp' );\ndefine( 'DB_USER', 'exemplo_user' );\ndefine( 'DB_PASSWORD', 's3nh4-wp-f4ls4' );\ndefine( 'DB_HOST', 'localhost' );\ndefine( 'AUTH_KEY', 'FAKEFAKEFAKEFAKEFAKEFAKEFAKEFAKE' );\n$table_prefix = 'wp_';\n"
+ }
+}

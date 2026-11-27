@@ -1,0 +1,22 @@
+{
+ "_synthetic": "shape from the IPQS proxy-detection docs example (read 2026-11-26); values are documentation values. FC7: replace with a trimmed REAL capture made with the company key.",
+ "message": "Success.",
+ "success": true,
+ "proxy": true,
+ "vpn": true,
+ "tor": false,
+ "active_vpn": false,
+ "active_tor": false,
+ "recent_abuse": true,
+ "bot_status": false,
+ "is_crawler": false,
+ "fraud_score": 88,
+ "abuse_velocity": "medium",
+ "connection_type": "Data Center",
+ "ISP": "Example Hosting",
+ "organization": "Example Hosting",
+ "ASN": 64500,
+ "host": "host-203-0-113-7.example.net",
+ "country_code": "BR",
+ "request_id": "REQID00004"
+}

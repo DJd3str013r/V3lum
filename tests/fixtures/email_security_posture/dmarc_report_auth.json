@@ -1,0 +1,48 @@
+{
+ "answers": {
+  "cloudflare.com._report._dmarc.dmarc-reports.cloudflare.net TXT": {
+   "Status": 0,
+   "TC": false,
+   "RD": true,
+   "RA": true,
+   "AD": false,
+   "CD": false,
+   "Question": [
+    {
+     "name": "cloudflare.com._report._dmarc.dmarc-reports.cloudflare.net.",
+     "type": 16
+    }
+   ],
+   "Answer": [
+    {
+     "name": "cloudflare.com._report._dmarc.dmarc-reports.cloudflare.net.",
+     "type": 16,
+     "TTL": 300,
+     "data": "v=DMARC1"
+    }
+   ]
+  },
+  "example.org._report._dmarc.reports.example.net TXT": {
+   "Status": 3,
+   "TC": false,
+   "RD": true,
+   "RA": true,
+   "AD": false,
+   "CD": false,
+   "Question": [
+    {
+     "name": "example.org._report._dmarc.reports.example.net.",
+     "type": 16
+    }
+   ],
+   "Authority": [
+    {
+     "name": "org._report._dmarc.reports.example.net.",
+     "type": 6,
+     "TTL": 900,
+     "data": "ns1.example.net. hostmaster.example.net. 1 7200 3600 1209600 900"
+    }
+   ]
+  }
+ }
+}

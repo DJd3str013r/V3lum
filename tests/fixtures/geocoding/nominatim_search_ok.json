@@ -1,0 +1,29 @@
+{
+ "_envelope": 1,
+ "_source": "research sample nominatim_search.json (GET /search?q=Praça da Sé São Paulo&format=jsonv2&limit=1, 2026-11-25, V3LUM/0.1 UA): place_id/importance dropped",
+ "status": 200,
+ "headers": {
+  "content-type": "application/json; charset=utf-8"
+ },
+ "body": [
+  {
+   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+   "osm_type": "way",
+   "osm_id": 75488634,
+   "lat": "-23.5503898",
+   "lon": "-46.6330810",
+   "category": "leisure",
+   "type": "park",
+   "place_rank": 24,
+   "addresstype": "park",
+   "name": "Praça da Sé",
+   "display_name": "Praça da Sé, Glicério, Sé, São Paulo, Região Sudeste, 01001-000, Brasil",
+   "boundingbox": [
+    "-23.5517242",
+    "-23.5491629",
+    "-46.6342888",
+    "-46.6319455"
+   ]
+  }
+ ]
+}

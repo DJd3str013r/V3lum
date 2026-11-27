@@ -1,0 +1,73 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "$comment": "Suppression runs first: both listings were downgraded by SUP-warninglist (findings kept, POSSIBLE) and a third is context_only: no consensus",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "nodes": [
+    {
+      "key": "domain:cdn-assets.example",
+      "depth": 0,
+      "seed": true,
+      "findings": [
+        {
+          "title": "Listed on URLhaus (malware host)",
+          "severity": "high",
+          "confidence": 0.8,
+          "criterion": "POSSIBLE - on warninglist misp.cdn | URLhaus listing",
+          "tags": [
+            "malware",
+            "malicious"
+          ],
+          "module": "abusech",
+          "source": "abusech.urlhaus",
+          "confidence_label": "possible",
+          "observed_last": "2026-11-20T00:00:00Z",
+          "suppressed_by": [
+            {
+              "rule": "SUP-warninglist",
+              "reason": "on warninglist misp.cdn"
+            }
+          ]
+        },
+        {
+          "title": "Listed by PhishTank (verified phish)",
+          "severity": "high",
+          "confidence": 0.8,
+          "criterion": "POSSIBLE - on warninglist misp.cdn | PhishTank entry",
+          "tags": [
+            "phishing"
+          ],
+          "module": "url_domain_blocklists",
+          "source": "phishtank.online_valid",
+          "confidence_label": "possible",
+          "observed_last": "2026-11-24T00:00:00Z",
+          "suppressed_by": [
+            {
+              "rule": "SUP-warninglist",
+              "reason": "on warninglist misp.cdn"
+            }
+          ]
+        },
+        {
+          "title": "Sinkholed C2 domain",
+          "severity": "high",
+          "confidence": 0.8,
+          "criterion": "source verdict",
+          "tags": [
+            "c2",
+            "malicious",
+            "context_only"
+          ],
+          "module": "ioc_feeds_offline",
+          "source": "abusech.threatfox",
+          "observed_last": "2026-11-24T00:00:00Z"
+        }
+      ]
+    }
+  ],
+  "edges": []
+}

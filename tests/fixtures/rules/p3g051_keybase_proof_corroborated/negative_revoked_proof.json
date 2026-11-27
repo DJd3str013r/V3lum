@@ -1,0 +1,98 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "options": {
+  "mode": "passive",
+  "tlp": "amber",
+  "depth": 2
+ },
+ "nodes": [
+  {
+   "key": "username:exampleorg",
+   "depth": 0,
+   "seed": true,
+   "attributes": {
+    "keybase_profile": [
+     {
+      "value": [
+       {
+        "username": "exampleorg",
+        "uid": "0d3a4f5e6b7c8d9e0f1a2b3c4d5e6f19",
+        "has_sigchain": true,
+        "proof_count": 3,
+        "pgp_fingerprints": [
+         "05038F7802BB049DE654DA1751C59484928D2719"
+        ],
+        "banner": "Keybase is in maintenance mode: historical, self-asserted evidence"
+       }
+      ],
+      "source": "keybase"
+     }
+    ],
+    "keybase_proofs": [
+     {
+      "value": [
+       {
+        "username": "exampleorg",
+        "proof_type": "github",
+        "nametag": "exampleorg",
+        "state": 7,
+        "state_name": "revoked",
+        "ok": false,
+        "service_url": null,
+        "label": "historical",
+        "confidence": "possible",
+        "wording": "historical claim: Keybase proof revoked (revoked), signed on or before 2019-06-01 (historical)"
+       }
+      ],
+      "source": "keybase"
+     }
+    ]
+   }
+  },
+  {
+   "key": "social_account:github:exampleorg",
+   "depth": 1,
+   "attributes": {
+    "gpg_keys": [
+     {
+      "value": [
+       {
+        "fingerprint": "05038F7802BB049DE654DA1751C59484928D2719",
+        "key_id": "51C59484928D2719"
+       }
+      ],
+      "source": "github_user"
+     }
+    ]
+   }
+  },
+  {
+   "key": "pgp_fingerprint:05038F7802BB049DE654DA1751C59484928D2719",
+   "depth": 1
+  }
+ ],
+ "edges": [
+  {
+   "src": "username:exampleorg",
+   "dst": "social_account:github:exampleorg",
+   "relation": "keybase_proof",
+   "module": "keybase",
+   "confidence": 0.7
+  },
+  {
+   "src": "username:exampleorg",
+   "dst": "pgp_fingerprint:05038F7802BB049DE654DA1751C59484928D2719",
+   "relation": "pgp_key",
+   "module": "keybase",
+   "confidence": 0.7
+  },
+  {
+   "src": "social_account:github:exampleorg",
+   "dst": "pgp_fingerprint:05038F7802BB049DE654DA1751C59484928D2719",
+   "relation": "pgp_key",
+   "module": "github_user",
+   "confidence": 1.0
+  }
+ ]
+}

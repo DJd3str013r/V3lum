@@ -1,0 +1,19 @@
+{
+ "did": "did:plc:z72i7hdynmk6r22z27h6tvur",
+ "handle": "bsky.app",
+ "displayName": "Bluesky",
+ "description": "official Bluesky account (check username👆)\n\nBugs, feature requests, feedback: support@bsky.app",
+ "createdAt": "2023-04-12T04:53:57.057Z",
+ "indexedAt": "2026-11-04T15:41:10.973Z",
+ "followersCount": 35856608,
+ "followsCount": 44,
+ "postsCount": 928,
+ "labels": [],
+ "verification": {
+  "verifiedStatus": "none",
+  "trustedVerifierStatus": "valid"
+ },
+ "associated": {
+  "labeler": false
+ }
+}

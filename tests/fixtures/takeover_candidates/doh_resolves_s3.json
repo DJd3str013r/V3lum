@@ -1,0 +1,38 @@
+{
+ "qname": "assets.example.com",
+ "google": {
+  "Status": 0,
+  "TC": false,
+  "RD": true,
+  "RA": true,
+  "AD": false,
+  "CD": false,
+  "Question": [
+   {
+    "name": "assets.example.com.",
+    "type": 1
+   }
+  ],
+  "Answer": [
+   {
+    "name": "assets.example.com.",
+    "type": 5,
+    "TTL": 300,
+    "data": "assets.example.com.s3.amazonaws.com."
+   },
+   {
+    "name": "assets.example.com.s3.amazonaws.com.",
+    "type": 5,
+    "TTL": 60,
+    "data": "s3-1-w.amazonaws.com."
+   },
+   {
+    "name": "s3-1-w.amazonaws.com.",
+    "type": 1,
+    "TTL": 5,
+    "data": "198.51.100.20"
+   }
+  ],
+  "edns_client_subnet": "0.0.0.0/0"
+ }
+}

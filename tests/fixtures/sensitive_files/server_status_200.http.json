@@ -1,0 +1,17 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://www.example.com/server-status",
+  "headers": {
+   "Range": "bytes=0-1023"
+  }
+ },
+ "response": {
+  "status": 200,
+  "headers": {
+   "content-type": "text/html; charset=ISO-8859-1",
+   "content-length": "1089"
+  },
+  "body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\"\n \"http://www.w3.org/TR/html4/strict.dtd\">\n<html><head>\n<title>Apache Status</title>\n</head><body>\n<h1>Apache Server Status for www.example.com (via 192.0.2.10)</h1>\n\n<dl><dt>Server Version: Apache/2.4.62 (Debian) OpenSSL/3.0.15</dt>\n<dt>Server MPM: event</dt>\n<dt>Server Built: 2026-08-01T00:00:00\n</dt></dl><hr /><dl>\n<dt>Current Time: Thursday, 26-Nov-2026 11:00:00 UTC</dt>\n<dt>Restart Time: Monday, 23-Nov-2026 03:00:00 UTC</dt>\n<dt>Parent Server Config. Generation: 4</dt>\n<dt>Parent Server MPM Generation: 3</dt>\n<dt>Server uptime:  3 days 8 hours</dt>\n<dt>Server load: 0.12 0.10 0.08</dt>\n<dt>Total accesses: 120334 - Total Traffic: 2.1 GB</dt>\n</dl>\n<table border=\"0\"><tr><th>Srv</th><th>PID</th><th>Client</th><th>VHost</th><th>Request</th></tr>\n<tr><td>0-3</td><td>4242</td><td>203.0.113.77</td><td>www.example.com:443</td><td nowrap>GET /minha-conta?token=FAKETOKENFAKETOKEN1234 HTTP/1.1</td></tr>\n<tr><td>1-3</td><td>4243</td><td>198.51.100.23</td><td>www.example.com:443</td><td nowrap>POST /login HTTP/1.1</td></tr>\n</table>\n"
+ }
+}

@@ -1,0 +1,62 @@
+{
+ "v": 0,
+ "dimension_count": 1,
+ "result": [
+  {
+   "anomaly_count": 0,
+   "confirmed_count": 0,
+   "failure_count": 0,
+   "ok_count": 55,
+   "measurement_count": 55,
+   "probe_cc": "AE"
+  },
+  {
+   "anomaly_count": 2,
+   "confirmed_count": 0,
+   "failure_count": 3,
+   "ok_count": 1313,
+   "measurement_count": 1318,
+   "probe_cc": "BR"
+  },
+  {
+   "anomaly_count": 40,
+   "confirmed_count": 0,
+   "failure_count": 22,
+   "ok_count": 4,
+   "measurement_count": 66,
+   "probe_cc": "CN"
+  },
+  {
+   "anomaly_count": 14,
+   "confirmed_count": 0,
+   "failure_count": 7,
+   "ok_count": 1201,
+   "measurement_count": 1222,
+   "probe_cc": "DE"
+  },
+  {
+   "anomaly_count": 12,
+   "confirmed_count": 0,
+   "failure_count": 5,
+   "ok_count": 9526,
+   "measurement_count": 9543,
+   "probe_cc": "ES"
+  },
+  {
+   "anomaly_count": 48,
+   "confirmed_count": 0,
+   "failure_count": 14,
+   "ok_count": 2089,
+   "measurement_count": 2151,
+   "probe_cc": "RU"
+  },
+  {
+   "anomaly_count": 8,
+   "confirmed_count": 0,
+   "failure_count": 24,
+   "ok_count": 3637,
+   "measurement_count": 3669,
+   "probe_cc": "US"
+  }
+ ]
+}

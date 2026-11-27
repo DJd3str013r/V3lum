@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "cvelistv5_cve_list",
+  "source_url": "https://github.com/CVEProject/cvelistV5",
+  "version": "local mirror (baseline release archive + deltaLog changes) synced out of band; the CVE-2021-44228 record of 2025-10-21 in the test fixtures",
+  "sha256": "",
+  "licence": "CVE Program Terms of Use",
+  "attribution": "CVE records from the CVE List (https://github.com/CVEProject/cvelistV5) (c) The MITRE Corporation, used per the CVE Program Terms of Use (https://www.cve.org/Legal/TermsOfUse). CISA ADP Vulnrichment content (SSVC, KEV, CVSS) is a U.S. Government work in the public domain. legal_dpo pastes MITRE's exact CVE copyright designation here, as for mitre_cve (P352 cond 4).",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/vulnerability_cve/cve_offline_mirror.py",
+    "tests/fixtures/cve_offline_mirror/record_ok.json"
+  ]
+}

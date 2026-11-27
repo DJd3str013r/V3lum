@@ -1,0 +1,19 @@
+{
+ "name": "Hashes that are often included in IOC lists but are false positives.",
+ "type": "string",
+ "version": 20251216,
+ "description": "Hashes that are often included in IOC lists but are false positives.",
+ "matching_attributes": [
+  "md5",
+  "sha1",
+  "sha256",
+  "filename|md5",
+  "filename|sha1",
+  "filename|sha256"
+ ],
+ "list": [
+  "00014cb6ebc0e2fb3f83dec061fc8ac1",
+  "00040c682b12de3c33ef3a1839260d4851073c94ce49ab32ac38dbd13c16e1c2",
+  "000b86c93a586d1055074acbb05d93bbfc548d9380663e140721938696b9ef84"
+ ]
+}

@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "androguard_testactivity_apk",
+  "source_url": "https://github.com/androguard/androguard/blob/master/tests/data/APK/TestActivity.apk",
+  "version": "androguard repository master, fetched 2026-11 for batch p1-G12-1 (test fixture only, not shipped in the package)",
+  "sha256": "3bb32dd50129690bce850124ea120aa334e708eaa7987cf2329fd1ea0467a0eb",
+  "licence": "Apache-2.0",
+  "attribution": "TestActivity.apk from the androguard project (https://github.com/androguard/androguard), Apache License 2.0; a debug-signed test application used unmodified (renamed) as a real-format test fixture for apk_triage.",
+  "bundled": false,
+  "files": [
+    "tests/fixtures/apk_triage/androguard_testactivity_real.apk",
+    "tests/modules/test_apk_triage.py"
+  ]
+}

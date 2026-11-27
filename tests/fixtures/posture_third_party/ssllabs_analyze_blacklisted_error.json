@@ -1,0 +1,9 @@
+{
+ "host": "example.com",
+ "port": 443,
+ "protocol": "http",
+ "status": "ERROR",
+ "statusMessage": "Hostname blacklisted",
+ "engineVersion": "2.4.3",
+ "criteriaVersion": "2009q"
+}

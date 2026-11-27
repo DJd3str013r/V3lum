@@ -1,0 +1,25 @@
+{
+ "_meta": {
+  "module": "username_check",
+  "case": "medium_blocked",
+  "source": "C0228 Medium (WMN 'Medium')",
+  "request": {
+   "method": "GET",
+   "url": "https://medium.com/@medium/about",
+   "user_agent": "V3LUM/dev",
+   "redirects": "not followed"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "live check, this sandbox's datacenter egress",
+  "elapsed_s": 0.115,
+  "minimised": true,
+  "note": "Cloudflare managed challenge to the neutral UA; never retried (P326 BR6); challenge tokens and ray id redacted"
+ },
+ "status": 403,
+ "headers": {
+  "content-type": "text/html; charset=UTF-8",
+  "cf-mitigated": "challenge",
+  "server": "cloudflare"
+ },
+ "body": "<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title></head><body><noscript>Enable JavaScript and cookies to continue</noscript><script>(function(){window._cf_chl_opt = {cFPWv: 'g', cH: 'REDACTED'};var a = document.createElement('script');a.src = '/cdn-cgi/challenge-platform/h/g/orchestrate/chl_page/v1?ray=REDACTED';}());</script></body></html>"
+}

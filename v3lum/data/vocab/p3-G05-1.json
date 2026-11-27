@@ -1,0 +1,30 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p3-G05-1",
+  "title": "Keybase, Mastodon, memory.lol, Arctic Shift, Hacker News and YouTube (P104-P110)",
+  "owner": "batch p3-G05-1 (keybase, mastodon, memory_lol, reddit_archive, hackernews, youtube; rule p3g051_keybase_proof_corroborated)",
+  "attributes": {
+    "data_age": "age of a provider's data for a frozen or historical source {as_of, age_days, wording}: read the facts as historical, not present-tense (P104 cond 5)",
+    "keybase_profile": "Keybase accounts in the answer: list of {username, uid, created, last_identity_change, last_modified, has_sigchain, proof_count, pgp_fingerprints, banner}; Keybase is in maintenance mode, so every fact is historical and self-asserted (P104 cond 5)",
+    "keybase_proofs": "Keybase identity proofs: list of {username, proof_type, nametag, state, state_name, ok, service_url, proof_url, signed_at, signed_on_or_before, age_days, label current|historical|date unknown, confidence, wording}; an OK proof is PROBABLE on Keybase alone (P104 cond 3/4)",
+    "fediverse_account": "Mastodon/fediverse account facts {acct, id, home_host, resolved_via, display_name, created_at, last_status_at, counts, flags, moved_to, fields [{name, urls, verified, verified_at}], webfinger}: owner-written fields, link-less field text not kept (P105 cond 5)",
+    "x_handle_history": "screen-name history of X/Twitter account ids from memory.lol {window, accounts [{account_id, screen_names [{name, first_seen, last_seen}]}]}: anonymous access covers the public 60-day window only; case-bound personal data (P106 cond 3/5)",
+    "reddit_activity": "archived Reddit activity of a handle (Arctic Shift, one page each) {posts, posts_at_least, comments, comments_at_least, first_activity, first_activity_bound, last_activity, linked_domains, deleted_by_author, removed}: counts and dates only, never a per-subreddit profile (P108 cond 4)",
+    "org_mentions": "items of a public archive or forum that mention an organisation brand or domain of the org profile: list of {source, id, kind, permalink, created, quote (<= 200 characters)}; items deleted by their authors are never quoted (P108 cond 3/5, P109 cond 3)",
+    "hn_account": "Hacker News account facts {id, created, karma, submitted_count, about_urls, about_email_count, profile_url}: counts and links only, never the item list (P109 cond 3)",
+    "hn_activity": "Hacker News activity from HN Search {items_total, last_activity, first_activity_bound, stories [{id, title, url, created, permalink}], unmatched_comments, links}: submitted stories and matched items only, comment text never kept (P109 cond 3)",
+    "youtube_channel": "YouTube channel facts {channel_id, title, handle, url, created, country, view_count, subscriber_count, subscriber_count_hidden, video_count, source}: Data API facts follow the YouTube API Services storage policy (<= 30 days, P110 cond 5)",
+    "youtube_uploads": "latest uploads in a channel's public feed {channel_id, uploads_in_feed, last_upload, entries [{video_id, title, published, views}]}: descriptions are not kept (P110 cond 2)",
+    "youtube_video": "oEmbed facts of a YouTube video {video_id, title, author_name, author_url, handle} (P110 cond 2)"
+  },
+  "tags": {},
+  "relations": {
+    "keybase_proof": "Keybase account -> account, domain or site the account signed an identity proof for (sigchain; historical and self-asserted: PROBABLE when the proof is OK, POSSIBLE when revoked or broken; CONFIRMED only through corroboration, P104 cond 3/4)",
+    "verified_profile_link": "fediverse account -> website that verified the profile link back with rel=me (Mastodon verified_at): CONFIRMED, for passive modules only (P105 cond 5)",
+    "moved_to": "fediverse account -> account it declares it moved to (Mastodon 'moved'): PROBABLE, expand=False",
+    "keybase_prover": "GitHub/X/Reddit account or domain -> Keybase account that signed an identity proof for it (reverse lookup; historical and self-asserted, expand=False, P104 cond 1)"
+  },
+  "timeline": {
+    "data_age": "data age of a historical source"
+  }
+}

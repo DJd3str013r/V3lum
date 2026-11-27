@@ -1,0 +1,26 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p2-G02-2",
+  "title": "Names used by batch p2-G02-2 (DNSBL lookups, keyless anonymizer votes, honeypot intelligence)",
+  "owner": "batch p2-G02-2 (P045, P046, P147)",
+  "attributes": {
+    "dnsbl_listings": "list of per-list DNSBL answers {list, name, source, state (listed | not_listed | refused | error | test_point_failed), codes, meanings, counts, route (doh | system)}; query names carrying an access key are never kept",
+    "dnsbl_summary": "one line 'listed on k of n queried lists (names, return codes)' plus the lists that could not be verified (every DNSBL is ONE 'spam' family vote)",
+    "dnsbl_not_queried": "ONE coverage line naming the DNSBLs that refuse public resolvers and were not queried (needs DQS key/registration)",
+    "httpbl": "Project Honey Pot http:BL answer {threat_score (0-255, log-scaled), score_band, days_since_last_activity, visitor_types, search_engine}",
+    "anonymizer_votes": "VPN/proxy/hosting votes of independent keyless providers {line, answered, asked, providers, could_not_verify, deduplicated, need, inconclusive, categories {vpn|proxy|hosting: {voters, values, agreeing, true, verdict}}}; a verdict needs >= 3 agreeing answers",
+    "honeypot_sightings": "list of honeypot sightings of the IP {source, first_seen, last_seen, services, tags, cves, kev, attack, sensors, networks, hits, confidence, transport, decay, counts_for_verdict}",
+    "honeypot_cve_activity": "exploitation attempts of the CVE seen by honeypot networks {source, window, source_ips, kev, actively_exploited, events, unique_ips, patterns, top_asns, first_seen, last_seen}",
+    "honeypot_asn_activity": "attacking addresses of the AS seen by honeypot networks {source, window, ips, hits, tags, cves}",
+    "honeypot_relayed_lists": "third-party lists a honeypot provider relays for the IP (display only, never a vote of that provider: P171)"
+  },
+  "tags": {
+    "vpn": "VPN endpoint or exit (anonymizer context for CR28): traffic from many users, never malicious on its own",
+    "hosting": "hosting/datacenter address (context for CR28 anonymized infrastructure), never malicious on its own"
+  },
+  "relations": {
+    "attempted_exploit": "IP -> CVE the address was seen trying to exploit against honeypots (an attempt by the source: never has_vuln, the attacker is not the vulnerable host)",
+    "exploit_attempted_by": "CVE -> source IP seen trying to exploit it against honeypots (top actors of a honeypot network)",
+    "observed_technique": "IP -> ATT&CK technique observed in its honeypot sessions (behaviour of the address, not attribution to an actor)"
+  }
+}

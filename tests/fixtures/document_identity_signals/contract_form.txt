@@ -1,0 +1,9 @@
+# synthetic test text (P273-FC6) - qualification block with 'CPF:' on its own line
+CONTRATANTE
+Nome: FULANO DE TAL SOUZA
+CPF: 000.000.001-91
+Cidade: Campinas - SP
+
+CONTRATADA
+Razão social: EMPRESA EXEMPLO LTDA
+CNPJ: 00.000.000/0001-91

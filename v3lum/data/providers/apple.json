@@ -1,0 +1,71 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "apple",
+  "name": "Apple iTunes Search API (App Store catalogue search and lookup)",
+  "operator": "Apple Inc.",
+  "hosts": ["itunes.apple.com"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms, a privacy policy and a business offering (A8 trusted): 'Tier community (Koodous; Apple and Google are trusted).' (P346 chair rationale).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Apple's own App Store catalogue: the seller name and developer id are Apple-verified, but the seller URL and the bundle id prefix are entered by the developer (never proof of ownership on their own)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400,
+    "max_bytes": 2097152,
+    "timeout": 15,
+    "retries": 1,
+    "min_interval": 3.0,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "rate_per_second": 0.333,
+    "burst": 1,
+    "published": true,
+    "evidence_url": "https://performance-partners.apple.com/search-api"
+  },
+  "error_markers": [
+    {
+      "id": "apple_itunes_error_message",
+      "statuses": [200, 400],
+      "json_path": "errorMessage",
+      "regex": ".",
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "Apple iTunes: request rejected (errorMessage in the answer): could not verify"
+    }
+  ],
+  "keys": {},
+  "sources": {
+    "itunes_search": {
+      "title": "iTunes Search and Lookup API (entity=software, country=br): app metadata only",
+      "terms": {
+        "class": "license",
+        "evidence_url": "https://performance-partners.apple.com/search-api",
+        "quote": "Developers may use promotional content in the API, including previews of songs, music videos, album art and App icons only to promote store content and not for entertainment purposes. [...] The Search API is limited to approximately 20 calls per minute (subject to change).",
+        "checked_at": "2026-11-25",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "apple_app_store",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0778 (verified live 2026-11-25/26: HTTP 200 and intermittent 403 with an empty body from the datacenter egress). P346 c2: Apple's Search API terms cover promotional use, so the source is 'license': off under the corporate profile until legal records a licence_allow entry with a metadata-only scope (no artwork, previews or screenshots; internal brand monitoring). P346 c3: <= 20 calls/min (min_interval 3 s, token bucket 0.333/s), a 403 is retried once with the same request and UA, then BLOCKED 'could not verify'; never another UA (P326). The 200 answer is text/javascript with leading newlines and cache-control max-age=86400 (TTL 24 h). Used by mobile_app_impersonation.",
+      "licensed_alternative": "Apple Enterprise Partner Feed (EPF) or a written Apple permission for brand monitoring (record it as a licence_allow entry for apple.itunes_search)."
+    }
+  },
+  "notes": "Owned by batch p2-G03-2 (P346). Only itunes.apple.com: App Store web pages (apps.apple.com) are never fetched; their store URLs appear only as links in findings."
+}

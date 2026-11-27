@@ -1,0 +1,126 @@
+{
+ "build_id": null,
+ "capped": [],
+ "comment": [],
+ "dynamic": {},
+ "errors": [],
+ "exports": [],
+ "exports_total": 0,
+ "go_buildinfo": false,
+ "header": {
+  "abiversion": 0,
+  "class": "ELFCLASS64",
+  "data": "ELFDATA2LSB",
+  "entry": 4194544,
+  "flags": 0,
+  "machine": "EM_AARCH64",
+  "machine_arch": "AArch64",
+  "osabi": "ELFOSABI_SYSV",
+  "phentsize": 56,
+  "phnum": 3,
+  "phoff": 64,
+  "shentsize": 64,
+  "shnum": 5,
+  "shoff": 584,
+  "shstrndx": 4,
+  "type": "ET_EXEC"
+ },
+ "imports": [],
+ "imports_total": 0,
+ "interpreter": null,
+ "sections": [
+  {
+   "addr": 0,
+   "flags": 0,
+   "name": "",
+   "offset": 0,
+   "size": 0,
+   "type": "SHT_NULL"
+  },
+  {
+   "addr": 4194544,
+   "entropy": 2.0,
+   "flags": 6,
+   "name": ".text",
+   "offset": 240,
+   "oob": false,
+   "size": 128,
+   "type": "SHT_PROGBITS"
+  },
+  {
+   "addr": 0,
+   "entropy": 1.339,
+   "flags": 0,
+   "name": ".symtab",
+   "offset": 368,
+   "oob": false,
+   "size": 120,
+   "type": "SHT_SYMTAB"
+  },
+  {
+   "addr": 0,
+   "entropy": 4.0898,
+   "flags": 0,
+   "name": ".strtab",
+   "offset": 488,
+   "oob": false,
+   "size": 57,
+   "type": "SHT_STRTAB"
+  },
+  {
+   "addr": 0,
+   "entropy": 3.2635,
+   "flags": 0,
+   "name": ".shstrtab",
+   "offset": 545,
+   "oob": false,
+   "size": 33,
+   "type": "SHT_STRTAB"
+  }
+ ],
+ "segments": [
+  {
+   "entropy": 2.5852,
+   "filesz": 368,
+   "flags": 5,
+   "memsz": 368,
+   "offset": 0,
+   "oob": false,
+   "type": "PT_LOAD",
+   "vaddr": 4194304
+  },
+  {
+   "filesz": 0,
+   "flags": 6,
+   "memsz": 0,
+   "offset": 368,
+   "type": "PT_LOAD",
+   "vaddr": 4194672
+  },
+  {
+   "filesz": 0,
+   "flags": 6,
+   "memsz": 0,
+   "offset": 0,
+   "type": "PT_GNU_STACK",
+   "vaddr": 4194304
+  }
+ ],
+ "size": 904,
+ "source": "pyelftools",
+ "symtab": {
+  "count": 5,
+  "globals_sample": [
+   "main",
+   "v3lum_fixture_init",
+   "v3lum_fixture_loop"
+  ],
+  "present": true
+ },
+ "upx": {
+  "info_banner": false,
+  "magic_offsets": [],
+  "version": null
+ },
+ "version": "0.33"
+}

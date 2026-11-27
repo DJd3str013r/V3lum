@@ -1,0 +1,20 @@
+{
+ "address": "0x2222222222222222222222222222222222222222",
+ "contentHash": null,
+ "description": "line1\u001b[31mred\u0007\nline2 [bold]markup[/bold] AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+ "ens": "v3lum-fixture-hostile.eth",
+ "ens_primary": "v3lum-fixture-other.eth",
+ "github": "[bold red]pwn[/bold red]",
+ "twitter": "https://evil.example/@not a handle",
+ "com.twitter": "@example_handle",
+ "x": "https://x.com/example_handle",
+ "reddit": "https://www.reddit.com/user/example_user/",
+ "telegram": 12345,
+ "url": "javascript:alert(1)",
+ "email": "not-an-email",
+ "wallets": {
+  "eth": "0x2222222222222222222222222222222222222222",
+  "btc": "not-a-btc-address",
+  "doge": "DExampleDogeAddress00000000000000"
+ }
+}

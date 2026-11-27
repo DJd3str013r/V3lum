@@ -1,0 +1,7 @@
+{
+ "domain": "example.org",
+ "subdomains": [
+  "www"
+ ],
+ "count": 1
+}

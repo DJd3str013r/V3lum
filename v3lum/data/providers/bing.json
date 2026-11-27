@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "bing",
+  "name": "Bing web search (manual dork links)",
+  "operator": "Microsoft Corporation",
+  "hosts": [
+    "bing.com",
+    "www.bing.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms and a privacy policy (A8 BR2; P306 cond 7: search engines trusted).",
+  "tier_reviewer": "batch p2-G14-3 (council-1 P304 cond 5: initial tiers, reviewer confirms)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "General web search index; results depend on the index and change over time."
+  },
+  "http_profile": {
+    "user_agent": "neutral"
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "search_links": {
+      "title": "www.bing.com/search?q= (manual dork links; ip:/url: operators)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.microsoft.com/servicesagreement",
+        "quote": "Search engine ToS: manual use only (no automated scraping)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "bing",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0686/C0687 (Bing results page verified, 200). Links only: V3LUM never queries, scrapes or renders search engines (P306 cond 1, rule 1). Used by dork_generator."
+    }
+  },
+  "notes": "Owned by batch p2-G14-3 (P306, module dork_generator). Manual dork links only: never fetched, so no budget. Dork links follow A2/P311 rendering (non-clickable text at TLP:AMBER and above, P306 cond 7)."
+}

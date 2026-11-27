@@ -1,0 +1,53 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "ahmia",
+  "name": "Ahmia (Tor hidden-service search engine): banned/abuse onion filter list",
+  "operator": "Ahmia project (Juha Nurmi and contributors, ahmia.fi)",
+  "hosts": [
+    "ahmia.fi"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Well-known community project with an identifiable operator (Juha Nurmi; open-source code BSD-3 on GitHub), published terms of service and a public track record since 2014 (A8 community). Only the banned-list download is used: no investigated value is ever sent to Ahmia.",
+  "tier_reviewer": "batch p2-G09-1 (A8 definitions; P199 review)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Abuse filter list maintained by the search-engine operator for its own index: MD5 of the onion domain, one per line (60,407 lines on 2026-11-26); used only to withhold onions, never to judge them."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400,
+    "min_interval": 2.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "banned_list": {
+      "title": "Ahmia banned/abuse onion list https://ahmia.fi/blacklist/banned/ (md5 of the onion domain, one per line)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://ahmia.fi/blacklist/",
+        "quote": "You can use this to filter child sexual abuse material from your own search indexes. Onion addresses are masked by creating an MD5 sum of the onion domain.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1 BR2, P199 cond 2: registered 'open' for the filtering use Ahmia offers, with Ahmia's offer quoted as evidence)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "ahmia",
+      "sanitizer": null,
+      "dataset": "ahmia_banned_onions",
+      "notes": "Quote: Ahmia's own offer on ahmia.fi/blacklist/ (live 2026-11-26), the evidence P199 cond 2 requires. Research C0466 (verified_live 200): text/plain, ~2 MB, 60,407 lowercase md5 lines, Cache-Control max-age=3600, no ETag/Last-Modified. Worked example on the page: md5('abcdefghijklmnop.onion') = c50b9578b6357a561909ff29331ad7ad, so the hash input is the full onion domain including '.onion'. Dataset ahmia_banned_onions refreshed at most daily (essential), used only as the safety filter is_banned_onion() before any onion is displayed, stored, enriched or fetched (P199 cond 2-3). Ahmia's onion index list (ahmia.fi/onions/) is NOT downloaded: Ahmia's ToS (25 Sep 2026) forbid replicating the service without permission; it may come only as a 'license' dataset with Ahmia's written permission recorded (P199 cond 5). Ahmia search stays manual-only (rotating form token)."
+    }
+  },
+  "notes": "Owned by batch p2-G09-1 (P199). ahmia.fi serves the banned list and the manual search page (manual pivot only, never automated). Profile: one download at a time, daily at most."
+}

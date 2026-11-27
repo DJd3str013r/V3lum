@@ -1,0 +1,57 @@
+{
+ "nodes": [
+  {
+   "id": "5b4ee3ea-eee3-4c8e-8323-85ae32658754",
+   "name": "APT28",
+   "group": "APT"
+  },
+  {
+   "id": "b2056ff0-00b9-482e-b11c-c771daa5f28a",
+   "name": "APT29",
+   "group": "APT"
+  },
+  {
+   "id": "68391641-859f-4a9a-9a1e-3e5cf71ec376",
+   "name": "Lazarus Group",
+   "group": "APT"
+  }
+ ],
+ "links": [
+  {
+   "source": "5b4ee3ea-eee3-4c8e-8323-85ae32658754",
+   "target": "Russia",
+   "value": 1,
+   "color": "#ff338d"
+  },
+  {
+   "source": "5b4ee3ea-eee3-4c8e-8323-85ae32658754",
+   "target": "Cannon",
+   "value": 1,
+   "color": "#b0e0e0"
+  },
+  {
+   "source": "5b4ee3ea-eee3-4c8e-8323-85ae32658754",
+   "target": "certutil",
+   "value": 1,
+   "color": "#b0e0e0"
+  },
+  {
+   "source": "5b4ee3ea-eee3-4c8e-8323-85ae32658754",
+   "target": "CHERRYSPY",
+   "value": 1,
+   "color": "#b0e0e0"
+  },
+  {
+   "source": "5b4ee3ea-eee3-4c8e-8323-85ae32658754",
+   "target": "Computrace",
+   "value": 1,
+   "color": "#b0e0e0"
+  },
+  {
+   "source": "5b4ee3ea-eee3-4c8e-8323-85ae32658754",
+   "target": "CORESHELL",
+   "value": 1,
+   "color": "#b0e0e0"
+  }
+ ]
+}

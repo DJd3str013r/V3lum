@@ -1,0 +1,104 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "whoisfreaks",
+  "name": "WhoisFreaks WHOIS API (historical and reverse WHOIS)",
+  "operator": "WhoisFreaks",
+  "hosts": [
+    "api.whoisfreaks.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Small company with public API documentation, an error table, a credit ledger and paid plans (A8 community); P022 chair rationale: 'Whoxy and WhoisFreaks are small companies'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Third-party WHOIS crawl and history; post-GDPR records are mostly redacted and registry data stays authoritative."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "ttl": 2592000,
+    "min_interval": 2.0
+  },
+  "quota": {
+    "scope": "key",
+    "month": 500,
+    "burst": 1,
+    "published": false,
+    "evidence_url": "https://whoisfreaks.com/documentation/credit-usage",
+    "safety_margin": 0.8
+  },
+  "error_markers": [
+    {
+      "id": "whoisfreaks_credits",
+      "statuses": [401, 412, 413],
+      "json_path": "message",
+      "equals": null,
+      "regex": "(?i)credit|subscription|buy|upgrade|package|download limit|exceeded the limit",
+      "final_url_regex": null,
+      "maps_to": "quota",
+      "reason_code": "quota",
+      "reason": "WhoisFreaks: API credits or subscription exhausted (could not verify)"
+    },
+    {
+      "id": "whoisfreaks_suspicious",
+      "statuses": [401],
+      "json_path": "message",
+      "equals": null,
+      "regex": "(?i)suspicious|blocked",
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "WhoisFreaks: the key was blocked for suspicious activity (could not verify)"
+    },
+    {
+      "id": "whoisfreaks_tld",
+      "statuses": [403],
+      "json_path": "message",
+      "equals": null,
+      "regex": "(?i)tld|extension",
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "WhoisFreaks: TLD not served or inactive (HTTP 403, could not verify)"
+    }
+  ],
+  "keys": {
+    "whoisfreaks": {
+      "description": "WhoisFreaks API key (historical 2 credits per query, reverse 5 credits per page), sent as ?apiKey= and masked by the central redactor (AR01)",
+      "signup_url": "https://whoisfreaks.com/signup",
+      "env": [
+        "V3LUM_WHOISFREAKS_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "business = a company-paid WhoisFreaks plan recorded with the purchase in licence_allow (P022 cond 1); never an analyst's personal free credits"
+    }
+  },
+  "sources": {
+    "api": {
+      "title": "WhoisFreaks API v1.0 /whois?whois=historical (2 credits) and ?whois=reverse&email=|owner=|company=&exact=true&mode=mini (5 credits per page)",
+      "terms": {
+        "class": "license",
+        "evidence_url": "https://whoisfreaks.com/documentation/credit-usage",
+        "quote": "Company-paid keys only; legal records the licence/purchase in licence_allow before an adapter runs under corporate (P022 cond 1). Terms 'license' (paid credits).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "whoisfreaks",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P022 cond 1, chair rationale). Research C0054: keyless answers HTTP 400 {\"status\":400,\"error\":\"Invalid Param Exception\",\"message\":\"Please provide apikey\"} (real fixture), mapped to NEEDS_KEY by the module (P022 cond 7). Documented status table (whoisfreaks.com/documentation/errors): 401 invalid/inactive key -> NEEDS_KEY; 401 buy plan/credits, 412, 413 -> QUOTA; 401 suspicious activity -> could not verify; 403 TLD not served; 404 'No Record Found' -> documented absence; 408/499/504 timeout; 429 per-minute limit. WhoisFreaks documents the key only as a query parameter (?apiKey=), so the central redactor rule applies here too (AR01). Used by whois_history_keyed."
+    }
+  },
+  "notes": "Owned by batch p3-G01-2 (P022 whois_history_keyed). Cache 30 days (P022 cond 7). min_interval 2 s (per-minute plan limit). The quota block is a request budget; the module also keeps a monthly credit budget per adapter (history 2, reverse 5 credits per page)."
+}

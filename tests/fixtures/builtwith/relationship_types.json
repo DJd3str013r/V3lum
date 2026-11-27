@@ -1,0 +1,1262 @@
+[
+ {
+  "name": "IP",
+  "abbreviation": "IP"
+ },
+ {
+  "name": "Google Analytics",
+  "abbreviation": "UA"
+ },
+ {
+  "name": "Facebook Pixel",
+  "abbreviation": "FB"
+ },
+ {
+  "name": "Baidu",
+  "abbreviation": "BD"
+ },
+ {
+  "name": "Comm100",
+  "abbreviation": "C1"
+ },
+ {
+  "name": "ResponseTap",
+  "abbreviation": "RT"
+ },
+ {
+  "name": "Eloqua",
+  "abbreviation": "EQ"
+ },
+ {
+  "name": "Kampyle",
+  "abbreviation": "KP"
+ },
+ {
+  "name": "Optimizely",
+  "abbreviation": "OP"
+ },
+ {
+  "name": "Nielsen",
+  "abbreviation": "NT"
+ },
+ {
+  "name": "SkimLinks",
+  "abbreviation": "SK"
+ },
+ {
+  "name": "Kissmetrics",
+  "abbreviation": "KM"
+ },
+ {
+  "name": "Google Adsense",
+  "abbreviation": "CA-PUB"
+ },
+ {
+  "name": "Yahool Ads Pixel",
+  "abbreviation": "YP"
+ },
+ {
+  "name": "Yahool Analytics",
+  "abbreviation": "YA"
+ },
+ {
+  "name": "Google+",
+  "abbreviation": "GP"
+ },
+ {
+  "name": "Google Tag Manager",
+  "abbreviation": "GTM"
+ },
+ {
+  "name": "AddThis",
+  "abbreviation": "AT"
+ },
+ {
+  "name": "Amazon Associates",
+  "abbreviation": "AZ"
+ },
+ {
+  "name": "Alexa",
+  "abbreviation": "AL"
+ },
+ {
+  "name": "Amplitude",
+  "abbreviation": "AM"
+ },
+ {
+  "name": "Bizo",
+  "abbreviation": "BZ"
+ },
+ {
+  "name": "Boldchat",
+  "abbreviation": "BC"
+ },
+ {
+  "name": "Signal",
+  "abbreviation": "BT"
+ },
+ {
+  "name": "Coremetrics",
+  "abbreviation": "CM"
+ },
+ {
+  "name": "CrazyEgg",
+  "abbreviation": "CE"
+ },
+ {
+  "name": "CustomerIO",
+  "abbreviation": "CIO"
+ },
+ {
+  "name": "Drip",
+  "abbreviation": "DP"
+ },
+ {
+  "name": "FullStory",
+  "abbreviation": "FS"
+ },
+ {
+  "name": "Heap Analytics",
+  "abbreviation": "HP"
+ },
+ {
+  "name": "HotJar",
+  "abbreviation": "HJ"
+ },
+ {
+  "name": "HubSpot",
+  "abbreviation": "HS"
+ },
+ {
+  "name": "Inspectlet",
+  "abbreviation": "IS"
+ },
+ {
+  "name": "Intercom",
+  "abbreviation": "IC"
+ },
+ {
+  "name": "Janrain",
+  "abbreviation": "JR"
+ },
+ {
+  "name": "Kontera",
+  "abbreviation": "KT"
+ },
+ {
+  "name": "LuckyOrange",
+  "abbreviation": "LO"
+ },
+ {
+  "name": "Lytics",
+  "abbreviation": "LT"
+ },
+ {
+  "name": "Marketo",
+  "abbreviation": "MK"
+ },
+ {
+  "name": "MediaVoice",
+  "abbreviation": "MV"
+ },
+ {
+  "name": "MixPanel",
+  "abbreviation": "MP"
+ },
+ {
+  "name": "Monetate",
+  "abbreviation": "MT"
+ },
+ {
+  "name": "NewRelic",
+  "abbreviation": "NR"
+ },
+ {
+  "name": "Olark",
+  "abbreviation": "OL"
+ },
+ {
+  "name": "PageFair",
+  "abbreviation": "PF"
+ },
+ {
+  "name": "Pardot",
+  "abbreviation": "PD"
+ },
+ {
+  "name": "Quantcast",
+  "abbreviation": "QC"
+ },
+ {
+  "name": "SiteCatalyst",
+  "abbreviation": "SC"
+ },
+ {
+  "name": "StatCounter",
+  "abbreviation": "ST"
+ },
+ {
+  "name": "TrackJS",
+  "abbreviation": "TJ"
+ },
+ {
+  "name": "VisitorTrack",
+  "abbreviation": "VT"
+ },
+ {
+  "name": "Vizury",
+  "abbreviation": "VZ"
+ },
+ {
+  "name": "Visual Website Optimizer",
+  "abbreviation": "VWO"
+ },
+ {
+  "name": "WebTrends",
+  "abbreviation": "WT"
+ },
+ {
+  "name": "Wistia",
+  "abbreviation": "WI"
+ },
+ {
+  "name": "Woopra",
+  "abbreviation": "WO"
+ },
+ {
+  "name": "Adroll",
+  "abbreviation": "AD"
+ },
+ {
+  "name": "Segment",
+  "abbreviation": "SEG"
+ },
+ {
+  "name": "Yandex",
+  "abbreviation": "YX"
+ },
+ {
+  "name": "CloudFront",
+  "abbreviation": "CF"
+ },
+ {
+  "name": "MaxCDN",
+  "abbreviation": "MX"
+ },
+ {
+  "name": "Wix",
+  "abbreviation": "WX"
+ },
+ {
+  "name": "Coinhive",
+  "abbreviation": "CH"
+ },
+ {
+  "name": "LiveChat",
+  "abbreviation": "LC"
+ },
+ {
+  "name": "Amazon Publisher Servies",
+  "abbreviation": "APS"
+ },
+ {
+  "name": "AppNexus",
+  "abbreviation": "NEX"
+ },
+ {
+  "name": "Rubicon Project",
+  "abbreviation": "RUB"
+ },
+ {
+  "name": "IndexExchange",
+  "abbreviation": "IEX"
+ },
+ {
+  "name": "PubMatic",
+  "abbreviation": "PUBM"
+ },
+ {
+  "name": "SpotXChange",
+  "abbreviation": "SPTX"
+ },
+ {
+  "name": "ContextWeb",
+  "abbreviation": "CTX"
+ },
+ {
+  "name": "FreeWheel",
+  "abbreviation": "FWHL"
+ },
+ {
+  "name": "LKQD",
+  "abbreviation": "LKQD"
+ },
+ {
+  "name": "DistrictM",
+  "abbreviation": "DM"
+ },
+ {
+  "name": "Sovrn",
+  "abbreviation": "SVRN"
+ },
+ {
+  "name": "AdBlade",
+  "abbreviation": "ADBL"
+ },
+ {
+  "name": "33 Across",
+  "abbreviation": "33A"
+ },
+ {
+  "name": "AOL",
+  "abbreviation": "AOL"
+ },
+ {
+  "name": "Criteo",
+  "abbreviation": "CRIT"
+ },
+ {
+  "name": "Facebook",
+  "abbreviation": "FACE"
+ },
+ {
+  "name": "LiveIntent",
+  "abbreviation": "LIVE"
+ },
+ {
+  "name": "Triple Lift",
+  "abbreviation": "TRIP"
+ },
+ {
+  "name": "Kargo",
+  "abbreviation": "KARG"
+ },
+ {
+  "name": "GumGum",
+  "abbreviation": "GUMG"
+ },
+ {
+  "name": "OMS",
+  "abbreviation": "OMS"
+ },
+ {
+  "name": "Smaato",
+  "abbreviation": "SMAA"
+ },
+ {
+  "name": "Stroeer",
+  "abbreviation": "STRO"
+ },
+ {
+  "name": "Teads",
+  "abbreviation": "TEAD"
+ },
+ {
+  "name": "ShareThrough",
+  "abbreviation": "SHAR"
+ },
+ {
+  "name": "ORC International",
+  "abbreviation": "ORC"
+ },
+ {
+  "name": "Tremor Video",
+  "abbreviation": "TREM"
+ },
+ {
+  "name": "Yieldmo",
+  "abbreviation": "YIMO"
+ },
+ {
+  "name": "Technorati",
+  "abbreviation": "TECH"
+ },
+ {
+  "name": "Bidfluence",
+  "abbreviation": "BIDF"
+ },
+ {
+  "name": "Switch",
+  "abbreviation": "SWIT"
+ },
+ {
+  "name": "bRealTime",
+  "abbreviation": "BREA"
+ },
+ {
+  "name": "Comet Cox Media",
+  "abbreviation": "COME"
+ },
+ {
+  "name": "Converstand Media",
+  "abbreviation": "CONV"
+ },
+ {
+  "name": "AdFrontiers",
+  "abbreviation": "ADFR"
+ },
+ {
+  "name": "Sonobi",
+  "abbreviation": "SONO"
+ },
+ {
+  "name": "Lijit",
+  "abbreviation": "LIJI"
+ },
+ {
+  "name": "Spoutable",
+  "abbreviation": "SPOU"
+ },
+ {
+  "name": "Exponential",
+  "abbreviation": "EXPO"
+ },
+ {
+  "name": "PulsePoint",
+  "abbreviation": "PULS"
+ },
+ {
+  "name": "SmartAdServer",
+  "abbreviation": "SMAD"
+ },
+ {
+  "name": "TrustX",
+  "abbreviation": "TRUS"
+ },
+ {
+  "name": "Adform",
+  "abbreviation": "ADFO"
+ },
+ {
+  "name": "StreamRail",
+  "abbreviation": "STRE"
+ },
+ {
+  "name": "YieldBot",
+  "abbreviation": "YBOT"
+ },
+ {
+  "name": "RhythmOne",
+  "abbreviation": "RHYT"
+ },
+ {
+  "name": "A9",
+  "abbreviation": "A9D"
+ },
+ {
+  "name": "Connatix",
+  "abbreviation": "CONN"
+ },
+ {
+  "name": "AdYouLike",
+  "abbreviation": "ADYO"
+ },
+ {
+  "name": "Synacor",
+  "abbreviation": "SYNA"
+ },
+ {
+  "name": "YuMe",
+  "abbreviation": "YUME"
+ },
+ {
+  "name": "LoopMe",
+  "abbreviation": "LOOP"
+ },
+ {
+  "name": "Yahoo",
+  "abbreviation": "YAHO"
+ },
+ {
+  "name": "Videology Group",
+  "abbreviation": "VIDE"
+ },
+ {
+  "name": "Fyber",
+  "abbreviation": "FYBE"
+ },
+ {
+  "name": "Improve Digital",
+  "abbreviation": "IMPR"
+ },
+ {
+  "name": "Nativo",
+  "abbreviation": "NATI"
+ },
+ {
+  "name": "Sekindo",
+  "abbreviation": "SEKI"
+ },
+ {
+  "name": "Outbrain",
+  "abbreviation": "OUTB"
+ },
+ {
+  "name": "Carambola",
+  "abbreviation": "CARA"
+ },
+ {
+  "name": "Internet Billboard",
+  "abbreviation": "INTE"
+ },
+ {
+  "name": "BrightRoll",
+  "abbreviation": "BRIG"
+ },
+ {
+  "name": "FirstImpression",
+  "abbreviation": "FIRS"
+ },
+ {
+  "name": "SpringServe",
+  "abbreviation": "SPRI"
+ },
+ {
+  "name": "Beachfront",
+  "abbreviation": "BEAC"
+ },
+ {
+  "name": "Cedato",
+  "abbreviation": "CEDA"
+ },
+ {
+  "name": "Brightcom",
+  "abbreviation": "BCOM"
+ },
+ {
+  "name": "C1X",
+  "abbreviation": "C1X"
+ },
+ {
+  "name": "The MediaGrid",
+  "abbreviation": "MGRID"
+ },
+ {
+  "name": "Telaria",
+  "abbreviation": "TELA"
+ },
+ {
+  "name": "Truvid",
+  "abbreviation": "TRUV"
+ },
+ {
+  "name": "Genesis Media",
+  "abbreviation": "GENE"
+ },
+ {
+  "name": "Polymorph",
+  "abbreviation": "POLY"
+ },
+ {
+  "name": "Rock You",
+  "abbreviation": "ROCK"
+ },
+ {
+  "name": "ucfunnel",
+  "abbreviation": "UCFU"
+ },
+ {
+  "name": "Sortable",
+  "abbreviation": "SORT"
+ },
+ {
+  "name": "Chocolate",
+  "abbreviation": "CHOC"
+ },
+ {
+  "name": "Future Plc",
+  "abbreviation": "FUTU"
+ },
+ {
+  "name": "BidSwitch",
+  "abbreviation": "BIDS"
+ },
+ {
+  "name": "Media.net",
+  "abbreviation": "MEDI"
+ },
+ {
+  "name": "Admixer",
+  "abbreviation": "ADMI"
+ },
+ {
+  "name": "Automattic",
+  "abbreviation": "AUTO"
+ },
+ {
+  "name": "Optimatic",
+  "abbreviation": "OPTI"
+ },
+ {
+  "name": "Consumable",
+  "abbreviation": "CONS"
+ },
+ {
+  "name": "Imonomy",
+  "abbreviation": "IMON"
+ },
+ {
+  "name": "Somoaudience",
+  "abbreviation": "SOMO"
+ },
+ {
+  "name": "Smartclip",
+  "abbreviation": "SCLP"
+ },
+ {
+  "name": "Mobile Ad Trading",
+  "abbreviation": "MOBI"
+ },
+ {
+  "name": "Primis",
+  "abbreviation": "PRIM"
+ },
+ {
+  "name": "Revcontent",
+  "abbreviation": "REVC"
+ },
+ {
+  "name": "Quantum Native Solutions",
+  "abbreviation": "QNAT"
+ },
+ {
+  "name": "Bidtellect",
+  "abbreviation": "BIDT"
+ },
+ {
+  "name": "PilotX",
+  "abbreviation": "PILO"
+ },
+ {
+  "name": "Undertone",
+  "abbreviation": "UNDE"
+ },
+ {
+  "name": "AerServ",
+  "abbreviation": "AERS"
+ },
+ {
+  "name": "DistroScale",
+  "abbreviation": "DIST"
+ },
+ {
+  "name": "Yieldlab",
+  "abbreviation": "YIEL"
+ },
+ {
+  "name": "Native Ads",
+  "abbreviation": "NATA"
+ },
+ {
+  "name": "152 Media",
+  "abbreviation": "152M"
+ },
+ {
+  "name": "Adtelligent",
+  "abbreviation": "ADTE"
+ },
+ {
+  "name": "Mobfox",
+  "abbreviation": "MOBF"
+ },
+ {
+  "name": "Lockerdome",
+  "abbreviation": "LOCK"
+ },
+ {
+  "name": "Vuble",
+  "abbreviation": "VUBL"
+ },
+ {
+  "name": "SmartyAds",
+  "abbreviation": "SMAD"
+ },
+ {
+  "name": "Rich Audience",
+  "abbreviation": "RICH"
+ },
+ {
+  "name": "Insticator",
+  "abbreviation": "INST"
+ },
+ {
+  "name": "Aniview",
+  "abbreviation": "ANIV"
+ },
+ {
+  "name": "Ligatus",
+  "abbreviation": "LIGA"
+ },
+ {
+  "name": "saambaa",
+  "abbreviation": "SAAM"
+ },
+ {
+  "name": "Underdog Media",
+  "abbreviation": "UDOG"
+ },
+ {
+  "name": "Inneractive",
+  "abbreviation": "INNE"
+ },
+ {
+  "name": "Vhbx",
+  "abbreviation": "VHBX"
+ },
+ {
+  "name": "Next Millenium",
+  "abbreviation": "NEXT"
+ },
+ {
+  "name": "Seedtag",
+  "abbreviation": "SEED"
+ },
+ {
+  "name": "Infolinks",
+  "abbreviation": "INFO"
+ },
+ {
+  "name": "Connectad",
+  "abbreviation": "CONAD"
+ },
+ {
+  "name": "DeepIntent",
+  "abbreviation": "DEEP"
+ },
+ {
+  "name": "AnyClip",
+  "abbreviation": "ANYC"
+ },
+ {
+  "name": "Total Media",
+  "abbreviation": "TOTA"
+ },
+ {
+  "name": "WideOrbit",
+  "abbreviation": "WIOR"
+ },
+ {
+  "name": "Experian",
+  "abbreviation": "EXPE"
+ },
+ {
+  "name": "Quantcast",
+  "abbreviation": "QUAN"
+ },
+ {
+  "name": "Taboola",
+  "abbreviation": "TB"
+ },
+ {
+  "name": "OpenX",
+  "abbreviation": "OX"
+ },
+ {
+  "name": "DynAdmic",
+  "abbreviation": "DYNA"
+ },
+ {
+  "name": "Smartstream",
+  "abbreviation": "SMAR"
+ },
+ {
+  "name": "Epsilon",
+  "abbreviation": "EPSI"
+ },
+ {
+  "name": "Nexstar Digital",
+  "abbreviation": "NEXS"
+ },
+ {
+  "name": "Zedo",
+  "abbreviation": "ZEDO"
+ },
+ {
+  "name": "RTK",
+  "abbreviation": "RTK"
+ },
+ {
+  "name": "pixfuture",
+  "abbreviation": "PIXF"
+ },
+ {
+  "name": "Widespace",
+  "abbreviation": "WIDE"
+ },
+ {
+  "name": "adiply",
+  "abbreviation": "ADIP"
+ },
+ {
+  "name": "Oath",
+  "abbreviation": "OATH"
+ },
+ {
+  "name": "Videmob",
+  "abbreviation": "VMOB"
+ },
+ {
+  "name": "Tappx",
+  "abbreviation": "TAPP"
+ },
+ {
+  "name": "Brave",
+  "abbreviation": "BRAV"
+ },
+ {
+  "name": "Between Digital",
+  "abbreviation": "BETW"
+ },
+ {
+  "name": "Xapads",
+  "abbreviation": "XAPA"
+ },
+ {
+  "name": "MemeVideo",
+  "abbreviation": "MEME"
+ },
+ {
+  "name": "OneTag",
+  "abbreviation": "ONET"
+ },
+ {
+  "name": "Vidazoo",
+  "abbreviation": "VIDA"
+ },
+ {
+  "name": "Triton Digital",
+  "abbreviation": "TRIT"
+ },
+ {
+  "name": "Mars Media Group",
+  "abbreviation": "MARS"
+ },
+ {
+  "name": "Mediawayss",
+  "abbreviation": "MSYS"
+ },
+ {
+  "name": "Woobi",
+  "abbreviation": "WOOB"
+ },
+ {
+  "name": "ad6 media",
+  "abbreviation": "AD6"
+ },
+ {
+  "name": "Yoc",
+  "abbreviation": "YOC"
+ },
+ {
+  "name": "GroundTruth",
+  "abbreviation": "GROU"
+ },
+ {
+  "name": "Thrive",
+  "abbreviation": "THRI"
+ },
+ {
+  "name": "AndBeyond.Media",
+  "abbreviation": "ANDB"
+ },
+ {
+  "name": "Feature Forward",
+  "abbreviation": "FEAT"
+ },
+ {
+  "name": "Netseer",
+  "abbreviation": "NETS"
+ },
+ {
+  "name": "Switch Concepts",
+  "abbreviation": "SWCO"
+ },
+ {
+  "name": "RTB House",
+  "abbreviation": "RTB"
+ },
+ {
+  "name": "Dailymotion",
+  "abbreviation": "DAIL"
+ },
+ {
+  "name": "SSPHighway",
+  "abbreviation": "SSPH"
+ },
+ {
+  "name": "MGID",
+  "abbreviation": "MGID"
+ },
+ {
+  "name": "Komoona",
+  "abbreviation": "KOMO"
+ },
+ {
+  "name": "adstir",
+  "abbreviation": "ADST"
+ },
+ {
+  "name": "Q1Connect",
+  "abbreviation": "Q1CO"
+ },
+ {
+  "name": "vidoomy",
+  "abbreviation": "VIDO"
+ },
+ {
+  "name": "Ooyala",
+  "abbreviation": "OOYA"
+ },
+ {
+  "name": "AdTrue",
+  "abbreviation": "ADTR"
+ },
+ {
+  "name": "E-Planning",
+  "abbreviation": "E-PL"
+ },
+ {
+  "name": "JUICE Mobile",
+  "abbreviation": "JUIC"
+ },
+ {
+  "name": "DAConsortium",
+  "abbreviation": "DACO"
+ },
+ {
+  "name": "my6sense",
+  "abbreviation": "MY6S"
+ },
+ {
+  "name": "Gamma SSP",
+  "abbreviation": "GAMM"
+ },
+ {
+  "name": "SunMedia",
+  "abbreviation": "SUNM"
+ },
+ {
+  "name": "Vertoz",
+  "abbreviation": "VERT"
+ },
+ {
+  "name": "GourmetAds",
+  "abbreviation": "GOUR"
+ },
+ {
+  "name": "VideoFlare",
+  "abbreviation": "VFIRE"
+ },
+ {
+  "name": "Plista",
+  "abbreviation": "PLIS"
+ },
+ {
+  "name": "Fatchilli",
+  "abbreviation": "FATC"
+ },
+ {
+  "name": "Motionspots",
+  "abbreviation": "MOTI"
+ },
+ {
+  "name": "Flurry",
+  "abbreviation": "FLUR"
+ },
+ {
+  "name": "AdMan",
+  "abbreviation": "ADMA"
+ },
+ {
+  "name": "Powerlinks",
+  "abbreviation": "POWE"
+ },
+ {
+  "name": "Vibrant",
+  "abbreviation": "VIBR"
+ },
+ {
+  "name": "Viralize",
+  "abbreviation": "VIRA"
+ },
+ {
+  "name": "Vidstart",
+  "abbreviation": "VIDS"
+ },
+ {
+  "name": "The Trade Desk",
+  "abbreviation": "TDESK"
+ },
+ {
+  "name": "optAd360",
+  "abbreviation": "OPTA"
+ },
+ {
+  "name": "Crimtan",
+  "abbreviation": "CRIM"
+ },
+ {
+  "name": "ad.plus",
+  "abbreviation": "ADPL"
+ },
+ {
+  "name": "AdAsia",
+  "abbreviation": "ADAS"
+ },
+ {
+  "name": "TargetSpot",
+  "abbreviation": "TARG"
+ },
+ {
+  "name": "Coull",
+  "abbreviation": "COUL"
+ },
+ {
+  "name": "Gamoshi",
+  "abbreviation": "GAMO"
+ },
+ {
+  "name": "51.LA",
+  "abbreviation": "51LA"
+ },
+ {
+  "name": "Adingo",
+  "abbreviation": "ADING"
+ },
+ {
+  "name": "AvantisVideo",
+  "abbreviation": "AVVID"
+ },
+ {
+  "name": "Streamlyn",
+  "abbreviation": "STMLYN"
+ },
+ {
+  "name": "TIM Media",
+  "abbreviation": "TIMM"
+ },
+ {
+  "name": "Zemanta",
+  "abbreviation": "ZEMAN"
+ },
+ {
+  "name": "ICP",
+  "abbreviation": "ICP"
+ },
+ {
+  "name": "Baidu",
+  "abbreviation": "BAI"
+ },
+ {
+  "name": "MPS",
+  "abbreviation": "MPS"
+ },
+ {
+  "name": "RU Registration",
+  "abbreviation": "RU"
+ },
+ {
+  "name": "Cadastro Nacional Empresarial",
+  "abbreviation": "CNPJ"
+ },
+ {
+  "name": "Australian Business Number",
+  "abbreviation": "ABN"
+ },
+ {
+  "name": "Company Registration Number",
+  "abbreviation": "CRN"
+ },
+ {
+  "name": "Australian Business Number",
+  "abbreviation": "ABN"
+ },
+ {
+  "name": "Australian Company Number",
+  "abbreviation": "ACN"
+ },
+ {
+  "name": "US Employer ID",
+  "abbreviation": "EIN"
+ },
+ {
+  "name": "German Commercial Register",
+  "abbreviation": "HRB"
+ },
+ {
+  "name": "German VAT ID",
+  "abbreviation": "USTID"
+ },
+ {
+  "name": "French SIRET",
+  "abbreviation": "SIRET"
+ },
+ {
+  "name": "French SIREN",
+  "abbreviation": "SIREN"
+ },
+ {
+  "name": "Dutch Chamber of Commerce",
+  "abbreviation": "KVK"
+ },
+ {
+  "name": "Belgian Enterprise",
+  "abbreviation": "BCE"
+ },
+ {
+  "name": "Scandinavian Org Number",
+  "abbreviation": "ORGNR"
+ },
+ {
+  "name": "Danish CVR",
+  "abbreviation": "CVR"
+ },
+ {
+  "name": "Irish CRO",
+  "abbreviation": "CRO"
+ },
+ {
+  "name": "Spanish CIF",
+  "abbreviation": "CIF"
+ },
+ {
+  "name": "Italian P.IVA",
+  "abbreviation": "PIVA"
+ },
+ {
+  "name": "Portuguese NIPC",
+  "abbreviation": "NIPC"
+ },
+ {
+  "name": "Swiss UID",
+  "abbreviation": "UID"
+ },
+ {
+  "name": "Austrian Firmenbuch",
+  "abbreviation": "FBN"
+ },
+ {
+  "name": "Polish KRS",
+  "abbreviation": "KRS"
+ },
+ {
+  "name": "Polish NIP",
+  "abbreviation": "NIP"
+ },
+ {
+  "name": "Polish REGON",
+  "abbreviation": "REGON"
+ },
+ {
+  "name": "Czech Slovak ICO",
+  "abbreviation": "ICO"
+ },
+ {
+  "name": "Czech Slovak DIC",
+  "abbreviation": "DIC"
+ },
+ {
+  "name": "Finnish Y-tunnus",
+  "abbreviation": "YTUNNUS"
+ },
+ {
+  "name": "Greek GEMI",
+  "abbreviation": "GEMI"
+ },
+ {
+  "name": "Greek AFM",
+  "abbreviation": "AFM"
+ },
+ {
+  "name": "Luxembourg RCS",
+  "abbreviation": "RCS"
+ },
+ {
+  "name": "Hungarian Company Register",
+  "abbreviation": "CEGJEGYZEKSZAM"
+ },
+ {
+  "name": "Romanian Trade Register",
+  "abbreviation": "REGCOM"
+ },
+ {
+  "name": "Romanian CUI",
+  "abbreviation": "CUI"
+ },
+ {
+  "name": "Chinese USCC",
+  "abbreviation": "USCC"
+ },
+ {
+  "name": "Japanese Corporate Number",
+  "abbreviation": "JP_CORPORATE_NUMBER"
+ },
+ {
+  "name": "Brazilian CNPJ",
+  "abbreviation": "CNPJ"
+ },
+ {
+  "name": "Indian CIN",
+  "abbreviation": "CIN"
+ },
+ {
+  "name": "Indian GSTIN",
+  "abbreviation": "GSTIN"
+ },
+ {
+  "name": "Canadian Business Number",
+  "abbreviation": "BN"
+ },
+ {
+  "name": "Quebec NEQ",
+  "abbreviation": "NEQ"
+ },
+ {
+  "name": "Mexican RFC",
+  "abbreviation": "RFC"
+ },
+ {
+  "name": "South Korean BRN",
+  "abbreviation": "BRN"
+ },
+ {
+  "name": "EU VAT Number",
+  "abbreviation": "VAT"
+ },
+ {
+  "name": "Tawk",
+  "abbreviation": "TK"
+ },
+ {
+  "name": "OpenAI",
+  "abbreviation": "OAI"
+ },
+ {
+  "name": "OFAC Sanction Consolidated",
+  "abbreviation": "OFCON"
+ },
+ {
+  "name": "GLEIF Ultimate Parent",
+  "abbreviation": "GLEIFP"
+ },
+ {
+  "name": "GLEIF",
+  "abbreviation": "GLEIF"
+ },
+ {
+  "name": "Microsoft Clarity",
+  "abbreviation": "CLA"
+ },
+ {
+  "name": "OFAC Sanction",
+  "abbreviation": "OFS"
+ },
+ {
+  "name": "FCDO Sanctions",
+  "abbreviation": "FCDO"
+ },
+ {
+  "name": "Tressor Sanction",
+  "abbreviation": "TRES"
+ }
+]

@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "cisa_advisories",
+  "source_url": "https://www.cisa.gov/cybersecurity-advisories/all.xml",
+  "version": "advisories feed, polled daily at run time (test fixture: trimmed capture of 2026-11-26)",
+  "sha256": "",
+  "licence": "LicenseRef-US-Government-Work-Public-Domain",
+  "attribution": "CISA cybersecurity advisories: U.S. Government work (public domain), https://www.cisa.gov/news-events/cybersecurity-advisories",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/cti_framework/cisa_advisories.py",
+    "tests/fixtures/cisa_advisories/feed_real_trimmed.xml"
+  ]
+}

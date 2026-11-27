@@ -1,0 +1,9 @@
+Analyst notes - case 2026-0042 (do not share)
+
+10:42 pulled proxy logs; the host 10.20.30.40 talked to 45.33.32.156 over 443 and to 2001:db8:85a3::8a2e:370:7334.
+The office range 192.168.10.0/24 is ours. Gateway MAC 00:1A:2B:3C:4D:5E.
+python snippet from the loader config: if self.name == os.path.basename(cfg.path): load()
+Build string v2.4.1.7 and agent version 6.1.0.3 are NOT addresses.
+The loader pulled hxxp://stage2[.]example[.]net/p.bin and checked ip-api.example.com/json.
+Token found in the config (rotate it!): ghp_V3lumSyntheticTokenForTests012345678
+Email from the attacker: kettle.ops@mailbox.example.org; CVE-2024-3400 also mentioned.

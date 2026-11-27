@@ -1,0 +1,54 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "databreaches",
+  "name": "DataBreaches.net (RSS)",
+  "operator": "DataBreaches.net (pseudonymous operator 'Dissent')",
+  "hosts": [
+    "databreaches.net"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "Pseudonymous operator; terms not reviewed (A8 unknown); labelled 'unverified source' (P298 cond 9).",
+  "tier_reviewer": "council-1 (A8); proposal of batch p2-G11-1, registry reviewer confirms",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "D",
+    "justification": "Breach and extortion news, often relaying actor claims: 'reported claim - verify', never a confirmed breach."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "max_bytes": 2097152,
+    "ttl": 3600,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "rss": {
+      "title": "DataBreaches.net RSS feed /feed/ (breach and extortion news headlines)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://databreaches.net/",
+        "quote": "Licence (A1, legal floor): feed terms are 'unknown' until legal reviews them, so nothing runs yet in any profile. Legal's feed-reader decision (poll <= hourly; headline + link + date only; no full text; no redistribution) is recorded per kept feed with its class and evidence; a feed whose terms forbid business use or automated reading is dropped.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "databreaches",
+      "sanitizer": null,
+      "dataset": "cti_news_rss.databreaches",
+      "notes": "Quote: binding council text (P298 cond 3). Feed https://databreaches.net/feed/; read by module cti_news_rss through the dataset manager (TTL 3600 s, conditional GET, 2 MiB cap, <= 200 items; headline + link + date only, descriptions discarded). Live 2026-11-26: 200 RSS, 10 items, ETag + Last-Modified, conditional GET -> 304. Site content (c) DataBreaches.net: headlines + links only."
+    }
+  },
+  "notes": "Owned by batch p2-G11-1 (P298 cti_news_rss). Feed downloads carry no investigated value (module disclosure 'none'); terms 'unknown' keep the feed off in every profile until legal records the feed-reader decision (A1). ttl 3600 keeps polling at most hourly. No quota block: no published or observed figure."
+}

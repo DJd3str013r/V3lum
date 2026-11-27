@@ -1,0 +1,29 @@
+{
+ "_synthetic": "Two TXT records (Cloudflare DoH quoting) for one query: a role address and a person-like address on a documentation domain. Not observable with benign values; the shape follows the recorded answers.",
+ "Status": 0,
+ "TC": false,
+ "RD": true,
+ "RA": true,
+ "AD": false,
+ "CD": false,
+ "Question": [
+  {
+   "name": "20.2.0.192.abuse-contacts.abusix.zone.",
+   "type": 16
+  }
+ ],
+ "Answer": [
+  {
+   "name": "20.2.0.192.abuse-contacts.abusix.zone.",
+   "type": 16,
+   "TTL": 120,
+   "data": "\"abuse@example.net\""
+  },
+  {
+   "name": "20.2.0.192.abuse-contacts.abusix.zone.",
+   "type": 16,
+   "TTL": 120,
+   "data": "\"ana.souza@example.net\""
+  }
+ ]
+}

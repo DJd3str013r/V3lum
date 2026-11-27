@@ -1,0 +1,19 @@
+{
+ "did": "did:plc:examplehandleexample2345",
+ "handle": "example-dev.bsky.social",
+ "displayName": "Example Dev",
+ "description": "Security research at https://example.com - contact dev@example.com",
+ "createdAt": "2023-07-01T10:00:00.000Z",
+ "indexedAt": "2025-01-01T10:00:00.000Z",
+ "followersCount": 42,
+ "followsCount": 17,
+ "postsCount": 128,
+ "labels": [],
+ "verification": {
+  "verifiedStatus": "none",
+  "trustedVerifierStatus": "none"
+ },
+ "associated": {
+  "labeler": false
+ }
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "dataplane",
+  "source_url": "https://dataplane.org/",
+  "version": "sshclient.txt (runtime download, noncommercial use only, checked 2026-11-26)",
+  "sha256": "",
+  "licence": "LicenseRef-DataPlane-NC",
+  "attribution": "Dataplane.org - for operators, by operators (https://dataplane.org/): non-commercial use only, no redistribution; off under the corporate profile until licence-cleared.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/threat_intel_ioc/ip_blocklists.py"
+  ]
+}

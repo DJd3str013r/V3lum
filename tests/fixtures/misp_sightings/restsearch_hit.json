@@ -1,0 +1,370 @@
+{
+ "response": {
+  "Attribute": [
+   {
+    "id": "41021",
+    "event_id": "1734",
+    "category": "Network activity",
+    "type": "ip-dst",
+    "to_ids": true,
+    "uuid": "7f3c0d2e-0000-4000-8000-000000041021",
+    "timestamp": "1791043200",
+    "distribution": "5",
+    "comment": "C2 endpoint (synthetic)",
+    "value": "198.51.100.23",
+    "object_id": "0",
+    "object_relation": null,
+    "sharing_group_id": "0",
+    "deleted": false,
+    "disable_correlation": false,
+    "first_seen": null,
+    "last_seen": null,
+    "Event": {
+     "org_id": "1",
+     "distribution": "1",
+     "id": "1734",
+     "info": "Phishing campaign - fake bank SMS (synthetic)",
+     "orgc_id": "1",
+     "uuid": "5e1b2c3d-0000-4000-8000-000000001734"
+    },
+    "Tag": [
+     {
+      "id": "3",
+      "name": "tlp:amber",
+      "colour": "#004646",
+      "exportable": true,
+      "user_id": "0",
+      "hide_tag": false,
+      "numerical_value": null,
+      "is_galaxy": false,
+      "is_custom_galaxy": false,
+      "local_only": false,
+      "inherited": 1
+     },
+     {
+      "id": "1201",
+      "name": "misp-galaxy:threat-actor=\"Example Actor\"",
+      "colour": "#004646",
+      "exportable": true,
+      "user_id": "0",
+      "hide_tag": false,
+      "numerical_value": null,
+      "is_galaxy": true,
+      "is_custom_galaxy": false,
+      "local_only": false,
+      "inherited": 1
+     },
+     {
+      "id": "1305",
+      "name": "misp-galaxy:malpedia=\"Grandoreiro\"",
+      "colour": "#004646",
+      "exportable": true,
+      "user_id": "0",
+      "hide_tag": false,
+      "numerical_value": null,
+      "is_galaxy": true,
+      "is_custom_galaxy": false,
+      "local_only": false,
+      "inherited": 1
+     },
+     {
+      "id": "1410",
+      "name": "misp-galaxy:mitre-attack-pattern=\"Phishing - T1566\"",
+      "colour": "#004646",
+      "exportable": true,
+      "user_id": "0",
+      "hide_tag": false,
+      "numerical_value": null,
+      "is_galaxy": true,
+      "is_custom_galaxy": false,
+      "local_only": false,
+      "inherited": 0
+     }
+    ],
+    "decay_score": [
+     {
+      "score": 71.3,
+      "base_score": 80,
+      "decayed": false,
+      "DecayingModel": {
+       "id": "1",
+       "name": "NIDS Simple Decaying Model"
+      }
+     }
+    ],
+    "Sighting": [
+     {
+      "id": "90001",
+      "attribute_id": "41021",
+      "event_id": "1734",
+      "org_id": "1",
+      "date_sighting": "1793404800",
+      "uuid": "9a8b7c6d-0000-4000-8000-000000090001",
+      "source": "",
+      "type": "0",
+      "attribute_uuid": "7f3c0d2e-0000-4000-8000-000000041021",
+      "Organisation": {
+       "id": "1",
+       "uuid": "11111111-0000-4000-8000-000000000001",
+       "name": "EXAMPLE-CSIRT"
+      }
+     },
+     {
+      "id": "90002",
+      "attribute_id": "41021",
+      "event_id": "1734",
+      "org_id": "1",
+      "date_sighting": "1793836800",
+      "uuid": "9a8b7c6d-0000-4000-8000-000000090002",
+      "source": "",
+      "type": "0",
+      "attribute_uuid": "7f3c0d2e-0000-4000-8000-000000041021",
+      "Organisation": {
+       "id": "1",
+       "uuid": "11111111-0000-4000-8000-000000000001",
+       "name": "EXAMPLE-CSIRT"
+      }
+     }
+    ]
+   },
+   {
+    "id": "41388",
+    "event_id": "1802",
+    "category": "Network activity",
+    "type": "ip-dst",
+    "to_ids": false,
+    "uuid": "7f3c0d2e-0000-4000-8000-000000041388",
+    "timestamp": "1792252800",
+    "distribution": "5",
+    "comment": "seen in proxy logs during triage",
+    "value": "198.51.100.23",
+    "object_id": "0",
+    "object_relation": null,
+    "sharing_group_id": "0",
+    "deleted": false,
+    "disable_correlation": false,
+    "first_seen": null,
+    "last_seen": null,
+    "Event": {
+     "org_id": "1",
+     "distribution": "1",
+     "id": "1802",
+     "info": "Sector ISAC share - scanning wave (synthetic)",
+     "orgc_id": "5",
+     "uuid": "5e1b2c3d-0000-4000-8000-000000001802"
+    },
+    "Tag": [
+     {
+      "id": "2",
+      "name": "tlp:green",
+      "colour": "#004646",
+      "exportable": true,
+      "user_id": "0",
+      "hide_tag": false,
+      "numerical_value": null,
+      "is_galaxy": false,
+      "is_custom_galaxy": false,
+      "local_only": false,
+      "inherited": 1
+     }
+    ],
+    "decay_score": [],
+    "Sighting": [
+     {
+      "id": "90011",
+      "attribute_id": "41388",
+      "event_id": "1802",
+      "org_id": "1",
+      "date_sighting": "1792339200",
+      "uuid": "9a8b7c6d-0000-4000-8000-000000090011",
+      "source": "",
+      "type": "0",
+      "attribute_uuid": "7f3c0d2e-0000-4000-8000-000000041388",
+      "Organisation": {
+       "id": "1",
+       "uuid": "11111111-0000-4000-8000-000000000001",
+       "name": "EXAMPLE-CSIRT"
+      }
+     },
+     {
+      "id": "90012",
+      "attribute_id": "41388",
+      "event_id": "1802",
+      "org_id": "1",
+      "date_sighting": "1793750400",
+      "uuid": "9a8b7c6d-0000-4000-8000-000000090012",
+      "source": "",
+      "type": "1",
+      "attribute_uuid": "7f3c0d2e-0000-4000-8000-000000041388",
+      "Organisation": {
+       "id": "1",
+       "uuid": "11111111-0000-4000-8000-000000000001",
+       "name": "EXAMPLE-CSIRT"
+      }
+     }
+    ]
+   },
+   {
+    "id": "39554",
+    "event_id": "1650",
+    "category": "Network activity",
+    "type": "ip-dst",
+    "to_ids": true,
+    "uuid": "7f3c0d2e-0000-4000-8000-000000039554",
+    "timestamp": "1767225600",
+    "distribution": "5",
+    "comment": "2025 campaign infrastructure",
+    "value": "198.51.100.23",
+    "object_id": "0",
+    "object_relation": null,
+    "sharing_group_id": "0",
+    "deleted": false,
+    "disable_correlation": false,
+    "first_seen": null,
+    "last_seen": null,
+    "Event": {
+     "org_id": "1",
+     "distribution": "1",
+     "id": "1650",
+     "info": "2025 campaign infrastructure (synthetic)",
+     "orgc_id": "1",
+     "uuid": "5e1b2c3d-0000-4000-8000-000000001650"
+    },
+    "Tag": [
+     {
+      "id": "4",
+      "name": "tlp:clear",
+      "colour": "#004646",
+      "exportable": true,
+      "user_id": "0",
+      "hide_tag": false,
+      "numerical_value": null,
+      "is_galaxy": false,
+      "is_custom_galaxy": false,
+      "local_only": false,
+      "inherited": 1
+     }
+    ],
+    "decay_score": [
+     {
+      "score": 12.0,
+      "base_score": 80,
+      "decayed": true,
+      "DecayingModel": {
+       "id": "1",
+       "name": "NIDS Simple Decaying Model"
+      }
+     }
+    ],
+    "Sighting": []
+   },
+   {
+    "id": "41402",
+    "event_id": "1811",
+    "category": "Network activity",
+    "type": "ip-dst|port",
+    "to_ids": true,
+    "uuid": "7f3c0d2e-0000-4000-8000-000000041402",
+    "timestamp": "1793664000",
+    "distribution": "5",
+    "comment": "scanner (warninglisted)",
+    "value": "198.51.100.23|443",
+    "object_id": "0",
+    "object_relation": null,
+    "sharing_group_id": "0",
+    "deleted": false,
+    "disable_correlation": false,
+    "first_seen": null,
+    "last_seen": null,
+    "Event": {
+     "org_id": "1",
+     "distribution": "1",
+     "id": "1811",
+     "info": "Perimeter scanner sweep (synthetic)",
+     "orgc_id": "1",
+     "uuid": "5e1b2c3d-0000-4000-8000-000000001811"
+    },
+    "Tag": [
+     {
+      "id": "3",
+      "name": "tlp:amber",
+      "colour": "#004646",
+      "exportable": true,
+      "user_id": "0",
+      "hide_tag": false,
+      "numerical_value": null,
+      "is_galaxy": false,
+      "is_custom_galaxy": false,
+      "local_only": false,
+      "inherited": 1
+     }
+    ],
+    "decay_score": [
+     {
+      "score": 60.0,
+      "base_score": 60,
+      "decayed": false,
+      "DecayingModel": {
+       "id": "1",
+       "name": "NIDS Simple Decaying Model"
+      }
+     }
+    ],
+    "Sighting": [],
+    "warnings": [
+     {
+      "value": "198.51.100.23",
+      "match": "198.51.100.0/24",
+      "warninglist_id": "77",
+      "warninglist_name": "Example benign scanners (synthetic)",
+      "warninglist_category": "false_positive"
+     }
+    ]
+   },
+   {
+    "id": "41500",
+    "event_id": "1811",
+    "category": "Network activity",
+    "type": "ip-dst",
+    "to_ids": true,
+    "uuid": "7f3c0d2e-0000-4000-8000-000000041500",
+    "timestamp": "1793664000",
+    "distribution": "5",
+    "comment": "neighbour address",
+    "value": "198.51.100.230",
+    "object_id": "0",
+    "object_relation": null,
+    "sharing_group_id": "0",
+    "deleted": false,
+    "disable_correlation": false,
+    "first_seen": null,
+    "last_seen": null,
+    "Event": {
+     "org_id": "1",
+     "distribution": "1",
+     "id": "1811",
+     "info": "Perimeter scanner sweep (synthetic)",
+     "orgc_id": "1",
+     "uuid": "5e1b2c3d-0000-4000-8000-000000001811"
+    },
+    "Tag": [
+     {
+      "id": "3",
+      "name": "tlp:amber",
+      "colour": "#004646",
+      "exportable": true,
+      "user_id": "0",
+      "hide_tag": false,
+      "numerical_value": null,
+      "is_galaxy": false,
+      "is_custom_galaxy": false,
+      "local_only": false,
+      "inherited": 1
+     }
+    ],
+    "decay_score": [],
+    "Sighting": []
+   }
+  ]
+ }
+}

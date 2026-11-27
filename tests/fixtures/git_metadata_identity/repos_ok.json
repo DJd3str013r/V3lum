@@ -1,0 +1,240 @@
+[
+ {
+  "name": "notes",
+  "full_name": "example-dev/notes",
+  "private": false,
+  "owner": {
+   "login": "example-dev",
+   "id": 12345678,
+   "type": "User",
+   "html_url": "https://github.com/example-dev"
+  },
+  "fork": false,
+  "archived": false,
+  "disabled": false,
+  "size": 120,
+  "default_branch": "main",
+  "pushed_at": "2025-01-01T00:00:00Z"
+ },
+ {
+  "name": "tooling",
+  "full_name": "example-dev/tooling",
+  "private": false,
+  "owner": {
+   "login": "example-dev",
+   "id": 12345678,
+   "type": "User",
+   "html_url": "https://github.com/example-dev"
+  },
+  "fork": false,
+  "archived": false,
+  "disabled": false,
+  "size": 120,
+  "default_branch": "main",
+  "pushed_at": "2026-11-20T13:10:00Z"
+ },
+ {
+  "name": "docs",
+  "full_name": "example-dev/docs",
+  "private": false,
+  "owner": {
+   "login": "example-dev",
+   "id": 12345678,
+   "type": "User",
+   "html_url": "https://github.com/example-dev"
+  },
+  "fork": true,
+  "archived": false,
+  "disabled": false,
+  "size": 120,
+  "default_branch": "main",
+  "pushed_at": "2026-08-21T11:00:00Z"
+ },
+ {
+  "name": "proj-c",
+  "full_name": "example-dev/proj-c",
+  "private": false,
+  "owner": {
+   "login": "example-dev",
+   "id": 12345678,
+   "type": "User",
+   "html_url": "https://github.com/example-dev"
+  },
+  "fork": false,
+  "archived": false,
+  "disabled": false,
+  "size": 120,
+  "default_branch": "main",
+  "pushed_at": "2024-12-01T00:00:00Z"
+ },
+ {
+  "name": "scanner-cli",
+  "full_name": "example-dev/scanner-cli",
+  "private": false,
+  "owner": {
+   "login": "example-dev",
+   "id": 12345678,
+   "type": "User",
+   "html_url": "https://github.com/example-dev"
+  },
+  "fork": false,
+  "archived": false,
+  "disabled": false,
+  "size": 120,
+  "default_branch": "main",
+  "pushed_at": "2026-07-01T00:00:00Z"
+ },
+ {
+  "name": "empty-repo",
+  "full_name": "example-dev/empty-repo",
+  "private": false,
+  "owner": {
+   "login": "example-dev",
+   "id": 12345678,
+   "type": "User",
+   "html_url": "https://github.com/example-dev"
+  },
+  "fork": false,
+  "archived": false,
+  "disabled": false,
+  "size": 0,
+  "default_branch": "main",
+  "pushed_at": "2026-10-01T00:00:00Z"
+ },
+ {
+  "name": "dotfiles",
+  "full_name": "example-dev/dotfiles",
+  "private": false,
+  "owner": {
+   "login": "example-dev",
+   "id": 12345678,
+   "type": "User",
+   "html_url": "https://github.com/example-dev"
+  },
+  "fork": false,
+  "archived": true,
+  "disabled": false,
+  "size": 120,
+  "default_branch": "main",
+  "pushed_at": "2026-09-10T08:00:00Z"
+ },
+ {
+  "name": "proj-a",
+  "full_name": "example-dev/proj-a",
+  "private": false,
+  "owner": {
+   "login": "example-dev",
+   "id": 12345678,
+   "type": "User",
+   "html_url": "https://github.com/example-dev"
+  },
+  "fork": false,
+  "archived": false,
+  "disabled": false,
+  "size": 120,
+  "default_branch": "main",
+  "pushed_at": "2026-01-15T00:00:00Z"
+ },
+ {
+  "name": "legacy-disabled",
+  "full_name": "example-dev/legacy-disabled",
+  "private": false,
+  "owner": {
+   "login": "example-dev",
+   "id": 12345678,
+   "type": "User",
+   "html_url": "https://github.com/example-dev"
+  },
+  "fork": false,
+  "archived": false,
+  "disabled": true,
+  "size": 120,
+  "default_branch": "main",
+  "pushed_at": "2026-11-01T00:00:00Z"
+ },
+ {
+  "name": "proj-b",
+  "full_name": "example-dev/proj-b",
+  "private": false,
+  "owner": {
+   "login": "example-dev",
+   "id": 12345678,
+   "type": "User",
+   "html_url": "https://github.com/example-dev"
+  },
+  "fork": false,
+  "archived": false,
+  "disabled": false,
+  "size": 120,
+  "default_branch": "main",
+  "pushed_at": "2025-06-30T00:00:00Z"
+ },
+ {
+  "name": "proj-g",
+  "full_name": "example-dev/proj-g",
+  "private": false,
+  "owner": {
+   "login": "example-dev",
+   "id": 12345678,
+   "type": "User",
+   "html_url": "https://github.com/example-dev"
+  },
+  "fork": false,
+  "archived": false,
+  "disabled": false,
+  "size": 120,
+  "default_branch": "main",
+  "pushed_at": "2022-02-02T00:00:00Z"
+ },
+ {
+  "name": "proj-d",
+  "full_name": "example-dev/proj-d",
+  "private": false,
+  "owner": {
+   "login": "example-dev",
+   "id": 12345678,
+   "type": "User",
+   "html_url": "https://github.com/example-dev"
+  },
+  "fork": false,
+  "archived": false,
+  "disabled": false,
+  "size": 120,
+  "default_branch": "main",
+  "pushed_at": "2026-03-03T00:00:00Z"
+ },
+ {
+  "name": "proj-e",
+  "full_name": "example-dev/proj-e",
+  "private": false,
+  "owner": {
+   "login": "example-dev",
+   "id": 12345678,
+   "type": "User",
+   "html_url": "https://github.com/example-dev"
+  },
+  "fork": false,
+  "archived": false,
+  "disabled": false,
+  "size": 120,
+  "default_branch": "main",
+  "pushed_at": "2023-05-05T00:00:00Z"
+ },
+ {
+  "name": "proj-f",
+  "full_name": "example-dev/proj-f",
+  "private": false,
+  "owner": {
+   "login": "example-dev",
+   "id": 12345678,
+   "type": "User",
+   "html_url": "https://github.com/example-dev"
+  },
+  "fork": false,
+  "archived": false,
+  "disabled": false,
+  "size": 120,
+  "default_branch": "main",
+  "pushed_at": "2026-05-20T00:00:00Z"
+ }
+]

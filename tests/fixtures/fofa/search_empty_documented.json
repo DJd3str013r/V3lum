@@ -1,0 +1,9 @@
+{
+ "_documented": "Same shape, no rows.",
+ "error": false,
+ "mode": "extended",
+ "query": "domain=\"example.com\"",
+ "page": 1,
+ "size": 0,
+ "results": []
+}

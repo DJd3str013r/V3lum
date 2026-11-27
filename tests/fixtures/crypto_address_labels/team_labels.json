@@ -1,0 +1,72 @@
+{
+ "schema": "v3lum.crypto_labels/1",
+ "description": "Team-curated crypto address labels (Brazilian exchanges and addresses confirmed in past cases). FIXTURE: fictional institutions, documentation addresses.",
+ "updated": "2026-11-20",
+ "institutions": {
+  "exchange_exemplo": {
+   "name": "Exchange Exemplo",
+   "legal_name": "Exchange Exemplo Servicos Digitais Ltda (fixture)",
+   "kind": "exchange",
+   "country": "BR",
+   "cnpj": "11.222.333/0001-81",
+   "legal_contact": "juridico@example.com",
+   "graphsense_actor": null
+  },
+  "corretora_modelo": {
+   "name": "Corretora Modelo",
+   "legal_name": "Corretora Modelo S.A. (fixture)",
+   "kind": "exchange",
+   "country": "BR",
+   "cnpj": null,
+   "legal_contact": "oficios@example.org",
+   "graphsense_actor": null
+  }
+ },
+ "labels": [
+  {
+   "address": "TMVQGm1qAQYVdetCeGRRkTWYYrLXuHK2HC",
+   "chain": "tron",
+   "network": "TRX",
+   "label": "Exchange Exemplo USDT-TRC20 deposit address",
+   "category": "exchange",
+   "institution": "exchange_exemplo",
+   "confidence": "CONFIRMED",
+   "provenance": {
+    "source": "court_order_response",
+    "reference": "CASE-2026-0001 (oficio 123/2026)",
+    "date": "2026-03-10",
+    "added_by": "cti-analyst-01"
+   }
+  },
+  {
+   "address": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+   "chain": "evm",
+   "network": "ETH",
+   "label": "Corretora Modelo hot wallet",
+   "category": "exchange",
+   "institution": "corretora_modelo",
+   "confidence": "PROBABLE",
+   "provenance": {
+    "source": "public_statement",
+    "reference": "https://www.example.org/carteiras",
+    "date": "2025-06-01",
+    "added_by": "cti-analyst-02"
+   }
+  },
+  {
+   "address": "bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4",
+   "chain": "btc",
+   "network": "BTC",
+   "label": "Ransom payment address seen in CASE-2026-0002",
+   "category": "ransomware",
+   "institution": null,
+   "confidence": "CONFIRMED",
+   "provenance": {
+    "source": "case",
+    "reference": "CASE-2026-0002",
+    "date": "2026-05-20",
+    "added_by": "cti-analyst-01"
+   }
+  }
+ ]
+}

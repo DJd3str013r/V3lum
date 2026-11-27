@@ -1,0 +1,24 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://security.access.redhat.com/data/csaf/v2/vex/2021/cve-2021-9999999.json",
+  "headers": {}
+ },
+ "response": {
+  "status": 404,
+  "headers": {
+   "accept-ranges": "bytes",
+   "content-length": "16",
+   "content-type": "text/html",
+   "etag": "\"cf2386dad73a142103028fe09afdbae4:1794592169.502051\"",
+   "last-modified": "Fri, 13 Nov 2026 17:49:29 GMT",
+   "server": "AkamaiNetStorage",
+   "expires": "Thu, 26 Nov 2026 09:44:59 GMT",
+   "cache-control": "max-age=0, no-cache, no-store"
+  },
+  "body": "Page not found.\n"
+ },
+ "transport_error": null,
+ "elapsed_s": 0.13,
+ "note": "No VEX file for an unassigned id: 404 text/html \"Page not found.\" from AkamaiNetStorage (not JSON)."
+}

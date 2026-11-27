@@ -1,0 +1,213 @@
+{
+  "schema": "v3lum.pivot_pack/1",
+  "pack": "brazil",
+  "title": "Brazilian company pages: CNPJ and company name only (P250)",
+  "notes": "Batch p2-G14-2, module pivots_brazil (static links). Rule 4 (legal floor): no template ever takes a CPF and no person-name or people-search template exists in this pack; CNPJ and company types only (P250 cond 9). CNPJ templates are privacy=true (frozen P311 lint: company identifiers), so they render for analyst-typed CNPJ seeds of a case that opted in. Order (P250 cond 6): Portal da Transparencia, Reclame Aqui, consumidor.gov.br, Jusbrasil, Escavador, Receita, Sintegra, Casa dos Dados (CCC/SVRS now needs a login and REDESIM/juntas have no stable value URL: not shipped).",
+  "links": [
+    {
+      "id": "transparencia_busca_cnpj",
+      "label": "Portal da Transparencia - busca (CNPJ)",
+      "template": "https://portaldatransparencia.gov.br/busca?termo={cnpj_fmt}",
+      "entity_types": [
+        "cnpj"
+      ],
+      "category": "company",
+      "host": "portaldatransparencia.gov.br",
+      "verified": true,
+      "checked_at": "2026-11-25",
+      "privacy": true,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "Formatted CNPJ through {cnpj_fmt} (P250 cond 8). Research C0584 200 'Resultado da busca' on 2026-11-25; AWS WAF CAPTCHA (405) for curl from the datacenter egress on 2026-11-26, so the digits form could not be verified. The /pessoa-juridica/{cnpj} page (202 bot challenge) is not used."
+    },
+    {
+      "id": "transparencia_busca_nome",
+      "label": "Portal da Transparencia - busca (company name)",
+      "template": "https://portaldatransparencia.gov.br/busca?termo={q}",
+      "entity_types": [
+        "company_name"
+      ],
+      "category": "company",
+      "host": "portaldatransparencia.gov.br",
+      "verified": true,
+      "checked_at": "2026-11-25",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "Research C0584; AWS WAF CAPTCHA for curl on 2026-11-26."
+    },
+    {
+      "id": "reclameaqui_busca",
+      "label": "Reclame Aqui - company search (consumer complaints: context, not proof)",
+      "template": "https://www.reclameaqui.com.br/busca/?q={q}",
+      "entity_types": [
+        "company_name"
+      ],
+      "category": "company",
+      "host": "www.reclameaqui.com.br",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "Cloudflare managed challenge for curl on 2026-11-26 (P250 cond 11, cond 12)."
+    },
+    {
+      "id": "jusbrasil_busca_nome",
+      "label": "Jusbrasil - search by company name",
+      "template": "https://www.jusbrasil.com.br/busca?q={q}",
+      "entity_types": [
+        "company_name"
+      ],
+      "category": "company",
+      "host": "www.jusbrasil.com.br",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "Company values only (rule 4). Cloudflare managed challenge for curl on 2026-11-26."
+    },
+    {
+      "id": "jusbrasil_busca_cnpj",
+      "label": "Jusbrasil - search by CNPJ",
+      "template": "https://www.jusbrasil.com.br/busca?q={cnpj_fmt}",
+      "entity_types": [
+        "cnpj"
+      ],
+      "category": "company",
+      "host": "www.jusbrasil.com.br",
+      "verified": false,
+      "checked_at": "",
+      "privacy": true,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "Formatted CNPJ (P250 cond 12). Cloudflare managed challenge for curl on 2026-11-26."
+    },
+    {
+      "id": "escavador_busca_nome",
+      "label": "Escavador - search by company name",
+      "template": "https://www.escavador.com/busca?q={q}",
+      "entity_types": [
+        "company_name"
+      ],
+      "category": "company",
+      "host": "www.escavador.com",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "Company values only: the site also indexes people (rule 4). Cloudflare challenge for curl on 2026-11-26."
+    },
+    {
+      "id": "escavador_busca_cnpj",
+      "label": "Escavador - search by CNPJ",
+      "template": "https://www.escavador.com/busca?q={cnpj_fmt}",
+      "entity_types": [
+        "cnpj"
+      ],
+      "category": "company",
+      "host": "www.escavador.com",
+      "verified": false,
+      "checked_at": "",
+      "privacy": true,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "Formatted CNPJ (P250 cond 12). Cloudflare challenge for curl on 2026-11-26."
+    },
+    {
+      "id": "receita_comprovante",
+      "label": "Receita Federal - Comprovante de Inscricao (CAPTCHA solved by the analyst)",
+      "template": "https://solucoes.receita.fazenda.gov.br/Servicos/cnpjreva/Cnpjreva_Solicitacao.asp?cnpj={cnpj_digits}",
+      "entity_types": [
+        "cnpj"
+      ],
+      "category": "company",
+      "host": "solucoes.receita.fazenda.gov.br",
+      "verified": false,
+      "checked_at": "",
+      "privacy": true,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "hCaptcha page solved by the analyst in the browser (P250 cond 10, A9); never requested by V3LUM. CNPJ digits (14 characters, alphanumeric CNPJ kept)."
+    },
+    {
+      "id": "casadosdados_cnpj",
+      "label": "Casa dos Dados - company page by CNPJ",
+      "template": "https://casadosdados.com.br/solucao/cnpj/{cnpj_digits}",
+      "entity_types": [
+        "cnpj"
+      ],
+      "category": "company",
+      "host": "casadosdados.com.br",
+      "verified": false,
+      "checked_at": "",
+      "privacy": true,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "Redirects to the company slug page (C0560); Cloudflare challenge for curl on 2026-11-26."
+    }
+  ],
+  "x_module_links": [
+    {
+      "id": "consumidor_gov_busca",
+      "label": "consumidor.gov.br - company search (consumer complaints: context, not proof)",
+      "template": "https://www.consumidor.gov.br/pages/principal/",
+      "entity_types": [
+        "company_name",
+        "cnpj"
+      ],
+      "category": "company",
+      "host": "www.consumidor.gov.br",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": true,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Static page: the company search is a JavaScript autocomplete with no GET URL (verified 2026-11-26), so the link carries no value and the analyst types the company name (P250 cond 11).",
+      "x_static": true,
+      "x_badge": "manual: type the company name on the page"
+    },
+    {
+      "id": "sintegra_portal",
+      "label": "SINTEGRA - state registration lookup (pick the state, type the CNPJ)",
+      "template": "https://www.sintegra.gov.br/",
+      "entity_types": [
+        "cnpj"
+      ],
+      "category": "company",
+      "host": "www.sintegra.gov.br",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": true,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Static page: the national portal links each state's lookup and takes no CNPJ parameter (verified 2026-11-26); CCC/SVRS now redirects to a login and is excluded (P250 cond 10).",
+      "x_static": true,
+      "x_badge": "manual: pick the state and type the CNPJ"
+    }
+  ]
+}

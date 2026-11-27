@@ -1,0 +1,38 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "about_me",
+  "name": "About.me public profile pages",
+  "operator": "About.me, Inc.",
+  "hosts": ["about.me"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Identifiable operator (About.me, Inc.) with published terms of use and a privacy policy and more than ten years of public track record as a personal-page host (A8 community). P113 FC8 overlay record: 'major profile platform'. Recorded community, not trusted: a small company without a documented data-handling programme.",
+  "tier_reviewer": "batch p1-G05-2 (P113 FC8 overlay record)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "C", "justification": "Authoritative for whether a page exists under a handle; page content is self-asserted, and the same handle on another site does not prove identity (P113 FC13)."},
+  "http_profile": {"user_agent": "neutral", "timeout": 10, "retries": 0, "max_bytes": 2000000, "ttl": 86400, "min_interval": 1.0, "concurrency": 1},
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "profile_page": {
+      "title": "Public profile page https://about.me/{handle} (P113 username_check two-sided markers)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://about.me/legal/terms",
+        "quote": "Not reviewed by legal_dpo (A1 'unknown'). The terms of use (effective June 7, 2018) prohibit use of the Services that \"Crawls,\" \"scrapes,\" or \"spiders\" any page, data, or portion of or relating to the Services or Content (through use of manual or automated means).",
+        "checked_at": "2026-11-26",
+        "reviewer": "batch p1-G05-2 (terms quoted for the legal_dpo review queue)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "about_me",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "One unauthenticated GET per handle (P113 FC7/FC9). Stays out of the default pack until legal records 'open' terms with evidence (FC16), a personal_data_review exists (FC14) and the team re-calibrates it from its own egress (FC2). Redirects are not followed: reserved names answer 302 (e.g. to /team) and read as could not verify."
+    }
+  },
+  "notes": "Owned by batch p1-G05-2 (P113 username_check / username_check_extended): host used only by this batch (providers_seed owners.json). Hit semantics: 200 + og:type profile = account page; 404 + the marketing home title = no page under that handle."
+}

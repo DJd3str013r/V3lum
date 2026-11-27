@@ -1,0 +1,83 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "options": {
+  "mode": "passive",
+  "tlp": "amber",
+  "depth": 1
+ },
+ "nodes": [
+  {
+   "key": "btc_address:1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2",
+   "depth": 0,
+   "seed": true,
+   "attributes": {
+    "top_counterparties": [
+     {
+      "value": [
+       {
+        "address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+        "direction": "in",
+        "received_from": "1.0 BTC",
+        "sent_to": "0 BTC",
+        "tx_count": 1,
+        "in_tx_count": 1,
+        "out_tx_count": 0,
+        "first_seen": "2026-11-01T10:00:00Z",
+        "last_seen": "2026-11-02T10:00:00Z",
+        "label": "counterparty (role unknown)"
+       },
+       {
+        "address": "bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq",
+        "direction": "in",
+        "received_from": "0.2 BTC",
+        "sent_to": "0 BTC",
+        "tx_count": 1,
+        "in_tx_count": 1,
+        "out_tx_count": 0,
+        "first_seen": "2026-11-01T10:00:00Z",
+        "last_seen": "2026-11-02T10:00:00Z",
+        "label": "counterparty (role unknown)"
+       }
+      ],
+      "source": "btc_explorers"
+     }
+    ]
+   }
+  },
+  {
+   "key": "btc_address:1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+   "depth": 1
+  },
+  {
+   "key": "btc_address:bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq",
+   "depth": 1,
+   "attributes": {
+    "stop_node_hint": [
+     {
+      "value": "exchange",
+      "source": "walletexplorer"
+     }
+    ]
+   }
+  }
+ ],
+ "edges": [
+  {
+   "src": "btc_address:1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2",
+   "dst": "btc_address:1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+   "relation": "transacted_with",
+   "module": "btc_explorers",
+   "confidence": 0.7,
+   "expand": false
+  },
+  {
+   "src": "btc_address:1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2",
+   "dst": "btc_address:bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq",
+   "relation": "transacted_with",
+   "module": "btc_explorers",
+   "confidence": 0.7,
+   "expand": false
+  }
+ ]
+}

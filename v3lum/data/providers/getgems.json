@@ -1,0 +1,50 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "getgems",
+  "name": "Getgems (TON NFT marketplace GraphQL API) - held, not used",
+  "operator": "Getgems (getgems.io TON NFT marketplace)",
+  "hosts": [
+    "api.getgems.io"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "Not reviewed: P214 cond 4 holds api.getgems.io until legal records its terms and tier (A8). Registered only so the review queue lists it; no module declares this host or source.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "F",
+    "justification": "Not reviewed and not used (P214 cond 4 hold): reliability cannot be judged."
+  },
+  "http_profile": {
+    "user_agent": "neutral"
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "graphql": {
+      "title": "Getgems GraphQL API (NFT owner lookups; held by P214 cond 4, never queried)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://getgems.io/",
+        "quote": "",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "getgems",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "P214 cond 4: 'tonapi.io and getgems.io receive identifiers only after legal records their terms and tier (A8)'. Toncenter v3 nft/items already returns the owner, so this source is not needed for the a_TON_of_privacy flow."
+    }
+  },
+  "notes": "Owned by batch p3-G09-1 (P214 hold). Review-queue entry only."
+}

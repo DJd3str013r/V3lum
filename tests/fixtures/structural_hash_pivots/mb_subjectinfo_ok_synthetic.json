@@ -1,0 +1,83 @@
+{
+ "query_status": "ok",
+ "data": [
+  {
+   "sha256_hash": "2b228315bb82e6539bdc5f4456f30b28ceefbf3b8a15c1a77b79d141f42e1d70",
+   "sha3_384_hash": null,
+   "sha1_hash": "36a0525e39bafdcee88d1ed39c26e33ab5efc7b2",
+   "md5_hash": "9ffffac7113b63ffcbfb21602900958f",
+   "first_seen": "2026-11-20 10:00:00",
+   "last_seen": null,
+   "file_name": "sample.exe",
+   "file_size": 245760,
+   "file_type_mime": "application/x-dosexec",
+   "file_type": "exe",
+   "reporter": "reporter_a",
+   "anonymous": 0,
+   "signature": "CobaltStrike",
+   "imphash": "08edd19353b6849ce06a508960bfdf6a",
+   "tlsh": "T12B228315BB82E6539BDC5F4456F30B28CEEFBF3B8A15C1A77B79D141F42E1D70A2F2CD",
+   "telfhash": null,
+   "gimphash": null,
+   "ssdeep": "1536:y1UrR0shLMqjavOwKwUiO6pQ/y+L6NQzvKbKOxai:gzPtn80iYupfPJoH1TFa4SKB",
+   "dhash_icon": null,
+   "tags": [
+    "cobaltstrike",
+    "exe"
+   ],
+   "code_sign": [
+    {
+     "subject_cn": "Example Signing Ltd.",
+     "issuer_cn": "Example Code Signing CA",
+     "algorithm": "sha256_rsa",
+     "valid_from": "2026-01-02 00:00:00",
+     "valid_to": "2027-01-02 23:59:59",
+     "serial_number": "0a1b2c3d4e5f60718293a4b5c6d7e8f9",
+     "thumbprint": "3A5D2552CBCE2716D82969A0DF06A1BFCEBEA2C7AF7C62453ADCD9D48420999A",
+     "thumbprint_algorithm": "sha256",
+     "cscb_listed": true,
+     "cscb_reason": "CobaltStrike"
+    }
+   ]
+  },
+  {
+   "sha256_hash": "0bc1ebacdd3c424fcfd4ce7ee7e58a397c742803c73abff73c3624dc4c24de2d",
+   "sha3_384_hash": null,
+   "sha1_hash": "8a5c64bf3ac7ec43ea5413c9d09b729f872f4b6d",
+   "md5_hash": "178491715ae2de3a6fc1644368de402d",
+   "first_seen": "2026-11-20 10:00:00",
+   "last_seen": null,
+   "file_name": "sample.exe",
+   "file_size": 245760,
+   "file_type_mime": "application/x-dosexec",
+   "file_type": "exe",
+   "reporter": "reporter_a",
+   "anonymous": 0,
+   "signature": "CobaltStrike",
+   "imphash": "48ae1b52a02f9c64f7f47e4386105691",
+   "tlsh": "T10BC1EBACDD3C424FCFD4CE7EE7E58A397C742803C73ABFF73C3624DC4C24DE2DD31F7B",
+   "telfhash": null,
+   "gimphash": null,
+   "ssdeep": "1536:TOxRxrZYc/75kxiPAI297gaUydcv7GusgQOPbBC7:8lFFGchnlt+lQ6SE/aCNMmM/",
+   "dhash_icon": null,
+   "tags": [
+    "cobaltstrike",
+    "exe"
+   ],
+   "code_sign": [
+    {
+     "subject_cn": "Example Signing Ltd.",
+     "issuer_cn": "Example Code Signing CA",
+     "algorithm": "sha256_rsa",
+     "valid_from": "2026-01-02 00:00:00",
+     "valid_to": "2027-01-02 23:59:59",
+     "serial_number": "0a1b2c3d4e5f60718293a4b5c6d7e8f9",
+     "thumbprint": "3A5D2552CBCE2716D82969A0DF06A1BFCEBEA2C7AF7C62453ADCD9D48420999A",
+     "thumbprint_algorithm": "sha256",
+     "cscb_listed": true,
+     "cscb_reason": "CobaltStrike"
+    }
+   ]
+  }
+ ]
+}

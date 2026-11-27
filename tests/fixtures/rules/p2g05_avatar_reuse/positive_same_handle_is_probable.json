@@ -1,0 +1,106 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "$comment": "The same handle found on GitHub and GitLab (has_account from one username) plus the same avatar: two signals, PROBABLE. The GitLab profile links its avatar by the avatar_url attribute.",
+ "options": {
+  "mode": "passive",
+  "tlp": "amber",
+  "depth": 2
+ },
+ "nodes": [
+  {
+   "key": "username:example-dev",
+   "depth": 0,
+   "seed": true,
+   "attributes": {}
+  },
+  {
+   "key": "url:https://github.com/example-dev",
+   "depth": 1,
+   "seed": false,
+   "attributes": {}
+  },
+  {
+   "key": "url:https://gitlab.com/example-dev",
+   "depth": 1,
+   "seed": false,
+   "attributes": {
+    "avatar_url": [
+     {
+      "value": "https://gitlab.com/uploads/-/system/user/avatar/1000002/avatar.png",
+      "source": "github_user"
+     }
+    ]
+   }
+  },
+  {
+   "key": "url:https://avatars.githubusercontent.com/u/1000001?v=4",
+   "depth": 2,
+   "seed": false,
+   "attributes": {
+    "avatar_dhash": [
+     {
+      "value": "002070c860630300",
+      "source": "avatar_correlation"
+     }
+    ],
+    "avatar_sha256": [
+     {
+      "value": "b41a537b623156a9e4e8d758b08c68a51483e13f5adfed30d41bb2b51dcff93a",
+      "source": "avatar_correlation"
+     }
+    ]
+   }
+  },
+  {
+   "key": "url:https://gitlab.com/uploads/-/system/user/avatar/1000002/avatar.png",
+   "depth": 2,
+   "seed": false,
+   "attributes": {
+    "avatar_dhash": [
+     {
+      "value": "002070c860630300",
+      "source": "avatar_correlation"
+     }
+    ],
+    "avatar_sha256": [
+     {
+      "value": "b41a537b623156a9e4e8d758b08c68a51483e13f5adfed30d41bb2b51dcff93a",
+      "source": "avatar_correlation"
+     }
+    ]
+   }
+  }
+ ],
+ "edges": [
+  {
+   "src": "username:example-dev",
+   "dst": "url:https://github.com/example-dev",
+   "relation": "has_account",
+   "module": "username_check",
+   "confidence": 0.4
+  },
+  {
+   "src": "username:example-dev",
+   "dst": "url:https://gitlab.com/example-dev",
+   "relation": "has_account",
+   "module": "username_check",
+   "confidence": 0.4
+  },
+  {
+   "src": "url:https://github.com/example-dev",
+   "dst": "url:https://avatars.githubusercontent.com/u/1000001?v=4",
+   "relation": "has_avatar",
+   "module": "github_user",
+   "confidence": 0.9
+  }
+ ],
+ "expect": {
+  "p2g05_avatar_reuse": {
+   "min": 1,
+   "max": 1,
+   "severity": "info",
+   "confidence_label": "probable"
+  }
+ }
+}

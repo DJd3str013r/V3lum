@@ -1,0 +1,140 @@
+{
+ "batch": "p2-G02-3",
+ "modules": [
+  {
+   "name": "greynoise_community",
+   "file": "v3lum/modules/threat_intel_ioc/greynoise_community.py",
+   "proposal": "P148",
+   "category": "threat_intel_ioc",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "noncommercial",
+   "provider_tier": "trusted",
+   "keys": [
+    "greynoise"
+   ],
+   "datasets": [],
+   "pivot_packs": [
+    "scanner_intel_g02_3"
+   ],
+   "correlation_rules": [
+    "g02_scanner_intel_dampening"
+   ],
+   "new_vocabulary": [
+    "attribute:greynoise"
+   ],
+   "live_check": "Not called: under the shipped corporate profile the decision is SKIPPED licence ('noncommercial terms (licence profile corporate) [POL-04]', manual link emitted) - asserted by tests/live/test_p2_g02_3.py with V3LUM_LIVE=1 (3 passed; the module runs live only when a licence_allow entry clears greynoise.community). Recorded from this egress 2026-11-25/26: every keyless call answered 429 {plan Community, rate_limit 25-W}, X-Ratelimit-Remaining 0, reset 2026-11-28T05:04:57Z; the 8.8.8.8 404 'not observed' fixture is from 2026-11-25. viz.greynoise.io/ips/8.8.8.8 and /ip/8.8.8.8 answer 403 to scripts (manual link only)."
+  },
+  {
+   "name": "isc_dshield",
+   "file": "v3lum/modules/threat_intel_ioc/isc_dshield.py",
+   "proposal": "P151",
+   "category": "threat_intel_ioc",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "noncommercial",
+   "provider_tier": "trusted",
+   "keys": [],
+   "datasets": [],
+   "pivot_packs": [
+    "scanner_intel_g02_3"
+   ],
+   "correlation_rules": [
+    "g02_scanner_intel_dampening"
+   ],
+   "new_vocabulary": [
+    "attribute:dshield_reports",
+    "attribute:isc_threatfeeds",
+    "attribute:isc_research_scanner",
+    "attribute:isc_asn_reports"
+   ],
+   "live_check": "Not called: corporate decision SKIPPED licence (noncommercial, POL-04) for ipv4 and asn, asserted live (V3LUM_LIVE=1); without contact_email it is SKIPPED config (POL-12 and the module's own guard). Recorded from this egress: /api/ip/8.8.8.8?json 200 text/json (fixture), /api/asnum/5/15169?json 200 [] (fixture); /api/threatfeeds, /api/asnum/5/4837 and on 2026-11-26 also /api/ (docs page) redirect to /blockme.html - the egress is temporarily locked out by ISC (BLOCKED challenge + circuit is the module's outcome)."
+  },
+  {
+   "name": "leakix",
+   "file": "v3lum/modules/pentest_recon/leakix.py",
+   "proposal": "P274",
+   "category": "pentest_recon",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "key-terms",
+   "provider_tier": "community",
+   "keys": [
+    "leakix"
+   ],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:leakix_summary",
+    "attribute:leakix_exposures",
+    "attribute:leakix_services"
+   ],
+   "live_check": "Not called: key-only API and no team key; corporate decision SKIPPED licence (key-terms without key_plans.leakix=business), asserted live. Research 2026-11-25 recorded 401 'Invalid API key' for /host and /domain without a key (the real 401 fixtures). Every leakix.net web page (host, domain, search) redirects to /auth/login (checked 2026-11-26): references only, never a pivot-pack link."
+  }
+ ],
+ "proposals_not_done": [],
+ "core_requests": [
+  "quota (P148 c3): a 'week' window in the P334 provider quota block (QuotaSpec has hour/day/month only); GreyNoise publishes 25-W keyless (~50/week keyed), so greynoise_community uses the interim Module.daily_quota = 3 and greynoise.json records the weekly limit under x_quota_window.",
+  "http (P274 c1): honour LeakIX's 429 header 'x-limited-for' (a Go duration, e.g. '344.24ms') like Retry-After (one wait/retry when <= 15 s), declared per provider; leakix reports RATE_LIMITED with the wait meanwhile.",
+  "sanitize (P274 c2): a sanitizer schema transform that keeps only the path of a URL field (e.g. keep_path_of: ['Leaks[].http.url']); keep lists cannot transform, so leakix keeps http.url and vetoes caching (cache_if) of answers whose kept URLs carry a query or fragment.",
+  "sanitize/http: null list values of a sensitive provider body ('Services': null) are dropped by apply_schema, so the module cannot tell {'Services': null, 'Leaks': null} from an unexpected object after sanitization; leakix declares error markers evaluated on the raw body before the allowlist. A keep-null option (or classification-only markers documented as running pre-sanitization) would make this explicit.",
+  "http: ScopedHttp.check()/_classify() re-classifies a response whose classification is None after the sensitive-body sanitizer replaced resp.content, so module error markers also run on the sanitized body (leakix's markers are written to never match the allowlisted forms). Classify once (resp._classified) instead of on 'classification is None'.",
+  "policy/engine (P148 c4): a per-run, per-provider note API (e.g. ctx.note_once(key, text)) so a hint such as GreyNoise's free-key hint is shown once per scan in the coverage line, not only in the first RATE_LIMITED reason and the live feed.",
+  "suppression (P148 c5-c7, P322): an engine-level registry of named suppression rules contributed by modules/packs (scope ip, cap severity, derived_from blocklist) - today the dampening is a correlation rule (g02_scanner_intel_dampening) that mutates findings in the correlation stage, like g10_sanction_dedup."
+ ],
+ "files": [
+  "docs/backlog/p2-G02-3.md",
+  "tests/fixtures/acceptance/ipv4/greynoise_community.json",
+  "tests/fixtures/acceptance/ipv4/isc_dshield.json",
+  "tests/fixtures/greynoise_community/gateway_502_synthetic.html",
+  "tests/fixtures/greynoise_community/invalid_ip_400_synthetic.json",
+  "tests/fixtures/greynoise_community/noise_benign_synthetic.json",
+  "tests/fixtures/greynoise_community/noise_malicious_synthetic.json",
+  "tests/fixtures/greynoise_community/noise_unknown_synthetic.json",
+  "tests/fixtures/greynoise_community/not_observed_404_8888.json",
+  "tests/fixtures/greynoise_community/rate_limited_429_1111.json",
+  "tests/fixtures/greynoise_community/rate_limited_429_8888.json",
+  "tests/fixtures/greynoise_community/rate_limited_429_exchange_9999.json",
+  "tests/fixtures/greynoise_community/riot_synthetic.json",
+  "tests/fixtures/isc_dshield/asnum_docs_synthetic.json",
+  "tests/fixtures/isc_dshield/asnum_empty_15169.json",
+  "tests/fixtures/isc_dshield/blockme_page.html",
+  "tests/fixtures/isc_dshield/blockme_redirect_asnum.json",
+  "tests/fixtures/isc_dshield/blockme_redirect_threatfeeds.json",
+  "tests/fixtures/isc_dshield/ip_attacks_synthetic.json",
+  "tests/fixtures/isc_dshield/ip_empty_synthetic.json",
+  "tests/fixtures/isc_dshield/ip_ok_1111.json",
+  "tests/fixtures/isc_dshield/ip_ok_8888.json",
+  "tests/fixtures/isc_dshield/ip_xml_default_synthetic.xml",
+  "tests/fixtures/isc_dshield/rate_limited_429_synthetic.json",
+  "tests/fixtures/isc_dshield/threatcategory_research_ok.json",
+  "tests/fixtures/leakix/domain_401_nokey.json",
+  "tests/fixtures/leakix/domain_ok_synthetic.json",
+  "tests/fixtures/leakix/host_401_nokey.json",
+  "tests/fixtures/leakix/host_empty_synthetic.json",
+  "tests/fixtures/leakix/host_ok_synthetic.json",
+  "tests/fixtures/leakix/login_page_synthetic.html",
+  "tests/fixtures/leakix/rate_limited_429_synthetic.json",
+  "tests/fixtures/leakix/subdomains_ok_synthetic.json",
+  "tests/fixtures/rules/g02_scanner_intel_dampening/negative_domain_on_riot_ip_untouched.json",
+  "tests/fixtures/rules/g02_scanner_intel_dampening/negative_greynoise_malicious_conflict.json",
+  "tests/fixtures/rules/g02_scanner_intel_dampening/positive_benign_scanner_caps_scanner_listing.json",
+  "tests/fixtures/rules/g02_scanner_intel_dampening/positive_riot_caps_blocklist_listing.json",
+  "tests/live/test_p2_g02_3.py",
+  "tests/modules/test_greynoise_community.py",
+  "tests/modules/test_isc_dshield.py",
+  "tests/modules/test_leakix.py",
+  "tests/modules/test_p2_g02_3_rules.py",
+  "v3lum/correlations/p2_g02_3.py",
+  "v3lum/data/pivot_links/scanner_intel_g02_3.json",
+  "v3lum/data/providers/greynoise.json",
+  "v3lum/data/providers/leakix.json",
+  "v3lum/data/providers/sans_isc.json",
+  "v3lum/data/vocab/p2-G02-3.json",
+  "v3lum/modules/pentest_recon/leakix.py",
+  "v3lum/modules/threat_intel_ioc/greynoise_community.py",
+  "v3lum/modules/threat_intel_ioc/isc_dshield.py"
+ ],
+ "notes": "All three proposals delivered as PASSIVE modules plus one correlation rule. Provider fragments created (hosts mapped to null in owners.json): greynoise (api.greynoise.io, viz.greynoise.io; tier trusted; key greynoise in the 'key' header; no quota block, weekly limit in x_quota_window), sans_isc (isc.sans.edu; tier trusted; http_profile user_agent 'contact' + Accept application/json - binding PROFILE_REQUIREMENTS - min_interval 2 s, one connection, no retries; source id sans_isc.api as in the WP07 licence_allow example), leakix (leakix.net; tier community; flags.sensitive true with the P274 allowlist as the source sanitizer keep list; quota scope key month 3000 published false; key leakix). Decisions to review: (1) P151 c3's '/api/asnum/{asn}' path is read by ISC as a count; the documented /api/asnum/{count}/{asn}?json (count 100) is used. (2) GreyNoise riot/benign and ISC research-scanner dampening is applied by correlation rule g02_scanner_intel_dampening through the named rules greynoise_riot, greynoise_benign_scanner, isc_research_scanner (no SUP- prefix so the findings stay CR27 evidence and CR27 keeps its own downgraded consensus): blocklist-derived findings (tags blocklisted/spam/scanner/malicious/suspicious/botnet) of other sources on that IP only are capped at LOW with a one-level label downgrade, c2/malware/phishing evidence untouched, nothing deleted, overrides never crossed, no dampening when GreyNoise itself reports malicious scanning. The modules also set the WP23 signals (finding tags known_good/benign_scanner, attribute scanner_classification, allowlisted) so CR27 downgrades consensus. (3) GreyNoise runs on analyst-typed seeds at depth 0 only (run_on 'seeds' + applies(): not pivots, not text-extracted values, not unconfirmed seeds). (4) LeakIX: full detail on seeds (depth 0) and org_profile own assets, counts only for pivoted third-party assets; on CDN/shared IPs (noise kinds cdn/cloud/hosting/saas) hits go to the hostname entity (Finding.entity) and hostless events stay unattributed counts; own DB/config exposures HIGH, other own leaks capped HIGH, non-own seeds capped MEDIUM; >90 days -> historical/POSSIBLE/'re-verify'. Because the provider is sensitive, the core sanitizer reduces bodies to the keep list before the module/raw/cache and also drops 'ip' fields and IP literals (second net); the module therefore attributes host lookups to the queried IP. LeakIX web pages need a login, so they are finding references (labelled) and not a pivot-pack/manual link. (5) P274 c7 merge gate is open: the success fixtures are synthetic (no team key); the recorded 401 fixtures are real - recorded in docs/backlog/p2-G02-3.md (also the ACTIVE 'status and size' confirmation variant of c5, which belongs to the late LIGHT/ACTIVE phase). (6) Acceptance routes added for ipv4 8.8.8.8 (greynoise_community: recorded 404; isc_dshield: recorded IP answer + research category) and replayed in the module tests. Tests: 80 offline tests in tests/modules/test_{greynoise_community,isc_dshield,leakix,p2_g02_3_rules}.py + 4 rule fixtures, all green; registry contract green for the three modules; P327 lint clean on every batch file; ruff clean. Full offline suite: remaining failures are in other batches/core packages mid-edit (ioc_extract, profile_id_extractor, ransomfeed, typosquat, entity platforms, crowdsec_cti lint, btc_explorers registration, circl_vulnlookup, stale notices of other batches; test_engine_suppression/multi_source_malicious/test_links failed once and passed on re-run) - none names a module of this batch."
+}

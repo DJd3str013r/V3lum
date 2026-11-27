@@ -1,0 +1,15 @@
+# FC7 collision fixture: every 11-digit number below passes the CPF check digits.
+# Lines marked PHONE must be typed phone (or nothing), never CPF; lines marked CPF must be CPF.
+PHONE | Chama no zap 11955550166 que eu te passo o boleto
+PHONE | WhatsApp: 21955550174
+PHONE | tel 11 95555-0166
+PHONE | (11) 95555-0247
+PHONE | fale com a gente: wa.me/5531955550182
+PHONE | Telefone/celular: 11955550247
+PHONE | +55 31955550182
+CPF | CPF: 529.982.247-25
+CPF | CPF 52998224725
+CPF | inscrito no C.P.F. sob o nº 529.982.247-25
+CPF | {"nome": "Fulano de Tal", "cpf": "52998224725"}
+NONE | pedido 52998224725 confirmado
+NONE | CPF ***.982.247-** (masked, never completed)

@@ -1,0 +1,24 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://www.filescan.io/api/reputation/hash?sha256=abc",
+  "headers": {
+   "Accept": "application/json"
+  }
+ },
+ "response": {
+  "status": 400,
+  "headers": {
+   "cf-cache-status": "DYNAMIC",
+   "content-length": "44",
+   "content-type": "application/json",
+   "server": "cloudflare"
+  },
+  "body": {
+   "detail": "Bad hash: abc, check your input"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": 0.306863,
+ "note": "live: a malformed hash answers 400 {'detail': 'Bad hash: <input>, check your input'} (the input is echoed)"
+}

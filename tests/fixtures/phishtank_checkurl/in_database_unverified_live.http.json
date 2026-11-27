@@ -1,0 +1,18 @@
+{
+ "request": "POST https://checkurl.phishtank.com/checkurl/ url=base64(http://example.com/)&format=json UA phishtank/<app>",
+ "response": {
+  "status": 200,
+  "headers": {
+   "content-type": "application/json",
+   "cf-cache-status": "DYNAMIC",
+   "server": "cloudflare",
+   "x-request-count": "1",
+   "x-request-limit": "250",
+   "x-request-limit-interval": "300 Seconds"
+  },
+  "body": "{\"meta\":{\"timestamp\":\"2026-11-26T08:35:13+00:00\",\"serverid\":\"e5f3084e\",\"status\":\"success\",\"requestid\":\"REDACTED\"},\"results\":{\"url\":\"http:\\/\\/example.com\\/\",\"in_database\":true,\"phish_id\":4866807,\"phish_detail_page\":\"https:\\/\\/www.phishtank.com\\/phish_detail.php?phish_id=4866807\",\"verified\":false,\"verified_at\":null,\"valid\":false}}"
+ },
+ "transport_error": null,
+ "elapsed_s": 0.458,
+ "note": "same quirk re-observed 2026-11-26 with rate-limit headers (250 per 300 Seconds)"
+}

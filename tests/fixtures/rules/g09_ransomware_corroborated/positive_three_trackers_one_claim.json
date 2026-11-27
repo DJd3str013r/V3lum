@@ -1,0 +1,161 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "options": {
+  "mode": "passive",
+  "tlp": "amber",
+  "depth": 1
+ },
+ "nodes": [
+  {
+   "key": "company_name:Exemplo Alimentos",
+   "depth": 0,
+   "seed": true,
+   "findings": [
+    {
+     "title": "Possible ransomware leak-site claim (name match only)",
+     "severity": "medium",
+     "confidence": 0.4,
+     "confidence_label": "possible",
+     "criterion": "victim name equal after normalisation (accents folded, legal forms stripped) - possible match - verify victim identity",
+     "tags": [
+      "ransomware",
+      "ransomware_claim"
+     ],
+     "module": "ransomlook",
+     "source": "ransomlook.api",
+     "observed_first": "2026-11-24T10:00:00Z",
+     "observed_last": "2026-11-24T10:00:00Z",
+     "key": "exemplo alimentos|lockbit3|2026-11-24",
+     "data": {
+      "tracker": "ransomlook",
+      "victim": "Exemplo Alimentos Ltda.",
+      "victim_key": "exemplo alimentos",
+      "group": "lockbit3",
+      "group_key": "lockbit3",
+      "claimed_date": "2026-11-24",
+      "match_type": "name",
+      "domains": [],
+      "attribution": "documentation fixture"
+     }
+    },
+    {
+     "title": "Possible ransomware leak-site claim (name match only)",
+     "severity": "medium",
+     "confidence": 0.4,
+     "confidence_label": "possible",
+     "criterion": "victim name equal after normalisation (accents folded, legal forms stripped) - possible match - verify victim identity",
+     "tags": [
+      "ransomware",
+      "ransomware_claim"
+     ],
+     "module": "ransomfeed",
+     "source": "ransomfeed.api",
+     "observed_first": "2026-11-25T10:00:00Z",
+     "observed_last": "2026-11-25T10:00:00Z",
+     "key": "exemplo alimentos|lockbit3|2026-11-25",
+     "data": {
+      "tracker": "ransomfeed",
+      "victim": "EXEMPLO ALIMENTOS LTDA",
+      "victim_key": "exemplo alimentos",
+      "group": "LockBit 3.0",
+      "group_key": "lockbit3",
+      "claimed_date": "2026-11-25",
+      "match_type": "name",
+      "domains": [],
+      "attribution": "documentation fixture"
+     }
+    }
+   ]
+  },
+  {
+   "key": "domain:exemplo-alimentos.example",
+   "depth": 1,
+   "findings": [
+    {
+     "title": "Claimed on a ransomware leak site (actor claim, unverified)",
+     "severity": "high",
+     "confidence": 0.7,
+     "confidence_label": "probable",
+     "criterion": "victim website/domain on the claim (exemplo-alimentos.example) matches exactly (label boundary); the claim itself is an actor statement (unverified)",
+     "tags": [
+      "ransomware",
+      "ransomware_claim"
+     ],
+     "module": "ransomware_live",
+     "source": "ransomware_live.api",
+     "observed_first": "2026-11-24T10:00:00Z",
+     "observed_last": "2026-11-24T10:00:00Z",
+     "key": "exemplo alimentos example|lockbit3|2026-11-24",
+     "data": {
+      "tracker": "ransomware_live",
+      "victim": "exemplo-alimentos.example",
+      "victim_key": "exemplo alimentos example",
+      "group": "lockbit3",
+      "group_key": "lockbit3",
+      "claimed_date": "2026-11-24",
+      "match_type": "domain",
+      "domains": [
+       {
+        "domain": "exemplo-alimentos.example",
+        "evidence": "website"
+       }
+      ],
+      "attribution": "documentation fixture"
+     }
+    }
+   ]
+  },
+  {
+   "key": "company_name:Initech",
+   "depth": 0,
+   "seed": true,
+   "findings": [
+    {
+     "title": "Possible ransomware leak-site claim (name match only)",
+     "severity": "medium",
+     "confidence": 0.4,
+     "confidence_label": "possible",
+     "criterion": "victim name equal after normalisation (accents folded, legal forms stripped) - possible match - verify victim identity",
+     "tags": [
+      "ransomware",
+      "ransomware_claim"
+     ],
+     "module": "ransomlook",
+     "source": "ransomlook.api",
+     "observed_first": "2026-11-25T10:00:00Z",
+     "observed_last": "2026-11-25T10:00:00Z",
+     "key": "initech|thegentlemen|2026-11-25",
+     "data": {
+      "tracker": "ransomlook",
+      "victim": "Initech Inc.",
+      "victim_key": "initech",
+      "group": "the gentlemen",
+      "group_key": "thegentlemen",
+      "claimed_date": "2026-11-25",
+      "match_type": "name",
+      "domains": [],
+      "attribution": "documentation fixture"
+     }
+    }
+   ]
+  }
+ ],
+ "edges": [
+  {
+   "src": "company_name:Exemplo Alimentos",
+   "dst": "domain:exemplo-alimentos.example",
+   "relation": "victim_website",
+   "module": "ransomfeed",
+   "confidence": 0.4
+  }
+ ],
+ "expect": {
+  "g09_ransomware_corroborated": {
+   "min": 1,
+   "max": 1,
+   "severity": "info",
+   "confidence_label": "probable"
+  }
+ }
+}

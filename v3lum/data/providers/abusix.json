@@ -1,0 +1,37 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "abusix",
+  "name": "Abusix Abuse Contact DB (DNS zone abuse-contacts.abusix.zone)",
+  "operator": "Abusix Inc.",
+  "hosts": [],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published documentation, terms and a business offering (A8 trusted); P041 chair rationale: 'Abusix is an established company: tier trusted'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "B", "justification": "Abuse mailboxes derived from the RIR databases (abuse-c and role objects); usually correct, sometimes the parent network's desk."},
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "abuse_contacts": {
+      "title": "Abuse Contact DB: TXT {reversed IPv4 octets | IPv6 nibbles}.abuse-contacts.abusix.zone -> abuse mailbox of the network",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://docs.abusix.com/docs/abuse-reporting/abuse-contact-db/overview",
+        "quote": "The Abuse Contact DB service is free! If you use the information in the Abuse Contact DB for reporting, we only want you to place the following small reference into every single report message you send, indicating you used the Abuse Contact DB to find the recipient's abuse contact address",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "abusix",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Read only through the core DoH resolver chain (ctx.dns; no HTTP host of its own: the resolvers of core_doh receive the reversed-IP query name). One TXT query per IP (P041 cond 1); NXDOMAIN = no contact published, SERVFAIL/timeouts = could not verify (cond 3). The required report reference text travels with every abuse_contacts record ('report_reference') so the P345 takedown packet can add it. Used by abusix_contacts; shared with P345."
+    }
+  },
+  "notes": "Created by batch p2-G02-1 (P041 abusix_contacts). Virtual provider (no HTTP host): it records the terms and tier of the Abusix data read through DNS."
+}

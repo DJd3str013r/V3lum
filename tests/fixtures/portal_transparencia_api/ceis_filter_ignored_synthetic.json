@@ -1,0 +1,102 @@
+[
+ {
+  "id": 900002,
+  "dataReferencia": "01/11/2026",
+  "dataInicioSancao": "10/10/2024",
+  "dataFimSancao": "09/10/2026",
+  "dataPublicacaoSancao": "10/10/2024",
+  "dataTransitadoJulgado": "",
+  "dataOrigemInformacao": "10/10/2024",
+  "tipoSancao": {
+   "descricaoResumida": "Impedimento/proibição de contratar com prazo determinado",
+   "descricaoPortal": "Impedido"
+  },
+  "fonteSancao": {
+   "nomeExibicao": "Orgão Exemplo",
+   "telefoneContato": "+55 11 5555-0100",
+   "enderecoContato": "Endereco de exemplo, 100"
+  },
+  "fundamentacao": [
+   {
+    "codigo": "LEI 14133 - ART. 156",
+    "descricao": "Lei 14.133/2021, art. 156, III"
+   }
+  ],
+  "orgaoSancionador": {
+   "nome": "COMANDO DO EXERCITO",
+   "siglaUf": "RJ",
+   "poder": "Executivo",
+   "esfera": "Federal"
+  },
+  "sancionado": {
+   "nome": "EMPRESA EXEMPLO BETA LTDA",
+   "codigoFormatado": "22.333.444/0001-81"
+  },
+  "pessoa": {
+   "id": 0,
+   "cpfFormatado": "",
+   "cnpjFormatado": "22.333.444/0001-81",
+   "numeroInscricaoSocial": "",
+   "nome": "EMPRESA EXEMPLO BETA LTDA",
+   "razaoSocialReceita": "EMPRESA EXEMPLO BETA LTDA",
+   "nomeFantasiaReceita": "",
+   "tipo": "Pessoa Jurídica"
+  },
+  "textoPublicacao": "",
+  "linkPublicacao": "https://www.example.com/dou/exemplo",
+  "detalhamentoPublicacao": "",
+  "numeroProcesso": "PROC-EXEMPLO-900002",
+  "abrangenciaDefinidaDecisaoJudicial": "Em todos os Poderes da Esfera do órgão sancionador",
+  "informacoesAdicionaisDoOrgaoSancionador": ""
+ },
+ {
+  "id": 900003,
+  "dataReferencia": "01/11/2026",
+  "dataInicioSancao": "01/01/2025",
+  "dataFimSancao": "01/01/2026",
+  "dataPublicacaoSancao": "01/01/2025",
+  "dataTransitadoJulgado": "",
+  "dataOrigemInformacao": "01/01/2025",
+  "tipoSancao": {
+   "descricaoResumida": "Impedimento/proibição de contratar com prazo determinado",
+   "descricaoPortal": "Impedido"
+  },
+  "fonteSancao": {
+   "nomeExibicao": "Orgão Exemplo",
+   "telefoneContato": "+55 11 5555-0100",
+   "enderecoContato": "Endereco de exemplo, 100"
+  },
+  "fundamentacao": [
+   {
+    "codigo": "LEI 14133 - ART. 156",
+    "descricao": "Lei 14.133/2021, art. 156, III"
+   }
+  ],
+  "orgaoSancionador": {
+   "nome": "COMANDO DO EXERCITO",
+   "siglaUf": "RJ",
+   "poder": "Executivo",
+   "esfera": "Federal"
+  },
+  "sancionado": {
+   "nome": "EMPRESA EXEMPLO GAMA LTDA",
+   "codigoFormatado": "33.444.555/0001-81"
+  },
+  "pessoa": {
+   "id": 0,
+   "cpfFormatado": "",
+   "cnpjFormatado": "33.444.555/0001-81",
+   "numeroInscricaoSocial": "",
+   "nome": "EMPRESA EXEMPLO GAMA LTDA",
+   "razaoSocialReceita": "EMPRESA EXEMPLO GAMA LTDA",
+   "nomeFantasiaReceita": "",
+   "tipo": "Pessoa Jurídica"
+  },
+  "textoPublicacao": "",
+  "linkPublicacao": "https://www.example.com/dou/exemplo",
+  "detalhamentoPublicacao": "",
+  "numeroProcesso": "PROC-EXEMPLO-900003",
+  "abrangenciaDefinidaDecisaoJudicial": "Em todos os Poderes da Esfera do órgão sancionador",
+  "informacoesAdicionaisDoOrgaoSancionador": ""
+ }
+]

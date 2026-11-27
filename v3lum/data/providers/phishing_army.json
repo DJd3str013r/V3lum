@@ -1,0 +1,59 @@
+{
+  "schema": "v3lum.provider/1",
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "id": "phishing_army",
+  "name": "Phishing Army blocklist",
+  "operator": "Phishing Army project (independent maintainer)",
+  "hosts": [
+    "phishing.army"
+  ],
+  "tier": "community",
+  "tier_rationale": "Long-running community project (since 2019) with an identifiable maintainer and public documentation (A8 community).",
+  "reliability": {
+    "grade": "C",
+    "justification": "Aggregates PhishTank, OpenPhish, CERT.PL, urlscan.io and other feeds; its own value is coverage, not independent confirmation (counts as the families it embeds)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 21600
+  },
+  "sources": {
+    "blocklist": {
+      "title": "Phishing Army domain blocklist (phishing_army_blocklist.txt)",
+      "terms": {
+        "class": "noncommercial",
+        "evidence_url": "https://phishing.army/",
+        "quote": "Team Cymru MHR, Robtex, Malpedia, blocklist.de, CINS, ET, GreenSnow, DataPlane and Phishing Army = 'noncommercial' (A1 initial classes); P071 cond 4: Phishing Army (CC BY-NC, with OpenPhish upstream): off under the corporate profile until licence-cleared.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "phishing.army",
+      "sanitizer": null,
+      "dataset": "url_domain_blocklists.phishing_army.txt",
+      "notes": "Quote: binding council text (A1, P071 cond 4). ~3.2 MB, refreshed every 6 h upstream; the harmless filtering-test domains (amiprotected.it) are dropped at index time. Non-commercial data: runtime download only (A6).",
+      "embeds": [
+        "phishtank",
+        "openphish",
+        "cert.pl",
+        "urlscan",
+        "phishstats"
+      ],
+      "licensed_alternative": "A licence_allow entry backed by the maintainer's written permission (P071 cond 4); CERT.PL and Phishing.Database cover the category under open terms."
+    }
+  },
+  "notes": "Owned by batch p1-G03-1 (P071). Matched locally (disclosure 'none')."
+}

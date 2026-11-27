@@ -1,0 +1,123 @@
+{
+ "cik": "0000320193",
+ "entityType": "operating",
+ "sic": "3571",
+ "sicDescription": "Electronic Computers",
+ "name": "Apple Inc.",
+ "tickers": [
+  "AAPL"
+ ],
+ "exchanges": [
+  "Nasdaq"
+ ],
+ "category": "Large accelerated filer",
+ "formerNames": [
+  {
+   "name": "APPLE INC",
+   "from": "2007-01-10T00:00:00.000Z",
+   "to": "2019-08-05T00:00:00.000Z"
+  },
+  {
+   "name": "APPLE COMPUTER INC",
+   "from": "1994-01-26T00:00:00.000Z",
+   "to": "2007-01-04T00:00:00.000Z"
+  },
+  {
+   "name": "APPLE COMPUTER INC/ FA",
+   "from": "1997-07-28T00:00:00.000Z",
+   "to": "1997-07-28T00:00:00.000Z"
+  }
+ ],
+ "filings": {
+  "recent": {
+   "accessionNumber": [
+    "0001140361-26-044952",
+    "0001140361-26-042798",
+    "0000320193-26-000026"
+   ],
+   "filingDate": [
+    "2026-11-19",
+    "2026-11-09",
+    "2026-11-03"
+   ],
+   "reportDate": [
+    "2026-11-17",
+    "2026-11-05",
+    "2026-09-26"
+   ],
+   "acceptanceDateTime": [
+    "2026-11-19T23:30:21.000Z",
+    "2026-11-09T21:30:40.000Z",
+    "2026-11-03T13:05:15.000Z"
+   ],
+   "act": [
+    "",
+    "34",
+    "34"
+   ],
+   "form": [
+    "4",
+    "8-K",
+    "10-K"
+   ],
+   "fileNumber": [
+    "",
+    "001-36743",
+    "001-36743"
+   ],
+   "filmNumber": [
+    "",
+    "261536464",
+    "261514222"
+   ],
+   "items": [
+    "",
+    "8.01,9.01",
+    ""
+   ],
+   "core_type": [
+    "4",
+    "XBRL",
+    "XBRL"
+   ],
+   "size": [
+    4822,
+    1029343,
+    10902198
+   ],
+   "isXBRL": [
+    0,
+    1,
+    1
+   ],
+   "isInlineXBRL": [
+    0,
+    1,
+    1
+   ],
+   "isXBRLNumeric": [
+    0,
+    0,
+    1
+   ],
+   "primaryDocument": [
+    "xslF345X06/form4.xml",
+    "ef20085077_8k.htm",
+    "aapl-20260926.htm"
+   ],
+   "primaryDocDescription": [
+    "FORM 4",
+    "",
+    "10-K"
+   ]
+  },
+  "files": [
+   {
+    "name": "CIK0000320193-submissions-001.json",
+    "filingCount": 1278,
+    "filingFrom": "1994-01-26",
+    "filingTo": "2015-10-05"
+   }
+  ]
+ }
+}

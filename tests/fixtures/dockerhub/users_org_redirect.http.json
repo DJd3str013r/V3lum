@@ -1,0 +1,23 @@
+{
+ "_meta": {
+  "module": "dockerhub",
+  "case": "org_redirect",
+  "source": "C0234 hub.docker.com",
+  "request": {
+   "method": "GET",
+   "url": "https://hub.docker.com/v2/users/docker/"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "LIVE",
+  "elapsed_s": 0.105
+ },
+ "status": 308,
+ "headers": {
+  "location": "/v2/orgs/docker",
+  "x-ratelimit-limit": "180",
+  "x-ratelimit-remaining": "180",
+  "x-ratelimit-reset": "1795676307",
+  "server": "cloudflare"
+ },
+ "body": ""
+}

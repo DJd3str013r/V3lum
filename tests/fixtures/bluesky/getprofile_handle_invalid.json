@@ -1,0 +1,19 @@
+{
+ "did": "did:plc:exampleexampleexample234",
+ "handle": "handle.invalid",
+ "displayName": "Example Account",
+ "description": "",
+ "createdAt": "2024-03-01T12:00:00.000Z",
+ "indexedAt": "2024-03-01T12:00:00.000Z",
+ "followersCount": 3,
+ "followsCount": 5,
+ "postsCount": 1,
+ "labels": [],
+ "verification": {
+  "verifiedStatus": "none",
+  "trustedVerifierStatus": "none"
+ },
+ "associated": {
+  "labeler": false
+ }
+}

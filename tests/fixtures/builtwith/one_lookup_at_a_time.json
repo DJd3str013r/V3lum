@@ -1,0 +1,9 @@
+{
+ "Errors": [
+  {
+   "Lookup": null,
+   "Message": "Only one lookup at a time for this endpoint.",
+   "Code": -7
+  }
+ ]
+}

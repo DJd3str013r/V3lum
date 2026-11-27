@@ -1,0 +1,17 @@
+{
+ "errors": [
+  {
+   "message": "You must be logged in to do this.",
+   "extensions": {
+    "code": "AUTH_REQUIRED",
+    "data": {
+     "http_status": 401,
+     "genre": "BUSINESS"
+    }
+   }
+  }
+ ],
+ "data": {
+  "stixCyberObservables": null
+ }
+}

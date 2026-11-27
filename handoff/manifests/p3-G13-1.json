@@ -1,0 +1,107 @@
+{
+  "batch": "p3-G13-1",
+  "modules": [
+    {
+      "name": "saas_tenant_discovery",
+      "file": "v3lum/modules/pentest_recon/saas_tenant_discovery.py",
+      "proposal": "P371",
+      "category": "pentest_recon",
+      "opsec": "passive",
+      "default_enabled": false,
+      "terms": "open",
+      "provider_tier": "trusted",
+      "keys": [],
+      "datasets": [],
+      "pivot_packs": [],
+      "correlation_rules": [
+        "p3g131_saas_tenant_corroborated"
+      ],
+      "new_vocabulary": [
+        "attribute saas_tenant_checks",
+        "attribute saas_tenants",
+        "attribute identity_provider_hosts",
+        "tag candidate_tenant",
+        "tag saas_tenant",
+        "relation saas_tenant"
+      ],
+      "live_check": "tests/live/test_p3_g13_1.py run with V3LUM_LIVE=1 on 2026-11-26: 3 passed. Vendors' own tenants: okta.okta.com exists (200, openid_configuration_issuer), ecosystem.atlassian.net exists (200, tenant_info_cloudId), support.zendesk.com exists (301 to /hc/en-us, hc_locale_redirect); random name thisorgdoesnotexist0000x: Okta absent (403 E0000006), Atlassian absent (edge 404 'Page Unavailable'), Zendesk absent (404 help-center 'Not Found'). 'support' was refused for Okta (vendor service label, never sent). No login/sign-up/reset/user endpoint was requested."
+    },
+    {
+      "name": "cdn_origin_hypothesis",
+      "file": "v3lum/correlations/p3_g13_1.py (rule cdn_origin_hypothesis) + v3lum/modules/pentest_recon/cdn_origin_hypothesis.py (offline opt-in module)",
+      "proposal": "P278",
+      "category": "pentest_recon",
+      "opsec": "passive",
+      "default_enabled": false,
+      "terms": "open",
+      "provider_tier": "n/a",
+      "keys": [],
+      "datasets": [],
+      "pivot_packs": [],
+      "correlation_rules": [
+        "cdn_origin_hypothesis"
+      ],
+      "new_vocabulary": [
+        "tag origin_candidate",
+        "tag abuse_aid",
+        "relation origin_candidate"
+      ],
+      "live_check": "not applicable: FC1 makes P278 a correlation rule over facts already in the graph (disclosure 'none', no host, no key, zero requests). tests/live/test_p3_g13_1.py asserts the opt-in module makes no request even with the network open (passed); the offline tests assert zero socket use with a socket spy and the P327 lint (code and module profiles) is clean."
+    }
+  ],
+  "proposals_not_done": [],
+  "core_requests": [
+    "correlate/engine: an optional Correlation.relation (here 'origin_candidate') rendered as a non-expanding (expand=False) edge in graph views and exports, never scheduled - P278 FC4 asks for 'relation origin_candidate ... expand=False'; today the hypothesis is a correlation over [domain, ip] tagged origin_candidate.",
+    "correlate: per-rule opt-in metadata (e.g. @rule(..., opt_in=True) honoured with --preset deep / --all-modules / -M <rule>); the rule cdn_origin_hypothesis reads rctx.options (preset, include_disabled, include) and the presence of a result of the offline module cdn_origin_hypothesis, which exists so that -M cdn_origin_hypothesis passes app.py's module-name check.",
+    "core ranges index (P034 cond 1 promotion to v3lum/core/ranges.py): one label(ip) -> {kind cdn|cloud|hosting, provider, label} API over the AR06 noise lists, the P169 warninglists and the P034 local copies; the rule combines graph node labels (cloud_ranges attributes, noise_kind), noise.noise_kinds and cloud_ranges.local_classification itself.",
+    "architect decision P278 FC2 vs P034 FC6 (rented IaaS compute): if IaaS addresses must stay candidates, register a setting (e.g. cdn_origin_hypothesis_include_iaas, bool, default False) in SETTINGS_META; the rule then passes exclude_kinds=('cdn',) (already implemented and unit-tested).",
+    "A7 scope schema (WP11 owner): optional 'organisation_names' so P371 FC1 can take company/keyword candidates from the scope file of an --authorized engagement (today only scope target domain labels are used).",
+    "P158 virustotal (and other resolution producers): store dated resolutions {ip, first_seen, last_seen} (e.g. in dns_history_a) so P278 can place them before/during the CDN era; undated historical_a_record edges score as historical_a_undated (0.20)."
+  ],
+  "files": [
+    "v3lum/modules/pentest_recon/saas_tenant_discovery.py",
+    "v3lum/modules/pentest_recon/cdn_origin_hypothesis.py",
+    "v3lum/correlations/p3_g13_1.py",
+    "v3lum/data/providers/okta.json",
+    "v3lum/data/providers/atlassian.json",
+    "v3lum/data/providers/zendesk.json",
+    "v3lum/data/vocab/p3-G13-1.json",
+    "v3lum/data/notices/cloakquest3r.json",
+    "tests/modules/test_saas_tenant_discovery.py",
+    "tests/modules/test_cdn_origin_hypothesis.py",
+    "tests/live/test_p3_g13_1.py",
+    "docs/backlog/p3-G13-1.md",
+    "tests/fixtures/saas_tenant_discovery/atlassian_exists.json",
+    "tests/fixtures/saas_tenant_discovery/atlassian_malformed_200_derived.json",
+    "tests/fixtures/saas_tenant_discovery/atlassian_not_found_404.json",
+    "tests/fixtures/saas_tenant_discovery/atlassian_unavailable_503_derived.json",
+    "tests/fixtures/saas_tenant_discovery/okta_error_in_200_html_derived.json",
+    "tests/fixtures/saas_tenant_discovery/okta_exists.json",
+    "tests/fixtures/saas_tenant_discovery/okta_generic_403_html_derived.json",
+    "tests/fixtures/saas_tenant_discovery/okta_issuer_mismatch_derived.json",
+    "tests/fixtures/saas_tenant_discovery/okta_not_found_e0000006.json",
+    "tests/fixtures/saas_tenant_discovery/okta_rate_limited_429_derived.json",
+    "tests/fixtures/saas_tenant_discovery/zendesk_challenge_403.json",
+    "tests/fixtures/saas_tenant_discovery/zendesk_exists_hc_301_locale.json",
+    "tests/fixtures/saas_tenant_discovery/zendesk_exists_hc_locale_200.json",
+    "tests/fixtures/saas_tenant_discovery/zendesk_help_center_closed_301_research.json",
+    "tests/fixtures/saas_tenant_discovery/zendesk_login_redirect_derived.json",
+    "tests/fixtures/saas_tenant_discovery/zendesk_not_found_hc_404.json",
+    "tests/fixtures/saas_tenant_discovery/zendesk_rate_limited_429_derived.json",
+    "tests/fixtures/rules/cdn_origin_hypothesis/negative_cdn_and_cloud_only.json",
+    "tests/fixtures/rules/cdn_origin_hypothesis/negative_malformed_and_non_routable.json",
+    "tests/fixtures/rules/cdn_origin_hypothesis/negative_not_cdn_fronted.json",
+    "tests/fixtures/rules/cdn_origin_hypothesis/negative_not_opted_in.json",
+    "tests/fixtures/rules/cdn_origin_hypothesis/positive_hostile_abuse_aid.json",
+    "tests/fixtures/rules/cdn_origin_hypothesis/positive_medium_pre_cdn_history.json",
+    "tests/fixtures/rules/cdn_origin_hypothesis/positive_quota_no_history_san_only.json",
+    "tests/fixtures/rules/cdn_origin_hypothesis/positive_strong_cert_history_favicon.json",
+    "tests/fixtures/rules/cdn_origin_hypothesis/positive_strong_own_asset_is_low.json",
+    "tests/fixtures/rules/cdn_origin_hypothesis/positive_weak_capped_signals.json",
+    "tests/fixtures/rules/p3g131_saas_tenant_corroborated/negative_absent_rows_and_foreign_source.json",
+    "tests/fixtures/rules/p3g131_saas_tenant_corroborated/negative_name_match_only.json",
+    "tests/fixtures/rules/p3g131_saas_tenant_corroborated/positive_atlassian_dns_verification.json",
+    "tests/fixtures/rules/p3g131_saas_tenant_corroborated/positive_okta_tenant_is_the_federated_idp.json"
+  ],
+  "notes": "P371: one GET per vendor per candidate on the fixed FC2 paths (Okta /.well-known/openid-configuration, Atlassian /_edge/tenant_info, Zendesk /hc, redirects never followed), candidates only from the org profile (seed when it is an own domain/brand/org name, then profile domain labels and brands; at most 5, no permutations) or from the scope file with --authorized; anything else is SKIPPED own_asset with no request. Raw-body decisions (never get_json); the core classifier's keyless-403 label is read through for Okta's E0000006 absence marker; challenges and rate limits stop the vendor for the run (rule 1), never retried; only exists/absent answers are cached (cache_if). FC4 Zendesk deviation: the literal markers (200 / 301 help-center-closed) were seen by the research on '/', while the FC2 path /hc answers 301 to /hc/<locale> (exists) and 404 help-center 'Not Found' (absent) - both marker sets are read, setting saas_tenant_discovery_zendesk_strict_markers keeps only the literal ones; council/architect confirmation requested in docs/backlog/p3-G13-1.md. FC5: tenants are 'candidate tenant' (pivots expand=False) until corroborated - by the org profile in the module, and after the scan by the rule p3g131_saas_tenant_corroborated (P342 saas_vendors/TXT prefixes, P011 identity-provider host). Three provider fragments (okta, atlassian, zendesk; wildcard hosts, tier trusted, terms open, politeness budget 0.5 r/s and 60/day per vendor, retries 0). P278: correlation rule over P006/P015 history, certificate SHA-256/SAN, favicon mmh3 and title facts; FC2 read literally (CDN and cloud ranges excluded; excluded addresses listed in the evidence); FC3 weights cert_fingerprint 0.60, cert_san 0.50, pre-CDN A 0.35 decaying (half-life 3 years, floor 0.05), during-CDN A 0.25, undated A 0.20, favicon/title 0.08, noisy-OR, favicon/title-only and shared IPs (>50 domains) capped at 0.15; strength strong >= 0.50 (PROBABLE), else POSSIBLE; LOW only for a strong hypothesis on an own asset (possible WAF bypass); hostile sites get an abuse aid (hoster/ASN, abuse contact, verified Cloudflare abuse form only). No connection to candidates: the ACTIVE Host-header verification is backlog (FC5). CloakQuest3r (MIT, commit 2c6faf6) credited in file headers and v3lum/data/notices/cloakquest3r.json; no Cloudmare (AGPL) code. No LIGHT/ACTIVE class was added. ATT&CK: only ids already in the bundled index are used (T1590) - no attack fragment shipped."
+}

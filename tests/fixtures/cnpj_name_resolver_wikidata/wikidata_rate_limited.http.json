@@ -1,0 +1,19 @@
+{
+ "request": "GET https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q610817&props=labels%7Caliases%7Cclaims&languages=pt%7Cen&format=json",
+ "response": {
+  "status": 429,
+  "headers": {
+   "content-type": "text/plain",
+   "retry-after": "31",
+   "server": "envoy",
+   "vary": "User-Agent"
+  },
+  "body_kind": "text",
+  "body": "You are making too many requests to the API.\nPlease follow the best practices at https://www.mediawiki.org/wiki/Wikimedia_APIs/Rate_limits.\nIf you are unsure how to get the access you need, contact bot-traffic@wikimedia.org.\n\nrequest-id: 947b10b8-1ae4-4533-af8a-2378ec5c1676"
+ },
+ "transport_error": null,
+ "elapsed_s": 0.08,
+ "observed_at": "2026-11-26T07:16:29Z",
+ "origin": "live",
+ "note": "generic UA without contact details -> immediate 429 (also research 2026-11-25)"
+}

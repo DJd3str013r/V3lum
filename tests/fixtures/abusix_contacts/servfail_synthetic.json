@@ -1,0 +1,15 @@
+{
+ "_synthetic": "DoH SERVFAIL shape (RFC 8427-style JSON as served by dns.google); not observed live.",
+ "Status": 2,
+ "TC": false,
+ "RD": true,
+ "RA": true,
+ "AD": false,
+ "CD": false,
+ "Question": [
+  {
+   "name": "10.2.0.192.abuse-contacts.abusix.zone.",
+   "type": 16
+  }
+ ]
+}

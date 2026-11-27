@@ -1,0 +1,25 @@
+{
+ "schema": "v3lum.rfb_code_table/1",
+ "table": "rfb_layout_codes",
+ "source": "https://www.gov.br/receitafederal/dados/cnpj-metadados.pdf",
+ "version": "RFB 'Dados Abertos do CNPJ - Metadados' (cnpj-metadados.pdf, 6 pages, sha256 0a52d6bdfb61a07425e352a0e692932306a5ec9ecad682f5f9e28059e1a5fce0): Empresas CODIGO DO PORTE DA EMPRESA; Estabelecimentos CODIGO DA SITUACAO CADASTRAL and CODIGO DO IDENTIFICADOR MATRIZ/FILIAL",
+ "retrieved": "2026-11-26",
+ "attribution": "Receita Federal do Brasil - Dados Abertos do CNPJ, layout (open government data)",
+ "porte": {
+  "00": "Não informado",
+  "01": "Micro empresa",
+  "03": "Empresa de pequeno porte",
+  "05": "Demais"
+ },
+ "situacao_cadastral": {
+  "01": "Nula",
+  "02": "Ativa",
+  "03": "Suspensa",
+  "04": "Inapta",
+  "08": "Baixada"
+ },
+ "matriz_filial": {
+  "1": "Matriz",
+  "2": "Filial"
+ }
+}

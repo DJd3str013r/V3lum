@@ -1,0 +1,45 @@
+{
+ "origin": "live",
+ "note": "dns.quad9.net RFC 8484 GET A example.com (no EDNS sent, so no ECS)",
+ "request": {
+  "url": "https://dns.quad9.net/dns-query?dns=AAABAAABAAAAAAAAB2V4YW1wbGUDY29tAAABAAE",
+  "qname": "example.com.",
+  "qtype": "A"
+ },
+ "http_status": 200,
+ "content_type": "application/dns-message",
+ "wire_b64": "AACBgAABAAIAAAAAB2V4YW1wbGUDY29tAAABAAHADAABAAEAAAEMAARoFBeawAwAAQABAAABDAAErEKT8w==",
+ "decoded": {
+  "id": 0,
+  "rcode": "NOERROR",
+  "flags": [
+   "QR",
+   "RD",
+   "RA"
+  ],
+  "question": [
+   {
+    "name": "example.com.",
+    "type": "A"
+   }
+  ],
+  "answer": [
+   {
+    "name": "example.com.",
+    "type": "A",
+    "ttl": 268,
+    "data": "104.20.23.154"
+   },
+   {
+    "name": "example.com.",
+    "type": "A",
+    "ttl": 268,
+    "data": "172.66.147.243"
+   }
+  ],
+  "authority": [],
+  "additional": [],
+  "edns": false,
+  "ede": []
+ }
+}

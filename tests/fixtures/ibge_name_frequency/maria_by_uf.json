@@ -1,0 +1,272 @@
+[
+ {
+  "localidade": "22",
+  "res": [
+   {
+    "populacao": 3118360,
+    "frequencia": 363139,
+    "proporcao": 11645.19
+   }
+  ]
+ },
+ {
+  "localidade": "23",
+  "res": [
+   {
+    "populacao": 8452381,
+    "frequencia": 967042,
+    "proporcao": 11441.06
+   }
+  ]
+ },
+ {
+  "localidade": "25",
+  "res": [
+   {
+    "populacao": 3766528,
+    "frequencia": 423026,
+    "proporcao": 11231.19
+   }
+  ]
+ },
+ {
+  "localidade": "24",
+  "res": [
+   {
+    "populacao": 3168027,
+    "frequencia": 341940,
+    "proporcao": 10793.47
+   }
+  ]
+ },
+ {
+  "localidade": "27",
+  "res": [
+   {
+    "populacao": 3120494,
+    "frequencia": 321330,
+    "proporcao": 10297.41
+   }
+  ]
+ },
+ {
+  "localidade": "26",
+  "res": [
+   {
+    "populacao": 8796448,
+    "frequencia": 838534,
+    "proporcao": 9532.64
+   }
+  ]
+ },
+ {
+  "localidade": "28",
+  "res": [
+   {
+    "populacao": 2068017,
+    "frequencia": 188619,
+    "proporcao": 9120.77
+   }
+  ]
+ },
+ {
+  "localidade": "21",
+  "res": [
+   {
+    "populacao": 6574789,
+    "frequencia": 574689,
+    "proporcao": 8740.8
+   }
+  ]
+ },
+ {
+  "localidade": "12",
+  "res": [
+   {
+    "populacao": 733559,
+    "frequencia": 63172,
+    "proporcao": 8611.71
+   }
+  ]
+ },
+ {
+  "localidade": "31",
+  "res": [
+   {
+    "populacao": 19597330,
+    "frequencia": 1307650,
+    "proporcao": 6672.59
+   }
+  ]
+ },
+ {
+  "localidade": "17",
+  "res": [
+   {
+    "populacao": 1383445,
+    "frequencia": 87040,
+    "proporcao": 6291.54
+   }
+  ]
+ },
+ {
+  "localidade": "15",
+  "res": [
+   {
+    "populacao": 7581051,
+    "frequencia": 472891,
+    "proporcao": 6237.8
+   }
+  ]
+ },
+ {
+  "localidade": "53",
+  "res": [
+   {
+    "populacao": 2570160,
+    "frequencia": 146770,
+    "proporcao": 5710.54
+   }
+  ]
+ },
+ {
+  "localidade": "29",
+  "res": [
+   {
+    "populacao": 14016906,
+    "frequencia": 766238,
+    "proporcao": 5466.53
+   }
+  ]
+ },
+ {
+  "localidade": "16",
+  "res": [
+   {
+    "populacao": 669526,
+    "frequencia": 35298,
+    "proporcao": 5272.09
+   }
+  ]
+ },
+ {
+  "localidade": "52",
+  "res": [
+   {
+    "populacao": 6003788,
+    "frequencia": 314352,
+    "proporcao": 5235.89
+   }
+  ]
+ },
+ {
+  "localidade": "35",
+  "res": [
+   {
+    "populacao": 41262199,
+    "frequencia": 2143232,
+    "proporcao": 5194.18
+   }
+  ]
+ },
+ {
+  "localidade": "13",
+  "res": [
+   {
+    "populacao": 3483985,
+    "frequencia": 173034,
+    "proporcao": 4966.55
+   }
+  ]
+ },
+ {
+  "localidade": "32",
+  "res": [
+   {
+    "populacao": 3514952,
+    "frequencia": 169081,
+    "proporcao": 4810.34
+   }
+  ]
+ },
+ {
+  "localidade": "33",
+  "res": [
+   {
+    "populacao": 15989929,
+    "frequencia": 752021,
+    "proporcao": 4703.09
+   }
+  ]
+ },
+ {
+  "localidade": "11",
+  "res": [
+   {
+    "populacao": 1562409,
+    "frequencia": 72579,
+    "proporcao": 4645.33
+   }
+  ]
+ },
+ {
+  "localidade": "14",
+  "res": [
+   {
+    "populacao": 450479,
+    "frequencia": 20848,
+    "proporcao": 4627.96
+   }
+  ]
+ },
+ {
+  "localidade": "51",
+  "res": [
+   {
+    "populacao": 3035122,
+    "frequencia": 125984,
+    "proporcao": 4150.87
+   }
+  ]
+ },
+ {
+  "localidade": "41",
+  "res": [
+   {
+    "populacao": 10444526,
+    "frequencia": 432175,
+    "proporcao": 4137.81
+   }
+  ]
+ },
+ {
+  "localidade": "50",
+  "res": [
+   {
+    "populacao": 2449024,
+    "frequencia": 100649,
+    "proporcao": 4109.76
+   }
+  ]
+ },
+ {
+  "localidade": "42",
+  "res": [
+   {
+    "populacao": 6248436,
+    "frequencia": 210558,
+    "proporcao": 3369.77
+   }
+  ]
+ },
+ {
+  "localidade": "43",
+  "res": [
+   {
+    "populacao": 10693929,
+    "frequencia": 322238,
+    "proporcao": 3013.28
+   }
+  ]
+ }
+]

@@ -1,0 +1,6 @@
+{
+ "requested_url": "rb.gy/example",
+ "success": false,
+ "error": "Usage limit exceeded. Try again later.",
+ "remaining_calls": 0
+}

@@ -1,0 +1,25 @@
+{
+ "result": {
+  "url": "www.ibm.com",
+  "cats": {
+   "Software / Hardware": true,
+   "General Business": true
+  },
+  "score": 1,
+  "categoryDescriptions": {
+   "Software / Hardware": "This category includes Web sites from the area of software, computer hardware and other electronic components.",
+   "General Business": "This category includes Web sites of industry, business, economy and supply of services."
+  }
+ },
+ "associated": [
+  {
+   "url": "ibm.com",
+   "cats": {
+    "Software / Hardware": true,
+    "General Business": true
+   },
+   "score": 1
+  }
+ ],
+ "tags": []
+}

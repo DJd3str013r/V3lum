@@ -1,0 +1,7 @@
+{
+ "request": "GET https://crt.sh/?q=%25.example.com&output=json&exclude=expired",
+ "response": null,
+ "transport_error": "timeout: curl 28 after 20.0 s, 0 bytes",
+ "elapsed_s": 20.002268,
+ "note": "first identity query for example.com from the datacenter egress"
+}

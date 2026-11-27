@@ -1,0 +1,15 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "aftership_email_verifier",
+  "source_url": "https://github.com/AfterShip/email-verifier",
+  "version": "metadata_free.go (sha256 0552ceb91a0b38a17debe84eff506844a49edf427915837463423614c0938c96, 4,535 domains) and metadata_role.go (sha256 01323c0e6cfbb7b8cb7dbcf4f4ff4e7679059b177886b57ae51dca1314c64d64, 892 local parts), branch master as downloaded 2026-11-26",
+  "sha256": "",
+  "licence": "MIT",
+  "attribution": "Free e-mail provider and role-account lists from AfterShip email-verifier (https://github.com/AfterShip/email-verifier). MIT License, Copyright (c) 2020 AfterShip. Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.",
+  "bundled": true,
+  "files": [
+    "v3lum/data/email_hygiene/aftership_metadata_free.go",
+    "v3lum/data/email_hygiene/aftership_metadata_role.go",
+    "v3lum/modules/email/email_hygiene.py"
+  ]
+}

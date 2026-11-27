@@ -1,0 +1,8 @@
+{
+ "redirects": "example.com",
+ "total": 2,
+ "domains": [
+  "example.net",
+  "www.example.org"
+ ]
+}

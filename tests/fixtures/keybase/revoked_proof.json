@@ -1,0 +1,73 @@
+{
+ "status": {
+  "code": 0,
+  "name": "OK"
+ },
+ "them": [
+  {
+   "id": "0d3a4f5e6b7c8d9e0f1a2b3c4d5e6f19",
+   "basics": {
+    "username": "exampleorg",
+    "ctime": 1420113600,
+    "mtime": 1565618750,
+    "id_version": 12,
+    "last_id_change": 1561982400,
+    "username_cased": "ExampleOrg",
+    "status": 0,
+    "eldest_seqno": 1
+   },
+   "public_keys": {
+    "all_bundles": [],
+    "subkeys": [],
+    "sibkeys": [],
+    "families": {},
+    "eldest_kid": null,
+    "eldest_key_fingerprint": null,
+    "pgp_public_keys": []
+   },
+   "proofs_summary": {
+    "by_presentation_group": {},
+    "by_sig_id": {},
+    "all": [
+     {
+      "proof_type": "github",
+      "nametag": "exampleorg",
+      "state": 1,
+      "service_url": "https://github.com/exampleorg",
+      "proof_url": "https://gist.github.com/exampleorg/0123456789abcdef0123456789abcdef",
+      "sig_id": "a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a10f",
+      "proof_id": "a1a1a1a1a1a1a1a1a1a1a1",
+      "human_url": "https://gist.github.com/exampleorg/0123456789abcdef0123456789abcdef",
+      "presentation_group": "github",
+      "presentation_tag": "github"
+     },
+     {
+      "proof_type": "reddit",
+      "nametag": "exampleorg",
+      "state": 7,
+      "service_url": "https://reddit.com/user/exampleorg",
+      "proof_url": "https://www.reddit.com/r/KeybaseProofs/comments/abcdef/",
+      "sig_id": "f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f60f",
+      "proof_id": "f6f6f6f6f6f6f6f6f6f6f6",
+      "human_url": "https://www.reddit.com/r/KeybaseProofs/comments/abcdef/",
+      "presentation_group": "reddit",
+      "presentation_tag": "reddit"
+     },
+     {
+      "proof_type": "generic_web_site",
+      "nametag": "old.example.com",
+      "state": 3,
+      "service_url": "https://old.example.com",
+      "proof_url": "https://old.example.com/keybase.txt",
+      "sig_id": "a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a70f",
+      "proof_id": "a7a7a7a7a7a7a7a7a7a7a7",
+      "human_url": "https://old.example.com/keybase.txt",
+      "presentation_group": "old.example.com",
+      "presentation_tag": "generic_web_site"
+     }
+    ],
+    "has_web": true
+   }
+  }
+ ]
+}

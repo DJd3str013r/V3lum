@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "escavador",
+  "name": "Escavador (search pages)",
+  "operator": "Escavador (Escavador Ltda)",
+  "hosts": [
+    "www.escavador.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Brazilian legal-publication search company with public terms and a multi-year track record (A8 community); P250 cond 5: 'trusted - Portal da Transparencia (CGU), Receita Federal, Sintegra/CCC, consumidor.gov.br, REDESIM/juntas comerciais, Jusbrasil, Reclame Aqui; community - Escavador, Casa dos Dados'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Indexed official gazettes and court publications: leads only; the site also indexes people, so only company values are sent (rule 4)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "search_pages": {
+      "title": "Escavador search /busca?q= by CNPJ or company name (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.escavador.com/termos-de-uso",
+        "quote": "The pack is offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "escavador",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P250 cond 1). CNPJ and company values only, never a CPF or person name (rule 4, P250 cond 9). Cloudflare managed challenge for curl on 2026-11-26: unverified, antibot. Used by pivots_brazil (pack brazil.json)."
+    }
+  },
+  "notes": "Manual pivot links only (batch p2-G14-2): V3LUM never fetches them (P311)."
+}

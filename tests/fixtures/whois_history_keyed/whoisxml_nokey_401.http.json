@@ -1,0 +1,15 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://www.whoisxmlapi.com/whoisserver/WhoisService?domainName=example.com&outputFormat=JSON"
+ },
+ "response": {
+  "status": 401,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": "{\"ErrorMessage\":{\"errorCode\":\"AUTHENTICATE_04\",\"msg\":\"API key required (Authorization: Bearer key or apiKey field)\"}}"
+ },
+ "transport_error": null,
+ "elapsed_s": null
+}

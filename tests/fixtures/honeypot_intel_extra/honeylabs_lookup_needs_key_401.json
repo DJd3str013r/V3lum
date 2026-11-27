@@ -1,0 +1,4 @@
+{
+ "error": "Anonymous JSON lookups need a free API key.",
+ "get_key": "https://honeylabs.net/dashboard"
+}

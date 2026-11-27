@@ -1,0 +1,56 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "lichess",
+  "name": "Lichess user API",
+  "operator": "Lichess (association lichess.org)",
+  "hosts": [
+    "lichess.org"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Free/libre community project run by a non-profit association with public API documentation and terms and a long public track record (A8 community); P116 FC9 records Lichess as community.",
+  "tier_reviewer": "council-1 (A8, P116 FC9)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "The platform's own answer is authoritative for the existence and public fields of its accounts; profile fields (names, links, bios) are self-declared by the owner."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 1,
+    "retries": 0,
+    "max_bytes": 262144
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "user_api": {
+      "title": "Lichess user API (lichess.org/api/user/{username})",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://lichess.org/api",
+        "quote": "P116 FC4 (binding council text): documented public APIs (Chess.com PubAPI, Lichess, Mojang, Steam Community XML, Medium RSS, Pinterest widget, Stack Exchange API, Twitch Helix with the team's app) are 'open' once recorded; Snapchat __NEXT_DATA__ and the Disqus profile page are 'unknown' and stay disabled in every profile until legal records them (A1).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "lichess",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0269: 404 {'error': 'Not found'} = ABSENT. One request at a time; after a 429 no Lichess request for 60 s (documented; P116 FC5): retries 0 so the core never retries a 429 in-run, the module keeps a 60 s cooldown in its state. profile.links (free text) are linked accounts (expand=False)."
+    }
+  },
+  "notes": "Batch p3-G05-2 (P116 lichess_user)."
+}

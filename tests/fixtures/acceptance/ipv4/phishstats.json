@@ -1,0 +1,43 @@
+{
+ "schema": "v3lum.acceptance_routes/1",
+ "module": "phishstats",
+ "routes": [
+  {
+   "method": "GET",
+   "url": "https://api.phishstats.info/api/phishing?_where=%28ip%2Ceq%2C8.8.8.8%29&_sort=-id&_size=100",
+   "status": 200,
+   "json": [
+    {
+     "id": 11671328,
+     "url": "https://adobeflashplayer.ir/xdxdxd/verification.html",
+     "redirect_url": null,
+     "ip": "8.8.8.8",
+     "countrycode": "US",
+     "asn": "AS3356",
+     "isp": "LEVEL3",
+     "title": null,
+     "date": "2025-12-15T06:08:00.000Z",
+     "date_update": "2026-05-05T05:00:35.000Z",
+     "score": 7.6,
+     "host": "adobeflashplayer.ir",
+     "domain": "adobeflashplayer",
+     "tld": "ir",
+     "domain_registered_n_days_ago": null,
+     "n_times_seen_ip": 66,
+     "n_times_seen_host": 0,
+     "n_times_seen_domain": 0,
+     "google_safebrowsing": null,
+     "virus_total": null,
+     "tags": null
+    }
+   ],
+   "headers": {
+    "content-type": "application/json; charset=utf-8",
+    "ratelimit-limit": "20",
+    "ratelimit-remaining": "19",
+    "ratelimit-reset": "40"
+   },
+   "latency_ms": 470
+  }
+ ]
+}

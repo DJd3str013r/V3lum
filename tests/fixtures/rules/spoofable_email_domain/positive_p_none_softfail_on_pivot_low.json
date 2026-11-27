@@ -1,0 +1,108 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "$comment": "The same p=none + ~all posture on a pivot domain (depth 1): LOW",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "nodes": [
+    {
+      "key": "domain:investigated.example",
+      "depth": 0,
+      "seed": true
+    },
+    {
+      "key": "domain:acme-mail.example",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "spf_status": [
+          {
+            "value": "ok",
+            "source": "email_security_posture"
+          }
+        ],
+        "spf": [
+          {
+            "value": "v=spf1 include:_spf.mailhost.example ~all",
+            "source": "email_security_posture"
+          }
+        ],
+        "spf_lookups": [
+          {
+            "value": 3,
+            "source": "email_security_posture"
+          }
+        ],
+        "spf_void_lookups": [
+          {
+            "value": 0,
+            "source": "email_security_posture"
+          }
+        ],
+        "dmarc": [
+          {
+            "value": "v=DMARC1; p=none; rua=mailto:dmarc@acme-mail.example",
+            "source": "email_security_posture"
+          }
+        ],
+        "dmarc_policy": [
+          {
+            "value": "none",
+            "source": "email_security_posture"
+          }
+        ],
+        "dmarc_pct": [
+          {
+            "value": 100,
+            "source": "email_security_posture"
+          }
+        ],
+        "dmarc_sp": [
+          {
+            "value": "none",
+            "source": "email_security_posture"
+          }
+        ],
+        "mx": [
+          {
+            "value": [
+              "mx1.acme-mail.example"
+            ],
+            "source": "email_security_posture"
+          }
+        ],
+        "email_posture": [
+          {
+            "value": {
+              "spf": "valid (~all)",
+              "spf_lookups": 3,
+              "spf_void_lookups": 0,
+              "dmarc": "p=none",
+              "mx": "mx1.acme-mail.example"
+            },
+            "source": "email_security_posture"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "src": "domain:investigated.example",
+      "dst": "domain:acme-mail.example",
+      "relation": "spf_include",
+      "module": "email_security_posture",
+      "confidence": 0.9
+    }
+  ],
+  "expect": {
+    "spoofable_email_domain": {
+      "min": 1,
+      "max": 1,
+      "severity": "low"
+    }
+  }
+}

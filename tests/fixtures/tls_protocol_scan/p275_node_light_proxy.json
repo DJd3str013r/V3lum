@@ -1,0 +1,10 @@
+{
+ "note": "P275 checked interception through proxy_light only: not the ACTIVE route",
+ "tls_handshake": {
+  "host": "www.example.com",
+  "port": 443,
+  "verified": true,
+  "egress_profile": "light",
+  "interception_check": "done"
+ }
+}

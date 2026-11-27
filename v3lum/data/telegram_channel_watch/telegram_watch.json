@@ -1,0 +1,6 @@
+{
+  "schema": "v3lum.telegram_watch/1",
+  "version": 1,
+  "notes": "Team-curated public Telegram channels watched by telegram_channel_watch (P357 cond 2). Public channel handles only (never invite links, private posts or people). Every entry needs: handle, justification (why this channel matters to the organisation), owner (team), review_date (YYYY-MM-DD, not in the past) and reviewed_by {cti_lead: date, legal: date}; entries missing any field, past their review date or not public are ignored and listed in the cycle bookkeeping. Ships empty: the CTI lead and legal add reviewed entries (or point setting telegram_channel_watch_list_path at a team-maintained copy).",
+  "channels": []
+}

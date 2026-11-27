@@ -1,0 +1,22 @@
+{
+ "request": "GET https://receitaws.com.br/v1/cnpj/00000000000192",
+ "response": {
+  "status": 400,
+  "headers": {
+   "content-type": "application/json; charset=utf-8",
+   "content-length": "54",
+   "etag": "W/\"36-/9KltxYgIpcj3pPT95pgjQ\"",
+   "cf-cache-status": "DYNAMIC",
+   "server": "cloudflare"
+  },
+  "body": {
+   "status": "ERROR",
+   "message": "CNPJ inválido"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": 0.526705,
+ "observed_at": "2026-11-26T05:20:49+00:00",
+ "origin": "live",
+ "note": ""
+}

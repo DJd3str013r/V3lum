@@ -1,0 +1,233 @@
+{
+ "batch": "p2-G10-1",
+ "modules": [
+  {
+   "name": "gleif",
+   "file": "v3lum/modules/company_org/gleif.py",
+   "proposal": "P220",
+   "category": "company_org",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "open",
+   "provider_tier": "trusted",
+   "keys": [],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": {
+    "attributes": [
+     "lei_summary",
+     "lei_record",
+     "lei_parents",
+     "lei_children",
+     "lei_candidates"
+    ],
+    "tags": [],
+    "relations": [
+     "lei_candidate"
+    ],
+    "timeline": []
+   },
+   "live_check": "2026-11-26 V3LUM_LIVE=1 tests/live/test_p2_g10_1.py: cnpj:00000000000191 -> OK in 4 requests (formatted registeredAs filter, direct/ultimate parent reporting exceptions NON_CONSOLIDATING, first page of 3 direct children); 'LEI QE0Q0253K88YAGNPE356 | BANCO DO BRASIL SA | ISSUED | updated 2026-08-07 | direct parent: none reported (NON_CONSOLIDATING) | ultimate parent: none reported (NON_CONSOLIDATING)'."
+  },
+  {
+   "name": "cep_lookup",
+   "file": "v3lum/modules/brazil_public_data/cep_lookup.py",
+   "proposal": "P234",
+   "category": "brazil_public_data",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "open",
+   "provider_tier": "community",
+   "keys": [],
+   "datasets": [
+    "cep_lookup.ibge_municipios"
+   ],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": {
+    "attributes": [
+     "cep_record",
+     "ibge_code",
+     "cep_ddd",
+     "uf_mismatch",
+     "cep_reverse_matches"
+    ],
+    "tags": [],
+    "relations": [],
+    "timeline": []
+   },
+   "live_check": "2026-11-26 V3LUM_LIVE=1: cep:01001000 -> OK from BrasilAPI v2 (first success, chain stopped; city São Paulo, UF SP, IBGE 3550308, CEP-centroid coordinates pivot expand=False); cep:99999999 -> BrasilAPI bogus 200 (Sarandi-PR for an RS CEP) discarded as inconsistent, ViaCEP erro marker -> EMPTY; typed address 'Praça da Sé, São Paulo - SP' -> ViaCEP reverse search OK (01001-000 listed)."
+  },
+  {
+   "name": "cnae_tables",
+   "file": "v3lum/modules/brazil_public_data/cnae_tables.py",
+   "proposal": "P235",
+   "category": "brazil_public_data",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "open",
+   "provider_tier": "trusted",
+   "keys": [],
+   "datasets": [
+    "cnae"
+   ],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": {
+    "attributes": [
+     "cnae_detail",
+     "cnae_matches",
+     "sector_tags",
+     "cnae_lgpd_protected"
+    ],
+    "tags": [],
+    "relations": [],
+    "timeline": []
+   },
+   "live_check": "2026-11-26 V3LUM_LIVE=1: `data update cnae` (DataStore.update) downloaded the IBGE CNAE tree (3,648,251 bytes), validated >= 1300 subclasses and installed it; load_tables(ctx.data) used the refreshed tree (6422-1/00 'BANCOS MÚLTIPLOS, COM CARTEIRA COMERCIAL'). The module itself makes no request (disclosure none)."
+  },
+  {
+   "name": "portal_transparencia_api",
+   "file": "v3lum/modules/brazil_public_data/portal_transparencia_api.py",
+   "proposal": "P237",
+   "category": "brazil_public_data",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "key-terms",
+   "provider_tier": "trusted",
+   "keys": [
+    "transparencia"
+   ],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [
+    "g10_sanction_dedup (existing, batch p1-G10-2: P237 findings carry its dedup_key)"
+   ],
+   "new_vocabulary": {
+    "attributes": [
+     "transparencia_summary",
+     "federal_contracts",
+     "federal_agreements",
+     "federal_payments",
+     "cgu_api_sanctions"
+    ],
+    "tags": [],
+    "relations": [],
+    "timeline": []
+   },
+   "live_check": "keyed source, no institutional team key in this environment: V3LUM_LIVE=1 asserts NEEDS_KEY with zero requests (passed 2026-11-26). Offline success fixtures are synthetic from the OpenAPI document; the real keyless 401 (ISO-8859-1) is the only real capture (P237 cond 9 pending, backlog)."
+  }
+ ],
+ "proposals_not_done": [
+  {
+   "id": "P237 (partial) cond 9",
+   "reason": "Merge-gate success fixtures captured with the team's institutional key: no key exists in this environment, so the module ships with OpenAPI-derived synthetic success fixtures plus the real keyless 401; backlog p2-G10-1 records the capture list (pessoa-juridica, ceis, cnep, cepim, acordos-leniencia, contratos/cpf-cnpj, convenios, despesas)."
+  },
+  {
+   "id": "P237 (partial) cond 4 - servidores by name",
+   "reason": "Only PEP by name is implemented for an analyst-typed due-diligence subject with a recorded purpose; /servidores returns full civil-servant records whose minimisation could not be verified without a key (backlog)."
+  },
+  {
+   "id": "P234 (partial) cond 4 - OpenCEP",
+   "reason": "Provider opencep registered with tier unknown (A8): it receives no value until the registry reviewer records tier community; parser, marker, consistency guard and chain slot are coded and tested (one-line enablement, backlog)."
+  },
+  {
+   "id": "P234 (partial) cond 7 - company-address reverse search",
+   "reason": "Reverse search runs for analyst-typed addresses only: the CNPJ record's address does not reach cep_lookup (engine hand-off needed, backlog)."
+  },
+  {
+   "id": "P220 (partial) cond 1 - P361 migration",
+   "reason": "The single shared GLEIF client is v3lum/modules/company_org/gleif_client.py; cnpj_name_resolver (batch p2-G10-3) still has its own fulltext URL/parser and is not this batch's file (backlog: switch it to gleif_client)."
+  }
+ ],
+ "core_requests": [
+  "P237 cond 2: coverage/summary folds the NEEDS_KEY rows of one module into a single per-scan hint line (e.g. from Module.notice); today requires_keys yields NEEDS_KEY per CNPJ entity.",
+  "AR01: add 'chave-api-dados' (Portal da Transparencia key header) to v3lum.core.redact.CREDENTIAL_HEADERS; it is already masked and stripped on redirects only through the registered-secret check (has_secret).",
+  "P235 cond 1: a shared v3lum/data/br/ namespace if the core wants the council's paths; the bundled tables live in v3lum/data/cnae_tables/ (batch-owned) and are read through DataStore.bundled_json.",
+  "P234 cond 7: hand a module the attributes of its parent entity (or let cnpj_lookup pivot the company address with a 'company_record' origin) so cep_lookup can run the ViaCEP reverse search for company addresses from CNPJ records.",
+  "P234 cond 9: per-source TTL caps (BrasilAPI's 72 h profile cap also limits CEP answers that the council allows to cache 30 days), or the brasilapi.json owner raises the CEP TTL.",
+  "Integration (not core): cnpj_lookup (p1-G10-2) should call cnae_tables.cnpj_card_labels / sector_tags for codes-only fallback providers (P235 cond 3); cnpj_name_resolver (p2-G10-3) should use gleif_client (P220 cond 1)."
+ ],
+ "files": [
+  "docs/backlog/p2-G10-1.md",
+  "tests/fixtures/acceptance/cnpj/gleif.json",
+  "tests/fixtures/acceptance/cnpj/portal_transparencia_api.json",
+  "tests/fixtures/cep_lookup/brasilapi_v1_no_location.json",
+  "tests/fixtures/cep_lookup/brasilapi_v2_company_ok.json",
+  "tests/fixtures/cep_lookup/brasilapi_v2_empty_coordinates_synthetic.json",
+  "tests/fixtures/cep_lookup/brasilapi_v2_not_found.http.json",
+  "tests/fixtures/cep_lookup/brasilapi_v2_ok.json",
+  "tests/fixtures/cep_lookup/brasilapi_v2_range_mismatch.json",
+  "tests/fixtures/cep_lookup/ibge_municipio_empty.json",
+  "tests/fixtures/cep_lookup/ibge_municipio_ok.json",
+  "tests/fixtures/cep_lookup/ibge_municipios_flat_sample.json",
+  "tests/fixtures/cep_lookup/opencep_not_found.http.json",
+  "tests/fixtures/cep_lookup/opencep_ok.json",
+  "tests/fixtures/cep_lookup/opencep_range_mismatch.json",
+  "tests/fixtures/cep_lookup/viacep_bad_request.http.json",
+  "tests/fixtures/cep_lookup/viacep_blocked_synthetic.http.json",
+  "tests/fixtures/cep_lookup/viacep_erro.json",
+  "tests/fixtures/cep_lookup/viacep_erro_bool_synthetic.json",
+  "tests/fixtures/cep_lookup/viacep_html_200_synthetic.http.json",
+  "tests/fixtures/cep_lookup/viacep_ok.json",
+  "tests/fixtures/cep_lookup/viacep_rate_limited_synthetic.http.json",
+  "tests/fixtures/cep_lookup/viacep_reverse_empty_synthetic.json",
+  "tests/fixtures/cep_lookup/viacep_reverse_ok.json",
+  "tests/fixtures/cnae_tables/ibge_error_object_synthetic.json",
+  "tests/fixtures/cnae_tables/ibge_subclass_6422100.json",
+  "tests/fixtures/cnae_tables/ibge_subclass_unknown_empty.json",
+  "tests/fixtures/cnae_tables/ibge_subclasses_sample.json",
+  "tests/fixtures/cnae_tables/ibge_subclasses_truncated.txt",
+  "tests/fixtures/gleif/cnpj_bb_ok.json",
+  "tests/fixtures/gleif/cnpj_raw_digits_empty.json",
+  "tests/fixtures/gleif/cnpj_truncated.txt",
+  "tests/fixtures/gleif/cnpj_votorantim_ok.json",
+  "tests/fixtures/gleif/direct_children_bb.json",
+  "tests/fixtures/gleif/direct_parent_exception_bb.json",
+  "tests/fixtures/gleif/direct_parent_not_found.http.json",
+  "tests/fixtures/gleif/direct_parent_votorantim_ok.json",
+  "tests/fixtures/gleif/error_in_200_synthetic.json",
+  "tests/fixtures/gleif/fuzzycompletions_ok.json",
+  "tests/fixtures/gleif/html_200_synthetic.http.json",
+  "tests/fixtures/gleif/name_bb_ok.json",
+  "tests/fixtures/gleif/rate_limited_synthetic.http.json",
+  "tests/fixtures/gleif/ultimate_parent_exception_bb.json",
+  "tests/fixtures/portal_transparencia_api/acordos_leniencia_synthetic.json",
+  "tests/fixtures/portal_transparencia_api/ceis_empty_synthetic.json",
+  "tests/fixtures/portal_transparencia_api/ceis_filter_ignored_synthetic.json",
+  "tests/fixtures/portal_transparencia_api/ceis_latin1_synthetic.http.json",
+  "tests/fixtures/portal_transparencia_api/ceis_synthetic.json",
+  "tests/fixtures/portal_transparencia_api/cepim_synthetic.json",
+  "tests/fixtures/portal_transparencia_api/cnep_synthetic.json",
+  "tests/fixtures/portal_transparencia_api/contratos_synthetic.json",
+  "tests/fixtures/portal_transparencia_api/convenios_synthetic.json",
+  "tests/fixtures/portal_transparencia_api/error_in_200_synthetic.json",
+  "tests/fixtures/portal_transparencia_api/needs_key_401.http.json",
+  "tests/fixtures/portal_transparencia_api/pessoa_juridica_synthetic.json",
+  "tests/fixtures/portal_transparencia_api/rate_limited_429_synthetic.http.json",
+  "tests/live/test_p2_g10_1.py",
+  "tests/modules/test_cep_lookup.py",
+  "tests/modules/test_cnae_tables.py",
+  "tests/modules/test_gleif.py",
+  "tests/modules/test_p2_g10_1.py",
+  "tests/modules/test_portal_transparencia_api.py",
+  "v3lum/data/cep_lookup/cep_uf_ranges.json",
+  "v3lum/data/cep_lookup/ibge_municipios.json",
+  "v3lum/data/cnae_tables/cnae.json",
+  "v3lum/data/cnae_tables/natureza_juridica.json",
+  "v3lum/data/cnae_tables/rfb_codes.json",
+  "v3lum/data/cnae_tables/sensitive_divisions.json",
+  "v3lum/data/notices/cep_lookup_ibge_municipios.json",
+  "v3lum/data/notices/cnae_tables_ibge_rfb.json",
+  "v3lum/data/providers/opencep.json",
+  "v3lum/data/providers/viacep.json",
+  "v3lum/data/vocab/p2-G10-1.json",
+  "v3lum/modules/brazil_public_data/cep_lookup.py",
+  "v3lum/modules/brazil_public_data/cnae_tables.py",
+  "v3lum/modules/brazil_public_data/portal_transparencia_api.py",
+  "v3lum/modules/company_org/gleif.py",
+  "v3lum/modules/company_org/gleif_client.py"
+ ],
+ "notes": "Four modules, 314 offline tests (tests/modules/test_gleif.py, test_cep_lookup.py, test_cnae_tables.py, test_portal_transparencia_api.py, test_p2_g10_1.py) green; registry contract green for the four modules; P327 lint clean (one justified pragma: LINT-04 on the official /contratos/cpf-cnpj path, which only ever receives a check-digit-valid CNPJ); ruff clean. Live (V3LUM_LIVE=1 tests/live/test_p2_g10_1.py, 6 passed 2026-11-26). Providers: created viacep.json (community) and opencep.json (unknown, pending tier review; no module declares it); gleif, brasilapi, ibge and transparencia_api reused as seeded (no extension needed). Bundled data verified at the source: IBGE CNAE 2.3 tree (1332 subclasses) + 27 RFB-only legacy codes and the official RFB Naturezas table (92 codes, CNPJ open data 2026-11, downloaded once through the public RFB share) replace the unverified prep seed; porte/situacao/matriz-filial from the RFB cnpj-metadados.pdf (sha256 recorded). GLEIF: relations are fetched for CNPJ inputs and analyst-typed exact names; only the direct parent/children of a seed expand; the ultimate parent is not re-requested when the direct parent has no parent. cnae_tables accepts keyword inputs (CNAE code, 'cnae: <term>' search, 'natureza <code>'); CNPJ cards use its helpers (cnpj_card_labels etc.) once cnpj_lookup wires them. portal_transparencia_api: sanctions come from P240 when its bulk list was fetched < 48 h ago (detail attribute only), else API rows go through cgu_sanctions_bulk._sanction_row with the shared dedup_key. Full offline suite: failures only in other batches' in-progress files (typosquat, pivots_crypto, pivots_threat_intel, pe_triage, yara_scan, ransomware_matrices, pivots_unverified, urldna provider, ooni/web_fingerprint notices, github__p9-G03-2 lint)."
+}

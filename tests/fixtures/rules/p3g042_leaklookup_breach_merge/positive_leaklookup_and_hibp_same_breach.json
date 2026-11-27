@@ -1,0 +1,57 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "nodes": [
+  {
+   "key": "email:analyst@example.com",
+   "depth": 0,
+   "seed": true,
+   "ownership": "own_asset",
+   "findings": [
+    {
+     "title": "Listed in breach: 8tracks",
+     "severity": "medium",
+     "confidence": 0.7,
+     "confidence_label": "probable",
+     "criterion": "hibp_account: the address is listed in this breach (synthetic fixture)",
+     "tags": ["breach", "privacy", "credential_exposure"],
+     "module": "hibp_account",
+     "source": "hibp.account",
+     "key": "8tracks",
+     "data": {"name": "8tracks", "breach_key": "8tracks", "data_classes": ["Email addresses", "Passwords"], "verified": true,
+              "sensitive": false, "counted": true, "date": "2017-06-27", "sources": ["hibp.account"]}
+    },
+    {
+     "title": "Listed in breach: 8tracks.com",
+     "severity": "medium",
+     "confidence": 0.7,
+     "confidence_label": "probable",
+     "criterion": "Leak-Lookup: the address is listed in this breach (synthetic fixture)",
+     "tags": ["breach", "privacy", "credential_exposure"],
+     "module": "leak_lookup_public",
+     "source": "leaklookup.search",
+     "key": "8tracks",
+     "data": {"name": "8tracks.com", "breach_key": "8tracks", "data_classes": ["Email addresses", "Passwords"], "verified": true,
+              "sensitive": false, "counted": true, "date": "2017-06-27", "sources": ["leaklookup.search"]}
+    },
+    {
+     "title": "Listed in breach: sensitive breach (name withheld)",
+     "severity": "medium",
+     "confidence": 0.4,
+     "confidence_label": "possible",
+     "criterion": "Leak-Lookup: the address is listed in this breach (synthetic fixture)",
+     "tags": ["breach", "privacy"],
+     "module": "leak_lookup_public",
+     "source": "leaklookup.search",
+     "key": "sensitive:0123456789ab",
+     "data": {"name": "sensitive breach (name withheld)", "breach_key": "sensitive:0123456789ab", "data_classes": [],
+              "sensitive": true, "counted": true, "date": null, "sources": ["leaklookup.search"]}
+    }
+   ]
+  }
+ ],
+ "edges": [],
+ "expect": {
+  "p3g042_leaklookup_breach_merge": {"min": 1, "max": 1, "severity": "info", "confidence_label": "confirmed"}
+ }
+}

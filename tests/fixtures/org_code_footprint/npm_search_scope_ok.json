@@ -1,0 +1,137 @@
+{
+ "objects": [
+  {
+   "package": {
+    "name": "@angular-devkit/schematics",
+    "version": "22.3.0",
+    "date": "2026-11-19T00:41:21.933Z",
+    "links": {
+     "homepage": "https://github.com/angular/angular-cli",
+     "repository": "git+https://github.com/angular/angular-cli.git",
+     "npm": "https://www.npmjs.com/package/@angular-devkit/schematics"
+    },
+    "publisher": {
+     "username": "google-wombot",
+     "email": "redacted@example.com"
+    },
+    "maintainers": [
+     {
+      "username": "angular",
+      "email": "redacted@example.com"
+     },
+     {
+      "username": "google-wombot",
+      "email": "redacted@example.com"
+     }
+    ]
+   },
+   "searchScore": 353.18393
+  },
+  {
+   "package": {
+    "name": "@angular-eslint/schematics",
+    "version": "22.8.0",
+    "date": "2026-11-18T11:30:56.193Z",
+    "links": {
+     "homepage": "https://github.com/angular-eslint/angular-eslint#readme",
+     "repository": "https://github.com/angular-eslint/angular-eslint.git",
+     "npm": "https://www.npmjs.com/package/@angular-eslint/schematics"
+    },
+    "publisher": {
+     "username": "GitHub Actions",
+     "email": "redacted@example.com"
+    },
+    "maintainers": [
+     {
+      "username": "example-maintainer",
+      "email": "redacted@example.com"
+     }
+    ]
+   },
+   "searchScore": 351.16013
+  },
+  {
+   "package": {
+    "name": "@angular/core",
+    "version": "22.3.0",
+    "date": "2026-11-18T19:30:29.803Z",
+    "links": {
+     "homepage": "https://github.com/angular/angular#readme",
+     "repository": "git+https://github.com/angular/angular.git",
+     "npm": "https://www.npmjs.com/package/@angular/core"
+    },
+    "publisher": {
+     "username": "google-wombot",
+     "email": "redacted@example.com"
+    },
+    "maintainers": [
+     {
+      "username": "angular",
+      "email": "redacted@example.com"
+     },
+     {
+      "username": "google-wombot",
+      "email": "redacted@example.com"
+     }
+    ]
+   },
+   "searchScore": 345.31946
+  },
+  {
+   "package": {
+    "name": "@angular/cli",
+    "version": "22.3.0",
+    "date": "2026-11-19T00:40:50.260Z",
+    "links": {
+     "homepage": "https://github.com/angular/angular-cli",
+     "repository": "git+https://github.com/angular/angular-cli.git",
+     "npm": "https://www.npmjs.com/package/@angular/cli"
+    },
+    "publisher": {
+     "username": "google-wombot",
+     "email": "redacted@example.com"
+    },
+    "maintainers": [
+     {
+      "username": "angular",
+      "email": "redacted@example.com"
+     },
+     {
+      "username": "google-wombot",
+      "email": "redacted@example.com"
+     }
+    ]
+   },
+   "searchScore": 343.7268
+  },
+  {
+   "package": {
+    "name": "@angular/compiler",
+    "version": "22.3.0",
+    "date": "2026-11-18T19:28:45.362Z",
+    "links": {
+     "homepage": "https://github.com/angular/angular#readme",
+     "repository": "git+https://github.com/angular/angular.git",
+     "npm": "https://www.npmjs.com/package/@angular/compiler"
+    },
+    "publisher": {
+     "username": "google-wombot",
+     "email": "redacted@example.com"
+    },
+    "maintainers": [
+     {
+      "username": "angular",
+      "email": "redacted@example.com"
+     },
+     {
+      "username": "google-wombot",
+      "email": "redacted@example.com"
+     }
+    ]
+   },
+   "searchScore": 343.14288
+  }
+ ],
+ "total": 106444,
+ "time": "2026-11-26T07:25:04.546Z"
+}

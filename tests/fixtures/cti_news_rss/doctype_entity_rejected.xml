@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<!-- _synthetic: FC5 safe XML - DOCTYPE/ENTITY must be rejected before parsing -->
+<!DOCTYPE rss [<!ENTITY a "aaaaaaaaaa"><!ENTITY b "&a;&a;&a;&a;&a;&a;&a;&a;&a;&a;">]>
+<rss version="2.0"><channel><title>&b;</title><link>https://example.com/</link><item><title>&b;</title><link>https://example.com/x</link></item></channel></rss>

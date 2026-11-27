@@ -1,0 +1,36 @@
+{
+ "_synthetic": "List of existing domain scan reports (GET /v1/domain/reports?query=&offset=0, documented by Criminal IP; field names recalled, not verified).",
+ "data": {
+  "count": 2,
+  "reports": [
+   {
+    "scan_id": 9100002,
+    "reg_dtime": "2026-11-20 10:00:00",
+    "url": "https://www.example.com/",
+    "title": "Example Domain",
+    "connected_ip_cnt": 2,
+    "issue": [
+     "login_form"
+    ],
+    "score": "Low",
+    "country_code": [
+     "BR"
+    ]
+   },
+   {
+    "scan_id": 9100001,
+    "reg_dtime": "2026-10-02 08:00:00",
+    "url": "https://www.example.com/",
+    "title": "Example Domain",
+    "connected_ip_cnt": 1,
+    "issue": [],
+    "score": "Safe",
+    "country_code": [
+     "BR"
+    ]
+   }
+  ]
+ },
+ "message": "api success",
+ "status": 200
+}

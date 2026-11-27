@@ -1,0 +1,149 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "options": {
+  "mode": "light",
+  "tlp": "amber",
+  "depth": 1,
+  "egress_override": ""
+ },
+ "org_profile": {
+  "org": {
+   "name": "Banco Exemplo S.A."
+  },
+  "domains": [
+   {
+    "name": "bancoexemplo.example",
+    "verification": "txt_verified",
+    "criticality": "high"
+   },
+   {
+    "name": "bancoexemplo-seguro.example",
+    "verification": "attested",
+    "attested_by": "brand team",
+    "attested_date": "2026-11-01"
+   }
+  ],
+  "brands": [
+   {
+    "keyword": "bancoexemplo",
+    "criticality": "high"
+   }
+  ]
+ },
+ "nodes": [
+  {
+   "key": "domain:bancoexemplo.example",
+   "depth": 0,
+   "seed": true,
+   "ownership": "own_asset",
+   "tags": [
+    "own_asset"
+   ],
+   "attributes": {
+    "page_fingerprint": [
+     {
+      "value": {
+       "role": "brand_reference",
+       "url": "https://bancoexemplo.example/",
+       "final_url": "https://bancoexemplo.example/",
+       "http_status": 200,
+       "title": "Banco Exemplo | Internet Banking",
+       "ppdeep": "24:hco/jl3pT5CpQFMUuCRY6QbdygYUQLbYk1ulfvMpLX17PLETqmO6lUuVElG:a2bcNU5hGdygPWbT1+vQj1eqmO60Q",
+       "normalised_bytes": 1400,
+       "favicon_mmh3": -1101418309,
+       "favicon_url": "https://bancoexemplo.example/favicon.png",
+       "form_action_hosts": [
+        "login.bancoexemplo.example"
+       ],
+       "offsite_form_hosts": [],
+       "login_form": true,
+       "posts_offsite": false,
+       "meta_refresh": null,
+       "fetched_at": "2026-11-26T12:00:00+00:00",
+       "egress_profile": "proxy_light"
+      },
+      "source": "typosquat_live_checks"
+     }
+    ]
+   }
+  },
+  {
+   "key": "domain:bancoexemplo-receitas.example",
+   "depth": 0,
+   "seed": true,
+   "attributes": {
+    "page_fingerprint": [
+     {
+      "value": {
+       "role": "candidate",
+       "url": "https://bancoexemplo-receitas.example/",
+       "final_url": "https://bancoexemplo-receitas.example/",
+       "http_status": 200,
+       "title": "Receitas da Vovo",
+       "ppdeep": "12:hAHOqrl48UqLJpSfXlgRvDoSWKaOb07ZWoJHFPyD4TBqrTzPkD:hq/rl4c9MfevcSNaOb0lJ8rXsD",
+       "normalised_bytes": 1400,
+       "favicon_mmh3": 77,
+       "favicon_url": "https://bancoexemplo-receitas.example/favicon.png",
+       "form_action_hosts": [],
+       "offsite_form_hosts": [],
+       "login_form": false,
+       "posts_offsite": false,
+       "meta_refresh": null,
+       "fetched_at": "2026-11-26T12:00:00+00:00",
+       "egress_profile": "proxy_light"
+      },
+      "source": "typosquat_live_checks"
+     }
+    ],
+    "live_check": [
+     {
+      "value": {
+       "state": "unrelated",
+       "reason": "page 0% similar to https://bancoexemplo.example/ -> unrelated content",
+       "brands": [
+        "bancoexemplo.example"
+       ],
+       "contacted": true,
+       "requests": 2,
+       "comparison": {
+        "brand": "bancoexemplo.example",
+        "brand_url": "https://bancoexemplo.example/",
+        "score": 0,
+        "html_fuzzy": 0,
+        "matched": [],
+        "hashes": {
+         "ppdeep_brand": "24:hco/jl3pT5CpQFMUuCRY6QbdygYUQLbYk1ulfvMpLX17PLETqmO6lUuVElG:a2bcNU5hGdygPWbT1+vQj1eqmO60Q",
+         "ppdeep_candidate": "12:hAHOqrl48UqLJpSfXlgRvDoSWKaOb07ZWoJHFPyD4TBqrTzPkD:hq/rl4c9MfevcSNaOb0lJ8rXsD",
+         "favicon_mmh3_brand": -1101418309,
+         "favicon_mmh3_candidate": 77
+        },
+        "state": "unrelated",
+        "wording": "page 0% similar to https://bancoexemplo.example/ -> unrelated content"
+       }
+      },
+      "source": "typosquat_live_checks"
+     }
+    ]
+   }
+  }
+ ],
+ "edges": [
+  {
+   "src": "domain:bancoexemplo.example",
+   "dst": "domain:bancoexemplo-receitas.example",
+   "relation": "lookalike",
+   "module": "typosquat",
+   "confidence": 0.7,
+   "expand": false
+  }
+ ],
+ "expect": {
+  "p9g131_typosquat_page_unrelated": {
+   "min": 1,
+   "max": 1,
+   "severity": "info",
+   "confidence_label": "possible"
+  }
+ }
+}

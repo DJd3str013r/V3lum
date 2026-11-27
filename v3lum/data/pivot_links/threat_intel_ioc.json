@@ -1,0 +1,189 @@
+{
+  "schema": "v3lum.pivot_pack/1",
+  "pack": "threat_intel_ioc",
+  "title": "Reputation pages: NERD, GreyNoise Visualizer, FortiGuard, URLVoid, MultiRBL, HoneyLabs, CyberCrime-Tracker",
+  "notes": "Offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them; it renders them for the analyst (P311). Rendering follows A2: at TLP:AMBER and above every link is non-clickable text with 'opening sends <value> to <host>', at RED third-party links are hidden from reports and listed only by `v3lum links`; links are never auto-opened. Links in 'links' are rendered by the core (v3lum.core.links); entries in 'x_module_links' need a gate the frozen core link model does not carry (TLP ceiling, analyst-typed values only, public-value filter, vetted encoder) and are rendered by the pack's module through v3lum.modules.utility.pivot_gated_links. File order is the curated analyst-value order (cond 6). Verified links carry checked_at; pivot_gated_links.recheck_report() lists unverified links and links older than 180 days (cond 7, the data of `v3lum doctor --links`).",
+  "x_batch": "p2-G14-1",
+  "x_proposal": "P170",
+  "x_module": "pivots_threat_intel",
+  "x_served_by": [
+    {
+      "ref": "scanner_intel_g02_3:greynoise_viz_ip",
+      "entry": "GreyNoise Visualizer /ips/{ip} (P170 cond 8)",
+      "template": "https://viz.greynoise.io/ips/{ip}",
+      "note": "C0398. The research saw 429 and this egress a CloudFront 403 on 2026-11-26 (antibot; never seen working from automation). greynoise_community uses it as manual_link: referenced, not duplicated. Curated place: second, after NERD."
+    }
+  ],
+  "links": [
+    {
+      "id": "nerd_ip",
+      "label": "CESNET NERD: IP reputation score, events, blacklists",
+      "template": "https://nerd.cesnet.cz/nerd/ip/{q}",
+      "entity_types": [
+        "ipv4"
+      ],
+      "category": "reputation",
+      "host": "nerd.cesnet.cz",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0396. Verified 2026-11-26 (200).",
+      "x_group": "reputation"
+    },
+    {
+      "id": "fortiguard_search",
+      "label": "FortiGuard Labs: search results (IP reputation and web-filter category)",
+      "template": "https://www.fortiguard.com/search?q={q}&engine=8",
+      "entity_types": [
+        "ipv4"
+      ],
+      "category": "reputation",
+      "host": "www.fortiguard.com",
+      "verified": true,
+      "checked_at": "2026-11-25",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "C0397. The search-results variant was verified 2026-11-25 with an IP; on 2026-11-26 this egress got a FortiWeb block page: open it in a browser. The iprep/webfilter variants are not linked (P170 cond 8).",
+      "x_group": "reputation"
+    },
+    {
+      "id": "multirbl",
+      "label": "MultiRBL (valli.org): DNSBL/RHSBL listing status (manual context; automated DNSBL checks use the DNS modules)",
+      "template": "https://multirbl.valli.org/lookup/{q}.html",
+      "entity_types": [
+        "ipv4",
+        "ipv6",
+        "domain"
+      ],
+      "category": "reputation",
+      "host": "multirbl.valli.org",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0401. Verified 2026-11-26 (IPv4, IPv6 and domain, 200). Unknown tier: IOC values only. Automated DNSBL checks never use public resolvers for Spamhaus (P170 cond 11).",
+      "x_group": "blocklists"
+    },
+    {
+      "id": "honeylabs",
+      "label": "HoneyLabs: honeypot report for the IP (JavaScript check for anonymous readers)",
+      "template": "https://honeylabs.net/lookup/{q}",
+      "entity_types": [
+        "ipv4"
+      ],
+      "category": "reputation",
+      "host": "honeylabs.net",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "C0399. Verified 2026-11-26 (HTML page for browsers; the same URL as JSON needs a key: the keyed API is never used here). Unknown tier: IP values only.",
+      "x_group": "honeypots"
+    },
+    {
+      "id": "cybercrime_tracker",
+      "label": "CyberCrime-Tracker: C2 panel search (substring match over stored C2 URLs; mostly legacy families)",
+      "template": "https://cybercrime-tracker.net/index.php?search={q}",
+      "entity_types": [
+        "domain",
+        "ipv4"
+      ],
+      "category": "reputation",
+      "host": "cybercrime-tracker.net",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0403. Verified 2026-11-26 (200; google.com matched a row inside another C2 URL: hits are leads). Unknown tier: IOC values only; the malware_family search waits for a recorded tier promotion (P170 cond 11).",
+      "x_group": "c2_tracking"
+    }
+  ],
+  "x_module_links": [
+    {
+      "id": "urlvoid",
+      "label": "URLVoid: blocklist engines report (URLVoid runs a fresh check of the site)",
+      "template": "https://www.urlvoid.com/scan/{q}/",
+      "entity_types": [
+        "domain"
+      ],
+      "category": "reputation",
+      "host": "www.urlvoid.com",
+      "verified": true,
+      "checked_at": "2026-11-25",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": true,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0402. Verified 2026-11-25. Runs a fresh check on view: touches_target, analyst-typed values only, TLP:CLEAR/GREEN only, never for hostile entities (P170 cond 9). Its homepage shows no public recent-checks list (rule 7 review 2026-11-26).",
+      "x_group": "reputation",
+      "x_max_tlp": "green",
+      "x_seed_only": true
+    },
+    {
+      "id": "cybercrime_tracker_url",
+      "label": "CyberCrime-Tracker: C2 panel search for the URL (host and path, no scheme)",
+      "template": "https://cybercrime-tracker.net/index.php?search={urlhp}",
+      "entity_types": [
+        "url"
+      ],
+      "category": "reputation",
+      "host": "cybercrime-tracker.net",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0403. Stored C2 URLs have no scheme, so the vetted {urlhp} encoder sends host[:port] and path only (no scheme, query or fragment). Verified 2026-11-26: search=example.com/panel/gate.php answered 'No result for: example.com/panel/gate.php' (the page takes the form; P170 cond 8).",
+      "x_group": "c2_tracking"
+    }
+  ],
+  "x_pending": [
+    {
+      "id": "threatbook_ip",
+      "host": "threatbook.io",
+      "label": "ThreatBook: IP research page",
+      "template": "https://threatbook.io/ip/{q}",
+      "requires": "a browser check showing a verdict without signing in (P170 cond 10)",
+      "login_required": true,
+      "max_tlp": "green",
+      "badge": "foreign provider (CN): queries are logged abroad",
+      "reason": "threatbook.io/ip/8.8.8.8 answered 301 to i.threatbook.io/ip/8.8.8.8 (not /research/), then nginx 502 twice on 2026-11-26: login_required until a browser check; the P311 lint drops it"
+    }
+  ],
+  "x_excluded": [
+    {
+      "id": "cybercrime_tracker_family",
+      "host": "cybercrime-tracker.net",
+      "reason": "malware_family values go to an unknown-tier host only after a recorded promotion to community tier (P170 cond 11, A8 BR4)"
+    },
+    {
+      "id": "fortiguard_iprep",
+      "host": "www.fortiguard.com",
+      "reason": "iprep?q= answered 422 'Invalid Parameters' and webfilter 403: re-derive in a browser before use (P170 cond 8)"
+    },
+    {
+      "id": "honeylabs_json",
+      "host": "honeylabs.net",
+      "reason": "the keyed JSON form of the lookup page is an API (401 without a key): only the HTML page is linked (P170 cond 8)"
+    }
+  ]
+}

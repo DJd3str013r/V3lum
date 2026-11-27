@@ -1,0 +1,11 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "webappanalyzer",
+  "source_url": "https://github.com/enthec/webappanalyzer",
+  "version": "runtime download of the main branch (src/technologies/{_,a..z}.json, src/categories.json), identified by the per-file ETag/SHA-256 recorded at download",
+  "sha256": "",
+  "licence": "GPL-3.0-only",
+  "attribution": "Technology fingerprints from enthec/webappanalyzer (a community fork of the Wappalyzer fingerprints), GPL-3.0 data. Downloaded at run time into ~/.v3lum/datasets and never bundled, vendored or committed (A6); V3LUM re-implements the matching from the public format description and copies no GPL code.",
+  "bundled": false,
+  "files": ["v3lum/modules/url_web/web_fingerprint.py"]
+}

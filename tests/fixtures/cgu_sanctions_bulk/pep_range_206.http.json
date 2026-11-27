@@ -1,0 +1,22 @@
+{
+ "request": "GET https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/pep/202610_PEP.zip",
+ "response": {
+  "status": 206,
+  "headers": {
+   "content-type": "application/x-zip-compressed",
+   "content-length": "65536",
+   "server": "AmazonS3",
+   "last-modified": "Mon, 16 Nov 2026 18:25:09 GMT",
+   "etag": "\"6f969700370de6b1f16ede9dc34b8921\"",
+   "x-cache": "Hit from cloudfront",
+   "age": "77879",
+   "content-range": "bytes 0-65535/2496127"
+  },
+  "body": null
+ },
+ "transport_error": null,
+ "elapsed_s": 0.126547,
+ "observed_at": "2026-11-26T05:23:10+00:00",
+ "origin": "live",
+ "note": ""
+}

@@ -1,0 +1,4 @@
+{"template-id":"tech-detect","info":{"name":"Technology","tags":["tech"],"severity":"info"},"type":"http","host":"app.example.com","matched-at":"https://app.example.com","matcher-status":true}
+{"template-id":"git-config","info":{"name":"Git Config","tags":["exposure"],"sever
+not-json at all
+{"info":{"severity":"high"},"host":"x.example.com"}

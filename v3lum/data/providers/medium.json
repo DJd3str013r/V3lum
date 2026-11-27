@@ -1,0 +1,55 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "medium",
+  "name": "Medium user RSS feed",
+  "operator": "A Medium Corporation",
+  "hosts": [
+    "medium.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "A Medium Corporation, an established company with published terms, a privacy policy and a business offering (A8 trusted); P116 FC9.",
+  "tier_reviewer": "council-1 (A8, P116 FC9)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "The platform's own answer is authoritative for the existence and public fields of its accounts; profile fields (names, links, bios) are self-declared by the owner."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/rss+xml, application/xml;q=0.9, text/xml;q=0.8",
+    "ttl": 86400,
+    "min_interval": 2.0,
+    "concurrency": 1,
+    "max_bytes": 1048576
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "user_rss": {
+      "title": "Medium user RSS (medium.com/feed/@{username})",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://policy.medium.com/medium-terms-of-service-9db0094a1e0f",
+        "quote": "P116 FC4 (binding council text): documented public APIs (Chess.com PubAPI, Lichess, Mojang, Steam Community XML, Medium RSS, Pinterest widget, Stack Exchange API, Twitch Helix with the team's app) are 'open' once recorded; Snapchat __NEXT_DATA__ and the Disqus profile page are 'unknown' and stay disabled in every profile until legal records them (A1).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "medium",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0270 + live check 2026-11-26: 404 = ABSENT (the ordinary 404 page embeds Cloudflare's passive precursor script: not a challenge); profile pages may be served a Cloudflare managed challenge (BLOCKED, never retried). The feed carries the last ~10 posts; post titles and outbound domains are content (only when relevant to the case, P116 FC8)."
+    }
+  },
+  "notes": "Batch p3-G05-2 (P116 medium_feed)."
+}

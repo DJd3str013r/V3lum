@@ -1,0 +1,15 @@
+{
+ "_fixture": "REAL live capture 2026-11-26, minimised: GET /users/github/repos refused by the research egress proxy (not GitHub); not retried (documentation_url dropped)",
+ "_meta": {
+  "url": "https://api.github.com/users/github/repos?type=owner&sort=pushed&direction=desc&per_page=10",
+  "user_agent": "V3LUM/dev",
+  "captured": "2026-11-26T08:32:34Z",
+  "elapsed_s": 0.025,
+  "bytes_original": 249
+ },
+ "status": 403,
+ "headers": {
+  "content-type": "application/json; charset=utf-8"
+ },
+ "body": "{\"message\":\"This GitHub API path is not available: sessions are bound to their configured repositories. Use repository-scoped endpoints (repos/{owner}/{repo}/...).\"}"
+}

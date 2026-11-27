@@ -1,0 +1,5247 @@
+{
+"schema": "v3lum.vin_wmi_table/1",
+"built": "2026-11-26",
+"source": "NHTSA vPIC API (https://vpic.nhtsa.dot.gov/api/): GetWMIsForManufacturer and DecodeWMI answers, fetched 2026-11-26 at 1 request per 1.5 s; US government work, public domain (17 U.S.C. 105)",
+"fields": {
+"manufacturer": "NHTSA registrant name for the WMI (for some foreign WMIs the US importer, e.g. 9BW = VOLKSWAGEN GROUP OF AMERICA, INC.); null for curated rows",
+"make": "brand (vPIC DecodeWMI Make, or the curated brand for WMIs vPIC does not list)",
+"vehicle_types": "vPIC vehicle types registered under the WMI",
+"source": "'nhtsa_vpic' or 'curated' (Brazilian WMIs of makers never registered for the US market; a brand hint from public Brazilian VIN usage, not verified against NHTSA)",
+"shared": "small-manufacturer WMI (third character 9) shared by several registrants: positions 12-14 identify the maker",
+"country": "never stored: the module derives it from the ISO 3780 range of the first two characters (vPIC's Country is the registrant's, e.g. 9BW -> MEXICO)"
+},
+"count": 748,
+"table": {
+"145": {
+"manufacturer": "HYUNDAI STEEL INDUSTRIES, INC.",
+"vehicle_types": [
+"Trailer"
+],
+"source": "nhtsa_vpic"
+},
+"19U": {
+"manufacturer": "AMERICAN HONDA MOTOR CO., INC.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"19V": {
+"manufacturer": "AMERICAN HONDA MOTOR CO., INC.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"19X": {
+"manufacturer": "AMERICAN HONDA MOTOR CO., INC.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"1A4": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"1A8": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"1B3": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"1B4": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"1B5": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"1B6": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"1B7": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"1B8": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"1C3": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"1C4": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"1C6": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"1C7": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"1C8": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"1D2": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"1D3": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"1D4": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"1D5": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"1D6": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"1D7": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"1D8": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"1E3": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"1F1": {
+"manufacturer": "FORD MOTOR COMPANY",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"1F7": {
+"manufacturer": "FORD MOTOR COMPANY",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"1FA": {
+"manufacturer": "FORD MOTOR COMPANY",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"1FB": {
+"manufacturer": "FORD MOTOR COMPANY",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"1FC": {
+"manufacturer": "FORD MOTOR COMPANY",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"1FD": {
+"manufacturer": "FORD MOTOR COMPANY",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"1FL": {
+"manufacturer": "FORD MOTOR COMPANY",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"1FM": {
+"manufacturer": "FORD MOTOR COMPANY",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"1FT": {
+"manufacturer": "FORD MOTOR COMPANY",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"1FU": {
+"manufacturer": "DAIMLER TRUCK NORTH AMERICA LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"1FV": {
+"manufacturer": "DAIMLER TRUCK NORTH AMERICA LLC",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"1G0": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"1G1": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"1G2": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"1G3": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"1G4": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"1G5": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"1G6": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"1G7": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"1G8": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"1GA": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"1GB": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"1GC": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"1GD": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"1GE": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"1GG": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"1GH": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"1GJ": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"1GK": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"1GM": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"1GN": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"1GT": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"1GY": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"1HD": {
+"manufacturer": "HARLEY-DAVIDSON MOTOR COMPANY, INC.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"1HF": {
+"manufacturer": "AMERICAN HONDA MOTOR CO., INC.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"1HG": {
+"manufacturer": "AMERICAN HONDA MOTOR CO., INC.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"1J2": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"1J3": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"1J4": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"1J5": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"1J6": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"1J7": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"1J8": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"1JC": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"1JD": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"1JT": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"1L1": {
+"manufacturer": "FORD MOTOR COMPANY",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"1LJ": {
+"manufacturer": "FORD MOTOR COMPANY",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"1LN": {
+"manufacturer": "FORD MOTOR COMPANY",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"1MB": {
+"manufacturer": "MERCEDES-BENZ TRUCK COMPANY INC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"1ME": {
+"manufacturer": "FORD MOTOR COMPANY",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"1MH": {
+"manufacturer": "FORD MOTOR COMPANY",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"1MR": {
+"manufacturer": "FORD MOTOR COMPANY",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"1N4": {
+"manufacturer": "NISSAN NORTH AMERICA, INC.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"1N6": {
+"manufacturer": "NISSAN NORTH AMERICA, INC.",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"1P3": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"1P4": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"1P5": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"1P6": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"1P7": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"1V1": {
+"manufacturer": "VOLKSWAGEN GROUP OF AMERICA, INC.",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"1V2": {
+"manufacturer": "VOLKSWAGEN GROUP OF AMERICA, INC.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"1VH": {
+"manufacturer": "DAIMLERCHRYSLER COMMERCIAL BUSES NORTH AMERICA",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"1VW": {
+"manufacturer": "VOLKSWAGEN GROUP OF AMERICA, INC.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"1WA": {
+"manufacturer": "VOLVO WHITE TRUCK CORPORATION",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"1WB": {
+"manufacturer": "VOLVO WHITE TRUCK CORPORATION",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"1WD": {
+"manufacturer": "VOLVO WHITE TRUCK CORPORATION",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"1WU": {
+"manufacturer": "VOLVO WHITE TRUCK CORPORATION",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"1WX": {
+"manufacturer": "VOLVO WHITE TRUCK CORPORATION",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"1WY": {
+"manufacturer": "VOLVO WHITE TRUCK CORPORATION",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"1XM": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"1Z2": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"1Z3": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"1Z4": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"1Z6": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"1Z7": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"1Z8": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"2A2": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"2A3": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"2A4": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"2A6": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"2A7": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"2A8": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"2AY": {
+"manufacturer": "HINO MOTORS CANADA, LTD",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"2AZ": {
+"manufacturer": "HINO MOTORS CANADA, LTD",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"2B1": {
+"manufacturer": "DAIMLERCHRYSLER COMMERCIAL BUSES NORTH AMERICA (CANADA)",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"2B2": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"2B3": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"2B4": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"2B5": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"2B6": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"2B7": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"2B8": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"2BA": {
+"manufacturer": "DAIMLERCHRYSLER COMMERCIAL BUSES NORTH AMERICA (CANADA)",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"2C1": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"2C2": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"2C3": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"2C4": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"2C6": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"2C7": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"2C8": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"2CA": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"2CG": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"2CK": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"2CN": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"2CT": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"2D2": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"2D3": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"2D4": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"2D5": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"2D6": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"2D7": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"2D8": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"2E3": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"2E4": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"2FA": {
+"manufacturer": "FORD MOTOR COMPANY OF CANADA, LTD.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"2FB": {
+"manufacturer": "FORD MOTOR COMPANY OF CANADA, LTD.",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"2FC": {
+"manufacturer": "FORD MOTOR COMPANY OF CANADA, LTD.",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"2FD": {
+"manufacturer": "FORD MOTOR COMPANY OF CANADA, LTD.",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"2FM": {
+"manufacturer": "FORD MOTOR COMPANY OF CANADA, LTD.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"2FT": {
+"manufacturer": "FORD MOTOR COMPANY OF CANADA, LTD.",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"2FU": {
+"manufacturer": "FREIGHTLINER CORPORATION",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"2FV": {
+"manufacturer": "FREIGHTLINER CORPORATION",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"2FW": {
+"manufacturer": "STERLING TRUCKS (DAIMLER DIVISION)",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"2FZ": {
+"manufacturer": "STERLING TRUCKS (DAIMLER DIVISION)",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"2G0": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"2G1": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"2G2": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"2G3": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"2G4": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"2G5": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"2G6": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"2G7": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"2G8": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"2GA": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"2GB": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"2GC": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"2GD": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"2GE": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"2GH": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"2GJ": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"2GK": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"2GN": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"2GT": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"2HG": {
+"manufacturer": "HONDA OF CANADA MFG., A DIVISION OF HONDA CANADA INC.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"2HH": {
+"manufacturer": "HONDA OF CANADA MFG., A DIVISION OF HONDA CANADA INC.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"2HJ": {
+"manufacturer": "HONDA OF CANADA MFG., A DIVISION OF HONDA CANADA INC.",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"2HK": {
+"manufacturer": "HONDA OF CANADA MFG., A DIVISION OF HONDA CANADA INC.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"2HN": {
+"manufacturer": "HONDA OF CANADA MFG., A DIVISION OF HONDA CANADA INC.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"2HP": {
+"manufacturer": "NAVISTAR CANADA, INC.",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"2HS": {
+"manufacturer": "NAVISTAR CANADA, INC.",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"2HT": {
+"manufacturer": "NAVISTAR CANADA, INC.",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"2HU": {
+"manufacturer": "HONDA OF CANADA MFG., A DIVISION OF HONDA CANADA INC.",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"2HV": {
+"manufacturer": "NAVISTAR CANADA, INC.",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"2J4": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"2J5": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"2J6": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"2L1": {
+"manufacturer": "FORD MOTOR COMPANY OF CANADA, LTD.",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"2LJ": {
+"manufacturer": "FORD MOTOR COMPANY OF CANADA, LTD.",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"2LM": {
+"manufacturer": "FORD MOTOR COMPANY OF CANADA, LTD.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"2LN": {
+"manufacturer": "FORD MOTOR COMPANY OF CANADA, LTD.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"2ME": {
+"manufacturer": "FORD MOTOR COMPANY OF CANADA, LTD.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"2MH": {
+"manufacturer": "FORD MOTOR COMPANY OF CANADA, LTD.",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"2MR": {
+"manufacturer": "FORD MOTOR COMPANY OF CANADA, LTD.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"2P3": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"2P4": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"2P5": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"2P6": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"2P7": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"2PC": {
+"manufacturer": "VOLVO GROUP CANADA, INC",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"2S2": {
+"manufacturer": "SUZUKI MOTOR OF AMERICA, INC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"2S3": {
+"manufacturer": "SUZUKI MOTOR OF AMERICA, INC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"2T1": {
+"manufacturer": "TOYOTA MOTOR MANUFACTURING CANADA",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"2T2": {
+"manufacturer": "TOYOTA MOTOR MANUFACTURING CANADA",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"2T3": {
+"manufacturer": "TOYOTA MOTOR MANUFACTURING CANADA",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"2TZ": {
+"manufacturer": "TRIUMPH TRAILERS CANADA",
+"vehicle_types": [
+"Trailer"
+],
+"source": "nhtsa_vpic"
+},
+"2V4": {
+"manufacturer": "FCA CANADA INC.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"2V8": {
+"manufacturer": "CHRYSLER GROUP LLC(USA),CHRYSLER CANADA, CHRYSLER DE MEXICO",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"2XM": {
+"manufacturer": "CHRYSLER GROUP LLC(USA),CHRYSLER CANADA, CHRYSLER DE MEXICO",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"3A2": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"3A3": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"3A4": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"3A6": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"3A7": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"3A8": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"3AK": {
+"manufacturer": "DAIMLER VEH\u00cdCULOS COMERCIALES M\u00c9XICO S. DE R.L. DE C.V.",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"3AL": {
+"manufacturer": "DAIMLER VEH\u00cdCULOS COMERCIALES M\u00c9XICO S. DE R.L. DE C.V.",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"3B2": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"3B3": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"3B4": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"3B5": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"3B6": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"3B7": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"3B8": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"3BH": {
+"manufacturer": "DAIMLER VEH\u00cdCULOS COMERCIALES M\u00c9XICO S. DE R.L. DE C.V.",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"3BJ": {
+"manufacturer": "DAIMLER VEH\u00cdCULOS COMERCIALES M\u00c9XICO S. DE R.L. DE C.V.",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"3C3": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"3C4": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"3C6": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"3C7": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"3C8": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"3CA": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"3CE": {
+"manufacturer": "VOLVO GROUP MEXICO, S.A. DE C.V.",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"3CG": {
+"manufacturer": "KTMMEX SA. DE CV.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"3CZ": {
+"manufacturer": "HONDA DE MEXICO, S.A. DE C.V.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"3D2": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"3D3": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"3D4": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"3D5": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"3D6": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"3D7": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"3D8": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"3DH": {
+"manufacturer": "HONDA DE MEXICO, S.A. DE C.V.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"3E3": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"3E4": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"3F6": {
+"manufacturer": "DAIMLER CHRYSLER DE MEXICO SA DE CV",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"3FA": {
+"manufacturer": "FORD MOTOR COMPANY, MEXICO",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic",
+"make": "FORD"
+},
+"3FB": {
+"manufacturer": "FORD MOTOR COMPANY, MEXICO",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"3FC": {
+"manufacturer": "FORD MOTOR COMPANY, MEXICO",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"3FD": {
+"manufacturer": "FORD MOTOR COMPANY, MEXICO",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"3FE": {
+"manufacturer": "FORD MOTOR COMPANY, MEXICO",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"3FF": {
+"manufacturer": "FREIGHTLINER CORPORATION",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"3FM": {
+"manufacturer": "FORD MOTOR COMPANY, MEXICO",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"3FT": {
+"manufacturer": "FORD MOTOR COMPANY, MEXICO",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"3G0": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"3G1": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic",
+"make": "CHEVROLET"
+},
+"3G2": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"3G3": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"3G4": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"3G5": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"3G7": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"3GB": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"3GC": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"3GD": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"3GG": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"3GK": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"3GM": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"3GN": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"3GP": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"3GS": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"3GT": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"3GY": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"3H1": {
+"manufacturer": "HONDA DE MEXICO, S.A. DE C.V.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"3H3": {
+"manufacturer": "HYUNDAI DE MEXICO, S.A. DE C.V.",
+"vehicle_types": [
+"Trailer"
+],
+"source": "nhtsa_vpic"
+},
+"3HD": {
+"manufacturer": "HONDA DE MEXICO, S.A. DE C.V.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"3HG": {
+"manufacturer": "HONDA DE MEXICO, S.A. DE C.V.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"3J4": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"3J5": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"3J6": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"3KM": {
+"manufacturer": "KIA MEXICO S.A. DE C.V.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"3KP": {
+"manufacturer": "KIA MEXICO S.A. DE C.V.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"3LN": {
+"manufacturer": "FORD MOTOR COMPANY, MEXICO",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"3MA": {
+"manufacturer": "FORD MOTOR COMPANY, MEXICO",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"3MD": {
+"manufacturer": "MAZDA MOTOR MANUFACTURING DE MEXICO S.A. DE C.V.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"3ME": {
+"manufacturer": "FORD MOTOR COMPANY, MEXICO",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"3MF": {
+"manufacturer": "BMW AG",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"3MV": {
+"manufacturer": "MAZDA MOTOR MANUFACTURING DE MEXICO S.A. DE C.V.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"3MW": {
+"manufacturer": "BMW AG",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"3MY": {
+"manufacturer": "MAZDA MOTOR MANUFACTURING DE MEXICO S.A. DE C.V.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"3MZ": {
+"manufacturer": "MAZDA MOTOR MANUFACTURING DE MEXICO S.A. DE C.V.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"3N1": {
+"manufacturer": "NISSAN MEXICANA, S.A. DE C.V.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic",
+"make": "NISSAN, INFINITI"
+},
+"3N6": {
+"manufacturer": "NISSAN MEXICANA, S.A. DE C.V.",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"3N8": {
+"manufacturer": "NISSAN MEXICANA, S.A. DE C.V.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"3NE": {
+"manufacturer": "POLARIS INDUSTRIES INC.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"3NS": {
+"manufacturer": "POLARIS INDUSTRIES INC.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"3P3": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"3P4": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"3P5": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"3P6": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"3P7": {
+"manufacturer": "CHRYSLER DE MEXICO TOLUCA",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"3PC": {
+"manufacturer": "NISSAN NORTH AMERICA, INC.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"3SD": {
+"manufacturer": "STERLING TRUCKS (DAIMLER DIVISION)",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"3T1": {
+"manufacturer": "TRAILERS Y TANQUES DE ALUMINIO S.A. DE C.V.",
+"vehicle_types": [
+"Trailer"
+],
+"source": "nhtsa_vpic"
+},
+"3TM": {
+"manufacturer": "TOYOTA MOTOR MFG DE BAJA CALIFORNIA S DE RL DE CV",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"3TY": {
+"manufacturer": "TOYOTA MOTOR MANUFACTURING DE GUANAJUATO",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"3V4": {
+"manufacturer": "VOLVO GROUP OPERATIONS MEXICO, S.A. DE C.V.",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"3V6": {
+"manufacturer": "VOLVO GROUP OPERATIONS MEXICO, S.A. DE C.V.",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"3VV": {
+"manufacturer": "VOLKSWAGEN DE MEXICO SA DE CV",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"3VW": {
+"manufacturer": "VOLKSWAGEN DE MEXICO SA DE CV",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic",
+"make": "VOLKSWAGEN"
+},
+"3X1": {
+"manufacturer": "VOLVO GROUP OPERATIONS MEXICO, S.A. DE C.V.",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"3X2": {
+"manufacturer": "VOLVO GROUP OPERATIONS MEXICO, S.A. DE C.V.",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"421": {
+"manufacturer": "DOMINION BOATS",
+"vehicle_types": [
+"Trailer"
+],
+"source": "nhtsa_vpic"
+},
+"478": {
+"manufacturer": "AMERICAN HONDA MOTOR CO., INC.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"480": {
+"manufacturer": "STERLING TRUCKS (DAIMLER DIVISION)",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"49H": {
+"manufacturer": "STERLING TRUCKS (DAIMLER DIVISION)",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"4A3": {
+"manufacturer": "MITSUBISHI MOTORS NORTH AMERICA",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"4A4": {
+"manufacturer": "MITSUBISHI MOTORS NORTH AMERICA",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"4B3": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"4C3": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"4E3": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"4F2": {
+"manufacturer": "FORD MOTOR COMPANY",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"4F3": {
+"manufacturer": "FORD MOTOR COMPANY",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"4F4": {
+"manufacturer": "FORD MOTOR COMPANY",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"4G1": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"4G2": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"4G3": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"4G5": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"4GD": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"4GL": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"4GT": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"4JG": {
+"manufacturer": "MERCEDES-BENZ OF NORTH AMERICA, INC.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"4KB": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"4KD": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"4KL": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"4M2": {
+"manufacturer": "FORD MOTOR COMPANY",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"4M3": {
+"manufacturer": "FORD MOTOR COMPANY",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"4M4": {
+"manufacturer": "FORD MOTOR COMPANY",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"4N2": {
+"manufacturer": "FORD MOTOR COMPANY",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"4N3": {
+"manufacturer": "FORD MOTOR COMPANY",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"4N4": {
+"manufacturer": "FORD MOTOR COMPANY",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"4NS": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"4NT": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"4NU": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"4P3": {
+"manufacturer": "MITSUBISHI MOTORS NORTH AMERICA",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"4S1": {
+"manufacturer": "ISUZU MOTORS LIMITED, JAPAN",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"4S2": {
+"manufacturer": "ISUZU MOTORS LIMITED, JAPAN",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"4S3": {
+"manufacturer": "SUBARU OF AMERICA, INC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"4S4": {
+"manufacturer": "SUBARU OF AMERICA, INC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"4S5": {
+"manufacturer": "ISUZU MANUFACTURING SERVICES OF AMERICA, INC.",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"4S6": {
+"manufacturer": "ISUZU MANUFACTURING SERVICES OF AMERICA, INC.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"4T1": {
+"manufacturer": "TOYOTA MOTOR MANUFACTURING, KENTUCKY, INC.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"4T3": {
+"manufacturer": "TOYOTA MOTOR MANUFACTURING, KENTUCKY, INC.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"4T4": {
+"manufacturer": "TOYOTA MOTOR MANUFACTURING, NORTHERN KENTUCKY, INC.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"4US": {
+"manufacturer": "BMW MANUFACTURER CORPORATION / BMW NORTH AMERICA",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"4UZ": {
+"manufacturer": "FREIGHTLINER CUSTOM CHASSIS CORP.",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"4V1": {
+"manufacturer": "VOLVO GROUP NORTH AMERICA, LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"4V2": {
+"manufacturer": "VOLVO GROUP NORTH AMERICA, LLC",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"4V3": {
+"manufacturer": "VOLVO GROUP NORTH AMERICA, LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"4V4": {
+"manufacturer": "VOLVO GROUP NORTH AMERICA, LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"4V5": {
+"manufacturer": "VOLVO GROUP NORTH AMERICA, LLC",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"4V6": {
+"manufacturer": "VOLVO GROUP NORTH AMERICA, LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"4VA": {
+"manufacturer": "VOLVO GROUP NORTH AMERICA, LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"4VB": {
+"manufacturer": "VOLVO GROUP NORTH AMERICA, LLC",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"4VC": {
+"manufacturer": "VOLVO GROUP NORTH AMERICA, LLC",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"4VD": {
+"manufacturer": "VOLVO GROUP NORTH AMERICA, LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"4VE": {
+"manufacturer": "VOLVO GROUP NORTH AMERICA, LLC",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"4VG": {
+"manufacturer": "VOLVO GROUP NORTH AMERICA, LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"4VH": {
+"manufacturer": "VOLVO GROUP NORTH AMERICA, LLC",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"4VJ": {
+"manufacturer": "VOLVO GROUP NORTH AMERICA, LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"4VK": {
+"manufacturer": "VOLVO GROUP NORTH AMERICA, LLC",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"4VM": {
+"manufacturer": "VOLVO GROUP NORTH AMERICA, LLC",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"4W1": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"4W5": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"4XA": {
+"manufacturer": "POLARIS INDUSTRIES INC.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"50E": {
+"manufacturer": "LUCID USA, INC.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"52C": {
+"manufacturer": "POLARIS INDUSTRIES INC.",
+"vehicle_types": [
+"Low Speed Vehicle (LSV)"
+],
+"source": "nhtsa_vpic"
+},
+"55S": {
+"manufacturer": "MERCEDES-BENZ CARS",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"57X": {
+"manufacturer": "POLARIS INDUSTRIES INC.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"58A": {
+"manufacturer": "TOYOTA MOTOR MANUFACTURING, KENTUCKY, INC.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"5AS": {
+"manufacturer": "POLARIS INDUSTRIES INC.",
+"vehicle_types": [
+"Low Speed Vehicle (LSV)"
+],
+"source": "nhtsa_vpic"
+},
+"5BZ": {
+"manufacturer": "NISSAN NORTH AMERICA, INC.",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"5FN": {
+"manufacturer": "AMERICAN HONDA MOTOR CO., INC.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"5FP": {
+"manufacturer": "AMERICAN HONDA MOTOR CO., INC.",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"5FR": {
+"manufacturer": "AMERICAN HONDA MOTOR CO., INC.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"5FS": {
+"manufacturer": "AMERICAN HONDA MOTOR CO., INC.",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"5G2": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"5G3": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"5G5": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"5G8": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"5GA": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"5GD": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"5GN": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"5GR": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"5GT": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"5GZ": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"5HD": {
+"manufacturer": "HARLEY-DAVIDSON MOTOR COMPANY, INC.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"5J6": {
+"manufacturer": "AMERICAN HONDA MOTOR CO., INC.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"5J7": {
+"manufacturer": "AMERICAN HONDA MOTOR CO., INC.",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"5J8": {
+"manufacturer": "AMERICAN HONDA MOTOR CO., INC.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"5KB": {
+"manufacturer": "AMERICAN HONDA MOTOR CO., INC.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"5KC": {
+"manufacturer": "AMERICAN HONDA MOTOR CO., INC.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"5KJ": {
+"manufacturer": "DAIMLER TRUCK NORTH AMERICA LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"5KK": {
+"manufacturer": "DAIMLER TRUCK NORTH AMERICA LLC",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"5L1": {
+"manufacturer": "FORD MOTOR COMPANY",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"5LD": {
+"manufacturer": "FORD MOTOR COMPANY",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"5LM": {
+"manufacturer": "FORD MOTOR COMPANY",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"5LT": {
+"manufacturer": "FORD MOTOR COMPANY",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"5N1": {
+"manufacturer": "NISSAN NORTH AMERICA, INC.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"5N3": {
+"manufacturer": "NISSAN NORTH AMERICA, INC.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"5NM": {
+"manufacturer": "HYUNDAI MOTOR MANUFACTURING ALABAMA LLC (HMMA)",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"5NP": {
+"manufacturer": "HYUNDAI-KIA AMERICA TECHNICAL CENTER INC (HATCI)",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"5NT": {
+"manufacturer": "HYUNDAI MOTOR MANUFACTURING ALABAMA LLC (HMMA)",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"5PV": {
+"manufacturer": "HINO MOTORS MANUFACTURING U.S.A.",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"5S3": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"5SA": {
+"manufacturer": "SUZUKI MOTOR OF AMERICA, INC",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"5TB": {
+"manufacturer": "TOYOTA MOTOR MANUFACTURING, INDIANA, INC.",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"5TD": {
+"manufacturer": "TOYOTA MOTOR MANUFACTURING, INDIANA, INC.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"5TE": {
+"manufacturer": "TOYOTA MOTOR MANUFACTURING, CALIFORNIA, INC.",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"5TF": {
+"manufacturer": "TOYOTA MOTOR MANUFACTURING, TEXAS, INC.",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"5TG": {
+"manufacturer": "SMART TRANSPORT SOLUTIONS, INC.",
+"vehicle_types": [
+"Trailer"
+],
+"source": "nhtsa_vpic"
+},
+"5UM": {
+"manufacturer": "BMW AG",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"5UX": {
+"manufacturer": "BMW MANUFACTURER CORPORATION / BMW NORTH AMERICA",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"5VP": {
+"manufacturer": "POLARIS INDUSTRIES INC.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"5XX": {
+"manufacturer": "KIA GEORGIA, INC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"5XY": {
+"manufacturer": "KIA GEORGIA, INC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"5Y4": {
+"manufacturer": "YAMAHA MOTOR CORPORATION",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"5YF": {
+"manufacturer": "TOYOTA MOTOR MANUFACTURING, MISSISSIPPI, INC.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"5YJ": {
+"manufacturer": "TESLA, INC.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"5YM": {
+"manufacturer": "BMW MANUFACTURER CORPORATION / BMW NORTH AMERICA",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"5Z6": {
+"manufacturer": "SUZUKI MOTOR OF AMERICA, INC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"6G1": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"6G2": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"6G3": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"6MM": {
+"manufacturer": "MITSUBISHI MOTORS AUSTRALIA LTD.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"6MP": {
+"manufacturer": "FORD MOTOR CO OF AUSTRALIA LTD.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"722": {
+"manufacturer": "ISUZU NORTH AMERICA CORPORATION",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"7A5": {
+"manufacturer": "FORD MOTOR COMPANY OF NEW ZEALAND LTD",
+"vehicle_types": [
+"Trailer"
+],
+"source": "nhtsa_vpic"
+},
+"7FA": {
+"manufacturer": "AMERICAN HONDA MOTOR CO., INC.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"7FC": {
+"manufacturer": "RIVIAN AUTOMOTIVE LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"7G2": {
+"manufacturer": "TESLA, INC.",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"7H4": {
+"manufacturer": "HINO MOTORS MANUFACTURING U.S.A.",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"7JD": {
+"manufacturer": "VOLVO CAR USA, LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"7JN": {
+"manufacturer": "JACKSON'S TRAILERS & WELDING",
+"vehicle_types": [
+"Trailer"
+],
+"source": "nhtsa_vpic"
+},
+"7JR": {
+"manufacturer": "VOLVO CAR USA, LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"7KX": {
+"manufacturer": "CHINOOK MOTOR COACH LLC",
+"vehicle_types": [
+"Trailer"
+],
+"source": "nhtsa_vpic"
+},
+"7MM": {
+"manufacturer": "MAZDA TOYOTA MANUFACTURING, USA, INC.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"7MU": {
+"manufacturer": "MAZDA TOYOTA MANUFACTURING, USA, INC.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"7N0": {
+"manufacturer": "BLACK RHINO MANUFACTURING INC.",
+"vehicle_types": [
+"Trailer"
+],
+"source": "nhtsa_vpic"
+},
+"7NA": {
+"manufacturer": "NAVISTAR DEFENSE, LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"7NP": {
+"manufacturer": "RHINO TRAILERS LLC",
+"vehicle_types": [
+"Trailer"
+],
+"source": "nhtsa_vpic"
+},
+"7PD": {
+"manufacturer": "RIVIAN AUTOMOTIVE LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"7SA": {
+"manufacturer": "TESLA, INC.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"7SV": {
+"manufacturer": "TOYOTA MOTOR MANUFACTURING, TEXAS, INC.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"7UU": {
+"manufacturer": "LUCID USA, INC.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"7YA": {
+"manufacturer": "HYUNDAI MOTOR GROUP METAPLANT AMERICA",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"8BN": {
+"manufacturer": "MERCEDES-BENZ USA, LLC (SPRINTER)",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"8BR": {
+"manufacturer": "MERCEDES-BENZ USA, LLC (SPRINTER)",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"8BT": {
+"manufacturer": "MERCEDES-BENZ USA, LLC (SPRINTER)",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"8BU": {
+"manufacturer": "MERCEDES-BENZ USA, LLC (SPRINTER)",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"932": {
+"manufacturer": "HARLEY-DAVIDSON DO BRASIL LTDA",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"97N": {
+"manufacturer": "TRIUMPH MOTORCYCLES (AMERICA) LIMITED",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"99L": {
+"manufacturer": "BYD DO BRASIL LTDA",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"9BF": {
+"manufacturer": "FORD MOTOR COMPANY BRASIL LTDA.",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic",
+"make": "FORD"
+},
+"9BV": {
+"manufacturer": "VOLVO DO BRASIL VEICULOS LTDA",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic",
+"make": "VOLVO"
+},
+"9BW": {
+"manufacturer": "VOLKSWAGEN GROUP OF AMERICA, INC.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic",
+"make": "VOLKSWAGEN"
+},
+"9C2": {
+"manufacturer": "MOTO HONDA DA AMAZONIA LTDA.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic",
+"make": "HONDA"
+},
+"9C6": {
+"manufacturer": "YAMAHA MOTOR CORPORATION",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic",
+"make": "YAMAHA"
+},
+"9DB": {
+"manufacturer": "MERCEDES-BENZ TRUCK COMPANY INC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"ADM": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"AFV": {
+"manufacturer": "FREIGHTLINER CORPORATION",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"HDR": {
+"manufacturer": "HARLEY-DAVIDSON OFF-ROAD",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"J81": {
+"manufacturer": "ISUZU MOTORS LIMITED, JAPAN",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"J87": {
+"manufacturer": "ISUZU MOTORS LIMITED, JAPAN",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"J8B": {
+"manufacturer": "ISUZU MOTORS LIMITED, JAPAN",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"J8C": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"J8D": {
+"manufacturer": "ISUZU MOTORS LIMITED, JAPAN",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"J8T": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"J8Z": {
+"manufacturer": "ISUZU MOTORS LIMITED, JAPAN",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"JA3": {
+"manufacturer": "MITSUBISHI MOTORS CORPORATION (MMC)",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"JA4": {
+"manufacturer": "MITSUBISHI MOTORS CORPORATION (MMC)",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"JA7": {
+"manufacturer": "MITSUBISHI MOTORS CORPORATION (MMC)",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"JAA": {
+"manufacturer": "ISUZU MOTORS LIMITED, JAPAN",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"JAB": {
+"manufacturer": "ISUZU MOTORS LIMITED, JAPAN",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"JAC": {
+"manufacturer": "ISUZU MOTORS LIMITED, JAPAN",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"JAE": {
+"manufacturer": "ISUZU MOTORS LIMITED, JAPAN",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"JAL": {
+"manufacturer": "ISUZU MOTORS LIMITED, JAPAN",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"JAM": {
+"manufacturer": "ISUZU MOTORS LIMITED, JAPAN",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"JB3": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"JB4": {
+"manufacturer": "MITSUBISHI MOTORS CORPORATION (MMC)",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"JB7": {
+"manufacturer": "MITSUBISHI MOTORS CORPORATION (MMC)",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"JC1": {
+"manufacturer": "MAZDA MOTOR CORPORATION",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"JC2": {
+"manufacturer": "MAZDA MOTOR CORPORATION",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"JE3": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"JE4": {
+"manufacturer": "MITSUBISHI MOTORS CORPORATION (MMC)",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"JF1": {
+"manufacturer": "SUBARU CORPORATION",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"JF2": {
+"manufacturer": "SUBARU CORPORATION",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"JF3": {
+"manufacturer": "FUJI HEAVY INDUSTRIES U.S.A., INC. (C/O SUBARU OF AMERICA)",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"JF4": {
+"manufacturer": "FUJI HEAVY INDUSTRIES U.S.A., INC. (C/O SUBARU OF AMERICA)",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"JG1": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"JG2": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"JG7": {
+"manufacturer": "SUZUKI MOTOR OF AMERICA, INC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"JGC": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"JGT": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"JH1": {
+"manufacturer": "HONDA MOTOR CO., LTD.",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"JH2": {
+"manufacturer": "HONDA MOTOR CO., LTD.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"JH3": {
+"manufacturer": "HONDA MOTOR CO., LTD.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"JH4": {
+"manufacturer": "HONDA MOTOR CO., LTD.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"JH6": {
+"manufacturer": "HINO MOTORS, LTD.",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"JH7": {
+"manufacturer": "HINO MOTORS, LTD.",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"JH8": {
+"manufacturer": "HINO MOTORS, LTD.",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"JHA": {
+"manufacturer": "HINO MOTORS, LTD.",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"JHB": {
+"manufacturer": "HINO MOTORS, LTD.",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"JHC": {
+"manufacturer": "HINO MOTORS, LTD.",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"JHH": {
+"manufacturer": "HINO MOTORS, LTD.",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"JHL": {
+"manufacturer": "HONDA MOTOR CO., LTD.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"JHM": {
+"manufacturer": "HONDA MOTOR CO., LTD.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"JJ3": {
+"manufacturer": "MITSUBISHI MOTORS CORPORATION (MMC)",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"JK1": {
+"manufacturer": "KAWASAKI MOTORS, LTD.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"JK8": {
+"manufacturer": "KAWASAKI MOTORS, LTD.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"JKA": {
+"manufacturer": "KAWASAKI MOTORS, LTD.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"JKB": {
+"manufacturer": "KAWASAKI MOTORS, LTD.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"JKS": {
+"manufacturer": "SUZUKI MOTOR OF AMERICA, INC",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"JL6": {
+"manufacturer": "MITSUBISHI FUSO TRUCK AND BUS CORPORATION",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"JL7": {
+"manufacturer": "MITSUBISHI FUSO TRUCK AND BUS CORPORATION",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"JLS": {
+"manufacturer": "MITSUBISHI FUSO TRUCK AND BUS CORPORATION",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"JM1": {
+"manufacturer": "MAZDA MOTOR CORPORATION",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"JM2": {
+"manufacturer": "MAZDA MOTOR CORPORATION",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"JM3": {
+"manufacturer": "MAZDA MOTOR CORPORATION",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"JN1": {
+"manufacturer": "NISSAN MOTOR COMPANY, LTD",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"JN3": {
+"manufacturer": "NISSAN MOTOR COMPANY, LTD",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"JN6": {
+"manufacturer": "NISSAN MOTOR COMPANY, LTD",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"JN8": {
+"manufacturer": "NISSAN MOTOR COMPANY, LTD",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"JNK": {
+"manufacturer": "NISSAN MOTOR COMPANY, LTD",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"JNR": {
+"manufacturer": "NISSAN MOTOR COMPANY, LTD",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"JNT": {
+"manufacturer": "NISSAN MOTOR COMPANY, LTD",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"JNX": {
+"manufacturer": "NISSAN MOTOR COMPANY, LTD",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"JP3": {
+"manufacturer": "MITSUBISHI MOTORS CORPORATION (MMC)",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"JP4": {
+"manufacturer": "MITSUBISHI MOTORS CORPORATION (MMC)",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"JP7": {
+"manufacturer": "MITSUBISHI MOTORS CORPORATION (MMC)",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"JR2": {
+"manufacturer": "HONDA MOTOR CO., LTD.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"JS1": {
+"manufacturer": "SUZUKI MOTOR CORPORATION",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"JS2": {
+"manufacturer": "SUZUKI MOTOR OF AMERICA, INC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"JS3": {
+"manufacturer": "SUZUKI MOTOR OF AMERICA, INC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"JS4": {
+"manufacturer": "SUZUKI MOTOR OF AMERICA, INC",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"JSA": {
+"manufacturer": "SUZUKI MOTOR OF AMERICA, INC",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"JSK": {
+"manufacturer": "SUZUKI MOTOR OF AMERICA, INC",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"JSL": {
+"manufacturer": "SUZUKI MOTOR OF AMERICA, INC",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"JT2": {
+"manufacturer": "TOYOTA MOTOR CORPORATION",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"JT3": {
+"manufacturer": "TOYOTA MOTOR CORPORATION",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"JT4": {
+"manufacturer": "TOYOTA MOTOR CORPORATION",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"JT5": {
+"manufacturer": "TOYOTA MOTOR CORPORATION",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"JT6": {
+"manufacturer": "TOYOTA MOTOR CORPORATION",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"JT8": {
+"manufacturer": "TOYOTA MOTOR CORPORATION",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"JTD": {
+"manufacturer": "TOYOTA MOTOR CORPORATION",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"JTE": {
+"manufacturer": "TOYOTA MOTOR CORPORATION",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"JTH": {
+"manufacturer": "TOYOTA MOTOR CORPORATION",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"JTJ": {
+"manufacturer": "TOYOTA MOTOR CORPORATION",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"JTK": {
+"manufacturer": "TOYOTA MOTOR NORTH AMERICA, INC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"JTL": {
+"manufacturer": "TOYOTA MOTOR CORPORATION",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"JTM": {
+"manufacturer": "TOYOTA MOTOR CORPORATION",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"JTN": {
+"manufacturer": "TOYOTA MOTOR CORPORATION",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"JW6": {
+"manufacturer": "MITSUBISHI MOTORS CORPORATION (MMC)",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"JW7": {
+"manufacturer": "MITSUBISHI MOTORS CORPORATION (MMC)",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"JY4": {
+"manufacturer": "YAMAHA MOTOR CORPORATION",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"JYA": {
+"manufacturer": "YAMAHA MOTOR CO., LTD.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"JYE": {
+"manufacturer": "YAMAHA MOTOR CO., LTD.",
+"vehicle_types": [
+"Off-Road Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"KFB": {
+"manufacturer": "FREIGHTLINER CORPORATION",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"KL1": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"KL2": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"KL4": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"KL5": {
+"manufacturer": "SUZUKI MOTOR OF AMERICA, INC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"KL7": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"KL8": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"KM8": {
+"manufacturer": "HYUNDAI MOTOR CO",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"KME": {
+"manufacturer": "HYUNDAI MOTOR CO",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"KMF": {
+"manufacturer": "HYUNDAI MOTOR CO",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"KMH": {
+"manufacturer": "HYUNDAI MOTOR CO",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"KMT": {
+"manufacturer": "HYUNDAI MOTOR CO",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"KMU": {
+"manufacturer": "HYUNDAI MOTOR CO",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"KNA": {
+"manufacturer": "KIA CORPORATION",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"KND": {
+"manufacturer": "KIA CORPORATION",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"KNJ": {
+"manufacturer": "KIA MOTORS (FORD IMPORTS)",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"KNM": {
+"manufacturer": "RENAULT SAMSUNG MOTORS CO., LTD",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"KPH": {
+"manufacturer": "HYUNDAI MOTOR CO",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"L4V": {
+"manufacturer": "KTMMEX SA. DE CV.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"LAL": {
+"manufacturer": "SUNDIRO HONDA MOTORCYCLE CO., LTD.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"LBP": {
+"manufacturer": "YAMAHA MOTOR CORPORATION",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"LC0": {
+"manufacturer": "BYD AUTO INDUSTRY COMPANY LIMITED",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"LC6": {
+"manufacturer": "SUZUKI MOTOR OF AMERICA, INC",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"LGX": {
+"manufacturer": "BYD AUTO CO., LTD.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"LM1": {
+"manufacturer": "SUZUKI MOTOR OF AMERICA, INC",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"LM4": {
+"manufacturer": "SUZUKI MOTOR OF AMERICA, INC",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"LN1": {
+"manufacturer": "SUZUKI MOTOR OF AMERICA, INC",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"LPE": {
+"manufacturer": "BYD AUTO INDUSTRY COMPANY LIMITED",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"LPR": {
+"manufacturer": "YAMAHA MOTOR CORPORATION",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"LRB": {
+"manufacturer": "SHANGHAI GENERAL MOTORS CORP LTD.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"LRE": {
+"manufacturer": "SHANGHAI GENERAL MOTORS CORP LTD.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"LSG": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"LVY": {
+"manufacturer": "DAQING VOLVO CAR MANUFACTURING CO LTD",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"LWB": {
+"manufacturer": "AMERICAN HONDA MOTOR CO., INC.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"LYV": {
+"manufacturer": "DAQING VOLVO CAR MANUFACTURING CO LTD",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"MAA": {
+"manufacturer": "KAWASAKI MOTORS, LTD.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"MAJ": {
+"manufacturer": "FORD INDIA LTD",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"MBF": {
+"manufacturer": "ROYAL ENFIELD, A UNIT OF EICHER MOTORS LTD.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"MD2": {
+"manufacturer": "BAJAJ AUTO LTD",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"ME3": {
+"manufacturer": "ROYAL ENFIELD, A UNIT OF EICHER MOTORS LTD.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"MH3": {
+"manufacturer": "YAMAHA MOTOR CORPORATION",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"MH4": {
+"manufacturer": "KAWASAKI MOTORS, LTD.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"ML0": {
+"manufacturer": "DUCATI MOTOR (THAILAND) CO., LTD.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"ML3": {
+"manufacturer": "MITSUBISHI MOTORS CORPORATION (MMC)",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"ML5": {
+"manufacturer": "KAWASAKI MOTORS ENTERPRISE THAILAND CO., LTD.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"MLC": {
+"manufacturer": "SUZUKI MOTOR OF AMERICA, INC",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"MLH": {
+"manufacturer": "THAI HONDA CO., LTD.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"MN3": {
+"manufacturer": "FCA US LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"MP3": {
+"manufacturer": "MITSUBISHI MOTORS (THAILAND) CO LTD",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"NM0": {
+"manufacturer": "FORD OTOMOTIV SANAYI A.S., TURKEY",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"NMT": {
+"manufacturer": "TOYOTA MOTOR MANUFACTURING,TURKEY ,INC.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"PFD": {
+"manufacturer": "HYUNDAI MOTOR GROUP INNOVATION CENTRE IN SINGAPORE",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"R4N": {
+"manufacturer": "ELYX SMART TECHNOLOGY HOLDINGS (HONGKONG) LIMITED",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"RFD": {
+"manufacturer": "SUZUKI MOTOR OF AMERICA, INC",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"RK6": {
+"manufacturer": "SUZUKI MOTOR OF AMERICA, INC",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"RK7": {
+"manufacturer": "SUZUKI MOTOR OF AMERICA, INC",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"RKC": {
+"manufacturer": "RHINO POWER SPORT INDUSTRIAL CO., LTD",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"RKR": {
+"manufacturer": "YAMAHA MOTOR TAIWAN CO., LTD.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"RLH": {
+"manufacturer": "HONDA VIETNAM CO., LTD.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"RSA": {
+"manufacturer": "FREIGHTLINER CORPORATION",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"RSB": {
+"manufacturer": "FREIGHTLINER CORPORATION",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"S21": {
+"manufacturer": "POLARIS INDUSTRIES INC.",
+"vehicle_types": [
+"Off-Road Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"SAD": {
+"manufacturer": "JAGUAR LAND ROVER LIMITED",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"SAJ": {
+"manufacturer": "JAGUAR LAND ROVER LIMITED",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"SAL": {
+"manufacturer": "JAGUAR LAND ROVER LIMITED",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"SAT": {
+"manufacturer": "TRIUMPH MOTORCYCLES LIMITED",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"SB1": {
+"manufacturer": "TOYOTA MOTOR CORPORATION",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"SBV": {
+"manufacturer": "PACCAR INC.",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"SFZ": {
+"manufacturer": "TESLA, INC.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"SHH": {
+"manufacturer": "HONDA OF THE U.K. MFG., LTD.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"SHS": {
+"manufacturer": "HONDA OF THE U.K. MFG., LTD.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"SJK": {
+"manufacturer": "NISSAN MOTOR MANUFACTURING (UK) LTD",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"SMT": {
+"manufacturer": "TRIUMPH MOTORCYCLES LIMITED",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"SN1": {
+"manufacturer": "POLARIS INDUSTRIES INC.",
+"vehicle_types": [
+"Off-Road Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"TAP": {
+"manufacturer": "POLARIS INDUSTRIES INC.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"TMC": {
+"manufacturer": "THOMPSON MFG. COMPANY WEXFORD LTD.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"TRU": {
+"manufacturer": "AUDI AG",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"TYB": {
+"manufacturer": "MITSUBISHI FUSO TRUCK EUROPE S.A.",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"U5Y": {
+"manufacturer": "HYUNDAI-KIA AMERICA TECHNICAL CENTER INC (HATCI)",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"VBK": {
+"manufacturer": "KTM AG",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"VF1": {
+"manufacturer": "RENAULT GROUP",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"VF3": {
+"manufacturer": "AUTOMOBILES PEUGEOT",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"VG5": {
+"manufacturer": "YAMAHA MOTOR CORPORATION",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"VG6": {
+"manufacturer": "RENAULT GROUP",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"VG8": {
+"manufacturer": "RENAULT GROUP",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"VGA": {
+"manufacturer": "PEUGEOT MOTORCYCLES",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"VNK": {
+"manufacturer": "TOYOTA MOTOR MANUFACTURING, FRANCE, S.A.S.",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"VTD": {
+"manufacturer": "MONTESA HONDA SA",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"VTM": {
+"manufacturer": "MONTESA HONDA SA",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"VTT": {
+"manufacturer": "SUZUKI MOTOR OF AMERICA, INC",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"VYF": {
+"manufacturer": "STELLANTIS AUTO SAS",
+"vehicle_types": [
+"Low Speed Vehicle (LSV)"
+],
+"source": "nhtsa_vpic"
+},
+"W0V": {
+"manufacturer": "GENERAL MOTORS LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"W1A": {
+"manufacturer": "MERCEDES-BENZ, AG",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"W1H": {
+"manufacturer": "MERCEDES-BENZ, AG",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"W1K": {
+"manufacturer": "MERCEDES-BENZ CARS",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"W1L": {
+"manufacturer": "MERCEDES-BENZ, AG",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"W1M": {
+"manufacturer": "MERCEDES-BENZ, AG",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"W1N": {
+"manufacturer": "MERCEDES-BENZ, AG",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"W1P": {
+"manufacturer": "MERCEDES-BENZ, AG",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"W1R": {
+"manufacturer": "MERCEDES-BENZ, AG",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"W1W": {
+"manufacturer": "MERCEDES-BENZ, AG",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"W1X": {
+"manufacturer": "MERCEDES-BENZ, AG",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"W1Y": {
+"manufacturer": "MERCEDES-BENZ, AG",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"W1Z": {
+"manufacturer": "MERCEDES-BENZ, AG",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"W2W": {
+"manufacturer": "MERCEDES-BENZ, AG",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"W2X": {
+"manufacturer": "MERCEDES-BENZ, AG",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"W2Y": {
+"manufacturer": "MERCEDES-BENZ, AG",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"W2Z": {
+"manufacturer": "MERCEDES-BENZ, AG",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"WA1": {
+"manufacturer": "AUDI AG",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"WAP": {
+"manufacturer": "BMW OF NORTH AMERICA, LLC",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"WAU": {
+"manufacturer": "AUDI AG",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"WB1": {
+"manufacturer": "BMW AG MOTORCYCLES",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"WB3": {
+"manufacturer": "BMW AG MOTORCYCLES",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"WB4": {
+"manufacturer": "BMW AG MOTORCYCLES",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"WB5": {
+"manufacturer": "BMW AG",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"WBA": {
+"manufacturer": "BMW AG",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"WBS": {
+"manufacturer": "BMW M GMBH",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"WBX": {
+"manufacturer": "BMW AG",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"WBY": {
+"manufacturer": "BMW AG",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"WCD": {
+"manufacturer": "DAIMLER CHRYSLER AG",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"WD0": {
+"manufacturer": "MERCEDES-BENZ, AG",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"WD1": {
+"manufacturer": "DAIMLER CHRYSLER AG",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"WD2": {
+"manufacturer": "DAIMLER CHRYSLER AG",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"WD3": {
+"manufacturer": "MERCEDES-BENZ, AG",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"WD4": {
+"manufacturer": "MERCEDES-BENZ, AG",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"WD5": {
+"manufacturer": "DAIMLER CHRYSLER AG",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"WD6": {
+"manufacturer": "DAIMLER CHRYSLER AG",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"WD7": {
+"manufacturer": "DAIMLER CHRYSLER AG",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"WD8": {
+"manufacturer": "MERCEDES-BENZ, AG",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"WDA": {
+"manufacturer": "MERCEDES-BENZ, AG",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"WDB": {
+"manufacturer": "MERCEDES-BENZ CARS",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"WDC": {
+"manufacturer": "MERCEDES-BENZ CARS",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"WDD": {
+"manufacturer": "MERCEDES-BENZ CARS",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"WDP": {
+"manufacturer": "DAIMLER CHRYSLER AG",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"WDR": {
+"manufacturer": "DAIMLER CHRYSLER AG",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"WDW": {
+"manufacturer": "MERCEDES-BENZ, AG",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"WDX": {
+"manufacturer": "MERCEDES-BENZ, AG",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"WDY": {
+"manufacturer": "DAIMLER CHRYSLER AG",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"WDZ": {
+"manufacturer": "MERCEDES-BENZ USA, LLC (SPRINTER)",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"WEB": {
+"manufacturer": "DAIMLER BUSES GMBH",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"WF0": {
+"manufacturer": "FORD WERKE AG",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"WF1": {
+"manufacturer": "FORD WERKE AG",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"WKK": {
+"manufacturer": "DAIMLER BUSES GMBH",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"WME": {
+"manufacturer": "MERCEDES-BENZ CARS",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"WMW": {
+"manufacturer": "BMW AG",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"WMZ": {
+"manufacturer": "BMW AG",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"WP0": {
+"manufacturer": "DR. ING. H.C.F. PORSCHE AG",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"WP1": {
+"manufacturer": "DR. ING. H.C.F. PORSCHE AG",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"WU1": {
+"manufacturer": "AUDI SPORT GMBH",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"WUA": {
+"manufacturer": "AUDI SPORT GMBH",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"WV1": {
+"manufacturer": "VOLKSWAGEN GROUP OF AMERICA, INC.",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"WV2": {
+"manufacturer": "VOLKSWAGEN GROUP OF AMERICA, INC.",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"WV3": {
+"manufacturer": "VOLKSWAGEN GROUP OF AMERICA, INC.",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"WVG": {
+"manufacturer": "VOLKSWAGEN AG",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"WVW": {
+"manufacturer": "VOLKSWAGEN AG",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"WYB": {
+"manufacturer": "MERCEDES-BENZ, AG",
+"vehicle_types": [
+"Truck"
+],
+"source": "nhtsa_vpic"
+},
+"WZ1": {
+"manufacturer": "BMW AG",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"YB1": {
+"manufacturer": "VOLVO EUROPA TRUCK NV",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"YB3": {
+"manufacturer": "VOLVO EUROPA TRUCK NV",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"YC1": {
+"manufacturer": "AMERICAN HONDA MOTOR CO., INC.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"YV1": {
+"manufacturer": "VOLVO CAR CORPORATION",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"YV2": {
+"manufacturer": "VOLVO CAR CORPORATION",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"YV3": {
+"manufacturer": "VOLVO CAR CORPORATION",
+"vehicle_types": [
+"Bus"
+],
+"source": "nhtsa_vpic"
+},
+"YV4": {
+"manufacturer": "VOLVO CAR CORPORATION",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"YV5": {
+"manufacturer": "VOLVO CAR CORPORATION",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"YV6": {
+"manufacturer": "VOLVO CAR CORPORATION",
+"vehicle_types": [
+"Trailer"
+],
+"source": "nhtsa_vpic"
+},
+"ZAC": {
+"manufacturer": "STELLANTIS EUROPE SPA",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"ZAP": {
+"manufacturer": "PIAGGIO & C.S.P.A.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"ZCF": {
+"manufacturer": "IVECO TRUCKS OF NORTH AMERICAN, INC",
+"vehicle_types": [
+"Incomplete Vehicle"
+],
+"source": "nhtsa_vpic"
+},
+"ZDC": {
+"manufacturer": "AMERICAN HONDA MOTOR CO., INC.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"ZDM": {
+"manufacturer": "DUCATI MOTOR HOLDING S.P.A.",
+"vehicle_types": [
+"Motorcycle"
+],
+"source": "nhtsa_vpic"
+},
+"ZFA": {
+"manufacturer": "STELLANTIS EUROPE SPA",
+"vehicle_types": [
+"Passenger Car"
+],
+"source": "nhtsa_vpic"
+},
+"ZFB": {
+"manufacturer": "STELLANTIS EUROPE SPA",
+"vehicle_types": [
+"Multipurpose Passenger Vehicle (MPV)"
+],
+"source": "nhtsa_vpic"
+},
+"9BD": {
+"manufacturer": null,
+"make": "FIAT (Fiat Automoveis / Stellantis, Brazil)",
+"vehicle_types": [],
+"source": "curated"
+},
+"93H": {
+"manufacturer": null,
+"make": "HONDA (Honda Automoveis do Brasil, cars)",
+"vehicle_types": [],
+"source": "curated"
+},
+"9BG": {
+"manufacturer": null,
+"make": "CHEVROLET (General Motors do Brasil)",
+"vehicle_types": [],
+"source": "curated"
+},
+"9BR": {
+"manufacturer": null,
+"make": "TOYOTA (Toyota do Brasil)",
+"vehicle_types": [],
+"source": "curated"
+},
+"93Y": {
+"manufacturer": null,
+"make": "RENAULT (Renault do Brasil)",
+"vehicle_types": [],
+"source": "curated"
+},
+"9BM": {
+"manufacturer": null,
+"make": "MERCEDES-BENZ (Mercedes-Benz do Brasil, trucks and buses)",
+"vehicle_types": [],
+"source": "curated"
+},
+"9BH": {
+"manufacturer": null,
+"make": "HYUNDAI (Hyundai Motor Brasil)",
+"vehicle_types": [],
+"source": "curated"
+},
+"935": {
+"manufacturer": null,
+"make": "CITROEN (Brazil)",
+"vehicle_types": [],
+"source": "curated"
+},
+"936": {
+"manufacturer": null,
+"make": "PEUGEOT (Brazil)",
+"vehicle_types": [],
+"source": "curated"
+},
+"94D": {
+"manufacturer": null,
+"make": "NISSAN (Nissan do Brasil)",
+"vehicle_types": [],
+"source": "curated"
+},
+"988": {
+"manufacturer": null,
+"make": "JEEP (FCA / Stellantis, Goiana, Brazil)",
+"vehicle_types": [],
+"source": "curated"
+},
+"9BS": {
+"manufacturer": null,
+"make": "SCANIA (Scania Latin America, Brazil)",
+"vehicle_types": [],
+"source": "curated"
+},
+"953": {
+"manufacturer": null,
+"make": "VOLKSWAGEN TRUCKS AND BUSES (MAN Latin America, Brazil)",
+"vehicle_types": [],
+"source": "curated"
+},
+"93X": {
+"manufacturer": null,
+"make": "MITSUBISHI (HPE Automotores do Brasil)",
+"vehicle_types": [],
+"source": "curated"
+}
+}
+}

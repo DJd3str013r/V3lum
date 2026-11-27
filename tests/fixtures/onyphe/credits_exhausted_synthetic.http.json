@@ -1,0 +1,23 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://www.onyphe.io/api/v2/summary/ip/198.51.100.20"
+ },
+ "response": {
+  "status": 403,
+  "headers": {
+   "Content-Type": "application/json"
+  },
+  "body": {
+   "count": 0,
+   "error": 5,
+   "myip": "203.0.113.10",
+   "status": "nok",
+   "text": "No more credits available on your account",
+   "took": 0,
+   "total": 0
+  }
+ },
+ "observed": "synthetic",
+ "note": "Monthly credits exhausted -> QUOTA (condition 4). Code/text guessed."
+}

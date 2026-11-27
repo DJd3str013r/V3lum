@@ -1,0 +1,55 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "ukwa",
+  "name": "UK Web Archive",
+  "operator": "The British Library (UK Web Archive)",
+  "hosts": [
+    "www.webarchive.org.uk"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "National library of the United Kingdom (public body, A8 trusted); P059 'All archives are established non-profits or public bodies: tier trusted'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Captures are faithful records of what was served at capture time; the online service has been in maintenance since the 2023 cyberattack."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "timeout": 15,
+    "retries": 0,
+    "ttl": 86400,
+    "min_interval": 4.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "cdx": {
+      "title": "UK Web Archive CDX (wayback/archive/cdx)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://www.webarchive.org.uk/",
+        "quote": "",
+        "checked_at": "2026-11-26",
+        "reviewer": "batch p1-G01-2",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "webarchive.org.uk",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "UKWA stays disabled until it answers (P059 cond 3, cond 10): https://www.webarchive.org.uk/wayback/archive/cdx?url={url}&output=json answered 403 'Under Maintenance' (Azure Front Door) on 2026-11-25 and 2026-11-26, so its terms page could not be reviewed: class 'unknown' (disabled in every licence profile, A1) until legal records them. Research C0186 noted 'Free (British Library)'."
+    }
+  },
+  "notes": "Owned by batch p1-G01-2 (P059, module web_archives_ukwa, default off and disabled until the service answers)."
+}

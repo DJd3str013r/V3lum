@@ -1,0 +1,120 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "solana_foundation",
+  "name": "Solana public mainnet-beta JSON-RPC (api.mainnet-beta.solana.com)",
+  "operator": "Solana Foundation (public cluster endpoint published in the Solana documentation; answers name the serving RPC node in x-rpc-node)",
+  "hosts": [
+    "api.mainnet-beta.solana.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established foundation that stewards the Solana protocol and publishes the public cluster endpoints, their rate limits and the 'not intended for production' caveat in its documentation (A8 trusted: established organisation with published terms). Binding council decision P215 FC3: registry provider solana_foundation, tier trusted.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Ledger state served by a public node, best effort with no SLA. From a datacenter egress on 2026-11-26 the endpoint answered a valid-looking 0 lamports / [] for an account that certainly exists (Circle's USDC mint), while it answered the System Program correctly in the same minute: empty answers are not proof of absence."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 10.0,
+    "retries": 1,
+    "ttl": 3600,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "rate_per_second": 1.0,
+    "burst": 1,
+    "day": 1000,
+    "published": false,
+    "evidence_url": "https://solana.com/docs/references/clusters",
+    "safety_margin": 0.8
+  },
+  "error_markers": [
+    {
+      "id": "solana_rpc_rate_limited_code",
+      "statuses": [200, 429],
+      "json_path": "error.code",
+      "equals": 429,
+      "regex": null,
+      "final_url_regex": null,
+      "maps_to": "rate_limited",
+      "reason_code": "rate_limited",
+      "reason": "Solana public RPC: rate limited (JSON-RPC error 429): could not verify"
+    },
+    {
+      "id": "solana_rpc_too_many_requests",
+      "statuses": [200, 429],
+      "json_path": "error.message",
+      "equals": null,
+      "regex": "(?i)too many requests",
+      "final_url_regex": null,
+      "maps_to": "rate_limited",
+      "reason_code": "rate_limited",
+      "reason": "Solana public RPC: rate limited ('Too many requests'): could not verify"
+    },
+    {
+      "id": "solana_rpc_blocked_code",
+      "statuses": [200, 401, 403],
+      "json_path": "error.code",
+      "equals": 403,
+      "regex": null,
+      "final_url_regex": null,
+      "maps_to": "blocked",
+      "reason_code": "challenge",
+      "reason": "Solana public RPC: this egress is refused (JSON-RPC error 403): could not verify"
+    },
+    {
+      "id": "solana_rpc_blocked_message",
+      "statuses": [200, 401, 403],
+      "json_path": "error.message",
+      "equals": null,
+      "regex": "(?i)blocked from this endpoint",
+      "final_url_regex": null,
+      "maps_to": "blocked",
+      "reason_code": "challenge",
+      "reason": "Solana public RPC: 'your IP or provider is blocked from this endpoint': could not verify"
+    },
+    {
+      "id": "solana_rpc_disabled",
+      "statuses": [200, 410],
+      "json_path": "error.code",
+      "equals": 410,
+      "regex": null,
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "Solana public RPC: the call or its parameters are disabled on this endpoint (JSON-RPC error 410): could not verify"
+    }
+  ],
+  "keys": {},
+  "sources": {
+    "rpc": {
+      "title": "Solana mainnet-beta public JSON-RPC: getBalance and getSignaturesForAddress (limit <= 25) only",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://solana.com/docs/references/clusters",
+        "quote": "Registry provider solana_foundation: tier trusted, terms open (public RPC, best effort, no SLA).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "solana_rpc",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P215 FC3); the research record (C0502) gives 'Solana Foundation public RPC (best-effort, no SLA)' and 'Public RPC: ~100 req/10 s per IP, 40 req/10 s per method (Solana docs); not for heavy use'. The evidence page answered a Vercel Security Checkpoint (HTTP 429) from the datacenter egress on 2026-11-26: doctor --licences --refresh must report it BLOCKED challenge, never 'terms changed'. The quota block uses the stricter OBSERVED figure (published=false): live x-ratelimit headers gave getSignaturesForAddress a method limit of 10 (getBalance 150, rps 250, conn/connrate 40); 1 request/s x 0.8 = 8 requests per 10 s for the whole provider. The day budget of 1000 is a team policy (the endpoint is 'not intended for production'), not a published limit. JSON-RPC errors arrive inside HTTP 200 (e.g. -32602 'Invalid param'): the markers cover rate limit (429), egress block (403) and disabled calls (410); other JSON-RPC errors are classified by the module as ERROR (could not verify)."
+    }
+  },
+  "notes": "Owned by batch p3-G09-2 (P215 solana_rpc). Only the read-only methods getBalance and getSignaturesForAddress are ever sent (never sendTransaction, requestAirdrop, getTransaction or getTokenAccountsByOwner). A bare base58 string is never sent: the module runs only on explicitly typed Solana inputs (FC2)."
+}

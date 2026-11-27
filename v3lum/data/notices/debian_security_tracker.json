@@ -1,0 +1,15 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "debian_security_tracker",
+  "source_url": "https://security-tracker.debian.org/tracker/data/json",
+  "version": "runtime dataset debian_security_tracker (refreshed at most daily by v3lum data update); 4 packages / 8 ids of the 2026-11-26 export trimmed in the test fixtures",
+  "sha256": "",
+  "licence": "Debian security tracker data (public)",
+  "attribution": "Debian security tracker data (Debian Security Team), https://security-tracker.debian.org/tracker/",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/vulnerability_cve/debian_security_tracker.py",
+    "v3lum/correlations/p3_g08_1.py",
+    "tests/fixtures/debian_security_tracker/tracker_trimmed.json"
+  ]
+}

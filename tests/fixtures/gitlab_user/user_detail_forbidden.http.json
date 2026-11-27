@@ -1,0 +1,26 @@
+{
+ "_meta": {
+  "module": "gitlab_user",
+  "case": "detail_forbidden",
+  "source": "C0238 gitlab.com",
+  "request": {
+   "method": "GET",
+   "url": "https://gitlab.com/api/v4/users/1786152"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "LIVE",
+  "elapsed_s": 0.348,
+  "note": "GitLab's own 403 (gitlab-lb/ratelimit headers present), not the proxy and not a challenge"
+ },
+ "status": 403,
+ "headers": {
+  "content-type": "application/json",
+  "ratelimit-name": "throttle_unauthenticated_api",
+  "ratelimit-limit": "500",
+  "ratelimit-observed": "2",
+  "ratelimit-remaining": "498",
+  "ratelimit-reset": "1795676280",
+  "server": "cloudflare"
+ },
+ "body": "{\"message\":\"403 Forbidden - Not authorized!\"}"
+}

@@ -1,0 +1,50 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "$comment": "MongoDB on a C2-tagged host: the same fact is an INFO pivot for infrastructure fingerprinting",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "nodes": [
+    {
+      "key": "ipv4:192.0.2.41",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "open_ports": [
+          {
+            "value": [
+              27017
+            ],
+            "source": "shodan_api"
+          }
+        ]
+      },
+      "findings": [
+        {
+          "title": "ThreatFox IOC (botnet C2)",
+          "severity": "high",
+          "confidence": 0.8,
+          "criterion": "source verdict",
+          "tags": [
+            "c2",
+            "malicious"
+          ],
+          "module": "abusech",
+          "source": "abusech.threatfox",
+          "observed_last": "2026-11-25T00:00:00Z"
+        }
+      ]
+    }
+  ],
+  "edges": [],
+  "expect": {
+    "exposed_database_or_cache": {
+      "min": 1,
+      "max": 1,
+      "severity": "info"
+    }
+  }
+}

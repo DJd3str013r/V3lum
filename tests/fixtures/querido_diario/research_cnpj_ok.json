@@ -1,0 +1,19 @@
+{
+ "total_gazettes": 2292,
+ "gazettes": [
+  {
+   "territory_id": "5003207",
+   "date": "2013-08-30",
+   "scraped_at": "2024-03-27T15:05:34.732023",
+   "url": "https://data.queridodiario.ok.org.br/5003207/2013-08-30/03e971229417941c1c8528aaa3966f77df7ab88e.pdf",
+   "territory_name": "Corumbá",
+   "state_code": "MS",
+   "excerpts": [
+    "[REDACTED_EXCERPT]"
+   ],
+   "edition": "287",
+   "is_extra_edition": false,
+   "txt_url": "https://data.queridodiario.ok.org.br/5003207/2013-08-30/03e971229417941c1c8528aaa3966f77df7ab88e.txt"
+  }
+ ]
+}

@@ -1,0 +1,11 @@
+{
+ "request": {"method": "GET", "url": "https://example-corp.s3.amazonaws.com/?max-keys=1"},
+ "response": {
+  "status": 200,
+  "headers": {"content-type": "text/html"},
+  "body": "<html><body><h1>Hello</h1><p>This is a static site, not a bucket listing.</p></body></html>"
+ },
+ "class": "synthetic",
+ "origin": "synthetic (200 HTML where bucket XML expected)",
+ "notes": "200 without ListBucketResult XML = could-not-verify (FC4 'anything else')."
+}

@@ -1,0 +1,19 @@
+{
+ "total_gazettes": 20,
+ "gazettes": [
+  {
+   "territory_id": "3550308",
+   "date": "2025-03-17",
+   "scraped_at": "2025-03-18T00:00:06.998168",
+   "url": "https://data.queridodiario.ok.org.br/3550308/2025-03-17/d52b3cb3e701fde18f4547760004b0b3326f95a4.pdf",
+   "territory_name": "São Paulo",
+   "state_code": "SP",
+   "excerpts": [
+    "<excerpt redacted for fixture>"
+   ],
+   "edition": "",
+   "is_extra_edition": false,
+   "txt_url": "https://data.queridodiario.ok.org.br/3550308/2025-03-17/d52b3cb3e701fde18f4547760004b0b3326f95a4.txt"
+  }
+ ]
+}

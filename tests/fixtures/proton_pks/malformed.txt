@@ -1,0 +1,2 @@
+info:1:1
+pub:not-a-fingerprint:22::abc::

@@ -1,0 +1,21 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://tria.ge/api/v0/search?query=sha256:275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f",
+  "headers": {}
+ },
+ "response": {
+  "status": 429,
+  "headers": {
+   "content-type": "application/json",
+   "retry-after": "60"
+  },
+  "body": {
+   "error": "TOO_MANY_REQUESTS",
+   "message": "rate limit exceeded"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "synthetic: Triage documents no 429; status-driven classification only"
+}

@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "w3techs",
+  "name": "W3Techs site technology pages",
+  "operator": "Q-Success (W3Techs)",
+  "hosts": [
+    "w3techs.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Company with public terms and a long track record; P083 cond 5: 'community - W3Techs'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Technology detection from the vendor's crawl; manual context only."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "pivot_pages": {
+      "title": "W3Techs /sites/info/{domain} (manual pivot link)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://w3techs.com/",
+        "quote": "The pack is offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "w3techs",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (cond 1 of the proposal). Research C0199 (verified 2026-11-26, 200). The API is paid and never used. Used by pivots_url_web (pack url_web.json)."
+    }
+  },
+  "notes": "Manual pivot links only (batch p2-G14-1): V3LUM never fetches them (P311)."
+}

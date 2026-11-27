@@ -1,0 +1,349 @@
+{
+ "metadata": {
+  "vulnerability": "CVE-2021-44228",
+  "count": 3200,
+  "kinds": {
+   "milestone": 89,
+   "sighting": 2094,
+   "kev": 25,
+   "other": 992
+  },
+  "linked_omitted": 0
+ },
+ "data": [
+  {
+   "timestamp": "2021-11-26T00:00:00Z",
+   "date_only": false,
+   "value": "2021-11-26T00:00:00.000Z",
+   "kind": "milestone",
+   "label": "Reserved",
+   "source": "cvelistv5",
+   "record": "CVE-2021-44228",
+   "field": "cveMetadata.dateReserved"
+  },
+  {
+   "timestamp": "2021-12-09T23:00:00Z",
+   "date_only": false,
+   "value": "2021-12-09T23:00:00.000+00:00",
+   "kind": "milestone",
+   "label": "Published",
+   "source": "csaf_certbund · WID-SEC-W-2022-0351",
+   "record": "WID-SEC-W-2022-0351",
+   "field": "document.tracking.initial_release_date",
+   "metric_role": "disclosure",
+   "metric_basis": "recorded_event",
+   "linked_record": true
+  },
+  {
+   "timestamp": "2021-12-09T23:00:00Z",
+   "date_only": false,
+   "value": "2021-12-09T23:00:00.000+00:00",
+   "kind": "other",
+   "label": "Advisory revision",
+   "source": "csaf_certbund · WID-SEC-W-2022-0351",
+   "record": "WID-SEC-W-2022-0351",
+   "field": "document.tracking.revision_history.0.date",
+   "linked_record": true
+  },
+  {
+   "timestamp": "2021-12-10T00:00:00Z",
+   "date_only": true,
+   "value": "2021-12-10",
+   "kind": "kev",
+   "label": "Date added",
+   "source": "cisa-kev",
+   "record": "CVE-2021-44228",
+   "field": "evidence.0.details.date_added",
+   "uuid": "1a45906b-8393-4ad9-ae60-01e390610497",
+   "status": {
+    "status_reason": "confirmed",
+    "exploited": true
+   }
+  },
+  {
+   "timestamp": "2021-12-10T00:00:00Z",
+   "date_only": false,
+   "value": "2021-12-10T00:00:00+00:00",
+   "kind": "kev",
+   "label": "First seen",
+   "source": "previdian",
+   "record": "CVE-2021-44228",
+   "field": "timestamps.first_seen_at",
+   "metric_role": "exploitation_report",
+   "metric_basis": "kev_report",
+   "uuid": "fa089b32-b317-42c9-a3f2-56839bb1f3e7",
+   "status": {
+    "status_reason": "confirmed",
+    "exploited": true
+   }
+  },
+  {
+   "timestamp": "2021-12-10T04:00:00Z",
+   "date_only": false,
+   "value": "2021-12-10T04:00:00.000000Z",
+   "kind": "sighting",
+   "label": "Seen",
+   "source": "https://www.govcert.gov.hk/en/alerts_detail.php?id=700",
+   "record": "CVE-2021-44228",
+   "field": "creation_timestamp",
+   "uuid": "ad022924-2a9b-4ee6-b152-bfc2eead0595",
+   "url": "https://www.govcert.gov.hk/en/alerts_detail.php?id=700"
+  },
+  {
+   "timestamp": "2021-12-10T08:54:02Z",
+   "date_only": false,
+   "value": "2021-12-10T08:54:02.000000Z",
+   "kind": "sighting",
+   "label": "Seen",
+   "source": "https://www.kyberturvallisuuskeskus.fi/fi/haavoittuvuus_38/2021",
+   "record": "CVE-2021-44228",
+   "field": "creation_timestamp",
+   "uuid": "af40b76a-28e9-4c6f-b3de-28ce685df498",
+   "url": "https://www.kyberturvallisuuskeskus.fi/fi/haavoittuvuus_38/2021"
+  },
+  {
+   "timestamp": "2021-12-10T09:44:22Z",
+   "date_only": false,
+   "value": "2021-12-10T09:44:22.000000Z",
+   "kind": "sighting",
+   "label": "Exploited",
+   "source": "https://t.me/example_channel/229",
+   "record": "CVE-2021-44228",
+   "field": "creation_timestamp",
+   "uuid": "9fa47729-0d14-4998-b0f1-d642776af214",
+   "content": "",
+   "url": "https://t.me/example_channel/229",
+   "metric_role": "exploitation",
+   "metric_basis": "sighting_report"
+  },
+  {
+   "timestamp": "2021-12-10T10:16:35Z",
+   "date_only": false,
+   "value": "2021-12-10T10:16:35.000000Z",
+   "kind": "sighting",
+   "label": "Exploited",
+   "source": "https://t.me/example_channel/2428",
+   "record": "CVE-2021-44228",
+   "field": "creation_timestamp",
+   "uuid": "31e76aaf-394d-40bb-ab70-f2f46a0e47b0",
+   "content": "",
+   "url": "https://t.me/example_channel/2428",
+   "metric_role": "exploitation",
+   "metric_basis": "sighting_report"
+  },
+  {
+   "timestamp": "2021-12-11T04:05:03Z",
+   "date_only": false,
+   "value": "2021-12-11T04:05:03.000000Z",
+   "kind": "sighting",
+   "label": "Published proof of concept",
+   "source": "https://t.me/example_channel/926",
+   "record": "CVE-2021-44228",
+   "field": "creation_timestamp",
+   "uuid": "053e0aa6-81c3-4474-baa8-bed6bbe48d4d",
+   "content": "",
+   "url": "https://t.me/example_channel/926",
+   "metric_role": "exploit_publication",
+   "metric_basis": "sighting_report"
+  },
+  {
+   "timestamp": "2021-12-14T05:50:14Z",
+   "date_only": false,
+   "value": "2021-12-14T05:50:14+00:00",
+   "kind": "other",
+   "label": "Vendor fix",
+   "source": "csaf_redhat · RHSA-2021:5094",
+   "record": "RHSA-2021:5094",
+   "field": "vulnerabilities.0.remediations.0.date",
+   "metric_role": "patch",
+   "metric_basis": "recorded_event",
+   "linked_record": true
+  },
+  {
+   "timestamp": "2021-12-22T20:43:05Z",
+   "date_only": false,
+   "value": "2021-12-22T20:43:05.000000Z",
+   "kind": "sighting",
+   "label": "Seen",
+   "source": "MISP/e804ed63-36a3-438d-b753-08a9c5ca89d8",
+   "record": "CVE-2021-44228",
+   "field": "creation_timestamp",
+   "uuid": "4e89a93d-2655-4264-98a1-14f05e1e2947"
+  },
+  {
+   "timestamp": "2021-12-24T00:00:00Z",
+   "date_only": true,
+   "value": "2021-12-24",
+   "kind": "kev",
+   "label": "Due date",
+   "source": "cisa-kev",
+   "record": "CVE-2021-44228",
+   "field": "evidence.0.details.due_date",
+   "uuid": "1a45906b-8393-4ad9-ae60-01e390610497",
+   "status": {
+    "status_reason": "confirmed",
+    "exploited": true
+   }
+  },
+  {
+   "timestamp": "2023-10-13T17:58:35Z",
+   "date_only": false,
+   "value": "2023-10-13T17:58:35+00:00",
+   "kind": "kev",
+   "label": "First seen",
+   "source": "shadowserver",
+   "record": "CVE-2021-44228",
+   "field": "timestamps.first_seen_at",
+   "metric_role": "exploitation",
+   "metric_basis": "kev_first_seen",
+   "batch_listing": true,
+   "uuid": "27027409-e86e-4d86-bda6-a69dcd9eea66",
+   "status": {
+    "status_reason": "confirmed",
+    "exploited": true
+   }
+  },
+  {
+   "timestamp": "2024-10-24T00:00:00Z",
+   "date_only": false,
+   "value": "2024-10-24T00:00:00.000000Z",
+   "kind": "sighting",
+   "label": "Exploited",
+   "source": "The Shadowserver (honeypot/exploited-vulnerabilities) - (2024-10-24)",
+   "record": "CVE-2021-44228",
+   "field": "creation_timestamp",
+   "uuid": "95d6db7d-b64d-4daa-b1fb-5dc1a03d9481",
+   "metric_role": "exploitation",
+   "metric_basis": "sighting_report"
+  },
+  {
+   "timestamp": "2025-01-14T05:55:37.470Z",
+   "date_only": false,
+   "value": "2025-01-14T05:55:37.470149Z",
+   "kind": "sighting",
+   "label": "Seen",
+   "source": "https://bsky.app/profile/example.bsky.social/post/3lexample0001",
+   "record": "CVE-2021-44228",
+   "field": "creation_timestamp",
+   "uuid": "0f88b455-50aa-4b63-941c-c9c0ec5beb10",
+   "url": "https://bsky.app/profile/example.bsky.social/post/3lexample0001"
+  },
+  {
+   "timestamp": "2026-11-24T21:00:05Z",
+   "date_only": false,
+   "value": "2026-11-24T21:00:05.000000Z",
+   "kind": "sighting",
+   "label": "Published proof of concept",
+   "source": "Telegram/EXAMPLEchannelHASH0000000000000000000000000000",
+   "record": "CVE-2021-44228",
+   "field": "creation_timestamp",
+   "uuid": "1073a24f-827b-4a57-a1d6-ca07ba5ea12c",
+   "metric_role": "exploit_publication",
+   "metric_basis": "sighting_report"
+  }
+ ],
+ "metrics": {
+  "as_of": "2026-11-26T07:18:24.346Z",
+  "anchors": {
+   "origin": {
+    "timestamp": "2021-12-09T23:00:00Z",
+    "date_only": false,
+    "value": "2021-12-09T23:00:00.000+00:00",
+    "kind": "milestone",
+    "label": "Published",
+    "source": "csaf_certbund · WID-SEC-W-2022-0351",
+    "record": "WID-SEC-W-2022-0351",
+    "field": "document.tracking.initial_release_date",
+    "metric_role": "disclosure",
+    "metric_basis": "recorded_event",
+    "linked_record": true
+   },
+   "discovery": {
+    "timestamp": "2021-12-10T00:00:00Z",
+    "date_only": false,
+    "value": "2021-12-10T00:00:00+00:00",
+    "kind": "other",
+    "label": "Discovery date",
+    "source": "csaf_redhat · RHSA-2021:5093",
+    "record": "RHSA-2021:5093",
+    "field": "vulnerabilities.0.discovery_date",
+    "metric_role": "discovery",
+    "metric_basis": "recorded_event",
+    "linked_record": true
+   },
+   "report": null,
+   "acknowledgement": null,
+   "disclosure": {
+    "timestamp": "2021-12-09T23:00:00Z",
+    "date_only": false,
+    "value": "2021-12-09T23:00:00.000+00:00",
+    "kind": "milestone",
+    "label": "Published",
+    "source": "csaf_certbund · WID-SEC-W-2022-0351",
+    "record": "WID-SEC-W-2022-0351",
+    "field": "document.tracking.initial_release_date",
+    "metric_role": "disclosure",
+    "metric_basis": "recorded_event",
+    "linked_record": true
+   },
+   "exploit_publication": {
+    "timestamp": "2021-12-11T04:05:03Z",
+    "date_only": false,
+    "value": "2021-12-11T04:05:03.000000Z",
+    "kind": "sighting",
+    "label": "Published proof of concept",
+    "source": "https://t.me/example_channel/926",
+    "record": "CVE-2021-44228",
+    "field": "creation_timestamp",
+    "uuid": "053e0aa6-81c3-4474-baa8-bed6bbe48d4d",
+    "content": "",
+    "url": "https://t.me/example_channel/926",
+    "metric_role": "exploit_publication",
+    "metric_basis": "sighting_report"
+   },
+   "exploitation": {
+    "timestamp": "2021-12-10T00:00:00Z",
+    "date_only": false,
+    "value": "2021-12-10T00:00:00+00:00",
+    "kind": "kev",
+    "label": "Asserted",
+    "source": "cisa-kev",
+    "record": "CVE-2021-44228",
+    "field": "timestamps.asserted_at",
+    "metric_role": "exploitation_report",
+    "metric_basis": "kev_report",
+    "uuid": "1a45906b-8393-4ad9-ae60-01e390610497",
+    "status": {
+     "status_reason": "confirmed",
+     "exploited": true
+    }
+   },
+   "patch": {
+    "timestamp": "2021-12-14T05:50:14Z",
+    "date_only": false,
+    "value": "2021-12-14T05:50:14+00:00",
+    "kind": "other",
+    "label": "Vendor fix",
+    "source": "csaf_redhat · RHSA-2021:5094",
+    "record": "RHSA-2021:5094",
+    "field": "vulnerabilities.0.remediations.0.date",
+    "metric_role": "patch",
+    "metric_basis": "recorded_event",
+    "linked_record": true
+   }
+  },
+  "time_to_exploit": {
+   "available": true,
+   "seconds": 3600.0,
+   "hours": 1.0,
+   "days": 0.041666666666666664,
+   "min_seconds": 3600.0,
+   "max_seconds": 90000.0,
+   "approximate": true,
+   "ongoing": false,
+   "order_known": true,
+   "batch_listing": false,
+   "end_before_start": false
+  }
+ }
+}

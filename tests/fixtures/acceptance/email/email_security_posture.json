@@ -1,0 +1,1253 @@
+{
+ "schema": "v3lum.acceptance_routes/1",
+ "module": "email_security_posture",
+ "routes": [
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=_dmarc.example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "_dmarc.example.com.",
+      "type": 16
+     }
+    ],
+    "Answer": [
+     {
+      "name": "_dmarc.example.com.",
+      "type": 16,
+      "TTL": 299,
+      "data": "v=DMARC1;p=reject;sp=reject;adkim=s;aspf=s"
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0"
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 118
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=google._domainkey.example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "google._domainkey.example.com.",
+      "type": 16
+     }
+    ],
+    "Answer": [
+     {
+      "name": "google._domainkey.example.com.",
+      "type": 16,
+      "TTL": 300,
+      "data": "v=DKIM1; p="
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0",
+    "Comment": "Response from 172.64.35.228."
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 20
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=selector1._domainkey.example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "selector1._domainkey.example.com.",
+      "type": 16
+     }
+    ],
+    "Answer": [
+     {
+      "name": "selector1._domainkey.example.com.",
+      "type": 16,
+      "TTL": 300,
+      "data": "v=DKIM1; p="
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0",
+    "Comment": "Response from 162.159.44.228."
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 19
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=selector2._domainkey.example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "selector2._domainkey.example.com.",
+      "type": 16
+     }
+    ],
+    "Answer": [
+     {
+      "name": "selector2._domainkey.example.com.",
+      "type": 16,
+      "TTL": 300,
+      "data": "v=DKIM1; p="
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0",
+    "Comment": "Response from 108.162.195.228."
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 22
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=k1._domainkey.example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "k1._domainkey.example.com.",
+      "type": 16
+     }
+    ],
+    "Answer": [
+     {
+      "name": "k1._domainkey.example.com.",
+      "type": 16,
+      "TTL": 300,
+      "data": "v=DKIM1; p="
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0",
+    "Comment": "Response from 172.64.35.228."
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 20
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=k2._domainkey.example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "k2._domainkey.example.com.",
+      "type": 16
+     }
+    ],
+    "Answer": [
+     {
+      "name": "k2._domainkey.example.com.",
+      "type": 16,
+      "TTL": 300,
+      "data": "v=DKIM1; p="
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0",
+    "Comment": "Response from 162.159.44.228."
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 19
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=k3._domainkey.example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "k3._domainkey.example.com.",
+      "type": 16
+     }
+    ],
+    "Answer": [
+     {
+      "name": "k3._domainkey.example.com.",
+      "type": 16,
+      "TTL": 300,
+      "data": "v=DKIM1; p="
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0",
+    "Comment": "Response from 173.245.58.162."
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 20
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=s1._domainkey.example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "s1._domainkey.example.com.",
+      "type": 16
+     }
+    ],
+    "Answer": [
+     {
+      "name": "s1._domainkey.example.com.",
+      "type": 16,
+      "TTL": 300,
+      "data": "v=DKIM1; p="
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0",
+    "Comment": "Response from 173.245.58.162."
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 19
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=s2._domainkey.example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "s2._domainkey.example.com.",
+      "type": 16
+     }
+    ],
+    "Answer": [
+     {
+      "name": "s2._domainkey.example.com.",
+      "type": 16,
+      "TTL": 300,
+      "data": "v=DKIM1; p="
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0",
+    "Comment": "Response from 172.64.32.162."
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 23
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=default._domainkey.example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "default._domainkey.example.com.",
+      "type": 16
+     }
+    ],
+    "Answer": [
+     {
+      "name": "default._domainkey.example.com.",
+      "type": 16,
+      "TTL": 299,
+      "data": "v=DKIM1; p="
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0"
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 7
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=dkim._domainkey.example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "dkim._domainkey.example.com.",
+      "type": 16
+     }
+    ],
+    "Answer": [
+     {
+      "name": "dkim._domainkey.example.com.",
+      "type": 16,
+      "TTL": 300,
+      "data": "v=DKIM1; p="
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0",
+    "Comment": "Response from 162.159.44.228."
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 20
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=mail._domainkey.example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "mail._domainkey.example.com.",
+      "type": 16
+     }
+    ],
+    "Answer": [
+     {
+      "name": "mail._domainkey.example.com.",
+      "type": 16,
+      "TTL": 300,
+      "data": "v=DKIM1; p="
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0",
+    "Comment": "Response from 172.64.32.162."
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 19
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=smtp._domainkey.example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "smtp._domainkey.example.com.",
+      "type": 16
+     }
+    ],
+    "Answer": [
+     {
+      "name": "smtp._domainkey.example.com.",
+      "type": 16,
+      "TTL": 300,
+      "data": "v=DKIM1; p="
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0",
+    "Comment": "Response from 108.162.192.162."
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 20
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=mandrill._domainkey.example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "mandrill._domainkey.example.com.",
+      "type": 16
+     }
+    ],
+    "Answer": [
+     {
+      "name": "mandrill._domainkey.example.com.",
+      "type": 16,
+      "TTL": 300,
+      "data": "v=DKIM1; p="
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0",
+    "Comment": "Response from 172.64.32.162."
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 19
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=mxvault._domainkey.example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "mxvault._domainkey.example.com.",
+      "type": 16
+     }
+    ],
+    "Answer": [
+     {
+      "name": "mxvault._domainkey.example.com.",
+      "type": 16,
+      "TTL": 300,
+      "data": "v=DKIM1; p="
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0",
+    "Comment": "Response from 173.245.58.162."
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 19
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=example.com&type=MX&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "example.com.",
+      "type": 15
+     }
+    ],
+    "Answer": [
+     {
+      "name": "example.com.",
+      "type": 15,
+      "TTL": 225,
+      "data": "0 ."
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0"
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 394
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=everlytickey1._domainkey.example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "everlytickey1._domainkey.example.com.",
+      "type": 16
+     }
+    ],
+    "Answer": [
+     {
+      "name": "everlytickey1._domainkey.example.com.",
+      "type": 16,
+      "TTL": 299,
+      "data": "v=DKIM1; p="
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0"
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 12
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=everlytickey2._domainkey.example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "everlytickey2._domainkey.example.com.",
+      "type": 16
+     }
+    ],
+    "Answer": [
+     {
+      "name": "everlytickey2._domainkey.example.com.",
+      "type": 16,
+      "TTL": 250,
+      "data": "v=DKIM1; p="
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0"
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 8
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "example.com.",
+      "type": 16
+     }
+    ],
+    "Answer": [
+     {
+      "name": "example.com.",
+      "type": 16,
+      "TTL": 300,
+      "data": "_k2n1y4vw3qtb4skdx9e7dxt97qrmmq9"
+     },
+     {
+      "name": "example.com.",
+      "type": 16,
+      "TTL": 300,
+      "data": "v=spf1 -all"
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0",
+    "Comment": "Response from 108.162.195.228."
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 411
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=protonmail._domainkey.example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "protonmail._domainkey.example.com.",
+      "type": 16
+     }
+    ],
+    "Answer": [
+     {
+      "name": "protonmail._domainkey.example.com.",
+      "type": 16,
+      "TTL": 299,
+      "data": "v=DKIM1; p="
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0"
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 8
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=zoho._domainkey.example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "zoho._domainkey.example.com.",
+      "type": 16
+     }
+    ],
+    "Answer": [
+     {
+      "name": "zoho._domainkey.example.com.",
+      "type": 16,
+      "TTL": 300,
+      "data": "v=DKIM1; p="
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0",
+    "Comment": "Response from 173.245.58.162."
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 19
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=protonmail2._domainkey.example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "protonmail2._domainkey.example.com.",
+      "type": 16
+     }
+    ],
+    "Answer": [
+     {
+      "name": "protonmail2._domainkey.example.com.",
+      "type": 16,
+      "TTL": 300,
+      "data": "v=DKIM1; p="
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0",
+    "Comment": "Response from 172.64.35.228."
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 21
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=fm1._domainkey.example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "fm1._domainkey.example.com.",
+      "type": 16
+     }
+    ],
+    "Answer": [
+     {
+      "name": "fm1._domainkey.example.com.",
+      "type": 16,
+      "TTL": 250,
+      "data": "v=DKIM1; p="
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0"
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 8
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=protonmail3._domainkey.example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "protonmail3._domainkey.example.com.",
+      "type": 16
+     }
+    ],
+    "Answer": [
+     {
+      "name": "protonmail3._domainkey.example.com.",
+      "type": 16,
+      "TTL": 300,
+      "data": "v=DKIM1; p="
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0",
+    "Comment": "Response from 108.162.195.228."
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 21
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=fm3._domainkey.example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "fm3._domainkey.example.com.",
+      "type": 16
+     }
+    ],
+    "Answer": [
+     {
+      "name": "fm3._domainkey.example.com.",
+      "type": 16,
+      "TTL": 299,
+      "data": "v=DKIM1; p="
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0"
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 6
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=hs2._domainkey.example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "hs2._domainkey.example.com.",
+      "type": 16
+     }
+    ],
+    "Answer": [
+     {
+      "name": "hs2._domainkey.example.com.",
+      "type": 16,
+      "TTL": 250,
+      "data": "v=DKIM1; p="
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0"
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 6
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=hs1._domainkey.example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "hs1._domainkey.example.com.",
+      "type": 16
+     }
+    ],
+    "Answer": [
+     {
+      "name": "hs1._domainkey.example.com.",
+      "type": 16,
+      "TTL": 250,
+      "data": "v=DKIM1; p="
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0"
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 10
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=fm2._domainkey.example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "fm2._domainkey.example.com.",
+      "type": 16
+     }
+    ],
+    "Answer": [
+     {
+      "name": "fm2._domainkey.example.com.",
+      "type": 16,
+      "TTL": 300,
+      "data": "v=DKIM1; p="
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0",
+    "Comment": "Response from 173.245.58.162."
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 22
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=cm._domainkey.example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "cm._domainkey.example.com.",
+      "type": 16
+     }
+    ],
+    "Answer": [
+     {
+      "name": "cm._domainkey.example.com.",
+      "type": 16,
+      "TTL": 250,
+      "data": "v=DKIM1; p="
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0"
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 8
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=key1._domainkey.example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "key1._domainkey.example.com.",
+      "type": 16
+     }
+    ],
+    "Answer": [
+     {
+      "name": "key1._domainkey.example.com.",
+      "type": 16,
+      "TTL": 299,
+      "data": "v=DKIM1; p="
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0"
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 62
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=pm._domainkey.example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "pm._domainkey.example.com.",
+      "type": 16
+     }
+    ],
+    "Answer": [
+     {
+      "name": "pm._domainkey.example.com.",
+      "type": 16,
+      "TTL": 300,
+      "data": "v=DKIM1; p="
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0",
+    "Comment": "Response from 172.64.32.162."
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 77
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=sig1._domainkey.example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "sig1._domainkey.example.com.",
+      "type": 16
+     }
+    ],
+    "Answer": [
+     {
+      "name": "sig1._domainkey.example.com.",
+      "type": 16,
+      "TTL": 300,
+      "data": "v=DKIM1; p="
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0",
+    "Comment": "Response from 108.162.195.228."
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 70
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=example.com&type=CAA&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "example.com.",
+      "type": 257
+     }
+    ],
+    "Authority": [
+     {
+      "name": "example.com.",
+      "type": 6,
+      "TTL": 298,
+      "data": "elliott.ns.cloudflare.com. dns.cloudflare.com. 2421050422 10000 2400 604800 1800"
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0"
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 521
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=dkim1._domainkey.example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "dkim1._domainkey.example.com.",
+      "type": 16
+     }
+    ],
+    "Answer": [
+     {
+      "name": "dkim1._domainkey.example.com.",
+      "type": 16,
+      "TTL": 300,
+      "data": "v=DKIM1; p="
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0",
+    "Comment": "Response from 172.64.35.228."
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 21
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=_mta-sts.example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "_mta-sts.example.com.",
+      "type": 16
+     }
+    ],
+    "Authority": [
+     {
+      "name": "example.com.",
+      "type": 6,
+      "TTL": 1800,
+      "data": "elliott.ns.cloudflare.com. dns.cloudflare.com. 2421050422 10000 2400 604800 1800"
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0",
+    "Comment": "Response from 173.245.58.162."
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 137
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=default._bimi.example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "default._bimi.example.com.",
+      "type": 16
+     }
+    ],
+    "Authority": [
+     {
+      "name": "example.com.",
+      "type": 6,
+      "TTL": 1800,
+      "data": "elliott.ns.cloudflare.com. dns.cloudflare.com. 2421050422 10000 2400 604800 1800"
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0",
+    "Comment": "Response from 172.64.32.162."
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 349
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=_smtp._tls.example.com&type=TXT&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "_smtp._tls.example.com.",
+      "type": 16
+     }
+    ],
+    "Authority": [
+     {
+      "name": "example.com.",
+      "type": 6,
+      "TTL": 1800,
+      "data": "elliott.ns.cloudflare.com. dns.cloudflare.com. 2421050422 10000 2400 604800 1800"
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0",
+    "Comment": "Response from 108.162.195.228."
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 358
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=example.com&type=DS&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "example.com.",
+      "type": 43
+     }
+    ],
+    "Answer": [
+     {
+      "name": "example.com.",
+      "type": 43,
+      "TTL": 21600,
+      "data": "2371 13 2 C988EC423E3880EB8DD8A46FE06CA230EE23F35B578D64E78B29C3E1C83D245A"
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0",
+    "Comment": "Response from 192.41.162.30."
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 356
+  }
+ ]
+}

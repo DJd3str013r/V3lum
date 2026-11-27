@@ -1,0 +1,229 @@
+{
+ "source": "pefile",
+ "size": 5552,
+ "parse_error": null,
+ "machine": 332,
+ "number_of_sections": 4,
+ "timestamp": 1793534400,
+ "characteristics": 258,
+ "magic": 267,
+ "subsystem": 2,
+ "dll_characteristics": 33088,
+ "entry_point": 4096,
+ "image_base": 4194304,
+ "checksum": 0,
+ "size_of_image": 69632,
+ "size_of_headers": 1024,
+ "sections": [
+  {
+   "name": ".text",
+   "virtual_address": 4096,
+   "virtual_size": 64,
+   "raw_size": 512,
+   "raw_offset": 1024,
+   "characteristics": 1610612768,
+   "entropy": 0.6144
+  },
+  {
+   "name": ".rdata",
+   "virtual_address": 20480,
+   "virtual_size": 484,
+   "raw_size": 512,
+   "raw_offset": 1536,
+   "characteristics": 1073741888,
+   "entropy": 4.1043
+  },
+  {
+   "name": ".data",
+   "virtual_address": 36864,
+   "virtual_size": 64,
+   "raw_size": 512,
+   "raw_offset": 2048,
+   "characteristics": 3221225536,
+   "entropy": 0.2882
+  },
+  {
+   "name": ".rsrc",
+   "virtual_address": 53248,
+   "virtual_size": 310,
+   "raw_size": 512,
+   "raw_offset": 2560,
+   "characteristics": 1073741888,
+   "entropy": 3.4027
+  }
+ ],
+ "imports": [
+  {
+   "dll": "KERNEL32.dll",
+   "functions": [
+    {
+     "name": "GetModuleHandleA",
+     "ordinal": null
+    },
+    {
+     "name": "ExitProcess",
+     "ordinal": null
+    },
+    {
+     "name": "CreateFileW",
+     "ordinal": null
+    },
+    {
+     "name": "WriteFile",
+     "ordinal": null
+    },
+    {
+     "name": "CloseHandle",
+     "ordinal": null
+    }
+   ]
+  },
+  {
+   "dll": "USER32.dll",
+   "functions": [
+    {
+     "name": "MessageBoxW",
+     "ordinal": null
+    }
+   ]
+  },
+  {
+   "dll": "ADVAPI32.dll",
+   "functions": [
+    {
+     "name": "RegOpenKeyExW",
+     "ordinal": null
+    }
+   ]
+  },
+  {
+   "dll": "WS2_32.dll",
+   "functions": [
+    {
+     "name": "socket",
+     "ordinal": 23
+    },
+    {
+     "name": "WSAStartup",
+     "ordinal": 115
+    }
+   ]
+  }
+ ],
+ "exports": [],
+ "debug": [
+  {
+   "type": 2,
+   "timestamp": 1793534400,
+   "size": 90,
+   "pdb": "C:\\Users\\analyst01\\source\\repos\\HelloV3lum\\Release\\HelloV3lum.pdb",
+   "cv_signature": "RSDS",
+   "age": 1,
+   "guid": "3F2504E0-4F89-41D3-9A0C-0305E82C3301"
+  }
+ ],
+ "resources": [
+  {
+   "type": 24,
+   "name": 1,
+   "lang": 1033,
+   "size": 222,
+   "entropy": 4.9949
+  }
+ ],
+ "warnings": [],
+ "imphash": "04b1799f5906f1624a6e2a4b0fddfde5",
+ "rich": {
+  "key_hex": "61db1d4e",
+  "checksum": 1310579553,
+  "clear_md5": "78d6027a2ea3f913a43381c17bd30995",
+  "entries": [
+   [
+    17069508,
+    7
+   ],
+   [
+    17003972,
+    12
+   ],
+   [
+    17135044,
+    3
+   ],
+   [
+    16741828,
+    1
+   ],
+   [
+    16938436,
+    1
+   ],
+   [
+    65536,
+    99
+   ]
+  ]
+ },
+ "security_dir": {
+  "offset": 3072,
+  "size": 2480
+ },
+ "authenticode": {
+  "present": true,
+  "status": "signed, not verified",
+  "entries": [
+   {
+    "status": "signed, not verified",
+    "signers": [
+     {
+      "subject": "C=BR, O=Example Org Ltda, CN=Example Org Ltda Code Signing (TEST)",
+      "issuer": "C=BR, O=V3LUM Test, CN=V3LUM Test Root CA (DO NOT TRUST)",
+      "serial": "1234ABCD5678",
+      "not_before": "2026-11-26T08:33:31Z",
+      "not_after": "2036-11-23T08:33:31Z"
+     }
+    ],
+    "certificates": [
+     {
+      "subject": "C=BR, O=V3LUM Test, CN=V3LUM Test Root CA (DO NOT TRUST)",
+      "issuer": "C=BR, O=V3LUM Test, CN=V3LUM Test Root CA (DO NOT TRUST)",
+      "serial": "0A0B0C0D",
+      "not_before": "2026-11-26T08:33:30Z",
+      "not_after": "2036-11-23T08:33:30Z"
+     },
+     {
+      "subject": "C=BR, O=Example Org Ltda, CN=Example Org Ltda Code Signing (TEST)",
+      "issuer": "C=BR, O=V3LUM Test, CN=V3LUM Test Root CA (DO NOT TRUST)",
+      "serial": "1234ABCD5678",
+      "not_before": "2026-11-26T08:33:31Z",
+      "not_after": "2036-11-23T08:33:31Z"
+     }
+    ],
+    "content_type": "SpcIndirectDataContent",
+    "digest_algorithm": "sha256",
+    "program_name": null,
+    "more_info_url": null,
+    "timestamped": false,
+    "nested_signatures": 0,
+    "anomalies": [],
+    "program_digest": "2d5c77994fcc44216747db0f945d535a83b0bc8b7dafda074a4a54f9562a9afd"
+   }
+  ],
+  "signers": [
+   {
+    "subject": "C=BR, O=Example Org Ltda, CN=Example Org Ltda Code Signing (TEST)",
+    "issuer": "C=BR, O=V3LUM Test, CN=V3LUM Test Root CA (DO NOT TRUST)",
+    "serial": "1234ABCD5678",
+    "not_before": "2026-11-26T08:33:31Z",
+    "not_after": "2036-11-23T08:33:31Z"
+   }
+  ],
+  "anomalies": []
+ },
+ "overlay": {
+  "offset": 3072,
+  "size": 2480
+ },
+ "md5": "5c1da66dbe9ebc9757234f5cec78761c",
+ "sha256": "ce569c372b165c3516fb5c0dd42deb29fb4ceb0c85ee3b450ceba3211880764f"
+}

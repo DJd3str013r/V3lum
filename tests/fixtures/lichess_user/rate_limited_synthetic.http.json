@@ -1,0 +1,8 @@
+{
+ "_fixture": "SYNTHETIC: Lichess documents 429 and a full-minute wait (body text not documented)",
+ "status": 429,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": "{\"error\": \"Too many requests. Try again later.\"}"
+}

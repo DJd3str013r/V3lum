@@ -1,0 +1,40 @@
+{
+ "Count": 1,
+ "Message": "Results returned successfully. NOTE: Any missing decoded values should be interpreted as NHTSA does not have data on the specific variable. Missing value should NOT be interpreted as an indication that a feature or technology is unavailable for a vehicle.",
+ "SearchCriteria": "",
+ "Results": [
+  {
+   "AdditionalErrorText": "",
+   "BodyClass": "",
+   "DisplacementL": "",
+   "Doors": "",
+   "DriveType": "",
+   "EngineConfiguration": "",
+   "EngineCylinders": "",
+   "EngineHP": "",
+   "EngineModel": "",
+   "ErrorCode": "6,8",
+   "ErrorText": "6 - Incomplete VIN; 8 - No detailed data available currently",
+   "FuelTypePrimary": "",
+   "GVWR": "",
+   "Make": "VOLKSWAGEN",
+   "MakeID": "482",
+   "Manufacturer": "VOLKSWAGEN GROUP OF AMERICA, INC.",
+   "ManufacturerId": "1147",
+   "Model": "",
+   "ModelID": "",
+   "ModelYear": "1997",
+   "PlantCity": "",
+   "PlantCompanyName": "",
+   "PlantCountry": "",
+   "PlantState": "",
+   "PossibleValues": "",
+   "Series": "",
+   "SuggestedVIN": "",
+   "Trim": "",
+   "VIN": "9BWZZZ37*VT",
+   "VehicleDescriptor": "9BWZZZ37*VT",
+   "VehicleType": "PASSENGER CAR"
+  }
+ ]
+}

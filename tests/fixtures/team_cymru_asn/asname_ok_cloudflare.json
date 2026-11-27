@@ -1,0 +1,22 @@
+{
+ "Status": 0,
+ "TC": false,
+ "RD": true,
+ "RA": true,
+ "AD": false,
+ "CD": false,
+ "Question": [
+  {
+   "name": "AS15169.asn.cymru.com",
+   "type": 16
+  }
+ ],
+ "Answer": [
+  {
+   "name": "AS15169.asn.cymru.com",
+   "type": 16,
+   "TTL": 79856,
+   "data": "\"15169 | US | arin | 2000-03-30 | GOOGLE - Google LLC, US\""
+  }
+ ]
+}

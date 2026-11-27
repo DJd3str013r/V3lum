@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "cloud_ranges_oracle",
+  "source_url": "https://docs.oracle.com/en-us/iaas/tools/public_ip_ranges.json",
+  "version": "runtime download refreshed daily by the dataset manager (checked 2026-11-26)",
+  "sha256": "",
+  "licence": "Oracle Cloud Infrastructure public IP ranges (public provider publication, no licence stated)",
+  "attribution": "Oracle Cloud Infrastructure public IP ranges (https://docs.oracle.com/en-us/iaas/tools/public_ip_ranges.json), Oracle",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/ip_network/cloud_ranges.py"
+  ]
+}

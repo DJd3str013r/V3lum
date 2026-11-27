@@ -1,0 +1,50 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "msrc",
+  "name": "Microsoft Security Response Center (MSRC) CVRF API v3",
+  "operator": "Microsoft Corporation (Microsoft Security Response Center)",
+  "hosts": ["api.msrc.microsoft.com"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Microsoft Corporation is an established company with published terms, a privacy policy and a business offering; MSRC is the vendor's own security update channel (A8 trusted).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "Vendor-authoritative security update data for Microsoft products (KBs, fixed builds, affected products, Microsoft's own exploited / publicly disclosed flags)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 120,
+    "retries": 1,
+    "max_bytes": 67108864,
+    "ttl": 86400,
+    "min_interval": 2,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "msrc_patch_tuesday_cvrf": {
+      "title": "MSRC CVRF v3.0 /updates list and /cvrf/{yyyy-Mmm} month documents (Patch Tuesday: KBs, products, Exploited / Publicly Disclosed flags)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://msrc.microsoft.com/update-guide/",
+        "quote": "Offline: tier 'n/a', terms 'open'.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "msrc",
+      "sanitizer": null,
+      "dataset": "msrc_patch_tuesday.updates",
+      "notes": "Quote: binding council text (P353 chair rationale); research C0762 terms 'Microsoft security update data (public)' (verified_live 200/405). GET only (HEAD answers 405); /updates ignores If-Modified-Since (200 + full body, Cache-Control no-store, verified 2026-11-26), so refreshes are driven by CurrentReleaseDate with cadence caps. Month documents are ~20 MB (2026-Nov: 20.7 MB) and are downloaded out of band only (never mid-scan), parsed one at a time and indexed into SQLite; Acknowledgments (researcher names) are never stored. 404 answers a bare JSON string 'Unable to find the specified file.'. Used by msrc_patch_tuesday (disclosure none at scan time)."
+    }
+  },
+  "notes": "Owned by batch p2-G08-2 (P353). No published rate limit (no rate-limit headers observed 2026-11-26): one document at a time, >= 2 s apart."
+}

@@ -1,0 +1,98 @@
+{
+  "schema": "v3lum.pivot_pack/1",
+  "pack": "unverified_history",
+  "title": "Archive pages behind challenges or connection resets (P304)",
+  "notes": "P304 (batch p2-G14-3): pages that curl cannot verify (SPA or anti-bot). V3LUM never requests these URLs, not even from doctor, and never solves their challenges (P304 cond 1). verified stays false until a team member opens the link in a browser: then verified=true, checked_at=<date>, x_verification='browser', x_checked_by=<name> and the label marker '(browser)' (P304 cond 6); 'curl' never appears here. x_module_links are rendered by the module pivots_unverified (module-side placeholders url_sha256, url_path, cve_num, hunter_q, and the per-link x_max_tlp the frozen schema lacks).",
+  "links": [
+    {
+      "id": "wayback_domain_urls",
+      "label": "Wayback Machine URLs under the domain (may show a challenge)",
+      "template": "https://web.archive.org/web/*/{domain}*",
+      "entity_types": [
+        "domain"
+      ],
+      "category": "history",
+      "host": "web.archive.org",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "URL list only, never /save (P304 cond 7). The URL calendar is file_triage:wayback_url.",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0190"
+    },
+    {
+      "id": "archive_today_domain",
+      "label": "archive.today captures (domain) (may show a challenge)",
+      "template": "https://archive.ph/{domain}",
+      "entity_types": [
+        "domain"
+      ],
+      "category": "history",
+      "host": "archive.ph",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "Capture list only, never /submit (P304 cond 7); unknown-tier host: IOC values only.",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0192"
+    }
+  ],
+  "x_module_links": [
+    {
+      "id": "archive_today_url",
+      "label": "archive.today captures (URL) (may show a challenge)",
+      "template": "https://archive.ph/{url_path}",
+      "entity_types": [
+        "url"
+      ],
+      "category": "history",
+      "host": "archive.ph",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "{url_path} = the canonical URL with ':' and '/' kept and everything else percent-encoded; dot segments refused, so a value never reaches /submit (P304 cond 3, 7).",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0192",
+      "x_max_tlp": null,
+      "x_badge": null
+    },
+    {
+      "id": "archive_today_newest",
+      "label": "archive.today newest capture (URL) (may show a challenge)",
+      "template": "https://archive.ph/newest/{url_path}",
+      "entity_types": [
+        "url"
+      ],
+      "category": "history",
+      "host": "archive.ph",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0192",
+      "x_max_tlp": null,
+      "x_badge": null
+    }
+  ]
+}

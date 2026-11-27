@@ -1,0 +1,312 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "options": {
+  "mode": "passive",
+  "tlp": "amber",
+  "depth": 1
+ },
+ "nodes": [
+  {
+   "key": "domain:own.example",
+   "depth": 0,
+   "seed": true,
+   "ownership": "own_asset",
+   "tags": [
+    "own_asset"
+   ]
+  },
+  {
+   "key": "cidr:198.51.100.0/24",
+   "depth": 0,
+   "seed": true,
+   "ownership": "own_asset",
+   "tags": [
+    "own_asset"
+   ]
+  },
+  {
+   "key": "ipv4:198.51.100.7",
+   "depth": 1
+  },
+  {
+   "key": "ipv4:203.0.113.9",
+   "depth": 1
+  },
+  {
+   "key": "domain:d00.example.org",
+   "depth": 1,
+   "attributes": {
+    "registrar": [
+     {
+      "value": "Rare Registrar Ltd",
+      "source": "rdap"
+     }
+    ]
+   }
+  },
+  {
+   "key": "domain:d01.example.org",
+   "depth": 1,
+   "attributes": {
+    "registrar": [
+     {
+      "value": "Common Registrar Inc",
+      "source": "rdap"
+     }
+    ]
+   },
+   "findings": [
+    {
+     "title": "Listed by feed A",
+     "severity": "high",
+     "confidence": 0.9,
+     "tags": [
+      "malicious"
+     ],
+     "module": "t_feed_a",
+     "source": "t_feed.a",
+     "criterion": "feed verdict"
+    }
+   ]
+  },
+  {
+   "key": "domain:d02.example.org",
+   "depth": 1,
+   "attributes": {
+    "registrar": [
+     {
+      "value": "Common Registrar Inc",
+      "source": "rdap"
+     }
+    ]
+   },
+   "tags": [
+    "parked"
+   ]
+  },
+  {
+   "key": "domain:d03.example.org",
+   "depth": 1,
+   "attributes": {
+    "registrar": [
+     {
+      "value": "Common Registrar Inc",
+      "source": "rdap"
+     }
+    ]
+   }
+  },
+  {
+   "key": "domain:d04.example.org",
+   "depth": 1,
+   "attributes": {
+    "registrar": [
+     {
+      "value": "Common Registrar Inc",
+      "source": "rdap"
+     }
+    ]
+   },
+   "findings": [
+    {
+     "title": "Seen in CT logs",
+     "severity": "info",
+     "confidence": 0.9,
+     "tags": [],
+     "module": "t_ct",
+     "source": "crtsh.ct",
+     "criterion": "certificate SAN"
+    }
+   ]
+  },
+  {
+   "key": "domain:d05.example.org",
+   "depth": 1,
+   "attributes": {
+    "registrar": [
+     {
+      "value": "Common Registrar Inc",
+      "source": "rdap"
+     }
+    ]
+   },
+   "findings": [
+    {
+     "title": "Seen in CT logs",
+     "severity": "info",
+     "confidence": 0.9,
+     "tags": [],
+     "module": "t_ct",
+     "source": "crtsh.ct",
+     "criterion": "certificate SAN"
+    },
+    {
+     "title": "Resolves in DNS",
+     "severity": "info",
+     "confidence": 0.9,
+     "tags": [],
+     "module": "dns_records",
+     "source": "dns.doh",
+     "criterion": "A record"
+    }
+   ]
+  },
+  {
+   "key": "domain:d06.example.org",
+   "depth": 1,
+   "attributes": {
+    "registrar": [
+     {
+      "value": "Common Registrar Inc",
+      "source": "rdap"
+     }
+    ]
+   },
+   "findings": [
+    {
+     "title": "Context only listing",
+     "severity": "high",
+     "confidence": 0.9,
+     "tags": [
+      "malicious",
+      "context_only"
+     ],
+     "module": "t_feed_b",
+     "source": "t_feed.b",
+     "criterion": "context"
+    }
+   ]
+  },
+  {
+   "key": "domain:d07.example.org",
+   "depth": 1,
+   "attributes": {
+    "registrar": [
+     {
+      "value": "Common Registrar Inc",
+      "source": "rdap"
+     }
+    ]
+   }
+  },
+  {
+   "key": "domain:d08.example.org",
+   "depth": 1,
+   "attributes": {
+    "registrar": [
+     {
+      "value": "Common Registrar Inc",
+      "source": "rdap"
+     }
+    ]
+   }
+  },
+  {
+   "key": "domain:d09.example.org",
+   "depth": 1,
+   "attributes": {
+    "registrar": [
+     {
+      "value": "Common Registrar Inc",
+      "source": "rdap"
+     }
+    ]
+   }
+  },
+  {
+   "key": "domain:d10.example.org",
+   "depth": 1,
+   "attributes": {
+    "registrar": [
+     {
+      "value": "Common Registrar Inc",
+      "source": "rdap"
+     }
+    ]
+   }
+  },
+  {
+   "key": "domain:d11.example.org",
+   "depth": 1,
+   "attributes": {
+    "registrar": [
+     {
+      "value": "Common Registrar Inc",
+      "source": "rdap"
+     }
+    ]
+   }
+  },
+  {
+   "key": "person_name:Fulano de Tal Exemplo",
+   "depth": 0,
+   "seed": true,
+   "attributes": {
+    "city": [
+     {
+      "value": "Cidade Exemplo",
+      "source": "t_registry"
+     }
+    ]
+   }
+  },
+  {
+   "key": "person_name:Beltrano Exemplo",
+   "depth": 0,
+   "seed": true,
+   "attributes": {
+    "city": [
+     {
+      "value": "Cidade Exemplo",
+      "source": "t_registry"
+     }
+    ]
+   }
+  }
+ ],
+ "edges": [
+  {
+   "src": "domain:own.example",
+   "dst": "ipv4:198.51.100.7",
+   "relation": "resolves_to",
+   "module": "dns_records",
+   "confidence": 0.9
+  },
+  {
+   "src": "domain:d01.example.org",
+   "dst": "ipv4:198.51.100.7",
+   "relation": "resolves_to",
+   "module": "dns_records",
+   "confidence": 0.9
+  },
+  {
+   "src": "domain:d02.example.org",
+   "dst": "ipv4:198.51.100.7",
+   "relation": "resolves_to",
+   "module": "dns_records",
+   "confidence": 0.9
+  },
+  {
+   "src": "domain:d03.example.org",
+   "dst": "ipv4:198.51.100.7",
+   "relation": "resolves_to",
+   "module": "dns_records",
+   "confidence": 0.9
+  },
+  {
+   "src": "domain:d06.example.org",
+   "dst": "ipv4:198.51.100.7",
+   "relation": "resolves_to",
+   "module": "dns_records",
+   "confidence": 0.9
+  },
+  {
+   "src": "domain:d07.example.org",
+   "dst": "ipv4:203.0.113.9",
+   "relation": "resolves_to",
+   "module": "dns_records",
+   "confidence": 0.9
+  }
+ ]
+}

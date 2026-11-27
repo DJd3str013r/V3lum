@@ -1,0 +1,64 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "robtex",
+  "name": "Robtex free API (passive DNS forward/reverse) and web lookup pages",
+  "operator": "Robtex AB (Sweden)",
+  "hosts": [
+    "freeapi.robtex.com",
+    "www.robtex.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Small company with an identifiable operator, public documentation and a long public track record (A8 community); 'Robtex free API = noncommercial (non-commercial, low volume), tier community' (P015 cond 1).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Large passive DNS collection, but forward answers carry the same recent time_last on every record (observed 2026-11-25/26, including a 2009 address of example.com): time_last is a refresh time, not a last observation, so Robtex-only records never count as current."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "timeout": 20,
+    "retries": 0,
+    "ttl": 86400,
+    "min_interval": 2.0,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "hour": 10,
+    "burst": 1,
+    "published": true,
+    "evidence_url": "https://www.robtex.com/api/",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "pdns": {
+      "title": "Robtex freeapi /pdns/forward/{domain} and /pdns/reverse/{ip} (NDJSON: rrname, rrdata, rrtype, time_first, time_last, count)",
+      "terms": {
+        "class": "noncommercial",
+        "evidence_url": "https://www.robtex.com/api/",
+        "quote": "Robtex free API = noncommercial ('non-commercial, low volume'), tier community",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "robtex",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P015 cond 1; A1 initial class 'Robtex = noncommercial'). Off under the corporate profile until licence-cleared (a licence_allow entry or a Robtex Pro plan); while skipped the web pages robtex.com/dns-lookup/{domain} and /ip-lookup/{ip} are the manual links (pack passive_dns_robtex, P015 cond 3). NDJSON parsed line by line, malformed or truncated lines skipped; min_interval >= 2 s and the published 10 requests/hour per egress IP as the P334 budget (8/hour, P015 cond 4). An empty answer is the body '[]'. Reverse lookups of popular IPs are slow (9.9.9.9 sent nothing in 20 s): timeout 20 s, could not verify.",
+      "licensed_alternative": "Robtex Pro API (proapi.robtex.com) under a company plan recorded in licence_allow."
+    }
+  },
+  "notes": "Owned by batch p2-G01-2 (P015, module passive_dns). www.robtex.com serves the manual lookup pages only (never automated)."
+}

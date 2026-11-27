@@ -1,0 +1,17 @@
+{
+ "clsid": null,
+ "error": "OleFileError: incomplete OLE sector",
+ "kind": "msi",
+ "parser": "olefile 0.47",
+ "signed": false,
+ "size": 1536,
+ "storages": [],
+ "streams": [],
+ "streams_capped": false,
+ "summary": null,
+ "table_names": null,
+ "tables": null,
+ "tables_parser": null,
+ "tables_status": null,
+ "unavailable": null
+}

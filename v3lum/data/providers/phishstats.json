@@ -1,0 +1,72 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "phishstats",
+  "name": "PhishStats API",
+  "operator": "PhishStats (phishstats.info)",
+  "hosts": [
+    "api.phishstats.info"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Small identifiable operator with public terms and documentation (A8 community): 'PhishStats is a small identifiable operator with public terms: tier community.' (P074 chair rationale).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Automated phishing collection with an ML phishscore: useful coverage, false positives on shared platforms and dynamic-DNS hosts; a record is a URL-level verdict only (P071 verdict scope)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "ttl": 3600,
+    "timeout": 15,
+    "retries": 1,
+    "min_interval": 3.0,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "day": 50,
+    "published": true,
+    "evidence_url": "https://phishstats.info/",
+    "safety_margin": 0.8
+  },
+  "error_markers": [
+    {
+      "id": "phishstats_rate_limit_body",
+      "statuses": [200],
+      "json_path": "message",
+      "regex": "(?i)rate limit exceeded|api rate limit",
+      "maps_to": "rate_limited",
+      "reason_code": "rate_limited",
+      "reason": "PhishStats: rate limit message inside an HTTP 200 answer"
+    }
+  ],
+  "keys": {},
+  "sources": {
+    "api": {
+      "title": "PhishStats phishing URL search /api/phishing?_where=(host|ip,eq,...)|(url,like,~kw~)&_sort=-id&_size<=100",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://phishstats.info/",
+        "quote": "Terms: PhishStats licenses use 'for lawful security research, threat intelligence, and related purposes' (verified 2026-11-26): open, recorded in the registry. URLs are never submitted (submissions are redistributed to the community, rule 7).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "phishstats",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P074 cond 2). Research C0165 (verified_live). api.phishstats.info only (the phishstats.info:2096 host is unusable behind HTTPS-only proxies). _where filters are URL-encoded, exact host/ip filters first; an invalid filter is silently ignored and returns unrelated records with HTTP 200, so every record is re-checked against the filter. Limits: 20 req/min (RateLimit headers), anonymous 50/day per egress IP (quota block, 80% margin), cache 1 h of the redacted records only, result cap 100. Victims' e-mails and token-like values in result URLs are redacted before anything is stored (P074 cond 3). The submission endpoint is never used."
+    }
+  },
+  "notes": "Owned by batch p2-G03-1 (P074 phishstats). The 'host' field of a record is the registrable domain (workers.dev for *.workers.dev): shared-platform hosts are searched with a LIKE on the FQDN and filtered locally."
+}

@@ -1,0 +1,16 @@
+{
+ "request": "GET https://arquivos.receitafederal.gov.br/dados/cnpj/dados_abertos_cnpj/",
+ "response": {
+  "status": 404,
+  "headers": {
+   "content-type": "text/html; charset=UTF-8",
+   "x-robots-tag": "noindex, nofollow"
+  },
+  "body": "<html><head><title>SERPRO+</title></head><body>SERPRO+ Este aplicativo requer JavaScript para sua correta operação. Por favor habilite o JavaScript e recarregue a página. SERPRO+ Página não encontrada A página não pôde ser encontrada no servidor ou talvez você não tenha permissão para visualizá-la. Voltar para SERPRO+ SERPRO+ – Repositório de Ar</body></html>"
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "observed_at": "2026-11-25T21:36:55Z",
+ "origin": "research",
+ "note": "old Apache index path: Nextcloud 404 page (text trimmed)"
+}

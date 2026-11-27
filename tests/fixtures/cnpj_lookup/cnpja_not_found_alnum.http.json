@@ -1,0 +1,20 @@
+{
+ "request": "GET https://open.cnpja.com/office/12ABC34501DE35",
+ "response": {
+  "status": 404,
+  "headers": {
+   "content-type": "application/json; charset=utf-8",
+   "server": "Google Frontend",
+   "content-length": "65"
+  },
+  "body": {
+   "code": 404,
+   "message": "tax id not registered at revenue service"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": 0.28822,
+ "observed_at": "2026-11-26T05:19:58+00:00",
+ "origin": "live",
+ "note": ""
+}

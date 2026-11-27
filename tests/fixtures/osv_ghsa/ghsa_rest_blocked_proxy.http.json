@@ -1,0 +1,22 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.github.com/advisories?cve_id=CVE-2021-44228",
+  "headers": {
+   "Accept": "application/vnd.github+json",
+   "X-GitHub-Api-Version": "2022-11-28"
+  }
+ },
+ "response": {
+  "status": 403,
+  "headers": {
+   "content-type": "application/json; charset=utf-8",
+   "content-length": "249",
+   "connection": "close"
+  },
+  "body": "{\"message\":\"This GitHub API path is not available: sessions are bound to their configured repositories. Use repository-scoped endpoints (repos/{owner}/{repo}/...).\",\"documentation_url\":\"https://docs.anthropic.com/en/docs/claude-code/github-actions\"}"
+ },
+ "transport_error": null,
+ "elapsed_s": 0.045,
+ "note": "LIVE 2026-11-26: refused by the research egress proxy (not GitHub). Classify as BLOCKED (could not verify), never EMPTY."
+}

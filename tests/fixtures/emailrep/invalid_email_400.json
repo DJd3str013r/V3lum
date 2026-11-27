@@ -1,0 +1,12 @@
+{
+ "_envelope": 1,
+ "_synthetic": "documented EmailRep error body for a malformed address (not observed: no key)",
+ "status": 400,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": {
+  "status": "fail",
+  "reason": "invalid email"
+ }
+}

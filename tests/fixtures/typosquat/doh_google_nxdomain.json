@@ -1,0 +1,23 @@
+{
+ "Status": 3,
+ "TC": false,
+ "RD": true,
+ "RA": true,
+ "AD": true,
+ "CD": false,
+ "Question": [
+  {
+   "name": "example.invalid.",
+   "type": 2
+  }
+ ],
+ "Authority": [
+  {
+   "name": ".",
+   "type": 6,
+   "TTL": 86268,
+   "data": "a.root-servers.net. nstld.verisign-grs.com. 2026112503 1800 900 604800 86400"
+  }
+ ],
+ "edns_client_subnet": "0.0.0.0/0"
+}

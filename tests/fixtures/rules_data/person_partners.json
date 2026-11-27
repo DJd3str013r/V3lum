@@ -1,0 +1,38 @@
+{
+ "schema": "v3lum.rule/1",
+ "id": "t_person_partners",
+ "version": "1",
+ "title": "People recorded in the same city (natural persons)",
+ "severity": "low",
+ "criterion": "test rule (threshold)",
+ "references": [
+  "https://github.com/smicallef/spiderfoot"
+ ],
+ "attack": [],
+ "false_positives": "synthetic test rule",
+ "collections": [
+  {
+   "name": "people",
+   "entity_types": [
+    "person_name"
+   ],
+   "filters": [
+    {
+     "field": "attr:city",
+     "op": "eq",
+     "value": "cidade exemplo"
+    }
+   ]
+  }
+ ],
+ "analysis": {
+  "method": "threshold",
+  "minimum": 2
+ },
+ "headline": "{count} people recorded in {value}",
+ "recommendation": "Review the listed entities.",
+ "aggregation": {
+  "field": "attr:city"
+ },
+ "confidence": "confirmed"
+}

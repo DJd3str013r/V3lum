@@ -1,0 +1,17 @@
+{
+ "_fixture": "REAL live capture 2026-11-26, minimised: official 'disqus' profile page; tracking scripts dropped",
+ "_meta": {
+  "url": "https://disqus.com/by/disqus/",
+  "user_agent": "V3LUM/dev",
+  "captured": "2026-11-26T08:33:01Z",
+  "elapsed_s": 0.139,
+  "bytes_original": 5470
+ },
+ "status": 200,
+ "headers": {
+  "server": "nginx",
+  "content-type": "text/html; charset=utf-8",
+  "cache-control": "stale-while-revalidate=3600, public, max-age=300"
+ },
+ "body": "<!DOCTYPE html>\n<html lang=\"en\" dir=\"ltr\">\n<head>\n<meta charset=\"utf-8\">\n<title>Disqus Profile - disqus</title>\n<meta property=\"og:title\"  content=\"Disqus Profile - disqus\" /><meta property=\"og:type\" content=\"profile\"/><meta property=\"og:url\"    content=\"https://disqus.com/by/disqus/\" />\n</head>\n<body>\n<script>window.home_config=JSON.parse('{\\u000A  \\u0022is_private\\u0022:false\\u000A}');</script>\n</body>\n</html>\n"
+}

@@ -1,0 +1,13 @@
+{
+ "schema": "v3lum.notice/1",
+ "name": "lol_datasets_hijacklibs",
+ "source_url": "https://github.com/wietze/HijackLibs",
+ "version": "runtime download of https://hijacklibs.net/api/hijacklibs.json (weekly; 628 entries on 2026-11-26)",
+ "sha256": "",
+ "licence": "GPL-3.0-only",
+ "attribution": "HijackLibs by Wietze Beukema and contributors, https://hijacklibs.net/, GPL-3.0: downloaded at run time into ~/.v3lum/datasets, never bundled or modified (A6).",
+ "bundled": false,
+ "files": [
+  "v3lum/modules/malware_hash/lol_datasets.py"
+ ]
+}

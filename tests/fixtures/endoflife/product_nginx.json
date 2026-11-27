@@ -1,0 +1,160 @@
+{
+ "schema_version": "1.2.1",
+ "generated_at": "2026-11-25T23:43:38+00:00",
+ "last_modified": "2026-11-25T00:08:00+00:00",
+ "result": {
+  "name": "nginx",
+  "aliases": [],
+  "label": "nginx",
+  "category": "server-app",
+  "tags": [
+   "server-app",
+   "web-server"
+  ],
+  "versionCommand": "nginx -v",
+  "identifiers": [
+   {
+    "type": "repology",
+    "id": "nginx"
+   },
+   {
+    "type": "purl",
+    "id": "pkg:generic/nginx"
+   },
+   {
+    "type": "purl",
+    "id": "pkg:deb/debian/nginx"
+   },
+   {
+    "type": "purl",
+    "id": "pkg:deb/ubuntu/nginx"
+   },
+   {
+    "type": "purl",
+    "id": "pkg:rpm/amzn/nginx"
+   },
+   {
+    "type": "purl",
+    "id": "pkg:rpm/redhat/nginx"
+   },
+   {
+    "type": "purl",
+    "id": "pkg:rpm/centos/nginx"
+   },
+   {
+    "type": "purl",
+    "id": "pkg:apk/alpine/nginx"
+   },
+   {
+    "type": "purl",
+    "id": "pkg:rpm/opensuse/nginx"
+   },
+   {
+    "type": "purl",
+    "id": "pkg:github/nginx/nginx"
+   },
+   {
+    "type": "cpe",
+    "id": "cpe:2.3:a:f5:nginx"
+   }
+  ],
+  "labels": {
+   "eoas": null,
+   "discontinued": null,
+   "eol": "Security Support",
+   "eoes": null
+  },
+  "links": {
+   "icon": "https://cdn.jsdelivr.net/npm/simple-icons/icons/nginx.svg",
+   "html": "https://endoflife.date/nginx",
+   "releasePolicy": "https://www.nginx.com/blog/nginx-1-18-1-19-released/#NGINX-Versioning-Explained"
+  },
+  "releases": [
+   {
+    "name": "1.31",
+    "codename": null,
+    "label": "1.31",
+    "releaseDate": "2026-05-13",
+    "isLts": false,
+    "ltsFrom": null,
+    "isEol": false,
+    "eolFrom": null,
+    "isMaintained": true,
+    "latest": {
+     "name": "1.31.10",
+     "date": "2026-11-23",
+     "link": "https://nginx.org/en/CHANGES"
+    },
+    "custom": null
+   },
+   {
+    "name": "1.30",
+    "codename": null,
+    "label": "1.30",
+    "releaseDate": "2026-04-14",
+    "isLts": false,
+    "ltsFrom": null,
+    "isEol": false,
+    "eolFrom": null,
+    "isMaintained": true,
+    "latest": {
+     "name": "1.30.8",
+     "date": "2026-11-23",
+     "link": "https://nginx.org/en/CHANGES-1.30"
+    },
+    "custom": null
+   },
+   {
+    "name": "1.29",
+    "codename": null,
+    "label": "1.29",
+    "releaseDate": "2025-06-24",
+    "isLts": false,
+    "ltsFrom": null,
+    "isEol": true,
+    "eolFrom": "2026-05-13",
+    "isMaintained": false,
+    "latest": {
+     "name": "1.29.8",
+     "date": "2026-04-07",
+     "link": "https://nginx.org/en/CHANGES"
+    },
+    "custom": null
+   },
+   {
+    "name": "1.24",
+    "codename": null,
+    "label": "1.24",
+    "releaseDate": "2023-04-11",
+    "isLts": false,
+    "ltsFrom": null,
+    "isEol": true,
+    "eolFrom": "2024-04-23",
+    "isMaintained": false,
+    "latest": {
+     "name": "1.24.0",
+     "date": "2023-04-11",
+     "link": "https://nginx.org/en/CHANGES-1.24"
+    },
+    "custom": null
+   },
+   {
+    "name": "1.18",
+    "codename": null,
+    "label": "1.18",
+    "releaseDate": "2020-04-21",
+    "isLts": false,
+    "ltsFrom": null,
+    "isEol": true,
+    "eolFrom": "2021-04-20",
+    "isMaintained": false,
+    "latest": {
+     "name": "1.18.0",
+     "date": "2020-04-21",
+     "link": "https://nginx.org/en/CHANGES-1.18"
+    },
+    "custom": null
+   }
+  ]
+ }
+}

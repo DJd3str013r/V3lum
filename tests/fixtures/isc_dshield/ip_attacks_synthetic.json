@@ -1,0 +1,33 @@
+{
+ "_synthetic": "Field names and value styles from the /api/ip example on https://isc.sans.edu/api/ (fetched 2026-11-26); IP, AS, names and mailbox replaced with documentation values. Attack counts cannot be observed with the allowed benign IPs (8.8.8.8, 1.1.1.1 and 9.9.9.9 have count/attacks null).",
+ "ip": {
+  "number": "203.0.113.77",
+  "count": 9843,
+  "attacks": 34,
+  "maxdate": "2026-11-20",
+  "mindate": "2026-10-08",
+  "updated": "2026-11-20 14:03:22",
+  "comment": null,
+  "maxrisk": 0,
+  "asabusecontact": "abuse@example.net",
+  "as": 64500,
+  "asname": "EXAMPLE-NET Example Networks",
+  "ascountry": "BR",
+  "assize": 1024,
+  "network": "203.0.113.0/24",
+  "threatfeeds": {
+   "blocklistde22": {
+    "lastseen": "2026-11-19",
+    "firstseen": "2026-10-22"
+   },
+   "forumspam": {
+    "lastseen": "2024-05-30",
+    "firstseen": "2023-01-05"
+   },
+   "openbl_ssh": {
+    "lastseen": "2026-11-11",
+    "firstseen": "2026-09-27"
+   }
+  }
+ }
+}

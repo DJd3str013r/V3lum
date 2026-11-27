@@ -1,0 +1,49 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "trongrid",
+  "name": "TronGrid (TRON full-node HTTP API: accounts, TRC-20 transfers, constant contract calls)",
+  "operator": "TRON DAO (TronGrid)",
+  "hosts": ["api.trongrid.io"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "The TRON DAO's official API service with published terms, documentation and a business offering (A8 trusted); P207 cond 5 and P205 cond 7 'TronGrid (TRON DAO) trusted'.",
+  "tier_reviewer": "council-1 (A8, P205/P207)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "B", "justification": "Reads public blockchain state from the TRON network: authoritative for balances, transfers and contract state at query time; token symbols are attacker-chosen (recognise tokens by contract)."},
+  "http_profile": {"user_agent": "neutral", "accept": "application/json", "timeout": 20, "ttl": 3600, "min_interval": 1.0, "concurrency": 2, "retries": 1},
+  "quota": null,
+  "error_markers": [
+    {"id": "trongrid_success_false", "statuses": [200], "json_path": "success", "equals": false, "regex": null, "final_url_regex": null, "maps_to": "error", "reason_code": "error", "reason": "TronGrid: answer with success=false (could not verify)"},
+    {"id": "trongrid_frequency_limit", "statuses": [200, 403, 503], "json_path": null, "equals": null, "regex": "(?i)frequency limit|exceed(?:s|ed)? the (?:rate|frequency)|request rate exceeded|suspended for \\d+", "final_url_regex": null, "maps_to": "rate_limited", "reason_code": "rate_limited", "reason": "TronGrid: request throttled (keyless calls are throttled; could not verify)"}
+  ],
+  "keys": {
+    "trongrid": {
+      "description": "TronGrid API key (TRON-PRO-API-KEY header, never in a URL): raises the keyless throttle",
+      "signup_url": "https://www.trongrid.io/register",
+      "env": ["V3LUM_TRONGRID_KEY"],
+      "multi_key": false,
+      "plan_hint": "a company/team account on a plan whose terms permit internal business use, recorded by legal in key_plans (P207 cond 5) - never a personal free account"
+    }
+  },
+  "sources": {
+    "api": {
+      "title": "TronGrid v1 accounts/{addr}, accounts/{addr}/transactions/trc20 and wallet/triggerconstantcontract (read-only constant calls)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://www.trongrid.io/",
+        "quote": "Key-terms: keys from a company/team account on a plan whose terms permit internal business use, recorded by legal (key_plans) before corporate use; never personal free accounts (rule 1). Registry: TronGrid/Tronscan (TRON DAO) tier trusted.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "tron",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P207 cond 5; P205 cond 7 'TronGrid ... key-terms (company accounts, plans recorded)'). Research C0480 (verified_live 200): keyless works but is throttled; {'data': [], 'success': true} = account never activated; an invalid address is HTTP 400 with success=false. Shared client in v3lum/modules/crypto/tron_explorer.py (tron_explorer P207 and the USDT-TRC20 freeze check of crypto_sanctions_onchain P205). Under the corporate profile it runs once key_plans.trongrid is 'business'."
+    }
+  },
+  "notes": "Owned by batch p1-G09-1 (P205, P207). No published keyless limits: no quota block (429 and the throttle marker = RATE_LIMITED, could not verify); modules declare a daily fallback budget. ttl 1 h (crypto class)."
+}

@@ -1,0 +1,250 @@
+{
+ "clsid": "000c1084-0000-0000-c000-000000000046",
+ "error": null,
+ "kind": "msi",
+ "parser": "olefile 0.47",
+ "signed": false,
+ "size": 6144,
+ "storages": [],
+ "streams": [
+  {
+   "name": "\u0005SummaryInformation",
+   "size": 540,
+   "table": false
+  },
+  {
+   "encoding": null,
+   "head_hex": "4d5a9000000000000000000000000000",
+   "kind": "pe",
+   "md5": "7137384e56b2b43b2dec8e833ade8fa7",
+   "name": "Binary.CADll",
+   "sha1": "e746c07e87544df697ad8c3c753ed69974670eeb",
+   "sha256": "ea40c58820fde28322f55661f0d0e6132a64f29624dbef187facbcca884c9916",
+   "size": 165,
+   "table": false,
+   "text": null,
+   "text_truncated": false
+  },
+  {
+   "encoding": "utf-8",
+   "head_hex": "66756e6374696f6e204d61696e282920",
+   "kind": "js",
+   "md5": "c01cab2e4f1287a992053936b47935a7",
+   "name": "Binary.JsPayload",
+   "sha1": "d782df8d9237ec4b1914dc7593a5e60f275bad62",
+   "sha256": "df9f8b18a5a29d87a185b717d8ba5d3616a7ee2fecd8818976f40d3425e737c0",
+   "size": 178,
+   "table": false,
+   "text": "function Main() {\r\n  // fixture: string building only, nothing is fetched or run\r\n  var u = String.fromCharCode(104,116,116,112,115) + '://203.0.113.22/js.txt';\r\n  return 1;\r\n}\r\n",
+   "text_truncated": false
+  },
+  {
+   "name": "_Columns",
+   "size": 96,
+   "table": true
+  },
+  {
+   "name": "_StringData",
+   "size": 888,
+   "table": true
+  },
+  {
+   "name": "_StringPool",
+   "size": 208,
+   "table": true
+  },
+  {
+   "name": "_Tables",
+   "size": 8,
+   "table": true
+  },
+  {
+   "name": "Binary",
+   "size": 8,
+   "table": true
+  },
+  {
+   "name": "InstallExecuteSequence",
+   "size": 48,
+   "table": true
+  },
+  {
+   "name": "Property",
+   "size": 40,
+   "table": true
+  },
+  {
+   "name": "CustomAction",
+   "size": 72,
+   "table": true
+  }
+ ],
+ "streams_capped": false,
+ "summary": {
+  "author": "Example Org Ltda",
+  "codepage": 1252,
+  "comments": "This installer database contains the logic and data required to install Leitor NF-e.",
+  "create_time": "2026-11-20T09:00:00",
+  "creating_application": "Windows Installer XML Toolset (3.11.2.4516)",
+  "keywords": "Installer",
+  "last_saved_time": "2026-11-20T09:00:00",
+  "num_pages": 200,
+  "num_words": 2,
+  "revision_number": "{0E9A3C55-5301-4E6F-8A9B-0C1D2E3F4A03}",
+  "security": 2,
+  "subject": "Leitor NF-e",
+  "template": "Intel;1046",
+  "title": "Installation Database"
+ },
+ "table_names": [
+  "Binary",
+  "CustomAction",
+  "InstallExecuteSequence",
+  "Property",
+  "_Columns",
+  "_Tables"
+ ],
+ "tables": {
+  "Binary": [
+   {
+    "Data": "<binary>",
+    "Name": "CADll"
+   },
+   {
+    "Data": "<binary>",
+    "Name": "JsPayload"
+   }
+  ],
+  "CustomAction": [
+   {
+    "Action": "SetDlUrl",
+    "ExtendedType": null,
+    "Source": "DLURL",
+    "Target": "https://203.0.113.21/nfe/pkg.txt",
+    "Type": 51
+   },
+   {
+    "Action": "RunVbs",
+    "ExtendedType": null,
+    "Source": null,
+    "Target": "' fixture: string assignments only\r\nDim u : u = \"http://198.51.100.20/stage2.txt\"\r\nDim s : s = Chr(87) & Chr(83)\r\n",
+    "Type": 38
+   },
+   {
+    "Action": "RunJsBin",
+    "ExtendedType": null,
+    "Source": "JsPayload",
+    "Target": "Main",
+    "Type": 5
+   },
+   {
+    "Action": "RunDllBin",
+    "ExtendedType": null,
+    "Source": "CADll",
+    "Target": "DllEntry",
+    "Type": 3073
+   },
+   {
+    "Action": "RunPs",
+    "ExtendedType": null,
+    "Source": "SystemFolder",
+    "Target": "powershell.exe -NoP -NonI -w hidden -enc VwByAGkAdABlAC0ATwB1AHQAcAB1AHQAIAAnAGYAaQB4AHQAdQByAGUAJwA7ACAAJAB1ACAAPQAgACcAaAB0AHQAcABzADoALwAvADIAMAAzAC4AMAAuADEAMQAzAC4AMgAzAC8AbgBmAGUALgBwAHMAMQAnAA==",
+    "Type": 3106
+   },
+   {
+    "Action": "RunCmdProp",
+    "ExtendedType": null,
+    "Source": "CMDEXE",
+    "Target": "/c echo https://203.0.113.24/x.bat",
+    "Type": 114
+   }
+  ],
+  "InstallExecuteSequence": [
+   {
+    "Action": "CostInitialize",
+    "Condition": null,
+    "Sequence": 800
+   },
+   {
+    "Action": "SetDlUrl",
+    "Condition": null,
+    "Sequence": 1100
+   },
+   {
+    "Action": "RunVbs",
+    "Condition": "NOT Installed",
+    "Sequence": 1500
+   },
+   {
+    "Action": "RunJsBin",
+    "Condition": "NOT Installed",
+    "Sequence": 1510
+   },
+   {
+    "Action": "RunDllBin",
+    "Condition": "NOT Installed",
+    "Sequence": 6590
+   },
+   {
+    "Action": "RunPs",
+    "Condition": "NOT Installed",
+    "Sequence": 6595
+   },
+   {
+    "Action": "RunCmdProp",
+    "Condition": "NOT Installed",
+    "Sequence": 6596
+   },
+   {
+    "Action": "InstallFinalize",
+    "Condition": null,
+    "Sequence": 6600
+   }
+  ],
+  "Property": [
+   {
+    "Property": "ProductName",
+    "Value": "Leitor NF-e"
+   },
+   {
+    "Property": "Manufacturer",
+    "Value": "Example Org Ltda"
+   },
+   {
+    "Property": "ProductVersion",
+    "Value": "1.0.0"
+   },
+   {
+    "Property": "ProductCode",
+    "Value": "{0E9A3C55-5301-4E6F-8A9B-0C1D2E3F4A01}"
+   },
+   {
+    "Property": "UpgradeCode",
+    "Value": "{0E9A3C55-5301-4E6F-8A9B-0C1D2E3F4A02}"
+   },
+   {
+    "Property": "ProductLanguage",
+    "Value": "1046"
+   },
+   {
+    "Property": "ALLUSERS",
+    "Value": "1"
+   },
+   {
+    "Property": "DLURL",
+    "Value": "https://203.0.113.21/nfe/pkg.txt"
+   },
+   {
+    "Property": "CMDEXE",
+    "Value": "[SystemFolder]cmd.exe"
+   },
+   {
+    "Property": "ARPHELPLINK",
+    "Value": "https://www.example.com/suporte"
+   }
+  ]
+ },
+ "tables_parser": "pymsi 0.0.0rc1",
+ "tables_status": "parsed",
+ "unavailable": null
+}

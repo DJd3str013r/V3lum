@@ -1,0 +1,9 @@
+{
+  "schema": "v3lum.extra/1",
+  "package": "pytesseract",
+  "pip": "pytesseract>=0.3.13",
+  "extra": "ocr",
+  "licence": "Apache-2.0",
+  "justification": "Wrapper of the external tesseract binary for image_ocr (P363 c1: 'pytesseract (Apache-2.0) is the wrapper'). Optional: without it image_ocr reports UNAVAILABLE 'package' ('pip install pytesseract'); the tesseract binary itself (Apache-2.0) is installed separately by the analyst and is never downloaded or updated by V3LUM.",
+  "notes": "Batch p2-G12-2. Pure Python, used unmodified; it runs only inside the core file-analysis sandbox (core/sandbox.py), never in the V3LUM process. rapidocr-onnxruntime is not used (P363 c1)."
+}

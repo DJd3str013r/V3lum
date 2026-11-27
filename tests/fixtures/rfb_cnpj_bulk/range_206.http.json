@@ -1,0 +1,22 @@
+{
+ "request": "GET https://arquivos.receitafederal.gov.br/public.php/webdav/2026-11/Qualificacoes.zip (Range: bytes=0-65535, basic auth user=<official share token>)",
+ "response": {
+  "status": 206,
+  "headers": {
+   "oc-etag": "\"a0129f49e49c5eeef2e30918e874344a\"",
+   "content-disposition": "attachment; filename*=UTF-8''Qualificacoes.zip; filename=\"Qualificacoes.zip\"",
+   "x-robots-tag": "noindex, nofollow",
+   "last-modified": "Mon, 16 Nov 2026 10:08:47 GMT",
+   "etag": "\"a0129f49e49c5eeef2e30918e874344a\"",
+   "content-length": "980",
+   "content-range": "bytes 0-979/980",
+   "content-type": "application/zip"
+  },
+  "body": null
+ },
+ "transport_error": null,
+ "elapsed_s": 0.9904,
+ "observed_at": "2026-11-26T07:32:51Z",
+ "origin": "live",
+ "note": "body = fixtures/rfb_cnpj_bulk__qualificacoes_ok.zip; ETag equals the PROPFIND getetag"
+}

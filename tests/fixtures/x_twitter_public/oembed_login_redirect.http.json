@@ -1,0 +1,8 @@
+{
+ "_fixture": "SYNTHETIC: redirect to the X login flow (login wall)",
+ "status": 302,
+ "headers": {
+  "location": "https://x.com/i/flow/login?redirect_after_login=%2Foembed"
+ },
+ "body": ""
+}

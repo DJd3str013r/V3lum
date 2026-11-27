@@ -1,0 +1,15 @@
+{
+ "domain": "google.com",
+ "count": 10000,
+ "total": 211419,
+ "subdomains": [
+  "4eftn34p2mnzw6vdu7ivwtydcwfh6b5i7i3lkctbafpaeobbzxja.mx-verification.google.com",
+  "6m2cmtk3yvar7lo6dvdfv73vxrewwcpudcpmtkswsgifu7pg4qwa.mx-verification.google.com",
+  "3xyb7om22ldzd5p4ytyds5fwjafhp34d7dghnh3osb4df7dnlj4q.mx-verification.google.com",
+  "mail.hes.google.com",
+  "okp_jm9upyw6vmpc42t4gr4k6jbafcremgz3d53nrhc.mx-verification.google.com",
+  "stratumai.google.com",
+  "amcw.google.com",
+  "ncs2.google.com"
+ ]
+}

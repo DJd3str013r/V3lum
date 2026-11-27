@@ -1,0 +1,48 @@
+{
+ "took": 77,
+ "timed_out": false,
+ "_shards": {
+  "total": 24,
+  "successful": 22,
+  "skipped": 10,
+  "failed": 2,
+  "failures": [
+   {
+    "shard": 0,
+    "index": "logs-dns-2026.11.25",
+    "node": "node-data-02",
+    "reason": {
+     "type": "query_shard_exception",
+     "reason": "failed to create query: field [source.ip] of type [keyword] does not support term queries on ip values"
+    }
+   },
+   {
+    "shard": 1,
+    "index": "logs-dns-2026.11.25",
+    "node": "node-data-03",
+    "reason": {
+     "type": "node_disconnected_exception",
+     "reason": "[node-data-03] disconnected"
+    }
+   }
+  ]
+ },
+ "hits": {
+  "total": {
+   "value": 40,
+   "relation": "eq"
+  },
+  "max_score": null,
+  "hits": []
+ },
+ "aggregations": {
+  "first_seen": {
+   "value": 1793178843000.0,
+   "value_as_string": "2026-10-28T09:14:03.000Z"
+  },
+  "last_seen": {
+   "value": 1795612364000.0,
+   "value_as_string": "2026-11-25T13:12:44.000Z"
+  }
+ }
+}

@@ -1,0 +1,15 @@
+{
+ "messages": [
+  [
+   "error",
+   "not-an-ip is of an unsupported resource type. It should be one of: IP prefix/range/address."
+  ]
+ ],
+ "data_call_name": "network-info",
+ "data_call_status": "supported",
+ "cached": false,
+ "status": "error",
+ "status_code": 400,
+ "time": "2026-11-26T04:34:13.102505",
+ "data": {}
+}

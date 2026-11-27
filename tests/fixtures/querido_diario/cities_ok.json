@@ -1,0 +1,49 @@
+{
+ "cities": [
+  {
+   "territory_id": "1100072",
+   "territory_name": "Corumbiara",
+   "state_code": "RO",
+   "level": "0",
+   "availability_date": ""
+  },
+  {
+   "territory_id": "3512704",
+   "territory_name": "Corumbataí",
+   "state_code": "SP",
+   "level": "0",
+   "availability_date": ""
+  },
+  {
+   "territory_id": "4106555",
+   "territory_name": "Corumbataí do Sul",
+   "state_code": "PR",
+   "level": "0",
+   "availability_date": ""
+  },
+  {
+   "territory_id": "5003207",
+   "territory_name": "Corumbá",
+   "state_code": "MS",
+   "publication_urls": [
+    "http://do.corumba.ms.gov.br/corumba"
+   ],
+   "level": "3",
+   "availability_date": "2024-03-27"
+  },
+  {
+   "territory_id": "5205802",
+   "territory_name": "Corumbá de Goiás",
+   "state_code": "GO",
+   "level": "0",
+   "availability_date": ""
+  },
+  {
+   "territory_id": "5205901",
+   "territory_name": "Corumbaíba",
+   "state_code": "GO",
+   "level": "0",
+   "availability_date": ""
+  }
+ ]
+}

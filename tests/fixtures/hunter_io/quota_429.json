@@ -1,0 +1,17 @@
+{
+ "_envelope": 1,
+ "_synthetic": "documented Hunter error envelope {errors: [{id, code, details}]}; not observed (no key) - 429 = monthly usage limit per the docs",
+ "status": 429,
+ "headers": {
+  "content-type": "application/json; charset=utf-8"
+ },
+ "body": {
+  "errors": [
+   {
+    "id": "too_many_requests",
+    "code": 429,
+    "details": "You have reached your usage limit. Upgrade your plan if necessary."
+   }
+  ]
+ }
+}

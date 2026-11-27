@@ -1,0 +1,14 @@
+{
+ "server": "modern",
+ "probe": "tls10",
+ "trust": "self_signed_ca",
+ "ok": false,
+ "stage": "handshake",
+ "version": null,
+ "cipher": null,
+ "error_type": "SSLError",
+ "reason": "TLSV1_ALERT_PROTOCOL_VERSION",
+ "library": "SSL",
+ "verify_code": null,
+ "str": "[SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol version (_ssl.c:1035)"
+}

@@ -1,0 +1,347 @@
+{
+  "schema": "v3lum.pivot_pack/1",
+  "pack": "crypto",
+  "title": "Blockchain explorers, chain-aware (P216)",
+  "notes": "Batch p2-G14-2, module pivots_crypto. Links under x_module_links need a value transformation, a TLP ceiling or a warning that the frozen core link model does not carry yet: the pack's module renders them (linted like pack links, fail closed). x_accepts declares the address formats each entry takes (P217 validators: BTC base58/bech32, LTC, DOGE, BCH cashaddr, EVM 0x, TRON T-base58); EVM addresses are lower case in URLs and EIP-55 for display (P219). Challenge-walled explorers (Etherscan, BscScan, Tronscan, Arkham) ship unverified with antibot=true (P216 cond 9, P304 cond 12); Chainabuse address reports belong to the unverified pack of P304 (P216 cond 10). No wallet-connect, payment, swap or donation page is ever linked.",
+  "links": [
+    {
+      "id": "mempool_address",
+      "label": "mempool.space - Bitcoin address",
+      "template": "https://mempool.space/address/{q}",
+      "entity_types": [
+        "btc_address"
+      ],
+      "category": "crypto",
+      "host": "mempool.space",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Single-page app: 200 shell for curl, renders in the browser (2026-11-26).",
+      "x_accepts": [
+        "btc:mainnet"
+      ]
+    },
+    {
+      "id": "blockchair_btc",
+      "label": "Blockchair - Bitcoin address",
+      "template": "https://blockchair.com/bitcoin/address/{q}",
+      "entity_types": [
+        "btc_address"
+      ],
+      "category": "crypto",
+      "host": "blockchair.com",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Research C0508; title holds the address.",
+      "x_accepts": [
+        "btc:mainnet"
+      ]
+    },
+    {
+      "id": "walletexplorer_address",
+      "label": "WalletExplorer - Bitcoin address and wallet cluster",
+      "template": "https://www.walletexplorer.com/address/{q}",
+      "entity_types": [
+        "btc_address"
+      ],
+      "category": "crypto",
+      "host": "www.walletexplorer.com",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Research C0506; server-rendered, title holds the address.",
+      "x_accepts": [
+        "btc:mainnet"
+      ]
+    },
+    {
+      "id": "bitcoinwhoswho_address",
+      "label": "BitcoinWhosWho - scam reports for a Bitcoin address",
+      "template": "https://www.bitcoinwhoswho.com/address/{q}",
+      "entity_types": [
+        "btc_address"
+      ],
+      "category": "crypto",
+      "host": "www.bitcoinwhoswho.com",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Research C0504 saw the report page on 2026-11-25; on 2026-11-26 curl got 302 to the plain-http home page: unverified until a browser re-check.",
+      "x_accepts": [
+        "btc:mainnet"
+      ]
+    },
+    {
+      "id": "blockchain_com_btc",
+      "label": "Blockchain.com - Bitcoin address",
+      "template": "https://www.blockchain.com/explorer/addresses/btc/{q}",
+      "entity_types": [
+        "btc_address"
+      ],
+      "category": "crypto",
+      "host": "www.blockchain.com",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Research C0507; title 'Satoshi Address: ...' for the genesis address.",
+      "x_accepts": [
+        "btc:mainnet"
+      ]
+    },
+    {
+      "id": "bitref_address",
+      "label": "BitRef - Bitcoin address",
+      "template": "https://bitref.com/{q}",
+      "entity_types": [
+        "btc_address"
+      ],
+      "category": "crypto",
+      "host": "bitref.com",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Unknown-tier operator (badge 'unknown operator'); IOC values only.",
+      "x_accepts": [
+        "btc:mainnet"
+      ]
+    },
+    {
+      "id": "ethplorer_address",
+      "label": "Ethplorer - Ethereum address and tokens",
+      "template": "https://ethplorer.io/address/{q}",
+      "entity_types": [
+        "eth_address"
+      ],
+      "category": "crypto",
+      "host": "ethplorer.io",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Research C0509; accepts the lower-case address and shows the EIP-55 form.",
+      "x_accepts": [
+        "evm"
+      ]
+    },
+    {
+      "id": "blockchair_eth",
+      "label": "Blockchair - Ethereum address",
+      "template": "https://blockchair.com/ethereum/address/{q}",
+      "entity_types": [
+        "eth_address"
+      ],
+      "category": "crypto",
+      "host": "blockchair.com",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Research C0508.",
+      "x_accepts": [
+        "evm"
+      ]
+    },
+    {
+      "id": "blockchain_com_eth",
+      "label": "Blockchain.com - Ethereum address",
+      "template": "https://www.blockchain.com/explorer/addresses/eth/{q}",
+      "entity_types": [
+        "eth_address"
+      ],
+      "category": "crypto",
+      "host": "www.blockchain.com",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Research C0507; title 'Tether Address: ...' for the USDT contract.",
+      "x_accepts": [
+        "evm"
+      ]
+    },
+    {
+      "id": "etherscan_address",
+      "label": "Etherscan - Ethereum address",
+      "template": "https://etherscan.io/address/{q}",
+      "entity_types": [
+        "eth_address"
+      ],
+      "category": "crypto",
+      "host": "etherscan.io",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "Cloudflare 'Just a moment' for curl (C0503, template confirmed by a Wayback snapshot): unverified, opens in the browser and may require a challenge (P216 cond 9).",
+      "x_accepts": [
+        "evm"
+      ]
+    },
+    {
+      "id": "bscscan_address",
+      "label": "BscScan - BNB Smart Chain address",
+      "template": "https://bscscan.com/address/{q}",
+      "entity_types": [
+        "eth_address"
+      ],
+      "category": "crypto",
+      "host": "bscscan.com",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "Cloudflare for curl (C0503, Wayback 200): unverified, antibot (P216 cond 9).",
+      "x_accepts": [
+        "evm"
+      ]
+    },
+    {
+      "id": "arkham_address",
+      "label": "Arkham Intelligence - address entity page",
+      "template": "https://intel.arkm.com/explorer/address/{q}",
+      "entity_types": [
+        "eth_address"
+      ],
+      "category": "crypto",
+      "host": "intel.arkm.com",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "Cloudflare/JS shell for curl (C0503, Wayback 200). Kept only while the address page renders without login (P216 cond 9): drop it if a browser check shows a login wall.",
+      "x_accepts": [
+        "evm"
+      ]
+    }
+  ],
+  "x_module_links": [
+    {
+      "id": "blockchair_ltc",
+      "label": "Blockchair - Litecoin address",
+      "template": "https://blockchair.com/litecoin/address/{ltc}",
+      "entity_types": [
+        "other_crypto_address"
+      ],
+      "category": "crypto",
+      "host": "blockchair.com",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Chain-validated value only: a BTC address on this path answers 200 with an empty dashboard (no error).",
+      "x_accepts": [
+        "ltc:base58",
+        "ltc:bech32"
+      ]
+    },
+    {
+      "id": "blockchair_doge",
+      "label": "Blockchair - Dogecoin address",
+      "template": "https://blockchair.com/dogecoin/address/{doge}",
+      "entity_types": [
+        "other_crypto_address"
+      ],
+      "category": "crypto",
+      "host": "blockchair.com",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Research C0508.",
+      "x_accepts": [
+        "doge:base58"
+      ]
+    },
+    {
+      "id": "blockchair_bch",
+      "label": "Blockchair - Bitcoin Cash address",
+      "template": "https://blockchair.com/bitcoin-cash/address/{bch}",
+      "entity_types": [
+        "other_crypto_address"
+      ],
+      "category": "crypto",
+      "host": "blockchair.com",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "cashaddr without the 'bitcoincash:' prefix (checksum-validated); legacy 1.../3... BCH addresses type as BTC.",
+      "x_accepts": [
+        "bch:cashaddr"
+      ]
+    },
+    {
+      "id": "tronscan_address",
+      "label": "Tronscan - TRON address (USDT-TRC20)",
+      "template": "https://tronscan.org/#/address/{tron}",
+      "entity_types": [
+        "other_crypto_address"
+      ],
+      "category": "crypto",
+      "host": "tronscan.org",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "Cloudflare/JS application for curl (C0503, Wayback 200): unverified, antibot (P216 cond 9). TRON addresses only (T + base58check).",
+      "x_accepts": [
+        "tron:base58"
+      ]
+    }
+  ]
+}

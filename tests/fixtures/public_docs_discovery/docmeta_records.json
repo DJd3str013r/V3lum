@@ -1,0 +1,54 @@
+[
+ {
+  "format": "ooxml",
+  "url": "https://www.example.com/docs/politica-de-privacidade.docx",
+  "author": "Fulano de Tal",
+  "last_modified_by": "EXEMPLO\\bsilva",
+  "company": "Example Org Ltda",
+  "application": "Microsoft Office Word 16.0000",
+  "template": "\\\\fileserver01\\modelos\\Timbrado.dotx",
+  "created": "2023-03-01T12:00:00Z",
+  "modified": "2023-03-05T09:00:00Z",
+  "title": "Política de Privacidade"
+ },
+ {
+  "format": "pdf",
+  "url": "https://www.example.com/arquivos/relatorio-anual-2023.pdf",
+  "author": [
+   "Beltrano da Silva"
+  ],
+  "last_modified_by": null,
+  "company": null,
+  "application": "Microsoft® Word para Microsoft 365",
+  "producer": "Microsoft® Word para Microsoft 365",
+  "created": "2024-01-10T10:00:00-03:00",
+  "modified": "2024-01-10T10:05:00-03:00",
+  "title": "Relatório Anual"
+ },
+ {
+  "format": "pdf",
+  "url": "https://example.com/formularios/cadastro.pdf",
+  "author": [],
+  "application": "Writer",
+  "producer": "LibreOffice 7.3",
+  "created": "2022-07-01T08:00:00Z"
+ },
+ {
+  "format": "ole",
+  "url": "https://www.example.com/old/manual.xls",
+  "author": "Administrador",
+  "last_modified_by": "fsilva",
+  "company": "Example Org Ltda",
+  "application": "Microsoft Excel",
+  "hyperlink_base": "C:\\Users\\fsilva\\Documents\\Planilhas\\",
+  "created": "2010-02-03T04:05:06Z"
+ },
+ {
+  "format": "ooxml",
+  "url": "https://www.example.com/x.pptx",
+  "author": "contato@example.com",
+  "last_modified_by": "Windows User",
+  "application": "Microsoft Office PowerPoint 16.0000",
+  "template": "file:///home/ciclano/Modelos/apresentacao.potx"
+ }
+]

@@ -1,0 +1,24 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.securitycontext.com/v1/cves/NOT-A-CVE",
+  "headers": {}
+ },
+ "response": {
+  "status": 400,
+  "headers": {
+   "content-type": "application/json",
+   "content-length": "129",
+   "x-ratelimit-limit": "60",
+   "x-ratelimit-remaining": "59",
+   "x-ratelimit-reset": "17",
+   "x-ratelimit-scope": "anonymous",
+   "cf-cache-status": "BYPASS",
+   "server": "cloudflare"
+  },
+  "body": "{\"error\":\"'NOT-A-CVE' is not a CVE id\",\"code\":\"invalid_parameter\",\"field\":\"cve\",\"allowed\":[\"CVE-YYYY-NNNN, e.g. CVE-2021-44228\"]}"
+ },
+ "transport_error": null,
+ "elapsed_s": 0.502,
+ "note": "LIVE 2026-11-26: malformed id -> 400 {\"code\":\"invalid_parameter\",\"field\":\"cve\",...}."
+}

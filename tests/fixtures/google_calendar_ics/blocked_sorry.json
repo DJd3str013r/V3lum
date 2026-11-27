@@ -1,0 +1,9 @@
+{
+ "_envelope": 1,
+ "_synthetic": "Google 'unusual traffic' CAPTCHA interstitial (shape of /sorry/index); not observed",
+ "status": 429,
+ "headers": {
+  "content-type": "text/html; charset=UTF-8"
+ },
+ "body": "<html><head><title>https://calendar.google.com/calendar/ical/...</title></head><body><div>Our systems have detected unusual traffic from your computer network.</div><form id=\"captcha-form\" action=\"index\" method=\"post\"><div class=\"g-recaptcha\"></div></form><div>URL: https://www.google.com/sorry/index?continue=...</div></body></html>"
+}

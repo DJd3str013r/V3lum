@@ -1,0 +1,13 @@
+{
+ "schema": "v3lum.notice/1",
+ "name": "lol_datasets_lolbas",
+ "source_url": "https://github.com/LOLBAS-Project/LOLBAS",
+ "version": "runtime download of https://lolbas-project.github.io/api/lolbas.json (weekly; 246 entries on 2026-11-26)",
+ "sha256": "",
+ "licence": "GPL-3.0-only",
+ "attribution": "LOLBAS Project (Living Off The Land Binaries, Scripts and Libraries), https://lolbas-project.github.io/, GPL-3.0: downloaded at run time into ~/.v3lum/datasets, never bundled or modified (A6).",
+ "bundled": false,
+ "files": [
+  "v3lum/modules/malware_hash/lol_datasets.py"
+ ]
+}

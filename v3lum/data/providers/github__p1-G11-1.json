@@ -1,0 +1,84 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "github",
+  "hosts": [],
+  "sources": {
+    "warninglists_misp": {
+      "title": "MISP warninglists lists/<list>/list.json on raw.githubusercontent.com (weekly refresh of the bundled compact build, datasets warninglists.<list>)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/MISP/misp-warninglists#license",
+        "quote": "MISP warning-lists are licensed under CC0 1.0 Universal (CC0 1.0) - Public Domain Dedication. [...] The X4BNet-derived VPN and datacenter data retain their upstream MIT license notice.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "misp_warninglists",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "P169 (module warninglists). Research C0327 (verified_live). The compact build ships in v3lum/data/warninglists/ (CC0; the X4BNet lists vpn-ipv4/vpn-ipv6/datacenter-ipv4/datacenter-ipv6 keep their MIT notice, v3lum/data/notices/misp_warninglists_x4bnet.json). Every bundled list is also the dataset warninglists.<list> (weekly TTL, never fetched during a scan); heavy top-1M and known-good-hash lists are never bundled (FC9). No value is ever sent: downloads only."
+    },
+    "attack_index_stix": {
+      "title": "MITRE ATT&CK STIX 2.1 bundles (github.com/mitre-attack/attack-stix-data: enterprise-attack, mobile-attack, ics-attack, index.json)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/mitre-attack/attack-stix-data/blob/master/LICENSE.txt",
+        "quote": "The MITRE Corporation (MITRE) hereby grants you a non-exclusive, royalty-free license to use ATT&CK® for research, development, and commercial purposes. Any copy you make for such purposes is authorized provided that you reproduce MITRE's copyright designation and this license in any such copy.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "mitre",
+      "sanitizer": null,
+      "dataset": "attack",
+      "notes": "P292 (module attack_index). Research C0654 (verified_live). Datasets attack (enterprise-attack.json, ~55 MB), attack.mobile, attack.ics (large: `v3lum data update attack` / --essential, never during a scan) and attack.versions (index.json). The bundles are parsed object by object at update time into the compact index (no json.load of a whole bundle, P292 cond 3); the prebuilt index is not bundled until legal records that the ATT&CK terms permit bundling (P292 cond 2). The MITRE notice and licence travel with every card (data_notices) and in v3lum/data/notices/mitre_attack.json. TAXII (mitre.attack_taxii) only detects a newer version."
+    },
+    "attack_index_capec": {
+      "title": "MITRE CAPEC 2.1 STIX bundle (github.com/mitre/cti capec/2.1/stix-capec.json), optional CWE -> CAPEC -> ATT&CK links",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://capec.mitre.org/about/termsofuse.html",
+        "quote": "The MITRE Corporation (MITRE) hereby grants you a non-exclusive, royalty-free license to use Common Attack Pattern Enumeration and Classification (CAPEC™) for research, development, and commercial purposes. Any copy you make for such purposes is authorized provided that you reproduce MITRE’s copyright designation and this license in any such copy.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "mitre",
+      "sanitizer": null,
+      "dataset": "attack.capec",
+      "notes": "P292 cond 1/7 (optional CAPEC 2.1). Research C0766 (verified_live 200/206). CAPEC 3.9 (2023): its ATT&CK links are sparse and partly revoked in ATT&CK v20.1, so CWE -> CAPEC -> ATT&CK candidates always carry low confidence. Dataset attack.capec (`v3lum data update`, never during a scan)."
+    },
+    "actor_alias_index_galaxy": {
+      "title": "MISP galaxy clusters (github.com/MISP/misp-galaxy clusters/<cluster>.json): threat actors, ransomware, malpedia, MITRE groups/software, tools, botnets, RATs, stealers, bankers...",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/MISP/misp-galaxy#license",
+        "quote": "The MISP galaxy (JSON files) are dual-licensed under: CC0 1.0 Universal (CC0 1.0) - Public Domain Dedication. or [the 2-Clause BSD License]",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "misp_galaxy",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "P295 (module actor_alias_index). Research C0653 (verified_live). Bundled (CC0/BSD-2, notices kept; MITRE-derived clusters keep the ATT&CK notice) as a trimmed build in v3lum/data/actor_alias_index/; refreshed weekly as datasets actor_alias_index.galaxy.<cluster>. Malpedia family ids come from the galaxy 'malpedia' cluster: joins never call the non-commercial Malpedia API (P295 cond 3). Cluster 'authors' (personal names) are never kept."
+    },
+    "actor_alias_index_mstic": {
+      "title": "Microsoft threat actor naming map (github.com/microsoft/mstic PublicFeeds/ThreatActorNaming/MicrosoftMapping.json)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/microsoft/mstic/blob/master/LICENSE",
+        "quote": "Attribution 4.0 International",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "microsoft",
+      "sanitizer": null,
+      "dataset": "actor_alias_index.mstic",
+      "notes": "P295 (module actor_alias_index). Research C0769 (verified_live). CC BY 4.0: bundled with attribution 'Microsoft Threat Intelligence' (v3lum/data/notices/mstic_threat_actor_naming.json); refreshed weekly as dataset actor_alias_index.mstic. Alias equivalences are vendor assessments, not identities."
+    }
+  },
+  "error_markers": [],
+  "notes": "Batch p1-G11-1 (P169 warninglists, P292 attack_index, P295 actor_alias_index): dataset sources hosted on GitHub. Downloads go through the dataset manager only (no per-lookup traffic, the three modules are offline); a failed refresh keeps the last good copy. raw.githubusercontent.com answers a missing file with HTTP 404 and the 14-byte body '404: Not Found' (rejected by the dataset manager, never read as an empty list)."
+}

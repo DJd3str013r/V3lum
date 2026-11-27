@@ -1,0 +1,18 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://explorer.ooni.org/m/20261125201002.758710_CN_webconnectivity_b30d2f9082c26e35"
+ },
+ "response": {
+  "status": 429,
+  "headers": {
+   "cache-control": "private, no-store, max-age=0",
+   "content-type": "text/html; charset=utf-8",
+   "server": "Vercel",
+   "x-vercel-mitigated": "challenge"
+  },
+  "body": "<!DOCTYPE html><html><head><title>Vercel Security Checkpoint</title></head><body>[trimmed: 25092 bytes of Vercel checkpoint page]</body></html>"
+ },
+ "transport_error": null,
+ "elapsed_s": 1.001381
+}

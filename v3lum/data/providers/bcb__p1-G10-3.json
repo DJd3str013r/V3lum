@@ -1,0 +1,20 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "bcb",
+  "hosts": [],
+  "sources": {},
+  "error_markers": [
+    {
+      "id": "bcb_authorized_institutions_odata_comment_error",
+      "statuses": [200, 400, 404, 500, 503],
+      "json_path": null,
+      "equals": null,
+      "regex": "\\A\\s*/\\*\\s*\\{[\\s\\S]{0,400}?\"(?:codigo|mensagem)\"",
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "BCB Olinda: OData error wrapped in a comment ('/*{\"codigo\": ..., \"mensagem\": ...}*/'): could not verify, never an empty list"
+    }
+  ],
+  "notes": "Batch p1-G10-3 (P360 bcb_authorized_institutions). P360 FC3 / P321: Olinda answers errors (HTTP 500 on $filter and on _TomadoresDeServicosBaas, 400 on bad property names) with a JS-comment-wrapped JSON body and no JSON content-type; the marker also fires on HTTP 200 so such a body can never install as a dataset copy or read as an empty list. Trimmed real fixture: tests/fixtures/bcb_authorized_institutions/odata_error_500.txt (research 2026-11-25, byte-exact)."
+}

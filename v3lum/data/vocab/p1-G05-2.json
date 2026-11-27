@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p1-G05-2",
+  "title": "Username pack names (P113 username_check / username_check_extended)",
+  "owner": "batch p1-G05-2",
+  "attributes": {
+    "site_checks": "username pack counts line for a handle: 'N found · N could not verify · N absent · N not checked: budget' (P113 FC12)",
+    "site_checks_coverage": "aggregated reasons of the sites a username pack could not verify or did not query, e.g. '22 blocked/WAF, 3 timeouts; skipped: 2 licence' (coverage appendix, P113 FC12)",
+    "collision_reason": "why a handle is high-collision (short handle, common username, common first name, dictionary word): its hits stay weak signals at info severity (P113 FC13)"
+  },
+  "tags": {},
+  "relations": {}
+}

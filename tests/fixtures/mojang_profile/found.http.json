@@ -1,0 +1,16 @@
+{
+ "_fixture": "REAL live capture 2026-11-26, minimised: MHF_Steve, a Mojang-made helper account",
+ "_meta": {
+  "url": "https://api.mojang.com/users/profiles/minecraft/MHF_Steve",
+  "user_agent": "V3LUM/dev",
+  "captured": "2026-11-26T08:33:05Z",
+  "elapsed_s": 0.222,
+  "bytes_original": 71
+ },
+ "status": 200,
+ "headers": {
+  "content-type": "application/json",
+  "cache-control": "max-age=300"
+ },
+ "body": "{\n  \"id\" : \"c06f89064c8a49119c29ea1dbd1aab82\",\n  \"name\" : \"MHF_Steve\"\n}"
+}

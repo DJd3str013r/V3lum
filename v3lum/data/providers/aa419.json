@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "aa419",
+  "name": "aa419 Fake Sites Database",
+  "operator": "Artists Against 419 (volunteer anti-fraud project)",
+  "hosts": [
+    "db.aa419.org"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Volunteer anti-fraud project with an identifiable organisation and a long public track record; P083 cond 5: 'community - aa419'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Volunteer-curated fake-site listings: review each hit (exact-phrase search over every field)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "pivot_pages": {
+      "title": "aa419 fake sites search /fakebankslist.php?psearch={q} (manual pivot link)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://db.aa419.org/",
+        "quote": "The pack is offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "aa419",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (cond 1 of the proposal). Research C0191. Verified 2026-11-26 without the form's '&Submit=GO' parameter (the P327 submission lint rejects the token): psearch=example -> 'Records 1 to 20 of 305', psearch=zzqqxxnotfound -> 'No records found'. The database 'may not be copied or distributed to any third party unless explicitly authorised by Artists Against 419': no scraper without aa419's permission. Used by pivots_url_web (pack url_web.json)."
+    }
+  },
+  "notes": "Manual pivot links only (batch p2-G14-1): V3LUM never fetches them (P311)."
+}

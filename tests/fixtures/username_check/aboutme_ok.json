@@ -1,0 +1,24 @@
+{
+ "_meta": {
+  "module": "username_check",
+  "case": "aboutme_ok",
+  "source": "C0274/C0228 About.me",
+  "request": {
+   "method": "GET",
+   "url": "https://about.me/microsoft",
+   "user_agent": "V3LUM/dev",
+   "redirects": "not followed"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "live check, this sandbox's datacenter egress",
+  "elapsed_s": 0.177,
+  "minimised": true,
+  "note": "organisation-named public profile"
+ },
+ "status": 200,
+ "headers": {
+  "content-type": "text/html; charset=utf-8",
+  "server": "cloudflare"
+ },
+ "body": "<!DOCTYPE html><html><head><title>Microsoft | about.me</title>\n<meta property=\"og:url\" content=\"https://about.me/microsoft\"/>\n<meta property=\"og:title\" content=\"Microsoft on about.me\"/>\n<meta property=\"og:type\" content=\"profile\"/>\n<meta property=\"profile:first_name\" content=\"Microsoft\"/></head><body></body></html>"
+}

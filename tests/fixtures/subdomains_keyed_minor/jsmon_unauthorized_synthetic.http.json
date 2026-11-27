@@ -1,0 +1,15 @@
+{
+ "request": "GET https://subdomains.jsmon.sh/api/domain/example.com (Api-Key: <bad>)",
+ "response": {
+  "status": 401,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": {
+   "error": "Invalid API key"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "status per research (401 without key); body PLACEHOLDER"
+}

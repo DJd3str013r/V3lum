@@ -1,0 +1,52 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "cinsscore",
+  "name": "CINS Army list",
+  "operator": "Sentinel IPS / Collective Intelligence Network Security (cinsscore.com)",
+  "hosts": [
+    "cinsscore.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Identifiable operator with public documentation and a long public track record (A8 community).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Curated poor-reputation IPs from the Sentinel IPS network; capped list (15,000 IPs)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "badguys": {
+      "title": "CINS Army bad-guys list (ci-badguys.txt)",
+      "terms": {
+        "class": "noncommercial",
+        "evidence_url": "https://cinsscore.com/",
+        "quote": "Noncommercial, off under the corporate profile until licence-cleared: blocklist.de, CINS, ET compromised IPs, GreenSnow and DataPlane (A1 BR16), VoIPBL, and the FireHOL level1 aggregate (it embeds noncommercial upstreams such as DShield).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "cins",
+      "sanitizer": null,
+      "dataset": "ip_blocklists.cins_badguys.txt",
+      "notes": "Quote: binding council text (P149 cond 2); research C0350 terms 'Free for non-commercial use; attribute source' (verified_live 200). MEDIUM fidelity (curated attack list, P149 cond 6). Used by ip_blocklists.",
+      "licensed_alternative": "The open feeds of ip_blocklists (Spamhaus DROP/ASN-DROP, abuse.ch Feodo Tracker and SSLBL, IPsum, Binary Defense) keep running; a licence_allow entry recording the operator's written permission enables this feed."
+    }
+  },
+  "notes": "Owned by batch p1-G02-2 (P149). Downloaded whole by the dataset manager (conditional GET, validation) and matched locally: no value is ever sent. Never redistributed outside the team (P149 cond 2)."
+}

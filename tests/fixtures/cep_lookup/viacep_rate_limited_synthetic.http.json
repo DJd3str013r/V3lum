@@ -1,0 +1,7 @@
+{
+ "status": 429,
+ "headers": {
+  "content-type": "text/html"
+ },
+ "body": "<html><body>Too Many Requests</body></html>"
+}

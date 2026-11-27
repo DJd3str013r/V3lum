@@ -1,0 +1,47 @@
+User-agent: *
+User-agent: Google-Extended
+User-agent: Yandex
+Disallow: /search
+Allow: /search/about
+Allow: /search/howsearchworks
+Disallow: /sdch
+Disallow: /groups
+Disallow: /index.html?
+Disallow: /?
+Disallow: /goto?
+Allow: /?hl=
+Disallow: /?hl=*&
+Allow: /?hl=*&gws_rd=ssl$
+Disallow: /?hl=*&*&gws_rd=ssl
+Allow: /?gws_rd=ssl$
+Allow: /?pt1=true$
+Disallow: /imgres
+Disallow: /u/
+Disallow: /setprefs
+Disallow: /m?
+Disallow: /m/
+Allow:    /m/finance
+Disallow: /wml?
+Disallow: /wml/?
+Disallow: /wml/search?
+Disallow: /xhtml?
+Disallow: /xhtml/?
+Disallow: /xhtml/search?
+Disallow: /xml?
+Disallow: /imode?
+Disallow: /imode/?
+Disallow: /imode/search?
+Disallow: /jsky?
+Disallow: /jsky/?
+Disallow: /jsky/search?
+Disallow: /pda?
+Disallow: /pda/?
+Disallow: /pda/search?
+Disallow: /local?
+
+# second group
+User-agent: AdsBot-Google
+Disallow: /maps/api/js/
+Crawl-delay: 2
+
+Sitemap: https://www.google.com/sitemap.xml

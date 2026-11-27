@@ -1,0 +1,9 @@
+{
+ "nextPageSearchAfter": 1700000000123,
+ "domainsCount": 10002,
+ "domainsList": [
+  "bulk-0000.example",
+  "bulk-0001.example",
+  "bulk-0002.example"
+ ]
+}

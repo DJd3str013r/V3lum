@@ -1,0 +1,10 @@
+{
+ "status": 0,
+ "fqdn": "v3lum-fixture-livre.com.br",
+ "fqdnace": "",
+ "exempt": false,
+ "suggestions": [
+  "app.br",
+  "net.br"
+ ]
+}

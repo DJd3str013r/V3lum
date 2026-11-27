@@ -1,0 +1,19 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.securitycontext.com/v1/cves/CVE-2021-44228",
+  "headers": {}
+ },
+ "response": {
+  "status": 403,
+  "headers": {
+   "content-type": "text/html; charset=UTF-8",
+   "server": "cloudflare",
+   "cf-mitigated": "challenge"
+  },
+  "body": "<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title></head><body><div id=\"challenge-error-text\">Enable JavaScript and cookies to continue</div><script>window._cf_chl_opt={cZone:\"api.securitycontext.com\"};</script><script src=\"/cdn-cgi/challenge-platform/h/g/orchestrate/chl_page/v1\"></script></body></html>"
+ },
+ "transport_error": null,
+ "elapsed_s": 0.2,
+ "note": "DOC-SHAPED: Cloudflare managed challenge (the API is served by Cloudflare). Never bypassed: BLOCKED challenge + host short-circuit (A9)."
+}

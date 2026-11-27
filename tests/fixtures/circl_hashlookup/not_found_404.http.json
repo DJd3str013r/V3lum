@@ -1,0 +1,27 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://hashlookup.circl.lu/lookup/md5/5f6e7266a27a824c5fc5081add52f892",
+  "headers": {
+   "Accept": "application/json"
+  }
+ },
+ "response": {
+  "status": 404,
+  "headers": {
+   "access-control-allow-origin": "https://hashlookup.circl.lu",
+   "content-length": "77",
+   "content-type": "application/json",
+   "date": "Thu, 26 Nov 2026 05:20:22 GMT",
+   "server": "Werkzeug/1.0.1 Python/3.8.10",
+   "strict-transport-security": "max-age=15768000"
+  },
+  "body": {
+   "message": "Non existing MD5",
+   "query": "5f6e7266a27a824c5fc5081add52f892"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": 0.464328,
+ "note": "unknown md5 -> 404 JSON body; absent_statuses {404}: EMPTY 'not in hashlookup', never clean"
+}

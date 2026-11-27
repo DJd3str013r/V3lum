@@ -1,0 +1,18 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p3-G04-2",
+  "title": "Names used by batch p3-G04-2 (Intelligence X selector metadata and phonebook, Leak-Lookup public key, Pwned Passwords helper)",
+  "owner": "batch p3-G04-2 (P139, P140, P141)",
+  "attributes": {
+    "intelx_buckets": "Intelligence X items that mention the selector, grouped per bucket (P139 cond 4): list of {bucket (sensitive-category and unknown bucket names masked), category, masked, count, first_date, last_date} - metadata only, the items themselves are never read",
+    "intelx_records": "Intelligence X items of an OWN-asset selector (P139 cond 4-6): list of {systemid, bucket, date} for the analyst link https://intelx.io/?did=<systemid>; third-party selectors keep bucket names and dates only (intelx_buckets)",
+    "intelx_search": "Intelligence X search run summary (P139 cond 3) {kind intelligent | phonebook, selector_type, polls, stop done | poll_cap | time_budget | maxresults | search_id_not_found, partial, total, terminated, soft_selector_warning}",
+    "intelx_phonebook": "own-domain selectors an Intelligence X phonebook search returned (P139 cond 5) {emails, domains, urls (counts of the kept own-domain selectors), generic_emails (count), third_party_dropped, other_dropped, truncated}: third-party selectors are counted, never kept"
+  },
+  "tags": {
+    "leak_index": "selector mentioned in items of a leak/paste index (Intelligence X): bucket names and dates only, the items were never opened or read (rule 3)"
+  },
+  "relations": {
+    "leak_index_selector": "verified own domain -> e-mail address on that domain listed by a leak-index phonebook (Intelligence X, own assets only, expand=False: never sent automatically to per-person breach checks, P139 cond 5)"
+  }
+}

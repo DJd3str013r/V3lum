@@ -1,0 +1,85 @@
+{
+ "data": [
+  {
+   "id": 1017,
+   "org_id": 1245,
+   "name": "NIC.BR",
+   "aka": "Nucleo de Informacao e Coordenacao do Ponto BR",
+   "name_long": "",
+   "website": "http://nic.br",
+   "asn": 22548,
+   "looking_glass": "",
+   "route_server": "",
+   "irr_as_set": "AS-NICBR-ALL",
+   "info_type": "Non-Profit",
+   "info_types": [
+    "Non-Profit"
+   ],
+   "info_prefixes4": 50,
+   "info_prefixes6": 30,
+   "info_traffic": "1-5Gbps",
+   "info_ratio": "Balanced",
+   "info_scope": "Regional",
+   "info_unicast": true,
+   "info_multicast": false,
+   "info_ipv6": true,
+   "info_never_via_route_servers": false,
+   "ix_count": 2,
+   "fac_count": 0,
+   "policy_url": "",
+   "policy_general": "Open",
+   "policy_locations": "Not Required",
+   "policy_ratio": false,
+   "policy_contracts": "Not Required",
+   "netfac_set": [],
+   "netixlan_set": [
+    {
+     "id": 34970,
+     "ix_id": 171,
+     "name": "IX.br (PTT.br) São Paulo: ATM/MPLA",
+     "ixlan_id": 171,
+     "speed": 100000,
+     "asn": 22548,
+     "ipaddr4": "187.16.217.2",
+     "ipaddr6": "2001:12f8::1",
+     "is_rs_peer": true,
+     "operational": true,
+     "updated": "2017-08-01T17:54:19Z",
+     "status": "ok"
+    },
+    {
+     "id": 45808,
+     "ix_id": 710,
+     "name": "IX.br (PTT.br) Fortaleza: ATM/MPLA",
+     "ixlan_id": 710,
+     "speed": 10000,
+     "asn": 22548,
+     "ipaddr4": "45.68.72.136",
+     "ipaddr6": "2001:12f8:0:9::136",
+     "is_rs_peer": true,
+     "operational": true,
+     "updated": "2024-10-16T20:14:33Z",
+     "status": "ok"
+    }
+   ],
+   "poc_set": [
+    {
+     "id": 900000,
+     "role": "NOC",
+     "visible": "Public",
+     "name": "Example NOC Desk",
+     "phone": "+55 11 5555-0101",
+     "email": "noc-desk@example.com",
+     "url": "https://www.example.com/noc",
+     "status": "ok"
+    }
+   ],
+   "status_dashboard": "",
+   "rir_status": "ok",
+   "created": "2007-01-23T17:04:04Z",
+   "updated": "2025-10-03T20:07:51Z",
+   "status": "ok"
+  }
+ ],
+ "meta": {}
+}

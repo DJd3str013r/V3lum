@@ -1,0 +1,18 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://www.example.com/.git/config",
+  "headers": {
+   "Range": "bytes=0-1023"
+  }
+ },
+ "response": {
+  "status": 429,
+  "headers": {
+   "content-type": "text/html",
+   "retry-after": "60",
+   "server": "nginx"
+  },
+  "body": "<html><head><title>429 Too Many Requests</title></head><body><center><h1>429 Too Many Requests</h1></center><hr><center>nginx</center></body></html>\n"
+ }
+}

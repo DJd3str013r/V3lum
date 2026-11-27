@@ -1,0 +1,40 @@
+{
+ "brands": [
+  {
+   "name": "Exemplo Bank",
+   "keywords": [
+    "exemplo",
+    "EXEMPLO BANK"
+   ]
+  }
+ ],
+ "domains": [
+  {
+   "name": "example.com",
+   "verification": "txt_verified"
+  },
+  {
+   "name": "exêmplo.example.net",
+   "verification": "attested"
+  }
+ ],
+ "cnpj_roots": [
+  "11222333"
+ ],
+ "card_bins": [
+  "411111"
+ ],
+ "suppliers": [
+  {
+   "name": "ACME Pagamentos",
+   "domains": [
+    "acme-pagamentos.example"
+   ]
+  }
+ ],
+ "executives": [
+  {
+   "name": "Fulano de Tal"
+  }
+ ]
+}

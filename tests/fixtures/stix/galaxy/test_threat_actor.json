@@ -1,0 +1,12 @@
+{
+  "schema": "v3lum.galaxy/1",
+  "kind": "threat_actor",
+  "galaxy": "threat-actor",
+  "galaxy_uuid": "698774c7-8022-42c4-917f-8d6e4f06ada3",
+  "source": "synthetic test fragment (WP21 tests; not MISP data)",
+  "licence": "CC0-1.0",
+  "notice": "v3lum_test_galaxy",
+  "clusters": {
+    "APT28": {"uuid": "11111111-2222-4333-8444-555555555555", "synonyms": ["Sofacy", "Fancy Bear"]}
+  }
+}

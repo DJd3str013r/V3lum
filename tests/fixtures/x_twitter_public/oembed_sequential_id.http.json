@@ -1,0 +1,8 @@
+{
+ "_fixture": "RESEARCH sample 2026-11-25 (scrubbed: author name/handle -> 'example'): status id 20 is a pre-2010 sequential id, so no time is derived from it",
+ "status": 200,
+ "headers": {
+  "content-type": "application/json; charset=utf-8"
+ },
+ "body": "{\"url\":\"https://x.com/example/status/20\",\"author_name\":\"example\",\"author_url\":\"https://x.com/example\",\"html\":\"<blockquote class=\\\"twitter-tweet\\\"><p lang=\\\"en\\\" dir=\\\"ltr\\\">just setting up my twttr</p>&mdash; example (@example) <a href=\\\"https://x.com/example/status/20?ref_src=twsrc%5Etfw\\\">March 21, 2006</a></blockquote>\\n<script async src=\\\"https://platform.x.com/widgets.js\\\" charset=\\\"utf-8\\\"></script>\\n\\n\",\"width\":550,\"height\":null,\"type\":\"rich\",\"cache_age\":\"3153600000\",\"provider_name\":\"X\",\"provider_url\":\"https://x.com\",\"version\":\"1.0\"}"
+}

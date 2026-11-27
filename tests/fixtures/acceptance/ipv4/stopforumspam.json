@@ -1,0 +1,25 @@
+{
+ "schema": "v3lum.acceptance_routes/1",
+ "module": "stopforumspam",
+ "routes": [
+  {
+   "method": "GET",
+   "url": "https://api.stopforumspam.org/api?ip=8.8.8.8&json",
+   "status": 200,
+   "json": {
+    "success": 1,
+    "ip": {
+     "value": "8.8.8.8",
+     "frequency": 0,
+     "appears": 0,
+     "asn": 15169,
+     "country": "us"
+    }
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 750
+  }
+ ]
+}

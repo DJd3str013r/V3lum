@@ -1,0 +1,218 @@
+{
+ "recordsCount": 3,
+ "records": [
+  {
+   "domainName": "example.com",
+   "domainType": "added",
+   "createdDateISO8601": "2015-03-02T00:00:00+00:00",
+   "updatedDateISO8601": "2024-01-30T10:00:00+00:00",
+   "expiresDateISO8601": "2026-03-02T00:00:00+00:00",
+   "createdDateRaw": "2015-03-02",
+   "updatedDateRaw": "2024-01-30",
+   "expiresDateRaw": "2026-03-02",
+   "audit": {
+    "createdDate": "2024-02-11 03:10:00.000 UTC",
+    "updatedDate": "2024-06-30 03:10:00.000 UTC"
+   },
+   "nameServers": [
+    "NS1.DNS-PROVIDER.EXAMPLE",
+    "NS2.DNS-PROVIDER.EXAMPLE"
+   ],
+   "whoisServer": "whois.registrar.example",
+   "registrarName": "Registrar Example Ltda",
+   "status": [
+    "clientTransferProhibited (https://www.icann.org/epp#clientTransferProhibited)"
+   ],
+   "rawText": "Domain Name: example.com\n[trimmed raw WHOIS text]",
+   "registrantContact": {
+    "name": "REDACTED FOR PRIVACY",
+    "organization": "REDACTED FOR PRIVACY",
+    "street": "Rua Exemplo 100",
+    "city": "Sao Paulo",
+    "state": "SP",
+    "postalCode": "01000-000",
+    "country": "BRAZIL",
+    "email": "Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant",
+    "telephone": "+55 11 5555-0101",
+    "telephoneExt": "",
+    "fax": "+55 11 5555-0102",
+    "faxExt": "",
+    "rawText": "Registrant Name: REDACTED FOR PRIVACY\nRegistrant Phone: +55 11 5555-0101"
+   },
+   "administrativeContact": {
+    "name": "Admin Example Two",
+    "organization": "Example Holdings Ltda",
+    "street": "Rua Exemplo 100",
+    "city": "Sao Paulo",
+    "state": "SP",
+    "postalCode": "01000-000",
+    "country": "BRAZIL",
+    "email": "admin02@example.org",
+    "telephone": "+55 11 5555-0103",
+    "telephoneExt": "",
+    "fax": "+55 11 5555-0102",
+    "faxExt": "",
+    "rawText": "Registrant Name: Admin Example Two\nRegistrant Phone: +55 11 5555-0103"
+   },
+   "technicalContact": {
+    "name": "Tech Example Three",
+    "organization": "",
+    "street": "Rua Exemplo 100",
+    "city": "Sao Paulo",
+    "state": "SP",
+    "postalCode": "01000-000",
+    "country": "BRAZIL",
+    "email": "tech03@example.org",
+    "telephone": "+55 11 5555-0104",
+    "telephoneExt": "",
+    "fax": "+55 11 5555-0102",
+    "faxExt": "",
+    "rawText": "Registrant Name: Tech Example Three\nRegistrant Phone: +55 11 5555-0104"
+   },
+   "billingContact": {},
+   "zoneContact": {}
+  },
+  {
+   "domainName": "example.com",
+   "domainType": "added",
+   "createdDateISO8601": "2015-03-02T00:00:00+00:00",
+   "updatedDateISO8601": "2018-08-20T10:00:00+00:00",
+   "expiresDateISO8601": "2020-03-02T00:00:00+00:00",
+   "createdDateRaw": "2015-03-02",
+   "updatedDateRaw": "2018-08-20",
+   "expiresDateRaw": "2020-03-02",
+   "audit": {
+    "createdDate": "2018-09-01 11:23:51.000 UTC",
+    "updatedDate": "2019-07-01 11:23:51.000 UTC"
+   },
+   "nameServers": [
+    "NS1.DNS-PROVIDER.EXAMPLE",
+    "NS2.DNS-PROVIDER.EXAMPLE"
+   ],
+   "whoisServer": "whois.registrar.example",
+   "registrarName": "Registrar Example Ltda",
+   "status": [
+    "clientTransferProhibited (https://www.icann.org/epp#clientTransferProhibited)"
+   ],
+   "rawText": "Domain Name: example.com\n[trimmed raw WHOIS text]",
+   "registrantContact": {
+    "name": "Registration Private",
+    "organization": "Domains By Proxy, LLC",
+    "street": "Rua Exemplo 100",
+    "city": "Sao Paulo",
+    "state": "SP",
+    "postalCode": "01000-000",
+    "country": "UNITED STATES",
+    "email": "example.com@domainsbyproxy.com",
+    "telephone": "+55 11 5555-0101",
+    "telephoneExt": "",
+    "fax": "+55 11 5555-0102",
+    "faxExt": "",
+    "rawText": "Registrant Name: Registration Private\nRegistrant Phone: +55 11 5555-0101"
+   },
+   "administrativeContact": {
+    "name": "Admin Example Two",
+    "organization": "Example Holdings Ltda",
+    "street": "Rua Exemplo 100",
+    "city": "Sao Paulo",
+    "state": "SP",
+    "postalCode": "01000-000",
+    "country": "BRAZIL",
+    "email": "admin02@example.org",
+    "telephone": "+55 11 5555-0103",
+    "telephoneExt": "",
+    "fax": "+55 11 5555-0102",
+    "faxExt": "",
+    "rawText": "Registrant Name: Admin Example Two\nRegistrant Phone: +55 11 5555-0103"
+   },
+   "technicalContact": {
+    "name": "Tech Example Three",
+    "organization": "",
+    "street": "Rua Exemplo 100",
+    "city": "Sao Paulo",
+    "state": "SP",
+    "postalCode": "01000-000",
+    "country": "BRAZIL",
+    "email": "tech03@example.org",
+    "telephone": "+55 11 5555-0104",
+    "telephoneExt": "",
+    "fax": "+55 11 5555-0102",
+    "faxExt": "",
+    "rawText": "Registrant Name: Tech Example Three\nRegistrant Phone: +55 11 5555-0104"
+   },
+   "billingContact": {},
+   "zoneContact": {}
+  },
+  {
+   "domainName": "example.com",
+   "domainType": "added",
+   "createdDateISO8601": "2015-03-02T00:00:00+00:00",
+   "updatedDateISO8601": "2016-02-11T10:00:00+00:00",
+   "expiresDateISO8601": "2018-03-02T00:00:00+00:00",
+   "createdDateRaw": "2015-03-02",
+   "updatedDateRaw": "2016-02-11",
+   "expiresDateRaw": "2018-03-02",
+   "audit": {
+    "createdDate": "2016-02-12 08:00:00.000 UTC",
+    "updatedDate": "2017-12-01 08:00:00.000 UTC"
+   },
+   "nameServers": [
+    "NS1.OLD-HOST.EXAMPLE",
+    "NS2.OLD-HOST.EXAMPLE"
+   ],
+   "whoisServer": "whois.registrar.example",
+   "registrarName": "Registrar Example Ltda",
+   "status": [
+    "ok"
+   ],
+   "rawText": "Domain Name: example.com\n[trimmed raw WHOIS text]",
+   "registrantContact": {
+    "name": "Registrant Example One",
+    "organization": "Example Holdings Ltda",
+    "street": "Rua Exemplo 100",
+    "city": "Sao Paulo",
+    "state": "SP",
+    "postalCode": "01000-000",
+    "country": "BRAZIL",
+    "email": "dns-admin@example.net",
+    "telephone": "+55 11 5555-0101",
+    "telephoneExt": "",
+    "fax": "+55 11 5555-0102",
+    "faxExt": "",
+    "rawText": "Registrant Name: Registrant Example One\nRegistrant Phone: +55 11 5555-0101"
+   },
+   "administrativeContact": {
+    "name": "Admin Example Two",
+    "organization": "Example Holdings Ltda",
+    "street": "Rua Exemplo 100",
+    "city": "Sao Paulo",
+    "state": "SP",
+    "postalCode": "01000-000",
+    "country": "BRAZIL",
+    "email": "admin02@example.org",
+    "telephone": "+55 11 5555-0103",
+    "telephoneExt": "",
+    "fax": "+55 11 5555-0102",
+    "faxExt": "",
+    "rawText": "Registrant Name: Admin Example Two\nRegistrant Phone: +55 11 5555-0103"
+   },
+   "technicalContact": {
+    "name": "Tech Example Three",
+    "organization": "",
+    "street": "Rua Exemplo 100",
+    "city": "Sao Paulo",
+    "state": "SP",
+    "postalCode": "01000-000",
+    "country": "BRAZIL",
+    "email": "tech03@example.org",
+    "telephone": "+55 11 5555-0104",
+    "telephoneExt": "",
+    "fax": "+55 11 5555-0102",
+    "faxExt": "",
+    "rawText": "Registrant Name: Tech Example Three\nRegistrant Phone: +55 11 5555-0104"
+   },
+   "billingContact": {},
+   "zoneContact": {}
+  }
+ ]
+}

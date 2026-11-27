@@ -1,0 +1,8 @@
+{
+ "_source": "live check 2026-11-26 from this datacenter egress: first request for nic.br (async report generation)",
+ "domain": "nic.br",
+ "periodFrom": "2025-11-01",
+ "periodTo": "2026-10-31",
+ "status": "GENERATING_REPORT",
+ "report": null
+}

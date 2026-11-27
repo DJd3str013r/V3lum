@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "debian",
+  "name": "Debian security tracker (security-tracker.debian.org)",
+  "operator": "Debian project (Debian Security Team)",
+  "hosts": [
+    "security-tracker.debian.org"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established non-profit project (Software in the Public Interest) with public policies; distribution security team (A8 BR2). The module itself is offline (tier n/a, P355).",
+  "tier_reviewer": "batch p3-G08-1 (council-1 A8 definitions; chair files P191/P354/P355)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "The distribution's own per-release fix status and fixed package versions: authoritative for Debian packages (not for upstream or derivatives)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "security_tracker": {
+      "title": "Debian security tracker JSON export /tracker/data/json (package -> CVE -> per-release status and fixed version)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://security-tracker.debian.org/tracker/data/json",
+        "quote": "Debian security tracker data (public); P355 chair: 'Offline: tier n/a, terms open'.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "debian_security",
+      "sanitizer": null,
+      "dataset": "debian_security_tracker",
+      "notes": "P355: opt-in dataset (~93 MB JSON, 15 MB gzip transfer), refreshed at most daily by `v3lum data update debian_security_tracker`, streamed (never json.load'ed whole) into a local SQLite index; no per-query network call."
+    }
+  },
+  "notes": "Owned by batch p3-G08-1 (P355). Tracker pages (/tracker/CVE-...) are links only."
+}

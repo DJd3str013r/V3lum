@@ -1,0 +1,186 @@
+{
+ "dataType": "CVE_RECORD",
+ "dataVersion": "5.1",
+ "cveMetadata": {
+  "state": "PUBLISHED",
+  "cveId": "CVE-2014-0160",
+  "assignerOrgId": "53f830b8-0a3f-465b-8143-3b8a9948e749",
+  "assignerShortName": "redhat",
+  "dateUpdated": "2025-10-22T00:05:38.217Z",
+  "dateReserved": "2013-12-03T00:00:00.000Z",
+  "datePublished": "2014-04-07T00:00:00.000Z"
+ },
+ "containers": {
+  "cna": {
+   "providerMetadata": {
+    "orgId": "53f830b8-0a3f-465b-8143-3b8a9948e749",
+    "shortName": "redhat",
+    "dateUpdated": "2022-11-15T00:00:00.000Z"
+   },
+   "descriptions": [
+    {
+     "lang": "en",
+     "value": "The (1) TLS and (2) DTLS implementations in OpenSSL 1.0.1 before 1.0.1g do not properly handle Heartbeat Extension packets, which allows remote attackers to obtain sensitive information from process memory via crafted packets that trigger a buffer over-read, as demonstrated by reading private keys, related to d1_both.c and t1_lib.c, aka the Heartbleed bug."
+    }
+   ],
+   "affected": [
+    {
+     "vendor": "n/a",
+     "product": "n/a",
+     "versions": [
+      {
+       "version": "n/a",
+       "status": "affected"
+      }
+     ]
+    }
+   ],
+   "references": [
+    {
+     "name": "DSA-2896",
+     "tags": [
+      "vendor-advisory"
+     ],
+     "url": "http://www.debian.org/security/2014/dsa-2896"
+    },
+    {
+     "name": "RHSA-2014:0396",
+     "tags": [
+      "vendor-advisory"
+     ],
+     "url": "http://rhn.redhat.com/errata/RHSA-2014-0396.html"
+    },
+    {
+     "name": "VU#720951",
+     "tags": [
+      "third-party-advisory"
+     ],
+     "url": "http://www.kb.cert.org/vuls/id/720951"
+    },
+    {
+     "name": "1030077",
+     "tags": [
+      "vdb-entry"
+     ],
+     "url": "http://www.securitytracker.com/id/1030077"
+    }
+   ],
+   "problemTypes": [
+    {
+     "descriptions": [
+      {
+       "type": "text",
+       "lang": "en",
+       "description": "n/a"
+      }
+     ]
+    }
+   ],
+   "datePublic": "2014-04-07T00:00:00.000Z"
+  },
+  "adp": [
+   {
+    "providerMetadata": {
+     "orgId": "af854a3a-2127-422b-91ae-364da2661108",
+     "shortName": "CVE",
+     "dateUpdated": "2024-08-06T09:05:39.056Z"
+    },
+    "title": "CVE Program Container",
+    "references": [
+     {
+      "name": "DSA-2896",
+      "tags": [
+       "vendor-advisory",
+       "x_transferred"
+      ],
+      "url": "http://www.debian.org/security/2014/dsa-2896"
+     }
+    ]
+   },
+   {
+    "metrics": [
+     {
+      "cvssV3_1": {
+       "scope": "UNCHANGED",
+       "version": "3.1",
+       "baseScore": 7.5,
+       "attackVector": "NETWORK",
+       "baseSeverity": "HIGH",
+       "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+       "integrityImpact": "NONE",
+       "userInteraction": "NONE",
+       "attackComplexity": "LOW",
+       "availabilityImpact": "NONE",
+       "privilegesRequired": "NONE",
+       "confidentialityImpact": "HIGH"
+      }
+     },
+     {
+      "other": {
+       "type": "ssvc",
+       "content": {
+        "id": "CVE-2014-0160",
+        "role": "CISA Coordinator",
+        "options": [
+         {
+          "Exploitation": "active"
+         },
+         {
+          "Automatable": "yes"
+         },
+         {
+          "Technical Impact": "partial"
+         }
+        ],
+        "version": "2.0.3",
+        "timestamp": "2025-02-07T13:32:34.600181Z"
+       }
+      }
+     },
+     {
+      "other": {
+       "type": "kev",
+       "content": {
+        "dateAdded": "2022-05-04",
+        "reference": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2014-0160"
+       }
+      }
+     }
+    ],
+    "references": [
+     {
+      "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2014-0160",
+      "tags": [
+       "government-resource"
+      ]
+     }
+    ],
+    "problemTypes": [
+     {
+      "descriptions": [
+       {
+        "lang": "en",
+        "type": "CWE",
+        "cweId": "CWE-125",
+        "description": "CWE-125 Out-of-bounds Read"
+       }
+      ]
+     }
+    ],
+    "timeline": [
+     {
+      "time": "2022-05-04T00:00:00.000Z",
+      "lang": "en",
+      "value": "CVE-2014-0160 added to CISA KEV"
+     }
+    ],
+    "title": "CISA ADP Vulnrichment",
+    "providerMetadata": {
+     "orgId": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+     "shortName": "CISA-ADP",
+     "dateUpdated": "2025-10-22T00:05:38.217Z"
+    }
+   }
+  ]
+ }
+}

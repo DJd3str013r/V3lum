@@ -1,0 +1,19 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://raw.githubusercontent.com/nomi-sec/PoC-in-GitHub/master/2021/CVE-2021-44228.json",
+  "headers": {}
+ },
+ "response": {
+  "status": 429,
+  "headers": {
+   "content-type": "text/plain; charset=utf-8",
+   "retry-after": "60"
+  },
+  "body": "429: Too Many Requests\n"
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "observed_at": null,
+ "note": "NOT observed: raw.githubusercontent.com sends no rate-limit headers; shape of its throttle answer."
+}

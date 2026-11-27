@@ -1,0 +1,17 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://www.example.com/.env.bak",
+  "headers": {
+   "Range": "bytes=0-1023"
+  }
+ },
+ "response": {
+  "status": 416,
+  "headers": {
+   "content-range": "bytes */0",
+   "content-length": "0"
+  },
+  "body": ""
+ }
+}

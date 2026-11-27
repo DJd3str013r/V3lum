@@ -1,0 +1,155 @@
+{
+ "_source": "research sample live_osint__xposedornot_breach_analytics.json (test@example.com), 4 of 20 breach details, trimmed metrics",
+ "BreachMetrics": {
+  "industry": [
+   [
+    [
+     "misc",
+     15
+    ],
+    [
+     "ente",
+     53
+    ],
+    [
+     "heal",
+     7
+    ]
+   ]
+  ],
+  "passwords_strength": [
+   {
+    "EasyToCrack": 50,
+    "PlainText": 22,
+    "StrongHash": 50,
+    "Unknown": 94
+   }
+  ],
+  "risk": [
+   {
+    "risk_label": "Critical",
+    "risk_score": 100
+   }
+  ],
+  "xposed_data": [
+   {
+    "children": [
+     {
+      "name": "📞 Communication and Social Interactions",
+      "children": [
+       {
+        "colname": "level3",
+        "group": "F",
+        "name": "data_Email addresses",
+        "value": 216
+       },
+       {
+        "colname": "level3",
+        "group": "F",
+        "name": "data_Instant messenger identities",
+        "value": 1
+       },
+       {
+        "colname": "level3",
+        "group": "F",
+        "name": "data_Phone numbers",
+        "value": 82
+       },
+       {
+        "colname": "level3",
+        "group": "F",
+        "name": "data_Private Messages",
+        "value": 1
+       }
+      ],
+      "colname": "level2"
+     }
+    ]
+   }
+  ],
+  "yearwise_details": [
+   {
+    "y2021": 15,
+    "y2022": 10,
+    "y2023": 7,
+    "y2024": 12,
+    "y2025": 5,
+    "y2026": 31
+   }
+  ]
+ },
+ "BreachesSummary": {
+  "site": "Collection-1;WHMCS;MCBans;KomplettFritid;Win7VistaForum;OGusers-2020"
+ },
+ "ExposedBreaches": {
+  "breaches_details": [
+   {
+    "breach": "AlienStealerLogs",
+    "details": "ALIEN TXTBASE, a stealer log collection, was exposed in February 2025 when 23 billion rows of logs were obtained from a Telegram channel, revealing 299M unique email addresses along with the websites they were entered into and the passwords used.",
+    "domain": "",
+    "industry": "Miscellaneous",
+    "logo": "https://xposedornot.com/static/logos/combolist.png",
+    "password_risk": "plaintext",
+    "references": "",
+    "searchable": "Yes",
+    "verified": "Yes",
+    "xposed_data": "Email addresses;Passwords",
+    "xposed_date": "2025",
+    "xposed_records": 299646818,
+    "added": "2026-06-15T05:23:45+00:00"
+   },
+   {
+    "breach": "Paidwork",
+    "details": "Paidwork, a gig economy platform, was allegedly breached in March 2026, with data later published online exposing more than 23M unique email addresses along with user profile data, banking information, payout history, and bcrypt password hashes.",
+    "domain": "paidwork.com",
+    "industry": "Miscellaneous",
+    "logo": "https://xposedornot.com/static/logos/Paidwork.png",
+    "password_risk": "hardtocrack",
+    "references": "",
+    "searchable": "Yes",
+    "verified": "Yes",
+    "xposed_data": "Email addresses;Names;Passwords;Dates of birth;Device information;Genders;IP addresses;Phone numbers;Physical addresses",
+    "xposed_date": "2026",
+    "xposed_records": 23322371,
+    "added": "2026-07-25T00:01:49+00:00"
+   },
+   {
+    "breach": "ACTMobile",
+    "details": "ActMobile, the company behind Dash VPN and FreeVPN, was compromised in October 2021, exposing 10M unique email addresses along with IP addresses and password hashes. The data was later shared on a hacking forum.",
+    "domain": "actmobile.com",
+    "industry": "Information Technology",
+    "logo": "https://xposedornot.com/static/logos/Actmobile.png",
+    "password_risk": "unknown",
+    "references": "",
+    "searchable": "Yes",
+    "verified": "No",
+    "xposed_data": "Email addresses;IP addresses;Passwords",
+    "xposed_date": "2021",
+    "xposed_records": 10113780,
+    "added": "2026-07-19T01:32:04+00:00"
+   },
+   {
+    "breach": "Neogen",
+    "details": "Neogen, a food and animal safety company, was allegedly breached by the ShinyHunters group in August 2026, with data later published online exposing 445k unique email addresses from corporate mailing lists, employee records, and other business contacts.",
+    "domain": "neogen.com",
+    "industry": "Manufacturing",
+    "logo": "https://xposedornot.com/static/logos/Neogen.png",
+    "password_risk": "unknown",
+    "references": "https://cybernews.com/security/shinyhunters-neogen-breach-food-safety/",
+    "searchable": "Yes",
+    "verified": "Yes",
+    "xposed_data": "Email addresses;Names;Phone numbers;Physical addresses;Employers;Job titles",
+    "xposed_date": "2026",
+    "xposed_records": 445899,
+    "added": "2026-11-05T02:17:59+00:00"
+   }
+  ]
+ },
+ "ExposedPastes": null,
+ "PasteMetrics": null,
+ "PastesSummary": {
+  "cnt": 0,
+  "domain": "",
+  "tmpstmp": ""
+ }
+}

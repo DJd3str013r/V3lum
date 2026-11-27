@@ -1,0 +1,33 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p2-G02-1",
+  "title": "Names used by batch p2-G02-1 (ASN context, IP context lists, IPinfo, Shodan API, Abusix abuse contacts)",
+  "owner": "batch p2-G02-1 (P033, P035, P036, P039, P041)",
+  "attributes": {
+    "peeringdb_network": "PeeringDB record of the AS {asn, name, aka, operator, org_id, info_type, network_class, scope, traffic, ratio, prefixes4, prefixes6, policy {general, locations, ratio, contracts, url}, ix_count, ixps [capped {name, speed_mbps, is_rs_peer, ix_br}], fac_count, facilities [capped {name, city, country}], truncated, irr_as_set, website, looking_glass, updated, poc_roles}; contact objects are dropped at ingestion (PeeringDB AUP)",
+    "bgp_ranking": "CIRCL BGP Ranking context of the AS {asn, description, position, total_known_asns, percentile, rank_score, date, text, explanation}: higher percentile = more malicious activity observed in the address space; large clouds and hosters always rank high; context only, never a verdict or a consensus vote",
+    "ipasn_history": "origin ASN and prefix of the IP per date, latest first and capped [{date, asn, prefix, source}] (CIRCL IPASN History)",
+    "announced_prefixes": "prefixes the AS announces (normalised, sorted, capped list; announced_prefix_counts holds the totals)",
+    "context_tags": "context labels of an IP, domain or user agent from downloaded lists (vpn, datacenter, proxy, rmm_tool, dynamic_dns, suspicious_user_agent, privacy_relay): context only, never a malicious verdict; tags suppressed by privacy_relay are not listed",
+    "context_matches": "list matches behind context_tags [{tag, list, matched, label, dataset, sha256, fetched_at, age_days, stale, suppressed_by}] with the provenance of each local dataset copy",
+    "privacy_relay": "Apple iCloud Private Relay egress range of the IP {range, country, region, city, dataset}: ordinary Safari/iCloud+ users, never scored as an anonymiser; it suppresses VPN/proxy scoring for that range",
+    "as_domain": "registrable domain of the organisation operating the AS that announces the IP (IPinfo as_domain): company context, not the user of the address",
+    "host_os": "operating system reported for the host by an internet-scanner banner (e.g. Shodan 'os'): version-inferred, confirm on the host",
+    "scanner_search": "seed-only internet-scanner search {query, total, returned, credits_spent, matches [{ip, port, hostnames, org, timestamp}]} (Shodan search): candidates, never verdicts",
+    "abuse_contact_non_role": "addresses published as abuse contacts that do not look like role mailboxes: kept as context, never pivoted"
+  },
+  "tags": {
+    "vpn": "VPN endpoint or exit (anonymizer context for CR28): traffic from many users, never malicious on its own",
+    "hosting": "hosting/datacenter address (context for CR28 anonymized infrastructure), never malicious on its own",
+    "rmm_tool": "domain of a remote monitoring and management (RMM) tool (ip_context_lists): context only, legitimate admin software often abused for persistence",
+    "suspicious_user_agent": "user agent listed as belonging to an offensive tool, scanner or malware (ip_context_lists, exact match): context only, never a verdict"
+  },
+  "relations": {
+    "operated_by": "ASN -> organisation operating the network (PeeringDB organisation, self-declared): free-text name, homonym-prone, listed with expand=False",
+    "asn_candidate": "company name -> ASN whose PeeringDB network name contains it (name match only: POSSIBLE, homonym-prone, listed with expand=False)",
+    "operator_domain": "IP -> registrable domain of the organisation operating the announcing AS (IPinfo as_domain): company context, not the user of the address, listed with expand=False",
+    "serves_certificate": "IP -> SHA-256 fingerprint of a TLS certificate the host served on a port (internet-scanner banner)",
+    "cert_subject": "IP -> domain named in the subject CN of a TLS certificate the host served (internet-scanner banner)",
+    "scanner_match": "seed (favicon hash, certificate fingerprint, keyword) -> host an internet-scanner search matched (Shodan search): candidate, listed with expand=False"
+  }
+}

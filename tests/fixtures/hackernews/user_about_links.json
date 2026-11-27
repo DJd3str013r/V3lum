@@ -1,0 +1,10 @@
+{
+ "about": "Security team at Example Org.<p>Site: <a href=\"https:&#x2F;&#x2F;www.example.com&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;www.example.com&#x2F;</a><p>Contact: security&#x40;example.com or ops [at] example [dot] org<p>[ my public key: https:&#x2F;&#x2F;keybase.io&#x2F;exampleorg; my proof: https:&#x2F;&#x2F;keybase.io&#x2F;exampleorg&#x2F;sigs&#x2F;AbCdEfGhIjKlMnOpQrStUvWxYz0123456789abcd ]",
+ "created": 1420113600,
+ "id": "exampleorg",
+ "karma": 1234,
+ "submitted": [
+  40000001,
+  40000000
+ ]
+}

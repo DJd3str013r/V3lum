@@ -1,0 +1,18 @@
+PRIVATE ENTERPRISE NUMBERS
+
+(last updated 2026-11-25)
+
+SMI Network Management Private Enterprise Codes:
+
+Prefix: iso.org.dod.internet.private.enterprise (1.3.6.1.4.1)
+
+This file is https://www.iana.org/assignments/enterprise-numbers.txt
+
+Decimal
+| Organization
+| | Contact
+| | | Email
+| | | | 
+
+
+End of Document

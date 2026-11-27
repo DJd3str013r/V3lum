@@ -1,0 +1,16 @@
+{
+ "request": "GET https://fullhunt.io/api/v1/domain/example.com/subdomains",
+ "response": {
+  "status": 403,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": {
+   "status": 403,
+   "message": "You have exceeded your monthly credits"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "PLACEHOLDER text: credit exhaustion must give QUOTA even on a 403 (FC6)"
+}

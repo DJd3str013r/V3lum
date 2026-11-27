@@ -1,0 +1,119 @@
+{
+ "_synthetic": "documented Hunter API v2 response shape (hunter.io/api-documentation/v2), filled with documentation values; P090-FC6 requires a trimmed real success fixture captured with the team key before merge",
+ "data": {
+  "domain": "example.com",
+  "disposable": false,
+  "webmail": false,
+  "accept_all": true,
+  "pattern": "{first}.{last}",
+  "organization": "Example Org",
+  "description": null,
+  "industry": "Information Technology",
+  "twitter": null,
+  "linkedin": null,
+  "country": "BR",
+  "state": "SP",
+  "city": "Sao Paulo",
+  "headcount": "201-500",
+  "emails": [
+   {
+    "value": "maria.souza@example.com",
+    "type": "personal",
+    "confidence": 94,
+    "sources": [
+     {
+      "domain": "example.com",
+      "uri": "https://www.example.com/page-1",
+      "extracted_on": "2024-01-11",
+      "last_seen_on": "2026-01-21",
+      "still_on_page": true
+     },
+     {
+      "domain": "example.com",
+      "uri": "https://www.example.com/page-2",
+      "extracted_on": "2024-02-12",
+      "last_seen_on": "2026-02-22",
+      "still_on_page": true
+     }
+    ],
+    "first_name": "Maria",
+    "last_name": "Souza",
+    "position": "Finance Manager",
+    "seniority": "senior",
+    "department": "finance",
+    "linkedin": "https://www.linkedin.com/in/example-person-1",
+    "twitter": null,
+    "phone_number": "+55 11 5555-0101",
+    "verification": {
+     "date": "2026-10-01",
+     "status": "valid"
+    }
+   },
+   {
+    "value": "joao.silva@example.com",
+    "type": "personal",
+    "confidence": 88,
+    "sources": [
+     {
+      "domain": "example.com",
+      "uri": "https://www.example.com/page-3",
+      "extracted_on": "2024-03-13",
+      "last_seen_on": "2026-03-23",
+      "still_on_page": true
+     }
+    ],
+    "first_name": "Joao",
+    "last_name": "Silva",
+    "position": "IT Analyst",
+    "seniority": "junior",
+    "department": "it",
+    "linkedin": null,
+    "twitter": "example_handle",
+    "phone_number": null,
+    "verification": {
+     "date": null,
+     "status": null
+    }
+   },
+   {
+    "value": "contato@example.com",
+    "type": "generic",
+    "confidence": 97,
+    "sources": [
+     {
+      "domain": "example.com",
+      "uri": "https://www.example.com/page-4",
+      "extracted_on": "2024-04-14",
+      "last_seen_on": "2026-04-24",
+      "still_on_page": true
+     }
+    ],
+    "first_name": null,
+    "last_name": null,
+    "position": null,
+    "seniority": null,
+    "department": "support",
+    "linkedin": null,
+    "twitter": null,
+    "phone_number": null,
+    "verification": {
+     "date": "2026-09-12",
+     "status": "accept_all"
+    }
+   }
+  ],
+  "linked_domains": []
+ },
+ "meta": {
+  "results": 37,
+  "limit": 10,
+  "offset": 0,
+  "params": {
+   "domain": "example.com",
+   "company": null,
+   "type": null,
+   "seniority": null,
+   "department": null
+  }
+ }
+}

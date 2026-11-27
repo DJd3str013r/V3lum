@@ -1,0 +1,12 @@
+{
+ "domain": "example.com",
+ "urls": [
+  "https://api.example.com/v2/orders?id=1",
+  "http://m.example.com/app/config.json",
+  "https://maps.example.com/js?key=PLACEHOLDER-NOT-A-REAL-KEY&v=3",
+  "https://cdn.example.net/sdk.js",
+  "ftp://files.example.com/a",
+  "not a url",
+  "https://API.EXAMPLE.COM/v2/orders?id=1#frag"
+ ]
+}

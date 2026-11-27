@@ -1,0 +1,73 @@
+{
+ "_provenance": {
+  "synthetic": true
+ },
+ "target": "198.51.100.11",
+ "outcomes": [
+  {
+   "port": 21,
+   "result": "refused",
+   "errno": "ECONNREFUSED",
+   "rtt_ms": 38.0
+  },
+  {
+   "port": 22,
+   "result": "refused",
+   "errno": "ECONNREFUSED",
+   "rtt_ms": 38.4
+  },
+  {
+   "port": 23,
+   "result": "refused",
+   "errno": "ECONNREFUSED",
+   "rtt_ms": 38.8
+  },
+  {
+   "port": 25,
+   "result": "refused",
+   "errno": "ECONNREFUSED",
+   "rtt_ms": 39.2
+  },
+  {
+   "port": 80,
+   "result": "refused",
+   "errno": "ECONNREFUSED",
+   "rtt_ms": 39.6
+  },
+  {
+   "port": 110,
+   "result": "refused",
+   "errno": "ECONNREFUSED",
+   "rtt_ms": 40.0
+  },
+  {
+   "port": 139,
+   "result": "refused",
+   "errno": "ECONNREFUSED",
+   "rtt_ms": 40.4
+  },
+  {
+   "port": 143,
+   "result": "refused",
+   "errno": "ECONNREFUSED",
+   "rtt_ms": 40.8
+  },
+  {
+   "port": 443,
+   "result": "refused",
+   "errno": "ECONNREFUSED",
+   "rtt_ms": 41.2
+  },
+  {
+   "port": 445,
+   "result": "refused",
+   "errno": "ECONNREFUSED",
+   "rtt_ms": 41.6
+  },
+  {
+   "port": 3389,
+   "result": "timeout",
+   "rtt_ms": 1500.0
+  }
+ ]
+}

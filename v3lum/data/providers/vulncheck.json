@@ -1,0 +1,66 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "vulncheck",
+  "name": "VulnCheck (KEV index, community API)",
+  "operator": "VulnCheck, Inc.",
+  "hosts": [
+    "api.vulncheck.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established security company with published service terms, a privacy policy and a business offering (A8 trusted); P186 cond 4 'Registry provider vulncheck: tier trusted, terms key-terms'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Curated exploitation evidence (reported exploitation references, exploit database) broader and often earlier than CISA KEV; kept apart from CISA KEV (P186 cond 3)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 20,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {
+    "vulncheck": {
+      "description": "VulnCheck API token (Bearer header; community tier gives the vulncheck-kev index)",
+      "signup_url": "https://vulncheck.com/",
+      "env": [
+        "V3LUM_VULNCHECK_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "community token of a COMPANY account created under the corporate identity, never a personal one (rule 1); legal records in key_plans.vulncheck whether it falls under the Service Terms (Free Offering) or a paid plan before corporate use (P186 cond 2)"
+    }
+  },
+  "sources": {
+    "kev_index": {
+      "title": "VulnCheck KEV index GET /v3/index/vulncheck-kev?cve={cve} (Bearer key)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://vulncheck.com/",
+        "quote": "Licence: VulnCheck's site licence is 'personal, internal and non-commercial' while its Service Terms (rev. 6 Jul 2026) treat a community version as a Free Offering: legal records that the team's community key falls under the Service Terms, or a paid plan, in key_plans before corporate use.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "vulncheck",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P186 cond 2); research C0439 (verified_needs_key: keyless 401 {\"error\":true,\"errors\":[\"unauthorized\"]}). Under the corporate profile it runs only with key_plans.vulncheck = 'business' (legal decision). VulnCheck data is not made available to third parties (P186 cond 3): exports carry only the CVE id and the exploited flag. No published quota for the community tier: one request per CVE, min_interval 1 s, CVE fan-out rule (P183 cond 3). The offline variant on the daily vulncheck-kev backup (GET /v3/backup/vulncheck-kev, a pre-signed download URL) waits for the team key to confirm the community tier may use it (P186 cond 1, docs/backlog/p2-G08-1.md)."
+    }
+  },
+  "notes": "Owned by batch p2-G08-1 (P186 vulncheck, default off). The key belongs to a company account (rule 1)."
+}

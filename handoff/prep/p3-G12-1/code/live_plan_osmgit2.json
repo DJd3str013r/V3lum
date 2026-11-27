@@ -1,0 +1,8 @@
+[
+ {"id": "osmgit_nominatim_403_html", "gap": 3, "max_bytes": 100000,
+  "url": "https://git.openstreetmap.org/chef.git/blob_plain/HEAD:/cookbooks/nominatim/files/default/website/403.html"},
+ {"id": "osmgit_nominatim_509_html", "gap": 3, "max_bytes": 100000,
+  "url": "https://git.openstreetmap.org/chef.git/blob_plain/HEAD:/cookbooks/nominatim/files/default/website/509.html"},
+ {"id": "osmgit_nominatim_templates_tree", "gap": 3, "max_bytes": 300000,
+  "url": "https://git.openstreetmap.org/chef.git/tree/HEAD:/cookbooks/nominatim/templates"}
+]

@@ -1,0 +1,28 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p2-G09-2",
+  "title": "Bitcoin/Litecoin and EVM explorers, Telegram public-channel watch (batch p2-G09-2)",
+  "owner": "batch p2-G09-2 (P211 btc_explorers, P212 evm_explorers, P357 telegram_channel_watch)",
+  "attributes": {
+    "total_sent": "total amount sent by a wallet over its history (exact decimal string with unit)",
+    "balance_base_units": "exact wallet balance in the chain's smallest unit as a decimal string (satoshis, litoshis, koinu, duffs or wei)",
+    "explorer_failover": "sequential explorer failover of one address: {answered_by, order, per_provider [{provider, source, status, reason, elapsed_s, sent}], disclosed_to, elapsed_s, over_budget, budget_s}",
+    "disclosed_to": "public explorers/providers that received the investigated value in this run (OPSEC: they saw the lookup); empty when only a self-hosted instance answered",
+    "data_freshness": "how current an explorer answer is: {provider, provider_tip_height, latest_tx_height, blocks_since_latest_tx, fetched_at, from_cache}",
+    "activity_window": "first/last on-chain activity seen: {first_seen, last_seen, first_seen_exact (true only when every transaction was read or the provider gives it), txs_examined}",
+    "is_contract": "bool: the EVM address holds contract code (eth_getCode != '0x'), false for an externally owned account",
+    "ens_name": "ENS name of an Ethereum address as reported by the explorer (reverse record), or the ENS name a typed name.eth resolved from",
+    "top_token_holdings": "top token holdings of an EVM wallet by fiat value: list of {symbol, name, token_address, amount, fiat_value, type}; unpriced (often airdropped spam) tokens rank last",
+    "stop_node_hint": "explorer label class that should stop automatic graph expansion (P213): 'exchange' | 'mixer'",
+    "telegram_watch_alerts": "new matches of org-profile watch rules in public Telegram channel posts: list of {key, channel, post_id, date, url, rule_id, rule_kind, provenance (team_list | deepdarkcti), excerpt (<= 200 chars of scrubbed text)}",
+    "telegram_watch_digest": "deduplicated one-line digest of the new Telegram watch alerts (date, t.me/channel/post, provenance, rule, excerpt)",
+    "telegram_watch_cycle": "bookkeeping of one Telegram watch cycle: {cycle, channels_planned, channels_read, pages_read, posts_new, could_not_read, paused, rate_limited, backoff_until, team_list_problems, deepdarkcti}",
+    "news_watch_hits": "headline-only matches of org-profile watch rules in a news RSS companion feed: list of {title, link, published, rule_id, source}"
+  },
+  "tags": {},
+  "relations": {
+    "contract_creator": "contract address -> address that deployed it (creator; a lead for scam-token deployers, never expanded automatically)",
+    "ens_resolves_to": "ENS name -> Ethereum address its record resolves to (as reported by the explorer at lookup time; records can change)"
+  },
+  "timeline": {}
+}

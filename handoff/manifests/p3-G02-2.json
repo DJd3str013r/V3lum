@@ -1,0 +1,203 @@
+{
+ "batch": "p3-G02-2",
+ "modules": [
+  {
+   "name": "ip_geolocation",
+   "file": "v3lum/modules/ip_network/ip_geolocation.py",
+   "proposal": "P051",
+   "category": "ip_network",
+   "opsec": "passive",
+   "default_enabled": false,
+   "terms": "open",
+   "provider_tier": "community",
+   "keys": [],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:geo_votes"
+   ],
+   "live_check": "Run 2026-11-26 with V3LUM_LIVE=1 (tests/live/test_p3_g02_2.py, 7 passed): ip_geolocation 8.8.8.8 -> OK 'country: US - 2/2 providers (approximate); ASN: AS15169 Google LLC - 2/2 providers; city: San Jose - approximate (ipwho.is), disagreement: Mountain View (FreeIPAPI)'; 1.1.1.1 -> OK 'AU - 2/2 providers; AS13335 Cloudflare, Inc. - 2/2; Brisbane vs Sydney'; pivots AS15169/AS13335 (belongs_to_asn) and google.com/cloudflare.com (operator_domain), all expand=False; hosts ipwho.is + free.freeipapi.com only. Policy: allowed at AMBER when selected with -M (open terms, community tier), SKIPPED 'tlp' at RED."
+  },
+  {
+   "name": "ipqualityscore",
+   "file": "v3lum/modules/ip_network/ipqualityscore.py",
+   "proposal": "P052",
+   "category": "ip_network",
+   "opsec": "passive",
+   "default_enabled": false,
+   "terms": "key-terms",
+   "provider_tier": "trusted",
+   "keys": [
+    "ipqs"
+   ],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:ipqs_ip",
+    "attribute:ipqs_url"
+   ],
+   "live_check": "Not called live (keyed, no company key): policy decision under corporate = SKIPPED 'licence' (key-terms without key_plans.ipqs=business); NEEDS_KEY otherwise. Invalid-key behaviour is the real research capture (HTTP 200 success:false 'Invalid or unauthorized key') -> NEEDS_KEY in offline tests."
+  },
+  {
+   "name": "zoomeye",
+   "file": "v3lum/modules/ip_network/zoomeye.py",
+   "proposal": "P053",
+   "category": "ip_network",
+   "opsec": "passive",
+   "default_enabled": false,
+   "terms": "key-terms",
+   "provider_tier": "unknown",
+   "keys": [
+    "zoomeye"
+   ],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:zoomeye_assets"
+   ],
+   "live_check": "Not called live (keyed, no company key; tier unknown): policy decision under corporate = SKIPPED 'licence' (also excluded at AMBER+ by the tier, max_tlp GREEN). The 401 'login_required' fixture is the real research capture -> NEEDS_KEY."
+  },
+  {
+   "name": "ip_reputation_keyless",
+   "file": "v3lum/modules/threat_intel_ioc/ip_reputation_keyless.py",
+   "proposal": "P150",
+   "category": "threat_intel_ioc",
+   "opsec": "passive",
+   "default_enabled": false,
+   "terms": "unknown",
+   "provider_tier": "unknown",
+   "keys": [],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:ipguardian_lists",
+    "attribute:netapi_compromised"
+   ],
+   "live_check": "Not called live by design: IPGuardian and NetAPI are terms 'unknown' (P150 FC1); the live test asserts the corporate decision SKIPPED 'licence'. Offline fixtures are the prep's live answers of 2026-11-26 (IPGuardian 8.8.8.8/1.1.1.1/9.9.9.9 found:false, 192.0.2.1 found:true; NetAPI check 8.8.8.8/example.com not listed; 400 error bodies)."
+  },
+  {
+   "name": "netapi_compromised_feeds",
+   "file": "v3lum/modules/threat_intel_ioc/netapi_compromised_feeds.py",
+   "proposal": "P150",
+   "category": "threat_intel_ioc",
+   "opsec": "passive",
+   "default_enabled": false,
+   "terms": "unknown",
+   "provider_tier": "n/a",
+   "keys": [],
+   "datasets": [
+    "netapi_compromised_feeds.compromised_ip.txt",
+    "netapi_compromised_feeds.compromised_domains.csv"
+   ],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:netapi_compromised"
+   ],
+   "live_check": "Not downloaded live (unknown terms, licence-blocked; live test asserts SKIPPED 'licence'). Feed fixtures are slices of the prep's live downloads of 2026-11-26 (IP feed 657,878 B text/plain; domain feed 20.7 MB CSV with header row) with victim IPs/domains replaced by documentation values."
+  },
+  {
+   "name": "networksdb",
+   "file": "v3lum/modules/company_org/networksdb.py",
+   "proposal": "P218",
+   "category": "company_org",
+   "opsec": "passive",
+   "default_enabled": false,
+   "terms": "key-terms",
+   "provider_tier": "community",
+   "keys": [
+    "networksdb"
+   ],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "relation:candidate_netblock"
+   ],
+   "live_check": "Not called live (keyed, no company key): policy decision under corporate = SKIPPED 'licence'. The missing-key fixture (HTTP 400 'required header `X-Api-Key` ... missing') is the real research capture -> NEEDS_KEY."
+  }
+ ],
+ "proposals_not_done": [],
+ "core_requests": [
+  "providers/policy (P052 FC2/FC6): source-level flags (reuses_queries, fetches_target) on providers.Source that override the provider's, read by policy.decide POL-05/GUARD-02 and Module.max_tlp, with a policy-table test. Recorded meanwhile as data in v3lum/data/providers/ipqualityscore.json (x_source_flags.url) and enforced inside the ipqualityscore module (SKIPPED 'tlp' at AMBER+, internal/org-profile/recipient-token refusal).",
+  "context (P052 FC2): expose the entity's case/graph tags to modules (proposed name ctx.entity_tags -> iterable of tag names, or RunInfo.tags) and a seed tag flag (e.g. --tag phishing) so 'URL reputation only for URLs tagged hostile' can see tags; ipqualityscore already reads getattr(ctx, 'entity_tags') when present.",
+  "P321 error markers: allow maps_to 'needs_key' (reason_code needs_key) so 'Invalid or unauthorized key' / 'login_required' / missing X-Api-Key bodies map to NEEDS_KEY through the marker itself (IPQS, NetworksDB currently map it module-side).",
+  "votes: move the shared vote helper (vote_tally, format_value_votes, ...) from v3lum/modules/ip_network/ip_anonymizer_consensus.py to v3lum/core/votes.py; ip_geolocation (P051) imports it from the P046 module today.",
+  "offline facts by IP (P051 FC1): a core lookup of the P034/P047 offline answers (country/ASN by IP) so opt-in online chains can skip IPs the offline data already answered.",
+  "POL-14 per entity type: a large registered dataset (NetAPI domain feed, 20 MB) of one source should not make the module UNAVAILABLE 'dataset' for entity types that use a different, present dataset (netapi_compromised_feeds IP lookups).",
+  "AR20 safety suite (e): include a path-embedded key (IPQS /api/json/ip/<key>/...) in the fake-key grep over cache, evidence, feed, reports and case DB.",
+  "P331 specs: POST JSON bodies and multi-source vote collectors (P150 FC4 asks for the declarative collector 'where it fits'; IPGuardian is POST-only).",
+  "data update (WP18): skip datasets whose registry source terms are 'unknown' (NetAPI feeds) in a bulk `v3lum data update` unless named explicitly."
+ ],
+ "files": [
+  "v3lum/modules/ip_network/ip_geolocation.py",
+  "v3lum/modules/ip_network/ipqualityscore.py",
+  "v3lum/modules/ip_network/zoomeye.py",
+  "v3lum/modules/threat_intel_ioc/ip_reputation_keyless.py",
+  "v3lum/modules/threat_intel_ioc/netapi_compromised_feeds.py",
+  "v3lum/modules/company_org/networksdb.py",
+  "v3lum/data/providers/ipwhois.json",
+  "v3lum/data/providers/freeipapi.json",
+  "v3lum/data/providers/ipqualityscore.json",
+  "v3lum/data/providers/zoomeye.json",
+  "v3lum/data/providers/ipguardian.json",
+  "v3lum/data/providers/netapi.json",
+  "v3lum/data/providers/networksdb.json",
+  "v3lum/data/vocab/p3-G02-2.json",
+  "tests/modules/test_ip_geolocation.py",
+  "tests/modules/test_ipqualityscore.py",
+  "tests/modules/test_zoomeye.py",
+  "tests/modules/test_ip_reputation_keyless.py",
+  "tests/modules/test_netapi_compromised_feeds.py",
+  "tests/modules/test_networksdb.py",
+  "tests/live/test_p3_g02_2.py",
+  "docs/backlog/p3-G02-2.md",
+  "tests/fixtures/ip_geolocation/challenge_page_synthetic.html",
+  "tests/fixtures/ip_geolocation/freeipapi_all_null.json",
+  "tests/fixtures/ip_geolocation/freeipapi_ok_1111.json",
+  "tests/fixtures/ip_geolocation/freeipapi_ok_8888.json",
+  "tests/fixtures/ip_geolocation/freeipapi_ok_ipv6.json",
+  "tests/fixtures/ip_geolocation/geojs_ok.json",
+  "tests/fixtures/ip_geolocation/geojs_ok_nil_1111.json",
+  "tests/fixtures/ip_geolocation/ip2location_ok.json",
+  "tests/fixtures/ip_geolocation/ipguide_ok.json",
+  "tests/fixtures/ip_geolocation/ipguide_ok_text_plain_1111.json",
+  "tests/fixtures/ip_geolocation/ipwhois_invalid_ip_error_in_200_documented.json",
+  "tests/fixtures/ip_geolocation/ipwhois_malformed_truncated.txt",
+  "tests/fixtures/ip_geolocation/ipwhois_ok_1111.json",
+  "tests/fixtures/ip_geolocation/ipwhois_ok_8888.json",
+  "tests/fixtures/ip_geolocation/ipwhois_ok_ipv6.json",
+  "tests/fixtures/ip_geolocation/ipwhois_rate_limited_429_documented.json",
+  "tests/fixtures/ip_geolocation/ipwhois_reserved_error_in_200.json",
+  "tests/fixtures/ip_geolocation/keycdn_ua_refused_403.json",
+  "tests/fixtures/ipqualityscore/insufficient_credits_documented.json",
+  "tests/fixtures/ipqualityscore/invalid_ip_documented.json",
+  "tests/fixtures/ipqualityscore/invalid_key.json",
+  "tests/fixtures/ipqualityscore/ip_ok_synthetic.json",
+  "tests/fixtures/ipqualityscore/url_ok_synthetic.json",
+  "tests/fixtures/ipqualityscore/url_phishing_synthetic.json",
+  "tests/fixtures/zoomeye/nokey_401.json",
+  "tests/fixtures/zoomeye/search_empty_synthetic.json",
+  "tests/fixtures/zoomeye/search_ok_synthetic.json",
+  "tests/fixtures/ip_reputation_keyless/ipguardian_found_lists.json",
+  "tests/fixtures/ip_reputation_keyless/ipguardian_invalid_400.json",
+  "tests/fixtures/ip_reputation_keyless/ipguardian_malformed_truncated.txt",
+  "tests/fixtures/ip_reputation_keyless/ipguardian_not_found.json",
+  "tests/fixtures/ip_reputation_keyless/ipguardian_not_found_1111.json",
+  "tests/fixtures/ip_reputation_keyless/netapi_check_invalid_400.json",
+  "tests/fixtures/ip_reputation_keyless/netapi_check_listed_synthetic.json",
+  "tests/fixtures/ip_reputation_keyless/netapi_check_not_listed_domain.json",
+  "tests/fixtures/ip_reputation_keyless/netapi_check_not_listed_ip.json",
+  "tests/fixtures/netapi_compromised_feeds/compromised_domains_slice.csv",
+  "tests/fixtures/netapi_compromised_feeds/compromised_ip_slice.txt",
+  "tests/fixtures/networksdb/ip_info_synthetic.json",
+  "tests/fixtures/networksdb/nokey_400.json",
+  "tests/fixtures/networksdb/org_networks_synthetic.json",
+  "tests/fixtures/networksdb/org_search_synthetic.json"
+ ],
+ "notes": "All five proposals delivered as six modules (P150 split into the online ip_reputation_keyless and the local-first, disclosure-none netapi_compromised_feeds, FC2). No LIGHT/ACTIVE variant is asked by these conditions. Provider fragments created for every host (owners.json mapped all to null): ipwhois, freeipapi (+ old host freeipapi.com), ipqualityscore (ipqualityscore.com + www), zoomeye (api + www, www never requested: manual link only), ipguardian, netapi, networksdb. P051: only ipwho.is and FreeIPAPI are wired (FC3); ip.guide/IP2Location/GeoJS parsers ship unwired (FC4, no host/provider/key registered), KeyCDN never wired; city and country stay inside geo_votes (plain country/city attributes not set, FC6). P052: e-mail/phone endpoints cannot be built (unit-tested, AST check of string literals); URL reputation gated module-side (AMBER+ -> SKIPPED 'tlp', internal/org-profile/token URLs -> 'policy', not hostile-tagged -> 'not_applicable') until the core supports source-level flags; key 'ipqs' is the legacy KNOWN_KEYS entry, the fragment adds V3LUM_IPQS_KEY and records the provider; the key never reaches result, cache file, events or errors (tested). P053: keyword dropped from accepts (not IOC_TYPES); selectors validated (no query injection); key only in the API-KEY header; CDN/shared selectors give cohosting count_only. P150: one vote max, LOW max, IPGuardian lists deduplicated against ip_blocklists.FEEDS (P149). P218: X-Api-Key header only (apikey param refused), fuzzy org match (accent/legal-suffix folding) expands at most 2 candidates, CIDR pivots candidate_netblock expand=False confidence <= 0.4, network_candidates.scope_eligible=False; domain input via core DoH -> ip-info. Merge preconditions recorded in docs/backlog/p3-G02-2.md: trimmed REAL success fixtures with company keys for IPQS, ZoomEye and NetworksDB (P052 FC7, P053 FC5, P218 FC4) - the success fixtures are documentation-shaped and named *_synthetic.json; the invalid-key/401/missing-key fixtures are real. P327 lint: no issue on the six module files; tree lint blocking = 0. Registry contract test green for the six modules (other failures in that file name modules of other batches in progress)."
+}

@@ -1,0 +1,17 @@
+{
+ "_fixture": "REAL live capture 2026-11-26, minimised: /users/-1/associated answers an empty list",
+ "_meta": {
+  "url": "https://api.stackexchange.com/2.3/users/-1/associated?pagesize=5",
+  "user_agent": "V3LUM/dev",
+  "captured": "2026-11-26T08:39:34Z",
+  "elapsed_s": 0.31,
+  "bytes_original": 67
+ },
+ "status": 200,
+ "headers": {
+  "content-type": "application/json; charset=utf-8",
+  "cache-control": "private",
+  "server": "cloudflare"
+ },
+ "body": "{\"items\":[],\"has_more\":false,\"quota_max\":300,\"quota_remaining\":285}"
+}

@@ -1,0 +1,9 @@
+{
+  "schema": "v3lum.extra/1",
+  "package": "zxingcpp",
+  "pip": "zxing-cpp>=3.2.0",
+  "extra": "qr",
+  "licence": "Apache-2.0",
+  "justification": "QR code and barcode decoding (QR, Micro QR, ITF boleto barcodes...) for qr_decode (P261 c2: quishing and PIX QR triage). Optional: without it qr_decode reports UNAVAILABLE 'package' ('pip install v3lum[qr]').",
+  "notes": "Batch p2-G12-1. Binary wheels for CPython >= 3.11 (cp311, cp312-abi3) on glibc Linux x86_64/aarch64, macOS and Windows amd64/arm64; no musllinux or 32-bit wheels (PyPI 2026-11-26). Runs only inside the core file-analysis sandbox (core/sandbox.py); OpenCV and pyzbar are not used (P261 c2)."
+}

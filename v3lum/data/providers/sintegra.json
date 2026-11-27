@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "sintegra",
+  "name": "SINTEGRA (national portal of the state taxpayer registries)",
+  "operator": "SINTEGRA (Secretarias de Fazenda estaduais / CONFAZ)",
+  "hosts": [
+    "www.sintegra.gov.br"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Government portal of the state tax administrations (A8 trusted); P250 cond 5: 'trusted - Portal da Transparencia (CGU), Receita Federal, Sintegra/CCC, consumidor.gov.br, REDESIM/juntas comerciais, Jusbrasil, Reclame Aqui; community - Escavador, Casa dos Dados'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Official state registration (inscricao estadual) records, per state."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "portal_page": {
+      "title": "SINTEGRA national portal (static manual link: the analyst picks the state and types the CNPJ)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.sintegra.gov.br/",
+        "quote": "The pack is offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "sintegra",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P250 cond 1). The national portal is a frameset that links to each state's lookup and takes no CNPJ parameter (verified 2026-11-26); the CCC/SVRS lookup now redirects to a login and is excluded (P311 login lint). Used by pivots_brazil."
+    }
+  },
+  "notes": "Manual pivot links only (batch p2-G14-2): V3LUM never fetches them (P311)."
+}

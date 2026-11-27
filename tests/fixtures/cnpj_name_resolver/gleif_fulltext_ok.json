@@ -1,0 +1,267 @@
+{
+ "meta": {
+  "goldenCopy": {
+   "publishDate": "2026-11-26T00:00:00Z"
+  },
+  "pagination": {
+   "currentPage": 1,
+   "perPage": 10,
+   "from": 1,
+   "to": 10,
+   "total": 26,
+   "lastPage": 3
+  }
+ },
+ "links": {
+  "first": "https://api.gleif.org/api/v1/lei-records?filter%5Bfulltext%5D=banco+do+brasil&filter%5Bentity.legalAddress.country%5D=BR&page%5Bnumber%5D=1&page%5Bsize%5D=10",
+  "next": "https://api.gleif.org/api/v1/lei-records?filter%5Bfulltext%5D=banco+do+brasil&filter%5Bentity.legalAddress.country%5D=BR&page%5Bnumber%5D=2&page%5Bsize%5D=10",
+  "last": "https://api.gleif.org/api/v1/lei-records?filter%5Bfulltext%5D=banco+do+brasil&filter%5Bentity.legalAddress.country%5D=BR&page%5Bnumber%5D=3&page%5Bsize%5D=10"
+ },
+ "data": [
+  {
+   "type": "lei-records",
+   "id": "8BF3TWQK4F529HTAFX73",
+   "attributes": {
+    "lei": "8BF3TWQK4F529HTAFX73",
+    "entity": {
+     "legalName": {
+      "name": "Kirton Bank S.A. - Banco Multiplo",
+      "language": "pt"
+     },
+     "otherNames": [
+      {
+       "name": "HSBC Bank Brasil S.A. - Banco Multiplo",
+       "language": "pt",
+       "type": "PREVIOUS_LEGAL_NAME"
+      },
+      {
+       "name": "Banco Bamerindus do Brasil S.A.",
+       "language": "pt",
+       "type": "PREVIOUS_LEGAL_NAME"
+      }
+     ],
+     "registeredAt": {
+      "id": "RA999999",
+      "other": null
+     },
+     "registeredAs": null,
+     "jurisdiction": "BR",
+     "category": "GENERAL",
+     "legalForm": {
+      "id": "X0SD",
+      "other": null
+     },
+     "status": "ACTIVE",
+     "legalAddress": {
+      "city": "Curitiba",
+      "region": "BR-PR",
+      "country": "BR"
+     }
+    },
+    "registration": {
+     "initialRegistrationDate": "2012-06-06T15:54:00Z",
+     "lastUpdateDate": "2023-08-04T15:16:25Z",
+     "status": "LAPSED"
+    }
+   }
+  },
+  {
+   "type": "lei-records",
+   "id": "213800EN462WGNRCXE64",
+   "attributes": {
+    "lei": "213800EN462WGNRCXE64",
+    "entity": {
+     "legalName": {
+      "name": "HSBC FICFI MULTIMERCADO PREVIDENCIÁRIO LINHA DO TEMPO 2040 II",
+      "language": "en"
+     },
+     "otherNames": [
+      {
+       "name": "HSBC FUNDO DE INVESTIMENTO EM COTAS DE FUNDOS DE INVESTIMENTO MULTIMERCADO PREVIDENCIÁRIO LINHA DO TEMPO 2040 II",
+       "language": "en",
+       "type": "TRADING_OR_OPERATING_NAME"
+      }
+     ],
+     "registeredAt": {
+      "id": "RA000681",
+      "other": null
+     },
+     "registeredAs": "11.208.723/0001-05",
+     "jurisdiction": "BR",
+     "category": "FUND",
+     "legalForm": {
+      "id": "8888",
+      "other": "FUNDO DE INVESTIMENTO"
+     },
+     "status": "INACTIVE",
+     "legalAddress": {
+      "city": "CURITIBA",
+      "region": "BR-SP",
+      "country": "BR"
+     }
+    },
+    "registration": {
+     "initialRegistrationDate": "2015-01-14T00:00:00Z",
+     "lastUpdateDate": "2026-10-26T17:28:30Z",
+     "status": "RETIRED"
+    }
+   }
+  },
+  {
+   "type": "lei-records",
+   "id": "549300M0TV8E1AJVSE39",
+   "attributes": {
+    "lei": "549300M0TV8E1AJVSE39",
+    "entity": {
+     "legalName": {
+      "name": "BANCO INDUSTRIAL DO BRASIL S.A.",
+      "language": "pt"
+     },
+     "otherNames": [
+      {
+       "name": "BANCO INDUSTRIAL DO BRASIL S/A",
+       "language": "pt",
+       "type": "TRADING_OR_OPERATING_NAME"
+      }
+     ],
+     "registeredAt": {
+      "id": "RA000059",
+      "other": null
+     },
+     "registeredAs": "31.895.683/0001-16",
+     "jurisdiction": "BR",
+     "category": "GENERAL",
+     "legalForm": {
+      "id": "X0SD",
+      "other": null
+     },
+     "status": "ACTIVE",
+     "legalAddress": {
+      "city": "Sao Paulo",
+      "region": "BR-SP",
+      "country": "BR"
+     }
+    },
+    "registration": {
+     "initialRegistrationDate": "2018-11-14T15:31:00Z",
+     "lastUpdateDate": "2026-02-13T10:00:02Z",
+     "status": "ISSUED"
+    }
+   }
+  },
+  {
+   "type": "lei-records",
+   "id": "213800S5Z58MV1DYKG17",
+   "attributes": {
+    "lei": "213800S5Z58MV1DYKG17",
+    "entity": {
+     "legalName": {
+      "name": "FUNDO DE INVESTIMENTO EXCLUSIVO RENDA FIXA MUNICH RE DO BRASIL",
+      "language": "en"
+     },
+     "otherNames": [],
+     "registeredAt": {
+      "id": "RA000681",
+      "other": null
+     },
+     "registeredAs": "12.030.030/0001-20",
+     "jurisdiction": "BR",
+     "category": "FUND",
+     "legalForm": {
+      "id": "8888",
+      "other": "FUNDO DE INVESTIMENTO"
+     },
+     "status": "ACTIVE",
+     "legalAddress": {
+      "city": "CURITIBA",
+      "region": "BR-SP",
+      "country": "BR"
+     }
+    },
+    "registration": {
+     "initialRegistrationDate": "2015-01-16T00:00:00Z",
+     "lastUpdateDate": "2025-07-31T07:32:02Z",
+     "status": "LAPSED"
+    }
+   }
+  },
+  {
+   "type": "lei-records",
+   "id": "254900BWGC6X23Q02285",
+   "attributes": {
+    "lei": "254900BWGC6X23Q02285",
+    "entity": {
+     "legalName": {
+      "name": "BANCO KDB DO BRASIL S/A",
+      "language": "pt"
+     },
+     "otherNames": [
+      {
+       "name": "Banco KDB do Brasil SA",
+       "language": "pt",
+       "type": "PREVIOUS_LEGAL_NAME"
+      }
+     ],
+     "registeredAt": {
+      "id": "RA000059",
+      "other": null
+     },
+     "registeredAs": "07.656.500/0001-25",
+     "jurisdiction": "BR",
+     "category": "GENERAL",
+     "legalForm": {
+      "id": "X0SD",
+      "other": null
+     },
+     "status": "ACTIVE",
+     "legalAddress": {
+      "city": "Sao Paulo",
+      "region": "BR-SP",
+      "country": "BR"
+     }
+    },
+    "registration": {
+     "initialRegistrationDate": "2018-04-19T20:06:19Z",
+     "lastUpdateDate": "2026-07-23T05:33:15Z",
+     "status": "ISSUED"
+    }
+   }
+  },
+  {
+   "type": "lei-records",
+   "id": "81560032A9148CB5EB22",
+   "attributes": {
+    "lei": "81560032A9148CB5EB22",
+    "entity": {
+     "legalName": {
+      "name": "BANCO DO BRASIL S.A.",
+      "language": "it-IT"
+     },
+     "otherNames": [],
+     "registeredAt": {
+      "id": "RA000407",
+      "other": null
+     },
+     "registeredAs": "01763140157",
+     "jurisdiction": "IT",
+     "category": "GENERAL",
+     "legalForm": {
+      "id": "135L",
+      "other": null
+     },
+     "status": "NULL",
+     "legalAddress": {
+      "city": "BRASILIA",
+      "region": null,
+      "country": "BR"
+     }
+    },
+    "registration": {
+     "initialRegistrationDate": "2014-12-30T21:07:38Z",
+     "lastUpdateDate": "2018-03-01T00:48:53Z",
+     "status": "DUPLICATE"
+    }
+   }
+  }
+ ]
+}

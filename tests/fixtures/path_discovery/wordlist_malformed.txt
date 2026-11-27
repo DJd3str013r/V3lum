@@ -1,0 +1,22 @@
+﻿# comment line
+
+/api
+api
+//api//v1
+https://evil.example.net/x
+../../etc/passwd
+/a%2e%2e/b
+/graphql?query={__schema{types{name}}}
+/actuator/heapdump
+/heapdump
+/manage/env
+/actuator/httptrace
+/admin/%EXT%
+/FUZZ
+/api/users/delete
+/has space
+/ctrlchar
+/%3f/
+/jolokia/read/java.lang:type=Memory
+/swagger.json
+/swagger.json

@@ -1,0 +1,54 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "rnp",
+  "name": "CAIS/RNP security alerts (RSS, pending)",
+  "operator": "RNP - Rede Nacional de Ensino e Pesquisa (CAIS, Centro de Atendimento a Incidentes de Seguranca)",
+  "hosts": [
+    "alertas.cais.rnp.br"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "CSIRT of the Brazilian national research and education network (A8: national CERTs/CSIRTs are trusted).",
+  "tier_reviewer": "council-1 (A8); proposal of batch p2-G11-1, registry reviewer confirms",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Sector CSIRT publishing its own alerts."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "max_bytes": 2097152,
+    "ttl": 3600,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "cais_alerts": {
+      "title": "CAIS/RNP alerts RSS /feed/ (pending re-verification, not read)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://alertas.cais.rnp.br/",
+        "quote": "Licence (A1, legal floor): feed terms are 'unknown' until legal reviews them, so nothing runs yet in any profile. Legal's feed-reader decision (poll <= hourly; headline + link + date only; no full text; no redistribution) is recorded per kept feed with its class and evidence; a feed whose terms forbid business use or automated reading is dropped.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "cais_rnp",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "P298 cond 2: 'CTIR Gov and CAIS/RNP join only after re-verification from the team network'. 2026-11-25/26 from the research egress: proxy CONNECT 502 (upstream unreachable). Listed under 'pending' in v3lum/data/cti_feeds.json; no dataset is registered and nothing is fetched until the team re-verifies it."
+    }
+  },
+  "notes": "Owned by batch p2-G11-1 (P298). Registry entry for a pending feed host: no module declares this source yet."
+}

@@ -1,0 +1,25 @@
+{
+ "host": "github.com",
+ "port": 443,
+ "protocol": "http",
+ "isPublic": false,
+ "status": "READY",
+ "startTime": 1795566241729,
+ "testTime": 1795566337235,
+ "engineVersion": "2.4.3",
+ "criteriaVersion": "2009q",
+ "endpoints": [
+  {
+   "ipAddress": "140.82.114.4",
+   "serverName": "lb-140-82-114-4-iad.github.com",
+   "statusMessage": "Ready",
+   "grade": "A+",
+   "gradeTrustIgnored": "A+",
+   "hasWarnings": false,
+   "isExceptional": true,
+   "progress": 100,
+   "duration": 95404,
+   "delegation": 1
+  }
+ ]
+}

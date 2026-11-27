@@ -1,0 +1,7 @@
+{
+  "schema": "v3lum.default_avatars/1",
+  "platform": "gravatar",
+  "dhash": "00280c86868e0f03",
+  "sha256": "10fc73b31e251de09ba5c87355909ffe3d7dff5e398992074494f8e74386c7c3",
+  "source": "https://secure.gravatar.com/avatar/00000000000000000000000000000000?s=80&d=mm (Gravatar 'mm' mystery-person default, 80x80 JPEG, measured 2026-11-26 by batch p2-G05-2; dHash per the P114 convention: Pillow convert('L').resize((9, 8)), bit = left > right, row-major, MSB first)"
+}

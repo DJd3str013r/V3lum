@@ -1,0 +1,45 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "leakcheck",
+  "name": "LeakCheck public API (breach source names and field names per e-mail or username)",
+  "operator": "LeakCheck (leakcheck.io; the operating entity is not named on the public API pages)",
+  "hosts": ["leakcheck.io"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Identifiable breach-search service with public API documentation and a track record, but no terms page reachable on 2026-11-26 (P135 chair: 'Tier community (identifiable operator without published terms)').",
+  "tier_reviewer": "council-1 (A8, P135)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": true},
+  "personal_data_review": null,
+  "reliability": {"grade": "C", "justification": "Aggregator of breach corpora and combolists: source names and month dates per value, data-class names as a union over all sources (no per-source classes); generic and shared values return hundreds of sources (test@example.com -> found 1715), so found >= 100 is flagged generic (P135 cond 5)."},
+  "http_profile": {"user_agent": "neutral", "accept": "application/json", "timeout": 20, "ttl": 604800, "min_interval": 1.0, "concurrency": 1, "retries": 0},
+  "quota": {"scope": "egress_ip", "rate_per_second": 1, "burst": 1, "published": false, "evidence_url": "", "safety_margin": 0.8},
+  "error_markers": [
+    {"id": "leakcheck_limit_body", "statuses": [200], "json_path": "error", "equals": null, "regex": "(?i)limit", "final_url_regex": null, "maps_to": "quota", "reason_code": "quota", "reason": "LeakCheck: public API limit reached ('limit' error inside a 200 answer): provider stopped for today (could not verify)"},
+    {"id": "leakcheck_throttled", "statuses": [429], "json_path": null, "equals": null, "regex": null, "final_url_regex": "^https://leakcheck\\.io/", "maps_to": "quota", "reason_code": "quota", "reason": "LeakCheck: public API throttled (HTTP 429): provider stopped for today (could not verify)"}
+  ],
+  "keys": {},
+  "sources": {
+    "public": {
+      "title": "LeakCheck public API GET /api/public?check=<e-mail or username>: found count, source names and month dates, data-class (field) NAMES only",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://leakcheck.io/",
+        "quote": "Terms 'unknown' (A1 BR16; no terms page reachable on 2026-11-26): disabled in every profile until legal records LeakCheck's terms.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "leakcheck",
+      "sanitizer": {
+        "keep": ["success", "found", "fields[]", "sources[].name", "sources[].date", "error"],
+        "notes": "P135 cond 4 / P145: only the found count, the field NAMES (data classes, never values), the source names with their month dates and the error text survive before the HTTP cache; any other or future field is dropped."
+      },
+      "dataset": null,
+      "notes": "A1 initial class: LeakCheck public = 'unknown' (P135 cond 1): disabled in every licence profile until legal records the terms. osint_investigator's evidence (LeakCheck API docs, checked 2026-11-26: the Public API is 'Free, including commercial use' with a 'Powered by LeakCheck' link) is queued for that review (P135 cond 2); if cleared the class becomes open with the attribution 'Powered by LeakCheck' in the report footer and v3lum info. URL allow-list: only GET https://leakcheck.io/api/public?check=<value> (P135 cond 3); the authenticated v2 'lookup' API (raw records with passwords) is never implemented or subscribed to. Documented 1 request/s (min_interval 1 s); 429 and 'limit' bodies stop the provider for the UTC day (markers above, P135 cond 6). Research C0304 (verified_live 200). Used by leakcheck_public.",
+      "licensed_alternative": "Have I Been Pwned breachedaccount (hibp.account, company subscription) and XposedOrNot xonAPI+ give per-address breach names under a recorded licence."
+    }
+  },
+  "notes": "Owned by batch p2-G04-1 (P135 leakcheck_public). Sensitive provider (A4): the sanitizer schema applies before the HTTP cache (sanitized payload, TTL <= 7 days); the module keeps field names as data classes, never values. Tier community; terms unknown (default_enabled False, A3 BR2)."
+}

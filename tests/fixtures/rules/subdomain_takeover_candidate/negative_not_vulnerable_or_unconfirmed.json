@@ -1,0 +1,137 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "$comment": "(a) ELB is 'not vulnerable' in the pinned list; (b) NXDOMAIN not confirmed by a second resolver; (c) S3 without the unclaimed fingerprint; (d) SERVFAIL leaves no fact: nothing",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "org_profile": {
+    "org": {
+      "name": "Acme"
+    },
+    "domains": [
+      {
+        "name": "acme-corp.example",
+        "verification": "txt_verified",
+        "criticality": "high"
+      }
+    ],
+    "cidrs": [
+      {
+        "value": "203.0.113.0/24",
+        "criticality": "high"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "key": "domain:api.acme-corp.example",
+      "depth": 0,
+      "seed": true,
+      "ownership": "own_asset",
+      "tags": [
+        "own_asset"
+      ]
+    },
+    {
+      "key": "domain:old-lb-1234.us-east-1.elb.amazonaws.com",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "valid": [
+          {
+            "value": false,
+            "source": "dns_records"
+          }
+        ]
+      }
+    },
+    {
+      "key": "domain:www.acme-corp.example",
+      "depth": 1,
+      "seed": false,
+      "ownership": "own_asset",
+      "tags": [
+        "own_asset"
+      ],
+      "attributes": {
+        "cname_dangling": [
+          {
+            "value": {
+              "target": "acme-www.azurewebsites.net",
+              "status": "NXDOMAIN",
+              "confirmed": false,
+              "source": "ct_logs"
+            },
+            "source": "ct_logs"
+          }
+        ]
+      }
+    },
+    {
+      "key": "domain:acme-www.azurewebsites.net",
+      "depth": 2,
+      "seed": false
+    },
+    {
+      "key": "domain:files.acme-corp.example",
+      "depth": 1,
+      "seed": false,
+      "ownership": "own_asset",
+      "tags": [
+        "own_asset"
+      ]
+    },
+    {
+      "key": "domain:acme-files.s3.amazonaws.com",
+      "depth": 2,
+      "seed": false
+    },
+    {
+      "key": "domain:blog.acme-corp.example",
+      "depth": 1,
+      "seed": false,
+      "ownership": "own_asset",
+      "tags": [
+        "own_asset"
+      ]
+    },
+    {
+      "key": "domain:acme-blog.trydiscourse.com",
+      "depth": 2,
+      "seed": false
+    }
+  ],
+  "edges": [
+    {
+      "src": "domain:api.acme-corp.example",
+      "dst": "domain:old-lb-1234.us-east-1.elb.amazonaws.com",
+      "relation": "cname_to",
+      "module": "dns_records",
+      "confidence": 0.9
+    },
+    {
+      "src": "domain:www.acme-corp.example",
+      "dst": "domain:acme-www.azurewebsites.net",
+      "relation": "cname_to",
+      "module": "dns_records",
+      "confidence": 0.9
+    },
+    {
+      "src": "domain:files.acme-corp.example",
+      "dst": "domain:acme-files.s3.amazonaws.com",
+      "relation": "cname_to",
+      "module": "dns_records",
+      "confidence": 0.9
+    },
+    {
+      "src": "domain:blog.acme-corp.example",
+      "dst": "domain:acme-blog.trydiscourse.com",
+      "relation": "cname_to",
+      "module": "dns_records",
+      "confidence": 0.9
+    }
+  ]
+}

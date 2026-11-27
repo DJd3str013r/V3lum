@@ -1,0 +1,11 @@
+{
+ "_note": "live: 307 to the versioned artifact 20261126065437-jry, cache-control max-age=600 (BunnyCDN)",
+ "status": 307,
+ "headers": {
+  "content-length": "0",
+  "location": "https://data.opensanctions.org/artifacts/default/20261126065437-jry/index.json",
+  "server": "BunnyCDN-IL1-1069",
+  "cache-control": "public, max-age=600"
+ },
+ "body": ""
+}

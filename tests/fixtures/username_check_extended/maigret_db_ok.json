@@ -1,0 +1,654 @@
+{
+ "_meta": {
+  "note": "Trimmed copy of the Maigret site database (https://github.com/soxoj/maigret, data.json sha256 0872e6d2...), Copyright (c) 2020-2026 Soxoj, MIT. Claimed handles replaced by example values; credential values and activation URLs replaced by REDACTED."
+ },
+ "sites": {
+  "Alura": {
+   "url": "https://cursos.alura.com.br/user/{username}",
+   "urlMain": "https://cursos.alura.com.br",
+   "checkType": "message",
+   "usernameClaimed": "example-claimed",
+   "usernameUnclaimed": "noonewouldeverusethis7",
+   "tags": [
+    "br",
+    "education",
+    "tech"
+   ],
+   "absenceStrs": [
+    "\"error\":\"Not Found\""
+   ],
+   "presenseStrs": [
+    "Perfil de"
+   ]
+  },
+  "habbo.com.br": {
+   "url": "https://www.habbo.com.br/profile/{username}",
+   "urlMain": "https://www.habbo.com.br",
+   "checkType": "message",
+   "usernameClaimed": "example-claimed",
+   "usernameUnclaimed": "noonewouldeverusethis7",
+   "tags": [
+    "br",
+    "gaming"
+   ],
+   "absenceStrs": [
+    "error\": \"not-found"
+   ],
+   "presenseStrs": [
+    "uniqueId\":"
+   ],
+   "urlProbe": "https://www.habbo.com.br/api/public/users?name={username}"
+  },
+  "Filmow": {
+   "tags": [
+    "br",
+    "pt"
+   ],
+   "checkType": "status_code",
+   "alexaRank": 30525,
+   "urlMain": "https://filmow.com/",
+   "url": "https://filmow.com/usuario/{username}",
+   "usernameClaimed": "example-claimed",
+   "usernameUnclaimed": "noonewouldeverusethis7"
+  },
+  "About.me": {
+   "tags": [
+    "blog",
+    "social"
+   ],
+   "checkType": "status_code",
+   "alexaRank": 685,
+   "urlMain": "https://about.me/",
+   "url": "https://about.me/{username}",
+   "usernameClaimed": "example-claimed",
+   "usernameUnclaimed": "noonewouldeverusethis7"
+  },
+  "MicrosoftLearn": {
+   "tags": [
+    "coding",
+    "education",
+    "tech"
+   ],
+   "checkType": "response_url",
+   "urlMain": "https://learn.microsoft.com",
+   "url": "https://learn.microsoft.com/en-us/users/{username}",
+   "urlProbe": "https://learn.microsoft.com/api/profiles/{username}",
+   "usernameClaimed": "example-claimed",
+   "usernameUnclaimed": "noonewouldeverusethis7"
+  },
+  "WordPressOrg": {
+   "tags": [
+    "blog",
+    "coding",
+    "in"
+   ],
+   "checkType": "response_url",
+   "alexaRank": 12,
+   "urlMain": "https://wordpress.org/",
+   "url": "https://profiles.wordpress.org/{username}/",
+   "errorUrl": "https://wordpress.org",
+   "usernameClaimed": "example-claimed",
+   "usernameUnclaimed": "noonewouldeverusethis7"
+  },
+  "valinor.com.br": {
+   "engine": "XenForo",
+   "alexaRank": 63474,
+   "urlMain": "http://www.valinor.com.br/forum/",
+   "usernameClaimed": "example-claimed",
+   "usernameUnclaimed": "noonewouldeverusethis7",
+   "tags": [
+    "br",
+    "discussion",
+    "forum"
+   ]
+  },
+  "MercadoLivre": {
+   "tags": [
+    "br"
+   ],
+   "checkType": "message",
+   "protection": [
+    "tls_fingerprint"
+   ],
+   "absenceStrs": [
+    "Parece que esta página não existe",
+    "Este usuário foi temporariamente desativado ou excluído"
+   ],
+   "alexaRank": 6320,
+   "urlMain": "https://www.mercadolivre.com.br",
+   "url": "https://www.mercadolivre.com.br/perfil/{username}",
+   "usernameClaimed": "example-claimed",
+   "usernameUnclaimed": "noonewouldeverusethis77777"
+  },
+  "Twitter": {
+   "tags": [
+    "messaging",
+    "social"
+   ],
+   "headers": {
+    "sec-ch-ua": "Google Chrome\";v=\"87\", \" Not;A Brand\";v=\"99\", \"Chromium\";v=\"87\"",
+    "authorization": "REDACTED",
+    "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36",
+    "x-guest-token": "REDACTED"
+   },
+   "errors": {
+    "Bad guest token": "x-guest-token update required"
+   },
+   "regexCheck": "^[a-zA-Z0-9_]{1,15}$",
+   "activation": {
+    "method": "twitter",
+    "url": "REDACTED"
+   },
+   "urlProbe": "https://twitter.com/i/api/graphql/ZRnOhhXPwue_JGILb9TNug/UserByScreenName?variables=%7B%22screen_name%22%3A%22{username}%22%2C%22withHighlightedLabel%22%3Atrue%7D",
+   "checkType": "message",
+   "presenseStrs": [
+    "\"legacy\""
+   ],
+   "absenceStrs": [
+    " not found"
+   ],
+   "alexaRank": 5,
+   "urlMain": "https://www.twitter.com/",
+   "url": "https://twitter.com/{username}",
+   "usernameClaimed": "example-claimed",
+   "usernameUnclaimed": "noonewould123"
+  },
+  "Raidforums": {
+   "disabled": true,
+   "checkType": "status_code",
+   "alexaRank": 723798,
+   "urlMain": "https://raidforums.com/",
+   "url": "https://raidforums.com/User-{username}",
+   "usernameClaimed": "example-claimed",
+   "usernameUnclaimed": "noonewouldeverusethis7",
+   "tags": [
+    "cybercriminal",
+    "forum",
+    "hacking"
+   ]
+  },
+  "RoyalCams": {
+   "tags": [
+    "gr",
+    "ng",
+    "ru",
+    "webcam"
+   ],
+   "headers": {
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:133.0) Gecko/20100101 Firefox/133.0",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.5",
+    "Referer": "https://pt.royalcams.com/",
+    "Upgrade-Insecure-Requests": "1",
+    "Sec-Fetch-Dest": "document",
+    "Sec-Fetch-Mode": "navigate",
+    "Sec-Fetch-Site": "same-origin",
+    "Sec-Fetch-User": "?1"
+   },
+   "checkType": "message",
+   "presenseStrs": [
+    "<title>Informação e página"
+   ],
+   "absenceStrs": [
+    "- RoyalCams</title>"
+   ],
+   "urlMain": "https://royalcams.com",
+   "url": "https://royalcams.com/profile/{username}",
+   "urlProbe": "https://pt.royalcams.com/profile/{username}",
+   "usernameClaimed": "example-claimed",
+   "usernameUnclaimed": "noonewouldeverusethis77777"
+  },
+  "Discord": {
+   "url": "https://discord.com",
+   "urlMain": "https://discord.com/",
+   "urlProbe": "https://discord.com/api/v9/unique-username/username-attempt-unauthed",
+   "regexCheck": "^[^\\u3040-\\u30ff\\u3400-\\u4dbf\\u4e00-\\u9fff\\uac00-\\ud7af\\uf900-\\ufaff]{2,32}$",
+   "checkType": "message",
+   "absenceStrs": [
+    "{\"taken\":false}"
+   ],
+   "headers": {
+    "Content-Type": "application/json"
+   },
+   "usernameClaimed": "example-claimed",
+   "usernameUnclaimed": "noonewouldeverusethis7",
+   "alexaRank": 133,
+   "requestMethod": "POST",
+   "requestPayload": {
+    "username": "{username}"
+   },
+   "errors": {
+    "The resource is being rate limited": "Rate limited",
+    "You are being rate limited": "Rate limited",
+    "rate_limited": "Rate limited",
+    "BASE_TYPE_BAD_LENGTH": "Invalid username length",
+    "Must be between 2 and 32 in length": "Invalid username length"
+   },
+   "tags": [
+    "gaming",
+    "messaging",
+    "social"
+   ]
+  },
+  "ProtonMail": {
+   "checkType": "message",
+   "presenseStrs": [
+    "Username already used"
+   ],
+   "absenceStrs": [
+    "\"Code\":1000"
+   ],
+   "headers": {
+    "X-Pm-Appversion": "web-account@5.0.398.1"
+   },
+   "activation": {
+    "method": "proton",
+    "url": "REDACTED"
+   },
+   "urlMain": "https://proton.me/",
+   "url": "https://account.proton.me/api/users/available?Name={username}",
+   "usernameClaimed": "example-claimed",
+   "usernameUnclaimed": "noonewouldeverusethis7"
+  },
+  "Omg.lol": {
+   "url": "https://{username}.omg.lol",
+   "urlMain": "https://home.omg.lol",
+   "urlProbe": "https://api.omg.lol/address/{username}/availability",
+   "checkType": "message",
+   "presenseStrs": [
+    "\"available\": false"
+   ],
+   "absenceStrs": [
+    "\"available\": true"
+   ],
+   "usernameClaimed": "example-claimed",
+   "usernameUnclaimed": "noonewouldeverusethis7",
+   "tags": [
+    "social"
+   ],
+   "regexCheck": "^[^.]+$"
+  },
+  "Diskusjon.no": {
+   "url": "https://www.diskusjon.no",
+   "urlMain": "https://www.diskusjon.no",
+   "urlProbe": "https://www.diskusjon.no/?app=core&module=system&controller=ajax&do=usernameExists&input={username}",
+   "checkType": "message",
+   "absenceStrs": [
+    "{\"result\":\"ok\"}"
+   ],
+   "regexCheck": "^[a-zA-Z0-9_.-]{3,40}$",
+   "usernameClaimed": "example-claimed",
+   "usernameUnclaimed": "noonewouldeverusethis7",
+   "alexaRank": 293242,
+   "tags": [
+    "forum",
+    "no"
+   ]
+  },
+  "HiddenAnswers": {
+   "tags": [
+    "discussion",
+    "forum",
+    "hacking",
+    "q&a",
+    "tor"
+   ],
+   "protocol": "tor",
+   "url": "http://answerszuvs3gg2l64e6hmnryudl5zgrmwm3vh65hzszdghblddvfiqd.onion/user/{username}",
+   "urlMain": "http://answerszuvs3gg2l64e6hmnryudl5zgrmwm3vh65hzszdghblddvfiqd.onion",
+   "usernameClaimed": "example-claimed",
+   "usernameUnclaimed": "noonewouldeverusethis7",
+   "checkType": "message",
+   "absenceStrs": [
+    "Page not found"
+   ],
+   "presenseStrs": [
+    "qa-part-form-profile"
+   ]
+  },
+  "{username}.ddns.net": {
+   "protocol": "dns",
+   "url": "{username}.ddns.net",
+   "urlMain": "{username}.ddns.net",
+   "usernameClaimed": "example-claimed",
+   "usernameUnclaimed": "noonewouldeverusethis7",
+   "checkType": "status_code",
+   "tags": [
+    "tech"
+   ]
+  },
+  "ORCID": {
+   "type": "orcid",
+   "regexCheck": "^\\d{4}-\\d{4}-\\d{4}-\\d{3}[\\dX]$",
+   "checkType": "status_code",
+   "urlMain": "https://orcid.org",
+   "url": "https://orcid.org/{username}",
+   "urlProbe": "https://pub.orcid.org/v3.0/{username}/record",
+   "headers": {
+    "Accept": "application/json"
+   },
+   "usernameClaimed": "example-claimed",
+   "usernameUnclaimed": "9999-9999-9999-9999",
+   "tags": [
+    "education",
+    "global",
+    "professional",
+    "research",
+    "science"
+   ]
+  },
+  "Tweakers": {
+   "url": "https://tweakers.net/gallery/{username}/",
+   "urlMain": "https://tweakers.net",
+   "checkType": "status_code",
+   "headers": {
+    "Cookie": "REDACTED"
+   },
+   "usernameClaimed": "example-claimed",
+   "usernameUnclaimed": "noonewouldeverusethis7",
+   "alexaRank": 6836,
+   "tags": [
+    "nl",
+    "tech"
+   ]
+  },
+  "Kaggle": {
+   "tags": [
+    "coding",
+    "education",
+    "tech"
+   ],
+   "checkType": "message",
+   "headers": {
+    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0"
+   },
+   "errors": {
+    "Checking your browser before accessing": "Bot protection (reCAPTCHA)"
+   },
+   "presenseStrs": [
+    " | Kaggle</title>"
+   ],
+   "absenceStrs": [
+    "Kaggle: Your Home for Data Science"
+   ],
+   "alexaRank": 1705,
+   "urlMain": "https://www.kaggle.com/",
+   "url": "https://www.kaggle.com/{username}",
+   "usernameClaimed": "example-claimed",
+   "usernameUnclaimed": "noonewouldeverusethis7"
+  },
+  "Gravatar": {
+   "tags": [
+    "photo",
+    "social"
+   ],
+   "urlProbe": "http://en.gravatar.com/{username}.json",
+   "checkType": "message",
+   "presenseStrs": [
+    "requestHash"
+   ],
+   "absenceStrs": [
+    "User not found"
+   ],
+   "urlMain": "http://en.gravatar.com/",
+   "url": "http://en.gravatar.com/{username}",
+   "usernameClaimed": "example-claimed",
+   "usernameUnclaimed": "noonewouldeverusethis7"
+  },
+  "House-Mixes.com": {
+   "tags": [
+    "ir",
+    "music"
+   ],
+   "regexCheck": "^[a-zA-Z0-9]+(-[a-zA-Z0-9]+)*$",
+   "checkType": "status_code",
+   "alexaRank": 325111,
+   "urlMain": "https://www.house-mixes.com/",
+   "url": "https://www.house-mixes.com/profile/{username}",
+   "usernameClaimed": "example-claimed",
+   "usernameUnclaimed": "noonewouldeverusethis7"
+  },
+  "wiki.subnautica.com": {
+   "tags": [
+    "gaming",
+    "wiki"
+   ],
+   "urlMain": "https://wiki.subnautica.com",
+   "usernameClaimed": "example-claimed",
+   "usernameUnclaimed": "noonewouldeverusethis7",
+   "url": "https://wiki.subnautica.com/sn/User:{username}",
+   "urlProbe": "https://wiki.subnautica.com/sn/api.php?action=query&list=users&ususers={username}&usprop=editcount|registration|groups|gender&format=json",
+   "checkType": "message",
+   "absenceStrs": [
+    "\"missing\":",
+    "\"invalid\":"
+   ],
+   "presenseStrs": [
+    "\"userid\":"
+   ]
+  },
+  "500px": {
+   "tags": [
+    "art",
+    "photo",
+    "social"
+   ],
+   "urlProbe": "https://api.500px.com/graphql?query=query%28%24username%3AString%21%29%7BuserByUsername%28username%3A%24username%29%7Bid%20legacyId%20username%20displayName%20firstName%20lastName%20registeredAt%20userProfile%7Bfirstname%20lastname%20about%20country%20city%20state%7DsocialMedia%7Bwebsite%20twitter%20facebook%20instagram%7D%7D%7D&variables=%7B%22username%22%3A%22{username}%22%7D",
+   "checkType": "message",
+   "presenseStrs": [
+    "\"legacyId\":\""
+   ],
+   "absenceStrs": [
+    "\"userByUsername\":null"
+   ],
+   "alexaRank": 938,
+   "urlMain": "https://500px.com/",
+   "url": "https://500px.com/p/{username}",
+   "usernameClaimed": "example-claimed",
+   "usernameUnclaimed": "noonewouldeverusethis7"
+  },
+  "NPM": {
+   "tags": [
+    "apps",
+    "coding",
+    "tech"
+   ],
+   "checkType": "message",
+   "presenseStrs": [
+    "\"objects\":[{"
+   ],
+   "absenceStrs": [
+    "\"total\":0"
+   ],
+   "alexaRank": 590,
+   "urlMain": "https://www.npmjs.com/",
+   "url": "https://www.npmjs.com/~{username}",
+   "urlProbe": "https://registry.npmjs.org/-/v1/search?text=maintainer:{username}&size=1",
+   "usernameClaimed": "example-claimed",
+   "usernameUnclaimed": "noonewouldeverusethis7"
+  },
+  "Hudson Rock": {
+   "url": "https://cavalier.hudsonrock.com/api/json/v2/osint-tools/search-by-username?username={username}",
+   "urlMain": "https://hudsonrock.com",
+   "checkType": "message",
+   "absenceStrs": [
+    "This username is not associated"
+   ],
+   "usernameClaimed": "example-claimed",
+   "usernameUnclaimed": "noonewouldeverusethis7",
+   "alexaRank": 327352,
+   "tags": [
+    "business",
+    "hacking",
+    "research"
+   ]
+  },
+  "Dribbble": {
+   "tags": [
+    "business",
+    "design",
+    "professional",
+    "social"
+   ],
+   "regexCheck": "^[a-zA-Z][a-zA-Z0-9_-]*$",
+   "checkType": "message",
+   "absenceStrs": [
+    "Whoops, that page is gone."
+   ],
+   "alexaRank": 306,
+   "urlMain": "https://dribbble.com/",
+   "url": "https://dribbble.com/{username}",
+   "usernameClaimed": "example-claimed",
+   "usernameUnclaimed": "noonewouldeverusethis7"
+  },
+  "Bible.com": {
+   "tags": [
+    "education",
+    "reading",
+    "social"
+   ],
+   "checkType": "status_code",
+   "urlMain": "https://www.bible.com/",
+   "url": "https://www.bible.com/users/{username}",
+   "usernameClaimed": "example-claimed",
+   "usernameUnclaimed": "noonewouldeverusethis7"
+  },
+  "Intigriti": {
+   "tags": [
+    "hacking"
+   ],
+   "checkType": "message",
+   "presenseStrs": [
+    "avatar-container"
+   ],
+   "absenceStrs": [
+    "We didn't find what you're looking for"
+   ],
+   "urlMain": "https://intigriti.com",
+   "url": "https://app.intigriti.com/profile/{username}",
+   "usernameUnclaimed": "noonewouldeverusethis7",
+   "usernameClaimed": "example-claimed",
+   "alexaRank": 110156
+  }
+ },
+ "engines": {
+  "XenForo": {
+   "name": "XenForo",
+   "site": {
+    "ignore403": true,
+    "absenceStrs": [
+     "The requested page could not be found.",
+     "The specified member cannot be found. Please enter a member",
+     "Указанный пользователь не найден. Пожалуйста, введите другое имя.",
+     "Le membre spécifié est introuvable. Veuillez saisir le nom complet d'un membre.",
+     "Belirtilen üye bulunamadı. Lütfen bir üyenin tam adını giriniz.",
+     "Das angegebene Mitglied kann nicht gefunden werden. Bitte gib",
+     "Het gespecificeerde lid kan niet gevonden worden."
+    ],
+    "presenseStrs": [
+     "Вы должны быть авторизованы, чтобы выполнить это действие или просмотреть эту страницу.",
+     "Для того, чтобы это сделать, нужно сначала войти на форум.",
+     "You must be logged-in to do that.",
+     "You must be logged in to do that.",
+     "הינך נדרש להתחבר כדי לבצע פעולה זו.",
+     "برای انجام این کار باید به انجمن ورود کنید",
+     "memberHeader-content",
+     "profilePage",
+     "Du musst eingeloggt sein, um das zu tun.",
+     "Dazu muss man eingeloggt sein.",
+     "Je moet ingelogd zijn om dat te doen."
+    ],
+    "checkType": "message",
+    "url": "{urlMain}{urlSubpath}/members/?username={username}"
+   },
+   "presenseStrs": [
+    "XenForo"
+   ]
+  },
+  "Mastodon": {
+   "name": "Mastodon",
+   "site": {
+    "checkType": "status_code",
+    "url": "{urlMain}/@{username}",
+    "urlProbe": "{urlMain}/api/v1/accounts/lookup?acct={username}"
+   }
+  }
+ },
+ "tags": [
+  "3d",
+  "anime",
+  "apps",
+  "archive",
+  "art",
+  "auto",
+  "blog",
+  "bookmarks",
+  "books",
+  "business",
+  "career",
+  "classified",
+  "coding",
+  "cooking",
+  "crypto",
+  "cybercriminal",
+  "dating",
+  "design",
+  "discussion",
+  "documents",
+  "education",
+  "erotic",
+  "esoteric",
+  "fashion",
+  "finance",
+  "fintech",
+  "firearms",
+  "forum",
+  "freelance",
+  "gambling",
+  "gaming",
+  "geosocial",
+  "hacking",
+  "hobby",
+  "i2p",
+  "lemmy",
+  "links",
+  "llm",
+  "maps",
+  "mastodon",
+  "medicine",
+  "messaging",
+  "military",
+  "movies",
+  "music",
+  "networking",
+  "news",
+  "nft",
+  "parenting",
+  "photo",
+  "porn",
+  "professional",
+  "psychology",
+  "q&a",
+  "reading",
+  "religion",
+  "research",
+  "review",
+  "science",
+  "sharing",
+  "shopping",
+  "social",
+  "sport",
+  "stock",
+  "streaming",
+  "tasks",
+  "tech",
+  "tor",
+  "torrent",
+  "trading",
+  "travel",
+  "video",
+  "webcam",
+  "wiki",
+  "writing"
+ ]
+}

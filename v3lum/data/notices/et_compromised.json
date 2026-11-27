@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "et_compromised",
+  "source_url": "https://rules.emergingthreats.net/",
+  "version": "blockrules/compromised-ips.txt (runtime download, noncommercial use only, checked 2026-11-26)",
+  "sha256": "",
+  "licence": "LicenseRef-ET-Open-NC",
+  "attribution": "Proofpoint Emerging Threats Open compromised-hosts list (rules.emergingthreats.net), non-commercial use: off under the corporate profile until licence-cleared.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/threat_intel_ioc/ip_blocklists.py"
+  ]
+}

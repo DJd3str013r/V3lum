@@ -1,0 +1,25 @@
+{
+ "Id": "00755879-eeb3-4a70-9df6-c4e8ff561cdc",
+ "Verified": "TRUE",
+ "Author": "Fulano de Tal",
+ "Created": "2026-04-17",
+ "MitreID": "T1068",
+ "Category": "vulnerable driver",
+ "Tags": [
+  "iobios64.sys"
+ ],
+ "KnownVulnerableSamples": [
+  {
+   "MD5": "d49368296a3cd000ec0cea88c4bf7edd",
+   "SHA1": "fbd6c739b86afa550187cc80aa6dc139c0790cef",
+   "SHA256": "314a51fcf6e37eb8550a826df085d5c88c43eb1438682f3a6c33632d36956136",
+   "Authentihash": {
+    "MD5": "f83efae9f61dabd3a823bbcb0bb1dbe8",
+    "SHA1": "1f86df471708bba4ae012174307c326e97cd00f2",
+    "SHA256": "d73c3cac633b3a6b36ddeb4244f52e625ea6cf63df6cb41176b505342353350b"
+   },
+   "Filename": "iobios64.sys",
+   "MachineType": "AMD64"
+  }
+ ]
+}

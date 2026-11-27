@@ -1,0 +1,17 @@
+{
+ "_fixture": "synthetic Safe Browsing v4 threatMatches:find hit (documented response shape)",
+ "status": 200,
+ "body": {
+  "matches": [
+   {
+    "threatType": "MALWARE",
+    "platformType": "ANY_PLATFORM",
+    "threatEntryType": "URL",
+    "threat": {
+     "url": "http://malware.testing.google.test/testing/malware/"
+    },
+    "cacheDuration": "300s"
+   }
+  ]
+ }
+}

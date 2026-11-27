@@ -1,0 +1,81 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "org_profile": {
+    "org": {
+      "name": "Corp"
+    },
+    "cidrs": [
+      "203.0.113.0/24"
+    ]
+  },
+  "nodes": [
+    {
+      "key": "ipv4:203.0.113.10",
+      "depth": 0,
+      "seed": true,
+      "ownership": "own_asset",
+      "tags": [
+        "own_asset"
+      ]
+    },
+    {
+      "key": "cve:CVE-2014-0160",
+      "depth": 1,
+      "attributes": {
+        "kev_status": [
+          {
+            "value": "not in CISA KEV (catalog 2026.11.25): KEV lists only vulnerabilities whose exploitation CISA has confirmed, so absence is no evidence either way",
+            "source": "cisa_kev"
+          }
+        ],
+        "kev": [
+          {
+            "value": true,
+            "source": "vulncheck_kev"
+          }
+        ],
+        "kev_date_added": [
+          {
+            "value": "2022-05-01",
+            "source": "vulncheck_kev"
+          }
+        ],
+        "epss": [
+          {
+            "value": 0.05,
+            "source": "epss"
+          }
+        ],
+        "epss_percentile": [
+          {
+            "value": 0.8,
+            "source": "epss"
+          }
+        ],
+        "epss_date": [
+          {
+            "value": "2026-11-25",
+            "source": "epss"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "src": "ipv4:203.0.113.10",
+      "dst": "cve:CVE-2014-0160",
+      "relation": "has_vuln",
+      "module": "shodan_internetdb",
+      "confidence": 0.4
+    }
+  ],
+  "expect": {
+    "g08_cve_card": {
+      "min": 1,
+      "max": 1,
+      "severity": "info"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "fofa",
+  "hosts": [],
+  "sources": {},
+  "error_markers": [
+    {
+      "id": "fofa_points_exhausted",
+      "statuses": [200],
+      "json_path": "errmsg",
+      "equals": null,
+      "regex": "(?i)820031|f.?points?|f点|余额不足|insufficient|quota|limit",
+      "final_url_regex": null,
+      "maps_to": "quota",
+      "reason_code": "quota",
+      "reason": "FOFA: query budget (F-points) of the licence used up (errmsg inside HTTP 200): could not verify, deferred"
+    },
+    {
+      "id": "fofa_too_frequent",
+      "statuses": [200],
+      "json_path": "errmsg",
+      "equals": null,
+      "regex": "(?i)too (?:many|frequent)|频繁",
+      "final_url_regex": null,
+      "maps_to": "rate_limited",
+      "reason_code": "rate_limited",
+      "reason": "FOFA: requests too frequent (errmsg inside HTTP 200): could not verify now"
+    },
+    {
+      "id": "fofa_account_invalid",
+      "statuses": [200, 401, 403],
+      "json_path": "errmsg",
+      "equals": null,
+      "regex": "(?i)-700|account invalid|invalid key|key (?:is )?(?:invalid|error)|认证|账号",
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "FOFA: account or key refused (errmsg inside HTTP 200): the key 'fofa_key' is missing, invalid or its licence has no API access"
+    },
+    {
+      "id": "fofa_error_in_body",
+      "statuses": [200],
+      "json_path": "error",
+      "equals": true,
+      "regex": null,
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "FOFA: error:true inside HTTP 200: could not verify, never an empty answer"
+    }
+  ],
+  "notes": "Batch p3-G02-1 (module fofa, P049). FOFA reports errors inside HTTP 200 as {\"error\": true, \"errmsg\": \"[code] text\"} (official fofa-py client). The codes and wordings are UNVERIFIED (no paid key exists, P049 cond 6): F-points/quota words -> QUOTA, 'too frequent' -> RATE_LIMITED, account/key errors -> NEEDS_KEY (the module maps marker fofa_account_invalid to NEEDS_KEY), any other error:true -> ERROR. Never EMPTY."
+}

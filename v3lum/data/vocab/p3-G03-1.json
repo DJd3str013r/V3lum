@@ -1,0 +1,24 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p3-G03-1",
+  "title": "Public API exposure (Postman public search, APIs.guru), BuiltWith APIs and the PhishTank checkurl verdict (batch p3-G03-1: P069, P073, P075)",
+  "owner": "batch p3-G03-1 (public_api_exposure, builtwith, phishtank_checkurl)",
+  "notes": "Core names are reused where they fit: technologies, first_seen, last_seen, subdomains, analytics_shared_id, shared_tracking_ids; relations subdomain, same_analytics, copied_tracking_id, mentions; tags exposure, credential_exposure, phishing, malicious, historical, possible_clone, brand_abuse, suspicious, shared_tracking_id, context_only.",
+  "attributes": {
+    "public_api_locations": "public Postman workspaces, collections and requests tied to the organisation by request host or publisher [{location, entity_type, name, publisher_handle, publisher_name (team publishers only), publisher_verified, tied_by, matched_domain, request_host, request_url_redacted (every query value masked), exposed_kinds (names only), confidence}]: existence and location only, never bodies, headers or secret values (P069 cond 1, 4)",
+    "public_api_search": "Postman public search outcome {source, query, pages, hits, kept, discarded, discarded_by_reason, totals, partial, page_errors}: hits tied by name only are discarded (P069 cond 3, 5)",
+    "public_api_directory": "APIs.guru directory entries matching the domain [{key, provider, service, title, version, openapi_version, added, updated, age_days, spec_url, origin_urls_on_target, categories, matched_by, matched_domain, hosts}] (P069 cond 1; the directory has been frozen since 2023-04)",
+    "public_api_directory_info": "the local APIs.guru directory copy used for a match {dataset, sha256, fetched_at, entries, newest_update, metrics_num_apis, complete}",
+    "builtwith_groups": "BuiltWith Free API technology groups [{name, live, dead, latest, oldest, categories [{name, live, dead, latest, oldest}]}] with the first/last index dates (P073 cond 2)",
+    "builtwith_profile": "BuiltWith Domain API profile {endpoint, lookup, first_indexed, last_indexed, hosts, company {name, vertical, country, registrations}, pii_dropped}: personal Meta fields are never kept (NOPII=yes and HIDETEXT=yes on every call, P073 cond 3)",
+    "builtwith_identifiers": "BuiltWith Relationships API identifiers of the domain [{type, kind analytics|company_registration|tracker|infrastructure|sanction, value (IP and infrastructure values omitted), analytics_id, first, last, match_count, shared, label, pivots, clone_candidates, truncated}] under the P061 shared-id rules (P073 cond 5)",
+    "builtwith_budget": "BuiltWith credit/rate budget seen on the answer {limit_per_second, limit_concurrent, credits_available, credits_used, credits_remaining, local_used_today, local_daily_budget} (P073 cond 2, P334)",
+    "phishtank_verdict": "PhishTank checkurl answer {verdict phish|not_phish|unverified|not_in_database, in_database, phish_id, detail_page, verified, valid, verified_at, submitted_at, age_days, historical, consensus_votes, checked_at}: a finding only when verified AND valid; in_database alone is not a verdict (P075 cond 4)",
+    "phishtank_limits": "PhishTank per-IP request budget from the X-Request-Limit / X-Request-Limit-Interval / X-Request-Count headers {limit, interval_s, count, remaining} (P075 cond 5, P334)"
+  },
+  "tags": {},
+  "relations": {
+    "public_api_location": "domain or brand -> public Postman workspace, collection or request URL tied to it by request host or publisher (existence and location only; expand=False, P069)",
+    "api_spec_url": "domain -> OpenAPI/Swagger definition URL hosted on it and listed in the public APIs.guru directory (expand=False, P069)"
+  }
+}

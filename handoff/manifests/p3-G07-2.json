@@ -1,0 +1,247 @@
+{
+  "batch": "p3-G07-2",
+  "modules": [
+    {
+      "name": "triage",
+      "file": "v3lum/modules/malware_hash/hash_lookup_keyed.py",
+      "proposal": "P177",
+      "category": "malware_hash",
+      "opsec": "passive",
+      "default_enabled": false,
+      "terms": "noncommercial",
+      "provider_tier": "trusted",
+      "keys": [
+        "triage"
+      ],
+      "datasets": [],
+      "pivot_packs": [
+        "malware_hash:triage_hash (existing, manual_link)"
+      ],
+      "correlation_rules": [],
+      "new_vocabulary": [
+        "attribute triage_sandbox"
+      ],
+      "live_check": "keyed source (no company key): live test asserts NEEDS_KEY with zero requests; no live API call made"
+    },
+    {
+      "name": "metadefender",
+      "file": "v3lum/modules/malware_hash/hash_lookup_keyed.py",
+      "proposal": "P177",
+      "category": "malware_hash",
+      "opsec": "passive",
+      "default_enabled": false,
+      "terms": "noncommercial",
+      "provider_tier": "trusted",
+      "keys": [
+        "metadefender"
+      ],
+      "datasets": [],
+      "pivot_packs": [
+        "unverified_malware:metadefender_hash (existing, manual_link)"
+      ],
+      "correlation_rules": [],
+      "new_vocabulary": [
+        "attribute metadefender"
+      ],
+      "live_check": "keyed source (no company key): live test asserts NEEDS_KEY with zero requests; no live API call made"
+    },
+    {
+      "name": "malshare",
+      "file": "v3lum/modules/malware_hash/hash_lookup_keyed.py",
+      "proposal": "P177",
+      "category": "malware_hash",
+      "opsec": "passive",
+      "default_enabled": false,
+      "terms": "unknown",
+      "provider_tier": "community",
+      "keys": [
+        "malshare"
+      ],
+      "datasets": [],
+      "pivot_packs": [],
+      "correlation_rules": [],
+      "new_vocabulary": [
+        "attribute malshare"
+      ],
+      "live_check": "keyed source (no company key): live test asserts NEEDS_KEY with zero requests; no live API call made"
+    },
+    {
+      "name": "polyswarm",
+      "file": "v3lum/modules/malware_hash/hash_lookup_keyed.py",
+      "proposal": "P177",
+      "category": "malware_hash",
+      "opsec": "passive",
+      "default_enabled": false,
+      "terms": "unknown",
+      "provider_tier": "trusted",
+      "keys": [
+        "polyswarm"
+      ],
+      "datasets": [],
+      "pivot_packs": [],
+      "correlation_rules": [],
+      "new_vocabulary": [
+        "attribute polyswarm"
+      ],
+      "live_check": "keyed source (no company key): live test asserts NEEDS_KEY with zero requests; no live API call made"
+    },
+    {
+      "name": "virusshare",
+      "file": "v3lum/modules/malware_hash/hash_lookup_keyed.py",
+      "proposal": "P177",
+      "category": "malware_hash",
+      "opsec": "passive",
+      "default_enabled": false,
+      "terms": "unknown",
+      "provider_tier": "community",
+      "keys": [
+        "virusshare"
+      ],
+      "datasets": [],
+      "pivot_packs": [],
+      "correlation_rules": [],
+      "new_vocabulary": [
+        "attribute virusshare"
+      ],
+      "live_check": "keyed source (no company key): live test asserts NEEDS_KEY with zero requests; no live API call made"
+    },
+    {
+      "name": "filescan_reputation",
+      "file": "v3lum/modules/malware_hash/filescan_reputation.py",
+      "proposal": "P178",
+      "category": "malware_hash",
+      "opsec": "passive",
+      "default_enabled": false,
+      "terms": "unknown",
+      "provider_tier": "trusted",
+      "keys": [],
+      "datasets": [],
+      "pivot_packs": [
+        "unverified_malware:filescan_search (existing, manual_link)"
+      ],
+      "correlation_rules": [],
+      "new_vocabulary": [
+        "attribute filescan"
+      ],
+      "live_check": "2026-11-26 live (V3LUM_LIVE=1): corporate policy refuses it (licence, terms unknown) as designed; direct run EICAR sha256 -> ERROR 'Filescan response too large (> 2 MB): not parsed' (P178 FC3, 3.5 MB decoded answer); all-zero sha256 -> EMPTY (overall_verdict unknown inside HTTP 200); host www.filescan.io only, no key sent"
+    },
+    {
+      "name": "structural_hash_pivots",
+      "file": "v3lum/modules/malware_hash/structural_hash_pivots.py",
+      "proposal": "P351",
+      "category": "malware_hash",
+      "opsec": "passive",
+      "default_enabled": true,
+      "terms": "license",
+      "provider_tier": "trusted",
+      "keys": [
+        "abusech (optional_keys)"
+      ],
+      "datasets": [
+        "abusech_malwarebazaar_cscb.csv (local copy of the keyed CSCB export, read if present; not registered: keyed URL - backlog)",
+        "bundled v3lum/data/structural_hash_pivots/stoplist.json"
+      ],
+      "pivot_packs": [
+        "structural_hash_mb (new: MalwareBazaar browse search by imphash/tlsh/telfhash/gimphash/dhash_icon)"
+      ],
+      "correlation_rules": [
+        "p3g072_case_fuzzy_similarity"
+      ],
+      "new_vocabulary": [
+        "attribute structural_groups",
+        "attribute structural_common",
+        "attribute cscb_listing",
+        "tag hypothesis",
+        "tag common_value",
+        "tag malicious_signer"
+      ],
+      "live_check": "keyed (abuse.ch Auth-Key required for YARAify and MalwareBazaar, no company key): live test asserts NEEDS_KEY with zero requests; offline chain YARAify -> MalwareBazaar groups covered by unit tests"
+    }
+  ],
+  "proposals_not_done": [],
+  "core_requests": [
+    "Pivot tags: res.pivot(..., tags=['c2','hostile']) applied to the target node so the P376/GUARD-01 contact guard sees Triage config C2s, Triage dropper URLs and MalShare collection URLs as hostile (today: expand=False + 'hostile:' note + c2 tag on the hash finding).",
+    "Dataset manager keyed URL templates ({AUTH_KEY} substituted at download time, redacted) so the abuse.ch CSCB export (P351 FC3) and the MalwareBazaar full export (P351 FC5 '> 500 samples' counts) can be registered and refreshed by `v3lum data update`.",
+    "Provider extensions (v3lum.provider-ext/1) able to add keys, or one owner for the OPSWAT fragments: the keyed MetaDefender API needed its own fragment opswat_metadefender next to metadefender (p2-G14-3); likewise V3LUM_FILESCAN_KEY cannot be added to filescan.",
+    "abusech key env aliases V3LUM_ABUSECH_KEY and V3LUM_ABUSECH_AUTH_KEY in the core seed abusech.json (same request as p1-G07-1/p1-G07-2).",
+    "A wire-bytes (compressed-size) cap option in ctx.http, or an architect decision on P178 FC3: max_bytes counts decoded bytes, so popular hashes (EICAR: 3.5 MB decoded, 0.84 MB brotli) end ERROR 'response too large'.",
+    "A quota feedback hook so a module can report the provider's own remaining budget (MetaDefender X-RateLimit-*, MalShare getlimit) to the P334 quota book; and doctor/keys-wizard key tests (WP25) for MalShare getlimit and PolySwarm /v3/public/accounts."
+  ],
+  "files": [
+    "v3lum/modules/malware_hash/hash_lookup_keyed.py",
+    "v3lum/modules/malware_hash/filescan_reputation.py",
+    "v3lum/modules/malware_hash/structural_hash_pivots.py",
+    "v3lum/correlations/p3_g07_2.py",
+    "v3lum/data/providers/malshare.json",
+    "v3lum/data/providers/polyswarm.json",
+    "v3lum/data/providers/opswat_metadefender.json",
+    "v3lum/data/providers/triage__p3-G07-2.json",
+    "v3lum/data/providers/virusshare__p3-G07-2.json",
+    "v3lum/data/providers/filescan__p3-G07-2.json",
+    "v3lum/data/vocab/p3-G07-2.json",
+    "v3lum/data/pivot_links/structural_hash_mb.json",
+    "v3lum/data/structural_hash_pivots/stoplist.json",
+    "tests/modules/test_triage.py",
+    "tests/modules/test_metadefender.py",
+    "tests/modules/test_malshare.py",
+    "tests/modules/test_polyswarm.py",
+    "tests/modules/test_virusshare.py",
+    "tests/modules/test_hash_lookup_keyed.py",
+    "tests/modules/test_filescan_reputation.py",
+    "tests/modules/test_structural_hash_pivots.py",
+    "tests/live/test_p3_g07_2.py",
+    "tests/fixtures/acceptance/sha256/structural_hash_pivots.json",
+    "docs/backlog/p3-G07-2.md",
+    "tests/fixtures/filescan_reputation/malformed_400.http.json",
+    "tests/fixtures/filescan_reputation/not_found.json",
+    "tests/fixtures/filescan_reputation/ok.json",
+    "tests/fixtures/filescan_reputation/route_404.http.json",
+    "tests/fixtures/filescan_reputation/truncated_head.txt",
+    "tests/fixtures/malshare/details_ok_synthetic.json",
+    "tests/fixtures/malshare/nokey_400.http.json",
+    "tests/fixtures/malshare/not_found_404_synthetic.http.json",
+    "tests/fixtures/malshare/quota_429_synthetic.http.json",
+    "tests/fixtures/metadefender/blocked_cloudfront_403.http.json",
+    "tests/fixtures/metadefender/hash_no_threat_synthetic.json",
+    "tests/fixtures/metadefender/hash_ok_synthetic.json",
+    "tests/fixtures/metadefender/invalid_key_401_synthetic.http.json",
+    "tests/fixtures/metadefender/not_found_404_synthetic.http.json",
+    "tests/fixtures/metadefender/quota_429_synthetic.http.json",
+    "tests/fixtures/polyswarm/ambiguous_400_docs.http.json",
+    "tests/fixtures/polyswarm/not_found_404_synthetic.http.json",
+    "tests/fixtures/polyswarm/rate_limited_429_synthetic.http.json",
+    "tests/fixtures/polyswarm/search_hash_known_good_docs.json",
+    "tests/fixtures/polyswarm/search_hash_ok_synthetic.json",
+    "tests/fixtures/polyswarm/unauthorized_401_synthetic.http.json",
+    "tests/fixtures/rules/p3g072_case_fuzzy_similarity/negative_incomparable_digests.json",
+    "tests/fixtures/rules/p3g072_case_fuzzy_similarity/negative_same_file_hashes.json",
+    "tests/fixtures/rules/p3g072_case_fuzzy_similarity/positive_identical_ssdeep_attributes.json",
+    "tests/fixtures/rules/p3g072_case_fuzzy_similarity/positive_shared_ssdeep_node.json",
+    "tests/fixtures/structural_hash_pivots/cscb_api_docs.json",
+    "tests/fixtures/structural_hash_pivots/cscb_export_synthetic.csv",
+    "tests/fixtures/structural_hash_pivots/mb_illegal_imphash_docs.json",
+    "tests/fixtures/structural_hash_pivots/mb_imphash_generic_synthetic.json",
+    "tests/fixtures/structural_hash_pivots/mb_imphash_ok_synthetic.json",
+    "tests/fixtures/structural_hash_pivots/mb_issuerinfo_ok_synthetic.json",
+    "tests/fixtures/structural_hash_pivots/mb_no_results_docs.json",
+    "tests/fixtures/structural_hash_pivots/mb_subjectinfo_ok_synthetic.json",
+    "tests/fixtures/structural_hash_pivots/mb_tlsh_ok_synthetic.json",
+    "tests/fixtures/structural_hash_pivots/mb_unauthorized_401.http.json",
+    "tests/fixtures/structural_hash_pivots/yaraify_eicar.json",
+    "tests/fixtures/structural_hash_pivots/yaraify_no_results.json",
+    "tests/fixtures/structural_hash_pivots/yaraify_pe_synthetic.json",
+    "tests/fixtures/triage/nokey_401.http.json",
+    "tests/fixtures/triage/not_found_404_docs.http.json",
+    "tests/fixtures/triage/overview_mixed_synthetic.json",
+    "tests/fixtures/triage/overview_ok_docs.json",
+    "tests/fixtures/triage/rate_limited_429_synthetic.http.json",
+    "tests/fixtures/triage/search_empty_docs.json",
+    "tests/fixtures/triage/search_ok_docs.json",
+    "tests/fixtures/virusshare/file_docs_apk.json",
+    "tests/fixtures/virusshare/file_not_found_docs.json",
+    "tests/fixtures/virusshare/file_ok.json",
+    "tests/fixtures/virusshare/forbidden_403.http.json",
+    "tests/fixtures/virusshare/rate_limited_204.http.json"
+  ],
+  "notes": "P177: one module per provider in the council's order (triage, metadefender, then malshare, polyswarm, virusshare) in one source-family file, each with its own key, provider/source, terms, quota and tests; all default_enabled False. FC2 allow-lists (check_request/guard) run before every request and are unit-tested against 38 forbidden download/submission/delete endpoints from the providers' docs; usable_key() ignores empty/placeholder keys (FC4). Terms: triage/metadefender 'noncommercial' (free plans), malshare/polyswarm/virusshare 'unknown'; tiers trusted (Recorded Future, OPSWAT, PolySwarm) and community (MalShare, VirusShare). One vote per adapter via distinct upstream families; MetaDefender and Filescan share 'opswat' (P171). Providers: created malshare.json, polyswarm.json and opswat_metadefender.json (api.metadefender.com was unowned; 'metadefender' belongs to p2-G14-3 and extensions cannot add keys); extended triage (source triage_overview), virusshare (HTTP 204 rate-limit marker) and filescan (source filescan_reputation; www.filescan.io was already owned, so the council's 'opswat_filescan' id could not be created - backlog). FC6: only VirusShare's success fixture is real; Triage's are documented examples; MetaDefender/MalShare/PolySwarm are synthetic until a key holder captures one (backlog gate). Triage C2 pivots are communicates_with with expand=False and a hostile note (pivots cannot carry tags yet - core request); credentials, ransom notes, keys and file names from Triage configs are dropped. P178: keyless reputation lookup only, max_bytes 2 MB, truncated -> ERROR never parsed, res.raw = {verdict, tags, report_ids}; live EICAR answer is 3.5 MB decoded so it ends ERROR (architect decision in backlog). P351: accepts the P333 structural types plus md5/sha1/sha256 (YARAify values) and code_signing_cert (CSCB: local copy, else the documented keyed get_cscb query, high malicious-signer finding); MalwareBazaar get_imphash/get_tlsh/get_telfhash/get_gimphash/get_dhash_icon (limit 50) and get_issuerinfo/get_subjectinfo; similar_to pivots 0.3-0.6, expand=False, findings <= low tagged hypothesis; stoplist + >10 signatures + installer-stub rules; grouped headlines with top 10; licence gate via ctx.allowed_sources (MalwareBazaar 'license' off under corporate, YARAify open). FC6 case-level ssdeep similarity is the correlation rule p3g072_case_fuzzy_similarity (identical digests always, scored with the optional ppdeep extra; TLSH distance not implemented). No LIGHT/ACTIVE variants were asked. Removed unused prep fixtures (MalShare getlimit, VirusShare quick/source, CSCB legacy 410); CSCB doc fixture company names replaced by example names. Gates: batch module tests, rule fixtures, registry contract for the 7 modules, P327 lint (0 issues), ruff clean."
+}

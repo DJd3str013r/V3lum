@@ -1,0 +1,14 @@
+{
+ "_envelope": 1,
+ "_source": "live check 2026-11-26 from this datacenter egress: v3/profiles/sha256(test@example.com) (hashed locally)",
+ "status": 404,
+ "headers": {
+  "content-type": "application/json",
+  "x-ratelimit-limit": "100",
+  "x-ratelimit-remaining": "99",
+  "x-ratelimit-reset": "1795678661"
+ },
+ "body": {
+  "error": "Profile not found"
+ }
+}

@@ -1,0 +1,21 @@
+{
+ "_synthetic": "documented Hunter API v2 response shape (hunter.io/api-documentation/v2), filled with documentation values; P090-FC6 requires a trimmed real success fixture captured with the team key before merge (no addresses known for the domain)",
+ "data": {
+  "domain": "example.net",
+  "disposable": false,
+  "webmail": false,
+  "accept_all": false,
+  "pattern": null,
+  "organization": null,
+  "emails": [],
+  "linked_domains": []
+ },
+ "meta": {
+  "results": 0,
+  "limit": 10,
+  "offset": 0,
+  "params": {
+   "domain": "example.net"
+  }
+ }
+}

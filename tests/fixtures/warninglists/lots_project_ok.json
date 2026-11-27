@@ -1,0 +1,31 @@
+{
+ "name": "List of LOTS (Living Off Trusted Sites) Project Domains",
+ "type": "hostname",
+ "version": 20261014,
+ "description": "List of popular legitimate domains from LOTS (Living Off Trusted Sites) Project used to conduct phishing, C&C, exfiltration or downloading tools to evade detection",
+ "matching_attributes": [
+  "domain",
+  "domain|ip",
+  "hostname",
+  "hostname|port",
+  "url"
+ ],
+ "category": "known",
+ "list": [
+  ".appspot.com",
+  ".blob.core.windows.net",
+  ".blogspot.com",
+  ".duckdns.org",
+  ".firebaseapp.com",
+  ".github.io",
+  ".ngrok.io",
+  ".pages.dev",
+  ".sharepoint.com",
+  ".workers.dev",
+  "bit.ly",
+  "docs.google.com",
+  "drive.google.com",
+  "sites.google.com",
+  "storage.googleapis.com"
+ ]
+}

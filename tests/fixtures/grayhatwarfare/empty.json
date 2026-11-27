@@ -1,0 +1,10 @@
+{
+ "_synthetic": "GrayhatWarfare API v2 shape (field names from the public v2 docs and the v1 clients: bucket, fileCount, type, filename, fullPath, url, size, lastModified; meta.results), documentation values; P138-FC5 requires a trimmed real success fixture captured with the team key before merge (no match)",
+ "query": {
+  "keywords": "example-nomatch"
+ },
+ "meta": {
+  "results": 0
+ },
+ "files": []
+}

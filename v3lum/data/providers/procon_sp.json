@@ -1,0 +1,67 @@
+{
+  "schema": "v3lum.provider/1",
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "quota": null,
+  "error_markers": [
+    {
+      "id": "procon_sp_php_warning",
+      "statuses": [
+        200
+      ],
+      "json_path": null,
+      "equals": null,
+      "regex": "<b>\\s*(?:Warning|Fatal error|Notice|Parse error)\\s*</b>:",
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "Procon-SP: backend error inside HTTP 200 (PHP warning before the JSON list): could not verify"
+    }
+  ],
+  "keys": {},
+  "id": "procon_sp",
+  "name": "Procon-SP 'Evite estes sites' (fraudulent e-commerce sites)",
+  "operator": "Fundacao de Protecao e Defesa do Consumidor - Procon-SP (Governo do Estado de Sao Paulo)",
+  "hosts": [
+    "sistemas.procon.sp.gov.br"
+  ],
+  "tier": "trusted",
+  "tier_rationale": "State consumer-protection agency (A8 trusted: government bodies); P071 chair: 'CERT.PL and Procon-SP are trusted'.",
+  "reliability": {
+    "grade": "B",
+    "justification": "Official consumer-protection notice listing e-commerce sites after consumer complaints; the list backend was broken on 2026-11-26 (0 of 83 records)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept_language": "pt-BR",
+    "ttl": 86400,
+    "min_interval": 1.0
+  },
+  "sources": {
+    "evite_sites": {
+      "title": "Procon-SP 'Evite estes sites' list (jTable JSON: site, company, CNPJ/CPF, status, inclusion date)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://sistemas.procon.sp.gov.br/evitesite/list/evitesites.php",
+        "quote": "Per-feed terms: CERT.PL Hole (any use incl. commercial; trusted), Phishing.Database (MIT), StevenBlack (MIT), MetaMask eth-phishing-detect (permissive), spmedia (MIT), Botvrij, CyberCrime-Tracker and Procon-SP run with attribution. HaGeZi TIF and ScamSniffer are GPL-3.0 data: runtime download only, never bundled or used as fixtures (A6).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "procon-sp",
+      "sanitizer": null,
+      "dataset": "url_domain_blocklists.procon_sp.json",
+      "notes": "Quote: binding council text (P071 cond 2 and cond 5: optional with retry; when its backend errors the source emits its manual pivot link). GET .../evitesite.php?action=list&jtStartIndex=0&jtPageSize=1000 answers like the jTable POST (verified 2026-11-26: PHP warning + {'Result':'OK','TotalRecordCount':'83','Records':[]}). The dataset validator keeps only site, CNPJ (CPF masked, AR24; the name of a natural person is dropped), status and date before the copy is installed."
+    }
+  },
+  "notes": "Owned by batch p1-G03-1 (P071). Downloaded whole and matched locally (disclosure 'none'); CPF values are never stored unmasked and never looked up (rule 4)."
+}

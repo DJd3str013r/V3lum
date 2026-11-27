@@ -1,0 +1,24 @@
+{
+ "Status": 0,
+ "TC": false,
+ "RD": true,
+ "RA": true,
+ "AD": true,
+ "CD": false,
+ "Question": [
+  {
+   "name": "_dmarc.cloudflare.com.",
+   "type": 16
+  }
+ ],
+ "Answer": [
+  {
+   "name": "_dmarc.cloudflare.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "v=DMARC1; p=reject; sp=reject; adkim=r; aspf=r; pct=100; rua=mailto:0123456789abcdef0123456789abcdef@dmarc-reports.cloudflare.net,mailto:rua@cloudflare.com"
+  }
+ ],
+ "Comment": "Response from 2400:cb00:2049:1::a29f:606.",
+ "edns_client_subnet": "0.0.0.0/0"
+}

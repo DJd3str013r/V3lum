@@ -1,0 +1,42 @@
+{
+ "Results": [
+  {
+   "Lookup": "example.com",
+   "Result": {
+    "Paths": [
+     {
+      "Domain": "example.com",
+      "SubDomain": "",
+      "Technologies": [
+       {
+        "Name": "nginx",
+        "Id": 1515864597,
+        "confidence": 1,
+        "Tag": "Web Server",
+        "Categories": [
+         "Web Server"
+        ],
+        "FirstDetected": 1700000000000,
+        "LastDetected": 1760000000000,
+        "IsPremium": "No"
+       }
+      ]
+     }
+    ],
+    "Spend": 11390
+   },
+   "Meta": {
+    "PrimaryBusiness": "Travel & Tourism",
+    "company_reg": [
+     {
+      "type": "ABN",
+      "number": "23232322"
+     }
+    ],
+    "CompanyName": "Example Inc",
+    "Country": "US"
+   }
+  }
+ ],
+ "Errors": []
+}

@@ -1,0 +1,405 @@
+{
+ "retire-example": {
+  "licenses": [
+   "Apache-2.0 >=0"
+  ],
+  "extractors": {
+   "func": [
+    "retire.VERSION"
+   ],
+   "filename": [
+    "retire-example-(§§version§§)(.min)?\\.js"
+   ],
+   "filecontent": [
+    "/\\*!? Retire-example v(§§version§§)"
+   ],
+   "hashes": {
+    "07f8b94c8d601a24a1914a1a92bec0e4fafda964": "0.0.1"
+   }
+  },
+  "vulnerabilities": [
+   {
+    "below": "0.0.2",
+    "severity": "low",
+    "cwe": [
+     "CWE-477"
+    ],
+    "identifiers": {
+     "summary": "bug summary",
+     "CVE": [
+      "CVE-XXXX-XXXX"
+     ],
+     "bug": "1234"
+    },
+    "info": [
+     "http://github.com/eoftedal/retire.js/"
+    ]
+   }
+  ]
+ },
+ "jquery": {
+  "npmname": "jquery",
+  "licenses": [
+   "MIT >=0"
+  ],
+  "extractors": {
+   "func": [
+    "(window.jQuery || window.$ || window.$jq || window.$j).fn.jquery",
+    "require('jquery').fn.jquery"
+   ],
+   "uri": [
+    "/(§§version§§)/jquery(\\.min)?\\.js"
+   ],
+   "filename": [
+    "jquery-(§§version§§)(\\.min)?\\.js"
+   ],
+   "filecontent": [
+    "/\\*!? jQuery v(§§version§§)",
+    "\\* jQuery JavaScript Library v(§§version§§)",
+    "\\* jQuery (§§version§§) - New Wave Javascript",
+    "/\\*![\\s]+\\* jQuery JavaScript Library v(§§version§§)",
+    "// \\$Id: jquery.js,v (§§version§§)",
+    "/\\*! jQuery v(§§version§§)",
+    "[^a-z]f=\"(§§version§§)\",.*[^a-z]jquery:f,",
+    "[^a-z]m=\"(§§version§§)\",.*[^a-z]jquery:m,",
+    "[^a-z.]jquery:[ ]?\"(§§version§§)\"",
+    "\\$\\.documentElement,Q=e.jQuery,Z=e\\.\\$,ee=\\{\\},te=\\[\\],ne=\"(§§version§§)\"",
+    "=\"(§§version§§)\",.{50,300}(.)\\.fn=(\\2)\\.prototype=\\{jquery:"
+   ],
+   "filecontentreplace": [
+    "/var [a-z]=[a-z]\\.document,([a-z])=\"(§§version§§)\",([a-z])=.{130,160};\\3\\.fn=\\3\\.prototype=\\{jquery:\\1/$2/"
+   ],
+   "hashes": {}
+  },
+  "vulnerabilities": [
+   {
+    "below": "1.6.3",
+    "severity": "medium",
+    "cwe": [
+     "CWE-79"
+    ],
+    "identifiers": {
+     "summary": "XSS with location.hash",
+     "CVE": [
+      "CVE-2011-4969"
+     ],
+     "githubID": "GHSA-579v-mp3v-rrw5"
+    },
+    "info": [
+     "http://research.insecurelabs.org/jquery/test/"
+    ]
+   },
+   {
+    "below": "1.9.0b1",
+    "severity": "medium",
+    "cwe": [
+     "CWE-64",
+     "CWE-79"
+    ],
+    "identifiers": {
+     "summary": "Selector interpreted as HTML",
+     "CVE": [
+      "CVE-2012-6708"
+     ],
+     "bug": "11290",
+     "githubID": "GHSA-2pqj-h3vj-pqgw"
+    },
+    "info": [
+     "http://bugs.jquery.com/ticket/11290"
+    ]
+   },
+   {
+    "atOrAbove": "1.2.1",
+    "below": "1.9.0",
+    "severity": "medium",
+    "cwe": [
+     "CWE-79"
+    ],
+    "identifiers": {
+     "summary": "Versions of jQuery prior to 1.9.0 are vulnerable to Cross-Site Scripting (XSS). The load method fails to recognize and strip script tags containing whitespace in the closing tag (e.g. </script >), allowing enclosed script logic to execute and enabling attackers to run arbitrary JavaScript in a victim's browser.",
+     "CVE": [
+      "CVE-2020-7656"
+     ],
+     "githubID": "GHSA-q4m3-2j7h-f7xw"
+    },
+    "info": [
+     "https://github.com/advisories/GHSA-q4m3-2j7h-f7xw"
+    ]
+   },
+   {
+    "atOrAbove": "1.4.0",
+    "below": "1.12.0",
+    "severity": "medium",
+    "cwe": [
+     "CWE-79"
+    ],
+    "identifiers": {
+     "summary": "3rd party CORS request may execute",
+     "issue": "2432",
+     "CVE": [
+      "CVE-2015-9251"
+     ],
+     "githubID": "GHSA-rmxg-73gg-4p98"
+    },
+    "info": [
+     "http://blog.jquery.com/2016/01/08/jquery-2-2-and-1-12-released/"
+    ]
+   },
+   {
+    "atOrAbove": "1.8.0",
+    "below": "2.2.0",
+    "severity": "medium",
+    "cwe": [
+     "CWE-79"
+    ],
+    "identifiers": {
+     "summary": "parseHTML() executes scripts in event handlers",
+     "issue": "11974"
+    },
+    "info": [
+     "http://research.insecurelabs.org/jquery/test/"
+    ]
+   },
+   {
+    "below": "2.999.999",
+    "severity": "low",
+    "cwe": [
+     "CWE-1104"
+    ],
+    "identifiers": {
+     "summary": "jQuery 1.x and 2.x are End-of-Life and no longer receiving security updates",
+     "retid": "73",
+     "issue": "162"
+    },
+    "info": [
+     "https://github.com/jquery/jquery.com/issues/162"
+    ]
+   },
+   {
+    "atOrAbove": "1.12.3",
+    "below": "3.0.0-beta1",
+    "severity": "medium",
+    "cwe": [
+     "CWE-79"
+    ],
+    "identifiers": {
+     "summary": "3rd party CORS request may execute",
+     "issue": "2432",
+     "CVE": [
+      "CVE-2015-9251"
+     ],
+     "githubID": "GHSA-rmxg-73gg-4p98"
+    },
+    "info": [
+     "http://blog.jquery.com/2016/01/08/jquery-2-2-and-1-12-released/"
+    ]
+   },
+   {
+    "atOrAbove": "2.2.2",
+    "below": "3.0.0",
+    "severity": "medium",
+    "cwe": [
+     "CWE-79"
+    ],
+    "identifiers": {
+     "summary": "parseHTML() executes scripts in event handlers",
+     "issue": "11974"
+    },
+    "info": [
+     "http://research.insecurelabs.org/jquery/test/"
+    ]
+   },
+   {
+    "atOrAbove": "3.0.0-rc.1",
+    "below": "3.0.0",
+    "severity": "high",
+    "cwe": [
+     "CWE-400",
+     "CWE-674"
+    ],
+    "identifiers": {
+     "summary": "Denial of Service in jquery",
+     "CVE": [
+      "CVE-2016-10707"
+     ],
+     "githubID": "GHSA-mhpp-875w-9cpv"
+    },
+    "info": [
+     "https://nvd.nist.gov/vuln/detail/CVE-2016-10707"
+    ]
+   },
+   {
+    "atOrAbove": "1.1.4",
+    "below": "3.4.0",
+    "severity": "medium",
+    "cwe": [
+     "CWE-1321",
+     "CWE-79"
+    ],
+    "identifiers": {
+     "summary": "jQuery before 3.4.0, as used in Drupal, Backdrop CMS, and other products, mishandles jQuery.extend(true, {}, ...) because of Object.prototype pollution",
+     "CVE": [
+      "CVE-2019-11358"
+     ],
+     "PR": "4333",
+     "githubID": "GHSA-6c3j-c64m-qhgq"
+    },
+    "info": [
+     "https://blog.jquery.com/2019/04/10/jquery-3-4-0-released/"
+    ]
+   },
+   {
+    "atOrAbove": "1.0.3",
+    "below": "3.5.0",
+    "severity": "medium",
+    "cwe": [
+     "CWE-79"
+    ],
+    "identifiers": {
+     "summary": "passing HTML containing <option> elements from untrusted sources - even after sanitizing it - to one of jQuery's DOM manipulation methods (i.e. .html(), .append(), and others) may execute untrusted code.",
+     "CVE": [
+      "CVE-2020-11023"
+     ],
+     "issue": "4647",
+     "githubID": "GHSA-jpcq-cgw6-v4j6"
+    },
+    "info": [
+     "https://blog.jquery.com/2020/04/10/jquery-3-5-0-released/"
+    ]
+   },
+   {
+    "atOrAbove": "1.12.0",
+    "below": "3.5.0",
+    "severity": "medium",
+    "cwe": [
+     "CWE-79"
+    ],
+    "identifiers": {
+     "summary": "Regex in its jQuery.htmlPrefilter sometimes may introduce XSS",
+     "CVE": [
+      "CVE-2020-11022"
+     ],
+     "issue": "4642",
+     "githubID": "GHSA-gxr4-xjj5-5px2"
+    },
+    "info": [
+     "https://blog.jquery.com/2020/04/10/jquery-3-5-0-released/"
+    ]
+   }
+  ]
+ },
+ "lodash": {
+  "licenses": [
+   "MIT >=0"
+  ],
+  "extractors": {
+   "filecontent": [
+    "/\\*[\\s*!]+(?:@license)?[\\s*]+(?:Lo-Dash|lodash|Lodash) v?(§§version§§)[\\s\\S]{1,200}Build: `lodash modern -o",
+    "/\\*[\\s*!]+(?:@license)?[\\s*]+(?:Lo-Dash|lodash|Lodash) v?(§§version§§) <",
+    "/\\*[\\s*!]+(?:@license)?[\\s*]+(?:Lo-Dash|lodash|Lodash) v?(§§version§§) lodash.com/license",
+    "=\"(§§version§§)(?<=[0-9]{1,2}\\.[0-9]{1,2}\\.[0-9]{1,2})\"[\\s\\S]{1,300}__lodash_hash_undefined__",
+    "/\\*[\\s*]+@license[\\s*]+(?:Lo-Dash|lodhash|Lodash)[\\s\\S]{1,500}var VERSION *= *['\"](§§version§§)['\"]",
+    "var VERSION=\"(§§version§§)\";var BIND_FLAG=1,BIND_KEY_FLAG=2,CURRY_BOUND_FLAG=4,CURRY_FLAG=8"
+   ],
+   "uri": [
+    "/(§§version§§)/lodash(\\.min)?\\.js"
+   ]
+  },
+  "vulnerabilities": [
+   {
+    "below": "4.17.5",
+    "severity": "medium",
+    "cwe": [
+     "CWE-471",
+     "CWE-1321"
+    ],
+    "identifiers": {
+     "summary": "Prototype Pollution in lodash",
+     "CVE": [
+      "CVE-2018-3721"
+     ],
+     "githubID": "GHSA-fvqr-27wr-82fm"
+    },
+    "info": [
+     "https://github.com/advisories/GHSA-fvqr-27wr-82fm"
+    ]
+   },
+   {
+    "below": "4.17.11",
+    "severity": "high",
+    "cwe": [
+     "CWE-400"
+    ],
+    "identifiers": {
+     "summary": "Prototype Pollution in lodash",
+     "CVE": [
+      "CVE-2018-16487"
+     ],
+     "githubID": "GHSA-4xc9-xhrj-v574"
+    },
+    "info": [
+     "https://github.com/advisories/GHSA-4xc9-xhrj-v574"
+    ]
+   }
+  ]
+ },
+ "dojo": {
+  "licenses": [
+   "BSD-3-Clause >=2.0.0-alpha.5 <2.0.0-alpha1",
+   "(AFL-2.1 OR BSD-2-Clause) >=1.6.4 <1.7.11; >=1.9.1 <1.9.8; >=1.10.0 <1.10.5",
+   "(BSD-3-Clause OR AFL-2.1) >=1.7.11 <1.9.1; >=1.9.8 <1.10.0; >=1.10.5 <2.0.0-alpha.5"
+  ],
+  "extractors": {
+   "func": [
+    "dojo.version.toString()"
+   ],
+   "uri": [
+    "/(?:dojo-)?(§§version§§)(?:/dojo)?/dojo(\\.min)?\\.js"
+   ],
+   "filename": [
+    "dojo-(§§version§§)(\\.min)?\\.js"
+   ],
+   "filecontentreplace": [
+    "/dojo.version=\\{major:([0-9]+),minor:([0-9]+),patch:([0-9]+)/$1.$2.$3/",
+    "/\"dojox\"[\\s\\S]{1,350}\\.version=\\{major:([0-9]+),minor:([0-9]+),patch:([0-9]+)/$1.$2.$3/"
+   ],
+   "hashes": {
+    "73cdd262799aab850abbe694cd3bfb709ea23627": "1.4.1",
+    "c8c84eddc732c3cbf370764836a7712f3f873326": "1.4.0",
+    "d569ce9efb7edaedaec8ca9491aab0c656f7c8f0": "1.0.0",
+    "ad44e1770895b7fa84aff5a56a0f99b855a83769": "1.3.2",
+    "8fc10142a06966a8709cd9b8732f7b6db88d0c34": "1.3.1",
+    "a09b5851a0a3e9d81353745a4663741238ee1b84": "1.3.0",
+    "2ab48d45abe2f54cdda6ca32193b5ceb2b1bc25d": "1.2.3",
+    "12208a1e649402e362f528f6aae2c614fc697f8f": "1.2.0",
+    "72a6a9fbef9fa5a73cd47e49942199147f905206": "1.1.1"
+   }
+  },
+  "vulnerabilities": [
+   {
+    "below": "1.1.0",
+    "severity": "medium",
+    "cwe": [
+     "CWE-79"
+    ],
+    "identifiers": {
+     "summary": "Affected versions of dojo are susceptible to a cross-site scripting vulnerability in the dijit.Editor and textarea components, which execute their contents as Javascript, even when sanitized.",
+     "CVE": [
+      "CVE-2008-6681"
+     ],
+     "githubID": "GHSA-39cx-xcwj-3rc4"
+    },
+    "info": [
+     "http://www.cvedetails.com/cve/CVE-2008-6681/"
+    ]
+   }
+  ]
+ },
+ "_fixture": {
+  "source": "https://raw.githubusercontent.com/RetireJS/retire.js/master/repository/jsrepository-v4.json",
+  "fetched": "2026-11-26",
+  "original_bytes": 651449,
+  "original_libraries": 78,
+  "note": "4 libraries kept; ast extractors dropped (func kept: both need a JS runtime and are skipped, P344 c2); info lists trimmed to 1 URL; lodash/dojo vulnerabilities trimmed. Apache-2.0, RetireJS project."
+ }
+}

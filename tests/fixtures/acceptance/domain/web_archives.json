@@ -1,0 +1,71 @@
+{
+ "schema": "v3lum.acceptance_routes/1",
+ "module": "web_archives",
+ "routes": [
+  {
+   "method": "GET",
+   "url": "https://archive.org/wayback/available?url=example.com",
+   "status": 200,
+   "json": {
+    "url": "example.com",
+    "archived_snapshots": {
+     "closest": {
+      "status": "200",
+      "available": true,
+      "url": "http://web.archive.org/web/20261126034206/https://example.com/",
+      "timestamp": "20261126034206"
+     }
+    }
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 250
+  },
+  {
+   "method": "GET",
+   "url": "https://web.archive.org/cdx/search/cdx?url=example.com&matchType=domain&output=json&fl=original%2Ctimestamp%2Cstatuscode%2Cmimetype&collapse=urlkey&limit=5000&showResumeKey=true",
+   "status": 200,
+   "json": [
+    [
+     "original",
+     "timestamp",
+     "statuscode",
+     "mimetype"
+    ],
+    [
+     "http://example.com:80/",
+     "20020120142510",
+     "200",
+     "text/html"
+    ],
+    [
+     "http://www.example.com/",
+     "20020328012821",
+     "200",
+     "text/html"
+    ],
+    [
+     "https://example.com/",
+     "20261126034206",
+     "200",
+     "text/html"
+    ]
+   ],
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 2000
+  },
+  {
+   "method": "GET",
+   "url": "https://web.archive.org/web/20261126034206id_/https://example.com/",
+   "status": 200,
+   "text": "<HTML>\n<HEAD>\n  <TITLE>Example Web Page</TITLE>\n</HEAD> \n<body>  \n<p>You have reached this web page by typing &quot;example.com&quot;,\n&quot;example.net&quot;,\n  or &quot;example.org&quot; into your web browser.</p>\n<p>These domain names are reserved for use in documentation and are not available \n  for registration. See <a href=\"http://www.rfc-editor.org/rfc/rfc2606.txt\">RFC \n  2606</a>, Section 3.</p>\n</BODY>\n</HTML>\n\n",
+   "headers": {
+    "content-type": "text/html; charset=UTF-8"
+   },
+   "latency_ms": 600
+  }
+ ]
+}

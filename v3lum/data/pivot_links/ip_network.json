@@ -1,0 +1,260 @@
+{
+  "schema": "v3lum.pivot_pack/1",
+  "pack": "ip_network",
+  "title": "IP & ASN tools (verified templates)",
+  "notes": "Offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them; it renders them for the analyst (P311). Rendering follows A2: at TLP:AMBER and above every link is non-clickable text with 'opening sends <value> to <host>', at RED third-party links are hidden from reports and listed only by `v3lum links`; links are never auto-opened. Links in 'links' are rendered by the core (v3lum.core.links); entries in 'x_module_links' need a gate the frozen core link model does not carry (TLP ceiling, analyst-typed values only, public-value filter, vetted encoder) and are rendered by the pack's module through v3lum.modules.utility.pivot_gated_links. File order is the curated analyst-value order (cond 6). Verified links carry checked_at; pivot_gated_links.recheck_report() lists unverified links and links older than 180 days (cond 7, the data of `v3lum doctor --links`).",
+  "x_batch": "p2-G14-1",
+  "x_proposal": "P057",
+  "x_module": "pivots_ip_network",
+  "x_public_only": true,
+  "x_served_by": [
+    {
+      "ref": "tor_relays:exonerator",
+      "entry": "Tor ExoneraTor (P057 cond 8)",
+      "template": "https://metrics.torproject.org/exonerator.html?ip={ip}&lang=en",
+      "note": "C0136, verified 2026-11-26 (200; without a date the page pre-fills the IP and a default date). Three tor modules use it as manual_link: referenced, not duplicated."
+    }
+  ],
+  "links": [
+    {
+      "id": "bgphe_ip",
+      "label": "Hurricane Electric BGP Toolkit: IP (origin AS, prefix, peers, rDNS)",
+      "template": "https://bgp.he.net/ip/{q}",
+      "entity_types": [
+        "ipv4",
+        "ipv6"
+      ],
+      "category": "other",
+      "host": "bgp.he.net",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0129. Verified 2026-11-26 (/ip/8.8.8.8 and the encoded IPv6 form, 200). Manual only, never scraped: automation uses RIPEstat/Team Cymru (P057 cond 8).",
+      "x_group": "routing",
+      "x_public_only": true
+    },
+    {
+      "id": "bgphe_as",
+      "label": "Hurricane Electric BGP Toolkit: AS (prefixes, peers, IX, IRR)",
+      "template": "https://bgp.he.net/{q}",
+      "entity_types": [
+        "asn"
+      ],
+      "category": "other",
+      "host": "bgp.he.net",
+      "verified": true,
+      "checked_at": "2026-11-25",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0129. Verified 2026-11-25 ('AS15169 Google LLC - bgp.he.net', ~1.3 MB page). The normalised ASN value is 'AS<digits>', so {q} gives /AS15169 (the core {asn_num} placeholder is not encoded).",
+      "x_group": "routing",
+      "x_public_only": true
+    },
+    {
+      "id": "ipinfo_ip",
+      "label": "IPinfo: IP (geo, ASN, privacy flags, hosted domains sample)",
+      "template": "https://ipinfo.io/{q}",
+      "entity_types": [
+        "ipv4",
+        "ipv6"
+      ],
+      "category": "geo",
+      "host": "ipinfo.io",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0133. Verified 2026-11-26 (HTML page for browsers; API clients get JSON, never used here).",
+      "x_group": "network",
+      "x_public_only": true
+    },
+    {
+      "id": "ipinfo_asn",
+      "label": "IPinfo: ASN details",
+      "template": "https://ipinfo.io/{q}",
+      "entity_types": [
+        "asn"
+      ],
+      "category": "other",
+      "host": "ipinfo.io",
+      "verified": true,
+      "checked_at": "2026-11-25",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0133. Verified 2026-11-25 ('AS15169 Google LLC AS details | IPinfo'); API clients get 400 'API Access Token Required', browsers the page.",
+      "x_group": "routing",
+      "x_public_only": true
+    },
+    {
+      "id": "scamalytics",
+      "label": "Scamalytics: IP fraud score and proxy/VPN/datacenter flags",
+      "template": "https://scamalytics.com/ip/{q}",
+      "entity_types": [
+        "ipv4"
+      ],
+      "category": "reputation",
+      "host": "scamalytics.com",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0135. Verified 2026-11-26 (200, score server-rendered).",
+      "x_group": "reputation",
+      "x_public_only": true
+    },
+    {
+      "id": "cidr_report_as",
+      "label": "CIDR Report: AS report (announced prefixes, aggregation, adjacencies)",
+      "template": "https://www.cidr-report.org/cgi-bin/as-report?as={q}&view=2.0",
+      "entity_types": [
+        "asn"
+      ],
+      "category": "other",
+      "host": "www.cidr-report.org",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0137. Verified 2026-11-26 (200, ~400 KB).",
+      "x_group": "routing",
+      "x_public_only": true
+    },
+    {
+      "id": "myipms",
+      "label": "Myip.ms: IP WHOIS, hosting company, sites on the same IP (CAPTCHA after a few lookups)",
+      "template": "https://myip.ms/info/whois/{q}",
+      "entity_types": [
+        "ipv4"
+      ],
+      "category": "other",
+      "host": "myip.ms",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "C0140. Verified 2026-11-26 (200). Unknown tier: IP values only, 'unknown operator' badge, last (P057 cond 5-6, 8).",
+      "x_group": "hosting",
+      "x_public_only": true
+    }
+  ],
+  "x_module_links": [
+    {
+      "id": "bgphe_prefix",
+      "label": "Hurricane Electric BGP Toolkit: prefix",
+      "template": "https://bgp.he.net/net/{cidrp}",
+      "entity_types": [
+        "cidr"
+      ],
+      "category": "other",
+      "host": "bgp.he.net",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0129. Needs a literal '/': /net/8.8.8.0%2F24 answers 404, /net/8.8.8.0/24 answers 200 (verified 2026-11-26), so the vetted {cidrp} encoder renders it (address percent-encoded, '/', prefix length).",
+      "x_group": "routing"
+    },
+    {
+      "id": "criminalip",
+      "label": "Criminal IP: asset report (ports, vulnerabilities, abuse history)",
+      "template": "https://search.criminalip.io/asset/report/{q}",
+      "entity_types": [
+        "ipv4"
+      ],
+      "category": "reputation",
+      "host": "search.criminalip.io",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0132. Verified 2026-11-26 (9.9.9.9 full anonymous report; 8.8.8.8 and 1.1.1.1 are restricted from public display at the owner's request). Foreign provider (KR): listed only up to TLP:GREEN (P057 cond 10).",
+      "x_group": "scan_data",
+      "x_max_tlp": "green",
+      "x_badge": "foreign provider: queries are logged abroad - never paste internal host names"
+    },
+    {
+      "id": "fofa_ip",
+      "label": "FOFA: services seen on the IP",
+      "template": "https://en.fofa.info/result?qbase64={b64q}",
+      "entity_types": [
+        "ipv4"
+      ],
+      "category": "search",
+      "host": "en.fofa.info",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0131. Verified 2026-11-26 (ip=\"8.8.8.8\": result list visible, count masked). Vetted {b64q} placeholder (P057 cond 11). IPv6 is not declared: ip=\"<IPv6>\" answers 'No data for past year'.",
+      "x_group": "scan_data",
+      "x_max_tlp": "green",
+      "x_badge": "foreign provider: queries are logged abroad - never paste internal host names",
+      "x_b64q_expr": "ip=\"{q}\""
+    },
+    {
+      "id": "fofa_icon_hash",
+      "label": "FOFA: hosts serving the same favicon (icon_hash)",
+      "template": "https://en.fofa.info/result?qbase64={b64q}",
+      "entity_types": [
+        "favicon_hash"
+      ],
+      "category": "search",
+      "host": "en.fofa.info",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0131. Verified 2026-11-26 (72 KB results page echoing the hash). Rendered only for favicon_hash values (P057 cond 11).",
+      "x_group": "scan_data",
+      "x_max_tlp": "green",
+      "x_badge": "foreign provider: queries are logged abroad - never paste internal host names",
+      "x_b64q_expr": "icon_hash=\"{q}\""
+    }
+  ],
+  "x_excluded": [
+    {
+      "id": "fofa_cert",
+      "host": "en.fofa.info",
+      "reason": "cert=\"<fingerprint>\" answers in page '[824001] Keyword: cert requires Registered User and above' (2026-11-26): login_required, dropped by the P311 lint (P057 cond 11)"
+    },
+    {
+      "id": "bgphe_dns",
+      "host": "bgp.he.net",
+      "reason": "the /dns/<domain> page is not among the P057 cond 8 entries (IP, prefix and AS pages only)"
+    }
+  ]
+}

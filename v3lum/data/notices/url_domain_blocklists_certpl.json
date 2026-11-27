@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "url_domain_blocklists_certpl",
+  "source_url": "https://cert.pl/en/warning-list/",
+  "version": "hole.cert.pl/domains/v2/domains.csv (runtime download, refreshed by v3lum data update)",
+  "sha256": "",
+  "licence": "CERT Polska public warning list (any use incl. commercial, with attribution)",
+  "attribution": "Phishing domains from the CERT Polska warning list (Lista Ostrzezen przed niebezpiecznymi stronami), CERT Polska / NASK, https://cert.pl/en/warning-list/.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/url_web/url_domain_blocklists.py"
+  ]
+}

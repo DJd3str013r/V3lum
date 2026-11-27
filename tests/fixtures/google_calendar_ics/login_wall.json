@@ -1,0 +1,9 @@
+{
+ "_envelope": 1,
+ "_synthetic": "Google sign-in page served with 200 instead of the ICS (error-in-200 shape); not observed",
+ "status": 200,
+ "headers": {
+  "content-type": "text/html; charset=utf-8"
+ },
+ "body": "<!DOCTYPE html><html><head><title>Sign in - Google Accounts</title></head><body><form action=\"https://accounts.google.com/v3/signin/identifier\"></form></body></html>"
+}

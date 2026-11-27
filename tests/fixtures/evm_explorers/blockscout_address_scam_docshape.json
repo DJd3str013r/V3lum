@@ -1,0 +1,44 @@
+{
+ "block_number_balance_updated_at": 26494000,
+ "coin_balance": "1500000000000000000",
+ "creation_status": null,
+ "creation_transaction_hash": null,
+ "creator_address_hash": null,
+ "ens_domain_name": null,
+ "exchange_rate": "1685.58",
+ "has_beacon_chain_withdrawals": false,
+ "has_logs": false,
+ "has_token_transfers": true,
+ "has_tokens": false,
+ "has_validated_blocks": false,
+ "hash": "0x27b1fdb04752bbc536007a920d24acb045561c26",
+ "implementations": [],
+ "is_contract": false,
+ "is_scam": true,
+ "is_verified": false,
+ "metadata": {
+  "tags": [
+   {
+    "name": "Phish / Hack",
+    "slug": "phish-hack",
+    "tagType": "generic",
+    "ordinal": 0,
+    "meta": {}
+   }
+  ]
+ },
+ "name": null,
+ "private_tags": [],
+ "proxy_type": null,
+ "public_tags": [
+  {
+   "address_hash": "0x27b1fdb04752bbc536007a920d24acb045561c26",
+   "display_name": "Fake_Phishing123",
+   "label": "fake_phishing123"
+  }
+ ],
+ "reputation": "scam",
+ "token": null,
+ "watchlist_address_id": null,
+ "watchlist_names": []
+}

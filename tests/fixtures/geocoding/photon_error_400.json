@@ -1,0 +1,18 @@
+{
+ "_envelope": 1,
+ "_source": "GET https://photon.komoot.io/reverse?lat=999&lon=999 (2026-11-26T09:43:43Z, generic client UA, datacenter egress)",
+ "status": 400,
+ "headers": {
+  "server": "nginx",
+  "content-type": "application/json"
+ },
+ "body": {
+  "lat": [
+   {
+    "message": "Invalid value for 'lat' parameter.",
+    "args": {},
+    "value": 999.0
+   }
+  ]
+ }
+}

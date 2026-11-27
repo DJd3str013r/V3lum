@@ -1,0 +1,1 @@
+$s = [Text.Encoding]::UTF8.GetString([Convert]::FromBase64String('JGg9QHsnQXV0aG9yaXphdGlvbic9J0JlYXJlciBGQUtFLVRPS0VOLTAwMDAwMDAwMDAnfTsgSW52b2tlLVJlc3RNZXRob2QgLVVyaSAnaHR0cHM6Ly9hcGkuZXhhbXBsZS5jb20vdjEveD9hcGlfa2V5PUZBS0VLRVkxMjM0NTY3ODkwJyAtSGVhZGVycyAkaA=='))

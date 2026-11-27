@@ -1,0 +1,6 @@
+{
+  "schema": "v3lum.cisa_ioc_files/1",
+  "description": "Team-curated list of CISA advisory IOC attachments (STIX 2.1 JSON under https://www.cisa.gov/sites/default/files/...) for module cisa_advisories (P374 cond 3). Each entry {advisory_id, url, published} becomes the dataset cisa_advisories.ioc.<advisory id>. Empty on 2026-11-26: the advisories feed and pages answer an Akamai 'Access Denied' 403 to the research and batch egress, so no attachment URL could be discovered, and none is guessed. Add entries captured from the team network (P374 cond 1).",
+  "checked_at": "2026-11-26",
+  "files": []
+}

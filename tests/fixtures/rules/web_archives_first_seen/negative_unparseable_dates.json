@@ -1,0 +1,21 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "nodes": [
+    {
+      "key": "domain:example.com",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "created": [{"value": "not a date", "source": "rdap"}],
+        "archive_first": [{"value": "2002-01-20T14:25:10Z", "source": "web_archives"}]
+      }
+    },
+    {
+      "key": "ipv4:192.0.2.10",
+      "depth": 1,
+      "attributes": {"created": [{"value": "2020-01-01", "source": "x"}], "archive_first": [{"value": "2021-01-01", "source": "y"}]}
+    }
+  ],
+  "edges": []
+}

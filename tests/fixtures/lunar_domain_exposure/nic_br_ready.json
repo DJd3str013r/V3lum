@@ -1,0 +1,188 @@
+{
+ "_source": "live check 2026-11-26 from this datacenter egress: domain-exposure?domain=nic.br second request ~30 s after the first (report generated in ~5 s); masked user-name residue in login paths scrubbed",
+ "domain": "nic.br",
+ "periodFrom": "2025-11-01",
+ "periodTo": "2026-10-31",
+ "status": "REPORT_READY",
+ "report": {
+  "domain": "nic.br",
+  "generated_at": "2026-11-26T06:38:40.399711809",
+  "period": {
+   "from": "2025-11-01",
+   "to": "2026-10-31"
+  },
+  "summary": {
+   "total_events": 9324,
+   "infostealer_events": 746,
+   "data_breach_events": 8578,
+   "employee_events": 17,
+   "client_events": 9307,
+   "first_seen": "2025-11-04",
+   "last_seen": "2026-10-31"
+  },
+  "monthly_timeline": [
+   {
+    "month": "2026-08",
+    "total_events": 1915,
+    "infostealer_events": 29,
+    "data_breach_events": 1886,
+    "employee": {
+     "total_events": 13,
+     "infostealer_events": 0,
+     "data_breach_events": 13
+    }
+   },
+   {
+    "month": "2026-09",
+    "total_events": 1214,
+    "infostealer_events": 61,
+    "data_breach_events": 1153,
+    "employee": {
+     "total_events": 0,
+     "infostealer_events": 0,
+     "data_breach_events": 0
+    }
+   },
+   {
+    "month": "2026-10",
+    "total_events": 711,
+    "infostealer_events": 78,
+    "data_breach_events": 633,
+    "employee": {
+     "total_events": 2,
+     "infostealer_events": 0,
+     "data_breach_events": 2
+    }
+   }
+  ],
+  "infostealer_summary": {
+   "total_events": 746,
+   "employee_events": 0,
+   "client_events": 746,
+   "malware_families_observed": 10,
+   "events_with_os_context": 384,
+   "first_seen": "2025-11-04",
+   "last_seen": "2026-10-31"
+  },
+  "malware_family_breakdown": [
+   {
+    "family": "Acreed",
+    "events": 105,
+    "employee_events": 0,
+    "client_events": 105,
+    "share_of_infostealer_events_percent": 14.1,
+    "first_seen": "2025-11-25",
+    "last_seen": "2026-10-28"
+   },
+   {
+    "family": "LummaC2",
+    "events": 92,
+    "employee_events": 0,
+    "client_events": 92,
+    "share_of_infostealer_events_percent": 12.3,
+    "first_seen": "2025-11-08",
+    "last_seen": "2026-10-28"
+   },
+   {
+    "family": "Vidar",
+    "events": 62,
+    "employee_events": 0,
+    "client_events": 62,
+    "share_of_infostealer_events_percent": 8.3,
+    "first_seen": "2025-11-05",
+    "last_seen": "2026-10-25"
+   }
+  ],
+  "os_breakdown": [
+   {
+    "os_family": "Windows 11",
+    "infostealer_events": 80,
+    "employee_events": 0,
+    "client_events": 80,
+    "share_of_infostealer_events_percent": 10.7
+   },
+   {
+    "os_family": "Windows 10",
+    "infostealer_events": 45,
+    "employee_events": 0,
+    "client_events": 45,
+    "share_of_infostealer_events_percent": 6
+   }
+  ],
+  "data_breach_summary": {
+   "total_events": 8578,
+   "employee_events": 17,
+   "client_events": 8561,
+   "known_breach_sources_count": 7,
+   "events_from_known_breach_sources": 18,
+   "events_from_combolist_sources": 8560,
+   "first_seen": "2025-11-19",
+   "last_seen": "2026-10-31"
+  },
+  "antivirus_breakdown": [
+   {
+    "antivirus": "Windows Defender",
+    "events": 22,
+    "employee_events": 0,
+    "client_events": 22,
+    "share_of_infostealer_events_percent": 2.9
+   },
+   {
+    "antivirus": "Malwarebytes",
+    "events": 14,
+    "employee_events": 0,
+    "client_events": 14,
+    "share_of_infostealer_events_percent": 1.9
+   }
+  ],
+  "service_classification_breakdown": [],
+  "top_login_urls": [
+   {
+    "url": "cursoseventos.nic.br",
+    "events": 2225,
+    "employee_events": 0,
+    "client_events": 2225
+   },
+   {
+    "url": "https://cursoseventos.nic.br",
+    "events": 1203,
+    "employee_events": 0,
+    "client_events": 1203
+   },
+   {
+    "url": "https://cursoseventos.nic.br/cadastro/",
+    "events": 766,
+    "employee_events": 0,
+    "client_events": 766
+   },
+   {
+    "url": "cursoseventos.nic.br/cadastro/",
+    "events": 626,
+    "employee_events": 0,
+    "client_events": 626
+   },
+   {
+    "url": "https://cursoseventos.nic.br/users/****",
+    "events": 598,
+    "employee_events": 0,
+    "client_events": 598
+   },
+   {
+    "url": "cursoseventos.nic.br/users/****",
+    "events": 540,
+    "employee_events": 0,
+    "client_events": 540
+   }
+  ],
+  "country_breakdown": [
+   {
+    "country": "Brazil",
+    "events": 359
+   },
+   {
+    "country": "United States",
+    "events": 14
+   }
+  ]
+ }
+}

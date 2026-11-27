@@ -1,0 +1,118 @@
+{
+ "ip_str": "8.8.8.8",
+ "ip": 134744072,
+ "asn": "AS15169",
+ "org": "Google LLC",
+ "isp": "Google LLC",
+ "os": null,
+ "hostnames": [
+  "dns.google"
+ ],
+ "domains": [
+  "dns.google"
+ ],
+ "ports": [
+  443,
+  53
+ ],
+ "tags": [
+  "pqc"
+ ],
+ "last_update": "2026-11-25T15:26:44.605151",
+ "country_code": "US",
+ "country_name": "United States",
+ "city": "Mountain View",
+ "data": [
+  {
+   "port": 53,
+   "transport": "tcp",
+   "timestamp": "2026-11-25T15:17:28.438351",
+   "hostnames": [
+    "dns.google"
+   ],
+   "domains": [
+    "dns.google"
+   ],
+   "_shodan": {
+    "module": "dns-tcp"
+   },
+   "dns": {
+    "recursive": true,
+    "software": null
+   }
+  },
+  {
+   "port": 53,
+   "transport": "udp",
+   "timestamp": "2026-11-25T15:26:44.605151",
+   "hostnames": [
+    "dns.google"
+   ],
+   "domains": [
+    "dns.google"
+   ],
+   "_shodan": {
+    "module": "dns-udp"
+   },
+   "dns": {
+    "recursive": true,
+    "software": null
+   }
+  },
+  {
+   "port": 443,
+   "transport": "tcp",
+   "timestamp": "2026-11-25T14:33:34.575936",
+   "hostnames": [
+    "dns.google"
+   ],
+   "domains": [
+    "dns.google"
+   ],
+   "_shodan": {
+    "module": "https"
+   },
+   "http": {
+    "title": "Google Public DNS",
+    "server": "scaffolding on HTTPServer2",
+    "status": 200,
+    "host": "dns.google",
+    "favicon": {
+     "hash": 56641965,
+     "location": "https://dns.google:443/static/93dd5954/favicon.png"
+    }
+   },
+   "ssl": {
+    "cert": {
+     "fingerprint": {
+      "sha256": "eae0983719c088effaf76aeb59a9a5ec8c947f2f7024681576d5414fea79142f",
+      "sha1": "97bc39c77fd8149006acee7b81a7423ac41507bf"
+     },
+     "subject": {
+      "CN": "dns.google"
+     },
+     "issuer": {
+      "C": "US",
+      "CN": "WR2",
+      "O": "Google Trust Services"
+     },
+     "issued": "20261103082933Z",
+     "expires": "20270126082932Z",
+     "expired": false,
+     "serial": 247997551634336095500192026829065483960
+    },
+    "jarm": "29d3fd00029d29d00042d43d00041d8f924f5255cbc229bc55efa16391dad6",
+    "ja3s": "66e33336e3e99f75410126f42d44cc81",
+    "versions": [
+     "-SSLv2",
+     "-SSLv3",
+     "-TLSv1",
+     "-TLSv1.1",
+     "TLSv1.2",
+     "TLSv1.3"
+    ]
+   }
+  }
+ ],
+ "_observation": "Recorded 2026-11-25: /shodan/host/8.8.8.8 answered 200 WITHOUT a key (demo IP) while /api-info answered 401. Never relied on: P039 FC7 asserts NEEDS_KEY without a key."
+}

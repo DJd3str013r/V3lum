@@ -1,0 +1,26 @@
+{
+ "_fixture": "live POST https://safebrowsing.googleapis.com/v4/threatMatches:find?key=<invalid-placeholder> -> HTTP 400 (2026-11-26T06:46:04Z)",
+ "status": 400,
+ "body": {
+  "error": {
+   "code": 400,
+   "message": "API key not valid. Please pass a valid API key.",
+   "status": "INVALID_ARGUMENT",
+   "details": [
+    {
+     "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+     "reason": "API_KEY_INVALID",
+     "domain": "googleapis.com",
+     "metadata": {
+      "service": "safebrowsing.googleapis.com"
+     }
+    },
+    {
+     "@type": "type.googleapis.com/google.rpc.LocalizedMessage",
+     "locale": "en-US",
+     "message": "API key not valid. Please pass a valid API key."
+    }
+   ]
+  }
+ }
+}

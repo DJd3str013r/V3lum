@@ -1,0 +1,12 @@
+{
+ "status": 404,
+ "headers": {
+  "content-type": "application/json; charset=utf-8",
+  "age": "14117",
+  "cache-control": "max-age=0, public",
+  "server": "cloudflare",
+  "x-vercel-cache": "HIT",
+  "cf-cache-status": "DYNAMIC"
+ },
+ "body": "{\"name\":\"CepPromiseError\",\"message\":\"Todos os serviços de CEP retornaram erro.\",\"type\":\"service_error\",\"errors\":[{\"name\":\"ServiceError\",\"message\":\"Não foi possível interpretar o XML de resposta.\",\"service\":\"correios\"},{\"name\":\"ServiceError\",\"message\":\"Erro ao se conectar com o serviço ViaCEP.\",\"service\":\"viacep\"},{\"name\":\"ServiceError\",\"message\":\"Erro ao se conectar com o serviço WideNet.\",\"service\":\"widenet\"},{\"name\":\"ServiceError\",\"message\":\"CEP não encontrado na base dos Correios.\",\"service\":\"correios-alt\"}]}"
+}

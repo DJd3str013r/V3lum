@@ -1,0 +1,77 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "bluesky",
+  "name": "Bluesky AppView public API and PLC directory",
+  "operator": "Bluesky Social, PBC",
+  "hosts": [
+    "public.api.bsky.app",
+    "plc.directory"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Bluesky Social, PBC: an established company with published terms of service, developer guidelines and a privacy policy, operating the public AppView and the PLC directory (A8 trusted). Council P099 cond 2: registry provider bluesky, tier trusted.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Authoritative for the account records it serves (DID, handle, PLC operations); handles, display names and bios are self-asserted, and a custom-domain handle is verified only when the AppView, resolveHandle and DNS agree."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "ttl": 86400,
+    "min_interval": 0.5,
+    "concurrency": 2
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "rate_per_second": 10.0,
+    "burst": 1,
+    "published": true,
+    "evidence_url": "https://docs.bsky.app/docs/advanced-guides/rate-limits",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "appview": {
+      "title": "Bluesky AppView XRPC app.bsky.actor.getProfile, com.atproto.identity.resolveHandle and app.bsky.actor.searchActors (keyless)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://docs.bsky.app/docs/support/developer-guidelines",
+        "quote": "Registry provider bluesky (Bluesky PBC): tier trusted, terms open (developer guidelines checked 2026-11-26: read-only lookups allowed).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "bluesky",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P099 cond 2); research C0231 (verified_live 200). HTTP 400 {'error':'InvalidRequest','message':'Profile not found'} = absent (getProfile) and 'Unable to resolve handle' = no account claims the domain (resolveHandle); any other 400 = invalid identifier (SKIPPED not_applicable). Documented AppView limit about 3000 requests per 5 minutes per IP (rate_per_second 10 at an 80% margin); no rate-limit headers were seen on 200/400 answers (2026-11-26). getAuthorFeed, .well-known/atproto-did and did:web documents are never fetched (P099 cond 1/6). Usernames are PERSONAL_TYPES: personal_data_review before default use (A3 BR8)."
+    },
+    "plc_audit": {
+      "title": "PLC directory audit log plc.directory/{did:plc}/log/audit (handle and PDS history of a DID)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://web.plc.directory/",
+        "quote": "Registry provider bluesky (Bluesky PBC): tier trusted, terms open (developer guidelines checked 2026-11-26: read-only lookups allowed).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "bluesky",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P099 cond 2); research C0243 (verified_live 200). Only syntactically valid did:plc DIDs are sent (did:web is never resolved, P099 cond 6); 404 'DID not registered' = no PLC record. The log is capped at 200 entries and kept only as (handle, PDS endpoint, date) tuples (P099 cond 7): signatures, rotation keys and verification methods are dropped."
+    }
+  },
+  "notes": "Owned by batch p2-G05-1 (module bluesky, P099). The Bluesky image CDN cdn.bsky.app belongs to provider bsky_app (batch p2-G05-2, P114). Cache: profiles and handle resolutions 6 h at module level (handles can be transferred; checked_at is recorded), PLC audit logs 24 h. personal_data_review is still to be recorded (usernames and bsky handles are PERSONAL_TYPES, A3 BR8)."
+}

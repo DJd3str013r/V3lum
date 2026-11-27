@@ -1,0 +1,276 @@
+{
+  "schema": "v3lum.pivot_pack/1",
+  "pack": "unverified_reputation",
+  "title": "Reputation pages behind challenges or SPAs (P304)",
+  "notes": "P304 (batch p2-G14-3): pages that curl cannot verify (SPA or anti-bot). V3LUM never requests these URLs, not even from doctor, and never solves their challenges (P304 cond 1). verified stays false until a team member opens the link in a browser: then verified=true, checked_at=<date>, x_verification='browser', x_checked_by=<name> and the label marker '(browser)' (P304 cond 6); 'curl' never appears here. x_module_links are rendered by the module pivots_unverified (module-side placeholders url_sha256, url_path, cve_num, hunter_q, and the per-link x_max_tlp the frozen schema lacks).",
+  "links": [
+    {
+      "id": "abuseipdb_check_domain",
+      "label": "AbuseIPDB check (domain) (may show a challenge)",
+      "template": "https://www.abuseipdb.com/check/{domain}",
+      "entity_types": [
+        "domain"
+      ],
+      "category": "reputation",
+      "host": "www.abuseipdb.com",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "IP checks are threat_intel_g07_p2:abuseipdb_check_ip.",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0393"
+    },
+    {
+      "id": "otx_domain",
+      "label": "OTX indicator (domain) (may show a challenge)",
+      "template": "https://otx.alienvault.com/indicator/domain/{domain}",
+      "entity_types": [
+        "domain"
+      ],
+      "category": "reputation",
+      "host": "otx.alienvault.com",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "SPA shell; IP/file/CVE indicator pages are threat_intel_g07 links.",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0395"
+    },
+    {
+      "id": "otx_url",
+      "label": "OTX indicator (URL) (may show a challenge)",
+      "template": "https://otx.alienvault.com/indicator/url/{q}",
+      "entity_types": [
+        "url"
+      ],
+      "category": "reputation",
+      "host": "otx.alienvault.com",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0395"
+    },
+    {
+      "id": "talos_lookup",
+      "label": "Cisco Talos reputation (may show a challenge)",
+      "template": "https://talosintelligence.com/reputation_center/lookup?search={qp}",
+      "entity_types": [
+        "ipv4",
+        "domain"
+      ],
+      "category": "reputation",
+      "host": "talosintelligence.com",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0394"
+    },
+    {
+      "id": "malwarebazaar_sample",
+      "label": "MalwareBazaar sample page (may show a challenge)",
+      "template": "https://bazaar.abuse.ch/sample/{q}/",
+      "entity_types": [
+        "sha256"
+      ],
+      "category": "reputation",
+      "host": "bazaar.abuse.ch",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "abuse.ch answers scripts with a /verify-ua/ browser check.",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0392"
+    },
+    {
+      "id": "urlhaus_host",
+      "label": "URLhaus host page (may show a challenge)",
+      "template": "https://urlhaus.abuse.ch/host/{q}/",
+      "entity_types": [
+        "domain",
+        "ipv4"
+      ],
+      "category": "reputation",
+      "host": "urlhaus.abuse.ch",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "abuse.ch answers scripts with a /verify-ua/ browser check.",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0392"
+    },
+    {
+      "id": "xforce_ip",
+      "label": "IBM X-Force Exchange (IP) (may show a challenge)",
+      "template": "https://exchange.xforce.ibmcloud.com/ip/{ip}",
+      "entity_types": [
+        "ipv4",
+        "ipv6"
+      ],
+      "category": "reputation",
+      "host": "exchange.xforce.ibmcloud.com",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0400"
+    },
+    {
+      "id": "xforce_url",
+      "label": "IBM X-Force Exchange (URL or domain) (may show a challenge)",
+      "template": "https://exchange.xforce.ibmcloud.com/url/{q}",
+      "entity_types": [
+        "domain",
+        "url"
+      ],
+      "category": "reputation",
+      "host": "exchange.xforce.ibmcloud.com",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0400"
+    },
+    {
+      "id": "xforce_malware",
+      "label": "IBM X-Force Exchange (malware hash) (may show a challenge)",
+      "template": "https://exchange.xforce.ibmcloud.com/malware/{q}",
+      "entity_types": [
+        "md5",
+        "sha256"
+      ],
+      "category": "reputation",
+      "host": "exchange.xforce.ibmcloud.com",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0400"
+    },
+    {
+      "id": "spamhaus_check",
+      "label": "Spamhaus reputation checker (may show a challenge)",
+      "template": "https://check.spamhaus.org/results/?query={qp}",
+      "entity_types": [
+        "ipv4",
+        "domain"
+      ],
+      "category": "reputation",
+      "host": "check.spamhaus.org",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0405"
+    }
+  ],
+  "x_module_links": [
+    {
+      "id": "virustotal_url",
+      "label": "VirusTotal URL report (may show a challenge)",
+      "template": "https://www.virustotal.com/gui/url/{url_sha256}",
+      "entity_types": [
+        "url"
+      ],
+      "category": "reputation",
+      "host": "www.virustotal.com",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "{url_sha256} = SHA-256 of the canonical URL (lower-case scheme and host, '/' for an empty path, fragment dropped); VirusTotal's own canonical form is undocumented, so a mismatch reads 'not found' (browser check). Report page only, never upload or rescan (P304 cond 7-8). File/domain/IP pages are threat_intel_g07_p2 links.",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0391",
+      "x_max_tlp": null,
+      "x_badge": null
+    },
+    {
+      "id": "kaspersky_opentip",
+      "label": "Kaspersky OpenTIP lookup (may show a challenge)",
+      "template": "https://opentip.kaspersky.com/{q}/results?tab=lookup",
+      "entity_types": [
+        "ipv4",
+        "domain",
+        "url",
+        "md5",
+        "sha256"
+      ],
+      "category": "reputation",
+      "host": "opentip.kaspersky.com",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "P304 cond 10: listed only at TLP:CLEAR (x_max_tlp=clear) with the vendor-policy badge.",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0404",
+      "x_max_tlp": "clear",
+      "x_badge": "foreign provider (RU) - check the company vendor policy"
+    }
+  ]
+}

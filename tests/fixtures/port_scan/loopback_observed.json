@@ -1,0 +1,31 @@
+{
+ "_provenance": {
+  "origin": "loopback",
+  "host": "127.0.0.1",
+  "python": "3.13.18",
+  "platform": "linux",
+  "observed_utc": "2026-11-26T11:31:04Z"
+ },
+ "outcomes": [
+  {
+   "result": "connected",
+   "rtt_ms": 0.936,
+   "banner_hex": "5353482d322e302d4f70656e5353485f392e367031205562756e74752d337562756e747531332e350d0a",
+   "banner_bytes": 42,
+   "role": "open_banner"
+  },
+  {
+   "result": "connected",
+   "rtt_ms": 0.692,
+   "banner_hex": "",
+   "banner_bytes": 0,
+   "role": "open_silent"
+  },
+  {
+   "result": "refused",
+   "errno": "ECONNREFUSED",
+   "rtt_ms": 0.473,
+   "role": "closed"
+  }
+ ]
+}

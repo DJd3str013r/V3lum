@@ -1,0 +1,40 @@
+{
+ "_fixture": "DOC-SHAPED: /users/{ids}/associated network_user layout (API docs); documentation values",
+ "items": [
+  {
+   "badge_counts": {
+    "bronze": 1,
+    "silver": 0,
+    "gold": 0
+   },
+   "question_count": 1,
+   "answer_count": 2,
+   "last_access_date": 1795600000,
+   "creation_date": 1420070400,
+   "account_id": 200000001,
+   "reputation": 101,
+   "user_id": 100000001,
+   "site_url": "https://stackoverflow.com",
+   "site_name": "Stack Overflow"
+  },
+  {
+   "badge_counts": {
+    "bronze": 0,
+    "silver": 0,
+    "gold": 0
+   },
+   "question_count": 0,
+   "answer_count": 1,
+   "last_access_date": 1795000000,
+   "creation_date": 1388534400,
+   "account_id": 200000001,
+   "reputation": 11,
+   "user_id": 3000001,
+   "site_url": "https://security.stackexchange.com",
+   "site_name": "Information Security"
+  }
+ ],
+ "has_more": false,
+ "quota_max": 300,
+ "quota_remaining": 118
+}

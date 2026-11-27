@@ -1,0 +1,97 @@
+{
+ "category": "tool",
+ "name": "Malpedia",
+ "source": "Malpedia",
+ "type": "malpedia",
+ "uuid": "1d1c9af9-37fa-4deb-a928-f9b0abc7354a",
+ "version": 25472,
+ "description": "Malware galaxy cluster based on Malpedia.",
+ "values": [
+  {
+   "value": "Grandoreiro",
+   "uuid": "c62219e2-74a3-49c2-a33d-0789b820c467",
+   "meta": {
+    "synonyms": [],
+    "refs": [
+     "https://malpedia.caad.fkie.fraunhofer.de/details/win.grandoreiro"
+    ],
+    "type": []
+   }
+  },
+  {
+   "value": "Mekotio",
+   "uuid": "bfebb298-66e3-4250-82e8-910b7dd8618c",
+   "meta": {
+    "synonyms": [],
+    "refs": [
+     "https://malpedia.caad.fkie.fraunhofer.de/details/win.mekotio"
+    ],
+    "type": []
+   }
+  },
+  {
+   "value": "Metamorfo",
+   "uuid": "18dc3e7a-600d-4e5f-a283-86156b938530",
+   "meta": {
+    "synonyms": [
+     "Casbaneiro"
+    ],
+    "refs": [
+     "https://malpedia.caad.fkie.fraunhofer.de/details/win.metamorfo"
+    ],
+    "type": []
+   }
+  },
+  {
+   "value": "Astaroth",
+   "uuid": "0cdb83dd-106b-458e-8d04-ca864281e06e",
+   "meta": {
+    "synonyms": [
+     "Guildma"
+    ],
+    "refs": [
+     "https://malpedia.caad.fkie.fraunhofer.de/details/win.astaroth"
+    ],
+    "type": []
+   }
+  },
+  {
+   "value": "Mispadu",
+   "uuid": "ffc9ffcc-24f4-4e60-ab02-a75b007359fa",
+   "meta": {
+    "synonyms": [
+     "URSA"
+    ],
+    "refs": [
+     "https://malpedia.caad.fkie.fraunhofer.de/details/win.mispadu"
+    ],
+    "type": []
+   }
+  },
+  {
+   "value": "Carbanak",
+   "uuid": "8c246ec4-eaa5-42c0-b137-29f28cbb6832",
+   "meta": {
+    "synonyms": [
+     "Anunak",
+     "Sekur RAT"
+    ],
+    "refs": [
+     "https://malpedia.caad.fkie.fraunhofer.de/details/win.carbanak"
+    ],
+    "type": []
+   }
+  },
+  {
+   "value": "BlueNoroff",
+   "uuid": "862e9c13-dde6-473e-a816-a7d7043bf73c",
+   "meta": {
+    "synonyms": [],
+    "refs": [
+     "https://malpedia.caad.fkie.fraunhofer.de/details/win.bluenoroff"
+    ],
+    "type": []
+   }
+  }
+ ]
+}

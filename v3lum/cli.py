@@ -297,7 +297,7 @@ def make_app(args: argparse.Namespace, console: Any) -> Any:
 
 def _show_case_and_follow_up(app: Any, data: dict[str, Any], req: Any, *, full: bool = False) -> None:
     """Render the case, then offer the AR07 pick of personal identifiers found in text (TTY)."""
-    app.show_case(data, full=full)
+    app.show_case(data, full=full, show_personal=bool(getattr(req, "show_personal", False)))
     follow = app.follow_up_personal(data, req)
     if follow is not None:
         app.show_case(app.scan(follow), full=full)
@@ -459,7 +459,7 @@ def _extract(args: argparse.Namespace, app: Any, console: Any) -> int:
     terminal by default (P172 cond 11); ``--scan`` investigates them as the pivots of ONE text_blob
     seed, so they keep their text provenance (passive only, personal values listed for selection)."""
     from v3lum.app import ScanRequest, UserError
-    from v3lum.core import sanitize
+    from v3lum.core import ioc
     from v3lum.core.entities import defang
     from v3lum.core.models import Opsec
 
@@ -473,7 +473,7 @@ def _extract(args: argparse.Namespace, app: Any, console: Any) -> int:
     if getattr(args, "json", False):
         app.machine = True
     hits: list[dict[str, str]] = []
-    clean = sanitize.scrub_text(text, hits=hits) if text else text
+    clean = ioc.scrub(text, hits=hits) if text else text
     app._report_scrub(hits)
     types = set(_split(args.types)) or None
     ents = app.extract(clean, types)
@@ -555,6 +555,12 @@ def _config(args: argparse.Namespace, app: Any, console: Any) -> int:
     return 0
 
 
+def _stdout_is_data(args: argparse.Namespace) -> bool:
+    """True when stdout carries a file's content (``scope draft --from-org`` without ``-o``): no
+    reminder line may precede it, or the redirected TOML is unparsable (WP18)."""
+    return args.command == "scope" and getattr(args, "scope_cmd", None) == "draft" and not getattr(args, "out", None)
+
+
 def main(argv: list[str] | None = None) -> int:
     os.umask(0o077)  # AR03: every file V3LUM writes is owner-only, whoever opens it
     parser = build_parser()
@@ -568,7 +574,7 @@ def main(argv: list[str] | None = None) -> int:
     err_console = make_console(no_color=args.no_color, stderr=True)
     try:
         app = make_app(args, console)
-        if not getattr(args, "json", False) and args.command not in ("version",):
+        if not getattr(args, "json", False) and args.command not in ("version",) and not _stdout_is_data(args):
             app.startup_reminder()  # A10: at most once a day
         if args.command in (None, "shell"):
             from v3lum.shell import Shell

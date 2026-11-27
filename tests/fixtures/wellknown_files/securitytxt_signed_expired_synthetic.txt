@@ -1,0 +1,18 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+# Security contacts of Example Org
+Contact: mailto:security@example.com
+Contact: https://www.example.com/security/report
+Contact: tel:+55-11-5555-0100
+Encryption: https://www.example.com/.well-known/pgp-key.txt
+Policy: https://www.example.com/security/policy
+Preferred-Languages: pt, en
+Canonical: https://www.example.com/.well-known/security.txt
+Expires: 2024-12-31T23:59:59.000Z
+- -----not a header line, dash-escaped
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEEXAMPLEEXAMPLEEXAMPLEEXAMPLEEXAMPLE=
+=ABCD
+-----END PGP SIGNATURE-----

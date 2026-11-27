@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "lolrmm",
+  "name": "LOLRMM (RMM tools abused by attackers)",
+  "operator": "magicsword-io (LOLRMM project)",
+  "hosts": [
+    "lolrmm.io"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Community catalogue of remote monitoring and management tools by magicsword-io (public repository, Apache-2.0, published since 2024): A8 community. Offline use only (disclosure none: tier n/a).",
+  "tier_reviewer": "batch p2-G07-1 (A8 community definition)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Catalogue of legitimate RMM tools (and RATs) with install paths, executables and network domains; legitimate IT use is common, so matches are 'rmm_tool' context only (P268 cond 5)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "dataset": {
+      "title": "LOLRMM api/rmm_tools.json (tool names, categories, executables, installation paths, network domains)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/magicsword-io/LOLRMM/blob/main/LICENSE",
+        "quote": "Apache License Version 2.0 (LICENSE of magicsword-io/LOLRMM, research record C0793 verified; Apache-2.0)",
+        "checked_at": "2026-11-26",
+        "reviewer": "batch p2-G07-1 (licence file verified live 2026-11-26)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "lolrmm",
+      "sanitizer": null,
+      "dataset": "lol_datasets.lolrmm.json",
+      "notes": "https://lolrmm.io/api/rmm_tools.json (2.3 MB, 358 tools on 2026-11-26). Runtime download refreshed weekly by `v3lum data update`; attributed in THIRD_PARTY_NOTICES (notice lol_datasets_lolrmm)."
+    }
+  },
+  "notes": "Owned by batch p2-G07-1 (P268). lolrmm.io also serves the manual tool pages (lolrmm.io/tools/<name>/)."
+}

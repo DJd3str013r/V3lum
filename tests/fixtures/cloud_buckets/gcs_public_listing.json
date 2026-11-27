@@ -1,0 +1,11 @@
+{
+ "request": {"method": "GET", "url": "https://storage.googleapis.com/example-corp-assets?max-keys=1"},
+ "response": {
+  "status": 200,
+  "headers": {"content-type": "application/xml; charset=UTF-8"},
+  "body": "<?xml version='1.0' encoding='UTF-8'?><ListBucketResult xmlns='http://doc.s3.amazonaws.com/2006-03-01'><Name>example-corp-assets</Name><Prefix></Prefix><Marker></Marker><IsTruncated>false</IsTruncated><Contents><Key>css/site.css</Key><Generation>1</Generation><LastModified>2026-01-01T00:00:00.000Z</LastModified><ETag>\"00000000000000000000000000000000\"</ETag><Size>2048</Size></Contents></ListBucketResult>"
+ },
+ "class": "research",
+ "origin": "synthetic (documented GCS XML-API 200 ListBucketResult body)",
+ "notes": "GCS public listing via XML API. Extension .css only (FC5)."
+}

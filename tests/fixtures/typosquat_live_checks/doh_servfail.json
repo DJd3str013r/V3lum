@@ -1,0 +1,15 @@
+{
+ "Status": 2,
+ "TC": false,
+ "RD": true,
+ "RA": true,
+ "AD": false,
+ "CD": false,
+ "Question": [
+  {
+   "name": "example.invalid.",
+   "type": 2
+  }
+ ],
+ "edns_client_subnet": "0.0.0.0/0"
+}

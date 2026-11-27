@@ -1,0 +1,313 @@
+{
+  "schema": "v3lum.pivot_pack/1",
+  "pack": "unverified_infra",
+  "title": "Infrastructure pages behind challenges or SPAs (P304)",
+  "notes": "P304 (batch p2-G14-3): pages that curl cannot verify (SPA or anti-bot). V3LUM never requests these URLs, not even from doctor, and never solves their challenges (P304 cond 1). verified stays false until a team member opens the link in a browser: then verified=true, checked_at=<date>, x_verification='browser', x_checked_by=<name> and the label marker '(browser)' (P304 cond 6); 'curl' never appears here. x_module_links are rendered by the module pivots_unverified (module-side placeholders url_sha256, url_path, cve_num, hunter_q, and the per-link x_max_tlp the frozen schema lacks).",
+  "links": [
+    {
+      "id": "securitytrails_domain_dns",
+      "label": "SecurityTrails DNS history (may show a challenge)",
+      "template": "https://securitytrails.com/domain/{domain}/dns",
+      "entity_types": [
+        "domain"
+      ],
+      "category": "passive_dns",
+      "host": "securitytrails.com",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0061"
+    },
+    {
+      "id": "securitytrails_ip_list",
+      "label": "SecurityTrails domains on IP (may show a challenge)",
+      "template": "https://securitytrails.com/list/ip/{ip}",
+      "entity_types": [
+        "ipv4",
+        "ipv6"
+      ],
+      "category": "passive_dns",
+      "host": "securitytrails.com",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "May need a free login: drop it at the browser check if a login wall shows (P304 cond 9).",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0061"
+    },
+    {
+      "id": "dnslytics_domain",
+      "label": "DNSlytics domain report (may show a challenge)",
+      "template": "https://search.dnslytics.com/domain/{domain}",
+      "entity_types": [
+        "domain"
+      ],
+      "category": "passive_dns",
+      "host": "search.dnslytics.com",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0066"
+    },
+    {
+      "id": "dnslytics_ip",
+      "label": "DNSlytics IP report (may show a challenge)",
+      "template": "https://search.dnslytics.com/ip/{ip}",
+      "entity_types": [
+        "ipv4",
+        "ipv6"
+      ],
+      "category": "passive_dns",
+      "host": "search.dnslytics.com",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0066"
+    },
+    {
+      "id": "dnslytics_asn",
+      "label": "DNSlytics ASN report (may show a challenge)",
+      "template": "https://search.dnslytics.com/bgp/as{asn_num}",
+      "entity_types": [
+        "asn"
+      ],
+      "category": "other",
+      "host": "search.dnslytics.com",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0066"
+    },
+    {
+      "id": "radar_domain",
+      "label": "Cloudflare Radar domain (may show a challenge)",
+      "template": "https://radar.cloudflare.com/domains/domain/{domain}",
+      "entity_types": [
+        "domain"
+      ],
+      "category": "reputation",
+      "host": "radar.cloudflare.com",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0064"
+    },
+    {
+      "id": "radar_asn",
+      "label": "Cloudflare Radar ASN (may show a challenge)",
+      "template": "https://radar.cloudflare.com/as{asn_num}",
+      "entity_types": [
+        "asn"
+      ],
+      "category": "other",
+      "host": "radar.cloudflare.com",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0064"
+    },
+    {
+      "id": "censys_host",
+      "label": "Censys host (may show a challenge)",
+      "template": "https://platform.censys.io/hosts/{ip}",
+      "entity_types": [
+        "ipv4",
+        "ipv6"
+      ],
+      "category": "other",
+      "host": "platform.censys.io",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "Host page; the platform UI may require sign-in: drop it at the browser check if a login wall shows (P304 cond 9). Censys search pages are not linked.",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0130"
+    },
+    {
+      "id": "netlas_host",
+      "label": "Netlas host (may show a challenge)",
+      "template": "https://app.netlas.io/host/{ip}/",
+      "entity_types": [
+        "ipv4"
+      ],
+      "category": "other",
+      "host": "app.netlas.io",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "Host page only; the responses search is not linked (may need login, P304 cond 9).",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0134"
+    },
+    {
+      "id": "spur_context",
+      "label": "Spur IP context (may show a challenge)",
+      "template": "https://spur.us/context/{ip}",
+      "entity_types": [
+        "ipv4",
+        "ipv6"
+      ],
+      "category": "reputation",
+      "host": "spur.us",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "Vercel security checkpoint (429) for scripts; free page views are limited.",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0141"
+    },
+    {
+      "id": "centralops_dossier",
+      "label": "CentralOps Domain Dossier (may show a challenge)",
+      "template": "https://centralops.net/co/DomainDossier.aspx?addr={qp}&dom_whois=true&dom_dns=true&net_whois=true",
+      "entity_types": [
+        "domain",
+        "ipv4"
+      ],
+      "category": "history",
+      "host": "centralops.net",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "WHOIS and DNS only: the svc_scan option (a port probe of the target) is never set (P304 cond 8).",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0063"
+    },
+    {
+      "id": "icann_lookup",
+      "label": "ICANN Lookup (RDAP) (may show a challenge)",
+      "template": "https://lookup.icann.org/en/lookup?name={domain}",
+      "entity_types": [
+        "domain"
+      ],
+      "category": "history",
+      "host": "lookup.icann.org",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "SPA shell; the RDAP modules automate the same data.",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0074"
+    },
+    {
+      "id": "dotdb_keyword",
+      "label": "dotDB domains containing a keyword (may show a challenge)",
+      "template": "https://dotdb.com/search?keyword={qp}&position=any",
+      "entity_types": [
+        "keyword"
+      ],
+      "category": "search",
+      "host": "dotdb.com",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0068"
+    }
+  ],
+  "x_module_links": [
+    {
+      "id": "hunter_how_search",
+      "label": "hunter.how assets (may show a challenge)",
+      "template": "https://hunter.how/list?searchValue={hunter_q}",
+      "entity_types": [
+        "ipv4",
+        "domain",
+        "favicon_hash"
+      ],
+      "category": "search",
+      "host": "hunter.how",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "{hunter_q} = percent-encoded base64 of field=\"value\" (ip, domain, favicon_hash; field names confirmed at the browser check). Unknown-tier host: 'unknown operator' badge, IOC values only (P304 cond 4).",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0138",
+      "x_max_tlp": null,
+      "x_badge": null
+    }
+  ]
+}

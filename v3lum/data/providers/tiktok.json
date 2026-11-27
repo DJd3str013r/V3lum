@@ -1,0 +1,86 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "tiktok",
+  "name": "TikTok public profile page",
+  "operator": "TikTok Pte. Ltd.",
+  "hosts": [
+    "www.tiktok.com",
+    "tiktok.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "TikTok Pte. Ltd., an established company with published terms, a privacy policy and a business offering (A8 trusted); P118 records provider_tier trusted.",
+  "tier_reviewer": "council-1 (A8, P118)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "The platform's own answer is authoritative for the existence and public fields of its accounts; profile fields (names, links, bios) are self-declared by the owner."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "text/html",
+    "ttl": 86400,
+    "min_interval": 5.0,
+    "concurrency": 1,
+    "retries": 0,
+    "max_bytes": 8388608
+  },
+  "quota": null,
+  "error_markers": [
+    {
+      "id": "tiktok_verify_page",
+      "statuses": [
+        200,
+        403,
+        404
+      ],
+      "json_path": null,
+      "equals": null,
+      "regex": "(?i)tiktok-verify-page|secsdk-captcha|captcha_container|verify-bar-close",
+      "final_url_regex": null,
+      "maps_to": "blocked",
+      "reason_code": "challenge",
+      "reason": "TikTok served a verify/captcha page: could not verify (never bypassed, A9)"
+    },
+    {
+      "id": "tiktok_empty_hydration",
+      "statuses": [
+        200
+      ],
+      "json_path": null,
+      "equals": null,
+      "regex": "id=\"__UNIVERSAL_DATA_FOR_REHYDRATION__\"[^>]{0,200}>\\s{0,20}(?:\\{\\s{0,20}\\}|\\{\"__DEFAULT_SCOPE__\":\\{\\}\\})\\s{0,20}</script>",
+      "final_url_regex": null,
+      "maps_to": "blocked",
+      "reason_code": "challenge",
+      "reason": "TikTok served empty hydration data (anti-bot answer): could not verify (P118 FC4)"
+    }
+  ],
+  "keys": {},
+  "sources": {
+    "profile_page": {
+      "title": "TikTok public profile page (www.tiktok.com/@{username}, __UNIVERSAL_DATA_FOR_REHYDRATION__ only)",
+      "terms": {
+        "class": "license",
+        "evidence_url": "https://www.tiktok.com/legal/page/row/terms-of-service/en",
+        "quote": "P118 FC2 (binding council text): Terms 'license': TikTok's ToS forbid 'automated scripts to collect information' (legal_dpo, checked 2026-11-26). The module runs only with a licence_allow entry whose basis is provider_grant (TikTok's written permission) or under a research_basis recording such a grant; no terms_clause basis exists.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1, P118 FC2)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "tiktok",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0259: licence-gated (P118 FC2): off under the corporate profile until licence-cleared, and the module itself refuses any allow entry whose basis is not provider_grant. One plain GET per handle per run, >= 5 s apart, no signing/tokens/headless browser/cookie replay/proxy rotation and no retry after a challenge (FC3). Verify/captcha pages and empty hydration data are BLOCKED (markers below) and short-circuit the host for the run (A9)."
+    }
+  },
+  "notes": "Batch p3-G05-2 (P118 tiktok_public). Not contacted during the build (licence gate): fixtures are the research subset and synthetic pages; recapture at the first licensed run."
+}

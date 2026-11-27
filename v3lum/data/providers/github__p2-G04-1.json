@@ -1,0 +1,24 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "github",
+  "hosts": [],
+  "sources": {
+    "github_email_pivot_search": {
+      "title": "GitHub REST API search/commits?q=author-email:<e-mail> (sorted by author date), search/users?q=<e-mail> in:email, users/{login} (exact public-profile e-mail confirmation) and repos/{owner}/{repo}/commits/{sha} (signature verification of one matching commit)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://docs.github.com/en/site-policy/acceptable-use-policies/github-acceptable-use-policies",
+        "quote": "You may not use information from the Service (whether scraped, collected through our API, or obtained otherwise) for spamming purposes, including for the purposes of sending unsolicited emails to users or selling personal information, such as to recruiters, headhunters, and job boards. Your use of information from the Service must comply with the GitHub Privacy Statement.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1, P086)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "github",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "P086 (github_email_pivot). Council class 'key-terms' (P086 chair: 'GitHub: tier trusted; key-terms via the team token'): under the corporate profile it runs only with key_plans.github = 'business' (legal records the team token's plan as business-compatible, P086 cond 2); a team-owned token only (rule 1), never an analyst's personal token. Search budget 10 requests/min without a token, 30/min with it (min_interval 6 s / 2 s); 403/429 rate-limit answers are RATE_LIMITED through the provider marker github_user_rate_limit (P086 cond 2). Purpose limitation (GitHub AUP s.7, LGPD): security investigations inside a case only, never profiling, HR/performance use, marketing or resale; the processing is listed in the ROPA (P086 cond 8). Only exact e-mail matches are reported (P086 cond 4); usernames pivot with expand=False (P086 cond 7)."
+    }
+  },
+  "error_markers": [],
+  "notes": "Batch p2-G04-1 (P086 github_email_pivot): the e-mail search source of the GitHub provider. The GitHub requests go through the shared P111 GitHub client of v3lum/modules/username_social/github_user.py (one X-RateLimit budget per runtime)."
+}

@@ -1,0 +1,48 @@
+{
+ "qname": "lb.example.com",
+ "google": {
+  "Status": 3,
+  "TC": false,
+  "RD": true,
+  "RA": true,
+  "AD": false,
+  "CD": false,
+  "Question": [
+   {
+    "name": "lb.example.com.",
+    "type": 1
+   }
+  ],
+  "Answer": [
+   {
+    "name": "lb.example.com.",
+    "type": 5,
+    "TTL": 300,
+    "data": "exemplo-lb-123.sa-east-1.elb.amazonaws.com."
+   }
+  ],
+  "edns_client_subnet": "0.0.0.0/0"
+ },
+ "cloudflare": {
+  "Status": 3,
+  "TC": false,
+  "RD": true,
+  "RA": true,
+  "AD": false,
+  "CD": false,
+  "Question": [
+   {
+    "name": "lb.example.com",
+    "type": 1
+   }
+  ],
+  "Answer": [
+   {
+    "name": "lb.example.com",
+    "type": 5,
+    "TTL": 300,
+    "data": "exemplo-lb-123.sa-east-1.elb.amazonaws.com."
+   }
+  ]
+ }
+}

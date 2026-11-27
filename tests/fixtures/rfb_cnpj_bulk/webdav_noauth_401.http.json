@@ -1,0 +1,17 @@
+{
+ "request": "PROPFIND https://arquivos.receitafederal.gov.br/public.php/webdav/ (Depth: 0, no credentials)",
+ "response": {
+  "status": 401,
+  "headers": {
+   "www-authenticate": "Basic realm=\"SERPRO+\", charset=\"UTF-8\"",
+   "x-robots-tag": "noindex, nofollow",
+   "content-type": "application/xml; charset=utf-8"
+  },
+  "body": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<d:error xmlns:d=\"DAV:\" xmlns:s=\"http://sabredav.org/ns\">\n  <s:exception>Sabre\\DAV\\Exception\\NotAuthenticated</s:exception>\n  <s:message>No 'Authorization: Basic' header found. Either the client didn't send one, or the server is misconfigured</s:message>\n</d:error>\n"
+ },
+ "transport_error": null,
+ "elapsed_s": 1.402419,
+ "observed_at": "2026-11-26T07:32:53Z",
+ "origin": "live",
+ "note": "missing token: Sabre NotAuthenticated, realm SERPRO+"
+}

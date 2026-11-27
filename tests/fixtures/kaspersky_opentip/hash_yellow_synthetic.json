@@ -1,0 +1,16 @@
+{
+ "Zone": "Yellow",
+ "FileGeneralInfo": {
+  "FileStatus": "Adware and other",
+  "Sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+  "HitsCount": 5
+ },
+ "DetectionsInfo": [
+  {
+   "LastDetectDate": "2026-10-01T00:00:00Z",
+   "Zone": "Yellow",
+   "DetectionName": "not-a-virus:HEUR:AdWare.Win32.Example.gen",
+   "DescriptionUrl": "https://threats.kaspersky.com/en/threat/not-a-virus:AdWare/"
+  }
+ ]
+}

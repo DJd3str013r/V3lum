@@ -1,0 +1,24 @@
+{
+ "_meta": {
+  "module": "username_check",
+  "case": "regression_cf_jsd_200",
+  "source": "generic Cloudflare bot-management injection in a normal 200 page (research capture, not a P113 source)",
+  "request": {
+   "method": "GET",
+   "url": "https://tineye.com/",
+   "user_agent": "V3LUM/dev",
+   "redirects": "not followed"
+  },
+  "captured_at": "2026-11-25",
+  "origin": "research sample 2026-11-25 (tmp_caipora_people/bodies/tineye_url)",
+  "elapsed_s": null,
+  "minimised": true,
+  "note": "normal page: '/cdn-cgi/challenge-platform/scripts/jsd/main.js' must NOT be read as a challenge"
+ },
+ "status": 200,
+ "headers": {
+  "content-type": "text/html; charset=utf-8",
+  "server": "cloudflare"
+ },
+ "body": "<!DOCTYPE html><html><head><title>TinEye Reverse Image Search</title>\n<script>(function(){var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=REDACTED';})();</script></head><body></body></html>"
+}

@@ -1,0 +1,9 @@
+{
+ "Errors": [
+  {
+   "Lookup": "example",
+   "Message": "Invalid root domain name or unsupported.",
+   "Code": -8
+  }
+ ]
+}

@@ -1,0 +1,9 @@
+{
+ "domain": "example.com",
+ "total": 3,
+ "subdomains": [
+  "mail.example.com",
+  "api.example.com",
+  "vpn.example.com"
+ ]
+}

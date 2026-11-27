@@ -1,0 +1,78 @@
+{
+ "domain": "example.com",
+ "own_domain": true,
+ "expected": {
+  "findings": [
+   "DMARC policy p=none (monitoring only)",
+   "SPF allows any sender (+all)"
+  ]
+ },
+ "answers": {
+  "example.com TXT": {
+   "Status": 0,
+   "TC": false,
+   "RD": true,
+   "RA": true,
+   "AD": false,
+   "CD": false,
+   "Question": [
+    {
+     "name": "example.com.",
+     "type": 16
+    }
+   ],
+   "Answer": [
+    {
+     "name": "example.com.",
+     "type": 16,
+     "TTL": 300,
+     "data": "v=spf1 ip4:192.0.2.0/24 include:_spf.google.com +all"
+    }
+   ]
+  },
+  "_spf.google.com TXT": {
+   "Status": 0,
+   "TC": false,
+   "RD": true,
+   "RA": true,
+   "AD": false,
+   "CD": false,
+   "Question": [
+    {
+     "name": "_spf.google.com.",
+     "type": 16
+    }
+   ],
+   "Answer": [
+    {
+     "name": "_spf.google.com.",
+     "type": 16,
+     "TTL": 300,
+     "data": "v=spf1 ip4:74.125.0.0/16 ~all"
+    }
+   ]
+  },
+  "_dmarc.example.com TXT": {
+   "Status": 0,
+   "TC": false,
+   "RD": true,
+   "RA": true,
+   "AD": false,
+   "CD": false,
+   "Question": [
+    {
+     "name": "_dmarc.example.com.",
+     "type": 16
+    }
+   ],
+   "Answer": [
+    {
+     "name": "_dmarc.example.com.",
+     "type": 16,
+     "TTL": 300,
+     "data": "v=DMARC1; p=none; rua=mailto:dmarc@example.com"
+    }
+   ]
+  }
+ }
+}

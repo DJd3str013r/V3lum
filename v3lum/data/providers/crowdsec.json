@@ -1,0 +1,91 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "crowdsec",
+  "name": "CrowdSec CTI (smoke API and console pages)",
+  "operator": "CrowdSec SAS",
+  "hosts": [
+    "cti.api.crowdsec.net",
+    "app.crowdsec.net"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "CrowdSec SAS, an established company with published terms, a privacy policy and paid CTI plans (A8 trusted); P152 final condition 1: 'Registry provider crowdsec: tier trusted, terms key-terms'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Crowd-sourced signals from CrowdSec agents with scenario-level behaviours, ATT&CK mapping and false-positive classes; a 404 only means 'not in CrowdSec data', never benign (P152 cond 4)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "ttl": 259200,
+    "min_interval": 2.0,
+    "retries": 0
+  },
+  "quota": {
+    "scope": "key",
+    "month": 120,
+    "published": true,
+    "evidence_url": "https://docs.crowdsec.net/u/cti_api/intro",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {
+    "crowdsec": {
+      "description": "CrowdSec CTI API key (x-api-key header; smoke lookups)",
+      "signup_url": "https://app.crowdsec.net/settings/cti-api-keys",
+      "env": [
+        "V3LUM_CROWDSEC_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "the free Community key is for testing and personal servers: record 'business' (key_plans.crowdsec) only for a company-account Premium or paid key (P152 cond 2)"
+    }
+  },
+  "sources": {
+    "smoke": {
+      "title": "CrowdSec CTI smoke API v2 (GET /v2/smoke/{ip}: reputation, behaviours, classifications, ATT&CK, CVEs)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://www.crowdsec.net/terms-and-conditions",
+        "quote": "Licence (legal floor): the Community key is described for testing and personal servers; under the corporate profile it runs only with a company-account Premium or paid key whose plan legal records (key_plans.crowdsec='business'); otherwise SKIPPED reason_code 'licence' with the manual CrowdSec CTI link.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "crowdsec",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P152 cond 2). GET https://cti.api.crowdsec.net/v2/smoke/{ip} with header x-api-key only (no bulk ?ips=, search or fire endpoints). Without a key: 403 {'message':'Forbidden'} (research 2026-11-25). 404 = 'not in CrowdSec data' (EMPTY, never benign); 429 = RATE_LIMITED; the monthly budget (Community plan: 120 lookups per month) is the P334 quota block. Provider data is not redistributed: exports shared outside the company carry the verdict, the link and the source name only (P152 cond 7, x_redistribution).",
+      "licensed_alternative": "A company-account Premium or paid CrowdSec CTI key recorded as key_plans.crowdsec = 'business'; meanwhile the manual console page threat_intel_g07_p2:crowdsec_cti_ip."
+    },
+    "console_links": {
+      "title": "CrowdSec console CTI pages (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.crowdsec.net/terms-and-conditions",
+        "quote": "otherwise SKIPPED reason_code 'licence' with the manual CrowdSec CTI link.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "crowdsec",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P152 cond 2). app.crowdsec.net/cti/{ip} is a single-page app (not fetched; may ask the analyst to sign in to the console). V3LUM never fetches pivot links itself (P311)."
+    }
+  },
+  "x_redistribution": {
+    "external_exports": "verdict, link and source name only",
+    "basis": "P152 cond 7: provider data is not redistributed (CrowdSec CTI EULA: internal use); excluded from STIX/MISP/JSON exports shared outside the company"
+  },
+  "notes": "Owned by batch p2-G07-1 (P152). Quota: the Community plan's 120 lookups per month (published) as a key-scoped P334 month window at 80%; module setting crowdsec_monthly_quota lowers it for a smaller plan, and analyst-typed seeds only spend it (run_on 'seeds', 72 h cache, setting crowdsec_case_budget). retries 0: a 429 is never retried. Error-in-200 and 429 bodies are not captured yet (team-key capture pending, P152 cond 7)."
+}

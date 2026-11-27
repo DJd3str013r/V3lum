@@ -1,0 +1,9 @@
+{
+ "Errors": [
+  {
+   "Lookup": "example.com",
+   "Message": "Plan upgrade needed as maximum technologies reached.",
+   "Code": -5
+  }
+ ]
+}

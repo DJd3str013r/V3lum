@@ -1,0 +1,56 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "subdomain_center",
+  "name": "Subdomain Center (api.subdomain.center)",
+  "operator": "Subdomain Center (anonymous operator of api.subdomain.center)",
+  "hosts": [
+    "api.subdomain.center"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "Operator not identifiable from public terms or a privacy policy (A8 unknown). Chair decision P016: the extra feeds stay unknown tier until a promotion is recorded.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "D",
+    "justification": "Many noisy, user-generated-looking labels: names seen only here stay unconfirmed until they resolve or a second source agrees (P016 cond 7)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 25,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 12.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "subdomains": {
+      "title": "Subdomain Center subdomain list (GET /?domain={domain}, JSON array)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.subdomain.center/",
+        "quote": "Registry terms per feed (A1 BR3): THC, AnubisDB and Subdomain Center are 'open' (legal_dpo: free services with no published terms, no contractual bar)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "subdomain_center",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P016 cond 4). Research C0041: low free limit (a few requests per minute). Live 2026-11-26: first request 503 {\"error\": \"server busy (N queries in flight)\"} with Retry-After: 1 (could not verify; the core retries once within the budget), answers take 15-18 s. The optional key of subfinder is not used."
+    }
+  },
+  "notes": "Owned by batch p2-G01-3 (P016, module subdomains_passive_extra). Polite use: 12 s between requests (a few per minute), one request per registrable domain."
+}

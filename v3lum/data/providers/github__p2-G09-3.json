@@ -1,0 +1,23 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "github",
+  "hosts": [],
+  "sources": {
+    "crypto_address_labels_graphsense_tagpacks": {
+      "title": "GraphSense public TagPacks (graphsense/graphsense-tagpacks, branch master): packs/**/*.yaml + actors/graphsense.actorpack.yaml as one repository archive (weekly)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/graphsense/graphsense-tagpacks/blob/master/LICENSE",
+        "quote": "MIT License - Copyright (c) 2022 Iknaio Cryptoasset Analytics GmbH, Copyright (c) 2018-2022 AIT Austrian Institute of Technology. Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1, P358 chair rationale: 'Offline: tier n/a, terms open')",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "graphsense",
+      "sanitizer": null,
+      "dataset": "crypto_address_labels.graphsense_tagpacks",
+      "notes": "Research C0787 (verified_live 200 on raw.githubusercontent.com, 2026-11-25/26). Repository rule: tags come from public sources with a dereferenceable source link and contain no PII. Downloaded only by the dataset manager (v3lum data update), never during a scan: github.com/.../archive/refs/heads/master.zip redirects to codeload.github.com (same provider). The archive is read in memory through the safe ZIP reader (no extraction), YAML members parsed with yaml.safe_load only (optional extra 'yaml') and indexed into SQLite with source URL, category, confidence and pack date per tag. No investigated value ever leaves the machine (crypto_address_labels has disclosure none). Exchange packs are Nov-2022 proof-of-reserves snapshots: thin and dated (TRON: 27 exchange addresses, newest label 2022-12-12, commit 507756d2)."
+    }
+  },
+  "error_markers": []
+}

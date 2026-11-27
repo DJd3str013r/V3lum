@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p2-G07-2",
+  "notes": "siem_search (P349) and offline_hash_sets (P350)",
+  "attributes": {
+    "siem_sighting": "internal SIEM look-back of the value {backend, template_id, template_version, index_patterns, window_days, count, count_capped, first_seen, last_seen, seen, queried_at, personal, line}: counts and first/last seen only, never raw events, hostnames or usernames",
+    "hash_set_hits": "offline hash-set memberships of a file hash [{set, sample_sha256, signature, first_seen, file_type, mime_type, dataset, fetched_at, export_updated}]: corpus membership read from a local dataset copy (dates shown), never a verdict alone"
+  },
+  "tags": {
+    "seen_in_logs": "the value appears in the organisation's own telemetry (SIEM look-back over a bounded window): 'did this touch us?', a fact about our logs, not a verdict"
+  },
+  "relations": {}
+}

@@ -1,0 +1,105 @@
+{
+ "version": "0.2.2",
+ "sample": {
+  "id": "200916-w52vg1yl1a",
+  "target": "131.doc",
+  "size": 547328,
+  "md5": "3e241f5a1e7be77f25078560c8660351",
+  "sha1": "ba25c371e75d1a52c1f41c163dc8840626423948",
+  "sha256": "22d653dab4765e13c5fce0bf46a28a098d05582148fdf3101093f3687b42a5f1",
+  "sha512": "4f031f6a3e44687ca65ceec847aacf3053feec0882bd5c07febef85ba1a7570ec1f4357446dfc84226448e1d8eb342066eeb3e6e7394d53caadd66223a2ff345"
+ },
+ "tasks": {
+  "200916-w52vg1yl1a-behavioral1": {
+   "kind": "behavioral",
+   "status": "reported",
+   "tags": [
+    "spyware",
+    "trojan",
+    "banker",
+    "family:trickbot"
+   ],
+   "score": 10,
+   "target": "131.doc",
+   "backend": "fu1m1",
+   "resource": "win10v200722",
+   "platform": "windows10_x64",
+   "task_name": "300 seconds - Win. 10",
+   "queue_id": 1911088
+  },
+  "200916-w52vg1yl1a-static1": {
+   "kind": "static",
+   "status": "reported"
+  }
+ },
+ "analysis": {
+  "score": 10
+ },
+ "targets": [
+  {
+   "tasks": [
+    "behavioral1"
+   ],
+   "score": 10,
+   "target": "131.doc",
+   "size": 547328,
+   "md5": "3e241f5a1e7be77f25078560c8660351",
+   "sha1": "ba25c371e75d1a52c1f41c163dc8840626423948",
+   "sha256": "22d653dab4765e13c5fce0bf46a28a098d05582148fdf3101093f3687b42a5f1",
+   "sha512": "4f031f6a3e44687ca65ceec847aacf3053feec0882bd5c07febef85ba1a7570ec1f4357446dfc84226448e1d8eb342066eeb3e6e7394d53caadd66223a2ff345",
+   "tags": [
+    "spyware",
+    "trojan",
+    "banker",
+    "family:trickbot"
+   ],
+   "family": [
+    "trickbot"
+   ],
+   "signatures": [
+    {
+     "label": "trickbot",
+     "name": "Trickbot",
+     "score": 10,
+     "tags": [
+      "trojan",
+      "banker",
+      "family:trickbot"
+     ],
+     "desc": "Developed in 2016, TrickBot is one of the more recent banking Trojans."
+    }
+   ]
+  }
+ ],
+ "extracted": [
+  {
+   "tasks": [
+    "behavioral1"
+   ],
+   "dumped_file": "extracted/trickbot.payload-3",
+   "resource": "behavioral1/memory/3212-19-0x0000000000A20000-0x0000000000A56000-memory.dmp",
+   "config": {
+    "family": "trickbot",
+    "rule": "Trickbot2019",
+    "c2": [
+     "192.0.2.10:443",
+     "192.0.2.11:443",
+     "192.0.2.12:443",
+     "192.0.2.13:443",
+     "192.0.2.14:443",
+     "192.0.2.15:443"
+    ],
+    "version": "1000514",
+    "botnet": "ono76",
+    "attr": {
+     "autorun": [
+      {
+       "name": "pwgrab",
+       "control": ""
+      }
+     ]
+    }
+   }
+  }
+ ]
+}

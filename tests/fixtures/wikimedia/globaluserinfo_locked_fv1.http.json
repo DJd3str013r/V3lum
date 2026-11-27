@@ -1,0 +1,8 @@
+{
+ "_fixture": "DOC-SHAPED: locked global account in formatversion=1 (flags are empty strings)",
+ "status": 200,
+ "headers": {
+  "content-type": "application/json; charset=utf-8"
+ },
+ "body": "{\"batchcomplete\": \"\", \"query\": {\"globaluserinfo\": {\"home\": \"ptwiki\", \"id\": 9876, \"registration\": \"2012-02-03T04:05:06Z\", \"name\": \"Example locked\", \"locked\": \"\", \"merged\": [{\"wiki\": \"ptwiki\", \"url\": \"https://pt.wikipedia.org\", \"timestamp\": \"2012-02-03T04:05:06Z\", \"method\": \"new\", \"editcount\": 7, \"registration\": \"2012-02-03T04:05:06Z\"}], \"unattached\": [{\"wiki\": \"enwiki\", \"editcount\": 0}], \"editcount\": 7}}}"
+}

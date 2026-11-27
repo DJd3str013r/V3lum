@@ -1,0 +1,11 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "checkdmarc",
+  "source_url": "https://github.com/domainaware/checkdmarc",
+  "version": "6.0.4 (behavioural reference read 2026-11-25; no code copied)",
+  "sha256": "",
+  "licence": "Apache-2.0",
+  "attribution": "SPF evaluation limits (RFC 7208 lookup and void-lookup counting, include/redirect loop detection), DMARC tag parsing with organisational-domain fallback and external report authorization, MTA-STS, TLS-RPT and BIMI record checks re-implemented over DNS-over-HTTPS in v3lum.modules.domain_dns.email_security_posture after checkdmarc, Copyright Sean Whalen (domainaware), Apache License 2.0. No checkdmarc code is copied and dnspython is not used; checkdmarc's SMTP/STARTTLS checks are not ported (P002 cond 1, 9). recon-ng (GPL) was used as an idea only.",
+  "bundled": true,
+  "files": ["v3lum/modules/domain_dns/email_security_posture.py"]
+}

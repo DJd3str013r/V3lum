@@ -1,0 +1,8 @@
+{
+ "_fixture": "SYNTHETIC: inname search with one exact and one partial match plus a backoff field (doc values)",
+ "status": 200,
+ "headers": {
+  "content-type": "application/json; charset=utf-8"
+ },
+ "body": "{\"items\": [{\"user_id\": 100000001, \"account_id\": 200000001, \"display_name\": \"Example Dev\", \"reputation\": 101, \"creation_date\": 1420070400, \"last_access_date\": 1795600000, \"user_type\": \"registered\", \"link\": \"https://stackoverflow.com/users/100000001/example-dev\", \"website_url\": \"https://example.com\", \"location\": \"Example City\"}, {\"user_id\": 100000002, \"account_id\": 200000002, \"display_name\": \"Example Developer\", \"reputation\": 1, \"creation_date\": 1500000000, \"user_type\": \"registered\", \"link\": \"https://stackoverflow.com/users/100000002/example-developer\"}], \"has_more\": false, \"quota_max\": 300, \"quota_remaining\": 120, \"backoff\": 10}"
+}

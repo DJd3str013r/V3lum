@@ -1,0 +1,28 @@
+{
+ "category": "tool",
+ "name": "Tool",
+ "source": "MISP Project",
+ "type": "tool",
+ "uuid": "0d821b68-9d82-4c6d-86a6-1071a9e0f79f",
+ "version": 192,
+ "description": "threat-actor-tools is an enumeration of tools used by adversaries.",
+ "values": [
+  {
+   "value": "Winnti",
+   "uuid": "9b3a4cff-1c5a-4fd6-b49c-27240b6d622c",
+   "meta": {
+    "synonyms": [
+     "Etso",
+     "SUQ",
+     "Agent.ALQHI",
+     "RbDoor",
+     "RibDoor",
+     "HIGHNOON"
+    ],
+    "type": [
+     "Backdoor"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,55 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "as93",
+  "name": "who-dat public instance (who-dat.as93.net)",
+  "operator": "Alicia Sykes (individual developer, as93.net), author of the MIT-licensed who-dat project; the public instance is hosted on Vercel",
+  "hosts": ["who-dat.as93.net"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "P343 FC2: 'The public who-dat.as93.net instance is a separate module whois_fallback_public: unknown tier, default_enabled=False, excluded at AMBER and above' (individual operator, no published terms or privacy policy for the hosted service). Live 2026-11-26: answers come from a shared CDN cache (cache-control public, x-vercel-cache HIT with age), so a lookup is observable through cache state. CLEAR/GREEN only with --allow-unknown (A8).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Registry RDAP/WHOIS data relayed and normalised by a best-effort public instance; answers may be served from its cache (meta.cached) and a subdomain query is answered for the registrable domain."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 15,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 2.0,
+    "concurrency": 1,
+    "max_bytes": 262144
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "whodat": {
+      "title": "who-dat public lookup GET https://who-dat.as93.net/<domain>: normalised registration data (meta.source rdap|whois, meta.server)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/Lissy93/who-dat",
+        "quote": "Default module tier trusted (IANA and registries), terms open.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "whodat",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P343 chair rationale: the proposal's terms class is 'open'); research record C0785: 'MIT (code); data from registries' RDAP/WHOIS', public instance 'best effort'. The MIT licence covers the code; the hosted instance publishes no separate terms, so legal may still tighten this class (doctor --licences review queue). Only IOC values (domain names) are ever sent (A8 unknown tier); contact values are dropped at ingestion (P343 FC4)."
+    }
+  },
+  "notes": "Owned by batch p2-G01-4 (P343 module whois_fallback_public, opt-in). Best-effort public instance: 2 s between requests, 100 lookups/day (module daily_quota), 24 h cache."
+}

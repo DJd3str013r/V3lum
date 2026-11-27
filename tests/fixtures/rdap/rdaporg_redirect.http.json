@@ -1,0 +1,15 @@
+{
+ "request": "GET https://rdap.org/domain/example.com",
+ "response": {
+  "status": 302,
+  "headers": {
+   "location": "https://rdap.verisign.com/com/v1/domain/example.com",
+   "content-type": "text/html",
+   "cache-control": "public, max-age=28800"
+  },
+  "body": ""
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "302 to the authoritative Verisign server; Cache-Control public max-age=28800"
+}

@@ -1,0 +1,9 @@
+{
+ "_synthetic": "docs.leakix.net rate limiting (fetched 2026-11-26): '~1 request per second. If the limit is reached, the API will return a 429 http status code and a x-limited-for header. The client MUST wait for the duration of x-limited-for before the next request.' Body not documented.",
+ "url": "https://leakix.net/host/192.0.2.10",
+ "status": 429,
+ "headers": {
+  "x-limited-for": "344.24ms"
+ },
+ "body": ""
+}

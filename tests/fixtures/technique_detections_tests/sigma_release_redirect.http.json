@@ -1,0 +1,7 @@
+{
+ "status": 302,
+ "headers": {
+  "location": "https://github.com/SigmaHQ/sigma/releases/download/r2026-07-01/sigma_core.zip"
+ },
+ "body": ""
+}

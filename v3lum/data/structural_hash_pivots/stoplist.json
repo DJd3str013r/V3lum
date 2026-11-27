@@ -1,0 +1,42 @@
+{
+  "schema": "v3lum.structural_stoplist/1",
+  "name": "structural_hash_pivots stoplist",
+  "notes": "P351 FC5 generic-value stoplist: structural values seen across more than 10 unrelated MalwareBazaar signatures or more than 500 samples, and installer/packer stubs. They are shown as 'common, not distinctive' and never pivoted (no MalwareBazaar query is made for them). Seed: only the .NET imphash the final condition names; extend it from offline counts over the keyed MalwareBazaar full export (imphash/tlsh/ssdeep columns; telfhash and gimphash are not in the export). Values are lower case except TLSH (T1 + upper-case hex).",
+  "values": {
+    "imphash": {
+      "f34d5f2d4577ed6d9ceec516c1f5a744": ".NET assembly stub (imports only mscoree.dll _CorExeMain): shared by every .NET executable"
+    },
+    "tlsh": {},
+    "telfhash": {},
+    "gimphash": {},
+    "icon_dhash": {}
+  },
+  "installer_packer_tags": [
+    "nsis",
+    "nullsoft",
+    "inno",
+    "innosetup",
+    "inno-setup",
+    "installshield",
+    "msi",
+    "wix",
+    "sfx",
+    "7zsfx",
+    "winrar-sfx",
+    "autoit",
+    "autohotkey",
+    "upx",
+    "aspack",
+    "mpress",
+    "themida",
+    "vmprotect",
+    "enigma",
+    "pyinstaller",
+    "py2exe",
+    "nuitka",
+    "electron",
+    "nwjs",
+    "installer",
+    "setup"
+  ]
+}

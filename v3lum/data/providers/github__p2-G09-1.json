@@ -1,0 +1,38 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "github",
+  "hosts": [],
+  "sources": {
+    "deepdarkcti_index_lists": {
+      "title": "deepdarkCTI curated lists (fastfire/deepdarkCTI main: ransomware_gang, forum, markets, maas, exploits, telegram_threat_actors, telegram_infostealer .md)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/fastfire/deepdarkCTI",
+        "quote": "the deepdarkCTI markdown lists downloaded weekly at runtime only through the dataset manager (GPL-3.0 data: never vendored, attribution in THIRD_PARTY_NOTICES, A6)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1, P198 cond 1 and chair rationale: GPL-3.0 data used at runtime with attribution is 'open' under the A1 definitions)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "deepdarkcti",
+      "sanitizer": null,
+      "dataset": "deepdarkcti_index_ransomware_gang",
+      "notes": "Quote: binding council text (P198 cond 1). Research C0460 (verified_live 200, 2026-11-26): raw.githubusercontent.com/fastfire/deepdarkCTI/main/{list}.md for the seven lists that yield onion hosts or t.me handles (P198 cond 3). Datasets deepdarkcti_index_<list>, weekly, downloaded only by the dataset manager: no investigated value ever leaves the machine. The tables carry leak-site credentials and actor contacts in other columns: the parser keeps only the indexed key, group, status and line. Listed sites are hostile: data only, never fetched. Used by deepdarkcti_index."
+    },
+    "deepdarkcti_index_commits": {
+      "title": "deepdarkCTI repository commit date per list (api.github.com/repos/fastfire/deepdarkCTI/commits?path=<list>.md&per_page=1)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://docs.github.com/en/rest/commits/commits",
+        "quote": "each entry keeps its Status column and the repository commit date",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1, P198 cond 3: repository metadata of the same 'open' runtime dataset)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "deepdarkcti",
+      "sanitizer": null,
+      "dataset": "deepdarkcti_index_commit_ransomware_gang",
+      "notes": "Quote: binding council text (P198 cond 3). raw.githubusercontent.com sends no Last-Modified, so the list date comes from the GitHub REST commits API (keyless 60 requests/hour per IP; seven requests a week). Datasets deepdarkcti_index_commit_<list>; only commit.committer.date is read: author and committer names and e-mails in the stored copy are never parsed, displayed or exported. Not verified live from the build egress (the session's own GitHub proxy refused api.github.com); without it the wording falls back to 'list date unknown, fetched <date>'. Used by deepdarkcti_index."
+    }
+  },
+  "error_markers": []
+}

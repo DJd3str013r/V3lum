@@ -1,0 +1,72 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "purpose": ""
+  },
+  "org_profile": {
+    "name": "Exemplo Comércio Ltda",
+    "cnpj_roots": [
+      "11222333"
+    ],
+    "domains": [
+      {
+        "name": "exemplo.example",
+        "verification": "txt_verified"
+      }
+    ],
+    "app_ids": [
+      {
+        "kind": "m365_tenant",
+        "value": "00000000-0000-4000-8000-000000000001"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "key": "domain:exemplo-ofertas-novas.example",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "registered": [
+          {
+            "value": true,
+            "source": "rdap"
+          }
+        ],
+        "registrant_kind": [
+          {
+            "value": "individual",
+            "source": "rdap"
+          }
+        ],
+        "created": [
+          {
+            "value": "2026-11-01T12:00:00Z",
+            "source": "rdap"
+          }
+        ],
+        "domain_age_days": [
+          {
+            "value": 25,
+            "source": "rdap"
+          }
+        ],
+        "homepage_indicators": [
+          {
+            "value": {
+              "source": "wayback",
+              "cnpjs": [
+                "11.222.333/0001-81"
+              ]
+            },
+            "source": "web_archives"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": []
+}

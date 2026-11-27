@@ -1,0 +1,13 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "http://blog.example.com/"
+ },
+ "response": {
+  "status": 200,
+  "headers": {
+   "content-type": "text/html"
+  },
+  "body": "<html><body><h1>Failed to resolve DNS path for this host</h1></body></html>"
+ }
+}

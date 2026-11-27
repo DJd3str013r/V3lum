@@ -1,0 +1,24 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "quad9",
+  "hosts": [],
+  "sources": {
+    "protective_dns_security": {
+      "title": "Quad9 threat-blocking resolver (9.9.9.9, dns.quad9.net RFC 8484 wire format): block verdicts",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://quad9.net/privacy/policy/",
+        "quote": "Module protective_dns queries Cloudflare security.cloudflare-dns.com (1.1.1.2) and family.cloudflare-dns.com (1.1.1.3) through the JSON DoH layer, and Quad9 dns.quad9.net (RFC 8484 wire format). Registry: Cloudflare and Quad9 = open, tier trusted.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "protective_dns",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P020 cond 1). Category security (cond 4). Wire format only through the optional dnspython extra (UNAVAILABLE 'package' without it, cond 3): the query is built and the answer decoded by dnspython (id 0, RD, no EDNS so no ECS). Block form: NXDOMAIN without an SOA in the authority section (research gh_infra; a real NXDOMAIN carries the zone SOA, live nic.br fixture). Kept apart from quad9.doh (the core resolver source, family 'dns') because all protective-DNS votes are one upstream family (cond 7)."
+    }
+  },
+  "error_markers": [],
+  "notes": "Batch p2-G01-3 extension (P020, module protective_dns). The core resolver source quad9.doh is unchanged."
+}

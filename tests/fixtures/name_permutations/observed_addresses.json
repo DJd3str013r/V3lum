@@ -1,0 +1,14 @@
+{
+ "_fixture": "SYNTHETIC: observed addresses at the documentation domain example.com (shapes of commit e-mails and public pages); placeholder names, no real person",
+ "domain": "example.com",
+ "samples": [
+  {"address": "fulano.souza@example.com", "name": "Fulano Souza", "source": "commit e-mail"},
+  {"address": "Beltrano.Alves+git@example.com", "name": "Beltrano Alves", "source": "commit e-mail"},
+  {"address": "ciclana.dias@example.com", "source": "public page"},
+  {"address": "jsantos@example.com", "name": "Joana Santos", "source": "public page"},
+  {"address": "contato@example.com", "source": "public page"},
+  {"address": "no-reply@example.com", "source": "commit e-mail"},
+  {"address": "dev@example.org", "name": "Dev Example", "source": "commit e-mail"},
+  {"address": "not-an-address", "source": "public page"}
+ ]
+}

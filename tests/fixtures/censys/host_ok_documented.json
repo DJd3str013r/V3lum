@@ -1,0 +1,196 @@
+{
+ "_documented": "Shape from the official censys-sdk-python models read 2026-11-26 (ResponseEnvelopeHostAsset -> HostAsset{resource: Host, extensions}; Host, Routing, HostDNS, Service, Attribute, Vuln, Kev, Threat, Label, Certificate, CertificateParsed, ValidityPeriod). Values are invented on documentation space (198.51.100.20, AS64500, example.com); fingerprints are fake. Replace with a trimmed company-plan capture before merge (condition 7).",
+ "result": {
+  "resource": {
+   "ip": "198.51.100.20",
+   "autonomous_system": {
+    "asn": 64500,
+    "name": "EXAMPLE-AS",
+    "description": "Example Hosting",
+    "bgp_prefix": "198.51.100.0/24",
+    "country_code": "BR",
+    "organization": "Example Hosting"
+   },
+   "location": {
+    "continent": "South America",
+    "country": "Brazil",
+    "country_code": "BR",
+    "city": "Sao Paulo"
+   },
+   "whois": {
+    "network": {
+     "name": "EXAMPLE-NET",
+     "cidrs": [
+      "198.51.100.0/24"
+     ]
+    },
+    "organization": {
+     "name": "Example Hosting"
+    }
+   },
+   "dns": {
+    "names": [
+     "www.example.com",
+     "legacy.example.net"
+    ],
+    "reverse_dns": {
+     "names": [
+      "host20.example.com"
+     ],
+     "resolve_time": "2026-11-20T00:00:00Z"
+    }
+   },
+   "labels": [
+    {
+     "value": "remote-access",
+     "source": "censys",
+     "confidence": 0.9
+    }
+   ],
+   "network": [
+    {
+     "hosting": true,
+     "mobile": false,
+     "satellite": false,
+     "source": "censys"
+    }
+   ],
+   "privacy": [],
+   "service_count": 4,
+   "services": [
+    {
+     "port": 22,
+     "protocol": "SSH",
+     "transport_protocol": "tcp",
+     "scan_time": "2026-11-24T03:00:00Z",
+     "software": [
+      {
+       "vendor": "openbsd",
+       "product": "openssh",
+       "version": "8.2p1",
+       "part": "a",
+       "cpe": "cpe:2.3:a:openbsd:openssh:8.2p1:*:*:*:*:*:*:*",
+       "source": "recog"
+      }
+     ],
+     "vulns": [
+      {
+       "id": "CVE-2023-38408",
+       "severity": "critical",
+       "source": "recog",
+       "risk_source": "cve",
+       "confidence": 0.5
+      },
+      {
+       "id": "CVE-2021-41617",
+       "severity": "high",
+       "source": "recog",
+       "risk_source": "cve",
+       "confidence": 0.5
+      }
+     ]
+    },
+    {
+     "port": 443,
+     "protocol": "HTTP",
+     "transport_protocol": "tcp",
+     "scan_time": "2026-11-24T03:00:00Z",
+     "software": [
+      {
+       "vendor": "f5",
+       "product": "nginx",
+       "version": "1.18.0",
+       "part": "a",
+       "cpe": "cpe:2.3:a:f5:nginx:1.18.0:*:*:*:*:*:*:*",
+       "source": "recog"
+      }
+     ],
+     "cert": {
+      "fingerprint_sha256": "f1315fa063454bb3303d41c3b6c222afc9ec7c47880c2f63caa647d9d290e200",
+      "names": [
+       "example.com",
+       "www.example.com"
+      ],
+      "parsed": {
+       "subject_dn": "CN=www.example.com",
+       "issuer_dn": "C=US, O=Example CA, CN=Example Issuing CA",
+       "validity_period": {
+        "not_before": "2026-09-01T00:00:00Z",
+        "not_after": "2026-11-30T00:00:00Z"
+       }
+      }
+     },
+     "labels": [
+      {
+       "value": "LOGIN_PAGE",
+       "source": "censys"
+      }
+     ],
+     "vulns": [
+      {
+       "id": "CVE-2021-23017",
+       "severity": "high",
+       "source": "recog",
+       "risk_source": "cve",
+       "confidence": 0.5
+      }
+     ]
+    },
+    {
+     "port": 8080,
+     "protocol": "HTTP",
+     "transport_protocol": "tcp",
+     "scan_time": "2026-11-24T03:00:00Z",
+     "software": [
+      {
+       "vendor": "apache",
+       "product": "log4j",
+       "version": "2.14.1",
+       "part": "a",
+       "cpe": "cpe:2.3:a:apache:log4j:2.14.1:*:*:*:*:*:*:*",
+       "source": "third_party"
+      }
+     ],
+     "vulns": [
+      {
+       "id": "CVE-2021-44228",
+       "severity": "critical",
+       "source": "censys",
+       "risk_source": "censys",
+       "confidence": 0.95,
+       "kev": [
+        {
+         "source": "cisa",
+         "date_added": "2021-12-10"
+        }
+       ],
+       "evidence": [
+        {
+         "data_source": "http_response_check"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "port": 3389,
+     "protocol": "RDP",
+     "transport_protocol": "tcp",
+     "scan_time": "2026-11-24T03:00:00Z",
+     "threats": [
+      {
+       "id": "cobalt-strike",
+       "name": "Cobalt Strike",
+       "source": "censys",
+       "type": [
+        "c2"
+       ],
+       "confidence": 0.9
+      }
+     ]
+    }
+   ]
+  },
+  "extensions": {}
+ }
+}

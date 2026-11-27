@@ -1,0 +1,55 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "litecoinspace",
+  "name": "litecoinspace.org (mempool/Esplora API for Litecoin)",
+  "operator": "litecoinspace.org (Litecoin community deployment of the mempool open-source project)",
+  "hosts": [
+    "litecoinspace.org"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Community deployment of the mempool open-source explorer for Litecoin with an identifiable project, public API documentation and terms (A8 community). Registry tiers: Blockstream, Blockchain.com, BlockCypher and Blockchair trusted; mempool.space and litecoinspace community.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Esplora-compatible reader of the public Litecoin ledger: balances and transactions are chain facts."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 5.0,
+    "ttl": 3600,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "esplora_api": {
+      "title": "litecoinspace.org Esplora-compatible REST API (LTC address stats, address txs, chain tip)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://litecoinspace.org/terms-of-service",
+        "quote": "Per-adapter terms recorded: Esplora, mempool, litecoinspace and Blockchain.com 'open'; BlockCypher and Blockchair 'key-terms'.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "litecoinspace",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P211 cond 6). Research C0486 (verified_live 200; prep live check 2026-11-26: Cloudflare-fronted mempool-electrs, LTC /api/address/{a} and /txs follow the Esplora schema, tip 3219589). Never call /api/v1/... paths here (404). Used by btc_explorers (LTC, first public adapter)."
+    }
+  },
+  "notes": "Owned by batch p2-G09-2 (P211). Undocumented public limits: 1 s politeness, crypto ttl 1 h, 5 s timeout (15 s explorer budget)."
+}

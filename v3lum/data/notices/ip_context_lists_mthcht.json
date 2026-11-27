@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "ip_context_lists_mthcht",
+  "source_url": "https://github.com/mthcht/awesome-lists",
+  "version": "Lists/VPN/ProtonVPN/protonvpn_ip_list.csv, Lists/VPN/MullVad/mullvad_relay_servers_ips_list.csv, Lists/VPN/SurfSharkVPN/surfshark_vpn_servers_domains_and_ips_list.csv, Lists/DYNDNS/dyndns_list.csv and Lists/suspicious_http_user_agents_list.csv from the main branch (runtime download by the dataset manager, daily; checked 2026-11-26)",
+  "sha256": "",
+  "licence": "MIT",
+  "attribution": "Context lists from mthcht/awesome-lists (https://github.com/mthcht/awesome-lists). MIT License, Copyright (c) 2024 @mthcht thunting.io. Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction [...]. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/ip_network/ip_context_lists.py"
+  ]
+}

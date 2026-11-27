@@ -1,0 +1,24 @@
+{
+ "groups": 2,
+ "failed_groups": 1,
+ "failed_rules": 1,
+ "errors": [
+  {
+   "namespace": "V3LUM Test Broken",
+   "error": "line 18: undefined string \"$undefined\""
+  },
+  {
+   "namespace": "V3LUM Test Broken",
+   "rule": "V3LUM_TEST_BROKEN_Undefined_String",
+   "error": "line 18: undefined string \"$undefined\""
+  }
+ ],
+ "ok": true,
+ "namespaces": [
+  "V3LUM Test Broken",
+  "V3LUM Test OK"
+ ],
+ "includes_ignored": [
+  "other_rules.yar"
+ ]
+}

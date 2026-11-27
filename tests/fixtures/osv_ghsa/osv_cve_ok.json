@@ -1,0 +1,187 @@
+{
+ "id": "CVE-2021-44228",
+ "modified": "2026-10-24T10:30:50.770243089Z",
+ "published": "2021-12-10T10:15:09.143Z",
+ "aliases": [
+  "GHSA-jfh8-c2jp-5v3q"
+ ],
+ "related": [
+  "SUSE-SU-2021:4096-1",
+  "SUSE-SU-2021:4097-1",
+  "openSUSE-SU-2021:1577-1",
+  "openSUSE-SU-2021:1586-1",
+  "openSUSE-SU-2021:1601-1",
+  "openSUSE-SU-2021:1613-1",
+  "openSUSE-SU-2021:3999-1",
+  "openSUSE-SU-2021:4094-1",
+  "openSUSE-SU-2021:4107-1",
+  "openSUSE-SU-2021:4109-1",
+  "openSUSE-SU-2024:11666-1",
+  "openSUSE-SU-2024:11683-1"
+ ],
+ "schema_version": "1.9.0",
+ "severity": [
+  {
+   "type": "CVSS_V3",
+   "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H"
+  }
+ ],
+ "details": "Apache Log4j2 2.0-beta9 through 2.15.0 (excluding security releases 2.12.2, 2.12.3, and 2.3.1) JNDI features used in configuration, log messages, and parameters do not protect against attacker controlled LDAP and other JNDI related endpoints. An attacker who can control log messages or log message p",
+ "affected": [
+  {
+   "ranges": [
+    {
+     "type": "GIT",
+     "repo": "https://github.com/apache/logging-log4j2",
+     "events": [
+      {
+       "introduced": "6b788facd3479dfe9052b3a5e13f6603dce8c16f"
+      },
+      {
+       "fixed": "38513a7d57343881f7bf58f37e67d6a87e0a47c5"
+      },
+      {
+       "introduced": "0"
+      },
+      {
+       "fixed": "ad361d2e517e765f69db464d9407ac2dd80bc93e"
+      },
+      {
+       "introduced": "9dcb1823a0a0192f2016daf7c1445ddfb3435fbf"
+      },
+      {
+       "fixed": "c30a1398a6697fb832c650870c44284d0052103e"
+      },
+      {
+       "introduced": "8d9204a4b4c6016fa6b36513a46502689d6a45c1"
+      },
+      {
+       "last_affected": "8d9204a4b4c6016fa6b36513a46502689d6a45c1"
+      }
+     ],
+     "database_specific": {
+      "extracted_events": [
+       {
+        "range": [
+         {
+          "introduced": "2.0.1"
+         },
+         {
+          "fixed": "2.3.1"
+         }
+        ],
+        "source": "CPE_RANGE",
+        "cpe": "cpe:2.3:a:apache:log4j:*:*:*:*:*:*:*:*"
+       },
+       {
+        "range": [
+         {
+          "introduced": "2.4.0"
+         },
+         {
+          "fixed": "2.12.2"
+         }
+        ],
+        "source": "CPE_RANGE",
+        "cpe": "cpe:2.3:a:apache:log4j:*:*:*:*:*:*:*:*"
+       },
+       {
+        "range": [
+         {
+          "introduced": "2.13.0"
+         },
+         {
+          "fixed": "2.15.0"
+         }
+        ],
+        "source": "CPE_RANGE",
+        "cpe": "cpe:2.3:a:apache:log4j:*:*:*:*:*:*:*:*"
+       },
+       {
+        "range": [
+         {
+          "introduced": "2.0-NA"
+         },
+         {
+          "last_affected": "2.0-NA"
+         }
+        ],
+        "source": "CPE_STRING",
+        "cpe": "cpe:2.3:a:apache:log4j:2.0:-:*:*:*:*:*:*"
+       }
+      ]
+     }
+    }
+   ],
+   "versions": [
+    "2.0-NA",
+    "rel/2.3",
+    "log4j-2.3",
+    "rel/2.12.1",
+    "log4j-2.12.1-rc1",
+    "log4j-2.12.1"
+   ],
+   "database_specific": {
+    "source": "https://storage.googleapis.com/cve-osv-conversion/osv-output/CVE-2021-44228.json"
+   }
+  }
+ ],
+ "database_specific": {
+  "unresolved_ranges": [
+   {
+    "vendor_product": "apple:xcode",
+    "cpes": [
+     "cpe:2.3:a:apple:xcode:*:*:*:*:*:*:*:*"
+    ],
+    "extracted_events": [
+     {
+      "source": "CPE_RANGE",
+      "range": [
+       {
+        "fixed": "13.3"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "vendor_product": "cisco:broadworks",
+    "cpes": [
+     "cpe:2.3:a:cisco:broadworks:*:*:*:*:*:*:*:*"
+    ],
+    "extracted_events": [
+     {
+      "range": [
+       {
+        "fixed": "2021.11_1.162"
+       }
+      ],
+      "source": "CPE_RANGE"
+     }
+    ]
+   }
+  ]
+ },
+ "references": [
+  {
+   "type": "WEB",
+   "url": "https://github.com/cisagov/log4j-affected-db/blob/develop/SOFTWARE-LIST.md"
+  },
+  {
+   "type": "ADVISORY",
+   "url": "http://packetstormsecurity.com/files/165225/Apache-Log4j2-2.14.1-Remote-Code-Execution.html"
+  },
+  {
+   "type": "ADVISORY",
+   "url": "http://packetstormsecurity.com/files/165260/VMware-Security-Advisory-2021-0028.html"
+  },
+  {
+   "type": "ADVISORY",
+   "url": "http://packetstormsecurity.com/files/165281/Log4j2-Log4Shell-Regexes.html"
+  },
+  {
+   "type": "ADVISORY",
+   "url": "http://packetstormsecurity.com/files/165282/Log4j-Payload-Generator.html"
+  }
+ ]
+}

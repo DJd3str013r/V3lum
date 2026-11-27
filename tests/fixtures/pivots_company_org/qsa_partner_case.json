@@ -1,0 +1,61 @@
+{
+ "_doc": "P231 FC10: privacy links render only for analyst-typed seeds in a case with a recorded purpose and the opt-in; never for discovered QSA partners, registrants, employees or customers. Names are documentation values.",
+ "case": {
+  "id": "case-0000",
+  "tlp": "amber",
+  "purpose": "due diligence de fornecedor (ticket SEC-0000)",
+  "privacy_opt_in": true
+ },
+ "entities": [
+  {
+   "type": "cnpj",
+   "value": "00.000.000/0001-91",
+   "provenance": "seed"
+  },
+  {
+   "type": "company_name",
+   "value": "BANCO DO BRASIL SA",
+   "provenance": "pivot",
+   "relation": "cnpj_name"
+  },
+  {
+   "type": "person_name",
+   "value": "FULANO DE TAL",
+   "provenance": "pivot",
+   "relation": "qsa_partner"
+  },
+  {
+   "type": "email",
+   "value": "contato@example.com",
+   "provenance": "pivot",
+   "relation": "rdap_registrant"
+  },
+  {
+   "type": "domain",
+   "value": "example.com",
+   "provenance": "pivot",
+   "relation": "rdap_domain"
+  },
+  {
+   "type": "person_name",
+   "value": "BELTRANA EXEMPLO",
+   "provenance": "seed"
+  },
+  {
+   "type": "email",
+   "value": "analista.teste@example.com",
+   "provenance": "seed"
+  }
+ ],
+ "expected_privacy_links": {
+  "FULANO DE TAL": [],
+  "contato@example.com": [],
+  "BELTRANA EXEMPLO": [
+   "opensanctions_person",
+   "viewdns_rwhois_person"
+  ],
+  "analista.teste@example.com": [
+   "viewdns_rwhois_person"
+  ]
+ }
+}

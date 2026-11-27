@@ -1,0 +1,6 @@
+{
+ "/bin/ls": "elf",
+ "fixture_docprops.docx": "ooxml-docx",
+ "fixture_exif_gps.jpg": "jpeg",
+ "fixture_meta.pdf": "pdf"
+}

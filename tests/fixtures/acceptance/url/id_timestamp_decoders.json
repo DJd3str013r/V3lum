@@ -1,0 +1,5 @@
+{
+  "schema": "v3lum.acceptance_routes/1",
+  "module": "id_timestamp_decoders",
+  "routes": []
+}

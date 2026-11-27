@@ -1,0 +1,13 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://security.cloudflare-dns.com/dns-query?name=malware-test.example.net&type=A",
+  "headers": {}
+ },
+ "response": null,
+ "transport_error": "curl: (28) Operation timed out after 5000 milliseconds with 0 bytes received",
+ "elapsed_s": 5.0,
+ "observed_at": null,
+ "origin": "synthetic",
+ "note": "client-side timeout (no answer within the per-query limit)"
+}

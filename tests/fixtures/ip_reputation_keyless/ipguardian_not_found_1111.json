@@ -1,0 +1,18 @@
+{
+ "success": true,
+ "timestamp": "2026-11-26T08:24:20.571Z",
+ "count": 1,
+ "results": {
+  "ip": "1.1.1.1",
+  "found": false,
+  "sources": [],
+  "network": {
+   "asn": 13335,
+   "org": "CLOUDFLARENET - Cloudflare, Inc.",
+   "country": "US",
+   "type": "isp",
+   "type_source": "default"
+  },
+  "delisted": []
+ }
+}

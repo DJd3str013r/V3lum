@@ -1,0 +1,83 @@
+{
+ "version": "8.0",
+ "build_revision": "89598ea",
+ "relays_published": "2026-11-26 03:00:00",
+ "relays": [
+  {
+   "nickname": "ExampleRelay15",
+   "fingerprint": "2C3CCC35B53264238AE8066F3C6CAFB6031EB5CF",
+   "or_addresses": [
+    "192.0.2.10:9001",
+    "[2001:db8:ff::7]:9001"
+   ],
+   "exit_addresses": [],
+   "last_seen": "2026-11-26 03:00:00",
+   "first_seen": "2025-02-11 08:00:00",
+   "flags": [
+    "Fast",
+    "Running",
+    "Stable",
+    "Valid"
+   ],
+   "country": "us",
+   "as": "AS62744",
+   "as_name": "Quintex Alliance Consulting"
+  },
+  {
+   "nickname": "ExampleRelay5",
+   "fingerprint": "5F44E683AFAF2E7D15AED060841CD34935E4A4D0",
+   "or_addresses": [
+    "192.0.2.1:444",
+    "[2001:db8:ff::2]:81"
+   ],
+   "exit_addresses": [
+    "192.0.2.1"
+   ],
+   "last_seen": "2026-11-26 03:00:00",
+   "first_seen": "2026-07-03 01:00:00",
+   "flags": [
+    "Exit",
+    "Fast",
+    "Guard",
+    "HSDir",
+    "Running",
+    "Stable",
+    "V2Dir",
+    "Valid"
+   ],
+   "country": "us",
+   "as": "AS62744",
+   "as_name": "Quintex Alliance Consulting",
+   "contact": "operator <abuse AT example DOT com>"
+  },
+  {
+   "nickname": "ExampleRelay16",
+   "fingerprint": "0B512C94389C1D1485F8778751445C360E29C03D",
+   "or_addresses": [
+    "192.0.2.100:443"
+   ],
+   "exit_addresses": [
+    "192.0.2.100"
+   ],
+   "last_seen": "2026-11-26 03:00:00",
+   "first_seen": "2024-06-01 00:00:00",
+   "flags": [
+    "Exit",
+    "Fast",
+    "Guard",
+    "HSDir",
+    "Running",
+    "Stable",
+    "V2Dir",
+    "Valid"
+   ],
+   "country": "us",
+   "as": "AS62744",
+   "as_name": "Quintex Alliance Consulting",
+   "contact": "operator <abuse AT example DOT com>"
+  }
+ ],
+ "relays_truncated": 2801,
+ "bridges_published": "2026-11-26 02:58:18",
+ "bridges": []
+}

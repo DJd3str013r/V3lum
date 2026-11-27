@@ -1,0 +1,28 @@
+{
+ "_synthetic": "documented Hunter API v2 response shape (hunter.io/api-documentation/v2), filled with documentation values; P090-FC6 requires a trimmed real success fixture captured with the team key before merge (finder without a result)",
+ "data": {
+  "first_name": "Example",
+  "last_name": "Person",
+  "email": null,
+  "score": null,
+  "domain": "example.com",
+  "accept_all": false,
+  "position": null,
+  "twitter": null,
+  "linkedin_url": null,
+  "phone_number": null,
+  "company": "Example Org",
+  "sources": [],
+  "verification": {
+   "date": null,
+   "status": null
+  }
+ },
+ "meta": {
+  "params": {
+   "first_name": "Example",
+   "last_name": "Person",
+   "domain": "example.com"
+  }
+ }
+}

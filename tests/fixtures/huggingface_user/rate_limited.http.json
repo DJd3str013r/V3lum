@@ -1,0 +1,21 @@
+{
+ "_meta": {
+  "module": "huggingface_user",
+  "case": "rate_limited",
+  "source": "C0251 huggingface.co",
+  "request": {
+   "method": "GET",
+   "url": "https://huggingface.co/api/users/example-dev/overview"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "DOC-SHAPED",
+  "note": "RateLimit headers in the form observed live; body wording unverified"
+ },
+ "status": 429,
+ "headers": {
+  "content-type": "application/json; charset=utf-8",
+  "ratelimit": "\"api\";r=0;t=89",
+  "ratelimit-policy": "\"fixed window\";\"api\";q=500;w=300"
+ },
+ "body": "{\"error\":\"Too Many Requests\"}"
+}

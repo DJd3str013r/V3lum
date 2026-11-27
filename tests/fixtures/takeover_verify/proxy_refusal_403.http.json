@@ -1,0 +1,13 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://help.example.com/"
+ },
+ "response": {
+  "status": 403,
+  "headers": {
+   "content-type": "text/plain"
+  },
+  "body": "Request blocked by proxy policy: CONNECT to this host is not allowed from this egress"
+ }
+}

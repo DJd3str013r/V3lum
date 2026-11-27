@@ -1,0 +1,20 @@
+{
+ "data": {
+  "ipAddress": "198.51.100.23",
+  "isPublic": true,
+  "ipVersion": 4,
+  "isWhitelisted": false,
+  "abuseConfidenceScore": 100,
+  "countryCode": "NL",
+  "usageType": "Data Center/Web Hosting/Transit",
+  "isp": "Example Hosting B.V.",
+  "domain": "example.net",
+  "hostnames": [
+   "vps23.example.net"
+  ],
+  "isTor": false,
+  "totalReports": 1342,
+  "numDistinctUsers": 287,
+  "lastReportedAt": "2026-11-25T21:14:02+00:00"
+ }
+}

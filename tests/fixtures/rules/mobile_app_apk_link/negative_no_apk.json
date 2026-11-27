@@ -1,0 +1,16 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "nodes": [
+  {
+   "key": "url:https://example.com/apk-info.html",
+   "depth": 0,
+   "seed": true
+  },
+  {
+   "key": "url:https://example.com/files/apk",
+   "depth": 1
+  }
+ ],
+ "edges": []
+}

@@ -1,0 +1,13 @@
+{
+ "_fixture": "SIBLING live capture by p1-G05-2 on 2026-11-26 (same host medium.com, /@medium/about): Cloudflare managed challenge to the neutral UA; never retried",
+ "_meta": {
+  "url": "https://medium.com/@medium/about"
+ },
+ "status": 403,
+ "headers": {
+  "content-type": "text/html; charset=UTF-8",
+  "cf-mitigated": "challenge",
+  "server": "cloudflare"
+ },
+ "body": "<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title></head><body><noscript>Enable JavaScript and cookies to continue</noscript><script>(function(){window._cf_chl_opt = {cFPWv: 'g', cH: 'REDACTED'};var a = document.createElement('script');a.src = '/cdn-cgi/challenge-platform/h/g/orchestrate/chl_page/v1?ray=REDACTED';}());</script></body></html>"
+}

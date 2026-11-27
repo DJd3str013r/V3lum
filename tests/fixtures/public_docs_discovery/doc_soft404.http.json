@@ -1,0 +1,20 @@
+{
+ "_provenance": {
+  "synthetic": true
+ },
+ "request": {
+  "method": "GET",
+  "host": "www.example.com",
+  "path": "/arquivos/relatorio-anual-2023.pdf"
+ },
+ "response": {
+  "status": 200,
+  "headers": {
+   "Content-Type": "text/html; charset=utf-8"
+  },
+  "body": "<!DOCTYPE html><html lang=\"pt-BR\"><head><meta charset=\"utf-8\"><title>Página não encontrada | Example</title></head><body><div id=\"app\"><h1>Ops!</h1><p>A página /arquivos/relatorio-anual-2023.pdf não existe ou foi movida.</p><p class=\"rid\">request id 00000000000000000000000000000000</p></div></body></html>"
+ },
+ "history": [],
+ "final_url": null,
+ "transport_error": null
+}

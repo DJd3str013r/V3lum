@@ -1,0 +1,11 @@
+{
+ "request": {"method": "GET", "url": "https://example-corp-eu.s3.amazonaws.com/?max-keys=1"},
+ "response": {
+  "status": 301,
+  "headers": {"content-type": "application/xml", "server": "AmazonS3", "x-amz-bucket-region": "eu-west-1"},
+  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code><Message>The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.</Message><Endpoint>example-corp-eu.s3.eu-west-1.amazonaws.com</Endpoint><Bucket>example-corp-eu</Bucket><RequestId>0000000000000000</RequestId></Error>"
+ },
+ "class": "research",
+ "origin": "synthetic (documented S3 301 PermanentRedirect body)",
+ "notes": "301 PermanentRedirect = exists in another region (FC4)."
+}

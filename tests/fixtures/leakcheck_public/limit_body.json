@@ -1,0 +1,5 @@
+{
+ "_synthetic": "error-in-200 'limit' body: exact text not observed; the marker matches the 'limit' substring documented by the Ceos LeakCheck port",
+ "success": false,
+ "error": "Daily limit reached for your IP address"
+}

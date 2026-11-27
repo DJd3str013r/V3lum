@@ -1,0 +1,95 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "whoisxmlapi",
+  "name": "WhoisXML API Domain Research Suite (WHOIS History API v1, Reverse WHOIS API v2)",
+  "operator": "WhoisXML API, Inc.",
+  "hosts": [
+    "whois-history.whoisxmlapi.com",
+    "reverse-whois.whoisxmlapi.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established WHOIS data company with published API documentation, terms and paid plans (A8 trusted); P022 chair rationale: 'WhoisXML is trusted' (the module's derived tier is community through Whoxy and WhoisFreaks).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Large WHOIS-history collection dated by its own audit timestamps; historical records describe the past registration, post-GDPR records are mostly redacted (P022 cond 6)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "ttl": 2592000,
+    "min_interval": 1.0
+  },
+  "quota": {
+    "scope": "key",
+    "month": 500,
+    "rate_per_second": 30,
+    "burst": 1,
+    "published": true,
+    "evidence_url": "https://whois-history.whoisxmlapi.com/api/documentation/making-requests",
+    "safety_margin": 0.8
+  },
+  "error_markers": [
+    {
+      "id": "whoisxmlapi_credits",
+      "statuses": [403],
+      "json_path": null,
+      "equals": null,
+      "regex": "(?i)credit|balance|access restricted",
+      "final_url_regex": null,
+      "maps_to": "quota",
+      "reason_code": "quota",
+      "reason": "WhoisXML API: DRS credits exhausted or the key is not valid for this product (HTTP 403, could not verify)"
+    },
+    {
+      "id": "whoisxmlapi_allowlist",
+      "statuses": [403],
+      "json_path": null,
+      "equals": null,
+      "regex": "(?i)allow ?list|white ?list|ip address",
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "WhoisXML API: the egress IP is not on the key's IP allowlist (HTTP 403, could not verify)"
+    }
+  ],
+  "keys": {
+    "whoisxml": {
+      "description": "WhoisXML API key (Domain Research Suite credits), sent in the X-Authentication-Token header, never in the URL",
+      "signup_url": "https://user.whoisxmlapi.com/products",
+      "env": [
+        "V3LUM_WHOISXML_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "business = a company-paid WhoisXML subscription recorded with its licence/purchase in licence_allow (P022 cond 1); never an analyst's personal free account"
+    }
+  },
+  "sources": {
+    "drs": {
+      "title": "WhoisXML WHOIS History API v1 (preview 1 / purchase 50 DRS credits) and Reverse WHOIS API v2 (preview free / purchase 1 credit), one shared DRS credit pool",
+      "terms": {
+        "class": "license",
+        "evidence_url": "https://whois-history.whoisxmlapi.com/api/documentation/making-requests",
+        "quote": "Company-paid keys only; legal records the licence/purchase in licence_allow before an adapter runs under corporate (P022 cond 1). Terms 'license' (paid credits): business use needs the paid subscription.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "whoisxmlapi",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P022 cond 1, chair rationale 'terms license (paid credits)'); research C0043 (verified_needs_key, keyless WhoisService 401 AUTHENTICATE_04). POST https://whois-history.whoisxmlapi.com/api/v1 {domainName, mode preview|purchase, outputFormat JSON} and POST https://reverse-whois.whoisxmlapi.com/api/v2 {searchType historic, mode, advancedSearchTerms [{field RegistrantContact.Email|Organization|Name, term, exactMatch}]}; key in the documented X-Authentication-Token header (never apiKey in the URL, AR01). Documented errors: 401 key missing/invalid, 403 'insufficient credits balance, incorrect API key, or IP not on the allowlist', 408, 429 (30 requests/s), 5xx. Free plan: 500 DRS credits (one-time, at sign-up); the quota block counts requests, the module's monthly credit budget weights history purchases (50 credits). Used by whois_history_keyed."
+    }
+  },
+  "notes": "Owned by batch p3-G01-2 (P022 whois_history_keyed). Only the two Domain Research Suite hosts the final conditions use are registered (ip-netblocks/subdomains/www are not used, P327). Responses carry full registrant contacts: the module minimises them at ingestion (P022 cond 5) and keeps only domain, registrar, dates, nameservers, status and usable registrant selectors. Cache 30 days (P022 cond 7)."
+}

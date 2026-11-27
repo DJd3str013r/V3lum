@@ -1,0 +1,48 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "maclookup",
+  "name": "MACLookup (maclookup.app) API v2",
+  "operator": "MACLookup (maclookup.app), individual owner named in its terms; Italian VAT registration shown on the site",
+  "hosts": ["api.maclookup.app"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "Not reviewed yet: 'Both providers need a recorded community tier before that module runs (A8)' (P315 cond 3; council-1 chunk C reviewer queue: 'tiers for ... maclookup.app and macvendors (P315)'). Evidence for the reviewer (read 2026-11-26): identifiable owner in the published Terms and Conditions, privacy policy, public API documentation and rate limits, site online since 2018 (footer '2018-2026'). Until a community tier is recorded the opt-in mac_oui_online module never sends a prefix at AMBER or above.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "B", "justification": "Relays the IEEE registry (prefix, company, block type and size); occasionally lags the daily IEEE files."},
+  "http_profile": {"user_agent": "neutral", "accept": "application/json", "ttl": 2592000, "min_interval": 1.0, "timeout": 15},
+  "quota": {"scope": "egress_ip", "hour": 4166, "rate_per_second": 25, "published": true, "evidence_url": "https://maclookup.app/api-v2/rate-limits"},
+  "error_markers": [
+    {"id": "mac_oui_online_maclookup_success_false", "statuses": [200], "json_path": "success", "equals": false,
+     "maps_to": "error", "reason_code": "error", "reason": "maclookup.app: success=false inside an HTTP 200 answer (could not verify)"}
+  ],
+  "keys": {
+    "maclookup": {
+      "description": "maclookup.app API v2 key (optional; legacy keys only: new key registrations closed, legacy limits until April 2027). Sent as the apiKey query parameter, which the central redactor masks.",
+      "signup_url": "https://maclookup.app/api-v2/documentation",
+      "env": ["V3LUM_MACLOOKUP_KEY"],
+      "multi_key": false,
+      "plan_hint": "A15: a team-account key only (P315 cond 3); the module also runs keyless at the public limits."
+    }
+  },
+  "sources": {
+    "macs_v2": {
+      "title": "GET /v2/macs/{prefix} (6, 7 or 9 hex digits of the registry prefix only, never a full MAC)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://maclookup.app/terms-and-conditions",
+        "quote": "MACLookup grants you a limited, non-exclusive, revocable right to access and use the Service for lawful personal or commercial purposes. You may use data returned by the API in your applications, internal tools, or workflows, provided that your use is lawful and does not violate these Terms.",
+        "checked_at": "2026-11-26",
+        "reviewer": "batch p2-G12-2 (terms page read 2026-11-26; legal confirmation pending)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "ieee_ra",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Live 2026-11-26 (prep): 200 found=true; 200 found=false with empty fields for an unknown prefix (an absence, not a 404); 400 {success:false, errorCode:102, error:'... has a bad format'} for malformed input (the module validates first); accepts 6/7/9-hex prefixes; Cloudflare, cache-control no-store, no rate-limit headers keyless. Published limits: all users 25 requests/s and 25K requests per 6 h; 'New API key registrations are no longer available' (legacy keys 50 req/s, 1.0 M/day until April 2027). The data is a relay of the IEEE registry (upstream family ieee_ra)."
+    }
+  }
+}

@@ -1,0 +1,12 @@
+[
+ {"id": "emailformat_www_example", "url": "https://www.email-format.com/d/example.com/", "accept": "text/html"},
+ {"id": "bsky_profile_bsky_app", "url": "https://bsky.app/profile/bsky.app", "accept": "text/html"},
+ {"id": "mastodon_profile_mastodon", "url": "https://mastodon.social/@Mastodon", "accept": "text/html"},
+ {"id": "hibp_breach_lower_adobe", "url": "https://haveibeenpwned.com/breach/Adobe", "accept": "text/html"},
+ {"id": "webmii_quoted_bancodobrasil", "url": "https://webmii.com/people?n=%22Banco%20do%20Brasil%22", "accept": "text/html"},
+ {"id": "ddg_ia_example_com", "url": "https://api.duckduckgo.com/?q=example.com&format=json&no_html=1&skip_disambig=1"},
+ {"id": "emailformat_apex_example", "url": "https://email-format.com/d/example.com/", "accept": "text/html"},
+ {"id": "bsky_profile_example_com", "url": "https://bsky.app/profile/example.com", "accept": "text/html"},
+ {"id": "hibp_breach_upper_adobe", "url": "https://haveibeenpwned.com/Breach/Adobe", "accept": "text/html"},
+ {"id": "ddg_ia_registro_br", "url": "https://api.duckduckgo.com/?q=registro.br&format=json&no_html=1&skip_disambig=1"}
+]

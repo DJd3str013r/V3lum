@@ -1,0 +1,57 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "greynoise",
+  "name": "GreyNoise (Community API and Visualizer)",
+  "operator": "GreyNoise Intelligence, Inc.",
+  "hosts": ["api.greynoise.io", "viz.greynoise.io"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with a published EULA, a privacy policy and a business offering (A8 trusted; P148 chair rationale: 'GreyNoise is an established company: tier trusted').",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Classifications come from GreyNoise's own sensor network (mass-scanner noise) and its curated RIOT list of common business services; 'not observed' only means no scanning was seen by its sensors."
+  },
+  "http_profile": {"user_agent": "neutral", "accept": "application/json", "ttl": 86400, "min_interval": 2.0, "retries": 0},
+  "quota": null,
+  "error_markers": [],
+  "keys": {
+    "greynoise": {
+      "description": "GreyNoise API key (sent in the 'key' header of the Community API; raises the weekly lookup quota)",
+      "signup_url": "https://viz.greynoise.io/account/api-key",
+      "env": ["V3LUM_GREYNOISE_KEY", "GREYNOISE_API_KEY"],
+      "multi_key": false,
+      "plan_hint": "free/community keys are non-commercial (EULA s.2.3): record 'business' only for a paid GreyNoise plan or a written GreyNoise confirmation covering internal defence (P148 cond 2)"
+    }
+  },
+  "sources": {
+    "community": {
+      "title": "GreyNoise Community API (GET /v3/community/{ip}: noise, riot, classification, name, last_seen)",
+      "terms": {
+        "class": "noncommercial",
+        "evidence_url": "https://www.greynoise.io/terms",
+        "quote": "GreyNoise ... offers certain non-paid subscriptions for Free Customers wishing to use GreyNoise Products for non-commercial purposes (EULA s.2.3; s.3.1: 'limited to your internal business purposes or noncommercial purposes')",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1, P148 cond 1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "greynoise",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "P148 cond 1-2: the free community tier is classed noncommercial; off under the corporate profile until licence-cleared (a licence_allow entry for greynoise.community with scope 'internal defence, no resale or redistribution' after GreyNoise's written confirmation, or a paid plan recorded as key_plans.greynoise = business). HTTP 404 {'message': 'IP not observed scanning the internet.'} is the documented absence ('not observed scanning by GreyNoise', never 'benign'); HTTP 429 {plan, rate_limit '25-W'} is the per-egress weekly quota (could not verify).",
+      "licensed_alternative": "A paid GreyNoise plan recorded as key_plans.greynoise = 'business', or a licence_allow entry for greynoise.community citing GreyNoise's written confirmation (internal defence only, no resale or redistribution)."
+    }
+  },
+  "x_quota_window": {
+    "period": "week",
+    "keyless_per_egress_ip": 25,
+    "free_key": 50,
+    "evidence": "HTTP 429 body rate_limit '25-W' and X-Ratelimit-Limit: 25 observed 2026-11-25/26; ~50/week for a free key per the research record (C0335)",
+    "interim": "P334 quota blocks have no weekly window yet: greynoise_community declares Module.daily_quota = 3 (P148 cond 3) and seeds-only runs"
+  },
+  "notes": "Owned by batch p2-G02-3 (P148). viz.greynoise.io is the manual Visualizer page (403 to scripts from a datacenter egress on 2026-11-26: manual link only, never fetched). No P334 quota block: the published limit is weekly (see x_quota_window), the module's daily_quota is the interim budget."
+}

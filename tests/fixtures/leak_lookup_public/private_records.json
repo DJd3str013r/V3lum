@@ -1,0 +1,18 @@
+{
+ "_synthetic": "synthetic PRIVATE-tier shape (h8mail get_leaklookup_priv: message = {db: [record, ...]}); documentation values only. Used to prove the P145 schema drops records and the module fails closed (P140-FC1)",
+ "error": "false",
+ "message": {
+  "examplebreach.example": [
+   {
+    "email_address": "user@example.com",
+    "username": "example-user",
+    "password": "FIXTURE-NOT-A-PASSWORD",
+    "hash": "0000000000000000000000000000000000000000",
+    "ipaddress": "192.0.2.10",
+    "firstname": "Example",
+    "lastname": "Person",
+    "mobile": "+55 11 5555-0100"
+   }
+  ]
+ }
+}

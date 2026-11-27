@@ -1,0 +1,40 @@
+{
+ "domains": [
+  {
+   "domain": "examplebrand-login.com",
+   "create_date": "2026-11-20T08:00:00.000000",
+   "update_date": "2026-11-21T08:00:00.000000",
+   "country": null,
+   "isDead": "False",
+   "A": [
+    "192.0.2.20"
+   ],
+   "NS": [
+    "ns1.example.net"
+   ],
+   "CNAME": null,
+   "MX": [
+    {
+     "exchange": "mx.example.net",
+     "priority": 10
+    }
+   ],
+   "TXT": null
+  },
+  {
+   "domain": "examplebrand-ofertas.net",
+   "create_date": "2026-11-22T08:00:00.000000",
+   "update_date": "2026-11-22T08:00:00.000000",
+   "country": null,
+   "isDead": "True",
+   "A": null,
+   "NS": null,
+   "CNAME": null,
+   "MX": null,
+   "TXT": null
+  }
+ ],
+ "total": 2,
+ "time": "7",
+ "next_page": null
+}

@@ -1,0 +1,17 @@
+{
+ "_meta": {"provenance": "synthetic", "note": "Playwright defaults plus common copy-paste mistakes; every item must be flagged."},
+ "running_as_root": true,
+ "launch": {
+  "headless": true,
+  "chromium_sandbox": false,
+  "args": ["--no-sandbox", "--disable-web-security", "--load-extension=/tmp/stealth"]
+ },
+ "context": {
+  "accept_downloads": true,
+  "service_workers": "allow",
+  "permissions": ["geolocation", "notifications"],
+  "ignore_https_errors": true,
+  "bypass_csp": true,
+  "http_credentials": {"username": "analyst", "password": "x"}
+ }
+}

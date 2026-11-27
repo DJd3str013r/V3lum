@@ -58,6 +58,7 @@ __all__ = [
     "apply_overrides",
     "record_reports",
     "resume_plan",
+    "seeds_display",
     "run_info_of",
 ]
 
@@ -97,6 +98,23 @@ def _clean(value: Any) -> str:
         return clean_text(value)
     except Exception:  # noqa: BLE001 - WP14 helper unavailable: drop control characters here
         return "".join(ch for ch in str(value or "") if ch in "\n\t" or (ord(ch) >= 32 and not 0x7F <= ord(ch) <= 0x9F))
+
+
+def seeds_display(seeds: Any, *, limit: int = 160) -> str:
+    """Stored seed keys for a listing: each value through ``ui.safe.entity_display`` (CPF and other
+    personal identifiers masked, AR24; URLs defanged, P311 cond 8; control characters removed).
+    A listing is never an unmasked view: ``--show-personal`` applies to one rendered case only."""
+    from v3lum.ui.safe import entity_display
+
+    parts: list[str] = []
+    for key in seeds or ():
+        etype, sep, value = str(key or "").partition(":")
+        try:
+            shown = f"{_clean(etype)}:{entity_display(etype, value)}" if sep else entity_display("", etype)
+        except Exception:  # noqa: BLE001 - a display problem never breaks the listing (fail closed)
+            shown = "(unreadable seed)"
+        parts.append(shown)
+    return _clean(", ".join(parts))[:limit]
 
 
 def _user_error(message: str) -> Exception:
@@ -480,7 +498,7 @@ def _stored_options(case: Mapping[str, Any], app: Any, args: Any) -> Any:
         allow_unknown=bool(stored.get("allow_unknown", False)),
         egress_override=str(stored.get("egress_override") or ""),
         licence_profile=str(stored.get("licence_profile") or case.get("licence_profile") or ""),
-        show_personal=bool(stored.get("show_personal", False)),
+        show_personal=False,  # AR24: an unmasked view is never carried into a resumed case
         no_defang=bool(stored.get("no_defang", False)),
         seed_tlp={str(k): str(v) for k, v in (stored.get("seed_tlp") or {}).items()},
         unconfirmed_seeds={str(k) for k in stored.get("unconfirmed_seeds") or ()},
@@ -538,10 +556,19 @@ def _prepare_runtime(app: Any, rt: Any, options: Any) -> None:
     lookup = getattr(app.store, "sightings_for", None)  # interim wiring (WP13 not installed yet)
     if callable(lookup):
         rt.meta["sightings_lookup"] = lookup
+    try:  # analyst overrides survive the re-run (P322 cond 3, WP16)
+        from v3lum.core.store import OverrideHook
+
+        if not any(isinstance(h, OverrideHook) for h in rt.case_hooks):
+            rt.case_hooks.append(OverrideHook(app.store))
+    except Exception as exc:  # noqa: BLE001 - the re-run keeps the automatic labels (logged)
+        import logging
+
+        logging.getLogger("v3lum.commands.cases").warning("override hook unavailable: %s", type(exc).__name__)
     try:
         from v3lum.core.audit import AuditHook
 
-        rt.case_hooks.append(AuditHook(app.store, analyst=_analyst(app)))
+        AuditHook(app.store, analyst=_analyst(app)).attach(rt)  # ledger lines as requests happen (WP15)
     except Exception as exc:  # noqa: BLE001
         from v3lum.core.models import Opsec
 
@@ -604,7 +631,7 @@ def _resume(app: Any, console: Any, args: Any) -> int:
     if args.json:
         sys.stdout.write(json.dumps(data, ensure_ascii=False, indent=2, default=str) + "\n")
     else:
-        app.show_case(data)
+        app.show_case(data, show_personal=False)
         console.print(Text(f"\n[✓] resumed {len(pairs)} lookup(s) of case {case_id}: new case {case.case_id}", style="v.ok"))
     return 0
 
@@ -624,16 +651,19 @@ def _cases_table(app: Any, limit: int, search: str) -> Table:
     t.add_column("risk", no_wrap=True)
     t.add_column("findings", justify="right")
     t.add_column("entities", justify="right")
+    from v3lum.report.summary import level_label
+    from v3lum.ui.theme import risk_style
+
     rows = app.store.list_cases(limit, search)
     for c in rows:
-        lvl = str(c.get("risk_level") or "clean")
+        lvl = level_label(c.get("risk_level"))  # v1 'clean' reads 'no findings' (P302 cond 6, AR14)
         hold = Text("held", style="v.warn") if c.get("legal_hold") else Text("")
         name = Text(_clean(c["id"]))
         if c.get("engagement"):
             name.append(" (engagement)", style="v.warn")
         t.add_row(
-            name, str(c.get("created") or "")[:19], str(c.get("tlp") or ""), hold, Text(_clean(", ".join(c.get("seeds") or []))[:160]),
-            Text(f"{lvl} {float(c.get('risk_score') or 0):.0f}", style=f"risk.{lvl}"), str(c.get("findings") or 0), str(c.get("entities") or 0),
+            name, Text(_clean(str(c.get("created") or ""))[:19]), Text(_clean(str(c.get("tlp") or ""))), hold, Text(seeds_display(c.get("seeds"))),
+            Text(f"{lvl} {float(c.get('risk_score') or 0):.0f}", style=risk_style(lvl)), str(c.get("findings") or 0), str(c.get("entities") or 0),
         )
     held = sum(1 for c in rows if c.get("legal_hold"))
     t.caption = f"{len(rows)} shown" + (f" · {held} under legal hold (exempt from purge)" if held else "") + " · v3lum cases show <id>"
@@ -665,6 +695,7 @@ class Cases:
         cs.add_argument("case_id")
         cs.add_argument("--full", action="store_true")
         cs.add_argument("--json", action="store_true", help="print the stored case (overrides applied) as JSON")
+        cs.add_argument("--show-personal", action="store_true", help="unmask CPF/personal identifiers in THIS view only (recorded in the case audit, AR24)")
         cr = sub.add_parser("report", help="write report files for a case")
         cr.add_argument("case_id")
         cr.add_argument("-f", "--format", default="html,md,json,stix")
@@ -723,7 +754,10 @@ class Cases:
             if args.json:
                 sys.stdout.write(json.dumps(data, ensure_ascii=False, indent=2, default=str) + "\n")
             else:
-                app.show_case(data, full=args.full)
+                unmasked = bool(getattr(args, "show_personal", False))
+                if unmasked:  # one unmasked view, on request, written to the case audit (AR24)
+                    audit_append(store, str(data["case_id"]), str(data.get("case_dir") or ""), "personal_view", {"analyst": analyst, "command": "cases show"})
+                app.show_case(data, full=args.full, show_personal=unmasked)
                 info = store.case_info(str(data["case_id"])) or {}
                 if info.get("legal_hold"):
                     console.print(Text(f"[!] under legal hold since {info.get('held_at')}: {_clean(info.get('hold_reason'))} (requested by {_clean(info.get('hold_requester'))})", style="v.warn"))

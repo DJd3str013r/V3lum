@@ -1,0 +1,18 @@
+### [CVE-2021-44228](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44228)
+![](https://img.shields.io/static/v1?label=Product&message=Apache%20Log4j2&color=blue)
+![](https://img.shields.io/static/v1?label=Version&message=2.0-beta9%20&color=brightgreen)
+![](https://img.shields.io/static/v1?label=Vulnerability&message=CWE-20%20Improper%20Input%20Validation&color=brightgreen)
+![](https://img.shields.io/static/v1?label=Vulnerability&message=CWE-400%20Uncontrolled%20Resource%20Consumption&color=brightgreen)
+![](https://img.shields.io/static/v1?label=Vulnerability&message=CWE-502%20Deserialization%20of%20Untrusted%20Data&color=brightgreen)
+
+### Description
+
+Apache Log4j2 2.0-beta9 through 2.15.0 (excluding security releases 2.12.2, 2.12.3, and 2.3.1) JNDI features used in configuration, log messages, and parameters do not protect against attacker controlled LDAP and other JNDI related endpoints. An attacker who can control log messages or log message parameters can execute arbitrary code loaded from LDAP servers when message lookup substitution is enabled. From log4j 2.15.0, this behavior has been disabled by default. From version 2.16.0 (along with 2.12.2, 2.12.3, and 2.3.1), this functionality has been completely removed. Note that this vulnerability is specific to log4j-core and does not affect log4net, log4cxx, or other Apache Logging Services projects.
+
+### POC
+
+#### Reference
+- https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/example
+
+#### Github
+No PoCs found on GitHub currently.

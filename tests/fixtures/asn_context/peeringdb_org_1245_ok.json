@@ -1,0 +1,51 @@
+{
+ "data": [
+  {
+   "id": 1245,
+   "name": "NIC.br",
+   "aka": "",
+   "name_long": "",
+   "website": "http://nic.br/",
+   "city": "São Paulo",
+   "state": "SP",
+   "country": "BR",
+   "created": "2007-01-23T17:04:04Z",
+   "updated": "2022-10-14T20:16:47Z",
+   "status": "ok",
+   "address1": "Example Street 100",
+   "address2": "Suite 1",
+   "zipcode": "00000-000",
+   "latitude": 0.0,
+   "longitude": 0.0,
+   "net_set": [
+    {
+     "id": 1017,
+     "asn": 22548,
+     "name": "NIC.BR",
+     "info_type": "Non-Profit"
+    },
+    {
+     "id": 5654,
+     "asn": 14026,
+     "name": "NIC.br - SIMET",
+     "info_type": "Non-Profit"
+    }
+   ],
+   "ix_set": [
+    {
+     "id": 171,
+     "name": "IX.br (PTT.br) São Paulo",
+     "country": "BR"
+    }
+   ],
+   "fac_set": [
+    {
+     "id": 3809,
+     "name": "NIC-NU (Nações Unidas)",
+     "country": "BR"
+    }
+   ]
+  }
+ ],
+ "meta": {}
+}

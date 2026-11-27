@@ -1,0 +1,26 @@
+{
+ "generator": "phonenumbers 9.0.44 facts (collect_phone_facts schema), batch p1-G06-1 prep 2026-11-26",
+ "lib": "phonenumbers",
+ "lib_version": "9.0.44",
+ "region_hint": "BR",
+ "result": {
+  "input": "+55 21 99555-0100",
+  "region_hint": "BR",
+  "country_code": 55,
+  "national_number": "21995550100",
+  "valid": true,
+  "possible": true,
+  "possible_reason": 0,
+  "region": "BR",
+  "type": "MOBILE",
+  "e164": "+5521995550100",
+  "international": "+55 21 99555-0100",
+  "national": "(21) 99555-0100",
+  "geo_pt": "Rio de Janeiro",
+  "carrier_pt": "Vivo",
+  "timezones": [
+   "America/Sao_Paulo"
+  ],
+  "ndc_len": 2
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "ip": "8.8.8.8",
+ "country_code": "US",
+ "is_anycast": true,
+ "asn": {
+  "asn": "AS15169",
+  "route": "8.8.8.0/24",
+  "name": "Google LLC",
+  "domain": "google.com",
+  "type": "hosting"
+ },
+ "privacy": {
+  "is_abuser": false,
+  "is_anonymous": false,
+  "is_bogon": false,
+  "is_hosting": true,
+  "is_icloud_relay": false,
+  "is_proxy": false,
+  "is_tor": false,
+  "is_vpn": false
+ },
+ "company": {
+  "name": "Google LLC",
+  "domain": "google.com",
+  "type": "hosting"
+ },
+ "abuse": {
+  "email": "network-abuse@google.com"
+ }
+}

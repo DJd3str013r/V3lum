@@ -1,0 +1,18 @@
+{
+ "meta": {
+  "timestamp": "2026-11-26T08:00:00+00:00",
+  "serverid": "00000000",
+  "status": "success",
+  "requestid": "REDACTED"
+ },
+ "results": {
+  "url": "https://www.example.org/",
+  "in_database": true,
+  "phish_id": 11728,
+  "phish_detail_page": "https://www.phishtank.com/phish_detail.php?phish_id=11728",
+  "verified": "y",
+  "verified_at": "2006-10-01T02:32:23+00:00",
+  "valid": "y",
+  "submitted_at": "2006-10-01T02:28:46+00:00"
+ }
+}

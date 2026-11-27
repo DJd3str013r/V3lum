@@ -1,0 +1,25 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "gleif",
+  "hosts": [
+    "search.gleif.org"
+  ],
+  "sources": {
+    "pivots_company_org_search_pages": {
+      "title": "GLEIF LEI search search.gleif.org (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.gleif.org/en/meta/lei-data-terms-of-use",
+        "quote": "The pack is offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "gleif",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P231 cond 1). Single-page application: the value travels in the URL fragment; verified=false until the route is confirmed in a browser (P231 cond 9). Used by pivots_company_org (pack company_org.json)."
+    }
+  },
+  "error_markers": []
+}

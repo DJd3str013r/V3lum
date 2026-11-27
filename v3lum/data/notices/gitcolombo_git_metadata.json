@@ -1,0 +1,11 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "gitcolombo_git_metadata",
+  "source_url": "https://github.com/soxoj/gitcolombo",
+  "version": "commit 82eb1da79f9239707d08d6d8d8ba53e2d2f9926c (2026-08-30)",
+  "sha256": "",
+  "licence": "MIT",
+  "attribution": "Commit-identity extraction logic (identity trailer pattern and its malformed-name rule, the system-address rule, fork skipping and the GitAnalyst same-e-mail-set clustering) adapted from gitcolombo by Soxoj, Copyright (c) 2020-2026 Soxoj, MIT licence. gitcolombo is not a dependency and no git binary is run.",
+  "bundled": true,
+  "files": ["v3lum/modules/username_social/git_metadata_identity.py"]
+}

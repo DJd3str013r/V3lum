@@ -1,0 +1,27 @@
+{
+ "Zone": "Red",
+ "UrlGeneralInfo": {
+  "Url": "http://login.example.net/account/verify.php",
+  "Host": "login.example.net",
+  "Ipv4Count": 1,
+  "FilesCount": 2,
+  "Categories": [
+   "Phishing",
+   "Malicious"
+  ],
+  "CategoriesWithZone": [
+   {
+    "Name": "Phishing",
+    "Zone": "Red"
+   },
+   {
+    "Name": "Malicious",
+    "Zone": "Red"
+   }
+  ]
+ },
+ "UrlDomainWhoIs": {
+  "DomainName": "example.net",
+  "Created": "2026-11-01T00:00:00Z"
+ }
+}

@@ -1,0 +1,22 @@
+{
+ "_meta": {
+  "provenance": "documented",
+  "source": "genericapi.py CaptureRedirects",
+  "request": {
+   "method": "GET",
+   "url": "https://lookyloo.circl.lu/json/9e173218-215c-4550-b302-29801096e268/redirects"
+  }
+ },
+ "status": 200,
+ "headers": {},
+ "body": {
+  "response": {
+   "url": "https://login.example.com/secure/",
+   "redirects": [
+    "https://login.example.com/secure/",
+    "https://login.example.com/secure/index.php?u=user%40example.com",
+    "https://www.example.org/landing"
+   ]
+  }
+ }
+}

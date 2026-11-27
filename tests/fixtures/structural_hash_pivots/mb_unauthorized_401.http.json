@@ -1,0 +1,26 @@
+{
+ "request": {
+  "method": "POST",
+  "url": "https://mb-api.abuse.ch/api/v1/",
+  "headers": {},
+  "form": {
+   "query": "get_imphash",
+   "imphash": "<imphash>",
+   "limit": "50"
+  }
+ },
+ "response": {
+  "status": 401,
+  "headers": {
+   "content-type": "application/octet-stream",
+   "content-length": "25",
+   "server": "nginx/1.22.1"
+  },
+  "body": {
+   "error": "Unauthorized"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": 0.41,
+ "note": "research: get_imphash without Auth-Key (abuse.ch API family answers 401 {'error': 'Unauthorized'})"
+}

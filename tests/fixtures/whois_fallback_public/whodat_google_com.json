@@ -1,0 +1,121 @@
+{
+ "query": "google.com",
+ "domain": "google.com",
+ "domainUnicode": null,
+ "id": "2138514_DOMAIN_COM-VRSN",
+ "tld": "com",
+ "isRegistered": true,
+ "registrar": {
+  "name": "MarkMonitor Inc.",
+  "ianaId": "292",
+  "url": "https://www.markmonitor.com/about-us/",
+  "whoisServer": "whois.markmonitor.com",
+  "abuseEmail": "abusecomplaints@markmonitor.com",
+  "abusePhone": "+1.2086851750",
+  "reseller": null
+ },
+ "status": [
+  "clientDeleteProhibited",
+  "clientTransferProhibited",
+  "clientUpdateProhibited",
+  "serverDeleteProhibited",
+  "serverTransferProhibited",
+  "serverUpdateProhibited"
+ ],
+ "nameservers": [
+  {
+   "name": "ns1.google.com",
+   "ipv4": [],
+   "ipv6": []
+  },
+  {
+   "name": "ns2.google.com",
+   "ipv4": [],
+   "ipv6": []
+  },
+  {
+   "name": "ns3.google.com",
+   "ipv4": [],
+   "ipv6": []
+  },
+  {
+   "name": "ns4.google.com",
+   "ipv4": [],
+   "ipv6": []
+  }
+ ],
+ "dnssec": {
+  "signed": false,
+  "dsData": []
+ },
+ "dates": {
+  "created": "1997-09-15T04:00:00Z",
+  "updated": "2024-08-02T02:17:33Z",
+  "expires": "2028-09-14T04:00:00Z"
+ },
+ "contacts": {
+  "registrant": {
+   "name": null,
+   "organization": null,
+   "email": null,
+   "phone": null,
+   "address": {
+    "street": null,
+    "city": null,
+    "state": "SP",
+    "postalCode": null,
+    "country": "US"
+   },
+   "redacted": true
+  },
+  "admin": {
+   "name": null,
+   "organization": null,
+   "email": null,
+   "phone": null,
+   "address": {
+    "street": null,
+    "city": null,
+    "state": null,
+    "postalCode": null,
+    "country": null
+   },
+   "redacted": true
+  },
+  "tech": {
+   "name": null,
+   "organization": null,
+   "email": null,
+   "phone": null,
+   "address": {
+    "street": null,
+    "city": null,
+    "state": null,
+    "postalCode": null,
+    "country": null
+   },
+   "redacted": true
+  },
+  "billing": {
+   "name": null,
+   "organization": null,
+   "email": null,
+   "phone": null,
+   "address": {
+    "street": null,
+    "city": null,
+    "state": null,
+    "postalCode": null,
+    "country": null
+   },
+   "redacted": true
+  }
+ },
+ "meta": {
+  "source": "rdap",
+  "server": "https://rdap.verisign.com/com/v1",
+  "referral": "https://rdap.markmonitor.com/rdap/domain/GOOGLE.COM",
+  "fetchedAt": "2026-11-26T05:22:03.901591023Z",
+  "cached": true
+ }
+}

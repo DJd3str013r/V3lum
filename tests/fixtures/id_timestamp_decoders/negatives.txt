@@ -1,0 +1,7 @@
+Pedido 1536682540265873408 enviado; protocolo 613425648685547541; telefone +55 11 5555-0123;
+CPF 123.456.789-09 / 12345678909; https://example.com/status/1536682540265873408
+https://twitter.com/example/status/20 (pre-snowflake sequential id)
+https://x.com/example/status/9223372036854775807 (decodes to 2080: out of window)
+https://www.tiktok.com/@example/video/1000 (decodes to 1970: out of window)
+https://discord.com/channels/@me/0613425648685547541 (leading zero: not canonical)
+snowflake 613425648685547541 (no colon) id:613425648685547541 xsnowflake:1536682540265873408

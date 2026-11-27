@@ -1,0 +1,538 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "$comment": "Regression (P291 cond 11): an own nginx host with 20 version-inferred CVEs and one KEV entry gives ONE HIGH POSSIBLE finding, not 20 CRITICALs",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "org_profile": {
+    "org": {
+      "name": "Acme"
+    },
+    "domains": [
+      {
+        "name": "acme-corp.example",
+        "verification": "txt_verified",
+        "criticality": "high"
+      }
+    ],
+    "cidrs": [
+      {
+        "value": "203.0.113.0/24",
+        "criticality": "high"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "key": "ipv4:203.0.113.60",
+      "depth": 0,
+      "seed": true,
+      "ownership": "own_asset",
+      "tags": [
+        "own_asset"
+      ],
+      "attributes": {
+        "cpes": [
+          {
+            "value": [
+              "cpe:/a:f5:nginx:1.18.0"
+            ],
+            "source": "shodan_internetdb"
+          }
+        ],
+        "vulns": [
+          {
+            "value": [
+              "CVE-2099-10001",
+              "CVE-2099-10002",
+              "CVE-2099-10003",
+              "CVE-2099-10004",
+              "CVE-2099-10005",
+              "CVE-2099-10006",
+              "CVE-2099-10007",
+              "CVE-2099-10008",
+              "CVE-2099-10009",
+              "CVE-2099-10010",
+              "CVE-2099-10011",
+              "CVE-2099-10012",
+              "CVE-2099-10013",
+              "CVE-2099-10014",
+              "CVE-2099-10015",
+              "CVE-2099-10016",
+              "CVE-2099-10017",
+              "CVE-2099-10018",
+              "CVE-2099-10019",
+              "CVE-2099-10020"
+            ],
+            "source": "shodan_internetdb"
+          }
+        ]
+      },
+      "findings": [
+        {
+          "title": "CVEs by version match (version-inferred)",
+          "severity": "medium",
+          "confidence": 0.8,
+          "criterion": "version-inferred, backports not considered",
+          "tags": [
+            "vulnerable",
+            "version_inferred"
+          ],
+          "module": "shodan_internetdb",
+          "source": "shodan.internetdb",
+          "confidence_label": "possible",
+          "data": {
+            "cves": [
+              "CVE-2099-10001",
+              "CVE-2099-10002",
+              "CVE-2099-10003",
+              "CVE-2099-10004",
+              "CVE-2099-10005",
+              "CVE-2099-10006",
+              "CVE-2099-10007",
+              "CVE-2099-10008",
+              "CVE-2099-10009",
+              "CVE-2099-10010",
+              "CVE-2099-10011",
+              "CVE-2099-10012",
+              "CVE-2099-10013",
+              "CVE-2099-10014",
+              "CVE-2099-10015",
+              "CVE-2099-10016",
+              "CVE-2099-10017",
+              "CVE-2099-10018",
+              "CVE-2099-10019",
+              "CVE-2099-10020"
+            ],
+            "count": 20
+          }
+        }
+      ]
+    },
+    {
+      "key": "cve:CVE-2099-10001",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "cvss": [
+          {
+            "value": 5.3,
+            "source": "cve_record"
+          }
+        ]
+      }
+    },
+    {
+      "key": "cve:CVE-2099-10002",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "cvss": [
+          {
+            "value": 6.3,
+            "source": "cve_record"
+          }
+        ]
+      }
+    },
+    {
+      "key": "cve:CVE-2099-10003",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "cvss": [
+          {
+            "value": 7.3,
+            "source": "cve_record"
+          }
+        ]
+      }
+    },
+    {
+      "key": "cve:CVE-2099-10004",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "cvss": [
+          {
+            "value": 8.3,
+            "source": "cve_record"
+          }
+        ]
+      }
+    },
+    {
+      "key": "cve:CVE-2099-10005",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "cvss": [
+          {
+            "value": 5.3,
+            "source": "cve_record"
+          }
+        ]
+      }
+    },
+    {
+      "key": "cve:CVE-2099-10006",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "cvss": [
+          {
+            "value": 6.3,
+            "source": "cve_record"
+          }
+        ]
+      }
+    },
+    {
+      "key": "cve:CVE-2099-10007",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "cvss": [
+          {
+            "value": 7.3,
+            "source": "cve_record"
+          }
+        ]
+      }
+    },
+    {
+      "key": "cve:CVE-2099-10008",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "cvss": [
+          {
+            "value": 8.3,
+            "source": "cve_record"
+          }
+        ],
+        "kev": [
+          {
+            "value": true,
+            "source": "cisa_kev"
+          }
+        ],
+        "epss": [
+          {
+            "value": 0.91,
+            "source": "epss"
+          }
+        ]
+      }
+    },
+    {
+      "key": "cve:CVE-2099-10009",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "cvss": [
+          {
+            "value": 5.3,
+            "source": "cve_record"
+          }
+        ]
+      }
+    },
+    {
+      "key": "cve:CVE-2099-10010",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "cvss": [
+          {
+            "value": 6.3,
+            "source": "cve_record"
+          }
+        ]
+      }
+    },
+    {
+      "key": "cve:CVE-2099-10011",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "cvss": [
+          {
+            "value": 7.3,
+            "source": "cve_record"
+          }
+        ]
+      }
+    },
+    {
+      "key": "cve:CVE-2099-10012",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "cvss": [
+          {
+            "value": 8.3,
+            "source": "cve_record"
+          }
+        ]
+      }
+    },
+    {
+      "key": "cve:CVE-2099-10013",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "cvss": [
+          {
+            "value": 5.3,
+            "source": "cve_record"
+          }
+        ]
+      }
+    },
+    {
+      "key": "cve:CVE-2099-10014",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "cvss": [
+          {
+            "value": 6.3,
+            "source": "cve_record"
+          }
+        ]
+      }
+    },
+    {
+      "key": "cve:CVE-2099-10015",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "cvss": [
+          {
+            "value": 7.3,
+            "source": "cve_record"
+          }
+        ]
+      }
+    },
+    {
+      "key": "cve:CVE-2099-10016",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "cvss": [
+          {
+            "value": 8.3,
+            "source": "cve_record"
+          }
+        ]
+      }
+    },
+    {
+      "key": "cve:CVE-2099-10017",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "cvss": [
+          {
+            "value": 5.3,
+            "source": "cve_record"
+          }
+        ]
+      }
+    },
+    {
+      "key": "cve:CVE-2099-10018",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "cvss": [
+          {
+            "value": 6.3,
+            "source": "cve_record"
+          }
+        ]
+      }
+    },
+    {
+      "key": "cve:CVE-2099-10019",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "cvss": [
+          {
+            "value": 7.3,
+            "source": "cve_record"
+          }
+        ]
+      }
+    },
+    {
+      "key": "cve:CVE-2099-10020",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "cvss": [
+          {
+            "value": 8.3,
+            "source": "cve_record"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "src": "ipv4:203.0.113.60",
+      "dst": "cve:CVE-2099-10001",
+      "relation": "has_vuln",
+      "module": "shodan_internetdb",
+      "confidence": 0.5
+    },
+    {
+      "src": "ipv4:203.0.113.60",
+      "dst": "cve:CVE-2099-10002",
+      "relation": "has_vuln",
+      "module": "shodan_internetdb",
+      "confidence": 0.5
+    },
+    {
+      "src": "ipv4:203.0.113.60",
+      "dst": "cve:CVE-2099-10003",
+      "relation": "has_vuln",
+      "module": "shodan_internetdb",
+      "confidence": 0.5
+    },
+    {
+      "src": "ipv4:203.0.113.60",
+      "dst": "cve:CVE-2099-10004",
+      "relation": "has_vuln",
+      "module": "shodan_internetdb",
+      "confidence": 0.5
+    },
+    {
+      "src": "ipv4:203.0.113.60",
+      "dst": "cve:CVE-2099-10005",
+      "relation": "has_vuln",
+      "module": "shodan_internetdb",
+      "confidence": 0.5
+    },
+    {
+      "src": "ipv4:203.0.113.60",
+      "dst": "cve:CVE-2099-10006",
+      "relation": "has_vuln",
+      "module": "shodan_internetdb",
+      "confidence": 0.5
+    },
+    {
+      "src": "ipv4:203.0.113.60",
+      "dst": "cve:CVE-2099-10007",
+      "relation": "has_vuln",
+      "module": "shodan_internetdb",
+      "confidence": 0.5
+    },
+    {
+      "src": "ipv4:203.0.113.60",
+      "dst": "cve:CVE-2099-10008",
+      "relation": "has_vuln",
+      "module": "shodan_internetdb",
+      "confidence": 0.5
+    },
+    {
+      "src": "ipv4:203.0.113.60",
+      "dst": "cve:CVE-2099-10009",
+      "relation": "has_vuln",
+      "module": "shodan_internetdb",
+      "confidence": 0.5
+    },
+    {
+      "src": "ipv4:203.0.113.60",
+      "dst": "cve:CVE-2099-10010",
+      "relation": "has_vuln",
+      "module": "shodan_internetdb",
+      "confidence": 0.5
+    },
+    {
+      "src": "ipv4:203.0.113.60",
+      "dst": "cve:CVE-2099-10011",
+      "relation": "has_vuln",
+      "module": "shodan_internetdb",
+      "confidence": 0.5
+    },
+    {
+      "src": "ipv4:203.0.113.60",
+      "dst": "cve:CVE-2099-10012",
+      "relation": "has_vuln",
+      "module": "shodan_internetdb",
+      "confidence": 0.5
+    },
+    {
+      "src": "ipv4:203.0.113.60",
+      "dst": "cve:CVE-2099-10013",
+      "relation": "has_vuln",
+      "module": "shodan_internetdb",
+      "confidence": 0.5
+    },
+    {
+      "src": "ipv4:203.0.113.60",
+      "dst": "cve:CVE-2099-10014",
+      "relation": "has_vuln",
+      "module": "shodan_internetdb",
+      "confidence": 0.5
+    },
+    {
+      "src": "ipv4:203.0.113.60",
+      "dst": "cve:CVE-2099-10015",
+      "relation": "has_vuln",
+      "module": "shodan_internetdb",
+      "confidence": 0.5
+    },
+    {
+      "src": "ipv4:203.0.113.60",
+      "dst": "cve:CVE-2099-10016",
+      "relation": "has_vuln",
+      "module": "shodan_internetdb",
+      "confidence": 0.5
+    },
+    {
+      "src": "ipv4:203.0.113.60",
+      "dst": "cve:CVE-2099-10017",
+      "relation": "has_vuln",
+      "module": "shodan_internetdb",
+      "confidence": 0.5
+    },
+    {
+      "src": "ipv4:203.0.113.60",
+      "dst": "cve:CVE-2099-10018",
+      "relation": "has_vuln",
+      "module": "shodan_internetdb",
+      "confidence": 0.5
+    },
+    {
+      "src": "ipv4:203.0.113.60",
+      "dst": "cve:CVE-2099-10019",
+      "relation": "has_vuln",
+      "module": "shodan_internetdb",
+      "confidence": 0.5
+    },
+    {
+      "src": "ipv4:203.0.113.60",
+      "dst": "cve:CVE-2099-10020",
+      "relation": "has_vuln",
+      "module": "shodan_internetdb",
+      "confidence": 0.5
+    }
+  ],
+  "expect": {
+    "outdated_version_disclosed": {
+      "min": 1,
+      "max": 1,
+      "severity": "high",
+      "confidence_label": "possible"
+    }
+  }
+}

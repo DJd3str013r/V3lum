@@ -1,0 +1,94 @@
+{
+ "info": {
+  "name": "sampleproject",
+  "version": "4.0.0",
+  "summary": "A sample Python project",
+  "author": null,
+  "author_email": "\"A. Random Developer\" <author@example.com>",
+  "maintainer": null,
+  "maintainer_email": "\"A. Great Maintainer\" <maintainer@example.com>",
+  "home_page": null,
+  "project_url": "https://pypi.org/project/sampleproject/",
+  "project_urls": {
+   "Bug Reports": "https://github.com/pypa/sampleproject/issues",
+   "Funding": "https://donate.pypi.org",
+   "Homepage": "https://github.com/pypa/sampleproject",
+   "Say Thanks!": "http://saythanks.io/to/example",
+   "Source": "https://github.com/pypa/sampleproject/"
+  },
+  "license_expression": null,
+  "requires_python": ">=3.9"
+ },
+ "ownership": {
+  "organization": "pypa",
+  "roles": []
+ },
+ "releases": {
+  "1.0": [],
+  "1.2.0": [
+   {
+    "packagetype": "bdist_wheel",
+    "upload_time_iso_8601": "2015-06-14T14:38:05.875222Z"
+   },
+   {
+    "packagetype": "sdist",
+    "upload_time_iso_8601": "2015-06-14T14:37:56.383366Z"
+   }
+  ],
+  "1.3.0": [
+   {
+    "packagetype": "bdist_wheel",
+    "upload_time_iso_8601": "2019-05-28T20:23:12.721927Z"
+   },
+   {
+    "packagetype": "sdist",
+    "upload_time_iso_8601": "2019-05-28T20:23:13.940627Z"
+   }
+  ],
+  "1.3.1": [
+   {
+    "packagetype": "bdist_wheel",
+    "upload_time_iso_8601": "2019-11-04T20:36:25.256613Z"
+   },
+   {
+    "packagetype": "bdist_wheel",
+    "upload_time_iso_8601": "2020-06-25T19:00:04.654819Z"
+   },
+   {
+    "packagetype": "sdist",
+    "upload_time_iso_8601": "2019-11-04T20:36:26.798325Z"
+   }
+  ],
+  "2.0.0": [
+   {
+    "packagetype": "bdist_wheel",
+    "upload_time_iso_8601": "2020-06-25T19:09:43.103653Z"
+   },
+   {
+    "packagetype": "sdist",
+    "upload_time_iso_8601": "2020-06-25T19:09:43.925879Z"
+   }
+  ],
+  "3.0.0": [
+   {
+    "packagetype": "bdist_wheel",
+    "upload_time_iso_8601": "2022-12-01T18:51:00.007372Z"
+   },
+   {
+    "packagetype": "sdist",
+    "upload_time_iso_8601": "2022-12-01T18:51:01.420127Z"
+   }
+  ],
+  "4.0.0": [
+   {
+    "packagetype": "bdist_wheel",
+    "upload_time_iso_8601": "2024-11-06T22:37:09.220617Z"
+   },
+   {
+    "packagetype": "sdist",
+    "upload_time_iso_8601": "2024-11-06T22:37:10.868088Z"
+   }
+  ]
+ },
+ "last_serial": 25862117
+}

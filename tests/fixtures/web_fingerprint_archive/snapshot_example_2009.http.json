@@ -1,0 +1,91 @@
+{
+ "url": "https://arquivo.pt/wayback/20091222153217id_/http://www.example.com/",
+ "status": 200,
+ "headers": [
+  [
+   "accept-ranges",
+   "bytes"
+  ],
+  [
+   "content-length",
+   "438"
+  ],
+  [
+   "content-type",
+   "text/html; charset=UTF-8"
+  ],
+  [
+   "link",
+   "<http://www.example.com/>; rel=\"original\", <https://arquivo.pt/wayback/http://www.example.com/>; rel=\"timegate\", <https://arquivo.pt/wayback/timemap/link/http://www.example.com/>; rel=\"timemap\"; type=\"application/link-format\", <https://arquivo.pt/wayback/20091222153217mp_/http://www.example.com/>; rel=\"memento\"; datetime=\"Tue, 22 Dec 2009 15:32:17 GMT\"; collection=\"cdx_folder\""
+  ],
+  [
+   "memento-datetime",
+   "Tue, 22 Dec 2009 15:32:17 GMT"
+  ],
+  [
+   "via",
+   "1.1 Caddy"
+  ],
+  [
+   "x-archive-orig-age",
+   "1623"
+  ],
+  [
+   "x-archive-orig-connection",
+   "close"
+  ],
+  [
+   "x-archive-orig-date",
+   "Tue, 22 Dec 2009 15:20:17 GMT"
+  ],
+  [
+   "x-archive-orig-etag",
+   "\"b300b4-1b6-4059a80bfd280\""
+  ],
+  [
+   "x-archive-orig-last-modified",
+   "Tue, 15 Nov 2005 13:24:10 GMT"
+  ],
+  [
+   "x-archive-orig-server",
+   "Apache/2.2.3 (Red Hat)"
+  ],
+  [
+   "date",
+   "Thu, 26 Nov 2026 04:36:54 GMT"
+  ],
+  [
+   "vary",
+   "Accept-Encoding"
+  ],
+  [
+   "cache-control",
+   "max-age=300, public, must-revalidate"
+  ],
+  [
+   "strict-transport-security",
+   "max-age=31536000; preload"
+  ],
+  [
+   "x-content-type-options",
+   "nosniff"
+  ],
+  [
+   "x-xss-protection",
+   "1; mode=block"
+  ],
+  [
+   "access-control-allow-origin",
+   "*"
+  ],
+  [
+   "access-control-allow-headers",
+   "X-Requested-With"
+  ],
+  [
+   "server",
+   "Apache"
+  ]
+ ],
+ "body": "<HTML>\n<HEAD>\n  <TITLE>Example Web Page</TITLE>\n</HEAD> \n<body>  \n<p>You have reached this web page by typing &quot;example.com&quot;,\n&quot;example.net&quot;,\n  or &quot;example.org&quot; into your web browser.</p>\n<p>These domain names are reserved for use in documentation and are not available \n  for registration. See <a href=\"http://www.rfc-editor.org/rfc/rfc2606.txt\">RFC \n  2606</a>, Section 3.</p>\n</BODY>\n</HTML>\n\n"
+}

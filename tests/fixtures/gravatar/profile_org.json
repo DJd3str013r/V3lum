@@ -1,0 +1,25 @@
+{
+ "_source": "live check 2026-11-26 from this datacenter egress: api.gravatar.com/v3/profiles/gravatar (Gravatar's own organisation profile), verbatim",
+ "hash": "d5852b762c6568b0b5f7daa70193a2bc370c6cef9f8afd3aec740869d534de07",
+ "display_name": "gravatar",
+ "profile_url": "https://gravatar.com/gravatar",
+ "avatar_url": "https://2.gravatar.com/avatar/d5852b762c6568b0b5f7daa70193a2bc370c6cef9f8afd3aec740869d534de07",
+ "avatar_alt_text": "",
+ "location": "",
+ "description": "",
+ "job_title": "",
+ "company": "",
+ "verified_accounts": [],
+ "pronunciation": "",
+ "pronouns": "",
+ "hide_default_header_image": false,
+ "section_visibility": {
+  "hidden_contact_info": false,
+  "hidden_feeds": false,
+  "hidden_links": false,
+  "hidden_interests": false,
+  "hidden_wallet": false,
+  "hidden_photos": false,
+  "hidden_verified_accounts": false
+ }
+}

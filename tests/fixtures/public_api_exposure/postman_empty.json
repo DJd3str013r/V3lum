@@ -1,0 +1,23 @@
+{
+ "data": [],
+ "meta": {
+  "queryText": "v3lumprepzz0f9c2e7anohit",
+  "total": {
+   "team": 0,
+   "user": 0,
+   "workspace": 0,
+   "document": 0,
+   "api": 0,
+   "apiDefinition": 0,
+   "specification": 0,
+   "collection": 0,
+   "request": 0,
+   "history": 0,
+   "environment": 0,
+   "mock": 0,
+   "dataset": 0,
+   "flow": 0,
+   "privateNetworkFolder": 0
+  }
+ }
+}

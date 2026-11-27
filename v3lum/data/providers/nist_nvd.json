@@ -1,0 +1,101 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "nist_nvd",
+  "name": "NIST National Vulnerability Database (NVD)",
+  "operator": "National Institute of Standards and Technology (NIST), U.S. Department of Commerce",
+  "hosts": [
+    "services.nvd.nist.gov",
+    "nvd.nist.gov"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "U.S. government body (A8 trusted: government bodies; CISA/NVD named among the trusted operators); P183 cond 7 'Registry providers mitre and nist_nvd: tier trusted, terms open'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "Government analysis of the CVE List: NVD-assessed CVSS, CWE and CPE applicability configurations; curated reference data, not observations (analysis can lag publication)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 20,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "rate_per_second": 0.1667,
+    "burst": 5,
+    "published": true,
+    "evidence_url": "https://nvd.nist.gov/developers/start-here",
+    "safety_margin": 0.8
+  },
+  "error_markers": [
+    {
+      "id": "nist_nvd.rolling_window_403",
+      "statuses": [403],
+      "json_path": null,
+      "equals": null,
+      "regex": "(?i)\\A(?![\\s\\S]*(?:challenge-platform|_cf_chl_opt|cf-chl|just a moment|attention required|you have been blocked|captcha))",
+      "final_url_regex": "^https://services\\.nvd\\.nist\\.gov/rest/",
+      "maps_to": "rate_limited",
+      "reason_code": "rate_limited",
+      "reason": "NVD API: HTTP 403 - the rolling 30 s window was exceeded (5 requests keyless, 50 with key 'nvd'): could not verify, retry later"
+    }
+  ],
+  "keys": {
+    "nvd": {
+      "description": "NVD API key (header apiKey): raises the NVD limit from 5 to 50 requests per rolling 30 s and enables NVD keyword search in cve_record",
+      "signup_url": "https://nvd.nist.gov/developers/request-an-api-key",
+      "env": [
+        "V3LUM_NVD_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "free key requested under the corporate identity by the team (one team account, A15); NVD data stays public domain with or without it"
+    }
+  },
+  "sources": {
+    "cve_api": {
+      "title": "NVD CVE API 2.0 /rest/json/cves/2.0?cveId= (CPE configurations, NVD-assessed CVSS/CWE; keywordSearch only with key 'nvd')",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://nvd.nist.gov/developers/terms-of-use",
+        "quote": "Notices: 'This product uses data from the NVD API but is not endorsed or certified by the NVD.' wherever NVD data appears (v3lum info, report footer); MITRE's CVE/CWE copyright designation and licence in THIRD_PARTY_NOTICES. Registry providers mitre and nist_nvd: tier trusted, terms open.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "nvd",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P183 cond 7); research C0432 terms 'NIST public data' / 'US public domain' (verified_live 200; services.nvd.nist.gov now behind Cloudflare: server cloudflare, __cf_bm cookies - never stored, A10). Called only when CPE configurations are needed (seed CVEs or has_vuln on an org asset) or key 'nvd' is set (P183 cond 1); keyless budget 10 calls per case (setting cve_record_nvd_case_budget). Limits: 5 requests per rolling 30 s keyless, 50 with a key; the quota block is the keyless figure at 80% (keyed callers stay conservative). A bad parameter answers 404 with an empty body and the reason in the 'message' header; a 403 without a challenge page is the documented rolling-window signal (marker nist_nvd.rolling_window_403 -> rate_limited, provider signal wins, P334 cond 8); a Cloudflare challenge stays BLOCKED/challenge. Required notice: 'This product uses data from the NVD API but is not endorsed or certified by the NVD.'"
+    },
+    "web_pages": {
+      "title": "NVD vulnerability detail pages nvd.nist.gov/vuln/detail/{cve} (manual pivot links only: single-page app behind a bot check)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://nvd.nist.gov/developers/terms-of-use",
+        "quote": "NVD web pages are an SPA: links only.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "nvd",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P183 cond 1). Research C0432: the detail page shows a bot-check page to scripted clients, so V3LUM never fetches it; modules add it to their results as a link (res.link), never fetched."
+    }
+  },
+  "notes": "Owned by batch p1-G08-1 (P183 cve_record). Other batches extend it (nist_nvd__<suffix>.json). One key per provider: 'nvd' (env alias V3LUM_NVD_KEY, team account). NVD error channel: 404 + 'message' header for bad parameters (apiKey in the message -> the key was refused), 403 for the rolling window, Cloudflare challenge pages for bot management (never retried or bypassed, A9)."
+}

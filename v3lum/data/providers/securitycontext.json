@@ -1,0 +1,63 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "securitycontext",
+  "name": "SecurityContext CVE intelligence API (vulnx backend)",
+  "operator": "ProjectDiscovery (per the api.securitycontext.com homepage, checked 2026-11-26; no service terms published)",
+  "hosts": [
+    "api.securitycontext.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "No published service terms or privacy policy for the API (A1 BR16 classes SecurityContext 'unknown'); P188 cond 2 'provider tier unknown (A8): disabled in every profile until legal records terms; even then excluded at TLP:AMBER+ and run at CLEAR/GREEN only with --allow-unknown until promoted'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Aggregates NVD, EPSS, KEV lists, public exploit references and nuclei template coverage; undocumented schema and dataset refresh: comparison values only, never the sole source of a CVE card attribute (P188 cond 4)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 15,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 1.25,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "rate_per_second": 1.0,
+    "burst": 1,
+    "published": false,
+    "evidence_url": "https://api.securitycontext.com/v1/cves/CVE-2021-44228",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "cves": {
+      "title": "SecurityContext GET /v1/cves/{cve} only (no search, products, stack or scan endpoints)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://api.securitycontext.com/",
+        "quote": "Terms 'unknown' (no terms published; operator ProjectDiscovery per the homepage, checked 2026-11-26; A1 BR16) and provider tier 'unknown' (A8): disabled in every profile until legal records terms.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "securitycontext",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P188 cond 2); research C0433 (vulnx client MIT; service terms not reviewed). Observed 2026-11-26 from the research egress: anonymous 60 requests/min per address (x-ratelimit-limit 60, x-ratelimit-reset in RELATIVE seconds, headers on 4xx only), 404 {\"found\":false,\"code\":\"not_found\"} for an unassigned id, 400 {\"code\":\"invalid_parameter\"} for a malformed one; served by Cloudflare (a challenge is BLOCKED, never bypassed). Quota block: 60/min unpublished -> rate 1/s at 80%; min_interval 1.25 s until the HTTP client spends the token-bucket wait (WP10). POST /v1/scans, search, /v1/products, /v1/stack and every MCP tool are never built (P188 cond 1): only CVE ids (IOC_TYPES) are ever sent."
+    }
+  },
+  "notes": "Owned by batch p2-G08-1 (P188 securitycontext_cve, default off, unknown terms and tier). Neutral User-Agent (V3LUM/<version>): unknown-tier providers never get an identifying contact UA (A8)."
+}

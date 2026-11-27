@@ -1,0 +1,55 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "nhtsa",
+  "name": "NHTSA vPIC (Product Information Catalog and Vehicle Listing) API",
+  "operator": "National Highway Traffic Safety Administration (NHTSA), U.S. Department of Transportation",
+  "hosts": ["vpic.nhtsa.dot.gov"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "U.S. federal agency (A8 trusted: government bodies) running the official VIN decoding database that manufacturers report to under 49 CFR Part 565; council-1 P320 sets provider_tier trusted. US-centric: vehicles never sold in the US are often missing or attributed to the US importer.",
+  "tier_reviewer": "council-1 (P320)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Official manufacturer-reported data for vehicles sold in the US (usually reliable); for other markets the WMI registrant can be the US importer (vPIC lists 9BW, a Brazilian VW WMI, under VOLKSWAGEN GROUP OF AMERICA with Country MEXICO) and decodes are partial (ErrorCode 7/8)."
+  },
+  "http_profile": {"user_agent": "neutral", "accept": "application/json", "ttl": 2592000, "min_interval": 1.0, "timeout": 15, "concurrency": 1},
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "vpic_decode": {
+      "title": "GET https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinValues/{vin}?format=json (flat VIN decode, one validated 17-character VIN per request; no key)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://vpic.nhtsa.dot.gov/api/",
+        "quote": "Users/Applications attempting to use vPIC APIs will be controlled by an automated traffic rate control mechanism to ensure optimal performance of the NHTSA websites and minimize adverse impact to our users.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1); batch p3-G12-2 (US government work, public domain, 17 U.S.C. 105)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "nhtsa_vpic",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0724 (verified_live 200, 2026-11-25/26): about 140 decoded fields; every answer is HTTP 200 and errors live in the body (ErrorCode/ErrorText: 0 clean, 1 check digit, 6 incomplete VIN, 7 manufacturer not registered with NHTSA for the US, 8 no detailed data, 11 model-year code mismatch). Unknown vehicles give ErrorCode 6/7/11 with empty Make/Model/Manufacturer, never a 404. No rate-limit numbers are published (rate control mechanism, quote above); the module keeps 1 request/s and a 500/day self-imposed budget. Set-Cookie arrives on every answer and is never stored (core HTTP client). Batch decode (POST DecodeVINValuesBatch/, max 50 VINs) is documented but not used yet (the engine runs one entity per module run). Owner, plate and registration lookups are never made (P320 c4): vPIC has none and no other host is declared."
+    },
+    "wmi_table": {
+      "title": "Bundled WMI extract v3lum/data/vin_decoder/wmi_table.json (vPIC GetWMIsForManufacturer and DecodeWMI answers, built at release time; offline lookups only)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://vpic.nhtsa.dot.gov/api/",
+        "quote": "Standalone vPIC Databases are available for download here.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1); batch p3-G12-2 (US government work, public domain, 17 U.S.C. 105)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "nhtsa_vpic",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "748 WMIs (734 from NHTSA vPIC: registrant name, make where looked up, vehicle types; 14 curated Brazilian WMIs that vPIC does not list, source 'curated'). Country is never taken from vPIC (its Country is the registrant's); the module derives it from the ISO 3780 range of the first two characters. Rebuilt with the dev-time builder recorded in docs/backlog/p3-G12-2.md."
+    }
+  }
+}

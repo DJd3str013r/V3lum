@@ -1,0 +1,71 @@
+{
+ "q0": {
+  "result": [
+   {
+    "id": "10111600",
+    "name": "EXAMPLE LIMITED",
+    "description": "Entity node extracted from the Panama Papers data.",
+    "match": false,
+    "score": 33.333333333333336,
+    "types": [
+     {
+      "id": "https://offshoreleaks.icij.org/schema/oldb/entity",
+      "name": "Entity"
+     }
+    ]
+   },
+   {
+    "id": "10052832",
+    "name": "EBONY HOLDINGS INC.",
+    "description": "Entity node extracted from the Panama Papers data.",
+    "match": false,
+    "score": 33.333333333333336,
+    "types": [
+     {
+      "id": "https://offshoreleaks.icij.org/schema/oldb/entity",
+      "name": "Entity"
+     }
+    ]
+   },
+   {
+    "id": "10016353",
+    "name": "BULWORT HOLDINGS INC.",
+    "description": "Entity node extracted from the Panama Papers data.",
+    "match": false,
+    "score": 30.76923076923077,
+    "types": [
+     {
+      "id": "https://offshoreleaks.icij.org/schema/oldb/entity",
+      "name": "Entity"
+     }
+    ]
+   },
+   {
+    "id": "10005552",
+    "name": "MAPPERLEY HOLDINGS INC.",
+    "description": "Entity node extracted from the Panama Papers data.",
+    "match": false,
+    "score": 33.333333333333336,
+    "types": [
+     {
+      "id": "https://offshoreleaks.icij.org/schema/oldb/entity",
+      "name": "Entity"
+     }
+    ]
+   },
+   {
+    "id": "10198368",
+    "name": "ZOLDOR HOLDINGS CORP.",
+    "description": "Entity node extracted from the Panama Papers data.",
+    "match": false,
+    "score": 33.333333333333336,
+    "types": [
+     {
+      "id": "https://offshoreleaks.icij.org/schema/oldb/entity",
+      "name": "Entity"
+     }
+    ]
+   }
+  ]
+ }
+}

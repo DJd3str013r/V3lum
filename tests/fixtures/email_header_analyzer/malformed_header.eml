@@ -1,0 +1,28 @@
+Return-Path: <sender4@example.net>
+Delivered-To: recipient@example.com
+Received: (qmail 24134 invoked from network); 8 Mar 2017 01:21:00 -0000
+Received: from unknown (HELO 192.168.15.15) (198.51.100.29)
+  by smtp.example.com with SMTP; 8 Mar 2017 01:21:00 -0000
+Received: from 203.0.113.159 by ; Mon, 20 Mar 2017 03:11:54 +0400
+Message-ID: <QLHMAUTBMRLPSUHSWPVQEL@example.org>
+From: "Frutos & Verdes Exemplo" <promo@example.org>
+Reply-To: "Souvenirs Exemplo" <sender4@example.net>
+To: recipient@example.com
+Subject: Ahorre Dinero en su Recibo de Luz
+Date: Mon, 20 Mar 2017 05:12:54 +0600
+X-Mailer: guardian angel 9 dilettantes
+This line has no colon and breaks naive parsers
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary="--=_HsWzsKVZkho"
+X-Priority: 1
+X-MSMail-Priority: High
+
+----=_GlSzQZUbRbpVOpy
+Content-Type: text/html;
+Content-Transfer-Encoding: base64
+
+PGh0bWw+PGJvZHk+PGEgaHJlZj0iaHR0cDovL3Byb21vLmV4YW1wbGUub3JnLz92PTFmZGE0ZmE1
+NjA1ZCI+VmVyIG9uLWxpbmU8L2E+PC9ib2R5PjwvaHRtbD4=
+
+----=_GlSzQZUbRbpVOpy--

@@ -1,0 +1,65 @@
+{
+ "hits": [
+  {
+   "objectID": "50338728",
+   "author": "whoishiring",
+   "created_at": "2026-11-02T16:01:37Z",
+   "created_at_i": 1793635297,
+   "title": "Ask HN: Who is hiring? (November 2026)",
+   "story_id": 50338728,
+   "num_comments": 377,
+   "points": 263,
+   "_tags": [
+    "story",
+    "author_whoishiring",
+    "story_50338728",
+    "ask_hn"
+   ],
+   "story_text": "Please state the location and include REMOTE for remote work. See <a href=\"https:&#x2F;&#x2F;www.example.com&#x2F;jobs\" rel=\"nofollow\">https:&#x2F;&#x2F;www.example.com&#x2F;jobs</a>",
+   "updated_at": "2026-11-26T08:17:28Z"
+  },
+  {
+   "objectID": "50338726",
+   "author": "whoishiring",
+   "created_at": "2026-11-02T16:01:37Z",
+   "created_at_i": 1793635297,
+   "title": "Ask HN: Who wants to be hired? (November 2026)",
+   "story_id": 50338726,
+   "num_comments": 664,
+   "points": 56,
+   "_tags": [
+    "story",
+    "author_whoishiring",
+    "story_50338726",
+    "ask_hn"
+   ],
+   "story_text": "Please state the location and include REMOTE for remote work. See <a href=\"https:&#x2F;&#x2F;www.example.com&#x2F;jobs\" rel=\"nofollow\">https:&#x2F;&#x2F;www.example.com&#x2F;jobs</a>",
+   "updated_at": "2026-11-26T07:09:28Z"
+  },
+  {
+   "objectID": "49922569",
+   "author": "whoishiring",
+   "created_at": "2026-10-01T15:02:07Z",
+   "created_at_i": 1790866927,
+   "title": "Ask HN: Who is hiring? (October 2026)",
+   "story_id": 49922569,
+   "num_comments": 380,
+   "points": 277,
+   "_tags": [
+    "story",
+    "author_whoishiring",
+    "story_49922569",
+    "ask_hn"
+   ],
+   "story_text": "Please state the location and include REMOTE for remote work. See <a href=\"https:&#x2F;&#x2F;www.example.com&#x2F;jobs\" rel=\"nofollow\">https:&#x2F;&#x2F;www.example.com&#x2F;jobs</a>",
+   "updated_at": "2026-11-26T05:33:26Z"
+  }
+ ],
+ "hitsPerPage": 3,
+ "nbHits": 514,
+ "nbPages": 172,
+ "page": 0,
+ "params": "tags=author_whoishiring&hitsPerPage=3&advancedSyntax=true&analyticsTags=backend",
+ "query": "",
+ "exhaustiveNbHits": true
+}

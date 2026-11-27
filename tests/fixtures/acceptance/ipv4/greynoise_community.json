@@ -1,0 +1,21 @@
+{
+ "schema": "v3lum.acceptance_routes/1",
+ "module": "greynoise_community",
+ "routes": [
+  {
+   "method": "GET",
+   "url": "https://api.greynoise.io/v3/community/8.8.8.8",
+   "status": 404,
+   "json": {
+    "ip": "8.8.8.8",
+    "noise": false,
+    "riot": false,
+    "message": "IP not observed scanning the internet."
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 400
+  }
+ ]
+}

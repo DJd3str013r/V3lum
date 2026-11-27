@@ -1,0 +1,20 @@
+{
+ "_meta": {
+  "module": "bluesky",
+  "case": "plc_not_found",
+  "source": "C0243 plc.directory",
+  "request": {
+   "method": "GET",
+   "url": "https://plc.directory/did:plc:qz7k2v5m4p3w2n3x5c6bqz7k/log/audit"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "LIVE",
+  "elapsed_s": 0.17,
+  "note": "syntactically valid did:plc that nobody registered"
+ },
+ "status": 404,
+ "headers": {
+  "content-type": "application/json; charset=utf-8"
+ },
+ "body": "{\"message\":\"DID not registered: did:plc:qz7k2v5m4p3w2n3x5c6bqz7k\"}"
+}

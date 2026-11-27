@@ -1,0 +1,15 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.whoisfreaks.com/v1.0/whois?whois=historical&domainName=example.com"
+ },
+ "response": {
+  "status": 404,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": "{\"timestamp\": \"2026-11-26T08:40:00.000+00:00\", \"path\": \"/v1.0/whois\", \"status\": 404, \"error\": \"Not Found\", \"message\": \"No Record Found across domainName.\"}"
+ },
+ "transport_error": null,
+ "elapsed_s": null
+}

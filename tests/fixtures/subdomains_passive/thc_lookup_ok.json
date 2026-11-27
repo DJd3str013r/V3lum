@@ -1,0 +1,28 @@
+{
+ "comment": "Free Service!, Do not abuse",
+ "processed_domain": "example.com",
+ "matching_records": 20766,
+ "domains": [
+  {
+   "domain": "example.com",
+   "last_seen_on": "2026-11-26"
+  },
+  {
+   "domain": "www.example.com",
+   "last_seen_on": "2024-12-11"
+  },
+  {
+   "domain": "1.example.com",
+   "last_seen_on": "2025-05-03"
+  },
+  {
+   "domain": "ip-198-51-100-81.example.com",
+   "last_seen_on": "2025-05-03"
+  },
+  {
+   "domain": "mail.example.com",
+   "last_seen_on": "2025-05-03"
+  }
+ ],
+ "next_page_state": "00075405226d61696cf07ffffffaf07ffffffa"
+}

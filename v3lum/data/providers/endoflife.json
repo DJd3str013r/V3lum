@@ -1,0 +1,56 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "endoflife",
+  "name": "endoflife.date (product release cycles and end-of-life dates)",
+  "operator": "endoflife.date community project (open-source, GitHub endoflife-date)",
+  "hosts": [
+    "endoflife.date"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Well-known community project with an identifiable maintainer group, public documentation, an open data licence (MIT) and several years of public track record (A8 community); P187 cond 5 'Registry provider endoflife: tier community (dataset source)'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Community-maintained release calendars sourced from vendor announcements; dates are usually right but may lag a vendor change."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 20,
+    "retries": 1,
+    "ttl": 604800,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "products": {
+      "title": "endoflife.date API v1 /api/v1/products/{slug} (weekly datasets endoflife.<slug> for the pinned mapping v3lum/data/endoflife/eol_products.json)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/endoflife-date/endoflife.date",
+        "quote": "One grouped finding per asset lists all EOL components: medium/low on own or in-scope assets (org_profile), info on third-party or attacker infrastructure (CDN/SaaS edges are context). Attribution: endoflife.date (MIT data). Registry provider endoflife: tier community (dataset source).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "endoflife",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P187 cond 5); research C0440 'MIT (data)', verified live 2026-11-26 (Netlify, no rate-limit headers, 0.2 s per product, schema_version 1.2.x; an unknown slug answers a 404 HTML page). Dataset source only (datasets endoflife.<slug>, one per pinned slug; P187 cond 1): one weekly dataset per pinned slug, fetched by `v3lum data update`, never during a scan, so the investigated stack is never disclosed. Read offline by the correlation rule g08_endoflife."
+    }
+  },
+  "notes": "Owned by batch p2-G08-1 (P187 endoflife: registered datasets + correlation rule, no per-scan request; module tier n/a, terms open)."
+}

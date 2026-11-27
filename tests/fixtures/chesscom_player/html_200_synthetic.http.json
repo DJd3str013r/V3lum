@@ -1,0 +1,8 @@
+{
+ "_fixture": "SYNTHETIC: HTML where JSON was expected",
+ "status": 200,
+ "headers": {
+  "content-type": "text/html"
+ },
+ "body": "<!DOCTYPE html><html><head><title>Chess.com</title></head><body>maintenance</body></html>"
+}

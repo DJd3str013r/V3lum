@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "js_endpoints_design_refs",
+  "source_url": "https://github.com/GerbenJavado/LinkFinder",
+  "version": "design references read 2026-11-25/26; no code copied",
+  "sha256": "",
+  "licence": "MIT",
+  "attribution": "The endpoint classifier of v3lum/modules/url_web/js_endpoints.py re-implements the LinkFinder regex (https://github.com/GerbenJavado/LinkFinder, MIT, Copyright (c) 2016 Gerben Javado) as linear checks, and follows matcher ideas (Firebase config, fetch/XHR calls) from jsluice (https://github.com/BishopFox/jsluice, MIT, Copyright (c) 2023 Bishop Fox). The favicon search-engine link formats in v3lum/modules/url_web/favicon.py follow favihunter's engines.yaml (MIT) and favicorn (Apache-2.0). No source code was copied.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/url_web/js_endpoints.py",
+    "v3lum/modules/url_web/favicon.py"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+ "ipVersion": 6,
+ "ipAddress": "2606:4700:4700::1111",
+ "countryName": "United States",
+ "countryCode": "US",
+ "regionName": "California",
+ "cityName": "San Francisco (South Beach)",
+ "asn": "13335",
+ "asnOrganization": "Cloudflare, Inc.",
+ "isProxy": false
+}

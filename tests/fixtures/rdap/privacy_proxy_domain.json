@@ -1,0 +1,223 @@
+{
+ "objectClassName": "domain",
+ "handle": "EXAMPLE-0001",
+ "ldhName": "example-shop.example",
+ "status": [
+  "client transfer prohibited"
+ ],
+ "entities": [
+  {
+   "objectClassName": "entity",
+   "roles": [
+    "registrant"
+   ],
+   "vcardArray": [
+    "vcard",
+    [
+     [
+      "version",
+      {},
+      "text",
+      "4.0"
+     ],
+     [
+      "fn",
+      {},
+      "text",
+      "REDACTED FOR PRIVACY"
+     ],
+     [
+      "org",
+      {},
+      "text",
+      "Domains By Proxy, LLC"
+     ],
+     [
+      "email",
+      {},
+      "text",
+      "example-shop.example@domainsbyproxy.com"
+     ],
+     [
+      "tel",
+      {
+       "type": "voice"
+      },
+      "uri",
+      "tel:+55.1155550106"
+     ],
+     [
+      "adr",
+      {},
+      "text",
+      [
+       "",
+       "",
+       "",
+       "",
+       "",
+       "",
+       "US"
+      ]
+     ]
+    ]
+   ]
+  },
+  {
+   "objectClassName": "entity",
+   "roles": [
+    "technical"
+   ],
+   "vcardArray": [
+    "vcard",
+    [
+     [
+      "version",
+      {},
+      "text",
+      "4.0"
+     ],
+     [
+      "fn",
+      {},
+      "text",
+      "REDACTED FOR PRIVACY"
+     ],
+     [
+      "email",
+      {},
+      "text",
+      "Select Request Email Form at https://rdap.example/contact"
+     ],
+     [
+      "adr",
+      {},
+      "text",
+      [
+       "",
+       "",
+       "",
+       "",
+       "",
+       "",
+       ""
+      ]
+     ]
+    ]
+   ]
+  },
+  {
+   "objectClassName": "entity",
+   "handle": "146",
+   "roles": [
+    "registrar"
+   ],
+   "publicIds": [
+    {
+     "type": "IANA Registrar ID",
+     "identifier": "146"
+    }
+   ],
+   "vcardArray": [
+    "vcard",
+    [
+     [
+      "version",
+      {},
+      "text",
+      "4.0"
+     ],
+     [
+      "fn",
+      {},
+      "text",
+      "Example Registrar, LLC"
+     ],
+     [
+      "adr",
+      {},
+      "text",
+      [
+       "",
+       "",
+       "",
+       "",
+       "",
+       "",
+       ""
+      ]
+     ]
+    ]
+   ],
+   "entities": [
+    {
+     "objectClassName": "entity",
+     "roles": [
+      "abuse"
+     ],
+     "vcardArray": [
+      "vcard",
+      [
+       [
+        "version",
+        {},
+        "text",
+        "4.0"
+       ],
+       [
+        "fn",
+        {},
+        "text",
+        ""
+       ],
+       [
+        "email",
+        {},
+        "text",
+        "abuse@example.com"
+       ],
+       [
+        "tel",
+        {
+         "type": "voice"
+        },
+        "uri",
+        "tel:+55.1155550105"
+       ],
+       [
+        "adr",
+        {},
+        "text",
+        [
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         ""
+        ]
+       ]
+      ]
+     ]
+    }
+   ]
+  }
+ ],
+ "events": [
+  {
+   "eventAction": "registration",
+   "eventDate": "2026-11-20T10:00:00Z"
+  },
+  {
+   "eventAction": "expiration",
+   "eventDate": "2027-11-20T10:00:00Z"
+  }
+ ],
+ "nameservers": [
+  {
+   "objectClassName": "nameserver",
+   "ldhName": "NS1.EXAMPLE.NET"
+  }
+ ]
+}

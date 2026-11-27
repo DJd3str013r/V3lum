@@ -1,0 +1,107 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "sec",
+  "name": "U.S. SEC EDGAR (company tickers, submissions, full-text search)",
+  "operator": "U.S. Securities and Exchange Commission",
+  "hosts": [
+    "sec.gov",
+    "www.sec.gov",
+    "data.sec.gov",
+    "efts.sec.gov"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "U.S. federal regulator publishing EDGAR with a documented fair-access policy (A8 trusted); P223 provider tier trusted.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "Official regulatory filings (8-K Item 1.05 material cybersecurity incidents are self-disclosed by the registrant); name-to-company matches stay POSSIBLE unless CIK or ticker match (P223 cond 5)."
+  },
+  "http_profile": {
+    "user_agent": "contact",
+    "accept": "application/json",
+    "timeout": 20.0,
+    "ttl": 86400,
+    "min_interval": 0.5,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "rate_per_second": 10.0,
+    "burst": 1,
+    "published": true,
+    "evidence_url": "https://www.sec.gov/os/accessing-edgar-data",
+    "safety_margin": 0.2
+  },
+  "error_markers": [
+    {
+      "id": "sec_fair_access_block",
+      "statuses": [403],
+      "json_path": null,
+      "equals": null,
+      "regex": "Request Rate Threshold Exceeded|Automated access to our sites|Undeclared Automated Tool",
+      "final_url_regex": null,
+      "maps_to": "blocked",
+      "reason_code": "challenge",
+      "reason": "SEC fair-access block (HTTP 403): requests need the identifying User-Agent with the team role mailbox (setting contact_email) and at most 10 req/s; SEC blocks offenders for about 10 minutes - could not verify, never 'no filings'"
+    }
+  ],
+  "keys": {},
+  "sources": {
+    "company_tickers": {
+      "title": "SEC company_tickers.json (CIK, ticker, title) as a daily dataset matched locally",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.sec.gov/os/accessing-edgar-data",
+        "quote": "company_tickers.json is a daily dataset (dataset manager) matched locally, so the company name is not disclosed for that step; CIK is padded to 10 digits for submissions. US government work, public domain.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "sec_edgar",
+      "sanitizer": null,
+      "dataset": "sec_company_tickers",
+      "notes": "Quote: binding council text (P223 cond 3 and 6). www.sec.gov/files/company_tickers.json (~800 KB, ~10,400 rows). Batch p3-G10-1."
+    },
+    "submissions": {
+      "title": "SEC EDGAR submissions API (data.sec.gov/submissions/CIK##########.json): company facts and recent filings metadata",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.sec.gov/search-filings/edgar-application-programming-interfaces",
+        "quote": "Output: the company's CIK/ticker and cyber-incident disclosures (form, date, company, filing URL) as INFO/LOW supplier-incident context. Filing metadata and links only, no filing bodies stored. US government work, public domain.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "sec_edgar",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P223 cond 5 and 6). Research C0522: 200 with an identifying 'Org contact@email' User-Agent, 403 with a browser-like one. Batch p3-G10-1."
+    },
+    "efts": {
+      "title": "SEC EDGAR full-text search (efts.sec.gov/LATEST/search-index): first page only, 8-K/8-K/A Item 1.05 and 6-K",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.sec.gov/edgar/search/efts-faq.html",
+        "quote": "Full-text search (efts.sec.gov) only for the counterparty name, first page only (<= 10 hits per entity), restricted to 8-K/8-K/A filings with Item 1.05 (material cybersecurity incident) and 6-K mentions for foreign issuers.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "sec_edgar",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P223 cond 4). EFTS has no grouping: parentheses become literal phrases (live 2026-11-26), so queries never carry them. Batch p3-G10-1."
+    }
+  },
+  "notes": "Owned by batch p3-G10-1 (P223). BINDING PROFILE_REQUIREMENTS (www.sec.gov, data.sec.gov, efts.sec.gov): user_agent 'contact' (SEC fair access: the UA carries the team role mailbox from setting contact_email; without it the provider is SKIPPED 'config'). Rate: SEC caps 10 req/s; the council asked for <= 2 req/s (P223 cond 2): min_interval 0.5 s and a quota safety margin of 0.2 (2 req/s budget)."
+}

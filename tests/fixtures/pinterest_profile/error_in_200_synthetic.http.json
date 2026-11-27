@@ -1,0 +1,8 @@
+{
+ "_fixture": "SYNTHETIC: failure status inside a 200 (error-in-200)",
+ "status": 200,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": "{\"status\": \"failure\", \"code\": 2, \"message\": \"Something went wrong.\", \"endpoint_name\": \"v3_pidget_get_user_pins\", \"data\": null}"
+}

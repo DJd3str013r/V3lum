@@ -1,0 +1,33 @@
+{
+ "type": 0,
+ "code": "AbCd2345",
+ "expires_at": "2026-12-03T07:00:00.000000+00:00",
+ "flags": 0,
+ "guild_id": "1046950000000000000",
+ "guild": {
+  "id": "1046950000000000000",
+  "name": "Example Guild",
+  "description": null,
+  "verification_level": 1,
+  "vanity_url_code": null,
+  "nsfw_level": 0,
+  "nsfw": false,
+  "premium_subscription_count": 0,
+  "features": []
+ },
+ "channel": {
+  "id": "1046950000000000001",
+  "type": 0,
+  "name": "general"
+ },
+ "inviter": {
+  "id": "674262500000000000",
+  "username": "example-inviter",
+  "global_name": "Example Inviter",
+  "avatar": "0123456789abcdef0123456789abcdef",
+  "discriminator": "0",
+  "public_flags": 0
+ },
+ "approximate_member_count": 37,
+ "approximate_presence_count": 5
+}

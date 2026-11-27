@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://thisorgdoesnotexist0000x.zendesk.com/hc"
+  },
+  "response": {
+    "status": 404,
+    "headers": {
+      "server": "cloudflare",
+      "cache-control": "no-cache",
+      "zendesk-service": "help-center"
+    },
+    "body": "Not Found"
+  },
+  "class": "live",
+  "captured_at": "2026-11-26T11:00:41Z",
+  "notes": "random non-existent name on the FC2 path /hc: 404 'Not Found' (verbatim, 9 B), zendesk-service: help-center"
+}

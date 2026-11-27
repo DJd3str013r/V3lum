@@ -1,0 +1,843 @@
+{
+  "schema": "v3lum.takeover_fingerprints/1",
+  "source": "can-i-take-over-xyz (EdOverflow and contributors)",
+  "source_url": "https://github.com/EdOverflow/can-i-take-over-xyz/blob/5bd4e12837911c8475486f1da922c9b9c706e632/fingerprints.json",
+  "commit": "5bd4e12837911c8475486f1da922c9b9c706e632",
+  "upstream_sha256": "a108bf6e6d10d4e4861c4293eef8c224a0fd243ec4f3a39de321de69f284c64f",
+  "retrieved_at": "2026-11-26",
+  "licence": "CC-BY-4.0",
+  "attribution": "Service fingerprints from \"can-i-take-over-xyz\" by EdOverflow and contributors (https://github.com/EdOverflow/can-i-take-over-xyz), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Changes: fields reduced to service, status, vulnerable, nxdomain, cname suffixes, IP targets, fingerprint and HTTP status; entries sorted by service.",
+  "notes": "Pinned list used by the CR07 subdomain_takeover_candidate rule (P291 cond 6): only entries marked vulnerable count, and only with dangling evidence (a confirmed NXDOMAIN of the CNAME target or the unclaimed-resource fingerprint). V3LUM never claims or registers a resource to prove a takeover. Refresh by re-running the transcription at a newer commit and updating the notice v3lum/data/notices/can_i_take_over_xyz.json.",
+  "entries": [
+    {
+      "service": "Acquia",
+      "status": "Not vulnerable",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "Web Site Not Found",
+      "http_status": null
+    },
+    {
+      "service": "Agile CRM",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": false,
+      "cname": [
+        "agilecrm.com"
+      ],
+      "ips": [],
+      "fingerprint": "Sorry, this page is no longer available.",
+      "http_status": null
+    },
+    {
+      "service": "Airee.ru",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": false,
+      "cname": [
+        "airee.ru"
+      ],
+      "ips": [],
+      "fingerprint": "Ошибка 402. Сервис Айри.рф не оплачен",
+      "http_status": null
+    },
+    {
+      "service": "Akamai",
+      "status": "Not vulnerable",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "",
+      "http_status": null
+    },
+    {
+      "service": "Anima",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": false,
+      "cname": [
+        "animaapp.io"
+      ],
+      "ips": [],
+      "fingerprint": "The page you were looking for does not exist.",
+      "http_status": null
+    },
+    {
+      "service": "AWS/Elastic Beanstalk",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": true,
+      "cname": [
+        "elasticbeanstalk.com"
+      ],
+      "ips": [],
+      "fingerprint": "NXDOMAIN",
+      "http_status": null
+    },
+    {
+      "service": "AWS/Load Balancer (ELB)",
+      "status": "Not vulnerable",
+      "vulnerable": false,
+      "nxdomain": true,
+      "cname": [
+        "elb.amazonaws.com"
+      ],
+      "ips": [],
+      "fingerprint": "NXDOMAIN",
+      "http_status": null
+    },
+    {
+      "service": "AWS/S3",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": false,
+      "cname": [
+        "s3.amazonaws.com"
+      ],
+      "ips": [],
+      "fingerprint": "The specified bucket does not exist",
+      "http_status": null
+    },
+    {
+      "service": "Bitbucket",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": false,
+      "cname": [
+        "bitbucket.io"
+      ],
+      "ips": [],
+      "fingerprint": "Repository not found",
+      "http_status": null
+    },
+    {
+      "service": "Campaign Monitor",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "Trying to access your account?",
+      "http_status": null
+    },
+    {
+      "service": "Canny",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "Company Not Found` `There is no such company. Did you enter the right URL?",
+      "http_status": null
+    },
+    {
+      "service": "Cargo Collective",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "404 Not Found",
+      "http_status": null
+    },
+    {
+      "service": "Cloudfront",
+      "status": "Not vulnerable",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "ViewerCertificateException",
+      "http_status": null
+    },
+    {
+      "service": "Desk",
+      "status": "Not vulnerable",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "Please try again or try Desk.com free for 14 days.",
+      "http_status": null
+    },
+    {
+      "service": "Digital Ocean",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "Domain uses DO name servers with no records in DO.",
+      "http_status": null
+    },
+    {
+      "service": "Discourse",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": true,
+      "cname": [
+        "trydiscourse.com"
+      ],
+      "ips": [],
+      "fingerprint": "NXDOMAIN",
+      "http_status": null
+    },
+    {
+      "service": "Dreamhost",
+      "status": "Not vulnerable",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "Site Not Found Well, this is awkward. The site you're looking for is not here.",
+      "http_status": null
+    },
+    {
+      "service": "Fastly",
+      "status": "Not vulnerable",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "Fastly error: unknown domain:",
+      "http_status": null
+    },
+    {
+      "service": "Feedpress",
+      "status": "Not vulnerable",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "The feed has not been found.",
+      "http_status": null
+    },
+    {
+      "service": "Firebase",
+      "status": "Not vulnerable",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "",
+      "http_status": null
+    },
+    {
+      "service": "Fly.io",
+      "status": "Not vulnerable",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "404 Not Found",
+      "http_status": null
+    },
+    {
+      "service": "Freshdesk",
+      "status": "Not vulnerable",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "We couldn't find servicedesk.victim.tld Maybe this is still fresh! You can claim it now at http://www.freshservice.com/signup",
+      "http_status": null
+    },
+    {
+      "service": "Frontify",
+      "status": "Edge case",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "404 - Page Not Found` `Oops… looks like you got lost",
+      "http_status": null
+    },
+    {
+      "service": "Gemfury",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": false,
+      "cname": [
+        "furyns.com"
+      ],
+      "ips": [],
+      "fingerprint": "404: This page could not be found.",
+      "http_status": null
+    },
+    {
+      "service": "Getresponse",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "With GetResponse Landing Pages, lead generation has never been easier",
+      "http_status": null
+    },
+    {
+      "service": "Ghost",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": false,
+      "cname": [
+        "ghost.io"
+      ],
+      "ips": [],
+      "fingerprint": "Site unavailable\\.&#124;Failed to resolve DNS path for this host",
+      "http_status": null
+    },
+    {
+      "service": "Github",
+      "status": "Edge case",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "There isn't a GitHub Pages site here.",
+      "http_status": null
+    },
+    {
+      "service": "Gitlab",
+      "status": "Not vulnerable",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "",
+      "http_status": null
+    },
+    {
+      "service": "Google Cloud Storage",
+      "status": "Not vulnerable",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "<?xml version='1.0' encoding='UTF-8'?><Error><Code>NoSuchBucket</Code><Message>The specified bucket does not exist.</Message></Error>",
+      "http_status": null
+    },
+    {
+      "service": "Google Sites",
+      "status": "Not vulnerable",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "The requested URL was not found on this server. That’s all we know.",
+      "http_status": null
+    },
+    {
+      "service": "HatenaBlog",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": false,
+      "cname": [
+        "hatenablog.com"
+      ],
+      "ips": [],
+      "fingerprint": "404 Blog is not found",
+      "http_status": null
+    },
+    {
+      "service": "Help Juice",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": false,
+      "cname": [
+        "helpjuice.com"
+      ],
+      "ips": [],
+      "fingerprint": "We could not find what you're looking for.",
+      "http_status": null
+    },
+    {
+      "service": "Help Scout",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": false,
+      "cname": [
+        "helpscoutdocs.com"
+      ],
+      "ips": [],
+      "fingerprint": "No settings were found for this company:",
+      "http_status": null
+    },
+    {
+      "service": "Helprace",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": false,
+      "cname": [
+        "helprace.com"
+      ],
+      "ips": [],
+      "fingerprint": "HTTP_STATUS=301",
+      "http_status": 301
+    },
+    {
+      "service": "Heroku",
+      "status": "Edge case",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "No such app",
+      "http_status": null
+    },
+    {
+      "service": "HubSpot",
+      "status": "Not vulnerable",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "This page isn't available",
+      "http_status": null
+    },
+    {
+      "service": "Instapage",
+      "status": "Not vulnerable",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "",
+      "http_status": null
+    },
+    {
+      "service": "Intercom",
+      "status": "Edge case",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "Uh oh. That page doesn't exist.",
+      "http_status": null
+    },
+    {
+      "service": "JetBrains",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": false,
+      "cname": [
+        "youtrack.cloud"
+      ],
+      "ips": [],
+      "fingerprint": "is not a registered InCloud YouTrack",
+      "http_status": null
+    },
+    {
+      "service": "Key CDN",
+      "status": "Not vulnerable",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "",
+      "http_status": null
+    },
+    {
+      "service": "Kinsta",
+      "status": "Not vulnerable",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "No Site For Domain",
+      "http_status": null
+    },
+    {
+      "service": "Landingi",
+      "status": "Edge case",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "It looks like you’re lost...",
+      "http_status": null
+    },
+    {
+      "service": "LaunchRock",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": false,
+      "cname": [
+        "launchrock.com"
+      ],
+      "ips": [],
+      "fingerprint": "HTTP_STATUS=500",
+      "http_status": 500
+    },
+    {
+      "service": "Mailchimp",
+      "status": "Not vulnerable",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "We can't find that page It looks like you're trying to reach a page that was built by Mailchimp but is no longer active.",
+      "http_status": null
+    },
+    {
+      "service": "Mashery",
+      "status": "Edge case",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "Unrecognized domain",
+      "http_status": null
+    },
+    {
+      "service": "Microsoft Azure",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": true,
+      "cname": [
+        "cloudapp.net",
+        "cloudapp.azure.com",
+        "azurewebsites.net",
+        "blob.core.windows.net",
+        "azure-api.net",
+        "azurehdinsight.net",
+        "azureedge.net",
+        "azurecontainer.io",
+        "database.windows.net",
+        "azuredatalakestore.net",
+        "search.windows.net",
+        "azurecr.io",
+        "redis.cache.windows.net",
+        "servicebus.windows.net",
+        "visualstudio.com"
+      ],
+      "ips": [],
+      "fingerprint": "NXDOMAIN",
+      "http_status": null
+    },
+    {
+      "service": "Netlify",
+      "status": "Edge case",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "Not Found - Request ID:",
+      "http_status": null
+    },
+    {
+      "service": "Ngrok",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": false,
+      "cname": [
+        "ngrok.io"
+      ],
+      "ips": [],
+      "fingerprint": "Tunnel .*.ngrok.io not found",
+      "http_status": null
+    },
+    {
+      "service": "Pantheon",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "404 error unknown site!",
+      "http_status": null
+    },
+    {
+      "service": "Pingdom",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "Sorry, couldn't find the status page",
+      "http_status": null
+    },
+    {
+      "service": "Readme.io",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": false,
+      "cname": [
+        "readme.io"
+      ],
+      "ips": [],
+      "fingerprint": "The creators of this project are still working on making everything perfect!",
+      "http_status": null
+    },
+    {
+      "service": "Readthedocs",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "The link you have followed or the URL that you entered does not exist.",
+      "http_status": null
+    },
+    {
+      "service": "Sendgrid",
+      "status": "Not vulnerable",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "",
+      "http_status": null
+    },
+    {
+      "service": "Shopify",
+      "status": "Edge case",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "Sorry, this shop is currently unavailable.",
+      "http_status": null
+    },
+    {
+      "service": "Short.io",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "Link does not exist",
+      "http_status": null
+    },
+    {
+      "service": "SmartJobBoard",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [
+        "52.16.160.97"
+      ],
+      "fingerprint": "This job board website is either expired or its domain name is invalid.",
+      "http_status": null
+    },
+    {
+      "service": "Smartling",
+      "status": "Edge case",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "Domain is not configured",
+      "http_status": null
+    },
+    {
+      "service": "Smugsmug",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "",
+      "http_status": null
+    },
+    {
+      "service": "Squarespace",
+      "status": "Not vulnerable",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "",
+      "http_status": null
+    },
+    {
+      "service": "Statuspage",
+      "status": "Not vulnerable",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "",
+      "http_status": null
+    },
+    {
+      "service": "Strikingly",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": false,
+      "cname": [
+        "s.strikinglydns.com"
+      ],
+      "ips": [],
+      "fingerprint": "PAGE NOT FOUND.",
+      "http_status": null
+    },
+    {
+      "service": "Surge.sh",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": false,
+      "cname": [
+        "na-west1.surge.sh"
+      ],
+      "ips": [],
+      "fingerprint": "project not found",
+      "http_status": null
+    },
+    {
+      "service": "SurveySparrow",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": false,
+      "cname": [
+        "surveysparrow.com"
+      ],
+      "ips": [],
+      "fingerprint": "Account not found.",
+      "http_status": null
+    },
+    {
+      "service": "Tilda",
+      "status": "Edge case",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "Please renew your subscription",
+      "http_status": null
+    },
+    {
+      "service": "Tumblr",
+      "status": "Edge case",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "Whatever you were looking for doesn't currently exist at this address",
+      "http_status": null
+    },
+    {
+      "service": "Uberflip",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": false,
+      "cname": [
+        "read.uberflip.com"
+      ],
+      "ips": [],
+      "fingerprint": "The URL you've accessed does not provide a hub.",
+      "http_status": null
+    },
+    {
+      "service": "Unbounce",
+      "status": "Not vulnerable",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "The requested URL was not found on this server.",
+      "http_status": null
+    },
+    {
+      "service": "Uptimerobot",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": false,
+      "cname": [
+        "stats.uptimerobot.com"
+      ],
+      "ips": [],
+      "fingerprint": "page not found",
+      "http_status": null
+    },
+    {
+      "service": "UserVoice",
+      "status": "Not vulnerable",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "This UserVoice subdomain is currently available!",
+      "http_status": null
+    },
+    {
+      "service": "Vercel",
+      "status": "Edge case",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "DEPLOYMENT_NOT_FOUND.",
+      "http_status": null
+    },
+    {
+      "service": "Webflow",
+      "status": "Edge case",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "The page you are looking for doesn't exist or has been moved.",
+      "http_status": null
+    },
+    {
+      "service": "Wix",
+      "status": "Edge case",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "Looks Like This Domain Isn't Connected To A Website Yet!",
+      "http_status": null
+    },
+    {
+      "service": "Wordpress",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": false,
+      "cname": [
+        "wordpress.com"
+      ],
+      "ips": [],
+      "fingerprint": "Do you want to register .*.wordpress.com?",
+      "http_status": null
+    },
+    {
+      "service": "Worksites",
+      "status": "Vulnerable",
+      "vulnerable": true,
+      "nxdomain": false,
+      "cname": [
+        "worksites.net"
+      ],
+      "ips": [
+        "69.164.223.206"
+      ],
+      "fingerprint": "Hello! Sorry, but the website you&rsquo;re looking for doesn&rsquo;t exist.",
+      "http_status": null
+    },
+    {
+      "service": "WP Engine",
+      "status": "Not vulnerable",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "",
+      "http_status": null
+    },
+    {
+      "service": "Zendesk",
+      "status": "Not vulnerable",
+      "vulnerable": false,
+      "nxdomain": false,
+      "cname": [],
+      "ips": [],
+      "fingerprint": "Help Center Closed",
+      "http_status": null
+    }
+  ]
+}

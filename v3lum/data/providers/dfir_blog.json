@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "id": "dfir_blog",
+  "name": "Unfurl web UI (dfir.blog / hindsig.ht)",
+  "operator": "Ryan Benson (obsidianforensics, author of the open-source Unfurl project)",
+  "hosts": [
+    "dfir.blog",
+    "hindsig.ht"
+  ],
+  "tier": "community",
+  "tier_rationale": "Open-source DFIR tool (Apache-2.0) with an identifiable author and public documentation since 2019 (A8 community).",
+  "reliability": {
+    "grade": "C",
+    "justification": "URL-structure decoding tool; results are parse output, not threat intelligence."
+  },
+  "http_profile": {
+    "user_agent": "neutral"
+  },
+  "sources": {
+    "unfurl_web": {
+      "title": "Unfurl web UI (manual pivot link only; https://dfir.blog/unfurl/ now redirects to https://hindsig.ht/unfurl/)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/obsidianforensics/unfurl/blob/main/LICENSE",
+        "quote": "No automated call to dfir.blog or any Unfurl service (manual link only). Unfurl code is ported only after re-checking its Apache-2.0 LICENSE, with attribution.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "unfurl",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P064 cond 2). V3LUM never requests these hosts: the url_unwrap pivot pack renders a manual link (the web UI sends the URL to the author's cloud function when opened, so it is non-clickable at TLP:AMBER and above). No Unfurl code is ported."
+    }
+  },
+  "notes": "Owned by batch p1-G03-1 (P064 url_unwrap). Link host only."
+}

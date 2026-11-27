@@ -1,0 +1,4 @@
+[
+ {"id": "osmgit_nominatim_website_tree", "gap": 3, "max_bytes": 300000,
+  "url": "https://git.openstreetmap.org/chef.git/tree/HEAD:/cookbooks/nominatim/files/default/website"}
+]

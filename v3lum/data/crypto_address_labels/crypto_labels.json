@@ -1,0 +1,85 @@
+{
+  "schema": "v3lum.crypto_labels/1",
+  "description": "Team-curated crypto address labels (P358 cond 3): Brazilian exchanges (institutions to which a legal request can be sent) and addresses confirmed in past cases, each with provenance. This bundled copy ships the institution table only; addresses confirmed in cases go to the local team file (setting crypto_address_labels_team_file, default <V3LUM home>/crypto_labels.json, 0600), which is merged with this one. Never add personal data (CPF, customer names, e-mails, phones): such keys are dropped and reported.",
+  "updated": "2026-11-26",
+  "institutions": {
+    "mercadobitcoin": {
+      "name": "Mercado Bitcoin",
+      "legal_name": "Mercado Bitcoin Serviços Digitais Ltda.",
+      "kind": "exchange",
+      "country": "BR",
+      "uri": "mercadobitcoin.com.br",
+      "cnpj": null,
+      "legal_contact": null,
+      "graphsense_actor": "mercadobitcoin",
+      "provenance": {"source": "graphsense_actorpack", "reference": "https://github.com/graphsense/graphsense-tagpacks/blob/507756d2a8ad0a60d148ee2fe56bf559a747f250/actors/graphsense.actorpack.yaml", "date": "2026-10-14", "added_by": "batch p2-G09-3"}
+    },
+    "foxbit": {
+      "name": "Foxbit",
+      "legal_name": "Foxbit Serviços Digitais",
+      "kind": "exchange",
+      "country": "BR",
+      "uri": "foxbit.com.br",
+      "cnpj": null,
+      "legal_contact": null,
+      "graphsense_actor": "foxbit",
+      "provenance": {"source": "graphsense_actorpack", "reference": "https://github.com/graphsense/graphsense-tagpacks/blob/507756d2a8ad0a60d148ee2fe56bf559a747f250/actors/graphsense.actorpack.yaml", "date": "2026-10-14", "added_by": "batch p2-G09-3"}
+    },
+    "novadax": {
+      "name": "NovaDAX",
+      "legal_name": null,
+      "kind": "exchange",
+      "country": "BR",
+      "uri": "www.novadax.com.br",
+      "cnpj": null,
+      "legal_contact": null,
+      "graphsense_actor": "novadax",
+      "provenance": {"source": "graphsense_actorpack", "reference": "https://github.com/graphsense/graphsense-tagpacks/blob/507756d2a8ad0a60d148ee2fe56bf559a747f250/actors/graphsense.actorpack.yaml", "date": "2026-10-14", "added_by": "batch p2-G09-3"}
+    },
+    "bitcointoyou": {
+      "name": "Bitcointoyou",
+      "legal_name": null,
+      "kind": "exchange",
+      "country": "BR",
+      "uri": "bitcointoyou.com",
+      "cnpj": null,
+      "legal_contact": null,
+      "graphsense_actor": "bitcointoyou",
+      "provenance": {"source": "graphsense_actorpack", "reference": "https://github.com/graphsense/graphsense-tagpacks/blob/507756d2a8ad0a60d148ee2fe56bf559a747f250/actors/graphsense.actorpack.yaml", "date": "2026-10-14", "added_by": "batch p2-G09-3"}
+    },
+    "bitcoinp2p": {
+      "name": "bitcoinp2p.com.br",
+      "legal_name": null,
+      "kind": "exchange",
+      "country": "BR",
+      "uri": "bitcoinp2p.com.br",
+      "cnpj": null,
+      "legal_contact": null,
+      "graphsense_actor": "bitcoinp2p",
+      "provenance": {"source": "graphsense_actorpack", "reference": "https://github.com/graphsense/graphsense-tagpacks/blob/507756d2a8ad0a60d148ee2fe56bf559a747f250/actors/graphsense.actorpack.yaml", "date": "2026-10-14", "added_by": "batch p2-G09-3"}
+    },
+    "nanuexchange": {
+      "name": "Nanu Exchange",
+      "legal_name": null,
+      "kind": "exchange",
+      "country": "BR",
+      "uri": "nanu.digital",
+      "cnpj": null,
+      "legal_contact": null,
+      "graphsense_actor": "nanuexchange",
+      "provenance": {"source": "graphsense_actorpack", "reference": "https://github.com/graphsense/graphsense-tagpacks/blob/507756d2a8ad0a60d148ee2fe56bf559a747f250/actors/graphsense.actorpack.yaml", "date": "2026-10-14", "added_by": "batch p2-G09-3"}
+    },
+    "usecryptos": {
+      "name": "Usecryptos",
+      "legal_name": null,
+      "kind": "exchange",
+      "country": "BR",
+      "uri": "usecryptos.com",
+      "cnpj": null,
+      "legal_contact": null,
+      "graphsense_actor": "usecryptos",
+      "provenance": {"source": "graphsense_actorpack", "reference": "https://github.com/graphsense/graphsense-tagpacks/blob/507756d2a8ad0a60d148ee2fe56bf559a747f250/actors/graphsense.actorpack.yaml", "date": "2026-10-14", "added_by": "batch p2-G09-3"}
+    }
+  },
+  "labels": []
+}

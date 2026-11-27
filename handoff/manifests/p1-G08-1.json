@@ -1,0 +1,202 @@
+{
+  "batch": "p1-G08-1",
+  "modules": [
+    {
+      "name": "cisa_kev",
+      "file": "v3lum/modules/vulnerability_cve/cisa_kev.py",
+      "proposal": "P182",
+      "category": "vulnerability_cve",
+      "opsec": "passive",
+      "default_enabled": true,
+      "terms": "open",
+      "provider_tier": "n/a",
+      "keys": [],
+      "datasets": [
+        "cisa_kev"
+      ],
+      "pivot_packs": [],
+      "correlation_rules": [
+        "g08_cve_card"
+      ],
+      "new_vocabulary": [
+        "kev_date_added",
+        "kev_due_date",
+        "kev_vendor",
+        "kev_product",
+        "kev_vulnerability_name",
+        "kev_description",
+        "kev_required_action",
+        "kev_ransomware_use",
+        "kev_ransomware_known",
+        "kev_forensic_triage",
+        "kev_references",
+        "kev_catalog_version",
+        "kev_status",
+        "kev_search_hits"
+      ],
+      "live_check": "passed 2026-11-26 (V3LUM_LIVE=1): real KEV download from www.cisa.gov (1,898,186 B, catalogue 2026.11.25, validator ok); CVE-2021-44228 -> kev True, dateAdded 2021-12-10, knownRansomwareCampaignUse Known (flag kev_ransomware_known); 0 per-CVE requests"
+    },
+    {
+      "name": "cve_record",
+      "file": "v3lum/modules/vulnerability_cve/cve_record.py",
+      "proposal": "P183",
+      "category": "vulnerability_cve",
+      "opsec": "passive",
+      "default_enabled": true,
+      "terms": "open",
+      "provider_tier": "trusted",
+      "keys": [
+        "nvd"
+      ],
+      "datasets": [
+        "cwe_catalog"
+      ],
+      "pivot_packs": [],
+      "correlation_rules": [
+        "g08_cve_card"
+      ],
+      "new_vocabulary": [
+        "cve_state",
+        "cve_title",
+        "cve_description",
+        "cve_published",
+        "cve_assigner",
+        "cve_rejected_reason",
+        "cve_replaced_by",
+        "cve_matches",
+        "cvss_scores",
+        "cwe",
+        "cwe_names",
+        "ssvc",
+        "exploited",
+        "exploit_refs",
+        "exploit_count",
+        "vendor_advisories",
+        "fixed_versions",
+        "affected",
+        "cpe_matches",
+        "cpe_total",
+        "nvd_status",
+        "data_notices"
+      ],
+      "live_check": "passed 2026-11-26 (V3LUM_LIVE=1, seed CVE-2021-44228): cveawg.mitre.org 200 + services.nvd.nist.gov 200 (Analyzed, CVSS 10.0, 372 vulnerable CPE criteria, NVD notice attached), CWE catalogue cwec_latest.xml.zip 2,119,263 B validated and names resolved (CWE-502 Deserialization of Untrusted Data); 2 requests, hosts cveawg + services.nvd only"
+    },
+    {
+      "name": "epss",
+      "file": "v3lum/modules/vulnerability_cve/epss.py",
+      "proposal": "P184",
+      "category": "vulnerability_cve",
+      "opsec": "passive",
+      "default_enabled": true,
+      "terms": "open",
+      "provider_tier": "n/a",
+      "keys": [],
+      "datasets": [
+        "epss_scores"
+      ],
+      "pivot_packs": [],
+      "correlation_rules": [
+        "g08_cve_card"
+      ],
+      "new_vocabulary": [
+        "epss_percentile",
+        "epss_date",
+        "epss_model_version",
+        "epss_text"
+      ],
+      "live_check": "passed 2026-11-26 (V3LUM_LIVE=1): epss.empiricalsecurity.com -current 302 (relative Location) -> dated file, 2.9 MB gzip -> 12,570,834 B CSV validated (model v2026.06.15, score date 2026-11-25); CVE-2021-44228 epss 0.99999 percentile 1.0; 0 per-CVE requests"
+    },
+    {
+      "name": "epss_api",
+      "file": "v3lum/modules/vulnerability_cve/epss_api.py",
+      "proposal": "P184",
+      "category": "vulnerability_cve",
+      "opsec": "passive",
+      "default_enabled": true,
+      "terms": "open",
+      "provider_tier": "trusted",
+      "keys": [],
+      "datasets": [
+        "epss_scores"
+      ],
+      "pivot_packs": [],
+      "correlation_rules": [
+        "g08_cve_card"
+      ],
+      "new_vocabulary": [],
+      "live_check": "passed 2026-11-26 (V3LUM_LIVE=1, fresh home without a daily file): api.first.org/data/v1/epss?cve=CVE-2021-44228 200, epss 0.99999, date 2026-11-25, 1 request; with the day's file present it is SKIPPED not_applicable (answered offline by epss, no call)"
+    }
+  ],
+  "proposals_not_done": [],
+  "core_requests": [
+    "Engine (WP08 follow-up): KEV/EPSS-ranked CVE fan-out (P183 cond 3) - collect a case's pivot CVEs, run the offline cisa_kev/epss answers first and schedule online per-CVE modules in v3lum.modules.vulnerability_cve.cve_record.plan_cve_fanout order; modules enforce the per-case cap (setting cve_fanout_budget, first come, QUOTA 'quota' = deferred) until then.",
+    "QuotaBook (P334): a token-bucket wait should re-queue the (module, entity) pair instead of sleeping up to RATE_WAIT_MAX in the worker (P183 cond 2), and provider quota blocks per key plan (NVD 5 req/30 s keyless vs 50 req/30 s with key 'nvd'; nist_nvd declares the keyless figure).",
+    "Renderers (WP14/WP20): for CVE-only cases not linked to an own asset show the g08_cve_card priority line (correlation title/recommendation) instead of the case risk level (P183 cond 6), and render the card's evidence lines grouped (P335).",
+    "Report footer / THIRD_PARTY_NOTICES (P336, WP29): render the notices of the data shown (attribute data_notices, notice fragments nvd_api, mitre_cve, mitre_cwe, cisa_kev, first_epss); legal_dpo must paste the official CVE copyright designation into v3lum/data/notices/mitre_cve.json (www.cve.org/Legal/TermsOfUse is a JavaScript app).",
+    "tests/test_links.py FIXTURE_VALUES: add EntityType.CVE ('CVE-2021-44228', as module.BENIGN_VALUES) and the other types batch packs use (cert_fingerprint already fails it) so a CVE pivot-link pack (cve.org / NVD detail / CISA KEV entry) can be bundled; the batch ships the links as res.link + an inline manual_link meanwhile.",
+    "tests/test_datasets.py::test_first_run_hint_and_update_all is not isolated from module-registered essential datasets (cisa_kev, cwe_catalog, epss_scores here; cloud_ranges_* etc. from other batches): snapshot/clear datasets.DATASETS in that test.",
+    "Policy POL-14: a way to mark a dataset source as optional (e.g. Module.optional_datasets) - cve_record declares mitre.cve_record_cwe_catalog only for CWE names, so offline mode with the catalogue missing should not make the whole module UNAVAILABLE 'dataset'.",
+    "DataView: a documented read-only peek of a local dataset copy (no download, citation recorded); the batch uses ctx.data.info(name).present + ctx.data.fetch(name, ttl=<10 years>) as the workaround (cve_record.peek_dataset).",
+    "register_dataset: expose safe_extract's max_ratio (prep recommended 20 for the EPSS gzip; the core default 100 applies with the 128 MiB size cap).",
+    "Doctor v2 (WP25): run the offline HealthCheck self-tests of cisa_kev and epss, which flag a local copy older than 48 h (P182 cond 4).",
+    "P291 (CR15): replace the legacy exploitable_exposure rule, which still gives CRITICAL for any KEV CVE reached through has_vuln; cve_record.cr15_severity_cap is an executable reference of the caps (P182 cond 3).",
+    "Architect: confirm the nist_nvd provider marker nist_nvd.rolling_window_403 (a non-challenge 403 from the NVD API -> rate_limited, provider signal wins, P334 cond 8); it is documented NVD behaviour but was not triggered live (synthetic fixture)."
+  ],
+  "files": [
+    "docs/backlog/p1-G08-1.md",
+    "tests/fixtures/cisa_kev/access_denied_403.http.json",
+    "tests/fixtures/cisa_kev/catalog_ok.json",
+    "tests/fixtures/cisa_kev/not_modified_304.http.json",
+    "tests/fixtures/cisa_kev/truncated_206.txt",
+    "tests/fixtures/cve_record/cveawg_heartbleed.json",
+    "tests/fixtures/cve_record/cveawg_log4shell.json",
+    "tests/fixtures/cve_record/cveawg_not_found_404.http.json",
+    "tests/fixtures/cve_record/cveawg_rejected_synthetic.json",
+    "tests/fixtures/cve_record/cwe_catalog_entity_synthetic.xml",
+    "tests/fixtures/cve_record/cwe_catalog_ok.xml",
+    "tests/fixtures/cve_record/cwe_catalog_ok.xml.zip",
+    "tests/fixtures/cve_record/nvd_bad_param_404.http.json",
+    "tests/fixtures/cve_record/nvd_challenge_403.http.json",
+    "tests/fixtures/cve_record/nvd_empty.json",
+    "tests/fixtures/cve_record/nvd_log4shell.json",
+    "tests/fixtures/cve_record/nvd_rolling_window_403_synthetic.http.json",
+    "tests/fixtures/cve_record/nvd_truncated.txt",
+    "tests/fixtures/epss/bulk_bad_header_synthetic.csv",
+    "tests/fixtures/epss/bulk_bomb_synthetic.csv.gz",
+    "tests/fixtures/epss/bulk_missing_403.http.json",
+    "tests/fixtures/epss/bulk_ok.csv",
+    "tests/fixtures/epss/bulk_ok.csv.gz",
+    "tests/fixtures/epss/redirect_dated_302.http.json",
+    "tests/fixtures/epss/redirect_legacy_301.http.json",
+    "tests/fixtures/epss_api/batch_research.json",
+    "tests/fixtures/epss_api/empty.json",
+    "tests/fixtures/epss_api/invalid_param.json",
+    "tests/fixtures/epss_api/ok.json",
+    "tests/fixtures/rules/g08_cve_card/negative_cve_without_facts.json",
+    "tests/fixtures/rules/g08_cve_card/negative_no_cve_nodes.json",
+    "tests/fixtures/rules/g08_cve_card/positive_kev_epss_patch_now.json",
+    "tests/fixtures/rules/g08_cve_card/positive_pivot_cve_from_asset_stays_info.json",
+    "tests/fixtures/rules/g08_cve_card/positive_rejected_is_no_action.json",
+    "tests/live/test_p1_g08_1.py",
+    "tests/modules/test_cisa_kev.py",
+    "tests/modules/test_cve_record.py",
+    "tests/modules/test_epss.py",
+    "tests/modules/test_epss_api.py",
+    "v3lum/correlations/g08_cve_card.py",
+    "v3lum/data/notices/cisa_kev.json",
+    "v3lum/data/notices/first_epss.json",
+    "v3lum/data/notices/mitre_cve.json",
+    "v3lum/data/notices/mitre_cwe.json",
+    "v3lum/data/notices/nvd_api.json",
+    "v3lum/data/providers/cisa.json",
+    "v3lum/data/providers/first.json",
+    "v3lum/data/providers/mitre__p1-G08-1.json",
+    "v3lum/data/providers/nist_nvd.json",
+    "v3lum/data/vocab/p1-G08-1.json",
+    "v3lum/modules/vulnerability_cve/cisa_kev.py",
+    "v3lum/modules/vulnerability_cve/cve_record.py",
+    "v3lum/modules/vulnerability_cve/epss.py",
+    "v3lum/modules/vulnerability_cve/epss_api.py"
+  ],
+  "notes": "Four modules for three proposals: cisa_kev (P182, offline dataset, disclosure none), cve_record (P183, cveawg + NVD + CWE catalogue, third_party), epss (P184 cond 1, offline daily file, none) and epss_api (P184 cond 2, third_party, one disclosure class per module). Providers created (hosts mapped to null/absent in owners.json): cisa (www.cisa.gov, cisa.gov), nist_nvd (services.nvd.nist.gov, nvd.nist.gov; key 'nvd' with env alias V3LUM_NVD_KEY; quota block 5 req/30 s at 80%; marker nist_nvd.rolling_window_403), first (api.first.org, epss.empiricalsecurity.com, epss.cyentia.com); the seeded mitre provider is extended by mitre__p1-G08-1.json (hosts cwe.mitre.org for the CWE dataset and www.cve.org for record links; sources mitre.cve_record_cwe_catalog, mitre.cve_record_cve_pages). Datasets: cisa_kev (TTL 6 h, 1.9 MB, not large, validated: complete catalogue, count == entries, >= 1000 valid ids), epss_scores (gz, large, 128 MiB cap, validated: header + >= 100k rows), cwe_catalog (zip stored as-is, 2.1 MB, member read in memory with size/ratio caps, DTD/ENTITY refused, derived name index cached in ctx.state) - all essential. One consolidated CVE card: every module adds facts with provenance (no separate findings); correlation rule g08_cve_card (v3lum/correlations/g08_cve_card.py, fixtures in tests/fixtures/rules/g08_cve_card/) builds one INFO card per CVE with the plain-words priority line ('KEV + EPSS 0.97: patch now'), moves non-CISA 'kev' claims to exploitation evidence and lists own assets linked through has_vuln (severity left to CR15/P291). Batch tests: test_five_cve_modules_give_one_card_and_no_critical_case_level (cisa_kev, epss, epss_api, cve_record + a CIRCL-style CVE 5 source using the shared parser: one node, one card, no CRITICAL) and test_default_scan_of_a_cve_seed_runs_the_cve_modules (plain scan through the policy gate). Shared API for later CVE batches (cve_record.py): parse_cve5_record / cve5_attributes(include_kev=) (P181, P352), cve_fanout_allows + fanout_refusal + setting cve_fanout_budget (P181, P184 API, P185, P186, P188-P191, P354), register_cve_mirror (P352 hook), patch_priority, epss_plain_words, peek_dataset, dataset_failure. Interpretations: epss_api calls FIRST only when the local file is missing or older than the day's model run (a CVE missing from the day's file is also missing from the API, which answers 'OK, total 0' after 6-10 s); cve_record keyword input runs NVD keywordSearch only with key 'nvd' (else SKIPPED 'config'); kev attributes are set only for listed CVEs ('not in KEV' is kev_status text, never kev=False). No LIGHT/ACTIVE variant was asked. The bundled CVE pivot pack was dropped because a core links test lacks a 'cve' fixture value (core request). Gates: tests/test_registry_contract.py green for the four modules; P327 lint (lint_module_source / lint_tree) clean for every batch file; ruff clean; full offline suite 4676 passed / 21 failed / 55 skipped - every failure is in another batch's module (rdap, secret_scanner, url_domain_blocklists(_c2), email_security_posture) or in core tests being edited (test_engine_status_mapping x12, test_links x2, test_context, test_datasets first-run hint). Live: 4/4 passed with V3LUM_LIVE=1. Fixtures: prep fixtures re-checked (org role mailboxes security@apache.org / nvd@nist.gov kept as NVD source identifiers and mapped to organisation names in attributes; no personal data, keys or cookies); the CWE fixture carries MITRE's copyright designation and licence as the CWE terms require."
+}

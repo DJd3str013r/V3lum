@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "sploitus",
+  "name": "Sploitus exploit search pages",
+  "operator": "Sploitus (operator not verified)",
+  "hosts": [
+    "sploitus.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "Operator, terms and track record not reviewed (A8 unknown); P194 cond 5: 'unknown - Sploitus'. IOC values only (CVE ids), 'unknown operator' badge.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "D",
+    "justification": "Aggregated exploit listings of uneven quality: view only, never download or run code."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "pivot_pages": {
+      "title": "Sploitus /?query={cve} (manual pivot link)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://sploitus.com/",
+        "quote": "The pack is offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "sploitus",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (cond 1 of the proposal). Research C0453 (verified 2026-11-26: 301 to /cve/CVE-2021-44228, then '100 known exploits for CVE-2021-44228'). V3LUM never downloads, stores or executes exploit code (P194 cond 9). Used by pivots_vulnerability (pack vulnerability.json)."
+    }
+  },
+  "notes": "Manual pivot links only (batch p2-G14-1): V3LUM never fetches them (P311). Unknown tier: IOC values only, 'unknown operator' badge (A8 BR4)."
+}

@@ -1,0 +1,26 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p1-G01-2",
+  "title": "Names used by the typosquat and web-archive modules (batch p1-G01-2: P012, P059)",
+  "owner": "batch p1-G01-2 (typosquat, typosquat_dnstwister, web_archives, web_archives_deep, web_archives_ukwa)",
+  "attributes": {
+    "lookalike_matches": "list of {protected, source, technique, score, lure}: protected domains or brands (org profile, BCB verified domains, suppliers) the entity imitates, from the offline typosquat reverse match",
+    "typosquat_lookalikes": "full table of registered lookalike candidates of a brand/domain: {domain, domain_unicode, fuzzer, score, state, ns, a, mx_present, parked, sinkhole, registrar, cnpj_roots, created, age_days, ownership, severity, signals} (HTML/JSON)",
+    "typosquat_top": "the 10 highest-ranked registered lookalikes {domain, severity, signals}: what the terminal shows",
+    "typosquat_coverage": "typosquat forward-scan coverage: candidates generated/ranked/checked, DoH queries used and budget, cap hits, unregistered, NXDOMAIN not confirmed, could-not-verify and unchecked counts, RDAP lookups",
+    "typosquat_own_registrations": "lookalike candidates owned or defensively registered by the organisation (own-asset section, never typosquat findings)",
+    "archive_last": "most recent web-archive capture date seen (ISO)",
+    "archive_snapshot": "closest archived snapshot {url, captured_at, status, source} on the archive host",
+    "archive_sources": "per-archive outcome {source: ok | empty | could_not_verify | rate_limited | blocked | not_run, with the reason}; an empty archive never means a new domain",
+    "archived_urls": "historical URLs from web-archive CDX indexes, redacted (URL credentials, tokens, session ids and e-mail addresses masked) and capped; the full list goes to JSON",
+    "homepage_indicators": "indicators extracted from the closest archived homepage snapshot {source, snapshot, captured_at, sha256, bytes, truncated, title, lang, analytics_ids, cnpjs, favicon_hrefs, meta_refresh, generator}; the archived body itself is never stored",
+    "archive_estimate": "CarbonDate creation-date estimate {estimated_creation, earliest_sources, sources}: an estimate from archives and search engines, never a registration date"
+  },
+  "tags": {},
+  "relations": {
+    "lookalike_of": "typosquat candidate -> the protected brand domain it imitates (reverse match)"
+  },
+  "timeline": {
+    "archive_last": "last archived capture"
+  }
+}

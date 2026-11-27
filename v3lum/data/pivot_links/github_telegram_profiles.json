@@ -1,0 +1,40 @@
+{
+  "schema": "v3lum.pivot_pack/1",
+  "pack": "github_telegram_profiles",
+  "title": "GitHub and Telegram public profiles (manual fallback of github_user and telegram_public)",
+  "notes": "Batch p1-G05-1 (P111, P112). Rendered when automation is skipped or blocked; V3LUM never fetches these pages (the GitHub profile HTML is never parsed, GitHub AUP s.7).",
+  "links": [
+    {
+      "id": "github_profile",
+      "label": "GitHub public profile",
+      "template": "https://github.com/{user}",
+      "entity_types": ["username"],
+      "category": "social",
+      "host": "github.com",
+      "verified": false,
+      "checked_at": "2026-11-26",
+      "privacy": true,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Public profile page (no login). Not verified from the research egress: its proxy refused github.com user paths on 2026-11-26."
+    },
+    {
+      "id": "telegram_preview",
+      "label": "Telegram public web preview",
+      "template": "https://t.me/s/{user}",
+      "entity_types": ["username"],
+      "category": "social",
+      "host": "t.me",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": true,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Public channel preview (t.me/s/telegram answered 200 on 2026-11-26); for a user, bot, group or private channel t.me redirects to the t.me/{name} page. No account, session or bot token."
+    }
+  ]
+}

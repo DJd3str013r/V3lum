@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "firehol_level1",
+  "source_url": "https://iplists.firehol.org/?ipset=firehol_level1",
+  "version": "firehol_level1.netset (runtime download, noncommercial use only, checked 2026-11-26)",
+  "sha256": "",
+  "licence": "LicenseRef-FireHOL-aggregate-NC",
+  "attribution": "FireHOL blocklist-ipsets (https://iplists.firehol.org/); aggregated lists keep their own licences (DShield and others are noncommercial): off under the corporate profile until licence-cleared, never redistributed.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/threat_intel_ioc/ip_blocklists.py"
+  ]
+}

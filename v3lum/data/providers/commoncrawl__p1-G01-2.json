@@ -1,0 +1,26 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "commoncrawl",
+  "hosts": [
+    "data.commoncrawl.org"
+  ],
+  "sources": {
+    "web_archives_deep_warc": {
+      "title": "Common Crawl WARC records fetched by byte range from data.commoncrawl.org (archived homepage bodies)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://commoncrawl.org/terms-of-use",
+        "quote": "Registry terms (A1 BR3): the Internet Archive (Wayback CDX and availability), Arquivo.pt (FCT public service), Common Crawl (free terms of use) and CarbonDate (ODU academic service) are 'open', each recorded by legal with evidence",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "commoncrawl",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P059 cond 10). P059 cond 3: records via Range from data.commoncrawl.org, deep/-M only (module web_archives_deep). One gzip member per request (Range: bytes={offset}-{offset+length-1}, at most 1 MB); the archived body is parsed as untrusted data and kept only as extracted indicators plus SHA-256 (P059 cond 6)."
+    }
+  },
+  "error_markers": [],
+  "notes": "Batch p1-G01-2 extension: adds the WARC data host for web_archives_deep."
+}

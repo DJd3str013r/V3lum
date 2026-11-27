@@ -1,0 +1,28 @@
+{
+ "error": "malformed: embedded object #1 at 0x420 declares 2147483647 bytes, only 28 remain",
+ "header": {
+  "expected_length": 1144,
+  "ffv_last_writer": 42,
+  "file_format_ok": true,
+  "file_type": "one",
+  "guid_file": "0e9a3c55-5301-4e6f-8a9b-0c1d2e3f0001"
+ },
+ "kind": "onenote",
+ "markers": [
+  "length_mismatch",
+  "object_truncated"
+ ],
+ "names": [],
+ "objects": [
+  {
+   "available": 28,
+   "declared_size": 2147483647,
+   "footer_ok": false,
+   "index": 1,
+   "offset": 1056,
+   "truncated": true
+  }
+ ],
+ "objects_capped": false,
+ "size": 1120
+}

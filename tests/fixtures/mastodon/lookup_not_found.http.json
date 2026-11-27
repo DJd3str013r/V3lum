@@ -1,0 +1,12 @@
+{
+ "origin": "live check 2026-11-26 from the research datacenter egress",
+ "status": 404,
+ "headers": {
+  "server": "Mastodon",
+  "x-ratelimit-reset": "2026-11-26T09:00:00.110289Z",
+  "x-ratelimit-limit": "300",
+  "x-ratelimit-remaining": "299",
+  "content-type": "application/json; charset=utf-8"
+ },
+ "body": "{\"error\":\"Record not found\"}"
+}

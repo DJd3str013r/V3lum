@@ -1,0 +1,18 @@
+{
+ "Count": 1,
+ "Message": "Results returned successfully",
+ "SearchCriteria": "WMI:9BW",
+ "Results": [
+  {
+   "CommonName": "Volkswagen",
+   "CreatedOn": "2015-06-01",
+   "DateAvailableToPublic": "2015-01-01",
+   "Make": "VOLKSWAGEN",
+   "ManufacturerName": "VOLKSWAGEN GROUP OF AMERICA, INC.",
+   "ParentCompanyName": "",
+   "URL": "www.volkswagengroupamerica.com",
+   "UpdatedOn": null,
+   "VehicleType": "Passenger Car"
+  }
+ ]
+}

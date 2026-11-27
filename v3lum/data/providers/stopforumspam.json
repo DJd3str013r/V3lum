@@ -1,0 +1,62 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "stopforumspam",
+  "name": "StopForumSpam API (api.stopforumspam.org)",
+  "operator": "StopForumSpam.com (Stop Forum Spam Ltd)",
+  "hosts": [
+    "api.stopforumspam.org",
+    "www.stopforumspam.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Long-running community anti-spam project with an identifiable operator, public API documentation and usage terms (A8 community); P164 final condition 2: 'Registry provider stopforumspam: tier community'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "D",
+    "justification": "Forum-spam reports submitted by forum operators; shared/NAT addresses and test addresses (test@example.com is listed) are common false positives, so the signal is capped at severity low and never counted in consensus (P164 cond 3-4)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "retries": 0
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "day": 100000,
+    "published": true,
+    "evidence_url": "https://www.stopforumspam.com/usage",
+    "safety_margin": 0.05
+  },
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "api": {
+      "title": "StopForumSpam api?json with ip, emailhash (MD5 of the normalised address; never the plaintext e-mail) and username (registration-abuse cases only); add.php submissions are never built",
+      "terms": {
+        "class": "noncommercial",
+        "evidence_url": "https://www.stopforumspam.com/usage",
+        "quote": "Terms: Your use of this data and supporting software is non-commercial. (usage page, 2026-11-26) - P164 cond 2 (binding council text): StopForumSpam's terms are non-commercial but let 'any commercial system' use the data for internal use only, with no resale (verified 2026-11-26): terms 'noncommercial'; off under the corporate profile until licence-cleared (legal records a licence_allow entry with scope 'internal use only, no resale').",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "stopforumspam",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0368 (verified live 2026-11-26). A request without fields answers HTTP 503 {\"success\":0,\"error\":[{\"message\":\"request not understood\"}]}; json answers get a 503 when the query rate is exceeded (usage page); an invalid value gives a per-field error inside success 1 (never 'not listed'). frequency 255 is a blacklist/wildcard rule or a Tor exit, not 255 reports. 'API queries are limited to 100,000 per day' (usage page): the P334 budget is 5,000/day (safety margin 0.05) for a low-weight signal. Never counted in CR27 consensus (P164 cond 4).",
+      "licensed_alternative": "A licence_allow entry recorded by legal for stopforumspam.api with scope 'internal use only, no resale' (P164 cond 2)."
+    }
+  },
+  "notes": "Owned by batch p3-G07-1 (P164, module threat_intel_ioc/stopforumspam). BotScout (botscout.com) is not in this build (P164 cond 1: low precision, small operator) and has no provider entry. personal_data_review stays null until legal records the review: e-mail hashes and usernames are then sent only when the module is selected explicitly with a recorded purpose (A3 BR8, POL-07). The web host www.stopforumspam.com is listed for the manual IP-check link of pack threat_intel_g07_p3 only: V3LUM never requests it (add.php submissions are never built)."
+}

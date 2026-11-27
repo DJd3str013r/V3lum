@@ -1,0 +1,23 @@
+{
+ "query_status": "ok",
+ "data": {
+  "metadata": {
+   "file_size": 245760,
+   "file_type_mime": "application/x-dosexec",
+   "first_seen": "2026-11-10 10:00:00 UTC",
+   "last_seen": "2026-11-20 10:00:00 UTC",
+   "sightings": 3,
+   "sha256_hash": "7f77b5c7cecc4e05e05fa57efede89d1e031c4152cd8141ddce78ee4eef5b95d",
+   "md5_hash": "291fbcc53a9e4628b15f4a69b137f9f5",
+   "sha1_hash": "773663711eb6659a071a3973b45f707237f9f81b",
+   "sha3_384": null,
+   "imphash": "cae6529d16a79f2b2590b652488bd8e6",
+   "ssdeep": "1536:faooayVfn6DZ6VgER1fqdrUG+uD83aASBzO1iMk/:QrhM6yh0586gZpwV/Gx5CrmA",
+   "tlsh": "T17F77B5C7CECC4E05E05FA57EFEDE89D1E031C4152CD8141DDCE78EE4EEF5B95D15DCBD",
+   "telfhash": null,
+   "gimphash": null,
+   "dhash_icon": "e0c0f0f8f0c0e0c0"
+  },
+  "tasks": []
+ }
+}

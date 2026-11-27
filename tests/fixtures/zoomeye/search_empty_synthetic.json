@@ -1,0 +1,8 @@
+{
+ "_synthetic": "documented success envelope with no data",
+ "code": 60000,
+ "message": "success",
+ "total": 0,
+ "query": "domain=\"example.com\"",
+ "data": []
+}

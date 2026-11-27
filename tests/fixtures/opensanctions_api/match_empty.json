@@ -1,0 +1,24 @@
+{
+ "responses": {
+  "q0": {
+   "status": 200,
+   "total": {
+    "value": 0,
+    "relation": "eq"
+   },
+   "results": [],
+   "query": {
+    "schema": "Company",
+    "properties": {
+     "name": [
+      "Example Nonexistent Holdings"
+     ]
+    }
+   }
+  }
+ },
+ "matcher": {
+  "name": "logic-v1"
+ },
+ "limit": 5
+}

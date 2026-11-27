@@ -1,0 +1,4 @@
+{
+ "_synthetic": "HTTP 400 body for a non-routable/invalid IP; wording unverified (not observable here: the 429 quota answer comes first).",
+ "message": "Request is not a valid routable IPv4 address"
+}

@@ -1,0 +1,81 @@
+{
+ "_synthetic": "synthetic: IntelX API shape documented in the IntelligenceX SDK client vendored by h8mail (search start -> id/status; result -> records|selectors + status 0 results, 1 done, 2 id not found, 3 pending); documentation values only. P139-FC6: replace with a trimmed real answer before merge. Phonebook term example.com (target 0): own-domain e-mails/subdomains/URLs, third-party and lookalike selectors, a wildcard, trailing punctuation, a phone selector",
+ "selectors": [
+  {
+   "selectorvalue": "contato@example.com",
+   "selectortype": 1,
+   "selectortypeh": "Email Address"
+  },
+  {
+   "selectorvalue": "User01@Example.com",
+   "selectortype": 1,
+   "selectortypeh": "Email Address"
+  },
+  {
+   "selectorvalue": "user02@mail.example.com",
+   "selectortype": 1,
+   "selectortypeh": "Email Address"
+  },
+  {
+   "selectorvalue": "someone@example.net",
+   "selectortype": 1,
+   "selectortypeh": "Email Address"
+  },
+  {
+   "selectorvalue": "user03@example.com.attacker.test",
+   "selectortype": 1,
+   "selectortypeh": "Email Address"
+  },
+  {
+   "selectorvalue": "not-an-email.example.com",
+   "selectortype": 1,
+   "selectortypeh": "Email Address"
+  },
+  {
+   "selectorvalue": "www.example.com",
+   "selectortype": 2,
+   "selectortypeh": "Domain"
+  },
+  {
+   "selectorvalue": "mail.example.com",
+   "selectortype": 2,
+   "selectortypeh": "Domain"
+  },
+  {
+   "selectorvalue": "*.dev.example.com",
+   "selectortype": 2,
+   "selectortypeh": "Domain"
+  },
+  {
+   "selectorvalue": "intranet.example.com)",
+   "selectortype": 2,
+   "selectortypeh": "Domain"
+  },
+  {
+   "selectorvalue": "example.com.attacker.test",
+   "selectortype": 2,
+   "selectortypeh": "Domain"
+  },
+  {
+   "selectorvalue": "https://www.example.com/login",
+   "selectortype": 3,
+   "selectortypeh": "URL"
+  },
+  {
+   "selectorvalue": "http://portal.example.com/path?q=1",
+   "selectortype": 3,
+   "selectortypeh": "URL"
+  },
+  {
+   "selectorvalue": "https://example.org/x",
+   "selectortype": 3,
+   "selectortypeh": "URL"
+  },
+  {
+   "selectorvalue": "+55 11 5555-0100",
+   "selectortype": 8,
+   "selectortypeh": "Phone Number"
+  }
+ ],
+ "status": 1
+}

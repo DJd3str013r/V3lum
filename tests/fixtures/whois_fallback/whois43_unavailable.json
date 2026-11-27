@@ -1,0 +1,25 @@
+{
+ "note": "port-43 probes from the prep egress (HTTPS-proxy-only sandbox): no local resolver, no direct TCP egress -> UNAVAILABLE (FC3)",
+ "probes": [
+  {
+   "request": "whois whois.registro.br:43 'nic.br'",
+   "observed_at": "2026-11-26T06:09:20Z",
+   "result": "dns_error",
+   "error": "gaierror: [Errno -2] Name or service not known",
+   "elapsed_s": 0.003,
+   "bytes": 0,
+   "timeout_s": 10.0,
+   "cap_bytes": 65536
+  },
+  {
+   "request": "whois whois.iana.org:43 'br'",
+   "observed_at": "2026-11-26T06:09:21Z",
+   "result": "dns_error",
+   "error": "gaierror: [Errno -2] Name or service not known",
+   "elapsed_s": 0.001,
+   "bytes": 0,
+   "timeout_s": 10.0,
+   "cap_bytes": 65536
+  }
+ ]
+}

@@ -1,0 +1,17 @@
+{
+ "_fixture": "REAL live capture 2026-11-26, minimised: random control",
+ "_meta": {
+  "url": "https://api.chess.com/pub/player/snoixp6jxo8iy12i0rau",
+  "user_agent": "V3LUM/dev",
+  "captured": "2026-11-26T08:32:41Z",
+  "elapsed_s": 0.129,
+  "bytes_original": 63
+ },
+ "status": 404,
+ "headers": {
+  "content-type": "application/json; charset=utf-8",
+  "cache-control": "public, max-age=30",
+  "server": "cloudflare"
+ },
+ "body": "{\"code\":0,\"message\":\"User \\\"snoixp6jxo8iy12i0rau\\\" not found.\"}"
+}

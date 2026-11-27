@@ -1,0 +1,7 @@
+{
+ "_envelope": 1,
+ "_source": "research live check 2026-11-25 (tmp_gh_people/live2.json, slug intelx_free_api): GET https://free.intelx.io/authenticate/info without x-key -> HTTP 401, empty body; the search endpoints were not called (no key)",
+ "status": 401,
+ "headers": {},
+ "body": ""
+}

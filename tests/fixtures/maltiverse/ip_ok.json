@@ -1,0 +1,224 @@
+{
+ "ip_addr": "8.8.8.8",
+ "ip_version": 4,
+ "type": "ip",
+ "classification": "whitelist",
+ "as_name": "AS15169 Google LLC",
+ "as_number": "15169",
+ "asn_cidr": "8.8.8.0/24",
+ "asn_country_code": "US",
+ "cidr": [
+  "8.8.8.0/24"
+ ],
+ "country_code": "US",
+ "creation_time": "2018-07-21 15:45:10",
+ "modification_time": "2026-11-14 03:18:12",
+ "number_of_domains_resolving": 511,
+ "number_of_blacklisted_domains_resolving": 237,
+ "number_of_whitelisted_domains_resolving": 69,
+ "is_cdn": false,
+ "is_cnc": false,
+ "is_distributing_malware": false,
+ "is_hosting": false,
+ "is_iot_threat": false,
+ "is_known_attacker": false,
+ "is_known_scanner": false,
+ "is_mining_pool": false,
+ "is_open_proxy": false,
+ "is_sinkhole": false,
+ "is_tor_node": false,
+ "is_vpn_node": false,
+ "tag": [
+  "dns",
+  "reflection",
+  "asyncrat",
+  "c2",
+  "historicalandnew",
+  "mightcontainvariantsofasyncrat"
+ ],
+ "blacklist": [
+  {
+   "source": "ThreatFox Abuse.ch",
+   "description": "AsyncRAT",
+   "first_seen": "2023-09-10 22:18:48",
+   "last_seen": "2023-09-11 07:26:12",
+   "count": 1,
+   "labels": [
+    "botnet",
+    "malicious-activity"
+   ],
+   "external_references": [
+    {
+     "description": "AsyncRAT",
+     "external_id": "S1087",
+     "source_name": "mitre-attack",
+     "url": "https://attack.mitre.org/software/S1087/"
+    }
+   ]
+  },
+  {
+   "source": "ThreatFox Abuse.ch",
+   "description": "Ghost RAT",
+   "first_seen": "2022-06-28 18:18:52",
+   "last_seen": "2022-06-29 05:22:12",
+   "count": 1,
+   "labels": [
+    "botnet",
+    "malicious-activity"
+   ],
+   "external_references": [
+    {
+     "description": "ANGRYREBEL",
+     "external_id": "angryrebel",
+     "source_name": "maltiverse",
+     "url": "https://maltiverse.com/threat-observatory/malware/angryrebel"
+    }
+   ]
+  },
+  {
+   "source": "Maltiverse Research Team",
+   "description": "conficker",
+   "first_seen": "2022-05-14 00:27:00",
+   "last_seen": "2022-05-14 00:27:00",
+   "count": 1,
+   "labels": [
+    "botnet",
+    "malicious-activity"
+   ],
+   "external_references": [
+    {
+     "description": "Conficker",
+     "external_id": "S0608",
+     "source_name": "mitre-attack",
+     "url": "https://attack.mitre.org/software/S0608/"
+    }
+   ]
+  },
+  {
+   "source": "StopForumSpam.com",
+   "description": "HTTP Spammer",
+   "first_seen": "2018-12-04 08:51:07",
+   "last_seen": "2018-12-04 08:51:07",
+   "count": 1,
+   "labels": [
+    "attacker"
+   ]
+  },
+  {
+   "source": "Hybrid-Analysis",
+   "description": "Trojan.Agent",
+   "first_seen": "2019-02-18 13:33:43",
+   "last_seen": "2019-02-18 13:33:43",
+   "count": 1
+  },
+  {
+   "source": "Abuse.ch",
+   "description": "Malware Download",
+   "first_seen": "2019-03-06 06:02:49",
+   "last_seen": "2019-03-06 06:02:49",
+   "count": 1,
+   "labels": [
+    "malware"
+   ]
+  },
+  {
+   "source": "IBM X-Force Exchange",
+   "description": "Botnet Command and Control Server",
+   "first_seen": "2012-05-22 06:10:00",
+   "last_seen": "2012-12-04 12:21:00",
+   "count": 1,
+   "labels": [
+    "botnet"
+   ]
+  },
+  {
+   "source": "IBM X-Force Exchange",
+   "description": "Anonymisation Services",
+   "first_seen": "2012-04-26 00:34:00",
+   "last_seen": "2012-12-04 12:21:00",
+   "count": 1
+  },
+  {
+   "source": "Cybercrime-tracker.net",
+   "description": "AZORult",
+   "first_seen": "2019-07-06 00:00:00",
+   "last_seen": "2021-05-01 11:14:17",
+   "count": 1,
+   "labels": [
+    "botnet",
+    "malicious-activity"
+   ],
+   "external_references": [
+    {
+     "description": "Azorult",
+     "external_id": "S0344",
+     "source_name": "mitre-attack",
+     "url": "https://attack.mitre.org/software/S0344/"
+    }
+   ]
+  },
+  {
+   "source": "Myip.ms",
+   "description": "HTTP Spammer",
+   "first_seen": "2022-10-25 03:33:53",
+   "last_seen": "2026-10-20 03:03:14",
+   "count": 12,
+   "labels": [
+    "attacker",
+    "malicious-activity"
+   ],
+   "ref": [
+    21745
+   ]
+  },
+  {
+   "source": "HoneyDB",
+   "description": "Malicious Host",
+   "first_seen": "2019-11-04 00:00:00",
+   "last_seen": "2026-04-22 00:00:00",
+   "count": 2,
+   "labels": [
+    "attacker",
+    "malicious-activity"
+   ],
+   "ref": [
+    21745
+   ]
+  },
+  {
+   "source": "Maltiverse",
+   "description": "Matched whitelist source: Google",
+   "first_seen": "2026-06-01 02:00:19",
+   "last_seen": "2026-11-14 03:18:12",
+   "count": 3,
+   "labels": [
+    "benign"
+   ]
+  },
+  {
+   "source": "Public-dns.info",
+   "description": "DNS Server",
+   "first_seen": "2019-11-23 15:06:50",
+   "last_seen": "2026-11-01 02:00:04",
+   "count": 83,
+   "labels": [
+    "benign"
+   ],
+   "ref": [
+    1,
+    21745
+   ]
+  },
+  {
+   "source": "Maltiverse",
+   "description": "Hosting Provider",
+   "first_seen": "2026-09-03 21:12:30",
+   "last_seen": "2026-09-03 21:12:30",
+   "count": 1,
+   "labels": [
+    "benign",
+    "hosting"
+   ]
+  }
+ ]
+}

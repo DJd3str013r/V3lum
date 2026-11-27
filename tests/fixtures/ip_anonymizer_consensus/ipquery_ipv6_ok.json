@@ -1,0 +1,19 @@
+{
+ "ip": "2606:4700:4700::1111",
+ "isp": {
+  "asn": "AS13335",
+  "org": "Cloudflare, Inc.",
+  "isp": "Cloudflare, Inc."
+ },
+ "risk": {
+  "is_mobile": false,
+  "is_vpn": false,
+  "is_tor": false,
+  "is_proxy": false,
+  "is_datacenter": true,
+  "risk_score": 0
+ },
+ "location": {
+  "country_code": "US"
+ }
+}

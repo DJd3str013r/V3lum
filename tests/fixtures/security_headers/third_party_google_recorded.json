@@ -1,0 +1,47 @@
+{
+ "_note": "rebuilt from research sample design_security_headers_google.json (www.google.com, 2026-11-25): header names/flags as recorded; nonce, cookie values and dates replaced",
+ "url": "https://www.google.com/",
+ "status": 200,
+ "headers": [
+  [
+   "Content-Type",
+   "text/html; charset=ISO-8859-1"
+  ],
+  [
+   "Content-Security-Policy-Report-Only",
+   "object-src 'none';base-uri 'self';script-src 'nonce-EXAMPLEnonce000000000' 'strict-dynamic' 'report-sample' 'unsafe-eval' 'unsafe-inline' https: http:;report-uri https://csp.example.com/gws"
+  ],
+  [
+   "X-Frame-Options",
+   "SAMEORIGIN"
+  ],
+  [
+   "X-XSS-Protection",
+   "0"
+  ],
+  [
+   "Server",
+   "gws"
+  ],
+  [
+   "Set-Cookie",
+   "__Secure-STRP=EXAMPLEVALUE0000; expires=Tue, 25-May-2027 21:53:00 GMT; path=/; domain=.example.com; Secure; SameSite=strict"
+  ],
+  [
+   "Set-Cookie",
+   "AEC=EXAMPLEVALUE0000; expires=Tue, 25-May-2027 21:53:00 GMT; path=/; domain=.example.com; Secure; HttpOnly; SameSite=lax"
+  ],
+  [
+   "Set-Cookie",
+   "NID=EXAMPLEVALUE0000; expires=Tue, 25-May-2027 21:53:00 GMT; path=/; domain=.example.com; HttpOnly"
+  ]
+ ],
+ "expected_missing": [
+  "strict-transport-security",
+  "content-security-policy",
+  "x-content-type-options",
+  "referrer-policy",
+  "permissions-policy",
+  "cross-origin-opener-policy"
+ ]
+}

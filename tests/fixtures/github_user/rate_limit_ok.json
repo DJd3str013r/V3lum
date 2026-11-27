@@ -1,0 +1,28 @@
+{
+ "resources": {
+  "core": {
+   "limit": 15000,
+   "used": 0,
+   "remaining": 15000,
+   "reset": 1795646727
+  },
+  "search": {
+   "limit": 30,
+   "used": 2,
+   "remaining": 30,
+   "reset": 1795643186
+  },
+  "code_search": {
+   "limit": 10,
+   "used": 0,
+   "remaining": 10,
+   "reset": 1795643187
+  }
+ },
+ "rate": {
+  "limit": 15000,
+  "used": 0,
+  "remaining": 15000,
+  "reset": 1795646727
+ }
+}

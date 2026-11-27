@@ -1,0 +1,10 @@
+# Title: Synthetic fixture in HaGeZi wildcard format (no HaGeZi data)
+# Expires: 8 hours
+# Last modified: 25 Nov 2026 22:58 UTC
+# Version: 2026.1125.2258.28
+# Syntax: Domains Wildcard (without subdomains)
+# Number of entries: 3
+#
+*.malware-c2.example.net
+*.m.phish-kit.example.org
+*.cryptojack.example.com

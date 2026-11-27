@@ -1,0 +1,29 @@
+{
+  "schema": "v3lum.nicbr_providers/1",
+  "title": "Brazilian ISP, telecom, hosting and cloud network owners whose address space is customer space (P038 cond 4)",
+  "source": "V3LUM-authored list; ASNs and CNPJ roots checked against the public NIC.br ASN block list (https://ftp.registro.br/pub/numeracao/origin/nicbr-asn-blk-latest.txt) on 2026-11-26",
+  "licence": "proprietary-internal (V3LUM-authored list of public registry facts)",
+  "checked_at": "2026-11-26",
+  "notes": "An IP whose NIC.br block belongs to one of these owners gets relation network_provider and no CNPJ/QSA pivot: a phishing IP on a Claro or Locaweb block must never pivot into the provider's company and partners. Owner-name keywords (TELECOM, INTERNET, PROVEDOR, ...) cover the long tail; this list covers name-only telecoms and hosters. A CNPJ root covers every ASN of the company. Add entries with the same check against the NIC.br file.",
+  "providers": [
+    {"name": "Claro S.A. (incl. Embratel)", "kind": "telecom", "asns": [4230, 22085, 27652], "cnpj_roots": ["40432544"]},
+    {"name": "Claro NXT Telecomunicacoes Ltda", "kind": "telecom", "asns": [28573, 28351], "cnpj_roots": ["66970229"]},
+    {"name": "Telefonica Brasil S.A. (Vivo)", "kind": "telecom", "asns": [18881, 10429, 26599, 27699], "cnpj_roots": ["02558157"]},
+    {"name": "TIM S.A.", "kind": "telecom", "asns": [26615, 17379, 53157], "cnpj_roots": ["02421421"]},
+    {"name": "V tal (ex-Oi network)", "kind": "telecom", "asns": [7738, 8167, 22745, 52320], "cnpj_roots": ["02041460"]},
+    {"name": "Oi S.A.", "kind": "telecom", "asns": [14571, 27710], "cnpj_roots": ["76535764"]},
+    {"name": "Algar Telecom S/A", "kind": "telecom", "asns": [16735, 28310, 53006], "cnpj_roots": ["71208516"]},
+    {"name": "Vero S.A", "kind": "telecom", "asns": [28669, 28211, 28241, 28258], "cnpj_roots": ["31748174"]},
+    {"name": "SAMM Tecnologia e Telecomunicacoes S.A", "kind": "telecom", "asns": [22381, 262589], "cnpj_roots": ["11620561"]},
+    {"name": "Sencinet Latam Brasil Ltda", "kind": "telecom", "asns": [11271], "cnpj_roots": ["74280256"]},
+    {"name": "Cogent Brasil Telecomunicacoes Ltda", "kind": "transit", "asns": [174], "cnpj_roots": ["29484413"]},
+    {"name": "NTT do Brasil Telecomunicacoes Ltda", "kind": "transit", "asns": [2914, 13495], "cnpj_roots": ["31546914"]},
+    {"name": "Rede Nacional de Ensino e Pesquisa (RNP, national research and education network)", "kind": "nren", "asns": [1916, 6125], "cnpj_roots": ["03508097"]},
+    {"name": "Locaweb / LWSA S/A", "kind": "hosting", "asns": [27715, 28299, 53244, 262446, 262518, 263590, 274483], "cnpj_roots": ["02351877"]},
+    {"name": "Universo Online S.A. (UOL)", "kind": "hosting", "asns": [7162, 15201, 18479, 28297], "cnpj_roots": ["01109184"]},
+    {"name": "Digitalservices.UOL S.A.", "kind": "hosting", "asns": [15180, 18644, 21911], "cnpj_roots": ["01588770"]},
+    {"name": "Hostgator Brasil Ltda", "kind": "hosting", "asns": [263093], "cnpj_roots": ["15754475"]},
+    {"name": "Ascenty Data Centers e Telecomunicacoes S/A", "kind": "datacenter", "asns": [28630, 52925], "cnpj_roots": ["13743550"]},
+    {"name": "Microsoft Brasil Ltda (Azure)", "kind": "cloud", "asns": [8075, 52985], "cnpj_roots": ["04712500"]}
+  ]
+}

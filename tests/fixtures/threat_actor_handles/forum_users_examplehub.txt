@@ -1,0 +1,19 @@
+!-=EXAMPLE=-!
+#example_hash
+$99!$
+*Example*
+12345
+4ever_example
+ab
+abc1
+Example Actor
+example_actor
+EXAMPLE_ACTOR
+exampleactor
+octocat
+OctoCat
+ПРИМЕР
+пример
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+zz_example_vendor
+falcon

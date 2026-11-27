@@ -1,0 +1,77 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "$comment": "Redis on the dedicated address an own name resolves to, observed yesterday: HIGH, PROBABLE",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "org_profile": {
+    "org": {
+      "name": "Acme"
+    },
+    "domains": [
+      {
+        "name": "acme-corp.example",
+        "verification": "txt_verified",
+        "criticality": "high"
+      }
+    ],
+    "cidrs": [
+      {
+        "value": "203.0.113.0/24",
+        "criticality": "high"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "key": "domain:db.acme-corp.example",
+      "depth": 0,
+      "seed": true,
+      "ownership": "own_asset",
+      "tags": [
+        "own_asset"
+      ]
+    },
+    {
+      "key": "ipv4:198.51.100.40",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "open_ports": [
+          {
+            "value": [
+              6379
+            ],
+            "source": "shodan_api"
+          }
+        ],
+        "last_seen": [
+          {
+            "value": "2026-11-25",
+            "source": "shodan_api"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "src": "domain:db.acme-corp.example",
+      "dst": "ipv4:198.51.100.40",
+      "relation": "resolves_to",
+      "module": "dns_records",
+      "confidence": 0.9
+    }
+  ],
+  "expect": {
+    "exposed_database_or_cache": {
+      "min": 1,
+      "max": 1,
+      "severity": "high",
+      "confidence_label": "probable"
+    }
+  }
+}

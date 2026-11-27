@@ -1,0 +1,64 @@
+{
+ "nft_items": [
+  {
+   "address": "0:118616A1E94829BDFDCE00C74011F5A9AEB780D46C07BAFAA1D069E8A3F5A470",
+   "init": true,
+   "index": "87155146687651342500831811744211008803830373161988111035888956821006684411726",
+   "collection_address": "0:80D78A35F955A14B679FAA887FF4CD5BFC0F43B4A4EEA2A7E6927F3701B273C2",
+   "owner_address": "0:4AD11D4FB9A97C589032601B8FEC3141D85AE5192A6AAA2ED1B8C6CF3EBD30DC",
+   "content": {
+    "domain": "github.t.me",
+    "uri": "https://nft.fragment.com/username/github.json"
+   },
+   "last_transaction_lt": "50570292000003",
+   "on_sale": true,
+   "real_owner": "0:0881FBEDAFD2853D9FC32C1C48554F8B377361903274BB8B64ABCEF86DCDCFAB"
+  }
+ ],
+ "address_book": {
+  "0:118616A1E94829BDFDCE00C74011F5A9AEB780D46C07BAFAA1D069E8A3F5A470": {
+   "user_friendly": "EQARhhah6Ugpvf3OAMdAEfWprreA1GwHuvqh0Gnoo_WkcIVV",
+   "domain": null,
+   "interfaces": [
+    "dns",
+    "nft_item",
+    "teleitem"
+   ]
+  },
+  "0:80D78A35F955A14B679FAA887FF4CD5BFC0F43B4A4EEA2A7E6927F3701B273C2": {
+   "user_friendly": "EQCA14o1-VWhS2efqoh_9M1b_A9DtKTuoqfmkn83AbJzwnPi",
+   "domain": null,
+   "interfaces": [
+    "dns",
+    "nft_collection"
+   ]
+  },
+  "0:0881FBEDAFD2853D9FC32C1C48554F8B377361903274BB8B64ABCEF86DCDCFAB": {
+   "user_friendly": "UQAIgfvtr9KFPZ_DLBxIVU-LN3NhkDJ0u4tkq874bc3Pq4mm",
+   "domain": "github.t.me",
+   "interfaces": [
+    "wallet_v4r2"
+   ]
+  },
+  "0:4AD11D4FB9A97C589032601B8FEC3141D85AE5192A6AAA2ED1B8C6CF3EBD30DC": {
+   "user_friendly": "EQBK0R1Pual8WJAyYBuP7DFB2FrlGSpqqi7RuMbPPr0w3Fbi",
+   "domain": null,
+   "interfaces": [
+    "nft_sale_getgems_v3"
+   ]
+  }
+ },
+ "metadata": {
+  "0:118616A1E94829BDFDCE00C74011F5A9AEB780D46C07BAFAA1D069E8A3F5A470": {
+   "is_indexed": true,
+   "token_info": [
+    {
+     "valid": true,
+     "type": "nft_items",
+     "name": "@github",
+     "nft_index": "87155146687651342500831811744211008803830373161988111035888956821006684411726"
+    }
+   ]
+  }
+ }
+}

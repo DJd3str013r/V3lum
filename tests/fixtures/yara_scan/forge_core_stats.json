@@ -1,0 +1,690 @@
+{
+ "_note": "Derived from YARA Forge core release 20261122 (downloaded 2026-11-26). Counts and short meta values only; no rule text (A6: rule packs are downloaded at runtime, never bundled).",
+ "asset": {
+  "url": "https://github.com/YARAHQ/yara-forge/releases/latest/download/yara-forge-rules-core.zip",
+  "resolved_tag": "20261122",
+  "bytes": 1720630,
+  "sha256": "f88eb4ea361a4636021513dd71c3dfde0ca7af8d51e43ac9ccdfec9530dc3737",
+  "members": [
+   {
+    "name": "packages/core/",
+    "size": 0,
+    "compressed": 0
+   },
+   {
+    "name": "packages/core/yara-rules-core.yar",
+    "size": 7739572,
+    "compressed": 1720258
+   }
+  ]
+ },
+ "package": {
+  "name": "core",
+  "description": "Default YARA Rule Package - Core",
+  "forge_version": "0.9.1",
+  "qa_commit": "d8e1d0fa81610340a9ea5a04a36d414b9e5a2e6b",
+  "minimum_quality": 70,
+  "minimum_score": 65,
+  "creation_date": "2026-11-22",
+  "number_of_rules": 5078,
+  "skipped": "3240 (age), 806 (quality), 950 (score), 2039 (importance)"
+ },
+ "imports": [
+  "dotnet",
+  "hash",
+  "pe"
+ ],
+ "rule_sets": [
+  {
+   "name": "R3c0nst",
+   "repository": "https://github.com/fboldewin/YARA-rules/",
+   "commit": "54e9e6899b258b72074b2b4db6909257683240c2",
+   "declared_rules": 15,
+   "parsed_rules": 15,
+   "licence": null,
+   "prefix": "R3C0NST",
+   "classes": {
+    "unknown": 15
+   }
+  },
+  {
+   "name": "CAPE",
+   "repository": "https://github.com/kevoreilly/CAPEv2",
+   "commit": "1a84d3ad010a14bb4ba911e4a208a145da94f208",
+   "declared_rules": 122,
+   "parsed_rules": 122,
+   "licence": "GPL-3.0",
+   "prefix": "CAPE",
+   "classes": {
+    "license": 122
+   }
+  },
+  {
+   "name": "DelivrTo",
+   "repository": "https://github.com/delivr-to/detections",
+   "commit": "f85e1d0c477cbf4689d1cfe4a80049c465673b23",
+   "declared_rules": 2,
+   "parsed_rules": 2,
+   "licence": null,
+   "prefix": "DELIVRTO",
+   "classes": {
+    "unknown": 2
+   }
+  },
+  {
+   "name": "ESET",
+   "repository": "https://github.com/eset/malware-ioc",
+   "commit": "8921a81d245cce3f9b7a199b123d221ed8f1fe33",
+   "declared_rules": 56,
+   "parsed_rules": 56,
+   "licence": "BSD-2-Clause",
+   "prefix": "ESET",
+   "classes": {
+    "open": 56
+   }
+  },
+  {
+   "name": "FireEye-RT",
+   "repository": "https://github.com/mandiant/red_team_tool_countermeasures/",
+   "commit": "3561b71724dbfa3e2bb78106aaa2d7f8b892c43b",
+   "declared_rules": 143,
+   "parsed_rules": 143,
+   "licence": "BSD-2-Clause",
+   "prefix": "FIREEYE_RT",
+   "classes": {
+    "open": 143
+   }
+  },
+  {
+   "name": "GCTI",
+   "repository": "https://github.com/chronicle/GCTI",
+   "commit": "1c5fd42b1895098527fde00c2d9757edf6b303bb",
+   "declared_rules": 89,
+   "parsed_rules": 89,
+   "licence": "Apache-2.0",
+   "prefix": "GCTI",
+   "classes": {
+    "open": 89
+   }
+  },
+  {
+   "name": "Malpedia",
+   "repository": "https://github.com/malpedia/signator-rules/",
+   "commit": "eddaf26a30c6daff1b2350f52d0b5c11767f7552",
+   "declared_rules": 1621,
+   "parsed_rules": 1621,
+   "licence": null,
+   "prefix": "MALPEDIA",
+   "classes": {
+    "noncommercial": 1621
+   }
+  },
+  {
+   "name": "Trellix ARC",
+   "repository": "https://github.com/advanced-threat-research/Yara-Rules/",
+   "commit": "1919562a59f190bda60c982424f6a24c542ee3e0",
+   "declared_rules": 50,
+   "parsed_rules": 50,
+   "licence": "Apache-2.0",
+   "prefix": "TRELLIX_ARC",
+   "classes": {
+    "open": 50
+   }
+  },
+  {
+   "name": "Arkbird SOLG",
+   "repository": "https://github.com/StrangerealIntel/DailyIOC",
+   "commit": "a873ff1298c43705e9c67286f3014f4300dd04f7",
+   "declared_rules": 123,
+   "parsed_rules": 123,
+   "licence": null,
+   "prefix": "ARKBIRD_SOLG",
+   "classes": {
+    "unknown": 123
+   }
+  },
+  {
+   "name": "Telekom Security",
+   "repository": "https://github.com/telekom-security/malware_analysis/",
+   "commit": "755efb66586f53fea34926f78a8d2054a8e8e74b",
+   "declared_rules": 6,
+   "parsed_rules": 6,
+   "licence": "MIT",
+   "prefix": "TELEKOM_SECURITY",
+   "classes": {
+    "open": 6
+   }
+  },
+  {
+   "name": "Volexity",
+   "repository": "https://github.com/volexity/threat-intel",
+   "commit": "683296427d8c7f08938ce6c587f618c938cf4c54",
+   "declared_rules": 132,
+   "parsed_rules": 132,
+   "licence": "BSD-2-Clause",
+   "prefix": "VOLEXITY",
+   "classes": {
+    "open": 132
+   }
+  },
+  {
+   "name": "SecuInfra",
+   "repository": "https://github.com/SIFalcon/Detection",
+   "commit": "2d7c66d7d16c7541bf2a9a83a7a6d334364a26fd",
+   "declared_rules": 33,
+   "parsed_rules": 33,
+   "licence": null,
+   "prefix": "SECUINFRA",
+   "classes": {
+    "unknown": 33
+   }
+  },
+  {
+   "name": "RussianPanda",
+   "repository": "https://github.com/RussianPanda95/Yara-Rules",
+   "commit": "b59e13d90d02e058560f94cf00913d42751dbc45",
+   "declared_rules": 101,
+   "parsed_rules": 101,
+   "licence": null,
+   "prefix": "RUSSIANPANDA",
+   "classes": {
+    "unknown": 101
+   }
+  },
+  {
+   "name": "CadoSecurity",
+   "repository": "https://github.com/mikesxrs/Open-Source-YARA-rules",
+   "commit": "ec0056f767db98bf6d5fd63877ad51fb54d350e9",
+   "declared_rules": 7,
+   "parsed_rules": 7,
+   "licence": null,
+   "prefix": "CADOSECURITY",
+   "classes": {
+    "open": 7
+   }
+  },
+  {
+   "name": "Check Point",
+   "repository": "https://github.com/mikesxrs/Open-Source-YARA-rules",
+   "commit": "ec0056f767db98bf6d5fd63877ad51fb54d350e9",
+   "declared_rules": 4,
+   "parsed_rules": 4,
+   "licence": null,
+   "prefix": "CHECK_POINT",
+   "classes": {
+    "unknown": 4
+   }
+  },
+  {
+   "name": "BlackBerry",
+   "repository": "https://github.com/mikesxrs/Open-Source-YARA-rules",
+   "commit": "ec0056f767db98bf6d5fd63877ad51fb54d350e9",
+   "declared_rules": 21,
+   "parsed_rules": 21,
+   "licence": null,
+   "prefix": "BLACKBERRY",
+   "classes": {
+    "open": 20,
+    "unknown": 1
+   }
+  },
+  {
+   "name": "Cluster25",
+   "repository": "https://github.com/mikesxrs/Open-Source-YARA-rules",
+   "commit": "ec0056f767db98bf6d5fd63877ad51fb54d350e9",
+   "declared_rules": 8,
+   "parsed_rules": 8,
+   "licence": null,
+   "prefix": "CLUSTER25",
+   "classes": {
+    "unknown": 8
+   }
+  },
+  {
+   "name": "Microsoft",
+   "repository": "https://github.com/mikesxrs/Open-Source-YARA-rules",
+   "commit": "ec0056f767db98bf6d5fd63877ad51fb54d350e9",
+   "declared_rules": 1,
+   "parsed_rules": 1,
+   "licence": null,
+   "prefix": "MICROSOFT",
+   "classes": {
+    "unknown": 1
+   }
+  },
+  {
+   "name": "NCSC",
+   "repository": "https://github.com/mikesxrs/Open-Source-YARA-rules",
+   "commit": "ec0056f767db98bf6d5fd63877ad51fb54d350e9",
+   "declared_rules": 8,
+   "parsed_rules": 8,
+   "licence": null,
+   "prefix": "NCSC",
+   "classes": {
+    "unknown": 8
+   }
+  },
+  {
+   "name": "Dr4k0nia",
+   "repository": "https://github.com/dr4k0nia/yara-rules",
+   "commit": "4b10f9b79a4cfb3ec9cb5675f32cc7ee6885fbd8",
+   "declared_rules": 4,
+   "parsed_rules": 4,
+   "licence": "DRL-1.1",
+   "prefix": "DR4K0NIA",
+   "classes": {
+    "open": 4
+   }
+  },
+  {
+   "name": "EmbeeResearch",
+   "repository": "https://github.com/embee-research/Yara-detection-rules/",
+   "commit": "ac56d6f6fd2a30c8cb6e5c0455d6519210a8b0f4",
+   "declared_rules": 34,
+   "parsed_rules": 34,
+   "licence": null,
+   "prefix": "EMBEERESEARCH",
+   "classes": {
+    "unknown": 34
+   }
+  },
+  {
+   "name": "AvastTI",
+   "repository": "https://github.com/avast/ioc",
+   "commit": "eb6d7fc10cb0c57dab5a360f1fd28acae26efa97",
+   "declared_rules": 30,
+   "parsed_rules": 30,
+   "licence": null,
+   "prefix": "AVASTTI",
+   "classes": {
+    "unknown": 30
+   }
+  },
+  {
+   "name": "SBousseaden",
+   "repository": "https://github.com/sbousseaden/YaraHunts/",
+   "commit": "71b27a2a7c57c2aa1877a11d8933167794e2b4fb",
+   "declared_rules": 17,
+   "parsed_rules": 17,
+   "licence": null,
+   "prefix": "SBOUSSEADEN",
+   "classes": {
+    "unknown": 17
+   }
+  },
+  {
+   "name": "Elceef",
+   "repository": "https://github.com/elceef/yara-rulz",
+   "commit": "5683b294a12cf0c875b624933586029ae43a852f",
+   "declared_rules": 16,
+   "parsed_rules": 16,
+   "licence": "MIT",
+   "prefix": "ELCEEF",
+   "classes": {
+    "open": 16
+   }
+  },
+  {
+   "name": "Cod3nym",
+   "repository": "https://github.com/cod3nym/detection-rules/",
+   "commit": "a9f1cbab38406194d4451de021c0aeb309ac8baa",
+   "declared_rules": 7,
+   "parsed_rules": 7,
+   "licence": "DRL-1.1",
+   "prefix": "COD3NYM",
+   "classes": {
+    "open": 7
+   }
+  },
+  {
+   "name": "craiu",
+   "repository": "https://github.com/craiu/yararules",
+   "commit": "23cf0ca22021fa3684e180a18416b9ae1b695243",
+   "declared_rules": 7,
+   "parsed_rules": 7,
+   "licence": "GPL-3.0",
+   "prefix": "CRAIU",
+   "classes": {
+    "license": 7
+   }
+  },
+  {
+   "name": "DitekSHen",
+   "repository": "https://github.com/ditekshen/detection",
+   "commit": "e76c93dcdedff04076380ffc60ea54e45b313635",
+   "declared_rules": 603,
+   "parsed_rules": 603,
+   "licence": "BSD-2-Clause",
+   "prefix": "DITEKSHEN",
+   "classes": {
+    "open": 603
+   }
+  },
+  {
+   "name": "WithSecureLabs",
+   "repository": "https://github.com/WithSecureLabs/iocs",
+   "commit": "1a8384468dd292c6d2c5114c32e42dc0da1f5ae1",
+   "declared_rules": 24,
+   "parsed_rules": 24,
+   "licence": "BSD-2-Clause",
+   "prefix": "WITHSECURELABS",
+   "classes": {
+    "open": 24
+   }
+  },
+  {
+   "name": "HarfangLab",
+   "repository": "https://github.com/HarfangLab/iocs",
+   "commit": "3e2b674bf2f591ac46301420671ba553de094dea",
+   "declared_rules": 38,
+   "parsed_rules": 38,
+   "licence": null,
+   "prefix": "HARFANGLAB",
+   "classes": {
+    "unknown": 38
+   }
+  },
+  {
+   "name": "SEKOIA",
+   "repository": "https://github.com/SEKOIA-IO/Community",
+   "commit": "ae52d3fed661f7459c3877fec630e66a1771d5d0",
+   "declared_rules": 700,
+   "parsed_rules": 700,
+   "licence": "DRL-1.1",
+   "prefix": "SEKOIA",
+   "classes": {
+    "open": 700
+   }
+  },
+  {
+   "name": "Synacktiv",
+   "repository": "https://github.com/synacktiv/synacktiv-rules",
+   "commit": "d234cc4da0783db7dca56ae8dd5252afdc248df8",
+   "declared_rules": 3,
+   "parsed_rules": 3,
+   "licence": "DRL-1.1",
+   "prefix": "SYNACKTIV",
+   "classes": {
+    "open": 3
+   }
+  },
+  {
+   "name": "ArtifactDrop",
+   "repository": "https://github.com/matthieugras/artifact-drop/",
+   "commit": "d2bcbe820bc134a4ed672ef6013498f856561af4",
+   "declared_rules": 1,
+   "parsed_rules": 1,
+   "licence": null,
+   "prefix": "ARTIFACTDROP",
+   "classes": {
+    "unknown": 1
+   }
+  },
+  {
+   "name": "Signature Base",
+   "repository": "https://github.com/Neo23x0/signature-base",
+   "commit": "78d979eef87786a613659ee82e55abdd45572a78",
+   "declared_rules": 1052,
+   "parsed_rules": 1052,
+   "licence": "DRL-1.1",
+   "prefix": "SIGNATURE_BASE",
+   "classes": {
+    "open": 1052
+   }
+  }
+ ],
+ "licence_class_counts": {
+  "unknown": 416,
+  "license": 129,
+  "open": 2912,
+  "noncommercial": 1621
+ },
+ "licence_spdx_counts": {
+  "none": 416,
+  "GPL-3.0": 129,
+  "BSD-2-Clause": 963,
+  "Apache-2.0": 166,
+  "CC-BY-SA-4.0": 1621,
+  "MIT": 23,
+  "DRL-1.1": 1755,
+  "CC-BY-4.0": 5
+ },
+ "licence_evidence_counts": {
+  "missing": 416,
+  "meta:license_url->repository LICENSE": 2433,
+  "meta:license": 473,
+  "meta:malpedia_license": 1621,
+  "meta:license url->repository LICENSE": 135
+ },
+ "license_meta_values": {
+  "BSD 2-Clause": {
+   "meta_key": "license",
+   "rule_set": "ESET",
+   "spdx": "BSD-2-Clause",
+   "class": "open"
+  },
+  "CC BY-SA 4.0": {
+   "meta_key": "malpedia_license",
+   "rule_set": "Malpedia",
+   "spdx": "CC-BY-SA-4.0",
+   "class": "noncommercial"
+  },
+  "See license at https://github.com/volexity/threat-intel/blob/main/LICENSE.txt": {
+   "meta_key": "license",
+   "rule_set": "Volexity",
+   "spdx": "BSD-2-Clause",
+   "class": "open"
+  },
+  "Apache License 2.0": {
+   "meta_key": "license",
+   "rule_set": "CadoSecurity",
+   "spdx": "Apache-2.0",
+   "class": "open"
+  },
+  "This Yara rule is provided under the Apache License 2.0 (https://www.apache.org/licenses/LICENSE-2.0) and open to any user or organization, as long as you use it under this license and ensure originat": {
+   "meta_key": "license",
+   "rule_set": "BlackBerry",
+   "spdx": "Apache-2.0",
+   "class": "open"
+  },
+  "This Yara rule is provided under the Apache License 2.0   (https://www.apache.org/licenses/LICENSE-2.0) and open to any user or organization, as long as you use it under this license and ensure origin": {
+   "meta_key": "license",
+   "rule_set": "BlackBerry",
+   "spdx": "Apache-2.0",
+   "class": "open"
+  },
+  "DRL-1.1": {
+   "meta_key": "license",
+   "rule_set": "Synacktiv",
+   "spdx": "DRL-1.1",
+   "class": "open"
+  },
+  "Detection Rule License 1.1 https://github.com/Neo23x0/signature-base/blob/master/LICENSE": {
+   "meta_key": "license",
+   "rule_set": "Signature Base",
+   "spdx": "DRL-1.1",
+   "class": "open"
+  },
+  "See license at https://github.com/volexity/threat-intel/LICENSE.txt": {
+   "meta_key": "license",
+   "rule_set": "Signature Base",
+   "spdx": "BSD-2-Clause",
+   "class": "open"
+  },
+  "CC BY 4.0": {
+   "meta_key": "license",
+   "rule_set": "Signature Base",
+   "spdx": "CC-BY-4.0",
+   "class": "open"
+  },
+  "Detection Rule License 1.1 https://github.com/SigmaHQ/Detection-Rule-License": {
+   "meta_key": "license",
+   "rule_set": "Signature Base",
+   "spdx": "DRL-1.1",
+   "class": "open"
+  },
+  "MIT": {
+   "meta_key": "license",
+   "rule_set": "Signature Base",
+   "spdx": "MIT",
+   "class": "open"
+  },
+  "CC BY 4.0 - https://creativecommons.org/licenses/by/4.0/": {
+   "meta_key": "license",
+   "rule_set": "Signature Base",
+   "spdx": "CC-BY-4.0",
+   "class": "open"
+  }
+ },
+ "selection": {
+  "corporate": {
+   "counts": {
+    "loaded": 2912,
+    "licence": 2166,
+    "dependency": 0
+   },
+   "coverage_line": "2166 rules excluded: licence"
+  },
+  "research": {
+   "counts": {
+    "loaded": 4662,
+    "licence": 416,
+    "dependency": 0
+   },
+   "coverage_line": "416 rules excluded: licence"
+  }
+ },
+ "kind_counts": {
+  "specific": 4458,
+  "generic": 565,
+  "family": 55
+ },
+ "generic_reasons": {
+  "prefix SUSP_": 131,
+  "score": 91,
+  "prefix PUA_": 3,
+  "prefix HKTL_": 397,
+  "category": 3
+ },
+ "first_token_after_prefix_top": [
+  [
+   "WIN",
+   1679
+  ],
+  [
+   "APT",
+   663
+  ],
+  [
+   "MALWARE",
+   454
+  ],
+  [
+   "HKTL",
+   397
+  ],
+  [
+   "MAL",
+   264
+  ],
+  [
+   "INDICATOR",
+   178
+  ],
+  [
+   "SUSP",
+   131
+  ],
+  [
+   "COBALTSTRIKE",
+   116
+  ],
+  [
+   "TOOL",
+   76
+  ],
+  [
+   "HACKTOOL",
+   56
+  ],
+  [
+   "INFOSTEALER",
+   56
+  ],
+  [
+   "EXPL",
+   52
+  ],
+  [
+   "LOADER",
+   48
+  ],
+  [
+   "WEBSHELL",
+   43
+  ],
+  [
+   "BACKDOOR",
+   33
+  ],
+  [
+   "RAN",
+   31
+  ],
+  [
+   "RANSOM",
+   22
+  ],
+  [
+   "RAT",
+   22
+  ],
+  [
+   "IMPLANT",
+   20
+  ],
+  [
+   "RANSOMWARE",
+   20
+  ],
+  [
+   "GENERIC",
+   18
+  ],
+  [
+   "TROJAN",
+   16
+  ],
+  [
+   "EXPLOIT",
+   15
+  ],
+  [
+   "IIS",
+   15
+  ],
+  [
+   "CRIME",
+   15
+  ]
+ ],
+ "family_meta_examples": {
+  "Botnet:W32/LiquorBot": "LiquorBot",
+  "Botnet:W32/Fritzfrog": "Fritzfrog",
+  "Maldoc:W32/BlueTea": "BlueTea",
+  "Backdoor:W32/CobaltStrike": "CobaltStrike",
+  "Backdoor:W32/RedLine": "RedLine",
+  "Backdoor:W32/Emotet": "Emotet",
+  "Backdoor:W32/Winnti": "Winnti",
+  "Trojan:W32/RecordedTV": "RecordedTV",
+  "Trojan:W32/Milum": "Milum",
+  "Backdoor:W32/Pwnlnx": "Pwnlnx",
+  "Rootkit:W32/Acidbox": "Acidbox",
+  "Backdoor:W32/Acidbox": "Acidbox"
+ },
+ "modifiers": {
+  "private": 5
+ },
+ "rules_with_rule_refs": 18,
+ "rules_with_rule_refs_all_private": 18
+}

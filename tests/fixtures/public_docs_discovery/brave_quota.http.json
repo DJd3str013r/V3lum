@@ -1,0 +1,20 @@
+{
+ "_provenance": {
+  "synthetic": true,
+  "note": "shape from the provider's public API documentation; NOT captured (no key). Replace with a real capture before enabling the provider (P307 FC10).",
+  "source": "Brave 429 QUOTA_LIMITED"
+ },
+ "status": 429,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": {
+  "type": "ErrorResponse",
+  "error": {
+   "id": "00000000-0000-0000-0000-000000000000",
+   "status": 429,
+   "code": "QUOTA_LIMITED",
+   "detail": "Request quota limit exceeded for plan."
+  }
+ }
+}

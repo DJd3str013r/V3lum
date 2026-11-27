@@ -1,0 +1,223 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "preset": "quick"
+  },
+  "nodes": [
+    {
+      "key": "domain:example.com",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "a_records": [
+          {
+            "value": [
+              "198.51.100.10",
+              "198.51.100.11"
+            ],
+            "source": "dns_records"
+          }
+        ],
+        "dns_history_a": [
+          {
+            "value": [
+              {
+                "ip": "198.51.100.10",
+                "first_seen": "2024-03-01",
+                "last_seen": "2026-11-25",
+                "organizations": []
+              },
+              {
+                "ip": "198.51.100.11",
+                "first_seen": "2024-03-01",
+                "last_seen": "2026-11-25",
+                "organizations": []
+              },
+              {
+                "ip": "203.0.113.7",
+                "first_seen": "2019-05-10",
+                "last_seen": "2024-02-28",
+                "organizations": []
+              }
+            ],
+            "source": "securitytrails"
+          }
+        ],
+        "favicon_mmh3": [
+          {
+            "value": -1203450987,
+            "source": "favicon_hash"
+          }
+        ],
+        "title": [
+          {
+            "value": "Example Corp - Customer Portal",
+            "source": "web_fingerprint"
+          }
+        ]
+      }
+    },
+    {
+      "key": "ipv4:198.51.100.10",
+      "depth": 1,
+      "noise": true,
+      "noise_kind": "cdn",
+      "tags": [
+        "cdn"
+      ],
+      "attributes": {
+        "is_cloud": [
+          {
+            "value": true,
+            "source": "cloud_ranges"
+          }
+        ],
+        "is_cdn": [
+          {
+            "value": true,
+            "source": "cloud_ranges"
+          }
+        ],
+        "cloud_provider": [
+          {
+            "value": "Cloudflare",
+            "source": "cloud_ranges"
+          }
+        ],
+        "cloud_role": [
+          {
+            "value": "cdn_edge",
+            "source": "cloud_ranges"
+          }
+        ],
+        "cloud_label": [
+          {
+            "value": "Cloudflare CDN edge",
+            "source": "cloud_ranges"
+          }
+        ]
+      }
+    },
+    {
+      "key": "ipv4:198.51.100.11",
+      "depth": 1,
+      "noise": true,
+      "noise_kind": "cdn",
+      "tags": [
+        "cdn"
+      ],
+      "attributes": {
+        "is_cloud": [
+          {
+            "value": true,
+            "source": "cloud_ranges"
+          }
+        ],
+        "is_cdn": [
+          {
+            "value": true,
+            "source": "cloud_ranges"
+          }
+        ],
+        "cloud_provider": [
+          {
+            "value": "Cloudflare",
+            "source": "cloud_ranges"
+          }
+        ],
+        "cloud_role": [
+          {
+            "value": "cdn_edge",
+            "source": "cloud_ranges"
+          }
+        ],
+        "cloud_label": [
+          {
+            "value": "Cloudflare CDN edge",
+            "source": "cloud_ranges"
+          }
+        ]
+      }
+    },
+    {
+      "key": "ipv4:203.0.113.7",
+      "depth": 1,
+      "attributes": {
+        "cert_sha256": [
+          {
+            "value": "3f1e0000000000000000000000000000000000000000000000000000000000a1",
+            "source": "censys"
+          }
+        ],
+        "favicon_mmh3": [
+          {
+            "value": -1203450987,
+            "source": "shodan_api"
+          }
+        ],
+        "title": [
+          {
+            "value": "Example Corp - Customer Portal",
+            "source": "shodan_api"
+          }
+        ],
+        "asn": [
+          {
+            "value": "AS64500",
+            "source": "censys"
+          }
+        ],
+        "as_org": [
+          {
+            "value": "EXAMPLE-HOSTING-AS",
+            "source": "censys"
+          }
+        ]
+      }
+    },
+    {
+      "key": "cert_fingerprint:3f1e0000000000000000000000000000000000000000000000000000000000a1",
+      "depth": 1
+    }
+  ],
+  "edges": [
+    {
+      "src": "domain:example.com",
+      "dst": "ipv4:198.51.100.10",
+      "relation": "resolves_to",
+      "module": "dns_records",
+      "confidence": 0.9
+    },
+    {
+      "src": "domain:example.com",
+      "dst": "ipv4:198.51.100.11",
+      "relation": "resolves_to",
+      "module": "dns_records",
+      "confidence": 0.9
+    },
+    {
+      "src": "domain:example.com",
+      "dst": "ipv4:203.0.113.7",
+      "relation": "historical_a_record",
+      "module": "securitytrails",
+      "confidence": 0.4
+    },
+    {
+      "src": "domain:example.com",
+      "dst": "cert_fingerprint:3f1e0000000000000000000000000000000000000000000000000000000000a1",
+      "relation": "has_certificate",
+      "module": "ct_logs",
+      "confidence": 1.0
+    },
+    {
+      "src": "ipv4:203.0.113.7",
+      "dst": "cert_fingerprint:3f1e0000000000000000000000000000000000000000000000000000000000a1",
+      "relation": "serves_certificate",
+      "module": "censys",
+      "confidence": 0.7
+    }
+  ]
+}

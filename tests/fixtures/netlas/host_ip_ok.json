@@ -1,0 +1,164 @@
+{
+ "ip": "8.8.8.8",
+ "type": "ip",
+ "organization": "Google LLC (GOGL)",
+ "ptr": [
+  "dns.google"
+ ],
+ "ports": [
+  {
+   "prot4": "tcp",
+   "protocol": "https",
+   "port": 443,
+   "prot7": "http"
+  },
+  {
+   "prot4": "udp",
+   "protocol": "dns_udp",
+   "port": 53,
+   "prot7": "dns"
+  },
+  {
+   "protocol": "dns_tcp",
+   "prot4": "tcp",
+   "port": 53,
+   "prot7": "dns"
+  },
+  {
+   "prot4": "tcp",
+   "protocol": "raw_tcp",
+   "port": 853,
+   "prot7": "raw"
+  }
+ ],
+ "software": [
+  {
+   "uri": "https://8.8.8.8:443/",
+   "tag": [
+    {
+     "name": "http_3",
+     "fullname": "HTTP/3",
+     "category": [
+      "Miscellaneous"
+     ],
+     "http_3": {
+      "version": ""
+     }
+    }
+   ]
+  }
+ ],
+ "whois": {
+  "abuse": "network-abuse@example.com",
+  "@timestamp": "2026-10-09T13:02:14",
+  "ip": {
+   "gte": "8.8.8.0",
+   "lte": "8.8.8.255"
+  },
+  "net": {
+   "name": "GOGL",
+   "handle": "NET-8-8-8-0-2",
+   "range": "8.8.8.0 - 8.8.8.255",
+   "cidr": [
+    "8.8.8.0/24"
+   ],
+   "organization": "Google LLC (GOGL)",
+   "description": "Google LLC",
+   "country": "US",
+   "created": "2023-12-28",
+   "updated": "2023-12-28",
+   "start_ip": "8.8.8.0",
+   "end_ip": "8.8.8.255",
+   "net_size": 255
+  },
+  "asn": {
+   "number": [
+    "15169"
+   ],
+   "registry": "arin",
+   "country": "US",
+   "name": "GOOGLE - Google LLC",
+   "cidr": "8.8.8.0/24",
+   "updated": "2023-12-28"
+  },
+  "related_nets": []
+ },
+ "ioc": [
+  {
+   "lseen": "2026-11-10T00:00Z",
+   "fseen": "2026-11-10T00:00Z",
+   "@timestamp": "2026-11-10T00:00Z",
+   "domain": "8.8.8.8",
+   "fp": {
+    "descr": "Resource is unavailable",
+    "alarm": "true"
+   },
+   "threat": [
+    "grandoreiro"
+   ],
+   "tags": [
+    "banker"
+   ],
+   "score": {
+    "total": 18.0,
+    "src": 60.18,
+    "tags": 0.3,
+    "frequency": 1.0
+   },
+   "url": "https://8.8.8.8/dns-query"
+  },
+  {
+   "lseen": "2024-11-15T00:00Z",
+   "fseen": "2024-11-15T00:00Z",
+   "@timestamp": "2024-11-15T00:00Z",
+   "domain": "8.8.8.8",
+   "fp": {
+    "descr": "Resource is unavailable",
+    "alarm": "true"
+   },
+   "threat": [
+    "cobalt_strike"
+   ],
+   "tags": [
+    "c2"
+   ],
+   "score": {
+    "total": 18.0,
+    "src": 68.53,
+    "tags": 0.89,
+    "frequency": 1.0
+   },
+   "url": "http://8.8.8.8/jquery-3.3.1.min.js"
+  }
+ ],
+ "domains": [
+  "shop.example.com",
+  "mail.example.net",
+  "portal.example.org"
+ ],
+ "domains_count": 47137,
+ "geo": {
+  "continent": "North America",
+  "country": "US",
+  "registered_country": "US"
+ },
+ "privacy": {
+  "is_vpn": false,
+  "is_proxy": false,
+  "is_tor": false
+ },
+ "source": [
+  {
+   "id": 1038,
+   "availability": "public",
+   "type": "domains",
+   "scan_label": "2026-10-01",
+   "scan_started_at": "2026-10-01T00:00:00Z",
+   "scan_ended_at": "2026-10-21T18:43:44.575000Z",
+   "is_default": true,
+   "speed": "fast",
+   "state": "full",
+   "count": 3026952876
+  }
+ ]
+}

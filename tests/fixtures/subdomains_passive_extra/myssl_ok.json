@@ -1,0 +1,55 @@
+{
+ "code": 0,
+ "data": [
+  {
+   "domain": "pentest-sslpod-sharecert-20261022.example.com",
+   "ip": "198.51.100.10",
+   "port": "443",
+   "level_str": "T",
+   "title": "",
+   "server": "Burp Collaborator https://burpcollaborator.net/",
+   "is_sslvpn": false,
+   "evaluate_date": "2026-10-21T19:37:01Z"
+  },
+  {
+   "domain": "a.example.com",
+   "ip": "198.51.100.11",
+   "port": "443",
+   "level_str": "T",
+   "title": "redirect to https://baidu.com",
+   "server": "",
+   "is_sslvpn": false,
+   "evaluate_date": "2026-07-24T18:49:54Z"
+  },
+  {
+   "domain": "a.example.com",
+   "ip": "198.51.100.12",
+   "port": "443",
+   "level_str": "T",
+   "title": "redirect to https://baidu.com",
+   "server": "",
+   "is_sslvpn": false,
+   "evaluate_date": "2026-07-23T18:11:53Z"
+  },
+  {
+   "domain": "www.example.com",
+   "ip": "198.51.100.13",
+   "port": "443",
+   "level_str": "A",
+   "title": "Example Domain",
+   "server": "",
+   "is_sslvpn": false,
+   "evaluate_date": "2025-09-12T07:20:55Z"
+  },
+  {
+   "domain": "www.example.com",
+   "ip": "198.51.100.14",
+   "port": "443",
+   "level_str": "A",
+   "title": "Example Domain",
+   "server": "",
+   "is_sslvpn": false,
+   "evaluate_date": "2025-09-23T13:09:28Z"
+  }
+ ]
+}

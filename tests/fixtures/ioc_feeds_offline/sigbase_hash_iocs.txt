@@ -1,0 +1,25 @@
+#
+# LOKI CUSTOM EVIL HASHES
+# This file contains MD5, SHA1 and SHA256 hashes and a short info like file name
+# or hash origin
+#
+# FORMAT -----------------------------------------------------------------------
+#
+# MD5;COMMENT
+# SHA1;COMMENT
+# SHA256;COMMENT
+#
+# EXAMPLES ---------------------------------------------------------------------
+#
+# 0c2674c3a97c53082187d930efb645c2;DEEP PANDA Sakula Malware - http://goo.gl/R3e6eG
+# 000c907d39924de62b5891f8d0e03116;The Darkhotel APT http://goo.gl/DuS7WS
+# c03318cb12b827c03d556c8747b1e323225df97bdc4258c2756b0d6a4fd52b47;Operation SMN Hashes http://goo.gl/bfmF8B - Zxshell
+
+# 563d1512178cec1f6a73c98d565c98fa;Cygwin nc.exe example
+
+042cc382acb5b2b70c78baa77bb7c5f9;SlingShot APT https://securelist.com/apt-slingshot/84312/
+11ccc2c5811c80f2a796817d9ccbe34b;SlingShot APT https://securelist.com/apt-slingshot/84312/
+01edb82de7b9666eaa5d2791a14092f2e73d2795;APT10 IOCs - Source: AlienVault OTX
+154669ce22c0b29af28e0677bc65c43fc35cdd6a;APT10 IOCs - Source: AlienVault OTX
+ce583821191345274cd954b2db7da9742c239fe413fc17dcb97ffdd7b51cb072;Dark Caracal - MS Windows HtmlHelp Data
+ba4e063472a2559b4baa82d5272304a1cdae6968145c5ef221295c90e88458e2;Dark Caracal - PE32 executable (DLL) (GUI) Intel 80386

@@ -1,0 +1,13 @@
+{
+ "request": "GET https://dns.google/resolve?name=example.com&type=TXT&edns_client_subnet=0.0.0.0/0",
+ "response": {
+  "status": 200,
+  "headers": {
+   "content-type": "text/html; charset=utf-8"
+  },
+  "body": "<!DOCTYPE html><html><head><title>Network access</title></head><body><h1>Access to this site is restricted</h1></body></html>"
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "HTML page in a 200 (captive portal / filtering proxy): not a DoH answer, could not verify"
+}

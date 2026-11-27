@@ -1,0 +1,16 @@
+{
+ "_fixture": "DOC-SHAPED: GitHub REST v2022-11-28 field layout with documentation values. api.github.com was refused by the research egress proxy on 2026-11-26 (P115 FC7: recapture from the team network).",
+ "full_name": "example-dev/tooling",
+ "fork": false,
+ "owner": {
+  "login": "example-dev",
+  "id": 12345678,
+  "type": "User",
+  "html_url": "https://github.com/example-dev"
+ },
+ "size": 120,
+ "archived": false,
+ "disabled": false,
+ "default_branch": "main",
+ "pushed_at": "2026-11-20T13:10:00Z"
+}

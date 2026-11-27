@@ -1,0 +1,314 @@
+[
+ {
+  "Id": "00561455-9da1-4f0c-8564-e4c99b716a74",
+  "Verified": "TRUE",
+  "Created": "2024-09-10",
+  "MitreID": "T1068",
+  "Category": "malicious",
+  "Tags": [
+   "driver_090d409f.sys"
+  ],
+  "Commands": {
+   "Usecase": "Elevate privileges",
+   "Privileges": "kernel",
+   "OperatingSystem": "Windows 10"
+  },
+  "KnownVulnerableSamples": [
+   {
+    "MD5": "41046ce853788277da0d7e8c4e0a3123",
+    "SHA1": "e9bca8f4b8c60688eacc7d18c6ba7777c181bb84",
+    "SHA256": "090d409f86430e078694e621ad0bd5e458d32aa727f0eb99bda3961577df8d49",
+    "Authentihash": {
+     "MD5": "7ca020674114f5f8aad94c9cc61dccb4",
+     "SHA1": "f27d87a335c87654ebbbde16d41645be85f0424a",
+     "SHA256": "77cb09dc2fc3c56f3b12ad03a85cedbe3a8e0bb876dadfd76a1fb6c57602817b"
+    },
+    "ResearchEvidence": {
+     "Filename": "",
+     "OriginalFilename": "RWTKrl.sys",
+     "LoadsDespiteHVCI": "TRUE"
+    }
+   }
+  ]
+ },
+ {
+  "Id": "1d2cdef1-de44-4849-80e5-e2fa288df681",
+  "Verified": "TRUE",
+  "Created": "2023-01-09",
+  "MitreID": "T1068",
+  "Category": "vulnerable driver",
+  "Tags": [
+   "iqvw64e.sys"
+  ],
+  "CVE": [
+   "CVE-2015-2291"
+  ],
+  "Commands": {
+   "Usecase": "Elevate privileges",
+   "Privileges": "kernel",
+   "OperatingSystem": "Windows 10"
+  },
+  "KnownVulnerableSamples": [
+   {
+    "MD5": "1898ceda3247213c084f43637ef163b3",
+    "SHA1": "d04e5db5b6c848a29732bfd52029001f23c3da75",
+    "SHA256": "4429f32db1cc70567919d7d47b844a91cf1329a6cd116f582305f3b7b60cd60b",
+    "Authentihash": {
+     "MD5": "1789a16d20ca2b55f491ad71848166a2",
+     "SHA1": "2cbfe4ad0e1231ff3e19c19ca9311d952ce170b7",
+     "SHA256": "785e87bc23a1353fe0726554fd009aca69c320a98445a604a64e23ab45108087"
+    },
+    "ResearchEvidence": {
+     "Filename": "iqvw64e.sys",
+     "OriginalFilename": "iQVW64.SYS",
+     "LoadsDespiteHVCI": "FALSE"
+    }
+   }
+  ]
+ },
+ {
+  "Id": "257d425f-f660-466c-8bee-c24cccf06daa",
+  "Verified": "TRUE",
+  "Created": "2023-10-12",
+  "MitreID": "T1542, T1068",
+  "Category": "vulnerable driver",
+  "Tags": [
+   "asmio64.sys"
+  ],
+  "Commands": {
+   "Usecase": "Elevate privileges, firmware erasing/modification",
+   "Privileges": "kernel",
+   "OperatingSystem": "Windows 11"
+  },
+  "KnownVulnerableSamples": [
+   {
+    "MD5": "8f73c1c48ffddfca7d1a98faf83d18ff",
+    "SHA1": "8b53284fb23d34ca144544b19f8fba63700830d8",
+    "SHA256": "e4658d93544f69f5cb9aa6d9fec420fecc8750cb57e1e9798da38c139d44f2eb",
+    "Authentihash": {
+     "MD5": "99f5e3f2ce4c4d50dfcf6ca02ca73ae9",
+     "SHA1": "4a127ea0beb39a525db4c95a4a690222945f5f22",
+     "SHA256": "1ca20c63d8f56c09c48d0faa1894f2e3fccd4b029fd711d9864355e5f29c19f8"
+    },
+    "ResearchEvidence": {
+     "Filename": "",
+     "OriginalFilename": "AsmIo.sys",
+     "LoadsDespiteHVCI": "TRUE"
+    }
+   }
+  ]
+ },
+ {
+  "Id": "2bea1bca-753c-4f09-bc9f-566ab0193f4a",
+  "Verified": "TRUE",
+  "Created": "2023-01-09",
+  "MitreID": "T1068",
+  "Category": "vulnerable driver",
+  "Tags": [
+   "gdrv.sys"
+  ],
+  "CVEs": [
+   "CVE-2018-19320",
+   "CVE-2018-19322",
+   "CVE-2018-19323",
+   "CVE-2018-19321"
+  ],
+  "Commands": {
+   "Usecase": "Elevate privileges, tamper with PPL or system processes",
+   "Privileges": "kernel",
+   "OperatingSystem": "Windows 10"
+  },
+  "KnownVulnerableSamples": [
+   {
+    "MD5": "9ab9f3b75a2eb87fafb1b7361be9dfb3",
+    "SHA1": "fe10018af723986db50701c8532df5ed98b17c39",
+    "SHA256": "31f4cfb4c71da44120752721103a16512444c13c2ac2d857a7e6f13cb679b427",
+    "Authentihash": {
+     "MD5": "b18b1bff521337695d2d6a0768340252",
+     "SHA1": "0f5034fcf5b34be22a72d2ecc29e348e93b6f00f",
+     "SHA256": "9c0e80958b907c8df345ec2f8d711acefb4951ee3e6e84892ecd429f5e1f3acb"
+    },
+    "ResearchEvidence": {
+     "Filename": "gdrv.sys",
+     "OriginalFilename": "gdrv.sys",
+     "LoadsDespiteHVCI": "FALSE"
+    }
+   },
+   {
+    "MD5": "1cff7b947f8c3dea1d34dc791fc78cdc",
+    "SHA1": "8d59fd14a445c8f3f0f7991fa6cd717d466b3754",
+    "SHA256": "ff6729518a380bf57f1bc6f1ec0aa7f3012e1618b8d9b0f31a61d299ee2b4339",
+    "Authentihash": {
+     "MD5": "bf45a5d10968424666abede02113a509",
+     "SHA1": "5c26f130f6a5ad8bdd2eed29140542dae0885b17",
+     "SHA256": "34da66774ba09c4a8fc59349401ca1fefaaf4e66a9c620c7782c072a16089ba3"
+    },
+    "ResearchEvidence": {
+     "Filename": "gdrv.sys",
+     "OriginalFilename": "gdrv.sys",
+     "LoadsDespiteHVCI": "FALSE"
+    }
+   }
+  ]
+ },
+ {
+  "Id": "de365e80-45cb-48fb-af6e-0a96a5ad7777",
+  "Verified": "True",
+  "Created": "2023-05-22",
+  "MitreID": "T1068",
+  "Category": "vulnerable driver",
+  "Tags": [
+   "ctiio64.sys"
+  ],
+  "Commands": {
+   "Usecase": "Elevate privileges",
+   "Privileges": "kernel",
+   "OperatingSystem": "Windows 10"
+  },
+  "KnownVulnerableSamples": [
+   {
+    "MD5": "3f8cdaf7413000d34d6a1a1d5341a11b",
+    "SHA1": "c1c869deee6293eee3d0d84b6706d90fab8f8558",
+    "SHA256": "2121a2bb8ebbf2e6e82c782b6f3c6b7904f686aa495def25cf1cf52a42e16109",
+    "Authentihash": {
+     "MD5": "6bbd44ee42e3bbc6b4acc12fe11d765a",
+     "SHA1": "a19ec41abb65a26116bce1413470271d89d18995",
+     "SHA256": "2b4af74d74a4380130a1c46d2f1ffe112d87d9d7646540bbbd201c5bd176082b"
+    },
+    "ResearchEvidence": {
+     "Filename": "",
+     "OriginalFilename": "CtiIo64.sys",
+     "LoadsDespiteHVCI": "FALSE"
+    }
+   }
+  ]
+ },
+ {
+  "Id": "058fb356-e0ff-4f5e-8293-319feb005db2",
+  "Verified": "FALSE",
+  "Created": "2023-01-09",
+  "MitreID": "T1068",
+  "Category": "vulnerable driver",
+  "Tags": [
+   "bandai.sys"
+  ],
+  "Commands": {
+   "Usecase": "Elevate privileges",
+   "Privileges": "kernel",
+   "OperatingSystem": "Windows 10"
+  },
+  "KnownVulnerableSamples": [
+   {
+    "Authentihash": {
+     "SHA1": "0f780b7ada5dd8464d9f2cc537d973f5ac804e9c",
+     "SHA256": "7fd788358585e0b863328475898bb4400ed8d478466d1b7f5cc0252671456cc8"
+    },
+    "ResearchEvidence": {
+     "Filename": "bandai.sys",
+     "OriginalFilename": "",
+     "LoadsDespiteHVCI": "FALSE"
+    }
+   },
+   {
+    "Authentihash": {
+     "SHA1": "0f780b7ada5dd8464d9f2cc537d973f5ac804e9c",
+     "SHA256": "7fd788358585e0b863328475898bb4400ed8d478466d1b7f5cc0252671456cc8"
+    },
+    "ResearchEvidence": {
+     "Filename": "bandai.sys",
+     "OriginalFilename": "",
+     "LoadsDespiteHVCI": "FALSE"
+    }
+   }
+  ]
+ },
+ {
+  "Id": "3ea63674-2599-43b5-9390-4a929ec99f48",
+  "Verified": "FALSE",
+  "Created": "2023-06-05",
+  "MitreID": "T1068",
+  "Category": "malicious",
+  "Tags": [
+   "ktgn.sys"
+  ],
+  "Commands": {
+   "Usecase": "Elevate privileges",
+   "Privileges": "kernel",
+   "OperatingSystem": "Windows 10"
+  },
+  "KnownVulnerableSamples": [
+   {
+    "SHA1": "994e3f5dd082f5d82f9cc84108a60d359910ba79",
+    "ResearchEvidence": {
+     "Filename": "ktgn.sys",
+     "OriginalFilename": "",
+     "LoadsDespiteHVCI": "TRUE"
+    }
+   }
+  ]
+ },
+ {
+  "Id": "2d301a46-ceb6-477c-8a51-463a6ded3524",
+  "Verified": "TRUE",
+  "Created": "2026-04-17",
+  "MitreID": "T1068",
+  "Category": "vulnerable driver",
+  "Tags": [
+   "biostoolcommondriver.sys"
+  ],
+  "Commands": {
+   "Usecase": "Elevate privileges",
+   "Privileges": "kernel",
+   "OperatingSystem": "Windows 10"
+  },
+  "KnownVulnerableSamples": [
+   {
+    "MD5": "622cca8e67e9056955e0aeb55716a68f",
+    "SHA1": "d4c584732fa9abd7d7eb83e169686764c500f2e0",
+    "SHA256": "177227f68cc28ee7726381b95f7d2215da35be3750157ebcb7e113201059026c",
+    "Authentihash": {
+     "MD5": "be3cf8458143f2e2f47481043a18e6f5",
+     "SHA1": "129f2f059513ae62d0f63e3644cbfa7b671b938b",
+     "SHA256": "14deaf22605904971fe757778cec9e46a0fd59a1895491760740404843929481"
+    },
+    "ResearchEvidence": {
+     "Filename": "BiosToolCommonDriver.sys",
+     "OriginalFilename": "",
+     "LoadsDespiteHVCI": "FALSE"
+    }
+   }
+  ]
+ },
+ {
+  "Id": "f650dfc3-d3a1-4a9a-8b71-c599d1f9579c",
+  "Verified": "TRUE",
+  "Created": "2026-04-17",
+  "MitreID": "T1068",
+  "Category": "vulnerable driver",
+  "Tags": [
+   "fdmcjhjyxziti.sys"
+  ],
+  "Commands": {
+   "Usecase": "Elevate privileges",
+   "Privileges": "kernel",
+   "OperatingSystem": "Windows 10"
+  },
+  "KnownVulnerableSamples": [
+   {
+    "MD5": "622cca8e67e9056955e0aeb55716a68f",
+    "SHA1": "d4c584732fa9abd7d7eb83e169686764c500f2e0",
+    "SHA256": "177227f68cc28ee7726381b95f7d2215da35be3750157ebcb7e113201059026c",
+    "Authentihash": {
+     "MD5": "be3cf8458143f2e2f47481043a18e6f5",
+     "SHA1": "129f2f059513ae62d0f63e3644cbfa7b671b938b",
+     "SHA256": "14deaf22605904971fe757778cec9e46a0fd59a1895491760740404843929481"
+    },
+    "ResearchEvidence": {
+     "Filename": "FDMCJHJYXZITI.sys",
+     "OriginalFilename": "",
+     "LoadsDespiteHVCI": "FALSE"
+    }
+   }
+  ]
+ }
+]

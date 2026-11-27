@@ -1,0 +1,24 @@
+{
+  "schema": "v3lum.pivot_pack/1",
+  "pack": "url_unwrap",
+  "title": "URL structure decoding (manual)",
+  "notes": "Owned by batch p1-G03-1 (P064 url_unwrap cond 2: no automated call to dfir.blog or any Unfurl service, manual link only). dfir.blog/unfurl/ now redirects (301) to hindsig.ht/unfurl/, whose page reads ?url= and sends it to the author's cloud function: opening the link discloses the URL (non-clickable at TLP:AMBER and above).",
+  "links": [
+    {
+      "id": "unfurl",
+      "label": "Unfurl (URL structure decoder)",
+      "template": "https://hindsig.ht/unfurl/?url={q}",
+      "entity_types": ["url"],
+      "category": "other",
+      "host": "hindsig.ht",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Public web UI of the open-source Unfurl project (Apache-2.0); reads ?url= from the address bar. Opening it sends the URL to the Unfurl service: never auto-opened, and URLs carrying recipient tokens should be unwrapped/redacted with url_unwrap first."
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "$comment": "Exactly 10 lookups: LOW (one more include breaks SPF)",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "nodes": [
+    {
+      "key": "domain:at-limit.example",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "spf_status": [
+          {
+            "value": "ok",
+            "source": "email_security_posture"
+          }
+        ],
+        "spf": [
+          {
+            "value": "v=spf1 include:x.example -all",
+            "source": "email_security_posture"
+          }
+        ],
+        "spf_lookups": [
+          {
+            "value": 10,
+            "source": "email_security_posture"
+          }
+        ],
+        "spf_void_lookups": [
+          {
+            "value": 0,
+            "source": "email_security_posture"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [],
+  "expect": {
+    "spf_lookup_limit": {
+      "min": 1,
+      "max": 1,
+      "severity": "low"
+    }
+  }
+}

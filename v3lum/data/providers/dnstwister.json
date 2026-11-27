@@ -1,0 +1,57 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "dnstwister",
+  "name": "dnstwister.report domain-fuzzing API",
+  "operator": "dnstwister project (open-source code at github.com/thisismyrobot/dnstwister); since 2026-11 its homepage redirects to the commercial dnstwister.com",
+  "hosts": [
+    "dnstwister.report"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "P012 cond 11 sets the opt-in dnstwister adapter to community tier: an identifiable open-source project with public API documentation and a public track record since 2015 (A8 community). The brand sent to it is disclosed to a third party, so the adapter is opt-in and excluded at TLP:AMBER and above.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Deterministic dnstwist-style permutations only; registration and activity facts are checked by V3LUM itself through the core DoH resolver, never taken from dnstwister."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 20,
+    "retries": 1,
+    "ttl": 604800,
+    "min_interval": 2.0,
+    "concurrency": 1,
+    "max_bytes": 4194304
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "fuzz": {
+      "title": "dnstwister.report /api/fuzz/{domain_hex} (permutation list of one domain)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://dnstwister.report/api/",
+        "quote": "",
+        "checked_at": "2026-11-26",
+        "reviewer": "batch p1-G01-2",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "dnstwister",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0028 recorded the terms as 'Free public service (open-source project)' on 2026-11-25; on 2026-11-26 https://dnstwister.report/ answered 301 to https://dnstwister.com/, a commercial monitoring product with a pricing page and no published terms for the free API (the API itself still answers). Terms stay 'unknown' (disabled in every licence profile, A1) until legal records them (doctor --licences). Only /api/fuzz/{hex} is called, once per brand: never /api/parked/ (dnstwister would fetch the lookalike), /api/whois/, /api/ip/ or /api/mx/ (P012 cond 11)."
+    }
+  },
+  "notes": "Owned by batch p1-G01-2 (P012 cond 11, module typosquat_dnstwister). One fuzz call per brand: 7-day cache (deterministic output), 2 s between requests; the ~125 KB answer for example.com needs a generous max_bytes."
+}

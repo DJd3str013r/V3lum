@@ -1,0 +1,74 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "blockcypher",
+  "name": "BlockCypher API (BTC, LTC, DOGE, DASH)",
+  "operator": "BlockCypher, Inc.",
+  "hosts": [
+    "api.blockcypher.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "BlockCypher Inc., an established company with published documentation, terms and paid plans (A8 trusted). Registry tiers: Blockstream, Blockchain.com, BlockCypher and Blockchair trusted; mempool.space and litecoinspace community.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Explorer API with one schema for four UTXO chains: balances and transactions are chain facts."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 5.0,
+    "ttl": 3600,
+    "min_interval": 0.4,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "hour": 100,
+    "rate_per_second": 3,
+    "burst": 1,
+    "published": true,
+    "evidence_url": "https://www.blockcypher.com/dev/bitcoin/#rate-limits-and-tokens",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {
+    "blockcypher": {
+      "description": "BlockCypher API token (optional: raises the keyless 3 req/s, 100 req/h per IP limit)",
+      "signup_url": "https://accounts.blockcypher.com/",
+      "env": [
+        "V3LUM_BLOCKCYPHER_TOKEN"
+      ],
+      "multi_key": false,
+      "plan_hint": "business = a BlockCypher plan whose terms allow company use, recorded with `v3lum keys set blockcypher --plan business`; keyless use runs under corporate only once legal records free_plan_business_use"
+    }
+  },
+  "sources": {
+    "api": {
+      "title": "BlockCypher address endpoints /v1/{ltc,doge,dash,btc}/main/addrs/{a}[/full] and chain tips /v1/{coin}/main",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://www.blockcypher.com/dev/bitcoin/",
+        "quote": "Per-adapter terms recorded: Esplora, mempool, litecoinspace and Blockchain.com 'open'; BlockCypher and Blockchair 'key-terms'.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "blockcypher",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P211 cond 2 and 6: 'BlockCypher (LTC/DOGE/DASH; optional token 'blockcypher', sent only after AR01 redaction)'). Research C0483 (verified_live 200): keyless 3 req/s and 100 req/h per IP (documented), token raises limits; invalid address -> 400 {'error': '... non-matching checksum.'}; /full paginates with before=<height> while hasMore. free_plan_business_use null: legal has not recorded whether keyless/free use allows company use, so under the corporate profile this source runs only with key_plans.blockcypher='business'. The token travels as ?token= (a key-like query parameter, redacted by AR01). Used by btc_explorers.",
+      "licensed_alternative": "A BlockCypher plan recorded as key_plans.blockcypher='business'; litecoinspace.org (open) keeps LTC coverage, DOGE/DASH then need Blockchair with its commercial key."
+    }
+  },
+  "notes": "Owned by batch p2-G09-2 (P211). Quota block from the documented keyless limits (3 req/s, 100 req/h per egress IP; 80 % safety margin). The header x-ratelimit-remaining is not a usable countdown (always 1 in the prep live check)."
+}

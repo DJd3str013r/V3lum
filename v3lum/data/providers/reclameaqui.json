@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "reclameaqui",
+  "name": "Reclame Aqui (company complaint pages)",
+  "operator": "Reclame Aqui (Obvio Brasil Software e Servicos S.A.)",
+  "hosts": [
+    "www.reclameaqui.com.br"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established Brazilian company with published terms and a privacy policy (A8 trusted); P250 cond 5: 'trusted - Portal da Transparencia (CGU), Receita Federal, Sintegra/CCC, consumidor.gov.br, REDESIM/juntas comerciais, Jusbrasil, Reclame Aqui; community - Escavador, Casa dos Dados'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Consumer complaints: context, not proof (P250 cond 12)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "search_pages": {
+      "title": "Reclame Aqui company search /busca/?q= (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.reclameaqui.com.br/termos-de-uso/",
+        "quote": "The pack is offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "reclameaqui",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P250 cond 1). Company names only (rule 4). Cloudflare managed challenge for curl on 2026-11-26: unverified, antibot (P250 cond 10, cond 11). Labelled 'consumer complaints: context, not proof' (P250 cond 12). Used by pivots_brazil (pack brazil.json)."
+    }
+  },
+  "notes": "Manual pivot links only (batch p2-G14-2): V3LUM never fetches them (P311)."
+}

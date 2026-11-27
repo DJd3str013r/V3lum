@@ -1,0 +1,25 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "cloudflare",
+  "hosts": [
+    "radar.cloudflare.com"
+  ],
+  "sources": {
+    "pivots_unverified_radar_pages": {
+      "title": "Cloudflare Radar domains/domain/{domain} and as{asn} pages (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://radar.cloudflare.com/",
+        "quote": "Free web UI; provider ToS apply (manual analyst use)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "cloudflare-radar",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0064 (Cloudflare challenge for scripts; the Radar API needs a free token and is not used). Manual links only, never fetched (P304 cond 1). Batch p2-G14-3."
+    }
+  },
+  "error_markers": []
+}

@@ -1,0 +1,23 @@
+{
+ "_benchmark": 0.03,
+ "_meta": {
+  "timestamp": "2026-11-26T00:00:00.000000000Z",
+  "index": "vulncheck-kev",
+  "limit": 100,
+  "total_documents": 0,
+  "sort": "date_added",
+  "order": "desc",
+  "page": 1,
+  "total_pages": 0,
+  "max_pages": 6,
+  "first_item": 0,
+  "last_item": 0,
+  "parameters": [
+   {
+    "name": "cve",
+    "format": "CVE-YYYY-N{4-7}"
+   }
+  ]
+ },
+ "data": []
+}

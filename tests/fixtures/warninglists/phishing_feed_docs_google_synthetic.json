@@ -1,0 +1,8 @@
+{
+ "_synthetic": "phishing-feed record shape (FC10 regression); documentation values only",
+ "url": "https://docs.google.com/forms/d/e/1FAIpQLSf-EXAMPLE-0000000000000000/viewform",
+ "threat": "phishing",
+ "verdict": "malicious",
+ "source": "example-phishing-feed",
+ "first_seen": "2026-11-25T12:00:00Z"
+}

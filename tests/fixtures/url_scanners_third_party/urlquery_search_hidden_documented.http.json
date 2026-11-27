@@ -1,0 +1,29 @@
+{
+ "_meta": {
+  "provenance": "documented",
+  "source": "docs.urlquery.net/docs/api/reports (search example: items [] with total_hits 42)",
+  "request": {
+   "method": "GET",
+   "url": "https://api.urlquery.net/public/v2/reports/search",
+   "params": {
+    "query": "url.domain:example.com AND date:[2026-10-27 TO 2026-11-26]",
+    "limit": 25
+   }
+  },
+  "note": "Matches exist but none is visible to the key: not the same as 'not found'."
+ },
+ "status": 200,
+ "headers": {},
+ "body": {
+  "success": true,
+  "data": {
+   "query": "tags:phishing AND date:[2026-05-01 TO 2026-05-09]",
+   "items": [],
+   "page": {
+    "limit": 25,
+    "offset": 0,
+    "total_hits": 42
+   }
+  }
+ }
+}

@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "ssllabs",
+  "name": "Qualys SSL Labs (SSL Server Test pages)",
+  "operator": "Qualys, Inc.",
+  "hosts": [
+    "www.ssllabs.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established security company with published terms, a privacy policy and a business offering (A8 trusted); P290 cond 5: 'trusted - SSL Labs (Qualys)'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": true,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "TLS configuration assessment run by SSL Labs against the target."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "report_pages": {
+      "title": "SSL Server Test report analyze.html?d={domain}&hideResults=on&latest (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.ssllabs.com/about/terms.html",
+        "quote": "The pack is offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "ssllabs",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P290 cond 1). Research C0652 terms 'Qualys terms'. The template always carries hideResults=on&latest (results kept off the public 'recently seen' board, so publishes=false; P290 cond 9). On a cache miss opening it starts a new third-party TLS assessment of the target: touches_target=true, flag fetches_target. Used by pivots_pentest (pack pentest.json). The SSL Labs API (api.ssllabs.com) is not used here: a package that adds it extends this provider."
+    }
+  },
+  "notes": "Manual pivot links only (batch p2-G14-2): V3LUM never fetches them (P311). fetches_target: opening the report may make SSL Labs assess the target live."
+}

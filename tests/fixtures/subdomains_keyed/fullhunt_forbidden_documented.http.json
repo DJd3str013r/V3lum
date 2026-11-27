@@ -1,0 +1,16 @@
+{
+ "request": "GET https://fullhunt.io/api/v1/domain/example.com/subdomains",
+ "response": {
+  "status": 403,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": {
+   "status": 403,
+   "message": "Forbidden"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "documented: 403 = valid key but the plan lacks the capability -> NEEDS_KEY per FC6"
+}

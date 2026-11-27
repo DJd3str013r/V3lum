@@ -1,0 +1,30 @@
+{
+ "ip": "2606:4700:4700:0000:0000:0000:0000:1111",
+ "country_code": "US",
+ "is_anycast": true,
+ "asn": {
+  "asn": "AS13335",
+  "route": "2606:4700:4700::/48",
+  "name": "Cloudflare, Inc.",
+  "domain": "cloudflare.com",
+  "type": "hosting"
+ },
+ "privacy": {
+  "is_abuser": false,
+  "is_anonymous": false,
+  "is_bogon": false,
+  "is_hosting": true,
+  "is_icloud_relay": false,
+  "is_proxy": false,
+  "is_tor": false,
+  "is_vpn": false
+ },
+ "company": {
+  "name": "Cloudflare, Inc.",
+  "domain": "cloudflare.com",
+  "type": "hosting"
+ },
+ "abuse": {
+  "email": "abuse@cloudflare.com"
+ }
+}

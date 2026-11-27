@@ -1,0 +1,24 @@
+{
+ "hops": [
+  {
+   "url": "https://tinyurl.com/example1",
+   "status": 302,
+   "location": "http://127.0.0.1:8080/admin"
+  },
+  {
+   "url": "https://cutt.ly/example2",
+   "status": 301,
+   "location": "http://10.0.0.5/"
+  },
+  {
+   "url": "https://is.gd/example3",
+   "status": 302,
+   "location": "http://169.254.169.254/latest/meta-data/"
+  },
+  {
+   "url": "https://rb.gy/example4",
+   "status": 302,
+   "location": "http://router.local/"
+  }
+ ]
+}

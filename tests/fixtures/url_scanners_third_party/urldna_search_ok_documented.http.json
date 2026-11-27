@@ -1,0 +1,51 @@
+{
+ "_meta": {
+  "provenance": "documented",
+  "source": "api.urldna.io/openapi.json (POST /v1/search -> array of Scan)",
+  "request": {
+   "method": "POST",
+   "url": "https://api.urldna.io/v1/search",
+   "json": {
+    "query": "domain = example.com",
+    "max_results": 32
+   }
+  },
+  "note": "Shape from the OpenAPI schema; values are documentation values, not a real response."
+ },
+ "status": 200,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": [
+  {
+   "id": "6745aa00c0ffee0000000001",
+   "submitted_url": "https://login.example.com/secure/",
+   "domain": "login.example.com",
+   "target_url": "https://login.example.com/secure/index.php",
+   "protocol": "HTTPS",
+   "device": "DESKTOP",
+   "origin": "API",
+   "private_scan": false,
+   "status": "DONE",
+   "submitted_date": "2026-11-20T10:15:00Z",
+   "submitter_tags": [
+    "phishing"
+   ],
+   "error_code": null
+  },
+  {
+   "id": "6745aa00c0ffee0000000002",
+   "submitted_url": "http://example.com/",
+   "domain": "example.com",
+   "target_url": null,
+   "protocol": "HTTP",
+   "device": "MOBILE",
+   "origin": "USER",
+   "private_scan": false,
+   "status": "ERROR",
+   "submitted_date": "2026-09-01T08:00:00Z",
+   "submitter_tags": null,
+   "error_code": "CONNECTION_ERROR"
+  }
+ ]
+}

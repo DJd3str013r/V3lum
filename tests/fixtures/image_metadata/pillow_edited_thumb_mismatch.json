@@ -1,0 +1,45 @@
+{
+ "source": "pillow",
+ "errors": [],
+ "format": "JPEG",
+ "width": 64,
+ "height": 48,
+ "mode": "RGB",
+ "exif": {
+  "ifd0": {
+   "271": "V3LUMCam",
+   "272": "Model-X",
+   "305": "Adobe Photoshop 25.0 (Windows)",
+   "274": 1,
+   "306": "2026:03:02 09:10:00"
+  },
+  "exif": {
+   "40963": 48,
+   "36881": "-03:00",
+   "40962": 64,
+   "36867": "2026:03:01 14:22:00"
+  },
+  "gps": {},
+  "ifd1": {
+   "513": 280,
+   "514": 662,
+   "259": 6
+  }
+ },
+ "xmp": "<?xpacket begin=\"﻿\" id=\"W5M0MpCehiHzreSzNTczkc9d\"?>\n<x:xmpmeta xmlns:x=\"adobe:ns:meta/\">\n <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n  <rdf:Description rdf:about=\"\"\n    xmlns:xmp=\"http://ns.adobe.com/xap/1.0/\"\n    xmlns:xmpMM=\"http://ns.adobe.com/xap/1.0/mm/\"\n    xmlns:stEvt=\"http://ns.adobe.com/xap/1.0/sType/ResourceEvent#\"\n    xmlns:photoshop=\"http://ns.adobe.com/photoshop/1.0/\"\n    xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n    xmlns:exif=\"http://ns.adobe.com/exif/1.0/\"\n    xmlns:exifEX=\"http://cipa.jp/exif/1.0/\"\n    xmlns:tiff=\"http://ns.adobe.com/tiff/1.0/\"\n    xmlns:aux=\"http://ns.adobe.com/exif/1.0/aux/\"\n    xmp:CreatorTool=\"Adobe Photoshop 25.0 (Windows)\"\n    xmp:CreateDate=\"2026-03-01T14:22:00-03:00\"\n    xmp:ModifyDate=\"2026-03-02T09:10:00-03:00\"\n    xmp:MetadataDate=\"2026-03-02T09:10:00-03:00\"\n    photoshop:DateCreated=\"2026-03-01T14:22:00-03:00\"\n    exif:DateTimeOriginal=\"2026-03-01T14:22:00-03:00\"\n    exif:GPSLatitude=\"23,33.0167S\"\n    exif:GPSLongitude=\"46,38.0333W\"\n    tiff:Make=\"V3LUMCam\"\n    tiff:Model=\"Model-X\"\n    aux:SerialNumber=\"SN-0000-EXAMPLE\"\n    exifEX:LensModel=\"V3LUM 18-55mm\"\n    xmpMM:DocumentID=\"xmp.did:00000000-0000-4000-8000-000000000001\"\n    xmpMM:OriginalDocumentID=\"xmp.did:00000000-0000-4000-8000-000000000000\">\n   <dc:creator><rdf:Seq><rdf:li>Fulano de Tal</rdf:li></rdf:Seq></dc:creator>\n   <dc:rights><rdf:Alt><rdf:li xml:lang=\"x-default\">Example Org Ltda</rdf:li></rdf:Alt></dc:rights>\n   <xmpMM:History>\n    <rdf:Seq>\n     <rdf:li stEvt:action=\"created\" stEvt:softwareAgent=\"V3LUMCam firmware 1.0\" stEvt:when=\"2026-03-01T14:22:00-03:00\"/>\n     <rdf:li stEvt:action=\"saved\" stEvt:softwareAgent=\"Adobe Photoshop 25.0 (Windows)\" stEvt:when=\"2026-03-02T09:10:00-03:00\" stEvt:changed=\"/\"/>\n    </rdf:Seq>\n   </xmpMM:History>\n  </rdf:Description>\n </rdf:RDF>\n</x:xmpmeta>\n<?xpacket end=\"w\"?>",
+ "iptc": {},
+ "png_text": {},
+ "thumbnail": {
+  "width": 16,
+  "height": 16,
+  "bbox": [
+   0,
+   0,
+   16,
+   16
+  ],
+  "bytes": 662,
+  "readable": true
+ },
+ "warnings": []
+}

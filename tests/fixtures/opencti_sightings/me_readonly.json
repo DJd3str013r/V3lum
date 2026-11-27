@@ -1,0 +1,19 @@
+{
+ "data": {
+  "me": {
+   "id": "us-1",
+   "name": "v3lum-readonly",
+   "capabilities": [
+    {
+     "name": "KNOWLEDGE"
+    },
+    {
+     "name": "EXPLORE"
+    },
+    {
+     "name": "APIACCESS_USETOKEN"
+    }
+   ]
+  }
+ }
+}

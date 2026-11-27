@@ -1,0 +1,24 @@
+{
+ "id": "6422100",
+ "descricao": "BANCOS MÚLTIPLOS, COM CARTEIRA COMERCIAL",
+ "classe": {
+  "id": "64221",
+  "descricao": "BANCOS MÚLTIPLOS, COM CARTEIRA COMERCIAL",
+  "grupo": {
+   "id": "642",
+   "descricao": "INTERMEDIAÇÃO MONETÁRIA - DEPÓSITOS À VISTA",
+   "divisao": {
+    "id": "64",
+    "descricao": "ATIVIDADES DE SERVIÇOS FINANCEIROS",
+    "secao": {
+     "id": "K",
+     "descricao": "ATIVIDADES FINANCEIRAS, DE SEGUROS E SERVIÇOS RELACIONADOS"
+    }
+   }
+  }
+ },
+ "atividades": [
+  "BANCO MÚLTIPLO COM CARTEIRA COMERCIAL",
+  "BANCO MÚLTIPLO COM CARTEIRA COMERCIAL, NACIONAL COM CONTROLE ESTRANGEIRO"
+ ]
+}

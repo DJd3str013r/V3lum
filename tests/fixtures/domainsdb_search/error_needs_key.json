@@ -1,0 +1,1 @@
+{"error":"API key required","message":"Anonymous access is disabled. Please sign in to obtain an API key and include it via 'Authorization: Bearer <key>' or the 'api-key' header."}

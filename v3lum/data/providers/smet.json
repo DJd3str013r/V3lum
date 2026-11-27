@@ -1,0 +1,55 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "smet",
+  "name": "smet.cz newly registered domains lists",
+  "operator": "smet.cz (operator not identified in the research; no published terms or privacy policy found)",
+  "hosts": [
+    "smet.cz"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "No identifiable operator, terms or privacy policy were found during research (A8 unknown). The list is only downloaded as a dataset (no investigated value is ever sent), and P005 cond 2 keeps the source disabled in every profile until legal records its terms.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "D",
+    "justification": "Unreviewed aggregate NRD lists (today / 7 days / 30 days) of unknown method and coverage: a cross-check of WhoisDS only."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "timeout": 60,
+    "retries": 1,
+    "min_interval": 2.0,
+    "concurrency": 1,
+    "max_bytes": 52428800
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "nrd_today": {
+      "title": "smet.cz today.txt newly registered domains list (plain text, one name per line)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://smet.cz/nrd/data/today.txt",
+        "quote": "smet.cz today.txt has unclear licence terms (unknown): it ships as a separate dataset source nrd_smet, default_enabled=False and disabled in every profile until legal records its terms.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "smet",
+      "sanitizer": null,
+      "dataset": "smet_nrd_today",
+      "notes": "Quote: binding council text (P005 cond 2); research C0040 'Unclear license - check before redistribution'. Cloudflare-fronted static file (2.1 MB, about 140,000 names on 2026-11-26; Range ignored, If-None-Match answers 304). Module nrd_smet only; unknown terms never run in any licence profile (A1)."
+    }
+  },
+  "notes": "Owned by batch p2-G01-1 (P005 cond 2, module nrd_smet). Dataset-only provider: nothing is sent but the static list URL. Stays off until legal records the terms (doctor --licences review queue)."
+}

@@ -1,0 +1,83 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "github",
+  "hosts": ["release-assets.githubusercontent.com"],
+  "sources": {
+    "exploit_index_metasploit": {
+      "title": "Metasploit Framework module metadata db/modules_metadata_base.json on raw.githubusercontent.com (CVE -> Metasploit module references)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/rapid7/metasploit-framework/blob/master/LICENSE",
+        "quote": "Copyright: 2006-2026, Rapid7, Inc. License: BSD-3-clause",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "metasploit",
+      "sanitizer": null,
+      "dataset": "exploit_index.metasploit",
+      "notes": "P190 cond 1/6 (module exploit_index, disclosure none). Research C0436 (verified_live 200). 11.4 MB JSON keyed '<type>_<ref_name>', refreshed weekly out of band (conditional GET: weak ETag, 304 verified 2026-11-26); indexed by CVE at refresh time, authors and descriptions never kept. A Metasploit module marks exploit_maturity 'weaponised' (P190 cond 3); entries are references only, never run."
+    },
+    "exploit_index_nuclei": {
+      "title": "nuclei-templates cves.json (NDJSON: CVE -> detection template) on raw.githubusercontent.com",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/LICENSE.md",
+        "quote": "MIT License Copyright (c) 2025 ProjectDiscovery, Inc.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "nuclei-templates",
+      "sanitizer": null,
+      "dataset": "exploit_index.nuclei",
+      "notes": "P190 cond 1/3/5 (module exploit_index). Research C0443 (verified_live 200). 2.4 MB NDJSON, refreshed weekly out of band. A nuclei CVE template marks exploit_maturity 'detection template'; Info.Severity is kept only as template_severity and never becomes a finding severity; running templates stays the gated ACTIVE P369."
+    },
+    "poc_index_nomi": {
+      "title": "PoC-in-GitHub (nomi-sec) per-CVE JSON {year}/{CVE}.json on raw.githubusercontent.com (GitHub repositories claiming a PoC)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/nomi-sec/PoC-in-GitHub/blob/master/LICENSE",
+        "quote": "CC0 1.0 Universal",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "poc-in-github",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "P190 cond 2/3/5 (module poc_index, disclosure third_party: the CVE id leaves the machine; CVE fan-out rule P183). Research C0438 (verified_live 200; 404 'text/plain 404: Not Found' = no PoC tracked). Used as a link index only (top 5 links + count, never redistributed); the repository LICENSE file is CC0-1.0 (fetched 2026-11-26), the council class is 'open'. PoC repositories are untrusted references: defanged, labelled, expand=False; never cloned, downloaded or run."
+    },
+    "poc_index_trickest": {
+      "title": "trickest/cve per-CVE markdown {year}/{CVE}.md on raw.githubusercontent.com ('#### Reference' and '#### Github' PoC links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/trickest/cve/blob/main/LICENSE",
+        "quote": "MIT License Copyright (c) 2022 Trickest",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "trickest-cve",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "P190 cond 2/5 (module poc_index). Research C0444 (verified_live 200; 404 = no entry). Link index only: the Github section feeds the PoC claim count (union with PoC-in-GitHub), the Reference section is kept as untrusted reference links; never redistributed."
+    },
+    "cve_offline_mirror_cvelist": {
+      "title": "CVEProject cvelistV5 (CVE List JSON 5 records incl. CISA ADP Vulnrichment): cves/deltaLog.json, per-record raw files and the daily baseline release assets",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/CVEProject/cvelistV5/blob/main/README.md",
+        "quote": "You may search, download, and use the content hosted in this repository, per the CVE Program Terms of Use",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "mitre",
+      "sanitizer": null,
+      "dataset": "cve_offline_mirror.deltalog",
+      "notes": "P352 (module cve_offline_mirror, disclosure none at scan time). Research C0764 (verified_live 200). Explicit out-of-band sync only (never a git clone, never inside a scan): the daily baseline release asset '<date>_all_CVEs_at_midnight.zip[.zip]' (github.com release download, redirected to release-assets.githubusercontent.com / objects.githubusercontent.com: confirm from the team network), deltaLog.json (~29 MB, rolling 30 days) and the changed records under raw.githubusercontent.com/CVEProject/ only. CISA ADP content is public domain; CVE records per the CVE Program Terms of Use (attribution)."
+    }
+  },
+  "error_markers": []
+}

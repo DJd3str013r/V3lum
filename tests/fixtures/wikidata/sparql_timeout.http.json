@@ -1,0 +1,8 @@
+{
+ "_note": "synthetic: 500 + TimeoutException -> ERROR timeout, never EMPTY",
+ "status": 500,
+ "headers": {
+  "content-type": "text/plain; charset=utf-8"
+ },
+ "body": "SPARQL-QUERY: queryStr=SELECT ...\njava.util.concurrent.TimeoutException\n\tat java.util.concurrent.FutureTask.get(FutureTask.java:205)\n"
+}

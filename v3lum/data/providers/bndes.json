@@ -1,0 +1,56 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "bndes",
+  "name": "BNDES open data portal (CKAN datastore API)",
+  "operator": "Banco Nacional de Desenvolvimento Economico e Social (BNDES)",
+  "hosts": [
+    "dadosabertos.bndes.gov.br"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Federal development bank publishing its financing operations as open data (government body, A8 trusted); P246 'Official open data (BNDES, MinC, PNCP), tier trusted' (cond 5).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "The bank's own published operation tables (contract number, client CNPJ, amounts, dates); the full-text search matches loosely, so rows are post-filtered on the exact CNPJ."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 20,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "ckan_operations": {
+      "title": "BNDES CKAN datastore_search over the financing-operation resources (non-automatic operations with full CNPJ; automatic indirect operations with masked CNPJ)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://dadosabertos.bndes.gov.br/",
+        "quote": "Official open data (BNDES, MinC, PNCP), tier trusted.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "bndes",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P246 cond 5); research C0570 terms 'Open data (BNDES CKAN)' (verified_live 200, 2026-11-26). GET /api/3/action/datastore_search?resource_id=<id>&q=<CNPJ>&limit=20 only: a JSON 'filters' parameter is answered with an Apache 403 HTML page by the front WAF (prep capture), so it is never sent. Resource 6f56b78c-510f-44b6-8274-78a5b7e931f4 (operacoes nao automaticas, full formatted CNPJ, contract number) gives exact matches; 612faa0b-b6be-4b2c-9317-da5dc2c0b901 (operacoes indiretas automaticas) carries masked CNPJs and natural persons (masked CPF rows are dropped), so its rows are possible matches only. CKAN success=false envelopes are errors, never 'no operations'. Used by br_public_spending."
+    }
+  },
+  "notes": "Owned by batch p3-G10-2 (P246 br_public_spending). Throttled to 1 request/s, one at a time, answers cached 24 h (research: undocumented limit). No quota block. .br host: Accept-Language pt-BR by default."
+}

@@ -1,0 +1,71 @@
+{
+ "_doc": "Maintainer verification records for the pivots_company_org links (batch p2-G14-2): request URL, status, page title and a note per check, 2026-11-25/26 from a datacenter egress. Page bodies are not kept (victim lists, PEP names and bucket file names never enter the repository). 'link' and 'entity' name the pack link and the value the URL was built from; tests render them and compare with 'url'. V3LUM itself never requests these URLs.",
+ "checks": [
+  {
+   "case": "companies_house_empty",
+   "url": "https://find-and-update.company-information.service.gov.uk/search/companies?q=v3lumzzqnonexistent",
+   "status": 200,
+   "title": "Company search results - Find and update company information - GOV.UK",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:39:56Z",
+   "note": "no results",
+   "link": null,
+   "entity": null
+  },
+  {
+   "case": "companies_house_ok",
+   "url": "https://find-and-update.company-information.service.gov.uk/search/companies?q=GITHUB",
+   "status": 200,
+   "title": "Company search results - Find and update company information - GOV.UK",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:39:54Z",
+   "note": "company rows only (public register data); the no-results text also exists inside a client template script, so the empty marker is id=\"no-results\"",
+   "link": "company_org:companies_house_search",
+   "entity": "company_name:GITHUB"
+  },
+  {
+   "case": "gleif_spa_shell",
+   "url": "https://search.gleif.org/",
+   "status": 200,
+   "title": "LEI Search",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:39:58Z",
+   "note": "SPA shell (title 'LEI Search', <div id=app>); a fragment route cannot be curl-verified",
+   "link": null,
+   "entity": null
+  },
+  {
+   "case": "opensanctions_empty",
+   "url": "https://www.opensanctions.org/search/?q=v3lumzzqnonexistent",
+   "status": 200,
+   "title": "Search – OpenSanctions",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:39:53Z",
+   "note": "no-match alert",
+   "link": null,
+   "entity": null
+  },
+  {
+   "case": "opensanctions_ok",
+   "url": "https://www.opensanctions.org/search/?q=Banco%20do%20Brasil",
+   "status": 200,
+   "title": "Search – OpenSanctions",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:39:51Z",
+   "note": "query echoed only in the RSC payload (defaultValue); 14 results incl. 8 PEP persons, persons replaced by one documentation row",
+   "link": "company_org:opensanctions_company",
+   "entity": "company_name:Banco do Brasil"
+  },
+  {
+   "case": "viewdns_rwhois_challenge",
+   "url": "https://viewdns.info/reversewhois/?q=Banco%20do%20Brasil",
+   "status": 403,
+   "title": "Just a moment...",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:39:47Z",
+   "note": "Cloudflare managed challenge for reversewhois on 2026-11-26 (company, domain and empty probes alike); research C0537 saw 200 with the term in the title on 2026-11-25",
+   "link": "company_org:viewdns_rwhois_org",
+   "entity": "company_name:Banco do Brasil"
+  }
+ ]
+}

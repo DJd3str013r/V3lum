@@ -1,0 +1,14 @@
+{
+ "note": "attributes tls_inspect (P275) records on the node of a host it inspected: no interception on the default egress",
+ "tls_handshake": {
+  "host": "127.0.0.1",
+  "port": 443,
+  "verified": true,
+  "version": "TLSv1.3",
+  "cipher": "TLS_AES_256_GCM_SHA384",
+  "chain_length": 2,
+  "egress_profile": "default",
+  "interception_check": "done",
+  "ownership": "in_scope"
+ }
+}

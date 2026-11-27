@@ -1,0 +1,70 @@
+{
+ "qid": null,
+ "iid": 7104884,
+ "indicator": "registro.br",
+ "type": "domain",
+ "risk": "none",
+ "risk_recommended": "none",
+ "manualrisk": 0,
+ "retired": "No recent activity",
+ "stamp_added": "2019-11-12 21:24:55",
+ "stamp_updated": "2025-12-10 15:19:20",
+ "stamp_seen": "2025-09-09 23:52:53",
+ "stamp_probed": "2024-02-02 01:09:04",
+ "stamp_retired": "2025-12-10 15:19:20",
+ "recent": 0,
+ "submissions": 2,
+ "umbrella_rank": 213182,
+ "umbrella_domain": "registro.br",
+ "riskfactors": [
+  {
+   "rfid": 70,
+   "description": "Linked IPs return PTR records",
+   "risk": "none"
+  },
+  {
+   "rfid": 74,
+   "description": "SPF record present",
+   "risk": "none"
+  }
+ ],
+ "threats": [],
+ "redirects": {
+  "from": [],
+  "to": []
+ },
+ "feeds": [],
+ "comments": [],
+ "attributes": {
+  "port": [
+   "443",
+   "80"
+  ],
+  "protocol": [
+   "HTTP",
+   "HTTPS"
+  ],
+  "technology": [
+   "Apache",
+   "Apache HTTP Server",
+   "Cart Functionality"
+  ]
+ },
+ "properties": {
+  "geo": {
+   "country": "Brazil",
+   "countrycode": "BR"
+  },
+  "dns": {
+   "a": "200.160.2.3",
+   "aaaa": "2001:12ff:0:2::3",
+   "ns": [
+    "c.dns.br",
+    "b.dns.br",
+    "d.dns.br",
+    "e.dns.br",
+    "a.dns.br"
+   ]
+  }
+ }
+}

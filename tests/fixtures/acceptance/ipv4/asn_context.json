@@ -1,0 +1,82 @@
+{
+ "schema": "v3lum.acceptance_routes/1",
+ "module": "asn_context",
+ "routes": [
+  {
+   "method": "GET",
+   "url": "https://api.shadowserver.org/net/asn?origin=8.8.8.8",
+   "status": 200,
+   "json": [
+    {
+     "ip": "8.8.8.8",
+     "asn_name": "Google LLC",
+     "prefix": "8.8.8.0/24",
+     "asn": 15169
+    }
+   ],
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 530
+  },
+  {
+   "method": "GET",
+   "url": "https://bgpranking-ng.circl.lu/ipasn_history/?ip=8.8.8.8",
+   "status": 200,
+   "json": {
+    "meta": {
+     "ip": "8.8.8.8"
+    },
+    "response": {
+     "2026-11-24T22:00:00": {
+      "asn": "15169",
+      "prefix": "8.8.8.0/24",
+      "source": "caida"
+     }
+    }
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 725
+  },
+  {
+   "method": "GET",
+   "url": "https://www.peeringdb.com/api/net?asn=15169&depth=2",
+   "status": 429,
+   "json": {
+    "message": "Request was throttled. Expected available in 58 minutes. Authenticate for less restrictions. For more information: https://docs.peeringdb.com/howto/api_keys/",
+    "meta": {
+     "error": "Too Many Requests"
+    }
+   },
+   "headers": {
+    "content-type": "application/json",
+    "retry-after": "3514"
+   },
+   "latency_ms": 300
+  },
+  {
+   "method": "POST",
+   "url": "https://bgpranking-ng.circl.lu/json/asn",
+   "status": 200,
+   "json": {
+    "meta": {
+     "asn": "15169"
+    },
+    "response": {
+     "asn_description": "GOOGLE - Google LLC, US",
+     "ranking": {
+      "rank": 0.0005430632900416217,
+      "position": 5826,
+      "total_known_asns": 14877
+     }
+    }
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 480
+  }
+ ]
+}

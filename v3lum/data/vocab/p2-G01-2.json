@@ -1,0 +1,39 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p2-G01-2",
+  "title": "Tranco rank, Microsoft 365 tenant discovery, HackerTarget and passive DNS (batch p2-G01-2: P010, P011, P014, P015)",
+  "owner": "batch p2-G01-2 (tranco_rank, m365_tenant, m365_tenant_azmap, hackertarget, passive_dns)",
+  "notes": "Core names are reused where they fit: subdomains, passive_dns, asn, as_org, as_country, prefix, shared_ip, first_seen, last_seen; relations subdomain, resolves_to, hosted_domain, nameserver, mx_host, cname_to, same_analytics, same_m365_tenant, belongs_to_asn, in_network, announces, company_of.",
+  "attributes": {
+    "tranco_rank": "int: Tranco top-1M rank of the exact lookup domain (the registrable domain computed with the PSL private section); absent when not in the list",
+    "tranco_popularity": "Tranco popularity label of the lookup domain: 'popular' (<= 10k) | 'established' (<= 100k) | 'long tail' (<= 1M) | 'not in top 1M' | 'public suffix host'; context only, never evidence of benignness",
+    "tranco_context": "display line 'Tranco #1,234 - popular (list 947P2, 2026-11-25)' or 'not in top 1M (list ...)': context, never a finding by itself (P010 cond 6)",
+    "tranco_list": "provenance of the Tranco list used {dataset, list_id, list_date, sha256, fetched_at, stale, list_url}",
+    "tranco_lookup_domain": "the exact registrable domain looked up in the Tranco list (PSL private suffixes included, so evil.github.io is never ranked by github.io)",
+    "tranco_dampener": "score-dampening hint for P302 {dampen, factor, reason, scope 'domain'}: domain-level single-source reputation only, never URL-level or consensus (P171) verdicts, never known_good or an allow-list",
+    "shared_platform": "{platform, category}: the host is on a platform where third parties publish their own content (file sharing, forms, site builders, app hosting, dynamic DNS, URL shorteners...): its rank is shown but never dampens a score",
+    "m365_tenant_id": "Microsoft Entra ID (Microsoft 365) tenant GUID of the domain (OpenID configuration issuer, cross-checked with the Office ODC answer)",
+    "m365_tenant_name": "onmicrosoft.com prefix (initial domain name) of the Entra ID tenant, as reported by azmap.dev",
+    "m365_tenant_region": "tenant_region_scope of the Entra ID tenant (WW, NA, EU, AS, OC, SA, AF, USGov...)",
+    "m365_cloud_instance": "cloud instance of the tenant (microsoftonline.com, microsoftonline.us, partner.microsoftonline.cn)",
+    "m365_namespace_type": "GetUserRealm NameSpaceType of the domain: 'Managed' (cloud identities) | 'Federated' (sign-in at an external identity provider)",
+    "m365_brand_name": "FederationBrandName of the tenant: organisation display name typed by the tenant admin (self-declared, may be junk for unmanaged or test tenants)",
+    "m365_identity_provider": "federated sign-in identity provider {host, kind adfs|okta|ping|cloudflare_access|google|shibboleth|microsoft_sts|other, url without query}: recorded only, never contacted",
+    "m365_odc_environment": "Office ODC federation provider environment of the tenant (Global, GCC, GCCHigh, DoD, China...)",
+    "m365_anomalies": "list of inconsistencies between the Microsoft answers (tenant id mismatch, Unknown realm after a tenant, federation to a Microsoft STS host = unmanaged/test tenant, realm answer for another domain)",
+    "m365_related_domains": "{count, domains, source}: every domain verified in the same Entra ID tenant according to azmap.dev (full list; only DNS-confirmed ones pivot); candidate own assets for `v3lum org seed` (analyst confirms), never an ACTIVE scope",
+    "m365_dns_confirmation": "{checked, confirmed, unconfirmed, could_not_verify, doh_queries, stop_reason, evidence}: DNS confirmation of related tenant domains (MX *.mail.protection.outlook.com or TXT MS=), capped at 50 domains and 100 DoH queries",
+    "cohosting": "co-hosted names seen on the IP {count, mode pivot|count_only, reason, sources, exclude_from_shared_infra}: count_only for CDN/shared-hosting IPs or more than 50 names (no pivots, no co-hosting correlation)",
+    "truncated_answer": "the source answered a capped list (e.g. HackerTarget free-tier hostsearch rows): the result is possibly incomplete",
+    "analytics_shared_id": "{id, domains, shared, label, reason}: P061 shared-id rule applied to a reverse analytics lookup ('shared ID': more than 50 domains or a template/placeholder id, no pivots and no same-owner correlation)",
+    "pdns_summary": "passive DNS summary line 'resolved to N IPs since <date>' (domain) or 'N names seen on this IP since <date>' (IP), current versus historical (last seen more than 12 months ago)",
+    "pdns_record_count": "{total, kept, cap, historical, current, unknown_age, sources {source: records}}: passive DNS records per entity (capped at 200, report table 20 rows)",
+    "sinkholed": "{current, since, ips, last_seen}: the domain resolved to a known sinkhole address in passive DNS (core sinkhole lists); sinkhole addresses never pivot",
+    "names_pointing_here": "int: passive DNS names whose CNAME/PTR answer is the queried name (counted, never pivoted)",
+    "ptr_names": "PTR names of the IP seen in passive DNS (at most 20)"
+  },
+  "tags": {},
+  "relations": {
+    "identity_provider": "domain -> host of its federated sign-in identity provider (ADFS, Okta, Ping...): pivots get passive modules only, never contacted by the discovering module"
+  }
+}

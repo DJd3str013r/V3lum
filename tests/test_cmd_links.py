@@ -30,6 +30,17 @@ PACK = {
             "category": "reputation", "host": "rep.example.org", "verified": True, "checked_at": "2026-11-26",
             "privacy": False, "publishes": False, "touches_target": False, "login_required": False, "antibot": False, "notes": "test",
         },
+        # core tests never rely on module-batch pivot packs: the username and URL links come from here
+        {
+            "id": "user_profile", "label": "Profile page", "template": "https://github.com/{user}", "entity_types": ["username"],
+            "category": "social", "host": "github.com", "verified": True, "checked_at": "2026-11-26",
+            "privacy": True, "publishes": False, "touches_target": False, "login_required": False, "antibot": False, "notes": "test",
+        },
+        {
+            "id": "url_rep", "label": "URL reputation page", "template": "https://rep.example.org/u?q={q}", "entity_types": ["url"],
+            "category": "reputation", "host": "rep.example.org", "verified": True, "checked_at": "2026-11-26",
+            "privacy": False, "publishes": False, "touches_target": False, "login_required": False, "antibot": False, "notes": "test",
+        },
     ],
 }
 DOMAIN = "domain:acme-portal.example"  # .example is not an IANA TLD: force the type
@@ -198,7 +209,7 @@ def test_flagged_entity_shows_the_contact_warning_first(capsys, test_pack, flagg
     assert rows and all(r["flagged"] for r in rows)
 
 
-def test_privacy_links_only_with_show_personal(capsys):
+def test_privacy_links_only_with_show_personal(capsys, test_pack):
     rc, out, _ = _run(capsys, "user:octocat", "--tlp", "green")
     assert rc == 0 and "github.com/octocat" not in out
     rc, out, _ = _run(capsys, "user:octocat", "--tlp", "green", "--show-personal")
@@ -231,7 +242,7 @@ def test_the_investigated_url_is_never_printed_clickable(capsys):
     assert rc == 0 and all(r["entity"] == f"url:{target}" for r in json.loads(out))
 
 
-def test_open_prompt_defangs_the_investigated_url_and_escapes_markup(capsys, monkeypatch, browser):
+def test_open_prompt_defangs_the_investigated_url_and_escapes_markup(capsys, monkeypatch, browser, test_pack):
     target = "url:https://evil-portal.example/a[bold]b"
     rows = json.loads((main(["links", target, "--json"]), capsys.readouterr().out)[1])
     assert rows

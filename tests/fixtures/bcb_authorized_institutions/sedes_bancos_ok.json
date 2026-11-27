@@ -1,0 +1,70 @@
+{
+ "@odata.context": "https://was-p.bcnet.bcb.gov.br/olinda/servico/Instituicoes_em_funcionamento/versao/v1/odata$metadata#SedesBancoComMultCE",
+ "value": [
+  {
+   "CNPJ": "00000000",
+   "NOME_INSTITUICAO": "BANCO DO BRASIL S.A.",
+   "SEGMENTO": "Banco do Brasil - Banco Múltiplo",
+   "MUNICIPIO": "BRASÍLIA",
+   "UF": "DF",
+   "DDD": "11",
+   "TELEFONE": "55550101",
+   "CARTEIRA_COMERCIAL": "Sim",
+   "E_MAIL": "contato@example.com",
+   "SITIO_NA_INTERNET": "HTTPS://WWW.BB.COM.BR",
+   "MUNICIPIO_IBGE": "5300108"
+  },
+  {
+   "CNPJ": "00360305",
+   "NOME_INSTITUICAO": "CAIXA ECONOMICA FEDERAL",
+   "SEGMENTO": "Caixa Econômica Federal",
+   "MUNICIPIO": "BRASÍLIA",
+   "UF": "DF",
+   "DDD": "11",
+   "TELEFONE": "55550102",
+   "CARTEIRA_COMERCIAL": "Sim",
+   "E_MAIL": "contato@example.com",
+   "SITIO_NA_INTERNET": "HTTPS://WWW.CAIXA.GOV.BR/ATENDIMENTOBACEN/",
+   "MUNICIPIO_IBGE": "5300108"
+  },
+  {
+   "CNPJ": "60701190",
+   "NOME_INSTITUICAO": "ITAÚ UNIBANCO S.A.",
+   "SEGMENTO": "Banco Múltiplo",
+   "MUNICIPIO": "SÃO PAULO",
+   "UF": "SP",
+   "DDD": "11",
+   "TELEFONE": "55550103",
+   "CARTEIRA_COMERCIAL": "Sim",
+   "E_MAIL": "contato@example.com",
+   "SITIO_NA_INTERNET": "WWW.ITAU.COM.BR",
+   "MUNICIPIO_IBGE": "3550308"
+  },
+  {
+   "CNPJ": "13059145",
+   "NOME_INSTITUICAO": "EBURY BANCO DE CÂMBIO S.A.",
+   "SEGMENTO": "Banco de Câmbio",
+   "MUNICIPIO": "SÃO PAULO",
+   "UF": "SP",
+   "DDD": "11",
+   "TELEFONE": "55550104",
+   "CARTEIRA_COMERCIAL": "Não",
+   "E_MAIL": "contato@example.com",
+   "SITIO_NA_INTERNET": "BR.EBURY.COM",
+   "MUNICIPIO_IBGE": "3550308"
+  },
+  {
+   "CNPJ": "11970623",
+   "NOME_INSTITUICAO": "BANCO SENFF S.A.",
+   "SEGMENTO": "Banco Múltiplo",
+   "MUNICIPIO": "CURITIBA",
+   "UF": "PR",
+   "DDD": "11",
+   "TELEFONE": "55550105",
+   "CARTEIRA_COMERCIAL": "Sim",
+   "E_MAIL": "contato@example.com",
+   "SITIO_NA_INTERNET": null,
+   "MUNICIPIO_IBGE": "4106902"
+  }
+ ]
+}

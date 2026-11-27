@@ -9,7 +9,7 @@
 
 Shell history (A10): ``~/.v3lum/shell_history`` holds one JSON line per entry (``{ts, line}``),
 written 0600 through ``paths.secure_write_text``; entries older than setting ``retention_days`` are
-dropped at shell start, every line is scrubbed like pasted text (``sanitize.scrub_text``, P145) and
+dropped at shell start, every line is scrubbed like pasted text (``ioc.scrub``: ``sanitize.scrub_text`` plus card numbers and pattern-DB secrets, P145/P323) and
 lines typed while the session TLP is RED are never written.
 """
 
@@ -237,13 +237,13 @@ class Shell(cmd.Cmd):
     def remember(self, line: str) -> str | None:
         """Record a typed line (scrubbed, P145); lines of a TLP:RED session are not kept.
         Returns the recorded text (None when nothing was recorded)."""
-        from v3lum.core import sanitize
+        from v3lum.core import ioc
 
         text = line.strip()
         if not text:
             return None
         red = self._red_line(text)
-        scrubbed = None if red else _CONTROL_RE.sub(" ", sanitize.scrub_text(text)).strip()
+        scrubbed = None if red else _CONTROL_RE.sub(" ", ioc.scrub(text)).strip()
         self._sync_readline(line, scrubbed)
         if scrubbed is None or not scrubbed.strip():
             return None

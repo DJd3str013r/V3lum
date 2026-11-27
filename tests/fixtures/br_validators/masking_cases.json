@@ -1,0 +1,40 @@
+{
+ "cases": [
+  {
+   "fn": "mask_cpf",
+   "in": "123.456.789-09",
+   "out": "***.456.789-**"
+  },
+  {
+   "fn": "mask_cpf",
+   "in": "52998224725",
+   "out": "***.982.247-**"
+  },
+  {
+   "fn": "mask_cpf",
+   "in": "529.982.247",
+   "out": "***"
+  },
+  {
+   "fn": "mask_national_id",
+   "in": "123.45678.90-0",
+   "out": "***.45678.9*-*"
+  },
+  {
+   "fn": "mask_national_id",
+   "in": "898001234567891",
+   "out": "***0012345678**"
+  },
+  {
+   "fn": "mask_pix_key",
+   "in": "529.982.247-25",
+   "out": "***.982.247-**"
+  },
+  {
+   "fn": "mask_pix_key",
+   "in": "pix@example.com",
+   "out": "pix@example.com"
+  }
+ ],
+ "_note": "Synthetic masking vectors (CPF documentation examples). mask_cpf is the core function v3lum.core.entities.mask_cpf (AR24): '***' for anything that is not 11 digits."
+}

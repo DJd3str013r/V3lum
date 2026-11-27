@@ -1,0 +1,66 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "google_webrisk",
+  "name": "Google Web Risk API (commercial Safe Browsing)",
+  "operator": "Google LLC (Google Cloud)",
+  "hosts": [
+    "webrisk.googleapis.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms (A8): 'Google: tier trusted.' (P067 chair rationale).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Google's Safe Browsing lists through the licensed API: a hit is usually right; a miss reads 'not on Google's lists at <time>', never 'safe' (P067 cond 5). Same upstream lists as Safe Browsing v4: one vote in consensus."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "ttl": 1800,
+    "timeout": 10,
+    "min_interval": 0.5,
+    "concurrency": 2
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {
+    "webrisk": {
+      "description": "Google Web Risk API key of the company's Google Cloud project (billing account recorded in licence_allow before corporate use); sent as the 'key' URL parameter and masked by the central redactor (AR01)",
+      "signup_url": "https://cloud.google.com/web-risk/docs/quickstart",
+      "env": [
+        "V3LUM_WEBRISK_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "a company Google Cloud project with billing enabled under the Web Risk terms (class license): record the licence_allow entry for google_webrisk.uris_search with the billing account reference (P067 cond 1)"
+    }
+  },
+  "sources": {
+    "uris_search": {
+      "title": "Web Risk uris.search (GET /v1/uris:search?threatTypes=...&uri=...): MALWARE, SOCIAL_ENGINEERING, UNWANTED_SOFTWARE verdict of one URL",
+      "terms": {
+        "class": "license",
+        "evidence_url": "https://cloud.google.com/web-risk/docs/reference/rest/v1/uris/search",
+        "quote": "Google Web Risk (uris.search; class license, A1 BR15) is the corporate path, off under the corporate profile until licence-cleared: a company billing account recorded in licence_allow and key 'webrisk' in config.KNOWN_KEYS.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "google_safe_browsing",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P067 cond 1). Research C0729 (verified_needs_key): keyless calls answer 403 PERMISSION_DENIED 'Method doesn't allow unregistered callers', an invalid key 400 INVALID_ARGUMENT 'API key not valid' -> NEEDS_KEY (P067 cond 6). An empty {} answer means no match. Before uris.search, recipient identifiers and token-like values are removed and the URL is reduced to scheme://host/path (P067 cond 4). Hits are cached until their expireTime (<= 30 days), misses 30 min. The hash-prefix Update API (threatLists.computeDiff) is deferred to the backlog (architect floor).",
+      "licensed_alternative": "This is the licensed path: Google Cloud Web Risk terms under the company's billing account (pricing per 1,000 calls after the monthly free allowance)."
+    }
+  },
+  "notes": "Owned by batch p2-G03-1 (P067 google_safe_browsing). googleapis.com is a public-suffix namespace: each Google API host is its own provider. Quota = the Google Cloud project's quota and billing (pricing page renders client-side; legal/finance to record the free allowance): no quota block."
+}

@@ -1,0 +1,105 @@
+{
+ "cases": [
+  {
+   "query": "Lazarus Group",
+   "kind": "entity",
+   "expect": [
+    27307
+   ],
+   "case": "exact primary name"
+  },
+  {
+   "query": "Pixwave Soluções de Pagamento Ltda",
+   "kind": "entity",
+   "expect": [
+    56752
+   ],
+   "case": "fuzzy: accents, singular/plural, legal suffix"
+  },
+  {
+   "query": "Aero Caribbean",
+   "kind": "entity",
+   "expect": [
+    36
+   ],
+   "case": "ALT.CSV alias"
+  },
+  {
+   "query": "Hidden Cobra",
+   "kind": "entity",
+   "expect": [
+    27307
+   ],
+   "case": "a.k.a. inside remarks (merged)"
+  },
+  {
+   "query": "ISIL Khorasan",
+   "kind": "entity",
+   "expect": [
+    18647,
+    "UN:6908777"
+   ],
+   "case": "same actor on OFAC and UN"
+  },
+  {
+   "query": "KOMID",
+   "kind": "entity",
+   "expect": [
+    "UN:690735"
+   ],
+   "case": "UN alias in quotes"
+  },
+  {
+   "query": "Black September",
+   "kind": "entity",
+   "expect": [
+    "EU:201"
+   ],
+   "case": "EU FSF alias"
+  },
+  {
+   "query": "Banco do Brasil S.A.",
+   "kind": "entity",
+   "expect": [],
+   "case": "common BR company: no match"
+  },
+  {
+   "query": "Joao da Silva",
+   "kind": "person",
+   "expect": [],
+   "case": "common-name non-match"
+  },
+  {
+   "query": "Jose da Silva",
+   "kind": "person",
+   "expect": [
+    99000002
+   ],
+   "case": "homonym: very common name hit -> INFO"
+  },
+  {
+   "query": "John Doe",
+   "kind": "person",
+   "expect": [
+    99000001,
+    "UN:99000001",
+    "EU:990013"
+   ],
+   "case": "synthetic person on the three lists (EU via alias Johnny Doe)"
+  },
+  {
+   "query": "John Doe",
+   "kind": "entity",
+   "expect": [],
+   "case": "kind filter: persons never match entities"
+  },
+  {
+   "query": "Petrobras",
+   "kind": "entity",
+   "expect": [
+    11633
+   ],
+   "case": "CALIBRATION: Jaro-Winkler 0.93 vs PETROPARS LTD. at the 0.90 threshold (false positive)"
+  }
+ ]
+}

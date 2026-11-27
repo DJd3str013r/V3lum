@@ -1,0 +1,32 @@
+{
+ "type": 0,
+ "code": "discord-developers",
+ "expires_at": null,
+ "flags": 2,
+ "guild_id": "613425648685547541",
+ "approximate_member_count": 312492,
+ "approximate_presence_count": 50926,
+ "guild": {
+  "id": "613425648685547541",
+  "name": "Discord Developers",
+  "description": "Welcome to Discord Developers (DDevs), the official home for the community of developers building apps, bots, games, and more with Discord APIs.",
+  "verification_level": 3,
+  "vanity_url_code": "discord-developers",
+  "nsfw_level": 0,
+  "nsfw": false,
+  "premium_subscription_count": 61,
+  "premium_tier": 3,
+  "features": [
+   "VANITY_URL",
+   "COMMUNITY",
+   "VERIFIED",
+   "NEWS",
+   "DISCOVERABLE"
+  ]
+ },
+ "channel": {
+  "id": "613430047285706767",
+  "type": 0,
+  "name": "rules"
+ }
+}

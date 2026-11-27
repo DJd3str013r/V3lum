@@ -1,0 +1,25 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
+  "headers": {
+   "If-Modified-Since": "Wed, 25 Nov 2026 19:48:12 GMT",
+   "If-None-Match": "\"1cf6ca-6611f1b6e2660\""
+  }
+ },
+ "response": {
+  "status": 304,
+  "headers": {
+   "content-type": "application/json",
+   "last-modified": "Wed, 25 Nov 2026 19:48:12 GMT",
+   "etag": "\"1cf6ca-6611f1b6e2660\"",
+   "cache-control": "max-age=3152",
+   "expires": "Thu, 26 Nov 2026 06:09:37 GMT",
+   "date": "Thu, 26 Nov 2026 05:17:05 GMT"
+  },
+  "body": ""
+ },
+ "transport_error": null,
+ "elapsed_s": 0.250404,
+ "note": "Conditional GET with If-None-Match/If-Modified-Since from the full download: 304, empty body. The dataset manager keeps the current copy and only refreshes fetched_at."
+}

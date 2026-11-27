@@ -1,0 +1,12 @@
+{
+ "groups": 3,
+ "failed_groups": 0,
+ "failed_rules": 0,
+ "errors": [],
+ "ok": true,
+ "namespaces": [
+  "V3LUM Test DRL",
+  "V3LUM Test MIT",
+  "V3LUM Test NC"
+ ]
+}

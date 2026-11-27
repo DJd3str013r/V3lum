@@ -1,0 +1,28 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "hibp",
+  "hosts": [],
+  "sources": {
+    "hibp_account_pastes": {
+      "title": "HIBP paid-key GET /api/v3/pasteaccount/{account}: paste METADATA per address (source, id, date, e-mail count; the paste content is never fetched)",
+      "terms": {
+        "class": "license",
+        "evidence_url": "https://haveibeenpwned.com/Subscription",
+        "quote": "Company-paid key only (key 'hibp' in the hibp-api-key header), recorded in licence_allow as the HIBP subscription (budget: Core 1, from US$4.39/month: 10 RPM, one own domain, no stealer logs).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "hibp",
+      "sanitizer": {
+        "keep": ["[].Source", "[].Id", "[].Date", "[].EmailCount"],
+        "notes": "P133 cond 5 / P145: paste metadata only (source, id, date, e-mail count) before the HTTP cache; the paste Title (free text chosen by the paster) and any other field are dropped, and paste content is never fetched (a manual Pastebin link at most)."
+      },
+      "dataset": null,
+      "notes": "Same subscription and terms as hibp.account (P133 cond 1). A separate source only because the paste answer needs its own P145 keep schema next to the breach-object schema of hibp.account. Used by hibp_account.",
+      "licensed_alternative": "A company-paid HIBP subscription recorded as a licence_allow entry (P133 cond 1)."
+    }
+  },
+  "error_markers": [],
+  "notes": "Batch p2-G04-1 (P133 hibp_account): the paste-metadata source of the HIBP account API."
+}

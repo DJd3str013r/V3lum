@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "cloud_ranges_fastly",
+  "source_url": "https://api.fastly.com/public-ip-list",
+  "version": "runtime download refreshed daily by the dataset manager (checked 2026-11-26)",
+  "sha256": "",
+  "licence": "Fastly public IP list (public provider publication, no licence stated)",
+  "attribution": "Fastly public IP list (https://api.fastly.com/public-ip-list), Fastly, Inc.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/ip_network/cloud_ranges.py"
+  ]
+}

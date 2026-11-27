@@ -1,0 +1,62 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "zendesk",
+  "name": "Zendesk help center entry point (public, unauthenticated)",
+  "operator": "Zendesk, Inc.",
+  "hosts": [
+    "*.zendesk.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms, a privacy policy and a business offering (A8 trusted); P371 provider_tier 'trusted' (council #1).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "First-party answer of the requested <name>.zendesk.com help center; an agent-only account without a public help center cannot be told apart without login endpoints (rule 2), so 'absent' means 'no public help center under this name'. A name never proves which organisation owns the account (P371 FC5)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "timeout": 10,
+    "retries": 0,
+    "ttl": 604800,
+    "min_interval": 2.0,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "rate_per_second": 0.5,
+    "day": 60,
+    "published": false,
+    "evidence_url": "https://www.zendesk.com/company/agreements-and-terms/",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "help_center": {
+      "title": "Zendesk tenant discovery: https://<name>.zendesk.com/hc with redirects not followed (200 or 301 to the same host /hc/<locale> = help center exists; 404 help-center 'Not Found' or 301 to help-center-closed = no public help center)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.zendesk.com/company/agreements-and-terms/",
+        "quote": "Vendor public endpoints (no authentication).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "zendesk",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0797, live 2026-11-26 (batch p3-G13-1): on the fixed path /hc support.zendesk.com answered 301 to https://support.zendesk.com/hc/en-us and a random name answered 404 'Not Found' with header zendesk-service: help-center; the research saw the help-center-closed redirect on '/' only (both marker sets are read, see docs/backlog/p3-G13-1.md). A random name on /hc/en-us got a Cloudflare managed challenge (cf-mitigated: challenge): challenges stop the vendor check for the run and are never retried or bypassed (A9). Login redirects (/access/..., /signin) are never followed (rule 2). Politeness budget (not published by Zendesk): 0.5 request/s and 60 per day per egress, one GET per candidate, no retries."
+    }
+  },
+  "notes": "Owned by batch p3-G13-1 (P371, module saas_tenant_discovery). Only the fixed FC2 path is ever built and redirects are never followed; the candidate name is the only value Zendesk receives."
+}

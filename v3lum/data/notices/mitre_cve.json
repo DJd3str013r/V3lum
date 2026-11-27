@@ -1,0 +1,15 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "mitre_cve",
+  "source_url": "https://www.cve.org/Legal/TermsOfUse",
+  "version": "CVE JSON 5.1 records from CVE Services (cveawg.mitre.org), runtime lookups (checked 2026-11-26)",
+  "sha256": "",
+  "licence": "CVE Program Terms of Use",
+  "attribution": "CVE records © The MITRE Corporation, used under the CVE Program Terms of Use (https://www.cve.org/Legal/TermsOfUse). The Terms of Use page is a JavaScript application whose text could not be captured from the datacenter egress: legal_dpo pastes MITRE's exact CVE copyright designation here (P183 cond 7).",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/vulnerability_cve/cve_record.py",
+    "tests/fixtures/cve_record/cveawg_log4shell.json",
+    "tests/fixtures/cve_record/cveawg_heartbleed.json"
+  ]
+}

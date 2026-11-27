@@ -1,0 +1,11 @@
+{
+ "request": {"method": "GET", "url": "https://api.example.com/v1/me", "headers": {"Origin": "https://r4nd0m.v3lum-probe.invalid"}},
+ "response": {
+  "status": 403,
+  "headers": {"content-type": "text/html", "server": "cloudflare", "cf-mitigated": "challenge"},
+  "body": "<!DOCTYPE html><html><head><title>Just a moment...</title></head><body>Checking your browser.</body></html>"
+ },
+ "class": "synthetic",
+ "origin": "synthetic (blocked/challenge)",
+ "notes": "403/challenge => could-not-test (FC6), never 'safe'."
+}

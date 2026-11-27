@@ -1,0 +1,8 @@
+{
+ "_fixture": "live POST https://api.osv.dev/v1/query with ecosystem 'npmx' -> HTTP 400",
+ "status": 400,
+ "body": {
+  "code": 3,
+  "message": "invalid ecosystem"
+ }
+}

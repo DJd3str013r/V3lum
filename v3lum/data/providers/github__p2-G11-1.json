@@ -1,0 +1,68 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "github",
+  "hosts": [],
+  "sources": {
+    "ransomware_matrices_rtm": {
+      "title": "BushidoUK Ransomware Tool Matrix (raw.githubusercontent.com/BushidoUK/Ransomware-Tool-Matrix/main: Tools/*.md, Tools/AllTools.csv)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/BushidoUK/Ransomware-Tool-Matrix/blob/main/LICENSE",
+        "quote": "You are free to: Share - copy and redistribute the material in any medium or format for any purpose, even commercially. Adapt - remix, transform, and build upon the material for any purpose, even commercially. [...] Attribution - You must give appropriate credit (CC BY 4.0).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "bushidouk_rtm",
+      "sanitizer": null,
+      "dataset": "ransomware_matrices.rtm.rmm_tools",
+      "notes": "P372 cond 1/2/6 (module ransomware_matrices, disclosure none). Research C0740 (verified_live 200; weak ETag = SHA-256 of the content, If-None-Match -> 304 verified 2026-11-26; no commit or Last-Modified header on raw.githubusercontent.com, so copies are pinned by ETag + fetch time). Content tier: community (an individual researcher's public repository with >= 2 years of track record, reviewer confirms; the github provider tier covers the host only). Tools are hunting leads tagged dual_use, never malicious verdicts (cond 4). CC BY 4.0 attribution travels with every card."
+    },
+    "ransomware_matrices_rvm": {
+      "title": "BushidoUK Ransomware Vulnerability Matrix (raw.githubusercontent.com/BushidoUK/Ransomware-Vulnerability-Matrix/main/Vulnerabilities/*.md)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/BushidoUK/Ransomware-Vulnerability-Matrix/blob/main/LICENSE",
+        "quote": "You are free to: Share - copy and redistribute the material in any medium or format for any purpose, even commercially. [...] Attribution - You must give appropriate credit (CC BY 4.0).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "bushidouk_rvm",
+      "sanitizer": null,
+      "dataset": "ransomware_matrices.rvm.network_edge",
+      "notes": "P372 cond 1/2/5 (module ransomware_matrices). Research C0741 (verified_live 200; LICENSE verified 2026-11-25: CC BY 4.0). Markdown tables checked per table header; a changed layout is ERROR 'format changed' while the last good index stays in use. A CVE row without a group link stays 'reported'."
+    },
+    "technique_detections_sigma": {
+      "title": "SigmaHQ sigma_core.zip release asset (github.com/SigmaHQ/sigma/releases/latest/download/sigma_core.zip -> release-assets.githubusercontent.com)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/SigmaHQ/Detection-Rule-License",
+        "quote": "Rules: Detection Rule License (DRL) 1.1 (attribution required); Sigma specification public domain.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "sigmahq",
+      "sanitizer": null,
+      "dataset": "technique_detections_tests.sigma_core",
+      "notes": "P373 cond 1/2/5 (module technique_detections_tests, disclosure none). Research C0767 (verified_live: 302 to /releases/download/r2026-07-01/sigma_core.zip, 302 to a signed release-assets URL, 200, 1.40 MB). DRL 1.1 is not on the A6 bundling list: no Sigma-derived index is bundled; metadata only (title, id, status, level, tags, logsource, path) is indexed locally at run time, read in memory through the safe zip helper and yaml.safe_load (optional PyYAML extra). Rule bodies are reproduced only with DRL 1.1 author attribution. Content tier: community (SigmaHQ; the github provider tier covers the host)."
+    },
+    "technique_detections_atomic": {
+      "title": "Red Canary Atomic Red Team index (raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/Indexes/Indexes-CSV/index.csv)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/redcanaryco/atomic-red-team/blob/master/LICENSE.txt",
+        "quote": "MIT License Copyright (c) 2018 Red Canary",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "atomic_red_team",
+      "sanitizer": null,
+      "dataset": "technique_detections_tests.atomic_index",
+      "notes": "P373 cond 3/5. Research C0768 (verified_live 200; 371 KB CSV, ETag stable). Read with the stdlib csv module; test names, GUIDs and executors are links only: nothing is ever executed or written outside the dataset store. Tier trusted (Red Canary, cond 5)."
+    }
+  },
+  "error_markers": []
+}

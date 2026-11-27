@@ -1,0 +1,38 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "icloud",
+  "name": "Apple iCloud Private Relay egress IP ranges",
+  "operator": "Apple Inc.",
+  "hosts": ["mask-api.icloud.com"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms, a privacy policy and a business offering (A8 trusted); P035 chair rationale: 'Apple is trusted'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "A", "justification": "The operator's own list of its Private Relay egress ranges with the region each range serves."},
+  "http_profile": {"user_agent": "neutral", "ttl": 86400},
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "private_relay": {
+      "title": "iCloud Private Relay egress IP ranges (egress-ip-ranges.csv: CIDR, country, region, city; about 12 MB, weekly)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://developer.apple.com/icloud/prepare-your-network-for-icloud-private-relay/",
+        "quote": "If you run a web server, you can localize your content or restrict access based on the region of a client. Please reach out to your geo IP database provider to update your feeds with the latest mappings or you can access our latest set of IP addresses and locations directly.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "apple",
+      "sanitizer": null,
+      "dataset": "ip_context_lists.apple_private_relay.csv",
+      "notes": "P035 cond 3: 'Apple Private Relay ranges (published by Apple for geolocation/allow-listing: open)'. https://mask-api.icloud.com/egress-ip-ranges.csv (12,052,078 bytes, ETag unchanged between the research capture and 2026-11-26): fetched only by `v3lum data update` (> 5 MB, never mid-scan, P035 cond 1), refreshed weekly and parsed once per refresh. Context tag privacy_relay: ordinary Safari/iCloud+ users, never scored as an anonymiser; it suppresses VPN/proxy scoring for those ranges (P035 cond 6). Used by ip_context_lists."
+    }
+  },
+  "notes": "Created by batch p2-G02-1 (P035 ip_context_lists). Id from the registrable domain icloud.com: other Apple hosts belong to other providers."
+}

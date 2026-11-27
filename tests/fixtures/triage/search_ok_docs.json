@@ -1,0 +1,24 @@
+{
+ "data": [
+  {
+   "id": "201026-n8zz26cd4s",
+   "status": "reported",
+   "kind": "file",
+   "filename": "888d012fd36d8fa86ab57e0d547eb429e68303fcdf76b08191942e9307a74f78",
+   "private": false,
+   "submitted": "2020-10-26T16:51:31Z",
+   "completed": "2020-10-26T16:52:55Z",
+   "user_id": "00000000-0000-4000-8000-000000000001"
+  },
+  {
+   "id": "261120-abcdefghjk",
+   "status": "pending",
+   "kind": "file",
+   "filename": "sample.exe",
+   "private": false,
+   "submitted": "2026-11-20T10:00:00Z",
+   "user_id": "00000000-0000-4000-8000-000000000002"
+  }
+ ],
+ "next": "2020-10-26T16:51:21.232458Z"
+}

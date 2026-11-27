@@ -1,0 +1,149 @@
+[
+ {
+  "sha": "1a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d",
+  "html_url": "https://github.com/example-dev/tooling/commit/1a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d",
+  "commit": {
+   "author": {
+    "name": "Example Developer",
+    "email": "dev@example.com",
+    "date": "2026-11-20T13:05:00Z"
+   },
+   "committer": {
+    "name": "GitHub",
+    "email": "noreply@github.com",
+    "date": "2026-11-20T13:05:00Z"
+   },
+   "message": "Fix parser for empty input\n\nCo-authored-by: Other Contributor <other@example.org>",
+   "verification": {
+    "verified": false,
+    "reason": "unsigned"
+   }
+  },
+  "author": {
+   "login": "example-dev",
+   "id": 12345678,
+   "type": "User"
+  },
+  "committer": {
+   "login": "web-flow",
+   "id": 19864447,
+   "type": "User"
+  }
+ },
+ {
+  "sha": "2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e",
+  "html_url": "https://github.com/example-dev/tooling/commit/2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e",
+  "commit": {
+   "author": {
+    "name": "Example Developer",
+    "email": "Dev@Example.com",
+    "date": "2026-10-02T09:00:00Z"
+   },
+   "committer": {
+    "name": "Example Developer",
+    "email": "Dev@Example.com",
+    "date": "2026-10-02T09:00:00Z"
+   },
+   "message": "Add tests",
+   "verification": {
+    "verified": false,
+    "reason": "unsigned"
+   }
+  },
+  "author": {
+   "login": "example-dev",
+   "id": 12345678,
+   "type": "User"
+  },
+  "committer": {
+   "login": "example-dev",
+   "id": 12345678,
+   "type": "User"
+  }
+ },
+ {
+  "sha": "3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f",
+  "html_url": "https://github.com/example-dev/tooling/commit/3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f",
+  "commit": {
+   "author": {
+    "name": "Example Developer",
+    "email": "12345678+example-dev@users.noreply.github.com",
+    "date": "2026-06-01T18:00:00Z"
+   },
+   "committer": {
+    "name": "Example Developer",
+    "email": "12345678+example-dev@users.noreply.github.com",
+    "date": "2026-06-01T18:00:00Z"
+   },
+   "message": "Docs",
+   "verification": {
+    "verified": false,
+    "reason": "unsigned"
+   }
+  },
+  "author": {
+   "login": "example-dev",
+   "id": 12345678,
+   "type": "User"
+  },
+  "committer": {
+   "login": "example-dev",
+   "id": 12345678,
+   "type": "User"
+  }
+ },
+ {
+  "sha": "4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f70",
+  "html_url": "https://github.com/example-dev/tooling/commit/4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f70",
+  "commit": {
+   "author": {
+    "name": "Example Developer",
+    "email": "dev@work.example.net",
+    "date": "2025-12-24T15:00:00Z"
+   },
+   "committer": {
+    "name": "Example Developer",
+    "email": "dev@work.example.net",
+    "date": "2025-12-24T15:00:00Z"
+   },
+   "message": "Initial import",
+   "verification": {
+    "verified": false,
+    "reason": "unsigned"
+   }
+  },
+  "author": {
+   "login": "example-dev",
+   "id": 12345678,
+   "type": "User"
+  },
+  "committer": {
+   "login": "example-dev",
+   "id": 12345678,
+   "type": "User"
+  }
+ },
+ {
+  "sha": "5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f7081",
+  "html_url": "https://github.com/example-dev/tooling/commit/5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f7081",
+  "commit": {
+   "author": {
+    "name": "Unlinked Author",
+    "email": "unlinked@example.org",
+    "date": "2025-11-01T10:00:00Z"
+   },
+   "committer": {
+    "name": "Unlinked Author",
+    "email": "unlinked@example.org",
+    "date": "2025-11-01T10:00:00Z"
+   },
+   "message": "Vendor drop",
+   "verification": {
+    "verified": false,
+    "reason": "unsigned"
+   }
+  },
+  "author": null,
+  "committer": null
+ }
+]

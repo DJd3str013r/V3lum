@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "csaf_siemens",
+  "source_url": "https://cert-portal.siemens.com/productcert/csaf/provider-metadata.json",
+  "version": "CSAF 2.0 documents synced out of band into the local CSAF index; SSA-479842 in the test fixtures",
+  "sha256": "",
+  "licence": "Siemens License Terms / Terms of Use of Siemens' Global Website (Sections 8-10)",
+  "attribution": "Siemens ProductCERT Security Advisories, https://cert-portal.siemens.com/productcert/. Siemens Security Advisories are subject to Siemens' underlying license terms and the Terms of Use of Siemens' Global Website (https://www.siemens.com/terms_of_use, Sections 8-10); V3LUM shows excerpts with links only (P354 cond 4).",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/vulnerability_cve/csaf_advisories.py",
+    "tests/fixtures/csaf_advisories/siemens_doc.json"
+  ]
+}

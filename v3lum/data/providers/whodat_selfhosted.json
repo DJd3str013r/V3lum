@@ -1,0 +1,54 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "whodat_selfhosted",
+  "name": "Self-hosted who-dat instance (WHOIS/RDAP over HTTPS, setting whodat_url)",
+  "operator": "The organisation running V3LUM: a who-dat instance it deploys itself (who-dat is MIT-licensed open-source software, github.com/Lissy93/who-dat)",
+  "hosts": [],
+  "hosts_from_settings": ["whodat_url"],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Instance operated by the organisation itself (P343 FC2 'a self-hosted who-dat instance (MIT) when the setting whodat_url is configured'); it relays the queried domain only to the registries' own RDAP/WHOIS servers, and internet registries are trusted (A8). Deliberately not 'internal': the value leaves the company towards the registries, so modules using it stay disclosure third_party and are never allowed at TLP:RED.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Registry RDAP/WHOIS data normalised by who-dat (meta.source/meta.server name the registry server); the field mapping may lose detail, so registry values are never reinterpreted beyond the kept fields."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 15,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 2
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "api": {
+      "title": "who-dat lookup GET <whodat_url>/<domain>: normalised registration data (registrar, dates, nameservers, status, DNSSEC, meta.source rdap|whois, meta.server)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/Lissy93/who-dat",
+        "quote": "Order: a self-hosted who-dat instance (MIT) when the setting whodat_url is configured, then direct port-43 WHOIS to the registry server taken from the IANA root-zone page (cached 7 days).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "whodat",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P343 FC2); research record C0785 'MIT (code); data from registries' RDAP/WHOIS'. Only https URLs count (hosts_from_settings); a configured host that another provider owns (e.g. the public who-dat.as93.net instance) is ignored, so the public instance can never be reached through this setting. Contact values are dropped at ingestion (P343 FC4); never CNPJ pivots (FC5)."
+    }
+  },
+  "notes": "Owned by batch p2-G01-4 (P343 module whois_fallback). No key: an instance that answers 401 is reported 'could not verify' (V3LUM sends no credentials to it)."
+}

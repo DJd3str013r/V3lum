@@ -1,0 +1,66 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "$comment": "p=quarantine with pct=100 enforces DMARC: not spoofable even with ~all",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "nodes": [
+    {
+      "key": "domain:quarantined.example",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "spf_status": [
+          {
+            "value": "ok",
+            "source": "email_security_posture"
+          }
+        ],
+        "spf": [
+          {
+            "value": "v=spf1 include:_spf.mailhost.example ~all",
+            "source": "email_security_posture"
+          }
+        ],
+        "dmarc": [
+          {
+            "value": "v=DMARC1; p=quarantine; pct=100",
+            "source": "email_security_posture"
+          }
+        ],
+        "dmarc_policy": [
+          {
+            "value": "quarantine",
+            "source": "email_security_posture"
+          }
+        ],
+        "dmarc_pct": [
+          {
+            "value": 100,
+            "source": "email_security_posture"
+          }
+        ],
+        "dmarc_sp": [
+          {
+            "value": "quarantine",
+            "source": "email_security_posture"
+          }
+        ],
+        "email_posture": [
+          {
+            "value": {
+              "spf": "valid (~all)",
+              "dmarc": "p=quarantine",
+              "mx": "mx.quarantined.example"
+            },
+            "source": "email_security_posture"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": []
+}

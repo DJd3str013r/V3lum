@@ -1,0 +1,11 @@
+{
+ "_note": "a 404 from a challenge layer is not 'absent'",
+ "status": 404,
+ "headers": [
+  [
+   "Content-Type",
+   "text/html"
+  ]
+ ],
+ "body": "<html><head><title>Vercel Security Checkpoint</title></head><body></body></html>"
+}

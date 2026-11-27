@@ -1,0 +1,70 @@
+{
+ "_provenance": {
+  "synthetic": true
+ },
+ "exchanges": [
+  {
+   "_provenance": {
+    "synthetic": true
+   },
+   "request": {
+    "method": "GET",
+    "host": "app.example.com",
+    "path": "/q7w8e9r0t1y2u3i4"
+   },
+   "response": {
+    "status": 404,
+    "headers": {
+     "Content-Type": "text/html",
+     "Server": "nginx"
+    },
+    "body": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+   },
+   "history": [],
+   "final_url": null,
+   "transport_error": null
+  },
+  {
+   "_provenance": {
+    "synthetic": true
+   },
+   "request": {
+    "method": "GET",
+    "host": "app.example.com",
+    "path": "/z9x8c7v6b5n4m3l2/"
+   },
+   "response": {
+    "status": 404,
+    "headers": {
+     "Content-Type": "text/html",
+     "Server": "nginx"
+    },
+    "body": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+   },
+   "history": [],
+   "final_url": null,
+   "transport_error": null
+  },
+  {
+   "_provenance": {
+    "synthetic": true
+   },
+   "request": {
+    "method": "GET",
+    "host": "app.example.com",
+    "path": "/p0o9i8u7y6t5r4e3.json"
+   },
+   "response": {
+    "status": 404,
+    "headers": {
+     "Content-Type": "text/html",
+     "Server": "nginx"
+    },
+    "body": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+   },
+   "history": [],
+   "final_url": null,
+   "transport_error": null
+  }
+ ]
+}

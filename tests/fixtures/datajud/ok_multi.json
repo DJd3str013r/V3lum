@@ -1,0 +1,235 @@
+{
+ "took": 25010,
+ "timed_out": false,
+ "_shards": {
+  "total": 1,
+  "successful": 1,
+  "skipped": 0,
+  "failed": 0
+ },
+ "hits": {
+  "total": {
+   "value": 10000,
+   "relation": "gte"
+  },
+  "max_score": 1.0,
+  "hits": [
+   {
+    "_index": "api_publica_tjac",
+    "_id": "TJAC_G1",
+    "_score": 1.0,
+    "_source": {
+     "tribunal": "TJAC",
+     "grau": "G1",
+     "numeroProcesso": "07000551020188010022",
+     "dataAjuizamento": "20180412093322",
+     "orgaoJulgador": {
+      "codigo": 74302,
+      "nome": "Vara Unica de Porto Acre",
+      "codigoMunicipioIBGE": null
+     },
+     "classe": {
+      "codigo": 1116,
+      "nome": "Execução Fiscal"
+     },
+     "assuntos": [
+      {
+       "codigo": 6017,
+       "nome": "Dívida Ativa (Execução Fiscal)"
+      }
+     ],
+     "movimentos": [
+      {
+       "codigo": 60,
+       "dataHora": "2026-09-19T00:28:59.000Z",
+       "nome": "Expedição de documento",
+       "complementosTabelados": [
+        {
+         "codigo": 4,
+         "descricao": "tipo_de_documento",
+         "valor": 107,
+         "nome": "Certidão"
+        }
+       ],
+       "orgaoJulgador": {
+        "codigo": "74302",
+        "nome": "Vara Unica de Porto Acre"
+       }
+      },
+      {
+       "codigo": 60,
+       "dataHora": "2026-09-08T11:04:51.000Z",
+       "nome": "Expedição de documento",
+       "complementosTabelados": [
+        {
+         "codigo": 4,
+         "descricao": "tipo_de_documento",
+         "valor": 107,
+         "nome": "Certidão"
+        }
+       ],
+       "orgaoJulgador": {
+        "codigo": "74302",
+        "nome": "Vara Unica de Porto Acre"
+       }
+      },
+      {
+       "codigo": 11010,
+       "dataHora": "2026-08-31T12:58:53.000Z",
+       "nome": "Mero expediente",
+       "orgaoJulgador": {
+        "codigo": "74302",
+        "nome": "Vara Unica de Porto Acre"
+       }
+      }
+     ]
+    }
+   },
+   {
+    "_index": "api_publica_tjac",
+    "_id": "TJAC_G2",
+    "_score": 1.0,
+    "_source": {
+     "tribunal": "TJAC",
+     "grau": "G2",
+     "numeroProcesso": "07000551020188010022",
+     "dataAjuizamento": "2019-03-01T10:00:00.000Z",
+     "orgaoJulgador": {
+      "codigo": 1,
+      "nome": "Camara Civel"
+     },
+     "classe": {
+      "codigo": 198,
+      "nome": "Apelação Cível"
+     },
+     "assuntos": [
+      [
+       {
+        "codigo": 6017,
+        "nome": "Dívida Ativa (Execução Fiscal)"
+       }
+      ]
+     ],
+     "sistema": {
+      "codigo": 1,
+      "nome": "Pje"
+     },
+     "formato": {
+      "codigo": 1,
+      "nome": "Eletrônico"
+     },
+     "dataHoraUltimaAtualizacao": "2026-10-01T12:00:00.000Z",
+     "movimentos": [
+      {
+       "codigo": 22,
+       "nome": "Baixa Definitiva",
+       "dataHora": "2020-01-10T10:00:00.000Z"
+      },
+      {
+       "codigo": 26,
+       "nome": "Distribuição",
+       "dataHora": "2019-03-01T10:00:00.000Z"
+      }
+     ]
+    }
+   },
+   {
+    "_index": "api_publica_tjac",
+    "_id": "OTHER",
+    "_score": 0.5,
+    "_source": {
+     "tribunal": "TJSP",
+     "grau": "G1",
+     "numeroProcesso": "00012347120248260100",
+     "dataAjuizamento": "2019-03-01T10:00:00.000Z",
+     "orgaoJulgador": {
+      "codigo": 1,
+      "nome": "Camara Civel"
+     },
+     "classe": {
+      "codigo": 198,
+      "nome": "Apelação Cível"
+     },
+     "assuntos": [
+      [
+       {
+        "codigo": 6017,
+        "nome": "Dívida Ativa (Execução Fiscal)"
+       }
+      ]
+     ],
+     "sistema": {
+      "codigo": 1,
+      "nome": "Pje"
+     },
+     "formato": {
+      "codigo": 1,
+      "nome": "Eletrônico"
+     },
+     "dataHoraUltimaAtualizacao": "2026-10-01T12:00:00.000Z",
+     "movimentos": [
+      {
+       "codigo": 22,
+       "nome": "Baixa Definitiva",
+       "dataHora": "2020-01-10T10:00:00.000Z"
+      },
+      {
+       "codigo": 26,
+       "nome": "Distribuição",
+       "dataHora": "2019-03-01T10:00:00.000Z"
+      }
+     ]
+    }
+   },
+   {
+    "_index": "api_publica_tjac",
+    "_id": "SEALED",
+    "_score": 0.5,
+    "_source": {
+     "tribunal": "TJAC",
+     "grau": "JE",
+     "numeroProcesso": "07000551020188010022",
+     "dataAjuizamento": "2019-03-01T10:00:00.000Z",
+     "orgaoJulgador": {
+      "codigo": 1,
+      "nome": "Camara Civel"
+     },
+     "classe": {
+      "codigo": 198,
+      "nome": "Apelação Cível"
+     },
+     "assuntos": [
+      [
+       {
+        "codigo": 6017,
+        "nome": "Dívida Ativa (Execução Fiscal)"
+       }
+      ]
+     ],
+     "sistema": {
+      "codigo": 1,
+      "nome": "Pje"
+     },
+     "formato": {
+      "codigo": 1,
+      "nome": "Eletrônico"
+     },
+     "dataHoraUltimaAtualizacao": "2026-10-01T12:00:00.000Z",
+     "movimentos": [
+      {
+       "codigo": 22,
+       "nome": "Baixa Definitiva",
+       "dataHora": "2020-01-10T10:00:00.000Z"
+      },
+      {
+       "codigo": 26,
+       "nome": "Distribuição",
+       "dataHora": "2019-03-01T10:00:00.000Z"
+      }
+     ],
+     "nivelSigilo": 1
+    }
+   }
+  ]
+ }
+}

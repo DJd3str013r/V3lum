@@ -1,0 +1,9 @@
+{
+ "_envelope": 1,
+ "_synthetic": "binlist.net docs: 'If no matching cards are found an HTTP 404 response is returned' (body not documented; not observed live - BIN 100000 gave HTTP 200 with empty fields)",
+ "status": 404,
+ "headers": {
+  "server": "cloudflare"
+ },
+ "body": ""
+}

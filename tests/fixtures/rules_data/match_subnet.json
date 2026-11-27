@@ -1,0 +1,43 @@
+{
+ "schema": "v3lum.rule/1",
+ "id": "t_match_subnet",
+ "version": "1",
+ "title": "Address inside an own netblock",
+ "severity": "low",
+ "criterion": "test rule (match_all_to_first_collection)",
+ "references": [
+  "https://github.com/smicallef/spiderfoot"
+ ],
+ "attack": [],
+ "false_positives": "synthetic test rule",
+ "collections": [
+  {
+   "name": "netblocks",
+   "entity_types": [
+    "cidr"
+   ],
+   "filters": [
+    {
+     "field": "tag:own_asset",
+     "op": "exists"
+    }
+   ]
+  },
+  {
+   "name": "addresses",
+   "entity_types": [
+    "ipv4"
+   ],
+   "filters": []
+  }
+ ],
+ "analysis": {
+  "method": "match_all_to_first_collection",
+  "match": "subnet"
+ },
+ "headline": "{count} entities in own netblock {value}",
+ "recommendation": "Review the listed entities.",
+ "aggregation": {
+  "field": "value"
+ }
+}

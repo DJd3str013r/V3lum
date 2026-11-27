@@ -1,0 +1,19 @@
+{
+ "_meta": {
+  "provenance": "documented",
+  "source": "api.urldna.io/openapi.json (429 APIError); docs: free plan 100 API requests/day",
+  "request": {
+   "method": "POST",
+   "url": "https://api.urldna.io/v1/search",
+   "json": {
+    "query": "domain = example.com",
+    "max_results": 32
+   }
+  }
+ },
+ "status": 429,
+ "headers": {},
+ "body": {
+  "detail": "Too Many Requests: Rate limit exceeded."
+ }
+}

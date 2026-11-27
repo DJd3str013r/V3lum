@@ -1,0 +1,22 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://archive.org/wayback/available?url=registro.br/robots.txt",
+  "headers": {}
+ },
+ "response": {
+  "status": 429,
+  "headers": {
+   "server": "nginx/1.26.3",
+   "date": "Thu, 26 Nov 2026 06:15:54 GMT",
+   "content-type": "text/html; charset=utf-8",
+   "cache-control": "no-cache"
+  },
+  "body": "<html><body><h1>429 Too Many Requests</h1>\nYou have sent too many requests in a given amount of time.\n</body></html>\n"
+ },
+ "transport_error": null,
+ "elapsed_s": 0.419,
+ "observed_at": "2026-11-26T06:15:53Z",
+ "origin": "live",
+ "note": "archive.org availability API answered 429 to the first request of this run (shared datacenter egress; parallel batches)"
+}

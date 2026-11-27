@@ -1,0 +1,19 @@
+{
+ "schema": "v3lum.web_fingerprint.own_rules/1",
+ "licence": "MIT (V3LUM own rules, kept separate from the GPL-3.0 webappanalyzer data - P072 final condition 4)",
+ "semantics": "A rule hits when at least min_hits of its parts match: title (any regex on the <title>), assets (each regex on script src, link href and the page path), html (any regex on the first 500 KB of HTML). kind phishing_kit makes the page hostile (technologies become attributes, never vulnerability findings); kind panel is an exposed administration/monitoring panel.",
+ "rules": [
+  {"name": "Generic BR bank-credential phishing kit", "kind": "phishing_kit",
+   "title": ["(?:internet banking|acesso seguro|atualiza(?:c|ç)(?:a|ã)o cadastral|libera(?:c|ç)(?:a|ã)o de dispositivo)"],
+   "assets": ["/(?:css|js|img)/(?:token|seguranca|validacao)[-_]?(?:pf|pj|app)?\\.(?:css|js|png)$", "/(?:next|envia|send|post)\\.php$"],
+   "html": ["name=[\"'](?:senha(?:6|8)?|cartao|cvv|token|assinatura)[\"']"],
+   "min_hits": 2},
+  {"name": "Generic fake-store checkout (PIX-only)", "kind": "phishing_kit",
+   "title": ["(?:black friday|queima de estoque|oferta rel(?:a|â)mpago)"],
+   "html": ["(?:pague com pix|chave pix)[^<]{0,80}(?:desconto|aprovado na hora)"],
+   "min_hits": 2},
+  {"name": "Grafana", "kind": "panel", "title": ["^Grafana$"], "assets": ["/public/build/[\\w.-]{1,120}\\.js$"], "min_hits": 2},
+  {"name": "phpMyAdmin", "kind": "panel", "title": ["^phpMyAdmin\\b"], "assets": ["/themes/pmahomme/", "/js/vendor/jquery/"], "min_hits": 2},
+  {"name": "Jenkins", "kind": "panel", "title": ["(?:Dashboard|Sign in) \\[Jenkins\\]"], "assets": ["/static/[0-9a-f]{8}/"], "min_hits": 1}
+ ]
+}

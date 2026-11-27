@@ -1,0 +1,12 @@
+{
+ "_note": "Wayback id_ answer that is an HTML error page served 200 (shape of web.archive.org error pages)",
+ "url": "https://web.archive.org/web/2id_/https://www.example.com/favicon.ico",
+ "status": 200,
+ "headers": [
+  [
+   "Content-Type",
+   "text/html; charset=utf-8"
+  ]
+ ],
+ "body": "<!DOCTYPE html><html><head><title>Wayback Machine</title></head><body><p>Hrm. The Wayback Machine has not archived that URL.</p></body></html>"
+}

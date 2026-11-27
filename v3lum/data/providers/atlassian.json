@@ -1,0 +1,63 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "atlassian",
+  "name": "Atlassian Cloud site edge tenant info (public, unauthenticated)",
+  "operator": "Atlassian Corporation",
+  "hosts": [
+    "*.atlassian.net"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms, a privacy policy and a business offering (A8 trusted); P371 provider_tier 'trusted' (council #1).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "First-party edge answer of the requested <name>.atlassian.net site (cloudId JSON vs the edge 'Page Unavailable' 404); the endpoint is undocumented, and a site under a name never proves which organisation owns it (P371 FC5)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 10,
+    "retries": 0,
+    "ttl": 604800,
+    "min_interval": 2.0,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "rate_per_second": 0.5,
+    "day": 60,
+    "published": false,
+    "evidence_url": "https://www.atlassian.com/legal/acceptable-use-policy",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "tenant_info": {
+      "title": "Atlassian Cloud tenant discovery: https://<name>.atlassian.net/_edge/tenant_info (200 {cloudId} = site exists, edge 404 'Page Unavailable' = no site)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.atlassian.com/legal/acceptable-use-policy",
+        "quote": "Vendor public endpoints (no authentication).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "atlassian",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0797, live 2026-11-26 (batch p3-G13-1): ecosystem.atlassian.net answered 200 {\"cloudId\": ...} (server AtlassianEdge); a random name answered 404 text/html 'Atlassian Cloud Notifications - Page Unavailable' from the edge. The same page with a 5xx status is an outage (could not verify). Login, signup and user endpoints are never requested (rule 2, P371 FC3). Politeness budget (not published by Atlassian): 0.5 request/s and 60 per day per egress, one GET per candidate, no retries."
+    }
+  },
+  "notes": "Owned by batch p3-G13-1 (P371, module saas_tenant_discovery). Only the fixed FC2 path is ever built and redirects are never followed; the candidate name is the only value Atlassian receives."
+}

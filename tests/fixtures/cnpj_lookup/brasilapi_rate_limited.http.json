@@ -1,0 +1,20 @@
+{
+ "request": "GET https://brasilapi.com.br/api/cnpj/v1/00000000000191",
+ "response": {
+  "status": 429,
+  "headers": {
+   "content-type": "application/json; charset=utf-8",
+   "retry-after": "30"
+  },
+  "body": {
+   "message": "Too Many Requests",
+   "type": "too_many_requests",
+   "name": "TooManyRequestsError"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "observed_at": null,
+ "origin": "synthetic",
+ "note": "synthetic: not observed live (requests stayed under the limit); status and headers model the documented limit, body is a placeholder"
+}

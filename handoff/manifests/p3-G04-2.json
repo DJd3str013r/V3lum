@@ -1,0 +1,152 @@
+{
+ "batch": "p3-G04-2",
+ "modules": [
+  {
+   "name": "intelx_metadata",
+   "file": "v3lum/modules/breach_leak/intelx_metadata.py",
+   "proposal": "P139",
+   "category": "breach_leak",
+   "opsec": "passive",
+   "default_enabled": false,
+   "terms": "key-terms",
+   "provider_tier": "trusted",
+   "keys": [
+    "intelx"
+   ],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:intelx_buckets",
+    "attribute:intelx_records",
+    "attribute:intelx_search",
+    "tag:leak_index"
+   ],
+   "live_check": "live 2026-11-26: needs_key (no company key) - modules end NEEDS_KEY before any request; keyless protocol probe GET free.intelx.io/intelligent/search/result?id=<random uuid> without x-key -> HTTP 401 (as recorded 2026-11-25); no selector sent"
+  },
+  {
+   "name": "intelx_phonebook",
+   "file": "v3lum/modules/breach_leak/intelx_metadata.py",
+   "proposal": "P139",
+   "category": "breach_leak",
+   "opsec": "passive",
+   "default_enabled": false,
+   "terms": "key-terms",
+   "provider_tier": "trusted",
+   "keys": [
+    "intelx"
+   ],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:intelx_phonebook",
+    "relation:leak_index_selector"
+   ],
+   "live_check": "live 2026-11-26: needs_key (no company key) - modules end NEEDS_KEY before any request; keyless protocol probe GET free.intelx.io/intelligent/search/result?id=<random uuid> without x-key -> HTTP 401 (as recorded 2026-11-25); no selector sent (phonebook lookups are not on the IntelX free tier)"
+  },
+  {
+   "name": "leak_lookup_public",
+   "file": "v3lum/modules/breach_leak/leak_lookup_public.py",
+   "proposal": "P140",
+   "category": "breach_leak",
+   "opsec": "passive",
+   "default_enabled": false,
+   "terms": "key-terms",
+   "provider_tier": "community",
+   "keys": [
+    "leaklookup"
+   ],
+   "datasets": [
+    "hibp_breaches.json (shared P132 HIBP catalogue dataset of hibp_catalog, source hibp.catalog; not owned by this batch)"
+   ],
+   "pivot_packs": [],
+   "correlation_rules": [
+    "p3g042_leaklookup_breach_merge"
+   ],
+   "new_vocabulary": [],
+   "live_check": "live 2026-11-26: needs_key (no company public key) - module ends NEEDS_KEY before any request; keyless protocol probe POST leak-lookup.com/api/search with an empty key and empty query -> HTTP 200 {'error':'true',...} classified ERROR by provider marker leaklookup_key_refused (never EMPTY); no value sent"
+  },
+  {
+   "name": "pwned_passwords_internal",
+   "file": "v3lum/modules/breach_leak/pwned_passwords_internal.py",
+   "proposal": "P141",
+   "category": "breach_leak",
+   "opsec": "passive",
+   "default_enabled": false,
+   "terms": "open",
+   "provider_tier": "trusted",
+   "keys": [],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [],
+   "live_check": "live 2026-11-26 OK: helper over the core HttpClient, GET api.pwnedpasswords.com/range/5BAA6 with Add-Padding -> 'password' appears 52373976 times (prefix only sent); random value -> count >= 0. NOT a registered module (P141 cond 1): staged library awaiting core/pwned.py + secret_scanner wiring"
+  }
+ ],
+ "proposals_not_done": [
+  {
+   "id": "P141",
+   "reason": "Partially delivered: the k-anonymity helper (cond 2-5: in-memory uppercase SHA-1, 5-char prefix + Add-Padding only, in-memory suffix match, nothing logged/cached/returned, 'appears N times in public breach corpora' note on the masked finding, HIBP CC BY 4.0 attribution, 5BAA6 fixtures) is staged in v3lum/modules/breach_leak/pwned_passwords_internal.py with tests. Cond 1 wiring is outside batch ownership: the council placed it in core (v3lum/core/pwned.py) callable only by secret_scanner, behind setting secret_scanner_pwned_check; batches may not create core files, edit secret_scanner or register a secret_scanner_* setting, and secret_scanner (disclosure none) has no HTTP route to api.pwnedpasswords.com. See core_requests and docs/backlog/p3-G04-2.md."
+  }
+ ],
+ "core_requests": [
+  "P141: create v3lum/core/pwned.py re-exporting v3lum.modules.breach_leak.pwned_passwords_internal (lookup, annotate, check_enabled, http_fetch), give it a core-scoped HTTP client for provider pwnedpasswords (host api.pwnedpasswords.com, source pwnedpasswords.range, keyless, neutral UA, ttl 0, no redirects), register core setting secret_scanner_pwned_check (bool, default false) and have secret_scanner call lookup() for password-type findings with the in-memory value before masking, storing annotate() output on the masked finding; then move the module file into core and drop the staging copy.",
+  "providers.MARKER_MAPS / http._MARKER_CODES: add maps_to 'needs_key' (raising AuthRequired -> NEEDS_KEY) so key refusals inside HTTP 200 bodies (Leak-Lookup 'MISSING/INVALID/INACTIVE API KEY', P140 cond 3) become NEEDS_KEY instead of ERROR.",
+  "v3lum/correlations/p2_g04_1.py (owner p2-G04-1): add leak_lookup_public to MODULE_ORDER (after leakcheck_public) so p2g04_breach_merge covers Leak-Lookup; then retire p3g042_leaklookup_breach_merge.",
+  "redact.CREDENTIAL_HEADERS: add 'x-key' (Intelligence X key header) so it is stripped on origin change and redacted by name even before the key value is registered (today it is caught only through has_secret on the configured value).",
+  "config.KNOWN_KEYS (optional): add 'leaklookup' (Leak-Lookup public key, aliases V3LUM_LEAKLOOKUP_KEY/V3LUM_LEAKLOOKUP_PUBLIC_KEY) as P140 cond 1 words it; today it is registered through the provider fragment keys block, which key_registry() merges, and 'intelx' gains alias V3LUM_INTELX_KEY the same way.",
+  "ctx: a documented ctx.pause(seconds) helper (runtime clock in tests, cancel-aware wait in production) for polling modules; intelx_metadata reads ctx.runtime.clock / ctx.cancel_event like datajud and cloud_buckets do.",
+  "P337 keys wizard / health checks for IntelX: P139 cond 1 excludes /authenticate/info, so a key test costs one search credit; decide (architect) whether /authenticate/info may be allow-listed for health checks only."
+ ],
+ "files": [
+  "v3lum/modules/breach_leak/intelx_metadata.py",
+  "v3lum/modules/breach_leak/leak_lookup_public.py",
+  "v3lum/modules/breach_leak/pwned_passwords_internal.py",
+  "v3lum/correlations/p3_g04_2.py",
+  "v3lum/data/providers/intelx.json",
+  "v3lum/data/providers/leaklookup.json",
+  "v3lum/data/vocab/p3-G04-2.json",
+  "tests/modules/test_intelx_metadata.py",
+  "tests/modules/test_intelx_phonebook.py",
+  "tests/modules/test_leak_lookup_public.py",
+  "tests/modules/test_pwned_passwords_internal.py",
+  "tests/live/test_p3_g04_2.py",
+  "docs/backlog/p3-G04-2.md",
+  "tests/fixtures/intelx_metadata/malformed.txt",
+  "tests/fixtures/intelx_metadata/needs_key_401.json",
+  "tests/fixtures/intelx_metadata/quota_402.json",
+  "tests/fixtures/intelx_metadata/search_result_done_empty.json",
+  "tests/fixtures/intelx_metadata/search_result_id_not_found.json",
+  "tests/fixtures/intelx_metadata/search_result_ok.json",
+  "tests/fixtures/intelx_metadata/search_result_pending.json",
+  "tests/fixtures/intelx_metadata/search_start_invalid_term.json",
+  "tests/fixtures/intelx_metadata/search_start_ok.json",
+  "tests/fixtures/intelx_phonebook/needs_key_401.json",
+  "tests/fixtures/intelx_phonebook/phonebook_result_empty.json",
+  "tests/fixtures/intelx_phonebook/phonebook_result_ok.json",
+  "tests/fixtures/intelx_phonebook/quota_402.json",
+  "tests/fixtures/intelx_phonebook/search_start_ok.json",
+  "tests/fixtures/leak_lookup_public/blocked_challenge.html",
+  "tests/fixtures/leak_lookup_public/error_invalid_key.json",
+  "tests/fixtures/leak_lookup_public/error_limit.json",
+  "tests/fixtures/leak_lookup_public/error_other.json",
+  "tests/fixtures/leak_lookup_public/error_rate_limit.json",
+  "tests/fixtures/leak_lookup_public/hibp_catalogue_subset.json",
+  "tests/fixtures/leak_lookup_public/needs_key_missing.json",
+  "tests/fixtures/leak_lookup_public/not_found.json",
+  "tests/fixtures/leak_lookup_public/ok_email.json",
+  "tests/fixtures/leak_lookup_public/ok_list_form.json",
+  "tests/fixtures/leak_lookup_public/private_records.json",
+  "tests/fixtures/pwned_passwords_internal/error_400_bad_format.json",
+  "tests/fixtures/pwned_passwords_internal/error_400_not_hex.json",
+  "tests/fixtures/pwned_passwords_internal/malformed_truncated.txt",
+  "tests/fixtures/pwned_passwords_internal/range_padded_headers.json",
+  "tests/fixtures/pwned_passwords_internal/range_padded_ok.txt",
+  "tests/fixtures/pwned_passwords_internal/range_plain_headers.json",
+  "tests/fixtures/pwned_passwords_internal/range_plain_ok.txt",
+  "tests/fixtures/rules/p3g042_leaklookup_breach_merge/negative_leaklookup_alone_or_other_breach.json",
+  "tests/fixtures/rules/p3g042_leaklookup_breach_merge/positive_leaklookup_and_hibp_same_breach.json"
+ ],
+ "notes": "Two modules for P139 in one file (one per IntelX source C0311/C0312): intelx_metadata (intelligent search; e-mail/domain/URL; run_on own_assets with in-module A4 scope check; own assets keep system ids + analyst links https://intelx.io/?did=<id>, third-party selectors keep masked bucket names and dates only) and intelx_phonebook (own_assets_only, verified own domains; third-party selectors counted, never kept; pivots expand=False). Endpoint allow-list with tests proving file/preview/view/read/download/export/authenticate can never be built or sent; bounded polling (<= 5 polls, delays 1/2/3/5/8 s, <= 30 s, terminate) via FakeClock tests; P145 schemas in the provider fragments drop item names before the module reads a body (the HTTP client hands sensitive providers' sanitized bodies to modules). P140: public key in the POST body, type allow-list (no password/ipaddress/phone/fullname), schema keeps error flag + breach names and empties private-tier record lists (module refuses them), error-in-200 through four provider markers (REQUEST LIMIT -> QUOTA, RATE LIMIT -> RATE_LIMITED, API KEY -> ERROR, other error:true -> ERROR), P334 quota block from the published public plan (10/day, 5/min), names joined through the shared P132 catalogue helper + breach_accounts emit_listings (sensitive names masked, generic addresses capped), domain mode only for verified own domains (Leak-Lookup terms forbid mass-domain queries), merge rule p3g042_leaklookup_breach_merge with positive/negative graph fixtures. Provider terms checked live 2026-11-26: IntelX free tier forbids integrating the API without written consent (free_plan_business_use false; quota 'Selector Search 50 /day', phonebook not on free); Leak-Lookup allows searches only for oneself or written-authorised subjects (free_plan_business_use null). Merge gate P139/P140 cond 6: success fixtures are synthetic (no company keys) - recorded in docs/backlog/p3-G04-2.md. Modules are default_enabled False, so no AR21 acceptance route. No leftovers of an earlier run existed for this batch."
+}

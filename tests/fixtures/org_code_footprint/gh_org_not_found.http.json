@@ -1,0 +1,22 @@
+{
+ "_meta": {
+  "module": "org_code_footprint",
+  "case": "gh_org_not_found",
+  "source": "C0758 api.github.com",
+  "request": {
+   "method": "GET",
+   "url": "https://api.github.com/orgs/qz7k2v9m4p1w8n3x5c6b"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "DOC-SHAPED",
+  "note": "GitHub REST 404 layout; not observed here (proxy)"
+ },
+ "status": 404,
+ "headers": {
+  "content-type": "application/json; charset=utf-8",
+  "x-ratelimit-limit": "60",
+  "x-ratelimit-remaining": "57",
+  "x-ratelimit-resource": "core"
+ },
+ "body": "{\"message\": \"Not Found\", \"documentation_url\": \"https://docs.github.com/rest/orgs/orgs#get-an-organization\", \"status\": \"404\"}"
+}

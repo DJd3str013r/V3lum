@@ -1,0 +1,8 @@
+{
+ "_synthetic": "GET /users/{login} shape from the GitHub REST docs ('Get a user'); the live call was refused by this sandbox's GitHub proxy (repository-scoped sessions), so P086-FC9 re-capture from the team network is still due",
+ "login": "example-org-1",
+ "id": 2000001,
+ "html_url": "https://github.com/example-org-1",
+ "type": "Organization",
+ "email": "contact@example.org"
+}

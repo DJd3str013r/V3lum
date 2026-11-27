@@ -1,0 +1,16 @@
+{
+  "schema": "v3lum.attack_index/1",
+  "version": "enterprise-attack 20.1 (2026-11-05)",
+  "source": "https://github.com/mitre-attack/attack-stix-data (enterprise-attack.json)",
+  "attribution": "MITRE ATT&CK(R) is a registered trademark of The MITRE Corporation. (c) The MITRE Corporation. This work is reproduced and distributed with the permission of The MITRE Corporation (ATT&CK terms of use).",
+  "notes": "Batch p1-G10-3 (P360): techniques mapped by the bcb_lookalike_activity rule (lookalike registrations of BCB-verified institution domains). Same entry as the other packs that map it (first declaration wins).",
+  "techniques": {
+    "T1583.001": {
+      "name": "Acquire Infrastructure: Domains",
+      "stix_id": "attack-pattern--40f5caa0-4cb7-4117-89fc-d421bb493df3",
+      "revoked": false,
+      "deprecated": false,
+      "replaced_by": null
+    }
+  }
+}

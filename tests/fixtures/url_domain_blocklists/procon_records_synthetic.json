@@ -1,0 +1,22 @@
+{
+ "Result": "OK",
+ "TotalRecordCount": "2",
+ "Records": [
+  {
+   "intCodSite": "1",
+   "strSite": "www.loja-falsa.example.com.br",
+   "strEmpresa": "Loja Exemplo Ltda",
+   "strCNPJ": "11.222.333/0001-81",
+   "strSituacao": "1",
+   "dtInclusao": "2026-05-12"
+  },
+  {
+   "intCodSite": "2",
+   "strSite": "http://ofertas.example.net/",
+   "strEmpresa": "Fulano de Tal",
+   "strCNPJ": "123.456.789-09",
+   "strSituacao": "0",
+   "dtInclusao": "2025-12-01"
+  }
+ ]
+}

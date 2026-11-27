@@ -1,0 +1,17 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p9-G01-1",
+  "title": "Domain ownership verifier (batch p9-G01-1: P013 domain_ownership correlation rules)",
+  "owner": "batch p9-G01-1 (v3lum/correlations/ownership.py: domain_ownership, domain_ownership_cnpj_mismatch, domain_ownership_invalid_cnpj, domain_ownership_person)",
+  "notes": "P013 is a correlation pack over facts already in the graph (no module, no host, no key). Core and sibling names are read, never redefined: registered, cnpj_roots, registrant, registrant_kind, privacy_proxy, created, domain_age_days, rdap_server (rdap; a registrant organisation is registry-vetted only under registro.br, self-declared elsewhere); mx, spf, spf_includes (dns_records / email_security_posture); m365_tenant_id (m365_tenant); tls_certificate (tls_inspect); homepage_indicators (web_archives, P059); site_contacts (P077); legal_name (cnpj_lookup); tags fraud, suspicious, privacy, own_asset, known_good. natural_person is the WP22 correlate.PERSON_TAG, declared here because no fragment declares it yet. cert_organizations is declared here as the certificate-subject fact the rule reads; producers (Cert Spotter cert_der in ct_logs, Censys certificates, tls_inspect) are expected to adopt it.",
+  "attributes": {
+    "cert_organizations": "certificate subject organisations seen for a domain [{o, validation EV|OV|IV|DV, names (SAN dNSNames), source, given_name, surname}]: O= only from OV/EV certificates; given_name/surname only from IV certificates (person data, privacy); read by domain_ownership (P013 cond 3)"
+  },
+  "tags": {
+    "clone_indicator": "the site looks like a copy of another company's site (e.g. a CNPJ displayed that does not match the domain's registrant): a fraud / fake-store lead, never a verdict on its own (P013 cond 4)",
+    "ownership": "result of the domain ownership verifier (P013): CONFIRMED only from registry or org-profile data, PROBABLE from OV/EV certificate O= (+ tenancy), POSSIBLE = unconfirmed link",
+    "org_seed_candidate": "CONFIRMED/PROBABLE ownership of a domain the org profile does not list: a `v3lum org seed` proposal that needs analyst confirmation, never an ACTIVE scope entry (P013 cond 7)",
+    "natural_person": "the correlation links a natural person (P258 cond 3): capped at PROBABLE unless an analyst confirmed it; used by domain_ownership_person (P013 cond 6), tag name of correlate.PERSON_TAG (WP22)"
+  },
+  "relations": {}
+}

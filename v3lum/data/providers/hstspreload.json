@@ -1,0 +1,38 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "hstspreload",
+  "name": "HSTS preload list status API (hstspreload.org)",
+  "operator": "The Chromium Projects (Google LLC)",
+  "hosts": ["hstspreload.org"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Run by the Chromium project (Google) as the official submission and status site of the HSTS preload list shipped in Chrome, Firefox, Safari and Edge; public source code (github.com/chromium/hstspreload.org) and long public track record (A8 trusted; P076 chair: 'Qualys, Mozilla and Chromium: tier trusted').",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "A", "justification": "Authoritative state of the preload list (the list itself is the source of truth for browsers); the API answers from the list database."},
+  "http_profile": {"user_agent": "neutral", "accept": "application/json", "timeout": 15, "retries": 1, "ttl": 86400, "min_interval": 1.0, "concurrency": 1},
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "status": {
+      "title": "Preload status of one domain: GET /api/v2/status?domain={domain} (never /preloadable, /removable, /submit or /remove)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/chromium/hstspreload.org",
+        "quote": "HSTS preload uses /status only, never /preloadable (which makes hstspreload.org fetch the site) (P076 final condition 5). The status API is public, keyless and answered from the preload-list database; the project code is BSD-3-Clause (chromium/hstspreload.org).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "chromium_hsts_preload",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0184 (verified_live 200). Statuses (database/domainstate.go): unknown, pending, preloaded, rejected, removed, pending-removal, pending-automated-removal; preloadedDomain names the parent entry that covers a subdomain. Answers are cached one minute server-side (api.go). /preloadable and /removable make hstspreload.org fetch the site and /submit and /remove change state: posture_third_party never builds them (P076 cond 5, guarded by check_passive_request)."
+    }
+  },
+  "notes": "Batch p9-G03-2 (P076 posture_third_party). Only the status endpoint is used; the module runs on org-profile own assets and in-scope targets only."
+}

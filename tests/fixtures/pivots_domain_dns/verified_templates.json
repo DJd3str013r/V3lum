@@ -1,0 +1,173 @@
+{
+ "module": "pivots_domain_dns",
+ "pack": "domain_dns",
+ "note": "Maintainer verification of the pack templates (batch p2-G14-1): status, date and size only, no page bodies or headers. V3LUM never requests these URLs; values are benign public ones.",
+ "checks": [
+  {
+   "check": "completedns__ok",
+   "url": "https://completedns.com/dns-history/?domain=example.com",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 3540
+  },
+  {
+   "check": "crtsh_domain__ok",
+   "url": "https://crt.sh/?q=registro.br",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 50308
+  },
+  {
+   "check": "crtsh_sha256__not_found",
+   "url": "https://crt.sh/?q=0000000000000000000000000000000000000000000000000000000000000000",
+   "status": 502,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 150
+  },
+  {
+   "check": "dnsviz__ok",
+   "url": "https://dnsviz.net/d/example.com/dnssec/",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 5561
+  },
+  {
+   "check": "dnsviz__registro",
+   "url": "https://dnsviz.net/d/registro.br/dnssec/",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 5563
+  },
+  {
+   "check": "hostio__ok",
+   "url": "https://host.io/example.com",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 10897
+  },
+  {
+   "check": "whoxy__ok",
+   "url": "https://www.whoxy.com/example.com",
+   "status": 301,
+   "at": "2026-11-26",
+   "redirect": "https://www.whoxy.com/whois/example.com",
+   "bytes": 287
+  },
+  {
+   "check": "dmarcian__ok",
+   "url": "https://dmarcian.com/dmarc-inspector/?domain=google.com",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 51412
+  },
+  {
+   "check": "dt_reverseip__ok",
+   "url": "https://reverseip.domaintools.com/search/?q=example.com",
+   "status": 500,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 84
+  },
+  {
+   "check": "intodns__ok",
+   "url": "https://intodns.com/example.com",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 4991
+  },
+  {
+   "check": "mxtoolbox_spf__ok",
+   "url": "https://mxtoolbox.com/SuperTool.aspx?action=spf%3agoogle.com&run=toolpage",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 30348
+  },
+  {
+   "check": "mxtoolbox_dmarc__ok",
+   "url": "https://mxtoolbox.com/SuperTool.aspx?action=dmarc%3agoogle.com&run=toolpage",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 30347
+  },
+  {
+   "check": "mxtoolbox_mx__ok",
+   "url": "https://mxtoolbox.com/SuperTool.aspx?action=mx%3agoogle.com&run=toolpage",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 30347
+  },
+  {
+   "check": "verisign__ok",
+   "url": "https://dnssec-debugger.verisignlabs.com/example.com",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 52846
+  },
+  {
+   "check": "whois_is__ok",
+   "url": "https://who.is/whois/example.com",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 11814
+  },
+  {
+   "check": "whoiscom__ok",
+   "url": "https://www.whois.com/whois/example.com",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 9183
+  },
+  {
+   "check": "whoxy__whois",
+   "url": "https://www.whoxy.com/whois/example.com",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 2987
+  },
+  {
+   "check": "crtsh_sha256__not_found_retry",
+   "url": "https://crt.sh/?q=0000000000000000000000000000000000000000000000000000000000000000",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 1589
+  },
+  {
+   "check": "crtsh_sha256__ok_isrg_root_x1",
+   "url": "https://crt.sh/?q=96bcec06264976f37460779acf28c5a7cfe8a3c0aae11a8ffcee05c0bddf08c6",
+   "status": 404,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 210
+  },
+  {
+   "check": "crtsh_sha256_isrg_root_x1",
+   "url": "https://crt.sh/?q=96bcec06264976f37460779acf28c5a7cfe8a3c0aae11a8ffcee05c0bddf08c6",
+   "status": 502,
+   "at": "2026-11-26",
+   "observed": "502 Bad Gateway (crt.sh is unstable)"
+  },
+  {
+   "check": "crtsh_sha256_isrg_root_x1_retry",
+   "url": "https://crt.sh/?q=96bcec06264976f37460779acf28c5a7cfe8a3c0aae11a8ffcee05c0bddf08c6",
+   "status": 200,
+   "at": "2026-11-26",
+   "observed": "certificate page, crt.sh ID 9314791, 'Root certificate'"
+  }
+ ]
+}

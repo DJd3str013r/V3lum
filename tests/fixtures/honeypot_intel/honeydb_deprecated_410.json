@@ -1,0 +1,7 @@
+{
+ "error": {
+  "code": "endpoint_deprecated",
+  "message": "This endpoint was removed on 2026-09-28. See API documentation for replacement endpoints.",
+  "documentation_url": "https://honeydb.io/docs/api"
+ }
+}

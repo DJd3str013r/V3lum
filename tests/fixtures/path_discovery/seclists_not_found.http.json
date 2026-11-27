@@ -1,0 +1,22 @@
+{
+ "_provenance": {
+  "synthetic": false,
+  "observed_utc": "2026-11-26T11:13:55Z",
+  "elapsed_s": 0.123
+ },
+ "request": {
+  "method": "GET",
+  "host": "raw.githubusercontent.com",
+  "path": "/danielmiessler/SecLists/01bd31a91d11025e37c776b01edfe61c58dba784/Discovery/Web-Content/spring-boot.txt"
+ },
+ "response": {
+  "status": 404,
+  "headers": {
+   "content-type": "text/plain; charset=utf-8"
+  },
+  "body": "404: Not Found"
+ },
+ "history": [],
+ "final_url": null,
+ "transport_error": null
+}

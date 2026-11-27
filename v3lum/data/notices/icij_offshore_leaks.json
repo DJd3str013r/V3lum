@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "icij_offshore_leaks",
+  "source_url": "https://offshoreleaks.icij.org/pages/database",
+  "version": "full-oldb.LATEST.zip (runtime download by `v3lum data update icij`, indexed locally; addresses never imported) and the OpenRefine reconciliation endpoint, checked 2026-11-26",
+  "sha256": "",
+  "licence": "ODbL-1.0 (database) + CC-BY-SA-3.0 (contents)",
+  "attribution": "ICIJ Offshore Leaks Database (https://offshoreleaks.icij.org/), International Consortium of Investigative Journalists. Database licensed under the Open Database License (ODbL 1.0), contents under Creative Commons Attribution-ShareAlike. There are legitimate uses for offshore companies and trusts: appearing in the database does not suggest that a person or entity has broken the law or acted improperly.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/company_org/icij_offshore.py"
+  ]
+}

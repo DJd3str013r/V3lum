@@ -1,0 +1,20 @@
+{
+ "request": "GET https://api.queridodiario.org.br/company/info/12ABC34501DE35",
+ "response": {
+  "status": 400,
+  "headers": {
+   "content-type": "application/json",
+   "content-length": "50",
+   "server": "cloudflare",
+   "cf-cache-status": "DYNAMIC"
+  },
+  "body": {
+   "detail": "CNPJ \"12ABC34501DE35\" is not valid."
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": 0.900089,
+ "observed_at": "2026-11-26T05:20:03+00:00",
+ "origin": "live",
+ "note": ""
+}

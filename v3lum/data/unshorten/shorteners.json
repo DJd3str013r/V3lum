@@ -1,0 +1,1117 @@
+{
+ "name": "shorteners",
+ "description": "URL shorteners and redirectors the P070 tracer may contact (c5/c7); never_contact entries are IP loggers; preview = documented no-click preview page (c1).",
+ "sources": [
+  {
+   "name": "MISP warninglists lists/url-shortener/list.json",
+   "licence": "CC0-1.0",
+   "version": 20261014,
+   "url": "https://github.com/MISP/misp-warninglists/tree/main/lists/url-shortener"
+  },
+  {
+   "name": "V3LUM additions (BR smishing, TinyURL/Bitly alternates, IP loggers)",
+   "licence": "own"
+  }
+ ],
+ "spec_named_missing": [],
+ "hosts": [
+  {
+   "host": "1url.com",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "2h.ae",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "2ly.link",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "2no.co",
+   "source": "misp-warninglists url-shortener",
+   "never_contact": true,
+   "category": "ip_logger",
+   "note": "IP logger: a visit logs the visitor IP for the link creator; manual analysis only"
+  },
+  {
+   "host": "2uuu.me",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "3c5.com",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "42url.com",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "4x.si",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "7x.qa",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "9lick.me",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "abre.ai",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "abrv.in",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "adcraft.co",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "adcrun.ch",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "adf.ly",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "adflav.com",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "aiy.ooo",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "aka.gr",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "amzn.id",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "amzn.to",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "artist.link",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "atomicurl.com",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "b2n.ir",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "bc.vc",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "bee4.biz",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "belea.link",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "bit.do",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "bit.ly",
+   "source": "misp-warninglists url-shortener",
+   "preview": "bitly",
+   "preview_automation": "manual_only",
+   "provider": "Bitly"
+  },
+  {
+   "host": "bitly.com",
+   "source": "misp-warninglists url-shortener",
+   "preview": "bitly",
+   "preview_automation": "manual_only",
+   "provider": "Bitly"
+  },
+  {
+   "host": "bitly.com.vn",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "bitly.is",
+   "source": "V3LUM",
+   "note": "Bitly marketing redirector",
+   "provider": "Bitly"
+  },
+  {
+   "host": "bitly.lc",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "bitly.ws",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "bom.so",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "buff.ly",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "buzurl.com",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "bx.ms",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "cal.link",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "cektkp.com",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "chatg.pt",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "ci.ci",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "clc.li",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "clck.ru",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "clik.is",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "clik.now",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "cml.lol",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "coki.me",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "cszone.hu",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "cur.lv",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "cut.by",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "cutt.ly",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "cutt.us",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "cuty.io",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "d.to",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "db.tt",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "dft.ba",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "dik.si",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "dub.co",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "dub.sh",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "dwz.mk",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "e.vg",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "encr.pw",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "encurta.net",
+   "source": "V3LUM",
+   "note": "BR shortener"
+  },
+  {
+   "host": "encurtador.com.br",
+   "source": "V3LUM",
+   "note": "BR shortener seen in smishing (spec list)"
+  },
+  {
+   "host": "encurtador.dev",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "etd.bz",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "fig.page",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "filoops.info",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "flowto.it",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "for.edu.sg",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "for.sg",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "fun.ly",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "fzy.co",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "g.shrinkrl.com",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "gg-l.xyz",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "ggl.link",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "git.new",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "go.gov.sg",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "go.ly",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "gog.li",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "golinks.co",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "goo.by",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "goo.gd",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "goo.gl",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "goo.su",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "grabify.link",
+   "source": "V3LUM",
+   "never_contact": true,
+   "category": "ip_logger",
+   "note": "IP logger: a visit logs the visitor IP for the link creator; manual analysis only"
+  },
+  {
+   "host": "han.gl",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "hit.my",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "hyp.ae",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "hyperurl.co",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "i3l.ir",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "ic9.in",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "id.tl",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "idm.in",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "iii.im",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "iiil.io",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "ilang.in",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "inlnk.co",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "insprl.com",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "iplogger.com",
+   "source": "misp-warninglists url-shortener",
+   "never_contact": true,
+   "category": "ip_logger",
+   "note": "IP logger: a visit logs the visitor IP for the link creator; manual analysis only"
+  },
+  {
+   "host": "iplogger.org",
+   "source": "misp-warninglists url-shortener",
+   "never_contact": true,
+   "category": "ip_logger",
+   "note": "IP logger: a visit logs the visitor IP for the link creator; manual analysis only"
+  },
+  {
+   "host": "is.gd",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "ito.mx",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "ity.im",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "iurl.vip",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "j.mp",
+   "source": "misp-warninglists url-shortener",
+   "preview": "bitly",
+   "preview_automation": "manual_only",
+   "provider": "Bitly"
+  },
+  {
+   "host": "jii.li",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "komin.fo",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "kortlink.dk",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "kutt.it",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "kutt.to",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "kutti.co",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "l.ead.me",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "l.wl.co",
+   "source": "V3LUM",
+   "note": "WhatsApp link redirector"
+  },
+  {
+   "host": "lc.cx",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "link.zip.net",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "linksshortcut.com",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "linkto.im",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "litby.us",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "ln.run",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "lnk.co",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "lnk.direct",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "lnk.ink",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "lnk.pw",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "lnk.ua",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "lnkd.in",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "lnkfi.re",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "long.af",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "longurl.in",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "maxiurl.com",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "mcaf.ee",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "me2.do",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "merky.de",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "migre.me",
+   "source": "V3LUM",
+   "note": "historic BR shortener (old SMS/e-mail campaigns)"
+  },
+  {
+   "host": "minlink.com.br",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "mjt.lu",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "mtr.bio",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "mub.me",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "my5353.com",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "mylinks.ai",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "myqrcode.mobi",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "n9.cl",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "nanourly.in",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "neya.io",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "nov.io",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "o2o.to",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "odesli.co",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "onelink.to",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "onx.la",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "ouvaton.link",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "ow.ly",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "p6l.org",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "picz.us",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "po.st",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "postly.link",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "ppt.cc",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "prettylinkpro.com",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "q-r.to",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "q.gs",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "qr-codes.io",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "qr.ae",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "qr.net",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "qrco.de",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "qrcodedynamic.com",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "qrcodes.pro",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "qrkit.co",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "rb.gy",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "rebrand.ly",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "rebrandly.com",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "rebrandly.info",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "relink.is",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "reurl.cc",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "ricardo.news",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "rotf.lol",
+   "source": "V3LUM",
+   "note": "TinyURL alternate domain",
+   "provider": "TinyURL"
+  },
+  {
+   "host": "s.devh.in",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "s.ee",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "s.gy",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "s.id",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "s.rlp.de",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "s3r.io",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "s59.site",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "scanned.page",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "scrnch.me",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "shly.link",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "shorten.ee",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "shorten.is",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "shorten.tv",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "shorter.me",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "shortquik.com",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "shorturl.ae",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "shorturl.asia",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "shorturl.at",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "shrinkrl.com",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "shrt.bonosmles.ec",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "shrtcnl.com",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "sht.ac",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "sk.gy",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "sl8.in",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "smarturl.it",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "smurl.fr",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "sn.rs",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "snip.ly",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "song.link",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "spoo.me",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "sprl.in",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "spti.fi",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "srink.co",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "su.pr",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "surl.li",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "t.co",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "t.ly",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "temporary-url.com",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "tg.pe",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "tiny.cc",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "tiny.one",
+   "source": "V3LUM",
+   "note": "TinyURL alternate domain",
+   "provider": "TinyURL"
+  },
+  {
+   "host": "tinyarrows.com",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "tinyurl.com",
+   "source": "misp-warninglists url-shortener",
+   "preview": "tinyurl",
+   "preview_automation": "pending_terms_review",
+   "provider": "TinyURL"
+  },
+  {
+   "host": "tinyurl.mobi",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "tota2.com",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "tr.ee",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "tr.im",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "trimz.me",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "tt.vg",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "tweez.me",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "twitthis.com",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "twixar.com",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "twixar.me",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "tyny.to",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "u.bb",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "u.to",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "url.sg",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "urled.cc",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "urled.pro",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "urless.com",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "urlr.me",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "urlshort.dev",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "urltin.com",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "urlz.fr",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "ux9.de",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "v.gd",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "v.ht",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "vtaurl.com",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "vzturl.com",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "wa.link",
+   "source": "V3LUM",
+   "note": "WhatsApp link generator redirector (BR smishing/WhatsApp lures)"
+  },
+  {
+   "host": "webz.cc",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "wp.me",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "x.co",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "x.gd",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "xlinkz.info",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "xshort.co",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "xso.to",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "xtu.me",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "xy2.eu",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "yip.su",
+   "source": "V3LUM",
+   "never_contact": true,
+   "category": "ip_logger",
+   "note": "IP logger: a visit logs the visitor IP for the link creator; manual analysis only"
+  },
+  {
+   "host": "yirra.net",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "ykm.de",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "yourls.org",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "youtu.be",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "yu2.it",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "yu3.io",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "zpag.es",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "zpr.io",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "zurl.to",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "zws.im",
+   "source": "misp-warninglists url-shortener"
+  },
+  {
+   "host": "zzb.bz",
+   "source": "misp-warninglists url-shortener"
+  }
+ ]
+}

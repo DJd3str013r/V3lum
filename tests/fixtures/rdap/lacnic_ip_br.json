@@ -1,0 +1,69 @@
+{
+ "objectClassName": "ip network",
+ "handle": "200.160.0.0/20",
+ "startAddress": "200.160.0.0",
+ "endAddress": "200.160.15.255",
+ "ipVersion": "v4",
+ "name": "NIC.BR",
+ "type": "ASSIGNED PA",
+ "country": "BR",
+ "parentHandle": "200.160.0.0/16",
+ "status": [
+  "active"
+ ],
+ "entities": [
+  {
+   "objectClassName": "entity",
+   "handle": "EXORG1",
+   "roles": [
+    "registrant"
+   ],
+   "vcardArray": [
+    "vcard",
+    [
+     [
+      "version",
+      {},
+      "text",
+      "4.0"
+     ],
+     [
+      "kind",
+      {},
+      "text",
+      "org"
+     ],
+     [
+      "fn",
+      {},
+      "text",
+      "Nucleo de Inf. e Coord. do Ponto BR - NIC.BR"
+     ],
+     [
+      "adr",
+      {},
+      "text",
+      [
+       "",
+       "",
+       "",
+       "",
+       "",
+       "",
+       "BR"
+      ]
+     ]
+    ]
+   ]
+  }
+ ],
+ "links": [
+  {
+   "value": "https://rdap.lacnic.net/rdap/ip/200.160.2.3",
+   "rel": "self",
+   "href": "https://rdap.lacnic.net/rdap/ip/200.160.0.0/20",
+   "type": "application/rdap+json"
+  }
+ ],
+ "port43": "whois.lacnic.net"
+}

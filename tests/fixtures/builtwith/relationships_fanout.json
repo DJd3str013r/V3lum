@@ -1,0 +1,530 @@
+{
+ "Relationships": [
+  {
+   "Domain": "example.com",
+   "Identifiers": [
+    {
+     "Value": "1234567",
+     "Type": "UA",
+     "First": 1388534400000,
+     "Last": 1735689600000,
+     "Matches": [
+      {
+       "Domain": "site00.example.net",
+       "First": 1609459200000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site01.example.net",
+       "First": 1609545600000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site02.example.net",
+       "First": 1609632000000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site03.example.net",
+       "First": 1609718400000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site04.example.net",
+       "First": 1609804800000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site05.example.net",
+       "First": 1609891200000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site06.example.net",
+       "First": 1609977600000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site07.example.net",
+       "First": 1610064000000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site08.example.net",
+       "First": 1610150400000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site09.example.net",
+       "First": 1610236800000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site10.example.net",
+       "First": 1610323200000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site11.example.net",
+       "First": 1610409600000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site12.example.net",
+       "First": 1610496000000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site13.example.net",
+       "First": 1610582400000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site14.example.net",
+       "First": 1610668800000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site15.example.net",
+       "First": 1610755200000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site16.example.net",
+       "First": 1610841600000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site17.example.net",
+       "First": 1610928000000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site18.example.net",
+       "First": 1611014400000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site19.example.net",
+       "First": 1611100800000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site20.example.net",
+       "First": 1611187200000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site21.example.net",
+       "First": 1611273600000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site22.example.net",
+       "First": 1611360000000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site23.example.net",
+       "First": 1611446400000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site24.example.net",
+       "First": 1611532800000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site25.example.net",
+       "First": 1611619200000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site26.example.net",
+       "First": 1611705600000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site27.example.net",
+       "First": 1611792000000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site28.example.net",
+       "First": 1611878400000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site29.example.net",
+       "First": 1611964800000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site30.example.net",
+       "First": 1612051200000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site31.example.net",
+       "First": 1612137600000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site32.example.net",
+       "First": 1612224000000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site33.example.net",
+       "First": 1612310400000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site34.example.net",
+       "First": 1612396800000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site35.example.net",
+       "First": 1612483200000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site36.example.net",
+       "First": 1612569600000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site37.example.net",
+       "First": 1612656000000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site38.example.net",
+       "First": 1612742400000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site39.example.net",
+       "First": 1612828800000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site40.example.net",
+       "First": 1612915200000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site41.example.net",
+       "First": 1613001600000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site42.example.net",
+       "First": 1613088000000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site43.example.net",
+       "First": 1613174400000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site44.example.net",
+       "First": 1613260800000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site45.example.net",
+       "First": 1613347200000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site46.example.net",
+       "First": 1613433600000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site47.example.net",
+       "First": 1613520000000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site48.example.net",
+       "First": 1613606400000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site49.example.net",
+       "First": 1613692800000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site50.example.net",
+       "First": 1613779200000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site51.example.net",
+       "First": 1613865600000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site52.example.net",
+       "First": 1613952000000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site53.example.net",
+       "First": 1614038400000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site54.example.net",
+       "First": 1614124800000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site55.example.net",
+       "First": 1614211200000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site56.example.net",
+       "First": 1614297600000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site57.example.net",
+       "First": 1614384000000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site58.example.net",
+       "First": 1614470400000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "site59.example.net",
+       "First": 1614556800000,
+       "Last": 1704067200000,
+       "Overlap": true
+      }
+     ]
+    },
+    {
+     "Value": "GTM-ABC123",
+     "Type": "GTM",
+     "First": 1546300800000,
+     "Last": 1735689600000,
+     "Matches": [
+      {
+       "Domain": "brand00.example.org",
+       "First": 1609459200000,
+       "Last": 1704067200000,
+       "Overlap": false
+      },
+      {
+       "Domain": "brand01.example.org",
+       "First": 1609545600000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "brand02.example.org",
+       "First": 1609632000000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "brand03.example.org",
+       "First": 1609718400000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "brand04.example.org",
+       "First": 1609804800000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "brand05.example.org",
+       "First": 1609891200000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "brand06.example.org",
+       "First": 1609977600000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "brand07.example.org",
+       "First": 1610064000000,
+       "Last": 1704067200000,
+       "Overlap": false
+      },
+      {
+       "Domain": "brand08.example.org",
+       "First": 1610150400000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "brand09.example.org",
+       "First": 1610236800000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "brand10.example.org",
+       "First": 1610323200000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "brand11.example.org",
+       "First": 1610409600000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "brand12.example.org",
+       "First": 1610496000000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "brand13.example.org",
+       "First": 1610582400000,
+       "Last": 1704067200000,
+       "Overlap": true
+      }
+     ]
+    },
+    {
+     "Value": "ca-pub-0000000000000001",
+     "Type": "CA-PUB",
+     "First": 1577836800000,
+     "Last": 1735689600000,
+     "Matches": [
+      {
+       "Domain": "example-login.test",
+       "First": 1609545600000,
+       "Last": 1704067200000,
+       "Overlap": true
+      },
+      {
+       "Domain": "example.com.br",
+       "First": 1609632000000,
+       "Last": 1704067200000,
+       "Overlap": true
+      }
+     ]
+    },
+    {
+     "Value": "11222333000181",
+     "Type": "CNPJ",
+     "First": 1640995200000,
+     "Last": 1735689600000,
+     "Matches": [
+      {
+       "Domain": "example.com.br",
+       "First": 1609718400000,
+       "Last": 1704067200000,
+       "Overlap": true
+      }
+     ]
+    },
+    {
+     "Value": "192.0.2.10",
+     "Type": "IP",
+     "First": 1640995200000,
+     "Last": 1735689600000,
+     "Matches": [
+      {
+       "Domain": "shared-host.example.net",
+       "First": 1609804800000,
+       "Last": 1704067200000,
+       "Overlap": true
+      }
+     ]
+    },
+    {
+     "Value": "abc",
+     "Type": "ZZNEW",
+     "First": 1640995200000,
+     "Last": 1735689600000,
+     "Matches": []
+    }
+   ]
+  }
+ ],
+ "Errors": [],
+ "results": 77,
+ "max_per_page": 1000,
+ "page": 1,
+ "next_page": 2,
+ "more_results": true
+}

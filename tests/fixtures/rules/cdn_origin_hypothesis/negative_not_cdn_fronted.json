@@ -1,0 +1,50 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "preset": "deep"
+  },
+  "nodes": [
+    {
+      "key": "domain:example.com",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "a_records": [
+          {
+            "value": [
+              "203.0.113.9"
+            ],
+            "source": "dns_records"
+          }
+        ],
+        "dns_history_a": [
+          {
+            "value": [
+              {
+                "ip": "203.0.113.9",
+                "first_seen": "2019-01-01",
+                "last_seen": "2026-11-25",
+                "organizations": []
+              },
+              {
+                "ip": "203.0.113.7",
+                "first_seen": "2015-01-01",
+                "last_seen": "2018-12-31",
+                "organizations": []
+              }
+            ],
+            "source": "securitytrails"
+          }
+        ]
+      }
+    },
+    {
+      "key": "ipv4:203.0.113.9",
+      "depth": 1
+    }
+  ],
+  "edges": []
+}

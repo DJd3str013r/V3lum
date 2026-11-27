@@ -1,0 +1,22 @@
+{
+ "_fixture": "synthetic Google API error for a valid key whose project has not enabled the API (google.rpc PERMISSION_DENIED / SERVICE_DISABLED shape)",
+ "status": 403,
+ "body": {
+  "error": {
+   "code": 403,
+   "status": "PERMISSION_DENIED",
+   "message": "Web Risk API has not been used in project 0 before or it is disabled.",
+   "details": [
+    {
+     "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+     "reason": "SERVICE_DISABLED",
+     "domain": "googleapis.com",
+     "metadata": {
+      "service": "webrisk.googleapis.com",
+      "consumer": "projects/0"
+     }
+    }
+   ]
+  }
+ }
+}

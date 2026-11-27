@@ -1,0 +1,192 @@
+{
+ "Status": 0,
+ "TC": false,
+ "RD": true,
+ "RA": true,
+ "AD": true,
+ "CD": false,
+ "Question": [
+  {
+   "name": "cloudflare.com.",
+   "type": 16
+  }
+ ],
+ "Answer": [
+  {
+   "name": "cloudflare.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "_saml-domain-challenge.00000000-0000-4000-8000-000000000026.00000000-0000-4000-8000-000000000027.cloudflare.com=00000000-0000-4000-8000-000000000028"
+  },
+  {
+   "name": "cloudflare.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "stripe-verification=0000000000000000000000000000000000000000000000000000000000000015"
+  },
+  {
+   "name": "cloudflare.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "google-site-verification=EXAMPLE000000000000000000000000000000000018"
+  },
+  {
+   "name": "cloudflare.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "stripe-verification=0000000000000000000000000000000000000000000000000000000000000016"
+  },
+  {
+   "name": "cloudflare.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "liveramp-site-verification=EXAMPLE000000000000000000000000000000000020"
+  },
+  {
+   "name": "cloudflare.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "miro-verification=000000000000000000000000000000000000000b"
+  },
+  {
+   "name": "cloudflare.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "uber-domain-verification=00000000-0000-4000-8000-000000000015"
+  },
+  {
+   "name": "cloudflare.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "creatopy-domain-verification=00000000-0000-4000-8000-000000000017"
+  },
+  {
+   "name": "cloudflare.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "status-page-domain-verification=EXAMPLE00007"
+  },
+  {
+   "name": "cloudflare.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "docker-verification=00000000-0000-4000-8000-000000000010"
+  },
+  {
+   "name": "cloudflare.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "atlassian-domain-verification=EXAMPLE000000000000000000000000000000000000000000000000000000025"
+  },
+  {
+   "name": "cloudflare.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "asv=00000000000000000000000000000005"
+  },
+  {
+   "name": "cloudflare.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "ZOOM_verify_EXAMPLE000000000000004"
+  },
+  {
+   "name": "cloudflare.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "_EXAMPLE000000000000000000000003"
+  },
+  {
+   "name": "cloudflare.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "MS=ms00000001"
+  },
+  {
+   "name": "cloudflare.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "cisco-ci-domain-verification=0000000000000000000000000000000000000000000000000000000000000018"
+  },
+  {
+   "name": "cloudflare.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "canva-site-verification=EXAMPLE000000000000009"
+  },
+  {
+   "name": "cloudflare.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "jamf-site-verification=EXAMPLE000000000000008"
+  },
+  {
+   "name": "cloudflare.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "logmein-verification-code=00000000-0000-4000-8000-000000000016"
+  },
+  {
+   "name": "cloudflare.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "DirectFedAuthUrl=https://sso.example.com/cdn-cgi/access/sso/saml/000000000000000000000000000000000000000000000000000000000000001e"
+  },
+  {
+   "name": "cloudflare.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "google-site-verification=EXAMPLE000000000000000000000000000000000019"
+  },
+  {
+   "name": "cloudflare.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "onetrust-domain-verification=0000000000000000000000000000000e"
+  },
+  {
+   "name": "cloudflare.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "_EXAMPLE000000000000000000000002"
+  },
+  {
+   "name": "cloudflare.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "facebook-domain-verification=EXAMPLE00000000000000000000012"
+  },
+  {
+   "name": "cloudflare.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "v=spf1 ip4:199.15.212.0/22 ip4:173.245.48.0/20 include:_spf.google.com include:spf1.mcsv.net include:spf.mandrillapp.com include:mail.zendesk.com include:stspg-customer.com include:_spf.salesforce.com -all"
+  },
+  {
+   "name": "cloudflare.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "apple-domain-verification=EXAMPLE000000006"
+  },
+  {
+   "name": "cloudflare.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "databank-domain-verification-abc123=EXAMPLE000000000000000013"
+  },
+  {
+   "name": "cloudflare.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "DirectFedAuthUrl=https://sso.example.com/cdn-cgi/access/sso/saml/000000000000000000000000000000000000000000000000000000000000001d"
+  },
+  {
+   "name": "cloudflare.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "drift-domain-verification=0000000000000000000000000000000000000000000000000000000000000017"
+  }
+ ],
+ "edns_client_subnet": "0.0.0.0/0",
+ "Comment": "Response from 162.159.0.33."
+}

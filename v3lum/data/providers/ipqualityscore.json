@@ -1,0 +1,72 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "ipqualityscore",
+  "name": "IPQualityScore (IP reputation and malicious URL scanner APIs, keyed)",
+  "operator": "IPQualityScore LLC",
+  "hosts": ["ipqualityscore.com", "www.ipqualityscore.com"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms, a privacy policy and a business offering (A8 trusted); P052 chair rationale: 'IPQS is an established company: tier trusted'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "C", "justification": "Proprietary fraud score: one vote, never 'malicious' on its own (P052 FC6); VPN/proxy flags are provider claims."},
+  "http_profile": {"user_agent": "neutral", "accept": "application/json", "ttl": 86400, "min_interval": 1.0, "retries": 0},
+  "quota": {"scope": "key", "month": 1000, "published": true, "evidence_url": "https://www.ipqualityscore.com/plans", "safety_margin": 0.8},
+  "error_markers": [
+    {"id": "ipqs_insufficient_credits", "statuses": [200, 402, 403], "json_path": "message", "regex": "(?i)insufficient credits|exceeded your|quota|credit limit|upgrade your", "maps_to": "quota", "reason_code": "quota",
+     "reason": "IPQualityScore: lookup credits exhausted (success:false 'insufficient credits' in the answer body)"},
+    {"id": "ipqs_too_many_requests", "statuses": [200, 429], "json_path": "message", "regex": "(?i)too many requests|per second", "maps_to": "rate_limited", "reason_code": "rate_limited",
+     "reason": "IPQualityScore: request rate exceeded (success:false in the answer body)"},
+    {"id": "ipqs_success_false", "statuses": [200], "json_path": "success", "equals": false, "maps_to": "error", "reason_code": "error",
+     "reason": "IPQualityScore: success:false in an HTTP 200 body (invalid key, invalid input or another provider error)"}
+  ],
+  "keys": {
+    "ipqs": {
+      "description": "IPQualityScore API key (path-embedded; IP and URL reputation only, never e-mail/phone validation)",
+      "signup_url": "https://www.ipqualityscore.com/create-account",
+      "env": ["V3LUM_IPQS_KEY", "IPQS_API_KEY"],
+      "multi_key": false,
+      "plan_hint": "business = a company-owned IPQS key whose plan and terms legal has recorded (P052 FC3, key_plans.ipqs); personal or free accounts stay licence-blocked under the corporate profile"
+    }
+  },
+  "sources": {
+    "ip": {
+      "title": "IPQualityScore IP reputation (GET /api/json/ip/{key}/{ip}?strictness=0): fraud score, proxy/VPN/Tor flags, recent abuse",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://www.ipqualityscore.com/terms-of-service",
+        "quote": "veto_lift: a company-owned key with IPQS terms recorded by legal (key-terms, key_plans.ipqs) before it runs under corporate.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "ipqualityscore",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P052 FC3). The key travels in the URL path: the central redactor masks the configured key value anywhere in URLs, cache rows, events, logs and evidence (AR01, P052 FC5). Invalid key = HTTP 200 {success:false, message:'Invalid or unauthorized key...'} -> NEEDS_KEY; 'insufficient credits' -> QUOTA; any other success:false -> ERROR; never an absence (FC4). Location fields (city, coordinates, zip) are never kept. The e-mail and phone validation endpoints are never wired (FC1)."
+    },
+    "url": {
+      "title": "IPQualityScore malicious URL scanner (GET /api/json/url/{key}/{url-encoded}?strictness=0): risk score, phishing/malware/unsafe flags",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://www.ipqualityscore.com/terms-of-service",
+        "quote": "veto_lift: URL reputation runs only for URLs tagged hostile (malicious/phishing/suspicious), never for internal, confidential or org_profile URLs, and is skipped at TLP:AMBER and above",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "ipqualityscore",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P052 FC2). This source reuses submitted URLs and fetches the target live: the council asked for source-level reuses_queries and fetches_target flags; until the registry supports them (core request) the module enforces the AMBER+ exclusion (SKIPPED 'tlp'), the hostile-tag requirement, the org-profile/internal exclusion and the recipient-token refusal itself."
+    }
+  },
+  "x_source_flags": {
+    "url": {"reuses_queries": true, "fetches_target": true},
+    "basis": "P052 FC2/FC6: source-level flags overriding the provider's; recorded here as data until core/providers.py and core/policy.py support them"
+  },
+  "notes": "Owned by batch p3-G02-2 (P052 ipqualityscore). The key 'ipqs' is the legacy config.KNOWN_KEYS entry; this fragment adds the alias V3LUM_IPQS_KEY and the plan hint. Monthly budget: the free plan's 1,000 lookups at 80% (P334 block, key scope)."
+}

@@ -1,0 +1,50 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "imgops",
+  "name": "ImgOps reverse-image launcher",
+  "operator": "not identified on the site (no operator or terms page reviewed)",
+  "hosts": [
+    "imgops.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "No identifiable operator or reviewed terms (A8 unknown; P260 cond 5: 'unknown - ImgOps (URL values only)'). Links carry the 'unknown operator' badge and take IOC_TYPES values only (A8 BR4).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "F",
+    "justification": "Manual reverse-image or map pages whose content is third-party or user-generated: reliability cannot be judged at provider level (manual links only)."
+  },
+  "http_profile": {
+    "user_agent": "neutral"
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "launcher_url": {
+      "title": "ImgOps imgops.com/<image URL without scheme> (manual launcher link)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://imgops.com/",
+        "quote": "The pack is offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "imgops",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0611 terms 'site terms' (imgops.com/{image_url_without_scheme}; 200, live 2026-11-26). The page embeds the image, so the analyst's own browser loads it from its host (touches_target on the link; referrer suppressed), and it links to 30+ other services including upload/convert ones. Image URL values only. Used by pivots_geo_image."
+    }
+  },
+  "notes": "Seeded by batch p2-G12-1 (P260). Manual links only: V3LUM never requests imgops.com."
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "ransomlook_data",
+  "source_url": "https://www.ransomlook.io/about",
+  "version": "runtime downloads by the dataset manager: /api/last/30 (recent posts, ~1 MB) and /api/groups (group names, ~8 KB), daily; per-entity /api/search answers; licence checked 2026-11-26",
+  "sha256": "",
+  "licence": "CC-BY-4.0",
+  "attribution": "Source: RansomLook (https://www.ransomlook.io/), website, API responses and datasets licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Leak-site posts are actor claims, kept as metadata only; the AGPL-3.0 RansomLook service code is not copied.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/darkweb_ransomware/ransomlook.py"
+  ]
+}

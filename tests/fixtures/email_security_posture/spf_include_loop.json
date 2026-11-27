@@ -1,0 +1,75 @@
+{
+ "domain": "example.net",
+ "expected": {
+  "status": "permerror",
+  "error": "include loop"
+ },
+ "answers": {
+  "example.net TXT": {
+   "Status": 0,
+   "TC": false,
+   "RD": true,
+   "RA": true,
+   "AD": false,
+   "CD": false,
+   "Question": [
+    {
+     "name": "example.net.",
+     "type": 16
+    }
+   ],
+   "Answer": [
+    {
+     "name": "example.net.",
+     "type": 16,
+     "TTL": 300,
+     "data": "v=spf1 include:_spf.example.net -all"
+    }
+   ]
+  },
+  "_spf.example.net TXT": {
+   "Status": 0,
+   "TC": false,
+   "RD": true,
+   "RA": true,
+   "AD": false,
+   "CD": false,
+   "Question": [
+    {
+     "name": "_spf.example.net.",
+     "type": 16
+    }
+   ],
+   "Answer": [
+    {
+     "name": "_spf.example.net.",
+     "type": 16,
+     "TTL": 300,
+     "data": "v=spf1 ip4:192.0.2.10 include:_spf2.example.net -all"
+    }
+   ]
+  },
+  "_spf2.example.net TXT": {
+   "Status": 0,
+   "TC": false,
+   "RD": true,
+   "RA": true,
+   "AD": false,
+   "CD": false,
+   "Question": [
+    {
+     "name": "_spf2.example.net.",
+     "type": 16
+    }
+   ],
+   "Answer": [
+    {
+     "name": "_spf2.example.net.",
+     "type": 16,
+     "TTL": 300,
+     "data": "v=spf1 include:_spf.example.net -all"
+    }
+   ]
+  }
+ }
+}

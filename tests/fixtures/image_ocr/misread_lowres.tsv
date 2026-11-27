@@ -1,0 +1,8 @@
+level	page_num	block_num	par_num	line_num	word_num	left	top	width	height	conf	text
+1	1	0	0	0	0	0	0	267	37	-1	
+2	1	1	0	0	0	7	8	254	11	-1	
+3	1	1	1	0	0	7	8	254	11	-1	
+4	1	1	1	1	0	7	8	254	11	-1	
+5	1	1	1	1	1	7	8	48	9	95.826515	Confirme
+5	1	1	1	1	2	61	11	15	6	93.290375	em
+5	1	1	1	1	3	82	8	179	11	18.837372	secure-login.example.com/m/OlL

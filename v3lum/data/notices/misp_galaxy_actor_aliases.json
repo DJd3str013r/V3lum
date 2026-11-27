@@ -1,0 +1,18 @@
+{
+ "schema": "v3lum.notice/1",
+ "name": "misp_galaxy_actor_aliases",
+ "source_url": "https://github.com/MISP/misp-galaxy",
+ "version": "commit e04830400cfeea238124ad4e1e42267aa0f672b7 (2026-11-23): 16 clusters, trimmed (names, synonyms, ids, related edges; no authors, no free text), built 2026-11-26",
+ "sha256": "4010ad40f3f714f72e16c9b4ce8c9f5eb7eb07f5215e15ef74fa4d7797054660",
+ "licence": "CC0-1.0 OR BSD-2-Clause",
+ "attribution": "MISP galaxy (https://github.com/MISP/misp-galaxy), dual-licensed CC0 1.0 Universal or 2-Clause BSD: Copyright (c) 2015-2025 CIRCL - Computer Incident Response Center Luxembourg and the contributors of the MISP Project (see the repository README 'License'). The mitre-* clusters are derived from MITRE ATT&CK: (c) The MITRE Corporation. This work is reproduced and distributed with the permission of The MITRE Corporation.",
+ "bundled": true,
+ "files": [
+  "v3lum/data/actor_alias_index/alias_sources.json.gz",
+  "v3lum/data/actor_alias_index/collision_report.txt",
+  "v3lum/data/actor_alias_index/collision_report.reviewed.json",
+  "v3lum/data/aliases/misp_galaxy_threat_actor.json",
+  "v3lum/data/aliases/misp_galaxy_malware_family.json",
+  "v3lum/modules/cti_framework/actor_alias_index.py"
+ ]
+}

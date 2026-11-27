@@ -1,0 +1,36 @@
+{
+ "schema": "v3lum.acceptance_routes/1",
+ "module": "wikimedia",
+ "routes": [
+  {
+   "method": "GET",
+   "url": "https://pt.wikipedia.org/w/api.php?action=query&list=usercontribs&uclimit=50&ucprop=ids%7Ctitle%7Ctimestamp%7Csizediff%7Cflags&format=json&formatversion=2&maxlag=5&ucuser=8.8.8.8",
+   "status": 200,
+   "json": {
+    "batchcomplete": true,
+    "query": {
+     "usercontribs": []
+    }
+   },
+   "headers": {
+    "content-type": "application/json; charset=utf-8"
+   },
+   "latency_ms": 500
+  },
+  {
+   "method": "GET",
+   "url": "https://en.wikipedia.org/w/api.php?action=query&list=usercontribs&uclimit=50&ucprop=ids%7Ctitle%7Ctimestamp%7Csizediff%7Cflags&format=json&formatversion=2&maxlag=5&ucuser=8.8.8.8",
+   "status": 200,
+   "json": {
+    "batchcomplete": true,
+    "query": {
+     "usercontribs": []
+    }
+   },
+   "headers": {
+    "content-type": "application/json; charset=utf-8"
+   },
+   "latency_ms": 500
+  }
+ ]
+}

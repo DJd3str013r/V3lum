@@ -1,0 +1,8 @@
+{
+ "_fixture": "SYNTHETIC: CDX output=json with no captures answers an empty array",
+ "status": 200,
+ "headers": {
+  "content-type": "text/plain"
+ },
+ "body": "[]"
+}

@@ -1,0 +1,5 @@
+{
+ "message": "DDD não encontrado",
+ "type": "ddd_error",
+ "name": "DDD_NOT_FOUND"
+}

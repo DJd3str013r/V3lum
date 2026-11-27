@@ -1,0 +1,11 @@
+{
+ "origin": "synthetic: 429 + X-RateLimit-Reset/-Reset-At documented in the Arctic Shift API README; body text guessed",
+ "status": 429,
+ "headers": {
+  "content-type": "text/plain; charset=utf-8",
+  "server": "cloudflare",
+  "x-ratelimit-reset": "37",
+  "x-ratelimit-reset-at": "1795683420000"
+ },
+ "body": "Too many requests, please try again later."
+}

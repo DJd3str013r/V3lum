@@ -1,0 +1,23 @@
+{
+ "Status": 3,
+ "TC": false,
+ "RD": true,
+ "RA": true,
+ "AD": false,
+ "CD": false,
+ "Question": [
+  {
+   "name": "1.2.0.192.abuse-contacts.abusix.zone.",
+   "type": 16
+  }
+ ],
+ "Authority": [
+  {
+   "name": "abuse-contacts.abusix.zone.",
+   "type": 6,
+   "TTL": 1,
+   "data": "abuse-contacts.abusix.zone. support.abusix.com. 1795602893 3600 600 432000 1"
+  }
+ ],
+ "edns_client_subnet": "0.0.0.0/0"
+}

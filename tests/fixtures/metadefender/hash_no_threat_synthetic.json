@@ -1,0 +1,68 @@
+{
+ "data_id": "ZXhhbXBsZS1kYXRhLWlk",
+ "file_id": "ZXhhbXBsZS1maWxlLWlk",
+ "file_info": {
+  "display_name": "notepad.exe",
+  "file_size": 201216,
+  "file_type_category": "E",
+  "file_type_description": "Win64 Executable",
+  "file_type_extension": "exe",
+  "md5": "873aa99ce8ac505e249ab409ddb61f8a",
+  "sha1": "61222fe8eb4913a04e86bc11234521908087d3f3",
+  "sha256": "04c3bc5044a55a20a948947116ff17cfdff7f23a8edd7485201c50b98a066b2b",
+  "upload_timestamp": "2020-05-05T15:50:03.497Z"
+ },
+ "scan_results": {
+  "scan_details": {
+   "ClamAV": {
+    "def_time": "2026-11-25T00:00:00.000Z",
+    "scan_result_i": 0,
+    "scan_time": 3,
+    "threat_found": ""
+   },
+   "Bitdefender": {
+    "def_time": "2026-11-25T00:00:00.000Z",
+    "scan_result_i": 0,
+    "scan_time": 5,
+    "threat_found": ""
+   },
+   "Emsisoft": {
+    "def_time": "2026-11-25T00:00:00.000Z",
+    "scan_result_i": 0,
+    "scan_time": 4,
+    "threat_found": ""
+   },
+   "K7": {
+    "def_time": "2026-11-25T00:00:00.000Z",
+    "scan_result_i": 0,
+    "scan_time": 2,
+    "threat_found": ""
+   },
+   "Xvirus": {
+    "def_time": "2026-11-25T00:00:00.000Z",
+    "scan_result_i": 0,
+    "scan_time": 1,
+    "threat_found": ""
+   },
+   "ExampleAV": {
+    "def_time": "2026-11-25T00:00:00.000Z",
+    "scan_result_i": 0,
+    "scan_time": 0,
+    "threat_found": ""
+   }
+  },
+  "rescan_available": true,
+  "scan_all_result_i": 0,
+  "start_time": "2026-11-25T14:25:13.858Z",
+  "total_time": 1204,
+  "total_avs": 6,
+  "total_detected_avs": 0,
+  "progress_percentage": 100,
+  "scan_all_result_a": "No Threat Detected"
+ },
+ "votes": {
+  "up": 0,
+  "down": 0
+ },
+ "sandbox": false
+}

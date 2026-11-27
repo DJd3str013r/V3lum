@@ -1,0 +1,31 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://vulnerability.circl.lu/api/vulnerability/GHSA-jfh8-c2jp-5v3q",
+  "headers": {}
+ },
+ "response": {
+  "status": 200,
+  "headers": {
+   "server": "gunicorn",
+   "content-type": "application/json",
+   "x-api-policy-version": "1",
+   "link": "<https://vulnerability.circl.lu/.well-known/api-policy.json>; rel=\"api-policy\"; type=\"application/json\"",
+   "access-control-allow-origin": "*",
+   "x-ratelimit-limit": "20",
+   "x-ratelimit-remaining": "19",
+   "x-ratelimit-reset": "1795677662",
+   "retry-after": "60",
+   "cache-control": "max-age=1800",
+   "last-modified": "Thu, 26 Nov 2026 07:20:01 GMT",
+   "vary": "Cookie, Accept-Encoding",
+   "age": "0",
+   "via": "varnish",
+   "content-length": "3357"
+  },
+  "body": "{\"schema_version\": \"1.4.0\", \"id\": \"GHSA-jfh8-c2jp-5v3q\", \"modified\": \"2025-10-22T19:13:24Z\", \"published\": \"2021-12-10T00:40:56Z\", \"aliases\": [\"CVE-2021-44228\"], \"summary\": \"Remote code injection in Log4j\", \"details\": \"# Summary\\n\\nLog4j versions prior to 2.16.0 are subject to a remote code execution vulnerability via the ldap JNDI parser.\\nAs per [Apache's Log4j security guide](https://logging.apache.org/log4j/2.x/security.html): Apache Log4j2 <=2.14.1 JNDI features used in configuration, log messages, and parameters do not protect against attacker controlled LDAP and other JNDI related endpoints. An attacker who \", \"severity\": [{\"type\": \"CVSS_V3\", \"score\": \"CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H/E:H\"}], \"affected\": [{\"package\": {\"ecosystem\": \"Maven\", \"name\": \"org.apache.logging.log4j:log4j-core\"}, \"ranges\": [{\"type\": \"ECOSYSTEM\", \"events\": [{\"introduced\": \"2.13.0\"}, {\"fixed\": \"2.15.0\"}]}]}, {\"package\": {\"ecosystem\": \"Maven\", \"name\": \"org.apache.logging.log4j:log4j-core\"}, \"ranges\": [{\"type\": \"ECOSYSTEM\", \"events\": [{\"introduced\": \"2.0-beta9\"}, {\"fixed\": \"2.3.1\"}]}]}, {\"package\": {\"ecosystem\": \"Maven\", \"name\": \"org.apache.logging.log4j:log4j-core\"}, \"ranges\": [{\"type\": \"ECOSYSTEM\", \"events\": [{\"introduced\": \"2.4\"}, {\"fixed\": \"2.12.2\"}]}]}], \"references\": [{\"type\": \"ADVISORY\", \"url\": \"https://nvd.nist.gov/vuln/detail/CVE-2021-44228\"}, {\"type\": \"WEB\", \"url\": \"https://github.com/apache/logging-log4j2/pull/608\"}, {\"type\": \"WEB\", \"url\": \"https://github.com/github/advisory-database/pull/5501\"}, {\"type\": \"WEB\", \"url\": \"https://cert-portal.siemens.com/productcert/pdf/ssa-397453.pdf\"}], \"database_specific\": {\"cwe_ids\": [\"CWE-20\", \"CWE-400\", \"CWE-502\", \"CWE-917\"], \"severity\": \"CRITICAL\", \"github_reviewed\": true, \"github_reviewed_at\": \"2021-12-10T00:40:41Z\", \"nvd_published_at\": \"2021-12-10T10:15:00Z\"}, \"containers\": {\"cna\": {\"x_gcve\": [{\"vulnId\": \"GHSA-jfh8-c2jp-5v3q\", \"recordType\": \"advisory\"}]}}}"
+ },
+ "transport_error": null,
+ "elapsed_s": 0.732,
+ "note": "LIVE 2026-11-26: a GHSA id is served as the OSV record (schema 1.4.0) plus containers.cna.x_gcve. 200 responses always carry retry-after (not a rate limit)."
+}

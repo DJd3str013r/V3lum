@@ -1,0 +1,16 @@
+{
+ "request": "GET https://fullhunt.io/api/v1/domain/example.com/subdomains (X-API-KEY: <bad key>)",
+ "response": {
+  "status": 401,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": {
+   "status": 401,
+   "message": "Unauthorized"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "documented error schema (docs.fullhunt.io/errors): 401 = X-API-KEY missing, invalid or expired"
+}

@@ -1,0 +1,17 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://www.example.com/.env",
+  "headers": {
+   "Range": "bytes=0-1023"
+  }
+ },
+ "response": {
+  "status": 200,
+  "headers": {
+   "content-type": "application/octet-stream",
+   "content-length": "300"
+  },
+  "body_b64": "BR3OF8wcoIXYyQvT69Cddf0giuokxoW1KcZ4CN9YeinsFgYP/iuEnnMSOT3XzU0dluh5FD1mekMqJba6gPARPUbOrMx6fUdTKOTIhWIPHFWHirMuXBVun//ls/h1PGQwG4JFwCKRSRceYvzF5/Db+hCGli+Qtk5ROXBqb/Pico0PYjWJxSiSsergvNGWERPNsCvymWcJ3es3XaAHIfFLViHtYOkEwhzTSMwpy+lejJ+Z30i9yJkYlr8lDZYmGa6tuRO2daafps0ccSTM0KG9UUKNtsv+vtgq4UlVqDOg1f+x4ViZqklg/9ODpLKyOxDwaa/FgNQyxAoVi9bihFQFjKMEAtx4GcnLrXt8I+WKIpRHFEszb+HXiE2vTryrj+glNDzQ9Ae2nK/Ty6EJ"
+ }
+}

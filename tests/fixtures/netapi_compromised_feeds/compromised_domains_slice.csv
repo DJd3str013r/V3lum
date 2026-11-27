@@ -1,0 +1,9 @@
+domain,threat_type,evidence,first_seen,last_seen
+sinkholed-1.example,sinkhole-ns,"ns sc-a.sinkhole.shadowserver.org",2019-12-18,2026-11-25
+sinkholed-2.example,sinkhole-ns,"ns sc-a.sinkhole.shadowserver.org",2019-12-18,2026-11-25
+sinkholed-3.example,sinkhole-ns,"ns sc-a.sinkhole.shadowserver.org",2017-10-30,2026-11-25
+sinkholed-4.example,sinkhole-ns,"ns sc-a.sinkhole.shadowserver.org",2019-12-18,2026-11-25
+sinkholed-5.example,sinkhole-ns,"ns ns1.csof.net",2023-02-25,2026-11-25
+sinkholed-6.example,sinkhole-ns,"ns ns1.csof.net",2023-02-25,2026-11-25
+phish-1.example,cert-polska,,2026-11-26,2026-11-26
+brand-login.pages.example,cert-polska,,2026-11-26,2026-11-26

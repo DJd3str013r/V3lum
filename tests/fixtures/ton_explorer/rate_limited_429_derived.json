@@ -1,0 +1,5 @@
+{
+ "ok": false,
+ "error": "Ratelimit exceed",
+ "code": 429
+}

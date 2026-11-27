@@ -1,0 +1,16 @@
+{
+ "schema": "v3lum.acceptance_routes/1",
+ "module": "ip_context_lists",
+ "routes": [
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/mthcht/awesome-lists/main/Lists/DYNDNS/dyndns_list.csv",
+   "status": 200,
+   "body_b64": "ZGVzdF9udF9kb21haW4sbWV0YWRhdGFfUmV0cmlldmVkQXQsbWV0YWRhdGFfUHJvdmlkZXINCm1vb28uY29tLDIwMjQtMDItMThUMTg6MDA6MjIuMDc2WixhZnJhaWQub3JnDQpjaGlja2Vua2lsbGVyLmNvbSwyMDI0LTAyLTE4VDE4OjAwOjIyLjA3NlosYWZyYWlkLm9yZw0KdXMudG8sMjAyNC0wMi0xOFQxODowMDoyMi4wNzZaLGFmcmFpZC5vcmcNCnN0cmFuZ2xlZC5uZXQsMjAyNC0wMi0xOFQxODowMDoyMi4wNzZaLGFmcmFpZC5vcmcNCmlnbm9yZWxpc3QuY29tLDIwMjQtMDItMThUMTg6MDA6MjIuMDc2WixhZnJhaWQub3JnDQpjcmFiZGFuY2UuY29tLDIwMjQtMDItMThUMTg6MDA6MjIuMDc3WixhZnJhaWQub3JnDQpwcml2YXRlZG5zLm9yZywyMDI0LTAyLTE4VDE4OjAwOjIyLjA3N1osYWZyYWlkLm9yZw0KZnRwLnNoLDIwMjQtMDItMThUMTg6MDA6MjIuMDc3WixhZnJhaWQub3JnDQo=",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 300
+  }
+ ]
+}

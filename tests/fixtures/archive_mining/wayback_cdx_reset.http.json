@@ -1,0 +1,13 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://web.archive.org/cdx/search/cdx?url=example.com/robots.txt&output=json&fl=timestamp,original,digest&filter=statuscode:200&collapse=digest&limit=20",
+  "headers": {}
+ },
+ "response": null,
+ "transport_error": "curl: (35) Recv failure: Connection reset by peer",
+ "elapsed_s": 10.339,
+ "observed_at": "2026-11-26T06:15:53Z",
+ "origin": "live",
+ "note": "web.archive.org reset after ~10 s (curl 35), as in every earlier sweep from this egress; the favicon CDX was not sent (source stopped after the failure)"
+}

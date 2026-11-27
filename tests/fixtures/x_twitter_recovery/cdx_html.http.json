@@ -1,0 +1,8 @@
+{
+ "_fixture": "SYNTHETIC: 200 with an HTML page instead of CDX JSON",
+ "status": 200,
+ "headers": {
+  "content-type": "text/html"
+ },
+ "body": "<!DOCTYPE html><html><head><title>Internet Archive: Error</title></head><body><p>The Wayback Machine is temporarily offline.</p></body></html>"
+}

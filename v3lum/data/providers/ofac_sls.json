@@ -1,0 +1,85 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "ofac_sls",
+  "name": "OFAC Sanctions List Service (SDN list exports)",
+  "operator": "Office of Foreign Assets Control (OFAC), U.S. Department of the Treasury",
+  "hosts": [
+    "sanctionslistservice.ofac.treas.gov",
+    "wc2h-sls-prod-public-published.s3.us-gov-west-1.amazonaws.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "U.S. government body (A8 trusted: government bodies). 'Providers (dataset downloads, no value sent): OFAC/US Treasury, UN Security Council and the European Commission, all trusted tier.' (P219 cond 2). The S3 bucket host is OFAC's own publication storage: the export URLs answer 302 to pre-signed URLs on it (verified 2026-11-26).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "The authoritative Specially Designated Nationals list published by the designating agency; a local copy is as current as its last daily download (no value is ever sent)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "timeout": 120,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [
+    {
+      "id": "ofac_s3_link_expired",
+      "statuses": [
+        403
+      ],
+      "json_path": null,
+      "equals": null,
+      "regex": "<Code>(?:AccessDenied|ExpiredToken)</Code>\\s*<Message>[^<]{0,80}expired",
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "OFAC SLS: the pre-signed S3 download link expired (valid about 1 h): request the export again (v3lum data update sanctions)"
+    },
+    {
+      "id": "ofac_s3_error",
+      "statuses": [
+        400,
+        403,
+        404
+      ],
+      "json_path": null,
+      "equals": null,
+      "regex": "<Error>\\s*<Code>(?:AccessDenied|NoSuchKey|NoSuchBucket|SignatureDoesNotMatch|InvalidAccessKeyId)</Code>",
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "OFAC SLS: the S3 storage refused the published export (error document instead of the list): the previous copy is kept"
+    }
+  ],
+  "keys": {},
+  "sources": {
+    "sdn": {
+      "title": "OFAC SDN list exports (SDN.CSV, SDN_COMMENTS.CSV, ALT.CSV, ADD.CSV; datasets matched locally)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://ofac.treasury.gov/sanctions-list-service",
+        "quote": "Sources: OFAC SDN CSV from the Sanctions List Service (US government work, public domain), UN consolidated XML (UN public information) and EU FSF CSV (EU open data, reuse with attribution; the Commission's public token is a config value).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "ofac",
+      "sanitizer": null,
+      "dataset": "sanctions_ofac_sdn",
+      "notes": "Quote: binding council text (P219 cond 1); research C0511 terms 'US Government public data' / 'US Government work - public domain'. Datasets sanctions_ofac_sdn (SDN.CSV, 5.86 MB, no header, 12 columns, '-0-' = null, 0x1A trailer), sanctions_ofac_sdn_comments (remarks spill-over beyond 1000 characters, appended without separator), sanctions_ofac_alt (aliases) and sanctions_ofac_add (addresses), all through the dataset manager (TTL 24 h, `v3lum data update sanctions`), never downloaded during a scan (P219 cond 3, A6 BR9). GET https://sanctionslistservice.ofac.treas.gov/api/PublicationPreview/exports/<FILE> answers 302 to a pre-signed URL on wc2h-sls-prod-public-published.s3.us-gov-west-1.amazonaws.com (X-Amz-* credential parameters, about 1 h): both hosts belong here. Used by sanctions_lists (batch p1-G10-1)."
+    }
+  },
+  "notes": "Owned by batch p1-G10-1 (P219 sanctions_lists). Dataset downloads only: no investigated value is ever sent (disclosure 'none' module). The S3 redirect URL carries temporary X-Amz-Credential / X-Amz-Security-Token / X-Amz-Signature parameters: never cache, log or store it unredacted (core request: redact.KEY_PARAMS does not cover X-Amz-*). The SDN.CSV file carries no publication date: the list date shown is the download date unless the core exposes Last-Modified."
+}

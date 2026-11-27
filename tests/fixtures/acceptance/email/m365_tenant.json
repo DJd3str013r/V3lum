@@ -1,0 +1,76 @@
+{
+ "schema": "v3lum.acceptance_routes/1",
+ "module": "m365_tenant",
+ "routes": [
+  {
+   "method": "GET",
+   "url": "https://login.microsoftonline.com/example.com/.well-known/openid-configuration",
+   "status": 200,
+   "json": {
+    "token_endpoint": "https://login.microsoftonline.com/0e0e0e0e-0000-4000-8000-000000000001/oauth2/token",
+    "jwks_uri": "https://login.microsoftonline.com/common/discovery/keys",
+    "issuer": "https://sts.windows.net/0e0e0e0e-0000-4000-8000-000000000001/",
+    "authorization_endpoint": "https://login.microsoftonline.com/0e0e0e0e-0000-4000-8000-000000000001/oauth2/authorize",
+    "device_authorization_endpoint": "https://login.microsoftonline.com/0e0e0e0e-0000-4000-8000-000000000001/oauth2/devicecode",
+    "tenant_region_scope": "NA",
+    "cloud_instance_name": "microsoftonline.com",
+    "cloud_graph_host_name": "graph.windows.net",
+    "msgraph_host": "graph.microsoft.com",
+    "rbac_url": "https://pas.windows.net"
+   },
+   "headers": {
+    "content-type": "application/json; charset=utf-8"
+   },
+   "latency_ms": 450
+  },
+  {
+   "method": "GET",
+   "url": "https://login.microsoftonline.com/getuserrealm.srf?login=nonexistent.realm.probe@example.com&json=1",
+   "status": 200,
+   "json": {
+    "State": 3,
+    "UserState": 2,
+    "Login": "nonexistent.realm.probe@example.com",
+    "NameSpaceType": "Federated",
+    "DomainName": "example.com",
+    "FederationGlobalVersion": -1,
+    "AuthURL": "https://sts.microsoftonline.com/Trust/2005/UsernameMixed?username=nonexistent.realm.probe%40example.com&wa=wsignin1.0&wtrealm=urn%3afederation%3aMicrosoftOnline&wctx=",
+    "FederationBrandName": "Unmanaged Test Tenant",
+    "AuthNForwardType": 1,
+    "CloudInstanceName": "microsoftonline.com",
+    "CloudInstanceIssuerUri": "urn:federation:MicrosoftOnline"
+   },
+   "headers": {
+    "content-type": "application/json; charset=utf-8"
+   },
+   "latency_ms": 320
+  },
+  {
+   "method": "GET",
+   "url": "https://odc.officeapps.live.com/odc/v2.1/federationprovider?domain=example.com",
+   "status": 200,
+   "json": {
+    "environment": "Global",
+    "endpoint": [
+     {
+      "type": "MSA",
+      "authentication_endpoint": "https://login.live.com/oauth20_authorize.srf",
+      "token_endpoint": "https://login.live.com/oauth20_token.srf"
+     },
+     {
+      "type": "OrgId",
+      "authentication_endpoint": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "token_endpoint": "https://login.microsoftonline.com/common/oauth2/token"
+     }
+    ],
+    "tenantId": "0e0e0e0e-0000-4000-8000-000000000001",
+    "authority_host": "login.microsoftonline.com",
+    "graph": "https://graph.microsoft.com"
+   },
+   "headers": {
+    "content-type": "application/json; charset=utf-8"
+   },
+   "latency_ms": 460
+  }
+ ]
+}

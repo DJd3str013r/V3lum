@@ -1,0 +1,11 @@
+{
+ "_synthetic": "Shape of the documented GreyNoise Community v3 HTTP 200 answer (ip, noise, riot, classification, name, link, last_seen, message). Not captured live: the keyless weekly quota of this egress was exhausted (429) on 2026-11-25/26. Documentation IP.",
+ "ip": "203.0.113.66",
+ "noise": true,
+ "riot": false,
+ "classification": "malicious",
+ "name": "unknown",
+ "link": "https://viz.greynoise.io/ip/203.0.113.66",
+ "last_seen": "2026-11-25",
+ "message": "Success"
+}

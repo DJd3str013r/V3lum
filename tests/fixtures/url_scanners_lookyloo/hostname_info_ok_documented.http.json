@@ -1,0 +1,34 @@
+{
+ "_meta": {
+  "provenance": "documented",
+  "source": "genericapi.py get_hostname_occurrences",
+  "request": {
+   "method": "POST",
+   "url": "https://lookyloo.circl.lu/json/hostname_info",
+   "json": {
+    "hostname": "login.example.com",
+    "cached_captures_only": true,
+    "limit": 20
+   }
+  }
+ },
+ "status": 200,
+ "headers": {},
+ "body": {
+  "meta": {
+   "limit": 20,
+   "offset": 0,
+   "total": 1
+  },
+  "response": [
+   {
+    "capture_uuid": "52caba30-f480-4330-b3e6-d1fe17fce341",
+    "start_timestamp": "2026-11-22T01:02:03+00:00",
+    "title": "Entrar",
+    "hostnodes": [
+     "c1d2e3f4-0000-4000-8000-00000000000a"
+    ]
+   }
+  ]
+ }
+}

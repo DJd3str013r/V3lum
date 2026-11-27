@@ -1,0 +1,11 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "protosint_pks",
+  "source_url": "https://github.com/pixelbubble/ProtOSINT",
+  "version": "endpoint study 2026-11-26 (default branch; commit not pinned: no code copied)",
+  "sha256": "",
+  "licence": "MIT",
+  "attribution": "The Proton public key server lookup (api.protonmail.ch/pks/lookup?op=index) and the reading of the key creation epoch as an approximate account creation date are adapted from ProtOSINT by pixelbubble (MIT licence). V3LUM reimplements the request and parser; ProtOSINT's account.proton.me users/available method (a registration oracle) is not adopted.",
+  "bundled": true,
+  "files": ["v3lum/modules/email/proton_pks.py"]
+}

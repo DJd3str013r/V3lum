@@ -1,0 +1,81 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "ethplorer",
+  "name": "Ethplorer API (api.ethplorer.io)",
+  "operator": "Ethplorer (Everex)",
+  "hosts": [
+    "api.ethplorer.io"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Ethplorer, a long-running token explorer with an identifiable operator, public API documentation and a multi-year track record (A8 community). Tiers: Etherscan, OKLink, PublicNode trusted; Blockscout, Ethplorer community.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Token explorer: ETH balance, token holdings with prices and contract creator in one call; prices are market data of the provider."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 5.0,
+    "ttl": 3600,
+    "min_interval": 0.5,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [
+    {
+      "id": "evm_explorers_ethplorer_error",
+      "statuses": [
+        200,
+        400
+      ],
+      "json_path": "error.code",
+      "equals": null,
+      "regex": "^-?\\d+$",
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "Ethplorer: error object in the answer (invalid key, address or request): could not verify"
+    }
+  ],
+  "keys": {
+    "ethplorer": {
+      "description": "Ethplorer API key of the team (never the shared public 'freekey' test key)",
+      "signup_url": "https://ethplorer.io/wallet/#screen=api",
+      "env": [
+        "V3LUM_ETHPLORER_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "business = the team's own Ethplorer key on a plan whose terms allow company use (P212 cond 1)"
+    }
+  },
+  "sources": {
+    "api": {
+      "title": "Ethplorer getAddressInfo/{a} (ETH balance, tokens with prices, contractInfo.creatorAddress)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://ethplorer.io/privacy",
+        "quote": "Per-adapter classes (A1 BR3): Blockscout keyless and PublicNode RPC 'open' (free public APIs, terms recorded, as in P205 and P211); Etherscan, Ethplorer and OKLink 'key-terms' (company keys on recorded plans).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "ethplorer",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P212 cond 5). 'Ethplorer only with the team's own key 'ethplorer', never the shared 'freekey' test key' (P212 cond 1): evm_explorers refuses the value 'freekey' even when configured. Research C0485: errors as {'error': {'code', 'message'}}; the key travels as apiKey= (camelCase; AR01 redaction is case-insensitive for key-like parameters). Used by evm_explorers.",
+      "licensed_alternative": "The team's own Ethplorer key recorded as key_plans.ethplorer='business'; Blockscout token balances keep keyless coverage."
+    }
+  },
+  "notes": "Owned by batch p2-G09-2 (P212). Plan limits depend on the team key: no quota block until recorded (per-host 0.5 s politeness)."
+}

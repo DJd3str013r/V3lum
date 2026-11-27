@@ -1,0 +1,8 @@
+{
+ "_fixture": "SYNTHETIC: two accounts with the same display name",
+ "status": 200,
+ "headers": {
+  "content-type": "application/json; charset=utf-8"
+ },
+ "body": "{\"items\": [{\"user_id\": 100000003, \"account_id\": 1, \"display_name\": \"Example\", \"creation_date\": 1420070400, \"link\": \"https://stackoverflow.com/users/100000003/example\"}, {\"user_id\": 100000004, \"account_id\": 2, \"display_name\": \"example\", \"creation_date\": 1420070401, \"link\": \"https://stackoverflow.com/users/100000004/example\"}], \"has_more\": false, \"quota_max\": 300, \"quota_remaining\": 119}"
+}

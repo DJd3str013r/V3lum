@@ -1,0 +1,71 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "opendns",
+  "name": "OpenDNS public resolvers (Cisco Umbrella, RFC 8484 DoH)",
+  "operator": "Cisco Systems, Inc. (OpenDNS / Cisco Umbrella)",
+  "hosts": [
+    "doh.opendns.com",
+    "doh.familyshield.opendns.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms, a privacy policy and a business offering (A8 trusted). The terms class stays 'unknown' until legal records them (P020 cond 2).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Cisco Umbrella threat intelligence behind the standard resolver; blocked names answer the block-page range 146.112.61.104-110 (per-address category unverified)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/dns-message",
+    "timeout": 5,
+    "retries": 0,
+    "ttl": 3600,
+    "concurrency": 2
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "standard": {
+      "title": "OpenDNS standard resolver (doh.opendns.com, RFC 8484 wire format): security block verdicts",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://www.opendns.com/terms-of-service/",
+        "quote": "Opt-in module protective_dns_extra (default_enabled=False) holds AdGuard (dns.adguard-dns.com, family.adguard-dns.com), OpenDNS (doh.opendns.com) and CleanBrowsing. AdGuard and OpenDNS stay terms 'unknown' until legal records their terms",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "protective_dns",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P020 cond 2). Category security, 'OpenDNS standard' (cond 4). Wire format only through dnspython (cond 3)."
+    },
+    "familyshield": {
+      "title": "OpenDNS FamilyShield (doh.familyshield.opendns.com, RFC 8484 wire format): adult-content filter verdicts",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://www.opendns.com/terms-of-service/",
+        "quote": "Opt-in module protective_dns_extra (default_enabled=False) holds AdGuard (dns.adguard-dns.com, family.adguard-dns.com), OpenDNS (doh.opendns.com) and CleanBrowsing. AdGuard and OpenDNS stay terms 'unknown' until legal records their terms",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "protective_dns",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P020 cond 2). Category family/adult, 'OpenDNS FamilyShield' (cond 4); the FamilyShield DoH host is not in the P020 hosts list, it is added here because cond 4 names the resolver (same operator and terms class as doh.opendns.com)."
+    }
+  },
+  "notes": "Owned by batch p2-G01-3 (P020, module protective_dns_extra)."
+}

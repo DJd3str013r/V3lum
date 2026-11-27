@@ -1,0 +1,56 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "options": {
+  "mode": "passive",
+  "tlp": "amber",
+  "depth": 1
+ },
+ "nodes": [
+  {
+   "key": "eth_address:0x0330070fd38ec3bb94f58fa55d40368271e9e54a",
+   "depth": 0,
+   "seed": true,
+   "attributes": {
+    "sanctioned": [
+     {
+      "value": true,
+      "source": "goplus_address"
+     }
+    ]
+   },
+   "findings": [
+    {
+     "title": "Address flagged by a token-security service",
+     "severity": "medium",
+     "confidence": 0.4,
+     "confidence_label": "possible",
+     "criterion": "third-party security flag 'sanctioned' (not authoritative)",
+     "tags": [
+      "sanctions"
+     ],
+     "module": "goplus_address",
+     "source": "goplus.address",
+     "data": {
+      "flag": "sanctioned"
+     }
+    }
+   ]
+  },
+  {
+   "key": "eth_address:0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae",
+   "depth": 0,
+   "seed": true,
+   "findings": []
+  }
+ ],
+ "edges": [],
+ "expect": {
+  "g09_sanctions_non_authoritative": {
+   "min": 1,
+   "max": 1,
+   "severity": "info",
+   "confidence_label": "probable"
+  }
+ }
+}

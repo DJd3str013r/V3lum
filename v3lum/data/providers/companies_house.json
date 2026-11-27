@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "companies_house",
+  "name": "UK Companies House (Find and update company information)",
+  "operator": "Companies House (UK government)",
+  "hosts": [
+    "find-and-update.company-information.service.gov.uk"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Government body, the UK companies registrar (A8 trusted); P231 cond 5: 'trusted - ... UK Companies House'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "Official register of UK companies."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "search_pages": {
+      "title": "Companies House web search /search/companies?q= (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://find-and-update.company-information.service.gov.uk/help/terms-conditions",
+        "quote": "The pack is offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "companies_house",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P231 cond 1). Research C0540 terms 'public open data / free public API' (verified 2026-11-26: 'Company search results'). The REST API (api.company-information.service.gov.uk, key) is not used here: a package that adds it extends this provider. Used by pivots_company_org (pack company_org.json)."
+    }
+  },
+  "notes": "Manual pivot links only (batch p2-G14-2): V3LUM never fetches them (P311)."
+}

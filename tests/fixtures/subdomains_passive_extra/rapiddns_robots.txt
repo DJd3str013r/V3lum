@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://rapiddns.io/sitemap.xml

@@ -1,0 +1,13 @@
+{
+ "_fixture": "live response headers of https://api.phishstats.info/api/phishing?_where=%28ip%2Ceq%2C1.1.1.1%29&_sort=-id&_size=3 (2026-11-26T06:46:26Z)",
+ "status": 200,
+ "headers": {
+  "Content-Type": "application/json; charset=utf-8",
+  "Server": "cloudflare",
+  "RateLimit-Reset": "34",
+  "RateLimit-Limit": "20",
+  "X-RateLimit-Remaining-Minute": "19",
+  "X-RateLimit-Limit-Minute": "20",
+  "RateLimit-Remaining": "19"
+ }
+}

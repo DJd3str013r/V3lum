@@ -1,0 +1,30 @@
+{
+ "request": "GET https://receitaws.com.br/v1/cnpj/12ABC34501DE35",
+ "response": {
+  "status": 200,
+  "headers": {
+   "content-type": "application/json; charset=utf-8",
+   "content-length": "218",
+   "x-ratelimit-limit": "3",
+   "x-ratelimit-remaining": "1",
+   "etag": "W/\"da-RvqLsYJg0cV5DbJ10XU22Q\"",
+   "cf-cache-status": "DYNAMIC",
+   "server": "cloudflare"
+  },
+  "body": {
+   "cnpj": "12.ABC.345/01DE-35",
+   "ultima_atualizacao": "2026-11-10T18:44:35.100Z",
+   "status": "ERROR",
+   "message": "CNPJ rejeitado pela Receita Federal",
+   "billing": {
+    "free": true,
+    "database": true
+   }
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": 0.378446,
+ "observed_at": "2026-11-26T05:20:02+00:00",
+ "origin": "live",
+ "note": ""
+}

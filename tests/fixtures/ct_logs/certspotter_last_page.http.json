@@ -1,0 +1,17 @@
+{
+ "request": "GET https://api.certspotter.com/v1/issuances?domain=example.com&include_subdomains=true&expand=dns_names&expand=issuer&after=18605860762",
+ "response": {
+  "status": 200,
+  "headers": {
+   "content-type": "application/json",
+   "retry-after": "3600",
+   "x-ratelimit-limit": "10",
+   "x-ratelimit-remaining": "8",
+   "cache-control": "public, max-age=900, must-revalidate"
+  },
+  "body": "[]"
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "last page of the after= pagination: 200 + [] + 'Retry-After: 3600' (polling hint, not a rate limit)"
+}

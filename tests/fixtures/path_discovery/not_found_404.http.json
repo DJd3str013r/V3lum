@@ -1,0 +1,21 @@
+{
+ "_provenance": {
+  "synthetic": true
+ },
+ "request": {
+  "method": "GET",
+  "host": "app.example.com",
+  "path": "/openapi.yaml"
+ },
+ "response": {
+  "status": 404,
+  "headers": {
+   "Content-Type": "text/html",
+   "Server": "nginx"
+  },
+  "body": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+ },
+ "history": [],
+ "final_url": null,
+ "transport_error": null
+}

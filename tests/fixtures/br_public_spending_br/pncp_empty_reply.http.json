@@ -1,0 +1,13 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://pncp.gov.br/api/search/?q=00000000000191&tipos_documento=contrato&pagina=1&tam_pagina=10",
+  "headers": {}
+ },
+ "response": null,
+ "transport_error": "curl: (52) Empty reply from server",
+ "elapsed_s": 0.458184,
+ "observed_at": "2026-11-26T09:43:10Z",
+ "origin": "live",
+ "note": "PNCP search from a non-BR datacenter egress: curl (52) empty reply"
+}

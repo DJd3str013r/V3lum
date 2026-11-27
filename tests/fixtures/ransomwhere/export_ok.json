@@ -1,0 +1,185 @@
+{
+ "result": [
+  {
+   "address": "bc1qnf273myysxjw23g9hze4vcu3uqkget9ra70hen",
+   "balance": 2005326047,
+   "blockchain": "bitcoin",
+   "createdAt": "2021-09-11T15:59:58.492Z",
+   "transactions": [
+    {
+     "hash": "f12b44a39a919bdb120c98028554dc0332844651ec7887537c9a5939cb7e29e8",
+     "time": 1628000835,
+     "amount": 162152900,
+     "amountUSD": 61866.164266917105
+    },
+    {
+     "hash": "d698d1e4480123c6b9c58d86e950c459ea064236f91daa8ffd52ced358d0ff55",
+     "time": 1625088483,
+     "amount": 1242944494,
+     "amountUSD": 435538.1409429442
+    },
+    {
+     "hash": "d694af38c3710d4b0e67c488c2f3c39b5dbe2b34af7ae4dab7545d00bd7624b2",
+     "time": 1625084958,
+     "amount": 28653,
+     "amountUSD": 10.04025072131514
+    }
+   ],
+   "updatedAt": "2021-09-11T15:59:58.492Z",
+   "family": "Conti"
+  },
+  {
+   "address": "bc1qsmehmvycn97hsl3l8mjavg8u44ymvmutmhzvtx",
+   "balance": 2578305,
+   "blockchain": "bitcoin",
+   "createdAt": "2021-07-08T06:43:14.294Z",
+   "transactions": [
+    {
+     "hash": "6317dc92648abb58abbf81229cee75398c705301c02a83221303a1391e90f982",
+     "time": 1588146604,
+     "amount": 2578305,
+     "amountUSD": 226.9176050232423
+    }
+   ],
+   "updatedAt": "2021-09-22T20:53:57.557Z",
+   "family": "Netwalker (Mailto)"
+  },
+  {
+   "address": "1kJTyPQ8jPDCvpt2MpnA8R8viLKAGQqyT",
+   "balance": 1000915,
+   "blockchain": "bitcoin",
+   "createdAt": "2021-07-15T03:23:10.424Z",
+   "transactions": [
+    {
+     "hash": "53b87046781339d77fbe4c020534d8eee043ae1b303570719811bae72b424214",
+     "time": 1458548316,
+     "amount": 1000915,
+     "amountUSD": 4.1368518291140495
+    },
+    {
+     "hash": "53b87046781339d77fbe4c020534d8eee043ae1b303570719811bae72b424214",
+     "time": 1458548316,
+     "amount": 1000915,
+     "amountUSD": 4.1368518291140495
+    },
+    {
+     "hash": "53b87046781339d77fbe4c020534d8eee043ae1b303570719811bae72b424214",
+     "time": 1458548316,
+     "amount": 1000915,
+     "amountUSD": 4.1368518291140495
+    }
+   ],
+   "updatedAt": "2021-09-11T15:42:59.489Z",
+   "family": "Locky"
+  },
+  {
+   "address": "3DJK6n5rUYbkbm166dH83C2Pq2pCYrUzTz",
+   "balance": 8216654346,
+   "blockchain": "bitcoin",
+   "createdAt": "2024-10-27T19:02:23.619Z",
+   "transactions": [
+    {
+     "hash": "e787c0cde33989be90db5a3c0f670cdae203d03c9171cd66fcb175bffa3480f8",
+     "time": 1603489741,
+     "amount": 6226956417,
+     "amountUSD": 805241.3015003402
+    },
+    {
+     "hash": "bb2e5aca9397a6f4bebdeb615561c8424e9cca9714c432420809ecb3f44286c1",
+     "time": 1603387636,
+     "amount": 99508534,
+     "amountUSD": 12902.168653179315
+    },
+    {
+     "hash": "fe1756efa47d551c1af8522fc2330b436361fc44f6967165863bd4938495e545",
+     "time": 1603322974,
+     "amount": 120000000,
+     "amountUSD": 15388.4273436
+    }
+   ],
+   "updatedAt": "2024-10-27T19:02:23.619Z",
+   "family": "Unlabeled"
+  },
+  {
+   "address": "15FC73BdkpDMUWmxo7e7gtLRtM8gQgXyb4",
+   "balance": 0,
+   "blockchain": "bitcoin",
+   "createdAt": "2021-07-08T06:43:19.145Z",
+   "transactions": [],
+   "updatedAt": "2021-09-22T20:55:21.197Z",
+   "family": "Ryuk"
+  },
+  {
+   "address": "3KmK5z4CAvn3aL4Q8F2gWbhuPRy9ZmEurN",
+   "balance": 51956001,
+   "blockchain": "bitcoin",
+   "createdAt": "2021-07-08T06:43:09.096Z",
+   "transactions": [
+    {
+     "hash": "bc7ca0b943ee25cbbbae11cd655effd5eaf543d66c680a7f0b685d7b9a489f7b",
+     "time": 1622451020,
+     "amount": 3000000,
+     "amountUSD": 1119.98566407
+    },
+    {
+     "hash": "e8cb191a168e872f8a024266381b1ee7de943d1119f06e03f808ed4827e4a1f0",
+     "time": 1620408235,
+     "amount": 1000000,
+     "amountUSD": 573.56402344
+    },
+    {
+     "hash": "fc2be97193d5b936d6bb38dc159cd02a646de2f94744c22beadf9aad5860c048",
+     "time": 1620305652,
+     "amount": 1000000,
+     "amountUSD": 563.9651562500001
+    }
+   ],
+   "updatedAt": "2021-09-22T20:53:58.066Z",
+   "family": "Qlocker"
+  },
+  {
+   "address": "bc1qr0txunr259we37wer7w6et33qyq0n6hv83pw24",
+   "balance": 488528790,
+   "blockchain": "bitcoin",
+   "createdAt": "2024-10-29T00:56:30.455Z",
+   "transactions": [
+    {
+     "hash": "71e4dae29ed1bc9fe008bba7f3542fd5961b780c220ca8778100a7cb8bd4c81b",
+     "time": 1708190268,
+     "amount": 488528790,
+     "amountUSD": 252388.60969576545
+    }
+   ],
+   "updatedAt": "2024-10-29T00:56:30.455Z",
+   "family": "Akira"
+  },
+  {
+   "address": "3BeQ9H5tByJK9CeeZftDsBFhgt1i5Q7AQK",
+   "balance": 38149706,
+   "blockchain": "bitcoin",
+   "createdAt": "2021-07-08T06:43:11.057Z",
+   "transactions": [
+    {
+     "hash": "1b5a91a603f645688bc26850d0f580a6ce579aba2586d733dac390367cbab95e",
+     "time": 1578591410,
+     "amount": 55000,
+     "amountUSD": 4.333489208950001
+    },
+    {
+     "hash": "d5ef2a9c37406447af4edca3973077d9129960655d0bec4aaecefea642289e53",
+     "time": 1578590102,
+     "amount": 55000,
+     "amountUSD": 4.333489208950001
+    },
+    {
+     "hash": "52d576271c924c34d2b2cf7b9e790bd305eb78f9ae3bb09fb1b93a58c2e58581",
+     "time": 1578587714,
+     "amount": 38039706,
+     "amountUSD": 2997.1755538660104
+    }
+   ],
+   "updatedAt": "2021-09-22T20:54:02.819Z",
+   "family": "REvil / Sodinokibi"
+  }
+ ]
+}

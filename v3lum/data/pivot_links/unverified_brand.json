@@ -1,0 +1,32 @@
+{
+  "schema": "v3lum.pivot_pack/1",
+  "pack": "unverified_brand",
+  "title": "Brand-abuse pages behind JavaScript apps (P304 cond 12)",
+  "notes": "P304 (batch p2-G14-3): pages that curl cannot verify (SPA or anti-bot). V3LUM never requests these URLs, not even from doctor, and never solves their challenges (P304 cond 1). verified stays false until a team member opens the link in a browser: then verified=true, checked_at=<date>, x_verification='browser', x_checked_by=<name> and the label marker '(browser)' (P304 cond 6); 'curl' never appears here. x_module_links are rendered by the module pivots_unverified (module-side placeholders url_sha256, url_path, cve_num, hunter_q, and the per-link x_max_tlp the frozen schema lacks).",
+  "links": [
+    {
+      "id": "meta_ad_library",
+      "label": "Meta Ad Library (BR, all ads) (may show a challenge)",
+      "template": "https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=BR&q={qp}&search_type=keyword_unordered&media_type=all",
+      "entity_types": [
+        "company_name",
+        "keyword",
+        "domain"
+      ],
+      "category": "company",
+      "host": "www.facebook.com",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "Scam ads impersonating the brand; brand values only.",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0538",
+      "x_routed_from": "P304 cond 12"
+    }
+  ]
+}

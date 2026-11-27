@@ -1,0 +1,43 @@
+{
+ "User": {
+  "id": "42",
+  "org_id": "1",
+  "email": "v3lum-service@example.com",
+  "role_id": "3",
+  "disabled": false,
+  "autoalert": false
+ },
+ "Role": {
+  "id": "3",
+  "name": "User",
+  "perm_add": true,
+  "perm_modify": true,
+  "perm_modify_org": false,
+  "perm_publish": false,
+  "perm_delegate": false,
+  "perm_sync": false,
+  "perm_admin": false,
+  "perm_audit": false,
+  "perm_auth": true,
+  "perm_site_admin": false,
+  "perm_regexp_access": false,
+  "perm_tagger": true,
+  "perm_template": false,
+  "perm_sharing_group": false,
+  "perm_tag_editor": false,
+  "perm_sighting": true,
+  "perm_object_template": false,
+  "perm_publish_zmq": false,
+  "perm_publish_kafka": false,
+  "perm_decaying": false,
+  "perm_galaxy_editor": false,
+  "default_role": false,
+  "permission": "1",
+  "permission_description": "manage_own"
+ },
+ "Organisation": {
+  "id": "1",
+  "name": "EXAMPLE-CSIRT",
+  "uuid": "11111111-0000-4000-8000-000000000001"
+ }
+}

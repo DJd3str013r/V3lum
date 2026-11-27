@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "casadosdados",
+  "name": "Casa dos Dados (CNPJ pages)",
+  "operator": "Casa dos Dados",
+  "hosts": [
+    "casadosdados.com.br"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Brazilian company-data site built on the Receita Federal open CNPJ data, with public terms (A8 community); P250 cond 5: 'trusted - Portal da Transparencia (CGU), Receita Federal, Sintegra/CCC, consumidor.gov.br, REDESIM/juntas comerciais, Jusbrasil, Reclame Aqui; community - Escavador, Casa dos Dados'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Republication of Receita Federal open CNPJ data: the official record is the authority."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "cnpj_pages": {
+      "title": "Casa dos Dados company page /solucao/cnpj/{cnpj_digits} (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://casadosdados.com.br/",
+        "quote": "The pack is offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "casadosdados",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P250 cond 1). CNPJ values only (rule 4). The route redirects to the company slug page (C0560); Cloudflare managed challenge for curl on 2026-11-26: unverified, antibot. Used by pivots_brazil (pack brazil.json)."
+    }
+  },
+  "notes": "Manual pivot links only (batch p2-G14-2): V3LUM never fetches them (P311)."
+}

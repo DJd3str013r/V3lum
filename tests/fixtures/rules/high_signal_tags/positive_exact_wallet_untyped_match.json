@@ -1,0 +1,39 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 1,
+    "purpose": "AR08 fixture"
+  },
+  "nodes": [
+    {
+      "key": "btc_address:1BoatSLRHtKNngkdXEeobR76b53LETtpyT",
+      "depth": 0,
+      "seed": true,
+      "findings": [
+        {
+          "title": "Wallet listed in ransomware payment data",
+          "severity": "high",
+          "confidence": 0.7,
+          "tags": [
+            "ransomware"
+          ],
+          "module": "t_ransom_tracker",
+          "criterion": "fixture",
+          "confidence_label": "probable"
+        }
+      ]
+    }
+  ],
+  "edges": [],
+  "expect": {
+    "high_signal_tags": {
+      "min": 1,
+      "max": 1,
+      "severity": "critical",
+      "confidence_label": "probable"
+    }
+  }
+}

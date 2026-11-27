@@ -1,0 +1,4 @@
+{
+ "_synthetic": "Not observed (no key). Credit exhaustion error text.",
+ "error": "Insufficient query credits, please upgrade your API plan or wait for the monthly limit to reset."
+}

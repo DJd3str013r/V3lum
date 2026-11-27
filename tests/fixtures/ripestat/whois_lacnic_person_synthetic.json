@@ -1,0 +1,113 @@
+{
+ "_synthetic": "LACNIC-style shape (individual holder with CPF-shaped ownerid placeholder 111.111.111-11, invalid by design); documentation values only",
+ "messages": [
+  [
+   "info",
+   "IP address has been converted to a prefix"
+  ]
+ ],
+ "data_call_name": "whois",
+ "data_call_status": "supported",
+ "cached": false,
+ "status": "ok",
+ "status_code": 200,
+ "time": "2026-11-26T04:35:41.504871",
+ "data": {
+  "records": [
+   [
+    {
+     "key": "inetnum",
+     "value": "198.51.100.0/24"
+    },
+    {
+     "key": "status",
+     "value": "allocated"
+    },
+    {
+     "key": "aut-num",
+     "value": "N/A"
+    },
+    {
+     "key": "owner",
+     "value": "Example Person"
+    },
+    {
+     "key": "ownerid",
+     "value": "111.111.111-11"
+    },
+    {
+     "key": "responsible",
+     "value": "Example Person"
+    },
+    {
+     "key": "address",
+     "value": "Rua Exemplo, 300"
+    },
+    {
+     "key": "country",
+     "value": "BR"
+    },
+    {
+     "key": "phone",
+     "value": "+55 11 5555-0104"
+    },
+    {
+     "key": "owner-c",
+     "value": "EXP2"
+    },
+    {
+     "key": "tech-c",
+     "value": "EXP2"
+    },
+    {
+     "key": "abuse-c",
+     "value": "EXP2"
+    },
+    {
+     "key": "created",
+     "value": "20200101"
+    },
+    {
+     "key": "changed",
+     "value": "20240101"
+    },
+    {
+     "key": "source",
+     "value": "LACNIC"
+    }
+   ],
+   [
+    {
+     "key": "nic-hdl-br",
+     "value": "EXP2"
+    },
+    {
+     "key": "person",
+     "value": "Example Person"
+    },
+    {
+     "key": "e-mail",
+     "value": "person@example.com"
+    },
+    {
+     "key": "country",
+     "value": "BR"
+    },
+    {
+     "key": "created",
+     "value": "20200101"
+    },
+    {
+     "key": "changed",
+     "value": "20240101"
+    }
+   ]
+  ],
+  "irr_records": [],
+  "authorities": [
+   "lacnic"
+  ],
+  "resource": "198.51.100.10",
+  "query_time": "2026-11-26T04:35:00"
+ }
+}

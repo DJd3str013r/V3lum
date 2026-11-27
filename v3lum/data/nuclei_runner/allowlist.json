@@ -1,0 +1,183 @@
+{
+ "schema": "v3lum.nuclei_allowlist/1",
+ "release": "v10.5.2",
+ "reviewed_at": "2026-11-26",
+ "gate": "binding FC4/FC8 literal gate (all tags in {tech,panel,exposure,misconfig,ssl,dns,detect,discovery}, no forbidden/excluded/CVE tag, http/ssl/dns protocol only, GET/HEAD only, signed, no intrusive marker); the governing-tag widening and the human red-team+legal review are backlog unblock items (an A7 clarification is needed before the set is widened).",
+ "note": "nuclei-templates MIT (Copyright (c) 2025 ProjectDiscovery). Template CONTENT is not bundled; the pinned, reviewed checkout is pointed at by setting nuclei_runner_templates_dir. ids/sha256 are the pin recorded 2026-11-26 against nuclei-templates v10.5.2.",
+ "reviewed_ids": [
+  "abyss-web-server",
+  "acunetix-panel-detect",
+  "call-break-cms",
+  "default-detect-generic",
+  "iomega-emc-shared-nas",
+  "jaeger-ui-dashboard",
+  "orbit-telephone-detect",
+  "parallels-html-client",
+  "residential-gateway-login",
+  "seats-login",
+  "selenoid-ui-exposure",
+  "shoutcast-server",
+  "start-element-manager-panel",
+  "supervpn-detect",
+  "swag-instance-default-page",
+  "tech-detect",
+  "weave-scope-dashboard"
+ ],
+ "templates": {
+  "abyss-web-server": {
+   "path": "http/technologies/abyss-web-server.yaml",
+   "tags": [
+    "tech",
+    "discovery"
+   ],
+   "severity": "info",
+   "sha256": "bdfdf5ed784c64b736c9700957bfb68934e4f645ff22ef9e752c990065f68328"
+  },
+  "acunetix-panel-detect": {
+   "path": "http/exposed-panels/acunetix-panel.yaml",
+   "tags": [
+    "panel",
+    "discovery"
+   ],
+   "severity": "info",
+   "sha256": "ecebf9a191cab3b319e71901850e8683d2f91d6fe06223a1f363e9ef57f2f3c6"
+  },
+  "call-break-cms": {
+   "path": "http/exposed-panels/call-break-cms.yaml",
+   "tags": [
+    "panel",
+    "discovery"
+   ],
+   "severity": "info",
+   "sha256": "d2e76b1ef4a145435df3f9b508ed30a5d9f6d23311ca60e4cd1aab4a4b24b695"
+  },
+  "default-detect-generic": {
+   "path": "http/technologies/default-detect-generic.yaml",
+   "tags": [
+    "tech",
+    "discovery"
+   ],
+   "severity": "info",
+   "sha256": "8f55f46f41feb88ba350bcc1d1a97525da26af875d42130d7577707a876a091b"
+  },
+  "iomega-emc-shared-nas": {
+   "path": "http/exposed-panels/iomega-emc-shared-nas.yaml",
+   "tags": [
+    "panel",
+    "discovery"
+   ],
+   "severity": "info",
+   "sha256": "d8b06d62e599ef3badab8805464389a2805b1470bfcca57b89ce46b17422f770"
+  },
+  "jaeger-ui-dashboard": {
+   "path": "http/misconfiguration/jaeger-ui-dashboard.yaml",
+   "tags": [
+    "misconfig",
+    "discovery"
+   ],
+   "severity": "low",
+   "sha256": "c7caf4bf9e0dcb5288656667552f21355fdae3f289214f072b6a0f719a4e842b"
+  },
+  "orbit-telephone-detect": {
+   "path": "http/technologies/orbit-telephone-detect.yaml",
+   "tags": [
+    "tech",
+    "detect",
+    "discovery"
+   ],
+   "severity": "info",
+   "sha256": "130b4c48c8e9f1f15b0053abbce89b1872f840809584a6647396729a354360de"
+  },
+  "parallels-html-client": {
+   "path": "http/exposed-panels/parallels-html-client.yaml",
+   "tags": [
+    "panel",
+    "discovery"
+   ],
+   "severity": "info",
+   "sha256": "706d01bfa3e8e7b1e6a30843caa89bf1b65270f24869e57d81478abed7e535bc"
+  },
+  "residential-gateway-login": {
+   "path": "http/exposed-panels/residential-gateway-login.yaml",
+   "tags": [
+    "panel",
+    "discovery"
+   ],
+   "severity": "info",
+   "sha256": "ba888709c5b4ea9a1b70a636a00bdedb08f8adb41b4cd4ec47e70847af0dbfa5"
+  },
+  "seats-login": {
+   "path": "http/exposed-panels/seats-login.yaml",
+   "tags": [
+    "panel",
+    "discovery"
+   ],
+   "severity": "info",
+   "sha256": "5fa1fd6e74f3957a87b3fe3abf56347439e6c525c9835be9e2ad582909c28521"
+  },
+  "selenoid-ui-exposure": {
+   "path": "http/exposed-panels/selenoid-ui-exposure.yaml",
+   "tags": [
+    "panel",
+    "discovery"
+   ],
+   "severity": "info",
+   "sha256": "88616a8cdb50820eecbb2ea3de3d963d8c21859363141bd8faaec5ee4ca94d86"
+  },
+  "shoutcast-server": {
+   "path": "http/exposed-panels/shoutcast-server.yaml",
+   "tags": [
+    "panel",
+    "discovery"
+   ],
+   "severity": "info",
+   "sha256": "d871498f1b9039bcc304112de6b91c8823d05dc428d42d2575c489c3e1942541"
+  },
+  "start-element-manager-panel": {
+   "path": "http/exposed-panels/start-element-manager-panel.yaml",
+   "tags": [
+    "panel",
+    "discovery"
+   ],
+   "severity": "info",
+   "sha256": "9720e7eacf6ecf36984516f818ffc5eb673cb395985232f226706d42464b8102"
+  },
+  "supervpn-detect": {
+   "path": "http/exposed-panels/supervpn-panel.yaml",
+   "tags": [
+    "panel",
+    "discovery"
+   ],
+   "severity": "info",
+   "sha256": "33871ee882db3b1652fa5f317ee32c14ab16ae0efae83d0975ee7f8aad11089f"
+  },
+  "swag-instance-default-page": {
+   "path": "http/technologies/swag-instance-default-page.yaml",
+   "tags": [
+    "panel",
+    "tech",
+    "discovery"
+   ],
+   "severity": "info",
+   "sha256": "a82994faa20c12418f68db8789c34f17a93baed3089368d404ca934ce78fa2c4"
+  },
+  "tech-detect": {
+   "path": "http/technologies/tech-detect.yaml",
+   "tags": [
+    "tech",
+    "discovery"
+   ],
+   "severity": "info",
+   "sha256": "981080e049c7a1c9e418048e41ef7d7089d9f4f1b1c9d3d8094136349c087a95"
+  },
+  "weave-scope-dashboard": {
+   "path": "http/exposed-panels/weave-scope-dashboard.yaml",
+   "tags": [
+    "panel",
+    "discovery"
+   ],
+   "severity": "info",
+   "sha256": "85edfaf12b04a46cd1118236c2531ca6ba2d186e522afb06ba827a57dfafc026"
+  }
+ }
+}

@@ -1,0 +1,55 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "pinterest",
+  "name": "Pinterest public widget API",
+  "operator": "Pinterest, Inc.",
+  "hosts": [
+    "widgets.pinterest.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Pinterest, Inc., an established company with published terms, a privacy policy and a business offering (A8 trusted); P116 FC9.",
+  "tier_reviewer": "council-1 (A8, P116 FC9)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "The platform's own answer is authoritative for the existence and public fields of its accounts; profile fields (names, links, bios) are self-declared by the owner."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "ttl": 86400,
+    "min_interval": 2.0,
+    "concurrency": 1,
+    "max_bytes": 1048576
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "widget_pins": {
+      "title": "Pinterest widget API (widgets.pinterest.com/v3/pidgets/users/{username}/pins/)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://policy.pinterest.com/en/developer-guidelines",
+        "quote": "P116 FC4 (binding council text): documented public APIs (Chess.com PubAPI, Lichess, Mojang, Steam Community XML, Medium RSS, Pinterest widget, Stack Exchange API, Twitch Helix with the team's app) are 'open' once recorded; Snapchat __NEXT_DATA__ and the Disqus profile page are 'unknown' and stay disabled in every profile until legal records them (A1).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "pinterest",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0271 + live check 2026-11-26: 'status': 'success' with data.user = FOUND; HTTP 404 code 30 'User not found.' = ABSENT; any other failure inside a 200 = error-in-200 (could not verify). Pin link domains are content (brand-abuse/fraud shops), only when relevant to the case."
+    }
+  },
+  "notes": "Batch p3-G05-2 (P116 pinterest_profile): joins the pack with real found + absent fixtures (FC1)."
+}

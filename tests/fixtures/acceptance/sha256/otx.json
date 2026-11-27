@@ -1,0 +1,141 @@
+{
+ "schema": "v3lum.acceptance_routes/1",
+ "module": "otx",
+ "routes": [
+  {
+   "method": "GET",
+   "url": "https://otx.alienvault.com/api/v1/indicators/file/275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f/general",
+   "status": 200,
+   "json": {
+    "indicator": "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f",
+    "type": "sha256",
+    "type_title": "FileHash-SHA256",
+    "sections": [
+     "general",
+     "analysis"
+    ],
+    "validation": [],
+    "false_positive": [],
+    "pulse_info": {
+     "count": 50,
+     "pulses": [
+      {
+       "id": "6b0000000000000000000001",
+       "name": "Community pulse 01",
+       "author": {
+        "username": "community-user-a",
+        "id": "0"
+       },
+       "created": "2025-11-14T07:25:50.524000",
+       "modified": "2026-10-20T07:14:00.620000",
+       "tags": [],
+       "references": [],
+       "adversary": "",
+       "malware_families": [
+        {
+         "id": "Tsara Brashears",
+         "display_name": "Tsara Brashears"
+        },
+        {
+         "id": "Mitre Attack",
+         "display_name": "Mitre Attack"
+        },
+        {
+         "id": "ET",
+         "display_name": "ET"
+        }
+       ],
+       "attack_ids": [
+        {
+         "id": "T1056"
+        },
+        {
+         "id": "T1027"
+        },
+        {
+         "id": "T1090"
+        }
+       ],
+       "TLP": "green",
+       "cloned_from": null
+      },
+      {
+       "id": "6b0000000000000000000002",
+       "name": "Community pulse 02",
+       "author": {
+        "username": "community-user-a",
+        "id": "0"
+       },
+       "created": "2026-09-14T23:46:33.025000",
+       "modified": "2026-09-14T23:46:33.025000",
+       "tags": [],
+       "references": [],
+       "adversary": "",
+       "malware_families": [
+        {
+         "id": "Tsara Brashears",
+         "display_name": "Tsara Brashears"
+        },
+        {
+         "id": "Mitre Attack",
+         "display_name": "Mitre Attack"
+        },
+        {
+         "id": "ET",
+         "display_name": "ET"
+        }
+       ],
+       "attack_ids": [
+        {
+         "id": "T1056"
+        },
+        {
+         "id": "T1027"
+        },
+        {
+         "id": "T1090"
+        }
+       ],
+       "TLP": "green",
+       "cloned_from": null
+      },
+      {
+       "id": "6b0000000000000000000003",
+       "name": "Community pulse 03",
+       "author": {
+        "username": "community-user-b",
+        "id": "0"
+       },
+       "created": "2026-06-13T17:01:53.660000",
+       "modified": "2026-07-13T17:04:00.535000",
+       "tags": [],
+       "references": [],
+       "adversary": "Lab3",
+       "malware_families": [],
+       "attack_ids": [],
+       "TLP": "white",
+       "cloned_from": null
+      }
+     ],
+     "references": [],
+     "related": {
+      "alienvault": {
+       "adversary": [],
+       "malware_families": [],
+       "industries": []
+      },
+      "other": {
+       "adversary": [],
+       "malware_families": [],
+       "industries": []
+      }
+     }
+    }
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 565
+  }
+ ]
+}

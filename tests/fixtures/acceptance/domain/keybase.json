@@ -1,0 +1,22 @@
+{
+ "schema": "v3lum.acceptance_routes/1",
+ "module": "keybase",
+ "routes": [
+  {
+   "method": "GET",
+   "url": "https://keybase.io/_/api/1.0/user/lookup.json?domain=example.com&fields=basics,proofs_summary,public_keys",
+   "status": 200,
+   "json": {
+    "status": {
+     "code": 0,
+     "name": "OK"
+    },
+    "them": []
+   },
+   "headers": {
+    "content-type": "application/json; charset=utf-8"
+   },
+   "latency_ms": 553
+  }
+ ]
+}

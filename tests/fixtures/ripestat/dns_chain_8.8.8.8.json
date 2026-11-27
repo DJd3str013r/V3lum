@@ -1,0 +1,47 @@
+{
+ "messages": [],
+ "data_call_name": "dns-chain",
+ "data_call_status": "supported",
+ "cached": false,
+ "status": "ok",
+ "status_code": 200,
+ "time": "2026-11-26T08:15:53.529592",
+ "data": {
+  "query_time": "2026-11-26T08:15:00",
+  "resource": "8.8.8.8",
+  "forward_nodes": {
+   "dns.google": [
+    "8.8.8.8",
+    "8.8.4.4",
+    "2001:4860:4860::8844",
+    "2001:4860:4860::8888"
+   ]
+  },
+  "reverse_nodes": {
+   "8.8.8.8": [
+    "dns.google"
+   ],
+   "8.8.4.4": [
+    "dns.google"
+   ],
+   "2001:4860:4860::8844": [
+    "dns.google"
+   ],
+   "2001:4860:4860::8888": [
+    "dns.google"
+   ]
+  },
+  "authoritative_nameservers": [
+   "ns4.zdns.google",
+   "ns1.zdns.google",
+   "ns2.zdns.google",
+   "ns3.zdns.google"
+  ],
+  "nameservers": [
+   "193.0.19.101",
+   "2001:67c:2e8:11::c100:1365",
+   "193.0.19.102",
+   "2001:67c:2e8:11::c100:1366"
+  ]
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://vulnerability.circl.lu/api/vulnerability/CVE-2021-9999999",
+  "headers": {}
+ },
+ "response": {
+  "status": 200,
+  "headers": {
+   "server": "gunicorn",
+   "content-type": "application/json",
+   "x-api-policy-version": "1",
+   "link": "<https://vulnerability.circl.lu/.well-known/api-policy.json>; rel=\"api-policy\"; type=\"application/json\"",
+   "access-control-allow-origin": "*",
+   "x-ratelimit-limit": "20",
+   "x-ratelimit-remaining": "19",
+   "x-ratelimit-reset": "1795677561",
+   "retry-after": "60",
+   "cache-control": "max-age=1800",
+   "last-modified": "Thu, 26 Nov 2026 07:18:20 GMT",
+   "vary": "Cookie, Accept-Encoding",
+   "age": "0",
+   "via": "varnish"
+  },
+  "body": "{}\n"
+ },
+ "transport_error": null,
+ "elapsed_s": 0.385,
+ "note": "LIVE 2026-11-26: an unassigned CVE id answers HTTP 200 with body {} (no 404). FC1 says 404 -> EMPTY: treat both as EMPTY."
+}

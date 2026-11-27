@@ -1,0 +1,126 @@
+{
+ "data": {
+  "attributes": {
+   "first_submission_date": 1148301722,
+   "last_analysis_date": 1795600000,
+   "last_analysis_results": {
+    "Kaspersky": {
+     "category": "malicious",
+     "engine_name": "Kaspersky",
+     "method": "blacklist",
+     "result": "EICAR-Test-File"
+    },
+    "ESET-NOD32": {
+     "category": "malicious",
+     "engine_name": "ESET-NOD32",
+     "method": "blacklist",
+     "result": "Eicar test file"
+    },
+    "Microsoft": {
+     "category": "malicious",
+     "engine_name": "Microsoft",
+     "method": "blacklist",
+     "result": "Virus:DOS/EICAR_Test_File"
+    },
+    "BitDefender": {
+     "category": "malicious",
+     "engine_name": "BitDefender",
+     "method": "blacklist",
+     "result": "EICAR-Test-File (not a virus)"
+    },
+    "Avast": {
+     "category": "malicious",
+     "engine_name": "Avast",
+     "method": "blacklist",
+     "result": "EICAR Test-NOT virus!!!"
+    },
+    "Sophos": {
+     "category": "malicious",
+     "engine_name": "Sophos",
+     "method": "blacklist",
+     "result": "EICAR-AV-Test"
+    },
+    "ClamAV": {
+     "category": "malicious",
+     "engine_name": "ClamAV",
+     "method": "blacklist",
+     "result": "Win.Test.EICAR_HDB-1"
+    },
+    "GData": {
+     "category": "malicious",
+     "engine_name": "GData",
+     "method": "blacklist",
+     "result": "EICAR-Test-File"
+    },
+    "Webroot": {
+     "category": "undetected",
+     "engine_name": "Webroot",
+     "method": "blacklist",
+     "result": null
+    },
+    "Panda": {
+     "category": "type-unsupported",
+     "engine_name": "Panda",
+     "method": "blacklist",
+     "result": null
+    }
+   },
+   "last_analysis_stats": {
+    "confirmed-timeout": 0,
+    "failure": 0,
+    "harmless": 0,
+    "malicious": 8,
+    "suspicious": 0,
+    "timeout": 0,
+    "type-unsupported": 1,
+    "undetected": 1
+   },
+   "md5": "44d88612fea8a8f36de82e1278abb02f",
+   "sha1": "3395856ce81f2b7382dee72602f798b642f14140",
+   "sha256": "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f",
+   "meaningful_name": "eicar.com",
+   "names": [
+    "eicar.com",
+    "eicar.txt"
+   ],
+   "popular_threat_classification": {
+    "suggested_threat_label": "virus.eicar/test",
+    "popular_threat_category": [
+     {
+      "count": 6,
+      "value": "virus"
+     }
+    ],
+    "popular_threat_name": [
+     {
+      "count": 7,
+      "value": "eicar"
+     },
+     {
+      "count": 2,
+      "value": "test"
+     }
+    ]
+   },
+   "reputation": 3,
+   "size": 68,
+   "tags": [
+    "text",
+    "known-distributor"
+   ],
+   "times_submitted": 100000,
+   "total_votes": {
+    "harmless": 10,
+    "malicious": 2
+   },
+   "type_description": "Text",
+   "type_tag": "text",
+   "threat_verdict": "VERDICT_MALICIOUS"
+  },
+  "id": "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f",
+  "links": {
+   "self": "https://www.virustotal.com/api/v3/files/275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f"
+  },
+  "type": "file"
+ }
+}

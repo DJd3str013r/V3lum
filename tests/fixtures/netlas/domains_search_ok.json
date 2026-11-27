@@ -1,0 +1,82 @@
+{
+ "items": [
+  {
+   "data": {
+    "@timestamp": "2026-10-21T18:28:59.216Z",
+    "zone": "br",
+    "level": 4,
+    "domain": "www.sapo.nic.br"
+   },
+   "scan_label": "2026-10-01"
+  },
+  {
+   "data": {
+    "txt": [
+     "_qyuj7gwgkxtnuhqfja9mer2i6uqif1p"
+    ],
+    "@timestamp": "2026-10-21T17:28:43.299Z",
+    "level": 4,
+    "zone": "br",
+    "domain": "blackwidow.devsys.nic.br",
+    "aaaa": [
+     "2001:12ff:0:4145:f816:3eff:feec:883d"
+    ]
+   },
+   "scan_label": "2026-10-01"
+  },
+  {
+   "data": {
+    "a": [
+     "200.160.4.35",
+     "200.160.4.53"
+    ],
+    "@timestamp": "2026-10-21T10:25:09.778Z",
+    "zone": "br",
+    "level": 4,
+    "domain": "api.simetas.nic.br",
+    "cname": [
+     "api.simet.nic.br"
+    ],
+    "aaaa": [
+     "2001:12ff:0:4::35",
+     "2001:12ff:0:4::53"
+    ]
+   },
+   "scan_label": "2026-10-01"
+  },
+  {
+   "data": {
+    "a": [
+     "200.160.4.9"
+    ],
+    "txt": [
+     "v=spf1 mx mx:nic.br -all"
+    ],
+    "@timestamp": "2026-10-21T05:10:02.001Z",
+    "zone": "br",
+    "ns": [
+     "e.dns.br",
+     "c.dns.br"
+    ],
+    "level": 3,
+    "domain": "ipv6.nic.br",
+    "cname": [
+     "ipv6.br"
+    ],
+    "aaaa": [
+     "2001:12ff:0:4::9"
+    ]
+   },
+   "scan_label": "2026-10-01"
+  },
+  {
+   "data": {
+    "@timestamp": "2026-10-21T03:16:34.498Z",
+    "zone": "br",
+    "level": 3,
+    "domain": "localhost.nic.br"
+   },
+   "scan_label": "2026-10-01"
+  }
+ ]
+}

@@ -1,0 +1,91 @@
+{
+ "name": "default",
+ "title": "OpenSanctions Default",
+ "type": "collection",
+ "version": "20261125185440-ckr",
+ "updated_at": "2026-11-25T18:54:40",
+ "last_export": "2026-11-25T18:54:40",
+ "last_change": "2026-11-25T17:05:06",
+ "entity_count": 3934866,
+ "target_count": 1252970,
+ "thing_count": 1804997,
+ "index_url": "https://data.opensanctions.org/artifacts/default/20261125185440-ckr/index.json",
+ "result": "success",
+ "deprecated": false,
+ "disabled": false,
+ "coverage": {
+  "start": "2021-09-01",
+  "countries": [],
+  "frequency": "unknown",
+  "schedule": "0 */6 * * *"
+ },
+ "resources": [
+  {
+   "name": "entities.ftm.json",
+   "checksum": "b1b40d7dfa100a1e0b0b1d194e9a44ca03b18528",
+   "mime_type": "application/json+ftm",
+   "title": "FollowTheMoney entities",
+   "size": 2594575861,
+   "mime_type_label": "FollowTheMoney Entities",
+   "path": "entities.ftm.json",
+   "url": "https://data.opensanctions.org/artifacts/default/20261125185440-ckr/entities.ftm.json"
+  },
+  {
+   "name": "names.txt",
+   "checksum": "52fdb3e8ce8e89d37bf466275ff5f2506cc4157b",
+   "mime_type": "text/plain",
+   "title": "Target names text file",
+   "size": 111298711,
+   "mime_type_label": "Plain text",
+   "path": "names.txt",
+   "url": "https://data.opensanctions.org/artifacts/default/20261125185440-ckr/names.txt"
+  },
+  {
+   "name": "senzing.json",
+   "checksum": "ced8121404b725ee41c8895ebd56c309de7269d6",
+   "mime_type": "application/json+senzing",
+   "title": "Senzing entity format",
+   "size": 1168991697,
+   "mime_type_label": "json+senzing",
+   "path": "senzing.json",
+   "url": "https://data.opensanctions.org/artifacts/default/20261125185440-ckr/senzing.json"
+  },
+  {
+   "name": "statements.csv",
+   "checksum": "b3768575faf23f79d470d20c1f0cfeaa558dde00",
+   "mime_type": "text/csv+ftm-statements",
+   "title": "Statement-based granular CSV",
+   "size": 9499361201,
+   "mime_type_label": "csv+ftm statements",
+   "path": "statements.csv",
+   "url": "https://data.opensanctions.org/artifacts/default/20261125185440-ckr/statements.csv"
+  },
+  {
+   "name": "targets.nested.json",
+   "checksum": "a1d5136ba24038c92280e3d4e9ad21bb81d54035",
+   "mime_type": "application/json",
+   "title": "Targets as nested JSON",
+   "size": 3955467879,
+   "mime_type_label": "JavaScript Object Notation",
+   "path": "targets.nested.json",
+   "url": "https://data.opensanctions.org/artifacts/default/20261125185440-ckr/targets.nested.json"
+  },
+  {
+   "name": "targets.simple.csv",
+   "checksum": "8141c964e16eff3a18e2dda5925342cea0aa3bd1",
+   "mime_type": "text/csv",
+   "title": "Targets as simplified CSV",
+   "size": 479535026,
+   "mime_type_label": "Comma-separated table",
+   "path": "targets.simple.csv",
+   "url": "https://data.opensanctions.org/artifacts/default/20261125185440-ckr/targets.simple.csv"
+  }
+ ],
+ "datasets": [
+  "br_chamber_deputies",
+  "ca_foreign_reps",
+  "wd_curated",
+  "ni_legislature",
+  "cn_sanctions"
+ ]
+}

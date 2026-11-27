@@ -1,0 +1,21 @@
+{
+ "data": [
+  {
+   "score": 1.0,
+   "doc": {
+    "entityType": "workspace",
+    "id": "x"
+   }
+  },
+  {
+   "score": 0.5,
+   "document": "not-an-object"
+  }
+ ],
+ "meta": {
+  "queryText": "example.com",
+  "total": {
+   "workspace": 2
+  }
+ }
+}

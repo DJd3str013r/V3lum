@@ -1,0 +1,166 @@
+{
+ "response": [
+  {
+   "Event": {
+    "id": "1734",
+    "orgc_id": "1",
+    "org_id": "1",
+    "date": "2026-10-14",
+    "threat_level_id": "2",
+    "info": "Phishing campaign - fake bank SMS (synthetic)",
+    "published": true,
+    "uuid": "5e1b2c3d-0000-4000-8000-000000001734",
+    "analysis": "2",
+    "attribute_count": "12",
+    "timestamp": "1793664000",
+    "distribution": "1",
+    "sharing_group_id": "0",
+    "publish_timestamp": "1793664000",
+    "Org": {
+     "id": "1",
+     "name": "EXAMPLE-CSIRT",
+     "uuid": "11111111-0000-4000-8000-000000000001"
+    },
+    "Orgc": {
+     "id": "1",
+     "name": "EXAMPLE-CSIRT",
+     "uuid": "22222222-0000-4000-8000-000000000001"
+    },
+    "Tag": [
+     {
+      "id": "0",
+      "name": "tlp:amber",
+      "colour": "#004646",
+      "exportable": true,
+      "is_galaxy": false
+     },
+     {
+      "id": "0",
+      "name": "misp-galaxy:threat-actor=\"Example Actor\"",
+      "colour": "#004646",
+      "exportable": true,
+      "is_galaxy": true
+     },
+     {
+      "id": "0",
+      "name": "misp-galaxy:malpedia=\"Grandoreiro\"",
+      "colour": "#004646",
+      "exportable": true,
+      "is_galaxy": true
+     }
+    ]
+   }
+  },
+  {
+   "Event": {
+    "id": "1802",
+    "orgc_id": "5",
+    "org_id": "1",
+    "date": "2026-10-28",
+    "threat_level_id": "2",
+    "info": "Sector ISAC share - scanning wave (synthetic)",
+    "published": true,
+    "uuid": "5e1b2c3d-0000-4000-8000-000000001802",
+    "analysis": "2",
+    "attribute_count": "12",
+    "timestamp": "1793664000",
+    "distribution": "4",
+    "sharing_group_id": "12",
+    "publish_timestamp": "1793664000",
+    "Org": {
+     "id": "1",
+     "name": "EXAMPLE-CSIRT",
+     "uuid": "11111111-0000-4000-8000-000000000001"
+    },
+    "Orgc": {
+     "id": "5",
+     "name": "EXAMPLE-SECTOR-ISAC",
+     "uuid": "22222222-0000-4000-8000-000000000005"
+    },
+    "Tag": [
+     {
+      "id": "0",
+      "name": "tlp:green",
+      "colour": "#004646",
+      "exportable": true,
+      "is_galaxy": false
+     }
+    ]
+   }
+  },
+  {
+   "Event": {
+    "id": "1650",
+    "orgc_id": "1",
+    "org_id": "1",
+    "date": "2025-12-01",
+    "threat_level_id": "2",
+    "info": "2025 campaign infrastructure (synthetic)",
+    "published": true,
+    "uuid": "5e1b2c3d-0000-4000-8000-000000001650",
+    "analysis": "2",
+    "attribute_count": "12",
+    "timestamp": "1793664000",
+    "distribution": "1",
+    "sharing_group_id": "0",
+    "publish_timestamp": "1793664000",
+    "Org": {
+     "id": "1",
+     "name": "EXAMPLE-CSIRT",
+     "uuid": "11111111-0000-4000-8000-000000000001"
+    },
+    "Orgc": {
+     "id": "1",
+     "name": "EXAMPLE-CSIRT",
+     "uuid": "22222222-0000-4000-8000-000000000001"
+    },
+    "Tag": [
+     {
+      "id": "0",
+      "name": "tlp:clear",
+      "colour": "#004646",
+      "exportable": true,
+      "is_galaxy": false
+     }
+    ]
+   }
+  },
+  {
+   "Event": {
+    "id": "1811",
+    "orgc_id": "1",
+    "org_id": "1",
+    "date": "2026-11-03",
+    "threat_level_id": "2",
+    "info": "Perimeter scanner sweep (synthetic)",
+    "published": true,
+    "uuid": "5e1b2c3d-0000-4000-8000-000000001811",
+    "analysis": "2",
+    "attribute_count": "12",
+    "timestamp": "1793664000",
+    "distribution": "0",
+    "sharing_group_id": "0",
+    "publish_timestamp": "1793664000",
+    "Org": {
+     "id": "1",
+     "name": "EXAMPLE-CSIRT",
+     "uuid": "11111111-0000-4000-8000-000000000001"
+    },
+    "Orgc": {
+     "id": "1",
+     "name": "EXAMPLE-CSIRT",
+     "uuid": "22222222-0000-4000-8000-000000000001"
+    },
+    "Tag": [
+     {
+      "id": "0",
+      "name": "tlp:amber",
+      "colour": "#004646",
+      "exportable": true,
+      "is_galaxy": false
+     }
+    ]
+   }
+  }
+ ]
+}

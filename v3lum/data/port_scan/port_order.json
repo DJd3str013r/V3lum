@@ -1,0 +1,1002 @@
+{
+ "schema": "v3lum.port_order/1",
+ "name": "port_scan_top100",
+ "licence": "V3LUM-authored order (Apache-2.0 with the project); service names are facts from the IANA Service Name and Transport Protocol Port Number Registry (public)",
+ "notes": "P286 cond 4: top-100 TCP ports by default from own port-order data (facts only). The order is V3LUM's exposure-risk order, not the nmap-services frequency column (NPSL, never copied). ICS/OT ports (502, 102, 20000, 44818, 1911, 2404, 4840) are excluded from the default because the devices are fragile; an analyst may list them explicitly. role: server_first (the server speaks first: banner read, nothing sent), client_first (connect only), http (hand-off to web_fingerprint, P072), tls (hand-off to tls_inspect, P275).",
+ "ports": [
+  {
+   "rank": 1,
+   "port": 22,
+   "service": "ssh",
+   "role": "server_first",
+   "category": "remote_admin",
+   "iana_tcp_names": [
+    "ssh"
+   ]
+  },
+  {
+   "rank": 2,
+   "port": 3389,
+   "service": "rdp",
+   "role": "client_first",
+   "category": "remote_admin",
+   "iana_tcp_names": [
+    "ms-wbt-server"
+   ]
+  },
+  {
+   "rank": 3,
+   "port": 23,
+   "service": "telnet",
+   "role": "server_first",
+   "category": "remote_admin",
+   "iana_tcp_names": [
+    "telnet"
+   ]
+  },
+  {
+   "rank": 4,
+   "port": 5900,
+   "service": "vnc",
+   "role": "server_first",
+   "category": "remote_admin",
+   "iana_tcp_names": [
+    "rfb"
+   ]
+  },
+  {
+   "rank": 5,
+   "port": 5985,
+   "service": "winrm",
+   "role": "http",
+   "category": "remote_admin",
+   "iana_tcp_names": [
+    "wsman"
+   ]
+  },
+  {
+   "rank": 6,
+   "port": 5986,
+   "service": "winrm-https",
+   "role": "tls",
+   "category": "remote_admin",
+   "iana_tcp_names": [
+    "wsmans"
+   ]
+  },
+  {
+   "rank": 7,
+   "port": 2222,
+   "service": "ssh-alt",
+   "role": "server_first",
+   "category": "remote_admin",
+   "iana_tcp_names": [
+    "EtherNet-IP-1",
+    "EtherNet/IP-1"
+   ]
+  },
+  {
+   "rank": 8,
+   "port": 10000,
+   "service": "webmin",
+   "role": "http",
+   "category": "remote_admin",
+   "iana_tcp_names": [
+    "ndmp"
+   ]
+  },
+  {
+   "rank": 9,
+   "port": 21,
+   "service": "ftp",
+   "role": "server_first",
+   "category": "file_transfer",
+   "iana_tcp_names": [
+    "ftp"
+   ]
+  },
+  {
+   "rank": 10,
+   "port": 445,
+   "service": "smb",
+   "role": "client_first",
+   "category": "file_sharing",
+   "iana_tcp_names": [
+    "microsoft-ds"
+   ]
+  },
+  {
+   "rank": 11,
+   "port": 139,
+   "service": "netbios-ssn",
+   "role": "client_first",
+   "category": "file_sharing",
+   "iana_tcp_names": [
+    "netbios-ssn"
+   ]
+  },
+  {
+   "rank": 12,
+   "port": 135,
+   "service": "msrpc",
+   "role": "client_first",
+   "category": "windows",
+   "iana_tcp_names": [
+    "epmap"
+   ]
+  },
+  {
+   "rank": 13,
+   "port": 80,
+   "service": "http",
+   "role": "http",
+   "category": "web",
+   "iana_tcp_names": [
+    "http",
+    "www",
+    "www-http"
+   ]
+  },
+  {
+   "rank": 14,
+   "port": 443,
+   "service": "https",
+   "role": "tls",
+   "category": "web",
+   "iana_tcp_names": [
+    "https"
+   ]
+  },
+  {
+   "rank": 15,
+   "port": 8080,
+   "service": "http-alt",
+   "role": "http",
+   "category": "web",
+   "iana_tcp_names": [
+    "http-alt"
+   ]
+  },
+  {
+   "rank": 16,
+   "port": 8443,
+   "service": "https-alt",
+   "role": "tls",
+   "category": "web",
+   "iana_tcp_names": [
+    "pcsync-https"
+   ]
+  },
+  {
+   "rank": 17,
+   "port": 8000,
+   "service": "http-alt",
+   "role": "http",
+   "category": "web",
+   "iana_tcp_names": [
+    "irdmi"
+   ]
+  },
+  {
+   "rank": 18,
+   "port": 8008,
+   "service": "http-alt",
+   "role": "http",
+   "category": "web",
+   "iana_tcp_names": [
+    "http-alt"
+   ]
+  },
+  {
+   "rank": 19,
+   "port": 8081,
+   "service": "http-alt",
+   "role": "http",
+   "category": "web",
+   "iana_tcp_names": [
+    "sunproxyadmin"
+   ]
+  },
+  {
+   "rank": 20,
+   "port": 8888,
+   "service": "http-alt",
+   "role": "http",
+   "category": "web",
+   "iana_tcp_names": [
+    "ddi-tcp-1"
+   ]
+  },
+  {
+   "rank": 21,
+   "port": 9443,
+   "service": "https-alt",
+   "role": "tls",
+   "category": "web",
+   "iana_tcp_names": [
+    "tungsten-https"
+   ]
+  },
+  {
+   "rank": 22,
+   "port": 3000,
+   "service": "http-dev",
+   "role": "http",
+   "category": "web",
+   "iana_tcp_names": [
+    "hbci",
+    "remoteware-cl"
+   ]
+  },
+  {
+   "rank": 23,
+   "port": 5000,
+   "service": "http-dev",
+   "role": "http",
+   "category": "web",
+   "iana_tcp_names": [
+    "commplex-main"
+   ]
+  },
+  {
+   "rank": 24,
+   "port": 9000,
+   "service": "http-alt",
+   "role": "http",
+   "category": "web",
+   "iana_tcp_names": [
+    "cslistener"
+   ]
+  },
+  {
+   "rank": 25,
+   "port": 25,
+   "service": "smtp",
+   "role": "server_first",
+   "category": "mail",
+   "iana_tcp_names": [
+    "smtp"
+   ]
+  },
+  {
+   "rank": 26,
+   "port": 587,
+   "service": "submission",
+   "role": "server_first",
+   "category": "mail",
+   "iana_tcp_names": [
+    "submission"
+   ]
+  },
+  {
+   "rank": 27,
+   "port": 465,
+   "service": "smtps",
+   "role": "tls",
+   "category": "mail",
+   "iana_tcp_names": [
+    "urd",
+    "submissions"
+   ]
+  },
+  {
+   "rank": 28,
+   "port": 110,
+   "service": "pop3",
+   "role": "server_first",
+   "category": "mail",
+   "iana_tcp_names": [
+    "pop3"
+   ]
+  },
+  {
+   "rank": 29,
+   "port": 995,
+   "service": "pop3s",
+   "role": "tls",
+   "category": "mail",
+   "iana_tcp_names": [
+    "pop3s"
+   ]
+  },
+  {
+   "rank": 30,
+   "port": 143,
+   "service": "imap",
+   "role": "server_first",
+   "category": "mail",
+   "iana_tcp_names": [
+    "imap"
+   ]
+  },
+  {
+   "rank": 31,
+   "port": 993,
+   "service": "imaps",
+   "role": "tls",
+   "category": "mail",
+   "iana_tcp_names": [
+    "imaps"
+   ]
+  },
+  {
+   "rank": 32,
+   "port": 53,
+   "service": "dns",
+   "role": "client_first",
+   "category": "dns",
+   "iana_tcp_names": [
+    "domain"
+   ]
+  },
+  {
+   "rank": 33,
+   "port": 389,
+   "service": "ldap",
+   "role": "client_first",
+   "category": "directory",
+   "iana_tcp_names": [
+    "ldap"
+   ]
+  },
+  {
+   "rank": 34,
+   "port": 636,
+   "service": "ldaps",
+   "role": "tls",
+   "category": "directory",
+   "iana_tcp_names": [
+    "ldaps"
+   ]
+  },
+  {
+   "rank": 35,
+   "port": 88,
+   "service": "kerberos",
+   "role": "client_first",
+   "category": "directory",
+   "iana_tcp_names": [
+    "kerberos"
+   ]
+  },
+  {
+   "rank": 36,
+   "port": 3268,
+   "service": "ldap-gc",
+   "role": "client_first",
+   "category": "directory",
+   "iana_tcp_names": [
+    "msft-gc"
+   ]
+  },
+  {
+   "rank": 37,
+   "port": 3269,
+   "service": "ldap-gc-ssl",
+   "role": "tls",
+   "category": "directory",
+   "iana_tcp_names": [
+    "msft-gc-ssl"
+   ]
+  },
+  {
+   "rank": 38,
+   "port": 464,
+   "service": "kpasswd",
+   "role": "client_first",
+   "category": "directory",
+   "iana_tcp_names": [
+    "kpasswd"
+   ]
+  },
+  {
+   "rank": 39,
+   "port": 1433,
+   "service": "mssql",
+   "role": "client_first",
+   "category": "database",
+   "iana_tcp_names": [
+    "ms-sql-s"
+   ]
+  },
+  {
+   "rank": 40,
+   "port": 1521,
+   "service": "oracle-tns",
+   "role": "client_first",
+   "category": "database",
+   "iana_tcp_names": [
+    "ncube-lm"
+   ]
+  },
+  {
+   "rank": 41,
+   "port": 3306,
+   "service": "mysql",
+   "role": "server_first",
+   "category": "database",
+   "iana_tcp_names": [
+    "mysql"
+   ]
+  },
+  {
+   "rank": 42,
+   "port": 5432,
+   "service": "postgresql",
+   "role": "client_first",
+   "category": "database",
+   "iana_tcp_names": [
+    "postgresql"
+   ]
+  },
+  {
+   "rank": 43,
+   "port": 6379,
+   "service": "redis",
+   "role": "server_first",
+   "category": "database",
+   "iana_tcp_names": [
+    "redis"
+   ]
+  },
+  {
+   "rank": 44,
+   "port": 27017,
+   "service": "mongodb",
+   "role": "client_first",
+   "category": "database",
+   "iana_tcp_names": [
+    "mongodb"
+   ]
+  },
+  {
+   "rank": 45,
+   "port": 9200,
+   "service": "elasticsearch",
+   "role": "http",
+   "category": "database",
+   "iana_tcp_names": [
+    "wap-wsp"
+   ]
+  },
+  {
+   "rank": 46,
+   "port": 9300,
+   "service": "elasticsearch-transport",
+   "role": "client_first",
+   "category": "database",
+   "iana_tcp_names": [
+    "vrace"
+   ]
+  },
+  {
+   "rank": 47,
+   "port": 5984,
+   "service": "couchdb",
+   "role": "http",
+   "category": "database",
+   "iana_tcp_names": [
+    "couchdb"
+   ]
+  },
+  {
+   "rank": 48,
+   "port": 9042,
+   "service": "cassandra",
+   "role": "client_first",
+   "category": "database",
+   "iana_tcp_names": []
+  },
+  {
+   "rank": 49,
+   "port": 11211,
+   "service": "memcached",
+   "role": "client_first",
+   "category": "database",
+   "iana_tcp_names": [
+    "memcache"
+   ]
+  },
+  {
+   "rank": 50,
+   "port": 8086,
+   "service": "influxdb",
+   "role": "http",
+   "category": "database",
+   "iana_tcp_names": [
+    "d-s-n"
+   ]
+  },
+  {
+   "rank": 51,
+   "port": 7474,
+   "service": "neo4j",
+   "role": "http",
+   "category": "database",
+   "iana_tcp_names": [
+    "neo4j"
+   ]
+  },
+  {
+   "rank": 52,
+   "port": 2375,
+   "service": "docker",
+   "role": "http",
+   "category": "orchestration",
+   "iana_tcp_names": [
+    "docker"
+   ]
+  },
+  {
+   "rank": 53,
+   "port": 2376,
+   "service": "docker-tls",
+   "role": "tls",
+   "category": "orchestration",
+   "iana_tcp_names": [
+    "docker-s"
+   ]
+  },
+  {
+   "rank": 54,
+   "port": 6443,
+   "service": "kubernetes-api",
+   "role": "tls",
+   "category": "orchestration",
+   "iana_tcp_names": [
+    "sun-sr-https"
+   ]
+  },
+  {
+   "rank": 55,
+   "port": 10250,
+   "service": "kubelet",
+   "role": "tls",
+   "category": "orchestration",
+   "iana_tcp_names": []
+  },
+  {
+   "rank": 56,
+   "port": 2379,
+   "service": "etcd",
+   "role": "tls",
+   "category": "orchestration",
+   "iana_tcp_names": [
+    "etcd-client"
+   ]
+  },
+  {
+   "rank": 57,
+   "port": 8500,
+   "service": "consul",
+   "role": "http",
+   "category": "orchestration",
+   "iana_tcp_names": [
+    "fmtp"
+   ]
+  },
+  {
+   "rank": 58,
+   "port": 5601,
+   "service": "kibana",
+   "role": "http",
+   "category": "devops",
+   "iana_tcp_names": [
+    "esmagent"
+   ]
+  },
+  {
+   "rank": 59,
+   "port": 9090,
+   "service": "prometheus",
+   "role": "http",
+   "category": "devops",
+   "iana_tcp_names": [
+    "websm"
+   ]
+  },
+  {
+   "rank": 60,
+   "port": 15672,
+   "service": "rabbitmq-mgmt",
+   "role": "http",
+   "category": "messaging",
+   "iana_tcp_names": []
+  },
+  {
+   "rank": 61,
+   "port": 5672,
+   "service": "amqp",
+   "role": "client_first",
+   "category": "messaging",
+   "iana_tcp_names": [
+    "amqp"
+   ]
+  },
+  {
+   "rank": 62,
+   "port": 1883,
+   "service": "mqtt",
+   "role": "client_first",
+   "category": "messaging",
+   "iana_tcp_names": [
+    "mqtt"
+   ]
+  },
+  {
+   "rank": 63,
+   "port": 8883,
+   "service": "mqtt-tls",
+   "role": "tls",
+   "category": "messaging",
+   "iana_tcp_names": [
+    "secure-mqtt"
+   ]
+  },
+  {
+   "rank": 64,
+   "port": 61616,
+   "service": "activemq-openwire",
+   "role": "server_first",
+   "category": "messaging",
+   "iana_tcp_names": []
+  },
+  {
+   "rank": 65,
+   "port": 8161,
+   "service": "activemq-console",
+   "role": "http",
+   "category": "messaging",
+   "iana_tcp_names": [
+    "patrol-snmp"
+   ]
+  },
+  {
+   "rank": 66,
+   "port": 9092,
+   "service": "kafka",
+   "role": "client_first",
+   "category": "messaging",
+   "iana_tcp_names": [
+    "XmlIpcRegSvc"
+   ]
+  },
+  {
+   "rank": 67,
+   "port": 2181,
+   "service": "zookeeper",
+   "role": "client_first",
+   "category": "messaging",
+   "iana_tcp_names": [
+    "eforward"
+   ]
+  },
+  {
+   "rank": 68,
+   "port": 4848,
+   "service": "glassfish-admin",
+   "role": "tls",
+   "category": "app_server",
+   "iana_tcp_names": [
+    "appserv-http"
+   ]
+  },
+  {
+   "rank": 69,
+   "port": 8009,
+   "service": "ajp",
+   "role": "client_first",
+   "category": "app_server",
+   "iana_tcp_names": [
+    "nvme-disc"
+   ]
+  },
+  {
+   "rank": 70,
+   "port": 7001,
+   "service": "weblogic",
+   "role": "http",
+   "category": "app_server",
+   "iana_tcp_names": [
+    "afs3-callback"
+   ]
+  },
+  {
+   "rank": 71,
+   "port": 9060,
+   "service": "websphere-admin",
+   "role": "http",
+   "category": "app_server",
+   "iana_tcp_names": [
+    "CardWeb-IO"
+   ]
+  },
+  {
+   "rank": 72,
+   "port": 8983,
+   "service": "solr",
+   "role": "http",
+   "category": "app_server",
+   "iana_tcp_names": []
+  },
+  {
+   "rank": 73,
+   "port": 50070,
+   "service": "hadoop-namenode",
+   "role": "http",
+   "category": "app_server",
+   "iana_tcp_names": []
+  },
+  {
+   "rank": 74,
+   "port": 8088,
+   "service": "hadoop-yarn",
+   "role": "http",
+   "category": "app_server",
+   "iana_tcp_names": [
+    "radan-http"
+   ]
+  },
+  {
+   "rank": 75,
+   "port": 1099,
+   "service": "java-rmi",
+   "role": "client_first",
+   "category": "app_server",
+   "iana_tcp_names": [
+    "rmiregistry"
+   ]
+  },
+  {
+   "rank": 76,
+   "port": 2082,
+   "service": "cpanel",
+   "role": "http",
+   "category": "hosting_panel",
+   "iana_tcp_names": [
+    "infowave"
+   ]
+  },
+  {
+   "rank": 77,
+   "port": 2083,
+   "service": "cpanel-ssl",
+   "role": "tls",
+   "category": "hosting_panel",
+   "iana_tcp_names": [
+    "radsec"
+   ]
+  },
+  {
+   "rank": 78,
+   "port": 2087,
+   "service": "whm-ssl",
+   "role": "tls",
+   "category": "hosting_panel",
+   "iana_tcp_names": [
+    "eli"
+   ]
+  },
+  {
+   "rank": 79,
+   "port": 8089,
+   "service": "splunkd",
+   "role": "tls",
+   "category": "devops",
+   "iana_tcp_names": []
+  },
+  {
+   "rank": 80,
+   "port": 1080,
+   "service": "socks",
+   "role": "client_first",
+   "category": "proxy_vpn",
+   "iana_tcp_names": [
+    "socks"
+   ]
+  },
+  {
+   "rank": 81,
+   "port": 3128,
+   "service": "http-proxy",
+   "role": "http",
+   "category": "proxy_vpn",
+   "iana_tcp_names": [
+    "ndl-aas"
+   ]
+  },
+  {
+   "rank": 82,
+   "port": 1723,
+   "service": "pptp",
+   "role": "client_first",
+   "category": "proxy_vpn",
+   "iana_tcp_names": [
+    "pptp"
+   ]
+  },
+  {
+   "rank": 83,
+   "port": 1194,
+   "service": "openvpn",
+   "role": "client_first",
+   "category": "proxy_vpn",
+   "iana_tcp_names": [
+    "openvpn"
+   ]
+  },
+  {
+   "rank": 84,
+   "port": 111,
+   "service": "rpcbind",
+   "role": "client_first",
+   "category": "file_sharing",
+   "iana_tcp_names": [
+    "sunrpc"
+   ]
+  },
+  {
+   "rank": 85,
+   "port": 2049,
+   "service": "nfs",
+   "role": "client_first",
+   "category": "file_sharing",
+   "iana_tcp_names": [
+    "shilp",
+    "nfs"
+   ]
+  },
+  {
+   "rank": 86,
+   "port": 873,
+   "service": "rsync",
+   "role": "server_first",
+   "category": "file_transfer",
+   "iana_tcp_names": [
+    "rsync"
+   ]
+  },
+  {
+   "rank": 87,
+   "port": 3690,
+   "service": "svn",
+   "role": "server_first",
+   "category": "source_control",
+   "iana_tcp_names": [
+    "svn"
+   ]
+  },
+  {
+   "rank": 88,
+   "port": 9418,
+   "service": "git",
+   "role": "client_first",
+   "category": "source_control",
+   "iana_tcp_names": [
+    "git"
+   ]
+  },
+  {
+   "rank": 89,
+   "port": 990,
+   "service": "ftps",
+   "role": "tls",
+   "category": "file_transfer",
+   "iana_tcp_names": [
+    "ftps"
+   ]
+  },
+  {
+   "rank": 90,
+   "port": 119,
+   "service": "nntp",
+   "role": "server_first",
+   "category": "other",
+   "iana_tcp_names": [
+    "nntp"
+   ]
+  },
+  {
+   "rank": 91,
+   "port": 631,
+   "service": "ipp",
+   "role": "http",
+   "category": "printing",
+   "iana_tcp_names": [
+    "ipp",
+    "ipps"
+   ]
+  },
+  {
+   "rank": 92,
+   "port": 9100,
+   "service": "jetdirect",
+   "role": "client_first",
+   "category": "printing",
+   "iana_tcp_names": [
+    "hp-pdl-datastr",
+    "pdl-datastream"
+   ]
+  },
+  {
+   "rank": 93,
+   "port": 515,
+   "service": "lpd",
+   "role": "client_first",
+   "category": "printing",
+   "iana_tcp_names": [
+    "printer"
+   ]
+  },
+  {
+   "rank": 94,
+   "port": 548,
+   "service": "afp",
+   "role": "client_first",
+   "category": "file_sharing",
+   "iana_tcp_names": [
+    "afpovertcp"
+   ]
+  },
+  {
+   "rank": 95,
+   "port": 5060,
+   "service": "sip",
+   "role": "client_first",
+   "category": "voip",
+   "iana_tcp_names": [
+    "sip"
+   ]
+  },
+  {
+   "rank": 96,
+   "port": 5061,
+   "service": "sips",
+   "role": "tls",
+   "category": "voip",
+   "iana_tcp_names": [
+    "sips"
+   ]
+  },
+  {
+   "rank": 97,
+   "port": 5222,
+   "service": "xmpp",
+   "role": "client_first",
+   "category": "messaging",
+   "iana_tcp_names": [
+    "xmpp-client"
+   ]
+  },
+  {
+   "rank": 98,
+   "port": 554,
+   "service": "rtsp",
+   "role": "client_first",
+   "category": "media",
+   "iana_tcp_names": [
+    "rtsp"
+   ]
+  },
+  {
+   "rank": 99,
+   "port": 3260,
+   "service": "iscsi",
+   "role": "client_first",
+   "category": "storage",
+   "iana_tcp_names": [
+    "iscsi-target"
+   ]
+  },
+  {
+   "rank": 100,
+   "port": 10050,
+   "service": "zabbix-agent",
+   "role": "client_first",
+   "category": "devops",
+   "iana_tcp_names": [
+    "zabbix-agent"
+   ]
+  }
+ ]
+}

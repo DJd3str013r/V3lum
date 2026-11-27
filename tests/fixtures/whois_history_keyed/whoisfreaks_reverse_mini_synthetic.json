@@ -1,0 +1,19 @@
+{
+ "total_Result": 1,
+ "total_Pages": 1,
+ "current_Page": 1,
+ "whois_domains": [
+  {
+   "num": 1,
+   "domain_name": "examp1e-login.example",
+   "create_date": "2026-09-30",
+   "update_date": "2026-09-30",
+   "expiry_date": "2027-09-30",
+   "registrant_contact": {
+    "name": "Registrant Example One",
+    "email_address": "registrant01@example.org",
+    "company_name": ""
+   }
+  }
+ ]
+}

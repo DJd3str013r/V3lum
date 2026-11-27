@@ -1,0 +1,91 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "microsoft_entra",
+  "name": "Microsoft Entra ID public tenant discovery (OpenID configuration, GetUserRealm, Office ODC federation provider)",
+  "operator": "Microsoft Corporation",
+  "hosts": [
+    "login.microsoftonline.com",
+    "odc.officeapps.live.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms, a privacy policy and a business offering (A8 trusted); 'Microsoft public identity endpoints: tier trusted, terms open' (P011 chair rationale).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": {
+    "basis": "P011 cond 1-3 (legal_dpo floor): domain-level endpoints only; e-mail inputs are reduced to their domain before any request and the only local part ever sent is the fixed, documented probe constant 'nonexistent.realm.probe' (unit-test asserted), so Microsoft never receives an e-mail address; no user-level oracle (GetCredentialType, Autodiscover, OneDrive/Teams/login checks) can be built in code.",
+    "reviewer": "council-1 (P011 legal_dpo floor)",
+    "date": "2026-11-26"
+  },
+  "reliability": {
+    "grade": "A",
+    "justification": "Authoritative first-party answers of Microsoft's identity platform for the queried domain; the federation brand name is tenant-admin text (self-declared) and unmanaged/test tenants can claim a domain without DNS proof (observed for example.com on 2026-11-26), so ownership needs DNS confirmation."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 15,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 2
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "openid": {
+      "title": "OpenID configuration login.microsoftonline.com/{domain}/.well-known/openid-configuration (tenant GUID, tenant_region_scope)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://learn.microsoft.com/en-us/entra/identity-platform/v2-protocols-oidc",
+        "quote": "Public Microsoft identity endpoints",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "microsoft_entra",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0517. One call per registrable seed domain (P011 cond 4). HTTP 400 {'error': 'invalid_tenant', 'error_codes': [90002]} (AADSTS90002) means no Entra ID tenant (EMPTY); cache-control max-age=86400."
+    },
+    "getuserrealm": {
+      "title": "GetUserRealm login.microsoftonline.com/getuserrealm.srf with the fixed probe local part (NameSpaceType, FederationBrandName, federation AuthURL)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.microsoft.com/en-us/legal/terms-of-use",
+        "quote": "Public Microsoft identity endpoints",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "microsoft_entra",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0517. Domain-level only: login=nonexistent.realm.probe@{domain}, a hard-coded non-existent local part (P011 cond 1-2); never a real user, never iterated. Called only after the OpenID configuration found a tenant (P011 cond 4). NameSpaceType 'Unknown' = no Entra ID tenant. The federated AuthURL query echoes the probe login and is dropped."
+    },
+    "odc": {
+      "title": "Office ODC federation provider odc.officeapps.live.com/odc/v2.1/federationprovider?domain= (tenant id, environment)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.microsoft.com/en-us/legal/terms-of-use",
+        "quote": "Public (undocumented) Microsoft Office endpoint.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "microsoft_entra",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0033. Called only after a tenant was found (P011 cond 4). No tenant = HTTP 200 with the usual keys and no tenantId (observed for example.invalid); any other shape is ERROR 'schema changed', never EMPTY. Technique re-implemented from Microsoft's public endpoint (bbot is AGPL: nothing copied, A6)."
+    }
+  },
+  "notes": "Owned by batch p2-G01-2 (P011, module m365_tenant). Rule 2: user-level oracles (GetCredentialType, Autodiscover user checks, OneDrive/Teams/login checks) are never wired; the module builds only the three domain-level URLs above (allow-list asserted by tests). Both hosts set cookies, which the core client never stores or replays."
+}

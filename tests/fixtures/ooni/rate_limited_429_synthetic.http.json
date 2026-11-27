@@ -1,0 +1,16 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.ooni.io/api/v1/measurements?domain=example.com&probe_cc=BR&limit=50"
+ },
+ "response": {
+  "status": 429,
+  "headers": {
+   "content-type": "application/json",
+   "x-ratelimit-remaining": "0"
+  },
+  "body": "{\"detail\": \"Rate limit exceeded\"}"
+ },
+ "transport_error": null,
+ "elapsed_s": null
+}

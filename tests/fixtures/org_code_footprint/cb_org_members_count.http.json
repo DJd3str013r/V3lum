@@ -1,0 +1,23 @@
+{
+ "_meta": {
+  "module": "org_code_footprint",
+  "case": "cb_org_members_count",
+  "source": "C0760 codeberg.org",
+  "request": {
+   "method": "GET",
+   "url": "https://codeberg.org/api/v1/orgs/forgejo/public_members?limit=1"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "LIVE",
+  "elapsed_s": 0.456,
+  "note": "headers live (x-total-count 35); the member record is replaced by documentation values"
+ },
+ "status": 200,
+ "headers": {
+  "content-type": "application/json;charset=utf-8",
+  "ratelimit-policy": "\"baseline\";q=2000;w=600",
+  "ratelimit": "\"baseline\";r=1998;t=600",
+  "x-total-count": "35"
+ },
+ "body": "[{\"id\":1000001,\"login\":\"example-member\",\"login_name\":\"\",\"full_name\":\"\",\"email\":\"example-member@noreply.codeberg.org\",\"avatar_url\":\"https://codeberg.org/avatars/00000000000000000000000000000000\",\"html_url\":\"https://codeberg.org/example-member\",\"username\":\"example-member\"}]"
+}

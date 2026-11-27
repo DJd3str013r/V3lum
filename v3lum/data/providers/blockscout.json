@@ -1,0 +1,55 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "blockscout",
+  "name": "Blockscout API v2 (eth.blockscout.com)",
+  "operator": "Blockscout (Blockscout Ltd., open-source explorer, hosted instances)",
+  "hosts": [
+    "eth.blockscout.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Open-source explorer project with an identifiable operator, public API documentation and a multi-year track record (A8 community). Tiers: Etherscan, OKLink, PublicNode trusted; Blockscout, Ethplorer community.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Explorer API over Ethereum mainnet: balances and transactions are chain facts; is_scam flags and public tags are curated labels (leads, named as Blockscout's)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 5.0,
+    "ttl": 3600,
+    "min_interval": 0.5,
+    "concurrency": 2
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "api_v2": {
+      "title": "Blockscout REST API v2: /addresses/{a}, /addresses/{a}/transactions, /addresses/{a}/token-balances, /addresses/{a}/counters, /search?q=",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://docs.blockscout.com/devs/apis/rest",
+        "quote": "Per-adapter classes (A1 BR3): Blockscout keyless and PublicNode RPC 'open' (free public APIs, terms recorded, as in P205 and P211); Etherscan, Ethplorer and OKLink 'key-terms' (company keys on recorded plans).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "blockscout",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P212 cond 5). Research C0473 (verified_live 200): keyless; is_scam, reputation, public_tags/metadata.tags, ens_domain_name, creator_address_hash; /search?q=name.eth resolves ENS names; next_page_params paging. Prep live check 2026-11-26: x-ratelimit-limit 180, unknown address -> HTTP 200 with null balance/creation fields (not 404); the address endpoint of a heavy address hung > 20 s (5 s timeout, fail over). Used by evm_explorers (first adapter)."
+    }
+  },
+  "notes": "Owned by batch p2-G09-2 (P212). Keyless hosted instance (x-ratelimit-limit 180 per window observed): 0.5 s politeness, crypto ttl 1 h, 5 s timeout. Other Blockscout instances (base, optimism, gnosis...) need their own host entry and verification before use."
+}

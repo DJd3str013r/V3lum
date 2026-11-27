@@ -1,0 +1,76 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "internal_solana_rpc",
+  "name": "Solana mainnet RPC node operated by the organisation or a contracted processor (setting solana_rpc_url)",
+  "operator": "The organisation running V3LUM, or a processor under contract with it (setting solana_rpc_url)",
+  "hosts": [],
+  "hosts_from_settings": [
+    "solana_rpc_url"
+  ],
+  "internal": true,
+  "tier": "trusted",
+  "tier_rationale": "Node operated by the company or a contracted processor (A12 semantics for 'internal' platforms); P215 FC1 asks for a configurable Solana RPC with the public api.mainnet-beta.solana.com as the default.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Own (or contracted) mainnet node: ledger facts, as fresh as the node's sync state."
+  },
+  "http_profile": {
+    "accept": "application/json",
+    "timeout": 10.0,
+    "retries": 0,
+    "ttl": 3600
+  },
+  "quota": null,
+  "error_markers": [
+    {
+      "id": "solana_rpc_internal_rate_limited",
+      "statuses": [200, 429],
+      "json_path": "error.code",
+      "equals": 429,
+      "regex": null,
+      "final_url_regex": null,
+      "maps_to": "rate_limited",
+      "reason_code": "rate_limited",
+      "reason": "Configured Solana RPC (solana_rpc_url): rate limited (JSON-RPC error 429): could not verify"
+    },
+    {
+      "id": "solana_rpc_internal_disabled",
+      "statuses": [200, 410],
+      "json_path": "error.code",
+      "equals": 410,
+      "regex": null,
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "Configured Solana RPC (solana_rpc_url): the call or its parameters are disabled (JSON-RPC error 410): could not verify"
+    }
+  ],
+  "keys": {},
+  "sources": {
+    "rpc": {
+      "title": "Configured Solana mainnet JSON-RPC (getBalance and getSignaturesForAddress only)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://solana.com/docs/rpc",
+        "quote": "getBalance and getSignaturesForAddress (limit <= 25) on a configurable Solana RPC (default api.mainnet-beta.solana.com)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "solana_rpc_internal",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P215 FC1). Solana validator/RPC software (Agave) is Apache-2.0 and runs on infrastructure the organisation operates or contracts: no third party receives the address. https URL with a host name only (hosts_from_settings): IP literals, userinfo, fragments, devnet/testnet hosts and URLs carrying a credential (api-key query parameters, long path tokens of keyed commercial RPCs) are refused by the module (SKIPPED config); keyed commercial RPCs need their own provider fragment (key-terms) - docs/backlog/p3-G09-2.md."
+    }
+  },
+  "notes": "Owned by batch p3-G09-2 (P215 solana_rpc). Virtual internal provider: its host comes from the https URL setting solana_rpc_url only; without it the module uses the public solana_foundation.rpc source. A configured node is used exclusively (no failover to the public RPC)."
+}

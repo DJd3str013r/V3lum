@@ -1,0 +1,27 @@
+{
+ "cve_id": "CVE-2021-44228",
+ "title": "Apache Log4j2 JNDI remote code execution (Log4Shell)",
+ "severity": "critical",
+ "actively_exploited": true,
+ "known": true,
+ "patterns": [
+  "jndi%3a",
+  "jndi:"
+ ],
+ "events": 0,
+ "unique_ips": 0,
+ "actors": [],
+ "top_asns": [],
+ "top_countries": [],
+ "window_hours": 168,
+ "kev_date_added": "2021-12-10",
+ "kev": {
+  "date_added": "2021-12-10",
+  "vulnerability_name": "Apache Log4j2 Remote Code Execution Vulnerability",
+  "known_ransomware_campaign_use": "Known"
+ },
+ "window_notice": {
+  "requested_days": 90,
+  "returned_days": 7
+ }
+}

@@ -1,0 +1,16 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {"mode": "passive", "tlp": "amber", "depth": 1},
+  "$comment": "Synthetic graph: the domain resolves to an ordinary address (documentation range) and links a sinkhole only through a non-resolution edge, so the rule stays silent.",
+  "nodes": [
+    {"key": "domain:shop.example", "depth": 0, "seed": true},
+    {"key": "ipv4:203.0.113.10", "depth": 1},
+    {"key": "ipv4:104.236.150.45", "depth": 1, "noise": true, "noise_kind": "sinkhole", "tags": ["sinkhole"]}
+  ],
+  "edges": [
+    {"src": "domain:shop.example", "dst": "ipv4:203.0.113.10", "relation": "resolves_to", "module": "dns_records", "confidence": 0.9},
+    {"src": "domain:shop.example", "dst": "ipv4:104.236.150.45", "relation": "related", "module": "example_feed", "confidence": 0.5}
+  ],
+  "expect": {"g11_sinkholed_domain": {"min": 0, "max": 0}}
+}

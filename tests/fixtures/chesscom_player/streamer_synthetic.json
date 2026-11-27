@@ -1,0 +1,27 @@
+{
+ "_fixture": "SYNTHETIC: PubAPI field layout (live capture) with documentation values; streamer links",
+ "player_id": 100000001,
+ "@id": "https://api.chess.com/pub/player/examplestreamer",
+ "url": "https://www.chess.com/member/ExampleStreamer",
+ "name": "Example Streamer",
+ "username": "examplestreamer",
+ "followers": 12,
+ "country": "https://api.chess.com/pub/country/BR",
+ "location": "Example City",
+ "last_online": 1795600000,
+ "joined": 1609459200,
+ "status": "premium",
+ "is_streamer": true,
+ "verified": false,
+ "twitch_url": "https://twitch.tv/examplestreamer",
+ "streaming_platforms": [
+  {
+   "type": "twitch",
+   "channel_url": "https://twitch.tv/examplestreamer"
+  },
+  {
+   "type": "youtube",
+   "channel_url": "https://www.youtube.com/@examplestreamer"
+  }
+ ]
+}

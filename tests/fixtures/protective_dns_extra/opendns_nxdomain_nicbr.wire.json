@@ -1,0 +1,39 @@
+{
+ "origin": "live",
+ "note": "OpenDNS, non-existent nic.br label: NXDOMAIN + SOA (no NXDOMAIN hijacking)",
+ "request": {
+  "url": "https://doh.opendns.com/dns-query?dns=AAABAAABAAAAAAAAGHp6LW5vbmV4aXN0ZW50LWxhYmVsLTdxMwNuaWMCYnIAAAEAAQ",
+  "qname": "zz-nonexistent-label-7q3.nic.br.",
+  "qtype": "A"
+ },
+ "http_status": 200,
+ "content_type": "application/dns-message",
+ "wire_b64": "AACBgwABAAAAAQAAGHp6LW5vbmV4aXN0ZW50LWxhYmVsLTdxMwNuaWMCYnIAAAEAAcAlAAYAAQAAA4QAMgFhA2Ruc8ApCmhvc3RtYXN0ZXIIcmVnaXN0cm/AKXjEBlgAAAcIAAADhAAJOoAAAAOE",
+ "decoded": {
+  "id": 0,
+  "rcode": "NXDOMAIN",
+  "flags": [
+   "QR",
+   "RD",
+   "RA"
+  ],
+  "question": [
+   {
+    "name": "zz-nonexistent-label-7q3.nic.br.",
+    "type": "A"
+   }
+  ],
+  "answer": [],
+  "authority": [
+   {
+    "name": "nic.br.",
+    "type": "SOA",
+    "ttl": 900,
+    "data": "a.dns.br. hostmaster.registro.br. 2026112600 1800 900 604800 900"
+   }
+  ],
+  "additional": [],
+  "edns": false,
+  "ede": []
+ }
+}

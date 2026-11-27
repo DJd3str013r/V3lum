@@ -1,0 +1,24 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "github",
+  "hosts": [],
+  "sources": {
+    "web_fingerprint_webappanalyzer": {
+      "title": "enthec/webappanalyzer technology fingerprints (Wappalyzer format): raw.githubusercontent.com/enthec/webappanalyzer/main/src/technologies/{_,a..z}.json + src/categories.json",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/enthec/webappanalyzer/blob/main/LICENSE",
+        "quote": "Technology data: enthec/webappanalyzer JSON (GPL-3.0 data) downloaded at runtime into ~/.v3lum/datasets, never vendored or committed, attributed in THIRD_PARTY_NOTICES.md (A6) (P072 final condition 4). A1: 'open' covers copyleft licences whose obligations V3LUM meets by runtime download and attribution.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1, A6)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "wappalyzer",
+      "sanitizer": null,
+      "dataset": "webappanalyzer.technologies_a",
+      "notes": "Datasets webappanalyzer.technologies_{other,a..z} and webappanalyzer.categories (registered by v3lum/modules/url_web/web_fingerprint.py; the dataset field names one of the 28 files so the policy gate reads this source as a dataset, never as a receiver of the investigated value). Research C0154 (verified_live 200: 29 files, 3.35 MB, 7,715 technologies, 109 categories). GPL-3.0 DATA: runtime download only (A6), notice v3lum/data/notices/webappanalyzer.json (bundled false). Matched offline against bodies/headers already in hand: no case value is ever sent (download only). Keys js, dom, scripts, xhr, text, css, robots and probe are never evaluated (P072 cond 5: no JS engine, no probe rules). src/images (69 MB) is never downloaded."
+    }
+  },
+  "error_markers": [],
+  "notes": "Batch p9-G03-2 extension (P072 web_fingerprint / web_fingerprint_archive): one dataset family on the existing raw.githubusercontent.com host."
+}

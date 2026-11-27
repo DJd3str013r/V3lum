@@ -1,0 +1,40 @@
+{
+ "_synthetic": "shape from the docs Organization Networks example; cidr 'N/A' case kept from the docs (range that is not a single prefix); documentation ranges",
+ "total": 3,
+ "page": 1,
+ "results": [
+  {
+   "netname": "EXAMPLE-BANK-1",
+   "description": "Example Bank S.A.",
+   "extrainfo": "",
+   "countrycode": "BR",
+   "country": "Brazil",
+   "blocksize": "256",
+   "cidr": "198.51.100.0/24",
+   "first_ip": "198.51.100.0",
+   "last_ip": "198.51.100.255"
+  },
+  {
+   "netname": "EXAMPLE-BANK-2",
+   "description": "Example Bank S.A.",
+   "extrainfo": "",
+   "countrycode": "BR",
+   "country": "Brazil",
+   "blocksize": "192",
+   "cidr": "N/A",
+   "first_ip": "203.0.113.0",
+   "last_ip": "203.0.113.191"
+  },
+  {
+   "netname": "EXAMPLE-BANK-BAD",
+   "description": "Example Bank S.A.",
+   "extrainfo": "",
+   "countrycode": "BR",
+   "country": "Brazil",
+   "blocksize": "",
+   "cidr": "N/A",
+   "first_ip": "not-an-ip",
+   "last_ip": ""
+  }
+ ]
+}

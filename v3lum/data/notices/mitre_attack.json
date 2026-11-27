@@ -1,0 +1,13 @@
+{
+ "schema": "v3lum.notice/1",
+ "name": "mitre_attack",
+ "source_url": "https://github.com/mitre-attack/attack-stix-data",
+ "version": "runtime download (datasets attack, attack.mobile, attack.ics, attack.versions); ATT&CK v20.1 on 2026-11-26",
+ "sha256": "",
+ "licence": "MITRE ATT&CK Terms of Use (royalty-free, commercial use allowed with the copyright designation and licence reproduced)",
+ "attribution": "© 2026 The MITRE Corporation. This work is reproduced and distributed with the permission of The MITRE Corporation. The MITRE Corporation (MITRE) hereby grants you a non-exclusive, royalty-free license to use ATT&CK® for research, development, and commercial purposes. Any copy you make for such purposes is authorized provided that you reproduce MITRE's copyright designation and this license in any such copy.",
+ "bundled": false,
+ "files": [
+  "v3lum/modules/cti_framework/attack_index.py"
+ ]
+}

@@ -1,0 +1,22 @@
+{
+ "_meta": {
+  "module": "threat_actor_handles",
+  "case": "file_not_found",
+  "source": "C0463 raw.githubusercontent.com",
+  "request": {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/spmedia/Threat-Actor-Usernames-Scrape/main/dead_forum_users_nohide_io.txt"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "LIVE",
+  "elapsed_s": 0.129,
+  "note": "the README links this file but raw.githubusercontent.com answers 404: README-derived file lists are stale in places; skip the file with a coverage note"
+ },
+ "status": 404,
+ "headers": {
+  "content-type": "text/plain; charset=utf-8",
+  "content-length": "14",
+  "x-github-request-id": "A156:1C788C:3BBF3B:492890:6B07DE95"
+ },
+ "body": "404: Not Found"
+}

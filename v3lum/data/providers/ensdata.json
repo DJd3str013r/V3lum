@@ -1,0 +1,56 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "ensdata",
+  "name": "ENSData (ENS name and reverse-record resolution API)",
+  "operator": "ENSData (ensdata.net, independent community service for the Ethereum Name Service)",
+  "hosts": [
+    "api.ensdata.net"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Long-running community API for the Ethereum Name Service with public documentation (ensdata.net) and an identifiable project site; council decision P209 cond 3 'Registry provider ensdata: tier community, terms open' (A8 community).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Resolves public ENS records from the Ethereum chain; the resolution itself is reliable, but text records (twitter, github, url, email) are self-asserted by the ENS owner and never verified (P209 cond 2)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 20,
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 2,
+    "retries": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "api": {
+      "title": "ENSData API GET /{name}.eth (forward resolution) and GET /{0xaddress} (reverse record / primary name)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://ensdata.net/",
+        "quote": "Registry provider ensdata: tier community, terms open (council-1 P209 cond 3, binding council text; ENSData is a free public API without key or published restrictions).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "ensdata",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P209 cond 3); research C0491 verified_live 200 (2026-11-26). 404 {'error': true, 'status': 404, 'message': 'Unable to resolve ... not registered ...'} = name not registered, or no reverse record for an address: EMPTY, never an absent wallet (P209 cond 1); 400 'Invalid ENS name' for names the provider rejects. Served by Cloudflare in front of Railway; no rate-limit headers and no published limit (undocumented): min_interval 1 s, 24 h cache. Text records are self-asserted by the ENS owner (P209 cond 2). Used by ens_resolver."
+    }
+  },
+  "notes": "Owned by batch p3-G09-1 (P209). Only .eth names and 0x addresses are sent (ordinary DNS domains never). No published rate limit or quota: no quota block, politeness 1 s per request."
+}

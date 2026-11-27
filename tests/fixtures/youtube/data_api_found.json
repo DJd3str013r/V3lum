@@ -1,0 +1,37 @@
+{
+ "kind": "youtube#channelListResponse",
+ "etag": "exampleEtag0000000000000000",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 5
+ },
+ "items": [
+  {
+   "kind": "youtube#channel",
+   "etag": "exampleEtag0000000000000001",
+   "id": "UC0123456789abcdefABCDEF",
+   "snippet": {
+    "title": "Example Org",
+    "description": "Official channel of Example Org. https://www.example.com",
+    "customUrl": "@exampleorg",
+    "publishedAt": "2015-03-04T12:00:00Z",
+    "country": "BR",
+    "thumbnails": {
+     "default": {
+      "url": "https://yt3.ggpht.com/example=s88"
+     }
+    },
+    "localized": {
+     "title": "Example Org",
+     "description": "Official channel of Example Org."
+    }
+   },
+   "statistics": {
+    "viewCount": "12345",
+    "subscriberCount": "678",
+    "hiddenSubscriberCount": false,
+    "videoCount": "42"
+   }
+  }
+ ]
+}

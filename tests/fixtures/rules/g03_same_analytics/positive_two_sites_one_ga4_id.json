@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "$comment": "Two unrelated registrable domains carry the same GA4 id on their live pages (host.io related ids): one PROBABLE same_analytics link, never CONFIRMED (P061 cond 7-8)",
+  "nodes": [
+    {
+      "key": "domain:sister-a.example.org",
+      "depth": 0,
+      "seed": true
+    },
+    {
+      "key": "domain:sister-b.example.net",
+      "depth": 1
+    },
+    {
+      "key": "analytics_id:G-TEST0001AB",
+      "depth": 1
+    }
+  ],
+  "edges": [
+    {
+      "src": "domain:sister-a.example.org",
+      "dst": "analytics_id:G-TEST0001AB",
+      "relation": "same_analytics",
+      "module": "hostio",
+      "confidence": 0.7,
+      "expand": false
+    },
+    {
+      "src": "domain:sister-b.example.net",
+      "dst": "analytics_id:G-TEST0001AB",
+      "relation": "same_analytics",
+      "module": "hostio",
+      "confidence": 0.7,
+      "expand": false
+    }
+  ],
+  "expect": {
+    "g03_same_analytics": {
+      "min": 1,
+      "max": 1,
+      "severity": "info",
+      "confidence_label": "probable"
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "sslmate",
+  "name": "SSLMate Cert Spotter CT search API",
+  "operator": "SSLMate, Inc. (Opsmate)",
+  "hosts": [
+    "api.certspotter.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "SSLMate, Inc. is an established company with published API documentation, terms and a business offering for its Certificate Transparency search API (A8 trusted); P001 chair file: ct_logs provider_tier trusted (crt.sh, Cert Spotter, ctl.shodan.io).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Indexes public Certificate Transparency logs and merges precertificate and certificate entries per issuance; only unexpired issuances are listed, so it is a partial view of a domain's certificate history."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 20,
+    "retries": 1,
+    "ttl": 14400,
+    "min_interval": 1.0
+  },
+  "quota": {
+    "scope": "key",
+    "hour": 100,
+    "published": false,
+    "evidence_url": "https://sslmate.com/ct_search_api/",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {
+    "certspotter": {
+      "description": "SSLMate Cert Spotter API key (Authorization: Bearer; raises the hourly issuance-query allowance)",
+      "signup_url": "https://sslmate.com/account/ct_search_api",
+      "env": [
+        "V3LUM_CERTSPOTTER_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "keyed use is key-terms: record key_plans.certspotter = business (v3lum keys set certspotter --plan business) before it runs under the corporate profile (A1, P001 cond 3)"
+    }
+  },
+  "sources": {
+    "issuances": {
+      "title": "Cert Spotter /v1/issuances with the team's API key (Authorization: Bearer)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://sslmate.com/help/reference/ct_search_api_v1",
+        "quote": "When you're ready to launch in production, we ask that you sign up for an account and authenticate to the API using one the following methods: Specify an API key in the Authorization header as a Bearer Token.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "ct-logs",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Binding council text (P001 cond 2-3): 'Cert Spotter keyed = key-terms'; 'Cert Spotter runs with the team's own key once key_plans.certspotter is recorded (A1)'. Endpoint https://api.certspotter.com/v1/issuances?domain={apex}&include_subdomains=true&expand=dns_names&expand=issuer[&after={last id}] (research C0008, verified 2026-11-26): only unexpired issuances; pagination with after=<id of the last issuance> until an empty page (at most 5 pages per entity, P001 cond 5). The final empty page is a 200 carrying 'Retry-After: 3600' (a polling hint, never a rate limit). Errors are JSON {code, message} with 4xx/5xx (code rate_limited with HTTP 429). Upstream family ct-logs: never an independent vote next to crt.sh or ctl.shodan.io."
+    },
+    "issuances_keyless": {
+      "title": "Cert Spotter /v1/issuances without a key (small hourly allowance, personal or evaluation use)",
+      "terms": {
+        "class": "noncommercial",
+        "evidence_url": "https://sslmate.com/help/reference/ct_search_api_v1",
+        "quote": "You can make a limited number of unauthenticated \"List Issuances for a Domain\" queries per hour, for personal or evaluation purposes.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "ct-logs",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Binding council text (P001 cond 2-3): 'keyless = noncommercial (SSLMate: personal or evaluation)'; off under the corporate profile until licence-cleared. Live 2026-11-26 from a datacenter egress: X-Ratelimit-Limit 10 per hour without a key (HTTP 429 with Retry-After when exhausted).",
+      "licensed_alternative": "The team's own Cert Spotter key with key_plans.certspotter = business (source sslmate.issuances); crt.sh (crtsh.search) alone keeps ct_logs useful."
+    }
+  },
+  "notes": "Owned by batch p1-G01-1 (P001 ct_logs). One key per provider (certspotter, Bearer header only, P001 cond 3). Quota block: the free account's 100 issuance queries per hour (research C0008, not published as a figure; keyless calls are capped at about 10 per hour per egress IP and answer 429 + Retry-After). ttl 4 h follows the API's Cache-Control max-age=14400."
+}

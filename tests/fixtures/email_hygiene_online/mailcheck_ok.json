@@ -1,0 +1,1 @@
+{"status":200,"domain":"google.com","domain_age_in_days":10664,"mx":true,"mx_records":[{"hostname":"smtp.google.com","priority":10}],"mx_providers":[{"slug":"google","type":"mailbox","grade":"professional"}],"spf":"relaxed","dmarc":"reject","disposable":false,"public_domain":false,"relay_domain":false,"free_subdomain":false,"spam":false,"did_you_mean":null}

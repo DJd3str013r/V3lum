@@ -1,0 +1,91 @@
+{
+ "schema": "v3lum.siem_templates/1",
+ "version": "",
+ "backend": "elasticsearch",
+ "templates": [
+  {
+   "id": "free_text",
+   "entity_types": [
+    "domain"
+   ],
+   "index_patterns": [
+    "logs-*"
+   ],
+   "fields": [
+    "message"
+   ],
+   "time_field": "@timestamp",
+   "query": {
+    "query_string": {
+     "query": "{{value}}"
+    }
+   }
+  },
+  {
+   "id": "all_indices",
+   "entity_types": [
+    "ipv4"
+   ],
+   "index_patterns": [
+    "*"
+   ],
+   "fields": [
+    "source.ip"
+   ],
+   "time_field": "@timestamp"
+  },
+  {
+   "id": "wild_field",
+   "entity_types": [
+    "ipv4"
+   ],
+   "index_patterns": [
+    "logs-proxy-*"
+   ],
+   "fields": [
+    "source.*"
+   ],
+   "time_field": "@timestamp"
+  },
+  {
+   "id": "email_not_personal",
+   "entity_types": [
+    "email"
+   ],
+   "index_patterns": [
+    "logs-mail-*"
+   ],
+   "fields": [
+    "email.from.address"
+   ],
+   "time_field": "@timestamp",
+   "personal": false
+  },
+  {
+   "id": "unknown_type",
+   "entity_types": [
+    "cpf"
+   ],
+   "index_patterns": [
+    "logs-hr-*"
+   ],
+   "fields": [
+    "person.cpf"
+   ],
+   "time_field": "@timestamp",
+   "personal": true
+  }
+ ],
+ "splunk_saved_searches": [
+  {
+   "id": "sp_in_es_file",
+   "name": "v3lum_ioc_ip",
+   "owner": "nobody",
+   "app": "soc_v3lum",
+   "arg": "value",
+   "entity_types": [
+    "ipv4"
+   ]
+  }
+ ]
+}

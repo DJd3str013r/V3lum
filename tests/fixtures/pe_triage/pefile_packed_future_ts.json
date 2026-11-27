@@ -1,0 +1,125 @@
+{
+ "source": "pefile",
+ "size": 9216,
+ "parse_error": null,
+ "machine": 332,
+ "number_of_sections": 4,
+ "timestamp": 1924992000,
+ "characteristics": 258,
+ "magic": 267,
+ "subsystem": 2,
+ "dll_characteristics": 33088,
+ "entry_point": 20544,
+ "image_base": 4194304,
+ "checksum": 0,
+ "size_of_image": 69632,
+ "size_of_headers": 1024,
+ "sections": [
+  {
+   "name": "UPX0",
+   "virtual_address": 4096,
+   "virtual_size": 4096,
+   "raw_size": 0,
+   "raw_offset": 0,
+   "characteristics": 3758096512,
+   "entropy": 0.0
+  },
+  {
+   "name": "UPX1",
+   "virtual_address": 20480,
+   "virtual_size": 6144,
+   "raw_size": 6144,
+   "raw_offset": 1024,
+   "characteristics": 3758096448,
+   "entropy": 7.9659
+  },
+  {
+   "name": "UPX2",
+   "virtual_address": 36864,
+   "virtual_size": 208,
+   "raw_size": 512,
+   "raw_offset": 7168,
+   "characteristics": 3221225536,
+   "entropy": 1.8421
+  },
+  {
+   "name": ".rsrc",
+   "virtual_address": 53248,
+   "virtual_size": 1112,
+   "raw_size": 1536,
+   "raw_offset": 7680,
+   "characteristics": 1073741888,
+   "entropy": 6.1772
+  }
+ ],
+ "imports": [
+  {
+   "dll": "KERNEL32.DLL",
+   "functions": [
+    {
+     "name": "LoadLibraryA",
+     "ordinal": null
+    },
+    {
+     "name": "GetProcAddress",
+     "ordinal": null
+    },
+    {
+     "name": "VirtualProtect",
+     "ordinal": null
+    },
+    {
+     "name": "VirtualAlloc",
+     "ordinal": null
+    },
+    {
+     "name": "VirtualFree",
+     "ordinal": null
+    },
+    {
+     "name": "ExitProcess",
+     "ordinal": null
+    }
+   ]
+  }
+ ],
+ "exports": [],
+ "debug": [],
+ "resources": [
+  {
+   "type": 10,
+   "name": 1,
+   "lang": 1033,
+   "size": 1024,
+   "entropy": 7.8053
+  }
+ ],
+ "warnings": [
+  "Suspicious flags set for section 0. Both IMAGE_SCN_MEM_WRITE and IMAGE_SCN_MEM_EXECUTE are set. This might indicate a packed executable.",
+  "Suspicious flags set for section 1. Both IMAGE_SCN_MEM_WRITE and IMAGE_SCN_MEM_EXECUTE are set. This might indicate a packed executable.",
+  "Imported symbols contain entries typical of packed executables."
+ ],
+ "imphash": "e58ab46f2a279ded0846d81bf0fa21f7",
+ "rich": {
+  "key_hex": "3156e641",
+  "checksum": 1105614385,
+  "clear_md5": "db06f32650ea93578d00f75e67c1aa4d",
+  "entries": [
+   [
+    17069508,
+    7
+   ],
+   [
+    17003972,
+    12
+   ]
+  ]
+ },
+ "security_dir": {
+  "offset": 0,
+  "size": 0
+ },
+ "overlay": null,
+ "md5": "b690f7d0e62a17a25a07bf46be8dc5f4",
+ "sha256": "990c90dd64d1ac7a0ddc957264bdd14bb8788d0d0a2ff1b33cbb930206f9d8db"
+}

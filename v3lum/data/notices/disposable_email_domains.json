@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "disposable_email_domains",
+  "source_url": "https://github.com/disposable-email-domains/disposable-email-domains",
+  "version": "disposable_email_blocklist.conf as downloaded 2026-11-26 (10,455 domains; upstream commit 9cf2bee of 2026-11-21 in the research copy)",
+  "sha256": "00c87dbccd3c77e54d37d6d8e133e97647d98e60f37038c70ad6f9673de3a575",
+  "licence": "CC0-1.0",
+  "attribution": "Disposable e-mail domain list from disposable-email-domains (https://github.com/disposable-email-domains/disposable-email-domains), CC0 1.0 Universal (public domain dedication). Bundled unmodified as the fallback of the refreshable dataset email_hygiene_disposable.conf.",
+  "bundled": true,
+  "files": [
+    "v3lum/data/email_hygiene/disposable_email_blocklist.conf",
+    "v3lum/modules/email/email_hygiene.py"
+  ]
+}

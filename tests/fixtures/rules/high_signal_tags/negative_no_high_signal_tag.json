@@ -1,0 +1,42 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 1,
+    "purpose": "AR08 fixture"
+  },
+  "nodes": [
+    {
+      "key": "domain:plain.example",
+      "depth": 0,
+      "seed": true,
+      "findings": [
+        {
+          "title": "Flagged by a feed",
+          "severity": "high",
+          "confidence": 0.9,
+          "tags": [
+            "malicious"
+          ],
+          "module": "t_feed_a",
+          "criterion": "fixture",
+          "confidence_label": "confirmed"
+        },
+        {
+          "title": "Breach listing",
+          "severity": "medium",
+          "confidence": 0.9,
+          "tags": [
+            "breach"
+          ],
+          "module": "t_breach",
+          "criterion": "fixture",
+          "confidence_label": "confirmed"
+        }
+      ]
+    }
+  ],
+  "edges": []
+}

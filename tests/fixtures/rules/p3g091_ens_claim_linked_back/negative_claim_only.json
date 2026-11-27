@@ -1,0 +1,81 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "options": {
+  "mode": "passive",
+  "tlp": "amber",
+  "depth": 1
+ },
+ "nodes": [
+  {
+   "key": "domain:v3lum-fixture-owner.eth",
+   "depth": 0,
+   "seed": true,
+   "attributes": {
+    "ens_name": [
+     {
+      "value": "v3lum-fixture-owner.eth",
+      "source": "ens_resolver"
+     }
+    ],
+    "ens_wallets": [
+     {
+      "value": {
+       "eth": "0x1111111111111111111111111111111111111111"
+      },
+      "source": "ens_resolver"
+     }
+    ],
+    "ens_text_records": [
+     {
+      "value": {
+       "github": "example-org"
+      },
+      "source": "ens_resolver"
+     }
+    ]
+   }
+  },
+  {
+   "key": "eth_address:0x1111111111111111111111111111111111111111",
+   "depth": 1
+  },
+  {
+   "key": "username:example-org",
+   "depth": 1,
+   "attributes": {
+    "ens_text_records": [
+     {
+      "value": {
+       "note": "v3lum-fixture-owner.eth"
+      },
+      "source": "ens_resolver"
+     }
+    ],
+    "website": [
+     {
+      "value": "https://example.com/ - an unrelated profile (mentions other-name.eth only)",
+      "source": "github_user"
+     }
+    ]
+   }
+  }
+ ],
+ "edges": [
+  {
+   "src": "domain:v3lum-fixture-owner.eth",
+   "dst": "eth_address:0x1111111111111111111111111111111111111111",
+   "relation": "ens_resolves_to",
+   "module": "ens_resolver",
+   "confidence": 0.9
+  },
+  {
+   "src": "domain:v3lum-fixture-owner.eth",
+   "dst": "username:example-org",
+   "relation": "ens_text_record",
+   "module": "ens_resolver",
+   "confidence": 0.4,
+   "expand": false
+  }
+ ]
+}

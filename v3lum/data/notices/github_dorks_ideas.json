@@ -1,0 +1,11 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "github_dorks_ideas",
+  "source_url": "https://github.com/techgaun/github-dorks",
+  "version": "dork ideas reviewed 2026-11-26 (no file copied)",
+  "sha256": "",
+  "licence": "Apache-2.0",
+  "attribution": "Code-search dork ideas (environment files, configuration files, password/apikey/private-key terms combined with an organisation's own identifiers) re-implemented by V3LUM from github-dorks by Samar Dhwoj Acharya (techgaun), Apache License 2.0; no list or code was copied.",
+  "bundled": true,
+  "files": ["v3lum/modules/search_dorks/code_search.py"]
+}

@@ -1,0 +1,24 @@
+{
+ "_meta": {
+  "provenance": "observed",
+  "recorded": "2026-11-26",
+  "request": {
+   "method": "GET",
+   "url": "https://lookyloo.circl.lu/json/a1787b91-d9d4-4e7f-b5fb-e74004250a43/redirects"
+  }
+ },
+ "status": 200,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": {
+  "response": {
+   "redirects": [
+    "https://macffab.com/",
+    "https://href.li/?https://example.com",
+    "https://example.com/"
+   ],
+   "url": "https://macffab.com/"
+  }
+ }
+}

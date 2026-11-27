@@ -1,0 +1,19 @@
+{
+ "request": {
+  "method": "POST",
+  "url": "https://app.netlas.io/api/domains/download/"
+ },
+ "response": {
+  "status": 401,
+  "headers": {
+   "Content-Type": "application/json"
+  },
+  "body": {
+   "type": "not_authenticated",
+   "title": "Not authenticated",
+   "detail": "Authentication credentials were not provided."
+  }
+ },
+ "observed": "synthetic",
+ "note": "Netlas error shape (SDK) with Django REST framework default wording; the exact type string for a missing key was not observed (download needs a key per research)."
+}

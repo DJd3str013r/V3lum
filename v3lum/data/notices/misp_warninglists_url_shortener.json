@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "misp_warninglists_url_shortener",
+  "source_url": "https://github.com/MISP/misp-warninglists/tree/main/lists/url-shortener",
+  "version": "lists/url-shortener version 20261014 (255 hosts), fetched 2026-11-26, plus V3LUM additions (BR shorteners, IP loggers flagged never_contact, preview metadata)",
+  "sha256": "",
+  "licence": "CC0-1.0",
+  "attribution": "URL shortener host list derived from the MISP warninglists (https://github.com/MISP/misp-warninglists), licensed under CC0 1.0 Universal (Public Domain Dedication).",
+  "bundled": true,
+  "files": [
+    "v3lum/data/unshorten/shorteners.json",
+    "v3lum/modules/url_web/unshorten.py"
+  ]
+}

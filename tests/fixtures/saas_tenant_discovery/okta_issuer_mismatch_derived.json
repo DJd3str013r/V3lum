@@ -1,0 +1,16 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://okta.okta.com/.well-known/openid-configuration"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "content-type": "application/json"
+    },
+    "body": "{\"issuer\": \"https://login.example.com\", \"authorization_endpoint\": \"https://login.example.com/oauth2/v1/authorize\"}"
+  },
+  "class": "derived",
+  "captured_at": "2026-11-26T00:00:00Z",
+  "notes": "issuer host != requested tenant host -> unknown (never attributed)"
+}

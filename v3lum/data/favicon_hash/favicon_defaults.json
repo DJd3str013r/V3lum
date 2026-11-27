@@ -1,0 +1,5052 @@
+{
+ "name": "favicon_defaults",
+ "description": "Default/blank favicon mmh3 hashes: recorded as noise, never pivoted (P062 c5). category 'product' entries are recorded as favicon_product attributes but stay pivotable.",
+ "sources": [
+  {
+   "name": "projectdiscovery/nuclei-templates http/technologies/favicon-detect.yaml",
+   "url": "https://raw.githubusercontent.com/projectdiscovery/nuclei-templates/main/http/technologies/favicon-detect.yaml",
+   "licence": "MIT",
+   "copyright": "Copyright (c) 2025 ProjectDiscovery, Inc.",
+   "fetched": "2026-11-26"
+  },
+  {
+   "name": "V3LUM computed blank icons",
+   "licence": "own"
+  }
+ ],
+ "counts": {
+  "blank": 3,
+  "cms": 20,
+  "error_page": 2,
+  "framework_default": 8,
+  "hosting_panel": 29,
+  "platform": 34,
+  "product": 385,
+  "router_device": 213,
+  "web_server": 23
+ },
+ "entries": [
+  {
+   "mmh3": -1542678720,
+   "name": "1x1 transparent GIF",
+   "category": "blank",
+   "noise": true,
+   "source": "V3LUM computed",
+   "md5": "d89746888da2d9510b64a9f031eaecd5"
+  },
+  {
+   "mmh3": -1407611025,
+   "name": "1x1 transparent PNG",
+   "category": "blank",
+   "noise": true,
+   "source": "V3LUM computed",
+   "md5": "91e42db1c66c0b276abf6234dc50b2eb"
+  },
+  {
+   "mmh3": 0,
+   "name": "empty body",
+   "category": "blank",
+   "noise": true,
+   "source": "V3LUM computed",
+   "md5": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  {
+   "mmh3": -2024949122,
+   "name": "Liferay",
+   "category": "cms",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1593651747,
+   "name": "blackboard",
+   "category": "cms",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -503480258,
+   "name": "blogger",
+   "category": "cms",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 575613323,
+   "name": "canvas-lms-learning-management",
+   "category": "cms",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -505448917,
+   "name": "discuz",
+   "category": "cms",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -167656799,
+   "name": "drupal",
+   "category": "cms",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1174841451,
+   "name": "drupal",
+   "category": "cms",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1231681737,
+   "name": "ghost-cms",
+   "category": "cms",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1015932800,
+   "name": "ghost-cms",
+   "category": "cms",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1950415971,
+   "name": "joomla",
+   "category": "cms",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 366524387,
+   "name": "joomla",
+   "category": "cms",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1627330242,
+   "name": "joomla",
+   "category": "cms",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 129457226,
+   "name": "liferay-portal",
+   "category": "cms",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -38580010,
+   "name": "magento",
+   "category": "cms",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1273982002,
+   "name": "mautic-open-source-marketing-automation",
+   "category": "cms",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -438482901,
+   "name": "moodle",
+   "category": "cms",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -617743584,
+   "name": "odoo",
+   "category": "cms",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1966198264,
+   "name": "openerp-now-known-as-odoo",
+   "category": "cms",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 603314,
+   "name": "redmine",
+   "category": "cms",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 191654058,
+   "name": "wordpress-under-construction-icon",
+   "category": "cms",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1227052603,
+   "name": "alibaba-cloud-block-page",
+   "category": "error_page",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1507567067,
+   "name": "baidu-ip-error-page",
+   "category": "error_page",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 450899026,
+   "name": "Laravel Horizon",
+   "category": "framework_default",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1255347784,
+   "name": "angular-io-angularjs",
+   "category": "framework_default",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1772087922,
+   "name": "asp.net-favicon",
+   "category": "framework_default",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 980692677,
+   "name": "cake-php",
+   "category": "framework_default",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1913538826,
+   "name": "material-dashboard",
+   "category": "framework_default",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -2009722838,
+   "name": "react",
+   "category": "framework_default",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 116323821,
+   "name": "spring-boot",
+   "category": "framework_default",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1298108480,
+   "name": "yii-php-framework-default-favicon",
+   "category": "framework_default",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -476299640,
+   "name": "Hestiacp",
+   "category": "hosting_panel",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1119613926,
+   "name": "bluehost",
+   "category": "hosting_panel",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1251810433,
+   "name": "cafe24-korea",
+   "category": "hosting_panel",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1244636413,
+   "name": "cpanel-login",
+   "category": "hosting_panel",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1544230796,
+   "name": "cpanel-login",
+   "category": "hosting_panel",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1993518473,
+   "name": "cpanel-login",
+   "category": "hosting_panel",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 2072198544,
+   "name": "ferozo-panel",
+   "category": "hosting_panel",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -421986013,
+   "name": "homegrown-website-hosting",
+   "category": "hosting_panel",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -972810761,
+   "name": "hostmonster-web-hosting",
+   "category": "hosting_panel",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -986678507,
+   "name": "isp-manager",
+   "category": "hosting_panel",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1151675028,
+   "name": "isp-manager-web-hosting-panel",
+   "category": "hosting_panel",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 483383992,
+   "name": "ispconfig",
+   "category": "hosting_panel",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1734609466,
+   "name": "justhost",
+   "category": "hosting_panel",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -771764544,
+   "name": "parallels-plesk-panel",
+   "category": "hosting_panel",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -652508439,
+   "name": "parallels-plesk-panel",
+   "category": "hosting_panel",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -519765377,
+   "name": "parallels-plesk-panel",
+   "category": "hosting_panel",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1050786453,
+   "name": "plesk",
+   "category": "hosting_panel",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -981606721,
+   "name": "plesk",
+   "category": "hosting_panel",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -134375033,
+   "name": "plesk",
+   "category": "hosting_panel",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1761642992,
+   "name": "vesta-hosting-control-panel",
+   "category": "hosting_panel",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1954835352,
+   "name": "vesta-hosting-control-panel",
+   "category": "hosting_panel",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1268095485,
+   "name": "vzpp-plesk",
+   "category": "hosting_panel",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 255892555,
+   "name": "wdcp-cloud-host-management-system",
+   "category": "hosting_panel",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1786752597,
+   "name": "wdcp-cloud-host-management-system",
+   "category": "hosting_panel",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1038557304,
+   "name": "webmin",
+   "category": "hosting_panel",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 479413330,
+   "name": "webmin",
+   "category": "hosting_panel",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1280907310,
+   "name": "webmin",
+   "category": "hosting_panel",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1453890729,
+   "name": "webmin",
+   "category": "hosting_panel",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -649378830,
+   "name": "whm",
+   "category": "hosting_panel",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1701804003,
+   "name": "ServiceNow",
+   "category": "platform",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -333791179,
+   "name": "adobe-campaign-classic",
+   "category": "platform",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1544605732,
+   "name": "amazon",
+   "category": "platform",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 716989053,
+   "name": "amazon",
+   "category": "platform",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1498185948,
+   "name": "apple",
+   "category": "platform",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1232159009,
+   "name": "apple",
+   "category": "platform",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1382324298,
+   "name": "apple",
+   "category": "platform",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 628535358,
+   "name": "atlassian",
+   "category": "platform",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 705143395,
+   "name": "atlassian",
+   "category": "platform",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 743365239,
+   "name": "atlassian",
+   "category": "platform",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1379982221,
+   "name": "atlassian-bamboo",
+   "category": "platform",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1642532491,
+   "name": "atlassian-confluence",
+   "category": "platform",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -305179312,
+   "name": "atlassian-confluence",
+   "category": "platform",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1581907337,
+   "name": "atlassian-jira",
+   "category": "platform",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 552727997,
+   "name": "atlassian-jira",
+   "category": "platform",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 981867722,
+   "name": "atlassian-jira",
+   "category": "platform",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1118684072,
+   "name": "baidu",
+   "category": "platform",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -2116540786,
+   "name": "bet365",
+   "category": "platform",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 708578229,
+   "name": "google",
+   "category": "platform",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 728788645,
+   "name": "ibm-notes",
+   "category": "platform",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1726027799,
+   "name": "ibm-server",
+   "category": "platform",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1629518721,
+   "name": "macos-server-apple",
+   "category": "platform",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1249852061,
+   "name": "microsoft-outlook",
+   "category": "platform",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 902521196,
+   "name": "netflix",
+   "category": "platform",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1414300307,
+   "name": "oracle",
+   "category": "platform",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1792417660,
+   "name": "oracle-rest-data-services",
+   "category": "platform",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1433417005,
+   "name": "salesforce",
+   "category": "platform",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1347937389,
+   "name": "sap-conversational-ai",
+   "category": "platform",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1967743928,
+   "name": "sap-id-service",
+   "category": "platform",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -266008933,
+   "name": "sap-netweaver",
+   "category": "platform",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 86919334,
+   "name": "servicenow",
+   "category": "platform",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1807411396,
+   "name": "skype",
+   "category": "platform",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 99395752,
+   "name": "slack-instance",
+   "category": "platform",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -459291760,
+   "name": "workday",
+   "category": "platform",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1314864135,
+   "name": "10",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1011076161,
+   "name": "ASPECT Control",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1595726841,
+   "name": "AceNet AceReporter Report",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -347188002,
+   "name": "Acuneti360",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 688609340,
+   "name": "Agentejo Cockpit",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 463802404,
+   "name": "Anyscale Ray",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 587330928,
+   "name": "Apache Impala",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -186961397,
+   "name": "Apache Kylin",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1582430156,
+   "name": "Apache Superset",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -839356603,
+   "name": "Apigee",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 11794165,
+   "name": "Apollo",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -633108100,
+   "name": "Appwrite",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1261322577,
+   "name": "Aqua Enterprise",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1889244460,
+   "name": "ArcServe",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 889652940,
+   "name": "Archibus Web Central",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1706783005,
+   "name": "Atlantis",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 983734701,
+   "name": "Avatier Password Management",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1247684400,
+   "name": "Axigen WebMail",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -2115208104,
+   "name": "Bitrix24",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -850502287,
+   "name": "Buddy",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 163538942,
+   "name": "CData RSB Connect",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1606065523,
+   "name": "Cachet",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -374133142,
+   "name": "Celery Flower",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 538583492,
+   "name": "ClipBucket",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 151132309,
+   "name": "CloudPanel",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 739801466,
+   "name": "Cofense Vision",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -994319624,
+   "name": "Coverity",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -47932290,
+   "name": "CraftCMS",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1013024216,
+   "name": "Dashy",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1198579728,
+   "name": "DbGate Web Client Management",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 440258421,
+   "name": "Dolibarr",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 24048806,
+   "name": "Doris Dashboard",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1354079303,
+   "name": "Drone CI",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1828614783,
+   "name": "Dynatrace",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1961736892,
+   "name": "DzzOffice",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1693580324,
+   "name": "Eagle For Apache Kakfa",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 902188936,
+   "name": "Emby",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -670975485,
+   "name": "EmqDefault",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 305412257,
+   "name": "Eventum",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -977323269,
+   "name": "Everything Server",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1117549627,
+   "name": "Fastvue",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1052926265,
+   "name": "File Browser",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1599943282,
+   "name": "FileCatalyst",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1189292869,
+   "name": "Flatpress",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1170495932,
+   "name": "Fortra GoAnywhere MFT",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -2098066288,
+   "name": "GenieACS",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -165631681,
+   "name": "Gibbon",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1484947000,
+   "name": "GoAnyWhere",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1828756398,
+   "name": "GoAnywhere",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1614287628,
+   "name": "Gradle-enterprise",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1749354953,
+   "name": "Hitachi Pentaho Business Analytics Server",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1604363273,
+   "name": "HiveManager",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -417785140,
+   "name": "Homer",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -741491222,
+   "name": "Horde",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 2104916232,
+   "name": "Horde Webmail",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1521640213,
+   "name": "HotelDruid Hotel Management Software",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -399298961,
+   "name": "IBM Maximo",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 965982073,
+   "name": "IBM OpenAdmin Tool",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1841044852,
+   "name": "ICT Protege WX",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 2144485375,
+   "name": "IceWarp Webmail Server",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -43504595,
+   "name": "Immich",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1698328762,
+   "name": "Ionic",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1383463717,
+   "name": "Iparapheur",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1380908726,
+   "name": "JeecgBoot",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -2017604252,
+   "name": "Jellyseerr",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 81586312,
+   "name": "Jenkins",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1343712810,
+   "name": "Joget",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -2032163853,
+   "name": "Jorani Benjamin BALET",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 2056442365,
+   "name": "Kanboard",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1445519482,
+   "name": "Kaseya",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -2144699833,
+   "name": "Kasm",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1650202746,
+   "name": "KevinLAB",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1105083093,
+   "name": "Keycloak Admin",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1215318992,
+   "name": "Kiteworks PCN",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -379154636,
+   "name": "KubeView",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 2130463260,
+   "name": "Kubernetes-Operational-View",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1649949475,
+   "name": "Label Studio",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1054477011,
+   "name": "Leica RefWorx",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 874152924,
+   "name": "Likeshop",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1781653957,
+   "name": "LimeSurvey Survey Software",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1464851260,
+   "name": "MCMS",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 989289239,
+   "name": "MOVEit Transfer",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -2073748627,
+   "name": "MSNSwitch Firmware MNT",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1903390397,
+   "name": "MajorDoMo",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 662709064,
+   "name": "MantisBT",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 780351152,
+   "name": "Microweber",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1949005079,
+   "name": "Modoboa",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 419828698,
+   "name": "MonstraCMS",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 598296063,
+   "name": "Navicat On-Prem Server",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1575154882,
+   "name": "Netsparker Enterprise",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -582931176,
+   "name": "NexusPHP",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -2017596142,
+   "name": "NocoDB version",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1529860313,
+   "name": "OSQuery Fleet",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -800060828,
+   "name": "OfficeKeeper Admin",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 983384876,
+   "name": "One Identity Password Manager",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1550906681,
+   "name": "OpenBMCS",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1264095219,
+   "name": "OpenBullet",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1167011145,
+   "name": "OpenSNS",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 407286339,
+   "name": "OpenTSDB",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1898583197,
+   "name": "OpenVZ Web",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1469328760,
+   "name": "PMB",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 933976300,
+   "name": "Pichome",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 540706145,
+   "name": "Piwigo",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 932345713,
+   "name": "Prometheus Promtail",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 942678640,
+   "name": "Proofpoint Protection Server",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -74348711,
+   "name": "Qlik Sense Enterprise",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1893514038,
+   "name": "RSSHub",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 217119619,
+   "name": "RStudio Connect",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 464587962,
+   "name": "Rancher",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1324930554,
+   "name": "Rancher Dashboard",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1465760059,
+   "name": "RaspAP",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -578216669,
+   "name": "RaspberryMatic",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 698624197,
+   "name": "Redash",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1817615343,
+   "name": "Regify",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 969374472,
+   "name": "RethinkDB Administration Console",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 106844876,
+   "name": "Revive Adserver",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1499940355,
+   "name": "Rukovoditel",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 957255151,
+   "name": "SAS",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1663319756,
+   "name": "SAUTER moduWeb Vision",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1101206929,
+   "name": "SECUI WAF",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1552322396,
+   "name": "Seafile",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -656528622,
+   "name": "Selea-CarPlateServer",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -749942143,
+   "name": "Sensu by Sumo Logic",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1373456171,
+   "name": "Setup GitHub Enterprise",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 816588900,
+   "name": "ShardingSphere ElasticJob UI",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -629968763,
+   "name": "Shell In A Bo",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 635899646,
+   "name": "Silverback MDM",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1410071322,
+   "name": "SmarterTools SmarterTrack",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 431627549,
+   "name": "Snipe-IT",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -244067125,
+   "name": "SolarView Compact",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1416464161,
+   "name": "SolarWinds ARM",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1000719429,
+   "name": "SpamSniper",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1099097618,
+   "name": "Squide",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 115295460,
+   "name": "Strider CD",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1199592666,
+   "name": "Structurizr",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 781922099,
+   "name": "Sunbird DCIM",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -2015389528,
+   "name": "Synapse-Mobility",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1540720428,
+   "name": "SysAid Server",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 824580113,
+   "name": "T-Up OpenFrame",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 557327884,
+   "name": "Temporal Web UI",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1478287554,
+   "name": "TeslaMate",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1414548363,
+   "name": "ThinVNC",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 2134367771,
+   "name": "TimeKeeper",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1238669242,
+   "name": "Tufin-SecureTrack",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 176427349,
+   "name": "UniboPanel",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -902890504,
+   "name": "Universal Media Server",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -919788577,
+   "name": "Vault",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -633512412,
+   "name": "Veeam",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1728967963,
+   "name": "Veeam Service Provider Console",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -2097033750,
+   "name": "VertaAI ModelDB",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1970367401,
+   "name": "Vidyo Admin",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 876876147,
+   "name": "Virtua Software",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1252041730,
+   "name": "Vue",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1074357885,
+   "name": "WD My Cloud",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1398055326,
+   "name": "WSO2-api-manager",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1350437236,
+   "name": "Wavlink",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1680052984,
+   "name": "Web2py URL",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -234335289,
+   "name": "WebMethod Integration Server",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1090061843,
+   "name": "WebTitan Cloud",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1691956220,
+   "name": "XXL-JOB",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1624375939,
+   "name": "Zimbra",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 475145467,
+   "name": "Zimbra Collaboration Suite",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1127895693,
+   "name": "Zuul",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -166151761,
+   "name": "abilis-network-automation",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1275148624,
+   "name": "accrisoft",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -183163807,
+   "name": "ace",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -587741716,
+   "name": "adb-broadband-spa-network",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1863663974,
+   "name": "airwatch",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1153873472,
+   "name": "airwatch",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 321909464,
+   "name": "airwatch",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 788771792,
+   "name": "airwatch",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1095915848,
+   "name": "airwatch",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1333537166,
+   "name": "alfresco",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1779611449,
+   "name": "alienvault",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 494866796,
+   "name": "aplikasi",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1745552996,
+   "name": "arbor-networks",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1479202414,
+   "name": "arcadyan-o2-box-network",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1378182799,
+   "name": "archivematica",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -2062596654,
+   "name": "arista-velocloud",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1318124267,
+   "name": "avigilon",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 475379699,
+   "name": "axcient-replibit-management-server",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 829321644,
+   "name": "bomgar-support-portal",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 394527072,
+   "name": "brightdata-proxies",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -329747115,
+   "name": "c-lodop",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1738184811,
+   "name": "cacaoweb",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 988422585,
+   "name": "caprover",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 2128230701,
+   "name": "chainpoint",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -276759139,
+   "name": "chef-automate",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -646322113,
+   "name": "cisco-eg",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -521603470,
+   "name": "cisco-ucs",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -687783882,
+   "name": "claimtime-ramsell-public-health-safety",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -805544463,
+   "name": "clawdbot-control-panel",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -235701012,
+   "name": "cnservers-llc",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -342262483,
+   "name": "combivox",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1588746893,
+   "name": "communigate",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 96215732,
+   "name": "comxchange",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1022206565,
+   "name": "crushftp",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -532394952,
+   "name": "cx",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1153950306,
+   "name": "dell",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 944969688,
+   "name": "deluge",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1589842876,
+   "name": "deluge-web-ui",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1961046099,
+   "name": "dgraph-ratel",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -373674173,
+   "name": "digital-keystone-dk",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 2068154487,
+   "name": "digium-switchvox",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1465479343,
+   "name": "dnn-cms",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1814887000,
+   "name": "docker",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1937209448,
+   "name": "docker",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -630493013,
+   "name": "dokuwiki",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1552860581,
+   "name": "elastic-database",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1611729805,
+   "name": "elastic-database",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1463037400,
+   "name": "enghouse-systems-lifesize",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -368490461,
+   "name": "entronix-energy-management-platform",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 236252842,
+   "name": "esl-management-system",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1818779764,
+   "name": "etic-telecom",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 509789953,
+   "name": "farming-simulator-dedicated-server",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1294748862,
+   "name": "fastpanel",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 774252049,
+   "name": "fastpanel-hosting",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -842192932,
+   "name": "fireeye",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 95271369,
+   "name": "fireeye",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 105083909,
+   "name": "fireeye",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 240606739,
+   "name": "fireeye",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1476335317,
+   "name": "fireeye",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 2121539357,
+   "name": "fireeye",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -393788031,
+   "name": "flussonic-video-streaming",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1319699698,
+   "name": "form.io",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1969970750,
+   "name": "gitea",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 516963061,
+   "name": "gitlab",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1278323681,
+   "name": "gitlab",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1474875778,
+   "name": "glpi",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -647318973,
+   "name": "gm77",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 917966895,
+   "name": "gogs",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1398529462,
+   "name": "grandstream",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1067420240,
+   "name": "graphql",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 926501571,
+   "name": "handle-proxy",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 731374291,
+   "name": "hfs-http-file-server",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 2124459909,
+   "name": "hfs-http-file-server",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 92627686,
+   "name": "hitachi",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 94231047,
+   "name": "hitachi-management",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 903086190,
+   "name": "honeywell",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1188645141,
+   "name": "hxxps",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -81573405,
+   "name": "iSAMS",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -60395993,
+   "name": "ictbroadcast",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -450254253,
+   "name": "idera",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -256828986,
+   "name": "idirect-canada-network-management",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 671221099,
+   "name": "innovaphone",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1862800928,
+   "name": "ivanti-traffic-manager",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 896412703,
+   "name": "iw",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1262005940,
+   "name": "jamf-pro-login",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 855273746,
+   "name": "jira",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1298131932,
+   "name": "jshERP",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -895963602,
+   "name": "jupyter-notebook",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1248917303,
+   "name": "jupyterhub",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1738727418,
+   "name": "keepitsafe-management-console",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1678298769,
+   "name": "kerio-connect-webmail",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -677167908,
+   "name": "kerio-connect-webmail",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1267819858,
+   "name": "keyhelp-keyweb-ag",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 726817668,
+   "name": "keyhelp-keyweb-ag",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1200737715,
+   "name": "kibana",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -759754862,
+   "name": "kibana",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -267431135,
+   "name": "kibana",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 75230260,
+   "name": "kibana",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1668183286,
+   "name": "kibana",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1203021870,
+   "name": "kubeflow",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 882208493,
+   "name": "lantronix-spider",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 538585915,
+   "name": "lenel",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1467395679,
+   "name": "ligowave-network",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 541087742,
+   "name": "liquidfiles",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1906448386,
+   "name": "liquidfiles",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 784872924,
+   "name": "lucee",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -299324825,
+   "name": "lupus-electronics-xt",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 2146763496,
+   "name": "mailcow",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 2127152956,
+   "name": "mailwizz",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 99432374,
+   "name": "mdaemon-remote-administration",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -766957661,
+   "name": "mdaemon-webmail",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -676779906,
+   "name": "meinberg",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 938616453,
+   "name": "mersive-solstice",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1953726032,
+   "name": "metabase",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1235192469,
+   "name": "metasploit",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -127886975,
+   "name": "metasploit",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 579239725,
+   "name": "metasploit",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1139788073,
+   "name": "metasploit",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1490343308,
+   "name": "mk-auth",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1702393021,
+   "name": "mofinetwork",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 702863115,
+   "name": "mooSocial",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 381100274,
+   "name": "moxapass-iologik-remote-ethernet-io-server",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 331817455,
+   "name": "mspcontrol",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -736276076,
+   "name": "myasp",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1519363246,
+   "name": "n-central",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -831756631,
+   "name": "n8n",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 5471989,
+   "name": "netcom-technology",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1302486561,
+   "name": "netdata",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -182423204,
+   "name": "netdata-dashboard",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1585145626,
+   "name": "netdata-dashboard",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1124868062,
+   "name": "netport-software-dsl",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 321591353,
+   "name": "node-red",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1442789563,
+   "name": "nuxt-js",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1583478052,
+   "name": "okazik",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -625364318,
+   "name": "okofen-pellematic",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1234311970,
+   "name": "onera",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1211608009,
+   "name": "openfire-admin-console",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -609520537,
+   "name": "opengeo-suite",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1836828108,
+   "name": "openproject",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -923088984,
+   "name": "openstack",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 786533217,
+   "name": "openstack",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1232596212,
+   "name": "openstack",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1148190371,
+   "name": "opnsense",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -374235895,
+   "name": "ossia-provision-sr",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -2006308185,
+   "name": "otrs-open-ticket-request-system",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1616115760,
+   "name": "owncloud",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 727253975,
+   "name": "paradox-ip-module",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 246145559,
+   "name": "parse",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1010568750,
+   "name": "phpmyadmin",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -476231906,
+   "name": "phpmyadmin",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 432733105,
+   "name": "pi-star",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 2099342476,
+   "name": "pkp-openjournalsystems-public-knowledge-project",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -895890586,
+   "name": "plex-server",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1424036600,
+   "name": "portainer-docker-management",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1788112745,
+   "name": "powermta-monitoring",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1399433489,
+   "name": "prometheus-time-series-collection-and-processing-server",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1630354993,
+   "name": "proofpoint",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 213144638,
+   "name": "proxmox",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -655683626,
+   "name": "prtg-network-monitor",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 762074255,
+   "name": "qdPM",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1064742722,
+   "name": "rabbitmq",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1492966240,
+   "name": "radix",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 72005642,
+   "name": "remobjects-sdk-remoting-sdk",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1135165421,
+   "name": "ricoh",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 225632504,
+   "name": "rocket-chat",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -2140379067,
+   "name": "roundcube-webmail",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -976235259,
+   "name": "roundcube-webmail",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1528414776,
+   "name": "rumpus",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1939892142,
+   "name": "sabnzbd",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1547576879,
+   "name": "saia-burgess-controls-pcd",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 552597979,
+   "name": "sails",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -12700016,
+   "name": "seafile",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1857752096,
+   "name": "searxng-search",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -2054889066,
+   "name": "sentora",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 2063428236,
+   "name": "sentry",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 224536051,
+   "name": "shenzhen-coship-electronics",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -10974981,
+   "name": "shinobi-cctv",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -336242473,
+   "name": "siemens-ozw772",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1051205943,
+   "name": "siemens-simatic-s7-1200",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1117165781,
+   "name": "simplehelp-remote-support",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 385597939,
+   "name": "skysea-clientview",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -43161126,
+   "name": "slack",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1935525788,
+   "name": "smartermail",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -644617577,
+   "name": "smartlang",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 430582574,
+   "name": "smartping",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 307296554,
+   "name": "snowflake",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 812385209,
+   "name": "solarwinds-serv-u-ftp-server",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1485257654,
+   "name": "sonarqube",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1546574541,
+   "name": "sonatype-nexus-repository-manager",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1323738809,
+   "name": "sonatype-nexus-repository-manager",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1688698891,
+   "name": "spamexperts",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -2117390767,
+   "name": "spiceworks-panel",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -590892202,
+   "name": "surfilter-ssl-vpn-portal",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1441956789,
+   "name": "tableau",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1734573358,
+   "name": "tc-group",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -702384832,
+   "name": "tcn",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1944119648,
+   "name": "teamcity",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1452159623,
+   "name": "tecvoz",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1059329877,
+   "name": "tecvoz",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -759108386,
+   "name": "tongda",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -335153896,
+   "name": "traccar-gps-tracking",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -878891718,
+   "name": "twonky-server-media-streaming",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -130447705,
+   "name": "umami",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 768816037,
+   "name": "unifi-video-controller-airvision",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1697334194,
+   "name": "univention-portal",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 16202868,
+   "name": "universal-devices-ud",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1632780968,
+   "name": "université-toulouse-1-capitole",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1162730477,
+   "name": "vanderbilt-spc",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 706602230,
+   "name": "visualsvn-server",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1250474341,
+   "name": "vmware-Workspace-ONE-Access",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1642701741,
+   "name": "vmware-secure-file-transfer",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -956471263,
+   "name": "web-client-pro",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -291579889,
+   "name": "websockets-test-page-eg",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 2113497004,
+   "name": "wijungle",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -2125083197,
+   "name": "windows-azure",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -106646451,
+   "name": "wispr-airlan",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1985721423,
+   "name": "worldclient-for-mdaemon",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -35107086,
+   "name": "worldclient-mdaemon",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 697691819,
+   "name": "yardi-voyager",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -178685903,
+   "name": "yasni",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 892542951,
+   "name": "zabbix",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1822002133,
+   "name": "登录-amh",
+   "category": "product",
+   "noise": false,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 970132176,
+   "name": "3cx-phone-system",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1317621215,
+   "name": "D-Link D-View",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1653394551,
+   "name": "Dahua Web Service",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1548359600,
+   "name": "SOUND4 IMPACTFIRST PULSE Eco",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -41369781,
+   "name": "Selea-ANPR-Camera",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1381126564,
+   "name": "SonicWall GMS and Analytics Web Services",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -830586692,
+   "name": "Sophos Email Appliance",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1274798165,
+   "name": "Sophos Mobile managed on-premises",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -893681401,
+   "name": "Sophos Web Appliance",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1876585825,
+   "name": "alibi-nvr",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1477563858,
+   "name": "arris",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -360566773,
+   "name": "arris-network",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1142227528,
+   "name": "aruba-virtual-controller",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1710631084,
+   "name": "askey-cable-modem",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 89321398,
+   "name": "askey-cable-modem",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 552592949,
+   "name": "asus-aicloud",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1678170702,
+   "name": "asustor",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -194439630,
+   "name": "avtech-ip-surveillance-camera",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1616143106,
+   "name": "axis-network-cameras",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1436966696,
+   "name": "barracuda",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 878647854,
+   "name": "big-ip",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -375623619,
+   "name": "bintec-elmeg",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1770799630,
+   "name": "bintec-elmeg",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -520888198,
+   "name": "blue-iris-webcam",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1702769256,
+   "name": "bosch-security-systems-camera",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -435817905,
+   "name": "cambium-networks",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1908556829,
+   "name": "centurylink-modem-gui-login-eg",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 794809961,
+   "name": "checkpoint",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1822098181,
+   "name": "checkpoint-gaia",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 163842882,
+   "name": "cisco-meraki",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 804949239,
+   "name": "cisco-meraki-dashboard",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -299287097,
+   "name": "cisco-router",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1457536113,
+   "name": "cradlepoint",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1466912879,
+   "name": "cradlepoint-technology-router",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1462981117,
+   "name": "cyberoam",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1897829998,
+   "name": "d-link-camera",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -355305208,
+   "name": "d-link-camera",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -2031183903,
+   "name": "d-link-network",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1081719753,
+   "name": "d-link-network",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 517158172,
+   "name": "d-link-router-network",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1038500535,
+   "name": "d-link-router-network",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1703788174,
+   "name": "d-link-router-network",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1466785234,
+   "name": "dahua",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1281253102,
+   "name": "dahua-storm-dvr",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 833190513,
+   "name": "dahua-storm-ip-camera",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 2019488876,
+   "name": "dahua-storm-ip-camera",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 363324987,
+   "name": "dell-sonicwall",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1037387972,
+   "name": "dlink-router",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1354933624,
+   "name": "dlink-webcam",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 31972968,
+   "name": "dlink-webcam",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1144925962,
+   "name": "dlink-webcam",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1221759509,
+   "name": "dlink-webcam",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 90680708,
+   "name": "domoticz-home-automation",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 400100893,
+   "name": "dvr",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -560297467,
+   "name": "dvr-korean",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1877797890,
+   "name": "eltex-router",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1225484776,
+   "name": "endian-firewall",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1973665246,
+   "name": "entrolink",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 476213314,
+   "name": "exacq",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 420473080,
+   "name": "exostar-managed-access-gateway",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -335242539,
+   "name": "f5-big-ip",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -569941107,
+   "name": "fireware-watchguard",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 945408572,
+   "name": "fortinet-forticlient",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1838417872,
+   "name": "freebox-os",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -219752612,
+   "name": "fritz!box",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1862132268,
+   "name": "gargoyle-router-management-utility",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 251106693,
+   "name": "gpon-home-gateway",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -873627015,
+   "name": "herospeed-digital-technology-co",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 607846949,
+   "name": "hitron-technologies",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 711742418,
+   "name": "hitron-technologies-inc",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 2059618623,
+   "name": "hp-ilo",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 905744673,
+   "name": "hp-printer",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -2144363468,
+   "name": "hp-printer-server",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 281559989,
+   "name": "huawei",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1395400951,
+   "name": "huawei-adsl -router",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 2109473187,
+   "name": "huawei-claro",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -884776764,
+   "name": "huawei-network",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 987967490,
+   "name": "huawei-network",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -271448102,
+   "name": "ikuai-networks",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1648531157,
+   "name": "infinet-wireless-wanflex-network",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1748763891,
+   "name": "instar-full-hd-ip-camera",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1169314298,
+   "name": "instar-ip-cameras",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1343070146,
+   "name": "intelbras-sa",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 283740897,
+   "name": "intelbras-sa",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 2006716043,
+   "name": "intelbras-sa",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -359621743,
+   "name": "intelbras-wireless",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -2056503929,
+   "name": "iomega-nas",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1656695885,
+   "name": "iomega-nas",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -689902428,
+   "name": "iomega-nas",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -613216179,
+   "name": "iomega-nas",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -600508822,
+   "name": "iomega-nas",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -401934945,
+   "name": "iomega-nas",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 322531336,
+   "name": "iomega-nas",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 331870709,
+   "name": "iomega-nas",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 656868270,
+   "name": "iomega-nas",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 998138196,
+   "name": "iomega-nas",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1241049726,
+   "name": "iomega-nas",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -601917817,
+   "name": "ip-webcam",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -195508437,
+   "name": "ipecs",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 462223993,
+   "name": "jeedom-home-automation",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 2141724739,
+   "name": "juniper-device-manager",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 547282364,
+   "name": "keenetic",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -631002664,
+   "name": "kerio-control-firewall",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -466504476,
+   "name": "kerio-control-firewall",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -50306417,
+   "name": "kyocera-printer",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1277814690,
+   "name": "lacie",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -325082670,
+   "name": "lancom-systems",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -2063036701,
+   "name": "linksys-smart-wi-fi",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 904434662,
+   "name": "loxone-automation",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1351901211,
+   "name": "luma-surveillance",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1723752240,
+   "name": "microhard-systems",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 442749392,
+   "name": "microsoft-owa",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1922044295,
+   "name": "mitel-networks-micollab-end-user-portal",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1506998866,
+   "name": "mitsubishi-air-condition",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 362091310,
+   "name": "mobileiron",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 545827989,
+   "name": "mobileiron",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 967636089,
+   "name": "mobileiron",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 2086228042,
+   "name": "mobileiron",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 661332347,
+   "name": "mobotix-camera",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -923693877,
+   "name": "motioneye-camera",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 916642917,
+   "name": "multilaser",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1922032523,
+   "name": "nec-webpro",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1929912510,
+   "name": "netasq-secure-stormshield",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 5542029,
+   "name": "netcomwireless-network",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1319025408,
+   "name": "netgear",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1047213685,
+   "name": "netgear-network",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -137295400,
+   "name": "netgear-readynas",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -978656757,
+   "name": "netiaspot-network",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -594256627,
+   "name": "netis-network-devices",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 2071993228,
+   "name": "nomadix-access-gateway",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -831826827,
+   "name": "nos-router",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1307375944,
+   "name": "octoprint-3d-printer",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -693082538,
+   "name": "openmediavault-nas",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -986816620,
+   "name": "openrg",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 396533629,
+   "name": "openvpn",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -675839242,
+   "name": "openwrt-luci",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1941381095,
+   "name": "openwrt-luci",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1356662359,
+   "name": "outlook-web-application",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1768726119,
+   "name": "outlook-web-application",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 602431586,
+   "name": "palo-alto-login-portal",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -318947884,
+   "name": "palo-alto-networks",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1015545776,
+   "name": "pfsense",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1405460984,
+   "name": "pfsense",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 77044418,
+   "name": "polycom",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 492290497,
+   "name": "possible-ip-camera",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 999357577,
+   "name": "possibly-dvr",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1041180225,
+   "name": "qnap-nas-virtualization-station",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 2055322029,
+   "name": "realtek",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1308238121,
+   "name": "reolink",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -38705358,
+   "name": "reolink",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1933493443,
+   "name": "residential-gateway",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -2069844696,
+   "name": "ruckus-wireless",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -692947551,
+   "name": "ruijie-networks-login",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1926484046,
+   "name": "sangfor",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1810847295,
+   "name": "sangfor",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 123821839,
+   "name": "sangfor",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -139383140,
+   "name": "schneider-electric",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 487597720,
+   "name": "schneider-electric-ecostruxure",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 953127083,
+   "name": "schneider-electric-xflow",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 240136437,
+   "name": "seagate-technology-nas",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1051648103,
+   "name": "securepoint",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1326164945,
+   "name": "shock&innovation-netis-setup",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1571472432,
+   "name": "sierra-wireless-ace-manager-airlink",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 631108382,
+   "name": "sonicwall",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1548649046,
+   "name": "sophos",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1601194732,
+   "name": "sophos-cyberoam-appliance",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1045696447,
+   "name": "sophos-user-portal",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -332324409,
+   "name": "starface-voip-software",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 979634648,
+   "name": "struxureware-schneider-electric",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1975413433,
+   "name": "sunny-webbox",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1410610129,
+   "name": "supermicro-intelligent-management-ipmi",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1483097076,
+   "name": "syncthru-web-service-printers",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 149371702,
+   "name": "synology-diskstation",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1235070469,
+   "name": "synology-vpn-plus",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 97604680,
+   "name": "tandberg",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -2138771289,
+   "name": "technicolor",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1594377337,
+   "name": "technicolor",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1835479497,
+   "name": "technicolor-gateway",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 156312019,
+   "name": "technicolor-thomson-speedtouch-network-adsl",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1612496354,
+   "name": "teltonika",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 119741608,
+   "name": "teltonika",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 607493189,
+   "name": "teltonika-networks",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -2145085239,
+   "name": "tenda-web-master",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1346447358,
+   "name": "tilginab-homegateway",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 547474373,
+   "name": "totolink-network",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1274078387,
+   "name": "tp-link-network-device",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1842351293,
+   "name": "tp-link-network-device",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 512590457,
+   "name": "trendnet-ip-camera",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1093172228,
+   "name": "truvision-nvr",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1782271534,
+   "name": "truvision-nvr-interlogix",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1249285083,
+   "name": "ubiquiti-aircube",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -697231354,
+   "name": "ubiquiti-airos",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1020814938,
+   "name": "ubiquiti-airos",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1446794564,
+   "name": "ubiquiti-login-portals",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1157789622,
+   "name": "ubiquiti-unms",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1677255344,
+   "name": "ubnt-router-ui",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1775553655,
+   "name": "unified-management-console-polycom",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1103599349,
+   "name": "untangle",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1911253822,
+   "name": "upc-ceska-republica-network",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 104189364,
+   "name": "vigor-router",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1654229048,
+   "name": "vivotek-camera",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1255992602,
+   "name": "vmware-horizon",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -991123252,
+   "name": "vmware-horizon",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1895360511,
+   "name": "vmware-horizon",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 165976831,
+   "name": "vodafone-technicolor",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 15831193,
+   "name": "watchguard",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1240222446,
+   "name": "zhejiang-uniview-technologies",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 459900502,
+   "name": "zte-corporation-gateway-appliance",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1427976651,
+   "name": "zte-network",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 943925975,
+   "name": "zyxel",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -882760066,
+   "name": "zyxel-network",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -484708885,
+   "name": "zyxel-zywall",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -440644339,
+   "name": "zyxel-zywall",
+   "category": "router_device",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1337147129,
+   "name": "IBM WebSphere Application",
+   "category": "web_server",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -632070065,
+   "name": "apache-haus",
+   "category": "web_server",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -297069493,
+   "name": "apache-tomcat",
+   "category": "web_server",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1607644090,
+   "name": "bitnami",
+   "category": "web_server",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1169183049,
+   "name": "boaserver",
+   "category": "web_server",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 252728887,
+   "name": "dd-wrt-milli-httpd",
+   "category": "web_server",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1424295654,
+   "name": "icecast-streaming-media-server",
+   "category": "web_server",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 90066852,
+   "name": "jaws-web-server-ip-camera",
+   "category": "web_server",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 768231242,
+   "name": "jaws-web-server-ip-camera",
+   "category": "web_server",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -656811182,
+   "name": "jboss",
+   "category": "web_server",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 937999361,
+   "name": "jboss-application-server-7",
+   "category": "web_server",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -629047854,
+   "name": "jetty-",
+   "category": "web_server",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1205024243,
+   "name": "lwip-a-lightweight-tcp-ip-stack",
+   "category": "web_server",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1414475558,
+   "name": "microsoft-iis",
+   "category": "web_server",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -676077969,
+   "name": "niagara-web-server",
+   "category": "web_server",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 1991562061,
+   "name": "niagara-web-server-tridium",
+   "category": "web_server",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -632583950,
+   "name": "shoutcast-server",
+   "category": "web_server",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 443944613,
+   "name": "wampserver",
+   "category": "web_server",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 929825723,
+   "name": "wampserver",
+   "category": "web_server",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1666561833,
+   "name": "wildfly",
+   "category": "web_server",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": 74935566,
+   "name": "windriver-webserver",
+   "category": "web_server",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1437701105,
+   "name": "xampp",
+   "category": "web_server",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  },
+  {
+   "mmh3": -1275226814,
+   "name": "xampp",
+   "category": "web_server",
+   "noise": true,
+   "source": "nuclei-templates favicon-detect"
+  }
+ ]
+}

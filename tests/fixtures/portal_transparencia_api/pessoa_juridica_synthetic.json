@@ -1,0 +1,18 @@
+{
+ "cnpj": "11222333000181",
+ "razaoSocial": "EMPRESA EXEMPLO ALFA LTDA",
+ "nomeFantasia": "",
+ "favorecidoDespesas": true,
+ "possuiContratacao": true,
+ "convenios": false,
+ "favorecidoTransferencias": false,
+ "sancionadoCEPIM": false,
+ "sancionadoCEIS": true,
+ "sancionadoCNEP": true,
+ "sancionadoCEAF": false,
+ "participanteLicitacao": true,
+ "emitiuNFe": false,
+ "beneficiadoRenunciaFiscal": false,
+ "isentoImuneRenunciaFiscal": false,
+ "habilitadoRenunciaFiscal": false
+}

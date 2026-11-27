@@ -1,0 +1,82 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "spamhaus",
+  "name": "Spamhaus DROP lists",
+  "operator": "The Spamhaus Project SLU",
+  "hosts": [
+    "www.spamhaus.org",
+    "spamhaus.org"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established security non-profit with published terms (A8 BR2 names Spamhaus as trusted; P149 chair: 'Spamhaus and abuse.ch are trusted').",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "Curated lists of hijacked and criminal netblocks/ASNs maintained by Spamhaus researchers; very low false-positive rate."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 3600
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "drop_v4": {
+      "title": "Spamhaus DROP (IPv4, NDJSON)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.spamhaus.org/drop/terms/",
+        "quote": "Per-feed terms registry with an enable flag per feed. Open (run under corporate): Spamhaus DROP/EDROP/ASN-DROP (free for protection, no resale), Feodo Tracker and SSLBL (abuse.ch CC0, A1 BR14), IPsum (Unlicense), Binary Defense Artillery (internal use, no resale).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "spamhaus",
+      "sanitizer": null,
+      "dataset": "ip_blocklists.spamhaus_drop_v4.json",
+      "notes": "Quote: binding council text (P149 cond 1); research C0346 (verified_live 200; NDJSON, last line = metadata with the terms URL). EDROP has been merged into DROP (edrop.txt is an empty stub): not fetched. Refreshed at most hourly as Spamhaus asks, matched locally. Used by ip_blocklists."
+    },
+    "drop_v6": {
+      "title": "Spamhaus DROP (IPv6, NDJSON)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.spamhaus.org/drop/terms/",
+        "quote": "Per-feed terms registry with an enable flag per feed. Open (run under corporate): Spamhaus DROP/EDROP/ASN-DROP (free for protection, no resale), Feodo Tracker and SSLBL (abuse.ch CC0, A1 BR14), IPsum (Unlicense), Binary Defense Artillery (internal use, no resale).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "spamhaus",
+      "sanitizer": null,
+      "dataset": "ip_blocklists.spamhaus_drop_v6.json",
+      "notes": "Quote: binding council text (P149 cond 1); research C0346. Refreshed at most hourly, matched locally. Used by ip_blocklists."
+    },
+    "asndrop": {
+      "title": "Spamhaus ASN-DROP (NDJSON)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.spamhaus.org/drop/terms/",
+        "quote": "Per-feed terms registry with an enable flag per feed. Open (run under corporate): Spamhaus DROP/EDROP/ASN-DROP (free for protection, no resale), Feodo Tracker and SSLBL (abuse.ch CC0, A1 BR14), IPsum (Unlicense), Binary Defense Artillery (internal use, no resale).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "spamhaus",
+      "sanitizer": null,
+      "dataset": "ip_blocklists.spamhaus_asndrop.json",
+      "notes": "Quote: binding council text (P149 cond 1); research C0346 (asndrop.json, max-age 86400). Matched locally for ASN entities. Used by ip_blocklists."
+    }
+  },
+  "notes": "Owned by batch p1-G02-2 (P149). The DNSBL zones (zen/dbl) are queried through DNS only (P045) and never through these hosts; check.spamhaus.org SBL pages are manual links."
+}

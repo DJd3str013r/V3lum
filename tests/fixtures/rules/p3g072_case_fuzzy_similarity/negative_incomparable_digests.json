@@ -1,0 +1,45 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "nodes": [
+  {
+   "key": "sha256:7f77b5c7cecc4e05e05fa57efede89d1e031c4152cd8141ddce78ee4eef5b95d",
+   "depth": 0,
+   "seed": true,
+   "attributes": {
+    "similarity_hashes": [
+     {
+      "value": {
+       "ssdeep": "1536:faooayVfn6DZ6VgER1fqdrUG+uD83aASBzO1iMk/:QrhM6yh0586gZpwV/Gx5CrmA",
+       "imphash": "cae6529d16a79f2b2590b652488bd8e6"
+      },
+      "source": "yaraify"
+     }
+    ]
+   }
+  },
+  {
+   "key": "sha256:41fa144b73bdb119bd08eec154905b68f5b0c3dccbfa0ddc3dce700ac59305a5",
+   "depth": 1,
+   "seed": false,
+   "attributes": {
+    "similarity_hashes": [
+     {
+      "value": {
+       "ssdeep": "3:a+JraNvsgzsVqSwHq9:tJuOgzsko",
+       "imphash": "cae6529d16a79f2b2590b652488bd8e6"
+      },
+      "source": "virusshare"
+     }
+    ]
+   }
+  }
+ ],
+ "edges": [],
+ "expect": {
+  "p3g072_case_fuzzy_similarity": {
+   "min": 0,
+   "max": 0
+  }
+ }
+}

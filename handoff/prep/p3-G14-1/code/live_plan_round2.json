@@ -1,0 +1,12 @@
+[
+ {"id": "emailformat_www_nic_br", "url": "https://www.email-format.com/d/nic.br/", "accept": "text/html"},
+ {"id": "mastodon_profile_microsoft", "url": "https://mastodon.social/@microsoft", "accept": "text/html"},
+ {"id": "hibp_breach_lower_example", "url": "https://haveibeenpwned.com/breach/Example", "accept": "text/html"},
+ {"id": "webmii_unquoted_bancodobrasil", "url": "https://webmii.com/people?n=Banco%20do%20Brasil", "accept": "text/html"},
+ {"id": "ddg_ia_nic_br", "url": "https://api.duckduckgo.com/?q=nic.br&format=json&no_html=1&skip_disambig=1"},
+ {"id": "hibp_api_breach_adobe", "url": "https://haveibeenpwned.com/api/v3/breach/Adobe", "accept": "application/json"},
+ {"id": "bsky_profile_upper_bsky_app", "url": "https://bsky.app/profile/BSKY.APP", "accept": "text/html"},
+ {"id": "emailformat_www_about", "url": "https://www.email-format.com/i/about/", "accept": "text/html"},
+ {"id": "hibp_api_breach_example", "url": "https://haveibeenpwned.com/api/v3/breach/Example", "accept": "application/json"},
+ {"id": "ddg_ia_cloudflare_com", "url": "https://api.duckduckgo.com/?q=cloudflare.com&format=json&no_html=1&skip_disambig=1"}
+]

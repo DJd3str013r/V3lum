@@ -1,0 +1,16 @@
+{
+ "_synthetic": "RIPEstat envelope shape with status_code 429 and a rate-limit message inside HTTP 200 (never observed live; documentation values)",
+ "messages": [
+  [
+   "error",
+   "Too many requests: rate limit exceeded for this source application"
+  ]
+ ],
+ "data_call_name": "network-info",
+ "data_call_status": "supported",
+ "cached": false,
+ "status": "error",
+ "status_code": 429,
+ "time": "2026-11-26T08:20:00.000000",
+ "data": {}
+}

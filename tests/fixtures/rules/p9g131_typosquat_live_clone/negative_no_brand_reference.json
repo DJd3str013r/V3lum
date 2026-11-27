@@ -1,0 +1,86 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "options": {
+  "mode": "light",
+  "tlp": "amber",
+  "depth": 1,
+  "egress_override": ""
+ },
+ "org_profile": {
+  "org": {
+   "name": "Banco Exemplo S.A."
+  },
+  "domains": [
+   {
+    "name": "bancoexemplo.example",
+    "verification": "txt_verified",
+    "criticality": "high"
+   },
+   {
+    "name": "bancoexemplo-seguro.example",
+    "verification": "attested",
+    "attested_by": "brand team",
+    "attested_date": "2026-11-01"
+   }
+  ],
+  "brands": [
+   {
+    "keyword": "bancoexemplo",
+    "criticality": "high"
+   }
+  ]
+ },
+ "nodes": [
+  {
+   "key": "domain:bancoexernplo.example",
+   "depth": 0,
+   "seed": true,
+   "attributes": {
+    "page_fingerprint": [
+     {
+      "value": {
+       "role": "candidate",
+       "url": "https://bancoexernplo.example/",
+       "final_url": "https://bancoexernplo.example/",
+       "http_status": 200,
+       "title": "Banco Exemplo | Internet Banking",
+       "ppdeep": "24:hco/jl3pT5CpQFMUuCRY6QbdygYUQLbYk1ulfvMpLX17PLETqmO6lUuVElG:a2bcNU5hGdygPWbT1+vQj1eqmO60Q",
+       "normalised_bytes": 1400,
+       "favicon_mmh3": -1101418309,
+       "favicon_url": "https://bancoexernplo.example/favicon.png",
+       "form_action_hosts": [
+        "coletor.example.net"
+       ],
+       "offsite_form_hosts": [
+        "coletor.example.net"
+       ],
+       "login_form": true,
+       "posts_offsite": true,
+       "meta_refresh": null,
+       "fetched_at": "2026-11-26T12:00:00+00:00",
+       "egress_profile": "proxy_light"
+      },
+      "source": "typosquat_live_checks"
+     }
+    ],
+    "live_check": [
+     {
+      "value": {
+       "state": "fetched",
+       "reason": "page fingerprint recorded",
+       "brands": [
+        "bancoexemplo.example"
+       ],
+       "contacted": true,
+       "requests": 2
+      },
+      "source": "typosquat_live_checks"
+     }
+    ]
+   }
+  }
+ ],
+ "edges": [],
+ "expect": {}
+}

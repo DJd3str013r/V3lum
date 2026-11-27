@@ -1,0 +1,16 @@
+{
+ "_envelope": 1,
+ "_source": "research tmp_caipora_people/bodies/grayhat_buckets_nokey.body(.hdr), GET /api/v2/files?keywords=example without a key, 2026-11-25",
+ "status": 401,
+ "headers": {
+  "content-type": "application/json",
+  "www-authenticate": "apiToken",
+  "cache-control": "max-age=0, must-revalidate, private",
+  "x-parallel-count": "0",
+  "x-parallel-limit": "1",
+  "server": "cloudflare"
+ },
+ "body": {
+  "error": "You don't have access to API. If you need API access please register: https://grayhatwarfare.com/register. Alternatively you can purchase a Premium or Enterprise account. For a full list of features see packages: https://grayhatwarfare.com/packages."
+ }
+}

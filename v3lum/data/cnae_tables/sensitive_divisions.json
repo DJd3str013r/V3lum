@@ -1,0 +1,55 @@
+{
+ "schema": "v3lum.cnae_sensitive_map/1",
+ "version": "2026-11-26",
+ "reviewer": "council-1 (P235 cond 4 and 5)",
+ "reviewed_at": "2026-11-26",
+ "scope": "Business-risk sectors only. Tags are info context: never a risk signal on their own (score effect 0); correlation rules may combine them with other signals.",
+ "sectors": {
+  "financial_insurance": {
+   "label": "financial and insurance activities (BCB/SUSEP/CVM regulated)",
+   "divisions": [
+    "64",
+    "65",
+    "66"
+   ],
+   "subclasses": []
+  },
+  "payments_crypto": {
+   "label": "payment and crypto-asset activities (exchange, cards, payment and crypto services)",
+   "divisions": [],
+   "subclasses": [
+    "6438701",
+    "6612603",
+    "6613400",
+    "6619302",
+    "6619305",
+    "6619399"
+   ]
+  },
+  "private_security": {
+   "label": "private security (Policia Federal regulated)",
+   "divisions": [
+    "80"
+   ],
+   "subclasses": []
+  },
+  "gambling_betting": {
+   "label": "gambling and betting",
+   "divisions": [
+    "92"
+   ],
+   "subclasses": []
+  }
+ },
+ "excluded": {
+  "6311900": "data processing/hosting: crypto-asset mining is one listed activity among many (would tag ordinary IT companies)",
+  "7740300": "intangible-asset management (royalties, franchising): crypto-asset lending is one listed activity among many",
+  "8299702": "meal/transport voucher issuers: payment instruments outside the financial divisions; left out pending a sector review",
+  "8291100": "debt collection and credit bureaus",
+  "8299706": "lottery outlets (CAIXA banking correspondents), not betting operators"
+ },
+ "lgpd_protected_divisions": [
+  "94"
+ ],
+ "lgpd_note": "Division 94 (associations: unions 9420-1/00, religious 9491-0/00, political 9492-8/00 and the rest) reveals union, religious or political affiliation (LGPD art. 5 II and 11): it never gets a sector tag, is never a risk signal and is never propagated as an attribute to natural persons (P235 cond 5)."
+}

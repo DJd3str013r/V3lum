@@ -1,0 +1,93 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "whoxy_api",
+  "name": "Whoxy WHOIS API (WHOIS history and reverse WHOIS)",
+  "operator": "Whoxy",
+  "hosts": [
+    "api.whoxy.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Small company with public API documentation, terms and prepaid credits (A8 community); P022 chair rationale: 'Whoxy and WhoisFreaks are small companies'. A separate fragment from whoxy.json (batch p2-G14-1: manual pivot pages on www.whoxy.com, never fetched), like transparencia_api: the keyed API needs its own key block and credit quota.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Third-party WHOIS crawl and history; post-GDPR records are mostly redacted and registry data stays authoritative."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "ttl": 2592000,
+    "min_interval": 1.0
+  },
+  "quota": {
+    "scope": "key",
+    "month": 500,
+    "burst": 1,
+    "published": false,
+    "evidence_url": "https://www.whoxy.com/whois-history/",
+    "safety_margin": 0.8
+  },
+  "error_markers": [
+    {
+      "id": "whoxy_api_balance",
+      "statuses": [200],
+      "json_path": "status_reason",
+      "equals": null,
+      "regex": "(?i)balance|credit|insufficient|exhaust|quota|limit reached|recharge",
+      "final_url_regex": null,
+      "maps_to": "quota",
+      "reason_code": "quota",
+      "reason": "Whoxy API: query balance exhausted (status 0 in an HTTP 200 answer, could not verify)"
+    },
+    {
+      "id": "whoxy_api_rate",
+      "statuses": [200],
+      "json_path": "status_reason",
+      "equals": null,
+      "regex": "(?i)too many|rate limit|slow down",
+      "final_url_regex": null,
+      "maps_to": "rate_limited",
+      "reason_code": "rate_limited",
+      "reason": "Whoxy API: too many requests (status 0 in an HTTP 200 answer, could not verify)"
+    }
+  ],
+  "keys": {
+    "whoxy": {
+      "description": "Whoxy API key (prepaid WHOIS history / reverse WHOIS queries), sent as ?key= and masked by the central redactor (AR01)",
+      "signup_url": "https://www.whoxy.com/account/",
+      "env": [
+        "V3LUM_WHOXY_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "business = company-paid Whoxy credits recorded with the purchase in licence_allow (P022 cond 1); never an analyst's personal account"
+    }
+  },
+  "sources": {
+    "api": {
+      "title": "Whoxy API ?history={domain} (WHOIS history) and ?reverse=whois&email=|name=|company= (reverse WHOIS, paged)",
+      "terms": {
+        "class": "license",
+        "evidence_url": "https://www.whoxy.com/terms.php",
+        "quote": "Company-paid keys only; legal records the licence/purchase in licence_allow before an adapter runs under corporate (P022 cond 1). Terms 'license' (paid credits).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "whoxy",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P022 cond 1, chair rationale). Research C0044: keyless/invalid key answers HTTP 200 {\"status\":0,\"status_reason\":\"Invalid API Key\"} (real fixture): the module maps it to NEEDS_KEY (P022 cond 7); balance and rate texts are provider markers. The key travels in the URL (?key=), so only through ctx.http params and the central redactor (AR01, P022 cond 1). Rule 7 open point: whoxy.com pages show a public 'RECENT WHOIS LOOKUP' list; until a team-key check shows API lookups never appear there, the adapter is off by default (setting whois_history_keyed_providers, docs/backlog/p3-G01-2.md). Used by whois_history_keyed."
+    }
+  },
+  "notes": "Owned by batch p3-G01-2 (P022 whois_history_keyed). Cache 30 days (P022 cond 7). Prepaid credits: the quota block is a request budget (published false until the team plan is recorded); the module also keeps a monthly credit budget per adapter."
+}

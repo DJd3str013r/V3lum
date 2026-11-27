@@ -1,0 +1,17 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://www.example.com/.env",
+  "headers": {
+   "Range": "bytes=0-1023"
+  }
+ },
+ "response": {
+  "status": 302,
+  "headers": {
+   "location": "https://www.example.com/login?next=%2F.env",
+   "content-length": "0"
+  },
+  "body": ""
+ }
+}

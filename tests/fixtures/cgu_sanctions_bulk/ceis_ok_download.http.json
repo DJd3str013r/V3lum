@@ -1,0 +1,21 @@
+{
+ "request": "GET https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/ceis/20261125_CEIS.zip",
+ "response": {
+  "status": 200,
+  "headers": {
+   "content-type": "application/x-zip-compressed",
+   "content-length": "3479006",
+   "server": "AmazonS3",
+   "last-modified": "Wed, 25 Nov 2026 21:18:31 GMT",
+   "etag": "\"f1f46f8be9d02d4fd7188858a43e3da5\"",
+   "x-cache": "Hit from cloudfront",
+   "age": "27471"
+  },
+  "body": null
+ },
+ "transport_error": null,
+ "elapsed_s": 1.293061,
+ "observed_at": "2026-11-26T05:22:38+00:00",
+ "origin": "live",
+ "note": ""
+}

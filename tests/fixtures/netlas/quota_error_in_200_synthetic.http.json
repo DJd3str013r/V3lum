@@ -1,0 +1,19 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://app.netlas.io/api/host/198.51.100.20/"
+ },
+ "response": {
+  "status": 200,
+  "headers": {
+   "Content-Type": "application/json"
+  },
+  "body": {
+   "type": "quota_exceeded",
+   "title": "Quota exceeded",
+   "detail": "Daily request limit reached for your plan."
+  }
+ },
+ "observed": "synthetic",
+ "note": "Error body inside HTTP 200 as condition 4 anticipates; type/wording invented. The marker must read QUOTA from the body whatever the status, never EMPTY."
+}

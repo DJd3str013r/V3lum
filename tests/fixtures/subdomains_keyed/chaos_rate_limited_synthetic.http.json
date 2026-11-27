@@ -1,0 +1,17 @@
+{
+ "request": "GET https://dns.projectdiscovery.io/dns/example.com/subdomains",
+ "response": {
+  "status": 429,
+  "headers": {
+   "content-type": "application/json",
+   "x-ratelimit-limit": "60",
+   "x-ratelimit-remaining": "0"
+  },
+  "body": {
+   "error": "too many requests"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "chaos-client reads X-Ratelimit-Limit as requests per minute (README: 60/min per IP); body PLACEHOLDER"
+}

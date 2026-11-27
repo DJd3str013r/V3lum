@@ -1,0 +1,87 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "$comment": "Two properties of the same UA account seen in archived homepages two months apart: grouped by account (UA-99999902) and linked (dates overlap within the 90-day tolerance)",
+  "nodes": [
+    {
+      "key": "domain:sister-a.example.org",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "archived_analytics_ids": [
+          {
+            "value": [
+              {
+                "id": "UA-99999902-1",
+                "kind": "ua",
+                "first_seen": "2019-03-01T00:00:00Z",
+                "last_seen": "2019-03-01T00:00:00Z",
+                "snapshots": 1
+              }
+            ],
+            "source": "archive_mining"
+          }
+        ]
+      }
+    },
+    {
+      "key": "domain:sister-b.example.com",
+      "depth": 1,
+      "attributes": {
+        "archived_analytics_ids": [
+          {
+            "value": [
+              {
+                "id": "UA-99999902-3",
+                "kind": "ua",
+                "first_seen": "2019-05-10T00:00:00Z",
+                "last_seen": "2019-05-10T00:00:00Z",
+                "snapshots": 1
+              }
+            ],
+            "source": "archive_mining"
+          }
+        ]
+      }
+    },
+    {
+      "key": "analytics_id:UA-99999902-1",
+      "depth": 1
+    },
+    {
+      "key": "analytics_id:UA-99999902-3",
+      "depth": 2
+    }
+  ],
+  "edges": [
+    {
+      "src": "domain:sister-a.example.org",
+      "dst": "analytics_id:UA-99999902-1",
+      "relation": "historical_analytics_id",
+      "module": "archive_mining",
+      "confidence": 0.4,
+      "expand": false
+    },
+    {
+      "src": "domain:sister-b.example.com",
+      "dst": "analytics_id:UA-99999902-3",
+      "relation": "historical_analytics_id",
+      "module": "archive_mining",
+      "confidence": 0.4,
+      "expand": false
+    }
+  ],
+  "expect": {
+    "g03_same_analytics": {
+      "min": 1,
+      "max": 1,
+      "severity": "info",
+      "confidence_label": "probable"
+    }
+  }
+}

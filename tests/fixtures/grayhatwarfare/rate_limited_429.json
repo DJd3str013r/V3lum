@@ -1,0 +1,14 @@
+{
+ "_envelope": 1,
+ "_synthetic": "throttling shape inferred from the x-parallel-limit: 1 header seen on the 401; not observed",
+ "status": 429,
+ "headers": {
+  "content-type": "application/json",
+  "x-parallel-count": "1",
+  "x-parallel-limit": "1",
+  "retry-after": "5"
+ },
+ "body": {
+  "error": "Too many requests. Parallel request limit reached."
+ }
+}

@@ -1,0 +1,11 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "ioc_extractor",
+  "source_url": "https://github.com/ninoseki/ioc-extractor",
+  "version": "main branch src/aux/regexes.ts as studied on 2026-11-25 (refang and URL-unwrapping rules re-implemented in Python)",
+  "sha256": "",
+  "licence": "MIT",
+  "attribution": "Refang rules (bracketed and half-bracketed dots, [:], [/], [://], [@]/(at), hxxp/h**p, backslash-dot) and the cheap substring guards before each extractor are adapted from ioc-extractor, Copyright (c) 2018 Manabu Niseki, MIT licence.",
+  "bundled": true,
+  "files": ["v3lum/core/ioc.py"]
+}

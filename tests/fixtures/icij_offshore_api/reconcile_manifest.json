@@ -1,0 +1,73 @@
+{
+ "name": "Offshore Leaks Database",
+ "versions": [
+  "0.2"
+ ],
+ "identifierSpace": "https://schema.org/identifier",
+ "schemaSpace": "https://offshoreleaks.icij.org/schema/oldb",
+ "defaultTypes": [
+  {
+   "id": "https://offshoreleaks.icij.org/schema/oldb/node",
+   "name": "Node (default)"
+  },
+  {
+   "id": "https://offshoreleaks.icij.org/schema/oldb/address",
+   "name": "Address"
+  },
+  {
+   "id": "https://offshoreleaks.icij.org/schema/oldb/entity",
+   "name": "Entity"
+  },
+  {
+   "id": "https://offshoreleaks.icij.org/schema/oldb/intermediary",
+   "name": "Intermediary"
+  },
+  {
+   "id": "https://offshoreleaks.icij.org/schema/oldb/officer",
+   "name": "Officer"
+  },
+  {
+   "id": "https://offshoreleaks.icij.org/schema/oldb/other",
+   "name": "Other"
+  }
+ ],
+ "documentation": "https://offshoreleaks.icij.org/docs/reconciliation",
+ "view": {
+  "url": "https://offshoreleaks.icij.org/api/v1/rest/nodes/{{id}}"
+ },
+ "preview": {
+  "url": "https://offshoreleaks.icij.org/nodes/{{id}}?embed=1",
+  "width": 575,
+  "height": 575
+ },
+ "batchSize": 25,
+ "extend": {
+  "propose_properties": {
+   "service_url": "https://offshoreleaks.icij.org/api/v1/reconcile",
+   "service_path": "/properties"
+  },
+  "property_settings": [
+   {
+    "name": "limit",
+    "label": "Limit",
+    "type": "number",
+    "default": 0,
+    "help_text": "Maximum number of values to return per row (0 for no limit)"
+   }
+  ]
+ },
+ "suggest": {
+  "property": {
+   "service_url": "https://offshoreleaks.icij.org/api/v1/reconcile",
+   "service_path": "/suggest/property"
+  },
+  "entity": {
+   "service_url": "https://offshoreleaks.icij.org/api/v1/reconcile",
+   "service_path": "/suggest/entity"
+  },
+  "type": {
+   "service_url": "https://offshoreleaks.icij.org/api/v1/reconcile",
+   "service_path": "/suggest/type"
+  }
+ }
+}

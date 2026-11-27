@@ -1,0 +1,20 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p2-G01-4",
+  "title": "SaaS verification tokens (P342) and WHOIS fallback (P343)",
+  "owner": "batch p2-G01-4",
+  "notes": "P342 FC3 asks for saas_vendors in core/vocab.py; module batches never edit core files, so it is declared here (decentralised vocabulary, contract v2 s.14) and listed as a core request.",
+  "attributes": {
+    "saas_vendors": "SaaS vendors with a domain-verification TXT record at the name (verification record present: proves a past domain verification, not current use; token values stay in evidence only; P342)",
+    "saas_unknown_prefixes": "TXT verification-style prefixes that V3LUM's vendor table does not know, listed raw without token values or embedded ids (P342)",
+    "registration_source": "protocol that produced the registration data of a WHOIS fallback lookup: rdap | whois (P343)",
+    "registration_server": "registry RDAP/WHOIS server that answered a WHOIS fallback lookup (who-dat meta.server, or the port-43 server)",
+    "registration_via": "path of the WHOIS fallback that answered: whodat (self-hosted who-dat), whodat_public (public who-dat.as93.net) or whois43 (registry port 43)",
+    "registration_referral": "WHOIS referral reported or followed by a WHOIS fallback lookup (at most one hop; registry values win)",
+    "registrar_whois_server": "WHOIS server of the sponsoring registrar as published by the registry",
+    "registry_whois_server": "WHOIS server of the TLD registry taken from the IANA root zone database (cached 7 days)"
+  },
+  "tags": {
+    "saas_footprint": "finding lists SaaS vendors with a domain-verification record (ASM inventory and phishing-simulation hints; never a hostile signal)"
+  }
+}

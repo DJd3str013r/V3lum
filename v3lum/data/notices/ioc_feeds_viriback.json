@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "ioc_feeds_viriback",
+  "source_url": "https://tracker.viriback.com/",
+  "version": "dump.php CSV, runtime download, checked 2026-11-26",
+  "sha256": "",
+  "licence": "LicenseRef-unknown-no-terms",
+  "attribution": "ViriBack C2 Tracker (https://tracker.viriback.com/). No published terms (A1 BR16): used only by the disabled module ioc_feeds_unreviewed until legal records a terms class; never redistributed.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/threat_intel_ioc/ioc_feeds_offline.py"
+  ]
+}

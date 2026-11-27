@@ -1,0 +1,39 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "gitlab",
+  "hosts": [],
+  "sources": {
+    "avatar_correlation_avatars": {
+      "title": "GitLab.com user avatar uploads /uploads/-/system/user/avatar/<id>/<file> (one GET per avatar URL already found on a profile, P114)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://about.gitlab.com/terms/",
+        "quote": "Registry provider gitlab: tier trusted, terms open; personal_data_review before default use (A3 BR8).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "gitlab",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "P114 cond 2: only the avatar upload path prefix of gitlab.com is fetched (host + path prefix allow-list in avatar_correlation); images are hashed in memory and discarded (cond 4)."
+    },
+    "org_code_footprint_archives": {
+      "title": "GitLab.com repository archives /api/v4/projects/{id}/repository/archive.tar.gz?sha={ref} (deep preset only, streamed in memory, P359)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://about.gitlab.com/terms/",
+        "quote": "Sources: GitHub REST 'key-terms' (as P111); GitLab, Codeberg, npm, PyPI and Docker Hub 'open'.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "gitlab",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "P359 cond 5: deep preset or -M only, org-confirmed groups only (GitLab groups expose no website: confirmation comes from the analyst), 50 MB compressed stream cap (simple=true projects carry no size), 1 MB per member, binaries skipped, nothing written to disk. Archive bodies are never cached."
+    }
+  },
+  "error_markers": [],
+  "notes": "Batch p2-G05-2: GitLab avatar uploads (avatar_correlation, P114) and repository archives (org_code_secrets, P359). Group search and group projects use the seeded source gitlab.groups_api."
+}

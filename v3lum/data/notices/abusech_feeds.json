@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "abusech_feeds",
+  "source_url": "https://abuse.ch/terms-of-use/",
+  "version": "Feodo Tracker ipblocklist.json and SSLBL sslblacklist.csv (runtime downloads shared with ip_blocklists), checked 2026-11-26",
+  "sha256": "",
+  "licence": "CC0-1.0",
+  "attribution": "abuse.ch Feodo Tracker (https://feodotracker.abuse.ch/) and SSL Blacklist (https://sslbl.abuse.ch/), CC0 (abuse.ch terms of use s.3.4); abuse.ch attribution kept in findings and exports.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/threat_intel_ioc/abusech.py",
+    "v3lum/modules/threat_intel_ioc/ioc_feeds_offline.py"
+  ]
+}

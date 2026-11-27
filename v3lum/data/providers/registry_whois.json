@@ -1,0 +1,45 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "registry_whois",
+  "name": "TLD registry WHOIS servers (port 43; server per TLD from the IANA root zone database)",
+  "operator": "The registry (TLD manager) of each top-level domain, e.g. the Coordination Center for TLD RU (whois.tcinet.ru), CNNIC (whois.cnnic.cn), NIC.br (whois.registro.br)",
+  "hosts": [],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Internet registries are trusted (A8 BR2); P343 chair rationale: 'Default module tier trusted (IANA and registries), terms open.' Virtual provider: port-43 servers are named per TLD by the IANA root zone database at run time, never HTTP hosts.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "Authoritative registry data, parsed conservatively from per-registry WHOIS text layouts (allow-listed fields only)."
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "port43": {
+      "title": "Registry WHOIS on port 43 (one query line per domain, at most one referral hop)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.iana.org/domains/root/db",
+        "quote": "Registry WHOIS terms are respected (per-query only, no bulk or marketing use).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "registry_whois",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P343 FC3); research record C0786 'Registry WHOIS terms of use (no bulk queries, no marketing use)'. Per-query lookups only, never lists or loops, raw text never republished (registro.br terms forbid distribution). Port 43 goes only through the core whois43 helper on the socket connector (10 s timeout, 64 KB cap, one referral hop; UNAVAILABLE with a proxy or when 43/tcp is blocked) - not in this build (core request of batch p2-G01-4), so the source reports UNAVAILABLE 'offline' until it lands."
+    }
+  },
+  "notes": "Owned by batch p2-G01-4 (P343 module whois_fallback). Politeness asked of the core whois43 helper: 3 s between queries to one server, at most 200 queries per server and day (registro.br and CNNIC throttle per IP)."
+}

@@ -1,0 +1,51 @@
+{
+ "generator": "phonenumbers 9.0.44 facts (collect_phone_facts schema), batch p1-G06-1 prep 2026-11-26",
+ "lib": "phonenumbers",
+ "lib_version": "9.0.44",
+ "region_hint": "BR",
+ "text_fixture": "extract_ok.txt",
+ "matches": [
+  {
+   "start": 48,
+   "end": 63,
+   "raw_string": "(11) 95555-0100",
+   "e164": "+5511955550100"
+  },
+  {
+   "start": 67,
+   "end": 80,
+   "raw_string": "0800 729 0001",
+   "e164": "+558007290001"
+  },
+  {
+   "start": 110,
+   "end": 123,
+   "raw_string": "5511955550101",
+   "e164": "+5511955550101"
+  },
+  {
+   "start": 135,
+   "end": 152,
+   "raw_string": "+55 21 99555-0100",
+   "e164": "+5521995550100"
+  },
+  {
+   "start": 155,
+   "end": 167,
+   "raw_string": "11 5555-0102",
+   "e164": "+551155550102"
+  },
+  {
+   "start": 270,
+   "end": 283,
+   "raw_string": "0303 555 0100",
+   "e164": "+553035550100"
+  },
+  {
+   "start": 295,
+   "end": 304,
+   "raw_string": "4004-0001",
+   "e164": "+5540040001"
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+[
+ {
+  "id": 55,
+  "dataReferencia": "2026-10-01",
+  "dataInicioVigencia": "2026-01-01",
+  "dataFinalVigencia": "2027-01-01",
+  "dataPublicacao": "2025-12-20",
+  "dataUltimaLiberacao": "2026-06-01",
+  "dataConclusao": null,
+  "dimConvenio": {
+   "codigo": "888001",
+   "objeto": "Convenio exemplo",
+   "numero": "888001"
+  },
+  "situacao": "EM EXECUÇÃO",
+  "convenente": {
+   "id": 0,
+   "cpfFormatado": "",
+   "cnpjFormatado": "11.222.333/0001-81",
+   "numeroInscricaoSocial": "",
+   "nome": "EMPRESA EXEMPLO ALFA LTDA",
+   "razaoSocialReceita": "EMPRESA EXEMPLO ALFA LTDA",
+   "nomeFantasiaReceita": "",
+   "tipo": "Pessoa Jurídica"
+  },
+  "valor": 100000.0,
+  "valorLiberado": 50000.0,
+  "valorContrapartida": 0.0,
+  "valorDaUltimaLiberacao": 50000.0,
+  "numeroProcesso": "PROC-888001"
+ }
+]

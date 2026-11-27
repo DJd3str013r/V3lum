@@ -1,0 +1,148 @@
+{
+ "schema": "v3lum.acceptance_routes/1",
+ "module": "urlscan_search",
+ "routes": [
+  {
+   "method": "GET",
+   "url": "https://urlscan.io/api/v1/search/?q=page.ip%3A8.8.8.8&size=100",
+   "status": 200,
+   "json": {
+    "results": [
+     {
+      "submitter": {},
+      "canonical": {
+       "task": {
+        "url": "8.8.4.4"
+       },
+       "page": {
+        "url": "dns.google"
+       }
+      },
+      "task": {
+       "visibility": "public",
+       "method": "api",
+       "domain": "8.8.4.4",
+       "time": "2026-11-26T08:24:30.694Z",
+       "uuid": "01a216f4-9fb8-727d-a862-e7b62d19dfcc",
+       "url": "http://8.8.4.4/"
+      },
+      "stats": {
+       "uniqIPs": 5,
+       "uniqCountries": 1,
+       "dataLength": 74826,
+       "encodedDataLength": 40621,
+       "requests": 9
+      },
+      "page": {
+       "country": "US",
+       "server": "scaffolding on HTTPServer2",
+       "redirected": "off-domain",
+       "ip": "8.8.8.8",
+       "apexDomainAgeDays": 3109,
+       "language": "en",
+       "mimeType": "text/html",
+       "title": "Google Public DNS",
+       "url": "https://dns.google/",
+       "tlsValidDays": 83,
+       "tlsAgeDays": 22,
+       "ptr": "dns.google",
+       "domainAgeDays": 3109,
+       "tlsValidFrom": "2026-11-03T08:29:40.000Z",
+       "domain": "dns.google",
+       "umbrellaRank": 784,
+       "apexDomain": "dns.google",
+       "asnname": "GOOGLE - Google LLC, US",
+       "asn": "AS15169",
+       "tlsIssuer": "WE2",
+       "status": "200"
+      },
+      "labels": [],
+      "_id": "01a216f4-9fb8-727d-a862-e7b62d19dfcc",
+      "_score": null,
+      "sort": [
+       1795681470694,
+       "01a216f4-9fb8-727d-a862-e7b62d19dfcc"
+      ],
+      "result": "https://urlscan.io/api/v1/result/01a216f4-9fb8-727d-a862-e7b62d19dfcc/",
+      "screenshot": "https://urlscan.io/screenshots/01a216f4-9fb8-727d-a862-e7b62d19dfcc.png"
+     },
+     {
+      "submitter": {},
+      "canonical": {
+       "task": {
+        "url": "8.8.4.4"
+       },
+       "page": {
+        "url": "dns.google"
+       }
+      },
+      "task": {
+       "visibility": "public",
+       "method": "api",
+       "domain": "8.8.4.4",
+       "time": "2026-11-26T08:24:19.208Z",
+       "uuid": "01a216f4-8234-709f-834a-89ce218def37",
+       "url": "http://8.8.4.4/"
+      },
+      "stats": {
+       "uniqIPs": 5,
+       "uniqCountries": 1,
+       "dataLength": 74826,
+       "encodedDataLength": 40614,
+       "requests": 9
+      },
+      "page": {
+       "country": "US",
+       "server": "scaffolding on HTTPServer2",
+       "redirected": "off-domain",
+       "ip": "8.8.8.8",
+       "apexDomainAgeDays": 3109,
+       "language": "en",
+       "mimeType": "text/html",
+       "title": "Google Public DNS",
+       "url": "https://dns.google/",
+       "tlsValidDays": 83,
+       "tlsAgeDays": 22,
+       "ptr": "dns.google",
+       "domainAgeDays": 3109,
+       "tlsValidFrom": "2026-11-03T08:29:40.000Z",
+       "domain": "dns.google",
+       "umbrellaRank": 784,
+       "apexDomain": "dns.google",
+       "asnname": "GOOGLE - Google LLC, US",
+       "asn": "AS15169",
+       "tlsIssuer": "WE2",
+       "status": "200"
+      },
+      "labels": [],
+      "_id": "01a216f4-8234-709f-834a-89ce218def37",
+      "_score": null,
+      "sort": [
+       1795681459208,
+       "01a216f4-8234-709f-834a-89ce218def37"
+      ],
+      "result": "https://urlscan.io/api/v1/result/01a216f4-8234-709f-834a-89ce218def37/",
+      "screenshot": "https://urlscan.io/screenshots/01a216f4-8234-709f-834a-89ce218def37.png"
+     }
+    ],
+    "total": 286,
+    "took": 5731,
+    "has_more": false,
+    "search_date_limit_days": 30
+   },
+   "headers": {
+    "content-type": "application/json; charset=utf-8",
+    "x-rate-limit-scope": "ip-address",
+    "x-rate-limit-action": "search",
+    "x-rate-limit-window": "minute",
+    "x-rate-limit-limit": "30",
+    "x-rate-limit-remaining": "29",
+    "x-rate-limit-reset": "2026-11-26T09:04:00.000Z",
+    "x-rate-limit-reset-after": "21",
+    "x-rate-limit-concurrency-rank": "0",
+    "x-rate-limit-concurrency-limit": "10"
+   },
+   "latency_ms": 6513
+  }
+ ]
+}

@@ -1,0 +1,29 @@
+﻿{
+  "Relationships": [
+    {
+      "Domain": "example.com",
+      "Identifiers": [
+        {
+          "Value": "123456",
+          "Type": "UA",
+          "First": 1609459200000,
+          "Last": 1735689600000,
+          "Matches": [
+            {
+              "Domain": "related-example.com",
+              "First": 1640995200000,
+              "Last": 1704067200000,
+              "Overlap": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Errors": [],
+  "results": 1,
+  "max_per_page": 1000,
+  "page": 1,
+  "next_page": 0,
+  "more_results": false
+}

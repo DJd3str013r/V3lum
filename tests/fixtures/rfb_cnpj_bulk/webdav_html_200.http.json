@@ -1,0 +1,15 @@
+{
+ "request": "PROPFIND https://arquivos.receitafederal.gov.br/public.php/webdav/",
+ "response": {
+  "status": 200,
+  "headers": {
+   "content-type": "text/html; charset=UTF-8"
+  },
+  "body": "<!DOCTYPE html><html><head><title>SERPRO+</title></head><body id=\"body-public\"><p>Este compartilhamento não está mais disponível.</p></body></html>"
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "observed_at": null,
+ "origin": "synthetic",
+ "note": "synthetic: an HTML page instead of a multistatus (error in 200)"
+}

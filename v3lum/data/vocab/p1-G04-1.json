@@ -1,0 +1,35 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p1-G04-1",
+  "title": "E-mail analysis, e-mail hygiene, HIBP catalogue and infostealer exposure names (batch p1-G04-1)",
+  "owner": "batch p1-G04-1 (email_header_analyzer, email_hygiene, email_hygiene_online, hibp_catalog, hudson_rock, hudson_rock_domain)",
+  "attributes": {
+    "role_account": "bool: role/team mailbox local part (info@, sales@, noreply@...) on the shared A4 generic list plus the AfterShip role list",
+    "relay": "bool: forwarding/alias privacy relay service (SimpleLogin, addy.io, DuckDuckGo, Firefox Relay, Apple Hide My Email): a privacy tool, never disposable and never scored as malicious",
+    "hygiene_opinions": "dict {provider: opinion}: online second opinions on an e-mail domain (only the domain was sent), e.g. {'kickbox': {'disposable': false}}",
+    "email_verdict": "dict: verdict block of an analysed e-mail (From vs Return-Path/Reply-To, SPF/DKIM/DMARC and who asserted them, originating IP and its trust, total delay, unwrapped URLs); recipient addresses redacted",
+    "email_summary": "dict: From/Reply-To/Return-Path, decoded Subject, Date and Message-ID domain of an analysed e-mail (recipient addresses redacted)",
+    "received_hops": "list of Received hops oldest first {hop, from_host, by_host, ips, date_utc, delay_s, trust}: hops below the trust boundary are attacker-controllable",
+    "email_auth": "dict {spf, dkim, dmarc}: verdict and who asserted it ('asserted by <org MTA>, trusted' or 'claimed by <host>, not verified')",
+    "originating_ip": "dict {ip, trust}: IP that handed the e-mail to the organisation (recorded by an org MTA at the trust boundary) or an unverified candidate",
+    "sender_tools": "list {header, value, family}: X-Mailer/User-Agent and similar sender-tool hints of an e-mail",
+    "email_attachments": "list {filename, declared_type, size, sha256, md5}: attachments hashed locally, never opened, written or uploaded",
+    "email_urls": "list {url (defanged), kind, recipient_token, unwrapped}: URLs found in an e-mail body, never fetched",
+    "mime_defects": "list of MIME/header defects of an e-mail (malformed lines, missing boundary: gateway-evasion indicators)",
+    "service_breaches": "list of HIBP breaches of the service at this domain (this service was breached - not accounts at this domain): name or 'sensitive breach (name withheld)', dates, data classes, password form, flags",
+    "breach_metadata": "dict: HIBP catalogue facts of one breach (dates, PwnCount, data classes, password form, IsVerified/IsFabricated/IsSpamList/IsStealerLog/IsSensitive, category)",
+    "stealer_logs": "list of sanitized infostealer records {date_compromised, stealer_family, total_corporate_services, total_user_services}: metadata only, never credentials or machine identifiers",
+    "stealer_exposure": "dict of infostealer counts for an own domain {total, total_stealers, employees, users, third_parties, total_urls, stealer_families}: counts only"
+  },
+  "tags": {
+    "privacy_relay": "forwarding/alias privacy service (relay): never disposable, never scored as malicious"
+  },
+  "relations": {
+    "sent_from": "e-mail -> IP that handed the message to the organisation (recorded by an org MTA at the trust boundary), or the unverified oldest external hop when no boundary is configured",
+    "relayed_by": "e-mail -> IP of a Received hop below the trust boundary (attacker-controllable, unverified)",
+    "sender_address": "e-mail -> From/Reply-To/Return-Path address (an attacker-chosen header value)",
+    "sender_domain": "e-mail -> domain of a sender address, DKIM d= signer or Message-ID (claimed, signatures not verified)",
+    "attachment": "e-mail -> SHA-256/MD5 of an attachment computed locally (never opened, written or uploaded)",
+    "stealer_log_url": "domain -> URL seen in infostealer logs for the domain (stripped to scheme + host + path; attack-surface context, never contacted)"
+  }
+}

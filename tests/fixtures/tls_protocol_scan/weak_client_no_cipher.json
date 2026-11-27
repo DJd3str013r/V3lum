@@ -1,0 +1,14 @@
+{
+ "server": "modern",
+ "probe": "weak_legacy_only",
+ "trust": "self_signed_ca",
+ "ok": false,
+ "stage": "context",
+ "version": null,
+ "cipher": null,
+ "error_type": "SSLError",
+ "reason": null,
+ "library": null,
+ "verify_code": null,
+ "str": "('No cipher can be selected.',)"
+}

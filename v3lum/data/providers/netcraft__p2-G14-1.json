@@ -1,0 +1,25 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "netcraft",
+  "hosts": [
+    "sitereport.netcraft.com"
+  ],
+  "sources": {
+    "pivots_url_web_site_report": {
+      "title": "Netcraft site report https://sitereport.netcraft.com/?url=https://{domain} (manual pivot link)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://sitereport.netcraft.com/",
+        "quote": "The pack is offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "netcraft",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P083 cond 1). Research C0194 (verified 2026-11-26, 200 with the encoded url= value). searchdns.netcraft.com is not linked: JavaScript/cookie bot gate (P083 cond 8). Used by pivots_url_web (pack url_web.json); batch p2-G14-1."
+    }
+  },
+  "error_markers": []
+}

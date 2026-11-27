@@ -1,0 +1,14 @@
+{
+ "data": {
+  "stixCyberObservables": {
+   "edges": [],
+   "pageInfo": {
+    "startCursor": "",
+    "endCursor": "",
+    "hasNextPage": false,
+    "hasPreviousPage": false,
+    "globalCount": 0
+   }
+  }
+ }
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p3-G07-2",
+  "title": "Keyed hash lookups, Filescan reputation and structural-hash pivots (batch p3-G07-2: triage, metadefender, malshare, polyswarm, virusshare, filescan_reputation, structural_hash_pivots)",
+  "owner": "batch p3-G07-2 (P177, P178, P351)",
+  "attributes": {
+    "triage_sandbox": "Recorded Future Triage sandbox facts of a sample {score (1-10, highest of the reported analyses), families, tags, signatures (top 5 {name, score, ttp}), configs (malware config summaries {family, rule, botnet, campaign, version, c2_count}), reports (sample ids), completed, sample_ioc_count}: credentials, ransom notes, keys and file names are never kept",
+    "metadefender": "OPSWAT MetaDefender Cloud facts of a hash {verdict, detected, total, wording 'N/M engines flagged', threat_name, malware_type, engines (top detecting {engine, threat}), file_type, last_scan, allowance {limit, remaining, reset_in}}: one OPSWAT vote with Filescan",
+    "malshare": "MalShare repository facts of a sample {file_type, sources_count, sources (collection URLs, hostile, never contacted)}: repository membership is a hint, never a verdict alone",
+    "polyswarm": "PolySwarm facts of a hash {verdict (V3LUM suggestion from the PolyScore: known_good, malicious >= 0.7, suspicious >= 0.3, benign), polyscore, detections {malicious, benign, total}, malicious_engines, families, known_good_tools, first_seen, last_seen, last_scanned, mimetype, extended_type}",
+    "virusshare": "VirusShare facts of a hash {category malware|benign, av {positives, total, scan_date, detections, scanner 'virusshare (not virustotal)'}, nsrl, added, updated, mimetype, filetype, extension, trid (top 5), exif (technical keys only)}",
+    "filescan": "Filescan.io (OPSWAT) reputation of a SHA-256 {verdict, raw_verdict, report_count, verdict_counts, first_report, last_report, mdcloud {detected, total, scan_time}, fuzzyhash_verdict}: the same OPSWAT vote as MetaDefender",
+    "structural_groups": "related MalwareBazaar samples per structural hash [{kind, value, headline 'N samples share this imphash; families X (8), Y (3)', sample_count, at_least (page hit the limit), families [{name, count}], unattributed, top_samples (10 newest {sha256, signature, first_seen, file_type}), listed_signers}]: hypotheses, never verdicts",
+    "structural_common": "structural hash values shown as 'common, not distinctive' and never pivoted [{kind, value, reason}] (stoplist, > 10 unrelated signatures, > 500 samples, installer/packer stubs)",
+    "cscb_listing": "abuse.ch Code Signing Certificate Blocklist entry of a certificate {thumbprint, serial, subject_cn, issuer_cn, reason, listed_at, valid_from, valid_to, matched_on, source local_copy|api}"
+  },
+  "tags": {
+    "hypothesis": "similarity-based hypothesis (shared structural or fuzzy hash): context for the analyst, never a verdict on its own",
+    "common_value": "a structural hash value seen across many unrelated samples (stoplist, toolchain stub, installer/packer): shown, not pivoted",
+    "malicious_signer": "code-signing certificate listed on the abuse.ch Code Signing Certificate Blocklist (CSCB) as used to sign malware"
+  },
+  "relations": {},
+  "notes": "Relations are core vocabulary: similar_to (P351 hypotheses, confidence 0.3-0.6, expand=False), similarity_hash (hash -> structural hash), family (hash -> malware family), communicates_with (Triage config C2, never contacted), drops (Triage dropper URLs), served_from (MalShare collection URLs), same_file, signing_certificate and related (CSCB-listed signers of related samples)."
+}

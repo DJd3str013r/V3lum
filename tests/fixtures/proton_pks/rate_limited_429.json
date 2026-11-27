@@ -1,0 +1,14 @@
+{
+ "_envelope": 1,
+ "_synthetic": "Proton API JSON error shape with Retry-After; not observed (4 requests); the Code value is illustrative - map by HTTP status",
+ "status": 429,
+ "headers": {
+  "content-type": "application/json",
+  "retry-after": "30"
+ },
+ "body": {
+  "Code": 2028,
+  "Error": "Too many recent API requests",
+  "Details": {}
+ }
+}

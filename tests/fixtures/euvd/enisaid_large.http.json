@@ -1,0 +1,22 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://euvdservices.enisa.europa.eu/api/enisaid?id=CVE-2021-44228",
+  "headers": {}
+ },
+ "response": {
+  "status": 200,
+  "headers": {
+   "content-type": "application/json",
+   "content-length": "492196",
+   "server": "Apache",
+   "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+   "expires": "0"
+  },
+  "body": null,
+  "body_bytes": 492196
+ },
+ "transport_error": null,
+ "elapsed_s": 1.154,
+ "note": "Headers of the live 492,196 B answer (log4j). Body omitted (see euvd__enisaid_ok.json): used for the Content-Length pre-check against the 1 MB cap."
+}

@@ -1,0 +1,63 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "options": {
+  "mode": "passive",
+  "tlp": "amber",
+  "depth": 1
+ },
+ "nodes": [
+  {
+   "key": "btc_address:16SbwNa22nBwhLtg6HzWVYFQiUxtNzAUpt",
+   "depth": 0,
+   "seed": true,
+   "attributes": {
+    "wallet_cluster": [
+     {
+      "value": {
+       "wallet_id": "000003a2f31608c0",
+       "updated_to_block": 977103,
+       "label": "BTC-e.com",
+       "category": "exchange"
+      },
+      "source": "walletexplorer"
+     }
+    ]
+   }
+  },
+  {
+   "key": "btc_address:1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+   "depth": 0,
+   "seed": true,
+   "attributes": {
+    "wallet_cluster": [
+     {
+      "value": {
+       "wallet_id": "9155adea5d855091",
+       "updated_to_block": 977600
+      },
+      "source": "walletexplorer"
+     }
+    ],
+    "data_freshness": [
+     {
+      "value": {
+       "provider": "mempool_space",
+       "provider_tip_height": 977600,
+       "latest_tx_height": 977500,
+       "fetched_at": "2026-11-26T11:59:00Z"
+      },
+      "source": "btc_explorers"
+     }
+    ]
+   }
+  }
+ ],
+ "edges": [],
+ "expect": {
+  "p2g09_walletexplorer_lag": {
+   "min": 0,
+   "max": 0
+  }
+ }
+}

@@ -1,0 +1,115 @@
+{
+ "@odata.context": "https://was-p.bcnet.bcb.gov.br/olinda/servico/Instituicoes_em_funcionamento/versao/v1/odata$metadata#SedesBancoComMultCE",
+ "value": [
+  {
+   "CNPJ": "61190658",
+   "NOME_INSTITUICAO": "BANCO ITAÚ VEÍCULOS S.A.",
+   "SEGMENTO": "Banco Múltiplo",
+   "MUNICIPIO": "SÃO PAULO",
+   "UF": "SP",
+   "SITIO_NA_INTERNET": "WWW.BANCOFIAT.COM.BR",
+   "MUNICIPIO_IBGE": "3550308",
+   "CARTEIRA_COMERCIAL": "Não"
+  },
+  {
+   "CNPJ": "00000000",
+   "NOME_INSTITUICAO": "BANCO DO BRASIL S.A.",
+   "SEGMENTO": "Banco do Brasil - Banco Múltiplo",
+   "MUNICIPIO": "BRASÍLIA",
+   "UF": "DF",
+   "SITIO_NA_INTERNET": "HTTPS://WWW.BB.COM.BR",
+   "MUNICIPIO_IBGE": "5300108",
+   "CARTEIRA_COMERCIAL": "Sim"
+  },
+  {
+   "CNPJ": "31895683",
+   "NOME_INSTITUICAO": "BANCO INDUSTRIAL DO BRASIL S.A.",
+   "SEGMENTO": "Banco Múltiplo",
+   "MUNICIPIO": "SÃO PAULO",
+   "UF": "SP",
+   "SITIO_NA_INTERNET": "WWW.BIB.COM.BR",
+   "MUNICIPIO_IBGE": "3550308",
+   "CARTEIRA_COMERCIAL": "Sim"
+  },
+  {
+   "CNPJ": "60394079",
+   "NOME_INSTITUICAO": "BANCO ITAUBANK S.A.",
+   "SEGMENTO": "Banco Múltiplo",
+   "MUNICIPIO": "SÃO PAULO",
+   "UF": "SP",
+   "SITIO_NA_INTERNET": "WWW.ITAU.COM.BR",
+   "MUNICIPIO_IBGE": "3550308",
+   "CARTEIRA_COMERCIAL": "Sim"
+  },
+  {
+   "CNPJ": "00000208",
+   "NOME_INSTITUICAO": "BRB - BANCO DE BRASILIA S.A.",
+   "SEGMENTO": "Banco Múltiplo",
+   "MUNICIPIO": "BRASÍLIA",
+   "UF": "DF",
+   "SITIO_NA_INTERNET": "HTTPS://NOVO.BRB.COM.BR/",
+   "MUNICIPIO_IBGE": "5300108",
+   "CARTEIRA_COMERCIAL": "Sim"
+  },
+  {
+   "CNPJ": "90400888",
+   "NOME_INSTITUICAO": "BANCO SANTANDER (BRASIL) S.A.",
+   "SEGMENTO": "Banco Múltiplo",
+   "MUNICIPIO": "SÃO PAULO",
+   "UF": "SP",
+   "SITIO_NA_INTERNET": "HTTPS://WWW.SANTANDER.COM.BR",
+   "MUNICIPIO_IBGE": "3550308",
+   "CARTEIRA_COMERCIAL": "Sim"
+  },
+  {
+   "CNPJ": "07237373",
+   "NOME_INSTITUICAO": "BANCO DO NORDESTE DO BRASIL S.A.",
+   "SEGMENTO": "Banco Múltiplo",
+   "MUNICIPIO": "FORTALEZA",
+   "UF": "CE",
+   "SITIO_NA_INTERNET": "WWW.BNB.GOV.BR",
+   "MUNICIPIO_IBGE": "2304400",
+   "CARTEIRA_COMERCIAL": "Sim"
+  },
+  {
+   "CNPJ": "60701190",
+   "NOME_INSTITUICAO": "ITAÚ UNIBANCO S.A.",
+   "SEGMENTO": "Banco Múltiplo",
+   "MUNICIPIO": "SÃO PAULO",
+   "UF": "SP",
+   "SITIO_NA_INTERNET": "WWW.ITAU.COM.BR",
+   "MUNICIPIO_IBGE": "3550308",
+   "CARTEIRA_COMERCIAL": "Sim"
+  },
+  {
+   "CNPJ": "60746948",
+   "NOME_INSTITUICAO": "BANCO BRADESCO S.A.",
+   "SEGMENTO": "Banco Múltiplo",
+   "MUNICIPIO": "OSASCO",
+   "UF": "SP",
+   "SITIO_NA_INTERNET": "HTTPS://BANCO.BRADESCO/",
+   "MUNICIPIO_IBGE": "3534401",
+   "CARTEIRA_COMERCIAL": "Sim"
+  },
+  {
+   "CNPJ": "60872504",
+   "NOME_INSTITUICAO": "ITAÚ UNIBANCO HOLDING S.A.",
+   "SEGMENTO": "Banco Múltiplo",
+   "MUNICIPIO": "SÃO PAULO",
+   "UF": "SP",
+   "SITIO_NA_INTERNET": "WWW.ITAU.COM.BR",
+   "MUNICIPIO_IBGE": "3550308",
+   "CARTEIRA_COMERCIAL": "Não"
+  },
+  {
+   "CNPJ": "00360305",
+   "NOME_INSTITUICAO": "CAIXA ECONOMICA FEDERAL",
+   "SEGMENTO": "Caixa Econômica Federal",
+   "MUNICIPIO": "BRASÍLIA",
+   "UF": "DF",
+   "SITIO_NA_INTERNET": "HTTPS://WWW.CAIXA.GOV.BR/ATENDIMENTOBACEN/",
+   "MUNICIPIO_IBGE": "5300108",
+   "CARTEIRA_COMERCIAL": "Sim"
+  }
+ ]
+}

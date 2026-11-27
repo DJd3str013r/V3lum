@@ -1,0 +1,38 @@
+{
+  "schema": "v3lum.vocab/1",
+  "attributes": {
+    "geo_place": "approximate place found by OSM geocoding (P262): {label 'approximate place (OSM)', precision street|postcode|city|region, disclaimer, attribution, direction forward|reverse, provider, lat, lon, display_name, osm_url, address}",
+    "geo_precision": "precision level of an OSM geocoding answer: street, postcode, city or region (P262 cond 6)",
+    "geo_label": "fixed label of a geocoding answer: 'approximate place (OSM)' (P262 cond 6)",
+    "geo_disclaimer": "fixed caveat of a geocoding answer: 'an address is not proof of residence' (P262 cond 6)",
+    "geo_attribution": "data attribution every report must carry for OSM places: '(c) OpenStreetMap contributors (ODbL 1.0)'",
+    "geo_provider": "geocoder that answered: nominatim (OSMF) or photon (komoot fallback)",
+    "geo_direction": "forward (address/CEP -> coordinates) or reverse (coordinates -> place)",
+    "geo_display_name": "display name of the approximate OSM place (street, district, city, state, postcode, country)",
+    "geo_osm_url": "OpenStreetMap object page of the matched place (evidence; map links come from pivots_geo_image)",
+    "geo_address": "address parts of the approximate OSM place: {road, house_number, suburb, city, state, state_code, postcode, country, country_code}",
+    "geo_export_allowed": "False when the place may locate a natural person: kept in the case and left out of STIX/MISP exports unless the analyst opts in (P262 cond 6)",
+    "ela_summary": "terminal line of the error level analysis: 'ELA map in the HTML report (heuristic, not proof)' (P264 cond 5)",
+    "ela_metrics": "numeric error-level metrics of a JPEG re-saved at q90 (heuristic, not proof of tampering): {mean, max, std, p99, frac_ge_16, region_ratio, hot_regions, width, height, resave_quality, jpeg_quality_estimate}",
+    "ela_map_png": "contrast-stretched ELA map as a data:image/png URI for the HTML report only (never a file outside the case, never printed in the terminal)",
+    "identity_signals": "identity signals of a typed person seed inside the case's own documents (P273): {name_found, occurrences, confidence, criterion, signals, alert, layout, nearest_cpf_masked, typed_cpf {masked, found_in_document, next_to_name}}; CPFs masked only",
+    "identity_windows": "bounded (<= 200 characters) excerpts around each occurrence of the typed name, CPFs masked (***.XXX.XXX-**), with the nearest masked CPF of that occurrence",
+    "ua_category": "user-agent class from the offline table: browser, bot, automation, scanner, benign_scanner, empty or unknown (P317)",
+    "ua_parsed": "parsed user agent (P317): {browser, browser_version, os, os_version, device, tool, bad_crawler_match, exploit_probe, truncated}",
+    "ua_risk_ceiling": "highest risk a user agent alone may give an IP: always LOW (user agents are trivially spoofed, P317 cond 4)",
+    "card_bin_info": "binlist.net facts of a card BIN (P318): {scheme, type, brand, prepaid, country {alpha2, name, numeric, currency}, bank {name, url, phone, city}, number {length, luhn}}",
+    "card_scheme": "card scheme of a BIN (visa, mastercard, amex, elo...)",
+    "card_type": "card type of a BIN (debit or credit)",
+    "card_issuer": "issuing bank name of a BIN (binlist.net; often empty)",
+    "imei_tac": "8-digit Type Allocation Code of an IMEI (the only part ever sent to a TAC lookup, P319 cond 3)",
+    "imei_masked": "IMEI shown as TAC + '*******' (personal identifier: the serial is never printed)",
+    "device_info": "device model of a TAC (P319): {name, brand, model, models, manufacturer, device_type, os, os_family, sim_slots, nettech, aliases}"
+  },
+  "tags": {
+    "bot": "user agent of a non-human agent (crawler, link preview, monitoring); not a verdict",
+    "automation": "user agent of an HTTP library or automation client; not a verdict",
+    "heuristic": "heuristic output (for example error level analysis): context only, never proof and never scored",
+    "no_cross_case_index": "result holds name-CPF pairs: excluded from the sightings index (even as HMAC) and from STIX/MISP exports (P273 cond 5)"
+  },
+  "relations": {}
+}

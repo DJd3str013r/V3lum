@@ -1,0 +1,9 @@
+{
+  "schema": "v3lum.vocab/1",
+  "attributes": {
+    "exposure_summary": "nuclei_runner engagement summary {status (confirmed|not_observed|could_not_test), technologies_detected (count), findings (count), informational (count), templates_passed, templates_loaded, targets, label ('N technologies detected'), malformed_lines?, note?} - the authorized template-based exposure run, never raw output",
+    "brute_force_summary": "dns_bruteforce engagement summary {status (confirmed|not_observed|could_not_test), found (count), count, top (top-20 by interest), wildcard (bool), candidates_tried, unknown (SERVFAIL/timeout count), queries (DoH), active_scope_joins, stopped?} - authorized subdomain enumeration under scoped apexes"
+  },
+  "tags": {},
+  "relations": {}
+}

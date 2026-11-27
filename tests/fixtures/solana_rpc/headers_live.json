@@ -1,0 +1,89 @@
+{
+ "getBalance": {
+  "http_status": 200,
+  "request": {
+   "jsonrpc": "2.0",
+   "id": 1,
+   "method": "getBalance",
+   "params": [
+    "EPjFWdd5AufqSVkPXiFi6wNahqaJYMH1cP2t1vbRJxcJ"
+   ]
+  },
+  "headers": {
+   "content-type": "application/json; charset=utf-8",
+   "x-rpc-node": "pit186",
+   "x-ratelimit-tier": "free",
+   "x-ratelimit-method-limit": "150",
+   "x-ratelimit-method-remaining": "149",
+   "x-ratelimit-rps-limit": "250",
+   "x-ratelimit-rps-remaining": "242",
+   "x-ratelimit-endpoint-limit": "unlimited",
+   "x-ratelimit-endpoint-remaining": "-16712",
+   "x-ratelimit-conn-limit": "40",
+   "x-ratelimit-conn-remaining": "38",
+   "x-ratelimit-connrate-limit": "40",
+   "x-ratelimit-connrate-remaining": "38",
+   "x-ratelimit-pubsub-limit": "5",
+   "x-ratelimit-pubsub-remaining": "5"
+  }
+ },
+ "getSignaturesForAddress": {
+  "http_status": 200,
+  "request": {
+   "jsonrpc": "2.0",
+   "id": 1,
+   "method": "getSignaturesForAddress",
+   "params": [
+    "EPjFWdd5AufqSVkPXiFi6wNahqaJYMH1cP2t1vbRJxcJ",
+    {
+     "limit": 25
+    }
+   ]
+  },
+  "headers": {
+   "content-type": "application/json; charset=utf-8",
+   "x-rpc-node": "pit186",
+   "x-ratelimit-tier": "free",
+   "x-ratelimit-method-limit": "10",
+   "x-ratelimit-method-remaining": "9",
+   "x-ratelimit-rps-limit": "250",
+   "x-ratelimit-rps-remaining": "249",
+   "x-ratelimit-endpoint-limit": "unlimited",
+   "x-ratelimit-endpoint-remaining": "-16689",
+   "x-ratelimit-conn-limit": "40",
+   "x-ratelimit-conn-remaining": "39",
+   "x-ratelimit-connrate-limit": "40",
+   "x-ratelimit-connrate-remaining": "39",
+   "x-ratelimit-pubsub-limit": "5",
+   "x-ratelimit-pubsub-remaining": "5"
+  }
+ },
+ "error_invalid_param": {
+  "http_status": 200,
+  "request": {
+   "jsonrpc": "2.0",
+   "id": 1,
+   "method": "getBalance",
+   "params": [
+    "not-a-solana-address"
+   ]
+  },
+  "headers": {
+   "content-type": "application/json; charset=utf-8",
+   "x-rpc-node": "pit186",
+   "x-ratelimit-tier": "free",
+   "x-ratelimit-method-limit": "150",
+   "x-ratelimit-method-remaining": "148",
+   "x-ratelimit-rps-limit": "250",
+   "x-ratelimit-rps-remaining": "238",
+   "x-ratelimit-endpoint-limit": "unlimited",
+   "x-ratelimit-endpoint-remaining": "-16548",
+   "x-ratelimit-conn-limit": "40",
+   "x-ratelimit-conn-remaining": "39",
+   "x-ratelimit-connrate-limit": "40",
+   "x-ratelimit-connrate-remaining": "39",
+   "x-ratelimit-pubsub-limit": "5",
+   "x-ratelimit-pubsub-remaining": "5"
+  }
+ }
+}

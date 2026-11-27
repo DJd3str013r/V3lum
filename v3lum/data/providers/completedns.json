@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "completedns",
+  "name": "CompleteDNS nameserver history pages",
+  "operator": "CompleteDNS",
+  "hosts": [
+    "completedns.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Small company with an identifiable operator, public pages and a paid API; P026 cond 5: 'community - CompleteDNS'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "NS change history pages for manual review; V3LUM takes no verdict from them."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "pivot_pages": {
+      "title": "CompleteDNS NS history page /dns-history/?domain={domain} (manual pivot link)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://completedns.com/",
+        "quote": "The pack is offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "completedns",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (cond 1 of the proposal). Research C0057 (verified 2026-11-26, 200). The page pre-fills the domain and loads results through /dns-history/ajax/, which is never linked or called (undocumented endpoint, a paid API exists; P026 cond 8). Used by pivots_domain_dns (pack domain_dns.json)."
+    }
+  },
+  "notes": "Manual pivot links only (batch p2-G14-1): V3LUM never fetches them (P311)."
+}

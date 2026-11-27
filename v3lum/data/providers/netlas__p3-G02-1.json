@@ -1,0 +1,69 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "netlas",
+  "hosts": [],
+  "sources": {
+    "netlas_paid_plan": {
+      "title": "Netlas API used with a paid-plan key (host and domain endpoints only)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://netlas.io/pricing/",
+        "quote": "Registry access modes: keyless and the free Community plan = noncommercial (Netlas pricing FAQ: 'for your own personal needs (non-commercial use only)', checked 2026-11-26); a paid plan key = key-terms. Off under the corporate profile until licence-cleared: it runs only with key_plans.netlas='business' or a licence_allow entry.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "netlas",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P037 cond 1). The same app.netlas.io endpoints as netlas.api (host, domains_count, domains first page), reached with the key 'netlas' recorded with a paid plan (key_plans.netlas='business'): the policy gate allows this source only then, while netlas.api (keyless and Community key, noncommercial) needs a licence_allow entry. The module queries only the sources the gate hands it (ctx.allowed_sources). Batch p3-G02-1, module netlas."
+    }
+  },
+  "error_markers": [
+    {
+      "id": "netlas_quota_in_body",
+      "statuses": [200, 402, 403, 429],
+      "json_path": "type",
+      "equals": null,
+      "regex": "(?i)quota|limit_(?:exceeded|reached)|not_enough|insufficient|balance|coins",
+      "final_url_regex": null,
+      "maps_to": "quota",
+      "reason_code": "quota",
+      "reason": "Netlas: request quota of the plan exhausted (error body {type, title, detail}): could not verify, deferred"
+    },
+    {
+      "id": "netlas_throttled_in_body",
+      "statuses": [200],
+      "json_path": "type",
+      "equals": "request_was_throttled",
+      "regex": null,
+      "final_url_regex": null,
+      "maps_to": "rate_limited",
+      "reason_code": "rate_limited",
+      "reason": "Netlas: request throttled (error body 'request_was_throttled' inside HTTP 200): could not verify now"
+    },
+    {
+      "id": "netlas_auth_in_body",
+      "statuses": [200],
+      "json_path": "type",
+      "equals": null,
+      "regex": "(?i)^(?:not_authenticated|authentication_failed|permission_denied|invalid_api_key|api_key_\\w+)$",
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "Netlas: the API key is missing or was refused (error body inside HTTP 200)"
+    },
+    {
+      "id": "netlas_error_in_body",
+      "statuses": [200],
+      "json_path": "detail",
+      "equals": null,
+      "regex": "[\\s\\S]",
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "Netlas: error body {type, title, detail} inside HTTP 200: could not verify, never an empty answer"
+    }
+  ],
+  "notes": "Batch p3-G02-1 (module netlas, P037 cond 1 and 4). Error shape {type, title, detail} from the official netlas-python SDK (helpers.check_status_code; 'request_was_throttled' with Retry-After); an error inside HTTP 200 was not observed live (2026-11-26), so the markers read the body of a 200 as condition 4 requires: quota -> QUOTA, throttling -> RATE_LIMITED, authentication types -> NEEDS_KEY (the module maps marker netlas_auth_in_body to NEEDS_KEY: the P321 schema has no needs_key target), any other {detail} error body -> ERROR. Never EMPTY. Fixtures: tests/fixtures/netlas/*.http.json."
+}

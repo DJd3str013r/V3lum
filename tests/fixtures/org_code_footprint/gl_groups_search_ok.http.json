@@ -1,0 +1,27 @@
+{
+ "_meta": {
+  "module": "org_code_footprint",
+  "case": "gl_groups_search_ok",
+  "source": "C0759 gitlab.com",
+  "request": {
+   "method": "GET",
+   "url": "https://gitlab.com/api/v4/groups?search=gitlab-org&top_level_only=true&per_page=5"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "LIVE",
+  "elapsed_s": 4.473,
+  "note": "4.47 s answer (research saw 4.88 s); results sorted by name, the exact match 'gitlab-org' is 2nd"
+ },
+ "status": 200,
+ "headers": {
+  "content-type": "application/json",
+  "ratelimit-limit": "500",
+  "ratelimit-remaining": "499",
+  "ratelimit-reset": "1795677900",
+  "ratelimit-name": "throttle_unauthenticated_api",
+  "x-total": "28",
+  "x-total-pages": "6",
+  "x-next-page": "2"
+ },
+ "body": "[{\"id\":58787695,\"web_url\":\"https://gitlab.com/groups/gitlab-org-sandbox\",\"name\":\"GitLab Org Sandbox\",\"path\":\"gitlab-org-sandbox\",\"description\":\"\",\"visibility\":\"public\",\"full_name\":\"GitLab Org Sandbox\",\"full_path\":\"gitlab-org-sandbox\",\"created_at\":\"2022-10-06T20:51:44.772Z\",\"parent_id\":null},{\"id\":9970,\"web_url\":\"https://gitlab.com/groups/gitlab-org\",\"name\":\"GitLab.org\",\"path\":\"gitlab-org\",\"description\":\"Open source software to collaborate on code\",\"visibility\":\"public\",\"full_name\":\"GitLab.org\",\"full_path\":\"gitlab-org\",\"created_at\":\"2013-09-26T06:02:04.000Z\",\"parent_id\":null},{\"id\":69618204,\"web_url\":\"https://gitlab.com/groups/gitlab-org-partial\",\"name\":\"GitLab.org Partial fork\",\"path\":\"gitlab-org-partial\",\"description\":\"\",\"visibility\":\"public\",\"full_name\":\"GitLab.org Partial fork\",\"full_path\":\"gitlab-org-partial\",\"created_at\":\"2023-07-03T14:59:26.089Z\",\"parent_id\":null},{\"id\":76611430,\"web_url\":\"https://gitlab.com/groups/gitlab-org-clone\",\"name\":\"GitLab.org clone\",\"path\":\"gitlab-org-clone\",\"description\":\"\",\"visibility\":\"public\",\"full_name\":\"GitLab.org clone\",\"full_path\":\"gitlab-org-clone\",\"created_at\":\"2023-10-19T02:29:39.780Z\",\"parent_id\":null},{\"id\":106197924,\"web_url\":\"https://gitlab.com/groups/gitlab-organizations\",\"name\":\"Gitlab Organizations\",\"path\":\"gitlab-organizations\",\"description\":\"\",\"visibility\":\"public\",\"full_name\":\"Gitlab Organizations\",\"full_path\":\"gitlab-organizations\",\"created_at\":\"2025-04-23T07:29:40.754Z\",\"parent_id\":null}]"
+}

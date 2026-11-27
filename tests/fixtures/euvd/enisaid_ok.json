@@ -1,0 +1,197 @@
+{
+ "id": "EUVD-2021-34768",
+ "enisaUuid": "4d72f2b4-996b-3aa8-9136-c16275226139",
+ "description": "Apache Log4j2 2.0-beta9 through 2.15.0 (excluding security releases 2.12.2, 2.12.3, and 2.3.1) JNDI features used in configuration, log messages, and parameters do not protect against attacker controlled LDAP and other JNDI related endpoints. An attacker who can control log messages or log message parameters can execute arbitrary code loaded from LDAP servers when message lookup substitution is enabled. From log4j 2.15.0, this behavior has been disabled by default. From version 2.16.0 (along with 2.12.2, 2.12.3, and 2.3.1), this functionality has been completely removed. Note that this vulnerability is specific to log4j-core and does not affect log4net, log4cxx, or other Apache Logging Services projects.",
+ "datePublished": "Dec 10, 2021, 12:00:00 AM",
+ "dateUpdated": "Oct 21, 2025, 11:25:23 PM",
+ "baseScore": 10.0,
+ "baseScoreVersion": "3.1",
+ "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+ "assigner": "apache",
+ "epss": 100.0,
+ "exploitedSince": "Dec 10, 2021, 12:00:00 AM",
+ "references": "https://logging.apache.org/log4j/2.x/security.html\nhttp://www.openwall.com/lists/oss-security/2021/12/10/1\nhttp://www.openwall.com/lists/oss-security/2021/12/10/2\nhttps://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-apache-log4j-qRuKNEbd\n",
+ "aliases": "CVE-2021-44228\n",
+ "enisaIdProduct": [
+  {
+   "id": "2c0cbbb9-6507-3d85-b374-62beec66bfe3",
+   "product": {
+    "name": "Apache Log4j2",
+    "vendor": {
+     "name": "Apache Software Foundation"
+    }
+   },
+   "product_version": "2.0-beta9 <log4j-core*"
+  }
+ ],
+ "enisaIdVendor": [
+  {
+   "id": "3843fd9d-1990-3d58-afbc-51849515b756",
+   "vendor": {
+    "name": "Apache Software Foundation"
+   }
+  }
+ ],
+ "enisaIdVulnerability": [
+  {
+   "id": "572348ab-5ac6-3991-88b1-8762665e84a5",
+   "vulnerability": {
+    "id": "GHSA-jfh8-c2jp-5v3q",
+    "description": "Remote code injection in Log4j",
+    "datePublished": "Dec 10, 2021, 12:40:56 AM",
+    "dateUpdated": "Oct 22, 2025, 7:13:24 PM",
+    "baseScore": 0.0,
+    "references": "https://nvd.nist.gov/vuln/detail/CVE-2021-44228\nhttps://cert-portal.siemens.com/productcert/pdf/ssa-397453.pdf\n",
+    "enisa_id": "EUVD-2021-34768\n",
+    "aliases": "GHSA-jfh8-c2jp-5v3q\nCVE-2021-44228\n",
+    "epss": 0.0,
+    "dataProcessed": "Nov 22, 2026, 2:06:55 AM",
+    "vulnerabilityProduct": [],
+    "vulnerabilityVendor": []
+   }
+  },
+  {
+   "id": "c231c17b-f2fe-3698-a803-3d07f00a5c65",
+   "vulnerability": {
+    "id": "CVE-2021-44228",
+    "description": "Apache Log4j2 2.0-beta9 through 2.15.0 (excluding security releases 2.12.2, 2.12.3, and 2.3.1) JNDI features used in configuration, log messages, and parameters do not protect against attacker control",
+    "datePublished": "Dec 10, 2021, 12:00:00 AM",
+    "dateUpdated": "Oct 21, 2025, 11:25:23 PM",
+    "status": "PUBLISHED",
+    "baseScore": 10.0,
+    "baseScoreVersion": "3.1",
+    "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+    "references": "https://logging.apache.org/log4j/2.x/security.html\nhttp://www.openwall.com/lists/oss-security/2021/12/10/1\n",
+    "enisa_id": "EUVD-2021-34768\n",
+    "assigner": "apache",
+    "epss": 100.0,
+    "dataProcessed": "Nov 26, 2026, 7:24:53 AM",
+    "exploitedSince": "Dec 10, 2021, 12:00:00 AM",
+    "vulnerabilityProduct": [
+     {
+      "id": "97bf5231-b7f6-355f-b04b-2b45f8f53618",
+      "product": {
+       "name": "Apache Log4j2",
+       "vendor": {
+        "name": "Apache Software Foundation"
+       }
+      },
+      "product_version": "2.0-beta9 <log4j-core*"
+     }
+    ],
+    "vulnerabilityVendor": [
+     {
+      "id": "6c95f5a6-01b0-384a-a201-edbc3b1174d1",
+      "vendor": {
+       "name": "Apache Software Foundation"
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "enisaIdAdvisory": [
+  {
+   "id": "025bbbc2-79cc-374d-89ff-fbd6cfc164ba",
+   "advisory": {
+    "id": "RHSA-2025:1746",
+    "description": "Red Hat Security Advisory: Red Hat JBoss Enterprise Application Platform 7.1.9 on RHEL 7 security update",
+    "summary": "A security update is now available for Red Hat JBoss Enterprise Application Platform 7.1 for Red Hat Enterprise Linux 7.\n\nRed Hat Product Security has rated thi",
+    "datePublished": "Feb 24, 2025, 12:08:27 AM",
+    "dateUpdated": "Nov 21, 2026, 1:02:03 AM",
+    "baseScore": 0.0,
+    "references": "https://access.redhat.com/errata/RHSA-2025:1746\nhttps://security.access.redhat.com/data/csaf/v2/advisories/2025/rhsa-2025_1746.json\n",
+    "aliases": "CVE-2021-44228\nCVE-2020-8840\nCVE-2020-9546\n",
+    "source": {
+     "id": 9,
+     "name": "csaf_redhat"
+    },
+    "advisoryProduct": [
+     {
+      "id": "016f77b0-4bcf-3a77-a496-22908f178d7d",
+      "product": {
+       "name": "eap7-apache-cxf-services-0:3.1.16-4.redhat_00003.1.ep7.el7.noarch",
+       "vendor": {
+        "name": "Red Hat"
+       }
+      }
+     },
+     {
+      "id": "0209d974-0a83-3a8e-b60c-37f5d209c4e0",
+      "product": {
+       "name": "eap7-resteasy-atom-provider-0:3.0.27-1.Final_redhat_00001.1.ep7.el7.noarch",
+       "vendor": {
+        "name": "Red Hat"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": "0339f7e0-2e8c-3b2d-bdb3-0b7276e6207e",
+   "advisory": {
+    "id": "SSA-479842",
+    "description": "SSA-479842: Apache Log4j Vulnerabilities - Impact to Siemens Energy Sensformer / Sensgear (Platform, Basic and Advanced)",
+    "summary": "On 2021-12-09, a vulnerability in Apache Log4j (a logging tool used in many Java-based applications) was disclosed, that could allow remote unauthenticated atta",
+    "datePublished": "Dec 21, 2021, 12:00:00 AM",
+    "dateUpdated": "Dec 23, 2021, 12:00:00 AM",
+    "baseScore": 0.0,
+    "references": "https://cert-portal.siemens.com/productcert/pdf/ssa-479842.pdf\nhttps://cert-portal.siemens.com/productcert/txt/ssa-479842.txt\n",
+    "aliases": "CVE-2021-44228\nCVE-2021-45046\n",
+    "source": {
+     "id": 7,
+     "name": "csaf_siemens"
+    },
+    "advisoryProduct": [
+     {
+      "id": "2dcdbacb-c9e5-365e-9651-0584e90088c1",
+      "product": {
+       "name": "Sensformer / Sensgear Platform (6BK1602-0AA52-0TP0)",
+       "vendor": {
+        "name": "Siemens"
+       }
+      }
+     },
+     {
+      "id": "863a995f-7f04-311d-b1b5-6e191968f1af",
+      "product": {
+       "name": "Sensformer / Sensgear Platform",
+       "vendor": {
+        "name": "Siemens"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": "afeb2d62-4c64-3a23-b6fc-237f2907449d",
+   "advisory": {
+    "id": "cisco-sa-apache-log4j-qRuKNEbd",
+    "description": "Vulnerabilities in Apache Log4j Library Affecting Cisco Products: December 2021",
+    "summary": "Critical Vulnerabilities in Apache Log4j Java Logging Library\r\n\r\nOn December 9, 2021, the following critical vulnerability in the Apache Log4j Java logging libr",
+    "datePublished": "Dec 10, 2021, 6:45:00 PM",
+    "dateUpdated": "Jan 31, 2022, 9:16:10 PM",
+    "baseScore": 0.0,
+    "references": "",
+    "aliases": "CVE-2021-44228\nCVE-2021-44832\nCVE-2021-45046\n",
+    "source": {
+     "id": 10,
+     "name": "csaf_cisco"
+    },
+    "advisoryProduct": [
+     {
+      "id": "6e798bb2-94e2-3f52-baec-8bf4c35594f1",
+      "product": {
+       "name": "Cisco Unified Communications Manager / Cisco Unity Connection",
+       "vendor": {
+        "name": "Cisco"
+       }
+      }
+     }
+    ]
+   }
+  }
+ ]
+}

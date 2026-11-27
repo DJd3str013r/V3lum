@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "vin_decoder_nhtsa_wmi",
+  "source_url": "https://vpic.nhtsa.dot.gov/api/",
+  "version": "vPIC GetWMIsForManufacturer and DecodeWMI answers fetched 2026-11-26 (734 WMIs) plus 14 curated Brazilian WMIs not listed by vPIC",
+  "sha256": "3f54fe48baa7f59b9a503d5363f38d732412e27bf2001c696d11aaee6b96e618",
+  "licence": "U.S. Government work (public domain)",
+  "attribution": "World Manufacturer Identifier extract from the NHTSA Product Information Catalog and Vehicle Listing (vPIC), U.S. Department of Transportation, National Highway Traffic Safety Administration; a U.S. Government work in the public domain (17 U.S.C. 105). Curated rows (source 'curated') are V3LUM's own brand hints for Brazilian WMIs that vPIC does not list.",
+  "bundled": true,
+  "files": [
+    "v3lum/data/vin_decoder/wmi_table.json",
+    "v3lum/modules/utility/vin_decoder.py"
+  ]
+}

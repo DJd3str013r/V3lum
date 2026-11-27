@@ -1,0 +1,83 @@
+{
+ "query_status": "ok",
+ "data": [
+  {
+   "sha256_hash": "686ac4505b574bd6d5c6eb3ee86cdf292809ec0e3984d47ad5b8dbba23ec3a27",
+   "sha3_384_hash": null,
+   "sha1_hash": "618e7451f194241b48471e3ffb0bd16d8a720ef5",
+   "md5_hash": "f6baab97b11d8c0c11f8f332b405c407",
+   "first_seen": "2026-11-20 10:00:00",
+   "last_seen": null,
+   "file_name": "sample.exe",
+   "file_size": 245760,
+   "file_type_mime": "application/x-dosexec",
+   "file_type": "exe",
+   "reporter": "reporter_a",
+   "anonymous": 0,
+   "signature": "RedLineStealer",
+   "imphash": null,
+   "tlsh": "T1BCA19F05B6239882F71F132E2ACFEC7F26C8FD09DC27792A16369D8BB126CB6F5C7889",
+   "telfhash": null,
+   "gimphash": null,
+   "ssdeep": "1536:iw9YCzNetxWjWUdd6Mp7SNxa0ofYmFlKSuL7DFZW:vJ0tWN5G9aIc7X35iX+Sp4Lg",
+   "dhash_icon": null,
+   "tags": [
+    "redlinestealer",
+    "exe"
+   ],
+   "code_sign": []
+  },
+  {
+   "sha256_hash": "4f8f94c560a241dbecb4d7cc376c89eafc7531df8e2af6951af0b390d649f227",
+   "sha3_384_hash": null,
+   "sha1_hash": "793dbc9863cc1060f6e047927736a61ce805cc16",
+   "md5_hash": "97a6bacd1d545c26b7f00a770b98c595",
+   "first_seen": "2026-11-20 10:00:00",
+   "last_seen": null,
+   "file_name": "sample.exe",
+   "file_size": 245760,
+   "file_type_mime": "application/x-dosexec",
+   "file_type": "exe",
+   "reporter": "reporter_a",
+   "anonymous": 0,
+   "signature": "RedLineStealer",
+   "imphash": null,
+   "tlsh": "T1BCA19F05B6239882F71F132E2ACFEC7F26C8FD09DC27792A16369D8BB126CB6F5C7889",
+   "telfhash": null,
+   "gimphash": null,
+   "ssdeep": "1536:R7eByaWeVVjqYI7c2z3FgxQSiTeE4ahweyK8i71X:5FjCVFTYIbd0dzEgc01ukBVn",
+   "dhash_icon": null,
+   "tags": [
+    "redlinestealer",
+    "exe"
+   ],
+   "code_sign": []
+  },
+  {
+   "sha256_hash": "bfa3babeb96e28d8404180136e48f515c9b89bbf1f0a3270c151b5db4770ebce",
+   "sha3_384_hash": null,
+   "sha1_hash": "5546ca1c10b0a0332e1c788ce707c2d58333a37e",
+   "md5_hash": "35b55c6e3036551961e62399c3ec6212",
+   "first_seen": "2026-11-20 10:00:00",
+   "last_seen": null,
+   "file_name": "sample.exe",
+   "file_size": 245760,
+   "file_type_mime": "application/x-dosexec",
+   "file_type": "exe",
+   "reporter": "reporter_a",
+   "anonymous": 0,
+   "signature": "RedLineStealer",
+   "imphash": null,
+   "tlsh": "T1BCA19F05B6239882F71F132E2ACFEC7F26C8FD09DC27792A16369D8BB126CB6F5C7889",
+   "telfhash": null,
+   "gimphash": null,
+   "ssdeep": "1536:BGtc8uR00lRxCdI0l4OyfN3iheiOJxmYc5Qt2Kh/:vb3v0QHwfCQy2ufAexb8wuFB",
+   "dhash_icon": null,
+   "tags": [
+    "redlinestealer",
+    "exe"
+   ],
+   "code_sign": []
+  }
+ ]
+}

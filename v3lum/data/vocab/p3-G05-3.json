@@ -1,0 +1,33 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p3-G05-3",
+  "title": "X oEmbed and archived-post recovery, Wikimedia accounts/contributions, X archive import, name permutations",
+  "owner": "batch p3-G05-3 (P119, P120, P121, P251)",
+  "attributes": {
+    "x_post": "X post seen through the published oEmbed interface {status_id, handle, author_name, text, lang, date_text, mentions, hashtags, links, availability, checked_at}: case content, never rendered as HTML (P119 cond 1/5)",
+    "post_availability": "whether X still serves a post through oEmbed: 'available', 'no longer available (deleted, protected or suspended)' (HTTP 404, never 'deleted') or 'could not verify' (P119 cond 3)",
+    "x_recovery": "opt-in deleted-post recovery summary for a case subject {handle, cdx_queries, archived_statuses, checked, recovered [{status_id, created, archived_copy_url, first_capture, last_capture, label 'archived copy'}], still_available, unverified, partial} (P119 cond 4/5)",
+    "wikimedia_account": "Wikimedia global (SUL) account facts {name, home_wiki, registration, editcount, locked, hidden, merged_count, unattached_count, wikis [{wiki, editcount, registration, blocked}]}: counts and dates only (P120 cond 4)",
+    "wikimedia_contributions": "per-wiki contribution summary {wiki: {count, first, last, more, relevant_pages [{title, timestamp, url}], rows (IP/CIDR lookups only), notes}}: never a full edit history or topic profile (P120 cond 3/4)",
+    "x_archive": "X/Twitter archive imported offline {account {account_id, handle, display_name, created_at}, profile {bio, website, location, avatar_url}, posts, deleted_posts, first_post, last_post, generated_at, clients, members, declared_bytes, warnings}: the archive e-mail and other account fields are never copied (P121)",
+    "archive_provenance": "provenance recorded for an imported archive before import {source, date, legal_basis account_holder|legal_process, reference, sha256} (P121 cond 2)",
+    "automation_indicators": "Ceos automation indicators of an imported X archive {signals [{id, metric, text}], signal_count, metrics, small_sample, basis}: indications, never a verdict about a person (P121 cond 5/6, LGPD art. 20)",
+    "automation_likelihood": "automation likelihood from the Ceos indicators: 'high' (>= 3 signals), 'medium' (2) or 'low' (0-1); an attribute, never the sole basis of a decision (P121 cond 5/6)",
+    "username_candidates": "generated username hypotheses for a person name (<= 15, deterministic order) [{value, rank, pattern, origin, label 'generated', offered_first}]: candidates (unverified guesses), never findings, never scored (P251 cond 3)",
+    "email_candidates": "generated corporate e-mail hypotheses (<= 15, only for case or org_profile domains) [{value, rank, pattern, format_samples, label 'generated', offered_first}]: never sent to breach, stealer, reputation or validation services (P251 cond 2/4)",
+    "email_formats": "address format inferred per domain from observed addresses {domain: {format, samples, used, counts, ambiguous, basis}}; samples = number of observed addresses behind the format (P251 cond 2)",
+    "name_parts": "accent-folded name tokens used for permutations {tokens, first, middles, last, suffix, particles_dropped} (P251 cond 1)"
+  },
+  "tags": {
+    "automation_indicator": "finding derived from automation indicators of an imported account archive: info/low, confidence <= 0.4, never the sole basis of a decision about a person (LGPD art. 20)",
+    "archived_copy": "evidence is an archived copy (web.archive.org) of content that is no longer available at its origin; used only for case subjects"
+  },
+  "relations": {
+    "post_author": "X post URL -> handle of its author as embedded by the oEmbed interface (expand=False)",
+    "archived_copy": "handle or post -> archived copy of a post on an archive host (web.archive.org id_ link, label 'archived copy', expand=False)",
+    "edited_page": "Wikimedia account, IP or range -> wiki page it edited (only pages relevant to the case; expand=False)",
+    "archive_account": "imported archive file -> account handle the archive belongs to (expand=False)",
+    "interacted_with": "imported archive file -> handle the account reposted, replied to or mentioned (count in the note; expand=False)",
+    "generated_candidate": "person name -> generated username/e-mail hypothesis (unverified guess, label 'generated', never expanded automatically)"
+  }
+}

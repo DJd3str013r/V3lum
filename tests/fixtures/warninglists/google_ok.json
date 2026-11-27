@@ -1,0 +1,21 @@
+{
+ "name": "List of known google domains",
+ "type": "hostname",
+ "version": 20261123,
+ "description": "Event contains one or more entries of known google domains, merged from Google's own supported_domains list, the nickspaargaren/no-google community blocklist, and the v2fly domain-list-community 'google' data set.",
+ "matching_attributes": [
+  "domain",
+  "hostname",
+  "domain|ip",
+  "url"
+ ],
+ "list": [
+  "blogspot.com",
+  "docs.google.com",
+  "drive.google.com",
+  "firebaseapp.com",
+  "forms.google.com",
+  "google.com",
+  "googleapis.com"
+ ]
+}

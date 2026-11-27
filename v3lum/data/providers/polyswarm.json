@@ -1,0 +1,84 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "polyswarm",
+  "name": "PolySwarm (multi-engine threat detection marketplace API)",
+  "operator": "PolySwarm Pte. Ltd.",
+  "hosts": [
+    "api.polyswarm.network"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms, a privacy policy, API documentation and a business offering (A8 trusted): 'Registry tiers: Recorded Future, OPSWAT and PolySwarm trusted; MalShare and VirusShare community.' (P177 cond 6).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Assertions of several marketplace engines combined into a PolyScore; V3LUM reads one PolySwarm vote per hash (P177 cond 5), PolySwarm defines no verdict threshold."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "ttl": 86400,
+    "min_interval": 2.0
+  },
+  "quota": {
+    "scope": "key",
+    "hour": 60,
+    "burst": 1,
+    "published": true,
+    "evidence_url": "https://docs.polyswarm.io/customers/polyswarm-rest-api-v3/",
+    "safety_margin": 0.8
+  },
+  "error_markers": [
+    {
+      "id": "polyswarm_error_envelope",
+      "statuses": [
+        200
+      ],
+      "json_path": "status",
+      "equals": "error",
+      "regex": null,
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "PolySwarm: error envelope inside an HTTP 200 answer (could not verify)"
+    }
+  ],
+  "keys": {
+    "polyswarm": {
+      "description": "PolySwarm API key (Authorization header, bare key)",
+      "signup_url": "https://polyswarm.network/",
+      "env": [
+        "V3LUM_POLYSWARM_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "community (free) accounts get 60 calls per hour plus monthly feature quotas; terms 'unknown' until legal records them (P177 cond 4), so the source stays disabled in every profile"
+    }
+  },
+  "sources": {
+    "hash_search": {
+      "title": "PolySwarm v3 hash search (/v3/search/hash/{md5|sha1|sha256}, metadata only)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://polyswarm.io/terms",
+        "quote": "Classes: triage free 'noncommercial' (commercial licence 'license'); metadefender free 'noncommercial' (paid plan 'key-terms'); malshare, polyswarm and virusshare 'unknown' until legal records their terms.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "polyswarm",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P177 cond 4). Research C0417 (verified_needs_key, 401). GET https://api.polyswarm.network/v3/search/hash/{type}?hash={hash}&community=default with the bare key in the Authorization header; 'community' is required by the v3 REST docs (missing from the research endpoint). Never built: downloads (/v3/consumer/download/..., /v3/instance/download), submissions (POST/PUT /v3/instance), rescans, sandbox tasks, bundles, reports and IOC endpoints (P177 cond 2). 404 = hash unknown; 400 AMBIGUOUS_HASH = not applicable; the error envelope {status: error} inside HTTP 200 is an error (marker polyswarm_error_envelope). Rate limits: 'community users have 60 calls per hour' (docs, checked 2026-11-26). Batch p3-G07-2, module polyswarm."
+    }
+  },
+  "notes": "Owned by batch p3-G07-2 (P177, module polyswarm). Terms 'unknown': disabled in every profile until legal records them; default_enabled False."
+}

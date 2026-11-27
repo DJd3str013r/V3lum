@@ -1,0 +1,287 @@
+{
+ "category": "actor",
+ "name": "Microsoft Activity Group actor",
+ "source": "MISP Project",
+ "type": "microsoft-activity-group",
+ "uuid": "28b5e55d-acba-4748-a79d-0afa3512689a",
+ "version": 23,
+ "description": "Activity groups as described by Microsoft",
+ "values": [
+  {
+   "value": "Forest Blizzard",
+   "uuid": "8d84d7b0-7716-5ab3-a3a4-f373dd148347",
+   "meta": {
+    "synonyms": [
+     "STRONTIUM",
+     "APT28",
+     "Fancy Bear",
+     "Sednit",
+     "ATG2",
+     "Sofacy",
+     "Blue Athena",
+     "Z-Lom Team",
+     "Operation Pawn Storm",
+     "Tsar Team",
+     "CrisisFour",
+     "HELLFIRE"
+    ],
+    "country": "RU"
+   },
+   "related": [
+    {
+     "dest-uuid": "5b4ee3ea-eee3-4c8e-8323-85ae32658754",
+     "type": "similar",
+     "tags": [
+      "estimative-language:likelihood-probability=\"likely\""
+     ]
+    }
+   ]
+  },
+  {
+   "value": "STRONTIUM",
+   "uuid": "213cdde9-c11a-4ea9-8ce0-c868e9826fec",
+   "meta": {
+    "synonyms": [
+     "APT 28",
+     "APT28",
+     "Pawn Storm",
+     "Fancy Bear",
+     "Sednit",
+     "TsarTeam",
+     "TG-4127",
+     "Group-4127",
+     "Sofacy",
+     "Grey-Cloud"
+    ],
+    "country": "RU"
+   },
+   "related": [
+    {
+     "dest-uuid": "bef4c620-0787-42a8-a96d-b7eb6e85917c",
+     "type": "similar",
+     "tags": [
+      "estimative-language:likelihood-probability=\"likely\""
+     ]
+    },
+    {
+     "dest-uuid": "5b4ee3ea-eee3-4c8e-8323-85ae32658754",
+     "type": "similar",
+     "tags": [
+      "estimative-language:likelihood-probability=\"likely\""
+     ]
+    }
+   ]
+  },
+  {
+   "value": "Midnight Blizzard",
+   "uuid": "31982812-c8bf-5e85-b0ba-0c64a7d05d20",
+   "meta": {
+    "synonyms": [
+     "NOBELIUM",
+     "APT29",
+     "Cozy Bear",
+     "UNC2452"
+    ],
+    "country": "RU"
+   },
+   "related": [
+    {
+     "dest-uuid": "b2056ff0-00b9-482e-b11c-c771daa5f28a",
+     "type": "similar",
+     "tags": [
+      "estimative-language:likelihood-probability=\"likely\""
+     ]
+    }
+   ]
+  },
+  {
+   "value": "NOBELIUM",
+   "uuid": "d7247cf9-13b6-4781-b789-a5f33521633b",
+   "meta": {}
+  },
+  {
+   "value": "Diamond Sleet",
+   "uuid": "9630b0aa-ee9e-5b58-9f79-cf7fa8d291a8",
+   "meta": {
+    "synonyms": [
+     "ZINC",
+     "Labyrinth Chollima",
+     "Lazarus",
+     "Black Artemis"
+    ],
+    "country": "KP"
+   },
+   "related": [
+    {
+     "dest-uuid": "68391641-859f-4a9a-9a1e-3e5cf71ec376",
+     "type": "similar",
+     "tags": [
+      "estimative-language:likelihood-probability=\"likely\""
+     ]
+    }
+   ]
+  },
+  {
+   "value": "Emerald Sleet",
+   "uuid": "44be06b1-e17a-5ea6-a0a2-067933a7af77",
+   "meta": {
+    "synonyms": [
+     "THALLIUM",
+     "Kimsuky",
+     "Velvet Chollima",
+     "RGB-D5",
+     "Black Banshee",
+     "Greendinosa"
+    ],
+    "country": "KP"
+   },
+   "related": [
+    {
+     "dest-uuid": "bcaaad6f-0597-4b89-b69b-84a6be2b7bc3",
+     "type": "similar",
+     "tags": [
+      "estimative-language:likelihood-probability=\"likely\""
+     ]
+    }
+   ]
+  },
+  {
+   "value": "Sapphire Sleet",
+   "uuid": "3a32c54d-d86a-55de-b16a-d9a08a5cf49b",
+   "meta": {
+    "synonyms": [
+     "COPERNICIUM",
+     "Genie Spider",
+     "BlueNoroff",
+     "UNC1069",
+     "STARDUST CHOLLIMA",
+     "Alluring Pisces",
+     "CageyChameleon",
+     "CryptoCore"
+    ],
+    "country": "KP"
+   },
+   "related": [
+    {
+     "dest-uuid": "68391641-859f-4a9a-9a1e-3e5cf71ec376",
+     "type": "similar",
+     "tags": [
+      "estimative-language:likelihood-probability=\"likely\""
+     ]
+    }
+   ]
+  },
+  {
+   "value": "Lace Tempest",
+   "uuid": "b27dcdee-14b1-5842-86b3-32eacec94584",
+   "meta": {
+    "synonyms": [
+     "DEV-0950",
+     "FIN11",
+     "TA505"
+    ]
+   },
+   "related": [
+    {
+     "dest-uuid": "03c80674-35f8-4fe0-be2b-226ed0fcd69f",
+     "type": "similar",
+     "tags": [
+      "estimative-language:likelihood-probability=\"likely\""
+     ]
+    }
+   ]
+  },
+  {
+   "value": "Spandex Tempest",
+   "uuid": "c85120d0-c397-5d30-9d57-3b019090acd5",
+   "meta": {
+    "synonyms": [
+     "CHIMBORAZO",
+     "TA505",
+     "MONTY SPIDER"
+    ]
+   },
+   "related": [
+    {
+     "dest-uuid": "03c80674-35f8-4fe0-be2b-226ed0fcd69f",
+     "type": "similar",
+     "tags": [
+      "estimative-language:likelihood-probability=\"likely\""
+     ]
+    }
+   ]
+  },
+  {
+   "value": "Brass Typhoon",
+   "uuid": "2fc42ffc-dd1a-560e-ac97-05e8fa27bbe5",
+   "meta": {
+    "synonyms": [
+     "BARIUM",
+     "APT41",
+     "WICKED PANDA"
+    ],
+    "country": "CN"
+   },
+   "related": [
+    {
+     "dest-uuid": "9c124874-042d-48cd-b72b-ccdc51ecbbd6",
+     "type": "similar",
+     "tags": [
+      "estimative-language:likelihood-probability=\"likely\""
+     ]
+    }
+   ]
+  },
+  {
+   "value": "Onyx Sleet",
+   "uuid": "26a2854b-51e4-5fc9-8c30-2880d1483ed1",
+   "meta": {
+    "synonyms": [
+     "PLUTONIUM",
+     "SILENT CHOLLIMA",
+     "StoneFly",
+     "Tdrop2 campaign",
+     "DarkSeoul",
+     "Black Chollima",
+     "Andariel",
+     "APT45"
+    ],
+    "country": "KP"
+   }
+  },
+  {
+   "value": "Citrine Sleet",
+   "uuid": "c4004152-f87a-5052-b02b-5602ee3c0fd3",
+   "meta": {
+    "synonyms": [
+     "Storm-0139",
+     "Storm-1222",
+     "LABYRINTH CHOLLIMA"
+    ],
+    "country": "KP"
+   }
+  },
+  {
+   "value": "Moonstone Sleet",
+   "uuid": "b1e94607-7211-585d-8197-73e7d9229400",
+   "meta": {
+    "synonyms": [
+     "Storm-1789",
+     "LABYRINTH CHOLLIMA"
+    ],
+    "country": "KP"
+   }
+  },
+  {
+   "value": "Jade Sleet",
+   "uuid": "67df1658-fa43-5cd0-9234-7ff2b86c2a8b",
+   "meta": {
+    "synonyms": [
+     "Storm-0954",
+     "LABYRINTH CHOLLIMA"
+    ],
+    "country": "KP"
+   }
+  }
+ ]
+}

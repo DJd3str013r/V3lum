@@ -1,0 +1,15 @@
+{
+ "id": 1234567,
+ "login": "example-dev",
+ "full_name": "Example Dev",
+ "email": "dev@example.com",
+ "html_url": "https://codeberg.org/example-dev",
+ "created": "2023-02-01T10:00:00+01:00",
+ "location": "Sao Paulo",
+ "website": "https://example.com",
+ "description": "Example bio",
+ "followers_count": 4,
+ "following_count": 2,
+ "visibility": "public",
+ "username": "example-dev"
+}

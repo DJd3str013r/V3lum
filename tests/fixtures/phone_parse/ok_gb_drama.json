@@ -1,0 +1,26 @@
+{
+ "generator": "phonenumbers 9.0.44 facts (collect_phone_facts schema), batch p1-G06-1 prep 2026-11-26",
+ "lib": "phonenumbers",
+ "lib_version": "9.0.44",
+ "region_hint": "BR",
+ "result": {
+  "input": "+44 20 7946 0000",
+  "region_hint": "BR",
+  "country_code": 44,
+  "national_number": "2079460000",
+  "valid": true,
+  "possible": true,
+  "possible_reason": 0,
+  "region": "GB",
+  "type": "FIXED_LINE",
+  "e164": "+442079460000",
+  "international": "+44 20 7946 0000",
+  "national": "020 7946 0000",
+  "geo_pt": "London",
+  "carrier_pt": "",
+  "timezones": [
+   "Europe/London"
+  ],
+  "ndc_len": 2
+ }
+}

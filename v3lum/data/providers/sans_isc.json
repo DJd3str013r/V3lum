@@ -1,0 +1,42 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "sans_isc",
+  "name": "SANS Internet Storm Center / DShield API",
+  "operator": "SANS Institute (Internet Storm Center)",
+  "hosts": ["isc.sans.edu"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established security non-profit/academic operator with a published API page and licence (A8 BR2 names SANS ISC as trusted; P151 chair rationale: 'SANS: tier trusted').",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "DShield sensor reports are real firewall-log submissions of opportunistic scanning (not targeted activity); threat-feed memberships re-publish third-party lists and are context, not verdicts."
+  },
+  "http_profile": {"user_agent": "contact", "accept": "application/json", "ttl": 86400, "min_interval": 2.0, "retries": 0, "concurrency": 1},
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "api": {
+      "title": "SANS ISC API (GET /api/ip/{ip}?json, /api/asnum/{count}/{asn}?json, /api/threatcategory/research?json)",
+      "terms": {
+        "class": "noncommercial",
+        "evidence_url": "https://isc.sans.edu/api/",
+        "quote": "Data is licensed CC BY-NC-SA 4.0. 'It is ok to use this data for commercial purposes, for example to protect your own company's network. But again: do not resell' (ISC API page, fetched 2026-11-26).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1, P151 cond 1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "dshield",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "A1 initial class 'noncommercial' (SANS ISC). Off under the corporate profile until licence-cleared: legal records a licence_allow entry for sans_isc.api (basis terms_clause) citing the API page clause, scope 'defence of the company's own networks only, no resale, no inclusion in paid deliverables to third parties' (P151 cond 1-2, day-1 queue). ISC asks API users to identify themselves: the provider profile sends the contact UA (setting contact_email, a team role mailbox), else SKIPPED config. Without Accept: application/json and ?json ISC answers XML or redirects to /blockme.html (BLOCKED challenge, circuit for the run). Attribution: 'SANS ISC / DShield'.",
+      "licensed_alternative": "A licence_allow entry for sans_isc.api quoting the API page's own-network-protection clause (no resale)."
+    }
+  },
+  "notes": "Owned by batch p2-G02-3 (P151). No published rate limit ('at times of high load, you may get 429 responses. Please stop sending queries for 5 minutes'): politeness is min_interval 2 s, one connection, no retries, and the core blockme circuit. HTML pages (ipinfo, threatfeeds) redirect scripts to /blockme.html: manual links only."
+}

@@ -1,0 +1,38 @@
+{
+ "took": 31015,
+ "timed_out": false,
+ "_shards": {
+  "total": 3,
+  "successful": 1,
+  "skipped": 0,
+  "failed": 2,
+  "failures": [
+   {
+    "shard": 0,
+    "index": "api_publica_tjdft",
+    "node": "qdBrsIHAQfe4IQ0WdjTrvQ",
+    "reason": {
+     "type": "es_rejected_execution_exception",
+     "reason": "rejected execution of TimedRunnable{original=ActionRunnable#wrap[org.elasticsearch.sear..."
+    }
+   },
+   {
+    "shard": 1,
+    "index": "api_publica_tjdft",
+    "node": "bBZhzg_xRru05_O7mgYG5Q",
+    "reason": {
+     "type": "es_rejected_execution_exception",
+     "reason": "rejected execution of TimedRunnable{original=ActionRunnable#wrap[org.elasticsearch.sear..."
+    }
+   }
+  ]
+ },
+ "hits": {
+  "total": {
+   "value": 10000,
+   "relation": "gte"
+  },
+  "max_score": 1.0,
+  "hits": []
+ }
+}

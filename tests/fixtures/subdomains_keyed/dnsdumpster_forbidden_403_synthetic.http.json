@@ -1,0 +1,15 @@
+{
+ "request": "GET https://api.dnsdumpster.com/domain/example.com (X-API-Key: <revoked key>)",
+ "response": {
+  "status": 403,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": {
+   "error": "Invalid API key"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "PLACEHOLDER text: FC6 maps any 401/403 to NEEDS_KEY ('invalid key')"
+}

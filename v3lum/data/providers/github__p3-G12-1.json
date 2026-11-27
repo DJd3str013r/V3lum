@@ -1,0 +1,24 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "github",
+  "hosts": [],
+  "sources": {
+    "user_agent_analysis_teler_bad_crawlers": {
+      "title": "kitabisa/teler-resources db/bad-crawlers.txt (Crawler-Detect user-agent patterns; raw.githubusercontent.com, through the dataset manager)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/kitabisa/teler-resources/blob/master/LICENSE",
+        "quote": "Attribution 4.0 International (teler-resources collection, CC BY 4.0); upstream Crawler-Detect patterns MIT. [research C0370 'Collection CC-BY-4.0 (attribution)'; P317 cond 1: downloaded at runtime by the dataset manager with attribution]",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "teler_resources",
+      "sanitizer": null,
+      "dataset": "teler_bad_crawlers.txt",
+      "notes": "Batch p3-G12-1 (P317 user_agent_analysis). Runtime download only, never bundled (22 KB, 1,741 patterns on 2026-11-26, sha256 666c95c4...b9b7873). The PHPIDS-derived common-web-attacks.json (LGPL-3.0) is not used for UA matching and never bundled (P317 cond 2). Nothing about the analysed user agent is ever sent: the list is a whole public file."
+    }
+  },
+  "error_markers": [],
+  "notes": "Batch p3-G12-1: the teler-resources bad-crawlers list (raw.githubusercontent.com belongs to the github provider)."
+}

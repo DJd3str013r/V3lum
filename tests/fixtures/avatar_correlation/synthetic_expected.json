@@ -1,0 +1,94 @@
+{
+ "_note": "dHash = Pillow convert('L').resize((9, 8)) [default BICUBIC], bit = left > right, row-major, MSB first (Ceos perfil_extra.dhash); stddev32 = max stddev of the 32x32 grayscale (Ceos plana). Images are synthetic.",
+ "images": {
+  "synthetic_a.png": {
+   "bytes": 1013,
+   "sha256": "b41a537b623156a9e4e8d758b08c68a51483e13f5adfed30d41bb2b51dcff93a",
+   "format": "PNG",
+   "size": [
+    128,
+    128
+   ],
+   "dhash": "002070c860630300",
+   "stddev32": 69.43
+  },
+  "synthetic_a_resized.jpg": {
+   "bytes": 1598,
+   "sha256": "e0098b586766da00d56a0aa4fbfbfd9a0321f65023b023a8b0020548393ed551",
+   "format": "JPEG",
+   "size": [
+    96,
+    96
+   ],
+   "dhash": "002070c860630300",
+   "stddev32": 69.476
+  },
+  "synthetic_a.webp": {
+   "bytes": 1038,
+   "sha256": "f83a3c32f5b75b6d239efbe73ea839fb4c298ec66753c0093212cfa7ed4814fb",
+   "format": "WEBP",
+   "size": [
+    128,
+    128
+   ],
+   "dhash": "002060c860630300",
+   "stddev32": 69.594
+  },
+  "synthetic_b.png": {
+   "bytes": 1007,
+   "sha256": "86ba0f2c25036a81f66fde6482fc7a5e69334f5d8c810a43e163162be8ecc245",
+   "format": "PNG",
+   "size": [
+    128,
+    128
+   ],
+   "dhash": "1030284c44020200",
+   "stddev32": 58.066
+  },
+  "synthetic_flat.png": {
+   "bytes": 227,
+   "sha256": "bff12cc86df1aad99f3feb238850728e739b1930ee81901173c4f66f8bb3436f",
+   "format": "PNG",
+   "size": [
+    64,
+    64
+   ],
+   "dhash": "0000000000000000",
+   "stddev32": 0.0
+  },
+  "synthetic_logo.png": {
+   "bytes": 788,
+   "sha256": "64633c661500fdb4d41179c0d0d8b201560ec967bbb5161047592eddaaefb9d9",
+   "format": "PNG",
+   "size": [
+    128,
+    128
+   ],
+   "dhash": "00cccc6870303000",
+   "stddev32": 66.056
+  },
+  "synthetic_anim.gif": {
+   "bytes": 8132,
+   "sha256": "d7795d2ce78b9f2b3d8832cdc279e4d6cc2d02d68bebff24673854e294676b1d",
+   "format": "GIF",
+   "size": [
+    128,
+    128
+   ],
+   "dhash": "002070c860630300",
+   "stddev32": 69.412
+  },
+  "synthetic_icon.svg": {
+   "bytes": 151,
+   "sha256": "5dccedd63dc7dc06a2459aa0119316bb793d4caa4e109a5face528afc84aed88"
+  },
+  "synthetic_bomb.png": {
+   "bytes": 4459,
+   "sha256": "0c904ba561a7fc658c275afd745a03686cc58c01a9809874028e49fbe55ddfc2"
+  },
+  "synthetic_truncated.png": {
+   "bytes": 200,
+   "sha256": "99f783e926149c6ba794ddeec96802b185db8ed1cac7665919447e2db4b15aec"
+  }
+ }
+}

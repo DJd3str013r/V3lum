@@ -1,0 +1,125 @@
+{
+ "total": 2731122,
+ "totalStealers": 37422635,
+ "employees": 322,
+ "users": 2730658,
+ "third_parties": 142,
+ "totalUrls": 95371,
+ "stealerFamilies": {
+  "total": 50000,
+  "Predator": 125,
+  "Azorult": 4735,
+  "KPOT": 17,
+  "Vidar": 3319,
+  "RedLine": 31603,
+  "CRYPTBOT": 891,
+  "Raccoon": 7501,
+  "UNKNOWN": 1445,
+  "Ficker": 93,
+  "Taurus": 271
+ },
+ "logo": "https://cdn.example.com/fixture-logo.png",
+ "data": {
+  "employees_urls": [
+   {
+    "occurrence": 2,
+    "type": "Employee",
+    "url": "https://github.com/users/fixture-user/emails"
+   }
+  ],
+  "clients_urls": [
+   {
+    "occurrence": 1,
+    "type": "Client",
+    "url": "https://github.com/login?client_id=FIXTURE123"
+   }
+  ],
+  "all_urls": [
+   {
+    "url": "https://github.com/session",
+    "type": "Employee",
+    "occurrence": 3
+   }
+  ]
+ },
+ "stats": {
+  "totalEmployees": 1,
+  "totalUsers": 2,
+  "employees_urls": [
+   "fixture"
+  ],
+  "clients_urls": [
+   "fixture"
+  ],
+  "employees_count": [
+   1
+  ],
+  "clients_count": [
+   2
+  ]
+ },
+ "is_shopify": false,
+ "last_employee_compromised": "2026-01-02T03:04:05.000Z",
+ "last_user_compromised": "2026-01-02T03:04:05.000Z",
+ "antiviruses": {
+  "total": 3,
+  "found": 2,
+  "not_found": 0.33,
+  "free": 0.5,
+  "list": [
+   {
+    "count": 2,
+    "name": "Fixture Antivirus"
+   }
+  ]
+ },
+ "applications": [
+  {
+   "keyword": "fixture-app"
+  }
+ ],
+ "employeePasswords": {
+  "totalPass": 10,
+  "too_weak": {
+   "qty": 4,
+   "perc": 40.0
+  },
+  "weak": {
+   "qty": 3,
+   "perc": 30.0
+  },
+  "medium": {
+   "qty": 2,
+   "perc": 20.0
+  },
+  "strong": {
+   "qty": 1,
+   "perc": 10.0
+  }
+ },
+ "userPasswords": {
+  "totalPass": 10,
+  "too_weak": {
+   "qty": 1,
+   "perc": 10.0
+  },
+  "weak": {
+   "qty": 2,
+   "perc": 20.0
+  },
+  "medium": {
+   "qty": 3,
+   "perc": 30.0
+  },
+  "strong": {
+   "qty": 4,
+   "perc": 40.0
+  }
+ },
+ "thirdPartyDomains": [
+  {
+   "occurrence": 3,
+   "domain": "fixture-third-party.example.net"
+  }
+ ]
+}

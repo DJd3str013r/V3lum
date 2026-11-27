@@ -1,0 +1,15 @@
+{
+ "Zone": "Green",
+ "FileGeneralInfo": {
+  "FileStatus": "NoThreats",
+  "Sha1": "13D21B1E4AF20D2B2079131DE9A9504D85294268",
+  "Md5": "667B4ADABD3F75250D17817B78530326",
+  "Sha256": "7AD4C9B8C7AF0FE090D2286BA6DAC3E90365C7E29C29A6105D97A41AE79BEAE0",
+  "FirstSeen": "2019-04-02T10:00:00Z",
+  "LastSeen": "2026-11-20T10:00:00Z",
+  "Size": 18,
+  "Type": "Txt",
+  "HitsCount": 120,
+  "Signer": "Example Software Ltd"
+ }
+}

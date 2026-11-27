@@ -1,0 +1,21 @@
+{
+ "_meta": {
+  "module": "npm_maintainer",
+  "case": "rate_limited",
+  "source": "C0242 registry.npmjs.org",
+  "request": {
+   "method": "GET",
+   "url": "https://registry.npmjs.org/-/v1/search?text=maintainer:example-dev&size=20"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "DOC-SHAPED",
+  "note": "status and Retry-After only; body wording unverified"
+ },
+ "status": 429,
+ "headers": {
+  "content-type": "application/json",
+  "retry-after": "60",
+  "server": "cloudflare"
+ },
+ "body": "{\"error\":\"Too Many Requests\"}"
+}

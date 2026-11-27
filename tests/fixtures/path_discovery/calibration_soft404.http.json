@@ -1,0 +1,70 @@
+{
+ "_provenance": {
+  "synthetic": true
+ },
+ "exchanges": [
+  {
+   "_provenance": {
+    "synthetic": true
+   },
+   "request": {
+    "method": "GET",
+    "host": "app.example.com",
+    "path": "/q7w8e9r0t1y2u3i4"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "text/html; charset=utf-8",
+     "Server": "nginx"
+    },
+    "body": "<!DOCTYPE html><html lang=\"pt-BR\"><head><meta charset=\"utf-8\"><title>Página não encontrada | Example</title></head><body><div id=\"app\"><h1>Ops!</h1><p>A página /q7w8e9r0t1y2u3i4 não existe ou foi movida.</p><p class=\"rid\">request id 9f8e7d6c5b4a39281706f5e4d3c2b1a0</p></div></body></html>"
+   },
+   "history": [],
+   "final_url": null,
+   "transport_error": null
+  },
+  {
+   "_provenance": {
+    "synthetic": true
+   },
+   "request": {
+    "method": "GET",
+    "host": "app.example.com",
+    "path": "/z9x8c7v6b5n4m3l2/"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "text/html; charset=utf-8",
+     "Server": "nginx"
+    },
+    "body": "<!DOCTYPE html><html lang=\"pt-BR\"><head><meta charset=\"utf-8\"><title>Página não encontrada | Example</title></head><body><div id=\"app\"><h1>Ops!</h1><p>A página /z9x8c7v6b5n4m3l2/ não existe ou foi movida.</p><p class=\"rid\">request id 0a1b2c3d4e5f60718293a4b5c6d7e8f9</p></div></body></html>"
+   },
+   "history": [],
+   "final_url": null,
+   "transport_error": null
+  },
+  {
+   "_provenance": {
+    "synthetic": true
+   },
+   "request": {
+    "method": "GET",
+    "host": "app.example.com",
+    "path": "/p0o9i8u7y6t5r4e3.json"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "text/html; charset=utf-8",
+     "Server": "nginx"
+    },
+    "body": "<!DOCTYPE html><html lang=\"pt-BR\"><head><meta charset=\"utf-8\"><title>Página não encontrada | Example</title></head><body><div id=\"app\"><h1>Ops!</h1><p>A página /p0o9i8u7y6t5r4e3.json não existe ou foi movida.</p><p class=\"rid\">request id 1234abcd5678ef901234abcd5678ef90</p></div></body></html>"
+   },
+   "history": [],
+   "final_url": null,
+   "transport_error": null
+  }
+ ]
+}

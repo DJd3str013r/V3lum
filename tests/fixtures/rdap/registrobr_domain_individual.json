@@ -1,0 +1,184 @@
+{
+ "objectClassName": "domain",
+ "handle": "exemplo-teste-0000.com.br",
+ "ldhName": "exemplo-teste-0000.com.br",
+ "nameservers": [
+  {
+   "objectClassName": "nameserver",
+   "ldhName": "ns1.example.net"
+  },
+  {
+   "objectClassName": "nameserver",
+   "ldhName": "ns2.example.net"
+  }
+ ],
+ "secureDNS": {
+  "delegationSigned": false
+ },
+ "entities": [
+  {
+   "objectClassName": "entity",
+   "handle": "EXCON4",
+   "roles": [
+    "registrant"
+   ],
+   "vcardArray": [
+    "vcard",
+    [
+     [
+      "version",
+      {},
+      "text",
+      "4.0"
+     ],
+     [
+      "kind",
+      {},
+      "text",
+      "individual"
+     ],
+     [
+      "fn",
+      {},
+      "text",
+      "Fulano de Tal"
+     ],
+     [
+      "email",
+      {},
+      "text",
+      "fulano@example.com"
+     ],
+     [
+      "tel",
+      {
+       "type": "voice"
+      },
+      "uri",
+      "tel:+55.1155550103"
+     ],
+     [
+      "adr",
+      {},
+      "text",
+      [
+       "",
+       "",
+       "",
+       "",
+       "",
+       "",
+       "BR"
+      ]
+     ]
+    ]
+   ],
+   "publicIds": [
+    {
+     "type": "cpf",
+     "identifier": "000.000.000-00"
+    }
+   ],
+   "events": [
+    {
+     "eventAction": "registration",
+     "eventDate": "2026-11-01T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "objectClassName": "entity",
+   "handle": "EXCON4",
+   "roles": [
+    "administrative",
+    "technical"
+   ],
+   "vcardArray": [
+    "vcard",
+    [
+     [
+      "version",
+      {},
+      "text",
+      "4.0"
+     ],
+     [
+      "kind",
+      {},
+      "text",
+      "individual"
+     ],
+     [
+      "fn",
+      {},
+      "text",
+      "Fulano de Tal"
+     ],
+     [
+      "email",
+      {},
+      "text",
+      "fulano@example.com"
+     ],
+     [
+      "adr",
+      {},
+      "text",
+      [
+       "",
+       "",
+       "",
+       "",
+       "",
+       "",
+       "BR"
+      ]
+     ]
+    ]
+   ]
+  }
+ ],
+ "events": [
+  {
+   "eventAction": "registration",
+   "eventDate": "2026-11-01T12:00:00Z"
+  },
+  {
+   "eventAction": "last changed",
+   "eventDate": "2026-11-01T12:00:00Z"
+  },
+  {
+   "eventAction": "expiration",
+   "eventDate": "2027-11-01T12:00:00Z"
+  }
+ ],
+ "status": [
+  "active"
+ ],
+ "notices": [
+  {
+   "title": "Use and Privacy Policy",
+   "description": [
+    "Copyright (c) Nic.br - Use of this data is governed by the Use and Privacy Policy. Distribution, commercialization, reproduction, and use for advertising or similar purposes are expressly prohibited.",
+    "2026-11-25T18:47:24-03:00 - 203.0.113.10"
+   ],
+   "links": [
+    {
+     "value": "https://rdap.registro.br/domain/bb.com.br",
+     "rel": "alternate",
+     "href": "https://registro.br/upp",
+     "type": "text/html"
+    }
+   ]
+  }
+ ],
+ "port43": "whois.registro.br",
+ "links": [
+  {
+   "value": "https://rdap.registro.br/domain/exemplo-teste-0000.com.br",
+   "rel": "self",
+   "href": "https://rdap.registro.br/domain/exemplo-teste-0000.com.br",
+   "type": "application/rdap+json"
+  }
+ ]
+}

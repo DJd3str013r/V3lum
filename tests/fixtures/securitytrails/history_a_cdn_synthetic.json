@@ -1,0 +1,68 @@
+{
+ "endpoint": "/v1/history/example.com/dns/a",
+ "pages": 1,
+ "type": "a/ipv4",
+ "records": [
+  {
+   "type": "a",
+   "first_seen": "2024-03-01",
+   "last_seen": "2026-11-25",
+   "organizations": [
+    "Cloudflare, Inc."
+   ],
+   "values": [
+    {
+     "ip": "104.16.132.229",
+     "ip_count": 1
+    }
+   ]
+  },
+  {
+   "type": "a",
+   "first_seen": "2019-05-10",
+   "last_seen": "2024-02-28",
+   "organizations": [
+    "Example Hosting"
+   ],
+   "values": [
+    {
+     "ip": "93.184.215.14",
+     "ip_count": 1
+    }
+   ]
+  },
+  {
+   "type": "a",
+   "first_seen": "2017-01-01",
+   "last_seen": "2019-05-09",
+   "organizations": [
+    "Example Old CDN"
+   ],
+   "values": [
+    {
+     "ip": "104.20.23.154",
+     "ip_count": 1
+    }
+   ]
+  },
+  {
+   "type": "a",
+   "first_seen": "2016-01-01",
+   "last_seen": "2016-12-31",
+   "organizations": [
+    "Example VPS"
+   ],
+   "values": [
+    {
+     "ip": "45.33.32.156",
+     "ip_count": 1
+    },
+    {
+     "ip": "not-an-ip",
+     "ip_count": 1
+    }
+   ]
+  },
+  "junk"
+ ]
+}

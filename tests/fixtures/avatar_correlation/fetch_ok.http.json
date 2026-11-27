@@ -1,0 +1,39 @@
+{
+ "_meta": {
+  "module": "avatar_correlation",
+  "case": "fetch_ok",
+  "source": "C0230 avatar CDN fetch",
+  "request": {
+   "method": "GET",
+   "url": "https://avatars.githubusercontent.com/u/9919?s=96&v=4"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "LIVE",
+  "elapsed_s": 0.388,
+  "note": "GitHub org avatar (github, u/9919): PNG 96x96 with Last-Modified"
+ },
+ "status": 200,
+ "headers": {
+  "content-type": "image/png",
+  "content-length": "2429",
+  "last-modified": "Wed, 06 May 2026 23:10:28 GMT",
+  "etag": "\"fab252e7fdaae8ca56c09ccbf01f1af75caaef398b104b51c75304eb1d2acc06\"",
+  "cache-control": "max-age=300"
+ },
+ "body": null,
+ "body_omitted": true,
+ "image_facts": {
+  "sha256": "c824ffb9a3d4c778f5dbe9fa2b5967f42604b613a9da97127a7e96b8fef99fc4",
+  "bytes": 2429,
+  "magic": "png",
+  "pil_format": "PNG",
+  "size": [
+   96,
+   96
+  ],
+  "mode": "RGB",
+  "n_frames": 1,
+  "dhash": "0c0f2b6171333314",
+  "stddev32": 106.628
+ }
+}

@@ -1,0 +1,150 @@
+{
+ "_envelope": 1,
+ "_source": "trimmed live answer of the keyless HIBP /api/v3/breaches catalogue (P132 dataset), captured 2026-11-26 by prep p2-G04-1; 8 entries, only the fields the P132 join uses",
+ "status": 200,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": [
+  {
+   "Name": "8tracks",
+   "Title": "8tracks",
+   "Domain": "8tracks.com",
+   "BreachDate": "2017-06-27",
+   "DataClasses": [
+    "Email addresses",
+    "Passwords"
+   ],
+   "IsVerified": true,
+   "IsFabricated": false,
+   "IsSensitive": false,
+   "IsSpamList": false,
+   "IsStealerLog": false
+  },
+  {
+   "Name": "000webhost",
+   "Title": "000webhost",
+   "Domain": "000webhost.com",
+   "BreachDate": "2015-03-01",
+   "DataClasses": [
+    "Email addresses",
+    "IP addresses",
+    "Names",
+    "Passwords"
+   ],
+   "IsVerified": true,
+   "IsFabricated": false,
+   "IsSensitive": false,
+   "IsSpamList": false,
+   "IsStealerLog": false
+  },
+  {
+   "Name": "Adobe",
+   "Title": "Adobe",
+   "Domain": "adobe.com",
+   "BreachDate": "2013-10-04",
+   "DataClasses": [
+    "Email addresses",
+    "Password hints",
+    "Passwords",
+    "Usernames"
+   ],
+   "IsVerified": true,
+   "IsFabricated": false,
+   "IsSensitive": false,
+   "IsSpamList": false,
+   "IsStealerLog": false
+  },
+  {
+   "Name": "Zomato",
+   "Title": "Zomato",
+   "Domain": "zomato.com",
+   "BreachDate": "2017-05-17",
+   "DataClasses": [
+    "Email addresses",
+    "Passwords",
+    "Usernames"
+   ],
+   "IsVerified": true,
+   "IsFabricated": false,
+   "IsSensitive": false,
+   "IsSpamList": false,
+   "IsStealerLog": false
+  },
+  {
+   "Name": "AshleyMadison",
+   "Title": "Ashley Madison",
+   "Domain": "ashleymadison.com",
+   "BreachDate": "2015-07-19",
+   "DataClasses": [
+    "Dates of birth",
+    "Email addresses",
+    "Ethnicities",
+    "Genders",
+    "Names",
+    "Passwords",
+    "Payment histories",
+    "Phone numbers",
+    "Physical addresses",
+    "Security questions and answers",
+    "Sexual orientations",
+    "Usernames",
+    "Website activity"
+   ],
+   "IsVerified": true,
+   "IsFabricated": false,
+   "IsSensitive": true,
+   "IsSpamList": false,
+   "IsStealerLog": false
+  },
+  {
+   "Name": "RiverCityMedia",
+   "Title": "River City Media Spam List",
+   "Domain": "rivercitymediaonline.com",
+   "BreachDate": "2017-01-01",
+   "DataClasses": [
+    "Email addresses",
+    "IP addresses",
+    "Names",
+    "Physical addresses"
+   ],
+   "IsVerified": true,
+   "IsFabricated": false,
+   "IsSensitive": false,
+   "IsSpamList": true,
+   "IsStealerLog": false
+  },
+  {
+   "Name": "Zoosk",
+   "Title": "Zoosk (2011)",
+   "Domain": "zoosk.com",
+   "BreachDate": "2011-01-01",
+   "DataClasses": [
+    "Email addresses",
+    "Passwords"
+   ],
+   "IsVerified": false,
+   "IsFabricated": true,
+   "IsSensitive": true,
+   "IsSpamList": false,
+   "IsStealerLog": false
+  },
+  {
+   "Name": "Hjedd",
+   "Title": "Hjedd",
+   "Domain": "hjedd.com",
+   "BreachDate": "2022-07-18",
+   "DataClasses": [
+    "Email addresses",
+    "IP addresses",
+    "Passwords",
+    "Usernames"
+   ],
+   "IsVerified": true,
+   "IsFabricated": false,
+   "IsSensitive": true,
+   "IsSpamList": false,
+   "IsStealerLog": false
+  }
+ ]
+}

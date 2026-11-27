@@ -1,0 +1,22 @@
+{
+ "data": {
+  "me": {
+   "id": "us-2",
+   "name": "v3lum-service",
+   "capabilities": [
+    {
+     "name": "KNOWLEDGE"
+    },
+    {
+     "name": "KNOWLEDGE_KNUPDATE"
+    },
+    {
+     "name": "KNOWLEDGE_KNUPDATE_KNDELETE"
+    },
+    {
+     "name": "EXPLORE"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,290 @@
+{
+ "objectClassName": "domain",
+ "handle": "bb.com.br",
+ "ldhName": "bb.com.br",
+ "nameservers": [
+  {
+   "objectClassName": "nameserver",
+   "ldhName": "dns1.bb.com.br",
+   "ipAddresses": {
+    "v4": [
+     "170.66.3.2"
+    ],
+    "v6": [
+     "2801:8e:10:803::2"
+    ]
+   }
+  },
+  {
+   "objectClassName": "nameserver",
+   "ldhName": "dns2.bb.com.br",
+   "ipAddresses": {
+    "v4": [
+     "170.66.3.3"
+    ],
+    "v6": [
+     "2801:8e:10:803::3"
+    ]
+   }
+  }
+ ],
+ "secureDNS": {
+  "delegationSigned": true,
+  "dsData": [
+   {
+    "keyTag": 23119,
+    "algorithm": 8,
+    "digestType": 2,
+    "digest": "8F853EC13B608868B620AFC78867552A043FB9C44FAEFB4334FF712796994630"
+   }
+  ]
+ },
+ "entities": [
+  {
+   "objectClassName": "entity",
+   "handle": "00000000000191",
+   "vcardArray": [
+    "vcard",
+    [
+     [
+      "version",
+      {},
+      "text",
+      "4.0"
+     ],
+     [
+      "kind",
+      {},
+      "text",
+      "org"
+     ],
+     [
+      "fn",
+      {},
+      "text",
+      "BANCO DO BRASIL S.A."
+     ],
+     [
+      "adr",
+      {},
+      "text",
+      [
+       "",
+       "",
+       "",
+       "",
+       "",
+       "",
+       "BR"
+      ]
+     ]
+    ]
+   ],
+   "roles": [
+    "registrant"
+   ],
+   "publicIds": [
+    {
+     "type": "cnpj",
+     "identifier": "00.000.000/0001-91"
+    }
+   ],
+   "entities": [
+    {
+     "objectClassName": "entity",
+     "handle": "EXCON1",
+     "vcardArray": [
+      "vcard",
+      [
+       [
+        "version",
+        {},
+        "text",
+        "4.0"
+       ],
+       [
+        "kind",
+        {},
+        "text",
+        "individual"
+       ],
+       [
+        "fn",
+        {},
+        "text",
+        "Beltrano da Silva"
+       ],
+       [
+        "email",
+        {},
+        "text",
+        "beltrano@example.com"
+       ],
+       [
+        "lang",
+        {},
+        "language-tag",
+        "pt"
+       ],
+       [
+        "adr",
+        {},
+        "text",
+        [
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "BR"
+        ]
+       ]
+      ]
+     ],
+     "roles": [
+      "administrative"
+     ],
+     "events": [
+      {
+       "eventAction": "registration",
+       "eventDate": "2011-09-15T20:16:58Z"
+      },
+      {
+       "eventAction": "last changed",
+       "eventDate": "2025-06-03T19:58:20Z"
+      }
+     ]
+    }
+   ],
+   "events": [
+    {
+     "eventAction": "registration",
+     "eventDate": "1998-02-09T12:00:00Z"
+    },
+    {
+     "eventAction": "last changed",
+     "eventDate": "2021-10-21T15:27:54Z"
+    }
+   ],
+   "links": [
+    {
+     "value": "https://rdap.registro.br/entity/00000000000191",
+     "rel": "self",
+     "href": "https://rdap.registro.br/entity/00000000000191",
+     "type": "application/rdap+json"
+    }
+   ],
+   "legalRepresentative": "Fulano de Tal"
+  },
+  {
+   "objectClassName": "entity",
+   "handle": "EXCON2",
+   "vcardArray": [
+    "vcard",
+    [
+     [
+      "version",
+      {},
+      "text",
+      "4.0"
+     ],
+     [
+      "kind",
+      {},
+      "text",
+      "individual"
+     ],
+     [
+      "fn",
+      {},
+      "text",
+      "Beltrano da Silva"
+     ],
+     [
+      "email",
+      {},
+      "text",
+      "beltrano@example.com"
+     ],
+     [
+      "lang",
+      {},
+      "language-tag",
+      "pt"
+     ],
+     [
+      "adr",
+      {},
+      "text",
+      [
+       "",
+       "",
+       "",
+       "",
+       "",
+       "",
+       "BR"
+      ]
+     ]
+    ]
+   ],
+   "roles": [
+    "technical"
+   ],
+   "events": [
+    {
+     "eventAction": "registration",
+     "eventDate": "2016-02-11T12:38:28Z"
+    },
+    {
+     "eventAction": "last changed",
+     "eventDate": "2025-08-19T15:52:42Z"
+    }
+   ]
+  }
+ ],
+ "events": [
+  {
+   "eventAction": "registration",
+   "eventDate": "1998-03-04T19:54:24Z"
+  },
+  {
+   "eventAction": "last changed",
+   "eventDate": "2026-05-29T12:00:10Z"
+  },
+  {
+   "eventAction": "expiration",
+   "eventDate": "2028-03-04T19:54:24Z"
+  }
+ ],
+ "status": [
+  "active"
+ ],
+ "notices": [
+  {
+   "title": "Use and Privacy Policy",
+   "description": [
+    "Copyright (c) Nic.br - Use of this data is governed by the Use and Privacy Policy. Distribution, commercialization, reproduction, and use for advertising or similar purposes are expressly prohibited.",
+    "2026-11-25T18:47:24-03:00 - 203.0.113.10"
+   ],
+   "links": [
+    {
+     "value": "https://rdap.registro.br/domain/bb.com.br",
+     "rel": "alternate",
+     "href": "https://registro.br/upp",
+     "type": "text/html"
+    }
+   ]
+  }
+ ],
+ "port43": "whois.registro.br",
+ "links": [
+  {
+   "value": "https://rdap.registro.br/domain/bb.com.br",
+   "rel": "self",
+   "href": "https://rdap.registro.br/domain/bb.com.br",
+   "type": "application/rdap+json"
+  }
+ ]
+}

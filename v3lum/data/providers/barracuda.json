@@ -1,0 +1,46 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "barracuda",
+  "name": "Barracuda Reputation Block List (b.barracudacentral.org)",
+  "operator": "Barracuda Networks, Inc.",
+  "hosts": [],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms, a privacy policy and a business offering (A8 trusted).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Sender reputation list maintained by Barracuda Central; queries need a registered resolver."
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "brbl": {
+      "title": "Barracuda BRBL (DNS A answer 127.0.0.2 = listed; registered resolvers only)",
+      "terms": {
+        "class": "noncommercial",
+        "evidence_url": "https://www.barracudacentral.org/rbl/how-to-use",
+        "quote": "P045 cond 2 (binding council text): URIBL, SURBL, UCEPROTECT and Barracuda are noncommercial/fair-use lists: off under the corporate profile until licence-cleared (their free-use terms recorded and allowed by legal).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "dnsbl",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P045 cond 2). Barracuda formally requires registering the querying resolver: never queried through public DoH (P045 cond 4); usable only through a registered system resolver (setting dnsbl_registered_lists). Off under the corporate profile until licence-cleared. Used by dnsbl.",
+      "licensed_alternative": "A licence_allow entry recording Barracuda's terms plus a registered resolver."
+    }
+  },
+  "notes": "Owned by batch p2-G02-2 (P045). DNS only: the list is queried through DNS A lookups (core DoH layer or the system resolver), never over HTTP, so the provider has no HTTP host. Every DNSBL counts as ONE 'spam' family vote in P171 consensus (upstream_family 'dnsbl', P045 cond 8)."
+}

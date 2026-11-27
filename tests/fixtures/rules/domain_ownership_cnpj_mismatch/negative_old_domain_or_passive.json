@@ -1,0 +1,115 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "light",
+    "tlp": "amber",
+    "purpose": ""
+  },
+  "org_profile": {
+    "name": "Exemplo Comércio Ltda",
+    "cnpj_roots": [
+      "11222333"
+    ],
+    "domains": [
+      {
+        "name": "exemplo.example",
+        "verification": "txt_verified"
+      }
+    ],
+    "app_ids": [
+      {
+        "kind": "m365_tenant",
+        "value": "00000000-0000-4000-8000-000000000001"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "key": "domain:exemplo-antigo.example",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "registered": [
+          {
+            "value": true,
+            "source": "rdap"
+          }
+        ],
+        "registrant_kind": [
+          {
+            "value": "individual",
+            "source": "rdap"
+          }
+        ],
+        "created": [
+          {
+            "value": "2012-01-01T00:00:00Z",
+            "source": "rdap"
+          }
+        ],
+        "domain_age_days": [
+          {
+            "value": 5443,
+            "source": "rdap"
+          }
+        ],
+        "homepage_indicators": [
+          {
+            "value": {
+              "source": "wayback",
+              "cnpjs": [
+                "11.222.333/0001-81"
+              ]
+            },
+            "source": "web_archives"
+          }
+        ]
+      }
+    },
+    {
+      "key": "domain:exemplo-live.example",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "registered": [
+          {
+            "value": true,
+            "source": "rdap"
+          }
+        ],
+        "registrant_kind": [
+          {
+            "value": "org",
+            "source": "rdap"
+          }
+        ],
+        "created": [
+          {
+            "value": "2015-03-04T12:00:00Z",
+            "source": "rdap"
+          }
+        ],
+        "cnpj_roots": [
+          {
+            "value": [
+              "99888777"
+            ],
+            "source": "rdap"
+          }
+        ],
+        "site_contacts": [
+          {
+            "value": {
+              "cnpjs": [
+                "11.222.333/0001-81"
+              ]
+            },
+            "source": "site_contacts"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": []
+}

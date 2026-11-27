@@ -1,0 +1,28 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "nodes": [
+    {
+      "key": "domain:contoso.example",
+      "depth": 0,
+      "seed": true,
+      "attributes": {"m365_tenant_id": [{"value": "11111111-2222-4333-8444-555555555555", "source": "m365_tenant"}]}
+    },
+    {
+      "key": "domain:www.contoso.example",
+      "depth": 1,
+      "attributes": {"m365_tenant_id": [{"value": "11111111-2222-4333-8444-555555555555", "source": "m365_tenant"}]}
+    },
+    {
+      "key": "domain:fabrikam.example",
+      "depth": 1,
+      "attributes": {"m365_tenant_id": [{"value": "22222222-3333-4444-8555-666666666666", "source": "m365_tenant"}]}
+    },
+    {
+      "key": "domain:northwind.example",
+      "depth": 1,
+      "attributes": {"m365_tenant_id": [{"value": "not-a-tenant-id", "source": "m365_tenant"}]}
+    }
+  ],
+  "edges": []
+}

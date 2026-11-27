@@ -1,0 +1,15 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://virusshare.com/apiv2/file?apikey=<INVALID>&hash=44d88612fea8a8f36de82e1278abb02f",
+  "headers": {}
+ },
+ "response": {
+  "status": 403,
+  "headers": {},
+  "body": ""
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "documentation: 403 = request without an API key or a key not authorized"
+}

@@ -1,0 +1,93 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "$comment": "Organisational record p=reject; sp=none: every subdomain (even non-existent ones without SPF) is spoofable",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "nodes": [
+    {
+      "key": "domain:acme-corp.example",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "spf_status": [
+          {
+            "value": "ok",
+            "source": "email_security_posture"
+          }
+        ],
+        "spf": [
+          {
+            "value": "v=spf1 ip4:203.0.113.0/24 -all",
+            "source": "email_security_posture"
+          }
+        ],
+        "spf_lookups": [
+          {
+            "value": 0,
+            "source": "email_security_posture"
+          }
+        ],
+        "spf_void_lookups": [
+          {
+            "value": 0,
+            "source": "email_security_posture"
+          }
+        ],
+        "dmarc": [
+          {
+            "value": "v=DMARC1; p=reject; sp=none",
+            "source": "email_security_posture"
+          }
+        ],
+        "dmarc_policy": [
+          {
+            "value": "reject",
+            "source": "email_security_posture"
+          }
+        ],
+        "dmarc_pct": [
+          {
+            "value": 100,
+            "source": "email_security_posture"
+          }
+        ],
+        "dmarc_sp": [
+          {
+            "value": "none",
+            "source": "email_security_posture"
+          }
+        ],
+        "mx": [
+          {
+            "value": [
+              "mx.acme-corp.example"
+            ],
+            "source": "email_security_posture"
+          }
+        ],
+        "email_posture": [
+          {
+            "value": {
+              "spf": "valid (-all)",
+              "dmarc": "p=reject",
+              "mx": "mx.acme-corp.example"
+            },
+            "source": "email_security_posture"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [],
+  "expect": {
+    "spoofable_email_domain": {
+      "min": 1,
+      "max": 1,
+      "severity": "high"
+    }
+  }
+}

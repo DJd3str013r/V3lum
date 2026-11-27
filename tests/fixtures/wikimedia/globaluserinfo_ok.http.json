@@ -1,0 +1,8 @@
+{
+ "_fixture": "DOC-SHAPED: meta=globaluserinfo&guiprop=merged|unattached|editcount, formatversion=2 (CentralAuth API docs; values illustrative for the documentation account 'Example'). Re-capture with the contact UA before merge (FC5)",
+ "status": 200,
+ "headers": {
+  "content-type": "application/json; charset=utf-8"
+ },
+ "body": "{\"batchcomplete\": true, \"query\": {\"globaluserinfo\": {\"home\": \"enwiki\", \"id\": 4321, \"registration\": \"2006-04-28T19:36:07Z\", \"name\": \"Example\", \"merged\": [{\"wiki\": \"enwiki\", \"url\": \"https://en.wikipedia.org\", \"timestamp\": \"2008-03-20T14:22:00Z\", \"method\": \"primary\", \"editcount\": 22, \"registration\": \"2005-12-15T21:56:59Z\"}, {\"wiki\": \"commonswiki\", \"url\": \"https://commons.wikimedia.org\", \"timestamp\": \"2008-03-20T14:25:10Z\", \"method\": \"login\", \"editcount\": 3, \"registration\": \"2008-03-20T14:25:10Z\", \"groups\": [\"autopatrolled\"]}, {\"wiki\": \"ptwiki\", \"url\": \"https://pt.wikipedia.org\", \"timestamp\": \"2009-07-01T10:00:00Z\", \"method\": \"login\", \"editcount\": 1, \"registration\": \"2009-07-01T10:00:00Z\"}, {\"wiki\": \"dewiki\", \"url\": \"https://de.wikipedia.org\", \"timestamp\": \"2010-01-02T03:04:05Z\", \"method\": \"login\", \"editcount\": 0, \"registration\": \"2010-01-02T03:04:05Z\", \"blocked\": {\"expiry\": \"infinity\", \"reason\": \"example\"}}], \"unattached\": [], \"editcount\": 26}}}"
+}

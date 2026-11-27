@@ -1,0 +1,30 @@
+{
+ "ok": true,
+ "doc": {
+  "title": "Etherscan exchange",
+  "creator": "GraphSense Core Team",
+  "description": "Cryptocurrency addresses associated with exchange",
+  "lastmod": "2023-08-16 12:18:52.619444",
+  "category": "exchange",
+  "source": "https://etherscan.io/accounts/label/exchange",
+  "confidence": "web_crawl",
+  "currency": "ETH",
+  "tags": [
+   {
+    "address": "0xc96c1609a1a45ccc667b2b7fa6508e29617f7b69",
+    "label": "2GT_token (2GT)",
+    "concepts": [
+     "exchange"
+    ]
+   },
+   {
+    "address": "0x05f51aab068caa6ab7eeb672f88c180f67f17ec7",
+    "label": "ABCC",
+    "concepts": [
+     "exchange"
+    ],
+    "actor": "abcc"
+   }
+  ]
+ }
+}

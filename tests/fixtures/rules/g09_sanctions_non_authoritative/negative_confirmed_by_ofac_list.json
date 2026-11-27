@@ -1,0 +1,63 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "options": {
+  "mode": "passive",
+  "tlp": "amber",
+  "depth": 1
+ },
+ "nodes": [
+  {
+   "key": "eth_address:0x0330070fd38ec3bb94f58fa55d40368271e9e54a",
+   "depth": 0,
+   "seed": true,
+   "attributes": {
+    "sanctioned": [
+     {
+      "value": true,
+      "source": "goplus_address"
+     },
+     {
+      "value": true,
+      "source": "crypto_sanctions_offline"
+     }
+    ]
+   },
+   "findings": [
+    {
+     "title": "Address flagged by a token-security service",
+     "severity": "medium",
+     "confidence": 0.4,
+     "confidence_label": "possible",
+     "criterion": "third-party security flag 'sanctioned' (not authoritative)",
+     "tags": [
+      "sanctions"
+     ],
+     "module": "goplus_address",
+     "source": "goplus.address",
+     "data": {
+      "flag": "sanctioned"
+     }
+    },
+    {
+     "title": "Address on the OFAC SDN list (US)",
+     "severity": "critical",
+     "confidence": 0.9,
+     "confidence_label": "confirmed",
+     "criterion": "exact match in the OFAC sanctioned-address list ETH (0xB10C, list date 2026-11-26)",
+     "tags": [
+      "sanctions"
+     ],
+     "module": "crypto_sanctions_offline",
+     "source": "github.crypto_sanctions_offline_ofac_lists",
+     "data": {
+      "lists": [
+       "ETH"
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "edges": []
+}

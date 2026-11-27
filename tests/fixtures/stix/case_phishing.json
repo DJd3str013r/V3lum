@@ -1,0 +1,602 @@
+{
+ "schema": "v3lum.case/2",
+ "tool": {
+  "name": "V3LUM",
+  "version": "test"
+ },
+ "case_id": "20261126-100000-a1b2",
+ "created": "2026-11-26T10:00:00+00:00",
+ "tlp": "amber",
+ "options": {
+  "mode": "passive",
+  "tlp": "amber",
+  "licence_profile": "corporate",
+  "purpose": "phishing report",
+  "ticket": "INC-0001"
+ },
+ "licence_profile": "corporate",
+ "licence_used": {},
+ "seeds": [
+  "domain:login-acme.example",
+  "email:joao.silva@acme-corp.example",
+  "cpf:52998224725"
+ ],
+ "summary": {
+  "risk_score": 72.0,
+  "risk_level": "high"
+ },
+ "risk": {
+  "score": 72.0,
+  "level": "high",
+  "no_export": [
+   "email:joao.silva@acme-corp.example",
+   "cpf:52998224725"
+  ]
+ },
+ "case_dir": "/home/analyst/.v3lum/cases/20261126-100000-a1b2",
+ "entities": [
+  {
+   "key": "domain:login-acme.example",
+   "type": "domain",
+   "value": "login-acme.example",
+   "display": "login-acme.example",
+   "seed": true,
+   "depth": 0,
+   "tags": [],
+   "attributes": {}
+  },
+  {
+   "key": "ipv4:203.0.113.10",
+   "type": "ipv4",
+   "value": "203.0.113.10",
+   "display": "203.0.113.10",
+   "seed": false,
+   "depth": 1,
+   "tags": [],
+   "attributes": {
+    "sightings": [
+     {
+      "value": {
+       "count": 2,
+       "restricted": 1,
+       "last_seen": "2026-10-01",
+       "verdicts": [
+        "malicious"
+       ],
+       "cases": [
+        "20261001-090000-ffff"
+       ]
+      },
+      "source": "case_sightings"
+     }
+    ]
+   }
+  },
+  {
+   "key": "url:https://login-acme.example/it's\\path?x=1",
+   "type": "url",
+   "value": "https://login-acme.example/it's\\path?x=1",
+   "display": "https://login-acme.example/it's\\path?x=1",
+   "seed": false,
+   "depth": 1,
+   "tags": [],
+   "attributes": {}
+  },
+  {
+   "key": "url:https://login-acme.example/reset?email=joao.silva@acme-corp.example",
+   "type": "url",
+   "value": "https://login-acme.example/reset?email=joao.silva@acme-corp.example",
+   "display": "https://login-acme.example/reset?email=joao.silva@acme-corp.example",
+   "seed": false,
+   "depth": 1,
+   "tags": [],
+   "attributes": {}
+  },
+  {
+   "key": "sha256:a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1",
+   "type": "sha256",
+   "value": "a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1",
+   "display": "a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1",
+   "seed": false,
+   "depth": 1,
+   "tags": [],
+   "attributes": {
+    "md5": [
+     {
+      "value": "b7e2b7e2b7e2b7e2b7e2b7e2b7e2b7e2",
+      "source": "sandbox"
+     }
+    ]
+   }
+  },
+  {
+   "key": "cve:CVE-2024-3400",
+   "type": "cve",
+   "value": "CVE-2024-3400",
+   "display": "CVE-2024-3400",
+   "seed": false,
+   "depth": 2,
+   "tags": [],
+   "attributes": {}
+  },
+  {
+   "key": "mitre_technique:T1566",
+   "type": "mitre_technique",
+   "value": "T1566",
+   "display": "T1566",
+   "seed": false,
+   "depth": 2,
+   "tags": [],
+   "attributes": {}
+  },
+  {
+   "key": "threat_actor:APT28",
+   "type": "threat_actor",
+   "value": "APT28",
+   "display": "APT28",
+   "seed": false,
+   "depth": 2,
+   "tags": [],
+   "attributes": {}
+  },
+  {
+   "key": "malware_family:V3lumTestLoader",
+   "type": "malware_family",
+   "value": "V3lumTestLoader",
+   "display": "V3lumTestLoader",
+   "seed": false,
+   "depth": 2,
+   "tags": [],
+   "attributes": {}
+  },
+  {
+   "key": "asn:AS64500",
+   "type": "asn",
+   "value": "AS64500",
+   "display": "AS64500",
+   "seed": false,
+   "depth": 2,
+   "tags": [],
+   "attributes": {}
+  },
+  {
+   "key": "email:joao.silva@acme-corp.example",
+   "type": "email",
+   "value": "joao.silva@acme-corp.example",
+   "display": "joao.silva@acme-corp.example",
+   "seed": true,
+   "depth": 0,
+   "tags": [],
+   "attributes": {}
+  },
+  {
+   "key": "cpf:52998224725",
+   "type": "cpf",
+   "value": "52998224725",
+   "display": "***.982.247-**",
+   "seed": true,
+   "depth": 0,
+   "tags": [],
+   "attributes": {}
+  },
+  {
+   "key": "person_name:Joao Silva Teste",
+   "type": "person_name",
+   "value": "Joao Silva Teste",
+   "display": "Joao Silva Teste",
+   "seed": false,
+   "depth": 1,
+   "tags": [],
+   "attributes": {}
+  },
+  {
+   "key": "username:jsilva_teste",
+   "type": "username",
+   "value": "jsilva_teste",
+   "display": "jsilva_teste",
+   "seed": false,
+   "depth": 1,
+   "tags": [],
+   "attributes": {}
+  },
+  {
+   "key": "phone:+5511987654321",
+   "type": "phone",
+   "value": "+5511987654321",
+   "display": "+55 11 98765-4321",
+   "seed": false,
+   "depth": 1,
+   "tags": [],
+   "attributes": {}
+  },
+  {
+   "key": "file:/home/analyst/cases/evidence/invoice-joao.pdf",
+   "type": "file",
+   "value": "/home/analyst/cases/evidence/invoice-joao.pdf",
+   "display": "invoice-joao.pdf",
+   "seed": false,
+   "depth": 1,
+   "tags": [],
+   "attributes": {}
+  }
+ ],
+ "edges": [
+  {
+   "src": "domain:login-acme.example",
+   "dst": "ipv4:203.0.113.10",
+   "relation": "resolves_to",
+   "module": "dns_records",
+   "confidence": 1.0,
+   "confidence_label": "confirmed",
+   "expand": true
+  },
+  {
+   "src": "domain:login-acme.example",
+   "dst": "url:https://login-acme.example/it's\\path?x=1",
+   "relation": "hosts_url",
+   "module": "urlscan",
+   "confidence": 0.8,
+   "confidence_label": "probable",
+   "expand": true
+  },
+  {
+   "src": "email:joao.silva@acme-corp.example",
+   "dst": "domain:login-acme.example",
+   "relation": "registrant_of",
+   "module": "whois",
+   "confidence": 0.7,
+   "confidence_label": "probable",
+   "expand": false
+  },
+  {
+   "src": "sha256:a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1",
+   "dst": "malware_family:V3lumTestLoader",
+   "relation": "family",
+   "module": "sandbox",
+   "confidence": 0.9,
+   "confidence_label": "confirmed",
+   "expand": false
+  },
+  {
+   "src": "ipv4:203.0.113.10",
+   "dst": "asn:AS64500",
+   "relation": "in_asn",
+   "module": "asn_context",
+   "confidence": 1.0,
+   "confidence_label": "confirmed",
+   "expand": false
+  },
+  {
+   "src": "malware_family:V3lumTestLoader",
+   "dst": "threat_actor:APT28",
+   "relation": "attributed_to",
+   "module": "cti",
+   "confidence": 0.6,
+   "confidence_label": "probable",
+   "expand": false
+  }
+ ],
+ "findings": [
+  {
+   "id": "f0dom0000000001",
+   "entity": "domain:login-acme.example",
+   "module": "feed_a",
+   "title": "Phishing page targeting joao.silva@acme-corp.example",
+   "severity": "high",
+   "description": "Registrant joao.silva@acme-corp.example (CPF 529.982.247-25, tel +55 11 98765-4321) per WHOIS.",
+   "confidence": 0.7,
+   "confidence_label": "probable",
+   "criterion": "listed by feed A",
+   "tags": [
+    "phishing",
+    "malicious"
+   ],
+   "references": [
+    "https://feed-a.example/report/1"
+   ],
+   "source": "feed_a.list",
+   "observed_first": "2026-11-18",
+   "observed_last": "2026-11-20",
+   "attack": [
+    "T1566"
+   ],
+   "data": {
+    "registrant": "joao.silva@acme-corp.example"
+   },
+   "suppressed_by": [],
+   "override": null
+  },
+  {
+   "id": "f0dom0000000002",
+   "entity": "domain:login-acme.example",
+   "module": "feed_b",
+   "title": "Listed as phishing by feed B",
+   "severity": "high",
+   "description": "Feed B lists the domain.",
+   "confidence": 0.7,
+   "confidence_label": "probable",
+   "criterion": "listed by feed B",
+   "tags": [
+    "phishing"
+   ],
+   "references": [],
+   "source": "feed_b.list",
+   "observed_first": null,
+   "observed_last": "2026-11-19",
+   "attack": [],
+   "data": {},
+   "suppressed_by": [],
+   "override": null
+  },
+  {
+   "id": "f0dom0000000003",
+   "entity": "domain:login-acme.example",
+   "module": "breach_x",
+   "title": "Domain present in a breach index",
+   "severity": "medium",
+   "description": "Employee accounts of the domain appear in a breach index.",
+   "confidence": 0.6,
+   "confidence_label": "probable",
+   "criterion": "breach metadata",
+   "tags": [
+    "breach",
+    "privacy"
+   ],
+   "references": [],
+   "source": "",
+   "observed_first": null,
+   "observed_last": null,
+   "attack": [],
+   "data": {},
+   "suppressed_by": [],
+   "override": null
+  },
+  {
+   "id": "f0ip00000000001",
+   "entity": "ipv4:203.0.113.10",
+   "module": "case_sightings",
+   "title": "seen in 2 previous cases (last 2026-10-01, verdict malicious)",
+   "severity": "low",
+   "description": "Case 20261001-090000-ffff (2026-10-01) marked it malicious.",
+   "confidence": 0.9,
+   "confidence_label": "confirmed",
+   "criterion": "case DB sightings",
+   "tags": [
+    "sighting"
+   ],
+   "references": [],
+   "source": "",
+   "observed_first": null,
+   "observed_last": null,
+   "attack": [],
+   "data": {
+    "count": 2,
+    "restricted": 1,
+    "cases": [
+     "20261001-090000-ffff"
+    ]
+   },
+   "suppressed_by": [],
+   "override": null
+  },
+  {
+   "id": "f0ip00000000002",
+   "entity": "ipv4:203.0.113.10",
+   "module": "internal_tip_sightings",
+   "title": "known internally: MISP event #4211",
+   "severity": "medium",
+   "description": "Company MISP event #4211 lists the address.",
+   "confidence": 0.8,
+   "confidence_label": "probable",
+   "criterion": "internal TIP",
+   "tags": [
+    "internal_sighting"
+   ],
+   "references": [],
+   "source": "internal_misp.events",
+   "observed_first": null,
+   "observed_last": null,
+   "attack": [],
+   "data": {},
+   "suppressed_by": [],
+   "override": null
+  },
+  {
+   "id": "f0ip00000000003",
+   "entity": "ipv4:203.0.113.10",
+   "module": "internal_tip_red",
+   "title": "RED-marked platform hit",
+   "severity": "high",
+   "description": "A TLP:RED platform result.",
+   "confidence": 0.8,
+   "confidence_label": "probable",
+   "criterion": "internal TIP (RED)",
+   "tags": [
+    "malicious"
+   ],
+   "references": [],
+   "source": "",
+   "observed_first": null,
+   "observed_last": null,
+   "attack": [],
+   "data": {},
+   "suppressed_by": [],
+   "override": null
+  },
+  {
+   "id": "f0hash000000001",
+   "entity": "sha256:a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1",
+   "module": "sandbox",
+   "title": "Sandbox verdict: V3lumTestLoader dropper",
+   "severity": "high",
+   "description": "Dropper sample.",
+   "confidence": 0.6,
+   "confidence_label": "confirmed",
+   "criterion": "sandbox verdict",
+   "tags": [
+    "malware"
+   ],
+   "references": [],
+   "source": "",
+   "observed_first": null,
+   "observed_last": "2026-11-21T08:30:00Z",
+   "attack": [
+    "T1204"
+   ],
+   "data": {},
+   "suppressed_by": [],
+   "override": {
+    "analyst": "analyst1",
+    "label": "confirmed",
+    "severity": null,
+    "verdict": "right",
+    "note": "PRIVATE ANALYST NOTE about Joao",
+    "at": "2026-11-26T11:00:00+00:00",
+    "auto": {
+     "label": "probable",
+     "severity": "high",
+     "criterion": "sandbox verdict"
+    }
+   }
+  }
+ ],
+ "correlations": [
+  {
+   "id": "c0cr270000000001",
+   "rule": "multi_source_malicious",
+   "title": "login-acme.example listed as malicious by 2 independent upstream families",
+   "severity": "high",
+   "description": "Upstream families listing the entity inside the decay window: feed_a, feed_b.",
+   "entities": [
+    "domain:login-acme.example"
+   ],
+   "confidence": 0.8,
+   "evidence": [
+    "counted: feed_a.list",
+    "counted: feed_b.list",
+    "finding:f0dom0000000001",
+    "finding:f0dom0000000002"
+   ],
+   "recommendation": "Block the indicator at the perimeter/EDR.",
+   "tags": [
+    "malicious"
+   ],
+   "criterion": "2 independent upstream families (feed_a, feed_b) inside the decay window",
+   "confidence_label": "probable",
+   "attack": [
+    "T1566"
+   ],
+   "references": [],
+   "version": 1,
+   "why": "families counted: feed_a, feed_b",
+   "key": "",
+   "suppressed_by": []
+  },
+  {
+   "id": "c0cr270000000002",
+   "rule": "multi_source_malicious",
+   "title": "203.0.113.10 listed as malicious by 1 independent upstream family",
+   "severity": "medium",
+   "description": "A single upstream family lists it.",
+   "entities": [
+    "ipv4:203.0.113.10"
+   ],
+   "confidence": 0.6,
+   "evidence": [],
+   "recommendation": "Corroborate first.",
+   "tags": [
+    "suspicious"
+   ],
+   "criterion": "1 independent upstream family (feed_c) inside the decay window",
+   "confidence_label": "probable",
+   "attack": [],
+   "references": [],
+   "version": 1,
+   "why": "",
+   "key": "",
+   "suppressed_by": []
+  },
+  {
+   "id": "c0recur00000001",
+   "rule": "recurrent_infrastructure",
+   "title": "Recurrent infrastructure",
+   "severity": "medium",
+   "description": "Seen in case 20261001-090000-ffff on 2026-10-01 with verdict malicious.",
+   "entities": [
+    "ipv4:203.0.113.10"
+   ],
+   "confidence": 0.7,
+   "evidence": [
+    "case 20261001-090000-ffff 2026-10-01 malicious"
+   ],
+   "recommendation": "",
+   "tags": [
+    "recurrent"
+   ],
+   "criterion": "earlier cases",
+   "confidence_label": "probable",
+   "attack": [],
+   "references": [],
+   "version": 1,
+   "why": "same indicator in case 20261001-090000-ffff",
+   "key": "",
+   "suppressed_by": []
+  },
+  {
+   "id": "c0ident00000001",
+   "rule": "identity_email_domain",
+   "title": "Identity link between the e-mail and the domain",
+   "severity": "low",
+   "description": "The registrant e-mail is tied to the domain.",
+   "entities": [
+    "domain:login-acme.example"
+   ],
+   "confidence": 0.6,
+   "evidence": [],
+   "recommendation": "",
+   "tags": [
+    "privacy",
+    "identity_link"
+   ],
+   "criterion": "registrant",
+   "confidence_label": "probable",
+   "attack": [],
+   "references": [],
+   "version": 1,
+   "why": "",
+   "key": "",
+   "suppressed_by": []
+  }
+ ],
+ "modules": [
+  {
+   "module": "feed_a",
+   "entity": "domain:login-acme.example",
+   "status": "ok",
+   "findings": [
+    "f0dom0000000001"
+   ],
+   "evidence": "/home/analyst/.v3lum/cases/20261126-100000-a1b2/evidence/feed_a.json",
+   "tlp": null
+  },
+  {
+   "module": "internal_tip_red",
+   "entity": "ipv4:203.0.113.10",
+   "status": "ok",
+   "findings": [
+    "f0ip00000000003"
+   ],
+   "evidence": "",
+   "tlp": "red"
+  }
+ ],
+ "notes": [
+  "analyst remark: call Joao"
+ ],
+ "feedback": [
+  {
+   "verdict": "partial",
+   "notes": "PRIVATE FEEDBACK NOTE"
+  }
+ ]
+}

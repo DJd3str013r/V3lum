@@ -1,0 +1,53 @@
+[
+ {
+  "id": 900101,
+  "dataReferencia": "01/11/2026",
+  "dataInicioSancao": "15/01/2025",
+  "dataFimSancao": "",
+  "dataPublicacaoSancao": "15/01/2025",
+  "dataTransitadoJulgado": "",
+  "dataOrigemInformacao": "15/01/2025",
+  "tipoSancao": {
+   "descricaoResumida": "Multa - Lei Anticorrupção",
+   "descricaoPortal": "Impedido"
+  },
+  "fonteSancao": {
+   "nomeExibicao": "Orgão Exemplo",
+   "telefoneContato": "+55 11 5555-0100",
+   "enderecoContato": "Endereco de exemplo, 100"
+  },
+  "fundamentacao": [
+   {
+    "codigo": "LEI 14133 - ART. 156",
+    "descricao": "Lei 14.133/2021, art. 156, III"
+   }
+  ],
+  "orgaoSancionador": {
+   "nome": "COMANDO DO EXERCITO",
+   "siglaUf": "RJ",
+   "poder": "Executivo",
+   "esfera": "Federal"
+  },
+  "sancionado": {
+   "nome": "EMPRESA EXEMPLO ALFA LTDA",
+   "codigoFormatado": "11.222.333/0001-81"
+  },
+  "pessoa": {
+   "id": 0,
+   "cpfFormatado": "",
+   "cnpjFormatado": "11.222.333/0001-81",
+   "numeroInscricaoSocial": "",
+   "nome": "EMPRESA EXEMPLO ALFA LTDA",
+   "razaoSocialReceita": "EMPRESA EXEMPLO ALFA LTDA",
+   "nomeFantasiaReceita": "",
+   "tipo": "Pessoa Jurídica"
+  },
+  "textoPublicacao": "",
+  "linkPublicacao": "https://www.example.com/dou/exemplo",
+  "detalhamentoPublicacao": "",
+  "numeroProcesso": "PROC-EXEMPLO-900101",
+  "abrangenciaDefinidaDecisaoJudicial": "Em todos os Poderes da Esfera do órgão sancionador",
+  "informacoesAdicionaisDoOrgaoSancionador": "",
+  "valorMulta": "150.000,00"
+ }
+]

@@ -1,0 +1,442 @@
+{
+ "schema": "v3lum.acceptance_routes/1",
+ "module": "gleif",
+ "routes": [
+  {
+   "method": "GET",
+   "url": "https://api.gleif.org/api/v1/lei-records?filter%5Bentity.registeredAs%5D=00.000.000%2F0001-91&page%5Bsize%5D=10",
+   "status": 200,
+   "json": {
+    "meta": {
+     "goldenCopy": {
+      "publishDate": "2026-11-26T00:00:00Z"
+     },
+     "pagination": {
+      "currentPage": 1,
+      "perPage": 10,
+      "from": 1,
+      "to": 1,
+      "total": 1,
+      "lastPage": 1
+     }
+    },
+    "links": {
+     "first": "https://api.gleif.org/api/v1/lei-records?filter%5Bentity.registeredAs%5D=00.000.000%2F0001-91&page%5Bnumber%5D=1&page%5Bsize%5D=10",
+     "last": "https://api.gleif.org/api/v1/lei-records?filter%5Bentity.registeredAs%5D=00.000.000%2F0001-91&page%5Bnumber%5D=1&page%5Bsize%5D=10"
+    },
+    "data": [
+     {
+      "type": "lei-records",
+      "id": "QE0Q0253K88YAGNPE356",
+      "attributes": {
+       "lei": "QE0Q0253K88YAGNPE356",
+       "entity": {
+        "legalName": {
+         "name": "BANCO DO BRASIL SA",
+         "language": "pt"
+        },
+        "otherNames": [],
+        "legalAddress": {
+         "addressLines": [
+          "Q SAUN QUADRA 5 BLOCO B TORRE I, II, III"
+         ],
+         "city": "BRASILIA",
+         "region": "BR-DF",
+         "country": "BR",
+         "postalCode": "70040-912"
+        },
+        "headquartersAddress": {
+         "addressLines": [
+          "13 ANDAR"
+         ],
+         "city": "BRASILIA",
+         "region": "BR-DF",
+         "country": "BR",
+         "postalCode": "70040-250"
+        },
+        "registeredAt": {
+         "id": "RA000041",
+         "other": null
+        },
+        "registeredAs": "00.000.000/0001-91",
+        "jurisdiction": "BR",
+        "category": "GENERAL",
+        "legalForm": {
+         "id": "X0SD",
+         "other": null
+        },
+        "status": "ACTIVE",
+        "successorEntity": {
+         "lei": null,
+         "name": null
+        }
+       },
+       "registration": {
+        "initialRegistrationDate": "2012-06-06T15:52:00Z",
+        "lastUpdateDate": "2026-08-07T07:20:59Z",
+        "status": "ISSUED",
+        "nextRenewalDate": "2027-08-15T13:03:10Z",
+        "managingLou": "5493001KJTIIGC8Y1R12",
+        "corroborationLevel": "FULLY_CORROBORATED"
+       },
+       "bic": [
+        "BRASBRRJXXX",
+        "BRASCNSHXXX"
+       ]
+      },
+      "relationships": {
+       "direct-parent": {
+        "links": {
+         "reporting-exception": "https://api.gleif.org/api/v1/lei-records/QE0Q0253K88YAGNPE356/direct-parent-reporting-exception"
+        }
+       },
+       "ultimate-parent": {
+        "links": {
+         "reporting-exception": "https://api.gleif.org/api/v1/lei-records/QE0Q0253K88YAGNPE356/ultimate-parent-reporting-exception"
+        }
+       },
+       "direct-children": {
+        "links": {
+         "relationship-records": "https://api.gleif.org/api/v1/lei-records/QE0Q0253K88YAGNPE356/direct-child-relationships",
+         "related": "https://api.gleif.org/api/v1/lei-records/QE0Q0253K88YAGNPE356/direct-children"
+        }
+       }
+      }
+     }
+    ]
+   },
+   "headers": {
+    "content-type": "application/vnd.api+json"
+   },
+   "latency_ms": 890
+  },
+  {
+   "method": "GET",
+   "url": "https://api.gleif.org/api/v1/lei-records/QE0Q0253K88YAGNPE356/direct-parent-reporting-exception",
+   "status": 200,
+   "json": {
+    "meta": {
+     "goldenCopy": {
+      "publishDate": "2026-11-26T00:00:00Z"
+     }
+    },
+    "data": {
+     "type": "reporting-exceptions",
+     "id": "QE0Q0253K88YAGNPE356|6|05820a9f6981f93d7b60d2ebb20b8571fd21709c6ade931d4e88de1016dbed3c|DIRECT_ACCOUNTING_CONSOLIDATION_PARENT|",
+     "attributes": {
+      "validFrom": null,
+      "validTo": null,
+      "lei": "QE0Q0253K88YAGNPE356",
+      "category": "DIRECT_ACCOUNTING_CONSOLIDATION_PARENT",
+      "reason": "NON_CONSOLIDATING",
+      "reference": null
+     },
+     "relationships": {
+      "lei-record": {
+       "links": {
+        "related": "https://api.gleif.org/api/v1/lei-records/QE0Q0253K88YAGNPE356"
+       }
+      }
+     }
+    }
+   },
+   "headers": {
+    "content-type": "application/vnd.api+json"
+   },
+   "latency_ms": 600
+  },
+  {
+   "method": "GET",
+   "url": "https://api.gleif.org/api/v1/lei-records/QE0Q0253K88YAGNPE356/ultimate-parent-reporting-exception",
+   "status": 200,
+   "json": {
+    "meta": {
+     "goldenCopy": {
+      "publishDate": "2026-11-26T00:00:00Z"
+     }
+    },
+    "data": {
+     "type": "reporting-exceptions",
+     "id": "QE0Q0253K88YAGNPE356|6|8846cdcdf1592529fe15875f50320e5bbbe7096f51aa6590c0dccef0a872077e|ULTIMATE_ACCOUNTING_CONSOLIDATION_PARENT|",
+     "attributes": {
+      "validFrom": null,
+      "validTo": null,
+      "lei": "QE0Q0253K88YAGNPE356",
+      "category": "ULTIMATE_ACCOUNTING_CONSOLIDATION_PARENT",
+      "reason": "NON_CONSOLIDATING",
+      "reference": null
+     },
+     "relationships": {
+      "lei-record": {
+       "links": {
+        "related": "https://api.gleif.org/api/v1/lei-records/QE0Q0253K88YAGNPE356"
+       }
+      }
+     }
+    }
+   },
+   "headers": {
+    "content-type": "application/vnd.api+json"
+   },
+   "latency_ms": 980
+  },
+  {
+   "method": "GET",
+   "url": "https://api.gleif.org/api/v1/lei-records/QE0Q0253K88YAGNPE356/direct-children?page%5Bsize%5D=10",
+   "status": 200,
+   "json": {
+    "meta": {
+     "goldenCopy": {
+      "publishDate": "2026-11-26T00:00:00Z"
+     },
+     "pagination": {
+      "currentPage": 1,
+      "perPage": 10,
+      "from": 1,
+      "to": 3,
+      "total": 3,
+      "lastPage": 1
+     }
+    },
+    "links": {
+     "first": "https://api.gleif.org/api/v1/lei-records/QE0Q0253K88YAGNPE356/direct-children?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+     "last": "https://api.gleif.org/api/v1/lei-records/QE0Q0253K88YAGNPE356/direct-children?page%5Bnumber%5D=1&page%5Bsize%5D=10"
+    },
+    "data": [
+     {
+      "type": "lei-records",
+      "id": "635400ULZIFPG1KU1F60",
+      "attributes": {
+       "lei": "635400ULZIFPG1KU1F60",
+       "entity": {
+        "legalName": {
+         "name": "BB GESTAO DE RECURSOS - DISTRIBUIDORA DE TITULOS E VALORES MOBILIARIOS S.A.",
+         "language": "en-IE"
+        },
+        "otherNames": [],
+        "legalAddress": {
+         "addressLines": [
+          "Praça XV de Novembro"
+         ],
+         "city": "Rio de Janeiro (RJ)",
+         "region": "BR-RJ",
+         "country": "BR",
+         "postalCode": "20010-010"
+        },
+        "headquartersAddress": {
+         "addressLines": [
+          "Praça XV de Novembro"
+         ],
+         "city": "Rio de Janeiro (RJ)",
+         "region": "BR-RJ",
+         "country": "BR",
+         "postalCode": "20010-010"
+        },
+        "registeredAt": {
+         "id": "RA999999",
+         "other": null
+        },
+        "registeredAs": null,
+        "jurisdiction": "BR",
+        "category": "GENERAL",
+        "legalForm": {
+         "id": "9999",
+         "other": "SOCIEDADE ANONIMA FECHADA"
+        },
+        "status": "ACTIVE",
+        "successorEntity": {
+         "lei": null,
+         "name": null
+        }
+       },
+       "registration": {
+        "initialRegistrationDate": "2019-07-08T23:00:00Z",
+        "lastUpdateDate": "2026-07-22T23:00:00Z",
+        "status": "ISSUED",
+        "nextRenewalDate": "2027-07-07T23:00:00Z",
+        "managingLou": "635400DZBUIMTBCXGA12",
+        "corroborationLevel": "ENTITY_SUPPLIED_ONLY"
+       },
+       "bic": []
+      },
+      "relationships": {
+       "direct-parent": {
+        "links": {
+         "relationship-record": "https://api.gleif.org/api/v1/lei-records/635400ULZIFPG1KU1F60/direct-parent-relationship",
+         "lei-record": "https://api.gleif.org/api/v1/lei-records/635400ULZIFPG1KU1F60/direct-parent"
+        }
+       },
+       "ultimate-parent": {
+        "links": {
+         "relationship-record": "https://api.gleif.org/api/v1/lei-records/635400ULZIFPG1KU1F60/ultimate-parent-relationship",
+         "lei-record": "https://api.gleif.org/api/v1/lei-records/635400ULZIFPG1KU1F60/ultimate-parent"
+        }
+       }
+      }
+     },
+     {
+      "type": "lei-records",
+      "id": "635400MHDAK5JBDC6M46",
+      "attributes": {
+       "lei": "635400MHDAK5JBDC6M46",
+       "entity": {
+        "legalName": {
+         "name": "BB CAYMAN ISLANDS HOLDING",
+         "language": "en"
+        },
+        "otherNames": [
+         {
+          "name": "BRASILIAN AMERICAN MERCHANT BANK",
+          "language": "en",
+          "type": "PREVIOUS_LEGAL_NAME"
+         }
+        ],
+        "legalAddress": {
+         "addressLines": [
+          "P. O. Box 1360"
+         ],
+         "city": "George Town",
+         "region": null,
+         "country": "KY",
+         "postalCode": "KY1-1108"
+        },
+        "headquartersAddress": {
+         "addressLines": [
+          "P. O. Box 1360"
+         ],
+         "city": "George Town",
+         "region": null,
+         "country": "KY",
+         "postalCode": "KY1-1108"
+        },
+        "registeredAt": {
+         "id": "RA000086",
+         "other": null
+        },
+        "registeredAs": "1933",
+        "jurisdiction": "KY",
+        "category": "GENERAL",
+        "legalForm": {
+         "id": "UE3G",
+         "other": null
+        },
+        "status": "ACTIVE",
+        "successorEntity": {
+         "lei": null,
+         "name": null
+        }
+       },
+       "registration": {
+        "initialRegistrationDate": "2018-06-13T23:00:00Z",
+        "lastUpdateDate": "2026-06-12T05:47:57Z",
+        "status": "ISSUED",
+        "nextRenewalDate": "2027-07-01T17:22:32Z",
+        "managingLou": "529900T8BM49AURSDO55",
+        "corroborationLevel": "FULLY_CORROBORATED"
+       },
+       "bic": []
+      },
+      "relationships": {
+       "direct-parent": {
+        "links": {
+         "relationship-record": "https://api.gleif.org/api/v1/lei-records/635400MHDAK5JBDC6M46/direct-parent-relationship",
+         "lei-record": "https://api.gleif.org/api/v1/lei-records/635400MHDAK5JBDC6M46/direct-parent"
+        }
+       },
+       "ultimate-parent": {
+        "links": {
+         "relationship-record": "https://api.gleif.org/api/v1/lei-records/635400MHDAK5JBDC6M46/ultimate-parent-relationship",
+         "lei-record": "https://api.gleif.org/api/v1/lei-records/635400MHDAK5JBDC6M46/ultimate-parent"
+        }
+       },
+       "direct-children": {
+        "links": {
+         "relationship-records": "https://api.gleif.org/api/v1/lei-records/635400MHDAK5JBDC6M46/direct-child-relationships",
+         "related": "https://api.gleif.org/api/v1/lei-records/635400MHDAK5JBDC6M46/direct-children"
+        }
+       }
+      }
+     },
+     {
+      "type": "lei-records",
+      "id": "X2EUTZGMHS8RBQFIUS93",
+      "attributes": {
+       "lei": "X2EUTZGMHS8RBQFIUS93",
+       "entity": {
+        "legalName": {
+         "name": "BANCO VOTORANTIM S.A.",
+         "language": "pt"
+        },
+        "otherNames": [],
+        "legalAddress": {
+         "addressLines": [
+          "AV DAS NACOES UNIDAS 14171"
+         ],
+         "city": "SAO PAULO",
+         "region": "BR-SP",
+         "country": "BR",
+         "postalCode": "04794-000"
+        },
+        "headquartersAddress": {
+         "addressLines": [
+          "AV DAS NACOES UNIDAS 14171"
+         ],
+         "city": "SAO PAULO",
+         "region": "BR-SP",
+         "country": "BR",
+         "postalCode": "04794-000"
+        },
+        "registeredAt": {
+         "id": "RA000681",
+         "other": null
+        },
+        "registeredAs": "59.588.111/0001-03",
+        "jurisdiction": "BR",
+        "category": "GENERAL",
+        "legalForm": {
+         "id": "X0SD",
+         "other": null
+        },
+        "status": "ACTIVE",
+        "successorEntity": {
+         "lei": null,
+         "name": null
+        }
+       },
+       "registration": {
+        "initialRegistrationDate": "2012-06-06T15:52:00Z",
+        "lastUpdateDate": "2026-08-20T09:59:42Z",
+        "status": "ISSUED",
+        "nextRenewalDate": "2027-08-28T00:00:00Z",
+        "managingLou": "5493001KJTIIGC8Y1R12",
+        "corroborationLevel": "FULLY_CORROBORATED"
+       },
+       "bic": [
+        "BAVOBRSPXXX",
+        "BAVOLULLXXX"
+       ]
+      },
+      "relationships": {
+       "direct-parent": {
+        "links": {
+         "relationship-record": "https://api.gleif.org/api/v1/lei-records/X2EUTZGMHS8RBQFIUS93/direct-parent-relationship",
+         "lei-record": "https://api.gleif.org/api/v1/lei-records/X2EUTZGMHS8RBQFIUS93/direct-parent"
+        }
+       },
+       "ultimate-parent": {
+        "links": {
+         "relationship-record": "https://api.gleif.org/api/v1/lei-records/X2EUTZGMHS8RBQFIUS93/ultimate-parent-relationship",
+         "lei-record": "https://api.gleif.org/api/v1/lei-records/X2EUTZGMHS8RBQFIUS93/ultimate-parent"
+        }
+       }
+      }
+     }
+    ]
+   },
+   "headers": {
+    "content-type": "application/vnd.api+json"
+   },
+   "latency_ms": 510
+  }
+ ]
+}

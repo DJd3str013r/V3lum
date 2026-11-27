@@ -1,0 +1,16 @@
+{
+ "request": "POST https://checkurl.phishtank.com/checkurl/",
+ "response": {
+  "status": 403,
+  "headers": {
+   "content-type": "text/html; charset=UTF-8",
+   "server": "cloudflare",
+   "cf-mitigated": "challenge",
+   "cf-ray": "REDACTED-ORD"
+  },
+  "body": "<html><head><title>Just a moment...</title></head><body><noscript>Enable JavaScript and cookies to continue</noscript></body></html>"
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "headers are the standard Cloudflare challenge set (cf-mitigated: challenge); the research capture kept no headers"
+}

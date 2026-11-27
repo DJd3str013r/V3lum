@@ -1,0 +1,27 @@
+{
+ "_note": "minimised research sample design_pivots_and_js.json: the js_extraction block",
+ "js_extraction": {
+  "js_url": "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js",
+  "status": 200,
+  "bytes": 87533,
+  "endpoints_found": 4,
+  "endpoints_sample": [
+   "application/x-www-form-urlencoded",
+   "text/html",
+   "text/plain",
+   "text/xml"
+  ],
+  "secret_hits_on_jquery": [],
+  "positive_control_rules": [
+   "aws-access-token",
+   "github-pat"
+  ],
+  "linkfinder_on_fake": [
+   "/api/v1/users?id=1"
+  ]
+ },
+ "gitleaks_rules": {
+  "total": 222,
+  "python_compilable": 217
+ }
+}

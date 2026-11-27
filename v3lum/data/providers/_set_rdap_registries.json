@@ -1,0 +1,1142 @@
+{
+  "schema": "v3lum.provider-set/1",
+  "notes": "Authoritative RDAP servers of the IANA RDAP bootstrap that the rdap module (P003, batch p1-G01-1) queries directly: four RIRs (ARIN is arin.json) and the domain registries behind the most used TLDs (registro.br is registrobr.json). One provider per operator; ids carry the rdap_ prefix so they never collide with other packages' providers of the same operators.",
+  "providers": [
+    {
+      "id": "rdap_ripe",
+      "name": "RIPE NCC RDAP",
+      "operator": "RIPE NCC (Reseaux IP Europeens Network Coordination Centre)",
+      "hosts": [
+        "rdap.db.ripe.net"
+      ],
+      "hosts_from_settings": [],
+      "internal": false,
+      "tier": "trusted",
+      "tier_rationale": "Regional Internet Registry for Europe, the Middle East and Central Asia (A8 definitions: internet registries and RIRs are trusted); P003 chair rationale: 'registries are trusted'.",
+      "tier_reviewer": "council-1 (A8)",
+      "tier_date": "2026-11-26",
+      "flags": {
+        "publishes_queries": false,
+        "reuses_queries": false,
+        "fetches_target": false,
+        "sensitive": false
+      },
+      "personal_data_review": null,
+      "reliability": {
+        "grade": "A",
+        "justification": "Authoritative registry data for the IP and AS number resources this RIR administers."
+      },
+      "http_profile": {
+        "user_agent": "neutral",
+        "accept": "application/rdap+json",
+        "timeout": 20,
+        "retries": 1,
+        "ttl": 86400,
+        "min_interval": 1.0
+      },
+      "quota": null,
+      "error_markers": [],
+      "keys": {},
+      "sources": {
+        "rdap": {
+          "title": "RDAP /ip/{ip|cidr} and /autnum/{asn} answers of the authoritative RIR (IANA RDAP bootstrap)",
+          "terms": {
+            "class": "open",
+            "evidence_url": "https://www.iana.org/assignments/rdap-ipv4/",
+            "quote": "registro.br RDAP is default-on by decision (A3 BR9). Tier community because rdap.org, a volunteer redirector, receives values on fallback; registries are trusted. Terms open (public registry data).",
+            "checked_at": "2026-11-26",
+            "reviewer": "council-1 (A1)",
+            "free_plan_business_use": true
+          },
+          "upstream_family": "ripe-ncc",
+          "sanitizer": null,
+          "dataset": null,
+          "notes": "Quote: council chair rationale (P003). Authoritative RIR named by the IANA RDAP bootstrap (ipv4.json, ipv6.json and asn.json). Per-query lookups only, no bulk harvesting (P003 cond 3); natural-person contacts are dropped at ingestion (P003 cond 5)."
+        }
+      },
+      "notes": "Owned by batch p1-G01-1 (P003 rdap). Curated from the IANA RDAP bootstrap: an authoritative server whose host is not listed here is never contacted (PASSIVE host allow-list); rdap reports it as could not verify with a manual link (core request: bootstrap-derived registry hosts)."
+    },
+    {
+      "id": "rdap_apnic",
+      "name": "APNIC RDAP",
+      "operator": "Asia-Pacific Network Information Centre (APNIC)",
+      "hosts": [
+        "rdap.apnic.net"
+      ],
+      "hosts_from_settings": [],
+      "internal": false,
+      "tier": "trusted",
+      "tier_rationale": "Regional Internet Registry for the Asia-Pacific region (A8 definitions: internet registries and RIRs are trusted); P003 chair rationale: 'registries are trusted'.",
+      "tier_reviewer": "council-1 (A8)",
+      "tier_date": "2026-11-26",
+      "flags": {
+        "publishes_queries": false,
+        "reuses_queries": false,
+        "fetches_target": false,
+        "sensitive": false
+      },
+      "personal_data_review": null,
+      "reliability": {
+        "grade": "A",
+        "justification": "Authoritative registry data for the IP and AS number resources this RIR administers."
+      },
+      "http_profile": {
+        "user_agent": "neutral",
+        "accept": "application/rdap+json",
+        "timeout": 20,
+        "retries": 1,
+        "ttl": 86400,
+        "min_interval": 1.0
+      },
+      "quota": null,
+      "error_markers": [],
+      "keys": {},
+      "sources": {
+        "rdap": {
+          "title": "RDAP /ip/{ip|cidr} and /autnum/{asn} answers of the authoritative RIR (IANA RDAP bootstrap)",
+          "terms": {
+            "class": "open",
+            "evidence_url": "https://www.iana.org/assignments/rdap-ipv4/",
+            "quote": "registro.br RDAP is default-on by decision (A3 BR9). Tier community because rdap.org, a volunteer redirector, receives values on fallback; registries are trusted. Terms open (public registry data).",
+            "checked_at": "2026-11-26",
+            "reviewer": "council-1 (A1)",
+            "free_plan_business_use": true
+          },
+          "upstream_family": "rir-rdap",
+          "sanitizer": null,
+          "dataset": null,
+          "notes": "Quote: council chair rationale (P003). Authoritative RIR named by the IANA RDAP bootstrap (ipv4.json, ipv6.json and asn.json). Per-query lookups only, no bulk harvesting (P003 cond 3); natural-person contacts are dropped at ingestion (P003 cond 5)."
+        }
+      },
+      "notes": "Owned by batch p1-G01-1 (P003 rdap). Curated from the IANA RDAP bootstrap: an authoritative server whose host is not listed here is never contacted (PASSIVE host allow-list); rdap reports it as could not verify with a manual link (core request: bootstrap-derived registry hosts)."
+    },
+    {
+      "id": "rdap_lacnic",
+      "name": "LACNIC RDAP",
+      "operator": "Latin America and Caribbean Network Information Centre (LACNIC)",
+      "hosts": [
+        "rdap.lacnic.net"
+      ],
+      "hosts_from_settings": [],
+      "internal": false,
+      "tier": "trusted",
+      "tier_rationale": "Regional Internet Registry for Latin America and the Caribbean (delegates Brazil to NIC.br: Brazilian resources answer 307 to rdap.registro.br, verified 2026-11-26) (A8 definitions: internet registries and RIRs are trusted); P003 chair rationale: 'registries are trusted'.",
+      "tier_reviewer": "council-1 (A8)",
+      "tier_date": "2026-11-26",
+      "flags": {
+        "publishes_queries": false,
+        "reuses_queries": false,
+        "fetches_target": false,
+        "sensitive": false
+      },
+      "personal_data_review": null,
+      "reliability": {
+        "grade": "A",
+        "justification": "Authoritative registry data for the IP and AS number resources this RIR administers."
+      },
+      "http_profile": {
+        "user_agent": "neutral",
+        "accept": "application/rdap+json",
+        "timeout": 20,
+        "retries": 1,
+        "ttl": 86400,
+        "min_interval": 1.0
+      },
+      "quota": null,
+      "error_markers": [],
+      "keys": {},
+      "sources": {
+        "rdap": {
+          "title": "RDAP /ip/{ip|cidr} and /autnum/{asn} answers of the authoritative RIR (IANA RDAP bootstrap)",
+          "terms": {
+            "class": "open",
+            "evidence_url": "https://www.iana.org/assignments/rdap-ipv4/",
+            "quote": "registro.br RDAP is default-on by decision (A3 BR9). Tier community because rdap.org, a volunteer redirector, receives values on fallback; registries are trusted. Terms open (public registry data).",
+            "checked_at": "2026-11-26",
+            "reviewer": "council-1 (A1)",
+            "free_plan_business_use": true
+          },
+          "upstream_family": "rir-rdap",
+          "sanitizer": null,
+          "dataset": null,
+          "notes": "Quote: council chair rationale (P003). Authoritative RIR named by the IANA RDAP bootstrap (ipv4.json, ipv6.json and asn.json). Per-query lookups only, no bulk harvesting (P003 cond 3); natural-person contacts are dropped at ingestion (P003 cond 5)."
+        }
+      },
+      "notes": "Owned by batch p1-G01-1 (P003 rdap). Curated from the IANA RDAP bootstrap: an authoritative server whose host is not listed here is never contacted (PASSIVE host allow-list); rdap reports it as could not verify with a manual link (core request: bootstrap-derived registry hosts)."
+    },
+    {
+      "id": "rdap_afrinic",
+      "name": "AFRINIC RDAP",
+      "operator": "African Network Information Centre (AFRINIC)",
+      "hosts": [
+        "rdap.afrinic.net"
+      ],
+      "hosts_from_settings": [],
+      "internal": false,
+      "tier": "trusted",
+      "tier_rationale": "Regional Internet Registry for Africa (A8 definitions: internet registries and RIRs are trusted); P003 chair rationale: 'registries are trusted'.",
+      "tier_reviewer": "council-1 (A8)",
+      "tier_date": "2026-11-26",
+      "flags": {
+        "publishes_queries": false,
+        "reuses_queries": false,
+        "fetches_target": false,
+        "sensitive": false
+      },
+      "personal_data_review": null,
+      "reliability": {
+        "grade": "A",
+        "justification": "Authoritative registry data for the IP and AS number resources this RIR administers."
+      },
+      "http_profile": {
+        "user_agent": "neutral",
+        "accept": "application/rdap+json",
+        "timeout": 20,
+        "retries": 1,
+        "ttl": 86400,
+        "min_interval": 1.0
+      },
+      "quota": null,
+      "error_markers": [],
+      "keys": {},
+      "sources": {
+        "rdap": {
+          "title": "RDAP /ip/{ip|cidr} and /autnum/{asn} answers of the authoritative RIR (IANA RDAP bootstrap)",
+          "terms": {
+            "class": "open",
+            "evidence_url": "https://www.iana.org/assignments/rdap-ipv4/",
+            "quote": "registro.br RDAP is default-on by decision (A3 BR9). Tier community because rdap.org, a volunteer redirector, receives values on fallback; registries are trusted. Terms open (public registry data).",
+            "checked_at": "2026-11-26",
+            "reviewer": "council-1 (A1)",
+            "free_plan_business_use": true
+          },
+          "upstream_family": "rir-rdap",
+          "sanitizer": null,
+          "dataset": null,
+          "notes": "Quote: council chair rationale (P003). Authoritative RIR named by the IANA RDAP bootstrap (ipv4.json, ipv6.json and asn.json). Per-query lookups only, no bulk harvesting (P003 cond 3); natural-person contacts are dropped at ingestion (P003 cond 5)."
+        }
+      },
+      "notes": "Owned by batch p1-G01-1 (P003 rdap). Curated from the IANA RDAP bootstrap: an authoritative server whose host is not listed here is never contacted (PASSIVE host allow-list); rdap reports it as could not verify with a manual link (core request: bootstrap-derived registry hosts)."
+    },
+    {
+      "id": "rdap_verisign",
+      "name": "Verisign registry RDAP (.com, .net, .cc, .name and others)",
+      "operator": "VeriSign, Inc.",
+      "hosts": [
+        "rdap.verisign.com",
+        "tld-rdap.verisign.com"
+      ],
+      "hosts_from_settings": [],
+      "internal": false,
+      "tier": "trusted",
+      "tier_rationale": "Registry operator named by the IANA RDAP bootstrap for com, net (rdap.verisign.com); cc, name and 14 other TLDs (tld-rdap.verisign.com) (A8 definitions: internet registries are trusted); P003 chair rationale: 'registries are trusted'.",
+      "tier_reviewer": "council-1 (A8)",
+      "tier_date": "2026-11-26",
+      "flags": {
+        "publishes_queries": false,
+        "reuses_queries": false,
+        "fetches_target": false,
+        "sensitive": false
+      },
+      "personal_data_review": null,
+      "reliability": {
+        "grade": "A",
+        "justification": "Authoritative registration data of the TLD registry (registrar, dates, status, nameservers); a 404 from it means 'not registered' (P003 cond 3)."
+      },
+      "http_profile": {
+        "user_agent": "neutral",
+        "accept": "application/rdap+json",
+        "timeout": 20,
+        "retries": 1,
+        "ttl": 86400,
+        "min_interval": 1.0
+      },
+      "quota": null,
+      "error_markers": [],
+      "keys": {},
+      "sources": {
+        "rdap": {
+          "title": "RDAP /domain/{name} answers of the authoritative TLD registry (IANA RDAP bootstrap)",
+          "terms": {
+            "class": "open",
+            "evidence_url": "https://www.iana.org/assignments/rdap-dns/",
+            "quote": "registro.br RDAP is default-on by decision (A3 BR9). Tier community because rdap.org, a volunteer redirector, receives values on fallback; registries are trusted. Terms open (public registry data).",
+            "checked_at": "2026-11-26",
+            "reviewer": "council-1 (A1)",
+            "free_plan_business_use": true
+          },
+          "upstream_family": "tld-rdap",
+          "sanitizer": null,
+          "dataset": null,
+          "notes": "Quote: council chair rationale (P003). Authoritative RDAP service of com, net (rdap.verisign.com); cc, name and 14 other TLDs (tld-rdap.verisign.com) in the IANA RDAP bootstrap dns.json (publication 2026-11-20). Per-query lookups only, no bulk harvesting (P003 cond 3); natural-person contacts are dropped at ingestion (P003 cond 5)."
+        }
+      },
+      "notes": "Owned by batch p1-G01-1 (P003 rdap). Curated from the IANA RDAP bootstrap: an authoritative server whose host is not listed here is never contacted (PASSIVE host allow-list); rdap reports it as could not verify with a manual link (core request: bootstrap-derived registry hosts)."
+    },
+    {
+      "id": "rdap_pir",
+      "name": "Public Interest Registry RDAP (.org)",
+      "operator": "Public Interest Registry (PIR)",
+      "hosts": [
+        "rdap.publicinterestregistry.org"
+      ],
+      "hosts_from_settings": [],
+      "internal": false,
+      "tier": "trusted",
+      "tier_rationale": "Registry operator named by the IANA RDAP bootstrap for org, ngo, ong, charity and 7 other TLDs (A8 definitions: internet registries are trusted); P003 chair rationale: 'registries are trusted'.",
+      "tier_reviewer": "council-1 (A8)",
+      "tier_date": "2026-11-26",
+      "flags": {
+        "publishes_queries": false,
+        "reuses_queries": false,
+        "fetches_target": false,
+        "sensitive": false
+      },
+      "personal_data_review": null,
+      "reliability": {
+        "grade": "A",
+        "justification": "Authoritative registration data of the TLD registry (registrar, dates, status, nameservers); a 404 from it means 'not registered' (P003 cond 3)."
+      },
+      "http_profile": {
+        "user_agent": "neutral",
+        "accept": "application/rdap+json",
+        "timeout": 20,
+        "retries": 1,
+        "ttl": 86400,
+        "min_interval": 1.0
+      },
+      "quota": null,
+      "error_markers": [],
+      "keys": {},
+      "sources": {
+        "rdap": {
+          "title": "RDAP /domain/{name} answers of the authoritative TLD registry (IANA RDAP bootstrap)",
+          "terms": {
+            "class": "open",
+            "evidence_url": "https://www.iana.org/assignments/rdap-dns/",
+            "quote": "registro.br RDAP is default-on by decision (A3 BR9). Tier community because rdap.org, a volunteer redirector, receives values on fallback; registries are trusted. Terms open (public registry data).",
+            "checked_at": "2026-11-26",
+            "reviewer": "council-1 (A1)",
+            "free_plan_business_use": true
+          },
+          "upstream_family": "tld-rdap",
+          "sanitizer": null,
+          "dataset": null,
+          "notes": "Quote: council chair rationale (P003). Authoritative RDAP service of org, ngo, ong, charity and 7 other TLDs in the IANA RDAP bootstrap dns.json (publication 2026-11-20). Per-query lookups only, no bulk harvesting (P003 cond 3); natural-person contacts are dropped at ingestion (P003 cond 5)."
+        }
+      },
+      "notes": "Owned by batch p1-G01-1 (P003 rdap). Curated from the IANA RDAP bootstrap: an authoritative server whose host is not listed here is never contacted (PASSIVE host allow-list); rdap reports it as could not verify with a manual link (core request: bootstrap-derived registry hosts)."
+    },
+    {
+      "id": "rdap_identity_digital",
+      "name": "Identity Digital registry RDAP",
+      "operator": "Identity Digital Inc.",
+      "hosts": [
+        "rdap.identitydigital.services"
+      ],
+      "hosts_from_settings": [],
+      "internal": false,
+      "tier": "trusted",
+      "tier_rationale": "Registry operator named by the IANA RDAP bootstrap for 451 TLDs including info, ai, mobi, pro, live, email, news, digital (A8 definitions: internet registries are trusted); P003 chair rationale: 'registries are trusted'.",
+      "tier_reviewer": "council-1 (A8)",
+      "tier_date": "2026-11-26",
+      "flags": {
+        "publishes_queries": false,
+        "reuses_queries": false,
+        "fetches_target": false,
+        "sensitive": false
+      },
+      "personal_data_review": null,
+      "reliability": {
+        "grade": "A",
+        "justification": "Authoritative registration data of the TLD registry (registrar, dates, status, nameservers); a 404 from it means 'not registered' (P003 cond 3)."
+      },
+      "http_profile": {
+        "user_agent": "neutral",
+        "accept": "application/rdap+json",
+        "timeout": 20,
+        "retries": 1,
+        "ttl": 86400,
+        "min_interval": 1.0
+      },
+      "quota": null,
+      "error_markers": [],
+      "keys": {},
+      "sources": {
+        "rdap": {
+          "title": "RDAP /domain/{name} answers of the authoritative TLD registry (IANA RDAP bootstrap)",
+          "terms": {
+            "class": "open",
+            "evidence_url": "https://www.iana.org/assignments/rdap-dns/",
+            "quote": "registro.br RDAP is default-on by decision (A3 BR9). Tier community because rdap.org, a volunteer redirector, receives values on fallback; registries are trusted. Terms open (public registry data).",
+            "checked_at": "2026-11-26",
+            "reviewer": "council-1 (A1)",
+            "free_plan_business_use": true
+          },
+          "upstream_family": "tld-rdap",
+          "sanitizer": null,
+          "dataset": null,
+          "notes": "Quote: council chair rationale (P003). Authoritative RDAP service of 451 TLDs including info, ai, mobi, pro, live, email, news, digital in the IANA RDAP bootstrap dns.json (publication 2026-11-20). Per-query lookups only, no bulk harvesting (P003 cond 3); natural-person contacts are dropped at ingestion (P003 cond 5)."
+        }
+      },
+      "notes": "Owned by batch p1-G01-1 (P003 rdap). Curated from the IANA RDAP bootstrap: an authoritative server whose host is not listed here is never contacted (PASSIVE host allow-list); rdap reports it as could not verify with a manual link (core request: bootstrap-derived registry hosts)."
+    },
+    {
+      "id": "rdap_centralnic",
+      "name": "CentralNic registry RDAP",
+      "operator": "CentralNic Ltd (Team Internet Group plc)",
+      "hosts": [
+        "rdap.centralnic.com",
+        "rdap.centralnicregistry.com"
+      ],
+      "hosts_from_settings": [],
+      "internal": false,
+      "tier": "trusted",
+      "tier_rationale": "Registry operator named by the IANA RDAP bootstrap for 92 TLDs including xyz, icu, art, bond, best (A8 definitions: internet registries are trusted); P003 chair rationale: 'registries are trusted'.",
+      "tier_reviewer": "council-1 (A8)",
+      "tier_date": "2026-11-26",
+      "flags": {
+        "publishes_queries": false,
+        "reuses_queries": false,
+        "fetches_target": false,
+        "sensitive": false
+      },
+      "personal_data_review": null,
+      "reliability": {
+        "grade": "A",
+        "justification": "Authoritative registration data of the TLD registry (registrar, dates, status, nameservers); a 404 from it means 'not registered' (P003 cond 3)."
+      },
+      "http_profile": {
+        "user_agent": "neutral",
+        "accept": "application/rdap+json",
+        "timeout": 20,
+        "retries": 1,
+        "ttl": 86400,
+        "min_interval": 1.0
+      },
+      "quota": null,
+      "error_markers": [],
+      "keys": {},
+      "sources": {
+        "rdap": {
+          "title": "RDAP /domain/{name} answers of the authoritative TLD registry (IANA RDAP bootstrap)",
+          "terms": {
+            "class": "open",
+            "evidence_url": "https://www.iana.org/assignments/rdap-dns/",
+            "quote": "registro.br RDAP is default-on by decision (A3 BR9). Tier community because rdap.org, a volunteer redirector, receives values on fallback; registries are trusted. Terms open (public registry data).",
+            "checked_at": "2026-11-26",
+            "reviewer": "council-1 (A1)",
+            "free_plan_business_use": true
+          },
+          "upstream_family": "tld-rdap",
+          "sanitizer": null,
+          "dataset": null,
+          "notes": "Quote: council chair rationale (P003). Authoritative RDAP service of 92 TLDs including xyz, icu, art, bond, best in the IANA RDAP bootstrap dns.json (publication 2026-11-20). Per-query lookups only, no bulk harvesting (P003 cond 3); natural-person contacts are dropped at ingestion (P003 cond 5)."
+        }
+      },
+      "notes": "Owned by batch p1-G01-1 (P003 rdap). Curated from the IANA RDAP bootstrap: an authoritative server whose host is not listed here is never contacted (PASSIVE host allow-list); rdap reports it as could not verify with a manual link (core request: bootstrap-derived registry hosts)."
+    },
+    {
+      "id": "rdap_radix",
+      "name": "Radix registry RDAP",
+      "operator": "Radix Technologies (Radix FZC)",
+      "hosts": [
+        "rdap.radix.host"
+      ],
+      "hosts_from_settings": [],
+      "internal": false,
+      "tier": "trusted",
+      "tier_rationale": "Registry operator named by the IANA RDAP bootstrap for online, site, store, tech, space, website, fun, host, press, pw, uno (A8 definitions: internet registries are trusted); P003 chair rationale: 'registries are trusted'.",
+      "tier_reviewer": "council-1 (A8)",
+      "tier_date": "2026-11-26",
+      "flags": {
+        "publishes_queries": false,
+        "reuses_queries": false,
+        "fetches_target": false,
+        "sensitive": false
+      },
+      "personal_data_review": null,
+      "reliability": {
+        "grade": "A",
+        "justification": "Authoritative registration data of the TLD registry (registrar, dates, status, nameservers); a 404 from it means 'not registered' (P003 cond 3)."
+      },
+      "http_profile": {
+        "user_agent": "neutral",
+        "accept": "application/rdap+json",
+        "timeout": 20,
+        "retries": 1,
+        "ttl": 86400,
+        "min_interval": 1.0
+      },
+      "quota": null,
+      "error_markers": [],
+      "keys": {},
+      "sources": {
+        "rdap": {
+          "title": "RDAP /domain/{name} answers of the authoritative TLD registry (IANA RDAP bootstrap)",
+          "terms": {
+            "class": "open",
+            "evidence_url": "https://www.iana.org/assignments/rdap-dns/",
+            "quote": "registro.br RDAP is default-on by decision (A3 BR9). Tier community because rdap.org, a volunteer redirector, receives values on fallback; registries are trusted. Terms open (public registry data).",
+            "checked_at": "2026-11-26",
+            "reviewer": "council-1 (A1)",
+            "free_plan_business_use": true
+          },
+          "upstream_family": "tld-rdap",
+          "sanitizer": null,
+          "dataset": null,
+          "notes": "Quote: council chair rationale (P003). Authoritative RDAP service of online, site, store, tech, space, website, fun, host, press, pw, uno in the IANA RDAP bootstrap dns.json (publication 2026-11-20). Per-query lookups only, no bulk harvesting (P003 cond 3); natural-person contacts are dropped at ingestion (P003 cond 5)."
+        }
+      },
+      "notes": "Owned by batch p1-G01-1 (P003 rdap). Curated from the IANA RDAP bootstrap: an authoritative server whose host is not listed here is never contacted (PASSIVE host allow-list); rdap reports it as could not verify with a manual link (core request: bootstrap-derived registry hosts)."
+    },
+    {
+      "id": "rdap_google_registry",
+      "name": "Google Registry RDAP",
+      "operator": "Charleston Road Registry Inc. (Google Registry)",
+      "hosts": [
+        "pubapi.registry.google"
+      ],
+      "hosts_from_settings": [],
+      "internal": false,
+      "tier": "trusted",
+      "tier_rationale": "Registry operator named by the IANA RDAP bootstrap for 46 TLDs including app, dev, page, new, how (A8 definitions: internet registries are trusted); P003 chair rationale: 'registries are trusted'.",
+      "tier_reviewer": "council-1 (A8)",
+      "tier_date": "2026-11-26",
+      "flags": {
+        "publishes_queries": false,
+        "reuses_queries": false,
+        "fetches_target": false,
+        "sensitive": false
+      },
+      "personal_data_review": null,
+      "reliability": {
+        "grade": "A",
+        "justification": "Authoritative registration data of the TLD registry (registrar, dates, status, nameservers); a 404 from it means 'not registered' (P003 cond 3)."
+      },
+      "http_profile": {
+        "user_agent": "neutral",
+        "accept": "application/rdap+json",
+        "timeout": 20,
+        "retries": 1,
+        "ttl": 86400,
+        "min_interval": 1.0
+      },
+      "quota": null,
+      "error_markers": [],
+      "keys": {},
+      "sources": {
+        "rdap": {
+          "title": "RDAP /domain/{name} answers of the authoritative TLD registry (IANA RDAP bootstrap)",
+          "terms": {
+            "class": "open",
+            "evidence_url": "https://www.iana.org/assignments/rdap-dns/",
+            "quote": "registro.br RDAP is default-on by decision (A3 BR9). Tier community because rdap.org, a volunteer redirector, receives values on fallback; registries are trusted. Terms open (public registry data).",
+            "checked_at": "2026-11-26",
+            "reviewer": "council-1 (A1)",
+            "free_plan_business_use": true
+          },
+          "upstream_family": "tld-rdap",
+          "sanitizer": null,
+          "dataset": null,
+          "notes": "Quote: council chair rationale (P003). Authoritative RDAP service of 46 TLDs including app, dev, page, new, how in the IANA RDAP bootstrap dns.json (publication 2026-11-20). Per-query lookups only, no bulk harvesting (P003 cond 3); natural-person contacts are dropped at ingestion (P003 cond 5)."
+        }
+      },
+      "notes": "Owned by batch p1-G01-1 (P003 rdap). Curated from the IANA RDAP bootstrap: an authoritative server whose host is not listed here is never contacted (PASSIVE host allow-list); rdap reports it as could not verify with a manual link (core request: bootstrap-derived registry hosts)."
+    },
+    {
+      "id": "rdap_nominet",
+      "name": "Nominet registry RDAP (.uk and gTLDs)",
+      "operator": "Nominet UK",
+      "hosts": [
+        "rdap.nominet.uk"
+      ],
+      "hosts_from_settings": [],
+      "internal": false,
+      "tier": "trusted",
+      "tier_rationale": "Registry operator named by the IANA RDAP bootstrap for uk and 80 gTLDs it operates the back end for (A8 definitions: internet registries are trusted); P003 chair rationale: 'registries are trusted'.",
+      "tier_reviewer": "council-1 (A8)",
+      "tier_date": "2026-11-26",
+      "flags": {
+        "publishes_queries": false,
+        "reuses_queries": false,
+        "fetches_target": false,
+        "sensitive": false
+      },
+      "personal_data_review": null,
+      "reliability": {
+        "grade": "A",
+        "justification": "Authoritative registration data of the TLD registry (registrar, dates, status, nameservers); a 404 from it means 'not registered' (P003 cond 3)."
+      },
+      "http_profile": {
+        "user_agent": "neutral",
+        "accept": "application/rdap+json",
+        "timeout": 20,
+        "retries": 1,
+        "ttl": 86400,
+        "min_interval": 1.0
+      },
+      "quota": null,
+      "error_markers": [],
+      "keys": {},
+      "sources": {
+        "rdap": {
+          "title": "RDAP /domain/{name} answers of the authoritative TLD registry (IANA RDAP bootstrap)",
+          "terms": {
+            "class": "open",
+            "evidence_url": "https://www.iana.org/assignments/rdap-dns/",
+            "quote": "registro.br RDAP is default-on by decision (A3 BR9). Tier community because rdap.org, a volunteer redirector, receives values on fallback; registries are trusted. Terms open (public registry data).",
+            "checked_at": "2026-11-26",
+            "reviewer": "council-1 (A1)",
+            "free_plan_business_use": true
+          },
+          "upstream_family": "tld-rdap",
+          "sanitizer": null,
+          "dataset": null,
+          "notes": "Quote: council chair rationale (P003). Authoritative RDAP service of uk and 80 gTLDs it operates the back end for in the IANA RDAP bootstrap dns.json (publication 2026-11-20). Per-query lookups only, no bulk harvesting (P003 cond 3); natural-person contacts are dropped at ingestion (P003 cond 5)."
+        }
+      },
+      "notes": "Owned by batch p1-G01-1 (P003 rdap). Curated from the IANA RDAP bootstrap: an authoritative server whose host is not listed here is never contacted (PASSIVE host allow-list); rdap reports it as could not verify with a manual link (core request: bootstrap-derived registry hosts)."
+    },
+    {
+      "id": "rdap_gmo_registry",
+      "name": "GMO Registry RDAP",
+      "operator": "GMO Registry, Inc.",
+      "hosts": [
+        "rdap.gmoregistry.net"
+      ],
+      "hosts_from_settings": [],
+      "internal": false,
+      "tier": "trusted",
+      "tier_rationale": "Registry operator named by the IANA RDAP bootstrap for shop and 45 brand and generic TLDs (A8 definitions: internet registries are trusted); P003 chair rationale: 'registries are trusted'.",
+      "tier_reviewer": "council-1 (A8)",
+      "tier_date": "2026-11-26",
+      "flags": {
+        "publishes_queries": false,
+        "reuses_queries": false,
+        "fetches_target": false,
+        "sensitive": false
+      },
+      "personal_data_review": null,
+      "reliability": {
+        "grade": "A",
+        "justification": "Authoritative registration data of the TLD registry (registrar, dates, status, nameservers); a 404 from it means 'not registered' (P003 cond 3)."
+      },
+      "http_profile": {
+        "user_agent": "neutral",
+        "accept": "application/rdap+json",
+        "timeout": 20,
+        "retries": 1,
+        "ttl": 86400,
+        "min_interval": 1.0
+      },
+      "quota": null,
+      "error_markers": [],
+      "keys": {},
+      "sources": {
+        "rdap": {
+          "title": "RDAP /domain/{name} answers of the authoritative TLD registry (IANA RDAP bootstrap)",
+          "terms": {
+            "class": "open",
+            "evidence_url": "https://www.iana.org/assignments/rdap-dns/",
+            "quote": "registro.br RDAP is default-on by decision (A3 BR9). Tier community because rdap.org, a volunteer redirector, receives values on fallback; registries are trusted. Terms open (public registry data).",
+            "checked_at": "2026-11-26",
+            "reviewer": "council-1 (A1)",
+            "free_plan_business_use": true
+          },
+          "upstream_family": "tld-rdap",
+          "sanitizer": null,
+          "dataset": null,
+          "notes": "Quote: council chair rationale (P003). Authoritative RDAP service of shop and 45 brand and generic TLDs in the IANA RDAP bootstrap dns.json (publication 2026-11-20). Per-query lookups only, no bulk harvesting (P003 cond 3); natural-person contacts are dropped at ingestion (P003 cond 5)."
+        }
+      },
+      "notes": "Owned by batch p1-G01-1 (P003 rdap). Curated from the IANA RDAP bootstrap: an authoritative server whose host is not listed here is never contacted (PASSIVE host allow-list); rdap reports it as could not verify with a manual link (core request: bootstrap-derived registry hosts)."
+    },
+    {
+      "id": "rdap_zdns",
+      "name": "ZDNS registry RDAP",
+      "operator": "ZDNS (Internet Domain Name System Beijing Engineering Research Center Co., Ltd.)",
+      "hosts": [
+        "rdap.zdnsgtld.com"
+      ],
+      "hosts_from_settings": [],
+      "internal": false,
+      "tier": "trusted",
+      "tier_rationale": "Registry operator named by the IANA RDAP bootstrap for top, wang, ren and 19 other TLDs (A8 definitions: internet registries are trusted); P003 chair rationale: 'registries are trusted'.",
+      "tier_reviewer": "council-1 (A8)",
+      "tier_date": "2026-11-26",
+      "flags": {
+        "publishes_queries": false,
+        "reuses_queries": false,
+        "fetches_target": false,
+        "sensitive": false
+      },
+      "personal_data_review": null,
+      "reliability": {
+        "grade": "A",
+        "justification": "Authoritative registration data of the TLD registry (registrar, dates, status, nameservers); a 404 from it means 'not registered' (P003 cond 3)."
+      },
+      "http_profile": {
+        "user_agent": "neutral",
+        "accept": "application/rdap+json",
+        "timeout": 20,
+        "retries": 1,
+        "ttl": 86400,
+        "min_interval": 1.0
+      },
+      "quota": null,
+      "error_markers": [],
+      "keys": {},
+      "sources": {
+        "rdap": {
+          "title": "RDAP /domain/{name} answers of the authoritative TLD registry (IANA RDAP bootstrap)",
+          "terms": {
+            "class": "open",
+            "evidence_url": "https://www.iana.org/assignments/rdap-dns/",
+            "quote": "registro.br RDAP is default-on by decision (A3 BR9). Tier community because rdap.org, a volunteer redirector, receives values on fallback; registries are trusted. Terms open (public registry data).",
+            "checked_at": "2026-11-26",
+            "reviewer": "council-1 (A1)",
+            "free_plan_business_use": true
+          },
+          "upstream_family": "tld-rdap",
+          "sanitizer": null,
+          "dataset": null,
+          "notes": "Quote: council chair rationale (P003). Authoritative RDAP service of top, wang, ren and 19 other TLDs in the IANA RDAP bootstrap dns.json (publication 2026-11-20). Per-query lookups only, no bulk harvesting (P003 cond 3); natural-person contacts are dropped at ingestion (P003 cond 5)."
+        }
+      },
+      "notes": "Owned by batch p1-G01-1 (P003 rdap). Curated from the IANA RDAP bootstrap: an authoritative server whose host is not listed here is never contacted (PASSIVE host allow-list); rdap reports it as could not verify with a manual link (core request: bootstrap-derived registry hosts)."
+    },
+    {
+      "id": "rdap_afnic",
+      "name": "AFNIC RDAP (.fr)",
+      "operator": "Association francaise pour le nommage Internet en cooperation (AFNIC)",
+      "hosts": [
+        "rdap.nic.fr"
+      ],
+      "hosts_from_settings": [],
+      "internal": false,
+      "tier": "trusted",
+      "tier_rationale": "Registry operator named by the IANA RDAP bootstrap for fr (A8 definitions: internet registries are trusted); P003 chair rationale: 'registries are trusted'.",
+      "tier_reviewer": "council-1 (A8)",
+      "tier_date": "2026-11-26",
+      "flags": {
+        "publishes_queries": false,
+        "reuses_queries": false,
+        "fetches_target": false,
+        "sensitive": false
+      },
+      "personal_data_review": null,
+      "reliability": {
+        "grade": "A",
+        "justification": "Authoritative registration data of the TLD registry (registrar, dates, status, nameservers); a 404 from it means 'not registered' (P003 cond 3)."
+      },
+      "http_profile": {
+        "user_agent": "neutral",
+        "accept": "application/rdap+json",
+        "timeout": 20,
+        "retries": 1,
+        "ttl": 86400,
+        "min_interval": 1.0
+      },
+      "quota": null,
+      "error_markers": [],
+      "keys": {},
+      "sources": {
+        "rdap": {
+          "title": "RDAP /domain/{name} answers of the authoritative TLD registry (IANA RDAP bootstrap)",
+          "terms": {
+            "class": "open",
+            "evidence_url": "https://www.iana.org/assignments/rdap-dns/",
+            "quote": "registro.br RDAP is default-on by decision (A3 BR9). Tier community because rdap.org, a volunteer redirector, receives values on fallback; registries are trusted. Terms open (public registry data).",
+            "checked_at": "2026-11-26",
+            "reviewer": "council-1 (A1)",
+            "free_plan_business_use": true
+          },
+          "upstream_family": "tld-rdap",
+          "sanitizer": null,
+          "dataset": null,
+          "notes": "Quote: council chair rationale (P003). Authoritative RDAP service of fr in the IANA RDAP bootstrap dns.json (publication 2026-11-20). Per-query lookups only, no bulk harvesting (P003 cond 3); natural-person contacts are dropped at ingestion (P003 cond 5)."
+        }
+      },
+      "notes": "Owned by batch p1-G01-1 (P003 rdap). Curated from the IANA RDAP bootstrap: an authoritative server whose host is not listed here is never contacted (PASSIVE host allow-list); rdap reports it as could not verify with a manual link (core request: bootstrap-derived registry hosts)."
+    },
+    {
+      "id": "rdap_sidn",
+      "name": "SIDN RDAP (.nl)",
+      "operator": "Stichting Internet Domeinregistratie Nederland (SIDN)",
+      "hosts": [
+        "rdap.sidn.nl"
+      ],
+      "hosts_from_settings": [],
+      "internal": false,
+      "tier": "trusted",
+      "tier_rationale": "Registry operator named by the IANA RDAP bootstrap for nl (A8 definitions: internet registries are trusted); P003 chair rationale: 'registries are trusted'.",
+      "tier_reviewer": "council-1 (A8)",
+      "tier_date": "2026-11-26",
+      "flags": {
+        "publishes_queries": false,
+        "reuses_queries": false,
+        "fetches_target": false,
+        "sensitive": false
+      },
+      "personal_data_review": null,
+      "reliability": {
+        "grade": "A",
+        "justification": "Authoritative registration data of the TLD registry (registrar, dates, status, nameservers); a 404 from it means 'not registered' (P003 cond 3)."
+      },
+      "http_profile": {
+        "user_agent": "neutral",
+        "accept": "application/rdap+json",
+        "timeout": 20,
+        "retries": 1,
+        "ttl": 86400,
+        "min_interval": 1.0
+      },
+      "quota": null,
+      "error_markers": [],
+      "keys": {},
+      "sources": {
+        "rdap": {
+          "title": "RDAP /domain/{name} answers of the authoritative TLD registry (IANA RDAP bootstrap)",
+          "terms": {
+            "class": "open",
+            "evidence_url": "https://www.iana.org/assignments/rdap-dns/",
+            "quote": "registro.br RDAP is default-on by decision (A3 BR9). Tier community because rdap.org, a volunteer redirector, receives values on fallback; registries are trusted. Terms open (public registry data).",
+            "checked_at": "2026-11-26",
+            "reviewer": "council-1 (A1)",
+            "free_plan_business_use": true
+          },
+          "upstream_family": "tld-rdap",
+          "sanitizer": null,
+          "dataset": null,
+          "notes": "Quote: council chair rationale (P003). Authoritative RDAP service of nl in the IANA RDAP bootstrap dns.json (publication 2026-11-20). Per-query lookups only, no bulk harvesting (P003 cond 3); natural-person contacts are dropped at ingestion (P003 cond 5)."
+        }
+      },
+      "notes": "Owned by batch p1-G01-1 (P003 rdap). Curated from the IANA RDAP bootstrap: an authoritative server whose host is not listed here is never contacted (PASSIVE host allow-list); rdap reports it as could not verify with a manual link (core request: bootstrap-derived registry hosts)."
+    },
+    {
+      "id": "rdap_auda",
+      "name": "auDA RDAP (.au)",
+      "operator": ".au Domain Administration Ltd (auDA)",
+      "hosts": [
+        "rdap.cctld.au"
+      ],
+      "hosts_from_settings": [],
+      "internal": false,
+      "tier": "trusted",
+      "tier_rationale": "Registry operator named by the IANA RDAP bootstrap for au (A8 definitions: internet registries are trusted); P003 chair rationale: 'registries are trusted'.",
+      "tier_reviewer": "council-1 (A8)",
+      "tier_date": "2026-11-26",
+      "flags": {
+        "publishes_queries": false,
+        "reuses_queries": false,
+        "fetches_target": false,
+        "sensitive": false
+      },
+      "personal_data_review": null,
+      "reliability": {
+        "grade": "A",
+        "justification": "Authoritative registration data of the TLD registry (registrar, dates, status, nameservers); a 404 from it means 'not registered' (P003 cond 3)."
+      },
+      "http_profile": {
+        "user_agent": "neutral",
+        "accept": "application/rdap+json",
+        "timeout": 20,
+        "retries": 1,
+        "ttl": 86400,
+        "min_interval": 1.0
+      },
+      "quota": null,
+      "error_markers": [],
+      "keys": {},
+      "sources": {
+        "rdap": {
+          "title": "RDAP /domain/{name} answers of the authoritative TLD registry (IANA RDAP bootstrap)",
+          "terms": {
+            "class": "open",
+            "evidence_url": "https://www.iana.org/assignments/rdap-dns/",
+            "quote": "registro.br RDAP is default-on by decision (A3 BR9). Tier community because rdap.org, a volunteer redirector, receives values on fallback; registries are trusted. Terms open (public registry data).",
+            "checked_at": "2026-11-26",
+            "reviewer": "council-1 (A1)",
+            "free_plan_business_use": true
+          },
+          "upstream_family": "tld-rdap",
+          "sanitizer": null,
+          "dataset": null,
+          "notes": "Quote: council chair rationale (P003). Authoritative RDAP service of au in the IANA RDAP bootstrap dns.json (publication 2026-11-20). Per-query lookups only, no bulk harvesting (P003 cond 3); natural-person contacts are dropped at ingestion (P003 cond 5)."
+        }
+      },
+      "notes": "Owned by batch p1-G01-1 (P003 rdap). Curated from the IANA RDAP bootstrap: an authoritative server whose host is not listed here is never contacted (PASSIVE host allow-list); rdap reports it as could not verify with a manual link (core request: bootstrap-derived registry hosts)."
+    },
+    {
+      "id": "rdap_cira",
+      "name": "CIRA RDAP (.ca)",
+      "operator": "Canadian Internet Registration Authority (CIRA, Fury registry platform)",
+      "hosts": [
+        "rdap.ca.fury.ca"
+      ],
+      "hosts_from_settings": [],
+      "internal": false,
+      "tier": "trusted",
+      "tier_rationale": "Registry operator named by the IANA RDAP bootstrap for ca (A8 definitions: internet registries are trusted); P003 chair rationale: 'registries are trusted'.",
+      "tier_reviewer": "council-1 (A8)",
+      "tier_date": "2026-11-26",
+      "flags": {
+        "publishes_queries": false,
+        "reuses_queries": false,
+        "fetches_target": false,
+        "sensitive": false
+      },
+      "personal_data_review": null,
+      "reliability": {
+        "grade": "A",
+        "justification": "Authoritative registration data of the TLD registry (registrar, dates, status, nameservers); a 404 from it means 'not registered' (P003 cond 3)."
+      },
+      "http_profile": {
+        "user_agent": "neutral",
+        "accept": "application/rdap+json",
+        "timeout": 20,
+        "retries": 1,
+        "ttl": 86400,
+        "min_interval": 1.0
+      },
+      "quota": null,
+      "error_markers": [],
+      "keys": {},
+      "sources": {
+        "rdap": {
+          "title": "RDAP /domain/{name} answers of the authoritative TLD registry (IANA RDAP bootstrap)",
+          "terms": {
+            "class": "open",
+            "evidence_url": "https://www.iana.org/assignments/rdap-dns/",
+            "quote": "registro.br RDAP is default-on by decision (A3 BR9). Tier community because rdap.org, a volunteer redirector, receives values on fallback; registries are trusted. Terms open (public registry data).",
+            "checked_at": "2026-11-26",
+            "reviewer": "council-1 (A1)",
+            "free_plan_business_use": true
+          },
+          "upstream_family": "tld-rdap",
+          "sanitizer": null,
+          "dataset": null,
+          "notes": "Quote: council chair rationale (P003). Authoritative RDAP service of ca in the IANA RDAP bootstrap dns.json (publication 2026-11-20). Per-query lookups only, no bulk harvesting (P003 cond 3); natural-person contacts are dropped at ingestion (P003 cond 5)."
+        }
+      },
+      "notes": "Owned by batch p1-G01-1 (P003 rdap). Curated from the IANA RDAP bootstrap: an authoritative server whose host is not listed here is never contacted (PASSIVE host allow-list); rdap reports it as could not verify with a manual link (core request: bootstrap-derived registry hosts)."
+    },
+    {
+      "id": "rdap_nask",
+      "name": "NASK RDAP (.pl)",
+      "operator": "NASK National Research Institute",
+      "hosts": [
+        "rdap.dns.pl"
+      ],
+      "hosts_from_settings": [],
+      "internal": false,
+      "tier": "trusted",
+      "tier_rationale": "Registry operator named by the IANA RDAP bootstrap for pl (A8 definitions: internet registries are trusted); P003 chair rationale: 'registries are trusted'.",
+      "tier_reviewer": "council-1 (A8)",
+      "tier_date": "2026-11-26",
+      "flags": {
+        "publishes_queries": false,
+        "reuses_queries": false,
+        "fetches_target": false,
+        "sensitive": false
+      },
+      "personal_data_review": null,
+      "reliability": {
+        "grade": "A",
+        "justification": "Authoritative registration data of the TLD registry (registrar, dates, status, nameservers); a 404 from it means 'not registered' (P003 cond 3)."
+      },
+      "http_profile": {
+        "user_agent": "neutral",
+        "accept": "application/rdap+json",
+        "timeout": 20,
+        "retries": 1,
+        "ttl": 86400,
+        "min_interval": 1.0
+      },
+      "quota": null,
+      "error_markers": [],
+      "keys": {},
+      "sources": {
+        "rdap": {
+          "title": "RDAP /domain/{name} answers of the authoritative TLD registry (IANA RDAP bootstrap)",
+          "terms": {
+            "class": "open",
+            "evidence_url": "https://www.iana.org/assignments/rdap-dns/",
+            "quote": "registro.br RDAP is default-on by decision (A3 BR9). Tier community because rdap.org, a volunteer redirector, receives values on fallback; registries are trusted. Terms open (public registry data).",
+            "checked_at": "2026-11-26",
+            "reviewer": "council-1 (A1)",
+            "free_plan_business_use": true
+          },
+          "upstream_family": "tld-rdap",
+          "sanitizer": null,
+          "dataset": null,
+          "notes": "Quote: council chair rationale (P003). Authoritative RDAP service of pl in the IANA RDAP bootstrap dns.json (publication 2026-11-20). Per-query lookups only, no bulk harvesting (P003 cond 3); natural-person contacts are dropped at ingestion (P003 cond 5)."
+        }
+      },
+      "notes": "Owned by batch p1-G01-1 (P003 rdap). Curated from the IANA RDAP bootstrap: an authoritative server whose host is not listed here is never contacted (PASSIVE host allow-list); rdap reports it as could not verify with a manual link (core request: bootstrap-derived registry hosts)."
+    },
+    {
+      "id": "rdap_cznic",
+      "name": "CZ.NIC RDAP (.cz)",
+      "operator": "CZ.NIC, z.s.p.o.",
+      "hosts": [
+        "rdap.nic.cz"
+      ],
+      "hosts_from_settings": [],
+      "internal": false,
+      "tier": "trusted",
+      "tier_rationale": "Registry operator named by the IANA RDAP bootstrap for cz (A8 definitions: internet registries are trusted); P003 chair rationale: 'registries are trusted'.",
+      "tier_reviewer": "council-1 (A8)",
+      "tier_date": "2026-11-26",
+      "flags": {
+        "publishes_queries": false,
+        "reuses_queries": false,
+        "fetches_target": false,
+        "sensitive": false
+      },
+      "personal_data_review": null,
+      "reliability": {
+        "grade": "A",
+        "justification": "Authoritative registration data of the TLD registry (registrar, dates, status, nameservers); a 404 from it means 'not registered' (P003 cond 3)."
+      },
+      "http_profile": {
+        "user_agent": "neutral",
+        "accept": "application/rdap+json",
+        "timeout": 20,
+        "retries": 1,
+        "ttl": 86400,
+        "min_interval": 1.0
+      },
+      "quota": null,
+      "error_markers": [],
+      "keys": {},
+      "sources": {
+        "rdap": {
+          "title": "RDAP /domain/{name} answers of the authoritative TLD registry (IANA RDAP bootstrap)",
+          "terms": {
+            "class": "open",
+            "evidence_url": "https://www.iana.org/assignments/rdap-dns/",
+            "quote": "registro.br RDAP is default-on by decision (A3 BR9). Tier community because rdap.org, a volunteer redirector, receives values on fallback; registries are trusted. Terms open (public registry data).",
+            "checked_at": "2026-11-26",
+            "reviewer": "council-1 (A1)",
+            "free_plan_business_use": true
+          },
+          "upstream_family": "tld-rdap",
+          "sanitizer": null,
+          "dataset": null,
+          "notes": "Quote: council chair rationale (P003). Authoritative RDAP service of cz in the IANA RDAP bootstrap dns.json (publication 2026-11-20). Per-query lookups only, no bulk harvesting (P003 cond 3); natural-person contacts are dropped at ingestion (P003 cond 5)."
+        }
+      },
+      "notes": "Owned by batch p1-G01-1 (P003 rdap). Curated from the IANA RDAP bootstrap: an authoritative server whose host is not listed here is never contacted (PASSIVE host allow-list); rdap reports it as could not verify with a manual link (core request: bootstrap-derived registry hosts)."
+    },
+    {
+      "id": "rdap_nic_ar",
+      "name": "NIC Argentina RDAP (.ar)",
+      "operator": "NIC Argentina (Secretaria Legal y Tecnica de la Presidencia de la Nacion)",
+      "hosts": [
+        "rdap.nic.ar"
+      ],
+      "hosts_from_settings": [],
+      "internal": false,
+      "tier": "trusted",
+      "tier_rationale": "Registry operator named by the IANA RDAP bootstrap for ar (A8 definitions: internet registries are trusted); P003 chair rationale: 'registries are trusted'.",
+      "tier_reviewer": "council-1 (A8)",
+      "tier_date": "2026-11-26",
+      "flags": {
+        "publishes_queries": false,
+        "reuses_queries": false,
+        "fetches_target": false,
+        "sensitive": false
+      },
+      "personal_data_review": null,
+      "reliability": {
+        "grade": "A",
+        "justification": "Authoritative registration data of the TLD registry (registrar, dates, status, nameservers); a 404 from it means 'not registered' (P003 cond 3)."
+      },
+      "http_profile": {
+        "user_agent": "neutral",
+        "accept": "application/rdap+json",
+        "timeout": 20,
+        "retries": 1,
+        "ttl": 86400,
+        "min_interval": 1.0
+      },
+      "quota": null,
+      "error_markers": [],
+      "keys": {},
+      "sources": {
+        "rdap": {
+          "title": "RDAP /domain/{name} answers of the authoritative TLD registry (IANA RDAP bootstrap)",
+          "terms": {
+            "class": "open",
+            "evidence_url": "https://www.iana.org/assignments/rdap-dns/",
+            "quote": "registro.br RDAP is default-on by decision (A3 BR9). Tier community because rdap.org, a volunteer redirector, receives values on fallback; registries are trusted. Terms open (public registry data).",
+            "checked_at": "2026-11-26",
+            "reviewer": "council-1 (A1)",
+            "free_plan_business_use": true
+          },
+          "upstream_family": "tld-rdap",
+          "sanitizer": null,
+          "dataset": null,
+          "notes": "Quote: council chair rationale (P003). Authoritative RDAP service of ar in the IANA RDAP bootstrap dns.json (publication 2026-11-20). Per-query lookups only, no bulk harvesting (P003 cond 3); natural-person contacts are dropped at ingestion (P003 cond 5)."
+        }
+      },
+      "notes": "Owned by batch p1-G01-1 (P003 rdap). Curated from the IANA RDAP bootstrap: an authoritative server whose host is not listed here is never contacted (PASSIVE host allow-list); rdap reports it as could not verify with a manual link (core request: bootstrap-derived registry hosts)."
+    },
+    {
+      "id": "rdap_godaddy_registry",
+      "name": "GoDaddy Registry RDAP (.biz)",
+      "operator": "GoDaddy Registry (Registry Services, LLC)",
+      "hosts": [
+        "rdap.nic.biz"
+      ],
+      "hosts_from_settings": [],
+      "internal": false,
+      "tier": "trusted",
+      "tier_rationale": "Registry operator named by the IANA RDAP bootstrap for biz (A8 definitions: internet registries are trusted); P003 chair rationale: 'registries are trusted'.",
+      "tier_reviewer": "council-1 (A8)",
+      "tier_date": "2026-11-26",
+      "flags": {
+        "publishes_queries": false,
+        "reuses_queries": false,
+        "fetches_target": false,
+        "sensitive": false
+      },
+      "personal_data_review": null,
+      "reliability": {
+        "grade": "A",
+        "justification": "Authoritative registration data of the TLD registry (registrar, dates, status, nameservers); a 404 from it means 'not registered' (P003 cond 3)."
+      },
+      "http_profile": {
+        "user_agent": "neutral",
+        "accept": "application/rdap+json",
+        "timeout": 20,
+        "retries": 1,
+        "ttl": 86400,
+        "min_interval": 1.0
+      },
+      "quota": null,
+      "error_markers": [],
+      "keys": {},
+      "sources": {
+        "rdap": {
+          "title": "RDAP /domain/{name} answers of the authoritative TLD registry (IANA RDAP bootstrap)",
+          "terms": {
+            "class": "open",
+            "evidence_url": "https://www.iana.org/assignments/rdap-dns/",
+            "quote": "registro.br RDAP is default-on by decision (A3 BR9). Tier community because rdap.org, a volunteer redirector, receives values on fallback; registries are trusted. Terms open (public registry data).",
+            "checked_at": "2026-11-26",
+            "reviewer": "council-1 (A1)",
+            "free_plan_business_use": true
+          },
+          "upstream_family": "tld-rdap",
+          "sanitizer": null,
+          "dataset": null,
+          "notes": "Quote: council chair rationale (P003). Authoritative RDAP service of biz in the IANA RDAP bootstrap dns.json (publication 2026-11-20). Per-query lookups only, no bulk harvesting (P003 cond 3); natural-person contacts are dropped at ingestion (P003 cond 5)."
+        }
+      },
+      "notes": "Owned by batch p1-G01-1 (P003 rdap). Curated from the IANA RDAP bootstrap: an authoritative server whose host is not listed here is never contacted (PASSIVE host allow-list); rdap reports it as could not verify with a manual link (core request: bootstrap-derived registry hosts)."
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "github",
+  "hosts": [],
+  "sources": {
+    "git_metadata_identity_commits": {
+      "title": "GitHub REST API users/{u}/repos, repos/{o}/{r} and one repos/{o}/{r}/commits?per_page=100 page per repository (P115, through the P111 shared client)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+        "quote": "Abuse or excessively frequent requests to GitHub via the API may result in the temporary or permanent suspension of your Account's access to the API. [...] You may not use the API to download data or Content from GitHub for spamming purposes, including for the purposes of selling GitHub users' personal information, such as to recruiters, headhunters, and job boards.",
+        "checked_at": "2026-11-26",
+        "reviewer": "batch p3-G05-2 (council-1 class kept: P115 FC7 follows the GitHub REST source of P111)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "github",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "P115 git_metadata_identity: commit metadata (author/committer names and e-mails, identity trailers, noreply ids) of GitHub accounts, organisations or repositories that are already case subjects, read through the GitHub REST API only (no git binary, no clone, FC1): the repository list sorted by pushed (<= 10 own non-fork repositories) and exactly one commits page of 100 per repository, at most 11 requests per account (2 per repository subject). Same budget and key as P111 (shared client in v3lum/modules/username_social/github_user.py; 60 requests/h keyless per egress IP, 5,000/h with the key 'github'). 403/429 with a rate-limit message = RATE_LIMITED (provider marker github_user_rate_limit), 404 = ABSENT, 409 = empty repository. Commit identities are personal data (GitHub AUP s.8 purpose limit): kept no longer than retention_days, never sent to breach or stealer modules automatically (FC5)."
+    }
+  },
+  "error_markers": [],
+  "notes": "Batch p3-G05-2 (P115): the GitHub REST source of git_metadata_identity. Terms class 'key-terms' as P111's GitHub REST source (FC7)."
+}

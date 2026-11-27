@@ -1,0 +1,18 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://www.example.com/backup.sql",
+  "headers": {
+   "Range": "bytes=0-1023"
+  }
+ },
+ "response": {
+  "status": 206,
+  "headers": {
+   "content-type": "application/sql",
+   "content-range": "bytes 0-423/734003",
+   "content-length": "424"
+  },
+  "body": "-- MySQL dump 10.13  Distrib 8.0.36, for Linux (x86_64)\n--\n-- Host: 192.0.2.15    Database: exemplo\n-- ------------------------------------------------------\n/*!40101 SET NAMES utf8mb4 */;\n\nDROP TABLE IF EXISTS `clientes`;\nCREATE TABLE `clientes` (\n  `id` int NOT NULL,\n  `email` varchar(255) DEFAULT NULL\n);\nLOCK TABLES `clientes` WRITE;\nINSERT INTO `clientes` VALUES (1,'usuario1@example.com'),(2,'usuario2@example.com');\n"
+ }
+}

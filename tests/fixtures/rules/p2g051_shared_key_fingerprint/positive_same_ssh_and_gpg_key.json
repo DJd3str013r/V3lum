@@ -1,0 +1,95 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "options": {
+  "mode": "passive",
+  "tlp": "amber",
+  "depth": 1
+ },
+ "nodes": [
+  {
+   "key": "social_account:github:example-dev",
+   "depth": 0,
+   "seed": true,
+   "attributes": {
+    "ssh_keys": [
+     {
+      "value": [
+       {
+        "type": "ssh-ed25519",
+        "fingerprint": "SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU",
+        "bits": 256
+       },
+       {
+        "type": "ecdsa-sha2-nistp256",
+        "fingerprint": "SHA256:p2QAMXNIC1TJYWeIOttrVc98/R1BUFWu3/LiyKgUfQM",
+        "bits": 256
+       }
+      ],
+      "source": "github_user"
+     }
+    ],
+    "gpg_keys": [
+     {
+      "value": [
+       {
+        "fingerprint": "25FBB5CEE76B105AF5A1923FAC12181FB41C0275",
+        "key_id": "AC12181FB41C0275",
+        "algorithm": "eddsa",
+        "created": "2026-11-26T04:39:24Z"
+       }
+      ],
+      "source": "github_user"
+     }
+    ]
+   }
+  },
+  {
+   "key": "username:example-dev-gl",
+   "depth": 0,
+   "seed": true,
+   "attributes": {
+    "ssh_keys": [
+     {
+      "value": [
+       {
+        "type": "ssh-ed25519",
+        "fingerprint": "SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU",
+        "bits": 256
+       }
+      ],
+      "source": "gitlab_user"
+     }
+    ],
+    "gpg_keys": [
+     {
+      "value": [
+       {
+        "fingerprint": "25FBB5CEE76B105AF5A1923FAC12181FB41C0275",
+        "key_id": "AC12181FB41C0275",
+        "algorithm": "eddsa",
+        "created": "2026-11-26T04:39:24Z"
+       },
+       {
+        "fingerprint": "FCDF969C363CD9A9C08E26C4A03927FE115EA357",
+        "key_id": "A03927FE115EA357",
+        "algorithm": "rsa",
+        "created": "2026-11-26T04:39:24Z"
+       }
+      ],
+      "source": "gitlab_user"
+     }
+    ]
+   }
+  }
+ ],
+ "edges": [],
+ "expect": {
+  "p2g051_shared_key_fingerprint": {
+   "min": 1,
+   "max": 1,
+   "severity": "info",
+   "confidence_label": "probable"
+  }
+ }
+}

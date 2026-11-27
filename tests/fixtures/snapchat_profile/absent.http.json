@@ -1,0 +1,17 @@
+{
+ "_fixture": "REAL live capture 2026-11-26, minimised: random control; 404 with pageType NOT_FOUND; viewerInfo/configs dropped",
+ "_meta": {
+  "url": "https://www.snapchat.com/@xg9ruucev40dvl2",
+  "user_agent": "V3LUM/dev",
+  "captured": "2026-11-26T08:32:59Z",
+  "elapsed_s": 0.296,
+  "bytes_original": 5906
+ },
+ "status": 404,
+ "headers": {
+  "cache-control": "max-age=0,no-cache,no-store",
+  "content-type": "text/html; charset=utf-8",
+  "server": "API Gateway"
+ },
+ "body": "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>Snapchat</title></head><body><div id=\"__next\"></div><script id=\"__NEXT_DATA__\" type=\"application/json\">{\"props\":{\"pageProps\":{\"pageProps\":{\"pageMetadata\":{\"pageType\":\"NOT_FOUND\",\"pageTitle\":\"Snapchat\",\"shareId\":\"\"}},\"status\":2},\"status\":0},\"page\":\"/at/[username]\",\"query\":{\"username\":\"@xg9ruucev40dvl2\"},\"buildId\":\"toY-n8s8peLb7zdwXob3v\"}</script></body></html>"
+}

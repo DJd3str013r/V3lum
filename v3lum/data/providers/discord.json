@@ -1,0 +1,54 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "discord",
+  "name": "Discord invite resolver (public API, keyless)",
+  "operator": "Discord Inc.",
+  "hosts": [
+    "discord.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Discord Inc.: an established company with published developer terms, a privacy policy and a documented public API (A8 trusted). Council P101 cond 1: registry provider discord, tier trusted.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Authoritative for the invite it resolves (guild id, counts, expiry, inviter); guild names and descriptions are written by the server owner (attacker-controlled when the server is hostile)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "ttl": 21600,
+    "min_interval": 2.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "invites": {
+      "title": "Discord invite resolver GET /api/v10/invites/{code}?with_counts=true&with_expiration=true (keyless, read-only)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://support-dev.discord.com/hc/en-us/articles/8562894815383-Discord-Developer-Terms-of-Service",
+        "quote": "Registry provider discord: tier trusted, terms open; invites are PERSONAL_TYPES (P333), so personal_data_review comes before default use (A3 BR8).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "discord",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P101 cond 1); research C0233 (verified_live 200). GET only, keyless: never POST (join/accept), never a bot or user token, never a webhook URL (P101 cond 1/5). 404 {'code':10006,'message':'Unknown Invite'} = invalid or expired invite (never 'no such server'); 429 honours the JSON retry_after (one retry within 15 s, else RATE_LIMITED, P101 cond 3). Discord global limits apply and no X-RateLimit headers were seen on this route (2026-11-26): min_interval 2 s, concurrency 1, no quota block. discord.gg and discordapp.com URLs are parsed locally and never fetched."
+    }
+  },
+  "notes": "Owned by batch p2-G05-1 (module discord_invite, P101). personal_data_review is still to be recorded (discord_invite is a PERSONAL_TYPES value, A3 BR8). Cache: valid invites 6 h (counts and expiry change), Unknown Invite answers 24 h."
+}

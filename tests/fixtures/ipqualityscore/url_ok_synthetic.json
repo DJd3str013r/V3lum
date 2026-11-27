@@ -1,0 +1,33 @@
+{
+ "_synthetic": "shape from the IPQS malicious-url-scanner docs example (read 2026-11-26), values replaced by documentation values. FC7: replace with a real company-key capture.",
+ "message": "Success.",
+ "success": true,
+ "unsafe": false,
+ "domain": "example.com",
+ "root_domain": "example.com",
+ "ip_address": "192.0.2.10",
+ "country_code": "US",
+ "server": "nginx",
+ "content_type": "text/html; charset=UTF-8",
+ "status_code": 200,
+ "page_size": 1256,
+ "domain_rank": 0,
+ "dns_valid": true,
+ "parking": false,
+ "spamming": false,
+ "malware": false,
+ "phishing": false,
+ "suspicious": false,
+ "adult": false,
+ "risk_score": 0,
+ "domain_age": {
+  "human": "29 years ago",
+  "timestamp": 808372800,
+  "iso": "1995-08-14T00:00:00-04:00"
+ },
+ "category": "N/A",
+ "redirected": false,
+ "scanned_url": "https://example.com/",
+ "final_url": "https://example.com/",
+ "request_id": "REQID00005"
+}

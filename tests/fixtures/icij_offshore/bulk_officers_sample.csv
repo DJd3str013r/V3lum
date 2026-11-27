@@ -1,0 +1,3 @@
+node_id,name,countries,country_codes,sourceID,valid_until,note
+99200001,EXAMPLE PERSON ONE,Brazil,BRA,Pandora Papers - Example Provider,Synthetic row for tests,
+99200002,EXAMPLE NOMINEE DIRECTORS LTD,Seychelles,SYC,Pandora Papers - Example Provider,Synthetic row for tests,

@@ -1,0 +1,55 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "opencep",
+  "name": "OpenCEP",
+  "operator": "OpenCEP (opencep.com): static CEP JSON files served from Google Cloud Storage behind Cloudflare; operator not identified in the research",
+  "hosts": [
+    "opencep.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "Not reviewed yet: 'OpenCEP is used only after the registry reviewer records it as community tier; while it is unknown it receives no value (unknown tier receives IOC values only) and the chain ends at ViaCEP.' (P234 cond 4). Evidence for the reviewer: static ViaCEP-compatible JSON on Google Cloud Storage (31-day cache), already relayed by BrasilAPI CEP v2 (backend 'open-cep'), and a live data-quality defect (2026-11-26: HTTP 200 with a Sarandi-PR street for the non-existent CEP 99999-999).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "D",
+    "justification": "Unreviewed static mirror of CEP data; answered a non-existent CEP (99999-999) with a real street on 2026-11-26, so its answers are checked against the offline CEP range table before use."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 5,
+    "ttl": 2592000,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "cep": {
+      "title": "OpenCEP /v1/{cep} (ViaCEP-compatible subset)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://opencep.com/",
+        "quote": "public open data / free public API",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "correios",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0577 terms 'public open data / free public API'. Not declared by any module while the tier is unknown (P234 cond 4): cep_lookup keeps the parser and the chain slot and adds this source once the registry reviewer records tier community. Not found = HTTP 404 {'error': true} (a vote, not a final verdict)."
+    }
+  },
+  "notes": "Owned by batch p2-G10-1 (P234 cep_lookup). Registered so the host has an owner and the tier review has a place to land; no module receives values through it until then."
+}

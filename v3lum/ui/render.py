@@ -46,7 +46,6 @@ import json
 from collections import defaultdict
 from collections.abc import Iterable
 from typing import Any
-from urllib.parse import urlsplit
 
 from rich import box
 from rich.console import Console, Group, RenderableType
@@ -287,7 +286,14 @@ def _header(v: _View) -> Panel:
     )
     score = _d(case.get("risk")).get("score", s.get("risk_score", 0))
     title = Text.assemble(("▌V3LUM REPORT▐ ", "v.title"), (f" {tlp_text} ", tlp_style(v.tlp)))
-    return Panel(Group(grid, Text(), risk_bar(score, S.case_level(case))), title=title, border_style="v.accent", box=box.HEAVY, padding=(1, 2))
+    parts: list[RenderableType] = [grid, Text(), risk_bar(score, S.case_level(case))]
+    contributors = S.contributor_lines(case, show_personal=v.show_personal, no_defang=v.no_defang)
+    if contributors:  # P302 cond 9: the top-3 contributors in plain words next to the score
+        lines = Text("top contributors:", style="v.dim")
+        for line in contributors:
+            lines.append("\n  " + line, style="v.text")
+        parts.append(lines)
+    return Panel(Group(*parts), title=title, border_style="v.accent", box=box.HEAVY, padding=(1, 2))
 
 
 def _inputs(case: dict[str, Any]) -> list[tuple[str, str]]:
@@ -315,27 +321,13 @@ def _bottom(v: _View) -> Panel:
 
 
 def _attention_lines(case: dict[str, Any]) -> tuple[list[str], list[str]]:
-    """``core.attention.attention_points`` / ``limitations`` (WP16); until that module exists (or if
-    it fails) the limitations fall back to the could-not-verify coverage groups."""
-    try:
-        from v3lum.core import attention as att  # WP16 (same wave)
-    except Exception:  # noqa: BLE001 - not there yet, or broken: the fallback below keeps rule 5 visible
-        att = None
-    points: list[str] | None = None
-    limits: list[str] | None = None
-    if att is not None:
-        try:
-            points = [str(p) for p in att.attention_points(case) or ()]
-        except Exception:  # noqa: BLE001
-            points = None
-        try:
-            limits = [str(x) for x in att.limitations(case) or ()]
-        except Exception:  # noqa: BLE001
-            limits = None
-    return points or [], limits if limits is not None else _fallback_limitations(case)
+    """``core.attention.attention_points`` / ``limitations`` (WP16) through ``report.summary.attention``
+    (if it fails, the limitations fall back to the could-not-verify coverage groups)."""
+    return S.attention(case)
 
 
 def _fallback_limitations(case: dict[str, Any]) -> list[str]:
+    """The could-not-verify coverage groups (kept for callers of the wave-3 name)."""
     groups: dict[str, list[str]] = defaultdict(list)
     for name, info in sorted(_d(case.get("coverage")).items()):
         info = _d(info)
@@ -366,6 +358,17 @@ def _attention(v: _View) -> list[RenderableType]:
     return [t]
 
 
+def _terminal_severity(c: dict[str, Any]) -> Any:
+    """The severity a correlation shows in the terminal: a pack may lower it there only
+    (``email_spoofing.TERMINAL_SEVERITY``: CR03 reads INFO, P027 cond 2); stored, HTML and MD keep it."""
+    try:
+        from v3lum.correlations.email_spoofing import TERMINAL_SEVERITY
+    except Exception:  # noqa: BLE001 - pack not installed: the stored severity
+        return c.get("severity")
+    override = TERMINAL_SEVERITY.get(str(c.get("rule") or ""))
+    return getattr(override, "value", override) if override is not None else c.get("severity")
+
+
 def _correlations(v: _View) -> list[RenderableType]:
     all_corrs = [c for c in _l(v.case.get("correlations")) if isinstance(c, dict)]
     corrs = [c for c in all_corrs if not S.is_identity_link(c)]
@@ -381,7 +384,7 @@ def _correlations(v: _View) -> list[RenderableType]:
     t.add_column("conclusion", ratio=3)
     t.add_column("what to do", ratio=2, style="v.dim")
     for c in corrs[:limit]:
-        sev = _sev(c.get("severity"))
+        sev = _sev(_terminal_severity(c))
         body = v.txt(c.get("title") or c.get("rule") or "?", "v.text")
         ents = [str(k) for k in _l(c.get("entities"))][:3]
         if ents:
@@ -411,13 +414,19 @@ def _override_text(f: dict[str, Any], v: _View) -> str:
 
 
 def _findings(v: _View, max_findings: int) -> list[RenderableType]:
+    """Findings as grouped rows (P335, ``report.summary.finding_rows``: the same fact about the same
+    subject from several sources is one row 'seen by N sources: ...'; every member keeps its id and
+    evidence), a confidence label on every row and the criterion for HIGH/CRITICAL (always with
+    ``full``); breach/infostealer rows show their data classes and password form in plain words (P145
+    cond 9). POSSIBLE identity links are only counted (P258 cond 12)."""
     every = list(v.idx.findings)
     findings = [f for f in every if v.full or _sev(f.get("severity")) != "info"]
     identity = [f for f in findings if S.is_identity_link(f)]
     findings = [f for f in findings if not S.is_identity_link(f)]
     infos = [f for f in every if _sev(f.get("severity")) == "info"]
     out: list[RenderableType] = []
-    if findings:
+    rows = S.finding_rows(findings)
+    if rows:
         t = Table(
             box=box.SIMPLE, show_header=True, header_style="v.dim", expand=True, title_justify="left",
             title=Text("⚑ findings", style="v.accent"),
@@ -427,21 +436,31 @@ def _findings(v: _View, max_findings: int) -> list[RenderableType]:
         t.add_column("entity", ratio=2, overflow="fold")
         t.add_column("finding", ratio=4, overflow="fold")
         t.add_column("source", ratio=1, style="v.module", overflow="fold")
-        shown = findings if v.full else findings[: max(0, int(max_findings))]
-        for f in shown:
-            sev = _sev(f.get("severity"))
+        shown = rows if v.full else rows[: max(0, int(max_findings))]
+        for row in shown:
+            f = row.lead
+            sev = _sev(row.severity)
             body = v.txt(f.get("title") or "?", "v.text")
-            if f.get("criterion") and (v.full or sev in ("critical", "high")):
-                body.append("\ncriterion: " + _clip(v.plain(f["criterion"]), 300), style="v.dim")
-            override = _override_text(f, v)
+            if row.criterion and (v.full or sev in ("critical", "high")):
+                body.append("\ncriterion: " + _clip(v.plain(row.criterion), 300), style="v.dim")
+            override = next((o for o in (_override_text(m, v) for m in row.members) if o), "")
             if override:
                 body.append("\n" + override, style="v.warn")
+            for fact in S.breach_facts(f, show_personal=v.show_personal):
+                body.append("\n" + fact, style="v.text")
             if f.get("description") and (v.full or sev in ("critical", "high")):
                 body.append("\n" + _clip(v.plain(f["description"]), 300), style="v.dim")
-            entity = v.ent(str(f["entity"])) if f.get("entity") else Text("-")
-            t.add_row(_sev_text(sev), _conf_text(f), entity, body, safe_rich(f.get("module") or "", "v.module"))
+            if row.grouped:
+                body.append("\n" + (row.sources_text() or f"{row.count} findings grouped"), style="v.ghost")
+            entities = list(dict.fromkeys(str(m.get("entity")) for m in row.members if m.get("entity")))
+            entity = v.ent(entities[0]) if entities else Text("-")
+            if len(entities) > 1:
+                entity.append(f" (+{len(entities) - 1} variants)", style="v.ghost")
+            conf = Text(f"{CONFIDENCE_ICON.get(row.confidence_label, '')} {row.confidence_label.upper()}", style=f"conf.{row.confidence_label}")
+            source = ", ".join(row.sources) if row.sources else str(f.get("module") or "")
+            t.add_row(_sev_text(sev), conf, entity, body, safe_rich(source, "v.module"))
         out.append(t)
-        hidden = len(findings) - len(shown)
+        hidden = len(rows) - len(shown)
         if hidden > 0:
             out.append(Text(f"  … {hidden} more findings (use --full or open the HTML report)", style="v.ghost"))
     if infos and not v.full:
@@ -642,15 +661,10 @@ def _coverage(case: dict[str, Any], *, full: bool, show_personal: bool = False) 
 
 
 def _link_host(item: dict[str, Any]) -> str:
-    """The host a link sends the value to: the declared ``host`` (pivot packs), else the URL's host
-    (module ``res.link`` items carry no host); lower case, no trailing dot."""
-    host = str(item.get("host") or "").strip().lower()
-    if not host:
-        try:
-            host = (urlsplit(str(item.get("url") or "").strip()).hostname or "").lower()
-        except ValueError:
-            host = ""
-    return host.rstrip(".")
+    """The host a link sends the value to (``report.summary.link_host``): the URL's own host, else
+    the declared pack ``host``; lower case, no trailing dot. A declared host never hides where the
+    URL really goes (a stored case is untrusted)."""
+    return S.link_host(item)
 
 
 def _host_in(host: str, targets: Iterable[str]) -> bool:
@@ -708,7 +722,7 @@ def _pivots(v: _View) -> list[RenderableType]:
     rows = 0
     hidden_red = hidden_hostile = hidden_privacy = more = dropped = 0
     for key in v.seeds:
-        candidates = [i for i in _l(links.get(key)) if isinstance(i, dict) and i.get("url")]
+        candidates = S.merged_links(_l(links.get(key)))  # a manual fallback and the pack link of one URL are one row
         items = [i for i in candidates if safe_href(str(i.get("url"))) is not None]
         dropped += len(candidates) - len(items)  # javascript:, data:, file:... never rendered (AR13)
         if not items:
@@ -821,6 +835,8 @@ def render_single(console: Console, out: dict[str, Any], *, show_personal: bool 
             body = Text(display_text(f.get("title") or "?", show_personal=show_personal), style="v.text")
             if f.get("criterion") and sev in ("critical", "high"):
                 body.append("\ncriterion: " + _clip(display_text(f["criterion"], show_personal=show_personal), 300), style="v.dim")
+            for fact in S.breach_facts(f, show_personal=show_personal):  # P145 cond 9: plain words, never a value
+                body.append("\n" + fact, style="v.text")
             if f.get("description"):
                 body.append("\n" + display_text(f["description"], show_personal=show_personal), style="v.dim")
             t.add_row(_sev_text(sev), _conf_text(f), body)

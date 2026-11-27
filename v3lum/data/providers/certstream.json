@@ -1,0 +1,47 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "certstream",
+  "name": "CertStream (public best-effort instance)",
+  "operator": "Calidog (CaliDog Security)",
+  "hosts": [
+    "certstream.calidog.io"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "P030 cond 5: certstream.calidog.io is tier community, terms open (public CT data, MIT server); a public best-effort service with past outages, run by a small team (A8 community).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Relays public Certificate Transparency log entries (append-only, verifiable in the logs themselves); the public instance is best-effort (outages, no backfill), which reads 'could not verify', never 'no certificates'."
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "stream": {
+      "title": "CertStream WebSocket firehose (certificate_update messages: leaf_cert.all_domains, serial, issuer, not_before; local filtering only)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/CaliDog/certstream-server",
+        "quote": "certstream.calidog.io is tier community, terms open (public CT data, MIT server; evidence recorded per A1)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "ct-logs",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P030 cond 5); research C0009 verified_live (HTTP 101 handshake, example.json 200): 'Public best-effort service by Calidog (certstream-server is MIT; can self-host certstream-server-go)'. Consumed only by `v3lum watch` (v3lum/core/watch.py, optional extra v3lum[watch]): the consumer sends nothing - org-profile keywords and permutations are matched locally. Upstream family ct-logs (crt.sh, Cert Spotter and CertStream mirror the same public CT logs)."
+    }
+  },
+  "notes": "Owned by WP26 (watch mode, P030). Setting certstream_url points watch to a self-hosted certstream-server-go first (MIT, same message format; research C0756); such an endpoint is disclosure 'internal' when its host is in the organisation's network (private address, internal name, own domain/network of the org profile) and is decided at runtime by v3lum.core.watch.certstream_endpoint - it is not a host of this fragment. Direct RFC 6962 / static-ct-api log polling is deferred (BACKLOG)."
+}

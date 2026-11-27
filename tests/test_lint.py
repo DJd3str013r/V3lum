@@ -667,3 +667,302 @@ def test_lint01_ad_hoc_dataset_downloads_in_modules():
     )
     found = {(i.line, i.rule_id) for i in lint_module_source("m.py", source=src)}
     assert found == {(2, "LINT-01"), (3, "LINT-01")}
+
+
+# ------------------------------------------------------------------ LINT-01: reaching around ctx.http/ctx.net (AR20, P327 cond 6)
+REACH = "reaches around ctx.http/ctx.net"
+
+
+def _reach(src: str, profile: str = "module") -> list[tuple[int, str]]:
+    """(line, message head) of the LINT-01 reach-around issues of ``src``."""
+    issues = lint_module_source("v3lum/modules/utility/m.py", source=src, profile=profile)
+    return [(i.line, i.message.split(":", 1)[0]) for i in issues if i.rule_id == "LINT-01" and REACH in i.message]
+
+
+def test_lint01_reaching_around_ctx_http_is_flagged_once_per_access():
+    src = (
+        "def run(self, entity, ctx):\n"
+        "    ctx.http.client.request('GET', 'https://x.example/')\n"  # 2
+        "    ctx.http._client.request('GET', 'https://x.example/')\n"  # 3
+        "    self.ctx.runtime.http.request('GET', 'https://x.example/')\n"  # 4
+        "    ctx.runtime.transport.send('GET', 'https://x.example/')\n"  # 5
+        "    ctx.runtime.egress, ctx.runtime.connector, ctx.runtime.net, ctx.runtime.dns\n"  # 6
+        "    ctx.runtime.data.fetch('registered')\n"  # 7
+        "    ctx.net._resolution_client().request('GET', 'https://x.example/')\n"  # 8
+        "    ctx.dns._cache, ctx.data._store, ctx.data.store._dataset_http(None, 'u')\n"  # 9
+        "    ctx.doh._client, ctx.net.http.client, ctx.data.runtime.http, ctx.data.store.runtime.http\n"  # 10
+        "    ctx.http.__class__(ctx.http)\n"  # 11
+    )
+    assert _reach(src) == [
+        (2, "ctx.http.client"), (3, "ctx.http._client"), (4, "self.ctx.runtime.http"), (5, "ctx.runtime.transport"),
+        (6, "ctx.runtime.connector"), (6, "ctx.runtime.dns"), (6, "ctx.runtime.egress"), (6, "ctx.runtime.net"),
+        (7, "ctx.runtime.data"), (8, "ctx.net._resolution_client"),
+        (9, "ctx.data._store"), (9, "ctx.data.store._dataset_http"), (9, "ctx.dns._cache"),
+        (10, "ctx.data.runtime.http"), (10, "ctx.data.store.runtime.http"), (10, "ctx.doh._client"), (10, "ctx.net.http.client"),
+        (11, "ctx.http.__class__"),
+    ]
+    assert all(i.rule_id != "LINT-01" or not i.allowed for i in lint_module_source("m.py", source=src))
+
+
+def test_lint01_reach_around_follows_aliases_and_getattr():
+    src = (
+        "def run(self, entity, ctx):\n"
+        "    c = ctx\n"
+        "    rt = c.runtime\n"
+        "    rt.http.request('GET', 'https://x.example/')\n"  # 4
+        "    h = ctx.http\n"
+        "    h.client.get('https://x.example/')\n"  # 6
+        "    self.scope = ctx.http\n"
+        "    self.scope._client\n"  # 8
+        "    n = getattr(ctx, 'net')\n"
+        "    n._resolution_client()\n"  # 10
+        "    getattr(ctx.http, 'client', None)\n"  # 11
+        "    getattr(getattr(ctx, 'runtime', None), 'http', None)\n"  # 12
+        "    rt.meta.get('sightings_lookup'), h.get('https://x.example/'), n.connect('h', 443)\n"  # clean
+    )
+    assert _reach(src) == [
+        (4, "ctx.runtime.http"), (6, "ctx.http.client"), (8, "ctx.http._client"), (10, "ctx.net._resolution_client"),
+        (11, "ctx.http.client"), (12, "ctx.runtime.http"),
+    ]
+
+
+def test_lint01_legitimate_ctx_reads_stay_clean():
+    """Narrow rule: the documented ctx helpers and run facts are not reaching around anything."""
+    src = (
+        "def run(self, entity, ctx):\n"
+        "    meta = getattr(ctx.runtime, 'meta', None) or ctx.runtime.meta\n"
+        "    now = ctx.runtime.clock.now(), ctx.runtime.in_scan, ctx.runtime.config, getattr(ctx, 'runtime', ctx)\n"
+        "    ctx.http.get('https://api.example.test/'), ctx.http.hosts, ctx.http.requests, ctx.http.clock\n"
+        "    ctx.net.connect('h', 443), ctx.net.run_tool('nuclei', []), ctx.dns.query('x', 'A')\n"
+        "    ctx.data.fetch('registered'), ctx.data.store.path('registered'), ctx.data.used, ctx.data.info('x')\n"
+        "    clientele = ctx.http.clientele if hasattr(ctx.http, 'clientele') else None\n"
+        "    return meta, now, clientele\n"
+    )
+    assert [i for i in lint_module_source("m.py", source=src) if i.rule_id == "LINT-01"] == []
+
+
+def test_lint01_scoped_http_built_in_a_module():
+    src = (
+        "from v3lum.core import http as H\n"
+        "from v3lum.core.http import ScopedHttp as S\n"
+        "def run(self, entity, ctx):\n"
+        "    H.ScopedHttp(None).get('https://x.example/')\n"
+        "    S(None)\n"
+    )
+    found = {(i.line, i.rule_id) for i in blocking(lint_module_source("m.py", source=src))}
+    assert found == {(4, "LINT-01"), (5, "LINT-01")}
+    assert "ScopedHttp" in lint.CORE_CLIENT_CLASSES
+
+
+def test_lint01_reach_around_is_a_module_rule_with_a_justified_pragma():
+    src = (
+        "def owner(ctx):\n"
+        "    return getattr(getattr(ctx, 'http', None), 'client', None)  # v3lum-lint: allow LINT-01 -- identity key only\n"
+        "def other(ctx):\n"
+        "    return ctx.http.client  # v3lum-lint: allow LINT-01\n"
+    )
+    issues = [i for i in lint_module_source("m.py", source=src) if i.rule_id == "LINT-01"]
+    assert [(i.line, i.allowed) for i in issues] == [(2, True), (4, False)]  # a pragma without a justification is ignored
+    assert "pragma ignored" in issues[1].message
+    for profile in ("core", "code"):  # core plumbing and correlation packs never receive a ctx
+        assert _reach("def f(ctx):\n    return ctx.http.client, ctx.runtime.http\n", profile=profile) == []
+
+
+def test_lint01_ad_hoc_download_through_the_store_is_flagged():
+    src = (
+        "def run(self, entity, ctx):\n"
+        "    ctx.data.store.fetch('feed', 'https://files.example.test/' + entity.value)\n"
+        "    ctx.data.store.fetch('feed')\n"
+    )
+    found = {(i.line, i.rule_id) for i in blocking(lint_module_source("m.py", source=src))}
+    assert found == {(2, "LINT-01")}
+
+
+def _lint01(src: str) -> list[tuple[int, str]]:
+    """(line, message) of the blocking LINT-01 issues of a module source."""
+    return [(i.line, i.message) for i in blocking(lint_module_source("v3lum/modules/utility/m.py", source=src)) if i.rule_id == "LINT-01"]
+
+
+def _reach_issues(src: str) -> list[tuple[int, str]]:
+    return sorted((line, msg) for line, msg in _lint01(src) if REACH in msg)
+
+
+def test_lint01_reach_around_follows_parameters_partial_and_walrus():
+    """ctx passed to a helper of the file is an alias inside that helper only (scoped, so a parameter of
+    the same name elsewhere is not); also through self.method(), functools.partial(), pool.submit(),
+    keyword arguments, a walrus and getattr with a string constant."""
+    src = (
+        "import functools\n"
+        "CLIENT = 'client'\n"
+        "def run(self, entity, ctx):\n"
+        "    _get(ctx)\n"
+        "    self._probe(entity, ctx)\n"
+        "    functools.partial(_bound, ctx)()\n"
+        "    pool.submit(_bound2, ctx)\n"
+        "    _kw(c=ctx.http)\n"
+        "    (h := ctx.http).client\n"  # 9
+        "    getattr(ctx.http, CLIENT)\n"  # 10
+        "def _get(c):\n"
+        "    return c.http.client\n"  # 12
+        "def _probe(self, entity, c):\n"
+        "    return c.runtime.http\n"  # 14
+        "def _bound(x):\n"
+        "    return x.net._resolution_client()\n"  # 16
+        "def _bound2(y):\n"
+        "    return y.runtime.transport\n"  # 18
+        "def _kw(c=None):\n"
+        "    return c._client\n"  # 20
+        "def unrelated(c, data, obj):\n"
+        "    return c.http.client, type(obj).__name__, data._x\n"  # clean: c, data, obj are not ctx here
+    )
+    assert [(line, msg.split(":", 1)[0]) for line, msg in _reach_issues(src)] == [
+        (9, "ctx.http.client"), (10, "ctx.http.client"), (12, "ctx.http.client"), (14, "ctx.runtime.http"),
+        (16, "ctx.net._resolution_client"), (18, "ctx.runtime.transport"), (20, "ctx.http._client"),
+    ]
+
+
+def test_lint01_rebinding_the_module_scope_is_flagged():
+    """ctx.http/net/dns/doh/data/runtime are the module's network binding: assigning or deleting their
+    attributes (directly, through an alias or a copy, setattr/delattr) would switch the host, scope or
+    egress checks off - ctx.runtime.in_scan = False would reopen mid-scan dataset downloads."""
+    src = (
+        "import copy\n"
+        "def run(self, entity, ctx):\n"
+        "    ctx.http.allowed_hosts = None\n"  # 3
+        "    h = ctx.http\n"
+        "    h.disclosure = 'third_party'\n"  # 5
+        "    ctx.http.max_requests += 1000\n"  # 6
+        "    del ctx.http.scope\n"  # 7
+        "    ctx.runtime.in_scan = False\n"  # 8
+        "    setattr(ctx.net, 'disclosure', 'third_party')\n"  # 9
+        "    delattr(ctx.http, 'contact_guard')\n"  # 10
+        "    h2 = copy.copy(ctx.http)\n"
+        "    h2.allowed_hosts = None\n"  # 12
+        "    ctx.http = ctx.doh\n"  # 13
+        "    setattr(ctx.http, name, None)\n"  # 14
+        "    getattr(ctx.runtime, name)\n"  # 15
+    )
+    found = _lint01(src)
+    assert sorted({line for line, _ in found}) == [3, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15]
+    assert any("ctx.runtime.in_scan assigned or deleted" in msg for _, msg in found)
+    assert any("<computed>" in msg for line, msg in found if line == 15)
+    clean = (
+        "def run(self, entity, ctx):\n"
+        "    self.http = ctx.http\n"  # binding an alias is not a rebind
+        "    ctx.state.seen = 1\n"
+        "    ctx.data.used.append({})\n"
+        "    local = {}\n"
+        "    local['x'] = ctx.http.get('https://api.example.test/')\n"
+        "    getattr(ctx, 'tlp', 'amber'), getattr(type(ctx), 'cached_response', None)\n"
+    )
+    assert _lint01(clean) == []
+
+
+def test_lint01_core_objects_built_through_getattr_imports_or_the_class():
+    src = (
+        "import v3lum.core.http as vh\n"
+        "from v3lum.core import context as cm\n"
+        "from v3lum.core.context import Runtime\n"
+        "def run(self, entity, ctx):\n"
+        "    getattr(vh, 'HttpClient')()\n"  # 5
+        "    getattr(vh, 'ScopedHttp')(ctx.http, allowed_hosts=None)\n"  # 6
+        "    Runtime()\n"  # 7
+        "    cm.Context(ctx.runtime, object, ctx.options, None)\n"  # 8
+        "    ctx.__class__(ctx.runtime, object, ctx.options, None)\n"  # 9
+        "    type(ctx.http)(ctx.http)\n"  # 10
+    )
+    built = [(line, msg) for line, msg in _lint01(src) if "built inside a module" in msg]
+    assert [line for line, _ in built] == [5, 6, 7, 8, 9, 10]
+    assert "HttpClient(" in built[0][1] and "ScopedHttp(" in built[1][1] and "Runtime(" in built[2][1] and "Context(" in built[3][1]
+
+
+def test_lint01_runtime_factories_egress_and_private_members():
+    src = (
+        "def run(self, entity, ctx):\n"
+        "    ctx.runtime.context(object).http.get('https://x.example/')\n"  # 2
+        "    ctx.runtime.doh_scope(public=True)\n"  # 3
+        "    ctx.net.egress.session_for('passive')\n"  # 4
+        "    vars(ctx.runtime)['http']\n"  # 5
+        "    ctx.runtime.__dict__['http']\n"  # 6
+        "    ctx.runtime._in_scan\n"  # 7
+    )
+    assert [(line, msg.split(":", 1)[0]) for line, msg in _reach_issues(src)] == [
+        (2, "ctx.runtime.context"), (3, "ctx.runtime.doh_scope"), (4, "ctx.net.egress"), (5, "ctx.runtime.__dict__"),
+        (6, "ctx.runtime.__dict__"), (7, "ctx.runtime._in_scan"),
+    ]
+
+
+def test_lint01_ad_hoc_dataset_downloads_through_aliases_are_flagged():
+    src = (
+        "def run(self, entity, ctx):\n"
+        "    d = ctx.data\n"
+        "    d.fetch('feed', 'https://files.example.test/' + entity.value)\n"  # 3
+        "    s = ctx.data.store\n"
+        "    s.fetch_lines('feed', url='https://files.example.test/' + entity.value)\n"  # 5
+        "    getattr(ctx.data, 'fetch_json')('feed', 'https://files.example.test/x')\n"  # 6
+        "    _load(ctx.data, entity.value)\n"
+        "    d.fetch('registered'), s.fetch_text('registered', None)\n"  # clean: by name
+        "def _load(view, value):\n"
+        "    return view.fetch_text('feed', 'https://files.example.test/' + value)\n"  # 10
+    )
+    found = [line for line, msg in _lint01(src) if "ad-hoc dataset download" in msg]
+    assert found == [3, 5, 6, 10]
+
+
+def test_lint01_reach_around_in_a_plugin_tree(tmp_path):
+    """~/.v3lum/plugins (any root that is not the package) is linted with the module profile: the
+    reach-around, rebind and built-core-object rules apply to plugins too."""
+    plugin = tmp_path / "plugins" / "my_plugin.py"
+    plugin.parent.mkdir()
+    plugin.write_text(
+        "def run(self, entity, ctx):\n"
+        "    h = ctx.http\n"
+        "    h.client.get('https://x.example/')\n"
+        "    ctx.runtime.in_scan = False\n"
+        "    getattr(__import__('v3lum.core.http').core.http, 'ScopedHttp')(ctx.http)\n",
+        encoding="utf-8",
+    )
+    found = [(i.line, i.message.split(":", 1)[0]) for i in blocking(lint_tree(tmp_path / "plugins")) if i.rule_id == "LINT-01"]
+    assert (3, "ctx.http.client") in found
+    assert any(line == 4 and "ctx.runtime.in_scan assigned or deleted" in msg for line, msg in found)
+    assert any(line == 5 and "ScopedHttp(...) built inside a module" in msg for line, msg in found)
+
+
+def test_lint01_editing_the_dataset_registry_is_flagged():
+    """register_dataset is the only reviewed way into DATASETS: an entry written or edited by hand would
+    keep a reviewed dataset scope for a URL nobody reviewed."""
+    src = (
+        "from v3lum.core.datasets import DATASETS\n"
+        "from v3lum.core import datasets as _ds\n"
+        "def run(self, entity, ctx):\n"
+        "    DATASETS['x'] = {'url': 'https://files.example.test/' + entity.value}\n"  # 4
+        "    DATASETS['feed']['url'] = 'https://files.example.test/' + entity.value\n"  # 5
+        "    _ds.DATASETS.update(x={})\n"  # 6
+        "    DATASETS['feed'].update(url='https://files.example.test/')\n"  # 7
+        "    del DATASETS['feed']\n"  # 8
+        "    if 'feed' not in DATASETS:\n"  # clean: reading the registry
+        "        return sorted(DATASETS.items()), DATASETS.get('feed')\n"
+    )
+    found = sorted({line for line, msg in _lint01(src) if "dataset registry" in msg})
+    assert found == [4, 5, 6, 7, 8]
+
+
+def test_lint01_handing_the_runtime_to_a_helper_is_flagged():
+    """A helper given the Runtime can build a client or scope of its own around ctx.http (e.g. an out-of-band
+    job_http(runtime, hosts=...) called mid-run): handing ctx.runtime (or an alias) to a call is LINT-01;
+    reading it, or keying a per-runtime table on it, is not."""
+    src = (
+        "from v3lum.modules.vulnerability_cve.g08_offline import job_http\n"
+        "from v3lum.core.datasets import DataStore\n"
+        "_TABLE = {}\n"
+        "def run(self, entity, ctx):\n"
+        "    job_http(ctx.runtime, module='m', provider='p', sources=(), hosts=('evil.example',), max_requests=9)\n"  # 5
+        "    rt = ctx.runtime\n"
+        "    DataStore(rt).update('feed')\n"  # 7
+        "    helper(runtime=ctx.data.runtime)\n"  # 8
+        "    meta = getattr(ctx.runtime, 'meta', None)\n"  # clean
+        "    table = _TABLE.setdefault(ctx.runtime, {}) or _TABLE.get(rt)\n"  # clean: an identity key
+        "    return meta, table, isinstance(ctx.runtime, object)\n"  # clean
+    )
+    found = [(line, msg.split(" handed", 1)[0]) for line, msg in _lint01(src) if "handed to" in msg]
+    assert found == [(5, "ctx.runtime"), (7, "ctx.runtime"), (8, "ctx.data.runtime")]

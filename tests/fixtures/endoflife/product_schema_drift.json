@@ -1,0 +1,53 @@
+{
+ "schema_version": "1.2.1",
+ "generated_at": "2026-11-25T23:43:38+00:00",
+ "last_modified": "2026-09-24T07:44:41+00:00",
+ "result": {
+  "name": "log4j",
+  "aliases": [
+   "apache_log4j",
+   "apache-log4j"
+  ],
+  "label": "Apache Log4j",
+  "category": "framework",
+  "tags": [
+   "framework",
+   "java-runtime"
+  ],
+  "versionCommand": null,
+  "identifiers": [
+   {
+    "type": "repology",
+    "id": "log4j"
+   },
+   {
+    "type": "cpe",
+    "id": "cpe:/a:apache:log4j"
+   },
+   {
+    "type": "cpe",
+    "id": "cpe:2.3:a:apache:log4j"
+   },
+   {
+    "type": "purl",
+    "id": "pkg:maven/org.apache.logging.log4j/log4j-core"
+   },
+   {
+    "type": "purl",
+    "id": "pkg:maven/log4j/log4j"
+   }
+  ],
+  "labels": {
+   "eoas": null,
+   "discontinued": null,
+   "eol": "Supported",
+   "eoes": null
+  },
+  "links": {
+   "icon": "https://cdn.jsdelivr.net/npm/simple-icons/icons/apache.svg",
+   "html": "https://endoflife.date/log4j",
+   "releasePolicy": "https://logging.apache.org/security.html"
+  },
+  "releasez": []
+ }
+}

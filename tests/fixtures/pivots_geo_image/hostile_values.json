@@ -1,0 +1,68 @@
+{
+ "image_urls_rejected": {
+  "javascript:alert(1)//x.png": "scheme",
+  "data:image/png;base64,iVBORw0KGgo=": "scheme",
+  "file:///etc/passwd.png": "scheme",
+  "ftp://example.com/x.png": "scheme",
+  "https://127.0.0.1/x.png": "address",
+  "https://10.0.0.5/logo.png": "address",
+  "https://[::1]/x.png": "address",
+  "https://169.254.169.254/latest/meta-data/x.png": "address",
+  "https://100.64.0.1/x.png": "address",
+  "https://[fd00::1]/x.png": "address",
+  "http://198.51.100.7/logo.jpeg": "address",
+  "https://intranet/x.png": "internal",
+  "https://printer.local/x.png": "internal",
+  "https://files.corp/x.png": "internal",
+  "https://x.internal/a.png": "internal",
+  "https://user:secret@example.com/x.png": "userinfo",
+  "https://example.com:8443/x.png": "port",
+  "https://example.com/page.html": "not_image",
+  "https://example.com/": "not_image",
+  "https://example.com/login?next=/img.png": "not_image",
+  "https://example.com/open.png?uid=4f9c2b7e8a1d4e6f9a0b3c5d": "token",
+  "https://example.com/i/ZXhhbXBsZUBleGFtcGxlLmNvbQ/logo.png": "token",
+  "https://example.com/img/logo.png\nHost: evil.example": "control",
+  "https://example.com/../../x.png": "dot_segment"
+ },
+ "image_urls_rendered": [
+  "https://example.com/img/logo.png",
+  "https://example.com/a b.png",
+  "https://example.com/a\"b.png",
+  "https://example.com/it's.png",
+  "https://example.com/ünïcödé.png",
+  "https://example.com/x.png?a=1&b=2",
+  "https://example.com/x.png#frag",
+  "https://example.com/{raw}.png",
+  "https://example.com/{0.__class__}.png",
+  "https://example.com/%7Burl_q%7D.png",
+  "http://8.8.8.8/logo.jpeg"
+ ],
+ "coordinates_rejected": [
+  "NaN,0",
+  "inf,1",
+  "1e5,2",
+  "-91,0",
+  "0,181",
+  "23.5,46.6; DROP",
+  "−23.5,46.6",
+  "23.5",
+  "",
+  "0,0",
+  "23.5,46.6,7"
+ ],
+ "coordinates_ok": {
+  "-23.550278,-46.633889": [
+   "-23.550278",
+   "-46.633889"
+  ],
+  "-23.5,-46.6": [
+   "-23.500000",
+   "-46.600000"
+  ],
+  "90,-180": [
+   "90.000000",
+   "-180.000000"
+  ]
+ }
+}

@@ -1,0 +1,18 @@
+{
+ "domain": "example.com",
+ "subdomains": [
+  "*",
+  "*.cfe",
+  "1.dev",
+  "www",
+  "API",
+  "mail",
+  "",
+  "mail.example.com",
+  "bad_label!",
+  "a..b",
+  "www",
+  "_dmarc"
+ ],
+ "count": 12
+}

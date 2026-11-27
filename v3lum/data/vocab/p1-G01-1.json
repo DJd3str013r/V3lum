@@ -1,0 +1,52 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p1-G01-1",
+  "title": "Certificate Transparency, e-mail security posture and RDAP names (batch p1-G01-1)",
+  "owner": "batch p1-G01-1 (P001 ct_logs/ct_logs_extra, P002 email_security_posture, P003 rdap)",
+  "notes": "P002 cond 9 asks for spf_lookups, spf_void_lookups, dmarc_pct, dmarc_sp, dmarc_rua_external, dkim_selectors, mta_sts, tls_rpt and bimi in core/vocab.py; batches never edit core files, so they live here until the core adopts them (core request).",
+  "attributes": {
+    "first_cert_seen": "ISO date: earliest not_before among the Certificate Transparency certificates naming the domain - a lower bound of its age, never a registration date",
+    "wildcard_cert": "list of wildcard names ('*.example.com') seen in certificates under the domain: wildcard coverage of the parent, never a host name",
+    "shared_cert": "list of shared (multi-tenant CDN/hosting) certificates naming the domain ({issuer, not_before, san_count, registrable_domains, reason}): never affiliate evidence",
+    "ct_summary": "Certificate Transparency summary: {cert_count, unique_names, first_cert_seen, issuers [[issuer, count]], top_names (20), sources}",
+    "ct_names_historical": "names found only in Certificate Transparency that answer NXDOMAIN through DoH (historical: passive modules only)",
+    "ct_names_unresolved": "names found in Certificate Transparency whose DoH check could not be verified (SERVFAIL, timeout): neither live nor historical",
+    "spf_lookups": "int: DNS-mechanism lookups of the SPF evaluation (include, a, mx, ptr, exists, redirect; RFC 7208 limit 10)",
+    "spf_void_lookups": "int: void lookups (NXDOMAIN or no records) of the SPF evaluation (RFC 7208 limit 2)",
+    "spf_includes": "list of {domain, vendor, depth, via}: domains reached through SPF include:/redirect=, with the SaaS/ESP vendor when known",
+    "spf_status": "SPF evaluation outcome: ok | none | permerror | temperror | could_not_verify",
+    "third_party_mail_cidrs": "list of {cidr, vendor, via}: netblocks authorised through SPF include: of SaaS/ESP mail providers (third_party_mail: never the organisation's netblocks)",
+    "dmarc_pct": "int: DMARC pct= tag (0-100) of the applicable policy",
+    "dmarc_sp": "DMARC sp= tag (subdomain policy): none | quarantine | reject",
+    "dmarc_rua_external": "list of {dest_domain, authorized}: DMARC rua/ruf destinations outside the organisational domain and whether <domain>._report._dmarc.<dest> authorises them (true/false; null = could not verify)",
+    "dkim_selectors": "list of common DKIM selectors with a published (non-revoked) key; absence means 'not determined', never 'DKIM missing'",
+    "mta_sts": "{present, id}: MTA-STS TXT record (_mta-sts.<domain>); the policy file itself is fetched by wellknown_files (P065)",
+    "tls_rpt": "{present, rua}: SMTP TLS reporting TXT record (_smtp._tls.<domain>)",
+    "bimi": "{present, logo, authority, declined}: BIMI TXT record (default._bimi.<domain>)",
+    "mail_providers": "list of mail SaaS/ESP vendors inferred from SPF includes and MX hosts (e.g. 'Google Workspace', 'Microsoft 365')",
+    "email_posture": "e-mail security posture summary table {spf, spf_lookups, spf_void_lookups, dmarc, dkim, mta_sts, tls_rpt, bimi, caa, dnssec, mx}",
+    "registered": "bool: the authoritative registry holds a registration for the name (False only from the authoritative RDAP server's 404)",
+    "registrant_kind": "kind of registrant in the registry answer: org | individual | redacted",
+    "privacy_proxy": "bool: the registrant data is a privacy/proxy or registrar-generic value (shown as 'redacted (privacy)'; never a pivot or a cluster key)",
+    "cnpj_roots": "list of 8-character CNPJ roots of the registrant (branch registrations link to one company)",
+    "registrar_iana_id": "IANA registrar id of the sponsoring registrar (takedown packet, P345)",
+    "abuse_phone": "abuse telephone of the registrar or network (role contact only)",
+    "delegation_signed": "bool: the registry reports a DNSSEC-signed delegation (RDAP secureDNS.delegationSigned)",
+    "rdap_server": "host of the RDAP server that answered (authoritative registry, or the rdap.org fallback)",
+    "rdap_contacts": "list of role/abuse contacts kept from the registry answer ({roles, org, email, tel}); natural persons are never kept",
+    "rdap_network": "{start, end, cidrs, name, handle, type, parent_handle}: IP network object of the RIR answer",
+    "rdap_autnum": "{start, end, name, handle, type}: AS number object of the RIR answer",
+    "brand_match": "org_profile brand keyword found in the label of an individual-held .br name (feeds typosquat scoring, P028)"
+  },
+  "tags": {
+    "third_party_mail": "SaaS/ESP mail infrastructure authorised by an SPF record: never the organisation's netblock, never a reputation or attack-surface subject, never an ACTIVE scope"
+  },
+  "relations": {
+    "has_certificate": "domain -> SHA-256 fingerprint of a certificate issued for it (Certificate Transparency)",
+    "spf_include": "domain -> domain included by its SPF record (include:/redirect=)",
+    "spf_authorized": "domain -> CIDR/IP authorised by a direct ip4:/ip6: mechanism of its own SPF record (candidate netblock until RDAP/NIC.br confirms ownership)"
+  },
+  "timeline": {
+    "first_cert_seen": "first certificate seen (Certificate Transparency)"
+  }
+}

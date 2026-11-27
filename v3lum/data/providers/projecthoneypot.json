@@ -1,0 +1,55 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "projecthoneypot",
+  "name": "Project Honey Pot http:BL (dnsbl.httpbl.org)",
+  "operator": "Unspam Technologies, Inc. (Project Honey Pot)",
+  "hosts": [],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Long-running community honeypot network with public API documentation and terms (A8 community).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Visitor types and a log-scaled threat score from a distributed web honeypot network; scores age out with the last activity."
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {
+    "httpbl": {
+      "description": "Project Honey Pot http:BL access key (12 lower-case letters): embedded in the DNS query name, so it is only ever sent through the system resolver (never public DoH)",
+      "signup_url": "https://www.projecthoneypot.org/httpbl_configure.php",
+      "env": [
+        "V3LUM_HTTPBL_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "record 'business' for the company account's key (key_plans.httpbl)"
+    }
+  },
+  "sources": {
+    "httpbl": {
+      "title": "Project Honey Pot http:BL (<key>.<reversed ip>.dnsbl.httpbl.org, DNS A 127.<days>.<score>.<type>)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://www.projecthoneypot.org/httpbl_api.php",
+        "quote": "P045 cond 1 (binding council text): Project Honey Pot http:BL is key-terms (company account).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "dnsbl",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P045 cond 1); research C0378 (zone alive, NS ns1-3.httpbl.org). The access key sits in the query name: system resolver through dnspython only, never public DoH, query name redacted (P045 cond 3). NXDOMAIN = not listed; scores are log-scaled (P045 cond 9). Business use decided by key_plans.httpbl (company account). Used by dnsbl."
+    }
+  },
+  "notes": "Owned by batch p2-G02-2 (P045). DNS only: the list is queried through DNS A lookups (core DoH layer or the system resolver), never over HTTP, so the provider has no HTTP host. Every DNSBL counts as ONE 'spam' family vote in P171 consensus (upstream_family 'dnsbl', P045 cond 8)."
+}

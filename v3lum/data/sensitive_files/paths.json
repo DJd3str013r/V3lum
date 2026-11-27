@@ -1,0 +1,100 @@
+{
+ "schema": "v3lum.sensitive_paths/1",
+ "description": "Fixed forced-browsing list of the ACTIVE sensitive_files check (P279 cond 4: fewer than 30 paths, one GET each, first KB only). '{domain}' is the registrable domain of the target host. Pinned by SHA-256 in v3lum/data/active_locks/sensitive_files_paths.json: a change is a reviewed decision.",
+ "source": "V3LUM's own list (research C0637); content signatures cross-checked against nuclei-templates exposure matchers (MIT), nothing copied",
+ "licence": "proprietary-internal (V3LUM)",
+ "paths": [
+  {
+   "path": "/.git/HEAD",
+   "signature": "git_head"
+  },
+  {
+   "path": "/.git/config",
+   "signature": "git_config"
+  },
+  {
+   "path": "/.env",
+   "signature": "env"
+  },
+  {
+   "path": "/.env.bak",
+   "signature": "env"
+  },
+  {
+   "path": "/.env.production",
+   "signature": "env"
+  },
+  {
+   "path": "/.DS_Store",
+   "signature": "ds_store"
+  },
+  {
+   "path": "/.svn/entries",
+   "signature": "svn_entries"
+  },
+  {
+   "path": "/.htpasswd",
+   "signature": "htpasswd"
+  },
+  {
+   "path": "/server-status",
+   "signature": "apache_status"
+  },
+  {
+   "path": "/phpinfo.php",
+   "signature": "phpinfo"
+  },
+  {
+   "path": "/info.php",
+   "signature": "phpinfo"
+  },
+  {
+   "path": "/backup.zip",
+   "signature": "zip"
+  },
+  {
+   "path": "/www.zip",
+   "signature": "zip"
+  },
+  {
+   "path": "/{domain}.zip",
+   "signature": "zip"
+  },
+  {
+   "path": "/backup.tar.gz",
+   "signature": "gzip"
+  },
+  {
+   "path": "/backup.sql",
+   "signature": "sql_dump"
+  },
+  {
+   "path": "/dump.sql",
+   "signature": "sql_dump"
+  },
+  {
+   "path": "/wp-config.php.bak",
+   "signature": "php_source"
+  },
+  {
+   "path": "/wp-config.php~",
+   "signature": "php_source"
+  },
+  {
+   "path": "/config.php.bak",
+   "signature": "php_source"
+  },
+  {
+   "path": "/main.js.map",
+   "signature": "source_map"
+  },
+  {
+   "path": "/app.js.map",
+   "signature": "source_map"
+  },
+  {
+   "path": "/bundle.js.map",
+   "signature": "source_map"
+  }
+ ]
+}

@@ -1,0 +1,40 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {"mode": "passive", "tlp": "amber", "depth": 1},
+  "nodes": [
+    {
+      "key": "cve:CVE-2021-44228",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "kev": [{"value": true, "source": "cisa_kev"}, {"value": true, "source": "cve_record"}],
+        "kev_date_added": [{"value": "2021-12-10", "source": "cisa_kev"}, {"value": "2021-12-10", "source": "cve_record"}],
+        "kev_due_date": [{"value": "2021-12-24", "source": "cisa_kev"}],
+        "kev_ransomware_use": [{"value": "Known", "source": "cisa_kev"}],
+        "kev_ransomware_known": [{"value": true, "source": "cisa_kev"}],
+        "kev_status": [{"value": "in CISA KEV since 2021-12-10 (due 2021-12-24; known ransomware use)", "source": "cisa_kev"}],
+        "kev_vendor": [{"value": "Apache", "source": "cisa_kev"}],
+        "kev_product": [{"value": "Log4j2", "source": "cisa_kev"}],
+        "epss": [{"value": 0.94358, "source": "epss"}],
+        "epss_percentile": [{"value": 0.99962, "source": "epss"}],
+        "epss_date": [{"value": "2026-11-25", "source": "epss"}],
+        "epss_model_version": [{"value": "v2026.06.15", "source": "epss"}],
+        "cve_state": [{"value": "PUBLISHED", "source": "cve_record"}],
+        "cvss": [{"value": 10.0, "source": "cve_record"}],
+        "cvss_scores": [{"value": [
+          {"source": "NVD", "container": "nvd_primary", "version": "3.1", "score": 10.0, "severity": "CRITICAL", "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H"},
+          {"source": "CISA-ADP", "container": "adp", "version": "3.1", "score": 10.0, "severity": "CRITICAL", "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H"}
+        ], "source": "cve_record"}],
+        "exploited": [{"value": {"CISA-ADP SSVC": "2025-02-04"}, "source": "cve_record"}],
+        "exploit_refs": [{"value": ["http://packetstormsecurity.com/files/165270/Apache-Log4j2-2.14.1-Remote-Code-Execution.html"], "source": "cve_record"}],
+        "fixed_versions": [{"value": [{"product": "Apache Software Foundation Apache Log4j2", "fixed": "2.15.0"}], "source": "cve_record"}],
+        "affected": [{"value": [{"vendor": "Apache Software Foundation", "product": "Apache Log4j2"}], "source": "cve_record"}],
+        "cwe": [{"value": ["CWE-502", "CWE-400", "CWE-20"], "source": "cve_record"}],
+        "data_notices": [{"value": ["This product uses data from the NVD API but is not endorsed or certified by the NVD."], "source": "cve_record"}]
+      }
+    }
+  ],
+  "edges": [],
+  "expect": {"g08_cve_card": {"min": 1, "max": 1, "severity": "info", "confidence_label": "confirmed"}}
+}

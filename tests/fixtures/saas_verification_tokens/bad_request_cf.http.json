@@ -1,0 +1,14 @@
+{
+ "request": "GET https://cloudflare-dns.com/dns-query?name=example.com&type=TXT (no Accept header)",
+ "response": {
+  "status": 400,
+  "headers": {
+   "content-type": null,
+   "server": "cloudflare"
+  },
+  "body": ""
+ },
+ "transport_error": null,
+ "elapsed_s": 0.059188,
+ "note": "HTTP 400 with an EMPTY body when the Accept: application/dns-json header is missing: could not verify"
+}

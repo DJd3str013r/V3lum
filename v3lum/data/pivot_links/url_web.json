@@ -1,0 +1,313 @@
+{
+  "schema": "v3lum.pivot_pack/1",
+  "pack": "url_web",
+  "title": "URL & website tools (verified templates)",
+  "notes": "Offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them; it renders them for the analyst (P311). Rendering follows A2: at TLP:AMBER and above every link is non-clickable text with 'opening sends <value> to <host>', at RED third-party links are hidden from reports and listed only by `v3lum links`; links are never auto-opened. Links in 'links' are rendered by the core (v3lum.core.links); entries in 'x_module_links' need a gate the frozen core link model does not carry (TLP ceiling, analyst-typed values only, public-value filter, vetted encoder) and are rendered by the pack's module through v3lum.modules.utility.pivot_gated_links. File order is the curated analyst-value order (cond 6). Verified links carry checked_at; pivot_gated_links.recheck_report() lists unverified links and links older than 180 days (cond 7, the data of `v3lum doctor --links`).",
+  "x_batch": "p2-G14-1",
+  "x_proposal": "P083",
+  "x_module": "pivots_url_web",
+  "x_served_by": [
+    {
+      "ref": "urlscan_search:domain",
+      "entry": "urlscan.io domain search page (P083 cond 8)",
+      "template": "https://urlscan.io/domain/{domain}",
+      "note": "C0189, verified 2026-11-26 (200). Search/result pages only, never a scan submission (rule 7): referenced, not duplicated."
+    },
+    {
+      "ref": "urlscan_search:ip",
+      "entry": "urlscan.io IP search page (P083 cond 8)",
+      "template": "https://urlscan.io/ip/{ip}",
+      "note": "C0189, verified 2026-11-26 (200 for IPv4 and IPv6): referenced, not duplicated."
+    }
+  ],
+  "links": [
+    {
+      "id": "builtwith_profile",
+      "label": "BuiltWith: technology profile and history",
+      "template": "https://builtwith.com/{q}",
+      "entity_types": [
+        "domain"
+      ],
+      "category": "other",
+      "host": "builtwith.com",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0188. Verified 2026-11-26 (200).",
+      "x_group": "technology"
+    },
+    {
+      "id": "builtwith_relationships",
+      "label": "BuiltWith: relationship profile (sites sharing analytics, ad and tag IDs or IPs)",
+      "template": "https://builtwith.com/relationships/{q}",
+      "entity_types": [
+        "domain"
+      ],
+      "category": "other",
+      "host": "builtwith.com",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0188. Verified 2026-11-26 (200, ~790 KB).",
+      "x_group": "technology"
+    },
+    {
+      "id": "builtwith_tag",
+      "label": "BuiltWith: sites sharing this analytics/tag ID",
+      "template": "https://builtwith.com/relationships/tag/{q}",
+      "entity_types": [
+        "analytics_id"
+      ],
+      "category": "other",
+      "host": "builtwith.com",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0188. P083 cond 8 kept it unverified until checked: checked 2026-11-26 with GTM-5F22G6 (200, 'GTM-5F22G6 - Google Tag Manager Usage and History'), BuiltWith's own tag links use this form.",
+      "x_group": "technology"
+    },
+    {
+      "id": "netcraft_site_report",
+      "label": "Netcraft: site report (hosting history, netblock owner, risk rating)",
+      "template": "https://sitereport.netcraft.com/?url=https%3A%2F%2F{q}",
+      "entity_types": [
+        "domain"
+      ],
+      "category": "history",
+      "host": "sitereport.netcraft.com",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0194. Verified 2026-11-26 (200 with the encoded url= value). searchdns.netcraft.com is not linked (JavaScript/cookie bot gate, P083 cond 8).",
+      "x_group": "hosting"
+    },
+    {
+      "id": "aa419",
+      "label": "aa419 Fake Sites Database: fraudulent sites search (exact phrase over every field: review each hit)",
+      "template": "https://db.aa419.org/fakebankslist.php?psearch={q}",
+      "entity_types": [
+        "domain",
+        "keyword"
+      ],
+      "category": "reputation",
+      "host": "db.aa419.org",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0191. Verified 2026-11-26 without the form's '&Submit=GO' (the P327 lint rejects the token): psearch=example -> 'Records 1 to 20 of 305', a nonsense term -> 'No records found'. Kept for Brazilian fake-store cases (P083 cond 12).",
+      "x_group": "fraud"
+    },
+    {
+      "id": "w3techs",
+      "label": "W3Techs: site technologies and popularity",
+      "template": "https://w3techs.com/sites/info/{q}",
+      "entity_types": [
+        "domain"
+      ],
+      "category": "other",
+      "host": "w3techs.com",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0199. Verified 2026-11-26 (200).",
+      "x_group": "technology"
+    },
+    {
+      "id": "webtechsurvey",
+      "label": "WebTechSurvey: site technology stack (CAPTCHA for automated clients)",
+      "template": "https://webtechsurvey.com/website/{q}",
+      "entity_types": [
+        "domain"
+      ],
+      "category": "other",
+      "host": "webtechsurvey.com",
+      "verified": true,
+      "checked_at": "2026-11-25",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "C0201. Verified 2026-11-25 (200); on 2026-11-26 the first request got 429 requireCaptchaCheck. Unknown tier: domain values only, 'unknown operator' badge.",
+      "x_group": "technology"
+    },
+    {
+      "id": "website_informer",
+      "label": "Website Informer: owner/registrar hints, IP, related sites",
+      "template": "https://website.informer.com/{q}",
+      "entity_types": [
+        "domain"
+      ],
+      "category": "other",
+      "host": "website.informer.com",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0200. Verified 2026-11-26 (200).",
+      "x_group": "hosting"
+    },
+    {
+      "id": "crawlgraph",
+      "label": "CrawlGraph: backlinks (who links to the domain)",
+      "template": "https://crawlgraph.com/backlinks/{q}",
+      "entity_types": [
+        "domain"
+      ],
+      "category": "other",
+      "host": "crawlgraph.com",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0193. Verified 2026-11-26 (200). Unknown tier: domain values only, 'unknown operator' badge.",
+      "x_group": "web_links"
+    },
+    {
+      "id": "ghostarchive",
+      "label": "Ghostarchive: archived captures (without web captures it redirects to its video search)",
+      "template": "https://ghostarchive.org/search?term={q}",
+      "entity_types": [
+        "domain",
+        "url"
+      ],
+      "category": "history",
+      "host": "ghostarchive.org",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0196. Verified 2026-11-26 (200, 'Page 1 out of 10'). Search page only, never an archive submission. Unknown tier: domain and URL values only.",
+      "x_group": "archives"
+    },
+    {
+      "id": "google_play_search",
+      "label": "Google Play: app search for the brand (look-alike apps; manual review only)",
+      "template": "https://play.google.com/store/search?q={q}&c=apps&hl=pt_BR&gl=BR",
+      "entity_types": [
+        "keyword"
+      ],
+      "category": "search",
+      "host": "play.google.com",
+      "verified": true,
+      "checked_at": "2026-11-25",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0779. Verified 2026-11-25 (200). Brand/app keywords only; the page is never fetched or parsed (Google Play terms, no scraping; P083 cond 12).",
+      "x_group": "apps"
+    }
+  ],
+  "x_module_links": [
+    {
+      "id": "scamadviser",
+      "label": "ScamAdviser: website trust check (ScamAdviser checks the site live)",
+      "template": "https://www.scamadviser.com/check-website/{q}",
+      "entity_types": [
+        "domain"
+      ],
+      "category": "reputation",
+      "host": "www.scamadviser.com",
+      "verified": true,
+      "checked_at": "2026-11-25",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": true,
+      "login_required": false,
+      "antibot": false,
+      "notes": "C0198. Verified 2026-11-25. The check fetches the site live: touches_target, rendered only for analyst-typed values at TLP:CLEAR/GREEN and never for hostile entities (P083 cond 10-11). Its homepage shows no public recent-checks list (rule 7 review 2026-11-26).",
+      "x_group": "fraud",
+      "x_max_tlp": "green",
+      "x_seed_only": true
+    },
+    {
+      "id": "securityheaders",
+      "label": "securityheaders.com: HTTP security headers grade (live scan; hide=on keeps it off the public recent-scans list)",
+      "template": "https://securityheaders.com/?q={q}&hide=on&followRedirects=on",
+      "entity_types": [
+        "domain",
+        "url"
+      ],
+      "category": "other",
+      "host": "securityheaders.com",
+      "verified": true,
+      "checked_at": "2026-11-25",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": true,
+      "login_required": false,
+      "antibot": true,
+      "notes": "C0195. Verified 2026-11-25 (grade for example.com). Always with hide=on (P083 cond 9, CI-asserted). touches_target, analyst-typed values only, TLP:CLEAR/GREEN only, never for hostile entities (cond 10-11). Its homepage answered a Cloudflare managed challenge to curl on 2026-11-26: antibot.",
+      "x_group": "web_security",
+      "x_max_tlp": "green",
+      "x_seed_only": true
+    }
+  ],
+  "x_pending": [
+    {
+      "id": "google_play_details",
+      "host": "play.google.com",
+      "label": "Google Play: app details page",
+      "template": "https://play.google.com/store/apps/details?id={q}&hl=pt_BR",
+      "requires": "an Android package-name entity type (P083 cond 12: package names found by APK triage or Digital Asset Links)",
+      "reason": "no entity type carries Android package names yet; mobile_app_impersonation renders its own Play details links"
+    }
+  ],
+  "x_excluded": [
+    {
+      "id": "mdn_observatory",
+      "host": "developer.mozilla.org",
+      "reason": "opening it starts a scan whose result joins MDN's public per-host history (P083 cond 9, rule 7)"
+    },
+    {
+      "id": "netcraft_searchdns",
+      "host": "searchdns.netcraft.com",
+      "reason": "JavaScript/cookie bot gate (P083 cond 8)"
+    },
+    {
+      "id": "urlscan_search_fragment",
+      "host": "urlscan.io",
+      "reason": "the value would sit in the URL fragment of a JavaScript search page; the domain and IP pages cover it"
+    },
+    {
+      "id": "urlscan_scan",
+      "host": "urlscan.io",
+      "reason": "scan submission (rule 7): only search/result pages are linked"
+    }
+  ]
+}

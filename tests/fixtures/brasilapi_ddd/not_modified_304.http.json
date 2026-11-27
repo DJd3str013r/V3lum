@@ -1,0 +1,22 @@
+{
+ "request": "GET https://brasilapi.com.br/api/ddd/v1/61",
+ "request_headers": {
+  "If-None-Match": "\"snf12tpdmc6f\""
+ },
+ "response": {
+  "status": 304,
+  "headers": {
+   "etag": "\"snf12tpdmc6f\"",
+   "cache-control": "max-age=0, public",
+   "age": "0",
+   "x-vercel-cache": "MISS",
+   "cf-cache-status": "DYNAMIC",
+   "server": "cloudflare"
+  },
+  "body": ""
+ },
+ "observed_at": "2026-11-26T09:31:20Z",
+ "elapsed_s": 0.385136,
+ "origin": "live: this prep (datacenter egress)",
+ "note": "conditional GET (If-None-Match = ETag seen 4 h earlier) -> 304 with no body: conditional GET works and ETags are content hashes"
+}

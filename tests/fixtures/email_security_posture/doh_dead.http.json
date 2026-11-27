@@ -1,0 +1,13 @@
+{
+ "request": "GET https://cloudflare-dns.com/dns-query?name=_dmarc.example.org&type=TXT",
+ "response": {
+  "status": 503,
+  "headers": {
+   "content-type": "text/html"
+  },
+  "body": "<html><head><title>503 Service Unavailable</title></head><body>Service Unavailable</body></html>"
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "dead DoH: HTML 503 instead of DNS JSON (P002 FC4/FC10 test)"
+}

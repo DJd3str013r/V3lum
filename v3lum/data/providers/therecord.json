@@ -1,0 +1,54 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "therecord",
+  "name": "The Record by Recorded Future News (RSS)",
+  "operator": "Recorded Future, Inc. (The Record news desk)",
+  "hosts": [
+    "therecord.media"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Identified commercial newsroom with published terms and editorial staff; P298 cond 9 records 'CERT.br and The Record trusted'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Professional cybersecurity newsroom; headlines link to its own reporting."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "max_bytes": 2097152,
+    "ttl": 3600,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "rss": {
+      "title": "The Record RSS feed /feed (security news headlines)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://therecord.media/feed",
+        "quote": "Licence (A1, legal floor): feed terms are 'unknown' until legal reviews them, so nothing runs yet in any profile. Legal's feed-reader decision (poll <= hourly; headline + link + date only; no full text; no redistribution) is recorded per kept feed with its class and evidence; a feed whose terms forbid business use or automated reading is dropped.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "therecord",
+      "sanitizer": null,
+      "dataset": "cti_news_rss.therecord",
+      "notes": "Quote: binding council text (P298 cond 3). Feed https://therecord.media/feed; read by module cti_news_rss through the dataset manager (TTL 3600 s, conditional GET, 2 MiB cap, <= 200 items; headline + link + date only, descriptions discarded). Live 2026-11-26: 200 RSS, 5 items, no ETag/Last-Modified."
+    }
+  },
+  "notes": "Owned by batch p2-G11-1 (P298 cti_news_rss). Feed downloads carry no investigated value (module disclosure 'none'); terms 'unknown' keep the feed off in every profile until legal records the feed-reader decision (A1). ttl 3600 keeps polling at most hourly. No quota block: no published or observed figure."
+}

@@ -1,0 +1,26 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.metadefender.com/v4/hash/0000000000000000000000000000000000000000000000000000000000000000",
+  "headers": {
+   "apikey": "<KEY>"
+  }
+ },
+ "response": {
+  "status": 404,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": {
+   "error": {
+    "code": 404003,
+    "messages": [
+     "The hash was not found"
+    ]
+   }
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "synthetic: documented not-found error object {error:{code,messages[]}}"
+}

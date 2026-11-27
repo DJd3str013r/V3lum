@@ -1,0 +1,63 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "$comment": "14 DNS-mechanism lookups (> 10, RFC 7208 permerror): MEDIUM",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "nodes": [
+    {
+      "key": "domain:many-includes.example",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "spf_status": [
+          {
+            "value": "permerror",
+            "source": "email_security_posture"
+          }
+        ],
+        "spf": [
+          {
+            "value": "v=spf1 include:a.example include:b.example include:c.example -all",
+            "source": "email_security_posture"
+          }
+        ],
+        "spf_lookups": [
+          {
+            "value": 14,
+            "source": "email_security_posture"
+          }
+        ],
+        "spf_void_lookups": [
+          {
+            "value": 1,
+            "source": "email_security_posture"
+          }
+        ],
+        "email_posture": [
+          {
+            "value": {
+              "spf": "permerror (-all)",
+              "spf_lookups": 14,
+              "spf_void_lookups": 1,
+              "dmarc": "p=reject",
+              "mx": "mx.many-includes.example"
+            },
+            "source": "email_security_posture"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [],
+  "expect": {
+    "spf_lookup_limit": {
+      "min": 1,
+      "max": 1,
+      "severity": "medium"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+ "_note": "GET .../csvFullSanctionsList_1_1/content without ?token, 2026-11-26 live (cookies dropped)",
+ "status": 403,
+ "headers": {
+  "Content-Type": "application/json",
+  "Server": "Europa"
+ },
+ "body": "{\"timestamp\":\"2026-11-26T05:25:54.478+00:00\",\"status\":403,\"error\":\"Forbidden\",\"message\":\"\",\"path\":\"/fsd/fsf/public/files/csvFullSanctionsList_1_1/content\"}"
+}

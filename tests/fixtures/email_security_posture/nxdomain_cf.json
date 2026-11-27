@@ -1,0 +1,22 @@
+{
+ "Status": 3,
+ "TC": false,
+ "RD": true,
+ "RA": true,
+ "AD": true,
+ "CD": false,
+ "Question": [
+  {
+   "name": "_dmarc.example.net",
+   "type": 16
+  }
+ ],
+ "Authority": [
+  {
+   "name": "example.net",
+   "type": 6,
+   "TTL": 1800,
+   "data": "ns.icann.org. noc.dns.icann.org. 2025082001 7200 3600 1209600 3600"
+  }
+ ]
+}

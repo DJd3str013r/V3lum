@@ -1,0 +1,16 @@
+{
+ "_fixture": "REAL live capture 2026-11-26: publish.twitter.com answers 301 to publish.x.com (query kept)",
+ "_meta": {
+  "url": "https://publish.twitter.com/oembed?url=https%3A%2F%2Ftwitter.com%2FInterior%2Fstatus%2F507185938620219395&omit_script=true&dnt=true",
+  "user_agent": "fixture-check/0.1",
+  "captured": "2026-11-26T09:14:20Z",
+  "elapsed_s": 0.404
+ },
+ "status": 301,
+ "headers": {
+  "location": "https://publish.x.com/oembed?url=https%3A%2F%2Ftwitter.com%2FInterior%2Fstatus%2F507185938620219395&omit_script=true&dnt=true",
+  "content-length": "0",
+  "server": "cloudflare envoy"
+ },
+ "body": ""
+}

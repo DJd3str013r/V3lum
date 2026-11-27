@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "zoomeye",
+  "name": "ZoomEye (cyberspace search engine API v2, keyed)",
+  "operator": "Knownsec Information Technology (ZoomEye)",
+  "hosts": ["api.zoomeye.ai", "www.zoomeye.ai"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "P053 final condition 1: registry tier unknown (Chinese operator; queries reveal targets; the LGPD art. 33 international transfer is not reviewed). Excluded at AMBER, AMBER+STRICT and RED; CLEAR/GREEN only with --allow-unknown; IOC_TYPES selectors only. A promotion needs legal_dpo's written decision and keeps the AMBER+ exclusion.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "D", "justification": "Scan-engine observations of varying age; unknown-tier provider; honeypot rows are flagged by the provider and never pivoted."},
+  "http_profile": {"user_agent": "neutral", "accept": "application/json", "ttl": 86400, "min_interval": 2.0, "retries": 0},
+  "quota": {"scope": "key", "day": 20, "published": false, "evidence_url": "https://www.zoomeye.ai/doc", "safety_margin": 0.8},
+  "error_markers": [
+    {"id": "zoomeye_credits", "statuses": [200, 402, 403], "json_path": "message", "regex": "(?i)credit|points|quota|insufficient|balance", "maps_to": "quota", "reason_code": "quota",
+     "reason": "ZoomEye: account credits/points exhausted"},
+    {"id": "zoomeye_error_body", "statuses": [200], "json_path": "error", "regex": "\\S", "maps_to": "error", "reason_code": "error",
+     "reason": "ZoomEye: error object in an HTTP 200 body (code/error instead of results)"}
+  ],
+  "keys": {
+    "zoomeye": {
+      "description": "ZoomEye API key (sent only in the API-KEY header)",
+      "signup_url": "https://www.zoomeye.ai/profile",
+      "env": ["V3LUM_ZOOMEYE_KEY"],
+      "multi_key": false,
+      "plan_hint": "business = a company/team ZoomEye account on a plan recorded by legal and procurement together with the LGPD art. 33 data-transfer decision (P053 FC1/FC2)"
+    }
+  },
+  "sources": {
+    "search": {
+      "title": "ZoomEye API v2 search (POST https://api.zoomeye.ai/v2/search, base64 query, API-KEY header): hosts, services, web assets",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://www.zoomeye.ai/doc",
+        "quote": "Key-terms: a company/team account on a plan recorded by legal before it runs under corporate. default_enabled=False.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "zoomeye",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P053 FC2). No key: HTTP 401 {code:50000, error:'login_required'} -> NEEDS_KEY (FC3). Success = code 60000. Points per search depend on the plan (not published: daily cap of 20 searches until the plan is recorded). The web deep link https://www.zoomeye.ai/searchResult?q=<base64> is a manual link only (FC5); www.zoomeye.ai is never requested."
+    }
+  },
+  "notes": "Owned by batch p3-G02-2 (P053 zoomeye)."
+}

@@ -1,0 +1,18 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {"mode": "passive", "tlp": "amber", "depth": 1},
+  "$comment": "Synthetic graph: a seed domain (documentation name) resolving to 104.236.150.45, a real address of the MISP warninglists 'sinkholes' list (version 20261014). The address node carries the core noise tag 'sinkhole' (core noise list misp.sinkholes) and the is_sinkhole fact.",
+  "nodes": [
+    {"key": "domain:c2-update.example", "depth": 0, "seed": true,
+     "findings": [
+       {"title": "Listed as C2 by a feed", "severity": "high", "confidence": 0.7, "criterion": "feed listing", "tags": ["c2", "malicious"], "module": "example_feed", "source": ""}
+     ]},
+    {"key": "ipv4:104.236.150.45", "depth": 1, "noise": true, "noise_kind": "sinkhole", "tags": ["sinkhole"],
+     "attributes": {"is_sinkhole": [{"value": true, "source": "noise"}]}}
+  ],
+  "edges": [
+    {"src": "domain:c2-update.example", "dst": "ipv4:104.236.150.45", "relation": "resolves_to", "module": "dns_records", "confidence": 0.9}
+  ],
+  "expect": {"g11_sinkholed_domain": {"min": 1, "max": 1, "severity": "info", "confidence_label": "probable"}}
+}

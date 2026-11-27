@@ -1,0 +1,4 @@
+Tactic,Technique,Technique Name,Test #,Test Name,Test GUID,Executor
+stealth,T1055.011,Process Injection: Extra Window Memory Injection,1,Process Injection via Extra Window Memory (EWM) x64 executable,93ca40d2-336c-446d-bcef-87f14d438018,powershell
+stealth,T1205.002,Traffic Signaling: Socket Filters,1,T1205.002 - Add Custom Firewall Rule for Traffic Signaling Simulation,c33f6e7b-87f9-45be-be0e-8eaa0616034d,powershell
+stealth,T1205.002,Traffic Signaling: Socket Filters,2,T1205.002 - Register Custom WinSock Protocol Catalog Entry,90fd1078-149b-4da4-b0f7-1113030dd8ae,powershell

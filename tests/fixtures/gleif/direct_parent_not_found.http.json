@@ -1,0 +1,8 @@
+{
+ "status": 404,
+ "headers": {
+  "content-type": "application/vnd.api+json",
+  "cache-control": "private, must-revalidate"
+ },
+ "body": "{\"errors\":[{\"status\":\"404\",\"title\":\"Resource not found\",\"detail\":\"Related resource not found\"}]}"
+}

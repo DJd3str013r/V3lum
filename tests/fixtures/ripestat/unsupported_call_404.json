@@ -1,0 +1,15 @@
+{
+ "messages": [
+  [
+   "info",
+   "This data call does not exist on RIPEstat. See https://stat.ripe.net/docs/02.data-api/ for available data calls."
+  ]
+ ],
+ "data_call_name": "blocklist",
+ "data_call_status": "unsupported",
+ "cached": false,
+ "status": "error",
+ "status_code": 404,
+ "time": "2026-11-25T21:23:38.431880",
+ "data": {}
+}

@@ -1,0 +1,42 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "mitre",
+  "hosts": [
+    "cwe.mitre.org",
+    "www.cve.org"
+  ],
+  "sources": {
+    "cve_record_cwe_catalog": {
+      "title": "CWE catalogue cwe.mitre.org/data/xml/cwec_latest.xml.zip (dataset: CWE names for CVE records, never a per-CVE CWE REST call)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://cwe.mitre.org/about/termsofuse.html",
+        "quote": "CWE™ is free to use by any organization or individual for any research, development, and/or commercial purposes, per these CWE Terms of Use. Accordingly, The MITRE Corporation hereby grants you a non-exclusive, royalty-free license to use CWE for research, development, and commercial purposes. Any copy you make for such purposes is authorized on the condition that you reproduce MITRE’s copyright designation and this license in any such copy. CWE is a trademark of The MITRE Corporation.",
+        "checked_at": "2026-11-26",
+        "reviewer": "p1-G08-1 prep (verified on cwe.mitre.org)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "mitre",
+      "sanitizer": null,
+      "dataset": "cwe_catalog",
+      "notes": "P183 cond 2: CWE names come from a registered CWE dataset. The XML catalogue (2.1 MB zip, one member cwec_v<version>.xml of 19.1 MB; 984 Weakness + 431 Grouping + 62 View entries in CWE 5.0) is preferred over the CSV view 1000, which lacks the groupings NVD still cites (CWE-264/310/399/189/16/19) and the deprecated ids. Stored zipped (not large); the module reads the member in memory with size/ratio caps, refuses any DTD/ENTITY declaration and keeps only the derived name index (ctx.state). Refreshed weekly by `v3lum data update cwe_catalog`. MITRE copyright designation and licence in THIRD_PARTY_NOTICES (notice mitre_cwe)."
+    },
+    "cve_record_cve_pages": {
+      "title": "CVE Program record pages www.cve.org/CVERecord?id={cve} (manual pivot links only)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.cve.org/Legal/TermsOfUse",
+        "quote": "MITRE's CVE/CWE copyright designation and licence in THIRD_PARTY_NOTICES. Registry providers mitre and nist_nvd: tier trusted, terms open.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "mitre",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P183 cond 7). www.cve.org is operated by the CVE Program (MITRE as Secretariat); its Terms of Use page is a JavaScript application whose text could not be captured from this egress (prep notes, item 3): legal_dpo pastes the exact CVE designation into THIRD_PARTY_NOTICES. Links only (cve_record's manual_link and res.link), never fetched."
+    }
+  },
+  "error_markers": [],
+  "notes": "Extension owned by batch p1-G08-1 (P183 cve_record): the CWE catalogue dataset host and the CVE Program record pages. The seed sources mitre.cve_services (cveawg) and mitre.cwe_api stay as seeded; the CWE REST API is not called per CVE (P183 cond 2)."
+}

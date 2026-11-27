@@ -1,0 +1,67 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "purpose": ""
+  },
+  "org_profile": {
+    "name": "Exemplo Comércio Ltda",
+    "cnpj_roots": [
+      "11222333"
+    ],
+    "domains": [
+      {
+        "name": "exemplo.example",
+        "verification": "txt_verified"
+      }
+    ],
+    "app_ids": [
+      {
+        "kind": "m365_tenant",
+        "value": "00000000-0000-4000-8000-000000000001"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "key": "domain:exemplo-store.example",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "registered": [
+          {
+            "value": true,
+            "source": "rdap"
+          }
+        ],
+        "registrant_kind": [
+          {
+            "value": "individual",
+            "source": "rdap"
+          }
+        ],
+        "created": [
+          {
+            "value": "2019-05-10T00:00:00Z",
+            "source": "rdap"
+          }
+        ],
+        "homepage_indicators": [
+          {
+            "value": {
+              "source": "wayback",
+              "captured_at": "2026-10-01T00:00:00Z",
+              "cnpjs": [
+                "11.222.333/0001-81"
+              ]
+            },
+            "source": "web_archives"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": []
+}

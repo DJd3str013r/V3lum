@@ -1,0 +1,17 @@
+{
+ "request": "GET https://api.queridodiario.org.br/gazettes?querystring=%2200.000.000%2F0001-91%22&size=10",
+ "response": {
+  "status": 502,
+  "headers": {
+   "content-type": "text/html; charset=UTF-8",
+   "server": "cloudflare"
+  },
+  "body_kind": "text",
+  "body": "<!DOCTYPE html><html><head><title>api.queridodiario.org.br | 502: Bad gateway</title></head><body><h1>Bad gateway</h1><span>Error code 502</span><p>Cloudflare Ray ID: 0000000000000000</p></body></html>"
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "observed_at": null,
+ "origin": "synthetic",
+ "note": "synthetic: Cloudflare 5xx page shape; not observed live (FC7 asks for a 5xx fixture)"
+}

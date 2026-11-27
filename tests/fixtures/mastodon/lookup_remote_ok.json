@@ -1,0 +1,26 @@
+{
+ "id": "1106229",
+ "username": "fsf",
+ "acct": "fsf@hostux.social",
+ "display_name": "Free Software Foundation",
+ "locked": false,
+ "bot": false,
+ "discoverable": true,
+ "indexable": false,
+ "group": false,
+ "created_at": "2019-12-16T00:00:00.000Z",
+ "note": "<p>Fighting for essential rights and freedoms for computer users since 1985. <a href=\"https://fsf.org\" rel=\"nofollow noopener\" translate=\"no\" target=\"_blank\"><span class=\"invisible\">https://</span><span class=\"\">fsf.org</span><span class=\"invisible\"></span></a></p>",
+ "url": "https://hostux.social/@fsf",
+ "uri": "https://hostux.social/users/fsf",
+ "followers_count": 29073,
+ "following_count": 240,
+ "statuses_count": 18044,
+ "last_status_at": "2026-11-26",
+ "fields": [
+  {
+   "name": "Homepage",
+   "value": "<a href=\"https://www.fsf.org\" target=\"_blank\" rel=\"nofollow noopener\" translate=\"no\"><span class=\"invisible\">https://www.</span><span class=\"\">fsf.org</span><span class=\"invisible\"></span></a>",
+   "verified_at": "2026-11-26T02:10:33.947+00:00"
+  }
+ ]
+}

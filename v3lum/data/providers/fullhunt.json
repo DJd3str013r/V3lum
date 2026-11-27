@@ -1,0 +1,73 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "fullhunt",
+  "name": "FullHunt attack-surface API (fullhunt.io)",
+  "operator": "FullHunt, Inc.",
+  "hosts": [
+    "fullhunt.io"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Commercial attack-surface platform with public API documentation, published rate limits and terms; council P007 cond 1 classes FullHunt community (A8).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Attack-surface index; community accounts get limited results per query (metadata all_results_count vs hosts returned)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 20,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "key",
+    "hour": 200,
+    "burst": 1,
+    "published": true,
+    "evidence_url": "https://docs.fullhunt.io/rate-limiting",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {
+    "fullhunt": {
+      "description": "FullHunt API key (X-API-KEY header)",
+      "signup_url": "https://fullhunt.io/user/settings/",
+      "env": [
+        "V3LUM_FULLHUNT_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "business = a company/team account on a plan whose terms permit internal business use, recorded by legal (never an analyst's personal free account, P007 cond 3); key_plans.fullhunt='business' unlocks it under the corporate profile"
+    }
+  },
+  "sources": {
+    "subdomains": {
+      "title": "FullHunt domain subdomains (GET /api/v1/domain/{domain}/subdomains)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://docs.fullhunt.io/",
+        "quote": "P007 cond 3 (binding council text): key-terms per adapter - a company/team account, never an analyst's personal free account, on a plan whose terms permit internal business use; legal records the plan and the terms URL in the registry before the adapter runs under the corporate profile (A1).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "fullhunt",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0029 (verified_needs_key: 401 {\"message\":\"Unauthorized access\"} without key; real fixture). Documented error schema {status, message}; 403 = the plan lacks the capability; 429 {\"error\":\"Rate Limit Exceeded\"} with X-RateLimit-* headers; the subdomains route allows 200 requests/hour (quota block) on top of monthly credits. Never call scan-triggering enterprise or on-demand endpoints. Used by subdomains_keyed."
+    }
+  },
+  "notes": "Owned by batch p3-G01-1 (P007, module subdomains_keyed). The legacy KNOWN_KEYS entry 'fullhunt' (FULLHUNT_API_KEY) is merged with this key block."
+}

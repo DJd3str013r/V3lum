@@ -1,0 +1,8 @@
+{
+ "_fixture": "SYNTHETIC: HTML error page where XML was expected",
+ "status": 200,
+ "headers": {
+  "content-type": "text/html; charset=UTF-8"
+ },
+ "body": "<!DOCTYPE html><html><head><title>Steam Community :: Error</title></head><body><h3>Sorry!</h3><p>An error was encountered while processing your request.</p></body></html>"
+}

@@ -1,0 +1,12 @@
+{
+ "origin": "synthetic: documented Mastodon 429 (docs.joinmastodon.org rate limits); headers as observed live",
+ "status": 429,
+ "headers": {
+  "content-type": "application/json; charset=utf-8",
+  "server": "Mastodon",
+  "x-ratelimit-limit": "300",
+  "x-ratelimit-remaining": "0",
+  "x-ratelimit-reset": "2026-11-26T09:00:00.110289Z"
+ },
+ "body": "{\"error\":\"Too many requests\"}"
+}

@@ -1,0 +1,165 @@
+{
+ "module": "pivots_url_web",
+ "pack": "url_web",
+ "note": "Maintainer verification of the pack templates (batch p2-G14-1): status, date and size only, no page bodies or headers. V3LUM never requests these URLs; values are benign public ones.",
+ "checks": [
+  {
+   "check": "builtwith__ok",
+   "url": "https://builtwith.com/example.com",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 74239
+  },
+  {
+   "check": "builtwith_rel__ok",
+   "url": "https://builtwith.com/relationships/google.com",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 93571
+  },
+  {
+   "check": "urlscan_domain__ok",
+   "url": "https://urlscan.io/domain/example.com",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 8318
+  },
+  {
+   "check": "urlscan_ip__ok",
+   "url": "https://urlscan.io/ip/8.8.8.8",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 9427
+  },
+  {
+   "check": "aa419__ok",
+   "url": "https://db.aa419.org/fakebankslist.php?psearch=example.com&Submit=GO",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 2789
+  },
+  {
+   "check": "aa419__not_found",
+   "url": "https://db.aa419.org/fakebankslist.php?psearch=registro.br&Submit=GO",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 2199
+  },
+  {
+   "check": "crawlgraph__ok",
+   "url": "https://crawlgraph.com/backlinks/example.com",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 10043
+  },
+  {
+   "check": "netcraft__ok",
+   "url": "https://sitereport.netcraft.com/?url=https%3A%2F%2Fexample.com",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 5473
+  },
+  {
+   "check": "ghostarchive__ok",
+   "url": "https://ghostarchive.org/search?term=example.com",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 2044
+  },
+  {
+   "check": "ghostarchive__not_found",
+   "url": "https://ghostarchive.org/search?term=v3lum-prep-nonexistent.example.com",
+   "status": 302,
+   "at": "2026-11-26",
+   "redirect": "https://ghostarchive.org/vidsearch?q=v3lum-prep-nonexistent.example.com",
+   "bytes": 69
+  },
+  {
+   "check": "w3techs__ok",
+   "url": "https://w3techs.com/sites/info/example.com",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 3593
+  },
+  {
+   "check": "websiteinformer__ok",
+   "url": "https://website.informer.com/example.com",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 24426
+  },
+  {
+   "check": "webtechsurvey__ok",
+   "url": "https://webtechsurvey.com/website/example.com",
+   "status": 429,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 12214
+  },
+  {
+   "check": "scamadviser__home",
+   "url": "https://www.scamadviser.com/",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 25995
+  },
+  {
+   "check": "securityheaders__home",
+   "url": "https://securityheaders.com/",
+   "status": 403,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 3065
+  },
+  {
+   "check": "builtwith_tag__ok",
+   "url": "https://builtwith.com/relationships/tag/GTM-5F22G6",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 55693
+  },
+  {
+   "check": "urlscan_ip6__ok",
+   "url": "https://urlscan.io/ip/2001%3A4860%3A4860%3A%3A8888",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 19749
+  },
+  {
+   "check": "aa419__no_records",
+   "url": "https://db.aa419.org/fakebankslist.php?psearch=zzqqxxnotfound&Submit=GO",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 1508
+  },
+  {
+   "check": "aa419_no_submit_param",
+   "url": "https://db.aa419.org/fakebankslist.php?psearch=example",
+   "status": 200,
+   "at": "2026-11-26",
+   "observed": "Records 1 to 20 of 305 (the template works without '&Submit=GO')"
+  },
+  {
+   "check": "aa419_no_submit_param_negative",
+   "url": "https://db.aa419.org/fakebankslist.php?psearch=zzqqxxnotfound",
+   "status": 200,
+   "at": "2026-11-26",
+   "observed": "No records found"
+  }
+ ]
+}

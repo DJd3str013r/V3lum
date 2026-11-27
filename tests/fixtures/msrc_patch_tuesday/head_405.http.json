@@ -1,0 +1,16 @@
+{
+ "request": {
+  "method": "HEAD",
+  "url": "https://api.msrc.microsoft.com/cvrf/v3.0/updates",
+  "headers": {}
+ },
+ "response": {
+  "status": 405,
+  "headers": {},
+  "body": ""
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "observed_at": null,
+ "note": "From the research record (HTTP seen 405 for HEAD, 2026-11-25); not re-sent here because FC2 forbids HEAD. Body and headers of the 405 were not recorded."
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><feed
+	xmlns="http://www.w3.org/2005/Atom"
+	xmlns:thr="http://purl.org/syndication/thread/1.0"
+	xml:lang="en-US"
+	>
+	<title type="text">Schneier on Security</title>
+	<subtitle type="text"></subtitle>
+
+	<updated>2026-11-25T12:08:12Z</updated>
+
+	<link rel="alternate" type="text/html" href="https://www.schneier.com/" />
+	<id>https://www.schneier.com/feed/atom/</id>
+	<link rel="self" type="application/atom+xml" href="https://www.schneier.com/feed/atom/" />
+
+	
+<icon>https://www.schneier.com/wp-content/uploads/2020/06/cropped-favicon-1-32x32.png</icon>
+	<entry>
+		<title type="html"><![CDATA[Tracking Incidents of Hacking Using AI Tools]]></title>
+		<link rel="alternate" type="text/html" href="https://www.schneier.com/blog/archives/2026/11/tracking-incidents-of-hacking-using-ai-tools.html" />
+
+		<id>https://www.schneier.com/?p=72967</id>
+		<updated>2026-11-25T12:08:12Z</updated>
+		<published>2026-11-25T12:07:21Z</published>
+		<link rel="replies" type="text/html" href="https://www.schneier.com/blog/archives/2026/11/tracking-incidents-of-hacking-using-ai-tools.html#comments" thr:count="4" />
+			<link rel="replies" type="application/atom+xml" href="https://www.schneier.com/blog/archives/2026/11/tracking-incidents-of-hacking-using-ai-tools.html/feed/atom/" thr:count="4" />
+			<thr:total>4</thr:total>
+			</entry>
+<entry>
+		<title type="html"><![CDATA[France Is Blaming Iran for the Fridge Cyberattack]]></title>
+		<link rel="alternate" type="text/html" href="https://www.schneier.com/blog/archives/2026/11/france-is-blaming-iran-for-the-fridge-cyberattack.html" />
+
+		<id>https://www.schneier.com/?p=72954</id>
+		<updated>2026-11-19T03:15:04Z</updated>
+		<published>2026-11-18T12:05:35Z</published>
+		<link rel="replies" type="text/html" href="https://www.schneier.com/blog/archives/2026/11/france-is-blaming-iran-for-the-fridge-cyberattack.html#comments" thr:count="15" />
+			<link rel="replies" type="application/atom+xml" href="https://www.schneier.com/blog/archives/2026/11/france-is-blaming-iran-for-the-fridge-cyberattack.html/feed/atom/" thr:count="15" />
+			<thr:total>15</thr:total>
+			</entry>
+	</feed>

@@ -1,0 +1,29 @@
+{
+ "self": "http://carbondate.cs.odu.edu/cd/https:/example.com",
+ "uri": "https:/example.com",
+ "estimated-creation-date": "",
+ "earliest-sources": [],
+ "sources": {
+  "google.com": {
+   "earliest": ""
+  },
+  "pubdate": {
+   "earliest": ""
+  },
+  "last-modified": {
+   "earliest": ""
+  },
+  "backlinks": {
+   "earliest": ""
+  },
+  "bing.com": {
+   "earliest": ""
+  },
+  "twitter.com": {
+   "earliest": ""
+  },
+  "bitly.com": {
+   "earliest": ""
+  }
+ }
+}

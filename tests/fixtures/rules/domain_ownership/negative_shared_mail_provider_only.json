@@ -1,0 +1,78 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "purpose": ""
+  },
+  "org_profile": {
+    "name": "Exemplo Comércio Ltda",
+    "cnpj_roots": [
+      "11222333"
+    ],
+    "domains": [
+      {
+        "name": "exemplo.example",
+        "verification": "txt_verified"
+      }
+    ],
+    "app_ids": [
+      {
+        "kind": "m365_tenant",
+        "value": "00000000-0000-4000-8000-000000000001"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "key": "domain:exemplo-promo.example",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "mx": [
+          {
+            "value": [
+              "exemplo-promo-example.mail.protection.outlook.com"
+            ],
+            "source": "dns_records"
+          }
+        ],
+        "spf": [
+          {
+            "value": "v=spf1 include:spf.protection.outlook.com -all",
+            "source": "dns_records"
+          }
+        ],
+        "m365_tenant_id": [
+          {
+            "value": "00000000-0000-4000-8000-000000000002",
+            "source": "m365_tenant"
+          }
+        ]
+      }
+    },
+    {
+      "key": "domain:exemplo-blog.example",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "mx": [
+          {
+            "value": [
+              "aspmx.l.google.com"
+            ],
+            "source": "dns_records"
+          }
+        ],
+        "spf": [
+          {
+            "value": "v=spf1 include:_spf.google.com ~all",
+            "source": "dns_records"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": []
+}

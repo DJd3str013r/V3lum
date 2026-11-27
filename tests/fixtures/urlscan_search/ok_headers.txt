@@ -1,0 +1,13 @@
+HTTP/2 200 
+content-type: application/json; charset=utf-8
+x-rate-limit-scope: ip-address
+x-rate-limit-action: search
+x-rate-limit-window: minute
+x-rate-limit-limit: 30
+x-rate-limit-remaining: 29
+x-rate-limit-reset: 2026-11-26T04:34:00.000Z
+x-rate-limit-reset-after: 24
+x-rate-limit-concurrency-rank: 0
+x-rate-limit-concurrency-limit: 10
+cache-control: private, max-age=10
+etag: W/"14fd-upEqQJZYGUkumvbIuhafDsH30w0"

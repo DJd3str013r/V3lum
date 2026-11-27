@@ -1,0 +1,8 @@
+{
+  "schema": "v3lum.extra/1",
+  "package": "maxminddb",
+  "pip": "maxminddb>=2.5",
+  "extra": "full",
+  "licence": "Apache-2.0",
+  "justification": "Reads the offline DB-IP Lite (and, later, GeoLite2) .mmdb files for ip_offline_geo (P047 cond 4: the optional pure-Python 'maxminddb' reader); without it the module reports UNAVAILABLE 'package'."
+}

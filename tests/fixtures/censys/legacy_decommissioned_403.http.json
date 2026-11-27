@@ -1,0 +1,19 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://search.censys.io/api/v2/hosts/8.8.8.8"
+ },
+ "response": {
+  "status": 403,
+  "headers": {
+   "Content-Type": "application/json"
+  },
+  "body": {
+   "error": "Censys Legacy Search was decommissioned on September 30, 2026.",
+   "status": "error",
+   "error_type": "decommissioned"
+  }
+ },
+ "observed": "research_sample",
+ "note": "Legacy Search API v2 answers 403 error_type 'decommissioned' (2026-09-30)."
+}

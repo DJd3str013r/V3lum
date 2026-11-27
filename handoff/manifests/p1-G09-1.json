@@ -1,0 +1,271 @@
+{
+  "batch": "p1-G09-1",
+  "modules": [
+    {
+      "name": "ransomlook",
+      "file": "v3lum/modules/darkweb_ransomware/ransomlook.py",
+      "proposal": "P196",
+      "category": "darkweb_ransomware",
+      "opsec": "passive",
+      "default_enabled": true,
+      "terms": "open",
+      "provider_tier": "community",
+      "keys": [],
+      "datasets": [
+        "ransomlook_recent_posts",
+        "ransomlook_groups"
+      ],
+      "pivot_packs": [],
+      "correlation_rules": [
+        "g09_ransomware_corroborated"
+      ],
+      "new_vocabulary": [
+        "attribute ransomware_claims",
+        "attribute ransomware_mentions",
+        "attribute ransomware_listing",
+        "attribute ransomware_group_profile",
+        "tag ransomware_claim",
+        "relation leak_site",
+        "relation leak_site_of",
+        "relation victim_website"
+      ],
+      "live_check": "V3LUM_LIVE=1 tests/live/test_p1_g09_1.py::test_ransomlook_domain_search_and_actor_index PASSED (2026-11-26): www.ransomlook.io/api/search?q=example.com HTTP 200 {groups:[],posts:[]...} -> EMPTY 'not listed by RansomLook (data as of 2026-11-26)'; dataset manager downloaded and validated ransomlook_groups (/api/groups) and ransomlook_recent_posts (/api/last/30, ~1 MB) - both 'updated'; threat_actor:akira answered offline from the index: OK, group known, INFO 'Ransomware group tracked by RansomLook', leak-site onions expand=False."
+    },
+    {
+      "name": "ransomware_live",
+      "file": "v3lum/modules/darkweb_ransomware/ransomware_live.py",
+      "proposal": "P197",
+      "category": "darkweb_ransomware",
+      "opsec": "passive",
+      "default_enabled": true,
+      "terms": "noncommercial",
+      "provider_tier": "community",
+      "keys": [
+        "ransomwarelive"
+      ],
+      "datasets": [],
+      "pivot_packs": [],
+      "correlation_rules": [
+        "g09_ransomware_corroborated"
+      ],
+      "new_vocabulary": [
+        "relation group_ioc",
+        "relation ransom_contact"
+      ],
+      "live_check": "V3LUM_LIVE=1 tests/live/test_p1_g09_1.py::test_ransomware_live_corporate_gate_and_pro_needs_key PASSED (2026-11-26): corporate policy decision = SKIPPED 'licence' with the manual ransomware.live search link and no request; api-pro.ransomware.live/victims/search without a key -> HTTP 401 {\"message\":\"Missing X-API-KEY header\"} -> AuthRequired (needs_key). Keyless v2 (noncommercial, research profile only) deliberately not called; PRO success needs the team key and the owner's written approval (backlog)."
+    },
+    {
+      "name": "ransomfeed",
+      "file": "v3lum/modules/darkweb_ransomware/ransomfeed.py",
+      "proposal": "P356",
+      "category": "darkweb_ransomware",
+      "opsec": "passive",
+      "default_enabled": true,
+      "terms": "open",
+      "provider_tier": "community",
+      "keys": [],
+      "datasets": [
+        "ransomfeed_rss"
+      ],
+      "pivot_packs": [],
+      "correlation_rules": [
+        "g09_ransomware_corroborated"
+      ],
+      "new_vocabulary": [
+        "(shares the ransomware attributes, tag and relations declared in v3lum/data/vocab/p1-G09-1.json)"
+      ],
+      "live_check": "V3LUM_LIVE=1 tests/live/test_p1_g09_1.py::test_ransomfeed_rss_index_placeholder_rows_and_gang_card PASSED (2026-11-26): ransomfeed.it/rss-complete.php (522 KB, text/xml;charset=iso-8859-1 with UTF-8 bytes) downloaded, parsed and installed ('updated'); domain:example.com (typed seed) -> api.ransomfeed.it/search/example.com HTTP 200 with killsec rows whose website is the placeholder example.com -> none matched, EMPTY 'not listed by Ransomfeed'; threat_actor:killsec -> /ganginfo/killsec card -> OK (ransomfeed group profile, no onion pivots)."
+    },
+    {
+      "name": "crypto_sanctions_offline",
+      "file": "v3lum/modules/crypto/crypto_sanctions_offline.py",
+      "proposal": "P205",
+      "category": "crypto",
+      "opsec": "passive",
+      "default_enabled": true,
+      "terms": "open",
+      "provider_tier": "n/a (offline, disclosure none; lists registered under provider github, source github.crypto_sanctions_offline_ofac_lists)",
+      "keys": [],
+      "datasets": [
+        "ofac_sanctioned_xbt",
+        "ofac_sanctioned_eth",
+        "ofac_sanctioned_xmr",
+        "ofac_sanctioned_ltc",
+        "ofac_sanctioned_zec",
+        "ofac_sanctioned_dash",
+        "ofac_sanctioned_btg",
+        "ofac_sanctioned_etc",
+        "ofac_sanctioned_bsv",
+        "ofac_sanctioned_bch",
+        "ofac_sanctioned_xvg",
+        "ofac_sanctioned_usdc",
+        "ofac_sanctioned_usdt",
+        "ofac_sanctioned_xrp",
+        "ofac_sanctioned_trx",
+        "ofac_sanctioned_arb",
+        "ofac_sanctioned_bsc",
+        "ofac_sanctioned_sol"
+      ],
+      "pivot_packs": [],
+      "correlation_rules": [
+        "g09_sanctions_non_authoritative"
+      ],
+      "new_vocabulary": [
+        "attribute ofac_list_hits",
+        "attribute ofac_list_stale",
+        "attribute sanctions_status"
+      ],
+      "live_check": "V3LUM_LIVE=1 tests/live/test_p1_g09_1.py::test_ofac_lists_download_and_match_offline PASSED (2026-11-26): all 18 0xB10C lists (raw.githubusercontent.com, branch lists) downloaded, validated and installed ('updated'); the Ethereum Foundation address -> EMPTY 'not on OFAC lists as of 2026-11-26'; the first address of today's ETH list -> OK, CRITICAL 'Address on the OFAC SDN list (US)'; TRON line TYK29mbyvV... found in the mixed USDT list (format matching)."
+    },
+    {
+      "name": "crypto_sanctions_onchain",
+      "file": "v3lum/modules/crypto/crypto_sanctions_onchain.py",
+      "proposal": "P205",
+      "category": "crypto",
+      "opsec": "passive",
+      "default_enabled": true,
+      "terms": "key-terms",
+      "provider_tier": "trusted",
+      "keys": [
+        "trongrid",
+        "chainalysis"
+      ],
+      "datasets": [],
+      "pivot_packs": [],
+      "correlation_rules": [
+        "g09_sanctions_non_authoritative"
+      ],
+      "new_vocabulary": [
+        "attribute onchain_checks",
+        "attribute issuer_frozen",
+        "attribute chainalysis_identifications",
+        "tag issuer_freeze"
+      ],
+      "live_check": "V3LUM_LIVE=1 tests/live/test_p1_g09_1.py::test_onchain_oracle_and_issuer_freezes PASSED (2026-11-26): one JSON-RPC batch (eth_chainId + oracle/USDT/USDC eth_call) to ethereum-rpc.publicnode.com: OFAC-listed 0x0330070F... -> Chainalysis oracle 0x..01, OK sanctioned, CRITICAL sanctions finding; Ethereum Foundation -> EMPTY 'not listed by the Chainalysis sanctions checks as of 2026-11-26'; TronGrid triggerconstantcontract isBlackListed on USDT-TRC20 for TYK29mbyvV... -> frozen by Tether, HIGH issuer_freeze (never 'sanctioned'). Chainalysis REST not called (no key)."
+    },
+    {
+      "name": "tron_explorer",
+      "file": "v3lum/modules/crypto/tron_explorer.py",
+      "proposal": "P207",
+      "category": "crypto",
+      "opsec": "passive",
+      "default_enabled": true,
+      "terms": "key-terms",
+      "provider_tier": "trusted",
+      "keys": [
+        "trongrid",
+        "tronscan"
+      ],
+      "datasets": [],
+      "pivot_packs": [],
+      "correlation_rules": [],
+      "new_vocabulary": [
+        "attribute chain",
+        "attribute token_balances",
+        "attribute top_counterparties",
+        "attribute transfers_seen",
+        "attribute lookalike_token_transfers",
+        "attribute wallet_labels",
+        "attribute wallet_status"
+      ],
+      "live_check": "V3LUM_LIVE=1 tests/live/test_p1_g09_1.py::test_tron_explorer_public_contract_account PASSED (2026-11-26): keyless api.trongrid.io /v1/accounts/{USDT-TRC20 contract} + /transactions/trc20 (limit 50, at most 2 pages) -> OK, chain tron, TRX balance with units, transacted_with pivots expand=False, no Tronscan row without its key."
+    }
+  ],
+  "proposals_not_done": [],
+  "core_requests": [
+    "Home for the shared ransomware helpers (P196 cond 3, P357): move the victim-name and group-alias normalisers, match_claim/report_claims/actor_profile and the 'not listed' wording from v3lum/modules/darkweb_ransomware/ransomlook.py to a core module (e.g. v3lum/core/ransomware.py); ransomware_live, ransomfeed and v3lum/correlations/g09_ransomware.py then import it.",
+    "v3lum.core.datasets.register_dataset: date-templated URLs ({today}, {today-30}) so ransomlook_recent_posts can use /api/posts/period/{d1}/{d2} as P196 cond 1 names it (today the static /api/last/30 equivalent).",
+    "Dataset manager: licence/terms gate before a download (policy.decide on the dataset's source) and keyed downloads (key header from the key registry, redacted), so ransomware.live recentvictims (noncommercial v2 / licence-gated PRO) can feed watch without bypassing P197 cond 1-2.",
+    "v3lum.core.sanitize (A4 second net): a per-source way for sensitive providers to extract attacker-authored data before scrubbing (ransom-note 'content' -> contacts only; IOC keys named 'ip'; hex hashes next to e-mail keys in IOC feeds), so P197 cond 6 ransom-note contacts and IP/hash group IOCs can reach the graph.",
+    "v3lum.core.entities: an entity type for messenger IDs such as Tox (P197 cond 6 qTox contacts are counted, not pivoted).",
+    "v3lum.core.datasets.DatasetInfo: record the upstream commit of GitHub-hosted datasets (P205 cond 1 'list date/commit kept per match'; today list date = fetch date plus the list SHA-256).",
+    "Redact presigned S3 query parameters (X-Amz-Signature, X-Amz-Credential, X-Amz-Security-Token) in cache, logs and evidence, or expose the OFAC SDN 'Digital Currency Address - <ASSET>' remarks parsed by sanctions_lists (P219), so crypto_sanctions_offline can cite SDN entity and programme per hit (P205 cond 5).",
+    "Core safe XML helper (P356 cond 1): ransomfeed parses the RSS with an expat stand-in (no DTD/entities); switch when the core helper exists.",
+    "P335/P302: group findings by the g09_ransomware_corroborated correlation key (victim + group alias + first date) and score a victim claim once across trackers (P196 cond 5).",
+    "Vocabulary/registry rule: only crypto_sanctions_* and sanctions_lists may set the 'sanctions' tag on crypto nodes; the GoPlus owner maps its 'sanctioned' flag to an attribute (P205 cond 6; the rule g09_sanctions_non_authoritative labels it meanwhile)."
+  ],
+  "files": [
+    "docs/backlog/p1-G09-1.md",
+    "tests/fixtures/acceptance/domain/ransomfeed.json",
+    "tests/fixtures/acceptance/domain/ransomlook.json",
+    "tests/fixtures/acceptance/domain/ransomware_live.json",
+    "tests/fixtures/crypto_sanctions_offline/ofac_eth_list_ok.txt",
+    "tests/fixtures/crypto_sanctions_offline/ofac_list_not_found.txt",
+    "tests/fixtures/crypto_sanctions_offline/ofac_minimal_list_ok.txt",
+    "tests/fixtures/crypto_sanctions_offline/ofac_trx_list_ok.txt",
+    "tests/fixtures/crypto_sanctions_offline/ofac_usdt_list_ok.txt",
+    "tests/fixtures/crypto_sanctions_offline/ofac_xbt_list_ok.txt",
+    "tests/fixtures/crypto_sanctions_onchain/chain_id_ok.json",
+    "tests/fixtures/crypto_sanctions_onchain/chainalysis_rest_blocked.html",
+    "tests/fixtures/crypto_sanctions_onchain/oracle_not_sanctioned.json",
+    "tests/fixtures/crypto_sanctions_onchain/oracle_sanctioned.json",
+    "tests/fixtures/crypto_sanctions_onchain/rpc_batch_ok.json",
+    "tests/fixtures/crypto_sanctions_onchain/rpc_error_in_200.json",
+    "tests/fixtures/crypto_sanctions_onchain/tron_usdt_frozen.json",
+    "tests/fixtures/crypto_sanctions_onchain/tron_usdt_not_frozen.json",
+    "tests/fixtures/crypto_sanctions_onchain/usdc_frozen.json",
+    "tests/fixtures/crypto_sanctions_onchain/usdc_not_frozen.json",
+    "tests/fixtures/crypto_sanctions_onchain/usdt_frozen.json",
+    "tests/fixtures/crypto_sanctions_onchain/usdt_not_frozen.json",
+    "tests/fixtures/ransomfeed/gang_ok.json",
+    "tests/fixtures/ransomfeed/ganginfo_ok.json",
+    "tests/fixtures/ransomfeed/rss_ok.xml",
+    "tests/fixtures/ransomfeed/search_empty.json",
+    "tests/fixtures/ransomfeed/search_ok.json",
+    "tests/fixtures/ransomfeed/search_placeholder_website.json",
+    "tests/fixtures/ransomlook/groups_ok.json",
+    "tests/fixtures/ransomlook/html_404.html",
+    "tests/fixtures/ransomlook/recent_posts_ok.json",
+    "tests/fixtures/ransomlook/search_empty.json",
+    "tests/fixtures/ransomlook/search_ok.json",
+    "tests/fixtures/ransomlook/search_truncated.json",
+    "tests/fixtures/ransomware_live/pro_needs_key.json",
+    "tests/fixtures/ransomware_live/v2_groups_ok.json",
+    "tests/fixtures/ransomware_live/v2_html_root.html",
+    "tests/fixtures/ransomware_live/v2_rate_limited.json",
+    "tests/fixtures/ransomware_live/v2_recent_ok.json",
+    "tests/fixtures/ransomware_live/v2_search_not_found.json",
+    "tests/fixtures/ransomware_live/v2_search_ok.json",
+    "tests/fixtures/ransomware_live/v2_search_placeholder_domain.json",
+    "tests/fixtures/rules/g09_ransomware_corroborated/negative_dates_too_far_apart.json",
+    "tests/fixtures/rules/g09_ransomware_corroborated/negative_one_tracker_reposts.json",
+    "tests/fixtures/rules/g09_ransomware_corroborated/positive_three_trackers_one_claim.json",
+    "tests/fixtures/rules/g09_sanctions_non_authoritative/negative_confirmed_by_ofac_list.json",
+    "tests/fixtures/rules/g09_sanctions_non_authoritative/positive_goplus_flag_only.json",
+    "tests/fixtures/tron_explorer/account_contract_ok.json",
+    "tests/fixtures/tron_explorer/account_not_found.json",
+    "tests/fixtures/tron_explorer/account_ok.json",
+    "tests/fixtures/tron_explorer/invalid_address.json",
+    "tests/fixtures/tron_explorer/trc20_page1.json",
+    "tests/fixtures/tron_explorer/trc20_page2.json",
+    "tests/fixtures/tron_explorer/tronscan_needs_key.html",
+    "tests/live/test_p1_g09_1.py",
+    "tests/modules/test_crypto_sanctions_offline.py",
+    "tests/modules/test_crypto_sanctions_onchain.py",
+    "tests/modules/test_ransomfeed.py",
+    "tests/modules/test_ransomlook.py",
+    "tests/modules/test_ransomware_live.py",
+    "tests/modules/test_tron_explorer.py",
+    "v3lum/correlations/g09_ransomware.py",
+    "v3lum/data/crypto_sanctions_onchain/contracts.json",
+    "v3lum/data/notices/ofac_0xb10c_lists.json",
+    "v3lum/data/notices/ransomfeed_data.json",
+    "v3lum/data/notices/ransomlook_data.json",
+    "v3lum/data/providers/chainalysis.json",
+    "v3lum/data/providers/github__p1-G09-1.json",
+    "v3lum/data/providers/publicnode__p1-G09-1.json",
+    "v3lum/data/providers/ransomfeed.json",
+    "v3lum/data/providers/ransomlook__p1-G09-1.json",
+    "v3lum/data/providers/ransomware_live.json",
+    "v3lum/data/providers/trongrid.json",
+    "v3lum/data/providers/tronscan.json",
+    "v3lum/data/vocab/p1-G09-1.json",
+    "v3lum/modules/crypto/crypto_sanctions_offline.py",
+    "v3lum/modules/crypto/crypto_sanctions_onchain.py",
+    "v3lum/modules/crypto/tron_explorer.py",
+    "v3lum/modules/darkweb_ransomware/ransomfeed.py",
+    "v3lum/modules/darkweb_ransomware/ransomlook.py",
+    "v3lum/modules/darkweb_ransomware/ransomware_live.py"
+  ],
+  "notes": "P205 is delivered split by disclosure: crypto_sanctions_offline (disclosure none, TLP:RED-safe, 18 OFAC lists) and crypto_sanctions_onchain (Chainalysis oracle + USDT/USDC isBlackListed by one JSON-RPC batch on the eth_rpc setting, USDT-TRC20 through TronGrid, Chainalysis REST with a key). The EVM JSON-RPC helper (JsonRpc, eth_call_request) lives in crypto_sanctions_onchain.py for evm_explorers (P212); the TronGrid client in tron_explorer.py. ransomlook.py also holds the shared ransomware helpers used by ransomware_live, ransomfeed and the rule pack v3lum/correlations/g09_ransomware.py (g09_ransomware_corroborated, g09_sanctions_non_authoritative). Corporate profile: ransomlook, ransomfeed, crypto_sanctions_offline and crypto_sanctions_onchain (PublicNode source only) run; ransomware_live (licence) and tron_explorer (key-terms without a recorded key plan) are skipped by the policy gate until legal records the approval / key plans. Acceptance routes: domain/ransomlook.json, domain/ransomfeed.json, domain/ransomware_live.json (empty: licence-skipped under corporate). Notices: ransomlook_data, ransomfeed_data (CC-BY-4.0), ofac_0xb10c_lists (MIT + US public domain). Partial items and their unblock conditions: docs/backlog/p1-G09-1.md. Test result: batch 168/168 passed (157 offline module tests + 6 registry-contract cases + 5 rule fixtures); live 6/6 passed with V3LUM_LIVE=1; ruff check and P327 lint clean; full offline suite 6718 collected: 6685 passed, 15 skipped, 18 failed, all in other batches' in-progress files or order-dependent core tests (none in p1-G09-1 files)."
+}

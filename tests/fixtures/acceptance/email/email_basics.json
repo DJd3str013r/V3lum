@@ -1,0 +1,33 @@
+{
+  "schema": "v3lum.acceptance_routes/1", 
+  "module": "email_basics", 
+  "routes": [
+    {
+      "method": "GET", 
+      "url": "https://dns.google/resolve?name=example.com&type=MX&edns_client_subnet=0.0.0.0%2F0", 
+      "status": 200, 
+      "json": {
+        "Status": 0, 
+        "AD": true, 
+        "Question": [
+          {
+            "name": "example.com.", 
+            "type": 15
+          }
+        ], 
+        "Answer": [
+          {
+            "name": "example.com.", 
+            "type": 15, 
+            "TTL": 134, 
+            "data": "0 ."
+          }
+        ]
+      }, 
+      "headers": {
+        "content-type": "application/dns-json"
+      }, 
+      "latency_ms": 60
+    }
+  ]
+}

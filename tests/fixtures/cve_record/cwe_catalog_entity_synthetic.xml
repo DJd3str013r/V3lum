@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<!DOCTYPE Weakness_Catalog [
+ <!ENTITY a "aaaaaaaaaa">
+ <!ENTITY b "&a;&a;&a;&a;&a;&a;&a;&a;&a;&a;">
+]>
+<Weakness_Catalog xmlns="http://cwe.mitre.org/cwe-8" Name="CWE" Version="0" Date="2099-01-01"><Weaknesses><Weakness ID="1" Name="&b;" Status="Draft"/></Weaknesses></Weakness_Catalog>

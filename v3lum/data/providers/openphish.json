@@ -1,0 +1,52 @@
+{
+  "schema": "v3lum.provider/1",
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "id": "openphish",
+  "name": "OpenPhish (community phishing feed)",
+  "operator": "OpenPhish",
+  "hosts": [
+    "openphish.com"
+  ],
+  "tier": "community",
+  "tier_rationale": "Phishing-intelligence vendor with published terms and paid feeds; the P071 chair rates the list maintainers community except CERT.PL and Procon-SP ('Tier community is the lowest list maintainer').",
+  "reliability": {
+    "grade": "B",
+    "justification": "Automated phishing detection with short-lived active entries; URLs are verified phishing at listing time."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 43200
+  },
+  "sources": {
+    "community_feed": {
+      "title": "OpenPhish community feed (active phishing URLs; served from raw.githubusercontent.com/openphish/public_feed)",
+      "terms": {
+        "class": "noncommercial",
+        "evidence_url": "https://openphish.com/terms.html",
+        "quote": "You agree not to use any part of the Services for any commercial purposes, including, but not limited to, security operations, threat intelligence, detection, enrichment, product development, automation, customer protection, or other business functions of any organization you are affiliated with without the prior written consent of OpenPhish.",
+        "checked_at": "2026-11-26",
+        "reviewer": "batch p1-G03-1 (verbatim from the terms page, 2026-11-26; P071 cond 3)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "openphish",
+      "sanitizer": null,
+      "dataset": "url_domain_blocklists.openphish.txt",
+      "notes": "P071 cond 3: off under EVERY licence profile unless legal records OpenPhish's written consent or a paid feed in licence_allow; the module also requires setting url_domain_blocklists_openphish_consent_ref (the legal reference) before it reads the feed. openphish.com/feed.txt redirects (302) to the pinned GitHub raw URL used by the dataset. Non-commercial data: runtime download only, never bundled or used as a fixture (A6).",
+      "licensed_alternative": "OpenPhish's written consent or a paid OpenPhish feed recorded in licence_allow (P071 cond 3); CERT.PL and Phishing.Database cover the same category under open terms."
+    }
+  },
+  "notes": "Owned by batch p1-G03-1 (P071). Matched locally (disclosure 'none'): OpenPhish never receives an investigated value."
+}

@@ -1,0 +1,163 @@
+{
+  "schema": "v3lum.username_overlay/1",
+  "title": "V3LUM username overlay: corrections, exclusions and per-site tiers (P113 FC4)",
+  "owner": "batch p1-G05-2 (P113 username_check / username_check_extended)",
+  "notes": [
+    "V3LUM-authored. Never copies or adapts WhatsMyName text: the 'definition' markers are V3LUM's own measurements from the captures named in 'measured' (P113 FC4, A6). A fix legal deems a WMN adaptation is CC BY-SA 4.0, attributed and never bundled: it then moves to a runtime download.",
+    "A5 names this overlay v3lum/data/username_overlay.json; batch file ownership places a module's bundled data under v3lum/data/<module>/, hence v3lum/data/username_check/overlay.json.",
+    "Per-site tier (A8/FC8): only 'trusted' or 'community' with a rationale is ever queried; unknown-tier sites never receive a username, at AMBER+STRICT only trusted sites. The provider registry fragment named in 'provider' must carry the same tier (checked by the tests).",
+    "Per-site terms (A1/FC16): the class of the registry source named in 'source' is authoritative at runtime; 'unknown' never runs in any profile and the default pack holds only 'open' sites.",
+    "Calibration (FC2/FC15): an official or organisation account as 'claimed' (never a private person's handle) and a random 20-character control. The records below were measured from the sandbox datacenter egress on 2026-11-26: the team re-measures them from its own egress (team_egress false until then), and doctor --sources re-tests them in rotation.",
+    "'exclusions' drop sites from both packs at pack build and at runtime; 'override_sherlock_exclusion' (not used today) needs a recorded decision with measured evidence."
+  ],
+  "maigret_backfill_approved": false,
+  "sites": {
+    "v3lum:gravatar": {
+      "name": "Gravatar",
+      "provider": "gravatar",
+      "source": "gravatar.profiles",
+      "hosts": ["en.gravatar.com"],
+      "tier": "trusted",
+      "tier_rationale": "major platform: Automattic Inc.; provider registry tier trusted (council-1 A8, P087 rationale)",
+      "tier_reviewer": "council-1 (A8) through provider gravatar",
+      "tier_date": "2026-11-26",
+      "terms": {"class": "open", "evidence": "provider registry source gravatar.profiles: 'Gravatar (Automattic): tier trusted, terms open.' (council-1 A1)"},
+      "calibration": {
+        "claimed": "automattic",
+        "claimed_state": "found",
+        "control_state": "absent",
+        "control_len": 20,
+        "verdict": "correct",
+        "date": "2026-11-26",
+        "egress": "sandbox datacenter egress (US)",
+        "team_egress": false
+      },
+      "br": false,
+      "cti": false,
+      "ua": "neutral",
+      "disabled": false,
+      "wrong_votes": 0,
+      "definition": {
+        "name": "Gravatar",
+        "check_url": "https://en.gravatar.com/{account}.json",
+        "profile_url": "https://gravatar.com/{account}",
+        "category": "social",
+        "presence": {"status": 200, "strings": ["\"preferredUsername\""]},
+        "absence": {"status": 404, "strings": ["User not found"]},
+        "measured": "2026-11-26 V3LUM captures: tests/fixtures/username_check/gravatar_ok.json (claimed) and gravatar_not_found.json (control)"
+      }
+    },
+    "v3lum:dribbble": {
+      "name": "Dribbble",
+      "provider": "dribbble",
+      "source": "dribbble.profile_page",
+      "hosts": ["dribbble.com"],
+      "tier": "community",
+      "tier_rationale": "major platform: Dribbble Holdings Ltd., published terms and privacy policy, more than ten years of public track record",
+      "tier_reviewer": "batch p1-G05-2 (P113 FC8)",
+      "tier_date": "2026-11-26",
+      "terms": {"class": "unknown", "evidence": "provider registry source dribbble.profile_page: terms restrict automated access and the collection of account names; legal_dpo review pending"},
+      "calibration": {
+        "claimed": "dribbble",
+        "claimed_state": "found",
+        "control_state": "absent",
+        "control_len": 20,
+        "verdict": "correct",
+        "date": "2026-11-26",
+        "egress": "sandbox datacenter egress (US)",
+        "team_egress": false
+      },
+      "br": false,
+      "cti": false,
+      "ua": "neutral",
+      "disabled": false,
+      "wrong_votes": 0,
+      "definition": {
+        "name": "Dribbble",
+        "check_url": "https://dribbble.com/{account}",
+        "profile_url": "https://dribbble.com/{account}",
+        "category": "art",
+        "presence": {"status": 200, "strings": ["property=\"og:type\" content=\"profile\""]},
+        "absence": {"status": 404, "strings": ["<title>Sorry, the page you were looking for"]},
+        "measured": "2026-11-26 V3LUM captures: tests/fixtures/username_check/dribbble_ok.json (claimed) and dribbble_not_found.json (control)"
+      }
+    },
+    "v3lum:aboutme": {
+      "name": "About.me",
+      "provider": "about_me",
+      "source": "about_me.profile_page",
+      "hosts": ["about.me"],
+      "tier": "community",
+      "tier_rationale": "major platform: About.me, Inc., published terms and privacy policy, more than ten years of public track record",
+      "tier_reviewer": "batch p1-G05-2 (P113 FC8)",
+      "tier_date": "2026-11-26",
+      "terms": {"class": "unknown", "evidence": "provider registry source about_me.profile_page: terms prohibit crawling or scraping by manual or automated means; legal_dpo review pending"},
+      "calibration": {
+        "claimed": "microsoft",
+        "claimed_state": "found",
+        "control_state": "absent",
+        "control_len": 20,
+        "verdict": "correct",
+        "date": "2026-11-26",
+        "egress": "sandbox datacenter egress (US)",
+        "team_egress": false,
+        "note": "the platform's own name ('aboutme') is reserved and answers 302 -> /team, which reads as could not verify"
+      },
+      "br": false,
+      "cti": false,
+      "ua": "neutral",
+      "disabled": false,
+      "wrong_votes": 0,
+      "definition": {
+        "name": "About.me",
+        "check_url": "https://about.me/{account}",
+        "profile_url": "https://about.me/{account}",
+        "category": "social",
+        "presence": {"status": 200, "strings": ["property=\"og:type\" content=\"profile\""]},
+        "absence": {"status": 404, "strings": ["<title>about.me</title>"]},
+        "measured": "2026-11-26 V3LUM captures: tests/fixtures/username_check/aboutme_ok.json (claimed) and aboutme_not_found.json (control; the 404 page is the marketing home, whose only distinctive mark is its own page title)"
+      }
+    },
+    "v3lum:kaggle": {
+      "name": "Kaggle",
+      "provider": "kaggle",
+      "source": "kaggle.profile_page",
+      "hosts": ["www.kaggle.com"],
+      "tier": "community",
+      "tier_rationale": "major platform: Kaggle (Google LLC), published terms and privacy policy, more than ten years of public track record",
+      "tier_reviewer": "batch p1-G05-2 (P113 FC8)",
+      "tier_date": "2026-11-26",
+      "terms": {"class": "unknown", "evidence": "provider registry source kaggle.profile_page: terms page not captured (JavaScript); legal_dpo review pending"},
+      "calibration": {
+        "claimed": "kaggleteam",
+        "claimed_state": "found",
+        "control_state": "absent",
+        "control_len": 20,
+        "verdict": "correct",
+        "date": "2026-11-26",
+        "egress": "sandbox datacenter egress (US)",
+        "team_egress": false,
+        "note": "official 'Kaggle Team Bot' account; organisation pages live under /organizations/ and answer 404 at the root"
+      },
+      "br": false,
+      "cti": false,
+      "ua": "neutral",
+      "disabled": false,
+      "wrong_votes": 0,
+      "definition": {
+        "name": "Kaggle",
+        "check_url": "https://www.kaggle.com/{account}",
+        "profile_url": "https://www.kaggle.com/{account}",
+        "category": "coding",
+        "presence": {"status": 200, "strings": ["property=\"og:type\" content=\"profile\""]},
+        "absence": {"status": 404, "strings": ["property=\"og:image\" content=\"https://www.kaggle.com/static/images/kaggle-wordmark-gradient.png\""]},
+        "measured": "2026-11-26 V3LUM captures: tests/fixtures/username_check/kaggle_ok.json (claimed) and kaggle_not_found.json (control; the 404 page carries the generic site og:image, profile pages do not)"
+      }
+    }
+  },
+  "exclusions": {
+    "v3lum:linktree": "Sherlock false-positive exclusion list (FC5) and terms that forbid scripts, bots or scraping tools to collect information from profiles; no override recorded",
+    "wmn:Linktree": "Sherlock false-positive exclusion list (FC5)",
+    "wmn:Duolingo": "undocumented internal API (FC7 legal floor: documented profile APIs only)"
+  }
+}

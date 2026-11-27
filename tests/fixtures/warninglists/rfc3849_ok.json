@@ -1,0 +1,16 @@
+{
+ "name": "List of RFC 3849 CIDR blocks",
+ "type": "cidr",
+ "version": 20220705,
+ "description": "Event contains one or more entries part of the IPv6 documentation prefix (RFC 3849)",
+ "matching_attributes": [
+  "ip-src",
+  "ip-dst",
+  "domain|ip",
+  "ip-dst|port",
+  "ip-src|port"
+ ],
+ "list": [
+  "2001:DB8::/32"
+ ]
+}

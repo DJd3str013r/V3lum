@@ -1,0 +1,2 @@
+{"host": "www.example.com", "port": 443, "protocol": "http", "isPublic": false, "status": "IN_PROGRESS", "startTime": 1795566241729, "engineVersion": "2.4.3", "criteriaVersion": "2009q",
+ "endpoints": [{"ipAddress": "192.0.2.10", "serverName": "www.example.com", "statusMessage": "In progress", "statusDetails": "TESTING_PROTOCOL_INTOLERANCE_399", "progress": 35, "eta": 60, "delegation": 2}]}

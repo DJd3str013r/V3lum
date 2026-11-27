@@ -1,0 +1,132 @@
+{
+ "data": [
+  {
+   "id": "331bc752-906a-4fc5-beda-0c82b139dd42",
+   "created_at": "2023-01-12T14:59:51.723981Z",
+   "sha1_hash": "c454fb9e24c5aa2326978caac665cf7d8385cf88",
+   "title": "2021-12-15 - ThreatLabz analysis - Log4Shell CVE-2021-44228 Exploit Attempts",
+   "llm_title": "2021-12-15 - ThreatLabz analysis - Log4Shell CVE-2021-44228 Exploit Attempts",
+   "authors": "Zscaler ThreatLabz",
+   "file_creation_date": "2022-05-27T21:07:16Z",
+   "plain_text": "",
+   "sources": [
+    "VXUG",
+    "Malpedia"
+   ],
+   "origins": [
+    "pdf",
+    "web"
+   ],
+   "references": [
+    "https://papers.vx-underground.org/papers/Malware Defense/Malware Analysis 2021/2021-12-15 - ThreatLabz analysis - Log4Shell CVE-2021-44228 Exploit Attempts.pdf",
+    "https://www.zscaler.com/blogs/security-research/threatlabz-analysis-log4shell-cve-2021-44228-exploit-attempts"
+   ],
+   "report_names": [
+    "2021-12-15 - ThreatLabz analysis - Log4Shell CVE-2021-44228 Exploit Attempts.pdf",
+    "threatlabz-analysis-log4shell-cve-2021-44228-exploit-attempts"
+   ],
+   "threat_actors": [
+    {
+     "main_name": "Cron",
+     "aliases": [],
+     "source_id": "ETDA"
+    },
+    {
+     "main_name": "Kinsing",
+     "aliases": [
+      "Money Libra"
+     ],
+     "source_id": "MISPGALAXY"
+    }
+   ],
+   "files": {
+    "pdf": "https://archive.orkl.eu/c454fb9e24c5aa2326978caac665cf7d8385cf88.pdf",
+    "text": "https://archive.orkl.eu/c454fb9e24c5aa2326978caac665cf7d8385cf88.txt",
+    "img": "https://archive.orkl.eu/c454fb9e24c5aa2326978caac665cf7d8385cf88.jpg"
+   }
+  },
+  {
+   "id": "9d622232-48b4-4a1d-85f9-cd0d86769ebd",
+   "created_at": "2026-04-06T00:11:08.119584Z",
+   "sha1_hash": "f983d1466408a000852e96c87551e7ea1c61ecd1",
+   "title": "Logs of Log4shell (CVE-2021-44228): log4j is ubiquitous [EN]",
+   "llm_title": "Logs of Log4shell (CVE-2021-44228): log4j is ubiquitous [EN]",
+   "authors": "S2W, TALON",
+   "file_creation_date": "0001-01-01T00:00:00Z",
+   "plain_text": "",
+   "sources": [
+    "Malpedia"
+   ],
+   "origins": [
+    "web"
+   ],
+   "references": [
+    "https://medium.com/s2wblog/logs-of-log4shell-cve-2021-44228-log4j-is-ubiquitous-en-809064312039"
+   ],
+   "report_names": [
+    "logs-of-log4shell-cve-2021-44228-log4j-is-ubiquitous-en-809064312039"
+   ],
+   "threat_actors": [
+    {
+     "main_name": "BlueHornet",
+     "aliases": [
+      "APT49",
+      "AgainstTheWest"
+     ],
+     "source_id": "MISPGALAXY"
+    },
+    {
+     "main_name": "Kinsing",
+     "aliases": [
+      "Money Libra"
+     ],
+     "source_id": "MISPGALAXY"
+    },
+    {
+     "main_name": "Cleaver",
+     "aliases": [
+      "Operation Cleaver",
+      "Op Cleaver",
+      "Tarh Andishan"
+     ],
+     "source_id": "MISPGALAXY"
+    }
+   ]
+  },
+  {
+   "id": "092c0b06-3e3b-409b-ad92-32b0ad53e0ef",
+   "created_at": "2023-01-12T15:08:21.218584Z",
+   "sha1_hash": "5a1e70e93c66b5f4dc5aad97b0fbf2d7ab0fa5cf",
+   "title": "2021-12-10 - Log4j2 Vulnerability “Log4Shell” (CVE-2021-44228)",
+   "llm_title": "2021-12-10 - Log4j2 Vulnerability \"Log4Shell\" (CVE-2021-44228)",
+   "authors": "CrowdStrike Intelligence Team",
+   "file_creation_date": "2022-05-28T23:18:45Z",
+   "plain_text": "",
+   "sources": [
+    "VXUG"
+   ],
+   "origins": [
+    "pdf"
+   ],
+   "references": [
+    "https://papers.vx-underground.org/papers/Malware Defense/Malware Analysis 2021/2021-12-10 - Log4j2 Vulnerability “Log4Shell” (CVE-2021-44228).pdf"
+   ],
+   "report_names": [
+    "2021-12-10 - Log4j2 Vulnerability “Log4Shell” (CVE-2021-44228).pdf"
+   ],
+   "threat_actors": [
+    {
+     "main_name": "Cleaver",
+     "aliases": [
+      "Operation Cleaver",
+      "Op Cleaver",
+      "Tarh Andishan"
+     ],
+     "source_id": "MISPGALAXY"
+    }
+   ]
+  }
+ ],
+ "message": "library entry search results",
+ "status": "success"
+}

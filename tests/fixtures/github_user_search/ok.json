@@ -1,0 +1,42 @@
+{
+ "total_count": 432,
+ "incomplete_results": false,
+ "items": [
+  {
+   "login": "octocat",
+   "id": 583231,
+   "node_id": "MDQ6VXNlcjU4MzIzMQ==",
+   "avatar_url": "https://avatars.githubusercontent.com/u/583231?v=4",
+   "url": "https://api.github.com/users/octocat",
+   "html_url": "https://github.com/octocat",
+   "type": "User",
+   "user_view_type": "public",
+   "site_admin": false,
+   "score": 1.0
+  },
+  {
+   "login": "example-user-1",
+   "id": 10000001,
+   "node_id": "U_EXAMPLE1",
+   "avatar_url": "https://avatars.githubusercontent.com/u/10000001?v=4",
+   "url": "https://api.github.com/users/example-user-1",
+   "html_url": "https://github.com/example-user-1",
+   "type": "User",
+   "user_view_type": "public",
+   "site_admin": false,
+   "score": 1.0
+  },
+  {
+   "login": "example-user-2",
+   "id": 10000002,
+   "node_id": "U_EXAMPLE2",
+   "avatar_url": "https://avatars.githubusercontent.com/u/10000002?v=4",
+   "url": "https://api.github.com/users/example-user-2",
+   "html_url": "https://github.com/example-user-2",
+   "type": "User",
+   "user_view_type": "public",
+   "site_admin": false,
+   "score": 1.0
+  }
+ ]
+}

@@ -1,0 +1,57 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "anubisdb",
+  "name": "AnubisDB subdomain database (anubisdb.com)",
+  "operator": "AnubisDB, run by the maintainer of the open-source Anubis project (jonluca/Anubis, individual operator)",
+  "hosts": [
+    "anubisdb.com",
+    "jldc.me"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "Individual operator without published terms or privacy policy (A8 unknown). Chair decision P016: the extra feeds stay unknown tier until a promotion is recorded, so they are opt-in and excluded at TLP:AMBER and above.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "D",
+    "justification": "Very large and noisy name list (22,253 names for example.com on 2026-11-26, with out-of-apex junk and thousands of numeric or word+digits labels): names seen only here stay unconfirmed until they resolve or a second source agrees (P016 cond 7)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 20,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "subdomains": {
+      "title": "AnubisDB subdomain list (GET /anubis/subdomains/{domain}, JSON array)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/jonluca/Anubis",
+        "quote": "Registry terms per feed (A1 BR3): THC, AnubisDB and Subdomain Center are 'open' (legal_dpo: free services with no published terms, no contractual bar)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "anubisdb",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P016 cond 4). https://anubisdb.com/anubis/subdomains/{domain} is the live host (research C0023); the legacy mirror jldc.me now answers 301 to jonlu.ca (2026-11-26) and is never used. Scripted clients sometimes get a Cloudflare 'Attention Required' page (HTTP 403): BLOCKED 'challenge', never retried with another UA or identity (A9, P016 cond 9)."
+    }
+  },
+  "notes": "Owned by batch p2-G01-3 (P016, module subdomains_passive_extra). jldc.me is listed because the research names it (legacy mirror, 301 to an undeclared host): no module contacts it."
+}

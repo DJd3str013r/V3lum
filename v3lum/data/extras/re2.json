@@ -1,0 +1,8 @@
+{
+  "schema": "v3lum.extra/1",
+  "package": "re2",
+  "pip": "google-re2>=1.1",
+  "extra": "full",
+  "licence": "BSD-3-Clause",
+  "justification": "secret_scanner (P312 cond 2): google-re2 runs the original gitleaks RE2 patterns in linear time when installed; without it the converted patterns run on Python re behind the ReDoS harness. Optional: the module never requires it."
+}

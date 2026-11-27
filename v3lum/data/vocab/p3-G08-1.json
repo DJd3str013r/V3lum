@@ -1,0 +1,19 @@
+{
+  "schema": "v3lum.vocab/1",
+  "attributes": {
+    "cvedb_kev_relay": "CISA KEV status relayed by Shodan CVEDB {listed, required_action, ransomware_campaign, note}: context only, the KEV card line and the 'kev' fact come from cisa_kev (P182 cond 4)",
+    "cvedb_search_hits": "list of {cve, cvss, epss, epss_percentile, kev_relay, published, vendor_products} of a Shodan CVEDB product search typed by the analyst (rows de-duplicated by CVE id)",
+    "euvd_record": "ENISA EUVD record of the CVE {euvd_id, assigner, published, updated, exploited_since, references_total, advisories_total, link}; the EUVD id is an alias, never an entity",
+    "euvd_advisories": "list of vendor advisories ENISA EUVD relays for the CVE {id, source, title, published, url} (links only, capped)",
+    "euvd_search_hits": "list of {euvd_id, cves, score, exploited_since, published, description} of an EUVD text search typed by the analyst (size <= 10)",
+    "csaf_advisories": "vendor CSAF 2.0 advisories of the CVE from the local CSAF index {vendor, advisory_id, title, url, distribution_url, licence, updated, cvss, excerpt (<= 300 chars), exploitation, status_counts, hash}: excerpts plus links, never copies",
+    "csaf_index": "provenance of the local CSAF index that answered {vendors: {vendor: {synced_at, documents, deferred}}, age_hours, stale}",
+    "csaf_search_hits": "list of {cve, vendor, advisory_id, title} of local CSAF advisories whose title or products match a keyword",
+    "vex_statuses": "vendor VEX statement for the CVE {vendor, advisory_id, counts {fixed, affected, not_affected, under_investigation}, products [{status, component, platform, platform_cpe, justification, remediation}] (capped), url}",
+    "debian_tracker": "Debian security tracker summary of the CVE or source package {packages, releases, open, resolved, not_affected, scope, description, index {built_at, ids, packages}}: shown only for analyst input or Debian-based assets (P355 cond 2)",
+    "debian_package_status": "list of {cve, release, codename, status, fixed, urgency, nodsa} of one Debian source package in the local tracker index (newest CVE ids first, capped)",
+    "distro_backport": "backport check of version-inferred CVEs against the distribution's own fix status {distro, package, installed, release, fixed: [cve], unfixed: [cve], not_affected: [cve], unknown: [cve], evidence}"
+  },
+  "tags": {},
+  "relations": {}
+}

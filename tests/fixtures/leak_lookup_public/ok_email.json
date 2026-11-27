@@ -1,0 +1,15 @@
+{
+ "_synthetic": "synthetic body in the PUBLIC response format documented at https://leak-lookup.com/docs/search (checked 2026-11-26): {'error': 'false', 'message': {'<breach_sitename>': []}} (indexed columns stripped). No company public key yet: P140 cond 6 - replace with a trimmed real answer before merge. Names: real public breach domains (joined through the HIBP catalogue subset) plus two fictional '.example' names without a catalogue entry",
+ "error": "false",
+ "message": {
+  "8tracks.com": [],
+  "adobe.com": [],
+  "000webhost.com": [],
+  "ashleymadison.com": [],
+  "zoosk.com": [],
+  "rivercitymediaonline.com": [],
+  "Hjedd.com": [],
+  "regionalshop.example": [],
+  "datingsite.example": []
+ }
+}

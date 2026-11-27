@@ -1,0 +1,24 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.securitycontext.com/v1/cves/CVE-2021-9999999",
+  "headers": {}
+ },
+ "response": {
+  "status": 404,
+  "headers": {
+   "content-type": "application/json",
+   "cache-control": "no-cache",
+   "x-ratelimit-limit": "60",
+   "x-ratelimit-remaining": "59",
+   "x-ratelimit-reset": "20",
+   "x-ratelimit-scope": "anonymous",
+   "cf-cache-status": "MISS",
+   "server": "cloudflare"
+  },
+  "body": "{\"found\":false,\"error\":\"not found\",\"code\":\"not_found\",\"candidates\":[],\"_links\":{\"index\":\"/v1/index\"},\"_meta\":{\"dataset\":\"2026-11-26T06:34:32Z\",\"note\":\"listed means exposed, not breached\",\"index\":\"/v1/index\"}}"
+ },
+ "transport_error": null,
+ "elapsed_s": 0.785,
+ "note": "LIVE 2026-11-26: unassigned id -> 404 {\"found\":false,\"code\":\"not_found\",...} with x-ratelimit-limit 60 / remaining 59 / reset 20 (seconds) / scope anonymous."
+}

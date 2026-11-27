@@ -1,0 +1,66 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "hudsonrock",
+  "name": "Hudson Rock Cavalier free OSINT tools (infostealer exposure metadata)",
+  "operator": "Hudson Rock Ltd. (hudsonrock.com)",
+  "hosts": ["cavalier.hudsonrock.com"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Identifiable cybercrime-intelligence company, but its free OSINT tools publish no terms of use (P134 chair: tier community, terms unknown).",
+  "tier_reviewer": "council-1 (A8, P134)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": true},
+  "personal_data_review": null,
+  "reliability": {"grade": "C", "justification": "Infostealer-log metadata from criminal markets: an exposure indicator, not proof; common usernames and test addresses match many unrelated machines (P134 cond 6)."},
+  "http_profile": {"user_agent": "neutral", "accept": "application/json", "timeout": 30, "ttl": 604800, "min_interval": 1.0, "concurrency": 1, "retries": 0},
+  "quota": {"scope": "egress_ip", "day": 100, "burst": 1, "published": false, "evidence_url": "", "safety_margin": 0.8},
+  "error_markers": [
+    {"id": "hudsonrock_error_field", "statuses": [200], "json_path": "error", "equals": null, "regex": "^(?!(?:false|null|0)$)\\S", "final_url_regex": null, "maps_to": "error", "reason_code": "error", "reason": "Hudson Rock: error field in a 200 answer (could not verify)"},
+    {"id": "hudsonrock_too_many_requests", "statuses": [200], "json_path": null, "equals": null, "regex": "(?i)too many requests|rate limit(?:ed| exceeded)", "final_url_regex": null, "maps_to": "rate_limited", "reason_code": "rate_limited", "reason": "Hudson Rock: rate limited (message inside a 200 answer)"}
+  ],
+  "keys": {},
+  "sources": {
+    "search_by_email": {
+      "title": "Cavalier osint-tools/search-by-email?email= (per-person, run_on own_assets)",
+      "terms": {"class": "unknown", "evidence_url": "https://www.hudsonrock.com/free-tools", "quote": "", "checked_at": "2026-11-26", "reviewer": "council-1 (A1)", "free_plan_business_use": null},
+      "upstream_family": "hudsonrock",
+      "sanitizer": {"keep": ["stealers[].date_compromised", "stealers[].stealer_family", "stealers[].total_corporate_services", "stealers[].total_user_services", "total_corporate_services", "total_user_services"], "notes": "P134 cond 1-2 ALLOWLIST applied before the HTTP cache, evidence, logs and graph: per stealer only the compromise date, stealer family and the two service counts, at top level only the counts. The message, top_passwords, top_logins, computer_name, ip, malware_path, antiviruses, operating_system and any new field are dropped."},
+      "dataset": null,
+      "notes": "A1 initial class: Hudson Rock free tools = 'unknown' (no published terms; disabled in every profile until Hudson Rock confirms its terms in writing or legal records a licence_allow entry, P134 cond 4). Research C0303 (verified_live 200, test@example.com -> 5 stealers = generic address threshold)."
+    },
+    "search_by_username": {
+      "title": "Cavalier osint-tools/search-by-username?username= (per-person, typed seeds with --breach-scope all only)",
+      "terms": {"class": "unknown", "evidence_url": "https://www.hudsonrock.com/free-tools", "quote": "", "checked_at": "2026-11-26", "reviewer": "council-1 (A1)", "free_plan_business_use": null},
+      "upstream_family": "hudsonrock",
+      "sanitizer": {"keep": ["stealers[].date_compromised", "stealers[].stealer_family", "stealers[].total_corporate_services", "stealers[].total_user_services", "total_corporate_services", "total_user_services"], "notes": "Same P134 ALLOWLIST as search-by-email."},
+      "dataset": null,
+      "notes": "Common usernames return many unrelated machines (research C0303): weighted low, generic threshold applies."
+    },
+    "search_by_ip": {
+      "title": "Cavalier osint-tools/search-by-ip?ip= (org_profile CIDRs only)",
+      "terms": {"class": "unknown", "evidence_url": "https://www.hudsonrock.com/free-tools", "quote": "", "checked_at": "2026-11-26", "reviewer": "council-1 (A1)", "free_plan_business_use": null},
+      "upstream_family": "hudsonrock",
+      "sanitizer": {"keep": ["stealers[].date_compromised", "stealers[].stealer_family", "stealers[].total_corporate_services", "stealers[].total_user_services", "total_corporate_services", "total_user_services"], "notes": "Same P134 ALLOWLIST as search-by-email (the masked victim IP is dropped)."},
+      "dataset": null,
+      "notes": "P134 cond 7: only for IPs inside org_profile CIDRs."
+    },
+    "search_by_domain": {
+      "title": "Cavalier osint-tools/search-by-domain?domain= (stealer domain search, counts only, run_on own_assets_only)",
+      "terms": {"class": "unknown", "evidence_url": "https://www.hudsonrock.com/free-tools", "quote": "", "checked_at": "2026-11-26", "reviewer": "council-1 (A1)", "free_plan_business_use": null},
+      "upstream_family": "hudsonrock",
+      "sanitizer": {"keep": ["total", "totalStealers", "employees", "users", "third_parties", "totalUrls", "stealerFamilies.*"], "notes": "P134 cond 8: counts only (and stealer-family counts). URLs, password-strength statistics, antivirus lists, applications, third-party domains, the logo and the last-compromise dates are dropped."},
+      "dataset": null,
+      "notes": "Hung for more than 70 s for some domains (research): 30 s request timeout, ERROR 'timeout' = could not verify (P134 cond 10)."
+    },
+    "urls_by_domain": {
+      "title": "Cavalier osint-tools/urls-by-domain?domain= (URLs seen in infostealer logs, run_on own_assets_only)",
+      "terms": {"class": "unknown", "evidence_url": "https://www.hudsonrock.com/free-tools", "quote": "", "checked_at": "2026-11-26", "reviewer": "council-1 (A1)", "free_plan_business_use": null},
+      "upstream_family": "hudsonrock",
+      "sanitizer": {"keep": ["data.employees_urls[].url", "data.employees_urls[].occurrence", "data.employees_urls[].type", "data.clients_urls[].url", "data.clients_urls[].occurrence", "data.clients_urls[].type"], "notes": "P134 cond 5: only the URL rows survive; the module strips query strings, fragments, userinfo and user-identifying path segments (scheme + host + path) in memory and fetches this endpoint no-store, so unstripped URLs never reach the HTTP cache."},
+      "dataset": null,
+      "notes": "Attack-surface context only: url entities with expand=False, never contacted automatically (P134 cond 5)."
+    }
+  },
+  "notes": "Owned by batch p1-G04-1 (P134 hudson_rock, hudson_rock_domain). Sensitive provider (A4): every source has an allow-list sanitizer; cache TTL <= 7 days; leaked data is never used for login attempts, spraying or validation (A4 BR12)."
+}

@@ -1,0 +1,83 @@
+[
+ {
+  "did": "did:plc:examplehandleexample2345",
+  "operation": {
+   "type": "create",
+   "handle": "old-example.bsky.social",
+   "service": "https://bsky.social",
+   "prev": null,
+   "signingKey": "did:key:zExampleSigningKey",
+   "recoveryKey": "did:key:zExampleRecoveryKey"
+  },
+  "cid": "bafyexample0001",
+  "nullified": false,
+  "createdAt": "2023-03-01T10:00:00.000Z"
+ },
+ {
+  "did": "did:plc:examplehandleexample2345",
+  "operation": {
+   "type": "plc_operation",
+   "alsoKnownAs": [
+    "at://example-dev.bsky.social"
+   ],
+   "services": {
+    "atproto_pds": {
+     "type": "AtprotoPersonalDataServer",
+     "endpoint": "https://bsky.social"
+    }
+   },
+   "prev": "bafyexample0001"
+  },
+  "cid": "bafyexample0002",
+  "nullified": true,
+  "createdAt": "2023-03-02T10:00:00.000Z"
+ },
+ {
+  "did": "did:plc:examplehandleexample2345",
+  "operation": {
+   "type": "plc_operation",
+   "alsoKnownAs": [
+    "at://example-dev.bsky.social"
+   ],
+   "services": {
+    "atproto_pds": {
+     "type": "AtprotoPersonalDataServer",
+     "endpoint": "https://bsky.social"
+    }
+   },
+   "prev": "bafyexample0001"
+  },
+  "cid": "bafyexample0003",
+  "nullified": false,
+  "createdAt": "2023-03-03T10:00:00.000Z"
+ },
+ {
+  "did": "did:plc:examplehandleexample2345",
+  "operation": {
+   "type": "plc_operation",
+   "alsoKnownAs": [
+    "at://example.com"
+   ],
+   "services": {
+    "atproto_pds": {
+     "type": "AtprotoPersonalDataServer",
+     "endpoint": "https://pds.example.com"
+    }
+   },
+   "prev": "bafyexample0003"
+  },
+  "cid": "bafyexample0004",
+  "nullified": false,
+  "createdAt": "2024-06-01T10:00:00.000Z"
+ },
+ {
+  "did": "did:plc:examplehandleexample2345",
+  "operation": {
+   "type": "plc_tombstone",
+   "prev": "bafyexample0004"
+  },
+  "cid": "bafyexample0005",
+  "nullified": false,
+  "createdAt": "2025-01-01T10:00:00.000Z"
+ }
+]

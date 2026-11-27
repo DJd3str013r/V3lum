@@ -1,0 +1,32 @@
+{
+ "dataType": "CVE_RECORD",
+ "dataVersion": "5.1",
+ "cveMetadata": {
+  "cveId": "CVE-2099-0001",
+  "assignerOrgId": "00000000-0000-4000-8000-000000000000",
+  "assignerShortName": "example",
+  "state": "REJECTED",
+  "dateReserved": "2099-01-02T00:00:00.000Z",
+  "datePublished": "2099-01-03T00:00:00.000Z",
+  "dateUpdated": "2099-01-04T00:00:00.000Z",
+  "dateRejected": "2099-01-04T00:00:00.000Z"
+ },
+ "containers": {
+  "cna": {
+   "providerMetadata": {
+    "orgId": "00000000-0000-4000-8000-000000000000",
+    "shortName": "example",
+    "dateUpdated": "2099-01-04T00:00:00.000Z"
+   },
+   "rejectedReasons": [
+    {
+     "lang": "en",
+     "value": "Synthetic V3LUM fixture: this candidate is a duplicate of CVE-2099-0002."
+    }
+   ],
+   "replacedBy": [
+    "CVE-2099-0002"
+   ]
+  }
+ }
+}

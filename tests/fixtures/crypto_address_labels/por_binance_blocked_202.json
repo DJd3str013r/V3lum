@@ -1,0 +1,14 @@
+{
+ "url": "https://www.binance.com/en/proof-of-reserves",
+ "observed_utc": "2026-11-25T23:58:17Z",
+ "status": 202,
+ "headers": {
+  "content-type": "text/html; charset=UTF-8",
+  "content-length": "0",
+  "server": "CloudFront",
+  "cache-control": "no-store, max-age=0",
+  "x-cache": "Error from cloudfront"
+ },
+ "body": "",
+ "note": "HTTP 202 with an empty body (bot-protection interstitial) -> manual pivot link only, never automated"
+}

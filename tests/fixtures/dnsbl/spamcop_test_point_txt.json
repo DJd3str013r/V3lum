@@ -1,0 +1,18 @@
+{
+ "Status": 0,
+ "TC": false,
+ "Question": [
+  {
+   "name": "2.0.0.127.bl.spamcop.net",
+   "type": 16
+  }
+ ],
+ "Answer": [
+  {
+   "name": "2.0.0.127.bl.spamcop.net",
+   "type": 16,
+   "TTL": 2100,
+   "data": "\"Blocked - see https://www.spamcop.net/bl.shtml?127.0.0.2\""
+  }
+ ]
+}

@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p3-G09-2",
+  "title": "Solana public JSON-RPC (batch p3-G09-2)",
+  "owner": "batch p3-G09-2 (P215 solana_rpc)",
+  "attributes": {
+    "recent_signatures": "newest transaction signatures of a wallet returned by the chain RPC (one bounded page, newest first): list of {signature, slot, block_time (ISO UTC or null), failed (the transaction errored), confirmation_status}; memos, counterparties and amounts are never kept",
+    "more_history": "bool: the bounded history page came back full, so older activity may exist (the oldest date read is then not the first activity)",
+    "rpc_context": "chain RPC that answered and the context of its answer: {host, internal (organisation-operated node), slot, api_version, node, ratelimit_tier}"
+  },
+  "tags": {},
+  "relations": {},
+  "timeline": {}
+}

@@ -1,0 +1,15 @@
+{
+ "request": "GET https://cl0q.com/api/browse/favicon/<sha256>?cursor=<page 4>",
+ "response": {
+  "status": 401,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": {
+   "error": "signin_required"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "documented: /api/browse past its 150 anonymous rows answers 401 {\"error\":\"signin_required\"}"
+}

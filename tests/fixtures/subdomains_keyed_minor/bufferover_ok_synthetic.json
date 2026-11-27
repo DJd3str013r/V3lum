@@ -1,0 +1,15 @@
+{
+ "Meta": {
+  "Errors": [],
+  "Runtime": "0.031s"
+ },
+ "Results": [
+  "192.0.2.10,,www.example.com",
+  "198.51.100.7,135af848cbec0fbaaad0afbda661041a34057924fce21a89a3270f95c5e707d7,api.example.com,dev.example.com",
+  "203.0.113.9,,mail.example.org",
+  "2001:db8::10,,v6.example.com",
+  "garbage-without-ip",
+  "192.0.2.10,,*.example.com",
+  "192.0.2.12,Example Org Ltd,EXAMPLE.COM"
+ ]
+}

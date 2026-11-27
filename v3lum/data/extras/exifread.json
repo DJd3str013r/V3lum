@@ -1,0 +1,9 @@
+{
+  "schema": "v3lum.extra/1",
+  "package": "exifread",
+  "pip": "ExifRead>=3.5.1",
+  "extra": "full",
+  "licence": "BSD-3-Clause",
+  "justification": "EXIF/GPS fallback reader for HEIC and RAW images that Pillow cannot open, for image_metadata (P259 c3). Optional: reads tags without decoding pixels; without it HEIC/RAW files are reported as not readable.",
+  "notes": "Batch p2-G12-1. Pure Python, used unmodified; run only inside the core file-analysis sandbox (core/sandbox.py). pillow-heif is not used: its binary wheels bundle GPLv2 x265 (A6). ExifTool (GPL) would only ever be an external binary on PATH."
+}

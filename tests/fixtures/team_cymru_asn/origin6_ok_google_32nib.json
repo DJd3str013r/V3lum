@@ -1,0 +1,24 @@
+{
+ "Status": 0,
+ "TC": false,
+ "RD": true,
+ "RA": true,
+ "AD": false,
+ "CD": false,
+ "Question": [
+  {
+   "name": "8.8.8.8.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.6.8.4.0.6.8.4.1.0.0.2.origin6.asn.cymru.com.",
+   "type": 16
+  }
+ ],
+ "Answer": [
+  {
+   "name": "8.8.8.8.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.6.8.4.0.6.8.4.1.0.0.2.origin6.asn.cymru.com.",
+   "type": 16,
+   "TTL": 14400,
+   "data": "15169 | 2001:4860::/32 | US | arin | 2005-03-14"
+  }
+ ],
+ "edns_client_subnet": "0.0.0.0/0",
+ "Comment": "Response from 2620:0:6b0:202::f1:1."
+}

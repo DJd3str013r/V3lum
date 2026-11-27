@@ -1,0 +1,76 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "censys",
+  "hosts": [
+    "api.platform.censys.io"
+  ],
+  "sources": {
+    "censys_platform_free": {
+      "title": "Censys Platform API v3 on the free tier (host/certificate lookups and search)",
+      "terms": {
+        "class": "noncommercial",
+        "evidence_url": "https://censys.com/terms-of-service/",
+        "quote": "Terms: the free tier is non-commercial research. Off under the corporate profile until licence-cleared: it runs only when legal records a commercial Censys plan (licence_allow or key_plans.censys='business').",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "censys",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P044 cond 3; A1 initial class 'Censys free = noncommercial'). Research C0079 (verified_needs_key: v3 host without a token -> 401 'Access credentials are invalid'). Platform API v3 only: the legacy Search API (search.censys.io/api/v2) was decommissioned on 2026-09-30 and answers 403 error_type 'decommissioned' (P044 cond 1). Lookup and search endpoints only; rescan, live discovery and every on-demand scan are never wired (P044 cond 4), hence fetches_target false. Batch p3-G02-1, module censys.",
+      "licensed_alternative": "A commercial Censys plan recorded by legal: a licence_allow entry for this source, or the key 'censys' recorded with key_plans.censys='business' (source censys.censys_platform_commercial, P044 cond 3)."
+    },
+    "censys_platform_commercial": {
+      "title": "Censys Platform API v3 under a commercial company plan (host/certificate lookups and search)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://censys.com/terms-of-service/",
+        "quote": "Off under the corporate profile until licence-cleared: it runs only when legal records a commercial Censys plan (licence_allow or key_plans.censys='business'). The keys wizard does not offer Censys free under corporate (A15).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "censys",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P044 cond 3). The same api.platform.censys.io endpoints as censys_platform_free, reached with the company PAT recorded as key_plans.censys='business' (and, when configured, the company organization id so the request is billed to the company wallet, not the user's free wallet). The policy gate hands the module only the sources it allows (ctx.allowed_sources). Batch p3-G02-1, module censys."
+    }
+  },
+  "error_markers": [
+    {
+      "id": "censys_legacy_decommissioned",
+      "statuses": [200, 400, 403, 404, 410],
+      "json_path": "error_type",
+      "equals": "decommissioned",
+      "regex": null,
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "Censys: the legacy Search API was decommissioned on 2026-09-30 (error_type 'decommissioned') - V3LUM uses Platform API v3 only (api.platform.censys.io)"
+    },
+    {
+      "id": "censys_credits_exhausted",
+      "statuses": [200, 402, 403, 429],
+      "json_path": "detail",
+      "equals": null,
+      "regex": "(?i)credit|quota|wallet|billing",
+      "final_url_regex": null,
+      "maps_to": "quota",
+      "reason_code": "quota",
+      "reason": "Censys: no credits left for this period (problem+json detail): could not verify, deferred"
+    },
+    {
+      "id": "censys_payment_required",
+      "statuses": [402],
+      "json_path": null,
+      "equals": null,
+      "regex": "[\\s\\S]",
+      "final_url_regex": null,
+      "maps_to": "quota",
+      "reason_code": "quota",
+      "reason": "Censys: HTTP 402 payment required (credits of the plan used up): could not verify, deferred"
+    }
+  ],
+  "notes": "Batch p3-G02-1 (module censys, P044). Adds the Platform API v3 host (owners.json maps it to no provider; the censys fragment of batch p2-G14-3 says 'The Censys API host (api.platform.censys.io) belongs to another proposal: extend this fragment') and two sources that model P044 cond 3: the free tier (noncommercial: needs a licence_allow entry) and the commercial company plan (key-terms: needs key_plans.censys='business'). Keys: P044 cond 2 asks for two registered keys (censys_pat, censys_org); an extension cannot declare keys and the registry allows one key per provider, so the PAT is the registered key 'censys' (config.KNOWN_KEYS 'Censys Platform API token') and the organization id is the module setting censys_organization_id, registered with the central redactor at run time (core request in docs/backlog/p3-G02-1.md). Error markers: the legacy 'decommissioned' 403 is a recorded research answer (C0079); credit exhaustion wording/status is unverified (SDK: 400/403/404/422/500 are problem+json {type, title, status, detail})."
+}

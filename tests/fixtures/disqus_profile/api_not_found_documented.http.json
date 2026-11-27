@@ -1,0 +1,8 @@
+{
+ "_fixture": "DOC-SHAPED: Disqus API error code 2 for an unknown user (WMN/Maigret markers)",
+ "status": 400,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": "{\"code\": 2, \"response\": \"Invalid argument, 'user': User matching query does not exist.\"}"
+}

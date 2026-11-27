@@ -1,0 +1,23 @@
+{
+  "schema": "v3lum.email_hygiene_supplement/1",
+  "description": "V3LUM-authored supplement to the bundled CC0/MIT e-mail hygiene lists (P088 C1-C4). It is merged with the upstream lists at run time; the upstream files stay unmodified.",
+  "checked_at": "2026-11-26",
+  "disposable": {
+    "description": "P088 C3: temp-mail provider domains missing from the CC0 disposable-email-domains list (coverage check of 2026-11-25/26).",
+    "domains": ["pee.place", "tempmail.net", "omail.io"]
+  },
+  "free_providers": {
+    "description": "P088 C3: Brazilian webmail domains (also in the AfterShip list today, kept here so a refreshed upstream list cannot drop them) and the free providers of the former hard-coded email_basics FREE_PROVIDERS set (P088 C1: one set of data files).",
+    "brazil": ["uol.com.br", "bol.com.br", "terra.com.br", "ig.com.br", "globo.com", "globomail.com", "zipmail.com.br", "r7.com", "yahoo.com.br", "hotmail.com.br", "outlook.com.br"],
+    "legacy_email_basics": [
+      "gmail.com", "googlemail.com", "outlook.com", "hotmail.com", "live.com", "msn.com", "yahoo.com", "yahoo.com.br",
+      "icloud.com", "me.com", "mac.com", "aol.com", "proton.me", "protonmail.com", "pm.me", "tutanota.com", "tuta.io",
+      "gmx.com", "gmx.net", "mail.com", "yandex.com", "yandex.ru", "mail.ru", "zoho.com", "uol.com.br", "bol.com.br",
+      "terra.com.br", "ig.com.br", "hotmail.com.br", "outlook.com.br", "live.com.br", "rocketmail.com", "inbox.com"
+    ]
+  },
+  "relay": {
+    "description": "P088 C4: forwarding/alias privacy services. Tagged relay (privacy tool), never disposable and never scored as malicious, even when an upstream list names them disposable.",
+    "domains": ["simplelogin.io", "simplelogin.com", "slmail.me", "aleeas.com", "anonaddy.com", "anonaddy.me", "addy.io", "burnermail.io", "duck.com", "mozmail.com", "privaterelay.appleid.com"]
+  }
+}

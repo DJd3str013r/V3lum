@@ -1,0 +1,70 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "urldna",
+  "name": "urlDNA (URL scan search API)",
+  "operator": "urlDNA (urldna.io)",
+  "hosts": [
+    "api.urldna.io"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Small company with an identifiable operator, public API documentation (docs.urldna.io, OpenAPI at api.urldna.io/openapi.json), published plans and terms; P078 chair rationale: 'Tier community (urlDNA, urlquery are small companies)'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Third-party scanner verdicts (MALICIOUS/SAFE) of dated captures made by other users: one vote in consensus, never ground truth; results older than 30 days are historical (P078 cond 6)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "ttl": 604800,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "key",
+    "day": 100,
+    "published": true,
+    "evidence_url": "https://docs.urldna.io/api-reference/api-usage",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {
+    "urldna": {
+      "description": "urlDNA API key (header 'Authorization: Bearer <key>'); search and existing scan results only",
+      "signup_url": "https://urldna.io/",
+      "env": [
+        "V3LUM_URLDNA_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "the company-owned key whose plan legal recorded as business-compatible (key_plans.urldna = 'business', P078 cond 4); free plan: 100 API requests/day"
+    }
+  },
+  "sources": {
+    "search": {
+      "title": "urlDNA POST /v1/search (CQL over existing scans) and GET /v1/scan/{id} (existing DONE results); no scan creation",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://urldna.io/terms",
+        "quote": "veto_lift: company-owned keys (urldna, urlquery in config.KNOWN_KEYS) with terms recorded by legal (key-terms). Registry terms per source (A1 BR3): urlDNA and urlquery are key-terms (company keys, plans recorded by legal).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "urldna",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P078 cond 4-5). Research C0176: keyless POST /v1/search -> 422 FastAPI 'Field required' on header authorization (observed 2026-11-25) = NEEDS_KEY; 401 invalid key; 429 {detail}; 404 unknown scan id. Search results carry no verdict: the verdict (classification.verdict MALICIOUS/SAFE) comes from GET /v1/scan/{id} of the newest DONE scans. CQL max 200 characters; pages beyond 1 are premium only. POST /v1/scan (new scan: urlDNA fetches the URL), /v1/fast-check and /v1/query* are never built (P078 cond 1, test-asserted)."
+    }
+  },
+  "notes": "Owned by batch p9-G03-3 (P078 url_scanners_third_party). Search/cached-result endpoints only: no submission path exists, so the provider never fetches the investigated value because of V3LUM and nothing is published (flags false)."
+}

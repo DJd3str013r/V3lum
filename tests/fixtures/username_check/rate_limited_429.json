@@ -1,0 +1,28 @@
+{
+ "_meta": {
+  "module": "username_check",
+  "case": "rate_limited",
+  "source": "generic 429 (research capture of unavatar.io, a username-keyed profile service; not a P113 source)",
+  "request": {
+   "method": "GET",
+   "url": "https://unavatar.io/github/<handle>",
+   "user_agent": "V3LUM/dev",
+   "redirects": "not followed"
+  },
+  "captured_at": "2026-11-25",
+  "origin": "research sample 2026-11-25 (tmp_caipora_people/bodies/unavatar_github)",
+  "elapsed_s": null,
+  "minimised": true,
+  "note": "no 429 was observed from this batch's hosts; this real 429 exercises Retry-After/X-Rate-Limit-* parsing"
+ },
+ "status": 429,
+ "headers": {
+  "content-type": "application/json; charset=utf-8",
+  "retry-after": "70956",
+  "server": "cloudflare",
+  "x-rate-limit-limit": "25",
+  "x-rate-limit-remaining": "0",
+  "x-rate-limit-reset": "1795711706347"
+ },
+ "body": "{\"status\":\"fail\",\"code\":\"ERATE\",\"more\":\"https://unavatar.io/erate\",\"message\":\"Daily anonymous rate limit reached. Register and use an API key to unlock 50 requests/day. Visit https://unavatar.io/checkout to get started.\"}"
+}

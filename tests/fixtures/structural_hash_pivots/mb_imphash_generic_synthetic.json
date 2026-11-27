@@ -1,0 +1,605 @@
+{
+ "query_status": "ok",
+ "data": [
+  {
+   "sha256_hash": "3654d7e264ba4780153cf16197f2d682ebe3dbd6e5570a21f274b168d4e392aa",
+   "md5_hash": "a70fdbd61e24048d200ed415f4c4fa7a",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "AgentTesla",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "agenttesla",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "cdb9689829e9bfa532b2bed9178fd646fd6c474f9a41d4ad79819c5d55d40124",
+   "md5_hash": "44548bd5b914e9499199c15d9a9c2373",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "Formbook",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "formbook",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "0c93e3b4180c8ea28fb9f1ab47e0e82021544dc56d3979cddfe26c6ed6898bcf",
+   "md5_hash": "2c73824a9a08353e93dbe77c9fe8fb9e",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "RedLineStealer",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "redlinestealer",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "2b7d62ac4c33454c87b1fc66e19fad586ec6401da734b202620c293b360f8022",
+   "md5_hash": "02b6aa919103660a891e2576050f2d43",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "AsyncRAT",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "asyncrat",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "0e2787068b56e14df6ce448b09cdbecccdddd393755bfbf1a0e42b6743105ac2",
+   "md5_hash": "3124453c4d1469dd0552a3f00c61a395",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "SnakeKeylogger",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "snakekeylogger",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "d4025501a19934565e0a86b67ea85ce250450e4ebf5f6ec3e01221413ec79ae0",
+   "md5_hash": "6f2da289b70f19d904977375a4ca15d2",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "MassLogger",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "masslogger",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "eb9843a1245fc9d35ce3274faa45358cbcacc56218dba8994ea528f066016c9c",
+   "md5_hash": "8bf014898db06cad320110d470323293",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "njrat",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "njrat",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "24fc384a684fece5e3d09eda498b06aeb6e5f64905f080d18e980846e7f8c584",
+   "md5_hash": "0bb9e81c8f5c1f40c96f28bdce04319e",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "QuasarRAT",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "quasarrat",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "90ee2530f628692b2d875f53ac6d9729ce23bfb7e5dab41a6f0b852b204567ac",
+   "md5_hash": "d5e21bd18f39559a2295ad70ae7452cd",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "DCRat",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "dcrat",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "9e0699c00a313559ee8b19142c489f80b11d5928e5177067c2819d12fc470dfd",
+   "md5_hash": "ef9f04b2e8f649f5c2bbebdfc51deb6f",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "XWorm",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "xworm",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "052bc8097aa853abf7ed2f6a33096006e549c73f09add51248677f648e608b0f",
+   "md5_hash": "22a8c79af83dbbf799f623123d430c31",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "VIPKeylogger",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "vipkeylogger",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "5c46733a0f8d586cd656df2b1b14b2e37afd543519cc9fe8ef9ecd5c99ed316f",
+   "md5_hash": "c40ba62d37f6d9d201eb6471fdd4fce6",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "404Keylogger",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "404keylogger",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "a2445735e4d1e54413e2283d54d4fcb99852c22e246f1fa35ba97db563954eaa",
+   "md5_hash": "c334ac80170ab9e002158955524d7dee",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "StormKitty",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "stormkitty",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "5163597a442f6c41007a76381059ce8d42285e5e70f50900c03b69f49c5d997e",
+   "md5_hash": "4e4c0fc8bac55f7dc83dae4d8278251f",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "PureLogsStealer",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "purelogsstealer",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "c3706f9537b232f6a612077e98988235ba65e4d7e2af57f3c7503803e4d0d1d4",
+   "md5_hash": "dc965549c9a47209fe6c554c887a10f2",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "AgentTesla",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "agenttesla",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "be96eb9b41b77c75789555c9dd1b6a309b668fff316cc395ec12331e36b81bf2",
+   "md5_hash": "b973df16d6c7864e2ff2b13150e228e3",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "Formbook",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "formbook",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "11021b5a5394b719507fc6d85a53a14ffaa20e4337337821d0756a9c642c1c12",
+   "md5_hash": "34505849d6de678f89dd330085025236",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "RedLineStealer",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "redlinestealer",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "23b6b696ea3bc14fcf9e952859a40bf5985a4d1b830dc59d64b16d9e0fc8b87b",
+   "md5_hash": "5e60a90f94f57d71e42ec41361f507b1",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "AsyncRAT",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "asyncrat",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "79d1277e38a2ff40e33ce17d9214f6ea766532765560afd64b821984e9eaed8e",
+   "md5_hash": "2339699c2bd957cb3515c32927f6ea09",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "SnakeKeylogger",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "snakekeylogger",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "bb50c4202dbb981852d02ed4f0276b8576ed29064e7f8727f7f20a61436d832a",
+   "md5_hash": "9aae49d04352523780c14ccb3ef6b285",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "MassLogger",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "masslogger",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "68de5b55900b86aa4ce95f9aa383cf0d88876ca7b5bb5114230e0cffc0726e81",
+   "md5_hash": "99ce1ed8ffe40be5b98b3154d3b2202e",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "njrat",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "njrat",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "c49d1ff45da5dec64cb775296c0985cdc01d1574133e96cf04115eaa0fa0cea4",
+   "md5_hash": "d78b9fe20ecd557116c62abe551bc5dc",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "QuasarRAT",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "quasarrat",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "ea834c1f7c3f24fa06e7bba0bf9d9ea29a2e9b1c3a2537a32a2ad869005f949c",
+   "md5_hash": "2469b1676249e6784e1492d1daac82c9",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "DCRat",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "dcrat",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "a9170a9a2ee62c65f0db786706504b23488733119110105b451aa629f568ab3d",
+   "md5_hash": "55398bddad4a2558e5aa161aab3602a5",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "XWorm",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "xworm",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "585d639915648f7e55ac267d868fe77be36968c221678709e7e27026141d06a9",
+   "md5_hash": "404dd1f53eb186180116be5b757ba310",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "VIPKeylogger",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "vipkeylogger",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "299fc2348ebc9b2190ac6f16ada9acc1a66ee9f39cd946651c8c60e546b55188",
+   "md5_hash": "1ee636f758e0009b4ef3bb564c70c601",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "404Keylogger",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "404keylogger",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "23982075f1d7c3dd8d1234dcd39d01a2e42a41fe41d47ae278261aab23ecd22a",
+   "md5_hash": "eca510ea775ed15eb3b41e805f817072",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "StormKitty",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "stormkitty",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "48221088acf3cf1772c40cdd612654bc4eaa8884c98cb03243ea5355adfd2a6e",
+   "md5_hash": "1bcc8c91f1515993dbcb65c371d08a37",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "PureLogsStealer",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "purelogsstealer",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "57428eb36e4dfb479b8c34898377af72a836e4271e61249e17ea9c50c7b03bfb",
+   "md5_hash": "7c5d6a9d852ad7f4961ce267d2afa814",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "AgentTesla",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "agenttesla",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "ab800b951a52e0332bf442521b167c41063fef2738a63abcf355be666b1f4488",
+   "md5_hash": "0309c7856583de38768a71ae9bb60461",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "Formbook",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "formbook",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "8d8ef90a5bc7c752735ae16c08f6cdbe6c83fb512b8abd97c7ee5fd5ad33effd",
+   "md5_hash": "c6a32b191dfd18dc1ce966f7acf4637a",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "RedLineStealer",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "redlinestealer",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "ab147083cfca30b0b8d99b52b6399c82681fdd68f57ff5bc2d23ec710cc4490c",
+   "md5_hash": "25f876083014e6cb8241126093d3e64f",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "AsyncRAT",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "asyncrat",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "8063400a0e9aac82530e8721b46aae071918c7217ac5dd833499bd7da007066a",
+   "md5_hash": "840a067bf5929893a61489d92bd9d80d",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "SnakeKeylogger",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "snakekeylogger",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "2cca4444bf657a4d9c44721833c5d322ece3d32b57b6a28232830c2b93bc29d0",
+   "md5_hash": "16b282dc8a58113179866282ea4a31a6",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "MassLogger",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "masslogger",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "2eb7c3fd1c702be685476d27af777c4519957f4ae6821f72e0053fc65a2f7033",
+   "md5_hash": "7844d0e48bba627129d07ebb72545426",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "njrat",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "njrat",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "99703c744768c6617d2bc2383bd2675a218de934e6864d1d099b0633bbb2d69d",
+   "md5_hash": "227adde808b5fc82507dd75454fe6999",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "QuasarRAT",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "quasarrat",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "8bedab9e7bf8db6eee4fbbd92d7f93964cc4e9af06c70280a10004ec64ba6c93",
+   "md5_hash": "b6d14345586423f9b85c3fec695081e2",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "DCRat",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "dcrat",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "6547278f08f289b3f559f1eb2c76d2ac69fb06aa5ec7a5b94c299d681ac3897a",
+   "md5_hash": "069299787967b6cd45f595fc4bea5bd0",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "XWorm",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "xworm",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "d903bdd9115b8cb6b012ef8a434af86741accce29af6c5106ca4a02826c8242c",
+   "md5_hash": "c034d802ec20ab2a4ce5270ab33c8d4b",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "VIPKeylogger",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "vipkeylogger",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "5ba737a800bf21f851f8380944a690e2bf2320c2d2665006ae7bdd5eb71b13d3",
+   "md5_hash": "400e1faf8f22c87fe237b87ca05286ed",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "404Keylogger",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "404keylogger",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "b0c600b35cf2215e74fb01a9172cf292fd55b8c1c9034e5811a159a23b06a47e",
+   "md5_hash": "7a2d8160b0d19681446e62d66d1caf87",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "StormKitty",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "stormkitty",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "bcad18460684212a682a0c63f866bdbe862506ea85d548d4d52c13f97e5e176b",
+   "md5_hash": "aae96f58e090c6984d4f513936d3a181",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "PureLogsStealer",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "purelogsstealer",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "6bca9c1bedf224187d3752ea51b057505cc0febdf60eb377971f3b0fcc7292a2",
+   "md5_hash": "04202df65acdc10d0c5432c019293d28",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "AgentTesla",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "agenttesla",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "c26d126b2d4dcadd1bc10a6a3d4b32dd7c3e9f2e6b89e190a81dcd2b207415e0",
+   "md5_hash": "1b7a6f40507f64ad635da59fdf9c5f53",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "Formbook",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "formbook",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "c4174008b9fc06133996b06ec961e2d7b30b824a5fc01d979f08676544306844",
+   "md5_hash": "8ea611afdad1724a0a7e9191db5f1735",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "RedLineStealer",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "redlinestealer",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "41aaaa629a44dc8c32a52e7d8929572b32a72f4ea2fcb8b089cffbbb6ed72055",
+   "md5_hash": "ae73b0d01626d82824fdd1ca94ecd772",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "AsyncRAT",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "asyncrat",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "ff3792dbb209bf0d7d76747c6a13b433d9963c618711ef3f5f010eec1a639cf2",
+   "md5_hash": "e83fdc42e5af190a9d9d676f38cef537",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "SnakeKeylogger",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "snakekeylogger",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "b6f95720508745be4c4d880d7fd2db239bb27a89b4475873d86a37c75aeabc2d",
+   "md5_hash": "d9a140c9cafd48b42d8b4682aa10e1f3",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "MassLogger",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "masslogger",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "d10ffdab21f0545bbe04b3fe2664911a4df7f2822eaf0ee3c303b479f2328747",
+   "md5_hash": "292d93a7c1bbcf27168cf4c8990416ad",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "njrat",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "njrat",
+    "exe"
+   ]
+  },
+  {
+   "sha256_hash": "cf2a485fe56df8b4988d7e84a0b66af1ca5e3b9467588bafdc17d4185ee21f18",
+   "md5_hash": "71811b35af86e8fc76705beff67ea413",
+   "first_seen": "2026-11-20 10:00:00",
+   "file_type": "exe",
+   "signature": "QuasarRAT",
+   "imphash": "f34d5f2d4577ed6d9ceec516c1f5a744",
+   "tags": [
+    "quasarrat",
+    "exe"
+   ]
+  }
+ ]
+}

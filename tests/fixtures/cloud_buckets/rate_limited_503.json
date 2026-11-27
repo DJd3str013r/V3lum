@@ -1,0 +1,11 @@
+{
+ "request": {"method": "GET", "url": "https://example-corp.s3.amazonaws.com/?max-keys=1"},
+ "response": {
+  "status": 503,
+  "headers": {"content-type": "application/xml", "server": "AmazonS3", "retry-after": "1"},
+  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>SlowDown</Code><Message>Please reduce your request rate.</Message><RequestId>0000000000000000</RequestId></Error>"
+ },
+ "class": "synthetic",
+ "origin": "synthetic (documented S3 503 SlowDown throttle body)",
+ "notes": "503 SlowDown = could-not-test (FC7)."
+}

@@ -1,0 +1,15 @@
+{
+ "request": "GET https://who-dat.as93.net/example.com",
+ "response": {
+  "status": 429,
+  "headers": {
+   "content-type": "application/json; charset=utf-8",
+   "retry-after": "60",
+   "server": "Vercel"
+  },
+  "body": "{\"error\": \"Too many requests\"}"
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "429 from a who-dat instance: RATE_LIMITED"
+}

@@ -1,0 +1,17 @@
+{
+ "_envelope": 1,
+ "_synthetic": "documented Hunter error envelope {errors: [{id, code, details}]}; not observed (no key)",
+ "status": 400,
+ "headers": {
+  "content-type": "application/json; charset=utf-8"
+ },
+ "body": {
+  "errors": [
+   {
+    "id": "wrong_params",
+    "code": 400,
+    "details": "You are missing the domain parameter."
+   }
+  ]
+ }
+}

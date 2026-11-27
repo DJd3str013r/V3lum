@@ -1,0 +1,36 @@
+{
+ "Status": 0,
+ "TC": false,
+ "RD": true,
+ "RA": true,
+ "AD": true,
+ "CD": false,
+ "Question": [
+  {
+   "name": "cloudflare.com.",
+   "type": 16
+  }
+ ],
+ "Answer": [
+  {
+   "name": "cloudflare.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "MS=ms00000000"
+  },
+  {
+   "name": "cloudflare.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "v=spf1 ip4:199.15.212.0/22 ip4:173.245.48.0/20 include:_spf.google.com include:spf1.mcsv.net include:spf.mandrillapp.com include:mail.zendesk.com include:stspg-customer.com include:_spf.salesforce.com -all"
+  },
+  {
+   "name": "cloudflare.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "google-site-verification=EXAMPLE-TOKEN-0000"
+  }
+ ],
+ "Comment": "Response from 162.159.6.6.",
+ "edns_client_subnet": "0.0.0.0/0"
+}

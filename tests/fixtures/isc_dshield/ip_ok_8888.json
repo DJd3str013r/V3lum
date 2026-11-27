@@ -1,0 +1,36 @@
+{
+ "ip": {
+  "number": "8.8.8.8",
+  "count": null,
+  "attacks": null,
+  "maxdate": null,
+  "mindate": null,
+  "updated": null,
+  "comment": "Google public recursive name server",
+  "maxrisk": 0,
+  "asabusecontact": "network-abuse@google.com",
+  "as": 15169,
+  "asname": "GOOGLE",
+  "ascountry": "US",
+  "assize": 13298176,
+  "network": "8.8.8.0/24",
+  "threatfeeds": {
+   "mastodon": {
+    "lastseen": "2026-11-10",
+    "firstseen": "2026-10-03"
+   },
+   "miner": {
+    "lastseen": "2026-11-26",
+    "firstseen": "2022-02-04"
+   },
+   "myip": {
+    "lastseen": "2026-11-10",
+    "firstseen": "2022-10-25"
+   },
+   "openresolver": {
+    "lastseen": "2026-11-26",
+    "firstseen": "2022-02-04"
+   }
+  }
+ }
+}

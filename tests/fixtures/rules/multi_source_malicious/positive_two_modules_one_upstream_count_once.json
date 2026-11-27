@@ -1,0 +1,71 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "$comment": "URLhaus and ThreatFox (two abuse.ch feeds, reported by two different modules) and an OTX pulse relaying abuse.ch: one family -> MEDIUM",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "nodes": [
+    {
+      "key": "ipv4:192.0.2.10",
+      "depth": 0,
+      "seed": true,
+      "findings": [
+        {
+          "title": "Listed on URLhaus (malware host)",
+          "severity": "high",
+          "confidence": 0.8,
+          "criterion": "source verdict",
+          "tags": [
+            "malware",
+            "malicious"
+          ],
+          "module": "abusech",
+          "source": "abusech.urlhaus",
+          "observed_last": "2026-11-20T10:00:00Z"
+        },
+        {
+          "title": "ThreatFox IOC (botnet C2)",
+          "severity": "high",
+          "confidence": 0.8,
+          "criterion": "source verdict",
+          "tags": [
+            "c2",
+            "malicious"
+          ],
+          "module": "ioc_feeds_offline",
+          "source": "abusech.threatfox",
+          "observed_last": "2026-11-22T10:00:00Z"
+        },
+        {
+          "title": "OTX pulses list the indicator",
+          "severity": "high",
+          "confidence": 0.8,
+          "criterion": "source verdict",
+          "tags": [
+            "malicious"
+          ],
+          "module": "otx",
+          "source": "otx.indicators",
+          "observed_last": "2026-11-21T00:00:00Z",
+          "data": {
+            "upstream_families": [
+              "abuse.ch"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "edges": [],
+  "expect": {
+    "multi_source_malicious": {
+      "min": 1,
+      "max": 1,
+      "severity": "medium",
+      "confidence_label": "probable"
+    }
+  }
+}

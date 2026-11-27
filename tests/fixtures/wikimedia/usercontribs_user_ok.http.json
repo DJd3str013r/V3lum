@@ -1,0 +1,8 @@
+{
+ "_fixture": "DOC-SHAPED: list=usercontribs&ucprop=ids|title|timestamp|sizediff|flags, formatversion=2, with a 'continue' block (more rows exist); values illustrative",
+ "status": 200,
+ "headers": {
+  "content-type": "application/json; charset=utf-8"
+ },
+ "body": "{\"batchcomplete\": true, \"continue\": {\"uccontinue\": \"20200101000000|900000001\", \"continue\": \"-||\"}, \"query\": {\"usercontribs\": [{\"userid\": 4321, \"user\": \"Example\", \"pageid\": 1003, \"revid\": 1206000003, \"parentid\": 1205999996, \"ns\": 2, \"title\": \"User:Example\", \"timestamp\": \"2024-02-10T08:00:00Z\", \"new\": false, \"minor\": false, \"top\": true, \"sizediff\": 15}, {\"userid\": 4321, \"user\": \"Example\", \"pageid\": 1002, \"revid\": 1183000002, \"parentid\": 1182999995, \"ns\": 0, \"title\": \"Exemplo S.A.\", \"timestamp\": \"2023-11-02T09:00:00Z\", \"new\": false, \"minor\": false, \"top\": false, \"sizediff\": 230}, {\"userid\": 4321, \"user\": \"Example\", \"pageid\": 1005, \"revid\": 1183000005, \"parentid\": 1182999998, \"ns\": 1, \"title\": \"Talk:Exemplo S.A.\", \"timestamp\": \"2023-11-02T09:05:00Z\", \"new\": true, \"minor\": false, \"top\": false, \"sizediff\": 88}, {\"userid\": 4321, \"user\": \"Example\", \"pageid\": 1001, \"revid\": 1021000001, \"parentid\": 1020999994, \"ns\": 4, \"title\": \"Wikipedia:Sandbox\", \"timestamp\": \"2021-05-05T05:05:05Z\", \"new\": false, \"minor\": true, \"top\": false, \"sizediff\": -3}]}}"
+}

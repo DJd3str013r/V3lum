@@ -1,0 +1,152 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "preset": "deep"
+  },
+  "nodes": [
+    {
+      "key": "domain:bank-login.example",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "a_records": [
+          {
+            "value": [
+              "198.51.100.40"
+            ],
+            "source": "dns_records"
+          }
+        ],
+        "passive_dns": [
+          {
+            "value": [
+              {
+                "hostname": "bank-login.example",
+                "address": "198.51.100.40",
+                "record_type": "A",
+                "first_seen": "2026-11-10T00:00:00Z",
+                "last_seen": "2026-11-25T00:00:00Z",
+                "historical": null,
+                "sources": [
+                  "mnemonic"
+                ]
+              },
+              {
+                "hostname": "bank-login.example",
+                "address": "203.0.113.66",
+                "record_type": "A",
+                "first_seen": "2026-11-02T00:00:00Z",
+                "last_seen": "2026-11-09T00:00:00Z",
+                "historical": null,
+                "sources": [
+                  "mnemonic"
+                ]
+              }
+            ],
+            "source": "passive_dns"
+          }
+        ]
+      },
+      "findings": [
+        {
+          "title": "Listed as phishing",
+          "severity": "high",
+          "confidence": 0.9,
+          "confidence_label": "confirmed",
+          "criterion": "phishing feed listing",
+          "tags": [
+            "phishing",
+            "malicious"
+          ],
+          "module": "phishing_feed",
+          "source": ""
+        }
+      ]
+    },
+    {
+      "key": "ipv4:198.51.100.40",
+      "depth": 1,
+      "noise": true,
+      "noise_kind": "cdn",
+      "tags": [
+        "cdn"
+      ],
+      "attributes": {
+        "is_cloud": [
+          {
+            "value": true,
+            "source": "cloud_ranges"
+          }
+        ],
+        "is_cdn": [
+          {
+            "value": true,
+            "source": "cloud_ranges"
+          }
+        ],
+        "cloud_provider": [
+          {
+            "value": "Cloudflare",
+            "source": "cloud_ranges"
+          }
+        ],
+        "cloud_role": [
+          {
+            "value": "cdn_edge",
+            "source": "cloud_ranges"
+          }
+        ],
+        "cloud_label": [
+          {
+            "value": "Cloudflare CDN edge",
+            "source": "cloud_ranges"
+          }
+        ]
+      }
+    },
+    {
+      "key": "ipv4:203.0.113.66",
+      "depth": 1,
+      "attributes": {
+        "cert_sans": [
+          {
+            "value": [
+              "bank-login.example"
+            ],
+            "source": "censys"
+          }
+        ],
+        "asn": [
+          {
+            "value": "AS64502",
+            "source": "censys"
+          }
+        ],
+        "as_org": [
+          {
+            "value": "EXAMPLE-VPS-LTDA",
+            "source": "censys"
+          }
+        ],
+        "abuse_contact": [
+          {
+            "value": "abuse@example.net",
+            "source": "ripestat"
+          }
+        ]
+      }
+    }
+  ],
+  "expect": {
+    "cdn_origin_hypothesis": {
+      "min": 1,
+      "max": 1,
+      "severity": "info",
+      "confidence_label": "probable"
+    }
+  },
+  "edges": []
+}

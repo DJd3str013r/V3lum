@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "ioc_feeds_tweetfeed",
+  "source_url": "https://github.com/0xDanielLopez/TweetFeed",
+  "version": "week.csv, runtime download (`v3lum data update`), LICENSE checked 2026-11-26",
+  "sha256": "",
+  "licence": "CC0-1.0",
+  "attribution": "TweetFeed (https://github.com/0xDanielLopez/TweetFeed): IOCs shared on X, CC0 1.0 Universal. No attribution required; credited as the source of the listing.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/threat_intel_ioc/ioc_feeds_offline.py"
+  ]
+}

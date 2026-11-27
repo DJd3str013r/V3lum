@@ -1,0 +1,11 @@
+{
+ "ns": "ns1.example.com",
+ "ns_ip": "192.0.2.10",
+ "domain": "example.com",
+ "status": "ok",
+ "record_count": 7,
+ "zone_text": "example.com.\t3600\tIN\tSOA\tns1.example.com. hostmaster.example.com. 2026010101 7200 3600 1209600 3600\nexample.com.\t3600\tIN\tNS\tns1.example.com.\nexample.com.\t3600\tIN\tNS\tns2.example.com.\nexample.com.\t3600\tIN\tMX\t10 mail.example.com.\nexample.com.\t3600\tIN\tTXT\t\"v=spf1 include:_spf.example.com ~all\"\nwww.example.com.\t3600\tIN\tA\t192.0.2.20\ndev.example.com.\t3600\tIN\tA\t192.0.2.21\nvpn.example.com.\t3600\tIN\tAAAA\t2001:db8::25\ninternal.example.com.\t3600\tIN\tCNAME\twww.example.com.\n_deploy.example.com.\t3600\tIN\tTXT\t\"deploy-token=AKIAIOSFODNN7EXAMPLE\"\n",
+ "class": "synthetic",
+ "origin": "synthetic canned zone for the loopback TCP DNS server test (FC8)",
+ "notes": "Success = HIGH misconfiguration (FC6, T1590.002). Hostnames/IPs scrubbed; the _deploy TXT carries a documentation AWS example key (AKIAIOSFODNN7EXAMPLE) to exercise the P312 secret hook and central redactor."
+}

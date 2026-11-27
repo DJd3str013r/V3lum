@@ -1,0 +1,56 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "minc",
+  "name": "SALIC API (Lei Rouanet cultural-incentive system)",
+  "operator": "Ministerio da Cultura (MinC)",
+  "hosts": [
+    "api.salic.cultura.gov.br"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Federal ministry publishing the Lei Rouanet incentive data as an open API (government body, A8 trusted); P246 'Official open data (BNDES, MinC, PNCP), tier trusted' (cond 5).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "The ministry's own incentive register (sponsors, projects, donations); totals are as published by SALIC."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 20,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "salic_incentivadores": {
+      "title": "SALIC incentivadores by CNPJ (HAL JSON _embedded.incentivadores with total_doado and the doacoes link)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://api.salic.cultura.gov.br/doc/",
+        "quote": "Official open data (BNDES, MinC, PNCP), tier trusted.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "salic",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P246 cond 5); research C0579 terms 'Open government API (MinC)' (verified_live 200, 2026-11-26). Only GET /api/v1/incentivadores?cgccpf=<14-digit CNPJ>: the proponentes/fornecedores name searches reach individuals and are never used, and natural-person sponsors and the 'responsavel' field are never matched, stored or pivoted (P246 cond 4). A 404 whose body carries message_code 11 ('No donator was found with your criteria', about 7.5 s) is the documented absence; any other 404 body is 'could not verify'. Used by br_public_spending."
+    }
+  },
+  "notes": "Owned by batch p3-G10-2 (P246 br_public_spending). Behind Cloudflare; 1 request/s, answers cached 24 h; the not-found answer takes about 7.5 s, hence the 20 s timeout. No quota block."
+}

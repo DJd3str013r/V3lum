@@ -1,0 +1,32 @@
+{
+ "origin": "synthetic",
+ "note": "Quad9 block form as documented by the research: NXDOMAIN with NO SOA in authority",
+ "request": {
+  "url": "https://dns.quad9.net/dns-query?dns=<b64url>",
+  "qname": "malware-test.example.net.",
+  "qtype": "A"
+ },
+ "http_status": 200,
+ "content_type": "application/dns-message",
+ "wire_b64": "AACBgwABAAAAAAAADG1hbHdhcmUtdGVzdAdleGFtcGxlA25ldAAAAQAB",
+ "decoded": {
+  "id": 0,
+  "rcode": "NXDOMAIN",
+  "flags": [
+   "QR",
+   "RD",
+   "RA"
+  ],
+  "question": [
+   {
+    "name": "malware-test.example.net.",
+    "type": "A"
+   }
+  ],
+  "answer": [],
+  "authority": [],
+  "additional": [],
+  "edns": false,
+  "ede": []
+ }
+}

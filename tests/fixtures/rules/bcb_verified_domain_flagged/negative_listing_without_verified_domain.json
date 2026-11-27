@@ -1,0 +1,27 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "nodes": [
+  {
+   "key": "domain:bb-seguranca.example",
+   "depth": 0,
+   "seed": true,
+   "findings": [
+    {
+     "title": "Domain listed as malicious",
+     "severity": "high",
+     "confidence": 0.9,
+     "confidence_label": "confirmed",
+     "criterion": "listed by the feed as an active phishing URL",
+     "tags": [
+      "malicious"
+     ],
+     "module": "ip_blocklists",
+     "source": "",
+     "data": {}
+    }
+   ]
+  }
+ ],
+ "edges": []
+}

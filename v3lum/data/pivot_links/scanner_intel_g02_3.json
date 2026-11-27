@@ -1,0 +1,40 @@
+{
+  "schema": "v3lum.pivot_pack/1",
+  "pack": "scanner_intel_g02_3",
+  "title": "GreyNoise Visualizer and SANS ISC manual pivots (batch p2-G02-3: greynoise_community, isc_dshield)",
+  "notes": "Manual follow-up pages of greynoise_community (P148 cond 7: viz.greynoise.io/ips/{ip}) and isc_dshield (P151: the ISC IP page). Checked 2026-11-26 from a datacenter egress: viz.greynoise.io answers 403 to scripts and isc.sans.edu redirects scripted page requests to /blockme.html, so both are manual links only (antibot) and never automated. LeakIX pages redirect to /auth/login (a LeakIX account is needed), so they are not in this pack: the leakix module cites them as references only.",
+  "links": [
+    {
+      "id": "greynoise_viz_ip",
+      "label": "GreyNoise Visualizer (IP)",
+      "template": "https://viz.greynoise.io/ips/{ip}",
+      "entity_types": ["ipv4"],
+      "category": "reputation",
+      "host": "viz.greynoise.io",
+      "verified": false,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "P148 cond 7 path (/ips/{ip}); the API's own link field uses /ip/{ip} or /riot/{ip}. Both answered 403 to a script from a datacenter egress (2026-11-26): open it in a browser."
+    },
+    {
+      "id": "isc_ipinfo",
+      "label": "SANS ISC IP report",
+      "template": "https://isc.sans.edu/ipinfo/{ip}",
+      "entity_types": ["ipv4"],
+      "category": "reputation",
+      "host": "isc.sans.edu",
+      "verified": false,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "DShield reports, threat feeds and comments for the IP. Scripted requests are redirected to /blockme.html (access restricted): manual opening only."
+    }
+  ]
+}

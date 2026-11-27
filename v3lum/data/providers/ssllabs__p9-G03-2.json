@@ -1,0 +1,39 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "ssllabs",
+  "hosts": ["api.ssllabs.com"],
+  "sources": {
+    "posture_third_party_endpoint": {
+      "title": "SSL Labs API v3 cached endpoint data: GET /api/v3/getEndpointData?host={host}&s={ip} (and /api/v3/info) - never starts an assessment",
+      "terms": {
+        "class": "noncommercial",
+        "evidence_url": "https://github.com/ssllabs/ssllabs-scan/blob/master/ssllabs-api-docs-v3.md",
+        "quote": "Commercial use is generally not allowed, except with an explicit permission from Qualys. [...] getEndpointData: this call does not initiate new assessments, even when a cached report is not found.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "ssllabs",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0169 (verified_live 200 for /info and analyze). P076 cond 2: the passive path uses getEndpointData per resolved IP only (analyze with fromCache=on still starts an assessment on a cache miss, so it is never called passively); 'Hostname blacklisted' and errors[] bodies give ERROR; 429/529 are rate limits (529 = overloaded, back off 30 min), 503 maintenance. P076 cond 4: noncommercial - skipped under the corporate profile (reason_code licence) unless a licence_allow entry exists. The cache-miss body of getEndpointData is not documented: an endpoint whose statusMessage is not 'Ready' reads 'no cached grade'."
+    },
+    "ssllabs_assess_analyze": {
+      "title": "SSL Labs API v3 new assessment: GET /api/v3/analyze?host={host}&publish=off&startNew=on&all=done once, then polls without startNew (ACTIVE, authorized scope only)",
+      "terms": {
+        "class": "noncommercial",
+        "evidence_url": "https://github.com/ssllabs/ssllabs-scan/blob/master/ssllabs-api-docs-v3.md",
+        "quote": "Commercial use is generally not allowed, except with an explicit permission from Qualys. [...] startNew - if set to 'on' then cached assessment results are ignored and a new assessment is started. [...] publish - set to 'on' if assessment results should be published on the public results boards; optional, defaults to 'off'.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "ssllabs",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "P076 cond 3: a new assessment makes Qualys perform dozens of TLS handshakes against the target (visible to it): separate ACTIVE module ssllabs_assess (--mode active --authorized REF --scope FILE), org-profile or scope-file targets only, publish=off, no maxAge/fromCache, startNew sent once and never repeated. /info reports maxAssessments (7) and newAssessmentCoolOff (1000 ms)."
+    }
+  },
+  "error_markers": [],
+  "notes": "Batch p9-G03-2 extension (P076): adds the SSL Labs API host api.ssllabs.com and its two uses to the ssllabs provider (owned by batch p2-G14-2 for the manual report pages)."
+}

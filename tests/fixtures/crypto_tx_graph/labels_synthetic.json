@@ -1,0 +1,46 @@
+{
+ "labels": {
+  "syn:mixer": [
+   {
+    "category": "mixer",
+    "name": "ExampleMixer",
+    "source": "walletexplorer"
+   }
+  ],
+  "syn:exchange-a": [
+   {
+    "category": "exchange",
+    "name": "ExampleExchange",
+    "source": "crypto_address_labels"
+   }
+  ],
+  "syn:exchange-b": [
+   {
+    "category": "exchange",
+    "name": "OtherExchange",
+    "source": "blockscout_tags"
+   }
+  ],
+  "syn:bridge": [
+   {
+    "category": "bridge",
+    "name": "ExampleBridge",
+    "source": "blockscout_tags"
+   }
+  ],
+  "syn:d": [
+   {
+    "category": "gambling",
+    "name": "ExampleCasino",
+    "source": "walletexplorer"
+   }
+  ]
+ },
+ "sanctioned": [
+  "syn:sanctioned"
+ ],
+ "degrees": {
+  "syn:hub": 15000,
+  "syn:a": 12
+ }
+}

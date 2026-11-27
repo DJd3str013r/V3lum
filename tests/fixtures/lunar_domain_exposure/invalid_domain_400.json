@@ -1,0 +1,12 @@
+{
+ "_envelope": 1,
+ "_source": "live check 2026-11-26 from this datacenter egress: domain-exposure?domain=not_a_domain",
+ "status": 400,
+ "headers": {
+  "content-type": "application/json",
+  "cache-control": "no-store"
+ },
+ "body": {
+  "error": "Invalid domain."
+ }
+}

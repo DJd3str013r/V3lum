@@ -1,0 +1,21 @@
+{
+ "_provenance": {
+  "synthetic": true
+ },
+ "request": {
+  "method": "GET",
+  "host": "app.example.com",
+  "path": "/docs"
+ },
+ "response": {
+  "status": 202,
+  "headers": {
+   "Content-Type": "text/html; charset=UTF-8",
+   "x-amzn-waf-action": "challenge"
+  },
+  "body": "<!DOCTYPE html><html lang=\"en\"><head><title></title></head><body><div id=\"challenge-container\"></div><script>AwsWafIntegration.checkForceRefresh()</script></body></html>"
+ },
+ "history": [],
+ "final_url": null,
+ "transport_error": null
+}

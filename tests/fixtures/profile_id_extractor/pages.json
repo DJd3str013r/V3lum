@@ -1,0 +1,122 @@
+{
+ "_note": "saved pages for the enabled socid_extractor schemes (FC7); 'url' is the page URL the caller held; origin per batch notes",
+ "pages": {
+  "github_api_ok.json": {
+   "url": "https://api.github.com/users/example-dev",
+   "scheme": "GitHub API",
+   "origin": "DOC-SHAPED",
+   "captured_at": "2026-11-26",
+   "note": "api.github.com refused by the research proxy; layout per REST docs"
+  },
+  "gitlab_api_ok.json": {
+   "url": "https://gitlab.com/api/v4/users?username=gitlab-bot",
+   "scheme": "Gitlab API",
+   "origin": "LIVE",
+   "captured_at": "2026-11-26"
+  },
+  "gitlab_api_public_email.json": {
+   "url": "https://gitlab.com/api/v4/users?username=example-dev",
+   "scheme": "Gitlab API",
+   "origin": "DERIVED",
+   "captured_at": "2026-11-26",
+   "note": "live layout, documentation values, public_email set, Gravatar avatar"
+  },
+  "dockerhub_api_ok.json": {
+   "url": "https://hub.docker.com/v2/users/exampledev/",
+   "scheme": "Docker Hub API",
+   "origin": "DOC-SHAPED",
+   "captured_at": "2026-11-26",
+   "note": "compact JSON with 'type' last (flag '\"type\":\"User\"}'); the live org record has type mid-object and does not match"
+  },
+  "bluesky_api_ok.json": {
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=bsky.app",
+   "scheme": "Bluesky API",
+   "origin": "LIVE",
+   "captured_at": "2026-11-26",
+   "note": "official account; trimmed (status/pinnedPost/associated/verification dropped)"
+  },
+  "huggingface_api_ok.json": {
+   "url": "https://huggingface.co/api/users/SFconvertbot/overview",
+   "scheme": "HuggingFace API",
+   "origin": "LIVE",
+   "captured_at": "2026-11-26",
+   "note": "official conversion bot account; orgs list dropped"
+  },
+  "gravatar_json_ok.json": {
+   "url": "https://en.gravatar.com/automattic.json",
+   "scheme": "Gravatar",
+   "origin": "LIVE",
+   "captured_at": "2026-11-26",
+   "note": "captured by p1-G05-2 (official account)"
+  },
+  "gravatar_json_accounts.json": {
+   "url": "https://en.gravatar.com/exampledev.json",
+   "scheme": "Gravatar",
+   "origin": "DERIVED",
+   "captured_at": "2026-11-26",
+   "note": "live layout (escaped slashes) with documentation values: accounts, urls and an e-mail"
+  },
+  "keybase_api_ok.json": {
+   "url": "https://keybase.io/_/api/1.0/user/lookup.json?usernames=exampledev",
+   "scheme": "Keybase API",
+   "origin": "DOC-SHAPED",
+   "captured_at": "2026-11-26",
+   "note": "keybase (P104) is a P3 module; layout per the scheme's flag and fields"
+  },
+  "telegram_ok.html": {
+   "url": "https://t.me/BotFather",
+   "scheme": "Telegram",
+   "origin": "LIVE",
+   "captured_at": "2026-11-26",
+   "note": "captured by p1-G05-1 (official bot); photo token shortened"
+  },
+  "dribbble_ok.html": {
+   "url": "https://dribbble.com/dribbble",
+   "scheme": "Dribbble profile",
+   "origin": "LIVE",
+   "captured_at": "2026-11-26",
+   "note": "captured by p1-G05-2 (official account); head metas only"
+  },
+  "linktree_ok.html": {
+   "url": "https://linktr.ee/linktree",
+   "scheme": "Linktree",
+   "origin": "LIVE",
+   "captured_at": "2026-11-26",
+   "note": "captured by p1-G05-2 (official account); pageProps trimmed (other creators' usernames dropped)"
+  },
+  "linktree_social.html": {
+   "url": "https://linktr.ee/exampledev",
+   "scheme": "Linktree",
+   "origin": "DERIVED",
+   "captured_at": "2026-11-26",
+   "note": "live layout with documentation values: social links incl. an e-mail"
+  },
+  "aboutme_stale_scheme.html": {
+   "url": "https://about.me/microsoft",
+   "scheme": "About.me profile",
+   "origin": "LIVE",
+   "captured_at": "2026-11-26",
+   "note": "current page lacks the 'aboutme_prod:page' flag and nests the ld+json name under mainEntity: socid 0.1.2 extracts nothing (scheme drift)"
+  },
+  "no_scheme.html": {
+   "url": "https://www.example.com/about",
+   "scheme": null,
+   "origin": "SYNTHETIC",
+   "captured_at": "2026-11-26"
+  },
+  "malformed_json.json": {
+   "url": "https://gitlab.com/api/v4/users?username=example-dev",
+   "scheme": "Gitlab API",
+   "origin": "SYNTHETIC",
+   "captured_at": "2026-11-26",
+   "note": "flags match, JSON broken: socid's unguarded json.loads would raise"
+  },
+  "socid_output_mixed.json": {
+   "url": "https://en.gravatar.com/exampledev.json",
+   "scheme": null,
+   "origin": "SYNTHETIC",
+   "captured_at": "2026-11-26",
+   "note": "socid-shaped OUTPUT (not a page; _extractor Gravatar) with implausible handles, a phone, an e-mail-derived username and hostile links"
+  }
+ }
+}

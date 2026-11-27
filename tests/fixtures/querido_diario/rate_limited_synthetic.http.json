@@ -1,0 +1,20 @@
+{
+ "request": "GET https://api.queridodiario.org.br/gazettes?querystring=%2200.000.000%2F0001-91%22&size=10",
+ "response": {
+  "status": 429,
+  "headers": {
+   "content-type": "application/json",
+   "retry-after": "60",
+   "server": "cloudflare"
+  },
+  "body_kind": "json",
+  "body": {
+   "detail": "Too Many Requests"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "observed_at": null,
+ "origin": "synthetic",
+ "note": "synthetic: not observed (5 requests stayed under any limit); FastAPI 'detail' shape"
+}

@@ -1,0 +1,30 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.polyswarm.network/v3/ioc/md5/44d88612fea8a8f36de82e1278abb02f?community=default",
+  "headers": {
+   "Authorization": "<KEY>"
+  }
+ },
+ "response": {
+  "status": 400,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": {
+   "status": "error",
+   "errors": {
+    "code": "AMBIGUOUS_HASH",
+    "hash_type": "md5",
+    "sha256s": [
+     "18e5b8fe...",
+     "275a021b..."
+    ],
+    "truncated": false
+   }
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "documentation: error envelope; AMBIGUOUS_HASH is documented for the md5/sha1 IOC endpoints"
+}

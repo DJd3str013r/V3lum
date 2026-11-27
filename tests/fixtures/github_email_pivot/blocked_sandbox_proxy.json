@@ -1,0 +1,12 @@
+{
+ "_envelope": 1,
+ "_source": "live check 2026-11-26 from this datacenter egress: GET api.github.com/users/github refused by THIS SANDBOX's GitHub proxy (not by GitHub); no x-ratelimit headers",
+ "status": 403,
+ "headers": {
+  "content-type": "application/json; charset=utf-8"
+ },
+ "body": {
+  "message": "This GitHub API path is not available: sessions are bound to their configured repositories. Use repository-scoped endpoints (repos/{owner}/{repo}/...).",
+  "documentation_url": "https://docs.anthropic.com/en/docs/claude-code/github-actions"
+ }
+}

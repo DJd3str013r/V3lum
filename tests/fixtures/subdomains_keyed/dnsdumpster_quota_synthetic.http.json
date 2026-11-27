@@ -1,0 +1,15 @@
+{
+ "request": "GET https://api.dnsdumpster.com/domain/example.com",
+ "response": {
+  "status": 429,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": {
+   "error": "Daily API limit reached"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "PLACEHOLDER text for the free 'small daily cap' (research); quota words win over the bare 429"
+}

@@ -1,0 +1,41 @@
+{
+ "Zone": "Orange",
+ "IpGeneralInfo": {
+  "Status": "Known",
+  "Ip": "198.51.100.7",
+  "CountryCode": "BR",
+  "HitsCount": 1000,
+  "FirstSeen": "2025-03-01T00:00:00Z",
+  "Ptr": "host7.example.net",
+  "Categories": [
+   "Malware",
+   "Phishing"
+  ],
+  "CategoriesWithZone": [
+   {
+    "Name": "Malware",
+    "Zone": "Orange"
+   },
+   {
+    "Name": "Phishing",
+    "Zone": "Orange"
+   }
+  ]
+ },
+ "IpWhoIs": {
+  "Asn": [
+   {
+    "Number": 64496,
+    "Description": [
+     "EXAMPLE-NET"
+    ]
+   }
+  ],
+  "Net": {
+   "Name": "EXAMPLE-NET-BR",
+   "RangeStart": "198.51.100.0",
+   "RangeEnd": "198.51.100.255",
+   "Country": "BR"
+  }
+ }
+}

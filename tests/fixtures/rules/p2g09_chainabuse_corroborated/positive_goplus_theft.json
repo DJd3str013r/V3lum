@@ -1,0 +1,83 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "options": {
+  "mode": "passive",
+  "tlp": "amber",
+  "depth": 1
+ },
+ "nodes": [
+  {
+   "key": "eth_address:0x1111111111111111111111111111111111111111",
+   "depth": 0,
+   "seed": true,
+   "findings": [
+    {
+     "title": "Community scam reports on Chainabuse (unverified)",
+     "severity": "medium",
+     "confidence": 0.7,
+     "confidence_label": "probable",
+     "criterion": ">= 3 community reports or a report checked by Chainabuse / from a trusted contributor (P204 cond 4)",
+     "tags": [
+      "fraud",
+      "phishing"
+     ],
+     "module": "chainabuse",
+     "source": "trm_chainabuse.reports_api",
+     "data": {
+      "count": 3,
+      "wording": "3 community reports (unverified): PHISHING (2), RANSOMWARE, last report 2026-11-20"
+     }
+    },
+    {
+     "title": "GoPlus: stealing attack (theft)",
+     "severity": "medium",
+     "confidence": 0.7,
+     "confidence_label": "probable",
+     "criterion": "GoPlus address_security 'stealing_attack' = 1 reported by SlowMist, BlockSec",
+     "tags": [
+      "theft"
+     ],
+     "module": "goplus_security",
+     "source": "gopluslabs.address_security",
+     "data": {
+      "flag": "stealing_attack",
+      "chain_id": "1"
+     }
+    }
+   ]
+  },
+  {
+   "key": "eth_address:0x2222222222222222222222222222222222222222",
+   "depth": 0,
+   "seed": true,
+   "findings": [
+    {
+     "title": "GoPlus: stealing attack (theft)",
+     "severity": "medium",
+     "confidence": 0.7,
+     "confidence_label": "probable",
+     "criterion": "GoPlus address_security 'stealing_attack' = 1 reported by SlowMist, BlockSec",
+     "tags": [
+      "theft"
+     ],
+     "module": "goplus_security",
+     "source": "gopluslabs.address_security",
+     "data": {
+      "flag": "stealing_attack",
+      "chain_id": "1"
+     }
+    }
+   ]
+  }
+ ],
+ "edges": [],
+ "expect": {
+  "p2g09_chainabuse_corroborated": {
+   "min": 1,
+   "max": 1,
+   "severity": "high",
+   "confidence_label": "probable"
+  }
+ }
+}

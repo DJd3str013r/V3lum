@@ -1,0 +1,19 @@
+{
+ "_meta": {
+  "provenance": "documented",
+  "source": "api.urldna.io/openapi.json (401 APIError, description text)",
+  "request": {
+   "method": "POST",
+   "url": "https://api.urldna.io/v1/search",
+   "json": {
+    "query": "domain = example.com",
+    "max_results": 32
+   }
+  }
+ },
+ "status": 401,
+ "headers": {},
+ "body": {
+  "detail": "Unauthorized: API Key is missing or invalid."
+ }
+}

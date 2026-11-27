@@ -1,0 +1,16 @@
+{
+ "_fixture": "synthetic 429 in the Kong rate-limiting plugin shape (the API is served through Kong: X-Kong-* headers observed live)",
+ "status": 429,
+ "headers": {
+  "Content-Type": "application/json; charset=utf-8",
+  "RateLimit-Limit": "20",
+  "RateLimit-Remaining": "0",
+  "RateLimit-Reset": "41",
+  "X-RateLimit-Limit-Minute": "20",
+  "X-RateLimit-Remaining-Minute": "0",
+  "Retry-After": "41"
+ },
+ "body": {
+  "message": "API rate limit exceeded"
+ }
+}

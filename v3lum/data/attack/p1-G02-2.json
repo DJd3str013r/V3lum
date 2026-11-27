@@ -1,0 +1,11 @@
+{
+  "schema": "v3lum.attack_index/1",
+  "version": "enterprise-attack (MISP galaxy mitre-attack-pattern cluster, checked 2026-11-26)",
+  "source": "https://github.com/mitre-attack/attack-stix-data (enterprise-attack.json)",
+  "attribution": "MITRE ATT&CK(R) is a registered trademark of The MITRE Corporation. (c) The MITRE Corporation. This work is reproduced and distributed with the permission of The MITRE Corporation (ATT&CK terms of use).",
+  "notes": "Batch p1-G02-2 (P040): T1090.003 is mapped when an IOC IP is a Tor exit (CR28). STIX ids checked against the MISP galaxy mitre-attack-pattern cluster.",
+  "techniques": {
+    "T1090": {"name": "Proxy", "stix_id": "attack-pattern--731f4f55-b6d0-41d1-a7a9-072a66389aea", "revoked": false, "deprecated": false, "replaced_by": null},
+    "T1090.003": {"name": "Multi-hop Proxy", "stix_id": "attack-pattern--a782ebe2-daba-42c7-bc82-e8e9d923162d", "revoked": false, "deprecated": false, "replaced_by": null}
+  }
+}

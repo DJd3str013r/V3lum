@@ -1,0 +1,98 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "nodes": [
+  {
+   "key": "ipv4:203.0.113.31",
+   "depth": 0,
+   "seed": true,
+   "attributes": {
+    "host_os": [
+     {
+      "value": "Debian",
+      "source": "shodan_api"
+     }
+    ],
+    "services": [
+     {
+      "value": [
+       {
+        "port": 22,
+        "product": "OpenSSH",
+        "version": "8.0"
+       }
+      ],
+      "source": "shodan_api"
+     }
+    ]
+   },
+   "findings": [
+    {
+     "title": "CVEs by version match (version-inferred)",
+     "severity": "medium",
+     "confidence": 0.4,
+     "confidence_label": "possible",
+     "criterion": "version-inferred, distro backports not considered: confirm on the host (synthetic)",
+     "tags": [
+      "vulnerable",
+      "version_inferred"
+     ],
+     "module": "shodan_api",
+     "source": "shodan.api",
+     "data": {
+      "vulns": [
+       {
+        "cve": "CVE-2023-51767",
+        "cvss": 7.5
+       }
+      ],
+      "count": 1
+     }
+    }
+   ]
+  },
+  {
+   "key": "cve:CVE-2023-51767",
+   "depth": 1,
+   "attributes": {
+    "vex_statuses": [
+     {
+      "value": {
+       "vendor": "redhat",
+       "advisory_id": "CVE-2023-51767",
+       "counts": {
+        "not_affected": 1
+       },
+       "products": [
+        {
+         "status": "not_affected",
+         "component": "openssh",
+         "platform": "Red Hat Enterprise Linux 8",
+         "platform_cpe": "cpe:/o:redhat:enterprise_linux:8",
+         "justification": "vulnerable_code_not_present"
+        }
+       ],
+       "url": "https://access.redhat.com/security/cve/CVE-2023-51767"
+      },
+      "source": "csaf_redhat_vex"
+     }
+    ]
+   }
+  }
+ ],
+ "edges": [
+  {
+   "src": "ipv4:203.0.113.31",
+   "dst": "cve:CVE-2023-51767",
+   "relation": "has_vuln",
+   "module": "shodan_api",
+   "confidence": 0.5
+  }
+ ],
+ "expect": {
+  "p3g081_vex_not_affected": {
+   "min": 0,
+   "max": 0
+  }
+ }
+}

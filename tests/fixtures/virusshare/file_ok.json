@@ -1,0 +1,63 @@
+{
+ "sha256": "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f",
+ "virustotal": {
+  "note": "Scan results are from the VirusShare scanning infrastructure. The use of the VirusTotal key name in this data is used only to maintain consistency.",
+  "scan_date": "2023-02-19 10:56:59",
+  "positives": 9,
+  "total": 9,
+  "scans": {
+   "DrWeb": {
+    "result": "EICAR Test File (NOT a Virus!)",
+    "detected": true,
+    "version": "7.00.59.12300",
+    "update": "2023-Feb-19 05:39:15"
+   },
+   "Microsoft": {
+    "result": "Virus:DOS/EICAR_Test_File",
+    "detected": true,
+    "version": "4.18.2301.6",
+    "update": "1.383.238.0"
+   },
+   "Kaspersky": {
+    "result": "EICAR-Test-File\r",
+    "detected": true,
+    "version": "21.3.10.391",
+    "update": "2023-02-19"
+   },
+   "ClamAV": {
+    "result": "Win.Test.EICAR_HDB-1",
+    "detected": true,
+    "version": "0.103.6",
+    "update": 26817
+   }
+  }
+ },
+ "added_timestamp": "2012-07-25T02:37:33+00:00",
+ "size": 68,
+ "sha224": "b42ec8b47deb2dc75edebd01132d63f8e8d4cd08e5d26d8bd366bdc5",
+ "sha384": "038f2e50e33dacef50d7e503b45c3525fcdbe89a823f9c4417d7c13e8e96a53dd6bd6d7fcc91189c5cda7253f4455106",
+ "mimetype": "text/plain",
+ "md5": "44d88612fea8a8f36de82e1278abb02f",
+ "exif": {
+  "FileSize": "68 bytes",
+  "FileType": "TXT",
+  "FileTypeExtension": "txt",
+  "LineCount": 1,
+  "MIMEEncoding": "us-ascii",
+  "MIMEType": "text/plain",
+  "Newlines": "(none)",
+  "WordCount": 1
+ },
+ "filetype": "EICAR virus test files",
+ "sha512": "cc805d5fab1fd71a4ab352a9c533e65fb2d5b885518f4e565e68847223b8e6b85cb48f3afad842726d99239c9e36505c64b0dc9a061d9e507d833277ada336ab",
+ "extension": "txt",
+ "ssdeep": "3:a+JraNvsgzsVqSwHq9:tJuOgzsko",
+ "sha1": "3395856ce81f2b7382dee72602f798b642f14140",
+ "trid": {
+  "0": "EICAR antivirus test file (100.0%)"
+ },
+ "nsrl": true,
+ "rescan": false,
+ "updated_timestamp": "2023-02-19T10:56:59+00:00",
+ "response": 1
+}

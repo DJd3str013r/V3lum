@@ -1,0 +1,13 @@
+{
+ "cnpj_numeric_bb_00000000000191": true,
+ "cnpj_alnum_rfb_example_12ABC34501DE": "35",
+ "btc_genesis_base58check": [
+  true,
+  0
+ ],
+ "btc_bip173_vector_bech32": true,
+ "imei_luhn_356938035643809": true,
+ "hashlib_sha3_256_empty": "a7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8434a",
+ "keccak256_empty_expected": "c5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470",
+ "cpf_check_known_valid_example": true
+}

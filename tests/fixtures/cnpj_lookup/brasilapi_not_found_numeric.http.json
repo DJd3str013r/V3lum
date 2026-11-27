@@ -1,0 +1,19 @@
+{
+ "request": "GET https://brasilapi.com.br/api/cnpj/v1/98765012000101",
+ "response": {
+  "status": 404,
+  "headers": {
+   "content-type": "application/json; charset=utf-8"
+  },
+  "body": {
+   "message": "CNPJ 98.765.012/0001-01 não encontrado.",
+   "type": "not_found",
+   "name": "NotFoundError"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": 0.24305,
+ "observed_at": "2026-11-26T09:05:02+00:00",
+ "origin": "live",
+ "note": "synthetic DV-valid CNPJ (not registered): numeric not_found body"
+}

@@ -1,0 +1,26 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.metadefender.com/v4/hash/275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f",
+  "headers": {
+   "apikey": "<INVALID>"
+  }
+ },
+ "response": {
+  "status": 401,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": {
+   "error": {
+    "code": 401006,
+    "messages": [
+     "Invalid API key"
+    ]
+   }
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "synthetic: the research saw HTTP 401 without a key (body not recorded)"
+}

@@ -1,0 +1,14 @@
+{
+ "server": "close",
+ "probe": "tls10",
+ "trust": "self_signed_ca",
+ "ok": false,
+ "stage": "handshake",
+ "version": null,
+ "cipher": null,
+ "error_type": "SSLEOFError",
+ "reason": "UNEXPECTED_EOF_WHILE_READING",
+ "library": "SSL",
+ "verify_code": null,
+ "str": "[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1035)"
+}

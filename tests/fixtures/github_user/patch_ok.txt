@@ -1,0 +1,24 @@
+From 1a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Exemplo=20Desenvolvedor=20S=C3=A3o?= <dev@example.com>
+Date: Fri, 20 Nov 2026 10:05:00 -0300
+Subject: [PATCH] Fix parser for empty input
+
+Handle empty bodies.
+
+Co-authored-by: Other Contributor <other@example.org>
+Signed-off-by: Exemplo Desenvolvedor <dev@example.com>
+---
+ parser.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/parser.py b/parser.py
+index 83db48f..f735c20 100644
+--- a/parser.py
++++ b/parser.py
+@@ -1,3 +1,5 @@
+ def parse(body):
++    if not body:
++        return None
+     return body.strip()
+--
+2.43.0

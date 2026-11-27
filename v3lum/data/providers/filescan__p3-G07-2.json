@@ -1,0 +1,23 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "filescan",
+  "hosts": [],
+  "sources": {
+    "filescan_reputation": {
+      "title": "Filescan.io keyless hash reputation (/api/reputation/hash?sha256=, lookup only)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://www.filescan.io/",
+        "quote": "Hudson Rock free tools, LeakCheck public, Filescan, MalwareIntel, SecurityContext, VirusShare lists, ViriBack and binlist/data = 'unknown'.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "opswat",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding A1 initial class (P178 cond 2: 'unknown', which a chair may only make stricter; OPSWAT licenses free use 'solely for Your personal use'). Research C0414 (verified_live 200). GET https://www.filescan.io/api/reputation/hash?sha256={sha256} only; upload (/api/uploads/*) and scan (/api/scan/*) endpoints are never built (P178 cond 1). The answer is streamed with max_bytes 2 MB: a truncated body is ERROR 'response too large' and is never parsed (P178 cond 3; the EICAR answer was 3.5 MB decoded on 2026-11-26). Unknown hash = HTTP 200 with overall_verdict 'unknown' and no reports (EMPTY); 400 'Bad hash' = not applicable (the body echoes the input and is never logged). Upstream family 'opswat': the same vote as MetaDefender (P178 cond 4). No key is ever sent (the lookup is keyless). Batch p3-G07-2, module filescan_reputation."
+    }
+  },
+  "error_markers": []
+}

@@ -214,14 +214,10 @@ def test_a_disclosure_none_module_that_insists_ends_skipped_policy(registry, htt
     assert http.calls == []
 
 
-@pytest.mark.xfail(
-    strict=True,
-    reason="WP04 datasets.py (+ WP08 context.py): an unregistered ad-hoc ctx.data.fetch(name, url) downloads during a scan from any "
-    "host, even for a disclosure-'none' module (P327 cond 5) - see the WP28 report open_issues",
-)
 def test_a_disclosure_none_module_cannot_download_ad_hoc_data(registry, http):
     """ctx.data.fetch with an unregistered name and a URL built from the investigated value would
-    send the value to an arbitrary host: an offline module must get no network this way either."""
+    send the value to an arbitrary host: an offline module must get no network this way either
+    (the ad-hoc download goes through the module's own ScopedHttp and is refused like ctx.http)."""
     http.add("GET", "https://collector.example.net/list.txt?v=example.org", text="1.2.3.4\n")
     seen: dict[str, str] = {}
 
@@ -238,6 +234,40 @@ def test_a_disclosure_none_module_cannot_download_ad_hoc_data(registry, http):
     scan(make_runtime(http), opts("t_safety_offline_data"), SEED)
     assert http.calls == [], f"an offline module downloaded {[c['url'] for c in http.calls]}"
     assert "refused" in seen
+    assert "no network" in seen["refused"], seen  # the module's own ScopedHttp refused it (disclosure 'none'), as ctx.http would
+
+
+def test_a_disclosure_none_module_cannot_download_through_a_dataset_it_registers(registry, http):
+    """A dataset registered during the run (a URL built from the investigated value) is not a reviewed,
+    import-time registration: ctx.data refuses it like ctx.http, and the store reached around ctx.data
+    refuses it mid-scan - nothing is sent."""
+    from v3lum.core.datasets import register_dataset, unregister_dataset
+
+    http.add("GET", "https://collector.example.net/r.txt?v=example.org", text="1.2.3.4\n")
+    seen: list[str] = []
+
+    def run(self, ent, ctx):
+        name = register_dataset("t_safety_runtime_reg.txt", f"https://collector.example.net/r.txt?v={ent.value}", expect="lines")
+        store = ctx.data.store
+        for read in (lambda: ctx.data.fetch_lines(name), lambda: ctx.data.index(name), lambda: store.fetch(name),
+                     lambda: store.fetch(name, http=ctx.http.client)):  # a raw client is not a module scope
+            try:
+                read()
+                seen.append("downloaded")
+            except Exception as exc:  # noqa: BLE001 - any refusal counts, the network call is what matters
+                seen.append(f"{type(exc).__name__}: {exc}")
+        seen.append(store.update(name).status)
+        return self.result(ent)
+
+    offline_module("t_safety_offline_reg", run, accepts=(T.DOMAIN,))
+    try:
+        scan(make_runtime(http), opts("t_safety_offline_reg"), SEED)
+    finally:
+        unregister_dataset("t_safety_runtime_reg.txt")
+    assert http.calls == [], f"an offline module downloaded {[c['url'] for c in http.calls]}"
+    assert [s.split(":", 1)[0] for s in seen] == ["PolicyError"] * 4 + ["failed"], seen
+    assert "no network" in seen[0] and "no network" in seen[1]  # the module's own ScopedHttp (disclosure 'none')
+    assert "ad-hoc download" in seen[2] and "module's own scope" in seen[3]  # the store: mid-scan / raw client refused
 
 
 # --------------------------------------------------------------------------------------
@@ -282,13 +312,37 @@ ESCAPES = {
     "ctx_runtime_http": ("", 'ctx.runtime.http.request("GET", "https://collector.example.net/")'),
     "own_scoped_http": ("from v3lum.core.http import ScopedHttp", 'ScopedHttp(ctx.http.client).get("https://collector.example.net/")'),
     "ctx_net_private_client": ("", 'ctx.net._resolution_client().request("GET", "https://collector.example.net/")'),
+    # the same escapes through aliases, getattr, helpers and imports (P327 cond 6: the lint reads the canonical ctx path)
+    "alias_of_ctx_http": ("", 'h = ctx.http; c = h.client; c.get("https://collector.example.net/")'),
+    "getattr_client": ("", 'getattr(ctx.http, "client").get("https://collector.example.net/")'),
+    "runtime_in_a_local": ("", 'rt = ctx.runtime; rt.http.request("GET", "https://collector.example.net/")'),
+    "ctx_passed_to_a_helper": ("", "_send(ctx)"),
+    "aliased_scoped_http_import": ("from v3lum.core.http import ScopedHttp as S", 'S(ctx.http, allowed_hosts=None).get("https://collector.example.net/")'),
+    "http_client_through_getattr": ("import v3lum.core.http as vh", 'getattr(vh, "HttpClient")().get("https://collector.example.net/")'),
+    "own_runtime": ("from v3lum.core.context import Runtime", 'Runtime().http.get("https://collector.example.net/")'),
+    "context_of_a_plain_class": ("", 'ctx.runtime.context(object).http.get("https://collector.example.net/")'),
+    "egress_session": ("", 'ctx.net.egress.session_for("passive")[1].get("https://collector.example.net/")'),
+    "scope_rebound": ("", 'ctx.http.allowed_hosts = None; ctx.http.disclosure = "third_party"; ctx.http.get("https://collector.example.net/")'),
+    "scan_flag_flipped": ("", 'ctx.runtime.in_scan = False; s = ctx.data.store; s.fetch("x", "https://collector.example.net/?q=" + entity.value)'),
+    "computed_getattr": ("", 'getattr(ctx.http, "cli" + "ent").get("https://collector.example.net/")'),
+    "runtime_handed_to_a_job_helper": ("from v3lum.modules.vulnerability_cve.g08_offline import job_http",
+                                       'job_http(ctx.runtime, module="m", provider="p", sources=(), hosts=("collector.example.net",), '
+                                       'max_requests=9).get("https://collector.example.net/")'),
+    "dataset_registry_edited": ("from v3lum.core.datasets import DATASETS",
+                                'DATASETS["feed"]["url"] = "https://collector.example.net/?q=" + entity.value'),
 }
+#: helpers appended to the probe module (``ctx_passed_to_a_helper``)
+ESCAPE_HELPERS = """
+
+def _send(c):
+    return c.http.client.get("https://collector.example.net/")
+"""
 
 
 def lint_problems(imports: str, call: str) -> list[str]:
     from v3lum.core import lint
 
-    source = LINT_MODULE.format(imports=imports, call=call)
+    source = LINT_MODULE.format(imports=imports, call=call) + ESCAPE_HELPERS
     issues = lint.lint_module_source("v3lum/modules/utility/safety_escape_probe.py", source=source)
     return [str(i) for i in lint.blocking(issues)]
 
@@ -299,15 +353,19 @@ def test_the_lint_refuses_direct_network_use_in_modules(variant):
     assert lint_problems(imports, call), f"the P327 lint lets a module use {variant}"
 
 
-@pytest.mark.xfail(
-    strict=True,
-    reason="WP09 lint.py: module code reaching the shared client around its ScopedHttp (ctx.http.client, ctx.runtime, "
-    "ScopedHttp(...), private ctx.net/ctx.http members) is not flagged (P327 cond 6) - see the WP28 report open_issues",
-)
 @pytest.mark.parametrize("variant", sorted(ESCAPES))
 def test_the_lint_refuses_reaching_around_ctx_http(variant):
     imports, call = ESCAPES[variant]
-    assert lint_problems(imports, call), f"the P327 lint lets a module bypass its host checks through {variant}"
+    problems = [p for p in lint_problems(imports, call) if " LINT-01 " in p]
+    assert problems, f"the P327 lint lets a module bypass its host checks through {variant}"
+    assert any(why in p for p in problems for why in ("reaches around ctx.http/ctx.net", "built inside a module", "rebinds the module's network scope",
+                                                       "<computed>", "handed to", "dataset registry")), problems
+
+
+def test_the_escape_probe_module_is_clean_without_an_escape():
+    """The probe itself (and its helper, called with a plain value) trips nothing: the variants above are
+    refused for the escape, not for the scaffolding."""
+    assert lint_problems("", "_send(entity)") == []
 
 
 def test_offline_module_dns_never_reaches_a_public_resolver(registry, http):

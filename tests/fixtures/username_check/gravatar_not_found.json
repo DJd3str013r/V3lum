@@ -1,0 +1,24 @@
+{
+ "_meta": {
+  "module": "username_check",
+  "case": "gravatar_not_found",
+  "source": "C0232/C0228 Gravatar",
+  "request": {
+   "method": "GET",
+   "url": "https://en.gravatar.com/oj5nsqgky6am1w4be0ud.json",
+   "user_agent": "V3LUM/dev",
+   "redirects": "not followed"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "live check, this sandbox's datacenter egress",
+  "elapsed_s": 0.142,
+  "minimised": true,
+  "note": "random 20-char control handle"
+ },
+ "status": 404,
+ "headers": {
+  "server": "nginx",
+  "content-type": "application/json"
+ },
+ "body": "\"User not found\""
+}

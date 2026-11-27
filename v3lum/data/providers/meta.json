@@ -1,0 +1,50 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "meta",
+  "name": "Meta Ad Library search (web pages)",
+  "operator": "Meta Platforms, Inc.",
+  "hosts": [
+    "www.facebook.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms and a privacy policy (A8 BR2; P304 cond 5 lists Meta as trusted).",
+  "tier_reviewer": "batch p2-G14-3 (council-1 P304 cond 5: initial tiers, reviewer confirms)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Ad transparency data published by Meta for active and inactive ads."
+  },
+  "http_profile": {
+    "user_agent": "neutral"
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "ad_library_pages": {
+      "title": "Meta Ad Library ads/library/?country=BR&q= (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.facebook.com/ads/library/",
+        "quote": "Free web UI; provider ToS apply (manual analyst use)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "meta",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0538 (403 for scripts: JavaScript app). Brand values (company name, keyword, domain) only, to spot scam ads impersonating the company; the official Ad Library API needs a verified developer identity. Used by pivots_unverified."
+    }
+  },
+  "notes": "Manual pivot links only (P304 cond 1): V3LUM never requests these pages, not even from doctor, and never solves their challenges; the analyst opens them in a browser. No budget. Owned by batch p2-G14-3 (module pivots_unverified); other batches extend it with <id>__<batch>.json. Other www.facebook.com uses (profile links) extend this fragment."
+}

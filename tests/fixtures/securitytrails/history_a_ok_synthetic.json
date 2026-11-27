@@ -1,0 +1,49 @@
+{
+ "endpoint": "/v1/history/example.com/dns/a",
+ "pages": 1,
+ "type": "a/ipv4",
+ "records": [
+  {
+   "type": "a",
+   "first_seen": "2024-03-01",
+   "last_seen": "2026-11-25",
+   "organizations": [
+    "Example CDN"
+   ],
+   "values": [
+    {
+     "ip": "192.0.2.10",
+     "ip_count": 2
+    }
+   ]
+  },
+  {
+   "type": "a",
+   "first_seen": "2019-05-10",
+   "last_seen": "2024-02-28",
+   "organizations": [
+    "Example Hosting"
+   ],
+   "values": [
+    {
+     "ip": "198.51.100.7",
+     "ip_count": 1
+    }
+   ]
+  },
+  {
+   "type": "a",
+   "first_seen": "2016-01-01",
+   "last_seen": "2019-05-09",
+   "organizations": [
+    "Example Old CDN"
+   ],
+   "values": [
+    {
+     "ip": "203.0.113.5",
+     "ip_count": 1
+    }
+   ]
+  }
+ ]
+}

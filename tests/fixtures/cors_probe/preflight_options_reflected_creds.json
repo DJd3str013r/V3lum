@@ -1,0 +1,15 @@
+{
+ "request": {"method": "OPTIONS", "url": "https://api.example.com/v1/me", "headers": {"Origin": "https://r4nd0m.v3lum-probe.invalid", "Access-Control-Request-Method": "GET"}},
+ "response": {
+  "status": 204,
+  "headers": {
+   "access-control-allow-origin": "https://r4nd0m.v3lum-probe.invalid",
+   "access-control-allow-credentials": "true",
+   "access-control-allow-methods": "GET, POST, OPTIONS"
+  },
+  "body": ""
+ },
+ "class": "synthetic",
+ "origin": "synthetic (OPTIONS preflight, FC4)",
+ "notes": "Preflight (204, empty body) still reflects forged Origin + ACAC true => HIGH. Classifier reads headers only, body may be empty."
+}

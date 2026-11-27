@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "voipbl",
+  "source_url": "https://voipbl.org/",
+  "version": "update/ (runtime download, noncommercial use only, checked 2026-11-26)",
+  "sha256": "",
+  "licence": "LicenseRef-VoIPBL-NC",
+  "attribution": "VoIPBL.org SIP/VoIP abuse netblocks, non-commercial use with attribution: off under the corporate profile until licence-cleared.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/threat_intel_ioc/ip_blocklists.py"
+  ]
+}

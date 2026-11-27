@@ -1,0 +1,14 @@
+{
+ "_envelope": 1,
+ "_source": "GET https://imeidb.xyz/api/imei/353893100000000?format=json (2026-11-26T10:42:28Z, generic client UA, datacenter egress): TAC probe of the docs example TAC 35389310 (serial 000000 + Luhn), no token",
+ "status": 401,
+ "headers": {
+  "server": "nginx/1.24.0 (Ubuntu)",
+  "content-type": "application/json; charset=UTF-8"
+ },
+ "body": {
+  "success": false,
+  "message": "Your request was made with invalid credentials.",
+  "code": 401
+ }
+}

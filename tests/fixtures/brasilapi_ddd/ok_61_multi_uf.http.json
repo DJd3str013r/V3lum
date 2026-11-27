@@ -1,0 +1,20 @@
+{
+ "request": "GET https://brasilapi.com.br/api/ddd/v1/61",
+ "response": {
+  "status": 200,
+  "headers": {
+   "content-type": "application/json; charset=utf-8",
+   "etag": "\"snf12tpdmc6f\"",
+   "cache-control": "max-age=0, public",
+   "age": "0",
+   "x-vercel-cache": "MISS",
+   "cf-cache-status": "DYNAMIC",
+   "server": "cloudflare"
+  },
+  "body": "{\"state\":\"DF\",\"cities\":[\"BRASÍLIA\",\"VILA BOA\",\"VALPARAÍSO DE GOIÁS\",\"SANTO ANTÔNIO DO DESCOBERTO\",\"PLANALTINA\",\"PADRE BERNARDO\",\"NOVO GAMA\",\"LUZIÂNIA\",\"FORMOSA\",\"CRISTALINA\",\"CIDADE OCIDENTAL\",\"CABECEIRAS\",\"ÁGUAS LINDAS DE GOIÁS\"]}"
+ },
+ "observed_at": "2026-11-26T05:19:22Z",
+ "elapsed_s": 0.56415,
+ "origin": "live: p1-G06-1 prep capture (same egress)",
+ "note": "DDD 61: state 'DF' only, yet the list is Brasilia plus 12 Goias municipalities (state is the primary UF). Still current: this prep's If-None-Match with this ETag got 304 at 09:3xZ"
+}

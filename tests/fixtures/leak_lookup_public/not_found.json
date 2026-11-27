@@ -1,0 +1,5 @@
+{
+ "_synthetic": "synthetic: error 'false' with an empty message (PHP json_encode of an empty array is []); the documentation shows no empty example. P140 cond 6",
+ "error": "false",
+ "message": []
+}

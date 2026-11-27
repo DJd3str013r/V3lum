@@ -1,0 +1,20 @@
+{
+ "_meta": {
+  "module": "org_code_footprint",
+  "case": "gl_html_error",
+  "source": "C0759 gitlab.com",
+  "request": {
+   "method": "GET",
+   "url": "https://gitlab.com/api/v4/groups/9970/projects?per_page=5"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "DOC-SHAPED",
+  "note": "HTML error page instead of JSON"
+ },
+ "status": 502,
+ "headers": {
+  "content-type": "text/html; charset=UTF-8",
+  "server": "cloudflare"
+ },
+ "body": "<!DOCTYPE html><html><head><title>gitlab.com | 502: Bad gateway</title></head><body><h1>Bad gateway</h1><p>Error code 502</p></body></html>"
+}

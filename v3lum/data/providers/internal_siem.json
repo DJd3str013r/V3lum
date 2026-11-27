@@ -1,0 +1,66 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "internal_siem",
+  "name": "Company primary SIEM (OpenSearch/Elasticsearch _search or Splunk saved searches, read-only)",
+  "operator": "The organisation running V3LUM (module setting siem_url)",
+  "hosts": [],
+  "hosts_from_settings": [
+    "siem_url"
+  ],
+  "internal": true,
+  "tier": "trusted",
+  "tier_rationale": "The team's own primary SIEM operated by the company or a contracted processor (A12: disclosure 'internal', allowed at TLP:RED); community or shared platforms must be registered as third-party providers instead.",
+  "tier_reviewer": "council-1 (A8, A12)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "The organisation's own telemetry (proxy, DNS, EDR, mail logs): exact term matches over a bounded window; counts are facts about our logs, not verdicts about the value."
+  },
+  "http_profile": {
+    "accept": "application/json",
+    "timeout": 15.0,
+    "retries": 0,
+    "max_bytes": 2000000,
+    "min_interval": 1.0,
+    "concurrency": 1,
+    "ttl": 0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {
+    "siem": {
+      "description": "read-only service-account token of the primary SIEM (Elasticsearch/OpenSearch API key or bearer token, Splunk authentication token)",
+      "signup_url": "",
+      "env": [
+        "V3LUM_SIEM_TOKEN"
+      ],
+      "multi_key": false,
+      "plan_hint": "a read-only least-privilege service account limited to the SOC-approved index patterns / saved searches (A12)"
+    }
+  },
+  "sources": {
+    "search": {
+      "title": "SIEM look-back through SOC-approved, versioned templates (term/terms _search or saved-search dispatch; counts and first/last seen only)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://opensearch.org/docs/latest/api-reference/search/",
+        "quote": "disclosure='internal' (allowed at TLP:RED) applies only to instances operated by the company or a contracted processor.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1, A12)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "internal_siem",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Own data through a read-only service account (research C0736). Quote: binding council text (A12). Personal identifiers (e-mail, username, user agent) are searched only inside a case with a recorded incident purpose and ticket, under the company's monitoring policy and privacy notice (P349 C6); results follow the case retention and are never used for HR or performance purposes."
+    }
+  },
+  "notes": "Owned by batch p2-G07-2 (P349 siem_search). Disabled unless setting siem_url (https), key 'siem' and the SOC-approved template file (setting siem_search_templates) are configured; read-only endpoints only (POST <patterns>/_search with size 0, saved-search dispatch with trigger_actions=0, job status and results GETs), TLS verification always on (setting ca_bundle, A12). One query at a time (concurrency 1) and never cached (ttl 0: counts change and personal-identifier queries never reach http_cache.db)."
+}

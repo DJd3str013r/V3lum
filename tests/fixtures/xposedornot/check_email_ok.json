@@ -1,0 +1,21 @@
+{
+ "_source": "live check 2026-11-26 from this datacenter egress: check-email/test@example.com (12 of 215 ids, nested list kept)",
+ "breaches": [
+  [
+   "8tracks",
+   "Zomato",
+   "000webhost",
+   "Collection-1",
+   "Twitter-Scraped",
+   "Morele.net",
+   "AlienStealerLogs",
+   "Adobe",
+   "NetEase",
+   "Havenly",
+   "Dubsmash",
+   "StockX"
+  ]
+ ],
+ "email": "test@example.com",
+ "status": "success"
+}

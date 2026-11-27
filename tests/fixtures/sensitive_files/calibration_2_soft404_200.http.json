@@ -1,0 +1,17 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://www.example.com/.c2b1a0f8e6c4d3b5a7e1c2f9",
+  "headers": {
+   "Range": "bytes=0-1023"
+  }
+ },
+ "response": {
+  "status": 200,
+  "headers": {
+   "content-type": "text/html; charset=utf-8",
+   "content-length": "466"
+  },
+  "body": "<!DOCTYPE html><html lang=\"pt-BR\"><head><meta charset=\"utf-8\"><title>Pagina nao encontrada - Exemplo</title><link rel=\"stylesheet\" href=\"/assets/site.css\"></head><body><header><a href=\"/\">Exemplo</a></header><main><h1>Ops! Pagina nao encontrada</h1><p>O endereco /.c2b1a0f8e6c4d3b5a7e1c2f9 nao existe ou foi movido.</p><p>Volte para a <a href=\"/\">pagina inicial</a> ou use a busca.</p></main><footer>Exemplo Ltda - todos os direitos reservados</footer></body></html>"
+ }
+}

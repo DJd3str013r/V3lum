@@ -1,0 +1,21 @@
+{
+ "_provenance": {
+  "synthetic": true
+ },
+ "request": {
+  "method": "GET",
+  "host": "app.example.com",
+  "path": "/api"
+ },
+ "response": {
+  "status": 502,
+  "headers": {
+   "Content-Type": "text/html",
+   "Proxy-Status": "egress.example.net; error=destination_ip_prohibited"
+  },
+  "body": "<html><body>Blocked by egress policy</body></html>"
+ },
+ "history": [],
+ "final_url": null,
+ "transport_error": null
+}

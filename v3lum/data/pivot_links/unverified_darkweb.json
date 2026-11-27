@@ -1,0 +1,30 @@
+{
+  "schema": "v3lum.pivot_pack/1",
+  "pack": "unverified_darkweb",
+  "title": "Tor search pages (P304 cond 9)",
+  "notes": "P304 (batch p2-G14-3): pages that curl cannot verify (SPA or anti-bot). V3LUM never requests these URLs, not even from doctor, and never solves their challenges (P304 cond 1). verified stays false until a team member opens the link in a browser: then verified=true, checked_at=<date>, x_verification='browser', x_checked_by=<name> and the label marker '(browser)' (P304 cond 6); 'curl' never appears here. x_module_links are rendered by the module pivots_unverified (module-side placeholders url_sha256, url_path, cve_num, hunter_q, and the per-link x_max_tlp the frozen schema lacks).",
+  "links": [
+    {
+      "id": "ahmia_search",
+      "label": "Ahmia Tor search (may show a challenge)",
+      "template": "https://ahmia.fi/search/?q={qp}",
+      "entity_types": [
+        "keyword",
+        "onion"
+      ],
+      "category": "search",
+      "host": "ahmia.fi",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "Manual link only: the scripted search needs a per-session anti-bot token (302 to the homepage), never read or reused (P304 cond 9, rule 1).",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0471"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+ "MD5": "53669595e3be509c41604e43a2b445e5",
+ "SHA1": "0694f20bf6fdba499ef6307e120b28f8c83c6fc4",
+ "SHA256": "1f5c6a15c19cdbd49ac24c2f0a8b595564d076be4cc29d6f2fc8a33965f58bf2",
+ "SSDEEP": "3072:HzUIVAKRO/YWCQ4EVNVTw8riZTGWbv4el4ubY4RU:Pc9HVrnpObICajkCuYtqAu7W",
+ "F_TYPE": "PE32",
+ "SOURCES": [
+  "http://198.51.100.23/bins/sample.exe",
+  "https://downloads.example.com/x/setup.exe",
+  "http://198.51.100.23/bins/sample.exe",
+  "not-a-url"
+ ]
+}

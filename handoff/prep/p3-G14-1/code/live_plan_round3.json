@@ -1,0 +1,5 @@
+[
+ {"id": "ddg_ia_9_9_9_9", "url": "https://api.duckduckgo.com/?q=9.9.9.9&format=json&no_html=1&skip_disambig=1"},
+ {"id": "emailformat_www_invalid_example", "url": "https://www.email-format.com/d/invalid.example.com/", "accept": "text/html"},
+ {"id": "mastodon_profile_lower_mastodon", "url": "https://mastodon.social/@mastodon", "accept": "text/html"}
+]

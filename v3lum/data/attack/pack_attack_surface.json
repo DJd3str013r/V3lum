@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.attack_index/1",
+  "version": "enterprise-attack 20.1 (2026-11-05)",
+  "source": "https://github.com/mitre-attack/attack-stix-data (enterprise-attack.json, collection 20.1, downloaded 2026-11-26)",
+  "attribution": "MITRE ATT&CK(R) is a registered trademark of The MITRE Corporation. (c) The MITRE Corporation. This work is reproduced and distributed with the permission of The MITRE Corporation (ATT&CK terms of use).",
+  "notes": "Correlation pack P291 (WP23, CR07/CR08/CR13-CR16/CR25/CR26/CR31): techniques its rules map.",
+  "techniques": {
+    "T1133": {
+      "name": "External Remote Services",
+      "stix_id": "attack-pattern--10d51417-ee35-4589-b1ff-b6df1c334e8d",
+      "revoked": false,
+      "deprecated": false,
+      "replaced_by": null
+    },
+    "T1190": {
+      "name": "Exploit Public-Facing Application",
+      "stix_id": "attack-pattern--3f886f2a-874f-4333-b794-aa6075009b1c",
+      "revoked": false,
+      "deprecated": false,
+      "replaced_by": null
+    },
+    "T1213": {
+      "name": "Data from Information Repositories",
+      "stix_id": "attack-pattern--d28ef391-8ed4-45dc-bc4a-2f43abf54416",
+      "revoked": false,
+      "deprecated": false,
+      "replaced_by": null
+    },
+    "T1584.001": {
+      "name": "Compromise Infrastructure: Domains",
+      "stix_id": "attack-pattern--f9cc4d06-775f-4ee1-b401-4e2cc0da30ba",
+      "revoked": false,
+      "deprecated": false,
+      "replaced_by": null
+    },
+    "T1592.002": {
+      "name": "Gather Victim Host Information: Software",
+      "stix_id": "attack-pattern--baf60e1a-afe5-4d31-830f-1b1ba2351884",
+      "revoked": false,
+      "deprecated": false,
+      "replaced_by": null
+    },
+    "T1596.003": {
+      "name": "Search Open Technical Databases: Digital Certificates",
+      "stix_id": "attack-pattern--0979abf9-4e26-43ec-9b6e-54efc4e70fca",
+      "revoked": false,
+      "deprecated": false,
+      "replaced_by": null
+    }
+  }
+}

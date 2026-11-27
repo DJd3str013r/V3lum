@@ -1,0 +1,7 @@
+{
+ "_envelope": 1,
+ "_synthetic": "IntelX documents HTTP 402 'Payment required' when the plan has no credits left (SDK get_error table); not observed",
+ "status": 402,
+ "headers": {},
+ "body": ""
+}

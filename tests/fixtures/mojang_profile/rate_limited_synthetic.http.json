@@ -1,0 +1,8 @@
+{
+ "_fixture": "SYNTHETIC: 429 shape reported by community tooling (~600 requests / 10 min)",
+ "status": 429,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": "{\"path\": \"/users/profiles/minecraft/example\", \"errorMessage\": \"The client has sent too many requests within a certain amount of time\"}"
+}

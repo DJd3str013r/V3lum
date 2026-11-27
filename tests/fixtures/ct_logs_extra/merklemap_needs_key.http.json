@@ -1,0 +1,11 @@
+{
+ "request": "GET https://api.merklemap.com/v1/search?query=*.example.com&page=0",
+ "response": {
+  "status": 401,
+  "headers": {},
+  "body": ""
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "research record: HTTP 401 without a key (body not recorded); no keyless call made in this prep"
+}

@@ -1,0 +1,11 @@
+=== message 1 (fake bank SMS)
+BANCO EXEMPLO: seu boleto vence amanha. Linha digitavel: 34191.09008 00012.345674 89001.234569 4 16470000123456
+Duvidas? Chama no zap (11) 95555-0101 ou ligue 11 5555-0102.
+=== message 2 (PIX scam)
+Pague com Pix copia e cola: 00020101021226760014br.gov.bcb.pix2554pix.example.com/qr/v2/9d36b84fc70b478fb95c12729b90ca255204000053039865406149.905802BR5917LOJA EXEMPLO LTDA6009SAO PAULO62070503***63049BE3
+Chave pix: pix@example.com - favor enviar o comprovante.
+=== message 3 (fake court notice)
+Intimacao: processo 0000001-14.2025.8.26.0000, parte CNPJ 00.000.000/0001-91, CPF 529.982.247-25.
+Regularize com o boleto 83670000000-0 98760123456-8 78901234567-2 89012345678-6 ate sexta.
+=== message 4 (no entities that pass checksums)
+Pedido 12345678901 e protocolo 00.000.000/0001-92 nao sao entidades validas.

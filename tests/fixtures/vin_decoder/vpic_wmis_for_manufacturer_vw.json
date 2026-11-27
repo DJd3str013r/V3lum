@@ -1,0 +1,84 @@
+{
+ "Count": 11,
+ "Message": "Response returned successfully",
+ "SearchCriteria": "Manufacturer: volkswagen",
+ "Results": [
+  {
+   "Country": "GERMANY",
+   "Id": 1148,
+   "Name": "VOLKSWAGEN AG",
+   "VehicleType": "Passenger Car",
+   "WMI": "WVW"
+  },
+  {
+   "Country": "MEXICO",
+   "Id": 16478,
+   "Name": "VOLKSWAGEN DE MEXICO SA DE CV",
+   "VehicleType": "Passenger Car",
+   "WMI": "3VW"
+  },
+  {
+   "Country": "MEXICO",
+   "Id": 1147,
+   "Name": "VOLKSWAGEN GROUP OF AMERICA, INC.",
+   "VehicleType": "Passenger Car",
+   "WMI": "9BW"
+  },
+  {
+   "Country": "UNITED STATES (USA)",
+   "Id": 1147,
+   "Name": "VOLKSWAGEN GROUP OF AMERICA, INC.",
+   "VehicleType": "Passenger Car",
+   "WMI": "1VW"
+  },
+  {
+   "Country": "GERMANY",
+   "Id": 1147,
+   "Name": "VOLKSWAGEN GROUP OF AMERICA, INC.",
+   "VehicleType": "Truck",
+   "WMI": "WV1"
+  },
+  {
+   "Country": "UNITED STATES (USA)",
+   "Id": 1147,
+   "Name": "VOLKSWAGEN GROUP OF AMERICA, INC.",
+   "VehicleType": "Truck",
+   "WMI": "1V1"
+  },
+  {
+   "Country": "GERMANY",
+   "Id": 1148,
+   "Name": "VOLKSWAGEN AG",
+   "VehicleType": "Multipurpose Passenger Vehicle (MPV)",
+   "WMI": "WVG"
+  },
+  {
+   "Country": "GERMANY",
+   "Id": 1147,
+   "Name": "VOLKSWAGEN GROUP OF AMERICA, INC.",
+   "VehicleType": "Multipurpose Passenger Vehicle (MPV)",
+   "WMI": "WV2"
+  },
+  {
+   "Country": "UNITED STATES (USA)",
+   "Id": 1147,
+   "Name": "VOLKSWAGEN GROUP OF AMERICA, INC.",
+   "VehicleType": "Multipurpose Passenger Vehicle (MPV)",
+   "WMI": "1V2"
+  },
+  {
+   "Country": "MEXICO",
+   "Id": 16478,
+   "Name": "VOLKSWAGEN DE MEXICO SA DE CV",
+   "VehicleType": "Multipurpose Passenger Vehicle (MPV)",
+   "WMI": "3VV"
+  },
+  {
+   "Country": "GERMANY",
+   "Id": 1147,
+   "Name": "VOLKSWAGEN GROUP OF AMERICA, INC.",
+   "VehicleType": "Incomplete Vehicle",
+   "WMI": "WV3"
+  }
+ ]
+}

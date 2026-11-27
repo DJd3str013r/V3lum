@@ -1,0 +1,54 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "ichi",
+  "name": "ICHI critical vulnerability advisories (RSS)",
+  "operator": "Internet Cyber Health Index (ichi.global; operator not verified)",
+  "hosts": [
+    "ichi.global"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "Operator and track record not verified (A8 unknown); labelled 'unverified source' (P298 cond 9).",
+  "tier_reviewer": "council-1 (A8); proposal of batch p2-G11-1, registry reviewer confirms",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "D",
+    "justification": "Aggregated advisories about actively exploited vulnerabilities; operator reliability not established."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "max_bytes": 2097152,
+    "ttl": 3600,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "alerts": {
+      "title": "ICHI critical vulnerability advisories RSS /api/alerts",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://ichi.global/",
+        "quote": "Licence (A1, legal floor): feed terms are 'unknown' until legal reviews them, so nothing runs yet in any profile. Legal's feed-reader decision (poll <= hourly; headline + link + date only; no full text; no redistribution) is recorded per kept feed with its class and evidence; a feed whose terms forbid business use or automated reading is dropped.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "ichi",
+      "sanitizer": null,
+      "dataset": "cti_news_rss.ichi",
+      "notes": "Quote: binding council text (P298 cond 3). Feed https://ichi.global/api/alerts; read by module cti_news_rss through the dataset manager (TTL 3600 s, conditional GET, 2 MiB cap, <= 200 items; headline + link + date only, descriptions discarded). Live 2026-11-26: 200 RSS, 36 items, complete valid XML (the research sample was cut at 30,000 bytes and is the malformed fixture); no ETag/Last-Modified. CVE ids are read from titles and descriptions in memory as facts."
+    }
+  },
+  "notes": "Owned by batch p2-G11-1 (P298 cti_news_rss). Feed downloads carry no investigated value (module disclosure 'none'); terms 'unknown' keep the feed off in every profile until legal records the feed-reader decision (A1). ttl 3600 keeps polling at most hourly. No quota block: no published or observed figure."
+}

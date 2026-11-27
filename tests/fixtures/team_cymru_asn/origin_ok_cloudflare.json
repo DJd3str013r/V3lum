@@ -1,0 +1,22 @@
+{
+ "Status": 0,
+ "TC": false,
+ "RD": true,
+ "RA": true,
+ "AD": false,
+ "CD": false,
+ "Question": [
+  {
+   "name": "1.1.1.1.origin.asn.cymru.com",
+   "type": 16
+  }
+ ],
+ "Answer": [
+  {
+   "name": "1.1.1.1.origin.asn.cymru.com",
+   "type": 16,
+   "TTL": 14400,
+   "data": "\"13335 | 1.1.1.0/24 | AU | apnic | 2011-08-11\""
+  }
+ ]
+}

@@ -1,0 +1,339 @@
+{
+  "batch": "p1-G02-2",
+  "modules": [
+    {
+      "name": "tor_exit_local",
+      "file": "v3lum/modules/ip_network/tor_exit_local.py",
+      "proposal": "P040",
+      "category": "ip_network",
+      "opsec": "passive",
+      "default_enabled": true,
+      "terms": "open",
+      "provider_tier": "trusted",
+      "keys": [],
+      "datasets": [
+        "tor_exit_local.torbulkexitlist.txt",
+        "tor_exit_local.onionoo_running_relays.json"
+      ],
+      "pivot_packs": [
+        "tor_relays"
+      ],
+      "correlation_rules": [],
+      "new_vocabulary": [
+        "attribute:is_tor_relay",
+        "attribute:tor_relay",
+        "attribute:dataset_age",
+        "tag:anonymizer"
+      ],
+      "live_check": "run live 2026-11-26 (V3LUM_LIVE=1, tests/live/test_p1_g02_2.py, all 7 live tests passed): the TorDNSEL bulk exit list (1,256 exits) and the Onionoo running-relay summary were fetched through the dataset manager and validated; 8.8.8.8 -> EMPTY (not Tor, no value sent anywhere); a current exit taken from the list -> OK, LOW 'Tor exit node' (anonymizer/context_only, T1090.003, never malicious)."
+    },
+    {
+      "name": "tor_onionoo",
+      "file": "v3lum/modules/ip_network/tor_onionoo.py",
+      "proposal": "P040",
+      "category": "ip_network",
+      "opsec": "passive",
+      "default_enabled": true,
+      "terms": "open",
+      "provider_tier": "trusted",
+      "keys": [],
+      "datasets": [
+        "tor_exit_local.torbulkexitlist.txt",
+        "tor_exit_local.onionoo_running_relays.json"
+      ],
+      "pivot_packs": [
+        "tor_relays"
+      ],
+      "correlation_rules": [],
+      "new_vocabulary": [
+        "attribute:is_tor_relay",
+        "attribute:tor_relay",
+        "tag:anonymizer"
+      ],
+      "live_check": "run live 2026-11-26 (V3LUM_LIVE=1, tests/live/test_p1_g02_2.py, all 7 live tests passed): 8.8.8.8 -> SKIPPED not_applicable with 0 requests (non-Tor IPs never leave the machine); one current exit -> Onionoo details answer parsed (exact-IP filter, flags Exit/Fast/Guard, fingerprint present, operator contact never requested)."
+    },
+    {
+      "name": "tor_exit_history",
+      "file": "v3lum/modules/ip_network/tor_exit_history.py",
+      "proposal": "P040",
+      "category": "ip_network",
+      "opsec": "passive",
+      "default_enabled": false,
+      "terms": "open",
+      "provider_tier": "trusted",
+      "keys": [],
+      "datasets": [
+        "tor_exit_history.collector_YYYY-MM.tar.xz (6 monthly CollecTor exit-list archives, 2026-06..2026-11 registered at import)",
+        "tor_exit_history.mthcht_tor_nodes_history.json"
+      ],
+      "pivot_packs": [
+        "tor_relays"
+      ],
+      "correlation_rules": [],
+      "new_vocabulary": [
+        "attribute:tor_exit_history",
+        "tag:anonymizer"
+      ],
+      "live_check": "run live 2026-11-26 (V3LUM_LIVE=1, tests/live/test_p1_g02_2.py, all 7 live tests passed): the CollecTor exit-list archive for 2026-11 was downloaded through `data update` (10,952,932 bytes in 2.3 s, streamed tar.xz reader with caps) and a dated check of a current exit answered 'was an exit on 2026-11-24, CollecTor' in 3.8 s."
+    },
+    {
+      "name": "shodan_internetdb",
+      "file": "v3lum/modules/ip_network/shodan_internetdb.py",
+      "proposal": "P043",
+      "category": "ip_network",
+      "opsec": "passive",
+      "default_enabled": true,
+      "terms": "noncommercial",
+      "provider_tier": "trusted",
+      "keys": [],
+      "datasets": [],
+      "pivot_packs": [
+        "core_reference (shodan_host manual link, existing)"
+      ],
+      "correlation_rules": [],
+      "new_vocabulary": [
+        "attribute:internetdb_status",
+        "attribute:shared_ip",
+        "attribute:tls_self_signed",
+        "attribute:eol_software",
+        "attribute:is_honeypot",
+        "attribute:is_ics",
+        "attribute:is_scanner",
+        "attribute:is_tor_relay"
+      ],
+      "live_check": "run live 2026-11-26 (V3LUM_LIVE=1, tests/live/test_p1_g02_2.py, all 7 live tests passed): InternetDB was deliberately not called (noncommercial terms; the live profile is corporate): policy.decide -> SKIPPED 'licence' with the manual Shodan link emitted. Parsing is covered by the recorded fixtures (1.1.1.1, 8.8.8.8, 9.9.9.9, 2001:4860:4860::8888, documented 404)."
+    },
+    {
+      "name": "ip_offline_db",
+      "file": "v3lum/modules/ip_network/ip_offline_db.py",
+      "proposal": "P047",
+      "category": "ip_network",
+      "opsec": "passive",
+      "default_enabled": true,
+      "terms": "open",
+      "provider_tier": "community",
+      "keys": [],
+      "datasets": [
+        "ip_offline_db.iptoasn_v4.tsv",
+        "ip_offline_db.iptoasn_v6.tsv",
+        "ip_offline_db.bgptools_asns.csv"
+      ],
+      "pivot_packs": [],
+      "correlation_rules": [],
+      "new_vocabulary": [
+        "attribute:as_country",
+        "attribute:announced",
+        "attribute:ip_range",
+        "attribute:network_type",
+        "attribute:as_class",
+        "attribute:as_range_count",
+        "attribute:as_ipv4_addresses",
+        "attribute:dataset_age"
+      ],
+      "live_check": "run live 2026-11-26 (V3LUM_LIVE=1, tests/live/test_p1_g02_2.py, all 7 live tests passed): IPtoASN v4 + v6 downloaded and validated; 8.8.8.8 -> OK AS15169 'GOOGLE - Google LLC', US, 8.8.8.0/24; 2001:4860:4860::8888 -> AS15169; AS15169 -> range count > 0. bgp.tools was not called: no team role mailbox is configured, so the source reports SKIPPED 'config' (asserted)."
+    },
+    {
+      "name": "ip_offline_geo",
+      "file": "v3lum/modules/ip_network/ip_offline_geo.py",
+      "proposal": "P047",
+      "category": "ip_network",
+      "opsec": "passive",
+      "default_enabled": true,
+      "terms": "open",
+      "provider_tier": "trusted",
+      "keys": [],
+      "datasets": [
+        "ip_offline_geo.dbip_country_lite.mmdb",
+        "ip_offline_geo.dbip_asn_lite.mmdb"
+      ],
+      "pivot_packs": [],
+      "correlation_rules": [],
+      "new_vocabulary": [
+        "attribute:continent",
+        "attribute:in_eu",
+        "attribute:dataset_age"
+      ],
+      "live_check": "run live 2026-11-26 (V3LUM_LIVE=1, tests/live/test_p1_g02_2.py, all 7 live tests passed): DB-IP Lite country + ASN mmdb (2026-11 release) downloaded, gunzipped through safe_extract and validated; the lookup returned UNAVAILABLE 'package' because the optional maxminddb package is not installed in this environment (expected; offline tests use a stdlib reader stand-in)."
+    },
+    {
+      "name": "ip_blocklists",
+      "file": "v3lum/modules/threat_intel_ioc/ip_blocklists.py",
+      "proposal": "P149",
+      "category": "threat_intel_ioc",
+      "opsec": "passive",
+      "default_enabled": true,
+      "terms": "noncommercial",
+      "provider_tier": "community",
+      "keys": [],
+      "datasets": [
+        "ip_blocklists.spamhaus_drop_v4.json",
+        "ip_blocklists.spamhaus_drop_v6.json",
+        "ip_blocklists.spamhaus_asndrop.json",
+        "ip_blocklists.feodo.json",
+        "ip_blocklists.sslbl.csv",
+        "ip_blocklists.ipsum.txt",
+        "ip_blocklists.firehol_level1.txt",
+        "ip_blocklists.blocklist_de.txt",
+        "ip_blocklists.cins.txt",
+        "ip_blocklists.et_compromised.txt",
+        "ip_blocklists.greensnow.txt",
+        "ip_blocklists.binarydefense.txt",
+        "ip_blocklists.dataplane_sshclient.txt",
+        "ip_blocklists.voipbl.txt"
+      ],
+      "pivot_packs": [],
+      "correlation_rules": [],
+      "new_vocabulary": [
+        "attribute:blocklist_hits",
+        "attribute:blocklist_families",
+        "attribute:ipsum_count",
+        "attribute:shared_ip",
+        "attribute:verdict_lifetime_days",
+        "tag:blocklisted",
+        "tag:hijacked_netblock"
+      ],
+      "live_check": "run live 2026-11-26 (V3LUM_LIVE=1, tests/live/test_p1_g02_2.py, all 7 live tests passed): only the open feeds ran (corporate profile; the noncommercial feeds stayed off via allowed_sources): 8.8.8.8 -> EMPTY (10.3 s cold, feeds downloaded and validated: Spamhaus DROP v4 1,737 entries, Feodo 5, IPsum 141,565, Binary Defense 475); AS245 -> ASN-DROP hit, HIGH."
+    }
+  ],
+  "proposals_not_done": [
+    {
+      "id": "P047 (partial) cond 6 - MaxMind GeoLite2 download/lookup",
+      "reason": "The core dataset manager cannot send credentials (DataStore.update downloads with no headers), so the keyed GeoLite2 permalinks would always answer 401, and the redirect storage host plus the EULA 30-day delete need core support. Delivered: provider 'maxmind' (source maxmind.geolite2, terms 'license', keys maxmind_account_id + maxmind_license), the HTTP Basic-auth request builder and the 30-day rule in ip_offline_geo (tested); DB-IP Lite covers country/ASN meanwhile. Backlog docs/backlog/p1-G02-2.md row 1."
+    },
+    {
+      "id": "P043 (partial) cond 3 - App.doctor must stop calling internetdb.shodan.io under corporate",
+      "reason": "v3lum/app.py is core; the module itself is licence-gated (POL-04 skips it under corporate, tested). Needs WP25 doctor v2 routing health checks through policy.decide. Backlog row 5."
+    },
+    {
+      "id": "P043 (partial) cond 7 - 'KEV: k' count in the collapsed CVE finding",
+      "reason": "No KEV accessor is reachable from this batch; the finding says 'KEV: not checked here' and stays MEDIUM. shodan_internetdb.kev_ids() is the hook (raising to HIGH when a CVE is in KEV is implemented and tested). Backlog row 7."
+    },
+    {
+      "id": "P047 (partial) cond 3 - offline-first ordering of online geo/ASN modules",
+      "reason": "Ordering other modules (P051/P036 only when the offline answer is missing, never for bulk pastes) is engine scheduling (core). Backlog row 8."
+    },
+    {
+      "id": "P149 (partial) cond 8 - 'seen earlier but absent from the current feed' = historical",
+      "reason": "Needs earlier sightings (P375 case DB) or previous-version diffs from the dataset manager; modules may not persist IOC values. Offline Feodo C2s are reported 'historical' meanwhile. Backlog row 9."
+    },
+    {
+      "id": "P149 (partial) cond 2 - STIX/MISP exports drop the provenance of restricted feeds",
+      "reason": "Exports are core (P303). Every hit carries terms + restricted: true and the finding lists restricted_sources, ready for the exporter. Backlog row 10."
+    }
+  ],
+  "core_requests": [
+    "P034 shared core IP-range index (v3lum/core/ranges.py): ip_offline_db.IntervalIndex (sorted integer intervals + bisect, IPv4/IPv6, nested intervals) stands in and is used by ip_offline_db, ip_blocklists and the Tor modules; p1-G02-1 has a RangeIndex in cloud_ranges.py - promote one, with a test seam for documentation ranges (cf. ip_offline_db.TEST_PUBLIC_LABELS), and switch the three modules to it.",
+    "datasets.safe_extract: tar/xz support streamed in memory with the same caps (member count/size, total size, no '..'/absolute names, no links/special files); tor_exit_history.iter_tar_xz is then replaced by it (P040 c3).",
+    "Keyed dataset downloads for MaxMind GeoLite2 (P047 c6): register_dataset(..., auth_keys=(user_key, password_key)) sending HTTP Basic auth from registered keys (redacted, stripped on cross-host redirects) in update()/fetch(), the redirect storage host registered, and DataStore.delete(name) for the EULA 30-day update-or-delete rule; plus a licence_allow entry for maxmind.geolite2 once legal accepts the EULA.",
+    "A per-seed/IOC date exposed to modules (ScanOptions date per seed, or the timestamp of the log line an IP came from, WP17) so tor_exit_history reads it per entity instead of setting tor_exit_history_dates (P040 c3).",
+    "WP25 doctor v2: App.doctor health checks through policy.decide (path 'doctor') so InternetDB is not probed under the corporate profile (P043 c3).",
+    "Per-source licence skip wording in POL-04 / coverage rows (e.g. from the registry source licensed_alternative): 'skipped: licence (Shodan non-commercial terms)' instead of the generic text (P043 c3).",
+    "A KEV accessor (the cisa provider/dataset of its owning batch or P291's KEV view) read by shodan_internetdb.kev_ids() for the 'KEV: k' count and the HIGH raise (P043 c7).",
+    "Engine/policy offline-first rule for the geo/ASN module families: online geo/ASN modules (P051, P036) only when ip_offline_db/ip_offline_geo have no answer or for depth-0 seeds, never for bulk pastes (P047 c3).",
+    "P375 case-DB sightings of blocklist hits (or previous-version diffs from the dataset manager) so an IP seen earlier but absent from the current feed is reported historical (P149 c8).",
+    "P303 STIX/MISP exporter: drop feed, attribution and dataset hash of hits marked restricted: true (P149 c2).",
+    "HttpClient conditional revalidation (If-Modified-Since / ETag) of expired cache rows, for the per-IP Onionoo details calls (P040 c7; the relay summary dataset already revalidates with If-Modified-Since).",
+    "POL-14 per-dataset granularity: a missing optional or monthly large dataset should mark that source, not block the whole module (why tor_exit_history is a separate opt-in module and bgp.tools is registered without a size).",
+    "MODULE_GUIDE section 24.3 excerpt of shodan_internetdb is out of date (documented 404 is now an info finding + EMPTY 'not seen by Shodan scanners', min_interval 1.0, CVEs collapsed into one version-inferred finding); the guide is frozen, so this needs a guide migration note.",
+    "AR21 acceptance harness: a way to replay trimmed dataset bodies below module validation floors (MIN_EXITS / MIN_RELAYS / min_bytes); the batch tests lower the floors with monkeypatch, a raw replay would get ERROR instead of EMPTY for tor_exit_local/tor_onionoo.",
+    "Fragile core tests (not editable by batches): tests/test_links.py::test_links_for_legacy_signature expects only the Shodan link for 8.8.8.8 (every IP pivot pack, including tor_relays:exonerator, adds links), and tests/test_datasets.py::test_first_run_hint_and_update_all counts every essential dataset registered by loaded modules (29 in the full suite; passes in isolation) - both should isolate the registries.",
+    "Coverage/report rendering of the dataset_age attribute (list of 'name, fetched YYYY-MM-DD HH:MM UTC (age)' lines) in the coverage table and the report footer, next to the attribution strings (P047 c2, P040 c7)."
+  ],
+  "files": [
+    "docs/backlog/p1-G02-2.md",
+    "tests/fixtures/acceptance/ipv4/ip_blocklists.json",
+    "tests/fixtures/acceptance/ipv4/shodan_internetdb.json",
+    "tests/fixtures/acceptance/ipv4/tor_exit_local.json",
+    "tests/fixtures/acceptance/ipv4/tor_onionoo.json",
+    "tests/fixtures/ip_blocklists/binarydefense_moved_301.html",
+    "tests/fixtures/ip_blocklists/binarydefense_ok.txt",
+    "tests/fixtures/ip_blocklists/blocklist_de_ok.txt",
+    "tests/fixtures/ip_blocklists/cins_ok.txt",
+    "tests/fixtures/ip_blocklists/dataplane_sshclient_ok.txt",
+    "tests/fixtures/ip_blocklists/et_compromised_ok.txt",
+    "tests/fixtures/ip_blocklists/feodo_empty.json",
+    "tests/fixtures/ip_blocklists/feodo_ok.json",
+    "tests/fixtures/ip_blocklists/firehol_level1_ok.netset",
+    "tests/fixtures/ip_blocklists/greensnow_ok.txt",
+    "tests/fixtures/ip_blocklists/ipsum_error_501.html",
+    "tests/fixtures/ip_blocklists/ipsum_ok.txt",
+    "tests/fixtures/ip_blocklists/spamhaus_asndrop_ok.json",
+    "tests/fixtures/ip_blocklists/spamhaus_drop_v4_ok.json",
+    "tests/fixtures/ip_blocklists/spamhaus_drop_v4_truncated.json",
+    "tests/fixtures/ip_blocklists/spamhaus_drop_v6_ok.json",
+    "tests/fixtures/ip_blocklists/spamhaus_edrop_retired.txt",
+    "tests/fixtures/ip_blocklists/sslbl_certs_ok.csv",
+    "tests/fixtures/ip_blocklists/sslbl_ips_retired.txt",
+    "tests/fixtures/ip_blocklists/voipbl_ok.txt",
+    "tests/fixtures/ip_offline_db/bgptools_asns_ok.csv",
+    "tests/fixtures/ip_offline_db/ip2asn_v4_slice.tsv",
+    "tests/fixtures/ip_offline_db/ip2asn_v6_slice.tsv",
+    "tests/fixtures/ip_offline_geo/dbip_asn_lite_slice.mmdb",
+    "tests/fixtures/ip_offline_geo/dbip_country_lite_slice.mmdb",
+    "tests/fixtures/ip_offline_geo/dbip_country_lite_slice.mmdb.gz",
+    "tests/fixtures/shodan_internetdb/1.1.1.1.json",
+    "tests/fixtures/shodan_internetdb/2001-4860-4860--8888.json",
+    "tests/fixtures/shodan_internetdb/8.8.8.8.json",
+    "tests/fixtures/shodan_internetdb/9.9.9.9.json",
+    "tests/fixtures/shodan_internetdb/vulns_synthetic.json",
+    "tests/fixtures/tor_exit_history/collector_2026-10_slice.tar.xz",
+    "tests/fixtures/tor_exit_history/collector_recent_ok.txt",
+    "tests/fixtures/tor_exit_history/mthcht_tor_nodes_history_ok.json",
+    "tests/fixtures/tor_exit_local/onionoo_summary_running_ok.json",
+    "tests/fixtures/tor_exit_local/torbulkexitlist_empty.txt",
+    "tests/fixtures/tor_exit_local/torbulkexitlist_ok.txt",
+    "tests/fixtures/tor_onionoo/details_empty.json",
+    "tests/fixtures/tor_onionoo/details_ok.json",
+    "tests/fixtures/tor_onionoo/details_prefix_matches.json",
+    "tests/fixtures/tor_onionoo/details_relay_only.json",
+    "tests/fixtures/tor_onionoo/error_400.html",
+    "tests/live/test_p1_g02_2.py",
+    "tests/modules/test_ip_blocklists.py",
+    "tests/modules/test_ip_offline_db.py",
+    "tests/modules/test_ip_offline_geo.py",
+    "tests/modules/test_shodan_internetdb.py",
+    "tests/modules/test_tor_exit_history.py",
+    "tests/modules/test_tor_exit_local.py",
+    "tests/modules/test_tor_onionoo.py",
+    "v3lum/data/attack/p1-G02-2.json",
+    "v3lum/data/extras/maxminddb.json",
+    "v3lum/data/notices/bgptools_asns.json",
+    "v3lum/data/notices/binarydefense_banlist.json",
+    "v3lum/data/notices/blocklist_de.json",
+    "v3lum/data/notices/cins_army.json",
+    "v3lum/data/notices/dataplane.json",
+    "v3lum/data/notices/dbip_lite.json",
+    "v3lum/data/notices/et_compromised.json",
+    "v3lum/data/notices/firehol_level1.json",
+    "v3lum/data/notices/greensnow.json",
+    "v3lum/data/notices/ipsum.json",
+    "v3lum/data/notices/iptoasn.json",
+    "v3lum/data/notices/mthcht_tor_nodes_history.json",
+    "v3lum/data/notices/spamhaus_drop.json",
+    "v3lum/data/notices/tor_metrics_data.json",
+    "v3lum/data/notices/voipbl.json",
+    "v3lum/data/pivot_links/tor_relays.json",
+    "v3lum/data/providers/bgptools.json",
+    "v3lum/data/providers/binarydefense.json",
+    "v3lum/data/providers/blocklist_de.json",
+    "v3lum/data/providers/cinsscore.json",
+    "v3lum/data/providers/dataplane.json",
+    "v3lum/data/providers/dbip.json",
+    "v3lum/data/providers/emergingthreats.json",
+    "v3lum/data/providers/github__p1-G02-2.json",
+    "v3lum/data/providers/greensnow.json",
+    "v3lum/data/providers/iptoasn.json",
+    "v3lum/data/providers/maxmind.json",
+    "v3lum/data/providers/spamhaus.json",
+    "v3lum/data/providers/voipbl.json",
+    "v3lum/data/vocab/p1-G02-2.json",
+    "v3lum/modules/ip_network/ip_offline_db.py",
+    "v3lum/modules/ip_network/ip_offline_geo.py",
+    "v3lum/modules/ip_network/shodan_internetdb.py",
+    "v3lum/modules/ip_network/tor_exit_history.py",
+    "v3lum/modules/ip_network/tor_exit_local.py",
+    "v3lum/modules/ip_network/tor_onionoo.py",
+    "v3lum/modules/threat_intel_ioc/ip_blocklists.py"
+  ],
+  "notes": "Seven modules for four proposals. P040 is split into tor_exit_local (local TorDNSEL bulk list + Onionoo running summary, disclosure none, allowed at TLP:RED), tor_onionoo (third-party details only for IPs already matched locally: a non-Tor IP never leaves the machine) and tor_exit_history (dated CollecTor/mthcht checks). P047 is split into ip_offline_db (IPtoASN + bgp.tools) and ip_offline_geo (DB-IP Lite, requires the optional maxminddb package) because POL-13 (packages) and POL-14 (missing large dataset) are module-level gates. Decisions to confirm: (1) tor_exit_history is default_enabled=False (deviation): its monthly 8-15 MB archives are large datasets that POL-14 would report missing on every IP scan, and the council allows history only when a date is known - entities carry no date, so the user opts in and sets tor_exit_history_dates (backlog rows 2-3). (2) bgp.tools needs the setting contact_email (team role mailbox) for the mandatory descriptive UA; without it the source is SKIPPED 'config' and was never called live. (3) ip_blocklists has terms noncommercial (some feeds) with per-feed allowed_sources: under corporate only Spamhaus DROP/ASN-DROP, Feodo/SSLBL, IPsum and Binary Defense run; restricted hits carry restricted: true. (4) The Feodo/SSLBL dataset names (ip_blocklists.feodo.json, ip_blocklists.sslbl.csv) are also registered by p1-G07-1's abusech module with the same names and URLs - one download serves both; the last import wins on validator/metadata, so the batch test asserts only rejection + kept copy. (5) shodan_internetdb (P043) was upgraded in place: manual 404 handling ({'detail': 'No information available'} -> info finding + EMPTY, other 404 -> ERROR), tag attributes, shared hostnames expand=False, 'last seen unknown' on ports, risky ports capped at MEDIUM, CVEs collapsed into one version-inferred finding with CVE pivots at 0.5, min_interval 1.0; its fixtures 1.1.1.1 and 8.8.8.8 were rescrubbed (co-tenant names) and 3 fixtures added. (6) The maxmind provider and its two keys are registered but unused until the GeoLite2 core support lands. Gates: registry contract green for all 7 modules, provider registry 0 errors, P327 lint clean on 7 modules + 32 data fragments, ruff clean on all batch Python files. Batch tests: 131 collected, 124 passed, 7 live skipped offline (all 7 passed with V3LUM_LIVE=1). Full offline suite (final run): 4,984 tests, 18 failed, 76 skipped, 0 errors - every failure is a core/top-level test outside this batch and failed again on re-run: test_engine_status_mapping x12 (engine in flux: select() tuples, status ranks), test_context::test_ctx_http_error_markers_and_keyless (QuotaExceeded on test_provider), test_datasets::test_first_run_hint_and_update_all (counts all essential datasets of loaded modules; passes in isolation), test_links x2 (cert_fingerprint template of another pack; legacy single-link expectation), test_net_connector::test_a_socks_proxy_refusing_the_target_is_a_socket_error (A7 PolicyError) and test_tools::test_forced_args_are_appended_and_the_rate_is_clamped. Earlier transient failures (test_username_check deadline; registry contract cases of rdap and secret_scanner) passed in the final run."
+}

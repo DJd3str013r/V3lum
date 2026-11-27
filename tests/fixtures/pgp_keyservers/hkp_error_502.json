@@ -1,0 +1,9 @@
+{
+ "_envelope": 1,
+ "_synthetic": "nginx 502 page in front of Hockeypuck; not observed",
+ "status": 502,
+ "headers": {
+  "content-type": "text/html"
+ },
+ "body": "<html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n</body>\r\n</html>\r\n"
+}

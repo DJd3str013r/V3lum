@@ -1,0 +1,16 @@
+{
+ "Status": 2,
+ "TC": false,
+ "RD": true,
+ "RA": true,
+ "AD": false,
+ "CD": false,
+ "Question": [
+  {
+   "name": "_dmarc.example.org.",
+   "type": 16
+  }
+ ],
+ "Comment": "Name servers refused query (lame delegation?) [192.0.2.53].",
+ "edns_client_subnet": "0.0.0.0/0"
+}

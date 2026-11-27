@@ -1,0 +1,80 @@
+{
+ "data_id": "ZXhhbXBsZS1kYXRhLWlk",
+ "file_id": "ZXhhbXBsZS1maWxlLWlk",
+ "file_info": {
+  "display_name": "eicar.com",
+  "file_size": 68,
+  "file_type_category": "T",
+  "file_type_description": "EICAR virus test files",
+  "file_type_extension": "com",
+  "md5": "44D88612FEA8A8F36DE82E1278ABB02F",
+  "sha1": "3395856CE81F2B7382DEE72602F798B642F14140",
+  "sha256": "275A021BBFB6489E54D471899F7DB9D1663FC695EC2FE2A2C4538AABF651FD0F",
+  "upload_timestamp": "2020-05-05T15:50:03.497Z"
+ },
+ "scan_results": {
+  "scan_details": {
+   "ClamAV": {
+    "def_time": "2026-11-25T00:00:00.000Z",
+    "scan_result_i": 1,
+    "scan_time": 3,
+    "threat_found": "Win.Test.EICAR_HDB-1"
+   },
+   "Bitdefender": {
+    "def_time": "2026-11-25T00:00:00.000Z",
+    "scan_result_i": 1,
+    "scan_time": 5,
+    "threat_found": "EICAR-Test-File (not a virus)"
+   },
+   "Emsisoft": {
+    "def_time": "2026-11-25T00:00:00.000Z",
+    "scan_result_i": 1,
+    "scan_time": 4,
+    "threat_found": "EICAR-Test-File (not a virus) (B)"
+   },
+   "K7": {
+    "def_time": "2026-11-25T00:00:00.000Z",
+    "scan_result_i": 2,
+    "scan_time": 2,
+    "threat_found": "Suspicious\u001b[31m"
+   },
+   "Xvirus": {
+    "def_time": "2026-11-25T00:00:00.000Z",
+    "scan_result_i": 0,
+    "scan_time": 1,
+    "threat_found": ""
+   },
+   "ExampleAV": {
+    "def_time": "2026-11-25T00:00:00.000Z",
+    "scan_result_i": 10,
+    "scan_time": 0,
+    "threat_found": ""
+   }
+  },
+  "rescan_available": true,
+  "scan_all_result_i": 1,
+  "start_time": "2026-11-25T14:25:13.858Z",
+  "total_time": 1204,
+  "total_avs": 6,
+  "total_detected_avs": 3,
+  "progress_percentage": 100,
+  "scan_all_result_a": "Infected"
+ },
+ "threat_name": "EICAR-Test-File",
+ "malware_family": "eicar",
+ "malware_type": [
+  "test"
+ ],
+ "votes": {
+  "up": 0,
+  "down": 0
+ },
+ "process_info": {
+  "result": "Blocked",
+  "blocked_reason": "Infected",
+  "verdicts": [
+   "Infected"
+  ]
+ },
+ "sandbox": false
+}

@@ -1,0 +1,9 @@
+{
+  "schema": "v3lum.extra/1",
+  "package": "ppdeep",
+  "pip": "ppdeep>=20200505",
+  "extra": "full",
+  "licence": "Apache-2.0",
+  "justification": "Pure-Python ssdeep (no C extension, no wheel needed) for file_hashing (P267 FC2): ssdeep is computed only for regular files <= 50 MB when ppdeep is installed; MD5/SHA-1/SHA-256/SHA-512 never depend on it, so the module stays available without it.",
+  "notes": "Optional extra of batch p1-G07-2. TLSH is not computed locally in this build (py-tlsh ships no wheels, P267 FC2); provider TLSH values are kept as attributes."
+}

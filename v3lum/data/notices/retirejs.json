@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "retirejs",
+  "source_url": "https://github.com/RetireJS/retire.js",
+  "version": "repository/jsrepository-v4.json downloaded 2026-11-26 (651,449 bytes, 78 libraries); detection semantics ported from node/lib/retire.js 6.1.1",
+  "sha256": "83bffe85191634137c6d0bc21d0212bd3bbfb1e8a32ea5b6cb6e230c1b71d31f",
+  "licence": "Apache-2.0",
+  "attribution": "Retire.js vulnerability repository and detection logic, Copyright the Retire.js authors (Erlend Oftedal and contributors), licensed under the Apache License, Version 2.0 (https://github.com/RetireJS/retire.js/blob/master/LICENSE.md). The bundled jsrepository-v4.json is unmodified; the version-comparison and extractor semantics were re-implemented in Python.",
+  "bundled": true,
+  "files": [
+    "v3lum/data/retirejs/jsrepository-v4.json",
+    "v3lum/modules/url_web/retirejs_check.py"
+  ]
+}

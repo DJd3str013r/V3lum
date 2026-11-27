@@ -1,0 +1,24 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "osv",
+  "hosts": [],
+  "sources": {
+    "retirejs_check_query": {
+      "title": "OSV API POST /v1/query {package: {name, ecosystem: npm}, version} for front-end libraries recognised by RetireJS (confirmation only)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://google.github.io/osv.dev/faq/",
+        "quote": "OSV npm confirmation queries (library name and version only, never the target) are capped at 10 per entity and 20 per run. [...] Tier community (the RetireJS project dataset; OSV is trusted); terms open.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "osv",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P344 cond 3 and chair rationale). Verified live by the p2-G03-1 prep (2026-11-26): jquery 1.12.4 -> 4 npm advisories (GHSA-6c3j-c64m-qhgq CVE-2019-11358, GHSA-gxr4-xjj5-5px2 CVE-2020-11022, GHSA-jpcq-cgw6-v4j6 CVE-2020-11023, GHSA-rmxg-73gg-4p98 CVE-2015-9251), jquery 3.7.1 -> {}, a bad ecosystem -> 400 {\"code\":3,\"message\":\"invalid ecosystem\"}. Only public npm package names recognised by the RetireJS repository and their versions are sent (never a URL, a host or an internal package name), which is narrower than the P185 cond 3 concern about disclosing an internal software inventory. Used by retirejs_osv; skipped at TLP:RED like every third-party source."
+    }
+  },
+  "error_markers": [],
+  "notes": "Batch p2-G03-1 extension (P344 retirejs_osv): the package query endpoint on the existing api.osv.dev host."
+}

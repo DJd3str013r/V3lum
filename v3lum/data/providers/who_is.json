@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "who_is",
+  "name": "Who.is WHOIS pages",
+  "operator": "Who.is",
+  "hosts": [
+    "who.is"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Long-running public WHOIS site with an identifiable operator; P026 cond 5: 'community - who.is'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Third-party WHOIS mirror; registry data is authoritative."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "pivot_pages": {
+      "title": "Who.is /whois/{domain} (manual pivot link)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://who.is/",
+        "quote": "The pack is offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "who-is",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (cond 1 of the proposal). Research C0072 (verified 2026-11-26, 200). DNS records sit on a separate tab: the WHOIS page is not touches_target. Used by pivots_domain_dns (pack domain_dns.json)."
+    }
+  },
+  "notes": "Manual pivot links only (batch p2-G14-1): V3LUM never fetches them (P311)."
+}

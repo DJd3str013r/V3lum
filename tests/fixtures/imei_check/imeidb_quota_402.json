@@ -1,0 +1,13 @@
+{
+ "_envelope": 1,
+ "_synthetic": "imeidb.xyz API docs error table (code 402 'Out of money, please top up your balance.'), body shaped like the live 401",
+ "status": 402,
+ "headers": {
+  "content-type": "application/json; charset=UTF-8"
+ },
+ "body": {
+  "success": false,
+  "message": "Out of money, please top up your balance.",
+  "code": 402
+ }
+}

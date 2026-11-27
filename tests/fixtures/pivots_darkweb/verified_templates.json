@@ -1,0 +1,225 @@
+{
+ "_doc": "Maintainer verification records for the pivots_darkweb links (batch p2-G14-2): request URL, status, page title and a note per check, 2026-11-25/26 from a datacenter egress. Page bodies are not kept (victim lists, PEP names and bucket file names never enter the repository). 'link' and 'entity' name the pack link and the value the URL was built from; tests render them and compare with 'url'. V3LUM itself never requests these URLs.",
+ "checks": [
+  {
+   "case": "onionsearch_blocked",
+   "url": "https://onionsearchengine.com/search.php?search=2gzyxa5ihm7nsggfxnu52rck2vv4rvmdlkiu3zzui5du4xyclen53wid.onion&submit=Search",
+   "status": 403,
+   "title": "Attention Required! | Cloudflare",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:39:24Z",
+   "note": "Cloudflare block page for curl from the datacenter egress on 2026-11-26 (research C0472 saw 200 on 2026-11-25); query was the Tor Project onion",
+   "link": null,
+   "entity": null
+  },
+  {
+   "case": "ransomlook_group_not_found",
+   "url": "https://www.ransomlook.io/group/v3lum-nonexistent-group",
+   "status": 302,
+   "title": "Redirecting...",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:39:12Z",
+   "note": "unknown slug -> 302 to the home page (a guessed path lands silently on the home page); the response also carries an Onion-Location header (not kept)",
+   "link": null,
+   "entity": null
+  },
+  {
+   "case": "ransomlook_group_ok",
+   "url": "https://www.ransomlook.io/group/lockbit3",
+   "status": 200,
+   "title": "Lockbit3 · RansomLook",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:39:09Z",
+   "note": "title 'Lockbit3 · RansomLook' (research saw 'Lockbit3 - RansomLook'); 2.9 MB page",
+   "link": "darkweb:ransomlook_group",
+   "entity": "threat_actor:LockBit 3.0"
+  },
+  {
+   "case": "ransomlook_group_space_slug",
+   "url": "https://www.ransomlook.io/group/inc%20ransom",
+   "status": 200,
+   "title": "Inc Ransom · RansomLook",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:43:56Z",
+   "note": "slug with a space: /group/inc%20ransom -> 200",
+   "link": "darkweb:ransomlook_group",
+   "entity": "threat_actor:INC Ransom"
+  },
+  {
+   "case": "ransomlook_home_post_search",
+   "url": "https://www.ransomlook.io/",
+   "status": 200,
+   "title": "RansomLook — Open ransomware intelligence",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:39:14Z",
+   "note": "the only search is a POST form: no GET search URL exists for the P203 FC8 fallback",
+   "link": null,
+   "entity": null
+  },
+  {
+   "case": "ransomlook_search_get_redirect",
+   "url": "https://www.ransomlook.io/search?search=lockbit",
+   "status": 302,
+   "title": "Redirecting...",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:43:54Z",
+   "note": "GET /search?search=lockbit -> 302 / (GET search unsupported)",
+   "link": null,
+   "entity": null
+  },
+  {
+   "case": "rlive_group_not_found",
+   "url": "https://www.ransomware.live/group/v3lum-nonexistent-group",
+   "status": 404,
+   "title": "404 Not Found",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:39:19Z",
+   "note": "unknown slug -> 404",
+   "link": null,
+   "entity": null
+  },
+  {
+   "case": "rlive_group_ok",
+   "url": "https://www.ransomware.live/group/lockbit3",
+   "status": 200,
+   "title": "Ransomware.live: Lockbit3",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:39:16Z",
+   "note": "7.6 MB page",
+   "link": "darkweb:rlive_group",
+   "entity": "threat_actor:LockBit 3.0"
+  },
+  {
+   "case": "rlive_search_ok",
+   "url": "https://www.ransomware.live/search?q=lockbit",
+   "status": 200,
+   "title": "Ransomware.live - Search",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:39:20Z",
+   "note": "GET /search?q= works (fallback of P203 FC8); query operators like -group:x +sector:y exist",
+   "link": "darkweb:rlive_search",
+   "entity": "keyword:lockbit"
+  },
+  {
+   "case": "ransomlook_group_akira",
+   "url": "https://www.ransomlook.io/group/akira",
+   "status": 200,
+   "title": "",
+   "observed_at": "2026-11-26",
+   "source": "maintainer HEAD check (batch p2-G14-2)",
+   "note": "slug of x_tracker_slugs",
+   "link": null,
+   "entity": null
+  },
+  {
+   "case": "ransomlook_group_qilin",
+   "url": "https://www.ransomlook.io/group/qilin",
+   "status": 200,
+   "title": "",
+   "observed_at": "2026-11-26",
+   "source": "maintainer HEAD check (batch p2-G14-2)",
+   "note": "slug of x_tracker_slugs",
+   "link": null,
+   "entity": null
+  },
+  {
+   "case": "ransomlook_group_play",
+   "url": "https://www.ransomlook.io/group/play",
+   "status": 200,
+   "title": "",
+   "observed_at": "2026-11-26",
+   "source": "maintainer HEAD check (batch p2-G14-2)",
+   "note": "slug of x_tracker_slugs",
+   "link": null,
+   "entity": null
+  },
+  {
+   "case": "ransomlook_group_medusa",
+   "url": "https://www.ransomlook.io/group/medusa",
+   "status": 200,
+   "title": "",
+   "observed_at": "2026-11-26",
+   "source": "maintainer HEAD check (batch p2-G14-2)",
+   "note": "slug of x_tracker_slugs",
+   "link": null,
+   "entity": null
+  },
+  {
+   "case": "ransomlook_group_safepay",
+   "url": "https://www.ransomlook.io/group/safepay",
+   "status": 200,
+   "title": "",
+   "observed_at": "2026-11-26",
+   "source": "maintainer HEAD check (batch p2-G14-2)",
+   "note": "slug of x_tracker_slugs",
+   "link": null,
+   "entity": null
+  },
+  {
+   "case": "rlive_group_akira",
+   "url": "https://www.ransomware.live/group/akira",
+   "status": 200,
+   "title": "",
+   "observed_at": "2026-11-26",
+   "source": "maintainer HEAD check (batch p2-G14-2)",
+   "note": "slug of x_tracker_slugs",
+   "link": null,
+   "entity": null
+  },
+  {
+   "case": "rlive_group_qilin",
+   "url": "https://www.ransomware.live/group/qilin",
+   "status": 200,
+   "title": "",
+   "observed_at": "2026-11-26",
+   "source": "maintainer HEAD check (batch p2-G14-2)",
+   "note": "slug of x_tracker_slugs",
+   "link": null,
+   "entity": null
+  },
+  {
+   "case": "rlive_group_play",
+   "url": "https://www.ransomware.live/group/play",
+   "status": 200,
+   "title": "",
+   "observed_at": "2026-11-26",
+   "source": "maintainer HEAD check (batch p2-G14-2)",
+   "note": "slug of x_tracker_slugs",
+   "link": null,
+   "entity": null
+  },
+  {
+   "case": "rlive_group_medusa",
+   "url": "https://www.ransomware.live/group/medusa",
+   "status": 200,
+   "title": "",
+   "observed_at": "2026-11-26",
+   "source": "maintainer HEAD check (batch p2-G14-2)",
+   "note": "slug of x_tracker_slugs",
+   "link": null,
+   "entity": null
+  },
+  {
+   "case": "rlive_group_safepay",
+   "url": "https://www.ransomware.live/group/safepay",
+   "status": 200,
+   "title": "",
+   "observed_at": "2026-11-26",
+   "source": "maintainer HEAD check (batch p2-G14-2)",
+   "note": "slug of x_tracker_slugs",
+   "link": null,
+   "entity": null
+  },
+  {
+   "case": "onionsearch_without_submit",
+   "url": "https://onionsearchengine.com/search.php?search=2gzyxa5ihm7nsggfxnu52rck2vv4rvmdlkiu3zzui5du4xyclen53wid.onion",
+   "status": 403,
+   "title": "",
+   "observed_at": "2026-11-26",
+   "source": "maintainer GET check (batch p2-G14-2)",
+   "note": "the template without '&submit=Search' (dropped for the P327 submission lint): Cloudflare 403 for curl, unverified until a browser re-check",
+   "link": null,
+   "entity": null
+  }
+ ]
+}

@@ -1,0 +1,97 @@
+{
+ "a": [
+  {
+   "host": "example.com",
+   "ips": [
+    {
+     "asn": "64496",
+     "asn_name": "EXAMPLE-AS-1",
+     "asn_range": "192.0.2.0/24",
+     "country": "Brazil",
+     "country_code": "BR",
+     "ip": "192.0.2.10",
+     "ptr": ""
+    }
+   ]
+  },
+  {
+   "host": "www.example.com",
+   "ips": [
+    {
+     "asn": "64496",
+     "asn_name": "EXAMPLE-AS-1",
+     "asn_range": "192.0.2.0/24",
+     "country": "Brazil",
+     "country_code": "BR",
+     "ip": "192.0.2.11",
+     "ptr": "web.example.net"
+    }
+   ]
+  },
+  {
+   "host": "VPN.Example.com",
+   "ips": [
+    {
+     "asn": "64500",
+     "asn_name": "EXAMPLE-AS-2",
+     "asn_range": "198.51.100.0/24",
+     "country": "United States",
+     "country_code": "US",
+     "ip": "198.51.100.20",
+     "ptr": ""
+    }
+   ]
+  },
+  {
+   "host": "legacy.example.com",
+   "ips": []
+  }
+ ],
+ "cname": [
+  {
+   "host": "shop.example.com",
+   "ips": []
+  }
+ ],
+ "mx": [
+  {
+   "host": "mx1.example.net",
+   "ips": [
+    {
+     "asn": "64501",
+     "asn_name": "EXAMPLE-MAIL",
+     "asn_range": "203.0.113.0/24",
+     "country": "Germany",
+     "country_code": "DE",
+     "ip": "203.0.113.25",
+     "ptr": "mx1.example.net"
+    }
+   ]
+  }
+ ],
+ "ns": [
+  {
+   "host": "ns1.example.com",
+   "ips": [
+    {
+     "asn": "64496",
+     "asn_name": "EXAMPLE-AS-1",
+     "asn_range": "192.0.2.0/24",
+     "country": "Brazil",
+     "country_code": "BR",
+     "ip": "192.0.2.53",
+     "ptr": ""
+    }
+   ]
+  },
+  {
+   "host": "ns2.example.net",
+   "ips": []
+  }
+ ],
+ "total_a_recs": 120,
+ "txt": [
+  "v=spf1 include:_spf.example.net -all",
+  "google-site-verification=PLACEHOLDER"
+ ]
+}

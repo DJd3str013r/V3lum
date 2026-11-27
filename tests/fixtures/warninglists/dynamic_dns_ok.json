@@ -1,0 +1,17 @@
+{
+ "name": "List of known dynamic DNS domains",
+ "type": "hostname",
+ "version": 20261123,
+ "description": "Event contains one or more entries of known dynamic DNS domains.",
+ "matching_attributes": [
+  "domain",
+  "hostname",
+  "domain|ip"
+ ],
+ "category": "known",
+ "list": [
+  ".ddns.net",
+  ".duckdns.org",
+  ".dynuddns.net"
+ ]
+}

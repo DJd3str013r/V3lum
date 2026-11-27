@@ -1,0 +1,23 @@
+{
+ "_meta": {
+  "module": "username_check",
+  "case": "kaggle_ok",
+  "source": "V3LUM calibration capture (P113 FC2), Kaggle",
+  "request": {
+   "method": "GET",
+   "url": "https://www.kaggle.com/kaggleteam",
+   "user_agent": "V3LUM/dev",
+   "redirects": "not followed"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "live check, this sandbox's datacenter egress",
+  "elapsed_s": 0.149,
+  "minimised": true,
+  "note": "official 'Kaggle Team Bot' account; page reduced to its head (title, og tags); nonces and the reCAPTCHA site key redacted"
+ },
+ "status": 200,
+ "headers": {
+  "content-type": "text/html; charset=utf-8"
+ },
+ "body": "<!DOCTYPE html><html lang=\"en\"><head><title>Kaggle Team Bot</title>\n<script nonce=\"REDACTED\" id=\"site-wide-recaptcha\" src=\"https://www.google.com/recaptcha/enterprise.js?render=REDACTED\" async defer></script>\n<meta name=\"description\" content=\"Kaggle profile for Kaggle Team Bot\" />\n<meta property=\"og:url\" content=\"https://www.kaggle.com/kaggleteam\" />\n<meta property=\"og:title\" content=\"Kaggle Team Bot\" />\n<meta property=\"og:description\" content=\"Kaggle profile for Kaggle Team Bot\" />\n<meta property=\"og:type\" content=\"profile\" />\n<meta property=\"og:username\" content=\"kaggleteam\" />\n<meta name=\"twitter:site\" content=\"@Kaggle\" /></head><body></body></html>"
+}

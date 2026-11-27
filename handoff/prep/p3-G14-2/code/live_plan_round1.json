@@ -1,0 +1,8 @@
+[
+ {"label": "lyzem_robots", "url": "https://lyzem.com/robots.txt", "accept": "text/plain", "max_bytes": 200000},
+ {"label": "wikileaks_robots", "url": "https://search.wikileaks.org/robots.txt", "accept": "text/plain", "max_bytes": 200000},
+ {"label": "lyzem_search_domain_example_com", "url": "https://lyzem.com/search?q=example.com", "accept": "text/html"},
+ {"label": "wikileaks_search_company_banco_do_brasil", "url": "https://search.wikileaks.org/?query=Banco%20do%20Brasil", "accept": "text/html"},
+ {"label": "lyzem_search_nonsense_token", "url": "https://lyzem.com/search?q=zqxvkjw9183pt", "accept": "text/html"},
+ {"label": "wikileaks_search_nonsense_token", "url": "https://search.wikileaks.org/?query=zqxvkjw9183pt", "accept": "text/html"}
+]

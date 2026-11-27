@@ -1,0 +1,20 @@
+{
+ "cep": "70040912",
+ "state": "DF",
+ "city": "Brasília",
+ "neighborhood": "Asa Norte",
+ "street": "SAUN Quadra 5 Lote B Torres I, II e III",
+ "service": "open-cep",
+ "ibge": {
+  "city": "5300108",
+  "state": "53"
+ },
+ "timezoneName": "America/Sao_Paulo",
+ "location": {
+  "type": "Point",
+  "coordinates": {
+   "longitude": "-47.92972",
+   "latitude": "-15.77972"
+  }
+ }
+}

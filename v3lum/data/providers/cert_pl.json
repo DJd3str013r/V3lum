@@ -1,0 +1,52 @@
+{
+  "schema": "v3lum.provider/1",
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "id": "cert_pl",
+  "name": "CERT Polska Hole (warning list of dangerous domains)",
+  "operator": "CERT Polska (NASK - Naukowa i Akademicka Siec Komputerowa)",
+  "hosts": [
+    "hole.cert.pl"
+  ],
+  "tier": "trusted",
+  "tier_rationale": "National CERT of Poland (A8 trusted: national CERTs/CSIRTs); P071 chair: 'CERT.PL and Procon-SP are trusted'.",
+  "reliability": {
+    "grade": "B",
+    "justification": "Entries are vetted by CERT Polska analysts before they enter the warning list; listings are dated (InsertDate) and removals are recorded."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 21600,
+    "min_interval": 1.0
+  },
+  "sources": {
+    "hole_domains": {
+      "title": "CERT.PL warning list domains (v2 CSV: domain, InsertDate, DeleteDate)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://cert.pl/en/warning-list/",
+        "quote": "Per-feed terms: CERT.PL Hole (any use incl. commercial; trusted), Phishing.Database (MIT), StevenBlack (MIT), MetaMask eth-phishing-detect (permissive), spmedia (MIT), Botvrij, CyberCrime-Tracker and Procon-SP run with attribution. HaGeZi TIF and ScamSniffer are GPL-3.0 data: runtime download only, never bundled or used as fixtures (A6).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "cert.pl",
+      "sanitizer": null,
+      "dataset": "url_domain_blocklists.certpl.csv",
+      "notes": "Quote: binding council text (P071 cond 2). https://hole.cert.pl/domains/v2/domains.csv (tab-separated, ~7 MB; the JSON variant holds the same fields at ~22.7 MB, the TXT variant has no dates) fetched by `v3lum data update` only (> 5 MB, A6) and indexed locally (disclosure 'none'). InsertDate gives the listing date; removals come from snapshot diffs (DeleteDate was null in every sampled record, 2026-11-26)."
+    }
+  },
+  "notes": "Owned by batch p1-G03-1 (P071 url_domain_blocklists). Downloaded and matched locally: no investigated value is ever sent to CERT Polska."
+}

@@ -1,0 +1,15 @@
+{
+  "schema": "v3lum.fediverse_instances/1",
+  "version": 1,
+  "description": "Known-instance list of the passive mastodon module (P105 cond 1): large public Mastodon instances the module may contact. Each host has a provider registry entry (v3lum/data/providers/<provider>.json) recording its tier (trusted or community) and terms. Maintainers refresh this list; a host added here without a provider entry fails registration (fail closed).",
+  "reviewed": "2026-11-26",
+  "reviewer": "p3-G05-1 implementer (candidate list, pending maintainer review)",
+  "resolver": "mastodon.social",
+  "instances": [
+    {"host": "mastodon.social", "software": "mastodon", "provider": "mastodon_ggmbh"},
+    {"host": "mastodon.online", "software": "mastodon", "provider": "mastodon_ggmbh"},
+    {"host": "hachyderm.io", "software": "mastodon", "provider": "hachyderm"},
+    {"host": "social.vivaldi.net", "software": "mastodon", "provider": "vivaldi_social"},
+    {"host": "fosstodon.org", "software": "mastodon", "provider": "fosstodon"}
+  ]
+}

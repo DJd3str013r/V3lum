@@ -1,0 +1,17 @@
+{
+ "_note": "synthetic fixture in the documented urlscan.io result format (keyed result API is not reachable without a key); documentation values only",
+ "task": {"uuid": "01a21607-9c70-74c0-853d-a1ef26e386e9", "time": "2026-11-26T04:05:32.766Z", "url": "https://www.example.com/", "visibility": "public"},
+ "page": {"url": "https://www.example.com/", "domain": "www.example.com", "ip": "192.0.2.10", "asn": "AS64496"},
+ "verdicts": {"overall": {"score": 100, "categories": ["phishing"], "brands": ["Example Bank"], "malicious": true}},
+ "lists": {"domains": ["www.example.com", "code.jquery.com"]},
+ "data": {
+  "requests": [
+   {"request": {"request": {"url": "https://www.example.com/"}},
+    "response": {"hash": "aa11bb22cc33dd44ee55ff66aa11bb22cc33dd44ee55ff66aa11bb22cc33dd44", "response": {"url": "https://www.example.com/"}}},
+   {"request": {"request": {"url": "https://code.jquery.com/jquery-3.7.1.min.js"}},
+    "response": {"hash": "fc9a93dd241f6b045cbff0481cf4e1901becd0e12fb45166a8f17f95823f0b1a", "response": {"url": "https://code.jquery.com/jquery-3.7.1.min.js"}}},
+   {"request": {"request": {"url": "https://www.example.com/assets/kit-config.js?u=victim%40example.com"}},
+    "response": {"hash": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef", "response": {"url": "https://www.example.com/assets/kit-config.js?u=victim%40example.com"}}}
+  ]
+ }
+}

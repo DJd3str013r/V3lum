@@ -1,0 +1,39 @@
+{
+ "_source": "live check 2026-11-26 from this datacenter egress: search/users?q=test@example.com in:email (4 of 13 items; logins and ids replaced; types kept). None of the 13 hits is an exact profile e-mail: the search is tokenised/fuzzy (P086-FC4)",
+ "total_count": 13,
+ "incomplete_results": false,
+ "items": [
+  {
+   "login": "example-org-1",
+   "id": 2000001,
+   "html_url": "https://github.com/example-org-1",
+   "type": "Organization",
+   "site_admin": false,
+   "score": 1.0
+  },
+  {
+   "login": "example-org-2",
+   "id": 2000002,
+   "html_url": "https://github.com/example-org-2",
+   "type": "Organization",
+   "site_admin": false,
+   "score": 1.0
+  },
+  {
+   "login": "example-user-3",
+   "id": 2000003,
+   "html_url": "https://github.com/example-user-3",
+   "type": "User",
+   "site_admin": false,
+   "score": 1.0
+  },
+  {
+   "login": "example-org-4",
+   "id": 2000004,
+   "html_url": "https://github.com/example-org-4",
+   "type": "Organization",
+   "site_admin": false,
+   "score": 1.0
+  }
+ ]
+}

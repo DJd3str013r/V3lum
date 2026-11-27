@@ -1,0 +1,74 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "dnsdumpster",
+  "name": "DNSDumpster API (api.dnsdumpster.com)",
+  "operator": "Hacker Target Pty Ltd (DNSDumpster)",
+  "hosts": [
+    "api.dnsdumpster.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Long-running public recon service of an identifiable company (Hacker Target) with published API documentation and terms; council P007 cond 1 classes DNSDumpster community (A8).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Passive DNS/scan aggregation with A/MX/NS/CNAME hosts and IP/ASN facts; the free plan returns at most 50 records per domain (Plus 200 per page)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 20,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 2.0,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "key",
+    "rate_per_second": 0.5,
+    "day": 50,
+    "burst": 1,
+    "published": false,
+    "evidence_url": "https://dnsdumpster.com/developer/",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {
+    "dnsdumpster": {
+      "description": "DNSDumpster API key (X-API-Key header on api.dnsdumpster.com)",
+      "signup_url": "https://dnsdumpster.com/developer/",
+      "env": [
+        "V3LUM_DNSDUMPSTER_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "business = a company/team account on a plan whose terms permit internal business use, recorded by legal (never an analyst's personal free account, P007 cond 3); key_plans.dnsdumpster='business' unlocks it under the corporate profile"
+    }
+  },
+  "sources": {
+    "domain": {
+      "title": "DNSDumpster domain records (GET /domain/{domain})",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://dnsdumpster.com/developer/",
+        "quote": "P007 cond 3 (binding council text): key-terms per adapter - a company/team account, never an analyst's personal free account, on a plan whose terms permit internal business use; legal records the plan and the terms URL in the registry before the adapter runs under the corporate profile (A1).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "dnsdumpster",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0027 (verified_needs_key: 401 {\"error\":\"API key is missing\"} without key; real fixture). Documented: 1 request / 2 s (429 {\"error\":\"Rate limit exceeded\"}), Free 50 records, Plus 200 per page (?page=N, Plus only); ?map=1 and /banners/ are Plus-only and never requested; the dnsdumpster.com web form needs a CSRF token and is never used. The daily figure of the quota block is an interim budget (the free daily cap is unpublished) until legal records the team plan. Used by subdomains_keyed."
+    }
+  },
+  "notes": "Owned by batch p3-G01-1 (P007, module subdomains_keyed)."
+}

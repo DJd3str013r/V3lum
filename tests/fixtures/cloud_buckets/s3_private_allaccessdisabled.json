@@ -1,0 +1,11 @@
+{
+ "request": {"method": "GET", "url": "https://example-corp-legacy.s3.amazonaws.com/?max-keys=1"},
+ "response": {
+  "status": 403,
+  "headers": {"content-type": "application/xml", "server": "AmazonS3"},
+  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>AllAccessDisabled</Code><Message>All access to this object has been disabled</Message><RequestId>0000000000000000</RequestId></Error>"
+ },
+ "class": "research",
+ "origin": "synthetic (documented S3 403 AllAccessDisabled body)",
+ "notes": "403 AllAccessDisabled = exists-private (FC4)."
+}

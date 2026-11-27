@@ -1,0 +1,25 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "rfb",
+  "hosts": [
+    "solucoes.receita.fazenda.gov.br"
+  ],
+  "sources": {
+    "pivots_brazil_comprovante_pages": {
+      "title": "Receita Federal Comprovante de Inscricao e de Situacao Cadastral (manual pivot links; CAPTCHA solved by the analyst)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://solucoes.receita.fazenda.gov.br/Servicos/cnpjreva/Cnpjreva_Solicitacao.asp",
+        "quote": "The pack is offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "rfb",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P250 cond 1). Template Cnpjreva_Solicitacao.asp?cnpj={cnpj_digits}: the page has an hCaptcha the analyst solves in the browser (P250 cond 10, A9 manual link); never requested by V3LUM. Unverified, antibot. Used by pivots_brazil (pack brazil.json)."
+    }
+  },
+  "error_markers": []
+}

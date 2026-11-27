@@ -1,0 +1,22 @@
+{
+ "schema": "v3lum.acceptance_routes/1",
+ "module": "digital_asset_links",
+ "routes": [
+  {
+   "method": "GET",
+   "url": "https://digitalassetlinks.googleapis.com/v1/statements:list?source.web.site=https%3A%2F%2Fexample.com&relation=delegate_permission%2Fcommon.handle_all_urls",
+   "status": 200,
+   "json": {
+    "maxAge": "599.999999939s",
+    "debugString": "********************* ERRORS *********************\n* Error: unavailable: Error fetching statements from https://example.com./.well-known/assetlinks.json (which is equivalent to 'https://example.com/.well-known/assetlinks.json'): 404 Not Found [2394] while fetching Web statements from https://example.com./.well-known/assetlinks.json (which is equivalent to 'https://example.com/.well-known/assetlinks.json') using download from the web (ID 1).\n",
+    "errorCode": [
+     "ERROR_CODE_FETCH_ERROR"
+    ]
+   },
+   "headers": {
+    "content-type": "application/json; charset=UTF-8"
+   },
+   "latency_ms": 450
+  }
+ ]
+}

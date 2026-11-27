@@ -1,0 +1,52 @@
+{
+ "success": true,
+ "timestamp": "2026-11-26T08:24:25.047Z",
+ "count": 1,
+ "results": {
+  "ip": "192.0.2.1",
+  "found": true,
+  "sources": [
+   {
+    "type": "subnet",
+    "subnet": "192.0.2.0/24",
+    "filename": "cidr_report_bogons.netset",
+    "category": "unroutable",
+    "maintainer": "CIDR-Report.org",
+    "maintainer_url": "http://www.cidr-report.org",
+    "source_updated_at": "2026-11-26T00:00:23.000Z",
+    "listed_since": "2026-09-29T00:01:19.000Z",
+    "listed_since_precision": "floor"
+   },
+   {
+    "type": "subnet",
+    "subnet": "192.0.2.0/24",
+    "filename": "firehol_level1.netset",
+    "category": "attacks",
+    "maintainer": "FireHOL",
+    "maintainer_url": "http://iplists.firehol.org/",
+    "source_updated_at": "2026-11-26T00:00:43.000Z",
+    "listed_since": "2026-09-29T00:02:04.000Z",
+    "listed_since_precision": "floor"
+   },
+   {
+    "type": "subnet",
+    "subnet": "192.0.2.0/24",
+    "filename": "iblocklist_cidr_report_bogons.netset",
+    "category": "unroutable",
+    "maintainer": "iBlocklist.com",
+    "maintainer_url": "https://www.iblocklist.com/",
+    "source_updated_at": "2026-11-26T00:01:30.000Z",
+    "listed_since": "2026-09-29T00:08:56.000Z",
+    "listed_since_precision": "floor"
+   }
+  ],
+  "network": {
+   "asn": null,
+   "org": null,
+   "country": null,
+   "type": "unrouted",
+   "type_source": "default"
+  },
+  "delisted": []
+ }
+}

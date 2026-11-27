@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "cloud_ranges_github_meta",
+  "source_url": "https://api.github.com/meta",
+  "version": "runtime download refreshed daily by the dataset manager (checked 2026-11-26)",
+  "sha256": "",
+  "licence": "GitHub meta API (public API answer, GitHub Terms of Service)",
+  "attribution": "GitHub meta API (https://api.github.com/meta), GitHub, Inc.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/ip_network/cloud_ranges.py"
+  ]
+}

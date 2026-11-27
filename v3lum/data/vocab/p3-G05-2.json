@@ -1,0 +1,21 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p3-G05-2",
+  "title": "Git metadata identities, community profile enrichers and the licence-gated TikTok profile (P115, P116, P118)",
+  "owner": "batch p3-G05-2 (git_metadata_identity, steam_community_profile, chesscom_player, lichess_user, medium_feed, snapchat_profile, disqus_profile, mojang_profile, pinterest_profile, stackexchange_user, tiktok_public)",
+  "attributes": {
+    "profile_row": "one row per community site {site, state, created, display_name, profile_url, linked}: the identity-raising summary of a profile (P116 FC8)",
+    "platform_facts": "identity-raising facts a platform returns for an account (stable ids, created/joined dates, counts, flags such as verified or closed): self-declared fields stay self-declared (P116 FC8, P118 FC5)",
+    "profile_content": "bio, location, real name, posts or link domains of a profile, shown only when the text mentions a case entity or an organisation brand/domain (P116 FC8): case-bound personal data",
+    "content_withheld": "names of profile content fields that were read but not shown because they mention no case entity (P116 FC8)",
+    "git_identities": "identities tied to a case-subject GitHub account in its own commits (GitHub account link or noreply id): list of {email, names, commits, roles, first, last, repos, via}; PROBABLE because git author fields are self-declared and forgeable (P115 FC4)",
+    "git_case_matches": "case entities found in the commit metadata of a subject's own repositories: list of {value, kind, roles, commits} (P115 FC4)",
+    "git_clusters": "gitcolombo clustering of the subject's own identities {same_person (names sharing the exact same e-mail set), multi_email_names, author_committer_links} (P115 FC3)",
+    "git_repos_read": "repositories whose single commits page was read {selected [{full_name, pushed_at, archived}], skipped {reason: count}, forks, page_full, commits_seen} (P115 FC1)"
+  },
+  "tags": {},
+  "relations": {
+    "git_commit_name": "account -> person name used with the account's own commit addresses (self-declared, PROBABLE, expand=False, never auto-pivoted into person_name modules; P115 FC5)",
+    "case_entity_in_subject_repos": "account/repository -> case entity seen in the commit metadata of the subject's own repositories (expand=False, P115 FC4)"
+  }
+}

@@ -1,0 +1,12 @@
+{
+ "status": 403,
+ "headers": {
+  "server": "daiquiri/5",
+  "content-length": "0",
+  "x-responding-instance": "MZStoreServices:6501726:::",
+  "apple-timing-app": "3 ms",
+  "x-apple-lokamai-no-cache": "true",
+  "cache-control": "max-age=0, no-cache, no-store",
+  "pragma": "no-cache"
+ }
+}

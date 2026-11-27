@@ -1,0 +1,13 @@
+{
+ "request": "GET https://whodat.internal.example/example.com",
+ "response": {
+  "status": 401,
+  "headers": {
+   "content-type": "application/json; charset=utf-8"
+  },
+  "body": "{\"error\": \"Unauthorized\"}"
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "self-hosted instance with an API key configured (CORS advertises Authorization/X-API-Key): NEEDS_KEY/config error"
+}

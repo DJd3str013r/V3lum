@@ -1,0 +1,17 @@
+{
+ "request": "POST https://checkurl.phishtank.com/checkurl/",
+ "response": {
+  "status": 509,
+  "headers": {
+   "content-type": "text/html",
+   "server": "cloudflare",
+   "x-request-count": "251",
+   "x-request-limit": "250",
+   "x-request-limit-interval": "300 Seconds"
+  },
+  "body": ""
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "documented on api_info.php: going over-limit returns HTTP 509; not provoked"
+}

@@ -1,0 +1,104 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "nodes": [
+  {
+   "key": "domain:bb.com.br",
+   "depth": 0,
+   "seed": true,
+   "attributes": {
+    "bcb_verified_domain": [
+     {
+      "value": {
+       "domain": "bb.com.br",
+       "match": "exact",
+       "host": "bb.com.br",
+       "registrable_domain": "bb.com.br",
+       "matched_domains": [
+        "bb.com.br"
+       ],
+       "institutions": [
+        {
+         "cnpj_root": "00000000",
+         "legal_name": "BANCO DO BRASIL S.A.",
+         "domain_type": "own",
+         "segments": [
+          "Banco do Brasil - Banco Multiplo"
+         ],
+         "conglomerate": "BB - PRUDENCIAL",
+         "conglomerate_code": "C0080329"
+        },
+        {
+         "cnpj_root": "24933830",
+         "legal_name": "BB-BANCO DE INVESTIMENTO S/A",
+         "domain_type": "conglomerate_member",
+         "segments": [
+          "Banco de Investimento"
+         ],
+         "conglomerate": "BB - PRUDENCIAL",
+         "conglomerate_code": "C0080329"
+        }
+       ],
+       "institutions_sharing_domain": 2,
+       "registrant_cnpj_roots": [
+        "00000000"
+       ],
+       "conglomerate_member_roots": [
+        "00000000",
+        "24933830",
+        "30822936"
+       ],
+       "as_of": "2026-11-26"
+      },
+      "source": "bcb_authorized_institutions"
+     }
+    ],
+    "known_good": [
+     {
+      "value": true,
+      "source": "bcb_authorized_institutions"
+     }
+    ]
+   },
+   "findings": [
+    {
+     "title": "Verified domain of a BCB-authorised institution",
+     "severity": "info",
+     "confidence": 1.0,
+     "confidence_label": "confirmed",
+     "criterion": "exact host or label-wise subdomain (below the PSL registrable domain) of a domain in BCB Olinda DominiosVerificados",
+     "tags": [
+      "verified_fi",
+      "known_good",
+      "info"
+     ],
+     "module": "bcb_authorized_institutions",
+     "source": "bcb.olinda_institutions",
+     "data": {}
+    },
+    {
+     "title": "Domain listed as malicious",
+     "severity": "high",
+     "confidence": 0.9,
+     "confidence_label": "confirmed",
+     "criterion": "listed by the feed as an active phishing URL",
+     "tags": [
+      "malicious"
+     ],
+     "module": "ip_blocklists",
+     "source": "",
+     "data": {}
+    }
+   ]
+  }
+ ],
+ "edges": [],
+ "expect": {
+  "bcb_verified_domain_flagged": {
+   "min": 1,
+   "max": 1,
+   "severity": "medium",
+   "confidence_label": "possible"
+  }
+ }
+}

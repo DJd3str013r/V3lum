@@ -1,0 +1,54 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "leaklookup",
+  "name": "Leak-Lookup search API (PUBLIC key: breach names only)",
+  "operator": "Leak-Lookup (leak-lookup.com; the operating entity is not named on its pages)",
+  "hosts": ["leak-lookup.com"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Identifiable breach-search service online since 2016 with public API documentation, terms of service and a status page, but no named legal entity (A8 community; P140 chair: 'Tier community').",
+  "tier_reviewer": "council-1 (A8, P140)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": true},
+  "personal_data_review": null,
+  "reliability": {"grade": "C", "justification": "Index of breach dumps received through 'anonymous donations or public sources'; the terms state that Leak-Lookup 'does not validate any of its data'. A listing is a lead, joined to the shared HIBP catalogue for dates and data classes where the name matches."},
+  "http_profile": {"user_agent": "neutral", "accept": "application/json", "timeout": 20, "ttl": 0, "min_interval": 12.0, "concurrency": 1, "retries": 0},
+  "quota": {"scope": "key", "day": 10, "rate_per_second": 0.0833, "burst": 1, "published": true, "evidence_url": "https://leak-lookup.com/packages/api", "safety_margin": 0.8},
+  "error_markers": [
+    {"id": "leaklookup_request_limit", "statuses": [200], "json_path": null, "equals": null, "regex": "(?is)\\A(?=.*\"error\"\\s*:\\s*\"?true\\b)(?=.*REQUEST\\s+LIMIT\\s+REACHED)", "final_url_regex": null, "maps_to": "quota", "reason_code": "quota", "reason": "Leak-Lookup: daily public-key request limit reached (HTTP 200 error 'REQUEST LIMIT REACHED'): provider stopped for today (could not verify)"},
+    {"id": "leaklookup_rate_limit", "statuses": [200], "json_path": null, "equals": null, "regex": "(?is)\\A(?=.*\"error\"\\s*:\\s*\"?true\\b)(?=.*RATE\\s+LIMIT\\s+REACHED)", "final_url_regex": null, "maps_to": "rate_limited", "reason_code": "rate_limited", "reason": "Leak-Lookup: more than 5 requests in the last minute (HTTP 200 error 'RATE LIMIT REACHED'): could not verify now"},
+    {"id": "leaklookup_key_refused", "statuses": [200], "json_path": null, "equals": null, "regex": "(?is)\\A(?=.*\"error\"\\s*:\\s*\"?true\\b)(?=.*API\\s+KEY)", "final_url_regex": null, "maps_to": "error", "reason_code": "error", "reason": "Leak-Lookup: the public API key was refused (HTTP 200 error 'MISSING', 'INVALID' or 'INACTIVE API KEY'): renew the 'leaklookup' key (v3lum keys) - could not verify"},
+    {"id": "leaklookup_error_true", "statuses": [200], "json_path": null, "equals": null, "regex": "(?is)\\A(?=.*\"error\"\\s*:\\s*\"?true\\b)", "final_url_regex": null, "maps_to": "error", "reason_code": "error", "reason": "Leak-Lookup: API error inside an HTTP 200 answer (error 'true'): could not verify"}
+  ],
+  "keys": {
+    "leaklookup": {
+      "description": "Leak-Lookup PUBLIC API key (the free key of a company-registered account; sent in the POST body; breach names only - the private/records tier is never subscribed to or used)",
+      "signup_url": "https://leak-lookup.com/account/register",
+      "env": ["V3LUM_LEAKLOOKUP_KEY", "V3LUM_LEAKLOOKUP_PUBLIC_KEY"],
+      "multi_key": false,
+      "plan_hint": "business = the company-registered PUBLIC key with its use recorded by legal (searches only for the organisation's own addresses or written-authorised case subjects, per Leak-Lookup's terms) before it runs under the corporate profile (P140 cond 1, 5)"
+    }
+  },
+  "sources": {
+    "search": {
+      "title": "Leak-Lookup search API POST /api/search with the PUBLIC key (form key, type email_address | domain | username, query): breach names only",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://leak-lookup.com/support/terms",
+        "quote": "You may only use this service for your own personal security and research. Furthermore, you may only search for information about yourself or those who you are authorized in writing to do so.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1, P140)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "leaklookup",
+      "sanitizer": {
+        "keep": ["error", "message[]", "message.*[].v3lum_no_record_fields"],
+        "notes": "P140 cond 2 / P145: only the error flag and the breach NAMES survive before the HTTP cache and the module (public answers are {name: []} or a list of names); record lists of a private-tier answer are emptied to {} so no record field ever reaches the module, which then refuses the answer (fail closed, P140 cond 1). Error texts are dropped: the provider error markers classify every error 'true' body before sanitizing."
+      },
+      "dataset": null,
+      "notes": "Research C0313 (verified_needs_key: a keyless POST answers HTTP 200 {'error':'true','message':'MISSING API KEY'}, 2026-11-25). API documentation (leak-lookup.com/docs/search, checked 2026-11-26): public key 'limited to 10 requests per day', 'Public API $0: Redacted Results, 10 Daily Search Requests, 5 Requests Per Minute' (packages/api); public answers strip every indexed column ({breach_sitename: []}); documented error messages MISSING SEARCH TYPE/QUERY/API KEY, MISSING REQUIRED PARAMETERS, EMPTY VALUE DETECTED, SEARCH FAILED, SEARCH QUERY BLACKLISTED, REQUEST LIMIT REACHED (quota), RATE LIMIT REACHED (rate_limited), INACTIVE/INVALID API KEY. Type allow-list email_address, domain, username: 'password', 'ipaddress', 'phone' and 'fullname' are never built (P140 cond 2). The terms forbid 'Mass-Domain queries of unauthorized domains': domain queries run only for verified own domains. ttl 0 (no-store: the key travels in the POST body). Used by leak_lookup_public."
+    }
+  },
+  "notes": "Owned by batch p3-G04-2 (P140 leak_lookup_public). Sensitive provider (A4): the sanitizer schema applies before the HTTP cache and before the module reads a body. Key-terms: legal records the plan (key_plans.leaklookup) before it runs under the corporate profile. Error-in-200 bodies map through the markers above to QUOTA, RATE_LIMITED or ERROR, never EMPTY (P140 cond 3); a key that is not configured is NEEDS_KEY before any request."
+}

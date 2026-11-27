@@ -1,0 +1,59 @@
+{
+  "schema": "v3lum.platforms/1",
+  "platforms": {
+    "codeberg": {
+      "title": "Codeberg",
+      "aliases": [],
+      "profile_url_patterns": ["https://codeberg.org/{handle}"],
+      "reserved_handles": ["explore", "user", "repo", "api", "assets", "avatars", "notifications", "org"]
+    },
+    "dockerhub": {
+      "title": "Docker Hub",
+      "aliases": ["docker_hub"],
+      "profile_url_patterns": ["https://hub.docker.com/u/{handle}"],
+      "reserved_handles": []
+    },
+    "huggingface": {
+      "title": "Hugging Face",
+      "aliases": ["hf"],
+      "profile_url_patterns": ["https://huggingface.co/{handle}"],
+      "reserved_handles": ["models", "datasets", "spaces", "docs", "blog", "pricing", "api", "papers", "organizations", "join", "learn"]
+    },
+    "keybase": {
+      "title": "Keybase",
+      "aliases": [],
+      "profile_url_patterns": ["https://keybase.io/{handle}"],
+      "reserved_handles": ["_", "docs", "blog", "download", "team"]
+    },
+    "linktree": {
+      "title": "Linktree",
+      "aliases": ["linktr.ee"],
+      "profile_url_patterns": ["https://linktr.ee/{handle}"],
+      "reserved_handles": ["s", "marketplace", "blog", "admin"]
+    },
+    "dribbble": {
+      "title": "Dribbble",
+      "aliases": [],
+      "profile_url_patterns": ["https://dribbble.com/{handle}"],
+      "reserved_handles": ["shots", "jobs", "designers", "tags", "stories", "pro", "session"]
+    },
+    "gravatar": {
+      "title": "Gravatar",
+      "aliases": [],
+      "profile_url_patterns": ["https://gravatar.com/{handle}", "https://en.gravatar.com/{handle}"],
+      "reserved_handles": ["avatar", "profile", "support", "site"]
+    },
+    "medium": {
+      "title": "Medium",
+      "aliases": [],
+      "profile_url_patterns": ["https://medium.com/@{handle}"],
+      "reserved_handles": []
+    },
+    "devto": {
+      "title": "DEV Community",
+      "aliases": ["dev.to"],
+      "profile_url_patterns": ["https://dev.to/{handle}"],
+      "reserved_handles": ["t", "top", "latest", "search", "listings", "videos", "podcasts", "tags", "enter"]
+    }
+  }
+}

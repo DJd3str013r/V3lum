@@ -1,0 +1,148 @@
+{
+ "Results": [
+  {
+   "Result": {
+    "IsDB": "True",
+    "Spend": 11390,
+    "Paths": [
+     {
+      "FirstIndexed": 1324166400000,
+      "LastIndexed": 1769472000000,
+      "Domain": "example.com",
+      "Url": "dd",
+      "SubDomain": "",
+      "Technologies": [
+       {
+        "Name": "MooTools",
+        "Tag": "javascript",
+        "Categories": [
+         "JavaScript Library"
+        ],
+        "FirstDetected": 1324166400000,
+        "LastDetected": 1380153600000,
+        "IsPremium": "No"
+       },
+       {
+        "Name": "Commission Junction",
+        "Tag": "ads",
+        "Categories": [
+         "Affiliate Programs"
+        ],
+        "FirstDetected": 1422316800000,
+        "LastDetected": 1422316800000,
+        "IsPremium": "No"
+       },
+       {
+        "Name": "YouTube",
+        "Tag": "media",
+        "Categories": [
+         "Live Stream / Webcast",
+         "Online Video Platform",
+         "Social Video Platform"
+        ],
+        "FirstDetected": 1473638400000,
+        "LastDetected": 1625097600000,
+        "IsPremium": "No"
+       }
+      ]
+     },
+     {
+      "FirstIndexed": 1369440000000,
+      "LastIndexed": 1764115200000,
+      "Domain": "example.com",
+      "Url": "",
+      "SubDomain": "blog",
+      "Technologies": [
+       {
+        "Name": "nginx 0.8",
+        "Parent": "nginx",
+        "Tag": "Web Server",
+        "FirstDetected": 1369440000000,
+        "LastDetected": 1442793600000,
+        "IsPremium": "No"
+       },
+       {
+        "Name": "WordPress 3.6",
+        "Parent": "WordPress",
+        "Tag": "cms",
+        "FirstDetected": 1386201600000,
+        "LastDetected": 1400371200000,
+        "IsPremium": "No"
+       },
+       {
+        "Name": "Comodo PositiveSSL",
+        "Tag": "ssl",
+        "FirstDetected": 1381622400000,
+        "LastDetected": 1442793600000,
+        "IsPremium": "No"
+       }
+      ]
+     },
+     {
+      "FirstIndexed": 1379203200000,
+      "LastIndexed": 1718496000000,
+      "Domain": "example.com",
+      "Url": "",
+      "SubDomain": "widgets",
+      "Technologies": [
+       {
+        "Name": "Linode",
+        "Tag": "hosting",
+        "Categories": [
+         "US hosting",
+         "VPS Hosting"
+        ],
+        "FirstDetected": 1381622400000,
+        "LastDetected": 1402963200000,
+        "IsPremium": "No"
+       },
+       {
+        "Name": "jQuery Autocomplete",
+        "Parent": "jQuery",
+        "Tag": "javascript",
+        "FirstDetected": 1379203200000,
+        "LastDetected": 1402963200000,
+        "IsPremium": "No"
+       },
+       {
+        "Name": "Comodo PositiveSSL Wildcard",
+        "Tag": "ssl",
+        "Categories": [
+         "Wildcard"
+        ],
+        "FirstDetected": 1379203200000,
+        "LastDetected": 1402963200000,
+        "IsPremium": "No"
+       }
+      ]
+     }
+    ]
+   },
+   "Meta": {
+    "Majestic": 8723,
+    "Vertical": "Travel",
+    "Social": null,
+    "CompanyName": "Example Inc",
+    "Telephones": null,
+    "Emails": [],
+    "City": null,
+    "State": null,
+    "Postcode": null,
+    "Country": "US",
+    "Names": null,
+    "ARank": 18255,
+    "QRank": 18255
+   },
+   "Attributes": {
+    "MJRank": 8723,
+    "GTMTags": 0,
+    "Sitemap": 0
+   },
+   "FirstIndexed": 1130457600000,
+   "LastIndexed": 1793145600000,
+   "Lookup": "example.com",
+   "SalesRevenue": 0
+  }
+ ],
+ "Errors": []
+}

@@ -1,0 +1,17 @@
+{
+ "_fixture": "REAL live capture 2026-11-26, minimised: unknown site parameter",
+ "_meta": {
+  "url": "https://api.stackexchange.com/2.3/users/-1?site=jlzqlpxmmz7a",
+  "user_agent": "V3LUM/dev",
+  "captured": "2026-11-26T08:33:15Z",
+  "elapsed_s": 0.283,
+  "bytes_original": 101
+ },
+ "status": 400,
+ "headers": {
+  "content-type": "application/json; charset=utf-8",
+  "cache-control": "private",
+  "server": "cloudflare"
+ },
+ "body": "{\"error_id\":400,\"error_message\":\"No site found for name `jlzqlpxmmz7a`\",\"error_name\":\"bad_parameter\"}"
+}

@@ -1,0 +1,14 @@
+{
+ "server": "modern",
+ "probe": "weak_broken",
+ "trust": "self_signed_ca",
+ "ok": false,
+ "stage": "handshake",
+ "version": null,
+ "cipher": null,
+ "error_type": "SSLError",
+ "reason": "SSLV3_ALERT_HANDSHAKE_FAILURE",
+ "library": "SSL",
+ "verify_code": null,
+ "str": "[SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] ssl/tls alert handshake failure (_ssl.c:1035)"
+}

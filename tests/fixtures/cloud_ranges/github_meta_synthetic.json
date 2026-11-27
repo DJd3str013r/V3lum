@@ -1,0 +1,42 @@
+{
+ "_synthetic": "schema of GET https://api.github.com/meta (docs.github.com REST 'meta'); documentation prefixes only - api.github.com/meta is refused by this session's egress policy; replace with a trimmed real answer from an unrestricted egress",
+ "verifiable_password_authentication": false,
+ "ssh_key_fingerprints": {
+  "SHA256_ED25519": "example-not-a-real-fingerprint"
+ },
+ "hooks": [
+  "192.0.2.192/29"
+ ],
+ "web": [
+  "192.0.2.200/29",
+  "2001:db8:1::/48"
+ ],
+ "api": [
+  "192.0.2.208/29"
+ ],
+ "git": [
+  "192.0.2.200/29"
+ ],
+ "packages": [
+  "192.0.2.216/29"
+ ],
+ "pages": [
+  "192.0.2.224/29",
+  "2001:db8:2::/48"
+ ],
+ "importer": [
+  "192.0.2.232/30"
+ ],
+ "actions": [
+  "192.0.2.240/28",
+  "2001:db8:3::/48"
+ ],
+ "dependabot": [
+  "192.0.2.236/30"
+ ],
+ "domains": {
+  "website": [
+   "*.example.com"
+  ]
+ }
+}

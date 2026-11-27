@@ -1,0 +1,24 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "gravatar",
+  "hosts": ["secure.gravatar.com", "www.gravatar.com", "0.gravatar.com", "1.gravatar.com", "2.gravatar.com"],
+  "sources": {
+    "avatar_correlation_avatars": {
+      "title": "Gravatar avatar images /avatar/<hash> on the gravatar.com image hosts, fetched only from avatar URLs already found on profiles (P114)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://automattic.com/tos/",
+        "quote": "Gravatar (Automattic): tier trusted, terms open.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "gravatar",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "P114 cond 7: avatar_correlation never queries Gravatar with a case e-mail's hash; it fetches only avatar URLs already found on profiles (such a URL already carries its owner's hash) and compares hashes of case e-mails locally. Gravatar default images ('mm', served with Last-Modified 1984-01-11) are listed in v3lum/data/default_avatars/gravatar.json and never count as identity evidence."
+    }
+  },
+  "error_markers": [],
+  "notes": "Batch p2-G05-2: the Gravatar avatar image hosts used by avatar_correlation (P114)."
+}

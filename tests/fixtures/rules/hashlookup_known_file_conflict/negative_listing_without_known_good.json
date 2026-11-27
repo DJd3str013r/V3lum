@@ -1,0 +1,18 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "nodes": [
+    {
+      "key": "sha256:275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f",
+      "depth": 0,
+      "seed": true,
+      "attributes": {"known_file": [{"value": "known file: Gentoo Linux 2005.0 Ubuntu 5.04 Iss 68 Jul 2005 (NSRL)", "source": "circl_hashlookup"}]},
+      "findings": [
+        {"title": "Listed as known malicious (CIRCL hashlookup)", "severity": "medium", "confidence": 0.7,
+         "confidence_label": "probable", "criterion": "hashlookup record carries KnownMalicious=malshare.com",
+         "tags": ["malware"], "module": "circl_hashlookup", "source": "circl.hashlookup", "data": {}}
+      ]
+    }
+  ],
+  "edges": []
+}

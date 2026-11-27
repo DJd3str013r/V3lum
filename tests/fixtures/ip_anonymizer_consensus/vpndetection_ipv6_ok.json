@@ -1,0 +1,21 @@
+{
+ "ip": "2606:4700:4700::1111",
+ "is_bogon": false,
+ "is_vpn": false,
+ "is_relay": false,
+ "is_tor": false,
+ "is_bot": false,
+ "is_anycast": true,
+ "tor": {},
+ "asn": {
+  "asn": 13335,
+  "name": "Cloudflare, Inc.",
+  "domain": "cloudflare.com",
+  "type": "hosting",
+  "prefix": "2606:4700:4700::/48"
+ },
+ "location": {
+  "country": "US"
+ },
+ "hostname": "one.one.one.one"
+}

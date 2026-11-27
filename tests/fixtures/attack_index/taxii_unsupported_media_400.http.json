@@ -1,0 +1,14 @@
+{
+ "status": 400,
+ "headers": {
+  "content-type": "application/taxii+json;version=2.1",
+  "content-length": "247"
+ },
+ "body": {
+  "title": "Unsupported Media SubType",
+  "description": "json is not a supported media subtype",
+  "http_status": "400",
+  "error_id": "aee3d2f5-279b-4fa6-b99e-da0a9d45232e",
+  "external_details": "https://docs.oasis-open.org/cti/taxii/v2.1/os/taxii-v2.1-os.html"
+ }
+}

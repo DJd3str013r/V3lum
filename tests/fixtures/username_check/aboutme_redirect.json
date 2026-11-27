@@ -1,0 +1,25 @@
+{
+ "_meta": {
+  "module": "username_check",
+  "case": "aboutme_redirect",
+  "source": "C0274/C0228 About.me",
+  "request": {
+   "method": "GET",
+   "url": "https://about.me/aboutme",
+   "user_agent": "V3LUM/dev",
+   "redirects": "not followed"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "live check, this sandbox's datacenter egress",
+  "elapsed_s": 0.155,
+  "minimised": true,
+  "note": "reserved name redirects to /team: a 3xx matching neither marker -> UNKNOWN (redirect not followed)"
+ },
+ "status": 302,
+ "headers": {
+  "content-type": "text/html; charset=utf-8",
+  "location": "/team",
+  "server": "cloudflare"
+ },
+ "body": "<p>Found. Redirecting to /team</p>"
+}

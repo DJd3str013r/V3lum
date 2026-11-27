@@ -1,0 +1,11 @@
+{
+ "request": {"method": "GET", "url": "https://example-corp-nope-xyz.s3.amazonaws.com/?max-keys=1"},
+ "response": {
+  "status": 404,
+  "headers": {"content-type": "application/xml", "server": "AmazonS3"},
+  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>NoSuchBucket</Code><Message>The specified bucket does not exist</Message><BucketName>example-corp-nope-xyz</BucketName><RequestId>0000000000000000</RequestId></Error>"
+ },
+ "class": "research",
+ "origin": "research/samples/design_cti_analysis_checks.json#bucket_semantics.s3",
+ "notes": "404 NoSuchBucket = absent (FC4). Bucket name scrubbed to example-corp-nope-xyz; RequestId/HostId zeroed."
+}

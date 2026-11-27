@@ -1,0 +1,25 @@
+{
+  "schema": "v3lum.pivot_pack/1",
+  "pack": "phone",
+  "title": "Phone pivots (P128): caller reputation",
+  "notes": "Owned by batch p1-G06-1 (P128). Manual links only: V3LUM never fetches them. Phone values are PERSONAL_TYPES: privacy=true links render only for analyst-typed seeds of a case that opted in, and as text with 'opening sends <number> to <host>' at TLP:AMBER and above (A2, P311 cond 5-6). The off-by-default messaging links (wa.me, t.me; setting phone_messaging_links) and ABR Telecom's static Consulta Numero page (no URL parameter, CAPTCHA) are emitted by the pivots_phone module, not by this pack: the frozen pack schema has no setting gate and requires a placeholder.",
+  "links": [
+    {
+      "id": "spamcalls_num",
+      "label": "spamcalls.net caller reports (user reports, unverified)",
+      "template": "https://spamcalls.net/en/num/{e164}",
+      "entity_types": ["phone"],
+      "category": "reputation",
+      "host": "spamcalls.net",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": true,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "User reports, unverified (P128 cond 1). {e164} = digits without '+': spamcalls.net decodes a literal '+' in the path as a space (verified 2026-11-26). A 410 'not (no longer) available' page means no reports. The page shows public per-number request counters: opening it from the analyst's browser is a lookup by that browser.",
+      "x_badge": "user reports, unverified"
+    }
+  ]
+}

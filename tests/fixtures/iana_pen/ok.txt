@@ -1,0 +1,106 @@
+PRIVATE ENTERPRISE NUMBERS
+
+(last updated 2026-11-25)
+
+SMI Network Management Private Enterprise Codes:
+
+Prefix: iso.org.dod.internet.private.enterprise (1.3.6.1.4.1)
+
+This file is https://www.iana.org/assignments/enterprise-numbers.txt
+
+Decimal
+| Organization
+| | Contact
+| | | Email
+| | | | 
+0
+  Reserved
+    Internet Assigned Numbers Authority
+      iana&iana.org
+2
+  IBM (https://w3.ibm.com/standards )
+    Contact Example
+      pen-contact&us.ibm.com
+9
+  ciscoSystems
+    Contact Example
+      pen-contact&cisco.com
+74
+  AT&T
+    Contact Example
+      pen-contact&att.com
+311
+  Microsoft
+    Contact Example
+      pen-contact&microsoft.com
+403
+  Nissin Electric Company, Ltd.
+    Contact Example
+      +55 11 5555-0100
+622
+  Unassigned
+    Returned 2003-02-21
+      iana&iana.org
+1500
+  ATI Australia Pty Limited
+    Contact Example
+      pen-contact&&jolt.mpx.com.au
+2462
+  VIGGEN Corporation
+    Contact Example
+      pen-contact1&mail.viggen.com, pen-contact2&mail.viggen.com
+3116
+  NICE CTI Systems UK Ltd.
+    Contact Example
+      pen-contact&intranet
+3591
+  Fulano de Tal
+    Fulano de Tal
+      fulano.de.tal&gmail.com
+4136
+  UQAM | Université du Québec à Montréal
+    Contact Example
+      pen-contact&uqam.ca
+4378
+  ---none---
+    ---none---
+      ---none---
+6168
+  Banco do Brasil S/A
+    Contact Example
+      pen-contact&bancobrasil.com.br
+6175
+  Pines of Woodedge
+    Contact Example
+      &pen-contact&synchronet.com
+11129
+  Google, Inc.
+    Contact Example
+      pen-contact&google.com
+12517
+  MAN Nutzfahrzeuge AG
+    Contact Example
+      mailto:pen-contact&mn.man.de
+15212
+  ITAU
+    Contact Example
+      pen-contact&itau-unibanco.com.br
+15213
+  ITAUSA
+    Contact Example
+      pen-contact&itau-unibanco.com.br
+44363
+  Cloudflare
+    Contact Example
+      pen-contact&cloudflare.com
+47727
+  Assistance Publique des Hôpitaux de Paris
+    Contact Example
+      pen-contact&aphp.fr
+67813
+  Nexalis Core
+    Contact Example
+      pen-contact&netsynag.com
+
+
+End of Document

@@ -1,0 +1,170 @@
+{
+ "build_id": "7c33fea49cce50359ffbfa6aed1ad1a90b5467ac",
+ "capped": [],
+ "comment": [],
+ "dynamic": {},
+ "errors": [
+  {
+   "error": "1 segment(s) partly parsed; first: 6: ELFParseError: Reading section 0 at offset 12616 past EOF 1024",
+   "step": "segments"
+  },
+  {
+   "error": "29 of 29 section(s) unreadable; first: 0: ELFParseError: Reading section 0 at offset 12616 past EOF 1024",
+   "step": "sections"
+  }
+ ],
+ "exports": [],
+ "exports_total": 0,
+ "go_buildinfo": false,
+ "header": {
+  "abiversion": 0,
+  "class": "ELFCLASS64",
+  "data": "ELFDATA2LSB",
+  "entry": 4272,
+  "flags": 0,
+  "machine": "EM_X86_64",
+  "machine_arch": "x64",
+  "osabi": "ELFOSABI_SYSV",
+  "phentsize": 56,
+  "phnum": 13,
+  "phoff": 64,
+  "shentsize": 64,
+  "shnum": 29,
+  "shoff": 12616,
+  "shstrndx": 28,
+  "type": "ET_DYN"
+ },
+ "imports": [],
+ "imports_total": 0,
+ "interpreter": "/lib64/ld-linux-x86-64.so.2",
+ "sections": [],
+ "segments": [
+  {
+   "filesz": 728,
+   "flags": 4,
+   "memsz": 728,
+   "offset": 64,
+   "type": "PT_PHDR",
+   "vaddr": 64
+  },
+  {
+   "filesz": 28,
+   "flags": 4,
+   "memsz": 28,
+   "offset": 792,
+   "oob": false,
+   "type": "PT_INTERP",
+   "vaddr": 792
+  },
+  {
+   "entropy": 2.6326,
+   "filesz": 1976,
+   "flags": 4,
+   "memsz": 1976,
+   "offset": 0,
+   "oob": true,
+   "type": "PT_LOAD",
+   "vaddr": 0
+  },
+  {
+   "entropy": null,
+   "filesz": 433,
+   "flags": 5,
+   "memsz": 433,
+   "offset": 4096,
+   "oob": true,
+   "type": "PT_LOAD",
+   "vaddr": 4096
+  },
+  {
+   "entropy": null,
+   "filesz": 288,
+   "flags": 4,
+   "memsz": 288,
+   "offset": 8192,
+   "oob": true,
+   "type": "PT_LOAD",
+   "vaddr": 8192
+  },
+  {
+   "entropy": null,
+   "filesz": 608,
+   "flags": 6,
+   "memsz": 616,
+   "offset": 11696,
+   "oob": true,
+   "type": "PT_LOAD",
+   "vaddr": 15792
+  },
+  {
+   "filesz": 496,
+   "flags": 6,
+   "memsz": 496,
+   "offset": 11712,
+   "oob": true,
+   "type": "PT_DYNAMIC",
+   "vaddr": 15808
+  },
+  {
+   "filesz": 48,
+   "flags": 4,
+   "memsz": 48,
+   "offset": 824,
+   "oob": false,
+   "type": "PT_NOTE",
+   "vaddr": 824
+  },
+  {
+   "filesz": 68,
+   "flags": 4,
+   "memsz": 68,
+   "offset": 872,
+   "oob": false,
+   "type": "PT_NOTE",
+   "vaddr": 872
+  },
+  {
+   "filesz": 48,
+   "flags": 4,
+   "memsz": 48,
+   "offset": 824,
+   "type": "PT_GNU_PROPERTY",
+   "vaddr": 824
+  },
+  {
+   "filesz": 60,
+   "flags": 4,
+   "memsz": 60,
+   "offset": 8236,
+   "type": "PT_GNU_EH_FRAME",
+   "vaddr": 8236
+  },
+  {
+   "filesz": 0,
+   "flags": 6,
+   "memsz": 0,
+   "offset": 0,
+   "type": "PT_GNU_STACK",
+   "vaddr": 0
+  },
+  {
+   "filesz": 592,
+   "flags": 4,
+   "memsz": 592,
+   "offset": 11696,
+   "type": "PT_GNU_RELRO",
+   "vaddr": 15792
+  }
+ ],
+ "size": 1024,
+ "source": "pyelftools",
+ "symtab": {
+  "present": false
+ },
+ "upx": {
+  "info_banner": false,
+  "magic_offsets": [],
+  "version": null
+ },
+ "version": "0.33"
+}

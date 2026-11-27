@@ -1,0 +1,24 @@
+{
+ "_meta": {
+  "module": "username_check",
+  "case": "tiktok_ok",
+  "source": "C0228 TikTok oEmbed (WMN 'TikTok')",
+  "request": {
+   "method": "GET",
+   "url": "https://www.tiktok.com/oembed?url=https://www.tiktok.com/@tiktok",
+   "user_agent": "V3LUM/dev",
+   "redirects": "not followed"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "live check, this sandbox's datacenter egress",
+  "elapsed_s": 0.403,
+  "minimised": true,
+  "note": "official account; embed html dropped"
+ },
+ "status": 200,
+ "headers": {
+  "server": "nginx",
+  "content-type": "application/json; charset=utf-8"
+ },
+ "body": "{\"version\":\"1.0\",\"type\":\"rich\",\"title\":\"TikTok's Creator Profile\",\"author_url\":\"https://www.tiktok.com/@tiktok\",\"author_name\":\"TikTok\",\"provider_url\":\"https://www.tiktok.com\",\"provider_name\":\"TikTok\",\"embed_product_id\":\"tiktok\",\"embed_type\":\"profile\"}"
+}

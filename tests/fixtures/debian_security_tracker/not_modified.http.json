@@ -1,0 +1,23 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://security-tracker.debian.org/tracker/data/json",
+  "headers": {
+   "Accept-Encoding": "gzip",
+   "If-Modified-Since": "Thu, 26 Nov 2026 08:36:31 GMT"
+  }
+ },
+ "response": {
+  "status": 304,
+  "headers": {
+   "via": "1.1 varnish",
+   "cache-control": "max-age=3600, stale-while-revalidate=60",
+   "expires": "Thu, 26 Nov 2026 09:46:05 GMT",
+   "x-cache": "HIT"
+  },
+  "body": ""
+ },
+ "transport_error": null,
+ "elapsed_s": 0.103,
+ "note": "Conditional GET with the stored Last-Modified -> 304, no body (refresh is free)."
+}

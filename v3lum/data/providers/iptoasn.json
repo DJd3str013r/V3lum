@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "iptoasn",
+  "name": "IPtoASN",
+  "operator": "IPtoASN project (iptoasn.com, Frank Denis)",
+  "hosts": [
+    "iptoasn.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Well-known community project with an identifiable maintainer, public documentation and a public-domain (PDDL) dataset published for years (A8 community; P047 chair: 'tier community is the lowest dataset operator (IPtoASN, bgp.tools)').",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Derived from global BGP table dumps; ranges and AS names are accurate at the snapshot date (monthly releases observed)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "ip2asn": {
+      "title": "IPtoASN ip2asn-v4/v6 TSV (range start, range end, AS number, country, AS description)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://iptoasn.com/",
+        "quote": "Registry terms: DB-IP Lite CC BY 4.0 (open), IPtoASN PDDL (open), bgp.tools free use with descriptive UA (open), GeoLite2 EULA (license).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "iptoasn",
+      "sanitizer": null,
+      "dataset": "ip_offline_db.iptoasn_v4.tsv",
+      "notes": "Quote: binding council text (P047 cond 7); research C0086 terms 'PDDL (public domain)' (verified_live 200, v4 8.7 MB gz and v6 2.3 MB gz, Last-Modified 2026-11-01). Fetched only by `v3lum data update` (at most daily), loaded into the shared range index (P034); the v6 file is dataset ip_offline_db.iptoasn_v6.tsv. Used by ip_offline_db."
+    }
+  },
+  "notes": "Owned by batch p1-G02-2 (P047). No value is ever sent: the files are downloaded whole and matched locally."
+}

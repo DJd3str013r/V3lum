@@ -1,0 +1,11 @@
+{
+  "schema": "v3lum.attack_index/1",
+  "version": "enterprise-attack 20.1 (2026-11-05)",
+  "source": "https://github.com/mitre-attack/attack-stix-data (enterprise-attack.json); STIX ids cross-checked against MISP galaxy mitre-attack-pattern",
+  "attribution": "MITRE ATT&CK(R) is a registered trademark of The MITRE Corporation. (c) The MITRE Corporation. This work is reproduced and distributed with the permission of The MITRE Corporation (ATT&CK terms of use).",
+  "notes": "Batch p1-G01-2 (P012 typosquat): techniques its findings map (research C0007: 'Map T1583.001/T1608.005').",
+  "techniques": {
+    "T1583.001": {"name": "Acquire Infrastructure: Domains", "stix_id": "attack-pattern--40f5caa0-4cb7-4117-89fc-d421bb493df3", "revoked": false, "deprecated": false, "replaced_by": null},
+    "T1608.005": {"name": "Stage Capabilities: Link Target", "stix_id": "attack-pattern--84ae8255-b4f4-4237-b5c5-e717405a9701", "revoked": false, "deprecated": false, "replaced_by": null}
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "offseq",
+  "name": "OffSeq Mirage honeypot feed",
+  "operator": "OffSeq",
+  "hosts": [
+    "feeds.offseq.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Identifiable operator publishing a documented open-data feed (README, licence, policy, SHA256SUMS) with a public track record (A8 community; P147 chair: tier community).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Listing needs a completed TCP handshake, >= 3 sensors in >= 2 networks and no allowlist match; known research scanners are kept apart."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 21600
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "mirage_attackers": {
+      "title": "Mirage attackers-7d.csv (per-IP services, tags, CVEs, KEV, ATT&CK, confidence, first/last seen)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://feeds.offseq.com/mirage-feed/LICENSE-DATA",
+        "quote": "The data published on the `data` branch of this repository and at https://feeds.offseq.com/mirage-feed/ is licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "offseq_mirage",
+      "sanitizer": null,
+      "dataset": "honeypot_intel.offseq_attackers_7d.csv",
+      "notes": "Research C0328 (verified_live 200; CC BY 4.0, TLP:CLEAR; rebuilt daily 03:00-04:00 UTC; ~400 KB, conditional GET answers 304). Parsed with the csv module under a field-size limit into a compact local index (P147 cond 1). Used by honeypot_intel."
+    },
+    "mirage_known_scanners": {
+      "title": "Mirage known-scanners-ipv4.txt (benign research scanners)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://feeds.offseq.com/mirage-feed/LICENSE-DATA",
+        "quote": "The data published on the `data` branch of this repository and at https://feeds.offseq.com/mirage-feed/ is licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "offseq_mirage",
+      "sanitizer": null,
+      "dataset": "honeypot_intel.offseq_known_scanners_ipv4.txt",
+      "notes": "Research C0328. Feeds the core noise-provider hook as kind benign_scanner: those IPs are never malicious (P147 cond 2). Used by honeypot_intel."
+    },
+    "mirage_anonymizers": {
+      "title": "Mirage anonymizers-7d.txt (Tor/VPN exits seen attacking)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://feeds.offseq.com/mirage-feed/LICENSE-DATA",
+        "quote": "The data published on the `data` branch of this repository and at https://feeds.offseq.com/mirage-feed/ is licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "offseq_mirage",
+      "sanitizer": null,
+      "dataset": "honeypot_intel.offseq_anonymizers_7d.txt",
+      "notes": "Research C0328. Anonymizer exits are LOW context (CR28), never malicious. Used by honeypot_intel."
+    }
+  },
+  "notes": "Owned by batch p2-G02-2 (P147). Static files downloaded whole by the dataset manager (If-Modified-Since, 6 h) and matched locally: no value is ever sent. Attribution: 'Mirage Feed by OffSeq Mirage (https://github.com/offseq/mirage-feed), CC BY 4.0' (notice offseq_mirage)."
+}

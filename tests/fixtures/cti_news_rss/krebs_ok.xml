@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Krebs on Security</title>
+	<atom:link href="https://krebsonsecurity.com/feed/" rel="self" type="application/rss+xml" />
+	<link>https://krebsonsecurity.com</link>
+	<description>In-depth security news and investigation</description>
+	<lastBuildDate>Sat, 21 Nov 2026 00:36:39 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.6.9</generator>
+	<item>
+		<title>Who Runs the Ransomware Group Qilin?</title>
+		<link>https://krebsonsecurity.com/2026/11/who-runs-the-ransomware-group-qilin/</link>
+					<pubDate>Wed, 11 Nov 2026 18:06:01 +0000</pubDate>
+				<guid isPermaLink="false">https://krebsonsecurity.com/?p=74550</guid>
+
+					</item>
+<item>
+		<title>Microsoft Fixes Nearly 1,100 Security Vulnerabilities</title>
+		<link>https://krebsonsecurity.com/2026/11/microsoft-fixes-nearly-1100-security-vulnerabilities/</link>
+					<pubDate>Tue, 10 Nov 2026 21:55:03 +0000</pubDate>
+				<guid isPermaLink="false">https://krebsonsecurity.com/?p=74619</guid>
+
+					</item>
+	</channel>
+</rss>
+
+<!--
+Performance optimized by W3 Total Cache. Learn more: https://www.boldgrid.com/w3-total-cache/?utm_source=w3tc&utm_medium=footer_comment&utm_campaign=free_plugin
+
+Object Caching 21/23 objects using Memcached
+Page Caching using Memcached 
+Database Caching using Memcached
+
+Served from: krebsonsecurity.com @ 2026-11-26 02:55:03 by W3 Total Cache
+-->

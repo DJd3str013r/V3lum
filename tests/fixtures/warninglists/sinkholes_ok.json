@@ -1,0 +1,21 @@
+{
+ "name": "List of known sinkholes",
+ "type": "cidr",
+ "version": 20261014,
+ "description": "List of known sinkholes",
+ "matching_attributes": [
+  "ip-src",
+  "ip-dst",
+  "domain|ip",
+  "ip-src|port",
+  "ip-dst|port"
+ ],
+ "category": "known",
+ "list": [
+  "104.155.11.149",
+  "104.21.27.14",
+  "104.21.65.18",
+  "104.236.150.45",
+  "104.236.158.189"
+ ]
+}

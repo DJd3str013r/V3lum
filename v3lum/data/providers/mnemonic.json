@@ -1,0 +1,114 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "mnemonic",
+  "name": "mnemonic PassiveDNS v3 (Argus API)",
+  "operator": "mnemonic AS (Oslo, Norway)",
+  "hosts": [
+    "api.mnemonic.no"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established security company with a public API, documentation and a business offering (A8 trusted); P015 cond 2 records 'mnemonic pDNS v3 keyless (public TLP:CLEAR records, tier trusted)'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Sensor-based passive DNS (records carry first/last seen and TLP:CLEAR markings); anonymous offset-0 pages come back masked (no timestamps, every rrtype 'a', flag partialResult: observed 2026-11-26), so those timestamps are approximate database times."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 15,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "day": 100,
+    "burst": 1,
+    "published": false,
+    "evidence_url": "",
+    "safety_margin": 0.8
+  },
+  "error_markers": [
+    {
+      "id": "mnemonic_rate_limited",
+      "statuses": [
+        200
+      ],
+      "json_path": "responseCode",
+      "equals": 429,
+      "regex": null,
+      "final_url_regex": null,
+      "maps_to": "rate_limited",
+      "reason_code": "rate_limited",
+      "reason": "mnemonic PassiveDNS: rate limited (responseCode 429 in the response envelope)"
+    },
+    {
+      "id": "mnemonic_quota",
+      "statuses": [
+        200
+      ],
+      "json_path": "responseCode",
+      "equals": 402,
+      "regex": null,
+      "final_url_regex": null,
+      "maps_to": "quota",
+      "reason_code": "quota",
+      "reason": "mnemonic PassiveDNS: anonymous quota exhausted (responseCode 402 in the response envelope)"
+    },
+    {
+      "id": "mnemonic_error_message",
+      "statuses": [
+        200
+      ],
+      "json_path": "messages[].type",
+      "equals": "ERROR",
+      "regex": null,
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "mnemonic PassiveDNS: ERROR message in an HTTP 200 envelope"
+    }
+  ],
+  "keys": {
+    "mnemonic": {
+      "description": "mnemonic Argus API key (header Argus-API-Key): raises the anonymous PassiveDNS quota",
+      "signup_url": "https://passivedns.mnemonic.no/",
+      "env": [
+        "V3LUM_MNEMONIC_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "the team's own mnemonic account; sent only in the Argus-API-Key header, never in a URL"
+    }
+  },
+  "sources": {
+    "pdns": {
+      "title": "mnemonic PassiveDNS v3 GET /pdns/v3/{domain_or_ip}?limit=25&offset={n} (first/last seen, rrtype, TLP per record)",
+      "terms": {
+        "class": "license",
+        "evidence_url": "https://passivedns.mnemonic.no/",
+        "quote": "mnemonic pDNS v3 keyless (public TLP:CLEAR records, tier trusted) is classed open only once legal records its terms with evidence (legal_dpo: recorded before the corporate default); until then it is skipped under the corporate profile with reason_code 'licence'.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "mnemonic_pdns",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P015 cond 2). Provisional class 'license' (business use waits for legal's recorded terms: a licence_allow entry with the terms evidence clears it, after which legal reclassifies the source 'open'); it keeps the module's terms 'noncommercial' set by the Robtex feed. Research C0015: limit <= 25 per page, offset pagination (capped at 4 pages, P015 cond 4), epoch-millisecond timestamps; anonymous answers ~100 requests/day per IP (unverified, budget 80/day); count 997 for example.com. The web deep link passivedns.mnemonic.no/search returned 404: no manual link.",
+      "licensed_alternative": "A licence_allow entry recording mnemonic's PassiveDNS terms (or a company Argus API account), after which legal reclassifies the source 'open'."
+    }
+  },
+  "notes": "Owned by batch p2-G01-2 (P015, module passive_dns). Markers derive from the Argus response envelope (responseCode, messages[].type); an HTTP 429/402 status is classified by the core as well."
+}

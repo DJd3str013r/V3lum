@@ -1,0 +1,146 @@
+[
+ {
+  "ref": "ct_rdap_lookups:crtsh_domain",
+  "renderer": "core",
+  "type": "domain",
+  "value": "registro.br",
+  "url": "https://crt.sh/?q=registro.br",
+  "source": "live"
+ },
+ {
+  "ref": "domain_dns:crtsh_cert_sha256",
+  "renderer": "module",
+  "type": "cert_fingerprint",
+  "value": "96bcec06264976f37460779acf28c5a7cfe8a3c0aae11a8ffcee05c0bddf08c6",
+  "url": "https://crt.sh/?q=96bcec06264976f37460779acf28c5a7cfe8a3c0aae11a8ffcee05c0bddf08c6",
+  "source": "live"
+ },
+ {
+  "ref": "domain_dns:crtsh_cert_sha256",
+  "renderer": "module",
+  "type": "cert_fingerprint",
+  "value": "96:BC:EC:06:26:49:76:F3:74:60:77:9A:CF:28:C5:A7:CF:E8:A3:C0:AA:E1:1A:8F:FC:EE:05:C0:BD:DF:08:C6",
+  "url": "https://crt.sh/?q=96bcec06264976f37460779acf28c5a7cfe8a3c0aae11a8ffcee05c0bddf08c6",
+  "source": "normalised"
+ },
+ {
+  "ref": "domain_dns:dnsviz",
+  "renderer": "core",
+  "type": "domain",
+  "value": "example.com",
+  "url": "https://dnsviz.net/d/example.com/dnssec/",
+  "source": "live"
+ },
+ {
+  "ref": "domain_dns:whoxy",
+  "renderer": "core",
+  "type": "domain",
+  "value": "example.com",
+  "url": "https://www.whoxy.com/whois/example.com",
+  "source": "live"
+ },
+ {
+  "ref": "domain_dns:hostio",
+  "renderer": "core",
+  "type": "domain",
+  "value": "example.com",
+  "url": "https://host.io/example.com",
+  "source": "live"
+ },
+ {
+  "ref": "domain_dns:mxtoolbox_spf",
+  "renderer": "core",
+  "type": "domain",
+  "value": "google.com",
+  "url": "https://mxtoolbox.com/SuperTool.aspx?action=spf%3agoogle.com&run=toolpage",
+  "source": "live"
+ },
+ {
+  "ref": "domain_dns:mxtoolbox_dmarc",
+  "renderer": "core",
+  "type": "domain",
+  "value": "google.com",
+  "url": "https://mxtoolbox.com/SuperTool.aspx?action=dmarc%3agoogle.com&run=toolpage",
+  "source": "live"
+ },
+ {
+  "ref": "domain_dns:mxtoolbox_mx",
+  "renderer": "core",
+  "type": "domain",
+  "value": "google.com",
+  "url": "https://mxtoolbox.com/SuperTool.aspx?action=mx%3agoogle.com&run=toolpage",
+  "source": "live"
+ },
+ {
+  "ref": "domain_dns:dmarcian",
+  "renderer": "core",
+  "type": "domain",
+  "value": "google.com",
+  "url": "https://dmarcian.com/dmarc-inspector/?domain=google.com",
+  "source": "live"
+ },
+ {
+  "ref": "domain_dns:completedns",
+  "renderer": "core",
+  "type": "domain",
+  "value": "example.com",
+  "url": "https://completedns.com/dns-history/?domain=example.com",
+  "source": "live"
+ },
+ {
+  "ref": "domain_dns:domaintools_reverse_ip",
+  "renderer": "core",
+  "type": "domain",
+  "value": "example.com",
+  "url": "https://reverseip.domaintools.com/search/?q=example.com",
+  "source": "live"
+ },
+ {
+  "ref": "domain_dns:intodns",
+  "renderer": "core",
+  "type": "domain",
+  "value": "example.com",
+  "url": "https://intodns.com/example.com",
+  "source": "live"
+ },
+ {
+  "ref": "domain_dns:verisign_dnssec_debugger",
+  "renderer": "core",
+  "type": "domain",
+  "value": "example.com",
+  "url": "https://dnssec-debugger.verisignlabs.com/example.com",
+  "source": "live"
+ },
+ {
+  "ref": "domain_dns:whois_is",
+  "renderer": "core",
+  "type": "domain",
+  "value": "example.com",
+  "url": "https://who.is/whois/example.com",
+  "source": "live"
+ },
+ {
+  "ref": "domain_dns:whois_com",
+  "renderer": "core",
+  "type": "domain",
+  "value": "example.com",
+  "url": "https://www.whois.com/whois/example.com",
+  "source": "live"
+ },
+ {
+  "ref": "domain_dns:domaintools_whois",
+  "renderer": "core",
+  "type": "domain",
+  "value": "example.com",
+  "url": "https://whois.domaintools.com/example.com",
+  "source": "spec"
+ },
+ {
+  "ref": "domain_dns:whois_com",
+  "renderer": "core",
+  "type": "domain",
+  "value": "EXAMPLE.COM.",
+  "url": "https://www.whois.com/whois/example.com",
+  "source": "normalised"
+ }
+]

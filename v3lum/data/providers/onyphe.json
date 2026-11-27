@@ -1,0 +1,121 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "onyphe",
+  "name": "ONYPHE (Summary API v2)",
+  "operator": "ONYPHE SAS (France)",
+  "hosts": [
+    "www.onyphe.io",
+    "onyphe.io"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established EU (French) company with published terms, a privacy policy and a business offering (A8 trusted); P042 chair rationale: 'ONYPHE is an established EU company: tier trusted'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Internet-wide scan, resolver, CT and threat-list data of the last 30 days from an established scanner operator; banners are version-inferred and threat lists are one vote."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 30,
+    "ttl": 86400,
+    "min_interval": 2.0
+  },
+  "quota": null,
+  "error_markers": [
+    {
+      "id": "onyphe_credits_exhausted",
+      "statuses": [200, 400, 401, 402, 403, 429],
+      "json_path": "text",
+      "equals": null,
+      "regex": "(?i)credit|quota|no more request",
+      "final_url_regex": null,
+      "maps_to": "quota",
+      "reason_code": "quota",
+      "reason": "ONYPHE: the monthly credits of the plan are used up ('status: nok' error body): could not verify, deferred to the next credit period"
+    },
+    {
+      "id": "onyphe_rate_limited",
+      "statuses": [200, 400, 403, 429],
+      "json_path": "text",
+      "equals": null,
+      "regex": "(?i)rate.?limit|too many|slow down",
+      "final_url_regex": null,
+      "maps_to": "rate_limited",
+      "reason_code": "rate_limited",
+      "reason": "ONYPHE: rate limited ('status: nok' error body): could not verify now"
+    },
+    {
+      "id": "onyphe_no_api_key",
+      "statuses": [200, 400, 401, 403],
+      "json_path": "error",
+      "equals": 2,
+      "regex": null,
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "ONYPHE: 'No API key given' (error 2): the key 'onyphe' was not sent or not accepted"
+    },
+    {
+      "id": "onyphe_invalid_api_key",
+      "statuses": [200, 400, 401, 403],
+      "json_path": "text",
+      "equals": null,
+      "regex": "(?i)api ?key|apikey|unauthori[sz]ed|authentication",
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "ONYPHE: the API key was refused ('status: nok' error body)"
+    },
+    {
+      "id": "onyphe_status_nok",
+      "statuses": [200, 400, 401, 403, 404, 500, 503],
+      "json_path": "status",
+      "equals": "nok",
+      "regex": null,
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "ONYPHE: error body ('status: nok'): could not verify, never an empty answer"
+    }
+  ],
+  "keys": {
+    "onyphe": {
+      "description": "ONYPHE API key (sent only in the 'Authorization: bearer' header; Summary API v2)",
+      "signup_url": "https://www.onyphe.io/pricing",
+      "env": [
+        "V3LUM_ONYPHE_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "business = a company/team ONYPHE account on a plan whose terms permit internal business use, recorded by legal with the plan and terms URL (key_plans.onyphe='business', P042 cond 2); the monthly credits of that plan bound the budget"
+    }
+  },
+  "sources": {
+    "summary_api": {
+      "title": "ONYPHE Summary API v2 (summary/ip, summary/domain, summary/hostname; last 30 days per category)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://search.onyphe.io/docs/general-apis/summary",
+        "quote": "Key-terms: a company/team account on a plan whose terms permit internal business use; legal records plan and terms URL before it runs under the corporate profile.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "onyphe",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P042 cond 2). Research C0111 (verified_needs_key: no key -> HTTP 400 {error:2, text:'No API key given', status:'nok'}; the body echoes the caller IP in 'myip', which the module never copies). Docs read 2026-11-26: the Summary API returns the last 30 days only and 10 or 100 results per category depending on the licence. Only summary (and, if ever wired, simple) endpoints are buildable (P042 cond 3): search, export, discovery, alert, bulk and the v3 on-demand Scope APIs (which make ONYPHE scan on request) are never wired, hence fetches_target false. The web search (search.onyphe.io) requires sign-in: no manual link (P042 cond 4)."
+    }
+  },
+  "notes": "Owned by batch p3-G02-1 (module onyphe, P042); other batches extend it with onyphe__<suffix>.json. Quota: the monthly credits of the plan legal records are not published in a verified source, so there is no quota block yet; the module carries a conservative daily_quota fallback until the plan's monthly credits are recorded here as a 'month' budget (P334, docs/backlog/p3-G02-1.md). Error markers: only error 2 'No API key given' is a verified ONYPHE answer (research C0111); the credit, rate-limit and invalid-key wordings are unverified and keyed on the documented 'text' field."
+}

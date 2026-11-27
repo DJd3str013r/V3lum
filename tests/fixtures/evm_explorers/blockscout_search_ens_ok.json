@@ -1,0 +1,74 @@
+{
+ "items": [
+  {
+   "address_hash": "0xFe89cc7aBB2C4183683ab71653C4cdc9B02D44b7",
+   "certified": false,
+   "ens_info": {
+    "name": "ens.eth",
+    "protocol": {
+     "deployment_blockscout_base_url": "https://eth.blockscout.com/",
+     "description": "The Ethereum Name Service (ENS) is a distributed, open, and extensible naming system based on the Ethereum blockchain.",
+     "docs_url": "https://docs.ens.domains/",
+     "icon_url": "https://i.imgur.com/GOfUwCb.jpeg",
+     "id": "ens",
+     "short_name": "ENS",
+     "title": "Ethereum Name Service",
+     "tld_list": [
+      "eth"
+     ]
+    },
+    "address_hash": "0xFe89cc7aBB2C4183683ab71653C4cdc9B02D44b7",
+    "expiry_date": "2030-11-27T00:06:57.000Z",
+    "names_count": 1,
+    "protocol_dapp_logo": null,
+    "protocol_dapp_url": null
+   },
+   "is_smart_contract_address": true,
+   "is_smart_contract_verified": true,
+   "name": "TimelockController",
+   "priority": 4,
+   "reputation": "ok",
+   "type": "ens_domain",
+   "url": "/address/0xFe89cc7aBB2C4183683ab71653C4cdc9B02D44b7"
+  },
+  {
+   "address_hash": "0xC18360217D8F7Ab5e7c516566761Ea12Ce7F9D72",
+   "address_url": "/address/0xC18360217D8F7Ab5e7c516566761Ea12Ce7F9D72",
+   "certified": false,
+   "circulating_market_cap": "148074647",
+   "exchange_rate": "3.51",
+   "icon_url": "https://assets.coingecko.com/coins/images/19785/small/ENS.jpg?1727872989",
+   "is_smart_contract_address": true,
+   "is_smart_contract_verified": true,
+   "is_verified_via_admin_panel": true,
+   "name": "Ethereum Name Service",
+   "priority": 2,
+   "reputation": "ok",
+   "symbol": "ENS",
+   "token_type": "ERC-20",
+   "token_url": "/token/0xC18360217D8F7Ab5e7c516566761Ea12Ce7F9D72",
+   "total_supply": "100000000000000000000000000",
+   "type": "token"
+  },
+  {
+   "address_hash": "0x57f1887a8BF19b14fC0dF6Fd9B2acc9Af147eA85",
+   "address_url": "/address/0x57f1887a8BF19b14fC0dF6Fd9B2acc9Af147eA85",
+   "certified": false,
+   "circulating_market_cap": null,
+   "exchange_rate": null,
+   "icon_url": "https://assets.coingecko.com/nft_contracts/images/373/small/ens-ethereum-name-service.png?1705042056",
+   "is_smart_contract_address": true,
+   "is_smart_contract_verified": true,
+   "is_verified_via_admin_panel": true,
+   "name": "Ethereum Name Service",
+   "priority": 2,
+   "reputation": "ok",
+   "symbol": "ENS",
+   "token_type": "ERC-721",
+   "token_url": "/token/0x57f1887a8BF19b14fC0dF6Fd9B2acc9Af147eA85",
+   "total_supply": null,
+   "type": "token"
+  }
+ ],
+ "next_page_params": null
+}

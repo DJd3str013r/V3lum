@@ -1,0 +1,1 @@
+[["original", "timestamp", "statuscode", "mimetype"], ["http://example.com:80/", "20020120142510", "200", "text/html"], ["http://user:pass@example.com/", "20091014042001", "200", "text/html"], ["https://example.com/index.html?utm_source=x&token=0123456789abcdef0123", "20150101000000", "200", "text/html"], ["https://www.example.

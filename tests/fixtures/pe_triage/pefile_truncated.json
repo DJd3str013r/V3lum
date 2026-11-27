@@ -1,0 +1,123 @@
+{
+ "source": "pefile",
+ "size": 768,
+ "parse_error": null,
+ "machine": 332,
+ "number_of_sections": 4,
+ "timestamp": 1793534400,
+ "characteristics": 258,
+ "magic": 267,
+ "subsystem": 2,
+ "dll_characteristics": 33088,
+ "entry_point": 4096,
+ "image_base": 4194304,
+ "checksum": 0,
+ "size_of_image": 69632,
+ "size_of_headers": 1024,
+ "sections": [
+  {
+   "name": ".text",
+   "virtual_address": 4096,
+   "virtual_size": 64,
+   "raw_size": 512,
+   "raw_offset": 1024,
+   "characteristics": 1610612768,
+   "entropy": 0.0
+  },
+  {
+   "name": ".rdata",
+   "virtual_address": 20480,
+   "virtual_size": 484,
+   "raw_size": 512,
+   "raw_offset": 1536,
+   "characteristics": 1073741888,
+   "entropy": 0.0
+  },
+  {
+   "name": ".data",
+   "virtual_address": 36864,
+   "virtual_size": 64,
+   "raw_size": 512,
+   "raw_offset": 2048,
+   "characteristics": 3221225536,
+   "entropy": 0.0
+  },
+  {
+   "name": ".rsrc",
+   "virtual_address": 53248,
+   "virtual_size": 310,
+   "raw_size": 512,
+   "raw_offset": 2560,
+   "characteristics": 1073741888,
+   "entropy": 0.0
+  }
+ ],
+ "imports": [],
+ "exports": [],
+ "debug": [],
+ "resources": [],
+ "warnings": [
+  "Error parsing section 0. SizeOfRawData is larger than file.",
+  "Error parsing section 0. PointerToRawData points beyond the end of the file.",
+  "Error parsing section 1. SizeOfRawData is larger than file.",
+  "Error parsing section 1. PointerToRawData points beyond the end of the file.",
+  "Error parsing section 2. SizeOfRawData is larger than file.",
+  "Error parsing section 2. PointerToRawData points beyond the end of the file.",
+  "Error parsing section 3. SizeOfRawData is larger than file.",
+  "Error parsing section 3. PointerToRawData points beyond the end of the file.",
+  "Possibly corrupt file. AddressOfEntryPoint lies outside the file. AddressOfEntryPoint: 0x1000",
+  "Corrupt header \"IMAGE_IMPORT_DESCRIPTOR\" at file offset 1536. Exception: 'Data length less than expected header length.'",
+  "Corrupt header \"IMAGE_RESOURCE_DIRECTORY\" at file offset 2560. Exception: 'Data length less than expected header length.'",
+  "Invalid resources directory. Can't parse directory data at RVA: 0xd000",
+  "Corrupt header \"IMAGE_DEBUG_DIRECTORY\" at file offset 1992. Exception: 'Data length less than expected header length.'"
+ ],
+ "imphash": null,
+ "rich": {
+  "key_hex": "61db1d4e",
+  "checksum": 1310579553,
+  "clear_md5": "78d6027a2ea3f913a43381c17bd30995",
+  "entries": [
+   [
+    17069508,
+    7
+   ],
+   [
+    17003972,
+    12
+   ],
+   [
+    17135044,
+    3
+   ],
+   [
+    16741828,
+    1
+   ],
+   [
+    16938436,
+    1
+   ],
+   [
+    65536,
+    99
+   ]
+  ]
+ },
+ "security_dir": {
+  "offset": 3072,
+  "size": 2480
+ },
+ "authenticode": {
+  "present": false,
+  "status": "unsigned",
+  "entries": [],
+  "signers": [],
+  "anomalies": []
+ },
+ "overlay": {
+  "offset": 448,
+  "size": 320
+ },
+ "md5": "7e1b5a70eee612d8c88ac8e9c4366b7a",
+ "sha256": "7273ddbab1dcbe2eb332ef5ee491f74c32669b80599112504c11708d39c59e02"
+}

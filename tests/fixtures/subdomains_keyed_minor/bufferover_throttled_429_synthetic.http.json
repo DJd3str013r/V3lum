@@ -1,0 +1,15 @@
+{
+ "request": "GET https://tls.bufferover.run/dns?q=.example.com",
+ "response": {
+  "status": 429,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": {
+   "message": "Too Many Requests"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "AWS API Gateway throttling body (PLACEHOLDER) -> RATE_LIMITED"
+}

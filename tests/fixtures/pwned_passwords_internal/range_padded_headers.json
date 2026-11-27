@@ -1,0 +1,17 @@
+{
+ "_envelope": 1,
+ "_source": "live 2026-11-26 09:15Z GET https://api.pwnedpasswords.com/range/5BAA6 with Add-Padding: true (0.50 s); body kept in range_padded_ok.txt (minimised)",
+ "status": 200,
+ "headers": {
+  "content-type": "text/plain; charset=utf-8",
+  "cache-control": "no-store",
+  "cf-cache-status": "BYPASS",
+  "vary": "Add-Padding"
+ },
+ "body": null,
+ "body_rows": 2098,
+ "real_rows": 1978,
+ "padding_rows": 120,
+ "line_ending": "CRLF",
+ "trailing_newline": false
+}

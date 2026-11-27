@@ -1,0 +1,23 @@
+{
+ "_extractor": "Gravatar",
+ "username": "exampledev",
+ "gravatar_id": "1000003",
+ "fullname": "Example Dev",
+ "emails": "['dev@example.com']",
+ "email": "dev@example.com",
+ "email_username": "dev",
+ "links": "['https://github.com/example-dev', 'https://x.com/example_dev', 'https://dev.example.com', 'javascript:alert(1)', 'https://192.0.2.10/admin']",
+ "twitter_username": "https://twitter.com/example_dev",
+ "github_username": "example-dev",
+ "instagram_username": "user@example.com",
+ "reddit_username": "example dev",
+ "telegram_username": "example/dev",
+ "other_usernames": "['example_dev2', 'https://x.com/a', '']",
+ "social_links": "{'instagram': 'https://instagram.com/example_dev', 'email': 'mailto:dev@example.com'}",
+ "uid": "1000003",
+ "created_at": "2015-04-02T12:00:00Z",
+ "is_verified": "False",
+ "phone": "+55 11 5555-0123",
+ "gravatar_url": "https://gravatar.com/be9d18f611892a738e54f2a3a171e2f9",
+ "gravatar_email_md5_hash": "be9d18f611892a738e54f2a3a171e2f9"
+}

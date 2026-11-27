@@ -1,0 +1,193 @@
+{
+ "batch": "p3-G10-2",
+ "modules": [
+  {
+   "name": "iana_pen",
+   "file": "v3lum/modules/company_org/iana_pen.py",
+   "proposal": "P228",
+   "category": "company_org",
+   "opsec": "passive",
+   "default_enabled": false,
+   "terms": "open",
+   "provider_tier": "trusted (iana; module disclosure none -> trust_tier n/a)",
+   "keys": [],
+   "datasets": [
+    "iana_enterprise_numbers.txt (iana.iana_pen_enterprise_numbers, monthly, large, runtime download only)"
+   ],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:iana_pen",
+    "attribute:iana_pen_registry",
+    "relation:iana_pen_contact_domain"
+   ],
+   "live_check": "passed 2026-11-26: dataset updated (5.2 MB, >60k records, registry date parsed); company_name:Microsoft -> PEN 311; OID 1.3.6.1.4.1.11129.2.4.2 -> Google; no contact data in output"
+  },
+  {
+   "name": "anac_rab",
+   "file": "v3lum/modules/brazil_public_data/anac_rab.py",
+   "proposal": "P248",
+   "category": "brazil_public_data",
+   "opsec": "passive",
+   "default_enabled": false,
+   "terms": "open",
+   "provider_tier": "trusted (anac; module disclosure none -> n/a)",
+   "keys": [],
+   "datasets": [
+    "anac_rab_dados_aeronaves.csv (anac.rab, daily, large)"
+   ],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:aircraft",
+    "attribute:anac_rab_date",
+    "relation:aircraft_owner",
+    "relation:aircraft_operator"
+   ],
+   "live_check": "passed 2026-11-26: full file downloaded (RAB as of 2026-11-26, 35,196 aircraft; 40,066 person/unidentified parties dropped, 36,296 company parties kept); CNPJ lookup of a company owner OK"
+  },
+  {
+   "name": "br_cnpj_risk_lists",
+   "file": "v3lum/modules/brazil_public_data/br_cnpj_risk_lists.py (+ opt-in importer v3lum/modules/brazil_public_data/pgfn_import.py)",
+   "proposal": "P244",
+   "category": "brazil_public_data",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "open",
+   "provider_tier": "PGFN, MTE (govbr), CVM trusted; BrasilAPI community (module disclosure none -> n/a)",
+   "keys": [],
+   "datasets": [
+    "mte_lista_suja.csv (govbr.br_cnpj_risk_lists_mte, weekly, essential)",
+    "cvm_processo_sancionador.zip (cvm.sanctions, daily, essential)",
+    "brasilapi_cvm_corretoras.json (brasilapi.cvm_brokers, daily, essential)",
+    "reused: cvm_intermed.csv/cvm_adm_cart_pj.csv/cvm_consultor_vlmob_pj.csv/cvm_crowdfunding.csv (shared CVM loader, P360) and cvm_cia_aberta.csv (P361)",
+    "PGFN divida ativa: opt-in on-disk SQLite index ~/.v3lum/datasets/br_cnpj_risk_lists/pgfn.sqlite built by pgfn_import (not a registered dataset)"
+   ],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:risk_lists",
+    "attribute:risk_lists_screening",
+    "attribute:cvm_authorisation",
+    "attribute:pgfn_debts",
+    "attribute:risk_lists_persons",
+    "tag:esg_labour",
+    "tag:tax_debt",
+    "tag:cvm_proceeding"
+   ],
+   "live_check": "passed 2026-11-26: MTE, CVM sanctions, BrasilAPI brokers, cvm_cia_aberta and cvm_intermed downloaded and validated; cnpj 00000000000191 -> 'registered with CVM: active (cia_aberta, intermed)', MTE no_record, PGFN not_screened (opt-in); PGFN plan read 2026_trimestre_03 (FGTS 18.5 MB, Previdenciario 78.6 MB, Sistema_SIDA 1.44 GB) without importing"
+  },
+  {
+   "name": "br_public_spending",
+   "file": "v3lum/modules/brazil_public_data/br_public_spending.py",
+   "proposal": "P246",
+   "category": "brazil_public_data",
+   "opsec": "passive",
+   "default_enabled": false,
+   "terms": "open",
+   "provider_tier": "trusted (bndes, minc)",
+   "keys": [],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:public_funding",
+    "attribute:public_funding_coverage"
+   ],
+   "live_check": "passed 2026-11-26: cnpj 00000000000191 -> BNDES 18 exact operations + SALIC sponsor record; masked indirect-operations query (setting br_public_spending_bndes_indirect) verified on 92816560000137 (masked_partial rows, person rows dropped)"
+  },
+  {
+   "name": "br_public_spending_br",
+   "file": "v3lum/modules/brazil_public_data/br_public_spending.py",
+   "proposal": "P246",
+   "category": "brazil_public_data",
+   "opsec": "passive",
+   "default_enabled": false,
+   "terms": "open",
+   "provider_tier": "trusted (compras_gov, pncp)",
+   "keys": [],
+   "datasets": [],
+   "pivot_packs": [
+    "br_public_spending_links (pncp_contracts, compras_sicaf_supplier)"
+   ],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:sicaf_supplier"
+   ],
+   "live_check": "policy gate only (A9): from this non-BR egress decide_single -> SKIPPED egress_country with the manual link; no request sent to pncp.gov.br or dadosabertos.compras.gov.br"
+  }
+ ],
+ "proposals_not_done": [],
+ "core_requests": [
+  "Wire `v3lum data update pgfn` (opt-in, never in the default or --essential update set) to v3lum.modules.brazil_public_data.pgfn_import.plan/import_pgfn (P244 cond 1-2); until then: python -m v3lum.modules.brazil_public_data.pgfn_import [--plan] [--include-persons --purpose ...].",
+  "Move iana_pen.pen_lookup / pen_reverse_lookup / extract_enterprise_oids to v3lum/core/pen.py (P228 cond 4 'core helper'), then call it from certificate-extension and SNMP/syslog parsers.",
+  "Move v3lum/modules/company_org/namematch.py (matcher + P252 homonym curve) to v3lum/core/namematch.py (P228 cond 3, P244 cond 4 name 'core/namematch.py').",
+  "register_dataset post-install transform hook so the stored copy is minimised (MTE/CVM-sanction person rows and IANA PEN contact names never land on disk; today they are dropped at parse time only).",
+  "POL-14: let a module mark datasets optional, so br_cnpj_risk_lists degrades per list ('not screened against <list>') instead of going UNAVAILABLE when the large shared CVM datasets (cvm.cadastral, cvm_cia_aberta.csv) are not downloaded (same request as p1-G10-3 / p2-G10-3).",
+  "A recorded case-level --include-persons option (and an enumerated purpose category, AR16) readable from the context; today br_cnpj_risk_lists uses setting br_cnpj_risk_lists_include_persons + --purpose + analyst-typed seed.",
+  "An aircraft_mark entity type (P333) with the strict PP/PR/PS/PT/PU pattern; anac_rab accepts typed keywords (mark:/tail:/rab:/aircraft:) meanwhile."
+ ],
+ "files": [
+  "docs/backlog/p3-G10-2.md",
+  "tests/fixtures/acceptance/cnpj/br_cnpj_risk_lists.json",
+  "tests/fixtures/anac_rab/no_preamble.csv",
+  "tests/fixtures/anac_rab/ok.csv",
+  "tests/fixtures/anac_rab/truncated.csv",
+  "tests/fixtures/br_cnpj_risk_lists/brasilapi_corretoras_ok.json",
+  "tests/fixtures/br_cnpj_risk_lists/brasilapi_corretoras_truncated.json",
+  "tests/fixtures/br_cnpj_risk_lists/cvm_cia_aberta_ok.csv",
+  "tests/fixtures/br_cnpj_risk_lists/cvm_cia_aberta_truncated.csv",
+  "tests/fixtures/br_cnpj_risk_lists/cvm_intermed_ok.csv",
+  "tests/fixtures/br_cnpj_risk_lists/cvm_sancionador_ok.zip",
+  "tests/fixtures/br_cnpj_risk_lists/mte_header_only.csv",
+  "tests/fixtures/br_cnpj_risk_lists/mte_moved_html_synthetic.html",
+  "tests/fixtures/br_cnpj_risk_lists/mte_ok.csv",
+  "tests/fixtures/br_cnpj_risk_lists/pgfn_bad_header.zip",
+  "tests/fixtures/br_cnpj_risk_lists/pgfn_fgts_ok.zip",
+  "tests/fixtures/br_cnpj_risk_lists/pgfn_index.html",
+  "tests/fixtures/br_cnpj_risk_lists/pgfn_prev_ok.zip",
+  "tests/fixtures/br_cnpj_risk_lists/pgfn_quarter_listing.html",
+  "tests/fixtures/br_cnpj_risk_lists/pgfn_sida_ok.zip",
+  "tests/fixtures/br_cnpj_risk_lists/pgfn_truncated.zip",
+  "tests/fixtures/br_public_spending/bndes_aut_masked_ok.json",
+  "tests/fixtures/br_public_spending/bndes_ckan_error_synthetic.json",
+  "tests/fixtures/br_public_spending/bndes_empty.json",
+  "tests/fixtures/br_public_spending/bndes_filters_blocked_403.http.json",
+  "tests/fixtures/br_public_spending/bndes_naut_ok.json",
+  "tests/fixtures/br_public_spending/salic_incentivadores_mixed_synthetic.json",
+  "tests/fixtures/br_public_spending/salic_incentivadores_not_found.http.json",
+  "tests/fixtures/br_public_spending/salic_incentivadores_ok.json",
+  "tests/fixtures/br_public_spending_br/compras_fornecedor_empty.json",
+  "tests/fixtures/br_public_spending_br/compras_fornecedor_missing_param_404.http.json",
+  "tests/fixtures/br_public_spending_br/compras_fornecedor_ok.json",
+  "tests/fixtures/br_public_spending_br/pncp_empty_reply.http.json",
+  "tests/fixtures/br_public_spending_br/pncp_timeout.http.json",
+  "tests/fixtures/iana_pen/empty_registry.txt",
+  "tests/fixtures/iana_pen/html_error_synthetic.html",
+  "tests/fixtures/iana_pen/oid_text_synthetic.txt",
+  "tests/fixtures/iana_pen/ok.txt",
+  "tests/fixtures/iana_pen/truncated.txt",
+  "tests/live/test_p3_g10_2.py",
+  "tests/modules/test_anac_rab.py",
+  "tests/modules/test_br_cnpj_risk_lists.py",
+  "tests/modules/test_br_public_spending.py",
+  "tests/modules/test_br_public_spending_br.py",
+  "tests/modules/test_iana_pen.py",
+  "v3lum/data/pivot_links/br_public_spending_links.json",
+  "v3lum/data/providers/anac.json",
+  "v3lum/data/providers/bndes.json",
+  "v3lum/data/providers/compras_gov.json",
+  "v3lum/data/providers/govbr__p3-G10-2.json",
+  "v3lum/data/providers/iana__p3-G10-2.json",
+  "v3lum/data/providers/minc.json",
+  "v3lum/data/providers/pgfn.json",
+  "v3lum/data/providers/pncp.json",
+  "v3lum/data/vocab/p3-G10-2.json",
+  "v3lum/modules/brazil_public_data/anac_rab.py",
+  "v3lum/modules/brazil_public_data/br_cnpj_risk_lists.py",
+  "v3lum/modules/brazil_public_data/br_public_spending.py",
+  "v3lum/modules/brazil_public_data/pgfn_import.py",
+  "v3lum/modules/company_org/iana_pen.py"
+ ],
+ "notes": "All four proposals delivered as five modules (P246 split by egress requirement: br_public_spending = BNDES+SALIC, the verified half; br_public_spending_br = Compras.gov.br SICAF + PNCP manual link, requires_egress={'BR'}, manual_link br_public_spending_links:pncp_contracts). PNCP sends no request (no success fixture from a BR egress: empty reply / timeout recorded) - backlog. Compras.gov.br: the research 404 was a missing required 'ativo' parameter; a success fixture exists from the non-BR prep egress and the parser is wired, still behind the BR egress gate (FC2 as written); an empty reply/connection drop maps to BLOCKED geo_block and a 404 'Resource not found' to ERROR (never an absence). P228: offline dataset module; organisation-level data only (contacts and full addresses dropped in the parser; individual registrants' names withheld); domain pivots expand=False never webmail/iana.org; accepts company_name, domain, keyword (pen:<n> or OID) and text_blob (OIDs) and exposes pen_lookup/pen_reverse_lookup helpers. Council header said 'produces: email' but FC2 requires domain pivots: produces={domain}. P244: default_enabled True per council (no bulk_download tag); MTE/CVM-sanction/BrasilAPI small datasets read from the local copy only (never downloaded by the module), shared CVM loader reused (cvm_registries) and P361's cvm_cia_aberta.csv; PGFN is a separate opt-in streamed importer (pgfn_import.py, resumable Range downloads through a ScopedHttp limited to dadosabertos.pgfn.gov.br with a justified LINT-01 pragma, SQLite index keyed by CNPJ root and name key, persons dropped unless --include-persons --purpose, recorded in index meta; zips deleted after import). Severity table MTE high / CVM sanction medium (name-only, possible) / PGFN low per nature with amount band / CVM registrations info. Missing or stale list -> per-source UNAVAILABLE dataset + 'not screened against <list> (<date>)'; nothing screened -> UNAVAILABLE dataset. Person due diligence only with setting br_cnpj_risk_lists_include_persons + analyst seed + --purpose: name-only possible matches with homonym score, masked CPF, no pivots. Known limit: POL-14 makes the module UNAVAILABLE in scans until the large shared CVM datasets are installed (`v3lum data update --essential`). P248: offline dataset module, BOM + 'Atualizado em' preamble handled, persons dropped at parse, typed-keyword marks only, CNPJ pivots expand=False. No LIGHT/ACTIVE variants were requested. Live run (V3LUM_LIVE=1, tests/live/test_p3_g10_2.py): 7 passed. Full offline suite: see test_result (failures, if any, are in other batches' in-progress files)."
+}

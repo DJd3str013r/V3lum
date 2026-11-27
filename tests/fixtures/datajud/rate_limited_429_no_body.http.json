@@ -1,0 +1,16 @@
+{
+ "request": "POST https://api-publica.datajud.cnj.jus.br/api_publica_tjac/_search",
+ "response": {
+  "status": 429,
+  "headers": {
+   "content-type": "application/json",
+   "content-length": "461"
+  },
+  "body": null
+ },
+ "transport_error": null,
+ "elapsed_s": 29.91,
+ "observed_at": "2026-11-25T23:52:27Z",
+ "origin": "research",
+ "note": "429 arrived after 29.9 s (the overload answer itself is slow); body not kept by the probe: classify on status"
+}

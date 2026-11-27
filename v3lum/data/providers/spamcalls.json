@@ -1,0 +1,50 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "spamcalls",
+  "name": "spamcalls.net caller reports (manual pivot links)",
+  "operator": "Hello World Digital (spamcalls.net imprint)",
+  "hosts": [
+    "spamcalls.net"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Community user-report site with an identifiable operator (imprint and privacy policy on /en/page/contact) and public activity since 2018 (A8 community); P128 cond 5 'spamcalls.net community'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": true,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "D",
+    "justification": "Anonymous user reports about callers, unverified ('user reports, unverified', P128 cond 1): leads for the analyst, never evidence."
+  },
+  "http_profile": {
+    "user_agent": "neutral"
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "num_page": {
+      "title": "spamcalls.net number page /en/num/{e164 digits} (user reports, unverified; manual pivot link)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://spamcalls.net/en/page/contact",
+        "quote": "spamcalls.net (https://spamcalls.net/en/num/{e164}, labelled 'user reports, unverified') ... V3LUM never fetches any of these links.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "spamcalls",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P128 cond 1); research C0297 terms 'spamcalls.net ToS' (verified_live 200; a 410 'User reports for the phone number are not (no longer) available.' is the normal no-reports page). The template uses the digits without '+' (a literal '+' in the path is decoded as a space, verified 2026-11-26). Manual link only (pack phone:spamcalls_num): V3LUM never fetches it. Opening it from the analyst's browser sends the number to spamcalls.net, its log files and its ad/analytics partners (privacy policy), hence reuses_queries=true; number pages also show public per-number request counters and a 'currently high activity' list: legal_dpo decides whether that is publishes_queries (rule 7) before release (docs/backlog/p1-G06-1.md). Used by pivots_phone."
+    }
+  },
+  "notes": "Owned by batch p1-G06-1 (P128). Manual pivot links only: V3LUM never requests spamcalls.net. Phone values are PERSONAL_TYPES: the phone pack link is privacy=true (analyst-typed seeds of an opted-in case) and renders as text with 'opening sends <number> to spamcalls.net' at TLP:AMBER and above (A2)."
+}

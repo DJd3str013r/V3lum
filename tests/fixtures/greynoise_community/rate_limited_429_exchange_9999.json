@@ -1,0 +1,17 @@
+{
+ "url": "https://api.greynoise.io/v3/community/9.9.9.9",
+ "observed_at": "2026-11-26T06:44:58Z",
+ "status": 429,
+ "headers": {
+  "content-type": "application/json; charset=utf-8",
+  "x-ratelimit-limit": "25",
+  "x-ratelimit-remaining": "0",
+  "x-ratelimit-reset": "1795842297"
+ },
+ "body": {
+  "plan": "Community",
+  "rate_limit": "25-W",
+  "plan_url": "https://greynoise.io/pricing",
+  "message": "You have hit your current rate limit. Please create a free account or upgrade your plan at https://greynoise.io/pricing."
+ }
+}

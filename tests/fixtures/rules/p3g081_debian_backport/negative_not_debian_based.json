@@ -1,0 +1,87 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "nodes": [
+  {
+   "key": "ipv4:203.0.113.23",
+   "depth": 0,
+   "seed": true,
+   "attributes": {
+    "services": [
+     {
+      "value": [
+       "SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.5"
+      ],
+      "source": "port_scan"
+     }
+    ],
+    "host_os": [
+     {
+      "value": "Ubuntu",
+      "source": "shodan_api"
+     }
+    ]
+   },
+   "findings": [
+    {
+     "title": "CVEs by version match (version-inferred)",
+     "severity": "medium",
+     "confidence": 0.4,
+     "confidence_label": "possible",
+     "criterion": "version-inferred, distro backports not considered: confirm on the host (synthetic)",
+     "tags": [
+      "vulnerable",
+      "version_inferred"
+     ],
+     "module": "shodan_api",
+     "source": "shodan.api",
+     "data": {
+      "vulns": [
+       {
+        "cve": "CVE-2023-38408",
+        "cvss": 7.5
+       }
+      ],
+      "count": 1
+     }
+    }
+   ]
+  },
+  {
+   "key": "cve:CVE-2023-38408",
+   "depth": 1,
+   "attributes": {
+    "distro_fixes": [
+     {
+      "value": [
+       {
+        "distro": "debian",
+        "release": "12",
+        "codename": "bookworm",
+        "package": "openssh",
+        "fixed": "1:9.2p1-2+deb12u1",
+        "status": "fixed"
+       }
+      ],
+      "source": "debian_security_tracker"
+     }
+    ]
+   }
+  }
+ ],
+ "edges": [
+  {
+   "src": "ipv4:203.0.113.23",
+   "dst": "cve:CVE-2023-38408",
+   "relation": "has_vuln",
+   "module": "shodan_api",
+   "confidence": 0.5
+  }
+ ],
+ "expect": {
+  "p3g081_debian_backport": {
+   "min": 0,
+   "max": 0
+  }
+ }
+}

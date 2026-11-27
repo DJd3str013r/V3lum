@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>DataBreaches.Net</title>
+	<atom:link href="https://databreaches.net/feed/" rel="self" type="application/rss+xml" />
+	<link>https://databreaches.net</link>
+	<description>The Office of Inadequate Security</description>
+	<lastBuildDate>Wed, 25 Nov 2026 20:37:39 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+
+<image>
+	<url>https://databreaches.net/wp-content/uploads/databreach2-150x150.png</url>
+	<title>DataBreaches.Net</title>
+	<link>https://databreaches.net</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>1Password says a hacker used an employee&#8217;s GitHub account to take customer data</title>
+		<link>https://databreaches.net/2026/11/25/1password-says-a-hacker-used-an-employees-github-account-to-take-customer-data/</link>
+					<pubDate>Wed, 25 Nov 2026 20:37:39 +0000</pubDate>
+				<guid isPermaLink="false">https://databreaches.net/?p=130886</guid>
+
+					</item>
+<item>
+		<title>&#8216;We are not ShinyHunters,&#8217; says criminal hacking crew that looks and acts just like ShinyHunters</title>
+		<link>https://databreaches.net/2026/11/25/we-are-not-shinyhunters-says-criminal-hacking-crew-that-looks-and-acts-just-like-shinyhunters/</link>
+					<pubDate>Wed, 25 Nov 2026 13:26:42 +0000</pubDate>
+				<guid isPermaLink="false">https://databreaches.net/?p=130884</guid>
+
+					</item>
+<item>
+		<title>HK: Gleneagles Hospital suspends app after data breach</title>
+		<link>https://databreaches.net/2026/11/24/hk-gleneagles-hospital-suspends-app-after-data-breach/</link>
+					<pubDate>Tue, 24 Nov 2026 14:00:34 +0000</pubDate>
+				<guid isPermaLink="false">https://databreaches.net/?p=130860</guid>
+
+					</item>
+	</channel>
+</rss>
+
+<!-- plugin=object-cache-pro client=phpredis metric#hits=1298 metric#misses=9 metric#hit-ratio=99.3 metric#bytes=379146 metric#prefetches=68 metric#store-reads=31 metric#store-writes=3 metric#store-hits=92 metric#store-misses=4 metric#sql-queries=25 metric#ms-total=186.09 metric#ms-cache=7.53 metric#ms-cache-avg=0.2282 metric#ms-cache-ratio=4.1 sample#redis-hits=124720722 sample#redis-misses=9977098 sample#redis-hit-ratio=92.6 sample#redis-ops-per-sec=15 sample#redis-evicted-keys=0 sample#redis-used-memory=170470656 sample#redis-used-memory-rss=170430464 sample#redis-memory-fragmentation-ratio=1.0 sample#redis-connected-clients=1 sample#redis-tracking-clients=0 sample#redis-rejected-connections=0 sample#redis-keys=187287 -->

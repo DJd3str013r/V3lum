@@ -1,0 +1,176 @@
+{
+  "schema": "v3lum.pivot_pack/1",
+  "pack": "darkweb",
+  "title": "Ransomware group pages and clearnet onion search (P203)",
+  "notes": "Batch p2-G14-2, module pivots_darkweb. Links under x_module_links need a value transformation, a TLP ceiling or a warning that the frozen core link model does not carry yet: the pack's module renders them (linted like pack links, fail closed). Rule 3: claim pages, leak-file, download and victim-file URLs are never linked or generated. Order (P203 cond 6): ransomware group pages first, then onion search.",
+  "links": [
+    {
+      "id": "rlive_search",
+      "label": "ransomware.live - search (groups and victim posts)",
+      "template": "https://www.ransomware.live/search?q={q}",
+      "entity_types": [
+        "company_name",
+        "keyword"
+      ],
+      "category": "other",
+      "host": "www.ransomware.live",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "GET search form (field q), verified 2026-11-26 (200, 'lockbit'). Search results only, never claim pages (rule 3). Threat-actor values use the group page when the per-site slug is known, this search otherwise (module link rlive_search_actor, P203 cond 8)."
+    }
+  ],
+  "x_module_links": [
+    {
+      "id": "ransomlook_group",
+      "label": "RansomLook - ransomware group page",
+      "template": "https://www.ransomlook.io/group/{ransomlook_slug}",
+      "entity_types": [
+        "threat_actor"
+      ],
+      "category": "other",
+      "host": "www.ransomlook.io",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Slug from x_tracker_slugs resolved through the P295 alias index (P203 cond 8). An unknown slug answers 302 to the home page and RansomLook has no GET search URL (POST form): without a known slug no RansomLook link is rendered.",
+      "x_accepts": [
+        "tracker_slug:ransomlook"
+      ]
+    },
+    {
+      "id": "rlive_group",
+      "label": "ransomware.live - ransomware group page",
+      "template": "https://www.ransomware.live/group/{rlive_slug}",
+      "entity_types": [
+        "threat_actor"
+      ],
+      "category": "other",
+      "host": "www.ransomware.live",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Slug from x_tracker_slugs resolved through the P295 alias index (P203 cond 8); an unknown slug answers 404.",
+      "x_accepts": [
+        "tracker_slug:ransomware_live"
+      ]
+    },
+    {
+      "id": "rlive_search_actor",
+      "label": "ransomware.live - search for the group name (no known group page)",
+      "template": "https://www.ransomware.live/search?q={q}",
+      "entity_types": [
+        "threat_actor"
+      ],
+      "category": "other",
+      "host": "www.ransomware.live",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Rendered only when no ransomware.live slug is known: the site's search URL instead of a guessed path (P203 cond 8).",
+      "x_fallback_for": "rlive_group"
+    },
+    {
+      "id": "onionsearch",
+      "label": "OnionSearchEngine - clearnet onion search (IOC values only)",
+      "template": "https://onionsearchengine.com/search.php?search={q}",
+      "entity_types": [
+        "domain",
+        "onion"
+      ],
+      "category": "other",
+      "host": "onionsearchengine.com",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "Unknown-tier operator: IOC values only (domain, onion), 'unknown operator' badge, hidden from reports at TLP:AMBER and above (max_tlp green, P203 cond 10). Research C0472 verified the form with '&submit=Search' on 2026-11-25; that token is dropped (the P327 submission lint rejects it) and the page answered a Cloudflare block (403) to curl on 2026-11-26: unverified until a browser re-check. Nothing is ever auto-fetched (P203 cond 11).",
+      "x_max_tlp": "green",
+      "x_warning": "illicit content, possibly child sexual abuse material (possession is a crime, ECA art. 241-B): open only in the team's isolated browsing environment"
+    }
+  ],
+  "x_tracker_slugs": {
+    "doc": "Per-site group names (P203 cond 8), keyed by the names the P295 alias index resolves to (normalised with actor_alias_index.normalise_alias). Each slug was checked by the maintainer (HEAD 200 on the group page; an unknown group is 302 on RansomLook and 404 on ransomware.live). A group not listed here gets no RansomLook link and the ransomware.live search link, never a guessed path. Re-check every 180 days (P203 cond 7).",
+    "groups": [
+      {
+        "names": [
+          "LockBit 3.0",
+          "lockbit3",
+          "LockBit Black"
+        ],
+        "ransomlook": "lockbit3",
+        "ransomware_live": "lockbit3",
+        "checked_at": "2026-11-26"
+      },
+      {
+        "names": [
+          "Akira"
+        ],
+        "ransomlook": "akira",
+        "ransomware_live": "akira",
+        "checked_at": "2026-11-26"
+      },
+      {
+        "names": [
+          "Qilin",
+          "Agenda"
+        ],
+        "ransomlook": "qilin",
+        "ransomware_live": "qilin",
+        "checked_at": "2026-11-26"
+      },
+      {
+        "names": [
+          "Play",
+          "PlayCrypt"
+        ],
+        "ransomlook": "play",
+        "ransomware_live": "play",
+        "checked_at": "2026-11-26"
+      },
+      {
+        "names": [
+          "Medusa"
+        ],
+        "ransomlook": "medusa",
+        "ransomware_live": "medusa",
+        "checked_at": "2026-11-26"
+      },
+      {
+        "names": [
+          "SafePay"
+        ],
+        "ransomlook": "safepay",
+        "ransomware_live": "safepay",
+        "checked_at": "2026-11-26"
+      },
+      {
+        "names": [
+          "INC Ransom",
+          "inc ransom"
+        ],
+        "ransomlook": "inc ransom",
+        "checked_at": "2026-11-26"
+      }
+    ]
+  }
+}

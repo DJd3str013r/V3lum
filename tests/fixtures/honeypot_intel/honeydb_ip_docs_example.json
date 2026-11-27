@@ -1,0 +1,47 @@
+{
+ "reverse_dns": "192-210-184-18-host.colocrossing.com.",
+ "internet_scanner": false,
+ "cve": [],
+ "generated": "2025-12-01",
+ "_source": "HoneyDB current API docs example (Postman collection 17070515/2sBXiesuMY), GET /api/ip/{ip}",
+ "network_info": {
+  "asn": 36352,
+  "organization": "AS-COLOCROSSING",
+  "country": "United States"
+ },
+ "threat_info": {
+  "is_bogon": false,
+  "is_tor": false,
+  "is_threat": false,
+  "threat_lists": {
+   "is_sansip": false,
+   "is_ciarmy": false,
+   "is_et_compromised": false,
+   "is_pallebone": false,
+   "is_threatfox": false,
+   "is_blocklist_net_ua": false
+  }
+ },
+ "ip_history": [
+  {
+   "date": "2025-08-07",
+   "service": "SIP",
+   "event_count": "5"
+  },
+  {
+   "date": "2025-08-09",
+   "service": "SIP",
+   "event_count": "1"
+  },
+  {
+   "date": "2025-11-08",
+   "service": "SIP",
+   "event_count": "3"
+  },
+  {
+   "date": "2025-11-09",
+   "service": "SIP",
+   "event_count": "3"
+  }
+ ]
+}

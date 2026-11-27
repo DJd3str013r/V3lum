@@ -1,0 +1,45 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p1-G12-1",
+  "title": "File-analysis names of batch p1-G12-1 (document_metadata, file_type_sniff, apk_triage, archive_listing)",
+  "owner": "batch p1-G12-1 (P269, P270, P364, P365)",
+  "attributes": {
+    "file_sniff": "file-type identification (P270, own magic table): {kind, category, description, confidence, entropy, routes (analysers the file goes to), polyglot, details, claimed_extension}",
+    "document_metadata": "document metadata facts: {format, author(s), last_modified_by, company, manager, application, producer, template, title, created, modified, revision, pages, xmp, ...}; personal fields are redacted in external exports unless --include-personal",
+    "document_author": "author name(s) recorded in a document's metadata (personal data: never auto-checked by person/username modules, redacted in external exports)",
+    "document_last_modified_by": "last-modified-by / last-saved-by account recorded in a document (personal data)",
+    "document_company": "company / organisation text recorded in a document's metadata (self-declared, untrusted)",
+    "document_summary": "one summary line per document: format | application | author | company | top severity and finding codes",
+    "document_external_targets": "external relationships and links of a document: list {type, target_kind, target, auto_load}; never fetched or resolved by V3LUM",
+    "document_macros": "macro facts of a document: {present, modules, autoexec, suspicious keywords, xlm_sheets, dde}; macros are never executed",
+    "pdf_structure": "pdfid-style structure of a PDF: {header, keyword counts, obfuscated names, encrypted, object streams inflated, open_action, embedded files}",
+    "apk_manifest": "Android manifest facts: {package, label, version_code, version_name, min_sdk, target_sdk, debuggable, allow_backup, cleartext, permissions, exported components}",
+    "android_package": "Android application package name declared in the manifest",
+    "apk_signing": "APK signing facts: {schemes (v1/v2/v3/v3.1), certificates (sha256, subject, issuer, validity), consistent, verified: false (signatures are not verified)}",
+    "apk_contents": "APK contents facts: {native libraries, packer hints, code-like assets, dex bytes, strings scanned, SDK/analytics/CDN noise hosts by class, non-routable IPs}",
+    "archive_summary": "archive or disk-image listing summary: {kind, counts (members, files, declared total, encrypted, unsafe names), anomalies, stealer_bundle, stop reason, nested containers}",
+    "archive_members": "archive members (capped list): {name, size, compressed_size, encrypted, flags, hidden, sha256, kind}; stealer bundles keep masked names and sizes only"
+  },
+  "tags": {
+    "masquerading": "file masquerading: the real type differs from what the name shows (extension mismatch, double extension, right-to-left override; ATT&CK T1036)",
+    "polyglot": "file valid as two formats at once (e.g. PDF+ZIP, PE+ZIP): content filters and analysts may see different files",
+    "remote_template": "document loads an external template or relationship when opened (template injection, T1221); its targets are never fetched",
+    "maldoc": "malicious-document indicators (auto-exec macros, XLM, DDE, auto-run PDF actions, exploit objects): suspicious, not a malware verdict",
+    "banker_profile": "Android permission profile consistent with banking trojans (accessibility, overlay, SMS, device admin): heuristic, not a verdict",
+    "motw_bypass": "container that defeats Mark-of-the-Web (ISO/IMG/VHD holding executables or scripts, T1553.005)",
+    "archive_bomb": "decompression bomb or archive limit reached: the listing is partial and nothing past the limit was read",
+    "unsafe_path": "archive member with an unsafe path (absolute, '..', drive letter, link or device): never extracted"
+  },
+  "relations": {
+    "remote_template": "document -> URL/host/IP of an external relationship loaded on open (template injection, T1221): hostile, passive modules only, never fetched or resolved over HTTP, SMB or WebDAV by V3LUM",
+    "external_hyperlink": "document -> click-only external hyperlink target (passive modules only, never fetched)",
+    "document_author": "document -> author or last-modified-by name/account from its metadata (personal data: analyst selection only, never auto-checked)",
+    "local_account": "document -> local account name taken from a user-profile path (C:\\Users\\<name>, /home/<name>) in its metadata (personal data)",
+    "macro_string": "document -> URL found in its macro source (macros are never executed)",
+    "pdf_link": "PDF -> target of a URI action (never fetched)",
+    "link_in_message": "Outlook message file -> URL found in its body (never fetched)",
+    "message_sender": "Outlook message file -> sender name or account (personal data: analyst selection only)",
+    "signing_certificate": "app or file -> SHA-256 thumbprint of the certificate it is signed with (signature not verified)",
+    "android_package": "APK -> its Android package name"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p2-G12-3",
+  "title": "Windows artefact triage names of batch p2-G12-3 (windows_artifact_triage, P367)",
+  "owner": "batch p2-G12-3 (P367)",
+  "attributes": {
+    "windows_artifact": "Windows artefact triage facts (P367): {format (lnk|onenote|onetoc2|msi|msp|mst), status, reason, parser (LnkParse3/olefile/pymsi or the built-in reader), detected_by (magic|extension), markers, warnings, partial}; parsed offline, nothing executed",
+    "windows_artifact_summary": "one summary line per Windows artefact (LNK target and markers, OneNote embedded files, MSI product and custom actions)",
+    "lnk_shortcut": "Windows shortcut (LNK) facts: {target, target_sources (environment block, LinkInfo, ID list, relative path), arguments, working_dir, icon_location, icon_index, description, show_command, link_flags, file_attributes, target_times, target_size, drive_type, volume_label, network_share, droid, extra_blocks, string_data_source}; never opened or followed",
+    "lnk_machine_id": "NetBIOS machine name of the TrackerDataBlock of an LNK (the machine that created the shortcut): clustering identifier only, never sent to any lookup (P367 c7)",
+    "lnk_droid_mac": "MAC address embedded in the version-1 droid file id of an LNK (the creating machine's network card): clustering identifier only, never sent to any lookup (P367 c7)",
+    "lnk_birth_droid_mac": "MAC address of the birth droid file id of an LNK when it differs from the current droid: clustering identifier only, never looked up",
+    "lnk_volume_serial": "volume serial number (XXXX-XXXX) of the drive that held the shortcut target: clustering identifier only, never looked up",
+    "lnk_decoded_command": "statically decoded text of an LNK command line (e.g. PowerShell -EncodedCommand): evidence for the analyst, never run",
+    "msi_package": "Windows Installer package facts: {product (ProductName, Manufacturer, ProductVersion, ProductCode, UpgradeCode, ProductLanguage), summary (SummaryInformation), signed, clsid, parser, tables_parser, table_names, stream_count, storages, property_count, cfb_anomalies}",
+    "msi_tables_status": "whether the MSI CustomAction/Binary/Property tables were read: 'parsed', or 'MSI tables not parsed (<why>)' when the optional pymsi is missing or fails (never empty)",
+    "msi_custom_actions": "MSI CustomAction rows decoded: {name, type, base, action, source_kind, description, source, target, command_line, deferred, no_impersonate, elevated, scheduled, payload_sha256, lolbin}; never executed",
+    "onenote_file": "OneNote file facts: {header (file type, file GUID, format GUID check, expected length), embedded_count, embedded_names (heuristic EmbeddedFileName strings), kinds, parser}",
+    "embedded_files": "files embedded in an artefact (LNK appended data, OneNote FileDataStoreObjects, MSI streams): {origin, name, kind, size, md5, sha1, sha256}; hashed in memory, never written to disk or executed",
+    "script_decoder_inputs": "scripts and command lines handed to the P366 script decoder: {origin, kind, chars, sha256, decoder (script_decoder|stand-in), layers, iocs}; decoding is static, nothing is run"
+  },
+  "tags": {},
+  "relations": {
+    "lnk_target": "shortcut -> URL/host/IP of its target when that target is a UNC/WebDAV share or URL (T1204.002): hostile, passive modules only, never resolved or contacted over HTTP, SMB or WebDAV",
+    "lnk_icon": "shortcut -> host/IP/URL of a remote icon location (fetched by Explorer on folder view: NTLM leak, T1187): hostile, passive modules only, never contacted",
+    "lnk_reference": "shortcut -> URL/host/IP found in its arguments, working directory or description: hostile, passive modules only, never contacted",
+    "msi_reference": "Windows Installer package -> URL/host/IP found in a CustomAction target or command line or in a Property value (ARP* properties are vendor metadata): passive modules only, never contacted",
+    "lnk_metadata": "shortcut -> clustering identifier (lnk_machine_id:, lnk_droid_mac:, lnk_volume_serial: keyword) that links artefacts of one campaign; expand=False, never sent to any lookup"
+  }
+}

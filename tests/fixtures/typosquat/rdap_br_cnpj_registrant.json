@@ -1,0 +1,79 @@
+{
+ "objectClassName": "domain",
+ "handle": "registro.br",
+ "ldhName": "registro.br",
+ "status": [
+  "active"
+ ],
+ "entities": [
+  {
+   "objectClassName": "entity",
+   "handle": "05506560000136",
+   "roles": [
+    "registrant"
+   ],
+   "publicIds": [
+    {
+     "type": "cnpj",
+     "identifier": "05.506.560/0001-36"
+    }
+   ],
+   "vcardArray": [
+    "vcard",
+    [
+     [
+      "version",
+      {},
+      "text",
+      "4.0"
+     ],
+     [
+      "kind",
+      {},
+      "text",
+      "org"
+     ],
+     [
+      "fn",
+      {},
+      "text",
+      "Núcleo de Inf. e Coord. do Ponto BR - NIC.BR"
+     ]
+    ]
+   ]
+  }
+ ],
+ "events": [
+  {
+   "eventAction": "registration",
+   "eventDate": "1999-02-21T12:00:00Z"
+  },
+  {
+   "eventAction": "last changed",
+   "eventDate": "2018-04-02T12:19:10Z"
+  }
+ ],
+ "nameservers": [
+  {
+   "objectClassName": "nameserver",
+   "ldhName": "a.dns.br"
+  },
+  {
+   "objectClassName": "nameserver",
+   "ldhName": "b.dns.br"
+  },
+  {
+   "objectClassName": "nameserver",
+   "ldhName": "c.dns.br"
+  },
+  {
+   "objectClassName": "nameserver",
+   "ldhName": "d.dns.br"
+  },
+  {
+   "objectClassName": "nameserver",
+   "ldhName": "e.dns.br"
+  }
+ ],
+ "_scrubbed": "legalRepresentative and the administrative/technical contacts (natural persons) were removed (P003 minimisation)"
+}

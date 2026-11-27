@@ -1,0 +1,78 @@
+
+
+
+{
+ "resultCount": 4,
+ "results": [
+  {
+   "wrapperType": "software",
+   "kind": "software",
+   "trackId": 101,
+   "trackName": "BB Token Seguro",
+   "bundleId": "net.example.bbtoken",
+   "sellerName": "Example Apps Ltd",
+   "artistName": "Example Apps Ltd",
+   "artistId": 900000101,
+   "sellerUrl": "https://apps.example.net/",
+   "trackViewUrl": "https://apps.apple.com/br/app/example/id101?uo=4",
+   "primaryGenreName": "Finance",
+   "releaseDate": "2026-11-01T08:00:00Z",
+   "currentVersionReleaseDate": "2026-11-20T08:00:00Z",
+   "version": "1.0",
+   "userRatingCount": 3
+  },
+  {
+   "wrapperType": "software",
+   "kind": "software",
+   "trackId": 102,
+   "trackName": "Banco do Brasil",
+   "bundleId": "com.example.bdb",
+   "sellerName": "Banco do Brasil Digital Ltda",
+   "artistName": "Banco do Brasil Digital Ltda",
+   "artistId": 900000102,
+   "sellerUrl": "https://www.example.com/",
+   "trackViewUrl": "https://apps.apple.com/br/app/example/id102?uo=4",
+   "primaryGenreName": "Finance",
+   "releaseDate": "2026-11-01T08:00:00Z",
+   "currentVersionReleaseDate": "2026-11-20T08:00:00Z",
+   "version": "1.0",
+   "userRatingCount": 3
+  },
+  {
+   "wrapperType": "software",
+   "kind": "software",
+   "trackId": 103,
+   "trackName": "Atualizacao Cadastral BB",
+   "bundleId": "br.com.bb.update",
+   "sellerName": "Example Apps Ltd",
+   "artistName": "Example Apps Ltd",
+   "artistId": 900000103,
+   "sellerUrl": "https://www.bb.com.br",
+   "trackViewUrl": "https://apps.apple.com/br/app/example/id103?uo=4",
+   "primaryGenreName": "Finance",
+   "releaseDate": "2026-11-01T08:00:00Z",
+   "currentVersionReleaseDate": "2026-11-20T08:00:00Z",
+   "version": "1.0",
+   "userRatingCount": 3
+  },
+  {
+   "wrapperType": "software",
+   "kind": "software",
+   "trackId": 104,
+   "trackName": "BBC News Example",
+   "bundleId": "org.example.news",
+   "sellerName": "Example Media Ltd",
+   "artistName": "Example Media Ltd",
+   "artistId": 900000104,
+   "sellerUrl": "https://news.example.org/",
+   "trackViewUrl": "https://apps.apple.com/br/app/example/id104?uo=4",
+   "primaryGenreName": "Finance",
+   "releaseDate": "2026-11-01T08:00:00Z",
+   "currentVersionReleaseDate": "2026-11-20T08:00:00Z",
+   "version": "1.0",
+   "userRatingCount": 3
+  }
+ ]
+}
+
+

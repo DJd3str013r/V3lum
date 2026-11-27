@@ -1,0 +1,24 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "cvm",
+  "hosts": [],
+  "sources": {
+    "cvm_person_registry_pf": {
+      "title": "CVM cadastral registries of natural persons: portfolio managers (cad_adm_cart_pf.csv) and securities advisers (cad_consultor_vlmob_pf.csv)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://dados.cvm.gov.br/dataset/adm_cart-cad",
+        "quote": "Open Database License (ODbL) per CKAN metadata: internal use fine; share-alike only if a derived database is redistributed.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "cvm",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: research C0744 terms (CKAN license_id odc-odbl, re-checked 2026-11-26). Same files as cvm.cadastral (the adm_cart and consultor_vlmob zips), but only the natural-person members, as datasets cvm_adm_cart_pf.csv and cvm_consultor_vlmob_pf.csv (non-essential, refreshed by v3lum data update, never during a scan). P360 FC9: matched only in explicit due diligence (module cvm_person_registry: default off, analyst-typed seeds, recorded purpose), by exact normalised name only; the files carry no CPF column (a future one would be kept masked) and a CPF is never a lookup key (rule 4). A separate source keeps these optional datasets out of the policy dataset gate (POL-14) of bcb_authorized_institutions. Attribution CVM."
+    }
+  },
+  "error_markers": [],
+  "notes": "Batch p1-G10-3 (P360): the natural-person registry source used by cvm_person_registry."
+}

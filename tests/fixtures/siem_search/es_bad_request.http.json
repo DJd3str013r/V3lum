@@ -1,0 +1,34 @@
+{
+ "request": {
+  "method": "POST",
+  "url": "https://siem.example.com:9200/logs-proxy-*,logs-dns-*/_search",
+  "headers": {
+   "Authorization": "<ApiKey value not stored>",
+   "Content-Type": "application/json"
+  }
+ },
+ "response": {
+  "status": 400,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": {
+   "error": {
+    "root_cause": [
+     {
+      "type": "parsing_exception",
+      "reason": "unknown query [query_string_x]",
+      "line": 1,
+      "col": 63
+     }
+    ],
+    "type": "parsing_exception",
+    "reason": "unknown query [query_string_x]",
+    "line": 1,
+    "col": 63
+   },
+   "status": 400
+  }
+ },
+ "note": "cluster rejected the template body -> error, template needs review"
+}

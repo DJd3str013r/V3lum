@@ -1,0 +1,29 @@
+{
+ "_provenance": {
+  "synthetic": true
+ },
+ "target": "198.51.100.12",
+ "egress": "HTTPS-only proxy (as in this research egress)",
+ "outcomes": [
+  {
+   "port": 22,
+   "result": "error",
+   "errno": "HTTPS_ONLY_EGRESS"
+  },
+  {
+   "port": 25,
+   "result": "error",
+   "errno": "HTTPS_ONLY_EGRESS"
+  },
+  {
+   "port": 80,
+   "result": "error",
+   "errno": "HTTPS_ONLY_EGRESS"
+  },
+  {
+   "port": 443,
+   "result": "error",
+   "errno": "PROXY_REFUSED"
+  }
+ ]
+}

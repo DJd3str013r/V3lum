@@ -1,0 +1,33 @@
+{
+ "_note": "research parse of the same file (design_security_txt.json) plus the github.com 403",
+ "google": {
+  "url": "https://www.google.com/.well-known/security.txt",
+  "status": 200,
+  "signed": false,
+  "fields": {
+   "contact": [
+    "https://g.co/vulnz",
+    "mailto:security@google.com"
+   ],
+   "encryption": [
+    "https://services.google.com/corporate/publickey.txt"
+   ],
+   "acknowledgments": [
+    "https://bughunters.google.com/"
+   ],
+   "policy": [
+    "https://g.co/vrp"
+   ],
+   "hiring": [
+    "https://g.co/SecurityPrivacyEngJobs"
+   ],
+   "expires": [
+    "2030-04-01T00:00:00z"
+   ]
+  }
+ },
+ "github": {
+  "status": 403,
+  "found": false
+ }
+}

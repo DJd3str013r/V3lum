@@ -1,0 +1,15 @@
+{
+ "_fixture": "REAL live capture 2026-11-26, minimised: random control",
+ "_meta": {
+  "url": "https://widgets.pinterest.com/v3/pidgets/users/z5n2zafhplp7e39qw4q9/pins/",
+  "user_agent": "V3LUM/dev",
+  "captured": "2026-11-26T08:32:54Z",
+  "elapsed_s": 0.501,
+  "bytes_original": 139
+ },
+ "status": 404,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": "{\"status\":\"failure\",\"code\":30,\"message\":\"User not found.\",\"endpoint_name\":\"v3_pidget_get_user_pins\",\"data\":null,\"error\":{\"message\":\"None\"}}"
+}

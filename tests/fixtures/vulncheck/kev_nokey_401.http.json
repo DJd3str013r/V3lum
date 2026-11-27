@@ -1,0 +1,17 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.vulncheck.com/v3/index/vulncheck-kev?cve=CVE-2021-44228",
+  "headers": {}
+ },
+ "response": {
+  "status": 401,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": "{\"error\": true, \"errors\": [\"unauthorized\"]}"
+ },
+ "transport_error": null,
+ "elapsed_s": 0.2,
+ "note": "RESEARCH 2026-11-25: body captured by the research run without a key; headers not recorded (content-type assumed). Not re-called: keyed source, no key here."
+}

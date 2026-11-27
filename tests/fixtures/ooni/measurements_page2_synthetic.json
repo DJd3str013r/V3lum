@@ -1,0 +1,28 @@
+{
+ "metadata": {
+  "count": -1,
+  "current_page": -1,
+  "limit": 3,
+  "next_url": "https://api.ooni.io/api/v1/measurements?domain=www.google.com&probe_cc=CN&since=2026-08-01T00%3A00%3A00%2B00%3A00&limit=3&cont=SYNTHETIC-CURSOR-2&order=desc&until=2026-11-27T00%3A00%3A00%2B00%3A00",
+  "offset": 0,
+  "pages": -1
+ },
+ "results": [
+  {
+   "anomaly": false,
+   "confirmed": false,
+   "failure": true,
+   "input": "https://www.google.com/",
+   "probe_asn": "AS24400",
+   "probe_cc": "CN",
+   "test_name": "web_connectivity",
+   "measurement_url": "https://api.ooni.io/api/v1/raw_measurement?measurement_uid=20261125092856.289284_CN_webconnectivity_db628b0726e5461e",
+   "measurement_start_time": "2026-11-25T09:28:21.000000Z",
+   "measurement_uid": "20261125092856.289284_CN_webconnectivity_db628b0726e5461e",
+   "verification_status": "unverified",
+   "scores": {
+    "blocking_general": 0.0
+   }
+  }
+ ]
+}

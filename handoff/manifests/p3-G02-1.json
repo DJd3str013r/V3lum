@@ -1,0 +1,183 @@
+{
+ "batch": "p3-G02-1",
+ "modules": [
+  {
+   "name": "netlas",
+   "file": "v3lum/modules/ip_network/netlas.py",
+   "proposal": "P037",
+   "category": "ip_network",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "noncommercial",
+   "provider_tier": "community",
+   "keys": [
+    "netlas (optional; V3LUM_NETLAS_KEY, X-API-Key header)"
+   ],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "netlas_ioc",
+    "whois_network",
+    "scan_engine_summary",
+    "subdomain_records"
+   ],
+   "live_check": "V3LUM_LIVE=1 tests/live/test_p3_g02_1.py: policy gate refuses keyless Netlas under corporate (SKIPPED licence, asserted); direct parser check keyless 2026-11-26 from this egress: ipv4:8.8.8.8 -> OK (AS15169, ports 53/443/853, 47137 co-hosted names -> count_only, 1 request), domain:example.com -> OK (17 A records, subdomain_count 96666, 1 request). Passed."
+  },
+  {
+   "name": "onyphe",
+   "file": "v3lum/modules/ip_network/onyphe.py",
+   "proposal": "P042",
+   "category": "ip_network",
+   "opsec": "passive",
+   "default_enabled": false,
+   "terms": "key-terms",
+   "provider_tier": "trusted",
+   "keys": [
+    "onyphe (required; V3LUM_ONYPHE_KEY, Authorization: bearer)"
+   ],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "scan_engine_summary",
+    "whois_network"
+   ],
+   "live_check": "keyed, no team key: live test asserts NEEDS_KEY before any request (passed); the recorded no-key 400 (research C0111) is the offline fixture."
+  },
+  {
+   "name": "censys",
+   "file": "v3lum/modules/ip_network/censys.py",
+   "proposal": "P044",
+   "category": "ip_network",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "noncommercial",
+   "provider_tier": "trusted",
+   "keys": [
+    "censys (required; legacy KNOWN_KEYS 'Censys Platform API token' = the PAT, Authorization: Bearer)",
+    "setting censys_organization_id (organization_id query parameter, masked via redact.register_secret)"
+   ],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "scan_threats",
+    "censys_web_properties",
+    "whois_network",
+    "scan_engine_summary"
+   ],
+   "live_check": "keyed, no company PAT: live test asserts NEEDS_KEY before any request (passed); recorded 401 (v3) and 403 'decommissioned' (legacy) are offline fixtures."
+  },
+  {
+   "name": "criminalip",
+   "file": "v3lum/modules/ip_network/criminalip.py",
+   "proposal": "P048",
+   "category": "ip_network",
+   "opsec": "passive",
+   "default_enabled": false,
+   "terms": "key-terms",
+   "provider_tier": "community (registry seed; P048 chair said trusted, P057's community is stricter and the seed records it)",
+   "keys": [
+    "criminalip (required; V3LUM_CRIMINALIP_KEY, x-api-key header)"
+   ],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "criminalip_score",
+    "ids_alerts"
+   ],
+   "live_check": "keyed, no team key: live test asserts NEEDS_KEY before any request (passed); the recorded no-key 'check access failed' (HTTP 200, body status 403) is the offline fixture."
+  },
+  {
+   "name": "fofa",
+   "file": "v3lum/modules/ip_network/fofa.py",
+   "proposal": "P049",
+   "category": "ip_network",
+   "opsec": "passive",
+   "default_enabled": false,
+   "terms": "license",
+   "provider_tier": "unknown",
+   "keys": [
+    "fofa_key (required; V3LUM_FOFA_KEY, key= URL parameter masked by AR01)"
+   ],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "fofa_assets"
+   ],
+   "live_check": "paid key, unknown tier: never called; live test asserts NEEDS_KEY before any request (passed)."
+  }
+ ],
+ "proposals_not_done": [],
+ "core_requests": [
+  "P321: add maps_to 'needs_key' to the error-marker schema (providers.parse_marker / http.classify raising AuthRequired) so 'key missing/refused' bodies inside HTTP 200 (Netlas, ONYPHE error 2, Criminal IP 'check access failed', FOFA account errors) become NEEDS_KEY without module-side mapping (scan_engines.fetch_json needs_key_markers is the interim workaround).",
+  "Keys: register censys_pat (env V3LUM_CENSYS_PAT, V3LUM_CENSYS_TOKEN) and censys_org (P044 cond 2) - the censys fragment is owned by p2-G14-3, provider extensions cannot declare keys and the registry allows one key per provider; interim: legacy KNOWN_KEYS 'censys' as PAT + module setting censys_organization_id registered with redact.register_secret at run time. A 'secret setting' kind (masked by the redactor, offered by the keys wizard) would also solve it.",
+  "Provider extensions (v3lum.provider-ext/1): allow a 'quota' block (or per-source quota) so batches can record P334 monthly credit budgets for providers they do not own (censys, criminalip, fofa); interim: Module.daily_quota fallbacks.",
+  "Policy: a recorded per-scan provider opt-in flag (e.g. ScanOptions.provider_opt_in, stored in the case audit) for P049 cond 3 (own-asset/engagement targets to FOFA); interim: fofa always SKIPPED own_asset for such targets."
+ ],
+ "files": [
+  "v3lum/modules/ip_network/scan_engines.py",
+  "v3lum/modules/ip_network/netlas.py",
+  "v3lum/modules/ip_network/onyphe.py",
+  "v3lum/modules/ip_network/censys.py",
+  "v3lum/modules/ip_network/criminalip.py",
+  "v3lum/modules/ip_network/fofa.py",
+  "v3lum/data/providers/onyphe.json",
+  "v3lum/data/providers/netlas__p3-G02-1.json",
+  "v3lum/data/providers/censys__p3-G02-1.json",
+  "v3lum/data/providers/criminalip__p3-G02-1.json",
+  "v3lum/data/providers/fofa__p3-G02-1.json",
+  "v3lum/data/vocab/p3-G02-1.json",
+  "tests/modules/test_netlas.py",
+  "tests/modules/test_onyphe.py",
+  "tests/modules/test_censys.py",
+  "tests/modules/test_criminalip.py",
+  "tests/modules/test_fofa.py",
+  "tests/live/test_p3_g02_1.py",
+  "tests/fixtures/netlas/domains_count_empty.json",
+  "tests/fixtures/netlas/domains_count_ok.json",
+  "tests/fixtures/netlas/domains_search_ok.json",
+  "tests/fixtures/netlas/host_domain_ok.json",
+  "tests/fixtures/netlas/host_empty_synthetic.json",
+  "tests/fixtures/netlas/host_ip_ok.json",
+  "tests/fixtures/netlas/host_ip_reserved_shared.json",
+  "tests/fixtures/netlas/malformed_truncated.json",
+  "tests/fixtures/netlas/needs_key_401_synthetic.http.json",
+  "tests/fixtures/netlas/quota_error_in_200_synthetic.http.json",
+  "tests/fixtures/netlas/rate_limited_429_documented.http.json",
+  "tests/fixtures/netlas/web_ui_challenge.http.json",
+  "tests/fixtures/onyphe/credits_exhausted_synthetic.http.json",
+  "tests/fixtures/onyphe/invalid_key_synthetic.http.json",
+  "tests/fixtures/onyphe/nokey_400.http.json",
+  "tests/fixtures/onyphe/rate_limited_429_synthetic.http.json",
+  "tests/fixtures/onyphe/summary_empty_synthetic.json",
+  "tests/fixtures/onyphe/summary_ip_ok_synthetic.json",
+  "tests/fixtures/censys/cert_ok_documented.json",
+  "tests/fixtures/censys/cert_shared_documented.json",
+  "tests/fixtures/censys/host_not_found_404_synthetic.http.json",
+  "tests/fixtures/censys/host_ok_documented.json",
+  "tests/fixtures/censys/legacy_decommissioned_403.http.json",
+  "tests/fixtures/censys/platform_nokey_401.http.json",
+  "tests/fixtures/censys/quota_403_synthetic.http.json",
+  "tests/fixtures/censys/rate_limited_429_synthetic.http.json",
+  "tests/fixtures/censys/search_empty_documented.json",
+  "tests/fixtures/censys/search_ok_documented.json",
+  "tests/fixtures/censys/web_ui_challenge.http.json",
+  "tests/fixtures/criminalip/domain_report_ok_synthetic.json",
+  "tests/fixtures/criminalip/domain_reports_ok_synthetic.json",
+  "tests/fixtures/criminalip/ip_report_empty_synthetic.json",
+  "tests/fixtures/criminalip/ip_report_ok_synthetic.json",
+  "tests/fixtures/criminalip/nokey_error_in_200.http.json",
+  "tests/fixtures/criminalip/quota_error_in_200_synthetic.http.json",
+  "tests/fixtures/criminalip/rate_limited_error_in_200_synthetic.http.json",
+  "tests/fixtures/fofa/error_in_200_account_invalid_synthetic.json",
+  "tests/fixtures/fofa/error_in_200_fpoints_synthetic.json",
+  "tests/fixtures/fofa/search_empty_documented.json",
+  "tests/fixtures/fofa/search_ok_documented.json",
+  "docs/backlog/p3-G02-1.md"
+ ],
+ "notes": "All five proposals delivered as PASSIVE modules sharing v3lum/modules/ip_network/scan_engines.py (fetch_json with P321 classification + needs-key marker mapping, coercers, P001 shared-certificate rule via ct_logs patterns when installed, P291 severity cap). Provider ownership: onyphe.json created (owners.json maps onyphe.io to null; hosts www.onyphe.io + onyphe.io, tier trusted, key onyphe, 5 error markers); netlas, criminalip, fofa are seeds -> extensions netlas__p3-G02-1.json (source netlas_paid_plan key-terms + 4 markers), criminalip__p3-G02-1.json and fofa__p3-G02-1.json (markers); censys.json belongs to p2-G14-3 -> censys__p3-G02-1.json adds host api.platform.censys.io, sources censys_platform_free (noncommercial) and censys_platform_commercial (key-terms) and 3 markers. Licence modelling: P037/P044 'runs only with key_plans.<key>=business or a licence_allow entry' is expressed with two sources each (noncommercial + key-terms); the module names the source the gate allowed. Merge-gate caveat: success fixtures for onyphe/censys/criminalip/fofa are documentation-shaped or synthetic (no company/team/paid keys exist); real recorded no-key/401/403 answers are included; Netlas fixtures are real keyless captures. See docs/backlog/p3-G02-1.md. Explicit-selection rule (P037 c2) uses ctx.options.include or a single run outside a scan (runtime.in_scan False). No LIGHT/ACTIVE variants were requested. No acceptance routes shipped (keyed/licence-gated modules make no request in a keyless default scan)."
+}

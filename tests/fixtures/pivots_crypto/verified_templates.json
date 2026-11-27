@@ -1,0 +1,148 @@
+{
+ "_doc": "Maintainer verification records for the pivots_crypto links (batch p2-G14-2): request URL, status, page title and a note per check, 2026-11-25/26 from a datacenter egress. Page bodies are not kept (victim lists, PEP names and bucket file names never enter the repository). 'link' and 'entity' name the pack link and the value the URL was built from; tests render them and compare with 'url'. V3LUM itself never requests these URLs.",
+ "checks": [
+  {
+   "case": "bitcoinwhoswho_nowww_redirect",
+   "url": "https://bitcoinwhoswho.com/address/1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+   "status": 301,
+   "title": "301 Moved Permanently",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:43:58Z",
+   "note": "bitcoinwhoswho.com/address/<a> -> 301 to the www form (which then 302s to plain http)",
+   "link": null,
+   "entity": null
+  },
+  {
+   "case": "bitcoinwhoswho_redirect_downgrade",
+   "url": "https://www.bitcoinwhoswho.com/address/1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+   "status": 302,
+   "title": "302 Found",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:39:38Z",
+   "note": "www.bitcoinwhoswho.com/address/<a> -> 302 http://bitcoinwhoswho.com (home page, plain http) for curl on 2026-11-26; research C0504 saw the report page",
+   "link": "crypto:bitcoinwhoswho_address",
+   "entity": "btc_address:1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+  },
+  {
+   "case": "bitref_ok",
+   "url": "https://bitref.com/1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+   "status": 200,
+   "title": "Address: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa | BitRef",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:39:43Z",
+   "note": "title echoes the address",
+   "link": "crypto:bitref_address",
+   "entity": "btc_address:1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+  },
+  {
+   "case": "blockchain_com_btc_ok",
+   "url": "https://www.blockchain.com/explorer/addresses/btc/1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+   "status": 200,
+   "title": "Satoshi Address: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:39:40Z",
+   "note": "title echoes the address",
+   "link": "crypto:blockchain_com_btc",
+   "entity": "btc_address:1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+  },
+  {
+   "case": "blockchain_com_eth_ok",
+   "url": "https://www.blockchain.com/explorer/addresses/eth/0xdac17f958d2ee523a2206206994597c13d831ec7",
+   "status": 200,
+   "title": "Tether Address: 0xdac17f958d2ee523a2206206994597c13d831ec7",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:39:42Z",
+   "note": "title echoes the address",
+   "link": "crypto:blockchain_com_eth",
+   "entity": "eth_address:0xdac17f958d2ee523a2206206994597c13d831ec7"
+  },
+  {
+   "case": "blockchair_bch_ok",
+   "url": "https://blockchair.com/bitcoin-cash/address/qp3wjpa3tjlj042z2wv7hahsldgwhwy0rq9sywjpyy",
+   "status": 200,
+   "title": "Bitcoin Cash address qp3wjpa3tjlj042z2wv7hahsldgwhwy0rq9sywjpyy",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:52:57Z",
+   "note": "address dashboard rendered (marker 'this address' present)",
+   "link": "crypto:blockchair_bch",
+   "entity": "other_crypto_address:bitcoincash:qp3wjpa3tjlj042z2wv7hahsldgwhwy0rq9sywjpyy"
+  },
+  {
+   "case": "blockchair_btc_ok",
+   "url": "https://blockchair.com/bitcoin/address/1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+   "status": 200,
+   "title": "Bitcoin address 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:39:28Z",
+   "note": "address dashboard rendered (marker 'this address' present)",
+   "link": "crypto:blockchair_btc",
+   "entity": "btc_address:1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+  },
+  {
+   "case": "blockchair_doge_unused",
+   "url": "https://blockchair.com/dogecoin/address/DEA5vGb2NpAwCiCp5yTE16F3DueQUVivQp",
+   "status": 200,
+   "title": "Dogecoin address DEA5vGb2NpAwCiCp5yTE16F3DueQUVivQp",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:52:55Z",
+   "note": "synthetic DOGE address from the genesis hash160 (unused): route verified, no data",
+   "link": "crypto:blockchair_doge",
+   "entity": "other_crypto_address:DEA5vGb2NpAwCiCp5yTE16F3DueQUVivQp"
+  },
+  {
+   "case": "blockchair_eth_ok",
+   "url": "https://blockchair.com/ethereum/address/0xdac17f958d2ee523a2206206994597c13d831ec7",
+   "status": 200,
+   "title": "Ethereum address 0xdac17f958d2ee523a2206206994597c13d831ec7",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:39:31Z",
+   "note": "address dashboard rendered (marker 'this address' present)",
+   "link": "crypto:blockchair_eth",
+   "entity": "eth_address:0xdac17f958d2ee523a2206206994597c13d831ec7"
+  },
+  {
+   "case": "blockchair_ltc_chain_mismatch",
+   "url": "https://blockchair.com/litecoin/address/1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+   "status": 200,
+   "title": "Litecoin address 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:39:33Z",
+   "note": "a BTC address on the litecoin path: HTTP 200 and a plausible title, no address data (the 'couldn't find' text is in every Blockchair page template; absence of the dashboard marker is the signal) - why P216 FC8 needs chain-validated placeholders",
+   "link": null,
+   "entity": null
+  },
+  {
+   "case": "ethplorer_ok",
+   "url": "https://ethplorer.io/address/0xdac17f958d2ee523a2206206994597c13d831ec7",
+   "status": 200,
+   "title": "[USDT] Tether USD Token price $0.9987, ERC-20 history and chart - Ethereum contract address 0xdAC17F958D2ee523a220620699",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:39:45Z",
+   "note": "title echoes the address",
+   "link": "crypto:ethplorer_address",
+   "entity": "eth_address:0xdac17f958d2ee523a2206206994597c13d831ec7"
+  },
+  {
+   "case": "mempool_spa_shell",
+   "url": "https://mempool.space/address/1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+   "status": 200,
+   "title": "mempool - Bitcoin Explorer",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:39:27Z",
+   "note": "SPA shell; the address is not in the HTML",
+   "link": "crypto:mempool_address",
+   "entity": "btc_address:1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+  },
+  {
+   "case": "walletexplorer_ok",
+   "url": "https://www.walletexplorer.com/address/1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+   "status": 200,
+   "title": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa [WalletExplorer.com]",
+   "observed_at": "2026-11-26",
+   "source": "live 2026-11-26T08:39:36Z",
+   "note": "title echoes the address",
+   "link": "crypto:walletexplorer_address",
+   "entity": "btc_address:1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+  }
+ ]
+}

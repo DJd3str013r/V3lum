@@ -1,0 +1,19 @@
+{
+ "url": "https://www.example.com/",
+ "status": 403,
+ "headers": [
+  [
+   "Server",
+   "cloudflare"
+  ],
+  [
+   "cf-mitigated",
+   "challenge"
+  ],
+  [
+   "Content-Type",
+   "text/html"
+  ]
+ ],
+ "body": "<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title></head><body><noscript>Enable JavaScript and cookies to continue</noscript></body></html>"
+}

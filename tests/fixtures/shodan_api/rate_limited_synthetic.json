@@ -1,0 +1,4 @@
+{
+ "_synthetic": "Not observed (no key). Error text as handled by the official client.",
+ "error": "Request rate limit reached (1 request/ second). Please wait a second before trying again and slow down your API calls."
+}

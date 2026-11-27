@@ -1,0 +1,24 @@
+{
+ "address": "0x1111111111111111111111111111111111111111",
+ "avatar": "https://example.com/avatar.png",
+ "avatar_small": "https://ensdata.net/media/avatar/v3lum-fixture-owner.eth",
+ "avatar_url": "https://ensdata.net/media/avatar/v3lum-fixture-owner.eth",
+ "contentHash": "bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi",
+ "description": "example description",
+ "ens": "v3lum-fixture-owner.eth",
+ "ens_primary": "v3lum-fixture-owner.eth",
+ "github": "example-org",
+ "header": "https://example.com/header.png",
+ "pgp": "0123456789ABCDEF0123456789ABCDEF01234567",
+ "resolverAddress": "0x231b0Ee14048e9dCcD1d247744d114a4EB5E8E63",
+ "twitter": "example_handle",
+ "url": "https://example.com/",
+ "wallets": {
+  "eth": "0x1111111111111111111111111111111111111111",
+  "btc": "1KwdXzmjqp39iuZCecTGytQfxVtHiLmg1Z",
+  "sol": "FEoEdUV1jQrToA1h25gVEj8hibA2eBajswoxjNGHbo1n"
+ },
+ "email": "owner@example.com",
+ "telegram": "example_channel",
+ "com.discord": "example.user"
+}

@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "sanctions_ofac_sdn",
+  "source_url": "https://sanctionslistservice.ofac.treas.gov/api/PublicationPreview/exports/SDN.CSV",
+  "version": "runtime download by the dataset manager (SDN.CSV, SDN_COMMENTS.CSV, ALT.CSV, ADD.CSV; TTL 24 h); format checked 2026-11-26 on the list dated 2026-11-20",
+  "sha256": "",
+  "licence": "U.S. Government work (public domain)",
+  "attribution": "OFAC Specially Designated Nationals list, U.S. Department of the Treasury (public domain). Matched locally by V3LUM; a name match is not a sanctions determination.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/company_org/sanctions_lists.py",
+    "v3lum/modules/company_org/sanctions_data.py"
+  ]
+}

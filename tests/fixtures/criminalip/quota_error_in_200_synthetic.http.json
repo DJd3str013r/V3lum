@@ -1,0 +1,19 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.criminalip.io/v1/asset/ip/report?ip=198.51.100.30"
+ },
+ "response": {
+  "status": 200,
+  "headers": {
+   "Content-Type": "application/json"
+  },
+  "body": {
+   "data": {},
+   "message": "monthly credit limit exceeded",
+   "status": 403
+  }
+ },
+ "observed": "synthetic",
+ "note": "Credit exhaustion wording/status not verified; the marker reads 'credit'/'limit' as QUOTA before the generic 403 = check access failed."
+}

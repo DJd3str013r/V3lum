@@ -1,0 +1,62 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "cnpjws",
+  "name": "CNPJ.ws public API (publica.cnpj.ws)",
+  "operator": "CNPJ.ws (Brazilian company running the public and commercial CNPJ APIs)",
+  "hosts": [
+    "publica.cnpj.ws"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Identifiable Brazilian operator with a documented public API, a commercial tier, published terms and a multi-year public track record (A8 community). 'Tiers: BrasilAPI, Minha Receita, CNPJ.ws and Querido Diario (Open Knowledge Brasil) community.' (P236 cond 1).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Relays the RFB CNPJ dump with its own refresh date (atualizado_em); keeps partners of earlier dumps, so only the latest refresh month is the current QSA (prep H10)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 8,
+    "ttl": 259200,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "rate_per_second": 0.05,
+    "burst": 3,
+    "published": false,
+    "evidence_url": "https://publica.cnpj.ws/cnpj/00000000000191",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "public": {
+      "title": "CNPJ.ws public API /cnpj/{cnpj} (state registrations IE, IBGE ids, QSA)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.cnpj.ws/",
+        "quote": "Sources at release (class open, legal_dpo): BrasilAPI and Minha Receita (MIT code, RFB open data; one shared parser), publica.cnpj.ws public API (only free source of state IE) and Querido Diario company/partners.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "rfb",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P236 cond 1). Research C0520 terms 'cnpj.ws public tier terms; commercial tier needs token' (the token is never used here). Endpoint https://publica.cnpj.ws/cnpj/{cnpj}: 404 {status: 404, titulo: 'Nao encontrado'} for an unknown or alphanumeric CNPJ, 400 for a wrong check digit. Observed headers x-ratelimit-limit 3, x-ratelimit-remaining, x-ratelimit-reset 60 (research C0520, prep 2026-11-26): 3 requests per minute, so the quota block is a token bucket (burst 3) and cnpj_lookup calls it only as the last resort of the chain, skipping it - never sleeping more than 2 s - when its bucket or the x-ratelimit-remaining/reset headers say it is empty (P236 cond 3). Sets a Cloudflare bot-management cookie (never stored); a challenge page is BLOCKED, never retried. Used by cnpj_lookup."
+    }
+  },
+  "notes": "Owned by batch p1-G10-2 (P236). Single-batch host (owners.json maps publica.cnpj.ws to no provider). min_interval stays 1 s on purpose: the 3/min budget is a token bucket the module checks before calling, so the chain skips an empty bucket instead of waiting (P236 cond 3). ttl 259200 = CNPJ class."
+}

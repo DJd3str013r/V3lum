@@ -1,0 +1,40 @@
+{
+ "data": {
+  "id": "331bc752-906a-4fc5-beda-0c82b139dd42",
+  "created_at": "2023-01-12T14:59:51.723981Z",
+  "sha1_hash": "c454fb9e24c5aa2326978caac665cf7d8385cf88",
+  "title": "2021-12-15 - ThreatLabz analysis - Log4Shell CVE-2021-44228 Exploit Attempts",
+  "llm_title": "2021-12-15 - ThreatLabz analysis - Log4Shell CVE-2021-44228 Exploit Attempts",
+  "authors": "Zscaler ThreatLabz",
+  "file_creation_date": "2022-05-27T21:07:16Z",
+  "plain_text": "ThreatLabz analysis - Log4Shell CVE-2021-44228 Exploit Attempts\n\nzscaler.com/blogs/security-research/threatlabz-analysis-log4shell-cve-2021-44228-exploit-attempts\n\nThe Zscaler ThreatLabz team has been actively monitoring exploit attempts related to the Apache Log4j 0-day Remote\nCode Execution Vulnerability (CVE-2021-44228), also known as “Log4Shell.”\n\nIn this blog we will share our analysis of the exploit payloads being delivered using this vulnerability. We will continue to\nupdate this blog and share more details as we uncover them during our analysis.\n\nThreatlabz has also published a securit\n[... truncated in fixture ...]\nLs\n92.242.40[.]21/kinsing\n80.71.158[.]12/kinsing\n\nPersistence\n185.191.32[.]198/lh.sh\n\nTop Exploit Server IPs/Domains\n18.185.60[.]131:1389\n37.233.99[.]127:1389\n45.137.21[.]9:1389\n45.155.205[.]233:12344\n45.155.205[.]233:5874\n78.31.71[.]248:1389\n92.242.40[.]21:5557\n176.32.33[.]14\n178.62.74[.]211:8888\n198.152.7[.]67:54737\n205.185.115[.]217:47324\nqloi8d.dnslog[.]cn\nu7911j.dnslog[.]cn\n90d744e.probe001[.]log4j[.]leakix[.]net:1266\n372d7648[.]probe001[.]log4j[.]leakix[.]net:9200\n4a3b19ce6368.bingsearchlib[.]com:39356\n\nMonero Miner\nlurchmath[.]org/wordpress-temp/wp-content/plugins/\nReferences\n\nExample benign values quoted in the report: 8.8.8.8 and google.com\n",
+  "sources": [
+   "VXUG"
+  ],
+  "origins": [
+   "pdf"
+  ],
+  "references": [
+   "https://papers.vx-underground.org/papers/Malware Defense/Malware Analysis 2021/2021-12-15 - ThreatLabz analysis - Log4Shell CVE-2021-44228 Exploit Attempts.pdf"
+  ],
+  "report_names": [
+   "2021-12-15 - ThreatLabz analysis - Log4Shell CVE-2021-44228 Exploit Attempts.pdf"
+  ],
+  "threat_actors": [
+   {
+    "main_name": "Cron",
+    "aliases": [],
+    "source_id": "ETDA"
+   },
+   {
+    "main_name": "Kinsing",
+    "aliases": [
+     "Money Libra"
+    ],
+    "source_id": "MISPGALAXY"
+   }
+  ]
+ },
+ "message": "library entry by ID",
+ "status": "success"
+}

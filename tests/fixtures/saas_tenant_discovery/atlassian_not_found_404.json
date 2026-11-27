@@ -1,0 +1,17 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://thisorgdoesnotexist0000x.atlassian.net/_edge/tenant_info"
+  },
+  "response": {
+    "status": 404,
+    "headers": {
+      "content-type": "text/html",
+      "server": "AtlassianEdge"
+    },
+    "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Atlassian Cloud Notifications - Page Unavailable</title>\n</head>\n<body>\n<h1>Page unavailable</h1>\n<p>Your Atlassian Cloud site is currently unavailable.</p>\n</body>\n</html>\n"
+  },
+  "class": "live",
+  "captured_at": "2026-11-26T11:00:41Z",
+  "notes": "random non-existent name: 404 HTML from AtlassianEdge, trimmed to title + first sentence (2766 B live)"
+}

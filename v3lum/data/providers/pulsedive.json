@@ -1,0 +1,90 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "pulsedive",
+  "name": "Pulsedive indicator info (pulsedive.com/api)",
+  "operator": "Pulsedive LLC",
+  "hosts": [
+    "pulsedive.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Small company with an identifiable operator, public API documentation, terms and more than two years of public track record (A8 community); P160 final condition 4: 'Registry provider pulsedive: tier community, terms key-terms'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Community threat-intel aggregator: risk is computed from public feeds and Pulsedive's own scans; feeds[] re-serve abuse.ch, Bambenek, OpenPhish and other lists, so memberships are deduplicated against the local feeds (P160 cond 4)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "ttl": 86400,
+    "min_interval": 1.1,
+    "retries": 0
+  },
+  "quota": {
+    "scope": "key",
+    "rate_per_second": 1,
+    "published": true,
+    "evidence_url": "https://docs.pulsedive.com/api/limits",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {
+    "pulsedive": {
+      "description": "Pulsedive API key (sent as the key= query parameter of info.php; masked by the redactor and hashed into the cache key)",
+      "signup_url": "https://pulsedive.com/register",
+      "env": [
+        "V3LUM_PULSEDIVE_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "Use a company account on a plan recorded as business-compatible (key_plans.pulsedive='business', P160 cond 1); keyless community use is not built."
+    }
+  },
+  "sources": {
+    "info": {
+      "title": "Pulsedive info.php?indicator= (indicator report) and explore.php (read-only search); analyze.php and every probe/scan/submit endpoint are never built",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://pulsedive.com/terms",
+        "quote": "P160 cond 1 (binding council text): keyed only in this build (key 'pulsedive'); keyless community use stays unbuilt until legal records its terms (the terms pages are JS-only, unverified 2026-11-26). The key comes from a company account on a plan recorded as business-compatible (key_plans.pulsedive='business'). Registry provider pulsedive: tier community, terms key-terms.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "pulsedive",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0344 (verified live 2026-11-26 keyless: 200 from Apache, X-Requests-Remaining-Second/Day headers). Documented: 404 {\"error\":\"Indicator not found.\"} (EMPTY 'not in Pulsedive', never clean), 401 'Invalid API key.' (NEEDS_KEY), 429 'API rate limit exceeded: 1 requests per second' (RATE_LIMITED; QUOTA when the day/month counter is 0). Never analyze.php: it makes Pulsedive actively scan the indicator (target contact, rule 7). Comments, cookies, WHOIS and HTTP headers are never copied. Aggregator: feeds[] are upstream provenance; the module names the families behind its verdict in finding data['upstream_families'] so CR27 counts them once (P171/P159).",
+      "embeds": [
+        "abuse.ch",
+        "spamhaus",
+        "blocklist.de",
+        "cins",
+        "emergingthreats",
+        "openphish",
+        "phishtank",
+        "firehol",
+        "tor-project",
+        "greensnow",
+        "binarydefense",
+        "dshield",
+        "otx",
+        "dataplane",
+        "botvrij",
+        "c2intelfeeds"
+      ],
+      "licensed_alternative": "A Pulsedive company plan (API/Commercial) recorded by legal as key_plans.pulsedive='business'; meanwhile the direct feeds it re-serves and the manual Pulsedive indicator page."
+    }
+  },
+  "x_quota_note": "rate_per_second is the documented free-account limit ('API rate limit exceeded: 1 requests per second', docs 2026-11-26); day and month limits are plan-specific and unpublished: the module reads X-Requests-Remaining-Day/Month and treats a 429 with a 0 day/month counter as QUOTA. Replace with the recorded plan's limits (P160 cond 3, P334).",
+  "notes": "Owned by batch p3-G07-1 (P160, module threat_intel_ioc/pulsedive). The key 'pulsedive' is the legacy config.KNOWN_KEYS entry; this fragment adds the alias V3LUM_PULSEDIVE_KEY and the plan hint. Cache 24 h (cond 3)."
+}

@@ -1,0 +1,33 @@
+{
+ "request": {
+  "method": "POST",
+  "url": "https://siem.example.com:9200/logs-proxy-*,logs-dns-*/_search",
+  "headers": {
+   "Authorization": "<ApiKey value not stored>",
+   "Content-Type": "application/json"
+  }
+ },
+ "response": {
+  "status": 401,
+  "headers": {
+   "content-type": "application/json",
+   "www-authenticate": "ApiKey, Basic realm=\"security\", charset=\"UTF-8\""
+  },
+  "body": {
+   "error": {
+    "root_cause": [
+     {
+      "type": "security_exception",
+      "reason": "unable to authenticate with provided credentials and anonymous access is not allowed for this request",
+      "additional_unsuccessful_credentials": "API key: api key [svc-v3lum-ro] has been invalidated"
+     }
+    ],
+    "type": "security_exception",
+    "reason": "unable to authenticate with provided credentials and anonymous access is not allowed for this request",
+    "additional_unsuccessful_credentials": "API key: api key [svc-v3lum-ro] has been invalidated"
+   },
+   "status": 401
+  }
+ },
+ "note": "bad or revoked read-only key -> needs_key"
+}

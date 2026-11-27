@@ -1,0 +1,21 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://euvdservices.enisa.europa.eu/api/enisaid?id=CVE-2021-9999999",
+  "headers": {}
+ },
+ "response": {
+  "status": 404,
+  "headers": {
+   "content-type": "application/json",
+   "content-length": "26",
+   "server": "Apache",
+   "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+   "expires": "0"
+  },
+  "body": "{\"error\":\"EUVD not found\"}"
+ },
+ "transport_error": null,
+ "elapsed_s": 0.662,
+ "note": "Valid but unassigned CVE id -> 404 {'error':'EUVD not found'}; a non-CVE id ('NOT-A-CVE') gives the same 404 body (raw/euvd_enisaid_bad_input.body)."
+}

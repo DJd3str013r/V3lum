@@ -1,0 +1,1454 @@
+[
+ {
+  "batch": "p1-G01-1",
+  "phase": 1,
+  "group": "G01",
+  "proposals": [
+   "P001",
+   "P002",
+   "P003"
+  ],
+  "points": 6,
+  "modules": [
+   "ct_logs",
+   "email_security_posture",
+   "rdap"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p1-G01-2",
+  "phase": 1,
+  "group": "G01",
+  "proposals": [
+   "P012",
+   "P059"
+  ],
+  "points": 5,
+  "modules": [
+   "typosquat",
+   "web_archives"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p1-G02-1",
+  "phase": 1,
+  "group": "G02",
+  "proposals": [
+   "P031",
+   "P032",
+   "P034",
+   "P038"
+  ],
+  "points": 6,
+  "modules": [
+   "ripestat",
+   "team_cymru_asn",
+   "cloud_ranges",
+   "nicbr_asn"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p1-G02-2",
+  "phase": 1,
+  "group": "G02",
+  "proposals": [
+   "P040",
+   "P043",
+   "P047",
+   "P149"
+  ],
+  "points": 6,
+  "modules": [
+   "tor_relays",
+   "shodan_internetdb",
+   "ip_offline_db",
+   "ip_blocklists"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p1-G03-1",
+  "phase": 1,
+  "group": "G03",
+  "proposals": [
+   "P064",
+   "P066",
+   "P071",
+   "P312"
+  ],
+  "points": 6,
+  "modules": [
+   "url_unwrap",
+   "urlscan_search",
+   "url_domain_blocklists",
+   "secret_scanner"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p1-G04-1",
+  "phase": 1,
+  "group": "G04",
+  "proposals": [
+   "P085",
+   "P088",
+   "P132",
+   "P134"
+  ],
+  "points": 5,
+  "modules": [
+   "email_header_analyzer",
+   "email_hygiene",
+   "hibp_catalog",
+   "hudson_rock"
+  ],
+  "existing": [
+   "email_basics"
+  ]
+ },
+ {
+  "batch": "p1-G05-1",
+  "phase": 1,
+  "group": "G05",
+  "proposals": [
+   "P111",
+   "P112"
+  ],
+  "points": 4,
+  "modules": [
+   "github_user",
+   "telegram_public"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p1-G05-2",
+  "phase": 1,
+  "group": "G05",
+  "proposals": [
+   "P113"
+  ],
+  "points": 3,
+  "modules": [
+   "username_check"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p1-G06-1",
+  "phase": 1,
+  "group": "G06",
+  "proposals": [
+   "P126",
+   "P128"
+  ],
+  "points": 2,
+  "modules": [
+   "phone_parse",
+   "pivots_phone"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p1-G07-1",
+  "phase": 1,
+  "group": "G07",
+  "proposals": [
+   "P153",
+   "P156",
+   "P159"
+  ],
+  "points": 6,
+  "modules": [
+   "otx",
+   "abusech",
+   "ioc_feeds_offline"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p1-G07-2",
+  "phase": 1,
+  "group": "G07",
+  "proposals": [
+   "P173",
+   "P175",
+   "P267",
+   "P348"
+  ],
+  "points": 5,
+  "modules": [
+   "circl_hashlookup",
+   "yaraify",
+   "file_hashing",
+   "internal_tip_sightings"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p1-G08-1",
+  "phase": 1,
+  "group": "G08",
+  "proposals": [
+   "P182",
+   "P183",
+   "P184"
+  ],
+  "points": 3,
+  "modules": [
+   "cisa_kev",
+   "cve_record",
+   "epss"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p1-G09-1",
+  "phase": 1,
+  "group": "G09",
+  "proposals": [
+   "P196",
+   "P197",
+   "P205",
+   "P207",
+   "P356"
+  ],
+  "points": 5,
+  "modules": [
+   "ransomlook",
+   "ransomware_live",
+   "crypto_sanctions",
+   "tron_explorer",
+   "ransomfeed"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p1-G10-1",
+  "phase": 1,
+  "group": "G10",
+  "proposals": [
+   "P219",
+   "P232",
+   "P233"
+  ],
+  "points": 5,
+  "modules": [
+   "sanctions_lists",
+   "br_validators",
+   "boleto_pix"
+  ],
+  "existing": [
+   "core/validators.py"
+  ]
+ },
+ {
+  "batch": "p1-G10-2",
+  "phase": 1,
+  "group": "G10",
+  "proposals": [
+   "P236",
+   "P239",
+   "P240",
+   "P252"
+  ],
+  "points": 6,
+  "modules": [
+   "cnpj_lookup",
+   "tcu_certidoes",
+   "cgu_sanctions_bulk",
+   "ibge_name_frequency"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p1-G10-3",
+  "phase": 1,
+  "group": "G10",
+  "proposals": [
+   "P360"
+  ],
+  "points": 1,
+  "modules": [
+   "bcb_authorized_institutions"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p1-G11-1",
+  "phase": 1,
+  "group": "G11",
+  "proposals": [
+   "P169",
+   "P292",
+   "P295"
+  ],
+  "points": 6,
+  "modules": [
+   "warninglists",
+   "attack_index",
+   "actor_alias_index"
+  ],
+  "existing": [
+   "core/noise.py"
+  ]
+ },
+ {
+  "batch": "p1-G12-1",
+  "phase": 1,
+  "group": "G12",
+  "proposals": [
+   "P269",
+   "P270",
+   "P364",
+   "P365"
+  ],
+  "points": 6,
+  "modules": [
+   "document_metadata",
+   "file_type_sniff",
+   "apk_triage",
+   "archive_listing"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p2-G01-1",
+  "phase": 2,
+  "group": "G01",
+  "proposals": [
+   "P004",
+   "P005",
+   "P006",
+   "P008",
+   "P009"
+  ],
+  "points": 6,
+  "modules": [
+   "hostio",
+   "nrd_feeds",
+   "securitytrails",
+   "digital_asset_links",
+   "govbr_domains"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p2-G01-2",
+  "phase": 2,
+  "group": "G01",
+  "proposals": [
+   "P010",
+   "P011",
+   "P014",
+   "P015"
+  ],
+  "points": 6,
+  "modules": [
+   "tranco_rank",
+   "m365_tenant",
+   "hackertarget",
+   "passive_dns"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p2-G01-3",
+  "phase": 2,
+  "group": "G01",
+  "proposals": [
+   "P016",
+   "P020",
+   "P060"
+  ],
+  "points": 6,
+  "modules": [
+   "subdomains_passive",
+   "protective_dns",
+   "archive_mining"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p2-G01-4",
+  "phase": 2,
+  "group": "G01",
+  "proposals": [
+   "P342",
+   "P343"
+  ],
+  "points": 2,
+  "modules": [
+   "saas_verification_tokens",
+   "whois_fallback"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p2-G02-1",
+  "phase": 2,
+  "group": "G02",
+  "proposals": [
+   "P033",
+   "P035",
+   "P036",
+   "P039",
+   "P041"
+  ],
+  "points": 6,
+  "modules": [
+   "asn_context",
+   "ip_context_lists",
+   "ipinfo",
+   "shodan_api",
+   "abusix_contacts"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p2-G02-2",
+  "phase": 2,
+  "group": "G02",
+  "proposals": [
+   "P045",
+   "P046",
+   "P147"
+  ],
+  "points": 6,
+  "modules": [
+   "dnsbl",
+   "ip_anonymizer_consensus",
+   "honeypot_intel"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p2-G02-3",
+  "phase": 2,
+  "group": "G02",
+  "proposals": [
+   "P148",
+   "P151",
+   "P274"
+  ],
+  "points": 3,
+  "modules": [
+   "greynoise_community",
+   "isc_dshield",
+   "leakix"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p2-G03-1",
+  "phase": 2,
+  "group": "G03",
+  "proposals": [
+   "P061",
+   "P067",
+   "P074",
+   "P344",
+   "P345"
+  ],
+  "points": 6,
+  "modules": [
+   "analytics_ids",
+   "google_safe_browsing",
+   "phishstats",
+   "retirejs_check",
+   "takedown_packet"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p2-G03-2",
+  "phase": 2,
+  "group": "G03",
+  "proposals": [
+   "P346"
+  ],
+  "points": 2,
+  "modules": [
+   "mobile_app_impersonation"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p2-G04-1",
+  "phase": 2,
+  "group": "G04",
+  "proposals": [
+   "P086",
+   "P087",
+   "P133",
+   "P135",
+   "P136",
+   "P137"
+  ],
+  "points": 6,
+  "modules": [
+   "github_email_pivot",
+   "gravatar",
+   "hibp_account",
+   "leakcheck_public",
+   "lunar_domain_exposure",
+   "xposedornot"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p2-G05-1",
+  "phase": 2,
+  "group": "G05",
+  "proposals": [
+   "P099",
+   "P100",
+   "P101",
+   "P102",
+   "P103"
+  ],
+  "points": 6,
+  "modules": [
+   "bluesky",
+   "dev_profiles_pack",
+   "discord_invite",
+   "dockerhub",
+   "gitlab_user"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p2-G05-2",
+  "phase": 2,
+  "group": "G05",
+  "proposals": [
+   "P107",
+   "P114",
+   "P195",
+   "P359"
+  ],
+  "points": 6,
+  "modules": [
+   "profile_id_extractor",
+   "avatar_correlation",
+   "threat_actor_handles",
+   "org_code_footprint"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p2-G07-1",
+  "phase": 2,
+  "group": "G07",
+  "proposals": [
+   "P152",
+   "P157",
+   "P158",
+   "P174",
+   "P268"
+  ],
+  "points": 6,
+  "modules": [
+   "crowdsec_cti",
+   "abuseipdb",
+   "virustotal",
+   "hybrid_analysis",
+   "lol_datasets"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p2-G07-2",
+  "phase": 2,
+  "group": "G07",
+  "proposals": [
+   "P349",
+   "P350"
+  ],
+  "points": 4,
+  "modules": [
+   "siem_search",
+   "offline_hash_sets"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p2-G08-1",
+  "phase": 2,
+  "group": "G08",
+  "proposals": [
+   "P181",
+   "P185",
+   "P186",
+   "P187",
+   "P188"
+  ],
+  "points": 5,
+  "modules": [
+   "circl_vulnlookup",
+   "osv_ghsa",
+   "vulncheck",
+   "endoflife",
+   "securitycontext_cve"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p2-G08-2",
+  "phase": 2,
+  "group": "G08",
+  "proposals": [
+   "P190",
+   "P352",
+   "P353"
+  ],
+  "points": 5,
+  "modules": [
+   "exploit_index",
+   "cve_offline_mirror",
+   "msrc_patch_tuesday"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p2-G09-1",
+  "phase": 2,
+  "group": "G09",
+  "proposals": [
+   "P198",
+   "P199",
+   "P204",
+   "P206",
+   "P208"
+  ],
+  "points": 5,
+  "modules": [
+   "deepdarkcti_index",
+   "onion_lookup",
+   "chainabuse",
+   "goplus_security",
+   "walletexplorer"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p2-G09-2",
+  "phase": 2,
+  "group": "G09",
+  "proposals": [
+   "P211",
+   "P212",
+   "P357"
+  ],
+  "points": 6,
+  "modules": [
+   "btc_explorers",
+   "evm_explorers",
+   "telegram_channel_watch"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p2-G09-3",
+  "phase": 2,
+  "group": "G09",
+  "proposals": [
+   "P358"
+  ],
+  "points": 1,
+  "modules": [
+   "crypto_address_labels"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p2-G10-1",
+  "phase": 2,
+  "group": "G10",
+  "proposals": [
+   "P220",
+   "P234",
+   "P235",
+   "P237"
+  ],
+  "points": 5,
+  "modules": [
+   "gleif",
+   "cep_lookup",
+   "cnae_tables",
+   "portal_transparencia_api"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p2-G10-2",
+  "phase": 2,
+  "group": "G10",
+  "proposals": [
+   "P238",
+   "P241",
+   "P242"
+  ],
+  "points": 6,
+  "modules": [
+   "rfb_cnpj_bulk",
+   "datajud",
+   "dou_search"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p2-G10-3",
+  "phase": 2,
+  "group": "G10",
+  "proposals": [
+   "P243",
+   "P361",
+   "P362"
+  ],
+  "points": 6,
+  "modules": [
+   "querido_diario",
+   "cnpj_name_resolver",
+   "djen_court_communications"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p2-G11-1",
+  "phase": 2,
+  "group": "G11",
+  "proposals": [
+   "P293",
+   "P298",
+   "P372",
+   "P373",
+   "P374"
+  ],
+  "points": 5,
+  "modules": [
+   "orkl",
+   "cti_news_rss",
+   "ransomware_matrices",
+   "technique_detections_tests",
+   "cisa_advisories"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p2-G12-1",
+  "phase": 2,
+  "group": "G12",
+  "proposals": [
+   "P259",
+   "P260",
+   "P261",
+   "P271",
+   "P272"
+  ],
+  "points": 6,
+  "modules": [
+   "image_metadata",
+   "pivots_geo_image",
+   "qr_decode",
+   "pe_triage",
+   "yara_scan"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p2-G12-2",
+  "phase": 2,
+  "group": "G12",
+  "proposals": [
+   "P314",
+   "P315",
+   "P316",
+   "P363",
+   "P366"
+  ],
+  "points": 5,
+  "modules": [
+   "id_timestamp_decoders",
+   "mac_oui",
+   "jwt_analysis",
+   "image_ocr",
+   "script_decoder"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p2-G12-3",
+  "phase": 2,
+  "group": "G12",
+  "proposals": [
+   "P367"
+  ],
+  "points": 2,
+  "modules": [
+   "windows_artifact_triage"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p2-G14-1",
+  "phase": 2,
+  "group": "G14",
+  "proposals": [
+   "P026",
+   "P057",
+   "P083",
+   "P170",
+   "P180",
+   "P194"
+  ],
+  "points": 6,
+  "modules": [
+   "pivots_domain_dns",
+   "pivots_ip_network",
+   "pivots_url_web",
+   "pivots_threat_intel",
+   "pivots_malware_hash",
+   "pivots_vulnerability"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p2-G14-2",
+  "phase": 2,
+  "group": "G14",
+  "proposals": [
+   "P203",
+   "P216",
+   "P231",
+   "P250",
+   "P290",
+   "P300"
+  ],
+  "points": 6,
+  "modules": [
+   "pivots_darkweb",
+   "pivots_crypto",
+   "pivots_company_org",
+   "pivots_brazil",
+   "pivots_pentest",
+   "pivots_cti"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p2-G14-3",
+  "phase": 2,
+  "group": "G14",
+  "proposals": [
+   "P304",
+   "P305",
+   "P306"
+  ],
+  "points": 5,
+  "modules": [
+   "pivots_unverified",
+   "code_search",
+   "dork_generator"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p3-G01-1",
+  "phase": 3,
+  "group": "G01",
+  "proposals": [
+   "P007",
+   "P017",
+   "P018",
+   "P021"
+  ],
+  "points": 5,
+  "modules": [
+   "subdomains_keyed",
+   "validin",
+   "cl0q",
+   "registrobr_domain_status"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p3-G01-2",
+  "phase": 3,
+  "group": "G01",
+  "proposals": [
+   "P022",
+   "P023"
+  ],
+  "points": 3,
+  "modules": [
+   "whois_history_keyed",
+   "ooni"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p3-G02-1",
+  "phase": 3,
+  "group": "G02",
+  "proposals": [
+   "P037",
+   "P042",
+   "P044",
+   "P048",
+   "P049"
+  ],
+  "points": 6,
+  "modules": [
+   "netlas",
+   "onyphe",
+   "censys",
+   "criminalip",
+   "fofa"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p3-G02-2",
+  "phase": 3,
+  "group": "G02",
+  "proposals": [
+   "P051",
+   "P052",
+   "P053",
+   "P150",
+   "P218"
+  ],
+  "points": 6,
+  "modules": [
+   "ip_geolocation",
+   "ipqualityscore",
+   "zoomeye",
+   "ip_reputation_keyless",
+   "networksdb"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p3-G03-1",
+  "phase": 3,
+  "group": "G03",
+  "proposals": [
+   "P069",
+   "P073",
+   "P075"
+  ],
+  "points": 4,
+  "modules": [
+   "public_api_exposure",
+   "builtwith",
+   "phishtank_checkurl"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p3-G04-1",
+  "phase": 3,
+  "group": "G04",
+  "proposals": [
+   "P089",
+   "P090",
+   "P091",
+   "P092",
+   "P093",
+   "P138"
+  ],
+  "points": 6,
+  "modules": [
+   "emailrep",
+   "hunter_io",
+   "pgp_keyservers",
+   "proton_pks",
+   "google_calendar_ics",
+   "grayhatwarfare"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p3-G04-2",
+  "phase": 3,
+  "group": "G04",
+  "proposals": [
+   "P139",
+   "P140",
+   "P141"
+  ],
+  "points": 3,
+  "modules": [
+   "intelx_metadata",
+   "leak_lookup_public",
+   "pwned_passwords_internal"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p3-G05-1",
+  "phase": 3,
+  "group": "G05",
+  "proposals": [
+   "P104",
+   "P105",
+   "P106",
+   "P108",
+   "P109",
+   "P110"
+  ],
+  "points": 6,
+  "modules": [
+   "keybase",
+   "mastodon",
+   "memory_lol",
+   "reddit_archive",
+   "hackernews",
+   "youtube"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p3-G05-2",
+  "phase": 3,
+  "group": "G05",
+  "proposals": [
+   "P115",
+   "P116",
+   "P118"
+  ],
+  "points": 5,
+  "modules": [
+   "git_metadata_identity",
+   "community_profiles_pack",
+   "tiktok_public"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p3-G05-3",
+  "phase": 3,
+  "group": "G05",
+  "proposals": [
+   "P119",
+   "P120",
+   "P121",
+   "P251"
+  ],
+  "points": 6,
+  "modules": [
+   "x_twitter_public",
+   "wikimedia",
+   "x_archive_import",
+   "name_permutations"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p3-G06-1",
+  "phase": 3,
+  "group": "G06",
+  "proposals": [
+   "P127"
+  ],
+  "points": 1,
+  "modules": [
+   "brasilapi_ddd"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p3-G07-1",
+  "phase": 3,
+  "group": "G07",
+  "proposals": [
+   "P154",
+   "P155",
+   "P160",
+   "P162",
+   "P164",
+   "P176"
+  ],
+  "points": 6,
+  "modules": [
+   "maltiverse",
+   "ibm_xforce",
+   "pulsedive",
+   "kaspersky_opentip",
+   "spam_bot_reputation",
+   "cymru_mhr"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p3-G07-2",
+  "phase": 3,
+  "group": "G07",
+  "proposals": [
+   "P177",
+   "P178",
+   "P351"
+  ],
+  "points": 5,
+  "modules": [
+   "hash_lookup_keyed",
+   "filescan_reputation",
+   "structural_hash_pivots"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p3-G08-1",
+  "phase": 3,
+  "group": "G08",
+  "proposals": [
+   "P189",
+   "P191",
+   "P354",
+   "P355"
+  ],
+  "points": 5,
+  "modules": [
+   "shodan_cvedb",
+   "euvd",
+   "csaf_advisories",
+   "debian_security_tracker"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p3-G09-1",
+  "phase": 3,
+  "group": "G09",
+  "proposals": [
+   "P209",
+   "P210",
+   "P213",
+   "P214"
+  ],
+  "points": 6,
+  "modules": [
+   "ens_resolver",
+   "ransomwhere",
+   "crypto_tx_graph",
+   "ton_explorer"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p3-G09-2",
+  "phase": 3,
+  "group": "G09",
+  "proposals": [
+   "P215"
+  ],
+  "points": 1,
+  "modules": [
+   "solana_rpc"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p3-G10-1",
+  "phase": 3,
+  "group": "G10",
+  "proposals": [
+   "P221",
+   "P222",
+   "P223",
+   "P224",
+   "P225",
+   "P227"
+  ],
+  "points": 6,
+  "modules": [
+   "icij_offshore",
+   "opensanctions",
+   "sec_edgar",
+   "wikidata",
+   "eu_vies",
+   "uk_companies_house"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p3-G10-2",
+  "phase": 3,
+  "group": "G10",
+  "proposals": [
+   "P228",
+   "P244",
+   "P246",
+   "P248"
+  ],
+  "points": 6,
+  "modules": [
+   "iana_pen",
+   "br_cnpj_risk_lists",
+   "br_public_spending",
+   "anac_rab"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p3-G10-3",
+  "phase": 3,
+  "group": "G10",
+  "proposals": [
+   "P253",
+   "P254"
+  ],
+  "points": 2,
+  "modules": [
+   "adverse_media_rss",
+   "wanted_notices"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p3-G11-1",
+  "phase": 3,
+  "group": "G11",
+  "proposals": [
+   "P294",
+   "P296"
+  ],
+  "points": 2,
+  "modules": [
+   "d3fend",
+   "malpedia"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p3-G12-1",
+  "phase": 3,
+  "group": "G12",
+  "proposals": [
+   "P262",
+   "P264",
+   "P273",
+   "P317",
+   "P318",
+   "P319"
+  ],
+  "points": 6,
+  "modules": [
+   "geocoding",
+   "image_ela",
+   "document_identity_signals",
+   "user_agent_analysis",
+   "card_bin",
+   "imei_check"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p3-G12-2",
+  "phase": 3,
+  "group": "G12",
+  "proposals": [
+   "P320",
+   "P368"
+  ],
+  "points": 2,
+  "modules": [
+   "vin_decoder",
+   "elf_triage"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p3-G13-1",
+  "phase": 3,
+  "group": "G13",
+  "proposals": [
+   "P278",
+   "P371"
+  ],
+  "points": 3,
+  "modules": [
+   "cdn_origin_hypothesis",
+   "saas_tenant_discovery"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p3-G14-1",
+  "phase": 3,
+  "group": "G14",
+  "proposals": [
+   "P098",
+   "P125",
+   "P144",
+   "P257",
+   "P289",
+   "P307"
+  ],
+  "points": 6,
+  "modules": [
+   "pivots_email",
+   "pivots_username_social",
+   "pivots_breach_leak",
+   "pivots_person",
+   "employee_xray",
+   "web_search_api"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p3-G14-2",
+  "phase": 3,
+  "group": "G14",
+  "proposals": [
+   "P308"
+  ],
+  "points": 1,
+  "modules": [
+   "pivots_search"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p9-G01-1",
+  "phase": 9,
+  "group": "G01",
+  "proposals": [
+   "P013"
+  ],
+  "points": 2,
+  "modules": [
+   "domain_ownership"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p9-G03-1",
+  "phase": 9,
+  "group": "G03",
+  "proposals": [
+   "P062",
+   "P063",
+   "P065",
+   "P068",
+   "P070"
+  ],
+  "points": 6,
+  "modules": [
+   "favicon_hash",
+   "security_headers",
+   "wellknown_files",
+   "js_endpoints",
+   "unshorten"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p9-G03-2",
+  "phase": 9,
+  "group": "G03",
+  "proposals": [
+   "P072",
+   "P076",
+   "P077"
+  ],
+  "points": 6,
+  "modules": [
+   "web_fingerprint",
+   "posture_third_party",
+   "site_contacts"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p9-G03-3",
+  "phase": 9,
+  "group": "G03",
+  "proposals": [
+   "P078",
+   "P275",
+   "P347"
+  ],
+  "points": 6,
+  "modules": [
+   "url_scanners_third_party",
+   "tls_inspect",
+   "page_capture"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p9-G13-1",
+  "phase": 9,
+  "group": "G13",
+  "proposals": [
+   "P025",
+   "P276",
+   "P277",
+   "P279"
+  ],
+  "points": 6,
+  "modules": [
+   "typosquat_live_checks",
+   "subdomain_takeover",
+   "tls_protocol_scan",
+   "sensitive_files"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p9-G13-2",
+  "phase": 9,
+  "group": "G13",
+  "proposals": [
+   "P281",
+   "P282",
+   "P283",
+   "P284"
+  ],
+  "points": 5,
+  "modules": [
+   "axfr",
+   "cloud_buckets",
+   "cors_probe",
+   "jarm"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p9-G13-3",
+  "phase": 9,
+  "group": "G13",
+  "proposals": [
+   "P285",
+   "P286",
+   "P287"
+  ],
+  "points": 6,
+  "modules": [
+   "path_discovery",
+   "port_scan",
+   "public_docs_discovery"
+  ],
+  "existing": []
+ },
+ {
+  "batch": "p9-G13-4",
+  "phase": 9,
+  "group": "G13",
+  "proposals": [
+   "P369",
+   "P370"
+  ],
+  "points": 4,
+  "modules": [
+   "nuclei_runner",
+   "dns_bruteforce"
+  ],
+  "existing": []
+ }
+]

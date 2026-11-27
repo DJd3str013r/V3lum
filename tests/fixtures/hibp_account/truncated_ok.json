@@ -1,0 +1,16 @@
+{
+ "_envelope": 1,
+ "_synthetic": "default truncated breachedaccount form (HIBP API docs)",
+ "status": 200,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": [
+  {
+   "Name": "8tracks"
+  },
+  {
+   "Name": "Adobe"
+  }
+ ]
+}

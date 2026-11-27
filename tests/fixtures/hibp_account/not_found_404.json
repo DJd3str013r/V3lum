@@ -1,0 +1,9 @@
+{
+ "_envelope": 1,
+ "_synthetic": "HIBP API docs: 404 = the account could not be found and has therefore not been pwned",
+ "status": 404,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": ""
+}

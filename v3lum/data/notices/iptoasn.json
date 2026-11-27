@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "iptoasn",
+  "source_url": "https://iptoasn.com/",
+  "version": "ip2asn-v4.tsv.gz and ip2asn-v6.tsv.gz (runtime downloads by `v3lum data update`, checked 2026-11-26)",
+  "sha256": "",
+  "licence": "PDDL-1.0",
+  "attribution": "IP to ASN mapping by IPtoASN (https://iptoasn.com), Open Data Commons Public Domain Dedication and License (PDDL).",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/ip_network/ip_offline_db.py"
+  ]
+}

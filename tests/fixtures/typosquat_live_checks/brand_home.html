@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Banco Exemplo | Internet Banking</title>
+<link rel="icon" href="/static/favicon.png">
+<link rel="stylesheet" href="/static/app.css?v=20261101">
+<style>.hero{background:url(/static/hero.jpg) no-repeat center}.btn{background:url('/static/btn.png')}</style>
+</head>
+<body>
+<header><a href="/"><img src="/static/logo.svg" alt="Banco Exemplo"></a>
+<nav><a href="/conta">Conta</a> <a href="/cartoes">Cartoes</a> <a href="/investimentos">Investimentos</a> <a href="/ajuda">Ajuda</a></nav></header>
+<main>
+<section class="hero"><h1>Acesse sua conta</h1><p>Seu banco digital, seguro e simples. Abra sua conta em minutos.</p></section>
+<form id="login" action="https://login.bancoexemplo.example/auth" method="post">
+<label for="agencia">Agencia</label><input id="agencia" name="agencia" type="text" autocomplete="off">
+<label for="conta">Conta</label><input id="conta" name="conta" type="text" autocomplete="off">
+<label for="senha">Senha</label><input id="senha" name="senha" type="password">
+<button type="submit" class="btn">Entrar</button>
+</form>
+<section><h2>Produtos</h2><ul><li>Conta digital sem tarifa</li><li>Cartao de credito sem anuidade</li><li>Pix e transferencias</li><li>Investimentos a partir de R$ 1</li></ul></section>
+<section><h2>Seguranca</h2><p>Nunca pedimos sua senha por telefone, e-mail ou SMS.</p></section>
+</main>
+<footer><p>Banco Exemplo S.A. - Ouvidoria +55 11 5555-0100 - <a href="/privacidade">Privacidade</a></p></footer>
+<script src="/static/app.js?v=20261101"></script>
+</body></html>

@@ -1,0 +1,24 @@
+{
+ "_meta": {
+  "module": "username_check",
+  "case": "tiktok_not_found",
+  "source": "C0228 TikTok oEmbed",
+  "request": {
+   "method": "GET",
+   "url": "https://www.tiktok.com/oembed?url=https://www.tiktok.com/@oj5nsqgky6am1w4be0ud",
+   "user_agent": "V3LUM/dev",
+   "redirects": "not followed"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "live check, this sandbox's datacenter egress",
+  "elapsed_s": 0.208,
+  "minimised": true,
+  "note": "random control"
+ },
+ "status": 400,
+ "headers": {
+  "server": "nginx",
+  "content-type": "application/json; charset=utf-8"
+ },
+ "body": "{\"message\":\"Something went wrong\",\"code\":400}"
+}

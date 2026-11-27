@@ -1,0 +1,19 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "nodes": [
+    {
+      "key": "cve:CVE-2099-0001",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "cve_state": [{"value": "REJECTED", "source": "cve_record"}],
+        "cve_rejected_reason": [{"value": "Synthetic fixture: duplicate of CVE-2099-0002.", "source": "cve_record"}],
+        "epss": [{"value": 0.6, "source": "epss_api"}],
+        "epss_date": [{"value": "2026-11-25", "source": "epss_api"}]
+      }
+    }
+  ],
+  "edges": [],
+  "expect": {"g08_cve_card": {"min": 1, "max": 1, "severity": "info"}}
+}

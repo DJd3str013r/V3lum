@@ -1,0 +1,54 @@
+{
+ "messages": [
+  [
+   "info",
+   "IP address has been converted to a prefix"
+  ]
+ ],
+ "data_call_name": "whois",
+ "data_call_status": "supported",
+ "cached": false,
+ "status": "ok",
+ "status_code": 200,
+ "time": "2026-11-26T04:34:30.628935",
+ "data": {
+  "records": [],
+  "irr_records": [
+   [
+    {
+     "key": "route",
+     "value": "200.160.0.0/20"
+    },
+    {
+     "key": "descr",
+     "value": "Registro.BR Network"
+    },
+    {
+     "key": "origin",
+     "value": "22548"
+    },
+    {
+     "key": "notify",
+     "value": "redacted@example.invalid"
+    },
+    {
+     "key": "mnt-by",
+     "value": "MAINT-AS22548"
+    },
+    {
+     "key": "source",
+     "value": "RADB"
+    },
+    {
+     "key": "last-modified",
+     "value": "2023-11-13T15:41:56Z"
+    }
+   ]
+  ],
+  "authorities": [
+   "lacnic"
+  ],
+  "resource": "200.160.2.3",
+  "query_time": "2026-11-26T04:34:00"
+ }
+}

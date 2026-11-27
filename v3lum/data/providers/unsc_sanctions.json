@@ -1,0 +1,68 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "unsc_sanctions",
+  "name": "United Nations Security Council Consolidated Sanctions List",
+  "operator": "United Nations Security Council (Security Council Affairs Division, UN Secretariat)",
+  "hosts": [
+    "scsanctions.un.org",
+    "unsolprodfiles.blob.core.windows.net"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Intergovernmental body (A8 trusted: government bodies). 'Providers (dataset downloads, no value sent): OFAC/US Treasury, UN Security Council and the European Commission, all trusted tier.' (P219 cond 2). The Azure blob host is the UN's own publication storage: consolidated.xml answers 302 to a SAS URL on it (verified 2026-11-26).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "The authoritative consolidated list of the Security Council sanctions committees (binding in Brazil through Lei 13.810/2019); regenerated daily even without changes."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "timeout": 120,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [
+    {
+      "id": "unsc_blob_auth_failed",
+      "statuses": [403],
+      "json_path": null,
+      "equals": null,
+      "regex": "<Code>(?:AuthenticationFailed|AuthorizationFailure)</Code>",
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "UN sanctions list: the Azure storage refused the signed download link (SAS expired or invalid): request the list again (v3lum data update sanctions)"
+    }
+  ],
+  "keys": {},
+  "sources": {
+    "consolidated": {
+      "title": "UN Security Council Consolidated List (consolidated.xml; dataset matched locally)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://main.un.org/securitycouncil/en/content/un-sc-consolidated-list",
+        "quote": "Sources: OFAC SDN CSV from the Sanctions List Service (US government work, public domain), UN consolidated XML (UN public information) and EU FSF CSV (EU open data, reuse with attribution; the Commission's public token is a config value).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "un_sc",
+      "sanitizer": null,
+      "dataset": "sanctions_un_consolidated",
+      "notes": "Quote: binding council text (P219 cond 1); research C0521 terms 'UN public information'. Dataset sanctions_un_consolidated (2.2 MB XML, dateGenerated regenerated daily: compare sha256 for real changes), TTL 24 h through the dataset manager (`v3lum data update sanctions`), never downloaded during a scan; parsed with the safe XML helper (DOCTYPE/entity declarations refused, size and depth caps; P219 cond 5). Attribution line in reports (P219 cond 12). Used by sanctions_lists (batch p1-G10-1)."
+    }
+  },
+  "notes": "Owned by batch p1-G10-1 (P219 sanctions_lists). Dataset downloads only: no investigated value is ever sent. GET https://scsanctions.un.org/resources/xml/en/consolidated.xml answers 302 to unsolprodfiles.blob.core.windows.net with SAS parameters (sig is redacted by the core; se/st/sv are not secrets)."
+}

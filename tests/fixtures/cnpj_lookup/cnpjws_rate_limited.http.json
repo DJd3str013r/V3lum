@@ -1,0 +1,23 @@
+{
+ "request": "GET https://publica.cnpj.ws/cnpj/00000000000191",
+ "response": {
+  "status": 429,
+  "headers": {
+   "content-type": "application/json; charset=utf-8",
+   "x-ratelimit-limit": "3",
+   "x-ratelimit-remaining": "0",
+   "x-ratelimit-reset": "37"
+  },
+  "body": {
+   "status": 429,
+   "titulo": "Muitas requisições",
+   "detalhes": "Excedido o limite máximo de 3 consultas por minuto.",
+   "validacao": []
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "observed_at": null,
+ "origin": "synthetic",
+ "note": "synthetic: not observed live (requests stayed under the limit); status and headers model the documented limit, body is a placeholder (shape of the observed 404/400 bodies; header names as observed)"
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "ransomfeed_data",
+  "source_url": "https://ransomfeed.it/",
+  "version": "runtime download by the dataset manager: https://ransomfeed.it/rss-complete.php (at most hourly) and per-name answers of api.ransomfeed.it/search and /ganginfo; licence (site footer) checked 2026-11-26",
+  "sha256": "",
+  "licence": "CC-BY-4.0",
+  "attribution": "Source: Ransomfeed (https://ransomfeed.it/). Ransomfeed (c) 2026 by Dario Fadda is licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Leak-site claims are kept as metadata only; changes: fields selected and claims matched to the investigated organisation by V3LUM.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/darkweb_ransomware/ransomfeed.py"
+  ]
+}

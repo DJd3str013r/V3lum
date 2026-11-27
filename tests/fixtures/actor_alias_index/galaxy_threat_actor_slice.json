@@ -1,0 +1,393 @@
+{
+ "category": "actor",
+ "name": "Threat Actor",
+ "source": "MISP Project",
+ "type": "threat-actor",
+ "uuid": "7cdff317-a673-4474-84ec-4f1754947823",
+ "version": 360,
+ "description": "Known or estimated adversary groups targeting organizations and employees.",
+ "values": [
+  {
+   "value": "APT28",
+   "uuid": "5b4ee3ea-eee3-4c8e-8323-85ae32658754",
+   "meta": {
+    "synonyms": [
+     "Pawn Storm",
+     "FANCY BEAR",
+     "Sednit",
+     "SNAKEMACKEREL",
+     "Tsar Team",
+     "TG-4127",
+     "STRONTIUM",
+     "Swallowtail",
+     "IRON TWILIGHT",
+     "Group 74",
+     "SIG40",
+     "Grizzly Steppe",
+     "G0007",
+     "ATK5",
+     "Fighting Ursa",
+     "ITG05",
+     "Blue Athena",
+     "TA422",
+     "T-APT-12",
+     "APT-C-20",
+     "UAC-0028",
+     "UAC-0001",
+     "FROZENLAKE",
+     "Sofacy",
+     "Forest Blizzard",
+     "BlueDelta",
+     "Fancy Bear",
+     "GruesomeLarch",
+     "LAKE RELIC"
+    ],
+    "country": "RU",
+    "refs": [
+     "https://attack.mitre.org/groups/G0007/"
+    ],
+    "attribution-confidence": "50"
+   },
+   "related": [
+    {
+     "dest-uuid": "bef4c620-0787-42a8-a96d-b7eb6e85917c",
+     "type": "similar",
+     "tags": [
+      "estimative-language:likelihood-probability=\"likely\""
+     ]
+    },
+    {
+     "dest-uuid": "213cdde9-c11a-4ea9-8ce0-c868e9826fec",
+     "type": "similar",
+     "tags": [
+      "estimative-language:likelihood-probability=\"likely\""
+     ]
+    },
+    {
+     "dest-uuid": "8d84d7b0-7716-5ab3-a3a4-f373dd148347",
+     "type": "similar",
+     "tags": [
+      "estimative-language:likelihood-probability=\"likely\""
+     ]
+    }
+   ]
+  },
+  {
+   "value": "APT29",
+   "uuid": "b2056ff0-00b9-482e-b11c-c771daa5f28a",
+   "meta": {
+    "synonyms": [
+     "Group 100",
+     "COZY BEAR",
+     "The Dukes",
+     "Minidionis",
+     "SeaDuke",
+     "YTTRIUM",
+     "IRON HEMLOCK",
+     "Grizzly Steppe",
+     "G0016",
+     "ATK7",
+     "Cloaked Ursa",
+     "TA421",
+     "Blue Kitsune",
+     "ITG11",
+     "BlueBravo",
+     "Nobelium",
+     "UAC-0029",
+     "ICECAP",
+     "ICE RELIC"
+    ],
+    "country": "RU",
+    "refs": [
+     "https://attack.mitre.org/groups/G0016"
+    ],
+    "attribution-confidence": "50"
+   },
+   "related": [
+    {
+     "dest-uuid": "899ce53f-13a0-479b-a0e4-67d46e241542",
+     "type": "similar",
+     "tags": [
+      "estimative-language:likelihood-probability=\"likely\""
+     ]
+    },
+    {
+     "dest-uuid": "31982812-c8bf-5e85-b0ba-0c64a7d05d20",
+     "type": "similar",
+     "tags": [
+      "estimative-language:likelihood-probability=\"likely\""
+     ]
+    }
+   ]
+  },
+  {
+   "value": "Lazarus Group",
+   "uuid": "68391641-859f-4a9a-9a1e-3e5cf71ec376",
+   "meta": {
+    "synonyms": [
+     "Operation DarkSeoul",
+     "Dark Seoul",
+     "Hidden Cobra",
+     "Hastati Group",
+     "Andariel",
+     "Unit 121",
+     "Bureau 121",
+     "NewRomanic Cyber Army Team",
+     "Bluenoroff",
+     "Subgroup: Bluenoroff",
+     "Group 77",
+     "Labyrinth Chollima",
+     "Operation Troy",
+     "Operation GhostSecret",
+     "Operation AppleJeus",
+     "APT38",
+     "APT 38",
+     "Stardust Chollima",
+     "Whois Hacking Team",
+     "Zinc",
+     "Appleworm",
+     "Nickel Academy",
+     "APT-C-26",
+     "NICKEL GLADSTONE",
+     "COVELLITE",
+     "ATK3",
+     "G0032",
+     "ATK117",
+     "G0082",
+     "Citrine Sleet",
+     "DEV-0139",
+     "DEV-1222",
+     "Diamond Sleet",
+     "ZINC",
+     "Sapphire Sleet",
+     "COPERNICIUM",
+     "TA404",
+     "Lazarus group",
+     "BeagleBoyz",
+     "Moonstone Sleet",
+     "Black Artemis"
+    ],
+    "country": "KP",
+    "refs": [
+     "https://attack.mitre.org/groups/G0032/",
+     "https://attack.mitre.org/groups/G0082",
+     "https://attack.mitre.org/groups/G0032"
+    ],
+    "attribution-confidence": "50"
+   },
+   "related": [
+    {
+     "dest-uuid": "c93fccb1-e8e8-42cf-ae33-2ad1d183913a",
+     "type": "similar",
+     "tags": [
+      "estimative-language:likelihood-probability=\"likely\""
+     ]
+    },
+    {
+     "dest-uuid": "9630b0aa-ee9e-5b58-9f79-cf7fa8d291a8",
+     "type": "similar",
+     "tags": [
+      "estimative-language:likelihood-probability=\"likely\""
+     ]
+    },
+    {
+     "dest-uuid": "3a32c54d-d86a-55de-b16a-d9a08a5cf49b",
+     "type": "similar",
+     "tags": [
+      "estimative-language:likelihood-probability=\"likely\""
+     ]
+    }
+   ]
+  },
+  {
+   "value": "Kimsuky",
+   "uuid": "bcaaad6f-0597-4b89-b69b-84a6be2b7bc3",
+   "meta": {
+    "synonyms": [
+     "Velvet Chollima",
+     "Black Banshee",
+     "Thallium",
+     "Operation Stolen Pencil",
+     "G0086",
+     "APT43",
+     "Emerald Sleet",
+     "THALLIUM",
+     "Springtail",
+     "Sparkling Pisces"
+    ],
+    "country": "KP",
+    "refs": [
+     "https://attack.mitre.org/groups/G0086/"
+    ],
+    "attribution-confidence": "50"
+   },
+   "related": [
+    {
+     "dest-uuid": "44be06b1-e17a-5ea6-a0a2-067933a7af77",
+     "type": "similar",
+     "tags": [
+      "estimative-language:likelihood-probability=\"likely\""
+     ]
+    },
+    {
+     "dest-uuid": "0ec2f388-bf0f-4b5c-97b1-fc736d26c25f",
+     "type": "similar",
+     "tags": [
+      "estimative-language:likelihood-probability=\"likely\""
+     ]
+    }
+   ]
+  },
+  {
+   "value": "APT43",
+   "uuid": "aac49b4e-74e9-49fa-84f9-e340cf8bafbc",
+   "meta": {}
+  },
+  {
+   "value": "FIN7",
+   "uuid": "00220228-a5a4-4032-a30d-826bb55aa3fb",
+   "meta": {
+    "synonyms": [
+     "CARBON SPIDER",
+     "GOLD NIAGARA",
+     "Calcium",
+     "ATK32",
+     "G0046",
+     "G0008",
+     "Coreid",
+     "Carbanak",
+     "Sangria Tempest",
+     "ELBRUS",
+     "Carbon Spider",
+     "JokerStash",
+     "WILD COMET"
+    ],
+    "country": "RU",
+    "refs": [
+     "https://attack.mitre.org/groups/G0008/",
+     "https://attack.mitre.org/groups/G0046/"
+    ],
+    "attribution-confidence": "50"
+   },
+   "related": [
+    {
+     "dest-uuid": "3753cc21-2dae-4dfb-8481-d004e74502cc",
+     "type": "similar",
+     "tags": [
+      "estimative-language:likelihood-probability=\"likely\""
+     ]
+    },
+    {
+     "dest-uuid": "55033a4d-3ffe-46b2-99b4-2c1541e9ce1c",
+     "type": "similar",
+     "tags": [
+      "estimative-language:likelihood-probability=\"likely\""
+     ]
+    }
+   ]
+  },
+  {
+   "value": "TA505",
+   "uuid": "03c80674-35f8-4fe0-be2b-226ed0fcd69f",
+   "meta": {
+    "synonyms": [
+     "SectorJ04",
+     "SectorJ04 Group",
+     "GRACEFUL SPIDER",
+     "GOLD TAHOE",
+     "Dudear",
+     "G0092",
+     "ATK103",
+     "Hive0065",
+     "CHIMBORAZO",
+     "Spandex Tempest"
+    ],
+    "country": "RU"
+   },
+   "related": [
+    {
+     "dest-uuid": "b27dcdee-14b1-5842-86b3-32eacec94584",
+     "type": "similar",
+     "tags": [
+      "estimative-language:likelihood-probability=\"likely\""
+     ]
+    },
+    {
+     "dest-uuid": "c85120d0-c397-5d30-9d57-3b019090acd5",
+     "type": "similar",
+     "tags": [
+      "estimative-language:likelihood-probability=\"likely\""
+     ]
+    }
+   ]
+  },
+  {
+   "value": "APT41",
+   "uuid": "9c124874-042d-48cd-b72b-ccdc51ecbbd6",
+   "meta": {
+    "synonyms": [
+     "G0096",
+     "TA415",
+     "Blackfly",
+     "Grayfly",
+     "LEAD",
+     "BARIUM",
+     "WICKED SPIDER",
+     "WICKED PANDA",
+     "BRONZE ATLAS",
+     "BRONZE EXPORT",
+     "Red Kelpie",
+     "G0044",
+     "Earth Baku",
+     "Amoeba",
+     "HOODOO",
+     "Brass Typhoon",
+     "Winnti",
+     "Double Dragon",
+     "TG-2633",
+     "Leopard Typhoon",
+     "SPIRE CASTLE"
+    ],
+    "country": "CN",
+    "refs": [
+     "https://attack.mitre.org/groups/G0044/",
+     "https://attack.mitre.org/groups/G0096"
+    ]
+   },
+   "related": [
+    {
+     "dest-uuid": "c5947e1c-1cbc-434c-94b8-27c7e3be0fff",
+     "type": "similar",
+     "tags": [
+      "estimative-language:likelihood-probability=\"likely\""
+     ]
+    },
+    {
+     "dest-uuid": "2fc42ffc-dd1a-560e-ac97-05e8fa27bbe5",
+     "type": "similar",
+     "tags": [
+      "estimative-language:likelihood-probability=\"likely\""
+     ]
+    }
+   ]
+  },
+  {
+   "value": "Silent Chollima",
+   "uuid": "245c8dde-ed42-4c49-b48b-634e3e21bdd7",
+   "meta": {
+    "synonyms": [
+     "OperationTroy",
+     "Guardian of Peace",
+     "GOP",
+     "WHOis Team",
+     "Andariel",
+     "Subgroup: Andariel",
+     "Onyx Sleet",
+     "PLUTONIUM"
+    ],
+    "country": "KP",
+    "attribution-confidence": "50"
+   }
+  }
+ ]
+}

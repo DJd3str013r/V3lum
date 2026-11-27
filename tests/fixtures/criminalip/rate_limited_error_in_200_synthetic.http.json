@@ -1,0 +1,19 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.criminalip.io/v1/asset/ip/report?ip=198.51.100.30"
+ },
+ "response": {
+  "status": 200,
+  "headers": {
+   "Content-Type": "application/json"
+  },
+  "body": {
+   "data": {},
+   "message": "too many requests",
+   "status": 429
+  }
+ },
+ "observed": "synthetic",
+ "note": "Body status 429 in an HTTP 200 (theHarvester treats it as rate-limited). Wording invented."
+}

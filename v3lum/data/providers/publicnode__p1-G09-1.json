@@ -1,0 +1,19 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "publicnode",
+  "hosts": [],
+  "sources": {},
+  "error_markers": [
+    {
+      "id": "crypto_sanctions_onchain_jsonrpc_error",
+      "statuses": [200],
+      "json_path": "error.code",
+      "equals": null,
+      "regex": "^-?\\d+$",
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "PublicNode: JSON-RPC error object inside an HTTP 200 answer (could not verify)"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+ "nft_collections": [
+  {
+   "address": "0:0E41DC1DC3C9067ED24248580E12B3359818D83DEE0304FABCF80845EAFAFDB2",
+   "owner_address": null,
+   "collection_content": {
+    "uri": "https://nft.fragment.com/numbers.json"
+   }
+  },
+  {
+   "address": "0:80D78A35F955A14B679FAA887FF4CD5BFC0F43B4A4EEA2A7E6927F3701B273C2",
+   "owner_address": null,
+   "collection_content": {
+    "uri": "https://nft.fragment.com/usernames.json"
+   }
+  }
+ ],
+ "address_book": {
+  "0:0E41DC1DC3C9067ED24248580E12B3359818D83DEE0304FABCF80845EAFAFDB2": {
+   "user_friendly": "EQAOQdwdw8kGftJCSFgOErM1mBjYPe4DBPq8-AhF6vr9si5N",
+   "domain": null,
+   "interfaces": [
+    "nft_collection"
+   ]
+  },
+  "0:80D78A35F955A14B679FAA887FF4CD5BFC0F43B4A4EEA2A7E6927F3701B273C2": {
+   "user_friendly": "EQCA14o1-VWhS2efqoh_9M1b_A9DtKTuoqfmkn83AbJzwnPi",
+   "domain": null,
+   "interfaces": [
+    "dns",
+    "nft_collection"
+   ]
+  }
+ },
+ "metadata": {
+  "0:0E41DC1DC3C9067ED24248580E12B3359818D83DEE0304FABCF80845EAFAFDB2": {
+   "is_indexed": true,
+   "token_info": [
+    {
+     "type": "nft_collections",
+     "name": "Anonymous Telegram Numbers"
+    }
+   ]
+  },
+  "0:80D78A35F955A14B679FAA887FF4CD5BFC0F43B4A4EEA2A7E6927F3701B273C2": {
+   "is_indexed": true,
+   "token_info": [
+    {
+     "type": "nft_collections",
+     "name": "Telegram Usernames"
+    }
+   ]
+  }
+ }
+}

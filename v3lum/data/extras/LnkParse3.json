@@ -1,0 +1,9 @@
+{
+  "schema": "v3lum.extra/1",
+  "package": "LnkParse3",
+  "pip": "LnkParse3==1.6.0",
+  "extra": "lnk",
+  "licence": "MIT",
+  "justification": "Windows shortcut (LNK) parser for windows_artifact_triage (P367 c3): target, arguments, working dir, icon, timestamps, tracker machine id and droids. Optional: without it the module uses its built-in [MS-SHLLINK] reader and always re-reads the StringData strings exactly (LnkParse3 1.6.0 caps three of them at 260 characters).",
+  "notes": "Batch p2-G12-3. Exact pin (1.6.0, 2026-02-27). It requires PyYAML (MIT), which is allowed only inside this extra: V3LUM never imports yaml for it (LnkParse3 uses yaml.dump in its CLI printer only). Runs in process until core/sandbox.py exists (backlog p2-G12-3)."
+}

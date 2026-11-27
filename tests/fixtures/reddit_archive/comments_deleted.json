@@ -1,0 +1,20 @@
+{
+ "data": [
+  {
+   "id": "k0deleted",
+   "author": "exampleorg_ops",
+   "subreddit": "example",
+   "created_utc": 1722557557,
+   "permalink": "/r/example/comments/1a2b3e/example/k0deleted/",
+   "body": "Visit https://www.example.com/login for details",
+   "link_id": "t3_1a2b3e",
+   "parent_id": "t3_1a2b3e",
+   "_meta": {
+    "retrieved_2nd_on": 1700090000,
+    "removal_type": "deleted",
+    "was_deleted_later": true
+   },
+   "retrieved_on": 1722557571
+  }
+ ]
+}

@@ -1,0 +1,14 @@
+{
+ "server": "not_tls",
+ "probe": "tls10",
+ "trust": "self_signed_ca",
+ "ok": false,
+ "stage": "handshake",
+ "version": null,
+ "cipher": null,
+ "error_type": "SSLError",
+ "reason": "WRONG_VERSION_NUMBER",
+ "library": "SSL",
+ "verify_code": null,
+ "str": "[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1035)"
+}

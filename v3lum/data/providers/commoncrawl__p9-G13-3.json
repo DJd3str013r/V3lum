@@ -1,0 +1,24 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "commoncrawl",
+  "hosts": [],
+  "sources": {
+    "public_docs_discovery_warc": {
+      "title": "Common Crawl WARC records of public documents (pdf, doc(x), xls(x), ppt(x)) fetched by byte range from data.commoncrawl.org",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://commoncrawl.org/terms-of-use",
+        "quote": "Registry terms (A1 BR3): the Internet Archive (Wayback CDX and availability), Arquivo.pt (FCT public service), Common Crawl (free terms of use) and CarbonDate (ODU academic service) are 'open', each recorded by legal with evidence",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "commoncrawl",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P059 cond 10). P287 cond 1: documents come preferably from archived copies, which keeps discovery PASSIVE; the WARC record of a document listed by the Common Crawl index (filename/offset/length) is read with one Range request (<= 10 MB, one gzip member), only when no Wayback raw capture is planned. The document is parsed in memory by the P269 functions and only its metadata and SHA-256 are kept (P287 cond 5)."
+    }
+  },
+  "error_markers": [],
+  "notes": "Batch p9-G13-3 extension (P287 public_docs_discovery): a separate source for document WARC records so coverage reports them apart from web_archives_deep's homepage records. The index itself is the shared commoncrawl.cdx_index source; data.commoncrawl.org was added by commoncrawl__p1-G01-2.json."
+}

@@ -1,0 +1,21 @@
+{
+ "width": 164,
+ "height": 164,
+ "results": [
+  {
+   "format": "QR Code",
+   "content_type": "Text",
+   "text": "WIFI:T:WPA;S:ExampleNet;P:not-a-real-secret-123;;",
+   "text_len": 49,
+   "bytes_hex": "574946493a543a5750413b533a4578616d706c654e65743b503a6e6f742d612d7265616c2d7365637265742d3132333b3b",
+   "bytes_len": 49,
+   "truncated": false,
+   "valid": true,
+   "error": null,
+   "symbology_identifier": "]Q1",
+   "ec_level": "M",
+   "orientation": 0,
+   "position": "16x16 148x16 148x148 16x148"
+  }
+ ]
+}

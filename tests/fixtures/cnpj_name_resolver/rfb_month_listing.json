@@ -1,0 +1,196 @@
+{
+ "url": "https://arquivos.receitafederal.gov.br/public.php/webdav/2026-11/",
+ "http_status": 207,
+ "entries": [
+  {
+   "href": "/public.php/webdav/2026-11/",
+   "bytes": null,
+   "last_modified": "Mon, 16 Nov 2026 10:10:13 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Cnaes.zip",
+   "bytes": 22078,
+   "last_modified": "Mon, 16 Nov 2026 10:00:23 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Empresas0.zip",
+   "bytes": 580989288,
+   "last_modified": "Mon, 16 Nov 2026 10:01:04 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Empresas1.zip",
+   "bytes": 77906042,
+   "last_modified": "Mon, 16 Nov 2026 10:01:11 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Empresas2.zip",
+   "bytes": 79128361,
+   "last_modified": "Mon, 16 Nov 2026 10:01:17 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Empresas3.zip",
+   "bytes": 85101965,
+   "last_modified": "Mon, 16 Nov 2026 10:01:25 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Empresas4.zip",
+   "bytes": 90215342,
+   "last_modified": "Mon, 16 Nov 2026 10:01:32 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Empresas5.zip",
+   "bytes": 97296322,
+   "last_modified": "Mon, 16 Nov 2026 10:01:40 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Empresas6.zip",
+   "bytes": 94174592,
+   "last_modified": "Mon, 16 Nov 2026 10:01:47 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Empresas7.zip",
+   "bytes": 98646283,
+   "last_modified": "Mon, 16 Nov 2026 10:01:55 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Empresas8.zip",
+   "bytes": 98698336,
+   "last_modified": "Mon, 16 Nov 2026 10:02:03 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Empresas9.zip",
+   "bytes": 94274393,
+   "last_modified": "Mon, 16 Nov 2026 10:02:10 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Estabelecimentos0.zip",
+   "bytes": 2321438760,
+   "last_modified": "Mon, 16 Nov 2026 10:04:47 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Estabelecimentos1.zip",
+   "bytes": 342021474,
+   "last_modified": "Mon, 16 Nov 2026 10:05:20 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Estabelecimentos2.zip",
+   "bytes": 336210956,
+   "last_modified": "Mon, 16 Nov 2026 10:05:44 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Estabelecimentos3.zip",
+   "bytes": 369176602,
+   "last_modified": "Mon, 16 Nov 2026 10:06:10 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Estabelecimentos4.zip",
+   "bytes": 340015213,
+   "last_modified": "Mon, 16 Nov 2026 10:06:35 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Estabelecimentos5.zip",
+   "bytes": 337828592,
+   "last_modified": "Mon, 16 Nov 2026 10:06:59 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Estabelecimentos6.zip",
+   "bytes": 368035905,
+   "last_modified": "Mon, 16 Nov 2026 10:07:25 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Estabelecimentos7.zip",
+   "bytes": 337438307,
+   "last_modified": "Mon, 16 Nov 2026 10:07:50 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Estabelecimentos8.zip",
+   "bytes": 351173799,
+   "last_modified": "Mon, 16 Nov 2026 10:08:16 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Estabelecimentos9.zip",
+   "bytes": 357878259,
+   "last_modified": "Mon, 16 Nov 2026 10:08:41 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Motivos.zip",
+   "bytes": 1180,
+   "last_modified": "Mon, 16 Nov 2026 10:08:42 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Municipios.zip",
+   "bytes": 43443,
+   "last_modified": "Mon, 16 Nov 2026 10:08:44 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Naturezas.zip",
+   "bytes": 1585,
+   "last_modified": "Mon, 16 Nov 2026 10:08:45 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Paises.zip",
+   "bytes": 2745,
+   "last_modified": "Mon, 16 Nov 2026 10:08:45 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Qualificacoes.zip",
+   "bytes": 980,
+   "last_modified": "Mon, 16 Nov 2026 10:08:47 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Simples.zip",
+   "bytes": 313773702,
+   "last_modified": "Mon, 16 Nov 2026 10:09:10 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Socios0.zip",
+   "bytes": 255704600,
+   "last_modified": "Mon, 16 Nov 2026 10:09:29 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Socios1.zip",
+   "bytes": 49557823,
+   "last_modified": "Mon, 16 Nov 2026 10:09:33 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Socios2.zip",
+   "bytes": 49062173,
+   "last_modified": "Mon, 16 Nov 2026 10:09:38 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Socios3.zip",
+   "bytes": 49029338,
+   "last_modified": "Mon, 16 Nov 2026 10:09:42 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Socios4.zip",
+   "bytes": 49569340,
+   "last_modified": "Mon, 16 Nov 2026 10:09:46 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Socios5.zip",
+   "bytes": 49052806,
+   "last_modified": "Mon, 16 Nov 2026 10:09:51 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Socios6.zip",
+   "bytes": 49138696,
+   "last_modified": "Mon, 16 Nov 2026 10:09:55 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Socios7.zip",
+   "bytes": 49324881,
+   "last_modified": "Mon, 16 Nov 2026 10:09:59 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Socios8.zip",
+   "bytes": 49387258,
+   "last_modified": "Mon, 16 Nov 2026 10:10:04 GMT"
+  },
+  {
+   "href": "/public.php/webdav/2026-11/Socios9.zip",
+   "bytes": 49168829,
+   "last_modified": "Mon, 16 Nov 2026 10:10:08 GMT"
+  }
+ ]
+}

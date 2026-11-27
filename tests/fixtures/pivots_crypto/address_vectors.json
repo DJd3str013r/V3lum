@@ -1,0 +1,135 @@
+{
+ "_doc": "public spec vectors (BIP-173/350, EIP-55, cashaddr spec), the genesis address, Tether's public USDT contracts and synthetic addresses derived from the genesis hash160 62e907b15cbf27d5425399ebf6f0fb50ebb88f18",
+ "valid": [
+  {
+   "value": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+   "chain": "btc",
+   "kind": "p2pkh",
+   "url_value": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+  },
+  {
+   "value": "BC1QW508D6QEJXTDG4Y5R3ZARVARY0C5XW7KV8F3T4",
+   "chain": "btc",
+   "kind": "p2wpkh",
+   "url_value": "bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4"
+  },
+  {
+   "value": "bc1qrp33g0q5c5txsp9arysrx4k6zdkfs4nce4xj0gdcccefvpysxf3qccfmv3",
+   "chain": "btc",
+   "kind": "p2wsh",
+   "url_value": "bc1qrp33g0q5c5txsp9arysrx4k6zdkfs4nce4xj0gdcccefvpysxf3qccfmv3"
+  },
+  {
+   "value": "bc1p0xlxvlhemja6c4dqv22uapctqupfhlxm9h8z3k2e72q4k9hcz7vqzk5jj0",
+   "chain": "btc",
+   "kind": "p2tr",
+   "url_value": "bc1p0xlxvlhemja6c4dqv22uapctqupfhlxm9h8z3k2e72q4k9hcz7vqzk5jj0"
+  },
+  {
+   "value": "LUEweDxDA4WhvWiNXXSxjM9CYzHPJv4QQF",
+   "chain": "ltc",
+   "kind": "p2pkh",
+   "url_value": "LUEweDxDA4WhvWiNXXSxjM9CYzHPJv4QQF"
+  },
+  {
+   "value": "ltc1qvt5s0v2uhuna2sjnn84ldu8m2r4m3rcc3n0rm5",
+   "chain": "ltc",
+   "kind": "p2wpkh",
+   "url_value": "ltc1qvt5s0v2uhuna2sjnn84ldu8m2r4m3rcc3n0rm5"
+  },
+  {
+   "value": "DEA5vGb2NpAwCiCp5yTE16F3DueQUVivQp",
+   "chain": "doge",
+   "kind": "p2pkh",
+   "url_value": "DEA5vGb2NpAwCiCp5yTE16F3DueQUVivQp"
+  },
+  {
+   "value": "XjhqDGJH37VEpecoDGmtJrmEB7VoD8Lb39",
+   "chain": "dash",
+   "kind": "p2pkh",
+   "url_value": "XjhqDGJH37VEpecoDGmtJrmEB7VoD8Lb39"
+  },
+  {
+   "value": "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t",
+   "chain": "tron",
+   "kind": "account",
+   "url_value": "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t"
+  },
+  {
+   "value": "bitcoincash:qp3wjpa3tjlj042z2wv7hahsldgwhwy0rq9sywjpyy",
+   "chain": "bch",
+   "kind": "p2pkh",
+   "url_value": "qp3wjpa3tjlj042z2wv7hahsldgwhwy0rq9sywjpyy"
+  },
+  {
+   "value": "bitcoincash:qpm2qsznhks23z7629mms6s4cwef74vcwvy22gdx6a",
+   "chain": "bch",
+   "kind": "p2pkh",
+   "url_value": "qpm2qsznhks23z7629mms6s4cwef74vcwvy22gdx6a"
+  },
+  {
+   "value": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+   "chain": "evm",
+   "kind": "account",
+   "url_value": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+   "display": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+   "checksum": "valid"
+  },
+  {
+   "value": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+   "chain": "evm",
+   "kind": "account",
+   "url_value": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+   "display": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+   "checksum": "none"
+  },
+  {
+   "value": "0x5aAeb6053F3E94C9b9A09f33669435E7Ef1BeAed",
+   "chain": "evm",
+   "kind": "account",
+   "url_value": "0x5aaeb6053f3e94c9b9a09f33669435e7ef1beaed",
+   "display": "0x5aAeb6053F3E94C9b9A09f33669435E7Ef1BeAed",
+   "checksum": "valid"
+  }
+ ],
+ "invalid": [
+  {
+   "value": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNb",
+   "why": "base58check checksum"
+  },
+  {
+   "value": "bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t5",
+   "why": "bech32 checksum"
+  },
+  {
+   "value": "bc1QW508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4",
+   "why": "mixed case bech32"
+  },
+  {
+   "value": "0x5aAeb6053F3E94C9b9A09f33669435E7Ef1BeAeD",
+   "why": "EIP-55 checksum (mixed case)"
+  },
+  {
+   "value": "d41d8cd98f00b204e9800998ecf8427e",
+   "why": "MD5-looking string"
+  },
+  {
+   "value": "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6u",
+   "why": "TRON checksum"
+  },
+  {
+   "value": "bitcoincash:qp3wjpa3tjlj042z2wv7hahsldgwhwy0rq9sywjpyz",
+   "why": "cashaddr checksum"
+  },
+  {
+   "value": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa\n",
+   "why": "control character"
+  }
+ ],
+ "eip55_spec": {
+  "0x5aaeb6053f3e94c9b9a09f33669435e7ef1beaed": "0x5aAeb6053F3E94C9b9A09f33669435E7Ef1BeAed",
+  "0xfb6916095ca1df60bb79ce92ce3ea74c37c5d359": "0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d359",
+  "0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae": "0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe"
+ },
+ "keccak256_empty": "c5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470"
+}

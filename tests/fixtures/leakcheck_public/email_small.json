@@ -1,0 +1,25 @@
+{
+ "_synthetic": "live answer structure with a small found count (non-generic case)",
+ "success": true,
+ "found": 3,
+ "fields": [
+  "username",
+  "password",
+  "ip",
+  "dob"
+ ],
+ "sources": [
+  {
+   "name": "8Tracks.com",
+   "date": "2017-06"
+  },
+  {
+   "name": "Zomato.com",
+   "date": "2017-05"
+  },
+  {
+   "name": "Hjedd.com",
+   "date": "2021-11"
+  }
+ ]
+}

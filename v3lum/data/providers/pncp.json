@@ -1,0 +1,56 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "pncp",
+  "name": "PNCP - Portal Nacional de Contratacoes Publicas",
+  "operator": "Ministerio da Gestao e da Inovacao em Servicos Publicos (PNCP, Lei 14.133/2021)",
+  "hosts": [
+    "pncp.gov.br"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "National public procurement portal of the federal government (government body, A8 trusted); P246 'Official open data (BNDES, MinC, PNCP), tier trusted' (cond 5).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "Official national procurement portal (tenders, price records and contracts of every sphere)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 20,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "pncp_search": {
+      "title": "PNCP contract search (manual link today; the API joins after a success fixture is captured from the team's Brazilian egress)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://pncp.gov.br/api/consulta/swagger-ui/index.html",
+        "quote": "Official open data (BNDES, MinC, PNCP), tier trusted.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "pncp",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P246 cond 5); research C0566 terms 'Open government API'. Both /api/search and /api/consulta/v1/contratos gave an empty reply or a timeout from the research and prep egress (geo/WAF filtering of non-BR IPs; fixtures pncp_empty_reply/pncp_timeout). P246 cond 2-3: no automated request until a success fixture exists from the team's own Brazilian egress, never through a VPN or rotated IPs; until then only the manual search link (pivot pack br_public_spending_links) is emitted. Used by br_public_spending_br."
+    }
+  },
+  "notes": "Owned by batch p3-G10-2 (P246 br_public_spending_br). Registered for the manual pivot link and the future BR-egress automation; no request is sent today. An empty reply from a non-BR egress is BLOCKED geo_block 'could not verify', never 'no contracts'."
+}

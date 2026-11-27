@@ -1,0 +1,307 @@
+{
+ "took": 169,
+ "timed_out": false,
+ "hits": {
+  "total": {
+   "value": 761,
+   "relation": "eq"
+  },
+  "max_score": 11.162676,
+  "hits": [
+   {
+    "_index": "edgar_file",
+    "_id": "0001193125-26-282946:ck0001641601-20260619.htm",
+    "_score": 9.644388,
+    "_source": {
+     "ciks": [
+      "0001641601"
+     ],
+     "period_ending": "2026-06-19",
+     "file_num": [
+      "333-205986"
+     ],
+     "display_names": [
+      "River Financial Corp  (RVRF)  (CIK 0001641601)"
+     ],
+     "xsl": null,
+     "sequence": 1,
+     "root_forms": [
+      "8-K"
+     ],
+     "file_date": "2026-06-25",
+     "biz_states": [
+      "AL"
+     ],
+     "sics": [
+      "6022"
+     ],
+     "form": "8-K",
+     "adsh": "0001193125-26-282946",
+     "film_num": [
+      "261122691"
+     ],
+     "biz_locations": [
+      "Prattville, AL"
+     ],
+     "file_type": "8-K",
+     "file_description": "8-K",
+     "inc_states": [
+      "AL"
+     ],
+     "items": [
+      "1.05",
+      "9.01"
+     ]
+    }
+   },
+   {
+    "_index": "edgar_file",
+    "_id": "0001140361-26-027441:ef20077249_8k.htm",
+    "_score": 9.566995,
+    "_source": {
+     "ciks": [
+      "0001593538"
+     ],
+     "period_ending": "2026-06-29",
+     "file_num": [
+      "001-36228"
+     ],
+     "display_names": [
+      "NAVIENT CORP  (JSM, NAVI)  (CIK 0001593538)"
+     ],
+     "xsl": null,
+     "sequence": 1,
+     "root_forms": [
+      "8-K"
+     ],
+     "file_date": "2026-07-02",
+     "biz_states": [
+      "VA"
+     ],
+     "sics": [
+      "6211"
+     ],
+     "form": "8-K",
+     "adsh": "0001140361-26-027441",
+     "film_num": [
+      "261151407"
+     ],
+     "biz_locations": [
+      "Herndon, VA"
+     ],
+     "file_type": "8-K",
+     "file_description": "8-K",
+     "inc_states": [
+      "DE"
+     ],
+     "items": [
+      "1.05"
+     ]
+    }
+   },
+   {
+    "_index": "edgar_file",
+    "_id": "0001437749-26-009193:trt20260320_8k.htm",
+    "_score": 9.392716,
+    "_source": {
+     "ciks": [
+      "0000732026"
+     ],
+     "period_ending": "2026-03-18",
+     "file_num": [
+      "001-14523"
+     ],
+     "display_names": [
+      "TRIO-TECH INTERNATIONAL  (TRT)  (CIK 0000732026)"
+     ],
+     "xsl": null,
+     "sequence": 1,
+     "root_forms": [
+      "8-K"
+     ],
+     "file_date": "2026-03-20",
+     "biz_states": [
+      "CA"
+     ],
+     "sics": [
+      "3559"
+     ],
+     "form": "8-K",
+     "adsh": "0001437749-26-009193",
+     "film_num": [
+      "26777722"
+     ],
+     "biz_locations": [
+      "Van Nuys, CA"
+     ],
+     "file_type": "8-K",
+     "file_description": "FORM 8-K",
+     "inc_states": [
+      "CA"
+     ],
+     "items": [
+      "1.05"
+     ]
+    }
+   },
+   {
+    "_index": "edgar_file",
+    "_id": "0001868419-26-000024:exhibit992apr1620268-ka.htm",
+    "_score": 9.238235,
+    "_source": {
+     "ciks": [
+      "0001868419"
+     ],
+     "period_ending": "2026-04-15",
+     "file_num": [
+      "001-41214"
+     ],
+     "display_names": [
+      "Cycurion, Inc.  (CYCU, CYCUW)  (CIK 0001868419)"
+     ],
+     "xsl": null,
+     "sequence": "3",
+     "root_forms": [
+      "8-K"
+     ],
+     "file_date": "2026-04-22",
+     "biz_states": [
+      "VA"
+     ],
+     "sics": [
+      "7371"
+     ],
+     "form": "8-K/A",
+     "adsh": "0001868419-26-000024",
+     "film_num": [
+      "26884792"
+     ],
+     "biz_locations": [
+      "Mclean, VA"
+     ],
+     "file_type": "EX-99.2",
+     "file_description": "EX-99.2",
+     "inc_states": [
+      "DE"
+     ],
+     "items": [
+      "8.01",
+      "9.01"
+     ]
+    }
+   },
+   {
+    "_index": "edgar_file",
+    "_id": "0000070866-26-000005:exhibit991-q42025earningsr.htm",
+    "_score": 11.162676,
+    "_source": {
+     "ciks": [
+      "0000070866"
+     ],
+     "period_ending": "2026-02-26",
+     "file_num": [
+      "001-00395"
+     ],
+     "display_names": [
+      "NCR Voyix Corp  (VYX, NCRRP)  (CIK 0000070866)"
+     ],
+     "xsl": null,
+     "sequence": "2",
+     "root_forms": [
+      "8-K"
+     ],
+     "file_date": "2026-02-26",
+     "biz_states": [
+      "GA"
+     ],
+     "sics": [
+      "3578"
+     ],
+     "form": "8-K",
+     "adsh": "0000070866-26-000005",
+     "film_num": [
+      "26681573"
+     ],
+     "biz_locations": [
+      "Atlanta, GA"
+     ],
+     "file_type": "EX-99.1",
+     "file_description": "EX-99.1",
+     "inc_states": [
+      "MD"
+     ],
+     "items": [
+      "2.02",
+      "7.01",
+      "9.01"
+     ]
+    }
+   }
+  ]
+ },
+ "query": {
+  "_source": {
+   "exclude": [
+    "doc_text"
+   ]
+  },
+  "query": {
+   "bool": {
+    "must": [
+     {
+      "match_phrase": {
+       "doc_text": "ransomware"
+      }
+     }
+    ],
+    "must_not": [],
+    "should": [],
+    "filter": [
+     {
+      "terms": {
+       "root_forms": [
+        "8-K"
+       ]
+      }
+     },
+     {
+      "range": {
+       "file_date": {
+        "gte": "2026-01-01",
+        "lte": "2026-11-01"
+       }
+      }
+     }
+    ]
+   }
+  },
+  "from": 0,
+  "size": 100,
+  "aggregations": {
+   "form_filter": {
+    "terms": {
+     "field": "root_forms",
+     "size": 30
+    }
+   },
+   "entity_filter": {
+    "terms": {
+     "field": "display_names.raw",
+     "size": 30
+    }
+   },
+   "sic_filter": {
+    "terms": {
+     "field": "sics",
+     "size": 30
+    }
+   },
+   "biz_states_filter": {
+    "terms": {
+     "field": "biz_states",
+     "size": 30
+    }
+   }
+  }
+ }
+}

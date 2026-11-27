@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "sanctions_un_consolidated",
+  "source_url": "https://scsanctions.un.org/resources/xml/en/consolidated.xml",
+  "version": "runtime download by the dataset manager (TTL 24 h); format checked 2026-11-26 (dateGenerated 2026-11-26)",
+  "sha256": "",
+  "licence": "UN public information (United Nations Security Council Consolidated List)",
+  "attribution": "United Nations Security Council Consolidated List (UN public information), list date shown with every match.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/company_org/sanctions_lists.py",
+    "v3lum/modules/company_org/sanctions_data.py"
+  ]
+}

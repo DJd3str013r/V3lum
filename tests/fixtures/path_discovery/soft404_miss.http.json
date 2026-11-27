@@ -1,0 +1,21 @@
+{
+ "_provenance": {
+  "synthetic": true
+ },
+ "request": {
+  "method": "GET",
+  "host": "app.example.com",
+  "path": "/api/v2"
+ },
+ "response": {
+  "status": 200,
+  "headers": {
+   "Content-Type": "text/html; charset=utf-8",
+   "Server": "nginx"
+  },
+  "body": "<!DOCTYPE html><html lang=\"pt-BR\"><head><meta charset=\"utf-8\"><title>Página não encontrada | Example</title></head><body><div id=\"app\"><h1>Ops!</h1><p>A página /api/v2 não existe ou foi movida.</p><p class=\"rid\">request id ffeeddccbbaa99887766554433221100</p></div></body></html>"
+ },
+ "history": [],
+ "final_url": null,
+ "transport_error": null
+}

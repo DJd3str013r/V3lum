@@ -1,0 +1,25 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p2-G04-1",
+  "title": "E-mail identity pivots and per-account breach names (batch p2-G04-1)",
+  "owner": "batch p2-G04-1 (github_email_pivot, gravatar, hibp_account, leakcheck_public, lunar_domain_exposure, xposedornot, xposedornot_domain, xposedornot_domain_breaches; rule p2g04_breach_merge)",
+  "description": "Names of the G04 e-mail/breach batch. Breach modules also emit the core/pack names breaches, breach_count, breach_data_classes, breach_records, first_seen_breach, breach_hit_count and generic_address (pack_breach.json) that the P146 pack reads.",
+  "attributes": {
+    "github_accounts": "GitHub accounts linked to an e-mail by an EXACT commit-author or public-profile e-mail match: list of {login, user_id, profile_url, basis commit_author | profile_email | noreply, commits, repos, commit_urls (max 5), first_seen, last_seen, verified_commit, confidence}: no names, bios, locations or followers",
+    "github_commit_search": "GitHub commit search by author e-mail summary {total_count, exact_matches, unlinked_commits, unlinked_repos, discarded_non_exact, placeholder_logins, incomplete}: fuzzy hits are discarded, commits not linked to an account are context only",
+    "gravatar_profile": "public Gravatar profile, minimised: {display_name, profile_url, avatar_hash, avatar_sha256 (file hash of the avatar image, for hash-equality correlation only), verified_accounts [{service, label, url, username}], links [{label, url}]}; location, bio, job, company and contact data are never kept",
+    "avatar_hash": "Gravatar avatar hash (the SHA-256 or MD5 id in avatar URLs): avatar-reuse correlation by hash equality only, never image or face analysis",
+    "pastes": "list of paste METADATA {source, id, date, email_count} listing the entity (the paste content is never fetched)",
+    "paste_count": "int: number of pastes listing the entity",
+    "breach_risk": "provider risk summary of an address's breach exposure {label, score, provider, note}: context only, never an exposure score for third-party addresses",
+    "service_breach_records": "breaches of the service at this domain from a breach catalogue other than HIBP (XposedOrNot): list of {name, breach_date, data_classes, records, password_form, sensitive, verified, wording} - this service was breached, not accounts at this domain",
+    "domain_exposure": "12-month aggregate exposure card of a domain {period, totals (events, infostealer, data breach, employee, client, first/last seen), stealer_families, operating_systems, antivirus, months, breach_sources, caveats, provider}: counts only, never records; confidential case data (TLP:AMBER minimum)",
+    "own_domain_breaches": "breached addresses of a verified own domain {addresses (count), breaches [{name, addresses}], years, provider}: counts per breach; the addresses themselves are listed only as analyst-selected pivots"
+  },
+  "tags": {
+    "confidential": "confidential case data (minimum TLP:AMBER): shown in AMBER-marked sections, excluded from CLEAR/GREEN exports and shareable reports"
+  },
+  "relations": {
+    "domain_breach_address": "own domain -> one of its addresses listed by an own-domain breach search (XposedOrNot domain-breaches): analyst selection required, never auto-expanded"
+  }
+}

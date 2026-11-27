@@ -1,0 +1,78 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "purpose": ""
+  },
+  "org_profile": {
+    "name": "Exemplo Comércio Ltda",
+    "cnpj_roots": [
+      "11222333"
+    ],
+    "domains": [
+      {
+        "name": "exemplo.example",
+        "verification": "txt_verified"
+      }
+    ],
+    "app_ids": [
+      {
+        "kind": "m365_tenant",
+        "value": "00000000-0000-4000-8000-000000000001"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "key": "domain:exemplo-ofertas.example",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "registered": [
+          {
+            "value": true,
+            "source": "rdap"
+          }
+        ],
+        "registrant_kind": [
+          {
+            "value": null,
+            "source": "rdap"
+          }
+        ],
+        "created": [
+          {
+            "value": "2015-03-04T12:00:00Z",
+            "source": "rdap"
+          }
+        ],
+        "cert_organizations": [
+          {
+            "value": [
+              {
+                "o": "EXEMPLO COMERCIO LTDA",
+                "validation": "OV",
+                "names": [
+                  "exemplo-ofertas.example"
+                ],
+                "source": "sslmate cert_der"
+              }
+            ],
+            "source": "ct_logs"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [],
+  "expect": {
+    "domain_ownership": {
+      "min": 1,
+      "max": 1,
+      "severity": "info",
+      "confidence_label": "probable"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "circl",
+  "hosts": [
+    "onion.ail-project.org"
+  ],
+  "sources": {
+    "onion_lookup_ail": {
+      "title": "AIL onion-lookup (CIRCL) GET onion.ail-project.org/api/lookup/{onion}: first/last seen, titles, languages, MISP tags",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://onion.ail-project.org/apiman/redoc/",
+        "quote": "Registry provider circl (AIL): tier trusted, terms open.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1, P199 cond 6)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "ail_project",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P199 cond 6). Research C0459 (verified_live 200, 2026-11-26): the OpenAPI document (/apiman/specification/) lists only GET/HEAD /api/lookup/{onion} - no submission endpoint. HTTP 200 for every answer: found {id, first_seen, last_seen, titles[], languages[], tags[]}, not found {error: 'domain not found', domain}, malformed onion {}. Queried only for onions already in the case, after the local v3 checksum check (P217) and the Ahmia banned-list filter; CIRCL sees the onion (disclosure third_party). No Tor connection. Free public service, fair use: min_interval 2 s, daily budget 200. Used by onion_lookup."
+    }
+  },
+  "error_markers": []
+}

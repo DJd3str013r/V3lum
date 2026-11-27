@@ -1,0 +1,9 @@
+{
+  "schema": "v3lum.extra/1",
+  "package": "yara",
+  "pip": "yara-python>=4.5.4",
+  "extra": "yara",
+  "licence": "Apache-2.0",
+  "justification": "Local YARA scanning with the YARA Forge rule packages for yara_scan (P272 c1, opt-in). Optional: without it yara_scan reports UNAVAILABLE 'package' ('pip install v3lum[yara]').",
+  "notes": "Batch p2-G12-1. yara-python 4.5.4 ships wheels for CPython 3.9-3.13 only (none for 3.14/3.15, macOS < 14 or Windows arm64; PyPI 2026-11-26): there the module stays UNAVAILABLE. Rules are compiled locally from source only, never loaded compiled from the network; rule packs are runtime downloads, never bundled (A6)."
+}

@@ -1,0 +1,38 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "kickbox",
+  "name": "Kickbox Open (free disposable-domain check)",
+  "operator": "Kickbox, Inc. (kickbox.com; the open.kickbox.com page reads 'Powered by Kickbox')",
+  "hosts": ["open.kickbox.com"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established e-mail verification company with a published Master Services Agreement, a privacy policy and paid plans (A8 trusted). Only a domain is ever sent (never an address), so the provider receives IOC values only.",
+  "tier_reviewer": "p1-G04-1 implementer (P088 C5)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "C", "justification": "Curated disposable-domain list behind a single boolean; answers {'disposable': false} even for invalid input (observed 2026-11-26), so it is a second opinion only, never ground truth."},
+  "http_profile": {"user_agent": "neutral", "accept": "application/json", "ttl": 604800, "min_interval": 1.0, "concurrency": 1},
+  "quota": {"scope": "egress_ip", "day": 500, "burst": 1, "published": false, "evidence_url": "https://open.kickbox.com/", "safety_margin": 0.8},
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "disposable": {
+      "title": "Kickbox Open GET /v1/disposable/{domain} (domain only)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://open.kickbox.com/",
+        "quote": "Free Disposable Email Address Check API - Powered by Kickbox ... The software is provided \"as is\" and \"as and when available\", without warranty of any kind",
+        "checked_at": "2026-11-26",
+        "reviewer": "p1-G04-1 implementer (P088 C5: terms recorded per provider before use)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "kickbox",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0218 (verified_live 200, 0.23-0.51 s, no rate-limit headers). The open endpoint publishes no usage terms of its own: the page states only a warranty disclaimer, and Kickbox's Master Services Agreement (https://docs.kickbox.com/docs/terms-of-service, checked 2026-11-26) covers the paid services, so the class stays 'unknown' (A1: terms not published) until legal reviews it; email_hygiene_online then skips this feed under the corporate profile (aggregator filter) and still asks MailCheck.ai. Only the normalised domain is sent, never the address (P088 C5). Quota: 'fair use' without a published figure - 500/day is a conservative local budget."
+    }
+  },
+  "notes": "Owned by batch p1-G04-1 (P088 email_hygiene_online). Disify is deliberately not used (it needs the full address and flagged example.com as disposable, P088 C5)."
+}

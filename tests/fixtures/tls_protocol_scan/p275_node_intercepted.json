@@ -1,0 +1,14 @@
+{
+ "note": "tls_inspect (P275) found the chain anchored outside the Mozilla store: re-signed by an inspection proxy",
+ "tls_handshake": {
+  "host": "www.example.com",
+  "port": 443,
+  "verified": true,
+  "version": "TLSv1.3",
+  "chain_length": 3,
+  "egress_profile": "default",
+  "interception_check": "done",
+  "ownership": "in_scope"
+ },
+ "intercepted_by": "O=Example Corp,CN=Example TLS inspection CA"
+}

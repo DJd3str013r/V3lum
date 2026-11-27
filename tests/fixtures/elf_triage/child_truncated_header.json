@@ -1,0 +1,7 @@
+{
+ "error": "ELFError",
+ "message": "expected 8, found 0",
+ "size": 40,
+ "source": "pyelftools",
+ "version": "0.33"
+}

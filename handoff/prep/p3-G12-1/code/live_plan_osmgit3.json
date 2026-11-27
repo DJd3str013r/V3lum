@@ -1,0 +1,4 @@
+[
+ {"id": "osmgit_nominatim_nginx_erb", "gap": 3, "max_bytes": 300000,
+  "url": "https://git.openstreetmap.org/chef.git/blob_plain/HEAD:/cookbooks/nominatim/templates/default/nginx.erb"}
+]

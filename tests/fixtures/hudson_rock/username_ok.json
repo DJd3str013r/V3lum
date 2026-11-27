@@ -1,0 +1,95 @@
+{
+ "message": "This username is associated with a computer that was infected by an info-stealer, all the credentials saved on this computer are at risk of being accessed by cybercriminals. Visit https://www.hudsonrock.com/free-tools to discover additional free tools and Infostealers related data.",
+ "stealers": [
+  {
+   "total_corporate_services": 1,
+   "total_user_services": 437,
+   "date_compromised": "2026-11-25T00:00:00.000Z",
+   "stealer_family": "Generic Stealer",
+   "computer_name": "DESKTOP-V3LUMFX (fixture-user)",
+   "operating_system": "Windows 10 Pro x64",
+   "malware_path": "C:\\Users\\fixture-user\\AppData\\Local\\Temp\\v3lum-fixture.exe",
+   "antiviruses": [
+    "Fixture Antivirus"
+   ],
+   "ip": "192.0.2.**",
+   "top_passwords": [
+    "f*********1",
+    "v******e"
+   ],
+   "top_logins": [
+    "t***@example.com",
+    "f*********r"
+   ],
+   "future_field_v3lum_test": "schema drift must not leak"
+  },
+  {
+   "total_corporate_services": 2,
+   "total_user_services": 120,
+   "date_compromised": "2026-11-21T13:42:18.000Z",
+   "stealer_family": "Generic Stealer",
+   "computer_name": "DESKTOP-V3LUMFX (fixture-user)",
+   "operating_system": "Windows 10 Pro x64",
+   "malware_path": "C:\\Users\\fixture-user\\AppData\\Local\\Temp\\v3lum-fixture.exe",
+   "antiviruses": [
+    "Fixture Antivirus"
+   ],
+   "ip": "192.0.2.**",
+   "top_passwords": [
+    "f*********1",
+    "v******e"
+   ],
+   "top_logins": [
+    "t***@example.com",
+    "f*********r"
+   ],
+   "future_field_v3lum_test": "schema drift must not leak"
+  },
+  {
+   "total_corporate_services": 0,
+   "total_user_services": 80,
+   "date_compromised": "2026-11-13T14:46:52.000Z",
+   "stealer_family": "Generic Stealer",
+   "computer_name": "DESKTOP-V3LUMFX (fixture-user)",
+   "operating_system": "Windows 10 Pro x64",
+   "malware_path": "C:\\Users\\fixture-user\\AppData\\Local\\Temp\\v3lum-fixture.exe",
+   "antiviruses": [
+    "Fixture Antivirus"
+   ],
+   "ip": "192.0.2.**",
+   "top_passwords": [
+    "f*********1",
+    "v******e"
+   ],
+   "top_logins": [
+    "t***@example.com",
+    "f*********r"
+   ],
+   "future_field_v3lum_test": "schema drift must not leak"
+  },
+  {
+   "total_corporate_services": 0,
+   "total_user_services": 80,
+   "date_compromised": "2026-11-13T14:46:52.000Z",
+   "stealer_family": "Generic Stealer",
+   "computer_name": "DESKTOP-V3LUMFX (fixture-user)",
+   "operating_system": "Windows 10 Pro x64",
+   "malware_path": "C:\\Users\\fixture-user\\AppData\\Local\\Temp\\v3lum-fixture.exe",
+   "antiviruses": [
+    "Fixture Antivirus"
+   ],
+   "ip": "192.0.2.**",
+   "top_passwords": [
+    "f*********1",
+    "v******e"
+   ],
+   "top_logins": [
+    "t***@example.com",
+    "f*********r"
+   ],
+   "future_field_v3lum_test": "schema drift must not leak"
+  }
+ ],
+ "total_corporate_services": 1,
+ "total_user_services": 437
+}

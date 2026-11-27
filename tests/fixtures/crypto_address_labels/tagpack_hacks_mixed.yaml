@@ -1,0 +1,20 @@
+title: Known Cryptoservice hacks
+creator: GraphSense Core Team
+description: Addresses related to hacked exchanges and hackers
+currency: BTC
+lastmod: 2021-11-12
+confidence: web_crawl
+tags:
+- address: 1JoktQJhCzuCQkt3GnQ8Xddcq4mUgNyXEa
+  category: exchange
+  label: Bitstamp
+  source: https://www.reddit.com/r/Bitcoin/comments/2rdvi7/bistamps_cold_storage_address/
+  actor: bitstamp
+- address: 1HVi6re6zDr5c5v9Sk2mmL9u7svEHfiBt4
+  label: Betco.in hack
+  source: https://bitcointalk.org/index.php?topic=576337
+  abuse: service_hack
+- address: 1Lgnzb1p9YE3uKwGpspMQZ1NcAD1EMxzSh
+  category: gambling
+  label: Betco.in
+  source: https://bitcointalk.org/index.php?topic=576337

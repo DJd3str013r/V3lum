@@ -1,0 +1,83 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "github",
+  "hosts": [],
+  "sources": {
+    "username_check_wmn": {
+      "title": "WhatsMyName site dataset wmn-data.json (archived 2026-11-09; runtime download, pinned by SHA-256, never bundled or merged)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/WebBreacher/WhatsMyName",
+        "quote": "Copyright (C) 2015-2026 Micah Hoffman. This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1/A5/A6: CC BY-SA data downloaded at runtime with attribution is 'open')",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "whatsmyname",
+      "sanitizer": null,
+      "dataset": "username_check.wmn-data.json",
+      "notes": "P113 FC3: downloaded at runtime into ~/.v3lum/datasets, pinned by SHA-256 a8b8385b..., attributed in the notices and the report footer (dataset citation), never bundled or merged. Packs reference its entries by id only (selection lists)."
+    },
+    "username_check_maigret_meta": {
+      "title": "Maigret db_meta.json manifest (data_sha256 of the site database; checked by v3lum data update)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/soxoj/maigret/blob/main/LICENSE",
+        "quote": "MIT License. Copyright (c) 2020-2026 Soxoj. Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1/A5)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "maigret",
+      "sanitizer": null,
+      "dataset": "username_check.maigret-meta.json",
+      "notes": "P113 FC3: the manifest's data_sha256 verifies every Maigret database update; updates are applied only by `v3lum data update`, never mid-run."
+    },
+    "username_check_maigret": {
+      "title": "Maigret site database data.json (extended pack only; pinned, verified against db_meta)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/soxoj/maigret/blob/main/LICENSE",
+        "quote": "MIT License. Copyright (c) 2020-2026 Soxoj. Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1/A5)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "maigret",
+      "sanitizer": null,
+      "dataset": "username_check.maigret-sites.json",
+      "notes": "P113 FC1/FC3: only the curated profile (no protection, activation or engine entries) and only overlay-tiered sites are ever queried. Large: never downloaded during a scan."
+    },
+    "username_check_sherlock": {
+      "title": "Sherlock site manifest data.json (used only for regexCheck username-syntax patterns and the exclusion name->host map)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/sherlock-project/sherlock/blob/master/LICENSE",
+        "quote": "MIT License. Copyright (c) 2019 Sherlock Project. Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1/A5)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "sherlock",
+      "sanitizer": null,
+      "dataset": "username_check.sherlock-data.json",
+      "notes": "P113 FC5: never used for detection; patterns with nested quantifiers are dropped."
+    },
+    "username_check_sherlock_exclusions": {
+      "title": "Sherlock false-positive exclusions list (exclusions branch)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/sherlock-project/sherlock/blob/master/LICENSE",
+        "quote": "MIT License. Copyright (c) 2019 Sherlock Project. Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1/A5)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "sherlock",
+      "sanitizer": null,
+      "dataset": "username_check.sherlock-exclusions.txt",
+      "notes": "P113 FC5: refreshed at most daily; listed sites are dropped from both packs (mapped to hosts through the Sherlock manifest) unless the overlay records an override with measured evidence."
+    }
+  },
+  "error_markers": []
+}

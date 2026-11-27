@@ -1,0 +1,41 @@
+{
+ "_envelope": 1,
+ "_source": "GET https://photon.komoot.io/reverse?lat=-23.550278&lon=-46.633889&limit=1&lang=en (2026-11-26T09:43:40Z, generic client UA, datacenter egress)",
+ "status": 200,
+ "headers": {
+  "server": "nginx",
+  "content-type": "application/json",
+  "cache-control": "max-age=3600"
+ },
+ "body": {
+  "type": "FeatureCollection",
+  "features": [
+   {
+    "type": "Feature",
+    "properties": {
+     "osm_type": "N",
+     "osm_id": 2135983920,
+     "osm_key": "tourism",
+     "osm_value": "artwork",
+     "type": "house",
+     "name": "Marco Zero",
+     "street": "Praça da Sé",
+     "locality": "Glicério",
+     "district": "Sé",
+     "city": "São Paulo",
+     "state": "São Paulo",
+     "country": "Brazil",
+     "postcode": "01001-001",
+     "countrycode": "BR"
+    },
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      -46.6339471,
+      -23.5503953
+     ]
+    }
+   }
+  ]
+ }
+}

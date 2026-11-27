@@ -1,0 +1,65 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "options": {
+  "mode": "passive",
+  "tlp": "amber",
+  "depth": 1
+ },
+ "nodes": [
+  {
+   "key": "eth_address:0x1111111111111111111111111111111111111111",
+   "depth": 0,
+   "seed": true,
+   "findings": [
+    {
+     "title": "Community scam reports on Chainabuse (unverified)",
+     "severity": "medium",
+     "confidence": 0.7,
+     "confidence_label": "probable",
+     "criterion": ">= 3 community reports or a report checked by Chainabuse / from a trusted contributor (P204 cond 4)",
+     "tags": [
+      "fraud",
+      "phishing"
+     ],
+     "module": "chainabuse",
+     "source": "trm_chainabuse.reports_api",
+     "data": {
+      "count": 3,
+      "wording": "3 community reports (unverified): PHISHING (2), RANSOMWARE, last report 2026-11-20"
+     }
+    },
+    {
+     "title": "GoPlus reports 'sanctioned' (not authoritative)",
+     "severity": "info",
+     "confidence": 0.4,
+     "confidence_label": "possible",
+     "criterion": "",
+     "tags": [],
+     "module": "goplus_security",
+     "source": "gopluslabs.address_security",
+     "data": {
+      "flag": "sanctioned"
+     }
+    }
+   ],
+   "attributes": {
+    "wallet_labels": [
+     {
+      "value": [
+       "Binance 14"
+      ],
+      "source": "evm_explorers"
+     }
+    ]
+   }
+  }
+ ],
+ "edges": [],
+ "expect": {
+  "p2g09_chainabuse_corroborated": {
+   "min": 0,
+   "max": 0
+  }
+ }
+}

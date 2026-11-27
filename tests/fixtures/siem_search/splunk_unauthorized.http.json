@@ -1,0 +1,34 @@
+{
+ "request": {
+  "method": "POST",
+  "url": "https://splunk.example.com:8089/servicesNS/nobody/soc_v3lum/saved/searches/v3lum_ioc_ip/dispatch",
+  "headers": {
+   "Authorization": "<Bearer token not stored>"
+  },
+  "form": {
+   "args.value": "198.51.100.23",
+   "dispatch.earliest_time": "-30d",
+   "dispatch.latest_time": "now",
+   "dispatch.max_count": "1000",
+   "dispatch.max_time": "15",
+   "trigger_actions": "0",
+   "output_mode": "json"
+  }
+ },
+ "response": {
+  "status": 401,
+  "headers": {
+   "content-type": "application/json; charset=UTF-8",
+   "www-authenticate": "Splunk"
+  },
+  "body": {
+   "messages": [
+    {
+     "type": "WARN",
+     "text": "call not properly authenticated"
+    }
+   ]
+  }
+ },
+ "note": "missing/expired token -> needs_key"
+}

@@ -1,0 +1,16 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "csaf_redhat",
+  "source_url": "https://security.access.redhat.com/data/csaf/v2/provider-metadata.json",
+  "version": "CSAF 2.0 advisories synced out of band into the local CSAF index and per-CVE VEX documents (csaf_redhat_vex); RHSA-2021:5138 and the CVE-2021-44228 VEX (pruned) in the test fixtures",
+  "sha256": "",
+  "licence": "CC-BY-4.0",
+  "attribution": "Red Hat, Inc. security data (CSAF advisories and VEX), licensed under the Creative Commons Attribution 4.0 International License (https://creativecommons.org/licenses/by/4.0/): attribution to Red Hat Inc. and a link to the original (https://security.access.redhat.com/data/csaf/v2/).",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/vulnerability_cve/csaf_advisories.py",
+    "v3lum/modules/vulnerability_cve/csaf_redhat_vex.py",
+    "tests/fixtures/csaf_advisories/redhat_doc.json",
+    "tests/fixtures/csaf_redhat_vex/cve_ok.json"
+  ]
+}

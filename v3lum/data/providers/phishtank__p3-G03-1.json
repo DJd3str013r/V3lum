@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "phishtank",
+  "hosts": [
+    "checkurl.phishtank.com",
+    "phishtank.org",
+    "www.phishtank.com"
+  ],
+  "sources": {
+    "phishtank_checkurl": {
+      "title": "PhishTank checkurl API: POST checkurl.phishtank.com/checkurl/ (url = base64 of the full URL, format=json, optional app_key) - single-URL verdict",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://phishtank.org/faq.php",
+        "quote": "Is it OK to use the API for both commercial and non-commercial uses? Yes, it is OK.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "phishtank",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Batch p3-G03-1 (P075 phishtank_checkurl). Research C0365 (verified_live 200 with the 'phishtank/<name>' User-Agent and format=json; another sweep got the Cloudflare managed challenge, 403 HTML, on 2026-11-25). Prep live checks 2026-11-26: 200 JSON with X-Request-Limit 250 per 300 Seconds; example.com is in_database=true with verified=false (not a verdict). The User-Agent is the provider's binding profile 'phishtank/{app}' (PROFILE_REQUIREMENTS). The URL is looked up, never fetched; 403/challenge = BLOCKED, never bypassed (P075 cond 3)."
+    }
+  },
+  "error_markers": [
+    {
+      "id": "phishtank_checkurl_error_in_200",
+      "statuses": [200],
+      "json_path": "meta.status",
+      "equals": "error",
+      "regex": null,
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "PhishTank checkurl: error inside an HTTP 200 answer (meta.status 'error', e.g. 'You must supply a URL'): could not verify"
+    },
+    {
+      "id": "phishtank_checkurl_over_limit",
+      "statuses": [509],
+      "json_path": null,
+      "equals": null,
+      "regex": null,
+      "final_url_regex": "^https://checkurl\\.phishtank\\.com/",
+      "maps_to": "rate_limited",
+      "reason_code": "rate_limited",
+      "reason": "PhishTank checkurl: HTTP 509, over the per-IP request limit (X-Request-Limit): could not verify now"
+    }
+  ],
+  "notes": "Batch p3-G03-1 (P075). checkurl.phishtank.com is mapped to no provider in the seed (owners.json); the provider id derived from the registrable domain (phishtank) already exists (owned by batch p1-G03-1), so this batch extends it. phishtank.org and www.phishtank.com are the public site (manual 'Is it a phish?' form and phish_detail.php pages) used only as manual links, never fetched. Fixtures: tests/fixtures/phishtank_checkurl/ (error_in_200.json is the real 2026-11-26 answer; the 509 answer is documented on api_info.php and was not provoked)."
+}

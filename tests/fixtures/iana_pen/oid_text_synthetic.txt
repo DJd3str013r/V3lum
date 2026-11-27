@@ -1,0 +1,8 @@
+Certificate extension: 1.3.6.1.4.1.311.21.7 (szOID_CERTIFICATE_TEMPLATE)
+CT precertificate SCTs: 1.3.6.1.4.1.11129.2.4.2
+SNMPv2-MIB::sysObjectID.0 = OID: SNMPv2-SMI::enterprises.9.1.1208
+snmpwalk: iso.3.6.1.4.1.44363.1.2 = STRING: "edge"
+syslog: enterprise=6168 msg="probe"
+trap oid .1.3.6.1.4.1.999999999.1 (unassigned number)
+not an enterprise OID: 1.3.6.1.4.10.5 and 2.5.29.17
+version string 1.3.6.1.4.1 without a number

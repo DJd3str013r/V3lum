@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "cins_army",
+  "source_url": "https://cinsscore.com/",
+  "version": "list/ci-badguys.txt (runtime download, noncommercial use only, checked 2026-11-26)",
+  "sha256": "",
+  "licence": "LicenseRef-CINS-Army-NC",
+  "attribution": "CINS Army list by Sentinel IPS / Collective Intelligence Network Security (cinsscore.com), non-commercial use: off under the corporate profile until licence-cleared.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/threat_intel_ioc/ip_blocklists.py"
+  ]
+}

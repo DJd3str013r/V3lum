@@ -1,0 +1,71 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "opswat_metadefender",
+  "name": "OPSWAT MetaDefender Cloud API (hash lookups)",
+  "operator": "OPSWAT, Inc.",
+  "hosts": [
+    "api.metadefender.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms, a privacy policy and a business offering (A8 trusted): 'Registry tiers: Recorded Future, OPSWAT and PolySwarm trusted; MalShare and VirusShare community.' (P177 cond 6).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Multi-engine AV scan results for a hash; one OPSWAT vote together with Filescan (same vendor, upstream family 'opswat', P177 cond 5, P178 cond 4)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "ttl": 86400,
+    "min_interval": 1.0
+  },
+  "quota": {
+    "scope": "key",
+    "day": 1000,
+    "burst": 1,
+    "published": false,
+    "evidence_url": "",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {
+    "metadefender": {
+      "description": "OPSWAT MetaDefender Cloud API key (apikey header)",
+      "signup_url": "https://metadefender.opswat.com/",
+      "env": [
+        "V3LUM_METADEFENDER_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "the free key is licensed 'solely for Your personal use' (noncommercial); corporate use needs a paid MetaDefender plan recorded by legal (licence_allow) (P177 cond 3/4); X-RateLimit-* headers report the plan's allowance"
+    }
+  },
+  "sources": {
+    "hash_lookup": {
+      "title": "MetaDefender Cloud v4 hash lookup (/v4/hash/{md5|sha1|sha256}, metadata only)",
+      "terms": {
+        "class": "noncommercial",
+        "evidence_url": "https://www.opswat.com/legal",
+        "quote": "Licence (legal floor, verified 2026-11-26): Triage's free Individual/Researcher licences are non-commercial and make analyses public, so corporate use needs a commercial Triage licence; OPSWAT licenses free use 'solely for Your personal use', so MetaDefender needs a paid plan.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "opswat",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P177 cond 3). Research C0416 (verified_needs_key, 401). GET https://api.metadefender.com/v4/hash/{hash} with the apikey header; never built: file upload (POST /v4/file), scan results by data_id, sanitized-file downloads and any /download path (P177 cond 2). 404 (code 404003) = hash unknown; 429 with X-RateLimit-Remaining 0 and a reset of an hour or more = daily allowance exhausted (QUOTA), else RATE_LIMITED. Upstream family 'opswat' so MetaDefender and Filescan count once in consensus (P177 cond 5, P171). The research endpoint host api.metadefender.com was unowned; the web result pages (metadefender.com) stay with provider metadefender. Batch p3-G07-2, module metadefender.",
+      "licensed_alternative": "A paid MetaDefender Cloud plan recorded by legal as a licence_allow entry for this source (P177 cond 3/4: the paid plan is 'key-terms'); the manual MetaDefender result pages (metadefender.result_pages) stay available."
+    }
+  },
+  "notes": "Owned by batch p3-G07-2 (P177, module metadefender). A separate fragment from 'metadefender' (manual result pages, batch p2-G14-3) because provider extensions cannot add keys and the adapter needs its own key (P177 cond 1). Terms 'noncommercial' (free key): off under the corporate profile until legal records a paid plan; default_enabled False."
+}

@@ -1,0 +1,23 @@
+{
+ "_meta": {
+  "module": "huggingface_user",
+  "case": "not_found",
+  "source": "C0251 huggingface.co",
+  "request": {
+   "method": "GET",
+   "url": "https://huggingface.co/api/users/qz7k2v9m4p1w8n3x5c6b/overview"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "LIVE",
+  "elapsed_s": 0.08,
+  "note": "random 20-char control handle that belongs to nobody"
+ },
+ "status": 404,
+ "headers": {
+  "content-type": "application/json; charset=utf-8",
+  "x-error-message": "This user does not exist",
+  "ratelimit": "\"api\";r=303;t=96",
+  "ratelimit-policy": "\"fixed window\";\"api\";q=500;w=300"
+ },
+ "body": "{\"error\":\"This user does not exist\"}"
+}

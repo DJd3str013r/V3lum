@@ -1,0 +1,17 @@
+{
+ "request": "GET https://api.builtwith.com/v21/api.json?KEY=<all-zero placeholder>&LOOKUP=example.com&NOPII=yes&HIDETEXT=yes",
+ "response": {
+  "status": 200,
+  "headers": {
+   "content-type": "text/json; charset=utf-8",
+   "x-ratelimit-limit-concurrent": "8",
+   "x-ratelimit-limit-persecond": "10",
+   "x-ratelimit-current-concurrent": "1",
+   "x-ratelimit-current-persecond": "1"
+  },
+  "body": "{\"Errors\":[{\"Message\":\"You need to login or create an account to test the calls (it is free) - http://builtwith.com/signup\",\"Code\":-2}]}"
+ },
+ "transport_error": null,
+ "elapsed_s": 0.257,
+ "note": "200 + Errors[] code -2 on the Domain API; X-RATELIMIT-* headers present"
+}

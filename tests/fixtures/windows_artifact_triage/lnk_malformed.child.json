@@ -1,0 +1,12 @@
+{
+ "appended": null,
+ "error": null,
+ "kind": "lnk",
+ "lnk": null,
+ "parser": null,
+ "precheck": "truncated ShellLinkHeader (60 of 76 bytes)",
+ "size": 60,
+ "string_data": null,
+ "unavailable": null,
+ "warnings": []
+}

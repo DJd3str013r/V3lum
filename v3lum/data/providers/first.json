@@ -1,0 +1,73 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "first",
+  "name": "FIRST EPSS (Exploit Prediction Scoring System)",
+  "operator": "FIRST - Forum of Incident Response and Security Teams (EPSS SIG); daily score files generated and hosted by Empirical Security for the EPSS SIG",
+  "hosts": [
+    "api.first.org",
+    "epss.empiricalsecurity.com",
+    "epss.cyentia.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established security non-profit with published terms (A8 trusted: established security non-profits); P184 cond 3 'Registry provider first: tier trusted, terms open'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "A published, peer-reviewed prediction model (probability of exploitation activity in the next 30 days), rescored daily: a calibrated estimate, not an observation of exploitation; model versions shift every score."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 15,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 2
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "epss_csv": {
+      "title": "EPSS daily bulk scores epss_scores-current.csv.gz (dataset; local lookups only, zero per-CVE calls)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.first.org/epss/faq",
+        "quote": "Yes. EPSS scores are published freely via CSV download and API with no registration required. Attribution is requested when EPSS data is used in publications or products.",
+        "checked_at": "2026-11-26",
+        "reviewer": "p1-G08-1 prep (verified on www.first.org)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "epss",
+      "sanitizer": null,
+      "dataset": "epss_scores",
+      "notes": "Research C0430 terms 'FIRST EPSS (free, attribution)'. epss.empiricalsecurity.com/epss_scores-current.csv.gz answers a 302 with a RELATIVE Location to the dated file (epss_scores-YYYY-MM-DD.csv.gz); the legacy epss.cyentia.com URL answers 301 to it. 2.9 MB gzip -> 12.6 MB CSV (412,861 rows, first line '#model_version:...,score_date:...'): a large dataset, fetched by `v3lum data update epss_scores`, never during a scan (A6 BR9). A missing dated object answers an S3 403 <Error><Code>AccessDenied</Code>: the previous copy is kept. FIRST attribution in THIRD_PARTY_NOTICES (P184 cond 3). Used by epss and epss_api (batch p1-G08-1)."
+    },
+    "epss_api": {
+      "title": "EPSS API api.first.org/data/v1/epss?cve= (one CVE per run, only for CVEs missing from the day's file)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.first.org/epss/faq",
+        "quote": "Yes. EPSS scores are published freely via CSV download and API with no registration required. Attribution is requested when EPSS data is used in publications or products.",
+        "checked_at": "2026-11-26",
+        "reviewer": "p1-G08-1 prep (verified on www.first.org)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "epss",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0430 (verified_live 200; Fastly cache, Cache-Control max-age=86400). The API never reports bad input: unscored CVEs, malformed ids and malformed dates all answer 200 {status OK, total 0} (misses take 6-10 s at the origin), so ids are validated locally first and an empty answer means 'no score published', never 'not exploitable'. No published quota ('designed for lookup, not bulk'): one CVE per run, min_interval 1 s, CVE fan-out rule (P183 cond 3)."
+    }
+  },
+  "notes": "Owned by batch p1-G08-1 (P184 epss + epss_api). Other batches extend it (first__<suffix>.json). The bulk file's current host epss.empiricalsecurity.com is declared together with the legacy redirect host epss.cyentia.com (P184 cond 3)."
+}

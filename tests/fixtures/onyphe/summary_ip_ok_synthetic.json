@@ -1,0 +1,90 @@
+{
+ "_synthetic": "Envelope keys (count, error, max_page, myip, page, page_size, results[@category], status, text, took, total) are documented at search.onyphe.io/docs/general-apis/summary (read 2026-11-26). Per-category fields are recalled from ONYPHE data models and NOT verified; replace with a trimmed team-key capture before merge (condition 5).",
+ "count": 6,
+ "error": 0,
+ "max_page": 1,
+ "myip": "203.0.113.10",
+ "page": 1,
+ "page_size": 6,
+ "results": [
+  {
+   "@category": "geoloc",
+   "@timestamp": "2026-11-20T10:00:00.000Z",
+   "ip": "198.51.100.20",
+   "country": "BR",
+   "country_name": "Brazil",
+   "city": "Sao Paulo",
+   "asn": "AS64500",
+   "organization": "Example Hosting",
+   "subnet": "198.51.100.0/24"
+  },
+  {
+   "@category": "inetnum",
+   "@timestamp": "2026-11-20T10:00:00.000Z",
+   "subnet": "198.51.100.0/24",
+   "netname": "EXAMPLE-NET",
+   "organization": "Example Hosting",
+   "country": "BR",
+   "source": "lacnic"
+  },
+  {
+   "@category": "datascan",
+   "@timestamp": "2026-11-20T10:00:00.000Z",
+   "ip": "198.51.100.20",
+   "port": 443,
+   "transport": "tcp",
+   "protocol": "http",
+   "tls": true,
+   "product": "nginx",
+   "productvendor": "f5",
+   "productversion": "1.18.0",
+   "cpe": [
+    "cpe:2.3:a:f5:nginx:1.18.0:*:*:*:*:*:*:*"
+   ],
+   "domain": [
+    "example.com"
+   ],
+   "hostname": [
+    "www.example.com"
+   ],
+   "tag": [
+    "open-port"
+   ]
+  },
+  {
+   "@category": "resolver",
+   "@timestamp": "2026-11-20T10:00:00.000Z",
+   "ip": "198.51.100.20",
+   "hostname": "www.example.com",
+   "domain": "example.com",
+   "type": "forward"
+  },
+  {
+   "@category": "threatlist",
+   "@timestamp": "2026-11-20T10:00:00.000Z",
+   "ip": "198.51.100.20",
+   "threatlist": "example-scanners",
+   "tag": [
+    "scanner"
+   ]
+  },
+  {
+   "@category": "ctl",
+   "@timestamp": "2026-11-20T10:00:00.000Z",
+   "hostname": [
+    "www.example.com",
+    "api.example.com"
+   ],
+   "domain": [
+    "example.com"
+   ],
+   "fingerprint": {
+    "sha256": "90e741dd51738dd484334f5253631c11b599d6c78fbda111a54e7c26a1de7b5d"
+   }
+  }
+ ],
+ "status": "ok",
+ "text": "Success",
+ "took": 0.052,
+ "total": 6
+}

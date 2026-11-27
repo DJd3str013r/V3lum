@@ -1,0 +1,258 @@
+{
+ "batch": "p1-G10-2",
+ "modules": [
+  {
+   "name": "cnpj_lookup",
+   "file": "v3lum/modules/brazil_public_data/cnpj_lookup.py",
+   "proposal": "P236",
+   "category": "brazil_public_data",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "open",
+   "provider_tier": "community",
+   "keys": [],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": {
+    "attributes": [
+     "status_date",
+     "status_reason",
+     "special_status",
+     "branch_type",
+     "cnaes_secondary",
+     "legal_nature",
+     "company_size",
+     "simples_nacional",
+     "mei",
+     "individual_entrepreneur",
+     "address_details",
+     "rfb_emails",
+     "rfb_phones",
+     "qsa",
+     "qsa_former",
+     "state_registrations",
+     "federative_entity",
+     "company_age_years",
+     "cnpj_card",
+     "rfb_snapshot",
+     "field_sources",
+     "field_conflicts",
+     "provider_chain",
+     "providers_pending_review"
+    ],
+    "tags": [
+     "company_status",
+     "shared_contact"
+    ],
+    "relations": [
+     "partner_of",
+     "rfb_contact",
+     "rfb_contact_domain",
+     "legal_name"
+    ],
+    "timeline": [
+     "status_date"
+    ]
+   },
+   "live_check": "2026-11-26 V3LUM_LIVE=1 tests/live/test_p1_g10_2.py: cnpj:00000000000191 -> OK via BrasilAPI (legal_name BANCO DO BRASIL SA, status ATIVA, chain stopped at the first full record); synthetic unregistered DV-valid cnpj:98765012000101 -> BrasilAPI 404 not_found + Querido Diario read timeout -> ERROR 'could not verify' (FC6: a single not_found is never an absence)."
+  },
+  {
+   "name": "tcu_certidoes",
+   "file": "v3lum/modules/brazil_public_data/tcu_certidoes.py",
+   "proposal": "P239",
+   "category": "brazil_public_data",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "open",
+   "provider_tier": "trusted",
+   "keys": [],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [
+    "g10_sanction_dedup"
+   ],
+   "new_vocabulary": {
+    "attributes": [
+     "certificate_lists",
+     "certificate_issued_at",
+     "tcu_base_found"
+    ],
+    "tags": [],
+    "relations": [],
+    "timeline": [
+     "certificate_issued_at"
+    ]
+   },
+   "live_check": "2026-11-26: cnpj:00000000000191 -> OK, seCnpjEncontradoNaBaseTcu=true, TCU inidoneos/CEIS/CNEP nada_consta as of 2026-11-26T06:30-03:00, CNJ CNIA unknown (SISTEMA_INDISPONIVEL -> 'could not verify', never clean); measured p50 6.8 s, so expected_latency = 7.0."
+  },
+  {
+   "name": "cgu_sanctions_bulk",
+   "file": "v3lum/modules/brazil_public_data/cgu_sanctions_bulk.py",
+   "proposal": "P240",
+   "category": "brazil_public_data",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "open",
+   "provider_tier": "trusted",
+   "keys": [],
+   "datasets": [
+    "cgu_sanctions_bulk.ceis",
+    "cgu_sanctions_bulk.cnep",
+    "cgu_sanctions_bulk.cepim",
+    "cgu_sanctions_bulk.acordos_leniencia",
+    "cgu_sanctions_bulk.pep"
+   ],
+   "pivot_packs": [],
+   "correlation_rules": [
+    "g10_sanction_dedup",
+    "g10_homonym_name_match"
+   ],
+   "new_vocabulary": {
+    "attributes": [
+     "sanctions_screening"
+    ],
+    "tags": [
+     "name_only_match"
+    ],
+    "relations": [],
+    "timeline": []
+   },
+   "live_check": "2026-11-26: update_lists(cnep, acordos_leniencia) downloaded both zips (portal 302 -> CGU S3), validated and installed the 2026-11-25 files (SQLite store, schema v3lum.cgu_sanctions/1, rows >= MIN_ROWS); cnpj:00000000000191 screened offline -> no record in CNEP / leniency agreements as of 2026-11-25, CEIS/CEPIM 'not screened' (not downloaded in the live test, never 'not sanctioned'). CEIS and PEP downloads were not exercised live (size)."
+  },
+  {
+   "name": "ibge_name_frequency",
+   "file": "v3lum/modules/person_name/ibge_name_frequency.py",
+   "proposal": "P252",
+   "category": "person_name",
+   "opsec": "passive",
+   "default_enabled": false,
+   "terms": "open",
+   "provider_tier": "trusted",
+   "keys": [],
+   "datasets": [
+    "ibge_name_frequency.ranking.json",
+    "ibge_name_frequency.ranking_f.json",
+    "ibge_name_frequency.ranking_m.json"
+   ],
+   "pivot_packs": [],
+   "correlation_rules": [
+    "g10_homonym_name_match"
+   ],
+   "new_vocabulary": {
+    "attributes": [
+     "first_name_frequency",
+     "homonym_risk"
+    ],
+    "tags": [],
+    "relations": [],
+    "timeline": []
+   },
+   "live_check": "2026-11-26: the three national IBGE rankings downloaded and validated (offline table MARIA 11.7M, JOSE 5.75M; 'JOSE DA SILVA' -> high, factor 0.32); invented 'Teodorico Exemplar' -> only 'teodorico' sent, frequency 1165, risk low, no findings."
+  }
+ ],
+ "proposals_not_done": [],
+ "core_requests": [
+  "P236 FC2: coverage rows for declared-but-unregistered sources (e.g. res.coverage_note(provider, host, reason)) so OpenCNPJ/CNPJa/ReceitaWS appear as 'pending terms review' in coverage; until then cnpj_lookup reports them in the attribute providers_pending_review.",
+  "P236 FC3 / P334: the core HttpClient enforces registry quota buckets with skip-instead-of-sleep semantics (no wait > 2 s); cnpj_lookup keeps its own GCRA bucket in ctx.state meanwhile.",
+  "P240 FC1 (WP18): dataset groups with a module-provided updater in `v3lum data update` (e.g. register_dataset_group('cgu', cgu_sanctions_bulk.update_lists)) so `v3lum data update cgu` runs the 7-day / 2-month walk-back.",
+  "P219/P240 FC2 + P252 FC1: core/namematch.py - move the shared matcher (v3lum/modules/company_org/namematch.py, batch p1-G10-1) and the homonym helper (ibge_name_frequency.homonym_risk / apply_homonym_curve / first_name / offline_table) into core; rule g10_homonym_name_match and cgu_sanctions_bulk then import from core.",
+  "P252 FC3: an engine late phase / run_after hook that hands a module the findings of its entity, so the IBGE online lookup runs only after a name-only match (today: opt-in module on person seeds only).",
+  "WP27: the acceptance harness pre-seeds local dataset copies for offline modules (cgu_sanctions_bulk has no routes and answers UNAVAILABLE 'dataset' without installed stores)."
+ ],
+ "files": [
+  "docs/backlog/p1-G10-2.md",
+  "tests/fixtures/acceptance/cnpj/cgu_sanctions_bulk.json",
+  "tests/fixtures/acceptance/cnpj/cnpj_lookup.json",
+  "tests/fixtures/acceptance/cnpj/tcu_certidoes.json",
+  "tests/fixtures/cgu_sanctions_bulk/acordos_leniencia_ok.zip",
+  "tests/fixtures/cgu_sanctions_bulk/ceis_bad_header.zip",
+  "tests/fixtures/cgu_sanctions_bulk/ceis_extra_member.zip",
+  "tests/fixtures/cgu_sanctions_bulk/ceis_not_published_403.http.json",
+  "tests/fixtures/cgu_sanctions_bulk/ceis_ok.zip",
+  "tests/fixtures/cgu_sanctions_bulk/ceis_ok_download.http.json",
+  "tests/fixtures/cgu_sanctions_bulk/ceis_ratio_bomb.zip",
+  "tests/fixtures/cgu_sanctions_bulk/ceis_traversal.zip",
+  "tests/fixtures/cgu_sanctions_bulk/cepim_ok.zip",
+  "tests/fixtures/cgu_sanctions_bulk/cnep_ok.zip",
+  "tests/fixtures/cgu_sanctions_bulk/not_a_zip.html",
+  "tests/fixtures/cgu_sanctions_bulk/pep_ok.zip",
+  "tests/fixtures/cgu_sanctions_bulk/pep_range_206.http.json",
+  "tests/fixtures/cgu_sanctions_bulk/portal_redirect.http.json",
+  "tests/fixtures/cnpj_lookup/brasilapi_inapta_partners_synthetic.json",
+  "tests/fixtures/cnpj_lookup/brasilapi_invalid_dv.http.json",
+  "tests/fixtures/cnpj_lookup/brasilapi_mei_synthetic.json",
+  "tests/fixtures/cnpj_lookup/brasilapi_not_found_alnum.http.json",
+  "tests/fixtures/cnpj_lookup/brasilapi_not_found_numeric.http.json",
+  "tests/fixtures/cnpj_lookup/brasilapi_ok.json",
+  "tests/fixtures/cnpj_lookup/brasilapi_rate_limited.http.json",
+  "tests/fixtures/cnpj_lookup/cnpja_not_found_alnum.http.json",
+  "tests/fixtures/cnpj_lookup/cnpja_ok.json",
+  "tests/fixtures/cnpj_lookup/cnpja_rate_limited.http.json",
+  "tests/fixtures/cnpj_lookup/cnpjws_challenge.http.json",
+  "tests/fixtures/cnpj_lookup/cnpjws_invalid_dv.http.json",
+  "tests/fixtures/cnpj_lookup/cnpjws_malformed_truncated.txt",
+  "tests/fixtures/cnpj_lookup/cnpjws_not_found_alnum.http.json",
+  "tests/fixtures/cnpj_lookup/cnpjws_ok.http.json",
+  "tests/fixtures/cnpj_lookup/cnpjws_rate_limited.http.json",
+  "tests/fixtures/cnpj_lookup/minhareceita_invalid_dv.http.json",
+  "tests/fixtures/cnpj_lookup/minhareceita_not_found_alnum.http.json",
+  "tests/fixtures/cnpj_lookup/minhareceita_ok.json",
+  "tests/fixtures/cnpj_lookup/minhareceita_rate_limited.http.json",
+  "tests/fixtures/cnpj_lookup/minhareceita_updated.json",
+  "tests/fixtures/cnpj_lookup/opencnpj_not_found_alnum.http.json",
+  "tests/fixtures/cnpj_lookup/opencnpj_ok.json",
+  "tests/fixtures/cnpj_lookup/opencnpj_rate_limited.http.json",
+  "tests/fixtures/cnpj_lookup/qd_info_alnum_unsupported.http.json",
+  "tests/fixtures/cnpj_lookup/qd_info_not_found_numeric.http.json",
+  "tests/fixtures/cnpj_lookup/qd_info_ok.json",
+  "tests/fixtures/cnpj_lookup/qd_partners_ok.json",
+  "tests/fixtures/cnpj_lookup/qd_rate_limited.http.json",
+  "tests/fixtures/cnpj_lookup/rdap_registrobr_bb.json",
+  "tests/fixtures/cnpj_lookup/receitaws_error_in_200.http.json",
+  "tests/fixtures/cnpj_lookup/receitaws_invalid_dv.http.json",
+  "tests/fixtures/cnpj_lookup/receitaws_ok.http.json",
+  "tests/fixtures/cnpj_lookup/receitaws_rate_limited.http.json",
+  "tests/fixtures/ibge_name_frequency/empty.json",
+  "tests/fixtures/ibge_name_frequency/jose_accented_ok.json",
+  "tests/fixtures/ibge_name_frequency/jose_ok.json",
+  "tests/fixtures/ibge_name_frequency/maria_by_uf.json",
+  "tests/fixtures/ibge_name_frequency/maria_ok.json",
+  "tests/fixtures/ibge_name_frequency/maria_ok_osint.json",
+  "tests/fixtures/ibge_name_frequency/ranking_br.json",
+  "tests/fixtures/ibge_name_frequency/ranking_br_f.json",
+  "tests/fixtures/ibge_name_frequency/ranking_br_m.json",
+  "tests/fixtures/ibge_name_frequency/ranking_rj.json",
+  "tests/fixtures/ibge_name_frequency/server_error_synthetic.http.json",
+  "tests/fixtures/ibge_name_frequency/teodorico_rare.json",
+  "tests/fixtures/rules/g10_homonym_name_match/negative_identifier_match.json",
+  "tests/fixtures/rules/g10_homonym_name_match/positive_common_name_lowered.json",
+  "tests/fixtures/rules/g10_sanction_dedup/negative_different_lists.json",
+  "tests/fixtures/rules/g10_sanction_dedup/positive_bulk_file_and_tcu_certificate.json",
+  "tests/fixtures/tcu_certidoes/consta_synthetic.json",
+  "tests/fixtures/tcu_certidoes/formatted_cnpj_404.http.json",
+  "tests/fixtures/tcu_certidoes/missing_entry_synthetic.json",
+  "tests/fixtures/tcu_certidoes/not_in_base_alnum.json",
+  "tests/fixtures/tcu_certidoes/ok.json",
+  "tests/fixtures/tcu_certidoes/server_error_synthetic.http.json",
+  "tests/fixtures/tcu_certidoes/sistema_indisponivel.json",
+  "tests/fixtures/tcu_certidoes/timeout_synthetic.http.json",
+  "tests/live/test_p1_g10_2.py",
+  "tests/modules/test_cgu_sanctions_bulk.py",
+  "tests/modules/test_cnpj_lookup.py",
+  "tests/modules/test_ibge_name_frequency.py",
+  "tests/modules/test_p1_g10_2.py",
+  "tests/modules/test_tcu_certidoes.py",
+  "v3lum/correlations/p1_g10_2.py",
+  "v3lum/data/providers/cnpjws.json",
+  "v3lum/data/providers/minhareceita.json",
+  "v3lum/data/providers/tcu.json",
+  "v3lum/data/providers/transparencia__p1-G10-2.json",
+  "v3lum/data/vocab/p1-G10-2.json",
+  "v3lum/modules/brazil_public_data/cgu_sanctions_bulk.py",
+  "v3lum/modules/brazil_public_data/cnpj_lookup.py",
+  "v3lum/modules/brazil_public_data/tcu_certidoes.py",
+  "v3lum/modules/person_name/ibge_name_frequency.py"
+ ],
+ "notes": "All four proposals implemented; deviations from the final conditions forced by the live services are documented in the module docstrings and docs/backlog/p1-G10-2.md: P239 FC1 - the TCU API answers 404 for the formatted CNPJ path, so the 14-character CNPJ is sent (parameter spelled seEmitirPDF=false as published); P240 - the CEIS/CNEP files publish full CPFs, which are masked at ingestion (***.456.789-**), S3 '403 AccessDenied' for a file not yet published is treated like a 404 in the walk-back (provider marker cgu_sanctions_bulk_not_published), the leniency zip has two members (Acordos + Efeitos), PEP is monthly (walk-back by month, stale after 40 days from publication), CSV decoded as cp1252 (superset of ISO-8859-1); names are scored with the shared P219 token-set Jaro-Winkler stand-in of batch p1-G10-1 (guarded import, local fallback); P236 - BrasilAPI and Minha Receita are one pipeline (same RFB dump), so the two-upstream not-found rule needs another pipeline; Querido Diario answers 400 for alphanumeric CNPJs (skipped as unsupported); OpenCNPJ/CNPJa/ReceitaWS parsers are coded and tested but not registered or called (terms pending); P252 - the homonym helper lives in the ibge_name_frequency module file (module batches cannot add core/namematch.py) and the always-on rule g10_homonym_name_match applies it to every name-only person match not already curved (sanctions_lists of p1-G10-1 marks homonym_applied); the opt-in module runs on person seeds only (it cannot see other modules' matches). Correlation rules: g10_homonym_name_match (downgrades, emits nothing) and g10_sanction_dedup (one listing = one finding of record, others INFO context_only, re-run safe). No LIGHT/ACTIVE variants exist for this batch."
+}

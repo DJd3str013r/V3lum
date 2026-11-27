@@ -1,0 +1,63 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "$comment": "Two non-owned sites share a favicon (favicon_hash node); one is a typosquat candidate: MEDIUM for that site only",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "nodes": [
+    {
+      "key": "domain:secure-paypa1-help.example",
+      "depth": 0,
+      "seed": true,
+      "findings": [
+        {
+          "title": "Lookalike of a brand domain",
+          "severity": "medium",
+          "confidence": 0.8,
+          "criterion": "edit distance 1 to a brand domain",
+          "tags": [
+            "typosquat"
+          ],
+          "module": "typosquat",
+          "source": ""
+        }
+      ]
+    },
+    {
+      "key": "domain:wallet-verify.example",
+      "depth": 1,
+      "seed": false
+    },
+    {
+      "key": "favicon_hash:81586312",
+      "depth": 1,
+      "seed": false
+    }
+  ],
+  "edges": [
+    {
+      "src": "domain:secure-paypa1-help.example",
+      "dst": "favicon_hash:81586312",
+      "relation": "favicon",
+      "module": "urlscan_search",
+      "confidence": 0.9
+    },
+    {
+      "src": "domain:wallet-verify.example",
+      "dst": "favicon_hash:81586312",
+      "relation": "favicon",
+      "module": "urlscan_search",
+      "confidence": 0.9
+    }
+  ],
+  "expect": {
+    "favicon_clone_cluster": {
+      "min": 1,
+      "max": 1,
+      "severity": "medium"
+    }
+  }
+}

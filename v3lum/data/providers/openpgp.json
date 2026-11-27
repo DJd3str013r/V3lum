@@ -1,0 +1,53 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "openpgp",
+  "name": "keys.openpgp.org verifying keyserver (VKS API)",
+  "operator": "keys.openpgp.org (community-run verifying keyserver, Hagrid)",
+  "hosts": ["keys.openpgp.org"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Well-known community project with an identifiable team, published usage policy and privacy policy and years of public track record (A8 community): 'Tier community (keys.openpgp.org ...)' (P091 chair rationale).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "B", "justification": "Only user IDs whose e-mail address the key owner confirmed are published: a verified address is a PROBABLE identity link (P091 cond 3); the name part of a UID stays self-asserted."},
+  "http_profile": {"user_agent": "neutral", "ttl": 0, "max_bytes": 1048576, "min_interval": 1.0, "concurrency": 1},
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "vks": {
+      "title": "VKS by-email / by-fingerprint (GET https://keys.openpgp.org/vks/v1/by-email/<address> | /vks/v1/by-fingerprint/<FPR>): ASCII-armored key with e-mail-verified UIDs only",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://keys.openpgp.org/about/usage",
+        "quote": "Tier community (keys.openpgp.org; Canonical's keyserver is trusted); terms open.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "keys_openpgp_org",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0210 (verified_live 200/404). 404 'No key found for email address ...' = 'no key published on keys.openpgp.org' (P091 cond 7). Armored keys are read only by the module's bounded OpenPGP packet reader (public-key and user-ID packets, length checks, 1 MB cap, P091 cond 2); otherwise existence only. Documented per-IP rate limits: 429 = RATE_LIMITED. Never cached (ttl 0). Used by pgp_keyservers."
+    },
+    "search_page": {
+      "title": "keys.openpgp.org search page (manual pivot link only, never fetched by V3LUM)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://keys.openpgp.org/about/usage",
+        "quote": "Tier community (keys.openpgp.org; Canonical's keyserver is trusted); terms open.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "keys_openpgp_org",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Manual link in v3lum/data/pivot_links/email_keys_calendar.json (privacy badge)."
+    }
+  },
+  "notes": "Owned by batch p3-G04-1 (P091 pgp_keyservers)."
+}

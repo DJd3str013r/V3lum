@@ -1,0 +1,8 @@
+{
+ "_fixture": "SYNTHETIC: documented 429 for parallel requests (body not documented)",
+ "status": 429,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": ""
+}

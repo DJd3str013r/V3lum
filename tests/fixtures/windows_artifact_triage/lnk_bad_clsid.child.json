@@ -1,0 +1,12 @@
+{
+ "appended": null,
+ "error": null,
+ "kind": "lnk",
+ "lnk": null,
+ "parser": null,
+ "precheck": "HeaderSize 0x4b != 0x4c",
+ "size": 1993,
+ "string_data": null,
+ "unavailable": null,
+ "warnings": []
+}

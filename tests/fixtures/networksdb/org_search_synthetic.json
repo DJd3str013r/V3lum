@@ -1,0 +1,46 @@
+{
+ "_synthetic": "shape from https://networksdb.io/api/docs (Organization Search example, read 2026-11-26); FC4: replace with a trimmed REAL company-key capture",
+ "total": 3,
+ "page": 1,
+ "results": [
+  {
+   "organization": "Example Bank S.A.",
+   "id": "example-bank-s-a",
+   "countries": [
+    "Brazil"
+   ],
+   "networks": {
+    "ipv4": 4,
+    "ipv6": 1
+   },
+   "url": "https://networksdb.io/ip-addresses-of/example-bank-s-a",
+   "asns": [
+    "64500"
+   ]
+  },
+  {
+   "organization": "Example Bank Holdings",
+   "id": "example-bank-holdings",
+   "countries": [],
+   "networks": {
+    "ipv4": 1,
+    "ipv6": 0
+   },
+   "url": "https://networksdb.io/ip-addresses-of/example-bank-holdings",
+   "asns": []
+  },
+  {
+   "organization": "Examplebank Foods Ltda",
+   "id": "examplebank-foods-ltda",
+   "countries": [
+    "Brazil"
+   ],
+   "networks": {
+    "ipv4": 2,
+    "ipv6": 0
+   },
+   "url": "https://networksdb.io/ip-addresses-of/examplebank-foods-ltda",
+   "asns": []
+  }
+ ]
+}

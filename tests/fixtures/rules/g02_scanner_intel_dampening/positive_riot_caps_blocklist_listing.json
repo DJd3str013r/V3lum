@@ -1,0 +1,83 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "nodes": [
+  {
+   "key": "ipv4:8.8.8.8",
+   "depth": 0,
+   "seed": true,
+   "findings": [
+    {
+     "title": "Known good service (Google Public DNS)",
+     "severity": "info",
+     "confidence": 0.7,
+     "confidence_label": "probable",
+     "criterion": "GreyNoise riot=true for this IP (Google Public DNS) (synthetic)",
+     "tags": [
+      "known_good"
+     ],
+     "module": "greynoise_community",
+     "source": "greynoise.community",
+     "data": {
+      "state": "riot",
+      "service": "Google Public DNS",
+      "suppression_rule": "greynoise_riot",
+      "scope": "ip"
+     }
+    },
+    {
+     "title": "Listed on 2 IP blocklists",
+     "severity": "medium",
+     "confidence": 0.7,
+     "confidence_label": "probable",
+     "criterion": "listed by FireHOL level1 (synthetic)",
+     "tags": [
+      "blocklisted"
+     ],
+     "module": "ip_blocklists",
+     "source": "firehol.level1",
+     "data": {
+      "hits": 2
+     }
+    },
+    {
+     "title": "Reported by DShield sensors (opportunistic scanning)",
+     "severity": "medium",
+     "confidence": 0.7,
+     "confidence_label": "probable",
+     "criterion": "DShield sensor reports (synthetic)",
+     "tags": [
+      "scanner"
+     ],
+     "module": "isc_dshield",
+     "source": "sans_isc.api",
+     "data": {
+      "reports": 12
+     }
+    },
+    {
+     "title": "Listed as C2 by a tracker",
+     "severity": "high",
+     "confidence": 0.7,
+     "confidence_label": "probable",
+     "criterion": "C2 tracker entry (synthetic)",
+     "tags": [
+      "c2"
+     ],
+     "module": "c2_tracker",
+     "source": "abusech.feodo",
+     "data": {}
+    }
+   ]
+  }
+ ],
+ "edges": [],
+ "expect": {
+  "g02_scanner_intel_dampening": {
+   "min": 1,
+   "max": 1,
+   "severity": "info",
+   "confidence_label": "probable"
+  }
+ }
+}

@@ -1,0 +1,90 @@
+{
+ "sha256": "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f",
+ "sha1": "3395856ce81f2b7382dee72602f798b642f14140",
+ "md5": "44d88612fea8a8f36de82e1278abb02f",
+ "type": "sample",
+ "classification": "whitelist",
+ "score": 10.0,
+ "av_ratio": 94,
+ "filetype": "ASCII text, with no line terminators",
+ "size": 68,
+ "creation_time": "2018-03-12 19:10:39",
+ "modification_time": "2026-10-13 08:45:04",
+ "is_cnc": false,
+ "is_distributing_malware": false,
+ "is_sinkhole": false,
+ "antivirus": [
+  {
+   "description": "Misc.Eicar-Test-File",
+   "name": "ALYac"
+  },
+  {
+   "description": "EICAR Anti-Virus Test File",
+   "name": "APEX"
+  },
+  {
+   "description": "EICAR Test-NOT virus!!!",
+   "name": "AVG"
+  },
+  {
+   "description": "Virus/EICAR_Test_File",
+   "name": "AhnLab-V3"
+  }
+ ],
+ "filename": [
+  "eicar.com"
+ ],
+ "tag": [
+  "adware",
+  "backdoor",
+  "crypt",
+  "downloader",
+  "exploit"
+ ],
+ "blacklist": [
+  {
+   "source": "Maltiverse",
+   "description": "adware ,backdoor ,crypt ,downloader ,exploit ,injector ,ransomware ,riskware ,worm",
+   "first_seen": "2018-03-12 19:10:39",
+   "last_seen": "2018-03-12 19:10:39",
+   "count": 1
+  },
+  {
+   "source": "Triage",
+   "description": "Generic Malware",
+   "first_seen": "2026-04-17 20:09:04",
+   "last_seen": "2026-06-30 18:34:05",
+   "count": 2,
+   "labels": [
+    "malicious-activity"
+   ],
+   "ref": [
+    21745
+   ]
+  },
+  {
+   "source": "Hybrid-Analysis",
+   "description": "Generic Malware",
+   "first_seen": "2023-10-20 08:45:03",
+   "last_seen": "2026-10-13 08:45:03",
+   "count": 3,
+   "labels": [
+    "malicious-activity"
+   ],
+   "ref": [
+    1,
+    21745
+   ]
+  },
+  {
+   "source": "Maltiverse",
+   "description": "Matched whitelist source: Misp_eicar",
+   "first_seen": "2026-10-01 12:02:05",
+   "last_seen": "2026-10-01 12:02:05",
+   "count": 1,
+   "labels": [
+    "benign"
+   ]
+  }
+ ]
+}

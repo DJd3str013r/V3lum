@@ -1,0 +1,13 @@
+{
+ "_fixture": "DOC-SHAPED: field layout of the GitHub REST v2022-11-28 documentation; values are documentation values. api.github.com/github.com were refused by the research egress proxy on 2026-11-26 (P111 FC10: recapture from the team network before merge).",
+ "status": 429,
+ "headers": {
+  "content-type": "application/json; charset=utf-8",
+  "x-github-api-version-selected": "2022-11-28",
+  "retry-after": "60",
+  "x-ratelimit-limit": "5000",
+  "x-ratelimit-remaining": "4870",
+  "x-ratelimit-resource": "core"
+ },
+ "body": "{\"message\":\"You have exceeded a secondary rate limit. Please wait a few minutes before you try again.\",\"documentation_url\":\"https://docs.github.com/rest/overview/rate-limits-for-the-rest-api#about-secondary-rate-limits\",\"status\":\"429\"}"
+}

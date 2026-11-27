@@ -1,0 +1,26 @@
+{
+ "generator": "phonenumbers 9.0.44 facts (collect_phone_facts schema), batch p1-G06-1 prep 2026-11-26",
+ "lib": "phonenumbers",
+ "lib_version": "9.0.44",
+ "region_hint": "BR",
+ "result": {
+  "input": "(11) 8555-0100",
+  "region_hint": "BR",
+  "country_code": 55,
+  "national_number": "1185550100",
+  "valid": false,
+  "possible": true,
+  "possible_reason": 0,
+  "region": "BR",
+  "type": "UNKNOWN",
+  "e164": "+551185550100",
+  "international": "+55 1185550100",
+  "national": "1185550100",
+  "geo_pt": "",
+  "carrier_pt": "",
+  "timezones": [
+   "Etc/Unknown"
+  ],
+  "ndc_len": 0
+ }
+}

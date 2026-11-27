@@ -1,0 +1,19 @@
+{
+ "_synthetic": "shape from the docs IP Address Info example; documentation values",
+ "ip": "198.51.100.20",
+ "domains_on_ip": 2,
+ "url": "https://networksdb.io/ip/198.51.100.20",
+ "organization": {
+  "name": "Example Bank S.A.",
+  "id": "example-bank-s-a",
+  "url": "https://networksdb.io/ip-addresses-of/example-bank-s-a"
+ },
+ "network": {
+  "netname": "EXAMPLE-BANK-1",
+  "description": "Example Bank S.A.",
+  "cidr": "198.51.100.0/24",
+  "first_ip": "198.51.100.0",
+  "last_ip": "198.51.100.255",
+  "url": "https://networksdb.io/ips-in-network/198.51.100.0/198.51.100.255"
+ }
+}

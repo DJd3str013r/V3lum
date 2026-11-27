@@ -1,0 +1,57 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "$comment": "RDP on a third-party host: INFO context only",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "org_profile": {
+    "org": {
+      "name": "Acme"
+    },
+    "domains": [
+      {
+        "name": "acme-corp.example",
+        "verification": "txt_verified",
+        "criticality": "high"
+      }
+    ],
+    "cidrs": [
+      {
+        "value": "203.0.113.0/24",
+        "criticality": "high"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "key": "ipv4:192.0.2.12",
+      "depth": 0,
+      "seed": true,
+      "ownership": "third_party",
+      "tags": [
+        "third_party"
+      ],
+      "attributes": {
+        "open_ports": [
+          {
+            "value": [
+              3389
+            ],
+            "source": "shodan_api"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [],
+  "expect": {
+    "exposed_remote_admin": {
+      "min": 1,
+      "max": 1,
+      "severity": "info"
+    }
+  }
+}

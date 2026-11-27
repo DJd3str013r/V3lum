@@ -1,0 +1,29 @@
+[
+ {
+  "id": 31,
+  "dataReferencia": "01/11/2026",
+  "motivo": "Omissão no dever de prestar contas",
+  "orgaoSuperior": {
+   "nome": "MINISTERIO EXEMPLO",
+   "codigoSIAFI": "99000",
+   "cnpj": "",
+   "sigla": "MEX",
+   "descricaoPoder": "Executivo"
+  },
+  "pessoaJuridica": {
+   "id": 0,
+   "cpfFormatado": "",
+   "cnpjFormatado": "11.222.333/0001-81",
+   "numeroInscricaoSocial": "",
+   "nome": "EMPRESA EXEMPLO ALFA LTDA",
+   "razaoSocialReceita": "EMPRESA EXEMPLO ALFA LTDA",
+   "nomeFantasiaReceita": "",
+   "tipo": "Pessoa Jurídica"
+  },
+  "convenio": {
+   "codigo": "777001",
+   "objeto": "Convenio de exemplo",
+   "numero": "777001"
+  }
+ }
+]

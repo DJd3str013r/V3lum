@@ -1,0 +1,17 @@
+{
+ "request": "GET https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/ceis/20261126_CEIS.zip",
+ "response": {
+  "status": 403,
+  "headers": {
+   "content-type": "application/xml",
+   "server": "AmazonS3",
+   "x-cache": "Error from cloudfront"
+  },
+  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>AccessDenied</Code><Message>Access Denied</Message></Error>"
+ },
+ "transport_error": null,
+ "elapsed_s": 0.89543,
+ "observed_at": "2026-11-26T05:21:39+00:00",
+ "origin": "live",
+ "note": ""
+}

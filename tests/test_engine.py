@@ -245,17 +245,30 @@ def test_budget(registry):
     assert any("budget" in n for n in case.notes)
 
 
-def test_multi_source_malicious_and_risk(registry):
-    def bad(self, entity, ctx):
+@pytest.mark.parametrize(("families", "severity"), [(("t_family_a", "t_family_b"), "high"), (("t_shared_upstream", "t_shared_upstream"), "medium")])
+def test_multi_source_malicious_and_risk(registry, families, severity):
+    """CR27 semantics (P171, WP23): the legacy rule gave CRITICAL as soon as two *module names*
+    flagged an entity. The pack rule counts *upstream families* from the provider registry
+    (Finding.source -> upstream_family): two synthetic modules whose sources belong to different
+    families give HIGH; two modules relaying the same upstream count once and give MEDIUM."""
+
+    def flag(self, entity, ctx):
         res = self.result(entity)
-        res.finding("flagged", "high", tags=["malicious"], confidence=0.9, criterion="synthetic source verdict")
+        res.finding("flagged", "high", tags=["malicious"], confidence=0.9, criterion="synthetic source verdict", source=self.sources[0])
         return res
 
-    define(registry, "t_src1", [T.DOMAIN], bad)
-    define(registry, "t_src2", [T.DOMAIN], bad)
-    case = scan([("domain", "evil.example")], ["t_src1", "t_src2"])
-    assert any(c.rule == "multi_source_malicious" for c in case.correlations)
-    assert case.risk["level"] in ("high", "critical")
+    fam_a, fam_b = families
+    with test_provider("t_feed_one", hosts=("one.example.test",), sources={"feed": {"upstream_family": fam_a}}) as one, \
+         test_provider("t_feed_two", hosts=("two.example.test",), sources={"feed": {"upstream_family": fam_b}}) as two:
+        for name, prov in (("t_src1", one), ("t_src2", two)):
+            define(registry, name, [T.DOMAIN], flag, disclosure="third_party", provider=prov.id, sources=source_ids(prov),
+                   hosts=prov.hosts, access_model="free_noauth_unlimited")
+        case = scan([("domain", "evil.example")], ["t_src1", "t_src2"])
+    [consensus] = [c for c in case.correlations if c.rule == "multi_source_malicious"]
+    assert consensus.severity.label == severity
+    assert consensus.criterion.startswith(f"{1 if fam_a == fam_b else 2} independent upstream famil")
+    assert consensus.entity_keys() == ["domain:evil.example"]
+    assert case.risk["level"] in ("high", "critical")  # two HIGH findings on the seed, whatever the consensus
 
 
 def test_pivot_cap_per_module(registry):

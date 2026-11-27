@@ -1,0 +1,11 @@
+{
+ "_fixture": "DOC-SHAPED: maxlag error object in HTTP 200 (Manual:Maxlag parameter: 200 status, Retry-After and X-Database-Lag headers); the live maxlag=-1 probe was not reached (429 first)",
+ "status": 200,
+ "headers": {
+  "content-type": "application/json; charset=utf-8",
+  "mediawiki-api-error": "maxlag",
+  "retry-after": "5",
+  "x-database-lag": "0"
+ },
+ "body": "{\"error\": {\"code\": \"maxlag\", \"info\": \"Waiting for a database server: 0 seconds lagged.\", \"lag\": 0, \"type\": \"db\", \"docref\": \"See https://en.wikipedia.org/w/api.php for API usage. Subscribe to the mediawiki-api-announce mailing list at &lt;https://lists.wikimedia.org/postorius/lists/mediawiki-api-announce.lists.wikimedia.org/&gt; for notice of API deprecations and breaking changes.\"}, \"servedby\": \"mw-api-ext.example\"}"
+}

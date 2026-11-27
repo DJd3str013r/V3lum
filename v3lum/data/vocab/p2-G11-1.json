@@ -1,0 +1,36 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p2-G11-1",
+  "attributes": {
+    "cti_reports": "public CTI reports that name the value (ORKL, P293): list of {title, publisher, date, date_source, url, orkl_sources, actors, report_sha1}, most recent first, at most 10; publisher links only, no report files",
+    "cti_report_count": "number of CTI reports listed in cti_reports",
+    "cti_reports_fuzzy_dropped": "number of fuzzy search hits dropped because they do not name the queried value (ORKL search is fuzzy)",
+    "report_iocs": "opt-in IOC mining of report texts (P293 cond 5): list of {report, date, iocs, warninglisted, truncated, chars_scanned, error}; the IOCs are expand=False pivots, never verdicts",
+    "cti_news_mentions": "headline-only matches of the value in curated CTI news / advisory feeds (P298): list of {feed, source, title, link, published, matched, why, kind, label, severity}, most recent first",
+    "cti_feed_health": "per-feed health of the CTI news watcher (P298 cond 9): {feed: {state ok | stale | blocked | error | missing | not_refreshed, newest_item, age_days, items, tier, label, reason}}",
+    "ransomware_cve_card": "ransomware exploitation context of a CVE (P372): {label 'reported exploited by ransomware groups X, Y', status 'reported', groups, unresolved_groups, sources [{label, url}], products, kev_known_ransomware_use, patch_priority, attribution}",
+    "patch_priority": "patch priority hint from ransomware exploitation context: highest (matrix names groups and CISA KEV says known ransomware use) | raised (either one) | normal",
+    "ransomware_tool_leads": "tools a ransomware group was reported to use in intrusions (BushidoUK Tool Matrix): list of {tool, category, note, lolrmm, attack_software_id}; hunting leads tagged dual_use, never malicious verdicts",
+    "ransomware_exploited_cves": "CVEs a ransomware group was reported to exploit (BushidoUK Vulnerability Matrix): list of {cve, product, sources}",
+    "ransomware_groups_unresolved": "group names of the ransomware matrices that the actor alias index could not resolve (listed, never guessed; doctor)",
+    "matrix_versions": "versions of the local ransomware matrix copies: {file: {etag, fetched_at, sha256}} (raw.githubusercontent.com gives no commit date)",
+    "sigma_rules": "SigmaHQ detection rules (metadata only, DRL 1.1) for a technique, CVE or name: list of {id, title, status, level, logsource, link, marked}, stable/test first",
+    "atomic_tests": "Atomic Red Team tests for a technique (MIT): list of {technique, number, name, guid, executor, tactics, link}; links only, never executed",
+    "detection_coverage": "detection and validation coverage label of a technique, CVE or name: 'N Sigma rules / N atomic tests'",
+    "sigma_release": "SigmaHQ release the local Sigma index was built from: {tag, release_date, label, commit, rules}",
+    "cisa_advisories": "CISA cybersecurity advisories (incl. #StopRansomware) that name the value: list of {advisory_id, title, published, link, family, stop_ransomware, ioc_file}; US Government work (public domain)",
+    "cisa_ioc_matches": "matches of the value in local CISA advisory IOC files: list of {advisory_id, published, tags, historical, matchable_as_malicious}",
+    "cisa_families_unresolved": "family / actor names of CISA advisories that the actor alias index could not resolve (listed, never guessed)"
+  },
+  "tags": {
+    "dual_use": "legitimate or dual-use tool (RMM, file transfer, admin utility) reported in intrusions: a hunting lead, never a malicious verdict",
+    "reported_claim": "a third-party report or actor claim naming the organisation: verify, never a confirmed incident",
+    "cisa_advisory": "indicator or fact taken from a CISA cybersecurity advisory (US Government, public domain)",
+    "unverified_source": "comes from an unknown-tier source (operator not verified): label only, context"
+  },
+  "relations": {
+    "reported_in": "value -> public report (publisher URL) that names it; context, not investigated",
+    "co_mentioned_in_report": "value -> indicator mined from the same public report (low confidence, never a verdict)",
+    "mentioned_in_news": "value -> news / advisory article whose headline names it (headline-only match)"
+  }
+}

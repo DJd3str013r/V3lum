@@ -1,0 +1,8 @@
+{
+ "help": "https://dadosabertos.bndes.gov.br/api/3/action/help_show?name=datastore_search",
+ "success": false,
+ "error": {
+  "__type": "Not Found Error",
+  "message": "Not found: Resource was not found."
+ }
+}

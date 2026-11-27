@@ -1,0 +1,105 @@
+{
+ "source": "pefile",
+ "size": 3072,
+ "parse_error": null,
+ "machine": 332,
+ "number_of_sections": 4,
+ "timestamp": 708992537,
+ "characteristics": 258,
+ "magic": 267,
+ "subsystem": 2,
+ "dll_characteristics": 33088,
+ "entry_point": 4096,
+ "image_base": 4194304,
+ "checksum": 0,
+ "size_of_image": 69632,
+ "size_of_headers": 1024,
+ "sections": [
+  {
+   "name": "CODE",
+   "virtual_address": 4096,
+   "virtual_size": 64,
+   "raw_size": 512,
+   "raw_offset": 1024,
+   "characteristics": 1610612768,
+   "entropy": 0.6144
+  },
+  {
+   "name": "DATA",
+   "virtual_address": 20480,
+   "virtual_size": 200,
+   "raw_size": 512,
+   "raw_offset": 1536,
+   "characteristics": 3221225536,
+   "entropy": 1.5878
+  },
+  {
+   "name": ".idata",
+   "virtual_address": 36864,
+   "virtual_size": 64,
+   "raw_size": 512,
+   "raw_offset": 2048,
+   "characteristics": 3221225536,
+   "entropy": 0.2882
+  },
+  {
+   "name": ".rsrc",
+   "virtual_address": 53248,
+   "virtual_size": 120,
+   "raw_size": 512,
+   "raw_offset": 2560,
+   "characteristics": 1073741888,
+   "entropy": 0.4139
+  }
+ ],
+ "imports": [
+  {
+   "dll": "kernel32.dll",
+   "functions": [
+    {
+     "name": "GetProcAddress",
+     "ordinal": null
+    },
+    {
+     "name": "LoadLibraryA",
+     "ordinal": null
+    },
+    {
+     "name": "ExitProcess",
+     "ordinal": null
+    }
+   ]
+  },
+  {
+   "dll": "user32.dll",
+   "functions": [
+    {
+     "name": "MessageBoxA",
+     "ordinal": null
+    }
+   ]
+  }
+ ],
+ "exports": [],
+ "debug": [],
+ "resources": [
+  {
+   "type": 10,
+   "name": 101,
+   "lang": 1046,
+   "size": 32,
+   "entropy": 1.1809
+  }
+ ],
+ "warnings": [
+  "Imported symbols contain entries typical of packed executables."
+ ],
+ "imphash": "18c8feeb8262906e2a2dc356a538b424",
+ "security_dir": {
+  "offset": 0,
+  "size": 0
+ },
+ "overlay": null,
+ "md5": "f7743e19803270b87dd632571c0148fd",
+ "sha256": "bcf3164538822c084bbc7e24f48bac3e48ed055324256dadf8e3488603b8fb9b"
+}

@@ -1,0 +1,16 @@
+{
+ "request": "PROPFIND https://arquivos.receitafederal.gov.br/public.php/webdav/ (basic auth user=<rotated token>)",
+ "response": {
+  "status": 401,
+  "headers": {
+   "content-type": "application/xml; charset=utf-8",
+   "www-authenticate": "Basic realm=\"SERPRO+\", charset=\"UTF-8\""
+  },
+  "body": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<d:error xmlns:d=\"DAV:\" xmlns:s=\"http://sabredav.org/ns\">\n  <s:exception>Sabre\\DAV\\Exception\\NotAuthenticated</s:exception>\n  <s:message>Username or password was incorrect</s:message>\n</d:error>\n"
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "observed_at": null,
+ "origin": "synthetic",
+ "note": "synthetic: not probed (a wrong share token is a failed authentication; not sent). Shape modelled on the live no-credentials 401; the marker relies on the status, not on the message"
+}

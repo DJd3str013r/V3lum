@@ -1,0 +1,21 @@
+{
+ "ip": "8.8.8.8",
+ "is_bogon": false,
+ "is_vpn": false,
+ "is_relay": false,
+ "is_tor": false,
+ "is_bot": false,
+ "is_anycast": true,
+ "tor": {},
+ "asn": {
+  "asn": 15169,
+  "name": "Google LLC",
+  "domain": "google.com",
+  "type": "hosting",
+  "prefix": "8.8.8.0/24"
+ },
+ "location": {
+  "country": "US"
+ },
+ "hostname": "dns.google"
+}

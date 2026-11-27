@@ -1,0 +1,17 @@
+{
+ "name": "List of known IPv4 networks belonging to datacenters and VPN providers",
+ "type": "cidr",
+ "version": 20261123,
+ "description": "IPv4 networks belonging to datacenters and VPN providers, from https://raw.githubusercontent.com/X4BNet/lists_vpn/main/output/datacenter/ipv4.txt",
+ "matching_attributes": [
+  "ip-src",
+  "ip-dst",
+  "domain|ip",
+  "ip-src|port",
+  "ip-dst|port"
+ ],
+ "category": "known",
+ "list": [
+  "8.8.8.0/24"
+ ]
+}

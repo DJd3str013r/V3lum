@@ -1,0 +1,27 @@
+{
+ "request": {
+  "method": "POST",
+  "url": "https://yaraify-api.abuse.ch/api/v1/",
+  "headers": {
+   "Auth-Key": "<invalid key, value not stored>"
+  },
+  "json": {
+   "query": "lookup_hash",
+   "search_term": "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f"
+  }
+ },
+ "response": {
+  "status": 401,
+  "headers": {
+   "content-type": "application/octet-stream",
+   "content-length": "25",
+   "server": "nginx/1.22.1"
+  },
+  "body": {
+   "error": "Unauthorized"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": 0.67,
+ "note": "derived: the abuse.ch API family answers 401 {\"error\": \"Unauthorized\"} (MalwareBazaar/ThreatFox/URLhaus keyless, 2026-11-25); YARAify itself answered keyless, so its 401 for a missing/invalid key is modelled on the sibling APIs"
+}

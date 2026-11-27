@@ -1,0 +1,9 @@
+{
+  "schema": "v3lum.extra/1",
+  "package": "playwright",
+  "pip": "playwright>=1.48",
+  "extra": "capture",
+  "licence": "Apache-2.0",
+  "justification": "Headless Chromium page capture (screenshot, rendered DOM, request log) for page_capture (P347 cond 1: the separate optional extra v3lum[capture]; nothing in v3lum/core imports it). Optional: without it page_capture reports UNAVAILABLE 'package'. After 'pip install v3lum[capture]' run 'playwright install chromium' (the browser is never auto-downloaded during a scan).",
+  "notes": "Batch p9-G03-3. Used unmodified. The browser is a renderer only: every page request is fulfilled through ctx.http (LIGHT egress profile, SSRF guard, ceilings, ledger, kill switch); route_web_socket needs Playwright >= 1.48."
+}

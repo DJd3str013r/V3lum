@@ -1,0 +1,50 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "duckduckgo",
+  "name": "DuckDuckGo web search (manual dork links)",
+  "operator": "Duck Duck Go, Inc.",
+  "hosts": [
+    "duckduckgo.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms and a privacy policy (A8 BR2; P306 cond 7: search engines trusted).",
+  "tier_reviewer": "batch p2-G14-3 (council-1 P304 cond 5: initial tiers, reviewer confirms)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "General web search; results depend on its providers."
+  },
+  "http_profile": {
+    "user_agent": "neutral"
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "search_links": {
+      "title": "duckduckgo.com/?q= (manual dork links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://duckduckgo.com/terms",
+        "quote": "Search engine ToS: manual use only (no automated scraping)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "duckduckgo",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0686: the HTML endpoint was flaky for scripts (202 anomaly); duckduckgo.com/?q= is the human form. Links only, never fetched (P306 cond 1). Used by dork_generator."
+    }
+  },
+  "notes": "Owned by batch p2-G14-3 (P306, module dork_generator). Manual dork links only: never fetched, so no budget. The Instant Answer API host (api.duckduckgo.com) belongs to another proposal: extend this fragment."
+}

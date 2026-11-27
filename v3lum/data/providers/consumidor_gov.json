@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "consumidor_gov",
+  "name": "consumidor.gov.br (public complaints platform)",
+  "operator": "Secretaria Nacional do Consumidor (Senacon/MJSP)",
+  "hosts": [
+    "www.consumidor.gov.br"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Government body (Senacon, Ministerio da Justica e Seguranca Publica; A8 trusted); P250 cond 5: 'trusted - Portal da Transparencia (CGU), Receita Federal, Sintegra/CCC, consumidor.gov.br, REDESIM/juntas comerciais, Jusbrasil, Reclame Aqui; community - Escavador, Casa dos Dados'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Official consumer complaint platform: complaints are consumer statements, context not proof (P250 cond 12)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "principal_page": {
+      "title": "consumidor.gov.br company search page /pages/principal/ (static manual link: the analyst types the company)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.consumidor.gov.br/",
+        "quote": "The pack is offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "consumidor_gov",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P250 cond 1). The company search is a JavaScript autocomplete with no GET URL (verified 2026-11-26), so the link is static: it carries no value and the analyst types the company name on the page (P250 cond 11). Used by pivots_brazil."
+    }
+  },
+  "notes": "Manual pivot links only (batch p2-G14-2): V3LUM never fetches them (P311)."
+}

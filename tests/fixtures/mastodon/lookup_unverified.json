@@ -1,0 +1,41 @@
+{
+ "id": "109999999999999999",
+ "username": "exampleorg",
+ "acct": "exampleorg@mastodon.example",
+ "display_name": "Example Org",
+ "locked": false,
+ "bot": false,
+ "discoverable": true,
+ "group": false,
+ "created_at": "2022-11-07T00:00:00.000Z",
+ "note": "<p>Official account. Security contact: <a href=\"https://www.example.com/security\" rel=\"nofollow noopener\" target=\"_blank\">example.com/security</a> or security@example.com</p>",
+ "url": "https://mastodon.example/@exampleorg",
+ "uri": "https://mastodon.example/users/exampleorg",
+ "followers_count": 120,
+ "following_count": 3,
+ "statuses_count": 42,
+ "last_status_at": "2026-10-30",
+ "fields": [
+  {
+   "name": "Website",
+   "value": "<a href=\"https://www.example.com\" target=\"_blank\" rel=\"nofollow noopener me\" translate=\"no\"><span class=\"invisible\">https://www.</span><span class=\"\">example.com</span><span class=\"invisible\"></span></a>",
+   "verified_at": null
+  },
+  {
+   "name": "Status",
+   "value": "<a href=\"https://status.example.org\" rel=\"nofollow noopener me\">status.example.org</a>",
+   "verified_at": "2024-02-29T10:00:00.000+00:00"
+  },
+  {
+   "name": "Location",
+   "value": "São Paulo",
+   "verified_at": null
+  }
+ ],
+ "moved": {
+  "id": "110000000000000001",
+  "username": "exampleorg",
+  "acct": "exampleorg@social.example",
+  "url": "https://social.example/@exampleorg"
+ }
+}

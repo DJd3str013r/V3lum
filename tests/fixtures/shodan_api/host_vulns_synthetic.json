@@ -1,0 +1,119 @@
+{
+ "_synthetic": "Full host answer with version-inferred banner vulns (documented banner schema), documentation IP. Replace with a trimmed capture made with the team key before merge (P039 FC8).",
+ "ip_str": "203.0.113.10",
+ "asn": "AS64500",
+ "org": "Example Hosting",
+ "isp": "Example Hosting",
+ "os": null,
+ "hostnames": [
+  "web.example.com"
+ ],
+ "domains": [
+  "example.com"
+ ],
+ "ports": [
+  443,
+  8080
+ ],
+ "tags": [
+  "cloud"
+ ],
+ "last_update": "2026-11-20T10:00:00.000000",
+ "country_code": "BR",
+ "city": "Sao Paulo",
+ "vulns": [
+  "CVE-2021-44228",
+  "CVE-2023-44487"
+ ],
+ "data": [
+  {
+   "port": 8080,
+   "transport": "tcp",
+   "timestamp": "2026-11-19T08:30:00.000000",
+   "product": "Apache Tomcat",
+   "version": "9.0.50",
+   "cpe23": [
+    "cpe:2.3:a:apache:tomcat:9.0.50"
+   ],
+   "_shodan": {
+    "module": "http"
+   },
+   "hostnames": [
+    "web.example.com"
+   ],
+   "domains": [
+    "example.com"
+   ],
+   "http": {
+    "title": "Example App",
+    "server": "Apache-Coyote/1.1",
+    "status": 200,
+    "favicon": {
+     "hash": -1234567890,
+     "location": "http://203.0.113.10:8080/favicon.ico"
+    }
+   },
+   "vulns": {
+    "CVE-2021-44228": {
+     "verified": false,
+     "cvss": 10.0,
+     "cvss_version": 3,
+     "summary": "Apache Log4j2 JNDI features ...",
+     "references": []
+    }
+   }
+  },
+  {
+   "port": 443,
+   "transport": "tcp",
+   "timestamp": "2026-11-20T10:00:00.000000",
+   "product": "nginx",
+   "version": "1.25.2",
+   "cpe23": [
+    "cpe:2.3:a:f5:nginx:1.25.2"
+   ],
+   "_shodan": {
+    "module": "https"
+   },
+   "hostnames": [
+    "web.example.com"
+   ],
+   "domains": [
+    "example.com"
+   ],
+   "http": {
+    "title": "Welcome",
+    "server": "nginx/1.25.2",
+    "status": 200
+   },
+   "ssl": {
+    "cert": {
+     "fingerprint": {
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "sha1": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+     },
+     "subject": {
+      "CN": "web.example.com"
+     },
+     "issuer": {
+      "O": "Example CA",
+      "CN": "Example CA R1"
+     },
+     "issued": "20260901000000Z",
+     "expires": "20261130000000Z",
+     "expired": false
+    },
+    "jarm": "00000000000000000000000000000000000000000000000000000000000000",
+    "ja3s": "cccccccccccccccccccccccccccccccc"
+   },
+   "vulns": {
+    "CVE-2023-44487": {
+     "verified": false,
+     "cvss": 7.5,
+     "summary": "HTTP/2 rapid reset ...",
+     "references": []
+    }
+   }
+  }
+ ]
+}

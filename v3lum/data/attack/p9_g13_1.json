@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.attack_index/1",
+  "version": "enterprise-attack 20.1 (2026-11-05)",
+  "source": "https://github.com/mitre-attack/attack-stix-data (enterprise-attack.json)",
+  "attribution": "MITRE ATT&CK(R) is a registered trademark of The MITRE Corporation. (c) The MITRE Corporation. This work is reproduced and distributed with the permission of The MITRE Corporation (ATT&CK terms of use).",
+  "notes": "Techniques mapped by batch p9-G13-1 (typosquat_live_checks, takeover_candidates/takeover_verify, tls_protocol_scan, sensitive_files). Re-declared here so the batch does not depend on the load order of the correlation-pack fragments; the first declaration wins.",
+  "techniques": {
+    "T1213": {"name": "Data from Information Repositories", "stix_id": "attack-pattern--d28ef391-8ed4-45dc-bc4a-2f43abf54416", "revoked": false, "deprecated": false, "replaced_by": null},
+    "T1552.001": {"name": "Unsecured Credentials: Credentials In Files", "stix_id": "attack-pattern--837f9164-50af-4ac0-8219-379d8a74cefc", "revoked": false, "deprecated": false, "replaced_by": null},
+    "T1557": {"name": "Adversary-in-the-Middle", "stix_id": "attack-pattern--035bb001-ab69-4a0b-9f6c-2de8b09e1b9d", "revoked": false, "deprecated": false, "replaced_by": null},
+    "T1583.001": {"name": "Acquire Infrastructure: Domains", "stix_id": "attack-pattern--40f5caa0-4cb7-4117-89fc-d421bb493df3", "revoked": false, "deprecated": false, "replaced_by": null},
+    "T1584.001": {"name": "Compromise Infrastructure: Domains", "stix_id": "attack-pattern--f9cc4d06-775f-4ee1-b401-4e2cc0da30ba", "revoked": false, "deprecated": false, "replaced_by": null}
+  }
+}

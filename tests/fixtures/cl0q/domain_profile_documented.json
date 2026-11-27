@@ -1,0 +1,20 @@
+{
+ "domain": "example.com",
+ "title": "Example Domain",
+ "status_code": 200,
+ "language": "en",
+ "server": "ECS",
+ "word_count": 30,
+ "latency_ms": 116,
+ "outbound_links": 1,
+ "ipv4": "192.0.2.10",
+ "ipv6": "2001:db8::10",
+ "mx_records": "mx1.example.net.,mx2.example.net.",
+ "asn": "64496",
+ "asn_org": "AS64496 Example Networks",
+ "region": "Sao Paulo",
+ "country": "BR",
+ "favicon_sha256": "0f7e861db0a2eeb3045c061b5fa6e4afdecd9828ff44f4a53d418d8fac55f080",
+ "first_seen": "2025-08-24T19:32:27Z",
+ "last_crawled": "2026-07-03T23:39:28Z"
+}

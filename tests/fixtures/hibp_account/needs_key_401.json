@@ -1,0 +1,12 @@
+{
+ "_envelope": 1,
+ "_source": "research sample live_osint__auth_and_block_responses.json (verified 401, no key)",
+ "status": 401,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": {
+  "statusCode": 401,
+  "message": "Access denied due to missing hibp-api-key."
+ }
+}

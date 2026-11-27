@@ -1,0 +1,106 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "ransomware_live",
+  "name": "Ransomware.live (ransomware leak-site tracker: keyless API v2 and PRO API)",
+  "operator": "Ransomware.live (Julien Mousqueton, ransomware.live)",
+  "hosts": ["api.ransomware.live", "api-pro.ransomware.live", "www.ransomware.live"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Well-known community tracker run by an identifiable operator, with public API documentation (swagger), published terms and conditions and a public track record since 2022 (A8 community); P197 cond 7 'Registry provider ransomware_live: tier community'.",
+  "tier_reviewer": "council-1 (A8, P197)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": true},
+  "personal_data_review": null,
+  "reliability": {"grade": "C", "justification": "Leak-site posts scraped by a tracker: entries are actor claims, unverified until corroborated (P197 cond 4); placeholder websites (example.com) and press-only entries occur."},
+  "http_profile": {"user_agent": "neutral", "accept": "application/json", "timeout": 30, "ttl": 21600, "min_interval": 1.0, "concurrency": 1, "retries": 1},
+  "quota": {"scope": "key", "month": 500000, "rate_per_second": 1.0, "burst": 1, "published": true, "evidence_url": "https://api-pro.ransomware.live/swagger.json", "safety_margin": 0.8},
+  "error_markers": [
+    {"id": "ransomware_live_monthly_quota", "statuses": [429], "json_path": null, "equals": null, "regex": "(?i)per\\s+\\d+\\s+month|monthly|month(?:ly)?\\s+(?:quota|limit)", "final_url_regex": null, "maps_to": "quota", "reason_code": "quota", "reason": "ransomware.live PRO: monthly request quota of the key exhausted (could not verify)"},
+    {"id": "ransomware_live_v2_rate_limit", "statuses": [429], "json_path": null, "equals": null, "regex": "(?i)\\d+\\s+per\\s+\\d+\\s+minute", "final_url_regex": null, "maps_to": "rate_limited", "reason_code": "rate_limited", "reason": "ransomware.live: request rate limit (keyless v2 allows 1 request per minute per endpoint; could not verify)"}
+  ],
+  "keys": {
+    "ransomwarelive": {
+      "description": "ransomware.live PRO API key (one team token; sent as the X-API-KEY header, never in a URL)",
+      "signup_url": "https://www.ransomware.live/my",
+      "env": ["V3LUM_RANSOMWARELIVE_KEY", "V3LUM_RANSOMWARELIVE_PRO_KEY"],
+      "multi_key": false,
+      "plan_hint": "a company account's PRO key; corporate use also needs the owner's prior written approval recorded in licence_allow (T&C s.5.2, P197 cond 2) - never an analyst's personal key"
+    }
+  },
+  "sources": {
+    "v2": {
+      "title": "Keyless API v2 api.ransomware.live/v2/searchvictims/{keyword} and /v2/group/{name} (research profile only)",
+      "terms": {
+        "class": "noncommercial",
+        "evidence_url": "https://www.ransomware.live/api",
+        "quote": "Licence (legal floor): the T&C s.5.2 (verified 2026-11-26) strictly prohibit commercial use without the owner's prior written approval, and keyless v2 is 'not intended for corporate or business use'. Source classes: v2 'noncommercial' (A1), PRO 'license'.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "ransomware.live",
+      "sanitizer": {
+        "keep": ["[].victim", "[].post_title", "[].domain", "[].website", "[].group", "[].group_name", "[].discovered", "[].published", "[].attackdate", "[].country", "[].activity", "[].description", "[].claim_url", "[].post_url", "[].screenshot", "[].url", "[].press", "error", "name", "altname", "description", "url", "locations[].fqdn", "locations[].available", "locations[].type", "locations[].title"],
+        "notes": "P197 cond 6 / A4: claim metadata only (victim, website, group, dates, country, sector, the description for the <= 300-char excerpt, claim and screenshot URLs as text: never fetched); group cards keep name, description and leak-site onion locations. Every other field is dropped before the HTTP cache."
+      },
+      "dataset": null,
+      "notes": "Quote: binding council text (P197 cond 2; A1 initial class 'ransomware.live keyless v2 = noncommercial'). Research C0457 (verified_live 200): 1 request per minute PER ENDPOINT (HTTP 429 {\"message\": \"1 per 1 minute\"}); 'no results' is HTTP 404 {\"error\": \"No victims found for keyword ...\"}. Runs only in the research profile with a recorded basis (P197 cond 1): off under the corporate profile until licence-cleared. Attribution 'Source: Ransomware.live' with a link (cond 5); raw records are never re-served or re-published."
+    },
+    "pro": {
+      "title": "PRO API (X-API-KEY) api-pro.ransomware.live/victims/search?q= and /group/{name}",
+      "terms": {
+        "class": "license",
+        "evidence_url": "https://www.ransomware.live/t&c",
+        "quote": "Licence (legal floor): the T&C s.5.2 (verified 2026-11-26) strictly prohibit commercial use without the owner's prior written approval ... Under corporate it needs a company-account PRO key AND that approval in licence_allow: off under the corporate profile until licence-cleared.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "ransomware.live",
+      "sanitizer": {
+        "keep": ["[].victim", "[].post_title", "[].domain", "[].website", "[].group", "[].group_name", "[].discovered", "[].published", "[].attackdate", "[].country", "[].activity", "[].description", "[].claim_url", "[].post_url", "[].screenshot", "[].url", "[].permalink", "[].id", "[].press", "[].infostealer.employees", "[].infostealer.users", "[].infostealer.thirdparties", "victims[].victim", "victims[].post_title", "victims[].domain", "victims[].website", "victims[].group", "victims[].group_name", "victims[].discovered", "victims[].published", "victims[].attackdate", "victims[].country", "victims[].activity", "victims[].description", "victims[].claim_url", "victims[].screenshot", "victims[].url", "victims[].permalink", "victims[].id", "victims[].press", "victims[].infostealer.employees", "victims[].infostealer.users", "victims[].infostealer.thirdparties", "error", "message", "name", "group", "altname", "description", "firstseen", "lastseen", "url", "locations[].fqdn", "locations[].available", "locations[].type", "locations[].title"],
+        "notes": "P197 cond 6 / A4: claim metadata plus the aggregate HudsonRock infostealer COUNTS only (A4 'kept': corporate/user service counts); group cards keep name, description, activity dates and leak-site onion locations. Shapes from the PRO swagger until the team-key capture (cond 7)."
+      },
+      "dataset": null,
+      "notes": "Quote: binding council text (P197 cond 2; the chair adopts written approval as the legal floor, stricter than A1 BR15 'key-terms'). Research C0458 (verified_needs_key: 401 {\"message\": \"Missing X-API-KEY header\"}); swagger: 60 requests/minute and 500,000/month per key, 429 beyond either. One team key 'ransomwarelive' (cond 1). PRO success fixtures are captured with the team key (cond 7, docs/backlog/p1-G09-1.md)."
+    },
+    "pro_iocs": {
+      "title": "PRO API (X-API-KEY) api-pro.ransomware.live/iocs/{group}: group IOCs organised by type",
+      "terms": {
+        "class": "license",
+        "evidence_url": "https://www.ransomware.live/t&c",
+        "quote": "Licence (legal floor): the T&C s.5.2 (verified 2026-11-26) strictly prohibit commercial use without the owner's prior written approval ... Under corporate it needs a company-account PRO key AND that approval in licence_allow: off under the corporate profile until licence-cleared.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "ransomware.live",
+      "sanitizer": {
+        "keep": ["*[]", "iocs.*[]", "[].type", "[].value", "[].ioc", "error", "message"],
+        "notes": "P197 cond 6: indicator values by type only (hostile pivots, expand=False). A4 second net still applies: a key named 'ip' is dropped by the core sanitizer, so IP indicators of a sensitive tracker never reach the graph (backlog p1-G09-1)."
+      },
+      "dataset": null,
+      "notes": "Swagger: 'Returns all indicators of compromise for a specific ransomware group, organized by type (e.g. md5, ip, domain)'. Exact shape unconfirmed until the team-key capture (cond 7)."
+    },
+    "pro_notes": {
+      "title": "PRO API (X-API-KEY) api-pro.ransomware.live/ransomnotes/{group} and /ransomnotes/{group}/{note}: ransom-note names and text",
+      "terms": {
+        "class": "license",
+        "evidence_url": "https://www.ransomware.live/t&c",
+        "quote": "Licence (legal floor): the T&C s.5.2 (verified 2026-11-26) strictly prohibit commercial use without the owner's prior written approval ... Under corporate it needs a company-account PRO key AND that approval in licence_allow: off under the corporate profile until licence-cleared.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "ransomware.live",
+      "sanitizer": {
+        "keep": ["[]", "notes[]", "names[]", "content", "extension", "error", "message"],
+        "notes": "P197 cond 6: the module reads only the contacts printed in a ransom note (onion hosts, e-mail addresses) and keeps none of its text; the note itself is the attacker's message, never leaked victim data."
+      },
+      "dataset": null,
+      "notes": "Swagger: /ransomnotes/{group} 'returns the list of ransom note identifiers (filenames without extension)'; /ransomnotes/{group}/{note} 'returns the full text content of a specific ransom note' with an 'extension' field. One note per actor run (request budget)."
+    }
+  },
+  "notes": "Owned by batch p1-G09-1 (P197 ransomware_live). Corporate code path = PRO with the team key; keyless v2 only in the research profile (cond 1). Every source stays off under the corporate profile until legal records the owner's written approval in licence_allow (cond 2-3); the engine then emits the manual www.ransomware.live search link. www.ransomware.live is registered for that manual link and the attribution link only: no module contacts it. flags.sensitive: leak-site claims plus HudsonRock infostealer counts (A4): allow-list sanitizers per source, cache sanitized, ttl 6 h (cond 5: >= 30 min, <= 60 req/min). images.ransomware.live screenshots and claim_url onions are never fetched (cond 6)."
+}

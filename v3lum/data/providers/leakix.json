@@ -1,0 +1,75 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "leakix",
+  "name": "LeakIX (exposed services and leak events)",
+  "operator": "LeakIX (LeakIX SRL, Belgium)",
+  "hosts": ["leakix.net"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Small identifiable operator with public API documentation (docs.leakix.net), published plans and more than two years of public track record (A8 community; P274 chair rationale: 'LeakIX is a small identifiable operator: tier community').",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": true},
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Events come from LeakIX's own internet scans (plugins); a leak event means an exposure was observed at scan time and may be stale or already fixed (90-day 're-verify' rule, P274 cond 5)."
+  },
+  "http_profile": {"user_agent": "neutral", "accept": "application/json", "ttl": 86400, "min_interval": 1.0, "retries": 0, "concurrency": 1},
+  "quota": {
+    "scope": "key",
+    "month": 3000,
+    "published": false,
+    "evidence_url": "https://leakix.net/plans",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {
+    "leakix": {
+      "description": "LeakIX API key (sent in the 'api-key' header; every API call needs it)",
+      "signup_url": "https://leakix.net/settings/api",
+      "env": ["V3LUM_LEAKIX_KEY", "LEAKIX_API_KEY"],
+      "multi_key": false,
+      "plan_hint": "record 'business' only for a company/team LeakIX account on a plan whose terms legal recorded as covering internal business use (P274 cond 1)"
+    }
+  },
+  "sources": {
+    "api": {
+      "title": "LeakIX API (GET /host/{ip}, /domain/{domain}, /api/subdomains/{domain}, /search?scope=leak&q=...): event metadata only",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://leakix.net/plans",
+        "quote": "P274 cond 1 (binding council text): requires key 'leakix' ... Key-terms: a company/team account on a plan recorded by legal before it runs under corporate; free 3,000 requests go into the P334 budget.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "leakix",
+      "sanitizer": {
+        "keep": [
+          "Services[].event_type", "Services[].event_source", "Services[].host", "Services[].port",
+          "Services[].protocol", "Services[].time", "Services[].http.url",
+          "Leaks[].event_type", "Leaks[].event_source", "Leaks[].host", "Leaks[].port",
+          "Leaks[].protocol", "Leaks[].time", "Leaks[].http.url", "Leaks[].leak.type", "Leaks[].leak.severity",
+          "services[].event_type", "services[].event_source", "services[].host", "services[].port",
+          "services[].protocol", "services[].time", "services[].http.url",
+          "leaks[].event_type", "leaks[].event_source", "leaks[].host", "leaks[].port",
+          "leaks[].protocol", "leaks[].time", "leaks[].http.url", "leaks[].leak.type", "leaks[].leak.severity",
+          "[].event_type", "[].event_source", "[].host", "[].port", "[].protocol", "[].time", "[].http.url",
+          "[].leak.type", "[].leak.severity",
+          "[].subdomain", "[].distinct_ips", "[].last_seen",
+          "lookup", "detail", "counts",
+          "services[].plugin", "services[].path",
+          "leaks[].plugin", "leaks[].path", "leaks[].leak_type", "leaks[].severity",
+          "subdomains[].subdomain", "subdomains[].distinct_ips", "subdomains[].last_seen"
+        ],
+        "notes": "P274 cond 2 (P145 schema): field ALLOWLIST at ingestion, before res.raw and the HTTP cache - event type, plugin (event_source), host, port, protocol, path (http.url, reduced to the path by the module), leak type, severity and time (first/last seen). 'summary', http headers/title, credentials, software banners, ssh banner/motd, certificates, leak stage and dataset (rows, files, ransom notes), geoip and network blocks are dropped. The second net also drops 'ip' fields (the queried IP is the run's entity). The last block is the module's own evidence shape (lookup, detail, counts, allowlisted services/leaks/subdomains)."
+      },
+      "dataset": null,
+      "notes": "Key-only since 2026 (401 'Invalid API key' without a key: NEEDS_KEY). Metadata only (rule 3): leaked content, credentials and database samples are never fetched, stored or printed; the module never contacts the exposed resource. Web pages (leakix.net/host, /domain, /search) redirect to /auth/login: they need the team's LeakIX login and are given as references, never automated.",
+      "licensed_alternative": "A company/team LeakIX account whose plan legal records as business-compatible (key_plans.leakix = 'business')."
+    }
+  },
+  "notes": "Owned by batch p2-G02-3 (P274). Flagged sensitive (P274 cond 2: summaries embed exposed data): HTTP bodies are reduced to the sanitizer keep list before the module, res.raw and the cache see them (cache TTL capped at 7 days). Quota: 3,000 requests (free plan per the research record; period unverified, assumed monthly) counted per key with the 80% margin; docs ask for ~1 request/s (min_interval 1.0, 429 carries x-limited-for)."
+}

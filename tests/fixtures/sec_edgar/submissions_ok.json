@@ -1,0 +1,164 @@
+{
+ "cik": "0000789019",
+ "entityType": "operating",
+ "sic": "7372",
+ "sicDescription": "Services-Prepackaged Software",
+ "name": "MICROSOFT CORP",
+ "tickers": [
+  "MSFT"
+ ],
+ "exchanges": [
+  "Nasdaq"
+ ],
+ "ein": "911144442",
+ "category": "Large accelerated filer",
+ "fiscalYearEnd": "0630",
+ "stateOfIncorporation": "WA",
+ "formerNames": [],
+ "filings": {
+  "recent": {
+   "accessionNumber": [
+    "0000789019-26-000236",
+    "0001193125-26-448357",
+    "0001193125-26-447173",
+    "0001193125-26-323660",
+    "0001193125-24-062997",
+    "0001193125-24-011295"
+   ],
+   "filingDate": [
+    "2026-11-16",
+    "2026-11-05",
+    "2026-11-04",
+    "2026-07-29",
+    "2024-03-08",
+    "2024-01-19"
+   ],
+   "reportDate": [
+    "2026-11-16",
+    "2026-11-04",
+    "2026-10-29",
+    "2026-06-30",
+    "2024-01-17",
+    "2024-01-17"
+   ],
+   "acceptanceDateTime": [
+    "2026-11-16T23:04:36.000Z",
+    "2026-11-05T11:01:52.000Z",
+    "2026-11-04T21:01:27.000Z",
+    "2026-07-29T20:08:01.000Z",
+    "2024-03-08T13:58:04.000Z",
+    "2024-01-19T21:39:35.000Z"
+   ],
+   "act": [
+    "",
+    "34",
+    "34",
+    "34",
+    "34",
+    "34"
+   ],
+   "form": [
+    "4",
+    "8-K",
+    "8-K",
+    "10-K",
+    "8-K/A",
+    "8-K"
+   ],
+   "fileNumber": [
+    "",
+    "001-37845",
+    "001-37845",
+    "001-37845",
+    "001-37845",
+    "001-37845"
+   ],
+   "filmNumber": [
+    "",
+    "261524469",
+    "261521928",
+    "261217433",
+    "24732464",
+    "24546127"
+   ],
+   "items": [
+    "",
+    "5.02",
+    "8.01,9.01",
+    "",
+    "1.05,7.01,9.01",
+    "1.05,7.01,9.01"
+   ],
+   "core_type": [
+    "4",
+    "XBRL",
+    "XBRL",
+    "XBRL",
+    "XBRL",
+    "XBRL"
+   ],
+   "size": [
+    4512,
+    179307,
+    1065462,
+    36328553,
+    208476,
+    196433
+   ],
+   "isXBRL": [
+    0,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "isInlineXBRL": [
+    0,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "isXBRLNumeric": [
+    0,
+    0,
+    0,
+    1,
+    null,
+    null
+   ],
+   "primaryDocument": [
+    "xslF345X06/form4.xml",
+    "d177209d8k.htm",
+    "d178557d8k.htm",
+    "msft-20260630.htm",
+    "d808756d8ka.htm",
+    "d708866d8k.htm"
+   ],
+   "primaryDocDescription": [
+    "STATEMENT OF CHANGES IN BENEFICIAL OWNERSHIP OF SECURITIES",
+    "8-K",
+    "8-K",
+    "10-K",
+    "8-K/A",
+    "8-K"
+   ]
+  },
+  "files": [
+   {
+    "name": "CIK0000789019-submissions-001.json",
+    "filingCount": 2005,
+    "filingFrom": "2008-08-28",
+    "filingTo": "2020-09-07"
+   },
+   {
+    "name": "CIK0000789019-submissions-002.json",
+    "filingCount": 1532,
+    "filingFrom": "1994-02-14",
+    "filingTo": "2008-08-26"
+   }
+  ]
+ }
+}

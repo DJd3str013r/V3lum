@@ -1,0 +1,68 @@
+{
+ "total": 71935075,
+ "members": [
+  {
+   "name": "GENERATED_ON_20260909.txt",
+   "method": 0,
+   "crc32": "00000000",
+   "compressed": 0,
+   "uncompressed": 0,
+   "local_header_offset": 0
+  },
+  {
+   "name": "nodes-entities.csv",
+   "method": 8,
+   "crc32": "5fa12214",
+   "compressed": 26758090,
+   "uncompressed": 198928989,
+   "local_header_offset": 83
+  },
+  {
+   "name": "nodes-officers.csv",
+   "method": 8,
+   "crc32": "6beaf0a0",
+   "compressed": 10698203,
+   "uncompressed": 91022305,
+   "local_header_offset": 26758249
+  },
+  {
+   "name": "nodes-addresses.csv",
+   "method": 8,
+   "crc32": "3063898b",
+   "compressed": 11657727,
+   "uncompressed": 72467125,
+   "local_header_offset": 37456528
+  },
+  {
+   "name": "nodes-intermediaries.csv",
+   "method": 8,
+   "crc32": "3e020ce5",
+   "compressed": 801306,
+   "uncompressed": 4064192,
+   "local_header_offset": 49114332
+  },
+  {
+   "name": "nodes-others.csv",
+   "method": 8,
+   "crc32": "c4daaa4b",
+   "compressed": 48100,
+   "uncompressed": 398436,
+   "local_header_offset": 49915720
+  },
+  {
+   "name": "relationships.csv",
+   "method": 8,
+   "crc32": "d7ec286c",
+   "compressed": 21970457,
+   "uncompressed": 259198321,
+   "local_header_offset": 49963894
+  }
+ ],
+ "http": {
+  "status": 206,
+  "last-modified": "Wed, 09 Sep 2026 10:55:34 GMT",
+  "etag": "\"a72fc063daa4a051827e2fbeaf6d8f15-9\"",
+  "content-range": "bytes 71869539-71935074/71935075",
+  "server": "AmazonS3"
+ }
+}

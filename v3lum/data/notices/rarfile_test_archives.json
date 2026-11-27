@@ -1,0 +1,17 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "rarfile_test_archives",
+  "source_url": "https://github.com/markokr/rarfile/tree/master/test/files",
+  "version": "rarfile repository master (rar3-comment-plain.rar, unicode.rar, rar5-symlink-unix.rar, rar5-hpsw.rar), fetched 2026-11 for batch p1-G12-1 (test fixtures only, not shipped in the package)",
+  "sha256": "",
+  "licence": "ISC",
+  "attribution": "Test archives from the rarfile project by Marko Kreen (https://github.com/markokr/rarfile), ISC licence; used unmodified (renamed) as real-format test fixtures for archive_listing's RAR header listing. rarfile itself is not imported.",
+  "bundled": false,
+  "files": [
+    "tests/fixtures/archive_listing/rar4_comment_real.rar",
+    "tests/fixtures/archive_listing/rar4_unicode_real.rar",
+    "tests/fixtures/archive_listing/rar5_header_encrypted_real.rar",
+    "tests/fixtures/archive_listing/rar5_symlink_real.rar",
+    "tests/modules/test_archive_listing.py"
+  ]
+}

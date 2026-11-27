@@ -251,6 +251,94 @@ def test_target_module_has_no_static_host_list(clean_registry):
 
 
 # --------------------------------------------------------------------------------------
+# ctx.data: ad-hoc downloads go through ctx.http (AR20 safety fix: P327 cond 5, A7)
+# --------------------------------------------------------------------------------------
+
+
+def test_ctx_data_ad_hoc_download_goes_through_ctx_http(net_module):
+    from v3lum.core.http import ScopedHttp
+
+    http = FakeHttp().add("GET", "https://api.example.test/list.txt", text="a.example\n").add("GET", "https://elsewhere.example/l", text="x\n")
+    ctx = make_ctx(net_module, http)
+    assert ctx.data.fetch_lines("t_ctx_adhoc.txt", "https://api.example.test/list.txt") == frozenset({"a.example"})
+    assert ctx.http.requests == 1 and ctx.http.hosts == {"api.example.test": 1}  # the module's own ledger and request cap
+    with pytest.raises(PolicyError, match="not declared"):
+        ctx.data.fetch_text("t_ctx_adhoc2.txt", "https://elsewhere.example/l")  # undeclared host: refused like ctx.http
+    with pytest.raises(PolicyError, match="not declared"):
+        ctx.data.fetch("t_ctx_adhoc3.txt", "https://elsewhere.example/l", http=ScopedHttp(http))  # a module's own scope is ignored
+    assert http.urls() == ["https://api.example.test/list.txt"]
+
+
+def test_ctx_data_ad_hoc_download_of_an_offline_module_is_refused(clean_registry):
+    from v3lum.core.datasets import register_dataset, unregister_dataset
+
+    cls = define_module("t_ctx_offline_data", [T.DOMAIN], _noop)
+    http = FakeHttp().add("GET", "https://lists.example.test/list.txt", text="x.example\n")
+    register_dataset("t_ctx_reg_list.txt", "https://lists.example.test/list.txt", expect="lines")  # import time
+    try:
+        ctx = make_ctx(cls, http)
+        with pytest.raises(PolicyError, match="no network"):
+            ctx.data.fetch_text("t_ctx_offline_list.txt", "https://lists.example.test/list.txt")
+        assert not http.calls
+        # a registered dataset keeps its reviewed dataset scope (a fixed URL, not the module's)
+        assert ctx.data.fetch_lines("t_ctx_reg_list.txt") == frozenset({"x.example"})
+        assert ctx.http.requests == 0 and http.urls() == ["https://lists.example.test/list.txt"]
+    finally:
+        unregister_dataset("t_ctx_reg_list.txt")
+
+
+def test_ctx_data_of_a_dataset_registered_during_the_run_goes_through_ctx_http(clean_registry):
+    """register_dataset is an import-time call: a module that registers a dataset during its run (a URL
+    built from the investigated value) gets no reviewed dataset scope - ctx.data downloads it through
+    ctx.http, so an offline module is refused (fetch*, index) and nothing is sent."""
+    from v3lum.core.datasets import register_dataset, unregister_dataset
+
+    cls = define_module("t_ctx_offline_reg", [T.DOMAIN], _noop)
+    http = FakeHttp().add("GET", "https://collector.example.net/x?v=example.org", text="1.2.3.4\n")
+    ctx = make_ctx(cls, http)
+    register_dataset("t_ctx_late.txt", "https://collector.example.net/x?v=example.org", expect="lines")
+    try:
+        for read in (ctx.data.fetch, ctx.data.fetch_text, ctx.data.fetch_json, ctx.data.fetch_lines, ctx.data.index):
+            with pytest.raises(PolicyError, match="no network"):
+                read("t_ctx_late.txt")
+        assert not http.calls and ctx.data.used == []
+    finally:
+        unregister_dataset("t_ctx_late.txt")
+
+
+def test_runtime_in_scan_records_the_registration_sequence_of_the_scan():
+    from v3lum.core import datasets
+
+    rt = make_runtime(FakeHttp())
+    assert rt.in_scan is False and rt.scan_dataset_seq is None
+    rt.in_scan = True
+    start = rt.scan_dataset_seq
+    assert start == datasets._registration_seq()
+    datasets.register_dataset("t_ctx_seq.txt", "https://lists.example.test/seq.txt")
+    try:
+        rt.in_scan = True  # a nested scan keeps the outer scan's sequence
+        assert rt.scan_dataset_seq == start < datasets.DATASETS["t_ctx_seq.txt"]["seq"]
+        with pytest.raises(PolicyError, match="ad-hoc download"):  # the store reached around ctx.data mid-scan
+            rt.data.fetch("t_ctx_seq.txt")
+        rt.in_scan = False
+        assert rt.scan_dataset_seq is None
+    finally:
+        datasets.unregister_dataset("t_ctx_seq.txt")
+
+
+def test_ctx_data_ad_hoc_refusal_ends_skipped_policy(clean_registry):
+    def insist(self, entity, ctx):
+        ctx.data.fetch_text("t_ctx_insist.txt", "https://collector.example.net/list?q=" + entity.value)
+        return self.result(entity)
+
+    cls = define_module("t_ctx_insist", [T.DOMAIN], insist)
+    http = FakeHttp()
+    res = run_module(cls, "domain:example.org", http)
+    assert (res.status, res.reason_code) == (Status.SKIPPED, "policy") and "no network" in res.error
+    assert not http.calls
+
+
+# --------------------------------------------------------------------------------------
 # ctx.dns over the per-run core DoH scope
 # --------------------------------------------------------------------------------------
 

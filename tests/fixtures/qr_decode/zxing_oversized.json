@@ -1,0 +1,4 @@
+{
+ "error": "DecompressionBombError",
+ "message": "Image size (1600000000 pixels) exceeds limit of 100000000 pixels, could be decompression bomb DOS attack."
+}

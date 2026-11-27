@@ -1,0 +1,62 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "nodes": [
+  {
+   "key": "email:analyst@example.com",
+   "depth": 0,
+   "seed": true,
+   "ownership": "own_asset",
+   "findings": [
+    {
+     "title": "Listed in breach: Adobe",
+     "severity": "medium",
+     "confidence": 0.7,
+     "confidence_label": "probable",
+     "criterion": "hibp_account: the address is listed in this breach (synthetic fixture)",
+     "tags": ["breach", "privacy"],
+     "module": "hibp_account",
+     "source": "hibp.account",
+     "key": "adobe",
+     "data": {"name": "Adobe", "breach_key": "adobe", "date": "2013-10-04", "sources": ["hibp.account"]}
+    },
+    {
+     "title": "Listed in breach: zomato.com",
+     "severity": "medium",
+     "confidence": 0.7,
+     "confidence_label": "probable",
+     "criterion": "Leak-Lookup: the address is listed in this breach (synthetic fixture)",
+     "tags": ["breach", "privacy"],
+     "module": "leak_lookup_public",
+     "source": "leaklookup.search",
+     "key": "zomato",
+     "data": {"name": "zomato.com", "breach_key": "zomato", "date": "2017-05-17", "sources": ["leaklookup.search"]}
+    }
+   ]
+  },
+  {
+   "key": "email:other@example.com",
+   "depth": 0,
+   "seed": true,
+   "ownership": "own_asset",
+   "findings": [
+    {
+     "title": "Listed in breach: Zomato",
+     "severity": "medium",
+     "confidence": 0.7,
+     "confidence_label": "probable",
+     "criterion": "hibp_account: the address is listed in this breach (synthetic fixture)",
+     "tags": ["breach", "privacy"],
+     "module": "hibp_account",
+     "source": "hibp.account",
+     "key": "zomato",
+     "data": {"name": "Zomato", "breach_key": "zomato", "date": "2017-05-17", "sources": ["hibp.account"]}
+    }
+   ]
+  }
+ ],
+ "edges": [],
+ "expect": {
+  "p3g042_leaklookup_breach_merge": {"min": 0, "max": 0}
+ }
+}

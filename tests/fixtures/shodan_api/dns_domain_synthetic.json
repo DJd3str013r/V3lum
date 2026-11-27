@@ -1,0 +1,39 @@
+{
+ "_synthetic": "dns/domain answer shape (documented fields) for example.com; replace with a trimmed capture made with the team key before merge (P039 FC8).",
+ "domain": "example.com",
+ "tags": [
+  "ipv6"
+ ],
+ "more": false,
+ "subdomains": [
+  "www",
+  "mail",
+  "*.dev"
+ ],
+ "data": [
+  {
+   "subdomain": "www",
+   "type": "A",
+   "value": "203.0.113.10",
+   "last_seen": "2026-11-20T10:00:00.000000"
+  },
+  {
+   "subdomain": "www",
+   "type": "AAAA",
+   "value": "2001:db8::10",
+   "last_seen": "2026-11-18T10:00:00.000000"
+  },
+  {
+   "subdomain": "mail",
+   "type": "MX",
+   "value": "mx.example.net",
+   "last_seen": "2026-11-10T00:00:00.000000"
+  },
+  {
+   "subdomain": "",
+   "type": "TXT",
+   "value": "v=spf1 -all",
+   "last_seen": "2026-11-10T00:00:00.000000"
+  }
+ ]
+}

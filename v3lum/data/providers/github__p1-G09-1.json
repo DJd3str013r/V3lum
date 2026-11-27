@@ -1,0 +1,23 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "github",
+  "hosts": [],
+  "sources": {
+    "crypto_sanctions_offline_ofac_lists": {
+      "title": "0xB10C ofac-sanctioned-digital-currency-addresses, branch 'lists': sanctioned_addresses_{ASSET}.txt (one dataset per asset, daily)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/0xB10C/ofac-sanctioned-digital-currency-addresses",
+        "quote": "crypto_sanctions_offline (disclosure none, TLP:RED-safe): the 0xB10C OFAC sanctioned-address lists (MIT lists over US public-domain OFAC data) via the dataset manager, daily, per chain",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1, P205 cond 1 and 7: OFAC lists 'open')",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "ofac",
+      "sanitizer": null,
+      "dataset": "ofac_sanctioned_xbt",
+      "notes": "Quote: binding council text (P205 cond 1). Research C0478 (verified_live 200): raw.githubusercontent.com/0xB10C/ofac-sanctioned-digital-currency-addresses/lists/sanctioned_addresses_{ASSET}.txt, nightly GitHub Action extracting 'Digital Currency Address - {ASSET}' features from OFAC SDN_ADVANCED.XML; 18 assets live on 2026-11-26 (XBT ETH XMR LTC ZEC DASH BTG ETC BSV BCH XVG USDC USDT XRP TRX ARB BSC SOL; DOGE 404). Datasets ofac_sanctioned_<asset> (one per asset, 41 KB in total), downloaded only by the dataset manager: no investigated value ever leaves the machine. Upstream family 'ofac' (the same public-domain SDN data the Chainalysis oracle mirrors under family 'chainalysis')."
+    }
+  },
+  "error_markers": []
+}

@@ -1,0 +1,229 @@
+{
+ "about": "provenance of the trimmed fixtures (prep for batch p3-G01-2): source live | research | documented | synthetic; contact values are documentation values (example.org/.net, *.example, +55 11 5555-01xx)",
+ "fixtures": {
+  "whoxy_badkey.json": {
+   "source": "research",
+   "origin": "https://api.whoxy.com/?key=<invalid>&whois=example.com (HTTP 200, cloudflare, 0.21 s)",
+   "captured_at": "2026-11-25",
+   "note": "error-in-200: P022 FC7 NEEDS_KEY marker, verbatim",
+   "sha256": "8fa7f23c89eeb7536ef92913d29a0b0ed34d4a0ac7e7dd209e980d708c726f8c",
+   "bytes": 54
+  },
+  "whoxy_record_example_com.json": {
+   "source": "research",
+   "origin": "JSON sample printed on https://www.whoxy.com/whois/example.com (research body p_whoxy.body)",
+   "captured_at": "2026-11-25",
+   "note": "real Whoxy record schema (the page states it is the output of ?whois=example.com); raw_whois dropped; IANA-reserved domain, no contacts",
+   "sha256": "a9f7606e4ff7e52fd879efd840c199a2314babc543f0d6e3823174841766be01",
+   "bytes": 622
+  },
+  "whoxy_history_ok_synthetic.json": {
+   "source": "synthetic",
+   "origin": "record schema verified on the real Whoxy sample (whoxy_record_example_com.json); wrapper keys total_records_found/whois_records from the Whoxy API docs as recalled (docs page not readable with a non-browser UA)",
+   "captured_at": null,
+   "note": "3 snapshots: 2024 redacted + contact-form e-mail, 2019 Domains By Proxy, 2016 pre-GDPR registrant; contact data are documentation values; replace with a team-key capture (FC8)",
+   "sha256": "22a4a7a55b1627306c51b1cd6a887790256c1071d2f6a8b628a0a8ec14cbeb7e",
+   "bytes": 5741
+  },
+  "whoxy_history_empty_synthetic.json": {
+   "source": "synthetic",
+   "origin": "Whoxy wrapper schema (unverified)",
+   "captured_at": null,
+   "note": "no history for the domain",
+   "sha256": "e2bc557c57b3007eeb8afdf270892da0cc6d63e5f295ab09ffab1da712c6bf5f",
+   "bytes": 98
+  },
+  "whoxy_reverse_ok_synthetic.json": {
+   "source": "synthetic",
+   "origin": "wrapper keys search_result/total_results/total_pages/current_page as used by SpiderFoot sfp_whoxy (recalled, unverified); record schema from whoxy_record_example_com.json",
+   "captured_at": null,
+   "note": "reverse=whois&email=registrant01@example.org; page 1 of 2 trimmed to 3 hits; hit 2 matches case-insensitively, hit 3 shows a different registrant e-mail (match not confirmed: admin/tech or historical match)",
+   "sha256": "3326d71ce3e1f11178c3ced9b5458533942ad121fdddd1b54f08ec101ff5b6c6",
+   "bytes": 5655
+  },
+  "whoxy_reverse_empty_synthetic.json": {
+   "source": "synthetic",
+   "origin": "Whoxy wrapper schema (unverified)",
+   "captured_at": null,
+   "note": "no domain for the selector",
+   "sha256": "33c4830691f89bec3c727934639cbb55e02592bee0fa886237f29629201d901c",
+   "bytes": 191
+  },
+  "whoxy_quota_synthetic.json": {
+   "source": "synthetic",
+   "origin": "status 0 envelope verified on whoxy_badkey.json; reason text unverified",
+   "captured_at": null,
+   "note": "credits exhausted -> QUOTA (FC7); confirm the exact status_reason with the team key",
+   "sha256": "538d93c6f44bbfe42fb431bc3297f61d4a2e06ac134a05223f18e2f95e48f9fc",
+   "bytes": 67
+  },
+  "whoxy_malformed_ok_text.http.json": {
+   "source": "live",
+   "origin": "https://www.whoxy.com/api/",
+   "captured_at": "2026-11-26T08:39:02Z",
+   "note": "www.whoxy.com/api/ answered 200 text/html 'OK' (2 bytes, vary: User-Agent) to curl's default UA; used as the non-JSON 200 case (must be ERROR/could not verify, never EMPTY)",
+   "sha256": "b2deab70ad8c7a810cf302bf50e9e57955d357d4977e735892f5b3c82c0e1ba4",
+   "bytes": 330
+  },
+  "whoisxml_nokey_401.http.json": {
+   "source": "research",
+   "origin": "https://www.whoisxmlapi.com/whoisserver/WhoisService?domainName=example.com&outputFormat=JSON",
+   "captured_at": "2026-11-25",
+   "note": "keyless WhoisService call: HTTP 401, ErrorMessage.errorCode AUTHENTICATE_04 (118 bytes)",
+   "sha256": "3a8871b84c98c1b6d1b6366bfb5e3241ed2a284b56edcf105fd35e781ffc4d06",
+   "bytes": 425
+  },
+  "whoisxml_history_ok_documented.json": {
+   "source": "documented",
+   "origin": "https://whois-history.whoisxmlapi.com/api/documentation/output-format (read 2026-11-26)",
+   "captured_at": null,
+   "note": "documented field names; values replaced by documentation values; billing/zone contacts empty; mode=purchase answer. Replace with a team-key capture (FC8)",
+   "sha256": "5aaf215fa6e9c1c990a9d64da80cd51fd6ed592e5e0a350b4f84d79a2bbd1014",
+   "bytes": 6908
+  },
+  "whoisxml_history_preview_documented.json": {
+   "source": "documented",
+   "origin": "https://whois-history.whoisxmlapi.com/api/documentation/making-requests (mode=preview)",
+   "captured_at": null,
+   "note": "preview returns only the number of records (1 DRS credit; purchase costs 50)",
+   "sha256": "700a70113817fd4e2b545a9a1eaf79160c698857b0fdea8173ef4a2eac79175c",
+   "bytes": 23
+  },
+  "whoisxml_history_empty_synthetic.json": {
+   "source": "synthetic",
+   "origin": "documented schema",
+   "captured_at": null,
+   "note": "no history for the domain",
+   "sha256": "e6d4e485b86dd79d37d69fad1d00a6b386de70ea37fdd91190cd3f58026c5f17",
+   "bytes": 39
+  },
+  "whoisxml_reverse_audit_documented.json": {
+   "source": "documented",
+   "origin": "https://reverse-whois.whoisxmlapi.com/api/documentation/output-format (includeAuditDates=true)",
+   "captured_at": null,
+   "note": "documented shape with audit dates; values replaced",
+   "sha256": "31a9ef3b426a9b022cea9b25029d5fc39541cf6fbf545c44540143ef38bb84ad",
+   "bytes": 404
+  },
+  "whoisxml_reverse_ok_documented.json": {
+   "source": "documented",
+   "origin": "https://reverse-whois.whoisxmlapi.com/api/documentation/output-format (includeAuditDates=false)",
+   "captured_at": null,
+   "note": "documented shape; the documented domain names (a real brand) replaced by documentation names",
+   "sha256": "2c6eb19098d46ef560cd54a710f8cafb683a0939a7c7191d8c5a8d7c4b13c046",
+   "bytes": 133
+  },
+  "whoisxml_reverse_preview_documented.json": {
+   "source": "documented",
+   "origin": "reverse-whois output-format: domainsList present in purchase mode only",
+   "captured_at": null,
+   "note": "preview mode: count only, no credits deducted",
+   "sha256": "2b7b2c91c5862e99e90a02a7fb305b1a4fd253911b61453e160825fe07f58549",
+   "bytes": 53
+  },
+  "whoisxml_reverse_paged_synthetic.json": {
+   "source": "synthetic",
+   "origin": "documented schema (nextPageSearchAfter, 10,000-domain page limit)",
+   "captured_at": null,
+   "note": "trimmed to 3 names; a selector with >10,000 domains is a reseller/privacy/registrar value, not an actor cluster",
+   "sha256": "46a1bf7d71b9ca7af1b524e9b38a611e0df65439dd6d9ba39d5937259ed9a681",
+   "bytes": 156
+  },
+  "whoisxml_reverse_empty_synthetic.json": {
+   "source": "synthetic",
+   "origin": "documented schema",
+   "captured_at": null,
+   "note": "no domain for the selector",
+   "sha256": "82c1ce0a7ce7e7ba66f12c214652fb40c43dab073d300bf9e75d80be70295ffa",
+   "bytes": 73
+  },
+  "whoisxml_quota_403_documented.http.json": {
+   "source": "documented",
+   "origin": "https://whois-history.whoisxmlapi.com/api/documentation/error-codes (403 = insufficient credits, incorrect API key or IP not on the allowlist)",
+   "captured_at": null,
+   "note": "status and reason documented; JSON envelope {code, messages} recalled, unverified",
+   "sha256": "6b1b47860863e10dd1edfb25183ff2c05c0ef0ff1e224d149f501ff7ffbb8d3e",
+   "bytes": 359
+  },
+  "whoisxml_rate_limited_429_documented.http.json": {
+   "source": "documented",
+   "origin": "error-codes page: 429 Too Many Requests (30 requests/s documented limit)",
+   "captured_at": null,
+   "note": "body envelope recalled, unverified",
+   "sha256": "419e19448829b68ed942c06dd6494599ff8c8654b13c2db81c877271d2a9abc1",
+   "bytes": 330
+  },
+  "whoisfreaks_nokey_400.http.json": {
+   "source": "research",
+   "origin": "https://api.whoisfreaks.com/v1.0/whois?whois=live&domainName=example.com",
+   "captured_at": "2026-11-25",
+   "note": "keyless call: HTTP 400 'Please provide apikey' (P022 FC7), verbatim",
+   "sha256": "316c7e12ba728138ff122b0cd8626e72a22afb88cabbcd88e417d293f87db1e9",
+   "bytes": 442
+  },
+  "whoisfreaks_history_ok_documented.json": {
+   "source": "documented",
+   "origin": "https://whoisfreaks.com/documentation/whois-history-api field table (read 2026-11-26; the example JSON is loaded client-side and was not in the HTML)",
+   "captured_at": null,
+   "note": "documented field names, documentation values; total_records is a string in the docs",
+   "sha256": "63ec7a0e8ae37eb5e218374d3f55e6d00dda9cdd2c2183954e8b5395faf12daa",
+   "bytes": 3416
+  },
+  "whoisfreaks_history_not_found_404_documented.http.json": {
+   "source": "documented",
+   "origin": "https://whoisfreaks.com/documentation/errors (404 messages)",
+   "captured_at": null,
+   "note": "message documented; Spring envelope verified on whoisfreaks_nokey_400; 'error' text unverified",
+   "sha256": "ef6fa063917b17333e686b65ce8e8985538cb96f9ac1a17de900e9dd1bea543f",
+   "bytes": 456
+  },
+  "whoisfreaks_reverse_ok_documented.json": {
+   "source": "documented",
+   "origin": "https://whoisfreaks.com/documentation/reverse-whois-api field table (read 2026-11-26)",
+   "captured_at": null,
+   "note": "company=Example Holdings Ltda&exact=true; documentation values",
+   "sha256": "c987a0b400c9c63fed12b919ba225fe5dccdd4b7a0837e96c4499a9fe03ee371",
+   "bytes": 3438
+  },
+  "whoisfreaks_reverse_mini_synthetic.json": {
+   "source": "synthetic",
+   "origin": "mode=mini field list from the reverse-whois docs (num, domain_name, dates, registrant name, email, company_name); list key whois_domains (older docs) - exact mini shape unverified",
+   "captured_at": null,
+   "note": "parser must accept whois_domains or whois_domains_historical and flat or nested contacts",
+   "sha256": "dec5e6c48e84b38ddd35519bf9876073663bfd279f17498f14ebcae911b62bd5",
+   "bytes": 388
+  },
+  "whoisfreaks_reverse_empty_synthetic.json": {
+   "source": "synthetic",
+   "origin": "documented schema",
+   "captured_at": null,
+   "note": "no domain for the selector",
+   "sha256": "70ed79b85ac9708fcf7c60805bbbdbd3bde983ecc6237fbd47d1f11275a9b8f9",
+   "bytes": 95
+  },
+  "whoisfreaks_invalid_key_401_documented.http.json": {
+   "source": "documented",
+   "origin": "https://whoisfreaks.com/documentation/errors",
+   "captured_at": null,
+   "note": "documented status + message; Spring envelope as verified on the 400; 'error' text unverified -> NEEDS_KEY",
+   "sha256": "d2e0eb89a51c29ab7568df012a35b681cd9d012e70e2a243d8eebdf03412e234",
+   "bytes": 453
+  },
+  "whoisfreaks_credits_413_documented.http.json": {
+   "source": "documented",
+   "origin": "https://whoisfreaks.com/documentation/errors",
+   "captured_at": null,
+   "note": "documented status + message; Spring envelope as verified on the 400; 'error' text unverified -> QUOTA",
+   "sha256": "17b44a543ed518eb15d98535e669f3cbaef347041dd273ab90d503d8a855c630",
+   "bytes": 515
+  },
+  "whoisfreaks_rate_limited_429_documented.http.json": {
+   "source": "documented",
+   "origin": "https://whoisfreaks.com/documentation/errors",
+   "captured_at": null,
+   "note": "documented status + message; Spring envelope as verified on the 400; 'error' text unverified -> RATE_LIMITED",
+   "sha256": "967eec9139bdedcdb2d296a39316e50a324336ea3b6ba8306854f04d083df601",
+   "bytes": 497
+  }
+ }
+}

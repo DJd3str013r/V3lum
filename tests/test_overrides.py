@@ -123,7 +123,31 @@ def test_apply_overrides_is_idempotent_and_keeps_the_automatic_values():
 
 
 @pytest.fixture()
-def resolver_flagger(clean_registry):
+def resolver_warninglist(tmp_path):
+    """8.8.8.8 on a test warninglist: core tests never rely on the warninglists that module batches
+    bundle (P169 fragments), so the downgrade below comes from this tmp fragment."""
+    import json
+
+    from v3lum.core import noise
+
+    directory = tmp_path / "noise"
+    directory.mkdir()
+    fragment = {
+        "schema": "v3lum.noise/1", "kind": "warninglist", "name": "t-public-dns", "source": "tests/test_overrides.py",
+        "licence": "CC0-1.0", "description": "test list of public DNS resolvers", "ips": ["8.8.8.8"],
+    }
+    (directory / "t_public_dns.json").write_text(json.dumps(fragment), encoding="utf-8")
+    previous = noise._EXTRA_DIRS
+    noise.reload([*previous, directory])
+    assert "t-public-dns" in noise.warninglists(Entity.make("ipv4", "8.8.8.8"))
+    try:
+        yield
+    finally:
+        noise.reload(previous)
+
+
+@pytest.fixture()
+def resolver_flagger(clean_registry, resolver_warninglist):
     class ResolverFlagger(Module):
         name = "t_resolver_flagger"
         title = "Synthetic flagger"

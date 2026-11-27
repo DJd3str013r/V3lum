@@ -1,0 +1,23 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "github",
+  "hosts": [],
+  "sources": {
+    "takeover_candidates_fingerprints": {
+      "title": "can-i-take-over-xyz fingerprints.json at a pinned commit on raw.githubusercontent.com (subdomain-takeover service fingerprints)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://github.com/EdOverflow/can-i-take-over-xyz/blob/master/LICENSE",
+        "quote": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "can-i-take-over-xyz",
+      "sanitizer": null,
+      "dataset": "can_i_take_over_xyz_fingerprints",
+      "notes": "P276 cond 2 (modules takeover_candidates and takeover_verify, batch p9-G13-1). Research C0631 (verified_live 200, 30804 bytes, 2026-11-26). Active dataset (A6/A7): pinned by commit 5bd4e12837911c8475486f1da922c9b9c706e632 and SHA-256 in v3lum/data/active_locks/can_i_take_over_xyz_fingerprints.json, installed or refreshed only by `v3lum data update` with a diff summary, never mid-engagement. Until it is installed the modules read the reduced copy of the same commit bundled by WP23 (v3lum/data/takeover_fingerprints.json). Attribution 'can-i-take-over-xyz by EdOverflow and contributors, CC BY 4.0' is carried in reports. Only rows marked Vulnerable give candidates, Edge case rows MEDIUM, Not vulnerable rows are never reported."
+    }
+  },
+  "error_markers": []
+}

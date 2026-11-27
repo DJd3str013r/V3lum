@@ -1,0 +1,6 @@
+{
+  "name": "www.example.com",
+  "status": "preloaded",
+  "bulk": true,
+  "preloadedDomain": "example.com"
+}

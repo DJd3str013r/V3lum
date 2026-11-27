@@ -1,0 +1,21 @@
+{
+ "_fixture": "synthetic Google API quota error (google.rpc RESOURCE_EXHAUSTED shape)",
+ "status": 429,
+ "body": {
+  "error": {
+   "code": 429,
+   "status": "RESOURCE_EXHAUSTED",
+   "message": "Quota exceeded for quota metric 'Lookup requests' and limit 'Lookup requests per minute' of service 'webrisk.googleapis.com' for consumer 'project_number:0'.",
+   "details": [
+    {
+     "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+     "reason": "RATE_LIMIT_EXCEEDED",
+     "domain": "googleapis.com",
+     "metadata": {
+      "service": "webrisk.googleapis.com"
+     }
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,16 @@
+{
+ "_fixture": "REAL live capture 2026-11-26, minimised: random control; Disqus 404 page reduced to its title",
+ "_meta": {
+  "url": "https://disqus.com/by/klqvcj4ogm7ovh6sngqi/",
+  "user_agent": "V3LUM/dev",
+  "captured": "2026-11-26T08:33:03Z",
+  "elapsed_s": 0.121,
+  "bytes_original": 5108
+ },
+ "status": 404,
+ "headers": {
+  "server": "nginx",
+  "content-type": "text/html; charset=utf-8"
+ },
+ "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<title>\n        Page not found (404) - Disqus\n    </title>\n</head>\n<body><h1>Page not found</h1></body>\n</html>\n"
+}

@@ -1,0 +1,64 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "thc",
+  "name": "THC subdomain and reverse-DNS database (ip.thc.org)",
+  "operator": "The Hacker's Choice (THC), community security group",
+  "hosts": [
+    "ip.thc.org"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Chair decision P016: only THC is community tier (and default) among the keyless passive subdomain feeds; well-known community security group with an identifiable operator and a public, documented free service (A8 community). No formal terms are published.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Aggregated passive DNS/rDNS names with a last_seen_on date: a name was seen at some point, never proof that it exists or belongs to the organisation today (stale names are flagged)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 15,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "day": 250,
+    "rate_per_second": 1.0,
+    "burst": 2,
+    "published": false,
+    "evidence_url": "https://ip.thc.org/",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "subdomains": {
+      "title": "THC subdomain lookup API (POST /api/v1/lookup/subdomains, cursor paging, last_seen_on per name)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://ip.thc.org/",
+        "quote": "Registry terms per feed (A1 BR3): THC, AnubisDB and Subdomain Center are 'open' (legal_dpo: free services with no published terms, no contractual bar)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "thc",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P016 cond 4). The service answers 'Free Service!, Do not abuse' in every body. POST https://ip.thc.org/api/v1/lookup/subdomains {domain, limit, page_state} -> {comment, processed_domain, matching_records, domains[{domain, last_seen_on}], next_page_state} (research C0020, live 2026-11-26: example.com 20,766 records, cursor paging verified). x-ratelimit-limit 250 with an unknown window: the module stops paging when x-ratelimit-remaining runs out; 429 = rate limited (P016 cond 2)."
+    }
+  },
+  "notes": "Owned by batch p2-G01-3 (P016, module subdomains_passive). Quota: x-ratelimit-limit 250 observed (window unknown) -> a soft day budget of 250 x 0.8 lookups (published false) plus 1 request/s; at most 10 pages per registrable domain (max_requests 10)."
+}

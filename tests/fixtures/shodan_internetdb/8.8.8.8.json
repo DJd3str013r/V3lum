@@ -1,1 +1,1 @@
-{"cpes":[],"hostnames":["test-site.omk.ru","dns.google"],"ip":"8.8.8.8","ports":[53,443],"tags":["pqc"],"vulns":[]}
+{"cpes":[],"hostnames":["dns.google","cotenant1.example.com"],"ip":"8.8.8.8","ports":[53,443],"tags":["pqc"],"vulns":[]}

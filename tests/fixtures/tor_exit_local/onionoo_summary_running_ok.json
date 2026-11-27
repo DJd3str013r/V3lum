@@ -1,0 +1,80 @@
+{
+ "version": "8.0",
+ "build_revision": "89598ea",
+ "relays_published": "2026-11-26 03:00:00",
+ "bridges_published": "2026-11-26 02:58:18",
+ "relays": [
+  {
+   "n": "ExampleRelay9",
+   "f": "5DC345143ABD46147DDC3DD5888962F996372B92",
+   "a": [
+    "203.0.113.1",
+    "[2001:db8::1]"
+   ],
+   "r": true
+  },
+  {
+   "n": "ExampleRelay5",
+   "f": "5F44E683AFAF2E7D15AED060841CD34935E4A4D0",
+   "a": [
+    "192.0.2.1",
+    "[2001:db8:ff::2]"
+   ],
+   "r": true
+  },
+  {
+   "n": "ExampleRelay11",
+   "f": "D28E1F360A9BE0EBC665C46F9FE1271625983CFD",
+   "a": [
+    "192.0.2.2",
+    "[2001:db8:ff::3]"
+   ],
+   "r": true
+  },
+  {
+   "n": "ExampleRelay12",
+   "f": "FD3E02E2DB30486D0DF46032F53D71D169615BEA",
+   "a": [
+    "192.0.2.3",
+    "[2001:db8:ff::4]"
+   ],
+   "r": true
+  },
+  {
+   "n": "ExampleRelay13",
+   "f": "FDECA060F74AAD2DBED96046B61A323866FA92FA",
+   "a": [
+    "192.0.2.4",
+    "[2001:db8:ff::5]"
+   ],
+   "r": true
+  },
+  {
+   "n": "ExampleRelay14",
+   "f": "554C66A0AAD0913F59905D12793833E53A0B282E",
+   "a": [
+    "192.0.2.5",
+    "[2001:db8:ff::6]"
+   ],
+   "r": true
+  },
+  {
+   "n": "ExampleRelay15",
+   "f": "2C3CCC35B53264238AE8066F3C6CAFB6031EB5CF",
+   "a": [
+    "192.0.2.10",
+    "[2001:db8:ff::7]"
+   ],
+   "r": true
+  },
+  {
+   "n": "ExampleRelay1",
+   "f": "17EC8DE1E5513310300E5CEDF6641737F0E3E384",
+   "a": [
+    "192.0.2.11"
+   ],
+   "r": true
+  }
+ ],
+ "bridges": []
+}

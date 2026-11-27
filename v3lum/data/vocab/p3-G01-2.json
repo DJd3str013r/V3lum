@@ -1,0 +1,19 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p3-G01-2",
+  "title": "Batch p3-G01-2 (P022 whois_history_keyed, P023 ooni)",
+  "attributes": {
+    "whois_history": "historical WHOIS records of the domain from a paid WHOIS-history API, minimised at ingestion [{provider, record_date, record_date_source, first_seen, historical, label, created, updated, expires, registrar {name, iana_id}, nameservers, status, registrant_kind, privacy_proxy, registrant_organization, registrant_country}]: past registrations, never the current state; natural-person contacts are not kept here (P022 cond 5)",
+    "whois_history_summary": "summary of a WHOIS-history lookup {providers, records_count, records_kept, historical_count, preview, earliest_record, latest_record, registrars, registrant_organizations, privacy_proxy_records}: 'preview' means only the record count was bought",
+    "registrant_selectors": "usable registrant values seen in (historical) WHOIS records, for analyst selection as reverse-WHOIS seeds [{kind email|company_name|person_name, value, natural_person, record_date, historical, provider}]: privacy/proxy, placeholder and role values are never listed (P022 cond 3-4); natural-person values carry the privacy tag on the finding and stay under case retention",
+    "reverse_whois": "reverse-WHOIS result for a registrant value {providers, match_field email|organization|name, total, kept, truncated, too_broad, historical_count, domains [{domain, created, updated, expires, registrar, record_date, historical, label, match_confirmed}]}: candidates sharing the registrant, never scope (P022 cond 2, 5)",
+    "ooni_censorship": "OONI network-measurement context per probe country [{probe_cc, domain, state, measurement_count, anomaly_count, confirmed_count, failure_count, ok_count, tested_count, anomaly_rate, blocking_types, since, until, evidence, manual_links}]: blocking/tampering seen by volunteer probes, context only and never scored (P023 cond 2); 'no_measurements' is no evidence either way"
+  },
+  "tags": {
+    "censorship": "network-interference context from OONI measurements (blocking, DNS tampering, anomalies seen by probes in a country): context only, never scored"
+  },
+  "relations": {
+    "registrant_email": "domain -> e-mail shown in the registrant contact of a (historical) WHOIS record (expand=False: analyst selection required, privacy)",
+    "shared_registrant": "registrant e-mail/organisation/name -> domain whose (historical) WHOIS record shows the same value in the matched registrant field (reverse WHOIS candidate, never scope)"
+  }
+}

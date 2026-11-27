@@ -1,0 +1,73 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "bufferover",
+  "name": "BufferOver TLS dataset (tls.bufferover.run)",
+  "operator": "BufferOver (small operator; RapidAPI-backed key service)",
+  "hosts": [
+    "tls.bufferover.run"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "Small operator without a verifiable company identity, terms or privacy policy reviewed by legal; council P007 cond 1 (legal_dpo floor) keeps BufferOver unknown tier: opt-in module, excluded at TLP:AMBER and above (A8).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "D",
+    "justification": "TLS-scan derived 'ip,hostname' records of unknown freshness: single-source names stay unconfirmed until they resolve or a second source agrees."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 20,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "key",
+    "day": 20,
+    "burst": 1,
+    "published": false,
+    "evidence_url": "https://tls.bufferover.run/",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {
+    "bufferover": {
+      "description": "BufferOver TLS API key (x-api-key header)",
+      "signup_url": "https://tls.bufferover.run/",
+      "env": [
+        "V3LUM_BUFFEROVER_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "business = a company/team account on a plan whose terms permit internal business use, recorded by legal (never an analyst's personal free account, P007 cond 3); key_plans.bufferover='business' unlocks it under the corporate profile"
+    }
+  },
+  "sources": {
+    "dns": {
+      "title": "BufferOver TLS records of a domain (GET /dns?q=.{domain})",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://tls.bufferover.run/",
+        "quote": "P007 cond 3 (binding council text): key-terms per adapter - a company/team account, never an analyst's personal free account, on a plan whose terms permit internal business use; legal records the plan and the terms URL in the registry before the adapter runs under the corporate profile (A1).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "bufferover",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0045 (verified_needs_key: 403 without key). Records are comma-separated 'ip,...,hostname' strings in Results[] (legacy FDNS_A[]/RDNS[]): the IP is split from the host name (P007 cond 4) and kept as evidence only; Meta.Errors inside an HTTP 200 is an error. The day figure of the quota block is an interim budget (plan limits unpublished). Used by subdomains_keyed_minor."
+    }
+  },
+  "notes": "Owned by batch p3-G01-1 (P007, module subdomains_keyed_minor)."
+}

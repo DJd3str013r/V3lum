@@ -1,0 +1,6 @@
+[
+ {"id": "binlist_404_probe", "gap": 5, "max_bytes": 100000, "headers": {"Accept-Version": "3"},
+  "url": "https://lookup.binlist.net/100000"},
+ {"id": "imeidb_api_no_token", "gap": 4, "max_bytes": 200000, "headers": {"Accept": "application/json"},
+  "url": "https://imeidb.xyz/api/imei/353893100000000?format=json"}
+]

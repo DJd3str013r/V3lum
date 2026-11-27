@@ -1,0 +1,42 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "ipguardian",
+  "name": "IPGuardian (keyless blocklist aggregator check)",
+  "operator": "IPGuardian (ipguardian.net)",
+  "hosts": ["ipguardian.net"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "P150 final condition 1: terms 'unknown' and tier unknown until legal records them (operator and data handling not reviewed). Disabled in every profile until then; afterwards opt-in, excluded at AMBER and above, --allow-unknown at CLEAR/GREEN, IOC_TYPES only.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "D", "justification": "Re-aggregates 140+ public blocklists (FireHOL and others) that P149 already matches locally; one vote at most, never above LOW alone (P150 FC3)."},
+  "http_profile": {"user_agent": "neutral", "accept": "application/json", "ttl": 86400, "min_interval": 2.0, "retries": 0},
+  "quota": {"scope": "egress_ip", "day": 500, "published": false, "evidence_url": "https://ipguardian.net/", "safety_margin": 0.8},
+  "error_markers": [
+    {"id": "ipguardian_success_false", "statuses": [200], "json_path": "success", "equals": false, "maps_to": "error", "reason_code": "error",
+     "reason": "IPGuardian: success:false in an HTTP 200 body"}
+  ],
+  "keys": {},
+  "sources": {
+    "check": {
+      "title": "IPGuardian blocklist check (POST https://ipguardian.net/api/check {\"ip\": ...}): names of the public blocklists that list the IP",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://ipguardian.net/",
+        "quote": "",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "ipguardian",
+      "sanitizer": null,
+      "dataset": null,
+      "embeds": ["firehol", "blocklist.de", "cins", "spamhaus", "emergingthreats"],
+      "notes": "P150 FC1: terms not reviewed (research record C0339 'IPGuardian terms (free)', no published text recorded). Invalid input: HTTP 400 {error:'Invalid IP addresses'} -> ERROR. List names are deduplicated against the P149 feeds (one vote at most)."
+    }
+  },
+  "notes": "Owned by batch p3-G02-2 (P150 ip_reputation_keyless)."
+}

@@ -1,0 +1,99 @@
+{
+ "schema": "v3lum.acceptance_routes/1",
+ "module": "bluesky",
+ "routes": [
+  {
+   "method": "GET",
+   "url": "https://public.api.bsky.app/xrpc/com.atproto.identity.resolveHandle?handle=example.com",
+   "status": 400,
+   "text": "{\"error\":\"InvalidRequest\",\"message\":\"Unable to resolve handle\"}",
+   "headers": {
+    "content-type": "application/json; charset=utf-8"
+   },
+   "latency_ms": 239
+  },
+  {
+   "method": "GET",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.searchActors?q=example.com&limit=10",
+   "status": 200,
+   "json": {
+    "actors": [
+     {
+      "did": "did:plc:examplecandidatexxxa2345",
+      "handle": "candidate-1.example.com",
+      "displayName": "Candidate 1",
+      "createdAt": "2026-09-18T12:21:24.854Z",
+      "labels": []
+     },
+     {
+      "did": "did:plc:examplecandidatexxxb2345",
+      "handle": "candidate-2.example.com",
+      "displayName": "Candidate 2",
+      "createdAt": "2024-07-21T01:11:45.376Z",
+      "labels": []
+     },
+     {
+      "did": "did:plc:examplecandidatexxxc2345",
+      "handle": "candidate-3.example.com",
+      "displayName": "Candidate 3",
+      "createdAt": "2023-06-13T02:04:45.869Z",
+      "labels": []
+     },
+     {
+      "did": "did:plc:examplecandidatexxxd2345",
+      "handle": "candidate-4.example.com",
+      "displayName": "Candidate 4",
+      "createdAt": "2025-10-04T20:02:39.752Z",
+      "labels": []
+     },
+     {
+      "did": "did:plc:examplecandidatexxxe2345",
+      "handle": "candidate-5.example.com",
+      "displayName": "Candidate 5",
+      "createdAt": "2024-10-23T17:37:01.910Z",
+      "labels": []
+     },
+     {
+      "did": "did:plc:examplecandidatexxxf2345",
+      "handle": "candidate-6.example.com",
+      "displayName": "Candidate 6",
+      "createdAt": "2025-12-28T21:40:00.224Z",
+      "labels": []
+     },
+     {
+      "did": "did:plc:examplecandidatexxxg2345",
+      "handle": "candidate-7.example.com",
+      "displayName": "Candidate 7",
+      "createdAt": "2025-02-10T23:27:17.159Z",
+      "labels": []
+     },
+     {
+      "did": "did:plc:examplecandidatexxxh2345",
+      "handle": "candidate-8.example.com",
+      "displayName": "Candidate 8",
+      "createdAt": "2024-11-30T22:17:32.048Z",
+      "labels": []
+     },
+     {
+      "did": "did:plc:examplecandidatexxxi2345",
+      "handle": "candidate-9.example.com",
+      "displayName": "Candidate 9",
+      "createdAt": "2024-11-27T04:59:38.647Z",
+      "labels": []
+     },
+     {
+      "did": "did:plc:examplecandidatexxxj2345",
+      "handle": "candidate-10.example.com",
+      "displayName": "Candidate 10",
+      "createdAt": "2025-03-28T09:59:32.795Z",
+      "labels": []
+     }
+    ]
+   },
+   "headers": {
+    "content-type": "application/json; charset=utf-8"
+   },
+   "latency_ms": 627
+  }
+ ]
+}

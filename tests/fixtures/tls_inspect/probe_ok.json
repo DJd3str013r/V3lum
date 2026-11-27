@@ -1,0 +1,52 @@
+{
+ "system_store": {
+  "verified": true,
+  "version": "TLSv1.3",
+  "cipher": [
+   "TLS_AES_256_GCM_SHA384",
+   "TLSv1.3",
+   256
+  ],
+  "alpn": null,
+  "ms": 49,
+  "subject": "CN=example.com",
+  "issuer": "CN=Cloudflare TLS Issuing ECC CA 3,O=SSL Corporation,C=US",
+  "not_before": "2026-11-24T23:48:34+00:00",
+  "not_after": "2027-02-22T23:53:08+00:00",
+  "serial": "0x77288510df7e2b1d5b1ebc349a11db61",
+  "sig_alg": "sha256",
+  "key_type": "ECPublicKey",
+  "key_size": 256,
+  "san": [
+   "example.com",
+   "*.example.com"
+  ],
+  "sha256": "56986996436e5efd8e9355479c92c97ac3a5c1d25699783239674cb44d0c5220",
+  "sha1": "e8b1b1e1d330e2acf9a44dc236e5166d9c520428"
+ },
+ "mozilla_store_only": {
+  "verified": true,
+  "version": "TLSv1.3",
+  "cipher": [
+   "TLS_AES_256_GCM_SHA384",
+   "TLSv1.3",
+   256
+  ],
+  "alpn": null,
+  "ms": 348,
+  "subject": "CN=example.com",
+  "issuer": "CN=Cloudflare TLS Issuing ECC CA 3,O=SSL Corporation,C=US",
+  "not_before": "2026-11-24T23:48:34+00:00",
+  "not_after": "2027-02-22T23:53:08+00:00",
+  "serial": "0x77288510df7e2b1d5b1ebc349a11db61",
+  "sig_alg": "sha256",
+  "key_type": "ECPublicKey",
+  "key_size": 256,
+  "san": [
+   "example.com",
+   "*.example.com"
+  ],
+  "sha256": "56986996436e5efd8e9355479c92c97ac3a5c1d25699783239674cb44d0c5220",
+  "sha1": "e8b1b1e1d330e2acf9a44dc236e5166d9c520428"
+ }
+}

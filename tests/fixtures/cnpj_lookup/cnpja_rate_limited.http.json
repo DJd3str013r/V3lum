@@ -1,0 +1,19 @@
+{
+ "request": "GET https://open.cnpja.com/office/00000000000191",
+ "response": {
+  "status": 429,
+  "headers": {
+   "content-type": "application/json; charset=utf-8",
+   "retry-after": "12"
+  },
+  "body": {
+   "code": 429,
+   "message": "too many requests"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "observed_at": null,
+ "origin": "synthetic",
+ "note": "synthetic: not observed live (requests stayed under the limit); status and headers model the documented limit, body is a placeholder (vendor documents ~5/min per IP)"
+}

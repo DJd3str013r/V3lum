@@ -1,0 +1,45 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "nodes": [
+    {
+      "key": "domain:old-shop.example",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "domain_age_days": [{"value": 400, "source": "rdap"}],
+        "tranco_popularity": [{"value": "not in top 1M", "source": "tranco_rank"}]
+      }
+    },
+    {
+      "key": "domain:popular-launch.example",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "domain_age_days": [{"value": 5, "source": "rdap"}],
+        "tranco_rank": [{"value": 4211, "source": "tranco_rank"}],
+        "tranco_popularity": [{"value": "popular", "source": "tranco_rank"}]
+      }
+    },
+    {
+      "key": "domain:tenant.example",
+      "depth": 1,
+      "attributes": {
+        "domain_age_days": [{"value": 2, "source": "rdap"}],
+        "tranco_popularity": [{"value": "not in top 1M", "source": "tranco_rank"}],
+        "shared_platform": [{"value": {"platform": "tenant.example", "category": "app_hosting"}, "source": "tranco_rank"}]
+      }
+    },
+    {
+      "key": "domain:age-unknown.example",
+      "depth": 1,
+      "attributes": {"tranco_popularity": [{"value": "not in top 1M", "source": "tranco_rank"}]}
+    },
+    {
+      "key": "domain:young-unranked-unknown.example",
+      "depth": 1,
+      "attributes": {"domain_age_days": [{"value": 3, "source": "rdap"}]}
+    }
+  ],
+  "edges": []
+}

@@ -1,0 +1,17 @@
+{
+ "request": "GET https://minhareceita.org/00000000000191",
+ "response": {
+  "status": 429,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": {
+   "message": "Too Many Requests"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "observed_at": null,
+ "origin": "synthetic",
+ "note": "synthetic: not observed live (requests stayed under the limit); status and headers model the documented limit, body is a placeholder"
+}

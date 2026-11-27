@@ -1,0 +1,386 @@
+{
+ "schema": "v3lum.acceptance_routes/1",
+ "module": "subdomains_passive",
+ "routes": [
+  {
+   "method": "POST",
+   "url": "https://ip.thc.org/api/v1/lookup/subdomains",
+   "status": 200,
+   "json": {
+    "comment": "Free Service!, Do not abuse",
+    "processed_domain": "example.com",
+    "matching_records": 8,
+    "domains": [
+     {
+      "domain": "example.com",
+      "last_seen_on": "2026-11-25"
+     },
+     {
+      "domain": "www.example.com",
+      "last_seen_on": "2024-12-11"
+     },
+     {
+      "domain": "1.example.com",
+      "last_seen_on": "2025-05-03"
+     },
+     {
+      "domain": "mail.example.com",
+      "last_seen_on": "2025-05-03"
+     },
+     {
+      "domain": "server2.example.com",
+      "last_seen_on": "2025-05-03"
+     },
+     {
+      "domain": "test3.example.com",
+      "last_seen_on": "2025-05-03"
+     },
+     {
+      "domain": "*.example.com",
+      "last_seen_on": "2024-12-11"
+     },
+     {
+      "domain": "1.example.com",
+      "last_seen_on": "2025-05-03"
+     }
+    ],
+    "next_page_state": ""
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 650
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=1.example.com&type=A&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "1.example.com.",
+      "type": 1
+     }
+    ],
+    "Authority": [
+     {
+      "name": "example.com.",
+      "type": 6,
+      "TTL": 1780,
+      "data": "elliott.ns.cloudflare.com. dns.cloudflare.com. 2421050422 10000 2400 604800 1800"
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0"
+   },
+   "headers": {
+    "content-type": "application/json; charset=UTF-8"
+   },
+   "latency_ms": 391
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=1.example.com&type=AAAA&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "1.example.com.",
+      "type": 28
+     }
+    ],
+    "Authority": [
+     {
+      "name": "example.com.",
+      "type": 6,
+      "TTL": 1800,
+      "data": "elliott.ns.cloudflare.com. dns.cloudflare.com. 2421050422 10000 2400 604800 1800"
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0",
+    "Comment": "Response from 108.162.192.162."
+   },
+   "headers": {
+    "content-type": "application/json; charset=UTF-8"
+   },
+   "latency_ms": 31
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=mail.example.com&type=A&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "mail.example.com.",
+      "type": 1
+     }
+    ],
+    "Authority": [
+     {
+      "name": "example.com.",
+      "type": 6,
+      "TTL": 1787,
+      "data": "elliott.ns.cloudflare.com. dns.cloudflare.com. 2421050422 10000 2400 604800 1800"
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0"
+   },
+   "headers": {
+    "content-type": "application/json; charset=UTF-8"
+   },
+   "latency_ms": 446
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=mail.example.com&type=AAAA&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "mail.example.com.",
+      "type": 28
+     }
+    ],
+    "Authority": [
+     {
+      "name": "example.com.",
+      "type": 6,
+      "TTL": 1787,
+      "data": "elliott.ns.cloudflare.com. dns.cloudflare.com. 2421050422 10000 2400 604800 1800"
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0"
+   },
+   "headers": {
+    "content-type": "application/json; charset=UTF-8"
+   },
+   "latency_ms": 8
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=server2.example.com&type=A&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "server2.example.com.",
+      "type": 1
+     }
+    ],
+    "Authority": [
+     {
+      "name": "example.com.",
+      "type": 6,
+      "TTL": 1800,
+      "data": "elliott.ns.cloudflare.com. dns.cloudflare.com. 2421050422 10000 2400 604800 1800"
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0",
+    "Comment": "Response from 172.64.32.162."
+   },
+   "headers": {
+    "content-type": "application/json; charset=UTF-8"
+   },
+   "latency_ms": 518
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=test3.example.com&type=A&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "test3.example.com.",
+      "type": 1
+     }
+    ],
+    "Authority": [
+     {
+      "name": "example.com.",
+      "type": 6,
+      "TTL": 1800,
+      "data": "elliott.ns.cloudflare.com. dns.cloudflare.com. 2421050422 10000 2400 604800 1800"
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0",
+    "Comment": "Response from 108.162.195.228."
+   },
+   "headers": {
+    "content-type": "application/json; charset=UTF-8"
+   },
+   "latency_ms": 523
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=test3.example.com&type=AAAA&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "test3.example.com.",
+      "type": 28
+     }
+    ],
+    "Authority": [
+     {
+      "name": "example.com.",
+      "type": 6,
+      "TTL": 1799,
+      "data": "elliott.ns.cloudflare.com. dns.cloudflare.com. 2421050422 10000 2400 604800 1800"
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0"
+   },
+   "headers": {
+    "content-type": "application/json; charset=UTF-8"
+   },
+   "latency_ms": 26
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=server2.example.com&type=AAAA&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "server2.example.com.",
+      "type": 28
+     }
+    ],
+    "Authority": [
+     {
+      "name": "example.com.",
+      "type": 6,
+      "TTL": 1800,
+      "data": "elliott.ns.cloudflare.com. dns.cloudflare.com. 2421050422 10000 2400 604800 1800"
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0",
+    "Comment": "Response from 173.245.58.162."
+   },
+   "headers": {
+    "content-type": "application/json; charset=UTF-8"
+   },
+   "latency_ms": 34
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=www.example.com&type=A&edns_client_subnet=0.0.0.0%2F0",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "www.example.com.",
+      "type": 1
+     }
+    ],
+    "Answer": [
+     {
+      "name": "www.example.com.",
+      "type": 1,
+      "TTL": 118,
+      "data": "172.66.147.243"
+     },
+     {
+      "name": "www.example.com.",
+      "type": 1,
+      "TTL": 118,
+      "data": "104.20.23.154"
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0"
+   },
+   "headers": {
+    "content-type": "application/json; charset=UTF-8"
+   },
+   "latency_ms": 451
+  },
+  {
+   "method": "GET",
+   "url": "https://dns.google/resolve?name=*",
+   "status": 200,
+   "json": {
+    "Status": 0,
+    "TC": false,
+    "RD": true,
+    "RA": true,
+    "AD": true,
+    "CD": false,
+    "Question": [
+     {
+      "name": "dxtolvocigl7418q.example.com.",
+      "type": 1
+     }
+    ],
+    "Authority": [
+     {
+      "name": "example.com.",
+      "type": 6,
+      "TTL": 1800,
+      "data": "elliott.ns.cloudflare.com. dns.cloudflare.com. 2421050422 10000 2400 604800 1800"
+     }
+    ],
+    "edns_client_subnet": "0.0.0.0/0",
+    "Comment": "Response from 108.162.195.228."
+   },
+   "headers": {
+    "content-type": "application/json; charset=UTF-8"
+   },
+   "latency_ms": 100
+  }
+ ]
+}

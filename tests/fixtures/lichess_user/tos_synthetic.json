@@ -1,0 +1,16 @@
+{
+ "_fixture": "SYNTHETIC (Lichess API docs field tosViolation); documentation values",
+ "id": "exampletos",
+ "username": "ExampleTos",
+ "tosViolation": true,
+ "createdAt": 1609459200000,
+ "seenAt": 1795600000000,
+ "url": "https://lichess.org/@/ExampleTos",
+ "profile": {
+  "bio": "see example.org/about",
+  "realName": "Example Person",
+  "location": "Example City",
+  "flag": "BR",
+  "links": "https://www.twitch.tv/exampletos\r\nexample.org/me"
+ }
+}

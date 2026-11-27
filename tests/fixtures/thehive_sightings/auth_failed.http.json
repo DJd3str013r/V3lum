@@ -1,0 +1,29 @@
+{
+ "request": {
+  "method": "POST",
+  "url": "https://thehive.example.com/api/v1/query",
+  "headers": {
+   "Authorization": "<invalid key, value not stored>"
+  },
+  "json": {
+   "query": [
+    {
+     "_name": "listObservable"
+    }
+   ]
+  }
+ },
+ "response": {
+  "status": 401,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": {
+   "type": "AuthenticationError",
+   "message": "Authentication failure"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "401 AuthenticationError {type, message} per the TheHive 6 OpenAPI (message text synthetic)"
+}

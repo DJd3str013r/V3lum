@@ -1,0 +1,11 @@
+{
+ "_synthetic": "Shape of the documented GreyNoise Community v3 HTTP 200 answer (ip, noise, riot, classification, name, link, last_seen, message). Not captured live: the keyless weekly quota of this egress was exhausted (429) on 2026-11-25/26. FC5 names 'Google Public DNS'; note the recorded 8.8.8.8 answer of 2026-11-25 was a 404 'not observed'.",
+ "ip": "8.8.8.8",
+ "noise": false,
+ "riot": true,
+ "classification": "benign",
+ "name": "Google Public DNS",
+ "link": "https://viz.greynoise.io/riot/8.8.8.8",
+ "last_seen": "2026-11-25",
+ "message": "Success"
+}

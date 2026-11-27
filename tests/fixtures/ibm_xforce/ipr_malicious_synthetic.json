@@ -1,0 +1,71 @@
+{
+ "ip": "198.51.100.23",
+ "history": [
+  {
+   "created": "2026-09-14T08:12:00.000Z",
+   "reason": "Regional Internet Registry",
+   "geo": {
+    "country": "Brazil",
+    "countrycode": "BR"
+   },
+   "ip": "198.51.100.0/24",
+   "categoryDescriptions": {},
+   "reasonDescription": "One of the five RIRs announced a (new) location mapping of the IP.",
+   "score": 1,
+   "cats": {}
+  },
+  {
+   "created": "2026-11-20T10:30:00.000Z",
+   "reason": "Security analyst review",
+   "geo": {
+    "country": "Brazil",
+    "countrycode": "BR"
+   },
+   "ip": "198.51.100.23",
+   "categoryDescriptions": {
+    "Botnet Command and Control Server": "This category refers to IP addresses that act as command and control."
+   },
+   "reasonDescription": "Based on the review of an X-Force security analyst.",
+   "score": 8.6,
+   "cats": {
+    "Botnet Command and Control Server": 86
+   }
+  }
+ ],
+ "subnets": [
+  {
+   "created": "2026-09-14T08:12:00.000Z",
+   "ip": "198.51.100.0",
+   "subnet": "198.51.100.0/24",
+   "score": 1,
+   "cats": {},
+   "reason": "Regional Internet Registry",
+   "asns": {
+    "64496": {
+     "Company": "Example Net",
+     "cidr": 24
+    }
+   },
+   "geo": {
+    "country": "Brazil",
+    "countrycode": "BR"
+   }
+  }
+ ],
+ "cats": {
+  "Botnet Command and Control Server": 86,
+  "Malware": 71
+ },
+ "geo": {
+  "country": "Brazil",
+  "countrycode": "BR"
+ },
+ "score": 8.6,
+ "reason": "Security analyst review",
+ "reasonDescription": "Based on the review of an X-Force security analyst.",
+ "categoryDescriptions": {
+  "Botnet Command and Control Server": "This category refers to IP addresses that act as command and control.",
+  "Malware": "This category lists IP addresses that were seen hosting malware."
+ },
+ "tags": []
+}

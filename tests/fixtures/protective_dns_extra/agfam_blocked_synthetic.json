@@ -1,0 +1,24 @@
+{
+ "Question": [
+  {
+   "name": "malware-test.example.net.",
+   "type": 1
+  }
+ ],
+ "Answer": [
+  {
+   "name": "malware-test.example.net.",
+   "data": "0.0.0.0",
+   "TTL": 10,
+   "type": 1,
+   "class": 1
+  }
+ ],
+ "Extra": null,
+ "TC": false,
+ "RD": true,
+ "RA": true,
+ "AD": false,
+ "CD": false,
+ "Status": 0
+}

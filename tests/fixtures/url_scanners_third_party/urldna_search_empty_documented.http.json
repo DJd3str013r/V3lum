@@ -1,0 +1,19 @@
+{
+ "_meta": {
+  "provenance": "documented",
+  "source": "api.urldna.io/openapi.json (empty array)",
+  "request": {
+   "method": "POST",
+   "url": "https://api.urldna.io/v1/search",
+   "json": {
+    "query": "domain = example.com",
+    "max_results": 32
+   }
+  }
+ },
+ "status": 200,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": []
+}

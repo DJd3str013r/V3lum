@@ -1,0 +1,4 @@
+{
+ "error": "UnidentifiedImageError",
+ "message": "cannot identify image file '<input>'"
+}

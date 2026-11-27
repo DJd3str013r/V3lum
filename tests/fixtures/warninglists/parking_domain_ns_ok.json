@@ -1,0 +1,17 @@
+{
+ "name": "Parking domains name server",
+ "type": "hostname",
+ "version": 20261014,
+ "description": "List of parking domain's name server",
+ "matching_attributes": [
+  "domain|ip",
+  "domain",
+  "hostname"
+ ],
+ "category": "known",
+ "list": [
+  "above.com",
+  "bodis.com",
+  "sedoparking.com"
+ ]
+}

@@ -1,0 +1,18 @@
+{
+ "request": {
+  "method": "POST",
+  "url": "https://siem.example.com:9200/logs-proxy-*,logs-dns-*/_search",
+  "headers": {
+   "Authorization": "<ApiKey value not stored>",
+   "Content-Type": "application/json"
+  }
+ },
+ "response": {
+  "status": 200,
+  "headers": {
+   "content-type": "text/html; charset=utf-8"
+  },
+  "body": "<!DOCTYPE html><html><head><title>Sign in - Example Corp SSO</title></head><body><form method=\"post\" action=\"/oauth2/sign_in\"><input type=\"text\" name=\"username\"><input type=\"password\" name=\"password\"></form></body></html>"
+ },
+ "note": "reverse proxy in front of the cluster answered its SSO login page with 200 -> blocked login_wall, never EMPTY"
+}

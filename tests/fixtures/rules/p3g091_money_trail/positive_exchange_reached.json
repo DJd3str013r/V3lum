@@ -1,0 +1,188 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "options": {
+  "mode": "passive",
+  "tlp": "amber",
+  "depth": 1
+ },
+ "settings": {
+  "crypto_depth": 2
+ },
+ "nodes": [
+  {
+   "key": "btc_address:1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2",
+   "depth": 0,
+   "seed": true,
+   "attributes": {
+    "top_counterparties": [
+     {
+      "value": [
+       {
+        "address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+        "direction": "in",
+        "received_from": "1.0 BTC",
+        "sent_to": "0 BTC",
+        "tx_count": 1,
+        "in_tx_count": 1,
+        "out_tx_count": 0,
+        "first_seen": "2026-11-01T10:00:00Z",
+        "last_seen": "2026-11-02T10:00:00Z",
+        "label": "counterparty (role unknown)"
+       },
+       {
+        "address": "3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy",
+        "direction": "out",
+        "received_from": "0 BTC",
+        "sent_to": "0.9 BTC",
+        "tx_count": 1,
+        "in_tx_count": 0,
+        "out_tx_count": 1,
+        "first_seen": "2026-11-01T10:00:00Z",
+        "last_seen": "2026-11-02T10:00:00Z",
+        "label": "counterparty (role unknown)"
+       },
+       {
+        "address": "1KwdXzmjqp39iuZCecTGytQfxVtHiLmg1Z",
+        "direction": "out",
+        "received_from": "0 BTC",
+        "sent_to": "0.1 BTC",
+        "tx_count": 1,
+        "in_tx_count": 0,
+        "out_tx_count": 1,
+        "first_seen": "2026-11-03T10:00:00Z",
+        "last_seen": "2026-11-03T10:00:00Z",
+        "label": "counterparty (role unknown)"
+       }
+      ],
+      "source": "btc_explorers"
+     }
+    ]
+   }
+  },
+  {
+   "key": "btc_address:1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+   "depth": 1
+  },
+  {
+   "key": "btc_address:3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy",
+   "depth": 1,
+   "seed": false,
+   "attributes": {
+    "top_counterparties": [
+     {
+      "value": [
+       {
+        "address": "1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2",
+        "direction": "in",
+        "received_from": "0.9 BTC",
+        "sent_to": "0 BTC",
+        "tx_count": 1,
+        "in_tx_count": 1,
+        "out_tx_count": 0,
+        "first_seen": "2026-11-01T10:00:00Z",
+        "last_seen": "2026-11-02T10:00:00Z",
+        "label": "counterparty (role unknown)"
+       },
+       {
+        "address": "bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq",
+        "direction": "out",
+        "received_from": "0 BTC",
+        "sent_to": "0.85 BTC",
+        "tx_count": 1,
+        "in_tx_count": 0,
+        "out_tx_count": 1,
+        "first_seen": "2026-11-04T10:00:00Z",
+        "last_seen": "2026-11-04T10:00:00Z",
+        "label": "counterparty (role unknown)"
+       }
+      ],
+      "source": "btc_explorers"
+     }
+    ]
+   }
+  },
+  {
+   "key": "btc_address:1KwdXzmjqp39iuZCecTGytQfxVtHiLmg1Z",
+   "depth": 1,
+   "attributes": {
+    "stop_node_hint": [
+     {
+      "value": "mixer",
+      "source": "walletexplorer"
+     }
+    ],
+    "wallet_labels": [
+     {
+      "value": [
+       "ExampleMixer"
+      ],
+      "source": "walletexplorer"
+     }
+    ]
+   }
+  },
+  {
+   "key": "btc_address:bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq",
+   "depth": 2,
+   "attributes": {
+    "stop_node_hint": [
+     {
+      "value": "exchange",
+      "source": "crypto_address_labels"
+     }
+    ],
+    "wallet_labels": [
+     {
+      "value": [
+       "ExampleExchange"
+      ],
+      "source": "crypto_address_labels"
+     }
+    ]
+   }
+  }
+ ],
+ "edges": [
+  {
+   "src": "btc_address:1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2",
+   "dst": "btc_address:1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+   "relation": "transacted_with",
+   "module": "btc_explorers",
+   "confidence": 0.7,
+   "expand": false
+  },
+  {
+   "src": "btc_address:1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2",
+   "dst": "btc_address:3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy",
+   "relation": "transacted_with",
+   "module": "btc_explorers",
+   "confidence": 0.7,
+   "expand": false
+  },
+  {
+   "src": "btc_address:1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2",
+   "dst": "btc_address:1KwdXzmjqp39iuZCecTGytQfxVtHiLmg1Z",
+   "relation": "transacted_with",
+   "module": "btc_explorers",
+   "confidence": 0.7,
+   "expand": false
+  },
+  {
+   "src": "btc_address:3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy",
+   "dst": "btc_address:bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq",
+   "relation": "transacted_with",
+   "module": "btc_explorers",
+   "confidence": 0.7,
+   "expand": false
+  }
+ ],
+ "expect": {
+  "p3g091_money_trail": {
+   "min": 1,
+   "max": 1,
+   "severity": "info",
+   "confidence_label": "probable"
+  }
+ }
+}

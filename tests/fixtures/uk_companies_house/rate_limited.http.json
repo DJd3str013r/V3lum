@@ -1,0 +1,12 @@
+{
+ "_note": "synthetic: 429 -> RATE_LIMITED with the reset time",
+ "status": 429,
+ "headers": {
+  "content-type": "application/json",
+  "x-ratelimit-limit": "600",
+  "x-ratelimit-remain": "0",
+  "x-ratelimit-reset": "1795685000",
+  "x-ratelimit-window": "5m"
+ },
+ "body": ""
+}

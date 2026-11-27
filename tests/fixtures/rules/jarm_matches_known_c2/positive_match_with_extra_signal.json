@@ -1,0 +1,73 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "$comment": "Indexed JARM equal to a ThreatFox-tagged C2 of the case, plus a self-signed certificate: MEDIUM",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "nodes": [
+    {
+      "key": "ipv4:192.0.2.20",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "jarm": [
+          {
+            "value": "07d14d16d21d21d07c42d41d00041d24a458a375eef0c576d23a7bab9a9fb1",
+            "source": "shodan_api"
+          }
+        ]
+      },
+      "findings": [
+        {
+          "title": "ThreatFox IOC (Cobalt Strike C2)",
+          "severity": "high",
+          "confidence": 0.8,
+          "criterion": "source verdict",
+          "tags": [
+            "c2",
+            "malicious"
+          ],
+          "module": "abusech",
+          "source": "abusech.threatfox",
+          "observed_last": "2026-11-25T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "key": "ipv4:192.0.2.21",
+      "depth": 1,
+      "seed": false,
+      "attributes": {
+        "jarm": [
+          {
+            "value": [
+              {
+                "port": 443,
+                "jarm": "07d14d16d21d21d07c42d41d00041d24a458a375eef0c576d23a7bab9a9fb1"
+              }
+            ],
+            "source": "shodan_api"
+          }
+        ],
+        "tls_self_signed": [
+          {
+            "value": true,
+            "source": "shodan_internetdb"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [],
+  "expect": {
+    "jarm_matches_known_c2": {
+      "min": 1,
+      "max": 1,
+      "severity": "medium",
+      "confidence_label": "probable"
+    }
+  }
+}

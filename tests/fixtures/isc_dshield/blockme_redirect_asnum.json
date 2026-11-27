@@ -1,0 +1,21 @@
+{
+ "url": "https://isc.sans.edu/api/asnum/5/4837?json",
+ "observed_at": "2026-11-26T06:46:27Z",
+ "request_headers": {
+  "Accept": "application/json",
+  "User-Agent": "v3lum-prep/0.1"
+ },
+ "status": 302,
+ "headers": {
+  "content-type": "text/html; charset=UTF-8",
+  "location": "/blockme.html",
+  "cache-control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0"
+ },
+ "body": "",
+ "followed": {
+  "url": "https://isc.sans.edu/blockme.html",
+  "status": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "body_fixture": "isc_dshield__blockme_page.html"
+ }
+}

@@ -1,0 +1,60 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "hachyderm",
+  "name": "Hachyderm (hachyderm.io Mastodon instance)",
+  "operator": "Nivenly Foundation (non-profit)",
+  "hosts": [
+    "hachyderm.io"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Large public instance run by the Nivenly Foundation with published rules, terms and privacy policy since 2022 (A8 community: identifiable operator, public terms, >= 2 years of track record).",
+  "tier_reviewer": "p3-G05-1 implementer (A8 definitions; maintainers review the known-instance list, P105 cond 1)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Mastodon REST API of the account's home instance (authoritative for local accounts); remote accounts come from the instance's federation cache. Profile fields are owner-written; rel=me verified_at proves only that the linked page links back."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 10,
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "hour": 3600,
+    "published": true,
+    "evidence_url": "https://docs.joinmastodon.org/api/rate-limits/"
+  },
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "accounts_api": {
+      "title": "Mastodon REST API GET /api/v1/accounts/lookup?acct= and /.well-known/webfinger?resource=acct: (read-only, unauthenticated)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://hachyderm.io/about",
+        "quote": "Passive module username_social/mastodon contacts only instances on a bundled known-instance list (data/fediverse_instances.json: large public instances, each with a registry entry recording tier trusted or community and its terms, refreshed by maintainers).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "fediverse",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P105 cond 1). 404 {'error':'Record not found'} = no such local account; a 404 for a remote acct means 'not known to this instance' (its cache only), never absent; 403/429 = could not verify (P105 cond 4). Unauthenticated v2 search is never used. "
+    }
+  },
+  "notes": "Owned by batch p3-G05-1 (P105 mastodon): an entry of v3lum/data/mastodon/fediverse_instances.json. Mastodon's documented default limit is 300 requests per 5 minutes per IP (x-ratelimit-* headers): quota block 3600/hour plus min_interval 1 s per instance (P105 cond 4). Fediverse handles are PERSONAL_TYPES: personal_data_review before default use (P105 cond 6)."
+}

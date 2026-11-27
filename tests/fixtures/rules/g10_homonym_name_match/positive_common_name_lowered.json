@@ -1,0 +1,56 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "options": {
+  "mode": "passive",
+  "tlp": "amber",
+  "depth": 1,
+  "purpose": "due diligence (synthetic fixture)"
+ },
+ "nodes": [
+  {
+   "key": "person_name:JOSE DA SILVA",
+   "depth": 0,
+   "seed": true,
+   "attributes": {
+    "first_name_frequency": [
+     {
+      "value": {
+       "first_name": "JOSE",
+       "frequency": 5754529,
+       "source": "IBGE nomes API"
+      },
+      "source": "ibge_name_frequency"
+     }
+    ]
+   },
+   "findings": [
+    {
+     "title": "Possible match: OFAC SDN (name only)",
+     "severity": "medium",
+     "confidence": 0.5,
+     "confidence_label": "possible",
+     "criterion": "name-only match (score 0.95) against a sanctions list (synthetic)",
+     "tags": [
+      "sanctions",
+      "name_only_match"
+     ],
+     "module": "sanctions_lists",
+     "source": "",
+     "data": {
+      "match_type": "name_only",
+      "matched_name": "JOSE DA SILVA",
+      "score": 0.95
+     }
+    }
+   ]
+  }
+ ],
+ "edges": [],
+ "expect": {
+  "g10_homonym_name_match": {
+   "min": 0,
+   "max": 0
+  }
+ }
+}

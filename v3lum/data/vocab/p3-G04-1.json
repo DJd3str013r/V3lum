@@ -1,0 +1,29 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p3-G04-1",
+  "title": "Names used by batch p3-G04-1 (EmailRep, Hunter.io, PGP keyservers, Proton key server, Google Calendar public ICS, GrayhatWarfare)",
+  "owner": "batch p3-G04-1 (P089, P090, P091, P092, P093, P138)",
+  "attributes": {
+    "emailrep_flags": "EmailRep flags kept for an address (P089 cond 5) {blacklisted, malicious_activity, malicious_activity_recent, leak_reported, leak_reported_recent, data_breach, spoofable, spf_strict, dmarc_enforced}: metadata only (A4); deliverability, accept-all and profile fields are dropped at ingestion",
+    "email_pattern": "address pattern of a domain reported by Hunter ('{first}.{last}', '{f}{last}'...); for verified own domains it feeds the offline sender-plausibility check (P090 cond 4)",
+    "email_counts": "address counts Hunter reports for a domain or company {total, personal, generic, department {name: n}, seniority {name: n}}: counts only, never addresses (P090 cond 2)",
+    "own_domain_addresses": "addresses Hunter lists for a VERIFIED own domain (privacy, case retention, never bulk-exported): list of {email, type, confidence, department, source_count, first_seen, last_seen} (P090 cond 4)",
+    "guessed_address": "address Hunter's email-finder guessed for an analyst-typed person {email, score, source_count, first_seen, last_seen, provenance 'generated'}: a hypothesis, never verified, never sent to account-revealing modules (P090 cond 3)",
+    "sender_check": "offline 'is this sender address plausible for our company' verdict (P090 cond 4) {verdict plausible | pattern_mismatch | lookalike_domain | other_domain | invalid, domain_check, own_domain, pattern, pattern_match, numeric_suffix}",
+    "pgp_keyserver_keys": "OpenPGP keys a public keyserver lists for the investigated value, minimised (P091 cond 4): list of {keyserver, fingerprint, keyid, algorithm, bits, created, expires, revoked, expired, uids [{email, name, created}], uids_dropped, address_match, claim ('unverified self-published claim' | 'address verified by keys.openpgp.org'), expiry_checked}",
+    "pgp_keyserver_results": "outcome per keyserver of one lookup {<keyserver>: {state published | none | could_not_verify, declared, listed, capped, truncated, reader_errors, reason}}: 'none' reads 'no key published on <keyserver>', never 'no such person'",
+    "proton_key": "Proton public key server facts for an analyst-typed address (P092 cond 3) {published, keys [{fingerprint, created}], earliest_created, age_days}: the key creation date approximates the account creation date; absence reads 'no public key published', never 'no account'",
+    "public_calendar": "Google Calendar public ICS facts of an analyst-typed address (P093 cond 2) {exists, event_count, recurring_event_count, first_event_date, last_event_date, timezone, truncated, complete}: never event titles, descriptions, locations, attendees or organizers",
+    "grayhat_buckets": "brand/domain-named cloud buckets GrayhatWarfare indexes (P138 cond 4): list of {bucket, provider, file_count, brand_hits, ownership 'exists, ownership unverified' | 'own (confirmed)'} - names only, never listed or downloaded",
+    "grayhat_files_summary": "GrayhatWarfare file-name search summary (P138 cond 3) {total, returned, capped, extension_counts, bucket_counts, masked_count}: counts and extensions only; masked names stay in the sanitized evidence"
+  },
+  "tags": {
+    "ownership_unverified": "asset (bucket, account) named after the organisation or brand whose ownership is not linked to it yet: a candidate, LOW until confirmed through the org profile, a CNAME or a website reference",
+    "generated_address": "e-mail address produced by a pattern, permutation or finder service (not observed): never sent to account-revealing or key-server modules"
+  },
+  "relations": {
+    "guessed_email": "person name -> e-mail address a finder or pattern service generated for that person (provenance 'generated', expand=False: never sent to account-revealing modules, P090 cond 3, P092 cond 1)",
+    "published_address": "verified own domain -> address of the domain Hunter found published on the web (privacy, expand=False, P090 cond 4)",
+    "candidate_bucket": "brand, keyword or domain -> cloud bucket named after it in the GrayhatWarfare index (exists, ownership unverified; names only, never fetched, expand=False, P138 cond 4)"
+  }
+}

@@ -1,0 +1,15 @@
+{
+ "request": "GET https://data.iana.org/rdap/dns.json (If-None-Match + If-Modified-Since)",
+ "response": {
+  "status": 304,
+  "headers": {
+   "etag": "\"1169c-660bd345ae377-br\"",
+   "last-modified": "Fri, 20 Nov 2026 23:00:03 GMT",
+   "cache-control": "max-age=86400"
+  },
+  "body": ""
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "conditional refresh of the 24 h dataset"
+}

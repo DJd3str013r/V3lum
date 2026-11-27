@@ -1,0 +1,19 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p3-G02-1",
+  "title": "Names used by batch p3-G02-1 (Netlas, ONYPHE, Censys Platform v3, Criminal IP, FOFA)",
+  "owner": "batch p3-G02-1 (P037, P042, P044, P048, P049)",
+  "attributes": {
+    "netlas_ioc": "Netlas IOC records of the host {total, fp_flagged, credible [{threats, tags, score, first_seen, last_seen}]}: fp_flagged entries carry Netlas' own false-positive alarm (context only); credible entries are one weak vote, never a verdict (P037)",
+    "whois_network": "network WHOIS record of the IP as reported by an internet-scan provider {name, handle, range, cidrs, organization, country, source}: registry data, never proof of operation",
+    "scan_engine_summary": "per-provider summary of an internet-scan engine answer {provider, endpoint, window, categories {name: count}, totals, scan_labels}: what the provider holds, not what was verified",
+    "scan_threats": "threats an internet-scan provider detected on services of the host [{name, port, type, source, confidence}] (e.g. Censys threats): one vote, never ground truth",
+    "criminalip_score": "Criminal IP risk score of the IP {inbound, outbound, vote malicious|suspicious|benign}: one vote for consensus, never 'malicious' alone (P048 cond 4)",
+    "ids_alerts": "IDS/honeypot alerts a provider recorded for the IP [{classification, message, source_system, confirmed_time}] (capped): context, never a verdict",
+    "subdomain_records": "DNS records of subdomains as indexed by a provider [{domain, a, aaaa, cname, seen}] (capped): indexed data of varying age, re-resolve before acting",
+    "fofa_assets": "FOFA rows for an IOC selector (capped) {total, rows [{host, ip, port, title}], capped}: observations of an unknown-tier provider, never expanded automatically",
+    "censys_web_properties": "Censys web properties matched by a search [{hostname, port}] (capped): indexed observations, never expanded automatically"
+  },
+  "tags": {},
+  "relations": {}
+}

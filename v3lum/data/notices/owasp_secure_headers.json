@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "owasp_secure_headers",
+  "source_url": "https://github.com/OWASP/www-project-secure-headers",
+  "version": "ci/headers_add.json (13 headers) and ci/headers_remove.json (88 names), last_update_utc 2026-11-23 13:15:25, fetched 2026-11-26",
+  "sha256": "",
+  "licence": "Apache-2.0",
+  "attribution": "Recommended and information-leaking HTTP header lists from the OWASP Secure Headers Project (https://owasp.org/www-project-secure-headers/), licensed under the Apache License, Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0). Re-shaped into one JSON file; values unchanged.",
+  "bundled": true,
+  "files": [
+    "v3lum/data/security_headers/owasp_secure_headers.json",
+    "v3lum/modules/url_web/security_headers.py"
+  ]
+}

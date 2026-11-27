@@ -1,0 +1,163 @@
+{
+ "messages": [
+  [
+   "info",
+   "IP address has been converted to a prefix"
+  ]
+ ],
+ "data_call_name": "whois",
+ "data_call_status": "supported",
+ "cached": false,
+ "status": "ok",
+ "status_code": 200,
+ "time": "2026-11-26T04:35:41.504871",
+ "data": {
+  "records": [
+   [
+    {
+     "key": "inetnum",
+     "value": "1.1.1.0/24"
+    },
+    {
+     "key": "netname",
+     "value": "APNIC-LABS"
+    },
+    {
+     "key": "descr",
+     "value": "APNIC and Cloudflare DNS Resolver project"
+    },
+    {
+     "key": "descr",
+     "value": "Routed globally by AS13335/Cloudflare"
+    },
+    {
+     "key": "descr",
+     "value": "Research prefix for APNIC Labs"
+    },
+    {
+     "key": "country",
+     "value": "AU"
+    },
+    {
+     "key": "org",
+     "value": "ORG-ARAD1-AP"
+    },
+    {
+     "key": "admin-c",
+     "value": "AIC3-AP"
+    },
+    {
+     "key": "tech-c",
+     "value": "AIC3-AP"
+    },
+    {
+     "key": "abuse-c",
+     "value": "AA1412-AP"
+    },
+    {
+     "key": "status",
+     "value": "ASSIGNED PORTABLE"
+    },
+    {
+     "key": "remarks",
+     "value": "---------------"
+    },
+    {
+     "key": "remarks",
+     "value": "All Cloudflare abuse reporting can be done via"
+    },
+    {
+     "key": "remarks",
+     "value": "resolver-abuse@cloudflare.com"
+    },
+    {
+     "key": "remarks",
+     "value": "---------------"
+    },
+    {
+     "key": "mnt-by",
+     "value": "APNIC-HM"
+    },
+    {
+     "key": "mnt-routes",
+     "value": "MAINT-APNICRANDNET"
+    },
+    {
+     "key": "mnt-irt",
+     "value": "IRT-APNICRANDNET-AU"
+    },
+    {
+     "key": "last-modified",
+     "value": "2023-04-26T22:57:58Z"
+    },
+    {
+     "key": "mnt-lower",
+     "value": "MAINT-APNICRANDNET"
+    },
+    {
+     "key": "source",
+     "value": "APNIC"
+    }
+   ]
+  ],
+  "irr_records": [
+   [
+    {
+     "key": "route",
+     "value": "1.1.1.0/24"
+    },
+    {
+     "key": "descr",
+     "value": "QRATOR via EMIX"
+    },
+    {
+     "key": "origin",
+     "value": "13335"
+    },
+    {
+     "key": "mnt-by",
+     "value": "MAINT-AS8966"
+    },
+    {
+     "key": "source",
+     "value": "RADB"
+    },
+    {
+     "key": "last-modified",
+     "value": "2023-11-13T16:17:56Z"
+    }
+   ],
+   [
+    {
+     "key": "route",
+     "value": "1.1.1.0/24"
+    },
+    {
+     "key": "origin",
+     "value": "13335"
+    },
+    {
+     "key": "descr",
+     "value": "APNIC Research and Development"
+    },
+    {
+     "key": "mnt-by",
+     "value": "MAINT-APNICRANDNET"
+    },
+    {
+     "key": "last-modified",
+     "value": "2023-04-26T02:42:44Z"
+    },
+    {
+     "key": "source",
+     "value": "APNIC"
+    }
+   ]
+  ],
+  "authorities": [
+   "apnic"
+  ],
+  "resource": "1.1.1.1",
+  "query_time": "2026-11-26T04:35:00"
+ }
+}

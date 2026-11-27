@@ -1,0 +1,15 @@
+{
+ "request": "GET https://osint.bevigil.com/api/example.com/subdomains/ (X-Access-Token: <bad>)",
+ "response": {
+  "status": 401,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": {
+   "detail": "Invalid token"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "status per research (401 without key); body PLACEHOLDER"
+}

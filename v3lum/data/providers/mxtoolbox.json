@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "mxtoolbox",
+  "name": "MXToolbox SuperTool pages",
+  "operator": "MXToolbox, Inc.",
+  "hosts": [
+    "mxtoolbox.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms and a business offering; P026 cond 5: 'trusted - MXToolbox'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": true,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "SPF/DMARC/MX evaluation computed live by the provider; manual context only."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "pivot_pages": {
+      "title": "MXToolbox SuperTool spf:/dmarc:/mx: actions (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://mxtoolbox.com/",
+        "quote": "The pack is offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "mxtoolbox",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (cond 1 of the proposal). Research C0070 (verified 2026-11-26, 200 for the spf, dmarc and mx actions; results render client-side). Opening the page makes MXToolbox query the domain's DNS live: touches_target=true (P026 cond 10). Used by pivots_domain_dns (pack domain_dns.json)."
+    }
+  },
+  "notes": "Manual pivot links only (batch p2-G14-1): V3LUM never fetches them (P311)."
+}

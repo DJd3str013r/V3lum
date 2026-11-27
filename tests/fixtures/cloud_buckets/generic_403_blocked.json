@@ -1,0 +1,11 @@
+{
+ "request": {"method": "GET", "url": "https://example-corp.s3.amazonaws.com/?max-keys=1"},
+ "response": {
+  "status": 403,
+  "headers": {"content-type": "text/html", "server": "cloudflare", "cf-mitigated": "challenge"},
+  "body": "<!DOCTYPE html><html><head><title>Just a moment...</title></head><body>Checking your browser before accessing.</body></html>"
+ },
+ "class": "synthetic",
+ "origin": "synthetic (403 with an HTML challenge body, no S3 Error XML)",
+ "notes": "403 without the provider AccessDenied/AllAccessDisabled XML = could-not-test (FC7), never exists-private."
+}

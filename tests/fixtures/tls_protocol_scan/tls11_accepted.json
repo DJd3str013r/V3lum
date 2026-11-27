@@ -1,0 +1,18 @@
+{
+ "server": "legacy_tls11",
+ "probe": "tls11",
+ "trust": "self_signed_ca",
+ "ok": true,
+ "stage": "handshake",
+ "version": "TLSv1.1",
+ "cipher": [
+  "ECDHE-RSA-AES256-SHA",
+  "TLSv1.0",
+  256
+ ],
+ "error_type": null,
+ "reason": null,
+ "library": null,
+ "verify_code": null,
+ "str": null
+}

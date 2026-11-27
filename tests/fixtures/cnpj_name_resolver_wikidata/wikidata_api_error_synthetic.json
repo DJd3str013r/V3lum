@@ -1,0 +1,8 @@
+{
+ "error": {
+  "code": "maxlag",
+  "info": "Waiting for all: 5.2 seconds lagged.",
+  "lag": 5.2
+ },
+ "servedby": "mw-api-ext.example"
+}

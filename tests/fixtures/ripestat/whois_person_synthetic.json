@@ -1,0 +1,274 @@
+{
+ "_synthetic": "RIPE-RPSL shape on a real RIPEstat whois envelope; documentation values only (no allowed benign resource returns RIPE person objects)",
+ "messages": [
+  [
+   "info",
+   "IP address has been converted to a prefix"
+  ]
+ ],
+ "data_call_name": "whois",
+ "data_call_status": "supported",
+ "cached": false,
+ "status": "ok",
+ "status_code": 200,
+ "time": "2026-11-26T04:35:41.504871",
+ "data": {
+  "records": [
+   [
+    {
+     "key": "inetnum",
+     "value": "192.0.2.0 - 192.0.2.255"
+    },
+    {
+     "key": "netname",
+     "value": "EXAMPLE-NET"
+    },
+    {
+     "key": "descr",
+     "value": "Example network"
+    },
+    {
+     "key": "country",
+     "value": "BR"
+    },
+    {
+     "key": "org",
+     "value": "ORG-EX1-RIPE"
+    },
+    {
+     "key": "admin-c",
+     "value": "EP1-RIPE"
+    },
+    {
+     "key": "tech-c",
+     "value": "EP1-RIPE"
+    },
+    {
+     "key": "abuse-c",
+     "value": "AR1-RIPE"
+    },
+    {
+     "key": "status",
+     "value": "ASSIGNED PA"
+    },
+    {
+     "key": "remarks",
+     "value": "contact person@example.com"
+    },
+    {
+     "key": "notify",
+     "value": "person@example.com"
+    },
+    {
+     "key": "mnt-by",
+     "value": "EXAMPLE-MNT"
+    },
+    {
+     "key": "created",
+     "value": "2020-01-01T00:00:00Z"
+    },
+    {
+     "key": "last-modified",
+     "value": "2024-01-01T00:00:00Z"
+    },
+    {
+     "key": "source",
+     "value": "RIPE"
+    }
+   ],
+   [
+    {
+     "key": "organisation",
+     "value": "ORG-EX1-RIPE"
+    },
+    {
+     "key": "org-name",
+     "value": "Example Org Ltda"
+    },
+    {
+     "key": "org-type",
+     "value": "OTHER"
+    },
+    {
+     "key": "address",
+     "value": "Rua Exemplo, 100"
+    },
+    {
+     "key": "country",
+     "value": "BR"
+    },
+    {
+     "key": "phone",
+     "value": "+55 11 5555-0101"
+    },
+    {
+     "key": "e-mail",
+     "value": "contato@example.com"
+    },
+    {
+     "key": "abuse-c",
+     "value": "AR1-RIPE"
+    },
+    {
+     "key": "mnt-by",
+     "value": "EXAMPLE-MNT"
+    },
+    {
+     "key": "created",
+     "value": "2020-01-01T00:00:00Z"
+    },
+    {
+     "key": "last-modified",
+     "value": "2024-01-01T00:00:00Z"
+    },
+    {
+     "key": "source",
+     "value": "RIPE"
+    }
+   ],
+   [
+    {
+     "key": "role",
+     "value": "Example Abuse Team"
+    },
+    {
+     "key": "address",
+     "value": "Rua Exemplo, 100"
+    },
+    {
+     "key": "phone",
+     "value": "+55 11 5555-0102"
+    },
+    {
+     "key": "e-mail",
+     "value": "noc@example.com"
+    },
+    {
+     "key": "abuse-mailbox",
+     "value": "abuse@example.com"
+    },
+    {
+     "key": "admin-c",
+     "value": "EP1-RIPE"
+    },
+    {
+     "key": "tech-c",
+     "value": "EP1-RIPE"
+    },
+    {
+     "key": "nic-hdl",
+     "value": "AR1-RIPE"
+    },
+    {
+     "key": "mnt-by",
+     "value": "EXAMPLE-MNT"
+    },
+    {
+     "key": "created",
+     "value": "2020-01-01T00:00:00Z"
+    },
+    {
+     "key": "last-modified",
+     "value": "2024-01-01T00:00:00Z"
+    },
+    {
+     "key": "source",
+     "value": "RIPE"
+    }
+   ],
+   [
+    {
+     "key": "person",
+     "value": "Example Person"
+    },
+    {
+     "key": "address",
+     "value": "Rua Exemplo, 200"
+    },
+    {
+     "key": "phone",
+     "value": "+55 11 5555-0103"
+    },
+    {
+     "key": "e-mail",
+     "value": "person@example.com"
+    },
+    {
+     "key": "nic-hdl",
+     "value": "EP1-RIPE"
+    },
+    {
+     "key": "mnt-by",
+     "value": "EXAMPLE-MNT"
+    },
+    {
+     "key": "created",
+     "value": "2020-01-01T00:00:00Z"
+    },
+    {
+     "key": "last-modified",
+     "value": "2024-01-01T00:00:00Z"
+    },
+    {
+     "key": "source",
+     "value": "RIPE"
+    }
+   ],
+   [
+    {
+     "key": "mntner",
+     "value": "EXAMPLE-MNT"
+    },
+    {
+     "key": "admin-c",
+     "value": "EP1-RIPE"
+    },
+    {
+     "key": "upd-to",
+     "value": "person@example.com"
+    },
+    {
+     "key": "auth",
+     "value": "SSO person@example.com"
+    },
+    {
+     "key": "mnt-by",
+     "value": "EXAMPLE-MNT"
+    },
+    {
+     "key": "source",
+     "value": "RIPE"
+    }
+   ]
+  ],
+  "irr_records": [
+   [
+    {
+     "key": "route",
+     "value": "192.0.2.0/24"
+    },
+    {
+     "key": "descr",
+     "value": "Example route"
+    },
+    {
+     "key": "origin",
+     "value": "AS64496"
+    },
+    {
+     "key": "mnt-by",
+     "value": "EXAMPLE-MNT"
+    },
+    {
+     "key": "source",
+     "value": "RIPE"
+    }
+   ]
+  ],
+  "authorities": [
+   "ripe"
+  ],
+  "resource": "192.0.2.1",
+  "query_time": "2026-11-26T04:35:00"
+ }
+}

@@ -1,0 +1,56 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "compras_gov",
+  "name": "Compras.gov.br open-data API (SICAF supplier registry)",
+  "operator": "Ministerio da Gestao e da Inovacao em Servicos Publicos (Compras.gov.br)",
+  "hosts": [
+    "dadosabertos.compras.gov.br"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Federal procurement system of the Ministerio da Gestao (government body, A8 trusted); open government API (P246 cond 5).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "SICAF supplier records of the federal procurement system; contracts are organ-centric in this API (codigoOrgao and a validity window are required), so only the supplier record is CNPJ-centric."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 20,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "sicaf_fornecedor": {
+      "title": "Compras.gov.br modulo-fornecedor 1_consultarFornecedor by CNPJ (SICAF supplier record)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://dadosabertos.compras.gov.br/swagger-ui/index.html",
+        "quote": "Official open data (BNDES, MinC, PNCP), tier trusted.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "compras_gov",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P246 cond 5); research C0574 terms 'Open government API (spec at /v3/api-docs)'. The research 404 'Resource not found' came from a missing required parameter: with ativo=true the supplier query answered 200 from the prep egress on 2026-11-26 (fixture). P246 cond 2-3 keep the source behind requires_egress BR (A9) until a success fixture is captured from the team's Brazilian egress; a 403, challenge, geo-block or empty reply is BLOCKED 'could not verify', never 'no contracts'; a 404 'Resource not found' is a query error, never an absence. Partners (masked names), e-mail and phone are never kept. Used by br_public_spending_br."
+    }
+  },
+  "notes": "Owned by batch p3-G10-2 (P246 br_public_spending_br). Azure Front Door; 1 request/s, answers cached 24 h. No quota block. Never through a VPN, proxy exit or IP rotation chosen to defeat a geo-block (A9)."
+}

@@ -1,0 +1,6 @@
+{
+  "name": "example.org",
+  "status": "pending-removal",
+  "bulk": true,
+  "preloadedDomain": "example.org"
+}

@@ -1,0 +1,287 @@
+{
+ "batch": "p3-G04-1",
+ "modules": [
+  {
+   "name": "emailrep",
+   "file": "v3lum/modules/email/emailrep.py",
+   "proposal": "P089",
+   "category": "email",
+   "opsec": "passive",
+   "default_enabled": false,
+   "terms": "unknown",
+   "provider_tier": "trusted",
+   "keys": [
+    "emailrep"
+   ],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:emailrep_flags"
+   ],
+   "live_check": "Not called live (keyed, no company key; terms unknown). Policy under corporate: SKIPPED 'licence' (unknown terms, POL-04) even with -M; without a key NEEDS_KEY before any request (live test). The 401 invalid-key, 429 anonymous-API-disabled and HTML-without-Accept answers are real research captures used offline."
+  },
+  {
+   "name": "hunter_io",
+   "file": "v3lum/modules/email/hunter_io.py",
+   "proposal": "P090",
+   "category": "email",
+   "opsec": "passive",
+   "default_enabled": false,
+   "terms": "key-terms",
+   "provider_tier": "trusted",
+   "keys": [
+    "hunter"
+   ],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:email_pattern",
+    "attribute:email_counts",
+    "attribute:own_domain_addresses",
+    "relation:published_address"
+   ],
+   "live_check": "Not called live (keyed, no company key): policy under corporate = SKIPPED 'licence' (key-terms without key_plans.hunter=business); run_on own_assets_only -> SKIPPED 'own_asset' without a txt_verified/attested domain; NEEDS_KEY without key. The 401 authentication_failed body is a real research capture."
+  },
+  {
+   "name": "hunter_io_count",
+   "file": "v3lum/modules/email/hunter_io.py",
+   "proposal": "P090",
+   "category": "email",
+   "opsec": "passive",
+   "default_enabled": false,
+   "terms": "key-terms",
+   "provider_tier": "trusted",
+   "keys": [
+    "hunter"
+   ],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [],
+   "live_check": "Not called live (keyed): NEEDS_KEY before any request asserted live; licence-blocked under corporate until key_plans.hunter=business."
+  },
+  {
+   "name": "hunter_io_finder",
+   "file": "v3lum/modules/email/hunter_io.py",
+   "proposal": "P090",
+   "category": "email",
+   "opsec": "passive",
+   "default_enabled": false,
+   "terms": "key-terms",
+   "provider_tier": "trusted",
+   "keys": [
+    "hunter"
+   ],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:guessed_address",
+    "relation:guessed_email",
+    "tag:generated_address"
+   ],
+   "live_check": "Not called live (keyed): licence-blocked under corporate; offline tests cover finder/not-found/451 opt-out/401."
+  },
+  {
+   "name": "hunter_sender_check",
+   "file": "v3lum/modules/email/hunter_io.py",
+   "proposal": "P090",
+   "category": "email",
+   "opsec": "passive",
+   "default_enabled": false,
+   "terms": "open",
+   "provider_tier": "n/a",
+   "keys": [],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:sender_check"
+   ],
+   "live_check": "Offline module (disclosure none): no network; offline tests only."
+  },
+  {
+   "name": "pgp_keyservers",
+   "file": "v3lum/modules/email/pgp_keyservers.py",
+   "proposal": "P091",
+   "category": "email",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "open",
+   "provider_tier": "community",
+   "keys": [],
+   "datasets": [],
+   "pivot_packs": [
+    "email_keys_calendar"
+   ],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:pgp_keyserver_keys",
+    "attribute:pgp_keyserver_results"
+   ],
+   "live_check": "Run 2026-11-26 with V3LUM_LIVE=1 (tests/live/test_p3_g04_1.py, 8 passed). email:test@example.com -> OK, keyserver.ubuntu.com 'published' (index capped at 100: flagged capped, 25 keys kept after minimisation, only test@example.com UIDs kept, no pivots), keys.openpgp.org 'none' (404); pgp_fingerprint:0D59D2B1...E651 (Debian security key) -> OK, both keyservers 'published' (VKS key without verified UID); never-used @example.com address -> EMPTY 'no key published on keyserver.ubuntu.com; no key published on keys.openpgp.org'. Hosts keyserver.ubuntu.com + keys.openpgp.org only. Policy: allowed with -M and --purpose; not default until personal_data_review (SKIPPED 'privacy')."
+  },
+  {
+   "name": "proton_pks",
+   "file": "v3lum/modules/email/proton_pks.py",
+   "proposal": "P092",
+   "category": "email",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "open",
+   "provider_tier": "trusted",
+   "keys": [],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:proton_key"
+   ],
+   "live_check": "Run 2026-11-26 with V3LUM_LIVE=1 (tests/live/test_p3_g04_1.py, 8 passed). email:security@proton.me (Proton's published role address) -> OK, 1 key, created 2022-05-03 (fingerprint + date only); email:test@example.com -> SKIPPED 'not_applicable' after the DoH MX check (null MX), no key-server call. Hosts api.protonmail.ch (+ dns.google for the MX gate). Policy: allowed with -M; not default until personal_data_review."
+  },
+  {
+   "name": "google_calendar_ics",
+   "file": "v3lum/modules/email/google_calendar_ics.py",
+   "proposal": "P093",
+   "category": "email",
+   "opsec": "passive",
+   "default_enabled": false,
+   "terms": "open",
+   "provider_tier": "trusted",
+   "keys": [],
+   "datasets": [],
+   "pivot_packs": [
+    "email_keys_calendar"
+   ],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:public_calendar"
+   ],
+   "live_check": "Run 2026-11-26 with V3LUM_LIVE=1 (tests/live/test_p3_g04_1.py, 8 passed). email:test@example.com -> EMPTY 'private or nonexistent (Google answers 404 for both: not an existence signal)'; Google's public holiday calendar id -> OK, 275 events 2021-01-01..2031-12-31, tz UTC, no event content kept, no cache. Host calendar.google.com only."
+  },
+  {
+   "name": "grayhatwarfare",
+   "file": "v3lum/modules/breach_leak/grayhatwarfare.py",
+   "proposal": "P138",
+   "category": "breach_leak",
+   "opsec": "passive",
+   "default_enabled": false,
+   "terms": "key-terms",
+   "provider_tier": "community",
+   "keys": [
+    "grayhat"
+   ],
+   "datasets": [],
+   "pivot_packs": [
+    "pentest"
+   ],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:grayhat_buckets",
+    "attribute:grayhat_files_summary",
+    "relation:candidate_bucket",
+    "tag:ownership_unverified"
+   ],
+   "live_check": "Not called live (keyed, no company key): NEEDS_KEY before any request asserted live; licence-blocked under corporate (key-terms) until key_plans.grayhat=business. The 401 'You don't have access to API' body is a real research capture."
+  }
+ ],
+ "proposals_not_done": [],
+ "core_requests": [
+  "P321 error markers: allow a declared 'absence' outcome for documented provider decisions (Hunter HTTP 451 'unavailable_for_legal_reasons' = person opted out) instead of the generic 451 geo_block classification; hunter_io_finder maps it module-side through a maps_to 'error' marker (which also keeps the circuit from tripping).",
+  "Core 'generated' provenance flag on entities (set by generator modules such as hunter_io_finder and name_permutations, honoured by policy.decide for account-revealing/key-server modules); proton_pks refuses depth>0, any provenance and known generator modules/relations (guessed_email, generated_candidate) module-side (P092 cond 1).",
+  "A value-free org fact store writable by own-asset modules (e.g. ctx.org facts: own-domain address pattern from hunter_io) so the offline hunter_sender_check gets the pattern without the manual 'v3lum config set hunter_sender_check_patterns' step (P090 cond 4); modules cannot read another module's ctx.state.",
+  "Case metadata naming the investigated company/domain (P091 cond 5 'the case company's domain'); pgp_keyservers uses 'analyst-typed seed + recorded purpose' meanwhile.",
+  "A structured person-at-organisation seed (or case context) for P090 cond 3; hunter_io_finder parses person_name 'First Last @ example.com' or the setting hunter_io_finder_domain.",
+  "P311 renderer: seeds-only privacy links (pivot pack flag) so email_keys_calendar:gcal_public_ics is offered only for analyst-typed seeds (P093 cond 3).",
+  "Export layer (P303/WP21): drop or gate attribute own_domain_addresses and published_address pivots in bulk exports (P090 cond 4 'never bulk-exported').",
+  "AR20 safety suite (e): include a query-string key (Hunter api_key=) in the fake-key grep over cache, evidence, events, reports and case DB (P090 cond 5).",
+  "Sanitizer second net: a boolean credential-leak flag ('credentials_leaked': true) is dropped as a credential field; emailrep renames it leak_reported. A metadata-boolean exemption (bool values under credential-like keys) would let modules keep provider names."
+ ],
+ "files": [
+  "docs/backlog/p3-G04-1.md",
+  "tests/fixtures/acceptance/email/pgp_keyservers.json",
+  "tests/fixtures/acceptance/email/proton_pks.json",
+  "tests/fixtures/emailrep/error_in_200_html.html",
+  "tests/fixtures/emailrep/invalid_email_400.json",
+  "tests/fixtures/emailrep/malformed.txt",
+  "tests/fixtures/emailrep/needs_key_401.json",
+  "tests/fixtures/emailrep/ok.json",
+  "tests/fixtures/emailrep/ok_suspicious.json",
+  "tests/fixtures/emailrep/rate_limited_429.json",
+  "tests/fixtures/google_calendar_ics/blocked_sorry.json",
+  "tests/fixtures/google_calendar_ics/login_wall.json",
+  "tests/fixtures/google_calendar_ics/malformed.ics",
+  "tests/fixtures/google_calendar_ics/not_found.json",
+  "tests/fixtures/google_calendar_ics/ok.ics",
+  "tests/fixtures/google_calendar_ics/ok_synthetic_personal.ics",
+  "tests/fixtures/grayhatwarfare/blocked_challenge.html",
+  "tests/fixtures/grayhatwarfare/buckets_ok.json",
+  "tests/fixtures/grayhatwarfare/empty.json",
+  "tests/fixtures/grayhatwarfare/files_ok.json",
+  "tests/fixtures/grayhatwarfare/needs_key_401.json",
+  "tests/fixtures/grayhatwarfare/rate_limited_429.json",
+  "tests/fixtures/hunter_io/domain_search_empty.json",
+  "tests/fixtures/hunter_io/domain_search_ok.json",
+  "tests/fixtures/hunter_io/email_count_ok.json",
+  "tests/fixtures/hunter_io/needs_key_401.json",
+  "tests/fixtures/hunter_io/quota_429.json",
+  "tests/fixtures/hunter_io/rate_limited_403.json",
+  "tests/fixtures/hunter_io/wrong_params_400.json",
+  "tests/fixtures/hunter_io_count/email_count_ok.json",
+  "tests/fixtures/hunter_io_count/needs_key_401.json",
+  "tests/fixtures/hunter_io_finder/email_finder_not_found.json",
+  "tests/fixtures/hunter_io_finder/email_finder_ok.json",
+  "tests/fixtures/hunter_io_finder/needs_key_401.json",
+  "tests/fixtures/hunter_io_finder/unavailable_451.json",
+  "tests/fixtures/pgp_keyservers/hkp_error_502.json",
+  "tests/fixtures/pgp_keyservers/hkp_index_capped.txt",
+  "tests/fixtures/pgp_keyservers/hkp_index_escaped.txt",
+  "tests/fixtures/pgp_keyservers/hkp_index_no_uids.txt",
+  "tests/fixtures/pgp_keyservers/hkp_index_ok.txt",
+  "tests/fixtures/pgp_keyservers/hkp_index_org.txt",
+  "tests/fixtures/pgp_keyservers/hkp_index_uid_hidden.txt",
+  "tests/fixtures/pgp_keyservers/hkp_not_found.json",
+  "tests/fixtures/pgp_keyservers/hkp_rate_limited_429.json",
+  "tests/fixtures/pgp_keyservers/malformed_armor.asc",
+  "tests/fixtures/pgp_keyservers/malformed_oversized.asc",
+  "tests/fixtures/pgp_keyservers/malformed_partial.asc",
+  "tests/fixtures/pgp_keyservers/malformed_truncated.asc",
+  "tests/fixtures/pgp_keyservers/vks_not_found.json",
+  "tests/fixtures/pgp_keyservers/vks_ok.asc",
+  "tests/fixtures/pgp_keyservers/vks_ok_no_uid.asc",
+  "tests/fixtures/pgp_keyservers/vks_rate_limited_429.json",
+  "tests/fixtures/proton_pks/empty.txt",
+  "tests/fixtures/proton_pks/malformed.txt",
+  "tests/fixtures/proton_pks/ok.txt",
+  "tests/fixtures/proton_pks/ok_org.txt",
+  "tests/fixtures/proton_pks/ok_two_keys.txt",
+  "tests/fixtures/proton_pks/rate_limited_429.json",
+  "tests/live/test_p3_g04_1.py",
+  "tests/modules/test_emailrep.py",
+  "tests/modules/test_google_calendar_ics.py",
+  "tests/modules/test_grayhatwarfare.py",
+  "tests/modules/test_hunter_io.py",
+  "tests/modules/test_hunter_io_count.py",
+  "tests/modules/test_hunter_io_finder.py",
+  "tests/modules/test_hunter_sender_check.py",
+  "tests/modules/test_pgp_keyservers.py",
+  "tests/modules/test_proton_pks.py",
+  "v3lum/data/notices/protosint_pks.json",
+  "v3lum/data/pivot_links/email_keys_calendar.json",
+  "v3lum/data/providers/emailrep.json",
+  "v3lum/data/providers/hunter.json",
+  "v3lum/data/providers/openpgp.json",
+  "v3lum/data/providers/proton.json",
+  "v3lum/data/providers/ubuntu_keyserver.json",
+  "v3lum/data/vocab/p3-G04-1.json",
+  "v3lum/modules/breach_leak/grayhatwarfare.py",
+  "v3lum/modules/email/emailrep.py",
+  "v3lum/modules/email/google_calendar_ics.py",
+  "v3lum/modules/email/hunter_io.py",
+  "v3lum/modules/email/pgp_keyservers.py",
+  "v3lum/modules/email/proton_pks.py"
+ ],
+ "notes": "All six proposals delivered (P089 emailrep; P090 as hunter_io (own-asset-only domain search, run_on own_assets_only), hunter_io_count (counts only, third parties, purpose), hunter_io_finder (typed person, purpose, generated pivot expand=False) and the offline hunter_sender_check (BEC lookalike + own-domain pattern); P091 pgp_keyservers; P092 proton_pks; P093 google_calendar_ics; P138 grayhatwarfare). Providers created (hosts mapped to null in owners.json): emailrep (reuses_queries=true, not sensitive, ttl 0), hunter (sensitive, per-source P145 schemas, monthly quota 25, key alias V3LUM_HUNTER_KEY), ubuntu_keyserver (trusted), openpgp (community), proton (api.protonmail.ch + mail-api.proton.me). Seeded providers google_calendar and grayhatwarfare are referenced, never edited. Merge gates still open: trimmed REAL success fixtures for emailrep/hunter/grayhatwarfare need company keys (P089 cond 6, P090 cond 6, P138 cond 5) - success fixtures are documentation-shaped and marked _synthetic; error fixtures are real captures. EmailRep never runs until legal records its terms (unknown). pgp_keyservers and proton_pks are default_enabled=True per the chair but stay out of the effective default set until personal_data_review is recorded (policy SKIPPED 'privacy'). No LIGHT/ACTIVE variant was required (WKD lookup and the ACTIVE bucket hand-off are in the backlog). Acceptance routes added for the default email modules (tests/fixtures/acceptance/email/pgp_keyservers.json, proton_pks.json; real someone@example.com answers, UIDs and fingerprints scrubbed). P327 lint clean on every module and data file; ruff clean on all batch files. Tests: 110 offline tests in the 9 batch test files + registry contract green for all 9 modules; live 8/8 passed (V3LUM_LIVE=1). Full offline suite (2026-11-26): 8 failures, none in batch files - other batches' work in progress (maltiverse MALWARE_FAMILY and hackernews marker load errors -> test_every_module_class_is_registered; leak_lookup_public LINT-07 -> test_shipped_tree_is_clean/test_default_root...; windows_artifact_triage vs script_decoder; test_permissions report naming; WP22 legacy rules count; engine suppression breach test; typosquat test passed on re-run)."
+}

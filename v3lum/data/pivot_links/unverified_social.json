@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.pivot_pack/1",
+  "pack": "unverified_social",
+  "title": "Personal-data pages behind challenges (privacy, P304 cond 11)",
+  "notes": "P304 (batch p2-G14-3): pages that curl cannot verify (SPA or anti-bot). V3LUM never requests these URLs, not even from doctor, and never solves their challenges (P304 cond 1). verified stays false until a team member opens the link in a browser: then verified=true, checked_at=<date>, x_verification='browser', x_checked_by=<name> and the label marker '(browser)' (P304 cond 6); 'curl' never appears here. x_module_links are rendered by the module pivots_unverified (module-side placeholders url_sha256, url_path, cve_num, hunter_q, and the per-link x_max_tlp the frozen schema lacks).",
+  "links": [
+    {
+      "id": "tgstat_channel",
+      "label": "TGStat channel analytics (may show a challenge)",
+      "template": "https://tgstat.com/channel/@{user}",
+      "entity_types": [
+        "username",
+        "telegram_handle"
+      ],
+      "category": "social",
+      "host": "tgstat.com",
+      "verified": false,
+      "checked_at": "",
+      "privacy": true,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "privacy=true: analyst-typed seeds of a case that opted in only (P304 cond 11).",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0285"
+    },
+    {
+      "id": "tellows_number",
+      "label": "tellows caller reputation (BR) (may show a challenge)",
+      "template": "https://www.tellows.com.br/num/{br_national}",
+      "entity_types": [
+        "phone"
+      ],
+      "category": "reputation",
+      "host": "www.tellows.com.br",
+      "verified": false,
+      "checked_at": "",
+      "privacy": true,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": true,
+      "notes": "privacy=true: analyst-typed seeds of a case that opted in only (P304 cond 11); Brazilian numbers only.",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0298"
+    }
+  ]
+}

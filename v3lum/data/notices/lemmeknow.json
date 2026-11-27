@@ -1,0 +1,11 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "lemmeknow",
+  "source_url": "https://github.com/swanandx/lemmeknow",
+  "version": "commit 1ed4a6b75540bae403d834857a0ddc371f1ac2f9 (src/data/regex.json; data derived from pyWhat)",
+  "sha256": "",
+  "licence": "MIT",
+  "attribution": "Identification regexes for cloud/API keys, tokens, webhooks, card brands and crypto wallets are adapted from lemmeknow, Copyright (c) 2021 Swanand Mulay, MIT licence; the data derives from pyWhat, Copyright (c) 2021 Bee-san, MIT licence. Rewritten for Python re, made linear and given validators; generic entries are disabled.",
+  "bundled": true,
+  "files": ["v3lum/core/patterns.py"]
+}

@@ -1,0 +1,19 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://services.nvd.nist.gov/rest/json/cves/2.0?cveId=CVE-2021-44228",
+  "headers": {}
+ },
+ "response": {
+  "status": 403,
+  "headers": {
+   "server": "cloudflare",
+   "content-type": "text/html; charset=UTF-8",
+   "cf-mitigated": "challenge"
+  },
+  "body": "<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta name=\"robots\" content=\"noindex,nofollow\"></head><body><div class=\"main-wrapper\" role=\"main\"><div class=\"main-content\"><noscript><div class=\"h2\"><span id=\"challenge-error-text\">Enable JavaScript and cookies to continue</span></div></noscript></div></div><script>(function(){window._cf_chl_opt = {cvId: '3',cZone: 'ipapi.co',cType: 'managed',cRay: '0000000000000000',cH: 'REDACTED',cN: 'REDACTED'};var a = document.createElement('script');a.src = '/cdn-cgi/challenge-platform/h/g/orchestrate/chl_page/v1?ray=0000000000000000';document.getElementsByTagName('head')[0].appendChild(a);}());</script></body></html>"
+ },
+ "transport_error": null,
+ "elapsed_s": 0.2,
+ "note": "Cloudflare managed-challenge page. Body: research capture from ipapi.co (same Cloudflare template; markers kept verbatim, tokens replaced). NVD is now fronted by Cloudflare (server: cloudflare, __cf_bm) but did not challenge the API from this egress. The cf-mitigated header is documented Cloudflare behaviour, added here."
+}

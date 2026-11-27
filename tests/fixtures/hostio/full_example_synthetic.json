@@ -1,0 +1,104 @@
+{
+ "domain": "example.com",
+ "dns": {
+  "domain": "example.com",
+  "a": [
+   "192.0.2.10"
+  ],
+  "aaaa": [
+   "2001:db8::10"
+  ],
+  "mx": [
+   "10 mx.example.net."
+  ],
+  "ns": [
+   "ns1.example.net."
+  ]
+ },
+ "ipinfo": {
+  "192.0.2.10": {
+   "city": "Example City",
+   "region": "Example Region",
+   "country": "US",
+   "loc": "0.0000,0.0000",
+   "postal": "00000",
+   "asn": {
+    "asn": "AS64500",
+    "name": "Example Hosting",
+    "domain": "example.net",
+    "route": "192.0.2.0/24",
+    "type": "hosting"
+   }
+  }
+ },
+ "web": {
+  "domain": "example.com",
+  "rank": 93,
+  "url": "https://www.example.org/landing",
+  "ip": "192.0.2.10",
+  "date": "2026-11-20T10:11:12.000Z",
+  "length": 1256,
+  "server": "ExampleServer",
+  "encoding": "utf8",
+  "title": "Example Domain",
+  "description": "Example description",
+  "links": [
+   "example.net",
+   "www.example.org",
+   "EXAMPLE.net",
+   "not a host",
+   "https://www.iana.org/domains/example"
+  ]
+ },
+ "related": {
+  "ip": [
+   {
+    "value": "192.0.2.10",
+    "count": 1579
+   }
+  ],
+  "asn": [
+   {
+    "value": "AS64500",
+    "count": 60938040
+   }
+  ],
+  "ns": [
+   {
+    "value": "example.net",
+    "count": 55215235
+   }
+  ],
+  "mx": [],
+  "backlinks": [
+   {
+    "value": "example.com",
+    "count": 60769
+   }
+  ],
+  "redirects": [
+   {
+    "value": "example.com",
+    "count": 2
+   }
+  ],
+  "adsense": [
+   {
+    "value": "pub-1234567890123456",
+    "count": 3
+   }
+  ],
+  "googleanalytics": [
+   {
+    "value": "UA-12345678",
+    "count": 3
+   }
+  ],
+  "gtm": [
+   {
+    "value": "GTM-ABC1234",
+    "count": 4000
+   }
+  ]
+ }
+}

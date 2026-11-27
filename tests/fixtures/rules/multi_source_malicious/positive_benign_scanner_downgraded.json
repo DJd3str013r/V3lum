@@ -1,0 +1,57 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "$comment": "A known benign research scanner listed by two families: consensus kept but downgraded to LOW/POSSIBLE",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "nodes": [
+    {
+      "key": "ipv4:192.0.2.12",
+      "depth": 0,
+      "seed": true,
+      "noise": true,
+      "noise_kind": "benign_scanner",
+      "tags": [
+        "benign_scanner"
+      ],
+      "findings": [
+        {
+          "title": "Listed by CINS Army",
+          "severity": "high",
+          "confidence": 0.8,
+          "criterion": "source verdict",
+          "tags": [
+            "malicious"
+          ],
+          "module": "ip_blocklists",
+          "source": "cinsscore.badguys",
+          "observed_last": "2026-11-25T00:00:00Z"
+        },
+        {
+          "title": "Listed by blocklist.de",
+          "severity": "high",
+          "confidence": 0.8,
+          "criterion": "source verdict",
+          "tags": [
+            "malicious"
+          ],
+          "module": "ip_blocklists",
+          "source": "blocklist_de.all",
+          "observed_last": "2026-11-24T00:00:00Z"
+        }
+      ]
+    }
+  ],
+  "edges": [],
+  "expect": {
+    "multi_source_malicious": {
+      "min": 1,
+      "max": 1,
+      "severity": "low",
+      "confidence_label": "possible"
+    }
+  }
+}

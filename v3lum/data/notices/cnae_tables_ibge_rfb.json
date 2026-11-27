@@ -1,0 +1,16 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "cnae_tables_ibge_rfb",
+  "source_url": "https://servicodados.ibge.gov.br/api/v2/cnae/subclasses",
+  "version": "IBGE CNAE 2.3 subclasses tree retrieved 2026-11-26 (1332 subclasses); RFB CNPJ open data 2026-11 Naturezas and Cnaes tables (Last-Modified 2026-11-16) and the RFB cnpj-metadados.pdf layout codes, retrieved 2026-11-26",
+  "sha256": "",
+  "licence": "Brazilian open government data (IBGE and Receita Federal do Brasil, Decreto 8.777/2016, Lei 12.527/2011)",
+  "attribution": "Fonte: IBGE/CONCLA - Classificacao Nacional de Atividades Economicas (CNAE 2.3) via servicodados.ibge.gov.br; Receita Federal do Brasil - Dados Abertos do CNPJ (tabelas de naturezas juridicas e CNAE, metadados do layout). Not endorsed by IBGE or RFB.",
+  "bundled": true,
+  "files": [
+    "v3lum/data/cnae_tables/cnae.json",
+    "v3lum/data/cnae_tables/natureza_juridica.json",
+    "v3lum/data/cnae_tables/rfb_codes.json",
+    "v3lum/modules/brazil_public_data/cnae_tables.py"
+  ]
+}

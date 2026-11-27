@@ -1,0 +1,5 @@
+{
+ "_synthetic": "IPinfo answer for a bogon/documentation address (documented 'bogon' flag).",
+ "ip": "192.0.2.1",
+ "bogon": true
+}

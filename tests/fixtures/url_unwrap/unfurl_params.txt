@@ -1,0 +1,10 @@
+https://x.com/github/status/2125212838917153459
+https://discord.com/channels/661720242585600273/849255963033600546/1573254070272000819
+https://www.tiktok.com/@github/video/7711432103156799096
+https://payout.example.org/track?ts=1795600000&t_ms=1795600000123
+https://payout.example.org/login?e=dmljdGltQGV4YW1wbGUuY29t
+https://payout.example.org/login?email=victim%40example.com&step=2
+https://payout.example.org/r?next=aHR0cHM6Ly9iYW5rLmV4YW1wbGUub3JnL2xvZ2lu
+https://payout.example.org/doc/930ce000-e7fe-11f1-8000-0242ac120002
+https://urlscan.io/result/01a21607-9c70-74c0-853d-a1ef26e386e9/
+https://payout.example.org/d/Q29tcGxleE9wYXF1ZVRva2VuMTIz9xKq/start

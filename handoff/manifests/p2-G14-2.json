@@ -1,0 +1,193 @@
+{
+ "batch": "p2-G14-2",
+ "modules": [
+  {
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "open",
+   "provider_tier": "n/a",
+   "keys": [],
+   "correlation_rules": [],
+   "new_vocabulary": [],
+   "name": "pivots_darkweb",
+   "file": "v3lum/modules/darkweb_ransomware/pivots_darkweb.py",
+   "proposal": "P203",
+   "category": "darkweb_ransomware",
+   "datasets": [
+    "P295 alias index (bundled, read through actor_alias_index.resolve; offline)",
+    "x_tracker_slugs table inside v3lum/data/pivot_links/darkweb.json (curated, maintainer-checked)"
+   ],
+   "pivot_packs": [
+    "darkweb (core link rlive_search; x_module_links ransomlook_group, rlive_group, rlive_search_actor, onionsearch)"
+   ],
+   "live_check": "tests/live/test_p2_g14_2.py passed with V3LUM_LIVE=1 (7 tests): offline module run through the real engine, bundled P295/ATT&CK data and the real provider registry, FakeHttp with no routes (no request made). Templates were checked by the maintainer on 2026-11-25/26 and recorded in tests/fixtures/pivots_*/verified_templates.json (status and title only); this batch added HEAD checks of the akira/qilin/play/medusa/safepay group pages on both trackers (all 200) and one GET of the onion-search template without '&submit=Search' (Cloudflare 403: unverified). V3LUM never fetches these URLs. pivots_darkweb: LockBit 3.0 -> both group pages; example.com at AMBER -> SKIPPED tlp (onion search max_tlp green)."
+  },
+  {
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "open",
+   "provider_tier": "n/a",
+   "keys": [],
+   "correlation_rules": [],
+   "new_vocabulary": [],
+   "name": "pivots_crypto",
+   "file": "v3lum/modules/crypto/pivots_crypto.py",
+   "proposal": "P216",
+   "category": "crypto",
+   "datasets": [],
+   "pivot_packs": [
+    "crypto (core links: 6 BTC + 6 EVM explorers; x_module_links blockchair_ltc, blockchair_doge, blockchair_bch, tronscan_address)"
+   ],
+   "live_check": "tests/live/test_p2_g14_2.py passed with V3LUM_LIVE=1 (7 tests): offline module run through the real engine, bundled P295/ATT&CK data and the real provider registry, FakeHttp with no routes (no request made). Templates were checked by the maintainer on 2026-11-25/26 and recorded in tests/fixtures/pivots_*/verified_templates.json (status and title only); this batch added HEAD checks of the akira/qilin/play/medusa/safepay group pages on both trackers (all 200) and one GET of the onion-search template without '&submit=Search' (Cloudflare 403: unverified). V3LUM never fetches these URLs. pivots_crypto: USDT-TRC20 contract -> Tronscan only; genesis address -> mempool.space first."
+  },
+  {
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "open",
+   "provider_tier": "n/a",
+   "keys": [],
+   "correlation_rules": [],
+   "new_vocabulary": [],
+   "name": "pivots_company_org",
+   "file": "v3lum/data/pivot_links/company_org.json",
+   "proposal": "P231",
+   "category": "company_org",
+   "datasets": [],
+   "pivot_packs": [
+    "company_org (pack only, no Module class: 7 core links; person/e-mail links privacy=true)"
+   ],
+   "live_check": "tests/live/test_p2_g14_2.py passed with V3LUM_LIVE=1 (7 tests): offline module run through the real engine, bundled P295/ATT&CK data and the real provider registry, FakeHttp with no routes (no request made). Templates were checked by the maintainer on 2026-11-25/26 and recorded in tests/fixtures/pivots_*/verified_templates.json (status and title only); this batch added HEAD checks of the akira/qilin/play/medusa/safepay group pages on both trackers (all 200) and one GET of the onion-search template without '&submit=Search' (Cloudflare 403: unverified). V3LUM never fetches these URLs. company_org: Companies House search URL for GITHUB matches the verified record."
+  },
+  {
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "open",
+   "provider_tier": "n/a",
+   "keys": [],
+   "correlation_rules": [],
+   "new_vocabulary": [],
+   "name": "pivots_brazil",
+   "file": "v3lum/modules/brazil_public_data/pivots_brazil.py",
+   "proposal": "P250",
+   "category": "brazil_public_data",
+   "datasets": [],
+   "pivot_packs": [
+    "brazil (core links: Portal da Transparencia CNPJ/name, Reclame Aqui, Jusbrasil, Escavador, Receita comprovante, Casa dos Dados; x_module_links static consumidor_gov_busca, sintegra_portal)"
+   ],
+   "live_check": "tests/live/test_p2_g14_2.py passed with V3LUM_LIVE=1 (7 tests): offline module run through the real engine, bundled P295/ATT&CK data and the real provider registry, FakeHttp with no routes (no request made). Templates were checked by the maintainer on 2026-11-25/26 and recorded in tests/fixtures/pivots_*/verified_templates.json (status and title only); this batch added HEAD checks of the akira/qilin/play/medusa/safepay group pages on both trackers (all 200) and one GET of the onion-search template without '&submit=Search' (Cloudflare 403: unverified). V3LUM never fetches these URLs. pivots_brazil: CNPJ 00.000.000/0001-91 -> consumidor.gov.br and SINTEGRA static pages."
+  },
+  {
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "open",
+   "provider_tier": "n/a",
+   "keys": [],
+   "correlation_rules": [],
+   "new_vocabulary": [],
+   "name": "pivots_pentest",
+   "file": "v3lum/modules/pentest_recon/pivots_pentest.py",
+   "proposal": "P290",
+   "category": "pentest_recon",
+   "datasets": [
+    "org profile (ctx.org: owns / brand_terms, read only)"
+   ],
+   "pivot_packs": [
+    "pentest (core links grayhat_files privacy=true, ssllabs_analyze touches_target with hideResults=on&latest)"
+   ],
+   "live_check": "tests/live/test_p2_g14_2.py passed with V3LUM_LIVE=1 (7 tests): offline module run through the real engine, bundled P295/ATT&CK data and the real provider registry, FakeHttp with no routes (no request made). Templates were checked by the maintainer on 2026-11-25/26 and recorded in tests/fixtures/pivots_*/verified_templates.json (status and title only); this batch added HEAD checks of the akira/qilin/play/medusa/safepay group pages on both trackers (all 200) and one GET of the onion-search template without '&submit=Search' (Cloudflare 403: unverified). V3LUM never fetches these URLs. pivots_pentest: example.com (no org profile, no opt-in) -> SKIPPED privacy; SSL Labs link keeps hideResults=on&latest."
+  },
+  {
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "open",
+   "provider_tier": "n/a",
+   "keys": [],
+   "correlation_rules": [],
+   "new_vocabulary": [],
+   "name": "pivots_cti",
+   "file": "v3lum/modules/cti_framework/pivots_cti.py",
+   "proposal": "P300",
+   "category": "cti_framework",
+   "datasets": [
+    "P295 alias index (bundled, actor_alias_index.resolve: G/S ids, Malpedia ids)",
+    "bundled ATT&CK fragments (v3lum.core.attack.canonical for revoked ids)"
+   ],
+   "pivot_packs": [
+    "cti (core link d3fend_technique; x_module_links attack_technique, attack_group, attack_software, malpedia_family, malpedia_actor)"
+   ],
+   "live_check": "tests/live/test_p2_g14_2.py passed with V3LUM_LIVE=1 (7 tests): offline module run through the real engine, bundled P295/ATT&CK data and the real provider registry, FakeHttp with no routes (no request made). Templates were checked by the maintainer on 2026-11-25/26 and recorded in tests/fixtures/pivots_*/verified_templates.json (status and title only); this batch added HEAD checks of the akira/qilin/play/medusa/safepay group pages on both trackers (all 200) and one GET of the onion-search template without '&submit=Search' (Cloudflare 403: unverified). V3LUM never fetches these URLs. pivots_cti: T1059.001 -> /techniques/T1059/001/; Emotet -> S0367 + win.emotet; APT28 -> G0007."
+  }
+ ],
+ "proposals_not_done": [],
+ "core_requests": [
+  "core/links.py + renderers + `v3lum links` (P311, A2): honour a per-link max_tlp (shipped as x_max_tlp; P203 cond 10 OnionSearchEngine, P290 cond 9 SSL Labs hidden at TLP:AMBER+ unless expanded). The SSL Labs pack link is still shown defanged at AMBER by ui/render.py.",
+  "core/links.py (P311): resolver placeholders so packs can hold the links rendered today by modules from x_module_links: {mitre_path} (T1059.001 -> T1059/001), {attack_id} (G/S id from P292/P295), {malpedia_id} (P295 galaxy refs), per-tracker slugs {ransomlook_slug}/{rlive_slug}, chain-validated {btc}/{ltc}/{doge}/{bch}/{tron}/{evm} (or an x_accepts key checked with validators.crypto_address_info); plus x_warning and x_fallback_for. Until then those links are absent from `v3lum links` and from every view at TLP:RED. Reference implementation: v3lum/modules/utility/pivot_pack_render.py.",
+  "core/links.py (P311): accept placeholder-less pack links for static manual-entry pages (x_static: consumidor.gov.br, SINTEGRA, P250 cond 10-11); only inline Module.manual_link templates may lack a placeholder today.",
+  "core/links.py lint_pack (P311): add the batch rules now enforced only by pivot_pack_render.PACK_RULES and the CI test: rule-3 claim/leak/download/victim paths for darkweb packs (P203 cond 9), wallet-connect/payment/swap/donation pages (P216 cond 10), GrayhatWarfare file links/downloads (P290 cond 8), ViewDNS reverseip/iphistory (P231 cond 11), SSL Labs hideResults=on&latest + touches_target (P290 cond 9), .onion hosts (P203 cond 11).",
+  "core/models.py ModuleResult.link: carry host, verified, antibot, badge, privacy, touches_target and category (structured link items like engine._link_item), so module links get the same renderer treatment as pack links; today the label repeats 'opening sends <value> to <host>' and the terminal shows it twice at AMBER.",
+  "doctor --links (P311 cond 7 of every pack, offline): list unverified links and links not re-checked for more than 180 days, x_module_links included; pivot_pack_render.recheck_report(today) returns that data for the six batch packs.",
+  "core/entities.py display_value: show the EIP-55 form of eth_address values (P216 cond 8: lower case for matching, checksum for display, as P219 does).",
+  "core/validators.py (P217): add Bitcoin Cash cashaddr and Litecoin bech32 to crypto_address_info (pivots_crypto validates them locally: cashaddr_payload, validators.segwit_decode('ltc', ...)); btc_address normalisation accepts testnet (tb1), so mainnet-only pack links render for testnet values.",
+  "actor_alias_index (P295, batch p1-G11-1): per-tracker group names (RansomLook, ransomware.live) for P203 cond 8; darkweb.json ships a curated 7-group x_tracker_slugs table meanwhile. Actor Malpedia ids are rare in the bundled index (P300 cond 9).",
+  "Engine / `v3lum org show` (P290 cond 8, A11): render GrayhatWarfare links for org_profile brands without writing profile entries into case data; pivots_pentest covers analyst-typed own-asset seeds only.",
+  "core/lint.py SUBMISSION_PATTERNS: the generic 'submit' pattern rejects OnionSearchEngine's '&submit=Search' form-button parameter; the template now omits it (unverified until a browser check).",
+  "Architect decision (P250): the frozen lint makes CNPJ templates privacy=true, so Brazilian company links render only for analyst-typed CNPJ seeds of an opted-in case, never for discovered CNPJs."
+ ],
+ "files": [
+  "docs/backlog/p2-G14-2.md",
+  "tests/fixtures/acceptance/cnpj/pivots_brazil.json",
+  "tests/fixtures/acceptance/domain/pivots_darkweb.json",
+  "tests/fixtures/acceptance/domain/pivots_pentest.json",
+  "tests/fixtures/pivots_brazil/cnpj_vectors.json",
+  "tests/fixtures/pivots_brazil/verified_templates.json",
+  "tests/fixtures/pivots_company_org/qsa_partner_case.json",
+  "tests/fixtures/pivots_company_org/verified_templates.json",
+  "tests/fixtures/pivots_crypto/address_vectors.json",
+  "tests/fixtures/pivots_crypto/verified_templates.json",
+  "tests/fixtures/pivots_cti/mitre_vectors.json",
+  "tests/fixtures/pivots_cti/verified_templates.json",
+  "tests/fixtures/pivots_darkweb/verified_templates.json",
+  "tests/fixtures/pivots_pentest/verified_templates.json",
+  "tests/live/test_p2_g14_2.py",
+  "tests/modules/test_pivot_pack_render.py",
+  "tests/modules/test_pivots_brazil.py",
+  "tests/modules/test_pivots_company_org.py",
+  "tests/modules/test_pivots_crypto.py",
+  "tests/modules/test_pivots_cti.py",
+  "tests/modules/test_pivots_darkweb.py",
+  "tests/modules/test_pivots_pentest.py",
+  "v3lum/data/pivot_links/brazil.json",
+  "v3lum/data/pivot_links/company_org.json",
+  "v3lum/data/pivot_links/crypto.json",
+  "v3lum/data/pivot_links/cti.json",
+  "v3lum/data/pivot_links/darkweb.json",
+  "v3lum/data/pivot_links/pentest.json",
+  "v3lum/data/providers/arkham.json",
+  "v3lum/data/providers/bitcoinwhoswho.json",
+  "v3lum/data/providers/bitref.json",
+  "v3lum/data/providers/blockchain_com__p2-G14-2.json",
+  "v3lum/data/providers/casadosdados.json",
+  "v3lum/data/providers/companies_house.json",
+  "v3lum/data/providers/consumidor_gov.json",
+  "v3lum/data/providers/escavador.json",
+  "v3lum/data/providers/etherscan__p2-G14-2.json",
+  "v3lum/data/providers/ethplorer__p2-G14-2.json",
+  "v3lum/data/providers/gleif__p2-G14-2.json",
+  "v3lum/data/providers/jusbrasil.json",
+  "v3lum/data/providers/onionsearchengine.json",
+  "v3lum/data/providers/opencorporates.json",
+  "v3lum/data/providers/ransomware_live__p2-G14-2.json",
+  "v3lum/data/providers/reclameaqui.json",
+  "v3lum/data/providers/rfb__p2-G14-2.json",
+  "v3lum/data/providers/sintegra.json",
+  "v3lum/data/providers/ssllabs.json",
+  "v3lum/data/providers/tronscan__p2-G14-2.json",
+  "v3lum/modules/brazil_public_data/pivots_brazil.py",
+  "v3lum/modules/crypto/pivots_crypto.py",
+  "v3lum/modules/cti_framework/pivots_cti.py",
+  "v3lum/modules/darkweb_ransomware/pivots_darkweb.py",
+  "v3lum/modules/pentest_recon/pivots_pentest.py",
+  "v3lum/modules/utility/pivot_pack_render.py"
+ ],
+ "notes": "Six G14 pivot packs in the frozen v3lum.pivot_pack/1 schema plus five offline (disclosure 'none', terms open, opsec passive, default_enabled true, max_requests 0) modules; P231 is pack-only (no Module class; its 'file' is the pack). Links the frozen core cannot render correctly (per-site tracker slugs, {mitre_path}, ATT&CK/Malpedia ids from P295, chain-validated addresses, max_tlp, warnings, static pages) live in each pack under the pack-level extension key x_module_links and are rendered by the pack's module through v3lum/modules/utility/pivot_pack_render.py: core lint on a {q} view of each entry plus batch rules, re.sub whitelist substitution, URL re-check, registry tier at render time, fail closed. Provider fragments: 13 new providers owned by this batch (onionsearchengine and bitref unknown tier; bitcoinwhoswho, arkham, escavador, casadosdados community; opencorporates, companies_house, reclameaqui, jusbrasil, consumidor_gov, sintegra, ssllabs trusted; ssllabs flags fetches_target) and 7 extensions (blockchain_com, etherscan incl. bscscan.com, ethplorer, tronscan, gleif, rfb, ransomware_live); ransomlook, mempool_space, blockchair, walletexplorer, opensanctions, viewdns, transparencia, grayhatwarfare, malpedia and mitre already registered the link hosts. Owners.json mapped blockchain.com, ethplorer.io, tronscan.org, etherscan.io and ransomware.live to null, but their providers exist now (other batches): extended, not recreated. Coordination with p2-G14-3 (P304): Etherscan, BscScan, Tronscan and Arkham ship in crypto.json (unverified, antibot); Chainabuse is left to P304 per P216 cond 10. Known gaps are in docs/backlog/p2-G14-2.md (max_tlp not honoured by renderers for SSL Labs, resolver links absent from `v3lum links`, testnet BTC, CNPJ privacy rule, Arkham/BitcoinWhosWho/OpenCorporates/GLEIF unverified). No LIGHT/ACTIVE variant was asked. Prep raw captures (victim lists, PEP names, bucket file names) were not copied: fixtures keep URL, status and title only."
+}

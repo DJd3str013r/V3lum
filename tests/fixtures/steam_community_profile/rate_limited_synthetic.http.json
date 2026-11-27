@@ -1,0 +1,8 @@
+{
+ "_fixture": "SYNTHETIC: Steam answers bursts with 429 (research note 'Steam may 429 bursts')",
+ "status": 429,
+ "headers": {
+  "content-type": "text/html; charset=UTF-8"
+ },
+ "body": ""
+}

@@ -1,0 +1,39 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p2-G08-2",
+  "title": "Exploit maturity, PoC claims, offline CVE mirror and MSRC Patch Tuesday facts (P190 exploit_index/poc_index, P352 cve_offline_mirror, P353 msrc_patch_tuesday)",
+  "owner": "batch p2-G08-2",
+  "notes": "Facts added to the consolidated CVE card with provenance. Exploit or PoC availability raises patch priority only: it never verifies a version-inferred match or sets CRITICAL by itself (P190 cond 4, P291). 'kev' stays CISA-only: Microsoft's exploited flag goes to the core attribute 'exploited' with source 'msrc' (P353 cond 3).",
+  "attributes": {
+    "exploit_maturity": "maturity of public exploit code for a CVE: 'weaponised' (Metasploit module or Exploit-DB entry), 'detection template' (nuclei CVE template only) or 'poc_claimed (N repos)' (unverified GitHub PoC claims, confidence <= 0.4)",
+    "exploit_sources": "counts of curated exploit references per source {exploitdb, metasploit, metasploit_exploit_modules, metasploit_scanner_modules, nuclei, kev}",
+    "exploit_index_refs": "list of curated exploit/template references {source, url, label, ...} from Exploit-DB, Metasploit and nuclei (references only: never downloaded or run)",
+    "exploit_summary": "plain-words exploit availability line, e.g. 'public exploit code: 2 Metasploit, 3 Exploit-DB - raises patch priority only'",
+    "poc_repos_total": "int: number of distinct public GitHub repositories claiming a PoC for the CVE (PoC-in-GitHub and trickest/cve)",
+    "poc_repos": "top PoC repository claims {repo (defanged), stars, pushed_at, source, label}: unverified code, may be malicious - never run outside an isolated lab",
+    "poc_references": "untrusted reference links listed by trickest/cve for the CVE (advisories, write-ups, PoC pages); links only, never fetched",
+    "poc_confidence": "confidence (<= 0.4) of the PoC claims: GitHub repositories claiming a PoC are not verified exploit code",
+    "poc_summary": "plain-words PoC claim line with the safety label",
+    "cve_mirror": "provenance of an answer from the local CVE mirror {synced_at, age_hours, stale, records, record_updated, record_sha256}",
+    "msrc_title": "title of the vulnerability in the MSRC Patch Tuesday (CVRF) document",
+    "msrc_severity": "highest Microsoft severity rating of the CVE across its products (Critical, Important, Moderate, Low)",
+    "msrc_impact": "Microsoft impact class of the CVE (e.g. Remote Code Execution, Elevation of Privilege)",
+    "msrc_exploited": "bool: Microsoft reports exploitation of the CVE (CVRF exploit status 'Exploited:Yes'); never the CISA KEV flag",
+    "msrc_publicly_disclosed": "bool: Microsoft reports the CVE as publicly disclosed before the fix",
+    "msrc_exploitability": "Microsoft exploitability assessment {latest_release, older_release} (e.g. 'Exploitation More Likely')",
+    "msrc_priority_line": "plain-words Microsoft priority line, e.g. 'Exploited per Microsoft (not in CISA KEV yet): patch now'",
+    "msrc_remediation": "list of Microsoft vendor fixes {kb, url, sub_type, fixed_build, fixed_build_url, supersedes, restart_required, products}",
+    "msrc_kbs": "list of Microsoft KB numbers that fix the CVE",
+    "msrc_documents": "list of MSRC Patch Tuesday document ids (e.g. '2026-Nov') listing the CVE",
+    "msrc_kb_cves": "list of CVE ids fixed by a Microsoft KB (keyword lookup in the local MSRC index)",
+    "msrc_search_hits": "list of {cve, severity, exploited, title} of the local MSRC index whose affected Microsoft products match a keyword (newest first)"
+  },
+  "tags": {},
+  "relations": {
+    "exploit_reference": "CVE -> curated exploit or detection-template reference URL (Exploit-DB, Metasploit, nuclei); reference only",
+    "poc_claim": "CVE -> public repository URL claiming a PoC (unverified code, may be malicious; never expanded or run)",
+    "fixes": "update/KB keyword -> CVE it fixes (vendor remediation)",
+    "affected_by": "product keyword -> CVE affecting that product"
+  },
+  "timeline": {}
+}

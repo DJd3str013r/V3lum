@@ -1,0 +1,9 @@
+{
+ "_envelope": 1,
+ "_source": "live check 2026-11-26 from this datacenter egress: gravatar.com/avatar/sha256(test@example.com)?d=404&s=80",
+ "status": 404,
+ "headers": {
+  "content-type": "text/html; charset=utf-8"
+ },
+ "body": "404 Not Found"
+}

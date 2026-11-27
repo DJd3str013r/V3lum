@@ -1,0 +1,64 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "$comment": "A sinkhole address listed by two families (feeds often list sinkholes as C2): no consensus",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "nodes": [
+    {
+      "key": "ipv4:192.0.2.14",
+      "depth": 0,
+      "seed": true,
+      "noise": true,
+      "noise_kind": "sinkhole",
+      "tags": [
+        "sinkhole"
+      ],
+      "attributes": {
+        "is_sinkhole": [
+          {
+            "value": true,
+            "source": "fixture"
+          }
+        ],
+        "malicious": [
+          {
+            "value": true,
+            "source": "abusech"
+          }
+        ]
+      },
+      "findings": [
+        {
+          "title": "Feodo Tracker C2",
+          "severity": "high",
+          "confidence": 0.8,
+          "criterion": "source verdict",
+          "tags": [
+            "c2",
+            "malicious"
+          ],
+          "module": "ip_blocklists",
+          "source": "abusech.feodotracker",
+          "observed_last": "2026-11-25T00:00:00Z"
+        },
+        {
+          "title": "Listed on Spamhaus DROP",
+          "severity": "high",
+          "confidence": 0.8,
+          "criterion": "source verdict",
+          "tags": [
+            "malicious"
+          ],
+          "module": "ip_blocklists",
+          "source": "spamhaus.drop_v4",
+          "observed_last": "2026-11-25T00:00:00Z"
+        }
+      ]
+    }
+  ],
+  "edges": []
+}

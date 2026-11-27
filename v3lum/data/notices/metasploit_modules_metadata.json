@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "metasploit_modules_metadata",
+  "source_url": "https://github.com/rapid7/metasploit-framework/blob/master/db/modules_metadata_base.json",
+  "version": "runtime dataset exploit_index.metasploit (weekly refresh); 8 modules trimmed in the test fixtures (2026-11-26)",
+  "sha256": "",
+  "licence": "BSD-3-Clause",
+  "attribution": "Metasploit Framework module metadata, Copyright: 2006-2026, Rapid7, Inc. License: BSD-3-clause (https://github.com/rapid7/metasploit-framework/blob/master/LICENSE); references only, authors and descriptions are not kept.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/vulnerability_cve/exploit_index.py",
+    "tests/fixtures/exploit_index/msf_ok.json"
+  ]
+}

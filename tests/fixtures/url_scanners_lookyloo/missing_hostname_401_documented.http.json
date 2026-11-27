@@ -1,0 +1,17 @@
+{
+ "_meta": {
+  "provenance": "documented",
+  "source": "genericapi.py HostnameInfo.post (401 when the field is missing)",
+  "request": {
+   "method": "POST",
+   "url": "https://lookyloo.circl.lu/json/hostname_info",
+   "json": {}
+  },
+  "note": "Lookyloo returns 401 for a missing field: not an auth problem, never NEEDS_KEY."
+ },
+ "status": 401,
+ "headers": {},
+ "body": {
+  "error": "No hostname provided."
+ }
+}

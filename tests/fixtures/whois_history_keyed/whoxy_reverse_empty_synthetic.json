@@ -1,0 +1,11 @@
+{
+ "status": 1,
+ "status_reason": "Successful",
+ "search_identifier": {
+  "email": "nobody@example.org"
+ },
+ "total_pages": 0,
+ "current_page": 1,
+ "total_results": 0,
+ "search_result": []
+}

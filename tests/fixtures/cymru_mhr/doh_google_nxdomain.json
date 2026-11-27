@@ -1,0 +1,1 @@
+{"Status":3,"TC":false,"RD":true,"RA":true,"AD":false,"CD":false,"Question":[{"name":"00000000000000000000000000000000.hash.cymru.com.","type":16}],"Authority":[{"name":"hash.cymru.com.","type":6,"TTL":900,"data":"ns1.hash.cymru.com. webmaster.cymru.com. 1616095030 1800 900 86400 900"}],"edns_client_subnet":"0.0.0.0/0","Comment":"Response from 216.31.2.231."}

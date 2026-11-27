@@ -1,0 +1,16 @@
+title: USDT blacklist
+creator: GraphSense Core team
+label: USDT_blacklisted
+is_cluster_definer: false
+confidence: ledger_immanent
+source: https://ikna.io
+lastmod: 2023-02-22
+currency: ETH
+category: black_list
+tags:
+- address: '0x008fe40574e881e7247b50b991c0cc057d66647f'
+  context: '{"transaction": "0x348a042dfedaf64400bf6660fe0ed523b373f172b7914985600d882ac09e0631",
+    "token": "USDT"}'
+- address: '0x0000000000000000000000000000000000000000'
+  context: '{"transaction": "0x26e2265c66d7de39bdf0570a74118bbeec782ea11b10b9b075f3ef3866d70722",
+    "token": "USDT"}'

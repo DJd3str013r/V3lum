@@ -1,0 +1,56 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "azmap",
+  "name": "azmap.dev Microsoft 365 tenant domain map",
+  "operator": "azmap.dev (unidentified operator; community service used by bbot azure_tenant and corptrace)",
+  "hosts": [
+    "azmap.dev"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "No published terms or privacy policy and no identifiable operator (A8 unknown): 'azmap.dev (no published terms, unknown operator) is a separate adapter module m365_tenant_azmap: default_enabled=False, terms unknown and tier unknown' (P011 cond 6). Whether queries are logged or reused is unknown: the unknown tier already keeps it out of TLP:AMBER and above and limits it to IOC values with --allow-unknown at CLEAR/GREEN.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Third-party index of the domains verified in an Entra ID tenant; plausible and broadly correct (microsoft.com lists GitHub, LinkedIn, Xbox) but unverifiable, so every related domain is DNS-confirmed (MX *.mail.protection.outlook.com or TXT MS=) before it pivots (P011 cond 7)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 20,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 2.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "tenant": {
+      "title": "azmap.dev /api/tenant?domain={domain}&extract=true (tenant id and name, brand, related domains)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://azmap.dev/",
+        "quote": "Third-party service, no published terms found.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "azmap",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0001. Disabled until legal records its terms and a promotion; even then excluded at AMBER and above; one call per domain, cache 24 h (P011 cond 6). 404 {'error': 'DOMAIN_NOT_FOUND'} = no Entra ID tenant (EMPTY). bbot's azure_tenant module (AGPL-3.0) is study material only: the technique is re-implemented (A6)."
+    }
+  },
+  "notes": "Owned by batch p2-G01-2 (P011 cond 6-7, module m365_tenant_azmap). The queried domain is disclosed to an unknown operator (OPSEC): IOC values only, never personal identifiers (A8)."
+}

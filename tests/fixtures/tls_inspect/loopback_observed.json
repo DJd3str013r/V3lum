@@ -1,0 +1,98 @@
+{
+ "_meta": {
+  "how": "127.0.0.1 loopback server with generated chains; no network",
+  "openssl": "OpenSSL 3.5.9 29 Sep 2026",
+  "python": "3.13.18",
+  "recorded_at": "2026-11-26T11:07:49+00:00"
+ },
+ "expired_leaf": {
+  "mozilla_store_only": {
+   "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1035)",
+   "verified": false,
+   "verify_code": 19,
+   "verify_message": "self-signed certificate in certificate chain"
+  },
+  "server_hostname": "old.example.org",
+  "system_store": {
+   "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1035)",
+   "verified": false,
+   "verify_code": 10,
+   "verify_message": "certificate has expired"
+  }
+ },
+ "hostname_mismatch": {
+  "mozilla_store_only": {
+   "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1035)",
+   "verified": false,
+   "verify_code": 19,
+   "verify_message": "self-signed certificate in certificate chain"
+  },
+  "server_hostname": "mismatch.example.org",
+  "system_store": {
+   "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'mismatch.example.org'. (_ssl.c:1035)",
+   "verified": false,
+   "verify_code": 62,
+   "verify_message": "Hostname mismatch, certificate is not valid for 'mismatch.example.org'."
+  }
+ },
+ "proxy_leaf_without_aki_strict": {
+  "mozilla_store_only": {
+   "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1035)",
+   "verified": false,
+   "verify_code": 19,
+   "verify_message": "self-signed certificate in certificate chain"
+  },
+  "server_hostname": "www.example.org",
+  "system_store": {
+   "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Missing Authority Key Identifier (_ssl.c:1035)",
+   "verified": false,
+   "verify_code": 85,
+   "verify_message": "Missing Authority Key Identifier"
+  }
+ },
+ "proxy_omits_root": {
+  "mozilla_store_only": {
+   "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1035)",
+   "verified": false,
+   "verify_code": 20,
+   "verify_message": "unable to get local issuer certificate"
+  },
+  "server_hostname": "www.example.org",
+  "system_store": {
+   "anchor_subject": "CN=Example TLS Inspection CA,O=Example Corp",
+   "verified": true,
+   "verified_chain_len": 2,
+   "version": "TLSv1.3"
+  }
+ },
+ "proxy_sends_root": {
+  "mozilla_store_only": {
+   "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1035)",
+   "verified": false,
+   "verify_code": 19,
+   "verify_message": "self-signed certificate in certificate chain"
+  },
+  "server_hostname": "www.example.org",
+  "system_store": {
+   "anchor_subject": "CN=Example TLS Inspection CA,O=Example Corp",
+   "verified": true,
+   "verified_chain_len": 2,
+   "version": "TLSv1.3"
+  }
+ },
+ "self_signed_leaf": {
+  "mozilla_store_only": {
+   "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1035)",
+   "verified": false,
+   "verify_code": 18,
+   "verify_message": "self-signed certificate"
+  },
+  "server_hostname": "self.example.org",
+  "system_store": {
+   "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1035)",
+   "verified": false,
+   "verify_code": 18,
+   "verify_message": "self-signed certificate"
+  }
+ }
+}

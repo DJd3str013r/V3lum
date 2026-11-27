@@ -1,0 +1,15 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "mitre_cwe",
+  "source_url": "https://cwe.mitre.org/data/xml/cwec_latest.xml.zip",
+  "version": "CWE 5.0 catalogue (2026-10-28), runtime dataset cwe_catalog; a 15-entry trimmed copy in the test fixtures",
+  "sha256": "",
+  "licence": "CWE Terms of Use (The MITRE Corporation): royalty-free, commercial use allowed with the copyright designation reproduced",
+  "attribution": "Copyright © 2006–2026, The MITRE Corporation. CWE, CWSS, CWRAF, and the CWE logo are trademarks of The MITRE Corporation. CWE™ is free to use by any organization or individual for any research, development, and/or commercial purposes, per these CWE Terms of Use. Accordingly, The MITRE Corporation hereby grants you a non-exclusive, royalty-free license to use CWE for research, development, and commercial purposes. Any copy you make for such purposes is authorized on the condition that you reproduce MITRE’s copyright designation and this license in any such copy. CWE is a trademark of The MITRE Corporation.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/vulnerability_cve/cve_record.py",
+    "tests/fixtures/cve_record/cwe_catalog_ok.xml",
+    "tests/fixtures/cve_record/cwe_catalog_ok.xml.zip"
+  ]
+}

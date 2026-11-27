@@ -1,0 +1,176 @@
+{
+ "module": "pivots_ip_network",
+ "pack": "ip_network",
+ "note": "Maintainer verification of the pack templates (batch p2-G14-1): status, date and size only, no page bodies or headers. V3LUM never requests these URLs; values are benign public ones.",
+ "checks": [
+  {
+   "check": "bgphe_ip__ok",
+   "url": "https://bgp.he.net/ip/8.8.8.8",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 58042
+  },
+  {
+   "check": "bgphe_net_enc__ok",
+   "url": "https://bgp.he.net/net/8.8.8.0%2F24",
+   "status": 404,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 19
+  },
+  {
+   "check": "bgphe_ip6_enc__ok",
+   "url": "https://bgp.he.net/ip/2001%3A4860%3A4860%3A%3A8888",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 15452
+  },
+  {
+   "check": "fofa_ip__ok",
+   "url": "https://en.fofa.info/result?qbase64=aXA9IjguOC44Ljgi",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 24781
+  },
+  {
+   "check": "fofa_icon__ok",
+   "url": "https://en.fofa.info/result?qbase64=aWNvbl9oYXNoPSI3MDg1NzgyMjki",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 29872
+  },
+  {
+   "check": "fofa_cert__check",
+   "url": "https://en.fofa.info/result?qbase64=<base64 of cert=\"<64-hex fingerprint>\">",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 13375,
+   "observed": "in-page '[824001] Keyword: cert requires Registered User and above' (login wall: fofa_cert excluded)"
+  },
+  {
+   "check": "criminalip__ok",
+   "url": "https://search.criminalip.io/asset/report/8.8.8.8",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 47554
+  },
+  {
+   "check": "ipinfo_ip__ok",
+   "url": "https://ipinfo.io/8.8.8.8",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 227
+  },
+  {
+   "check": "ipinfo_asn__ok",
+   "url": "https://ipinfo.io/AS15169",
+   "status": 400,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 51
+  },
+  {
+   "check": "ipinfo_ip6_enc__ok",
+   "url": "https://ipinfo.io/2001%3A4860%3A4860%3A%3A8888",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 221
+  },
+  {
+   "check": "scamalytics__ok",
+   "url": "https://scamalytics.com/ip/8.8.8.8",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 6980
+  },
+  {
+   "check": "exonerator__negative",
+   "url": "https://metrics.torproject.org/exonerator.html?ip=8.8.8.8&timestamp=2026-11-20&lang=en",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 3583
+  },
+  {
+   "check": "exonerator__nodate",
+   "url": "https://metrics.torproject.org/exonerator.html?ip=8.8.8.8&lang=en",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 3547
+  },
+  {
+   "check": "exonerator_ip6__negative",
+   "url": "https://metrics.torproject.org/exonerator.html?ip=2001%3A4860%3A4860%3A%3A8888&timestamp=2026-11-20&lang=en",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 3641
+  },
+  {
+   "check": "cidrreport__ok",
+   "url": "https://www.cidr-report.org/cgi-bin/as-report?as=AS15169&view=2.0",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 23809
+  },
+  {
+   "check": "myipms__ok",
+   "url": "https://myip.ms/info/whois/8.8.8.8",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 23539
+  },
+  {
+   "check": "bgphe_net__ok",
+   "url": "https://bgp.he.net/net/8.8.8.0/24",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 211140
+  },
+  {
+   "check": "criminalip__ok_1111",
+   "url": "https://search.criminalip.io/asset/report/1.1.1.1",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 47551
+  },
+  {
+   "check": "fofa_ip6__ok",
+   "url": "https://en.fofa.info/result?qbase64=aXA9IjIwMDE6NDg2MDo0ODYwOjo4ODg4Ig%3D%3D",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 13395
+  },
+  {
+   "check": "exonerator__retry_v4",
+   "url": "https://metrics.torproject.org/exonerator.html?ip=8.8.8.8&timestamp=2026-11-20&lang=en",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 3583
+  },
+  {
+   "check": "criminalip__ok_9999",
+   "url": "https://search.criminalip.io/asset/report/9.9.9.9",
+   "status": 200,
+   "at": "2026-11-26",
+   "redirect": "",
+   "bytes": 57571
+  }
+ ]
+}

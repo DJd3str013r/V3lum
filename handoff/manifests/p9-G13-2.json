@@ -1,0 +1,108 @@
+{
+  "batch": "p9-G13-2",
+  "modules": [
+    {
+      "name": "axfr",
+      "file": "v3lum/modules/pentest_recon/axfr.py",
+      "proposal": "P281",
+      "category": "pentest_recon",
+      "opsec": "active",
+      "default_enabled": false,
+      "terms": "open",
+      "provider_tier": "n/a",
+      "keys": [],
+      "datasets": [],
+      "pivot_packs": [],
+      "correlation_rules": [],
+      "new_vocabulary": [
+        "zone_transfer"
+      ],
+      "live_check": "No third-party contact (ACTIVE target-contact module). The real raw-socket (ctx.net) AXFR path runs against a loopback TCP DNS server the test starts on 127.0.0.1 (tests/modules/test_axfr.py): transfer=HIGH/T1590.002, REFUSED=INFO, SERVFAIL=could not test, slow-drip server cut at the per-NS total cap, managed-provider skip, out-of-scope skip, TCP/53 refused=could not test, pivots never contacted. NOTE: these tests need dnspython and are SKIPPED under the system python; run them with .venv/bin/python (review 2026-11-26)."
+    },
+    {
+      "name": "cloud_buckets",
+      "file": "v3lum/modules/pentest_recon/cloud_buckets.py",
+      "proposal": "P282",
+      "category": "pentest_recon",
+      "opsec": "active",
+      "default_enabled": false,
+      "terms": "open",
+      "provider_tier": "n/a",
+      "keys": [],
+      "datasets": [],
+      "pivot_packs": [],
+      "correlation_rules": [],
+      "new_vocabulary": [
+        "cloud_bucket_scan"
+      ],
+      "live_check": "No live check: the only real targets would be the cloud providers (S3/GCS/DO), which the batch rules forbid contacting. Offline, the real ScopedHttp path is exercised over FakeHttp with bucket hosts the scope file lists (attributed public listing=HIGH, AccessDenied XML=exists-private LOW, challenge=could not test, unlisted candidates refused before any request and the run SKIPPED 'scope' when nothing is listed)."
+    },
+    {
+      "name": "cors_probe",
+      "file": "v3lum/modules/pentest_recon/cors_probe.py",
+      "proposal": "P283",
+      "category": "pentest_recon",
+      "opsec": "active",
+      "default_enabled": false,
+      "terms": "open",
+      "provider_tier": "n/a",
+      "keys": [],
+      "datasets": [],
+      "pivot_packs": [],
+      "correlation_rules": [],
+      "new_vocabulary": [
+        "cors_endpoints_tested"
+      ],
+      "live_check": "tests/live/test_p9_g13_2_live.py (V3LUM_LIVE=1): the REAL engine, HttpClient, ACTIVE egress profile and scope binding against a reflecting HTTP server the test starts on 127.0.0.1 (scope 127.0.0.1/32): forged Origin reflected with credentials -> HIGH. Re-run green 2026-11-26 after the review fixes."
+    }
+  ],
+  "proposals_not_done": [
+    {
+      "id": "P284",
+      "reason": "jarm not built. The chair scheduled it out of this build (A16 BR1, P3 effort M), but the batch header says the team lead extended the build to every approved P3 item: this conflict needs a team-lead decision (docs/backlog/p9-G13-2.md). If it is built, FC4 (never against hostile/C2/non-owned infrastructure whatever the egress profile) needs a module-side refusal that cannot be overridden, because the core GUARD-01 lets hostile targets through with proxy_active or --egress-override."
+    }
+  ],
+  "core_requests": [
+    "cloud_buckets (P282) FC2 needs a core policy provider-endpoint allow-list for this module only (S3 *.s3.amazonaws.com, GCS storage.googleapis.com, DigitalOcean *.digitaloceanspaces.com): the cloud endpoints are never in the target IP scope and, being public suffixes, cannot be listed as scope targets, so WP07/WP08/WP11 policy must let this one ACTIVE module contact the allow-listed provider endpoints while every other hop stays scope-bound. Until then cloud_buckets reports tri-state 'could not test' for every candidate (safe).",
+    "axfr (P281) FC3 ASN-based managed-provider skip: an IP->ASN lookup available to a module (e.g. ctx exposing the core ASN dataset or an org-profile ASN for a resolved NS IP) so classify_ns_managed(..., asn=...) can match managed DNS operators by ASN as well as by NS name (the data file already carries the ASN markers; name matching works now).",
+    "P284 jarm FC4 (if the team lead schedules it): a hostile-host refusal mode for target-contact modules that proxy_active and --egress-override cannot lift (policy.contact_guard GUARD-01 currently allows hostile targets through a configured egress).",
+    "cloud_buckets (P282) FC6: read access for an ACTIVE module to passive bucket references / CNAMEs of in-scope assets in the case graph, so a bucket referenced by an in-scope asset can be attributed (today only an exact scope-file listing attributes it)."
+  ],
+  "files": [
+    "v3lum/modules/pentest_recon/axfr.py",
+    "v3lum/modules/pentest_recon/cloud_buckets.py",
+    "v3lum/modules/pentest_recon/cors_probe.py",
+    "v3lum/data/vocab/p9_g13_2.json",
+    "v3lum/data/attack/p9_g13_2.json",
+    "v3lum/data/axfr/managed_dns.json",
+    "tests/modules/test_axfr.py",
+    "tests/modules/test_cloud_buckets.py",
+    "tests/modules/test_cors_probe.py",
+    "tests/live/test_p9_g13_2_live.py",
+    "tests/fixtures/axfr/ok.json",
+    "tests/fixtures/axfr/refused.json",
+    "tests/fixtures/axfr/ns_list.json",
+    "tests/fixtures/cloud_buckets/s3_absent.json",
+    "tests/fixtures/cloud_buckets/s3_private_accessdenied.json",
+    "tests/fixtures/cloud_buckets/s3_private_allaccessdisabled.json",
+    "tests/fixtures/cloud_buckets/s3_public_listing.json",
+    "tests/fixtures/cloud_buckets/s3_public_empty.json",
+    "tests/fixtures/cloud_buckets/s3_redirect_region.json",
+    "tests/fixtures/cloud_buckets/gcs_absent.json",
+    "tests/fixtures/cloud_buckets/gcs_public_listing.json",
+    "tests/fixtures/cloud_buckets/do_absent.json",
+    "tests/fixtures/cloud_buckets/generic_403_blocked.json",
+    "tests/fixtures/cloud_buckets/rate_limited_503.json",
+    "tests/fixtures/cloud_buckets/malformed_200_html.json",
+    "tests/fixtures/cors_probe/reflected_with_credentials.json",
+    "tests/fixtures/cors_probe/null_with_credentials.json",
+    "tests/fixtures/cors_probe/reflected_no_credentials.json",
+    "tests/fixtures/cors_probe/reflected_no_credentials_userdata.json",
+    "tests/fixtures/cors_probe/wildcard.json",
+    "tests/fixtures/cors_probe/no_cors.json",
+    "tests/fixtures/cors_probe/blocked_403.json",
+    "tests/fixtures/cors_probe/preflight_options_reflected_creds.json",
+    "docs/backlog/p9-G13-2.md"
+  ],
+  "notes": "Adversarial review 2026-11-26 fixed: (1) FC1 - none of the three ACTIVE modules refused pivots or text/file-extracted entities: run_on='seeds' + applies() seed/provenance check added, with tests proving no target contact; (2) cors_probe - the prefix/suffix forged Origins replaced the target's dots with dashes, so they never tested startswith/substring bypasses: the host is now kept intact under .invalid; the OPTIONS preflight FC4 names was never sent (added, only when the GET carries no CORS header, within the 5x4 cap); any JSON body counted as 'user data' (MEDIUM inflation) - now only account-like fields; core P321 classifications (error-in-200 challenges) are could-not-test; (3) cloud_buckets - FC3's 3 req/s per provider was not enforced (max_rate is not consumed by core and bucket hosts differ per candidate): module-side per-provider pacer with kill switch and deadline; FC6 violation: a bucket matching an org brand term was attributed ('dns') and so a brand-named public bucket became HIGH - removed, only a scope-file listing attributes; FC2: org brand terms are used only when confirmed by a scope-file domain; GCS moved to virtual-host style so a scope file can list the exact bucket; an all-scope-refused run is SKIPPED 'scope' instead of blocked 'challenge'; core P321 classification honoured; (4) axfr - FC4's 30 s cap was only a per-recv timeout (a slow-drip server held the socket indefinitely): now a total per-NS cap; SERVFAIL/FORMERR/NXDOMAIN were reported as 'refused: good' - only REFUSED/NOTAUTH/NOTIMP are; TCP/53 failures were blocked/'challenge' (the anti-bot code) - now error 'could not test'; an all-skipped run was OK - now SKIPPED. The axfr tests were silently skipped under the system python (no dnspython); verified under .venv. Registry contract, P327 lint (0 issues), AR20 safety suite, ruff and the live loopback test pass. All three stay default_enabled=False, hosts=(), no provider fragments (disclosure 'target')."
+}

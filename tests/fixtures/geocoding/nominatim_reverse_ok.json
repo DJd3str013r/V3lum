@@ -1,0 +1,41 @@
+{
+ "_envelope": 1,
+ "_source": "GET https://nominatim.openstreetmap.org/reverse?lat=-23.550278&lon=-46.633889&format=jsonv2&zoom=18&addressdetails=1 (2026-11-26T09:43:38Z, generic client UA, datacenter egress); place_id/importance dropped",
+ "status": 200,
+ "headers": {
+  "content-type": "application/json; charset=utf-8",
+  "server": "gunicorn/asgi",
+  "x-cache": "MISS"
+ },
+ "body": {
+  "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+  "osm_type": "node",
+  "osm_id": 2135983920,
+  "lat": "-23.5503953",
+  "lon": "-46.6339471",
+  "category": "tourism",
+  "type": "artwork",
+  "place_rank": 30,
+  "addresstype": "tourism",
+  "name": "Marco zero da cidade de São Paulo",
+  "display_name": "Marco zero da cidade de São Paulo, Praça da Sé, Glicério, Sé, São Paulo, Região Sudeste, 01001-001, Brasil",
+  "address": {
+   "tourism": "Marco zero da cidade de São Paulo",
+   "road": "Praça da Sé",
+   "suburb": "Glicério",
+   "city": "São Paulo",
+   "state": "São Paulo",
+   "ISO3166-2-lvl4": "BR-SP",
+   "region": "Região Sudeste",
+   "postcode": "01001-001",
+   "country": "Brasil",
+   "country_code": "br"
+  },
+  "boundingbox": [
+   "-23.5504453",
+   "-23.5503453",
+   "-46.6339971",
+   "-46.6338971"
+  ]
+ }
+}

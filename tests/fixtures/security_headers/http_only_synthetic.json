@@ -1,0 +1,22 @@
+{
+ "url": "http://legacy.example.com/",
+ "status": 200,
+ "headers": [
+  [
+   "Content-Type",
+   "text/html"
+  ],
+  [
+   "X-Frame-Options",
+   "DENY"
+  ],
+  [
+   "X-Content-Type-Options",
+   "nosniff"
+  ],
+  [
+   "Set-Cookie",
+   "sessionid=1; HttpOnly; Path=/"
+  ]
+ ]
+}

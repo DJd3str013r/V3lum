@@ -1,0 +1,38 @@
+{
+ "_synthetic": "no key: shapes follow the http:BL API docs (127.<days>.<score>.<type>); verify with the company key before relying on the values",
+ "cases": [
+  {
+   "label": "suspicious, score 1, 1 day",
+   "rcode": "NOERROR",
+   "a": [
+    "127.1.1.1"
+   ]
+  },
+  {
+   "label": "comment spammer + harvester, score 40, 3 days",
+   "rcode": "NOERROR",
+   "a": [
+    "127.3.40.6"
+   ]
+  },
+  {
+   "label": "search engine (Google, serial 5)",
+   "rcode": "NOERROR",
+   "a": [
+    "127.0.5.0"
+   ]
+  },
+  {
+   "label": "not listed",
+   "rcode": "NXDOMAIN",
+   "a": []
+  },
+  {
+   "label": "malformed first octet",
+   "rcode": "NOERROR",
+   "a": [
+    "10.1.1.1"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,55 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "blockstream",
+  "name": "Blockstream Esplora public API (blockstream.info)",
+  "operator": "Blockstream Corporation Inc.",
+  "hosts": [
+    "blockstream.info"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Blockstream Corporation, an established company with published terms, a privacy policy and a business offering (A8 trusted). Registry tiers: Blockstream, Blockchain.com, BlockCypher and Blockchair trusted; mempool.space and litecoinspace community.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Esplora reader of the public Bitcoin ledger: balances and transactions are verifiable chain facts (the unspendable genesis coinbase is not indexed by electrs, so balances can differ from other explorers)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 5.0,
+    "ttl": 3600,
+    "min_interval": 0.5,
+    "concurrency": 2
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "esplora_api": {
+      "title": "Blockstream Esplora REST API (address stats, address txs with /txs/chain paging, chain tip)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://blockstream.info/terms",
+        "quote": "Per-adapter terms recorded: Esplora, mempool, litecoinspace and Blockchain.com 'open'; BlockCypher and Blockchair 'key-terms'.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "blockstream",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P211 cond 6). Research C0474 (verified_live 200): /api/address/{a}, /api/address/{a}/txs (25 confirmed per page), /api/address/{a}/txs/chain/{last_txid}, /api/blocks/tip/height; 'Public API of Blockstream (Esplora, MIT-licensed server software; self-hostable)'. Undocumented limits, 429 on bursts: <= 2 req/s, cache 1 h. Used by btc_explorers (one Esplora parser for Blockstream, mempool.space and litecoinspace)."
+    }
+  },
+  "notes": "Owned by batch p2-G09-2 (P211). No published quota (429 = RATE_LIMITED and the host is short-circuited for the run by btc_explorers): politeness 0.5 s per request, crypto ttl 1 h, 5 s request timeout so the sequential failover stays within the 15 s explorer budget."
+}

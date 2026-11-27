@@ -1,0 +1,23 @@
+{
+ "Status": 0,
+ "TC": false,
+ "RD": true,
+ "RA": true,
+ "AD": false,
+ "CD": false,
+ "Question": [
+  {
+   "name": "1.1.1.1.abuse-contacts.abusix.zone.",
+   "type": 16
+  }
+ ],
+ "Answer": [
+  {
+   "name": "1.1.1.1.abuse-contacts.abusix.zone.",
+   "type": 16,
+   "TTL": 300,
+   "data": "helpdesk@apnic.net"
+  }
+ ],
+ "edns_client_subnet": "0.0.0.0/0"
+}

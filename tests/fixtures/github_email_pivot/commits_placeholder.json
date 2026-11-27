@@ -1,0 +1,88 @@
+{
+ "_source": "live check 2026-11-26 from this datacenter egress: search/commits?q=author-email:octocat@github.com (3 of 5 items); every commit is linked to GitHub's placeholder account invalid-email-address (id 148100); repositories, SHAs and author names replaced",
+ "total_count": 3122594,
+ "incomplete_results": false,
+ "items": [
+  {
+   "sha": "0269f55a76baa9d94b7cd3cf5277e4d43ea5d72f",
+   "html_url": "https://github.com/example-owner/example-repo-1/commit/0269f55a76baa9d94b7cd3cf5277e4d43ea5d72f",
+   "commit": {
+    "author": {
+     "date": "2026-11-26T04:30:11.000+01:00",
+     "name": "Example Author",
+     "email": "octocat@github.com"
+    },
+    "committer": {
+     "date": "2026-11-26T04:30:11.000+01:00",
+     "name": "Example Author",
+     "email": "octocat@github.com"
+    }
+   },
+   "author": {
+    "login": "invalid-email-address",
+    "id": 148100,
+    "html_url": "https://github.com/invalid-email-address",
+    "type": "User"
+   },
+   "repository": {
+    "full_name": "example-owner/example-repo-1",
+    "html_url": "https://github.com/example-owner/example-repo-1"
+   },
+   "score": 1.0
+  },
+  {
+   "sha": "9e3d2dd5aa6ce59d17a2e0f0ab12d4cca29ad42c",
+   "html_url": "https://github.com/example-owner/example-repo-2/commit/9e3d2dd5aa6ce59d17a2e0f0ab12d4cca29ad42c",
+   "commit": {
+    "author": {
+     "date": "2026-11-26T04:15:11.000+01:00",
+     "name": "Example Author",
+     "email": "octocat@github.com"
+    },
+    "committer": {
+     "date": "2026-11-26T04:15:11.000+01:00",
+     "name": "Example Author",
+     "email": "octocat@github.com"
+    }
+   },
+   "author": {
+    "login": "invalid-email-address",
+    "id": 148100,
+    "html_url": "https://github.com/invalid-email-address",
+    "type": "User"
+   },
+   "repository": {
+    "full_name": "example-owner/example-repo-2",
+    "html_url": "https://github.com/example-owner/example-repo-2"
+   },
+   "score": 1.0
+  },
+  {
+   "sha": "fab443a0c797eeeda46db7f72a9832731db9ef70",
+   "html_url": "https://github.com/example-owner/example-repo-3/commit/fab443a0c797eeeda46db7f72a9832731db9ef70",
+   "commit": {
+    "author": {
+     "date": "2026-11-26T02:08:34.000+05:30",
+     "name": "Example Author",
+     "email": "octocat@github.com"
+    },
+    "committer": {
+     "date": "2026-11-26T02:08:34.000+05:30",
+     "name": "Example Author",
+     "email": "octocat@github.com"
+    }
+   },
+   "author": {
+    "login": "invalid-email-address",
+    "id": 148100,
+    "html_url": "https://github.com/invalid-email-address",
+    "type": "User"
+   },
+   "repository": {
+    "full_name": "example-owner/example-repo-3",
+    "html_url": "https://github.com/example-owner/example-repo-3"
+   },
+   "score": 1.0
+  }
+ ]
+}

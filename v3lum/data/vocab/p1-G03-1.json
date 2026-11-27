@@ -1,0 +1,34 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p1-G03-1",
+  "title": "Names used by batch p1-G03-1 (url_unwrap, urlscan_search, url_domain_blocklists, secret_scanner)",
+  "owner": "batch p1-G03-1 (P064, P066, P071, P312)",
+  "attributes": {
+    "unwrapped_url": "list of destination URLs recovered offline behind link-protection/redirect wrappers (recipient identifiers redacted)",
+    "unwrap_chain": "list of unwrapping chains {input, depth, truncated, steps[{wrapper, wrapper_host, wrapped, unwrapped, partial, recipient_kinds, facts, error}], final_url, final_domain_only} (redacted URLs, token kinds only)",
+    "wrapper_hosts": "list of link-protection/redirect wrapper hosts seen while unwrapping (noise: never IOCs, never reputation-checked)",
+    "url_decoded_params": "Unfurl-style decoded URL values [{where, kind, value?, iso?, redacted?}] (timestamps, snowflake/UUID times, base64 text/URLs); e-mails and tokens appear only as redacted kinds",
+    "recipient_identifiers": "kinds of per-recipient identifiers found and redacted in a URL (recipient e-mail, tenant id, tracking token...); values are never kept",
+    "urlscan_scans": "dated summaries of public urlscan.io scans [{uuid, label, scanned_at, historical, task_url, page_url, page_domain, page_ip, asn, country, server, title, status, tls_issuer, tags, verdict, screenshot_url, report_url}] (URLs redacted)",
+    "urlscan_totals": "urlscan.io search totals per labelled query {label: {total, capped, fetched}} (keyless search covers the last 30 days)",
+    "blocklist_hits": "list of local blocklist matches [{list, feed, category, match, key, listed_at, deleted_at, historical, terms, dataset_sha256, fetched_at}]",
+    "blocklists_not_checked": "list of {list, reason} for blocklists that could not be checked (missing, stale, licence, key): 'not checked', never 'not listed'",
+    "c2_panel_hints": "family hints from the paths of listed C2 panel URLs (e.g. 'bot gate (gate.php)'): hints only, never attribution",
+    "secret_counts": "number of distinct secrets per detection rule {rule_id: count} (masked: values are never kept)",
+    "jwt_header": "JWT header fields {alg, kid, typ} decoded offline (signature never verified)",
+    "jwt_claims": "non-personal JWT claims {iss, aud, exp, iat, nbf} decoded offline plus presence flags of personal claims {has_sub, has_email, has_name} (values never kept)"
+  },
+  "tags": {
+    "crypto_scam": "listed as a crypto scam / wallet-drainer / fake exchange site",
+    "brand_abuse": "third-party page reusing the organisation's resources or brand: a brand-abuse candidate to review",
+    "phishing_kit_exfil": "credential of a phishing-kit exfiltration channel (Telegram bot, Discord webhook, SMTP account)",
+    "historical": "listing or observation older than 30 days, removed or from a frozen list: not current state",
+    "ads_tracking": "listed only on ad/tracking blocklists (LOW, tag only, never phishing)",
+    "aggregate_list": "listed only on an aggregated multi-source blocklist (LOW, tag only, never phishing)"
+  },
+  "relations": {
+    "unwraps_to": "wrapped URL -> destination URL recovered offline behind a link-protection/redirect wrapper",
+    "loaded_by": "domain -> domain of a third-party page that loaded its resources (urlscan.io scans)",
+    "loads_resource": "page/domain -> SHA-256 of a resource it loaded (urlscan.io result)"
+  }
+}

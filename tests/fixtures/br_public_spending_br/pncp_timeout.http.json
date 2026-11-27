@@ -1,0 +1,13 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20261101&dataFinal=20261125&cnpjOrgao=00000000000191&pagina=1",
+  "headers": {}
+ },
+ "response": null,
+ "transport_error": "curl: (28) Operation timed out after 20000 milliseconds with 0 bytes received",
+ "elapsed_s": 20.000722,
+ "observed_at": "2026-11-26T09:48:54Z",
+ "origin": "live",
+ "note": "PNCP consulta API: no byte in 20 s"
+}

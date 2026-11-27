@@ -1,0 +1,96 @@
+{
+ "ip": "203.0.113.77",
+ "reputation": "suspicious",
+ "confidence": "medium",
+ "background_noise": "high",
+ "background_noise_score": 9,
+ "ip_range": "203.0.113.0/24",
+ "ip_range_score": 2,
+ "ip_range_24": "203.0.113.0/24",
+ "ip_range_24_reputation": "suspicious",
+ "ip_range_24_score": 2,
+ "as_name": "ACME",
+ "as_num": 64500,
+ "location": {
+  "country": "US",
+  "city": null,
+  "latitude": null,
+  "longitude": null
+ },
+ "reverse_dns": null,
+ "behaviors": [
+  {
+   "name": "tcp:scan",
+   "label": "TCP Scan",
+   "description": "IP has been reported for performing TCP port scanning."
+  }
+ ],
+ "history": {
+  "first_seen": "2026-10-03T23:00:00",
+  "last_seen": "2026-11-24T23:30:00",
+  "full_age": 54,
+  "days_age": 52
+ },
+ "classifications": {
+  "false_positives": [],
+  "classifications": [
+   {
+    "name": "scanner:legit",
+    "label": "Legit scanner",
+    "description": "IP belongs to a company scanning the internet"
+   }
+  ]
+ },
+ "mitre_techniques": [
+  {
+   "name": "T1595",
+   "label": "Active Scanning",
+   "description": "Adversaries may execute active reconnaissance scans."
+  }
+ ],
+ "cves": [],
+ "attack_details": [
+  {
+   "name": "crowdsecurity/iptables-scan-multi_ports",
+   "label": "Port scan",
+   "description": "Detect tcp port scan",
+   "references": []
+  }
+ ],
+ "target_countries": {
+  "US": 40,
+  "DE": 25,
+  "BR": 10
+ },
+ "scores": {
+  "overall": {
+   "aggressiveness": 4,
+   "threat": 4,
+   "trust": 2,
+   "anomaly": 1,
+   "total": 4
+  },
+  "last_day": {
+   "aggressiveness": 3,
+   "threat": 4,
+   "trust": 2,
+   "anomaly": 1,
+   "total": 3
+  },
+  "last_week": {
+   "aggressiveness": 4,
+   "threat": 4,
+   "trust": 2,
+   "anomaly": 1,
+   "total": 4
+  },
+  "last_month": {
+   "aggressiveness": 4,
+   "threat": 4,
+   "trust": 2,
+   "anomaly": 1,
+   "total": 4
+  }
+ },
+ "references": []
+}

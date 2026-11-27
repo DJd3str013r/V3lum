@@ -1,0 +1,26 @@
+{
+ "window": "7d",
+ "cves": [
+  {
+   "tag_id": "CVE-2025-30208",
+   "title": "Vite - Arbitrary File Read",
+   "severity": "medium",
+   "actively_exploited": false,
+   "events": 2491,
+   "unique_ips": 91,
+   "last_seen": "2026-11-25",
+   "kev_date_added": null
+  },
+  {
+   "tag_id": "CVE-2021-43798",
+   "title": "Grafana v8.x - Arbitrary File Read",
+   "severity": "high",
+   "actively_exploited": true,
+   "events": 1302,
+   "unique_ips": 3,
+   "last_seen": "2026-11-24",
+   "kev_date_added": "2025-10-09"
+  },
+  "...truncated 749 more"
+ ]
+}

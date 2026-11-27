@@ -1,0 +1,11 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "iana_rdap_bootstrap",
+  "source_url": "https://data.iana.org/rdap/",
+  "version": "runtime download: dns.json, ipv4.json, ipv6.json, asn.json (RFC 9224 bootstrap registries, refreshed every 24 h, stale copy kept on failure)",
+  "sha256": "",
+  "licence": "IANA public data",
+  "attribution": "RDAP bootstrap service registries published by the Internet Assigned Numbers Authority (IANA), https://www.iana.org/assignments/rdap-dns/ and the IP/ASN registries; downloaded at run time by v3lum.modules.domain_dns.rdap (datasets iana_rdap_dns.json, iana_rdap_ipv4.json, iana_rdap_ipv6.json, iana_rdap_asn.json).",
+  "bundled": false,
+  "files": ["v3lum/modules/domain_dns/rdap.py"]
+}

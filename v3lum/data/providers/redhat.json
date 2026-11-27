@@ -1,0 +1,67 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "redhat",
+  "name": "Red Hat Product Security CSAF 2.0 advisories and VEX (security.access.redhat.com)",
+  "operator": "Red Hat, Inc. (Red Hat Product Security)",
+  "hosts": [
+    "security.access.redhat.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms and a privacy policy; CSAF trusted provider (A8 BR2); P354: 'Tier refers to the Red Hat VEX adapter' (trusted).",
+  "tier_reviewer": "batch p3-G08-1 (council-1 A8 definitions; chair files P191/P354/P355)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "Vendor advisories (RHSA) and per-CVE VEX statements about Red Hat products: the authoritative source for their fix and not-affected status."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400,
+    "min_interval": 0.5
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "csaf_advisories": {
+      "title": "Red Hat CSAF 2.0 provider-metadata, advisories/changes.csv and advisory documents (+ .sha256)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://security.access.redhat.com/data/csaf/v2/provider-metadata.json",
+        "quote": "This content is licensed under the Creative Commons Attribution 4.0 International License (https://creativecommons.org/licenses/by/4.0/). If you distribute this content, or a modified version of it, you must provide attribution to Red Hat Inc. and provide a link to the original.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "redhat_psirt",
+      "sanitizer": null,
+      "dataset": "csaf_advisories.redhat_changes",
+      "notes": "P354: CC BY 4.0 (stated in every document's Terms of Use note; document.distribution.text also says 'Copyright Red Hat, Inc. All rights reserved.'): attribution to Red Hat Inc. and a link to the original. Synced out of band into the local CSAF index, newest first within a lookback window (changes.csv has ~32,700 rows and thousands of daily changes): <= 2,000 documents per sync."
+    },
+    "csaf_vex": {
+      "title": "Red Hat CSAF VEX per CVE: /data/csaf/v2/vex/{year}/cve-{year}-{n}.json (csaf_redhat_vex)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://security.access.redhat.com/data/csaf/v2/provider-metadata.json",
+        "quote": "This content is licensed under the Creative Commons Attribution 4.0 International License (https://creativecommons.org/licenses/by/4.0/). If you distribute this content, or a modified version of it, you must provide attribution to Red Hat Inc. and provide a link to the original.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "redhat_psirt",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "P354 cond 3: fetched only per in-scope CVE (analyst seeds and has_vuln CVEs, CVE fan-out rule P183); sends the CVE id (disclosure third_party). 404 text/html 'Page not found.' = no VEX for that CVE. Never bulk-synced (vex/changes.csv: ~78,000 rows)."
+    }
+  },
+  "notes": "Owned by batch p3-G08-1 (P354). Canonical advisory pages (access.redhat.com/errata, /security/cve) are links only."
+}

@@ -1,0 +1,24 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.polyswarm.network/v3/search/hash/sha256?hash=275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f&community=default",
+  "headers": {
+   "Authorization": "<KEY>"
+  }
+ },
+ "response": {
+  "status": 429,
+  "headers": {
+   "content-type": "application/json",
+   "retry-after": "60"
+  },
+  "body": {
+   "status": "error",
+   "errors": "Too Many Requests",
+   "result": null
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "synthetic: community tier is limited to 60 calls per hour (documented)"
+}

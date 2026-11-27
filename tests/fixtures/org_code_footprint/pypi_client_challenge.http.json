@@ -1,0 +1,19 @@
+{
+ "_meta": {
+  "module": "org_code_footprint",
+  "case": "pypi_client_challenge",
+  "source": "C0761 pypi.org",
+  "request": {
+   "method": "GET",
+   "url": "https://pypi.org/org/example-org/"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "DERIVED",
+  "note": "PyPI JS 'Client Challenge' served with HTTP 200 (research capture on pypi.org/user/*); not observed on /org/ from this egress. P359 FC8: a PyPI challenge = BLOCKED"
+ },
+ "status": 200,
+ "headers": {
+  "content-type": "text/html; charset=utf-8"
+ },
+ "body": "<!DOCTYPE html><html><head><title>Client Challenge</title><style>#loading-error { font-size: 16px; display: none; }</style></head><body><noscript>JavaScript is disabled in your browser. Please enable JavaScript to proceed.</noscript><div id=\"loading-error\">A required part of this site couldn’t load. This may be due to a browser extension, network issues, or browser settings.</div></body></html>"
+}

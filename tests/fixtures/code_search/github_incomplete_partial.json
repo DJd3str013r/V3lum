@@ -1,0 +1,45 @@
+{
+ "total_count": 1,
+ "incomplete_results": true,
+ "items": [
+  {
+   "name": "settings.py",
+   "path": "app/settings.py",
+   "sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+   "url": "https://api.github.com/repositories/1000001/contents/app/settings.py?ref=1111111111111111111111111111111111111111",
+   "git_url": "https://api.github.com/repositories/1000001/git/blobs/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+   "html_url": "https://github.com/example-org/example-app/blob/1111111111111111111111111111111111111111/app/settings.py",
+   "repository": {
+    "id": 1000001,
+    "name": "example-app",
+    "full_name": "example-org/example-app",
+    "private": false,
+    "fork": false,
+    "html_url": "https://github.com/example-org/example-app",
+    "owner": {
+     "login": "example-org",
+     "id": 1,
+     "type": "Organization"
+    }
+   },
+   "score": 1.0,
+   "text_matches": [
+    {
+     "object_url": "https://api.github.com/repositories/1000001/contents/app/settings.py?ref=1111111111111111111111111111111111111111",
+     "object_type": "FileContent",
+     "property": "content",
+     "fragment": "API_HOST = \"api.example.com\"\nSMTP_PASSWORD = \"example-not-a-real-secret-0002\"",
+     "matches": [
+      {
+       "text": "example.com",
+       "indices": [
+        16,
+        27
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

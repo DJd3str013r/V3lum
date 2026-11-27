@@ -1,0 +1,48 @@
+{
+ "as_name": "AS64496 Example Net",
+ "asn_cidr": "203.0.113.0/24",
+ "asn_country_code": "BR",
+ "blacklist": [
+  {
+   "count": 1,
+   "description": "Mail Spammer",
+   "first_seen": "2017-11-30 12:39:45",
+   "last_seen": "2017-11-30 12:39:45",
+   "source": "Blocklist.de"
+  },
+  {
+   "count": 1,
+   "description": "Malicious Host",
+   "first_seen": "2020-01-28 00:45:48",
+   "last_seen": "2020-01-29 07:10:12",
+   "source": "CIArmy"
+  },
+  {
+   "count": 1,
+   "description": "Malicious Host",
+   "first_seen": "2020-01-29 00:18:08",
+   "last_seen": "2020-02-19 06:34:10",
+   "source": "Alienvault Ip Reputation Database"
+  },
+  {
+   "count": 32,
+   "description": "Spam",
+   "first_seen": "2017-07-14 06:44:00",
+   "last_seen": "2020-03-21 07:52:00",
+   "source": "IBM X-Force Exchange"
+  }
+ ],
+ "cidr": [
+  "203.0.113.0/24"
+ ],
+ "classification": "malicious",
+ "country_code": "BR",
+ "creation_time": "2017-11-30 12:39:45",
+ "ip_addr": "203.0.113.98",
+ "modification_time": "2020-02-19 06:34:10",
+ "tag": [
+  "mail",
+  "spam"
+ ],
+ "type": "ip"
+}

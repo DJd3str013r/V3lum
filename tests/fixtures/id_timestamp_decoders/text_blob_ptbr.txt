@@ -1,0 +1,8 @@
+Denuncia recebida 2026-11-20 (texto colado pelo analista):
+- post: https://x.com/i/web/status/1536682540265873408 (repostado em https://twitter.com/example/status/1536682540265873408?s=20)
+- servidor: https://discord.com/channels/613425648685547541/613425648685547544/1235579295498416149
+- webhook usado no kit: https://discord.com/api/webhooks/613425648685547541/AbCdEfGhIjKlMnOpQrStUvWxYz0123456789-_FAKE
+- video: https://www.tiktok.com/@example/video/6718335390845095173?lang=pt-BR
+- linkedin: https://www.linkedin.com/posts/example-org_golpe-pix-activity-7034310859677622848-AbCd
+- linkedin (feed): https://www.linkedin.com/feed/update/urn:li:activity:7034310859677622848/
+- analista: snowflake:discord:613425648685547541 e snowflake:613425648685547541

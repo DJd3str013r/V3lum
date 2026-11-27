@@ -1,0 +1,19 @@
+{
+ "request": "GET https://portaldatransparencia.gov.br/download-de-dados/ceis/20261126",
+ "response": {
+  "status": 302,
+  "headers": {
+   "content-length": "0",
+   "location": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/ceis/20261126_CEIS.zip",
+   "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+   "expires": "0",
+   "x-cache": "Miss from cloudfront"
+  },
+  "body": ""
+ },
+ "transport_error": null,
+ "elapsed_s": 0.569201,
+ "observed_at": "2026-11-26T05:21:02+00:00",
+ "origin": "live",
+ "note": ""
+}

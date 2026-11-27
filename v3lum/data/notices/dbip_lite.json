@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "dbip_lite",
+  "source_url": "https://db-ip.com/db/lite.php",
+  "version": "DB-IP Lite country and ASN mmdb, monthly releases (runtime downloads by `v3lum data update`, checked 2026-11-26)",
+  "sha256": "",
+  "licence": "CC-BY-4.0",
+  "attribution": "IP Geolocation by DB-IP (https://db-ip.com), licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/ip_network/ip_offline_geo.py"
+  ]
+}

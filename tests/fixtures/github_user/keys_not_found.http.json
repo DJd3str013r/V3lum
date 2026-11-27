@@ -1,0 +1,9 @@
+{
+ "_fixture": "DOC-SHAPED (unverified): github.com/<missing>.keys answers 404; body text assumed.",
+ "status": 404,
+ "headers": {
+  "content-type": "text/plain; charset=utf-8",
+  "x-github-api-version-selected": "2022-11-28"
+ },
+ "body": "Not Found"
+}

@@ -1,0 +1,36 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p2-G05-2",
+  "title": "Profile ids, avatar correlation, threat-actor handle lists and organisation code footprint (P107, P114, P195, P359)",
+  "owner": "batch p2-G05-2 (profile_id_extractor helper, avatar_correlation, threat_actor_handles, org_code_footprint, org_code_secrets; rules p2g05_avatar_reuse, p2g05_gravatar_email_match)",
+  "attributes": {
+    "avatar_dhash": "16-hex 64-bit dHash of the whole avatar image (9x8 grayscale difference hash on Pillow; never face detection or biometric analysis, P114)",
+    "avatar_sha256": "SHA-256 of the avatar image bytes as served (the image itself is never stored, P114 cond 4)",
+    "avatar_facts": "avatar image facts {format, width, height, bytes, stddev32, frames_used, upload_date_hint}: no pixels, no thumbnail (P114 cond 4/9)",
+    "avatar_ignored": "why an avatar is not an identity signal: 'flat' (grayscale stddev < 6) or 'placeholder:<platform>' (bundled default/placeholder dHash list, P114 cond 5)",
+    "profile_ids": "stable ids, creation date, counters and flags extracted from a profile page the caller already fetched: {scheme, source_page, fields} (P107; no request made)",
+    "linked_accounts": "linked accounts found on profile (owner-written, attacker-controlled when the subject is an actor): list of {platform, handle, url, source_page}; expand=False (P107 cond 4)",
+    "profile_personal": "names, e-mails, phones and location shown on a profile page (owner-written, POSSIBLE): never auto-pivoted into person_name, breach or stealer modules (P107 cond 6)",
+    "forum_handle_lists": "scraped forum user lists where the same handle appears: list of {forum, title, status, list_date}; a weak signal, handle collisions are common (P195)",
+    "code_orgs": "source-code and package organisations found for a company or handle: list of {provider, login, url, state candidate|confirmed, basis, website_host} (P359 cond 2)",
+    "code_repos": "most recent public repositories of confirmed organisations (forks without own commits skipped): list of {provider, full_name, url, pushed_at, fork, archived} (P359 cond 4)",
+    "code_packages": "packages and images published by confirmed organisations {npm, pypi, docker}: names and dates only (P359 cond 1)",
+    "code_member_counts": "public member count per confirmed organisation {'<provider>:<login>': count}; member usernames are never listed by default (P359 cond 4)",
+    "code_secret_scan": "deep secret scan summary {repos_scanned, repos_skipped [{repo, reason}], files_scanned, secrets}: current tree only, values never kept (P359 cond 5/6)"
+  },
+  "tags": {
+    "same_avatar": "two accounts show the same avatar image (whole-image dHash): an identity signal that never proves the same person (P114)",
+    "common_image": "the same image is used by more than three unrelated accounts (logo, meme, stock image): not an identity signal (P114 cond 6)",
+    "third_party_disclosure": "a secret of a third party (supplier, customer): route it to the disclosure workflow, keep it out of shared reports (P359 cond 7)"
+  },
+  "relations": {
+    "has_avatar": "profile (username, account, profile URL, e-mail) -> the URL of its avatar image",
+    "linked_account_on_profile": "profile page -> account the owner linked on it (owner-written, expand=False, P107)",
+    "email_on_profile": "profile page -> e-mail address shown on it (owner-written, expand=False, never auto-sent to breach/stealer modules)",
+    "phone_on_profile": "profile page -> phone number shown on it (owner-written, expand=False)",
+    "name_on_profile": "profile page -> display/real name shown on it (owner-written, expand=False, never auto-pivoted into person_name modules)",
+    "link_on_profile": "profile page -> other link the owner put on it (owner-written, never fetched by the extractor)",
+    "code_org": "company, domain or handle -> forge/registry organisation URL (candidate unless confirmed by an owned website or the analyst, P359)",
+    "org_member": "organisation -> public member username (listed on demand only, expand=False, P359)"
+  }
+}

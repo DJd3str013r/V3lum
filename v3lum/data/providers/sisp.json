@@ -1,0 +1,55 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "sisp",
+  "name": "SISP gov.br official domain list (dominios_gov_br.csv)",
+  "operator": "Governo Federal do Brasil - SISP (Sistema de Administracao dos Recursos de Tecnologia da Informacao), Ministerio da Gestao e da Inovacao em Servicos Publicos",
+  "hosts": [
+    "dominiosgovbr.sisp.gov.br"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Federal government body publishing the registry of gov.br domains (A8 'government bodies': trusted); P009 chair: 'Government data source: tier trusted, terms open.'",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "Authoritative list of federal gov.br registrations with the registrant CNPJ (often the IT operator such as SERPRO, not the agency itself); state zones (sp.gov.br...) are separate registrable domains it does not cover."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "timeout": 60,
+    "retries": 1,
+    "min_interval": 1.0,
+    "concurrency": 1,
+    "max_bytes": 5242880
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "dominios_gov_br": {
+      "title": "dominios_gov_br.csv (dominio;documento;nome;nome_contato;data_cadastro;ultima_atualizacao)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2016/decreto/d8777.htm",
+        "quote": "legal_dpo: open government data (Decreto 8.777/2016) matched locally. Government data source: tier trusted, terms open.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "sisp-govbr",
+      "sanitizer": null,
+      "dataset": "govbr_domains.csv",
+      "notes": "Quote: binding council text (P009 chair rationale). Research C0031; live 2026-11-26: S3-backed static CSV (183 KB, 1,280 rows, regenerated daily about 06:00 UTC, strong ETag, If-None-Match -> 304; a missing object answers 403 AccessDenied XML). Reachable from a non-BR egress. Matched locally by govbr_domains (P009, disclosure none); the column nome_contato (natural persons) is never kept."
+    }
+  },
+  "notes": "Owned by batch p2-G01-1 (P009, module govbr_domains). Dataset-only provider: nothing but the static CSV URL is requested. .br host: Accept-Language pt-BR by default."
+}

@@ -1,0 +1,11 @@
+{
+ "request": {"method": "GET", "url": "https://example-corp-empty.s3.amazonaws.com/?max-keys=1"},
+ "response": {
+  "status": 200,
+  "headers": {"content-type": "application/xml", "server": "AmazonS3"},
+  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<ListBucketResult xmlns=\"http://s3.amazonaws.com/doc/2006-03-01/\"><Name>example-corp-empty</Name><Prefix></Prefix><MaxKeys>1</MaxKeys><IsTruncated>false</IsTruncated></ListBucketResult>"
+ },
+ "class": "research",
+ "origin": "synthetic (documented S3 200 empty ListBucketResult)",
+ "notes": "Public but no objects: public listing, sampled_extension=None."
+}

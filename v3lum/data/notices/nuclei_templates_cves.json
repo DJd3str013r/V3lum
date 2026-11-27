@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "nuclei_templates_cves",
+  "source_url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/cves.json",
+  "version": "runtime dataset exploit_index.nuclei (weekly refresh); lines trimmed in the test fixtures (2026-11-26)",
+  "sha256": "",
+  "licence": "MIT",
+  "attribution": "nuclei-templates cves.json, MIT License, Copyright (c) 2025 ProjectDiscovery, Inc.; references only (templates are never run by V3LUM's exploit_index).",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/vulnerability_cve/exploit_index.py",
+    "tests/fixtures/exploit_index/nuclei_ok.ndjson"
+  ]
+}

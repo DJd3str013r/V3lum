@@ -1,0 +1,52 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "siemens",
+  "name": "Siemens ProductCERT CSAF 2.0 advisories (cert-portal.siemens.com)",
+  "operator": "Siemens AG (Siemens ProductCERT)",
+  "hosts": [
+    "cert-portal.siemens.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms and a privacy policy; CSAF trusted provider of its own product advisories (A8 BR2, P354).",
+  "tier_reviewer": "batch p3-G08-1 (council-1 A8 definitions; chair files P191/P354/P355)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "Vendor ProductCERT advisories about the vendor's own OT/IT products: the authoritative source for them."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400,
+    "min_interval": 0.5
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "productcert_csaf": {
+      "title": "Siemens ProductCERT CSAF 2.0 provider-metadata, ROLIE feed (ssa-feed-tlp-white.json) and advisory documents (+ .sha512)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://cert-portal.siemens.com/productcert/csaf/provider-metadata.json",
+        "quote": "Siemens Security Advisories are subject to the terms and conditions contained in Siemens' underlying license terms or other applicable agreements previously agreed to with Siemens (hereinafter \"License Terms\"). To the extent applicable to information, software or documentation made available in or through a Siemens Security Advisory, the Terms of Use of Siemens' Global Website (https://www.siemens.com/terms_of_use, hereinafter \"Terms of Use\"), in particular Sections 8-10 of the Terms of Use, shall apply additionally.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "siemens_productcert",
+      "sanitizer": null,
+      "dataset": "csaf_advisories.siemens_feed",
+      "notes": "P354: council class 'open' (all three P354 feeds open); synced out of band into the local CSAF index; documents only from cert-portal.siemens.com (https), <= 2,000 per sync, <= 5 MB each, ROLIE rel=hash .sha512 checked. Reports show excerpts plus links only."
+    }
+  },
+  "notes": "Owned by batch p3-G08-1 (P354)."
+}

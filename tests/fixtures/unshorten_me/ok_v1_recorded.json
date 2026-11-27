@@ -1,0 +1,7 @@
+{
+ "requested_url": "bit.ly/3Example",
+ "success": true,
+ "resolved_url": "https://www.example.com/landing",
+ "usage_count": 1,
+ "remaining_calls": 9
+}

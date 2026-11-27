@@ -1,0 +1,67 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "google_safebrowsing",
+  "name": "Google Safe Browsing Lookup API v4 (non-commercial)",
+  "operator": "Google LLC",
+  "hosts": [
+    "safebrowsing.googleapis.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms (A8): 'Google: tier trusted.' (P067 chair rationale).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Google's Safe Browsing lists: a hit is usually right; a miss reads 'not on Google's lists at <time>', never 'safe' (P067 cond 5). Same upstream lists as Web Risk: one vote in consensus."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "ttl": 1800,
+    "timeout": 10,
+    "min_interval": 0.5,
+    "concurrency": 2
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {
+    "google_safebrowsing": {
+      "description": "Google Safe Browsing v4 API key (non-commercial use only: research profile or a licence_allow entry); sent as the 'key' URL parameter and masked by the central redactor (AR01)",
+      "signup_url": "https://developers.google.com/safe-browsing/v4/get-started",
+      "env": [
+        "V3LUM_GSB_KEY",
+        "GOOGLE_SAFEBROWSING_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "non-commercial terms: never used under the corporate profile without a licence_allow entry; commercial users go to Web Risk (key 'webrisk', P067 cond 2)"
+    }
+  },
+  "sources": {
+    "v4_lookup": {
+      "title": "Safe Browsing Lookup API v4 threatMatches:find (POST JSON, URL list): MALWARE, SOCIAL_ENGINEERING, UNWANTED_SOFTWARE",
+      "terms": {
+        "class": "noncommercial",
+        "evidence_url": "https://developers.google.com/safe-browsing/v4/usage-limits",
+        "quote": "Safe Browsing v4/v5 (noncommercial; v4 deprecated; Google sends commercial users to Web Risk) runs only through licence_allow or the research profile.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "google_safe_browsing",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P067 cond 2). Research C0147 (verified_needs_key): keyless POST answers 403 PERMISSION_DENIED (ErrorInfo ACCESS_DENIED), an invalid key 400 INVALID_ARGUMENT 'API key not valid' -> NEEDS_KEY (P067 cond 6); an empty {} answer means no match. The minimised URL (P067 cond 4) is the only value sent.",
+      "licensed_alternative": "Google Web Risk (google_webrisk.uris_search, class 'license'): a company billing account recorded in licence_allow and key 'webrisk' (P067 cond 1)."
+    }
+  },
+  "notes": "Owned by batch p2-G03-1 (P067 google_safe_browsing). Key name google_safebrowsing is the legacy config.KNOWN_KEYS name (alias GOOGLE_SAFEBROWSING_KEY); V3LUM_GSB_KEY is added as an alias. Free quota per Google Cloud project: no quota block."
+}

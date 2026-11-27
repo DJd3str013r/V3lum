@@ -1,0 +1,73 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "projectdiscovery",
+  "name": "ProjectDiscovery Chaos dataset API (dns.projectdiscovery.io)",
+  "operator": "ProjectDiscovery, Inc.",
+  "hosts": [
+    "dns.projectdiscovery.io"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established security company with published terms, public API documentation and open-source tooling (chaos-client, subfinder); council P007 cond 1 names Chaos (ProjectDiscovery) trusted (A8).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Curated subdomain dataset with best coverage for bug-bounty programmes; names are labels without the apex (appended by the module) and include wildcard labels."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 20,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "rate_per_second": 1.0,
+    "burst": 1,
+    "published": true,
+    "evidence_url": "https://github.com/projectdiscovery/chaos-client",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {
+    "chaos": {
+      "description": "ProjectDiscovery Chaos API key (raw value in the Authorization header)",
+      "signup_url": "https://cloud.projectdiscovery.io/",
+      "env": [
+        "V3LUM_CHAOS_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "business = a company/team account on a plan whose terms permit internal business use, recorded by legal (never an analyst's personal free account, P007 cond 3); key_plans.chaos='business' unlocks it under the corporate profile"
+    }
+  },
+  "sources": {
+    "subdomains": {
+      "title": "Chaos subdomains of a domain (GET /dns/{domain}/subdomains)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://projectdiscovery.io/terms",
+        "quote": "P007 cond 3 (binding council text): key-terms per adapter - a company/team account, never an analyst's personal free account, on a plan whose terms permit internal business use; legal records the plan and the terms URL in the registry before the adapter runs under the corporate profile (A1).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "projectdiscovery_chaos",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0016 (verified_needs_key, 401 without key). Answer {domain, subdomains[labels without the apex], count}: the module appends '.{domain}' (P007 cond 4); '*' and '*.x' labels are wildcard records of the parent. Never call POST /dns/add (it uploads subdomains) and never add chaos-client's ?sdk=true telemetry. chaos-client README: 60 requests/min per IP (quota block). Used by subdomains_keyed."
+    }
+  },
+  "notes": "Owned by batch p3-G01-1 (P007, module subdomains_keyed). The keyless bulk dataset chaos-data.projectdiscovery.io is outside the final conditions and not registered (docs/backlog/p3-G01-1.md)."
+}

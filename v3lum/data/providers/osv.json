@@ -1,0 +1,56 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "osv",
+  "name": "OSV.dev (Open Source Vulnerabilities API)",
+  "operator": "Google (OSV.dev, open-source vulnerability database and API)",
+  "hosts": [
+    "api.osv.dev"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established company with published terms, a privacy policy and a business offering (A8 trusted); P185 cond 5 'Registry providers osv (Google) and github: tier trusted'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Aggregates the advisories of the ecosystem databases (GitHub Advisory Database, PyPA, Go, RustSec, Debian, Ubuntu...) in one schema; ranges are as precise as each upstream database."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 15,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 0.5,
+    "concurrency": 2
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "vulns": {
+      "title": "OSV API GET /v1/vulns/{id} (CVE, GHSA and the derived DEBIAN-CVE/UBUNTU-CVE distro records)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://google.github.io/osv.dev/faq/",
+        "quote": "Sources: OSV (CC BY 4.0, per-source licences, attribution) 'open'; GHSA through the GitHub REST API 'key-terms' (as P111).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "osv",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P185 cond 2); research C0437 'OSV data CC-BY 4.0 (per-source licenses)', verified live 2026-11-26 (200 in 0.06-0.15 s, no rate-limit headers, no key). An unknown id answers 404 {\"code\":5,\"message\":\"Vulnerability not found\"} (documented absence, also for the DEBIAN-CVE/UBUNTU-CVE ids of CVEs without a distro record). /v1/query and /v1/querybatch (package@version) are never built until a purl/package entity type exists (P185 cond 3: package queries would disclose the internal software inventory). Attribution: OSV.dev, CC BY 4.0 (per-source licences)."
+    }
+  },
+  "notes": "Owned by batch p2-G08-1 (P185 osv_ghsa). Other batches extend it (osv__<suffix>.json). No published quota ('no key, generous'): min_interval 0.5 s and the CVE fan-out rule (P183 cond 3) keep the per-case load small."
+}

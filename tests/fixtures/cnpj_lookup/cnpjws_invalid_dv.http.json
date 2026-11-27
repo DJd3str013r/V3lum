@@ -1,0 +1,29 @@
+{
+ "request": "GET https://publica.cnpj.ws/cnpj/00000000000192",
+ "response": {
+  "status": 400,
+  "headers": {
+   "content-type": "application/json; charset=utf-8",
+   "content-length": "91",
+   "x-ratelimit-limit": "3",
+   "x-ratelimit-remaining": "2",
+   "x-ratelimit-reset": "60",
+   "x-cache": "MISS",
+   "etag": "W/\"5b-mmAgInzFFVMCjVXDx5uASLiGlSc\"",
+   "cache-control": "private",
+   "server": "cloudflare",
+   "cf-cache-status": "BYPASS"
+  },
+  "body": {
+   "status": 400,
+   "titulo": "Requisição inválida",
+   "detalhes": "CNPJ inválido",
+   "validacao": []
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": 0.385103,
+ "observed_at": "2026-11-26T05:20:47+00:00",
+ "origin": "live",
+ "note": ""
+}

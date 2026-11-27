@@ -1,0 +1,5 @@
+"http_user_agent","metadata_description","metadata_tool","metadata_category","metadata_priority","metadata_fp_risk","metadata_severity"
+"Mozilla/5.0 (ARTEX)","ARTEX agent driving web shells on compromised servers","ARTEX","Exploit","high","none","critical"
+"Mozilla/5.0 (Compatible Exploit)","HexStrike AI CVE exploit template User-Agent (remote code execution attempts)","HexStrike AI","Exploit","high","none","critical"
+"*CyberStrikeAI-WebShell/*","CyberStrikeAI web shell manager User-Agent (commands sent to deployed web shells)","CyberStrikeAI","Exploit","high","none","critical"
+"artex*","ARTEX AI-powered penetration testing tool User-Agents starting with the tool name (artex-<","ARTEX","Exploit","high","low","high"

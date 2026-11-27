@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Error><Code>AccessDenied</Code><Message>Request has expired</Message><X-Amz-Expires>3600</X-Amz-Expires><Expires>2026-11-26T06:21:39Z</Expires><ServerTime>2026-11-26T07:30:00Z</ServerTime><RequestId>EXAMPLE0000000000</RequestId><HostId>EXAMPLEHOSTID=</HostId></Error>

@@ -1,0 +1,15 @@
+{
+ "_fixture": "REAL live capture 2026-11-26, minimised: official Pinterest account; user kept, 50 pins replaced by 4 documentation-value pins",
+ "_meta": {
+  "url": "https://widgets.pinterest.com/v3/pidgets/users/pinterest/pins/",
+  "user_agent": "V3LUM/dev",
+  "captured": "2026-11-26T08:32:52Z",
+  "elapsed_s": 0.316,
+  "bytes_original": 90380
+ },
+ "status": 200,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": "{\"status\": \"success\", \"code\": 0, \"message\": \"ok\", \"endpoint_name\": \"v3_pidget_get_user_pins\", \"data\": {\"user\": {\"full_name\": \"Pinterest\", \"about\": \"Find your reason to go offline. &#128204;\", \"id\": \"424605208526455283\", \"pin_count\": 99261, \"follower_count\": 6272680, \"profile_url\": \"https://www.pinterest.com/pinterest/\"}, \"pins\": [{\"id\": \"100000000000000000\", \"domain\": \"shop.example.com\", \"link\": \"https://shop.example.com/product/1\", \"description\": \"Example product 1\", \"pinner\": {\"id\": \"424605208526455283\", \"full_name\": \"Pinterest\", \"profile_url\": \"https://www.pinterest.com/pinterest/\"}}, {\"id\": \"100000000000000001\", \"domain\": \"shop.example.com\", \"link\": \"https://shop.example.com/product/2\", \"description\": \"Example product 2\", \"pinner\": {\"id\": \"424605208526455283\", \"full_name\": \"Pinterest\", \"profile_url\": \"https://www.pinterest.com/pinterest/\"}}, {\"id\": \"100000000000000002\", \"domain\": \"store.example.net\", \"link\": \"https://store.example.net/product/3\", \"description\": \"Example product 3\", \"pinner\": {\"id\": \"424605208526455283\", \"full_name\": \"Pinterest\", \"profile_url\": \"https://www.pinterest.com/pinterest/\"}}, {\"id\": \"100000000000000009\", \"domain\": \"uploaded by user\", \"link\": null, \"description\": \"Example\", \"pinner\": {\"id\": \"424605208526455283\", \"full_name\": \"Pinterest\", \"profile_url\": \"https://www.pinterest.com/pinterest/\"}}]}}"
+}

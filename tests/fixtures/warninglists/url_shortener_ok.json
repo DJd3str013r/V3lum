@@ -1,0 +1,19 @@
+{
+ "name": "List of known URL Shorteners domains",
+ "type": "hostname",
+ "version": 20261014,
+ "description": "Event contains one or more entries of known Shorteners domains",
+ "matching_attributes": [
+  "domain",
+  "hostname",
+  "domain|ip",
+  "url",
+  "uri"
+ ],
+ "category": "known",
+ "list": [
+  "bit.ly",
+  "t.co",
+  "tinyurl.com"
+ ]
+}

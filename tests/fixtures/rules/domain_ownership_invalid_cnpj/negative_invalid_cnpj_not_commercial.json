@@ -1,0 +1,31 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "light",
+    "tlp": "amber",
+    "purpose": ""
+  },
+  "nodes": [
+    {
+      "key": "domain:blog-pessoal.example",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "homepage_indicators": [
+          {
+            "value": {
+              "source": "wayback",
+              "cnpjs": [
+                "11.222.333/0001-82"
+              ],
+              "commercial": false
+            },
+            "source": "web_archives"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": []
+}

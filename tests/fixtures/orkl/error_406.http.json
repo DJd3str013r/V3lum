@@ -1,0 +1,10 @@
+{
+ "status": 406,
+ "headers": {
+  "content-type": "application/json; charset=utf-8",
+  "x-ratelimit-limit": "300",
+  "x-ratelimit-remaining": "298",
+  "x-ratelimit-reset": "60"
+ },
+ "body": "{\"data\":null,\"message\":\"query can't be empty\",\"status\":\"error\"}"
+}

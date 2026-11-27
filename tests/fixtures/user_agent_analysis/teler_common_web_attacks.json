@@ -1,0 +1,24 @@
+{
+ "filters": [
+  {
+   "id": 1,
+   "rule": "(?:\"[^\"]*[^-]?>)|(?:[^\\w\\s]\\s*\\/>)|(?:>\")",
+   "description": "finds html breaking injections including whitespace attacks",
+   "tags": [
+    "xss",
+    "csrf"
+   ],
+   "impact": 4
+  },
+  {
+   "id": 2,
+   "rule": "(?:\"+.*[<=]\\s*\"[^\"]+\")|(?:\"\\s*\\w+\\s*=)|(?:>\\w=\\/)|(?:#.+\\)[\"\\s]*>)|(?:\"\\s*(?:src|style|on\\w+)\\s*=\\s*\")|(?:[^\"]?\"[,;\\s]+\\w*[\\[\\(])",
+   "description": "finds attribute breaking injections including whitespace attacks",
+   "tags": [
+    "xss",
+    "csrf"
+   ],
+   "impact": 4
+  }
+ ]
+}

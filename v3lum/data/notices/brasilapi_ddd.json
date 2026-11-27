@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "brasilapi_ddd",
+  "source_url": "https://brasilapi.com.br/api/ddd/v1",
+  "version": "runtime downloads by the dataset manager: one GET of /api/ddd/v1/{ddd} per allocated DDD (67 parts brasilapi_ddd.<DDD>, TTL 30 days, ETag-revalidated); format checked 2026-11-26",
+  "sha256": "",
+  "licence": "MIT (BrasilAPI code); Anatel numbering-plan data (Brazilian open government data)",
+  "attribution": "City lists per DDD: BrasilAPI (https://brasilapi.com.br, MIT-licensed code, https://github.com/BrasilAPI/BrasilAPI) over Anatel numbering-plan data (Fonte: Anatel).",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/phone/brasilapi_ddd.py"
+  ]
+}

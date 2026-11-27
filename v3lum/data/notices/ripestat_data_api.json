@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "ripestat_data_api",
+  "source_url": "https://stat.ripe.net/docs/02.data-api/",
+  "version": "RIPEstat Data API, live answers (HTTP cache 24 h); terms checked 2026-11-26",
+  "sha256": "",
+  "licence": "RIPEstat terms of service (free use with attribution; no re-packaging or redistribution of the data)",
+  "attribution": "Data: RIPEstat Data API, RIPE NCC (https://stat.ripe.net), used under the RIPEstat terms of service. RIPEstat Service Terms and Conditions: https://www.ripe.net/about-us/legal/ripestat-service-terms-and-conditions/",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/ip_network/ripestat.py"
+  ]
+}

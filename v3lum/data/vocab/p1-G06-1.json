@@ -1,0 +1,16 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p1-G06-1",
+  "title": "Phone parsing names (batch p1-G06-1: phone_parse P126, pivots_phone P128)",
+  "owner": "batch p1-G06-1",
+  "attributes": {
+    "phone_formats": "phone number formats from libphonenumber: {e164, international, national}",
+    "phone_geodescription": "libphonenumber geodescription {text, level city|state|country|locality, country, city, uf, state}: Brazilian mobiles give the state only, landlines 'City - UF', non-geographic numbers the country",
+    "phone_br": "Brazilian numbering facts read from the E.164 digits: {ddd, ddd_allocated, line_hint mobile|landline|mobile_sme_8digit|pre2016_mobile_missing_ninth_digit|non_geographic|invalid_length|unknown, subscriber_digits, non_geographic {prefix, class, label}}",
+    "phone_ddd": "DDD (Brazilian national code) facts from the bundled Anatel table: {code, allocated, uf, ufs, main_city, cities (brasilapi_ddd dataset only), cities_source, coverage, table, uf_time_zones}",
+    "phone_invalid_reason": "why libphonenumber does not consider the phone number valid (unallocated DDD, too short, 8-digit mobile without the ninth digit...)",
+    "original_carrier": "{name, label}: ORIGINAL carrier of the number block from libphonenumber; number portability is not reflected (never the current operator)"
+  },
+  "tags": {},
+  "relations": {}
+}

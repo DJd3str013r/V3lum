@@ -1,0 +1,19 @@
+{
+ "name": "Top 10,000 domains from Cloudflare Radar",
+ "type": "string",
+ "version": 20260810,
+ "description": "List of top 10,000 domains from Cloudflare Radar (https://developers.cloudflare.com/radar/investigate/domain-ranking-datasets/)",
+ "matching_attributes": [
+  "hostname",
+  "domain",
+  "url",
+  "domain|ip"
+ ],
+ "list": [
+  "cloudflare.com",
+  "example.com",
+  "google.com",
+  "nic.br",
+  "registro.br"
+ ]
+}

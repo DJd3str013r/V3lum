@@ -1,0 +1,29 @@
+{
+ "request": "GET https://publica.cnpj.ws/cnpj/12ABC34501DE35",
+ "response": {
+  "status": 404,
+  "headers": {
+   "content-type": "application/json; charset=utf-8",
+   "content-length": "93",
+   "x-ratelimit-limit": "3",
+   "x-ratelimit-remaining": "2",
+   "x-ratelimit-reset": "60",
+   "x-cache": "MISS",
+   "etag": "W/\"5d-btpSJpI6SBx7GJVszWyMfExCKv4\"",
+   "cache-control": "private",
+   "server": "cloudflare",
+   "cf-cache-status": "BYPASS"
+  },
+  "body": {
+   "status": 404,
+   "titulo": "Não encontrado",
+   "detalhes": "Recurso não encontrado",
+   "validacao": []
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": 0.271425,
+ "observed_at": "2026-11-26T05:20:00+00:00",
+ "origin": "live",
+ "note": ""
+}

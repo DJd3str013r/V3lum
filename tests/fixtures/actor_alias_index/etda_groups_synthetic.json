@@ -1,0 +1,114 @@
+{
+ "_synthetic": "ETDA/ThaiCERT getmisp.cgi?o=g export STRUCTURE (version, values[value, uuid, description, meta, related]); names and synonyms are public facts taken from the CC0 MISP galaxy; UUIDs are synthetic. Real ETDA data has no published licence and must not be committed (P295 FC1/FC2).",
+ "authors": [
+  "Example Author (example.com)"
+ ],
+ "category": "actor",
+ "name": "Threat Group Cards - Actors",
+ "type": "tgc-actors",
+ "source": "Threat Group Cards: A Threat Actor Encyclopedia",
+ "description": "Synthetic stand-in for the ETDA export.",
+ "uuid": "00000000-0000-4000-8000-0000000e7da0",
+ "version": "20250816",
+ "values": [
+  {
+   "value": "Sofacy, APT 28, Fancy Bear, Sednit",
+   "uuid": "00000000-0000-4000-8000-000000000028",
+   "description": "Synthetic record.",
+   "meta": {
+    "synonyms": [
+     "Sofacy",
+     "APT 28",
+     "Fancy Bear",
+     "Sednit",
+     "Pawn Storm",
+     "Tsar Team"
+    ],
+    "country": "RU",
+    "attribution-confidence": "50",
+    "date": "2004",
+    "refs": [
+     "https://apt.etda.or.th/cgi-bin/showcard.cgi?u=00000000-0000-4000-8000-000000000028"
+    ]
+   },
+   "related": [
+    {
+     "dest-uuid": "00000000-0000-4000-8000-000000000029",
+     "type": "related-to",
+     "tags": []
+    }
+   ]
+  },
+  {
+   "value": "APT 29, Cozy Bear, The Dukes",
+   "uuid": "00000000-0000-4000-8000-000000000029",
+   "description": "Synthetic record.",
+   "meta": {
+    "synonyms": [
+     "APT 29",
+     "Cozy Bear",
+     "The Dukes",
+     "Nobelium"
+    ],
+    "country": "RU",
+    "attribution-confidence": "50",
+    "refs": [
+     "https://apt.etda.or.th/cgi-bin/showcard.cgi?u=00000000-0000-4000-8000-000000000029"
+    ]
+   }
+  },
+  {
+   "value": "Winnti Group, Wicked Panda",
+   "uuid": "00000000-0000-4000-8000-000000000044",
+   "description": "Synthetic record.",
+   "meta": {
+    "synonyms": [
+     "Winnti Group",
+     "Wicked Panda",
+     "Winnti",
+     "G0044"
+    ],
+    "country": "CN",
+    "attribution-confidence": "50",
+    "refs": [
+     "https://apt.etda.or.th/cgi-bin/showcard.cgi?u=00000000-0000-4000-8000-000000000044"
+    ]
+   },
+   "related": [
+    {
+     "dest-uuid": "00000000-0000-4000-8000-000000000041",
+     "type": "overlaps",
+     "tags": []
+    }
+   ]
+  },
+  {
+   "value": "APT 41",
+   "uuid": "00000000-0000-4000-8000-000000000041",
+   "description": "Synthetic record.",
+   "meta": {
+    "synonyms": [
+     "Double Dragon",
+     "Barium",
+     "Brass Typhoon"
+    ],
+    "country": "CN",
+    "attribution-confidence": "50",
+    "refs": [
+     "https://apt.etda.or.th/cgi-bin/showcard.cgi?u=00000000-0000-4000-8000-000000000041"
+    ]
+   }
+  },
+  {
+   "value": "Example Unattributed Cluster",
+   "uuid": "00000000-0000-4000-8000-0000000000aa",
+   "description": "Synthetic record without synonyms or country.",
+   "meta": {
+    "attribution-confidence": "50",
+    "refs": [
+     "https://apt.etda.or.th/cgi-bin/showcard.cgi?u=00000000-0000-4000-8000-0000000000aa"
+    ]
+   }
+  }
+ ]
+}

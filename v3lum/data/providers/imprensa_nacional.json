@@ -1,0 +1,54 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "imprensa_nacional",
+  "name": "Imprensa Nacional - Diario Oficial da Uniao (DOU open-data XML dumps and public search page)",
+  "operator": "Imprensa Nacional (Presidencia da Republica)",
+  "hosts": [
+    "www.in.gov.br",
+    "in.gov.br"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Government body (A8 trusted): Imprensa Nacional publishes the official federal gazette (DOU) and its open-data XML dumps; P242 provider tier trusted.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "The official gazette itself; the local dump lags publication (the newest acts may be missing), so every answer states 'DOU dump as of <date>'."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 0,
+    "min_interval": 3.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "dou_open_data": {
+      "title": "DOU open-data XML dumps (monthly ZIPs per section, one XML file per act), matched locally; the search page is a manual link only",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.in.gov.br/acesso-a-informacao/dados-abertos/base-de-dados",
+        "quote": "Terms classes (definitions for every chair file and registry entry): 'open' = free use, internal business use included (public domain, CC0, CC BY, open government data, and permissive or copyleft licences whose obligations V3LUM meets by runtime download and attribution, A6)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "imprensa_nacional",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding A1 definition of 'open' (official gazette, open government data; research C0552 'Official gazette (public)'). www.in.gov.br/robots.txt disallows all robots ('Disallow: /', P242 cond 1): the search page is never fetched by V3LUM, only rendered as a manual pivot link. The dump URL is NOT recorded yet: www.in.gov.br drops the connection from the build egress (curl 'Empty reply from server' on 2026-11-26, prep H9; in.gov.br answers a BigIP 302 to www), so no dump could be fetched or excerpted (P242 cond 4). Until the team network records the official dump URL with evidence, dumps downloaded by hand from the official page are installed locally with dou_search.install_dumps() (no network). Used by dou_search."
+    }
+  },
+  "notes": "Owned by batch p2-G10-2 (P242 dou_search). Disclosure 'none': matching is local and no module declares these hosts; the hosts are registered for the manual pivot link (pivot pack dou_search_links) and the future dump download (`v3lum data update dou`, backlog). min_interval 3 s for that download."
+}

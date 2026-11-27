@@ -1,0 +1,23 @@
+{
+  "schema": "v3lum.pivot_pack/1",
+  "pack": "file_triage",
+  "title": "File triage fallbacks (batch p1-G12-1)",
+  "links": [
+    {
+      "id": "wayback_url",
+      "label": "Wayback Machine captures of the document URL (archived copy, no contact with the target)",
+      "template": "https://web.archive.org/web/*/{raw}",
+      "entity_types": ["url"],
+      "category": "history",
+      "host": "web.archive.org",
+      "verified": false,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "P269 c4: until the shared LIGHT file fetcher passes the AR20 safety suite, URL inputs of the file modules get this manual pivot link (archived copy preferred) instead of a download. The calendar view only lists existing captures (never Save Page Now). Not verified from the datacenter egress on 2026-11-26: web.archive.org reset the TLS connection (same as the prep check)."
+    }
+  ]
+}

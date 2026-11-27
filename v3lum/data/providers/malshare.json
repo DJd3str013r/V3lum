@@ -1,0 +1,70 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "malshare",
+  "name": "MalShare (malware sample repository API)",
+  "operator": "MalShare project (community malware repository, malshare.com)",
+  "hosts": [
+    "malshare.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Long-running community malware repository with an identifiable project, public API documentation and free researcher keys (A8 community): 'Registry tiers: Recorded Future, OPSWAT and PolySwarm trusted; MalShare and VirusShare community.' (P177 cond 6).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Repository membership says a sample was collected from a malware distribution source, not which family it is: presence is a hint, never a verdict alone; one vote per adapter (P177 cond 5)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "ttl": 86400,
+    "min_interval": 2.0
+  },
+  "quota": {
+    "scope": "key",
+    "day": 1000,
+    "burst": 1,
+    "published": false,
+    "evidence_url": "",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {
+    "malshare": {
+      "description": "MalShare API key (api_key URL parameter, masked by the central redactor)",
+      "signup_url": "https://malshare.com/register.php",
+      "env": [
+        "V3LUM_MALSHARE_KEY"
+      ],
+      "multi_key": false,
+      "plan_hint": "free researcher key with a daily request limit (action=getlimit reports LIMIT/REMAINING); terms 'unknown' until legal records them (P177 cond 4), so the source stays disabled in every profile; an empty or placeholder key is never used"
+    }
+  },
+  "sources": {
+    "api": {
+      "title": "MalShare API (action=details hash metadata only)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://malshare.com/doc.php",
+        "quote": "Classes: triage free 'noncommercial' (commercial licence 'license'); metadefender free 'noncommercial' (paid plan 'key-terms'); malshare, polyswarm and virusshare 'unknown' until legal records their terms.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "malshare",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P177 cond 4). Research C0415 (verified_needs_key: no key -> 400 'No key specified in `api_key` GET variable'). https://malshare.com/api.php?api_key={KEY}&action=details&hash={md5|sha1|sha256}; only the actions details and getlimit are ever built (P177 cond 2: never getfile, upload, download_url or the list/search actions). Errors come back as plain text, also inside HTTP 200: the module reads them (no key / invalid key -> NEEDS_KEY, request limit -> QUOTA, 'not found' -> EMPTY, anything else -> ERROR). Daily quota: start at 1000 requests (not published; getlimit gives the key's real LIMIT). Batch p3-G07-2, module malshare."
+    }
+  },
+  "notes": "Owned by batch p3-G07-2 (P177, module malshare). Terms 'unknown': disabled in every profile until legal records them; default_enabled False. Search/metadata only: no sample download or submission path is ever built."
+}

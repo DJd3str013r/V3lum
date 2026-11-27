@@ -6,7 +6,13 @@ Every rule has an id quoted in its messages and in docs/RULES.md (:data:`LINT_RU
 * ``LINT-01`` - direct network or process APIs in modules: socket, ssl sockets outside ctx.net,
   urllib.request, http.client, requests/httpx/aiohttp and other clients, browser automation,
   subprocess/os.system (modules use ctx.http, ctx.dns and ctx.net; external binaries only through
-  ``ctx.net.run_tool``; subprocess is accepted only in ``v3lum/core/tools.py``);
+  ``ctx.net.run_tool``; subprocess is accepted only in ``v3lum/core/tools.py``); core clients built
+  in a module (:data:`CORE_CLIENT_CLASSES`, ``ScopedHttp`` included; :data:`CORE_BUILT_NAMES`, a
+  Runtime or Context of its own), code that reaches the shared client around ctx.http/ctx.net
+  (:data:`REACH_AROUND_PATH`: ``ctx.http.client``, ``ctx.runtime.http``, private ctx.net members...,
+  through aliases of ctx, helper parameters and getattr too) and code that rebinds the module's
+  network scope (:data:`CTX_NETWORK_PATH`: ``ctx.http.allowed_hosts = None``,
+  ``ctx.runtime.in_scan = False``...);
 * ``LINT-02`` - anti-bot/CAPTCHA bypass and borrowed-session dependencies (cloudscraper,
   FlareSolverr, undetected browsers, stealth plugins, TLS impersonation, CAPTCHA solvers,
   browser-cookie readers) and CAPTCHA-solver service hosts;
@@ -102,8 +108,10 @@ LINT_RULES: dict[str, str] = {
     LINT_NETWORK: "no direct network or process APIs in modules (socket, ssl sockets, urllib.request, http.client, "
     "requests/httpx/aiohttp and other clients, browser automation, subprocess/os.system) and nothing the lint cannot "
     "see (eval/exec, imports of computed names, deserialisers that execute code such as pickle or yaml.load): modules "
-    "use ctx.http, ctx.dns and ctx.net, external binaries only through ctx.net.run_tool; subprocess is accepted only "
-    "in v3lum/core/tools.py (P327 cond 6, A6, A7)",
+    "use ctx.http, ctx.dns and ctx.net, external binaries only through ctx.net.run_tool, never a core client of their "
+    "own (ScopedHttp, HttpClient, Runtime...), the shared client reached around ctx.http/ctx.net (ctx.http.client, "
+    "ctx.runtime.http, private ctx.net members) or the module's network scope rebound (ctx.http.allowed_hosts = None, "
+    "ctx.runtime.in_scan = False); subprocess is accepted only in v3lum/core/tools.py (P327 cond 6, A6, A7)",
     LINT_DEPENDENCY: "no anti-bot/CAPTCHA bypass or borrowed-session dependency (cloudscraper, FlareSolverr, undetected "
     "or stealth browsers, TLS impersonation, CAPTCHA solvers, browser-cookie readers) and no CAPTCHA-solver "
     "service (team rule 1, A9)",
@@ -618,10 +626,44 @@ UNSAFE_LOADERS: frozenset[str] = frozenset({
 #: SMTP mailbox probing commands in module strings (team rule 2: no SMTP probing): protocol-shaped only
 #: ('RCPT TO:<...>' anywhere, 'VRFY x' / 'EXPN x' starting a line), so prose that names them is not code
 _SMTP_PROBE = re.compile(r"(?im)RCPT[ \t]{1,3}TO[ \t]{0,3}:|^[ \t]*(?:VRFY|EXPN)(?:[ \t]|\r?$)")
-#: LINT-01: core clients a module never builds itself (they would bypass the ctx host/scope checks).
-CORE_CLIENT_CLASSES: frozenset[str] = frozenset({"HttpClient", "RequestsTransport", "Connector", "EgressProfiles"})
+#: LINT-01: core clients a module never builds itself (they would bypass the ctx host/scope checks;
+#: a ScopedHttp of its own carries no declared hosts, run/scope binding or egress profile).
+CORE_CLIENT_CLASSES: frozenset[str] = frozenset({"HttpClient", "RequestsTransport", "Connector", "EgressProfiles", "ScopedHttp"})
+#: LINT-01: attribute paths that reach the shared client around the module's ScopedHttp/Connector (no host,
+#: scope or egress checks): ``ctx.http.client``/``ctx.http._client`` (also behind ctx.net/ctx.dns and the
+#: core DoH scope ``ctx.doh``), private members of ctx.net/ctx.dns/ctx.data/ctx.data.store and the
+#: runtime's network plumbing (``ctx.runtime.http`` ... also through ``ctx.data[.store].runtime``), its
+#: factories of new scopes (``ctx.runtime.context(cls)``: a Context of a class without module metadata
+#: has no host list; ``ctx.runtime.doh_scope()``: a public DoH scope) and private members, and the
+#: egress profiles behind ctx.net (``ctx.net.egress.session_for()/transport_for()`` hand out raw
+#: sessions). Matched on the canonical path (aliases of ctx resolved); legitimate reads such as
+#: ``ctx.runtime.meta``, ``ctx.runtime.clock`` or ``ctx.data.store.path(name)`` stay clean.
+REACH_AROUND_PATH = re.compile(
+    r"^(?:self\.)?ctx\.(?:"
+    r"(?:(?:net|dns)\.)?(?:http|doh)\.(?:client\b|_\w+)"
+    r"|(?:net|dns|data)\._\w+"
+    r"|net\.egress\b"
+    r"|data\.store\._\w+"
+    r"|(?:data\.(?:store\.)?)?runtime\.(?:http|net|dns|transport|egress|data|connector|context|doh_scope|_\w+)\b"
+    r")"
+)
+#: LINT-01: the module's network objects (and anything below them): an attribute assigned or deleted on
+#: one of these (``ctx.http.allowed_hosts = None``, ``ctx.runtime.in_scan = False``, ``ctx.http = x``),
+#: also through setattr/delattr and aliases, rebinds the host, scope or egress checks of the run.
+CTX_NETWORK_PATH = re.compile(r"^(?:self\.)?ctx\.(?:http|net|dns|doh|data|runtime)(?:\.|$)")
+#: LINT-01: core objects a module never builds itself, by their full import name: a Runtime of its own
+#: carries its own HTTP client, a Context of its own a scope without the module's host list.
+CORE_BUILT_NAMES: frozenset[str] = frozenset({"v3lum.core.context.Runtime", "v3lum.core.context.Context"})
 #: LINT-01: ctx.data readers whose v1 ``(name, url)`` form downloads from an unregistered URL.
 _DATASET_FETCHES: frozenset[str] = frozenset({"fetch", "fetch_text", "fetch_json", "fetch_lines"})
+#: LINT-01: the Runtime object of a module's ctx (handed to a call it can build clients around ctx.http).
+_RUNTIME_PATH = re.compile(r"(?:self\.)?ctx(?:\.data(?:\.store)?)?\.runtime")
+#: builtins that only read or test the runtime they are given.
+_RUNTIME_SAFE_CALLS: frozenset[str] = frozenset({"getattr", "hasattr", "isinstance", "id", "type", "callable", "repr", "bool"})
+#: container methods that only use their argument as a key (a per-runtime table keyed on ``ctx.runtime``).
+_KEY_METHODS: frozenset[str] = frozenset({"get", "setdefault", "pop", "add", "discard", "__contains__", "__getitem__"})
+#: LINT-01: dict methods that edit the dataset registry (``DATASETS``) when a module calls them on it.
+_MUTATING_METHODS: frozenset[str] = frozenset({"update", "setdefault", "pop", "popitem", "clear", "__setitem__", "__delitem__"})
 #: LINT-02: anti-bot/CAPTCHA bypass, TLS impersonation and borrowed-session libraries (import names).
 FORBIDDEN_DEPENDENCIES: frozenset[str] = frozenset({
     "cloudscraper", "cfscrape", "cloudflare_scrape", "cf_clearance", "cloudflare_bypass", "flaresolverr",
@@ -929,6 +971,13 @@ class _SourceLint(ast.NodeVisitor):
         self.opsec_consts: dict[str, str] = {}
         self.http_names: set[str] = set()
         self.defined_names: set[str] = set()
+        #: aliases of the module's ctx: name (or 'self.attr') -> canonical ctx path ('ctx.http', 'self.ctx.runtime')
+        self.ctx_aliases: dict[str, str] = {}
+        #: parameters bound to a ctx path by a call in this file: (id(function), parameter) -> ctx path
+        self.param_aliases: dict[tuple[int, str], str] = {}
+        #: innermost enclosing function (or lambda) of every node inside one, and of every function
+        self._enclosing: dict[int, ast.AST] = {}
+        self._fn_parent: dict[int, ast.AST | None] = {}
         self._prepare()
 
     def run(self) -> None:
@@ -986,9 +1035,220 @@ class _SourceLint(ast.NodeVisitor):
                             self.class_disclosure[node] = str(_const_str(stmt.value))
                         elif target == "error_markers":
                             self.skip.update(id(c) for c in _const_strings(stmt.value))  # detection markers (P321)
+        if self.module:
+            self._collect_ctx_aliases()  # after string_consts: getattr(ctx.http, NAME) reads the constant
         if self.profile != PROFILE_CORE:  # core files get no string rules
             self._detection_only_names()
         self.socket_helpers_only = self._socket_helpers_only()
+
+    # -- ctx paths (LINT-01: reaching around ctx.http/ctx.net) ------------------------------
+    def _collect_ctx_aliases(self) -> None:
+        """Names and ``self.<attr>`` bound to a ctx path (``c = ctx``, ``rt = ctx.runtime``,
+        ``self.http = ctx.http``, ``h = getattr(ctx, 'http')``): flow-insensitive, so a name bound to a
+        ctx path anywhere in the file is read as that path everywhere (fail closed; a pragma documents
+        a false positive). Parameters of a function of this file that a call passes a ctx path to
+        (``helper(ctx)``, ``self._fetch(entity, ctx)``, ``partial(helper, ctx)``) are aliases inside
+        that function (and the functions nested in it) only."""
+        functions: dict[str, list[ast.FunctionDef | ast.AsyncFunctionDef]] = {}
+        scopes = (ast.FunctionDef, ast.AsyncFunctionDef, ast.Lambda)
+        bindings: list[tuple[ast.AST, ast.AST]] = []
+        calls: list[ast.Call] = []
+        enclosing, parents, may_be = self._enclosing, self.parents, self._may_be_ctx
+        for node in self.nodes:  # pre-order: a parent (and so an outer function) comes before its children
+            parent = parents.get(node)
+            if parent is not None:
+                scope = parent if isinstance(parent, scopes) else enclosing.get(id(parent))
+                if scope is not None:
+                    enclosing[id(node)] = scope
+            if isinstance(node, scopes):
+                if not isinstance(node, ast.Lambda):
+                    functions.setdefault(node.name, []).append(node)
+                self._fn_parent[id(node)] = enclosing.get(id(node))
+            elif isinstance(node, ast.Assign):
+                if may_be(node.value):
+                    bindings.extend((target, node.value) for target in node.targets)
+            elif isinstance(node, (ast.AnnAssign, ast.NamedExpr)):
+                if node.value is not None and may_be(node.value):
+                    bindings.append((node.target, node.value))
+            elif isinstance(node, ast.Call) and (node.args or node.keywords):
+                calls.append(node)
+        params: list[tuple[ast.AST, str, ast.AST]] = []
+        for call in calls:
+            params.extend(b for b in self._param_bindings(call, functions) if may_be(b[2]))
+        for _ in range(6):  # chains bound out of source order (h = c.http before c = ctx) settle in a few passes
+            changed = False
+            for target, value in bindings:
+                if isinstance(target, ast.Name):
+                    key = target.id
+                elif isinstance(target, ast.Attribute) and isinstance(target.value, ast.Name) and target.value.id == "self":
+                    key = f"self.{target.attr}"
+                else:
+                    continue
+                if key in ("ctx", "self.ctx"):
+                    continue  # the roots themselves
+                path = self._ctx_path(value)
+                if path and self.ctx_aliases.get(key) != path and not path.startswith(f"{key}."):
+                    self.ctx_aliases[key] = path
+                    changed = True
+            for fn, param, value in params:
+                if param == "ctx":
+                    continue  # already the root
+                path = self._ctx_path(value)
+                if path and self.param_aliases.get((id(fn), param)) != path and not path.startswith(f"{param}."):
+                    self.param_aliases[(id(fn), param)] = path
+                    changed = True
+            if not changed:
+                break
+
+    @staticmethod
+    def _may_be_ctx(node: ast.AST | None) -> bool:
+        """Cheap pre-filter: only these expressions can have a ctx path (see :meth:`_ctx_path`)."""
+        if isinstance(node, (ast.Name, ast.Attribute, ast.NamedExpr)):
+            return True
+        if isinstance(node, ast.Call):
+            func = node.func
+            return (isinstance(func, ast.Name) and func.id in ("getattr", "vars", "type", "copy", "deepcopy")) or \
+                (isinstance(func, ast.Attribute) and func.attr in ("copy", "deepcopy"))
+        return False
+
+    @staticmethod
+    def _param_bindings(call: ast.Call, functions: dict[str, list[ast.FunctionDef | ast.AsyncFunctionDef]]) -> list[tuple[ast.AST, str, ast.AST]]:
+        """(function, parameter, argument) of a call to a function of this file: ``helper(ctx)`` binds
+        helper's parameter to ctx (``def helper(c): c.http.client`` is ``ctx.http.client``). Direct calls,
+        ``self.method(...)`` / ``cls.method(...)`` and ``functools.partial(fn, ...)`` / ``pool.submit(fn,
+        ...)``."""
+        func, args, skip_self = call.func, list(call.args), False
+        if isinstance(func, (ast.Name, ast.Attribute)) and (func.id if isinstance(func, ast.Name) else func.attr) in ("partial", "submit") \
+                and args and isinstance(args[0], (ast.Name, ast.Attribute)):
+            func, args = args[0], args[1:]
+        if isinstance(func, ast.Name):
+            name = func.id
+        elif isinstance(func, ast.Attribute) and isinstance(func.value, ast.Name) and func.value.id in ("self", "cls"):
+            name, skip_self = func.attr, True
+        else:
+            return []
+        out: list[tuple[ast.AST, str, ast.AST]] = []
+        for fn in functions.get(name, ()):
+            positional = [*fn.args.posonlyargs, *fn.args.args]
+            if skip_self and positional and positional[0].arg in ("self", "cls"):
+                positional = positional[1:]
+            for param, arg in zip(positional, args):
+                if not isinstance(arg, ast.Starred):
+                    out.append((fn, param.arg, arg))
+            names = {p.arg for p in [*positional, *fn.args.kwonlyargs]}
+            out.extend((fn, kw.arg, kw.value) for kw in call.keywords if kw.arg in names)
+        return out
+
+    def _alias_of(self, node: ast.Name) -> str:
+        """The ctx path a name stands for: a parameter alias of an enclosing function, else a name alias."""
+        scope = self._enclosing.get(id(node))
+        while scope is not None:
+            hit = self.param_aliases.get((id(scope), node.id))
+            if hit:
+                return hit
+            scope = self._fn_parent.get(id(scope))
+        return self.ctx_aliases.get(node.id, "")
+
+    def _ctx_path(self, node: ast.AST | None, depth: int = 0) -> str:
+        """The canonical ctx path of an expression (``ctx.http.client``: aliases resolved,
+        ``getattr(x, 'name')`` - also through a string constant - read as ``x.name``, ``vars(x)`` as
+        ``x.__dict__``, ``(h := x)`` as ``x``); '' when it is not rooted at the module's ctx."""
+        if node is None or depth > 32:
+            return ""
+        if isinstance(node, ast.Name):
+            return "ctx" if node.id == "ctx" else self._alias_of(node)
+        if isinstance(node, ast.NamedExpr):
+            return self._ctx_path(node.value, depth + 1)
+        if isinstance(node, ast.Attribute):
+            if isinstance(node.value, ast.Name) and node.value.id == "self":
+                key = f"self.{node.attr}"
+                return "self.ctx" if node.attr == "ctx" else self.ctx_aliases.get(key, "")
+            base = self._ctx_path(node.value, depth + 1)
+            return f"{base}.{node.attr}" if base else ""
+        if isinstance(node, ast.Call) and self._builtin_call(node, "getattr") and len(node.args) >= 2:
+            attr = self._const_arg(node.args[1])
+            base = self._ctx_path(node.args[0], depth + 1)
+            return f"{base}.{attr}" if base and attr and attr.isidentifier() else ""
+        if isinstance(node, ast.Call) and self._builtin_call(node, "vars") and len(node.args) == 1:
+            base = self._ctx_path(node.args[0], depth + 1)
+            return f"{base}.__dict__" if base else ""
+        if isinstance(node, ast.Call) and self._builtin_call(node, "type") and len(node.args) == 1:
+            base = self._ctx_path(node.args[0], depth + 1)
+            return f"{base}.__class__" if base else ""
+        if isinstance(node, ast.Call) and node.args and _dotted(node.func) in ("copy.copy", "copy.deepcopy", "copy", "deepcopy"):
+            return self._ctx_path(node.args[0], depth + 1)  # a copy of ctx.http is ctx.http (mutating it rebinds the scope)
+        return ""
+
+    def _builtin_call(self, node: ast.Call, name: str) -> bool:
+        """``node`` calls the builtin ``name`` (not a local or imported name that shadows it)."""
+        return isinstance(node.func, ast.Name) and node.func.id == name and name not in self.aliases and name not in self.defined_names
+
+    def _check_rebind(self, node: ast.Attribute) -> None:
+        """LINT-01 for an attribute stored or deleted on ctx.http/ctx.net/ctx.dns/ctx.doh/ctx.data/
+        ctx.runtime (or below, aliases resolved): ``ctx.http.allowed_hosts = None``,
+        ``ctx.runtime.in_scan = False``, ``ctx.http = other`` rebind the module's network scope."""
+        base = self._ctx_path(node.value)
+        if base:
+            self._report_rebind(node, f"{base}.{node.attr}")
+
+    def _report_rebind(self, node: ast.AST, path: str) -> None:
+        m = REACH_AROUND_PATH.match(path)
+        if m is not None and m.end() == len(path):
+            self.add(node, LINT_NETWORK, f"{path}: reaches around ctx.http/ctx.net (no host, scope or egress checks)")
+        elif CTX_NETWORK_PATH.match(path):
+            self.add(node, LINT_NETWORK, f"{path} assigned or deleted: rebinds the module's network scope (its host, scope or "
+                                         "egress checks)")
+
+    def _check_runtime_handed(self, node: ast.Call, callee: str) -> None:
+        """LINT-01 when the Runtime itself (``ctx.runtime``, also ``ctx.data[.store].runtime`` and aliases)
+        is handed to a call: a helper given the runtime can build a client or scope of its own around
+        ctx.http/ctx.net (``job_http(ctx.runtime, hosts=...)``, ``DataStore(ctx.runtime)``) - the lint
+        cannot follow it into another file. Reading it (``getattr(ctx.runtime, 'meta', None)``) is fine."""
+        if isinstance(node.func, ast.Name) and node.func.id in _RUNTIME_SAFE_CALLS and self._builtin_call(node, node.func.id):
+            return
+        if isinstance(node.func, ast.Attribute) and node.func.attr in _KEY_METHODS:
+            return  # the runtime as the identity key of a per-runtime table (table.get(ctx.runtime))
+        for arg in [*node.args, *(kw.value for kw in node.keywords)]:
+            value = arg.value if isinstance(arg, ast.Starred) else arg
+            if not self._may_be_ctx(value):
+                continue
+            path = self._ctx_path(value)
+            if _RUNTIME_PATH.fullmatch(path):
+                self.add(arg, LINT_NETWORK, f"{path} handed to {callee or 'a call'}(): a helper given the runtime can build a client "
+                                            "around ctx.http/ctx.net (pass the value it needs, e.g. ctx.runtime.meta)")
+
+    def _check_dynamic_ctx(self, node: ast.Call) -> None:
+        """LINT-01 for ``setattr``/``delattr`` on a ctx network object and for ``getattr`` of a computed
+        name on one (the lint cannot see what is reached)."""
+        if not isinstance(node.func, ast.Name) or len(node.args) < 2:
+            return
+        fn = node.func.id
+        if fn not in ("getattr", "setattr", "delattr") or not self._builtin_call(node, fn):
+            return
+        base = self._ctx_path(node.args[0])
+        if not base:
+            return
+        attr = self._const_arg(node.args[1])
+        if fn in ("setattr", "delattr"):
+            if attr and attr.isidentifier():
+                self._report_rebind(node, f"{base}.{attr}")
+            elif base in ("ctx", "self.ctx") or CTX_NETWORK_PATH.match(base):
+                self.add(node, LINT_NETWORK, f"{fn}({base}, <computed>): rebinds the module's network scope (the lint cannot see "
+                                             "what is changed)")
+        elif not attr and (base in ("ctx", "self.ctx") or CTX_NETWORK_PATH.match(base)):
+            self.add(node, LINT_NETWORK, f"getattr({base}, <computed>): the lint cannot see what is reached around ctx.http/ctx.net "
+                                         "(name it as a constant)")
+
+    def _check_reach_around(self, node: ast.AST) -> None:
+        """LINT-01 when ``node`` (an attribute access or a getattr call) is a ctx path that reaches the
+        shared client around the module's ScopedHttp/Connector (:data:`REACH_AROUND_PATH`); only the
+        innermost matching access of a chain is reported."""
+        path = self._ctx_path(node)
+        if not path:
+            return
+        m = REACH_AROUND_PATH.match(path)
+        if m is not None and m.end() == len(path):
+            self.add(node, LINT_NETWORK, f"{path}: reaches around ctx.http/ctx.net (no host, scope or egress checks)")
 
     def _socket_helpers_only(self) -> bool:
         """True when every use of the socket module is an address helper (inet_pton, AF_INET...)."""
@@ -1268,16 +1528,38 @@ class _SourceLint(ast.NodeVisitor):
             if name in SOCKET_CALLS or (last in _SOCKET_METHODS and not re.search(r"(?:^|\.)_?net$", receiver)):
                 self.add(node, LINT_NETWORK, f"{name or last}(): opens a socket/TLS connection outside ctx.net")
         if self.module:
-            if last in CORE_CLIENT_CLASSES:
-                self.add(node, LINT_NETWORK, f"{last}(...) built inside a module: use ctx.http / ctx.net (host, scope and egress checks)")
+            # a class reached through getattr(module, 'Name')(...) is built like Name(...)
+            built = last
+            if isinstance(node.func, ast.Call) and self._builtin_call(node.func, "getattr") and len(node.func.args) >= 2:
+                built = self._const_arg(node.func.args[1]) or last
+                gotten = self._resolve(_dotted(node.func.args[0]))
+                name = f"{gotten}.{built}" if gotten else name
+            callee = self._ctx_path(node.func)  # aliases of ctx resolved: d.fetch(...) with d = ctx.data
+            if built in CORE_CLIENT_CLASSES:
+                self.add(node, LINT_NETWORK, f"{built}(...) built inside a module: use ctx.http / ctx.net (host, scope and egress checks)")
+            elif name in CORE_BUILT_NAMES or re.fullmatch(r"(?:self\.)?ctx(?:\.(?:http|net|dns|doh|data|runtime)(?:\.\w+)*)?\.__class__",
+                                                          callee):
+                self.add(node, LINT_NETWORK, f"{name.rsplit('.', 1)[-1] if name in CORE_BUILT_NAMES else callee}(...) built inside a "
+                                             "module: a core object of its own has no module host list, scope or egress binding "
+                                             "(use ctx.http / ctx.net)")
+            if isinstance(node.func, ast.Name) and node.func.id in ("getattr", "vars") and self._builtin_call(node, node.func.id):
+                self._check_reach_around(node)  # getattr(ctx.http, "client"), vars(ctx.runtime)
+            self._check_dynamic_ctx(node)  # setattr/delattr on ctx.http..., getattr(ctx.http, <computed>)
+            if isinstance(node.func, ast.Attribute) and node.func.attr in _MUTATING_METHODS and self._dataset_registry(node.func.value):
+                self.add(node, LINT_NETWORK, f"DATASETS...{node.func.attr}(): edits the dataset registry: register_dataset at import time instead")
+            self._check_runtime_handed(node, callee or name or last)
             if last in REMOTE_WRITE_METHODS:
                 self.add(node, LINT_OFFENSIVE, f"{last}(): uploads, writes or deletes remote objects")
-            if last in _DATASET_FETCHES and isinstance(node.func, ast.Attribute) and re.search(r"(?:^|\.)data$", _dotted(node.func.value) or ""):
+            fetch = callee.rsplit(".", 1)[-1] if re.fullmatch(r"(?:self\.)?ctx\.data(?:\.store)?\.\w+", callee) else ""
+            if fetch not in _DATASET_FETCHES and last in _DATASET_FETCHES and isinstance(node.func, ast.Attribute) and \
+                    re.search(r"(?:^|\.)data(?:\.store)?$", _dotted(node.func.value) or ""):
+                fetch = last
+            if fetch in _DATASET_FETCHES:
                 url = node.args[1] if len(node.args) >= 2 else next((kw.value for kw in node.keywords if kw.arg == "url"), None)
                 if url is not None and not (isinstance(url, ast.Constant) and url.value is None):
                     # the v1 fetch(name, url) form downloads from any URL outside the registry: no host check, no
                     # licence/terms class for the policy gate (A1), no size rule (A6) - register_dataset it instead
-                    self.add(node, LINT_NETWORK, f"ctx.data.{last}(name, url): ad-hoc dataset download outside the registry "
+                    self.add(node, LINT_NETWORK, f"ctx.data.{fetch}(name, url): ad-hoc dataset download outside the registry "
                                                  "(register_dataset with its source, licence and terms class, then fetch by name)")
             if last == "run_tool" and (node.args or node.keywords):
                 arg = node.args[0] if node.args else next((kw.value for kw in node.keywords if kw.arg in ("name", "tool")), None)
@@ -1378,12 +1660,30 @@ class _SourceLint(ast.NodeVisitor):
     def visit_Attribute(self, node: ast.Attribute) -> None:
         if isinstance(node.ctx, ast.Load) and node.attr in ("CERT_NONE", "_create_unverified_context") and not self._detection(node, loops=False):
             self.add(node, LINT_TLS, f"{_dotted(node) or node.attr}: TLS verification disabled")
+        if self.module:
+            if isinstance(node.ctx, ast.Load):
+                self._check_reach_around(node)  # ctx.http.client, ctx.runtime.http, ctx.net._x...
+            else:
+                self._check_rebind(node)  # ctx.http.allowed_hosts = None, del ctx.runtime.http, ctx.runtime.in_scan = False
         self.generic_visit(node)
 
     def visit_Name(self, node: ast.Name) -> None:
         if isinstance(node.ctx, ast.Load) and node.id in ("CERT_NONE", "_create_unverified_context") and \
                 self.aliases.get(node.id, "").startswith("ssl.") and not self._detection(node, loops=False):
             self.add(node, LINT_TLS, f"{node.id}: TLS verification disabled")
+        self.generic_visit(node)
+
+    def _dataset_registry(self, node: ast.AST) -> bool:
+        """``node`` is the dataset registry (``v3lum.core.datasets.DATASETS``) or an entry of it."""
+        while isinstance(node, ast.Subscript):
+            node = node.value
+        return self._resolve(_dotted(node)).endswith("core.datasets.DATASETS")
+
+    def visit_Subscript(self, node: ast.Subscript) -> None:
+        if self.module and not isinstance(node.ctx, ast.Load) and self._dataset_registry(node.value):
+            # DATASETS['x'] = {...} / DATASETS['x']['url'] = ...: a registration nobody reviewed (register_dataset is an
+            # import-time call; an edited entry would keep the reviewed dataset scope for a new URL)
+            self.add(node, LINT_NETWORK, "edits the dataset registry (DATASETS): register_dataset at import time instead")
         self.generic_visit(node)
 
     def _check_target(self, target: ast.AST, value: ast.AST | None) -> None:

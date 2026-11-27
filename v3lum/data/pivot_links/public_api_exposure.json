@@ -1,0 +1,28 @@
+{
+  "schema": "v3lum.pivot_pack/1",
+  "pack": "public_api_exposure",
+  "title": "Postman public API network search (manual)",
+  "notes": "Owned by batch p3-G03-1 (P069 cond 2): Postman's search is an undocumented website API with unknown terms, so the automated source stays disabled until legal records its terms; the public search page is the manual pivot link of public_api_exposure. Viewing the page never publishes or submits anything.",
+  "links": [
+    {
+      "id": "postman_search",
+      "label": "Postman public API network search",
+      "template": "https://www.postman.com/search?q={qp}&scope=public&type=all",
+      "entity_types": [
+        "domain",
+        "company_name",
+        "keyword"
+      ],
+      "category": "code_paste",
+      "host": "www.postman.com",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Public search page (JS single-page app; research C0636 recorded HTTP 200). Lists public workspaces, collections and requests matching the value; check publisher and request hosts before attributing a hit to the organisation (search is fuzzy)."
+    }
+  ]
+}

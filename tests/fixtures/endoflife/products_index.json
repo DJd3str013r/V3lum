@@ -1,0 +1,474 @@
+{
+ "schema_version": "1.2.1",
+ "generated_at": "2026-11-25T23:43:38+00:00",
+ "total": 490,
+ "result": [
+  {
+   "name": "angular",
+   "aliases": [],
+   "label": "Angular",
+   "category": "framework"
+  },
+  {
+   "name": "angularjs",
+   "aliases": [
+    "angular-js"
+   ],
+   "label": "AngularJS",
+   "category": "framework"
+  },
+  {
+   "name": "apache-http-server",
+   "aliases": [
+    "apache",
+    "httpd"
+   ],
+   "label": "Apache HTTP Server",
+   "category": "server-app"
+  },
+  {
+   "name": "apache-struts",
+   "aliases": [
+    "struts"
+   ],
+   "label": "Apache Struts",
+   "category": "framework"
+  },
+  {
+   "name": "bind-9",
+   "aliases": [],
+   "label": "BIND 9",
+   "category": "server-app"
+  },
+  {
+   "name": "bootstrap",
+   "aliases": [],
+   "label": "Bootstrap",
+   "category": "framework"
+  },
+  {
+   "name": "caddy",
+   "aliases": [],
+   "label": "Caddy",
+   "category": "server-app"
+  },
+  {
+   "name": "cisco-ios-xe",
+   "aliases": [],
+   "label": "Cisco IOS XE",
+   "category": "os"
+  },
+  {
+   "name": "coldfusion",
+   "aliases": [],
+   "label": "Adobe ColdFusion",
+   "category": "server-app"
+  },
+  {
+   "name": "confluence",
+   "aliases": [
+    "atlassian-confluence"
+   ],
+   "label": "Confluence",
+   "category": "server-app"
+  },
+  {
+   "name": "django",
+   "aliases": [],
+   "label": "Django",
+   "category": "framework"
+  },
+  {
+   "name": "dovecot",
+   "aliases": [],
+   "label": "Dovecot",
+   "category": "server-app"
+  },
+  {
+   "name": "drupal",
+   "aliases": [],
+   "label": "Drupal",
+   "category": "server-app"
+  },
+  {
+   "name": "elasticsearch",
+   "aliases": [],
+   "label": "Elasticsearch",
+   "category": "database"
+  },
+  {
+   "name": "envoy",
+   "aliases": [
+    "envoy-proxy"
+   ],
+   "label": "Envoy",
+   "category": "server-app"
+  },
+  {
+   "name": "exim",
+   "aliases": [],
+   "label": "Exim",
+   "category": "server-app"
+  },
+  {
+   "name": "express",
+   "aliases": [],
+   "label": "Express",
+   "category": "framework"
+  },
+  {
+   "name": "fortios",
+   "aliases": [],
+   "label": "FortiOS",
+   "category": "os"
+  },
+  {
+   "name": "gitlab",
+   "aliases": [],
+   "label": "GitLab",
+   "category": "server-app"
+  },
+  {
+   "name": "grafana",
+   "aliases": [],
+   "label": "Grafana",
+   "category": "server-app"
+  },
+  {
+   "name": "haproxy",
+   "aliases": [],
+   "label": "HAProxy",
+   "category": "server-app"
+  },
+  {
+   "name": "jenkins",
+   "aliases": [],
+   "label": "Jenkins",
+   "category": "server-app"
+  },
+  {
+   "name": "jira-software",
+   "aliases": [
+    "jira",
+    "jira-core"
+   ],
+   "label": "Jira Software",
+   "category": "server-app"
+  },
+  {
+   "name": "joomla",
+   "aliases": [],
+   "label": "Joomla!",
+   "category": "server-app"
+  },
+  {
+   "name": "jquery-ui",
+   "aliases": [],
+   "label": "jQuery UI",
+   "category": "framework"
+  },
+  {
+   "name": "jquery",
+   "aliases": [],
+   "label": "jQuery",
+   "category": "framework"
+  },
+  {
+   "name": "kibana",
+   "aliases": [],
+   "label": "Kibana",
+   "category": "server-app"
+  },
+  {
+   "name": "laravel",
+   "aliases": [],
+   "label": "Laravel",
+   "category": "framework"
+  },
+  {
+   "name": "log4j",
+   "aliases": [
+    "apache_log4j",
+    "apache-log4j"
+   ],
+   "label": "Apache Log4j",
+   "category": "framework"
+  },
+  {
+   "name": "magento",
+   "aliases": [
+    "adobe-commerce"
+   ],
+   "label": "Magento",
+   "category": "server-app"
+  },
+  {
+   "name": "mariadb",
+   "aliases": [],
+   "label": "MariaDB",
+   "category": "database"
+  },
+  {
+   "name": "mongodb",
+   "aliases": [
+    "mongo"
+   ],
+   "label": "MongoDB Server",
+   "category": "database"
+  },
+  {
+   "name": "moodle",
+   "aliases": [],
+   "label": "Moodle",
+   "category": "server-app"
+  },
+  {
+   "name": "msexchange",
+   "aliases": [],
+   "label": "Microsoft Exchange",
+   "category": "server-app"
+  },
+  {
+   "name": "mssqlserver",
+   "aliases": [
+    "mssql",
+    "microsoftsqlserver"
+   ],
+   "label": "Microsoft SQL Server",
+   "category": "database"
+  },
+  {
+   "name": "mysql",
+   "aliases": [],
+   "label": "MySQL",
+   "category": "database"
+  },
+  {
+   "name": "nextcloud",
+   "aliases": [],
+   "label": "Nextcloud",
+   "category": "server-app"
+  },
+  {
+   "name": "nextjs",
+   "aliases": [
+    "next-js",
+    "nextdotjs"
+   ],
+   "label": "Next.js",
+   "category": "framework"
+  },
+  {
+   "name": "nginx",
+   "aliases": [],
+   "label": "nginx",
+   "category": "server-app"
+  },
+  {
+   "name": "nodejs",
+   "aliases": [
+    "node"
+   ],
+   "label": "Node.js",
+   "category": "framework"
+  },
+  {
+   "name": "openssl",
+   "aliases": [],
+   "label": "OpenSSL",
+   "category": "framework"
+  },
+  {
+   "name": "openvpn",
+   "aliases": [],
+   "label": "OpenVPN",
+   "category": "app"
+  },
+  {
+   "name": "panos",
+   "aliases": [
+    "pan-os"
+   ],
+   "label": "Palo Alto Networks PAN-OS",
+   "category": "os"
+  },
+  {
+   "name": "php",
+   "aliases": [],
+   "label": "PHP",
+   "category": "lang"
+  },
+  {
+   "name": "phpmyadmin",
+   "aliases": [],
+   "label": "phpMyAdmin",
+   "category": "server-app"
+  },
+  {
+   "name": "postfix",
+   "aliases": [],
+   "label": "Postfix",
+   "category": "server-app"
+  },
+  {
+   "name": "postgresql",
+   "aliases": [
+    "postgres",
+    "pg",
+    "psql",
+    "pgsql"
+   ],
+   "label": "PostgreSQL",
+   "category": "database"
+  },
+  {
+   "name": "proftpd",
+   "aliases": [],
+   "label": "ProFTPD",
+   "category": "server-app"
+  },
+  {
+   "name": "python",
+   "aliases": [],
+   "label": "Python",
+   "category": "lang"
+  },
+  {
+   "name": "react",
+   "aliases": [],
+   "label": "React",
+   "category": "framework"
+  },
+  {
+   "name": "redis",
+   "aliases": [],
+   "label": "Redis",
+   "category": "database"
+  },
+  {
+   "name": "roundcube",
+   "aliases": [],
+   "label": "Roundcube Webmail",
+   "category": "server-app"
+  },
+  {
+   "name": "rails",
+   "aliases": [
+    "rubyonrails",
+    "ruby-on-rails",
+    "roro",
+    "ror"
+   ],
+   "label": "Ruby on Rails",
+   "category": "framework"
+  },
+  {
+   "name": "ruby",
+   "aliases": [],
+   "label": "Ruby",
+   "category": "lang"
+  },
+  {
+   "name": "samba",
+   "aliases": [],
+   "label": "Samba",
+   "category": "server-app"
+  },
+  {
+   "name": "sharepoint",
+   "aliases": [
+    "mssharepoint"
+   ],
+   "label": "Microsoft SharePoint",
+   "category": "server-app"
+  },
+  {
+   "name": "spring-framework",
+   "aliases": [
+    "spring"
+   ],
+   "label": "Spring Framework",
+   "category": "framework"
+  },
+  {
+   "name": "squid",
+   "aliases": [
+    "squid-cache"
+   ],
+   "label": "Squid",
+   "category": "server-app"
+  },
+  {
+   "name": "tomcat",
+   "aliases": [],
+   "label": "Apache Tomcat",
+   "category": "server-app"
+  },
+  {
+   "name": "traefik",
+   "aliases": [],
+   "label": "Traefik",
+   "category": "server-app"
+  },
+  {
+   "name": "typo3",
+   "aliases": [],
+   "label": "TYPO3",
+   "category": "server-app"
+  },
+  {
+   "name": "umbraco",
+   "aliases": [],
+   "label": "Umbraco CMS",
+   "category": "server-app"
+  },
+  {
+   "name": "varnish",
+   "aliases": [
+    "varnish-cache"
+   ],
+   "label": "Varnish",
+   "category": "server-app"
+  },
+  {
+   "name": "esxi",
+   "aliases": [
+    "esx",
+    "vmwareesxi",
+    "vmesxi",
+    "vmware-esxi"
+   ],
+   "label": "VMware ESXi",
+   "category": "os"
+  },
+  {
+   "name": "vcenter",
+   "aliases": [
+    "vmwarevcenter",
+    "vmware-vcenter"
+   ],
+   "label": "VMware vCenter Server",
+   "category": "app"
+  },
+  {
+   "name": "vue",
+   "aliases": [
+    "vuejs"
+   ],
+   "label": "Vue",
+   "category": "framework"
+  },
+  {
+   "name": "wordpress",
+   "aliases": [],
+   "label": "WordPress",
+   "category": "server-app"
+  },
+  {
+   "name": "zabbix",
+   "aliases": [],
+   "label": "Zabbix",
+   "category": "server-app"
+  }
+ ]
+}

@@ -1,0 +1,18 @@
+{
+ "success": true,
+ "timestamp": "2026-11-25T22:04:01.295Z",
+ "count": 1,
+ "results": {
+  "ip": "8.8.8.8",
+  "found": false,
+  "sources": [],
+  "network": {
+   "asn": 15169,
+   "org": "GOOGLE - Google LLC",
+   "country": "US",
+   "type": "datacenter",
+   "type_source": "bad-asn-list"
+  },
+  "delisted": []
+ }
+}

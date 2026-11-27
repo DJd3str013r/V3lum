@@ -1,0 +1,16 @@
+{
+ "_fixture": "REAL live capture 2026-11-26: status id 1 -> 404 with X's HTML error page (trimmed: title, h1, p)",
+ "_meta": {
+  "url": "https://publish.x.com/oembed?url=https%3A%2F%2Ftwitter.com%2FInterior%2Fstatus%2F1&omit_script=true&dnt=true",
+  "user_agent": "fixture-check/0.1",
+  "captured": "2026-11-26T09:14:26Z",
+  "elapsed_s": 0.171,
+  "bytes_original": 3652
+ },
+ "status": 404,
+ "headers": {
+  "content-type": "text/html;charset=utf-8",
+  "cache-control": "max-age=0, no-cache, no-store"
+ },
+ "body": "<!DOCTYPE html>\n<html lang=\"en\" class=\"dog\">\n<head><title>X / ?</title></head>\n<body>\n<h1 id=\"header\">Nothing to see here</h1>\n<p id=\"description\">Looks like this page doesn’t exist. Here’s a picture of a poodle sitting in a chair for your trouble.</p>\n</body>\n</html>\n"
+}

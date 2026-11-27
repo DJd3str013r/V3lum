@@ -1,0 +1,61 @@
+{
+  "schema": "v3lum.acceptance_routes/1",
+  "module": "ransomfeed",
+  "routes": [
+    {
+      "method": "GET",
+      "url": "https://ransomfeed.it/rss-complete.php",
+      "status": 200,
+      "body_b64": "PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnID8+Cjxyc3MgdmVyc2lvbj0nMi4wJz4KPGNoYW5uZWw+Cjx0aXRsZT5SYW5zb20gRmVlZCB8IFJTUyBDb21wbGV0ZTwvdGl0bGU+CjxsaW5rPmh0dHBzOi8vcmFuc29tZmVlZC5pdC88L2xpbms+CjxkZXNjcmlwdGlvbj5SYW5zb213YXJlIHZpY3RpbXMgUlNTIDxpbWcgcmVmZXJyZXJwb2xpY3k9Im5vLXJlZmVycmVyLXdoZW4tZG93bmdyYWRlIiBzcmM9Imh0dHBzOi8vbWF0b21vLnJhbnNvbWZlZWQuaXQvbWF0b21vLnBocD9pZHNpdGU9MSZhbXA7cmVjPTEiIHN0eWxlPSJib3JkZXI6MCIgYWx0PSIiIC8+PC9kZXNjcmlwdGlvbj4KPGxhbmd1YWdlPmVuLXVzPC9sYW5ndWFnZT4KPGl0ZW0geG1sbnM6ZGM9J25zOjEnPgo8dGl0bGU+RXhlbXBsbyBBbGltZW50b3MgTHRkYS48L3RpdGxlPgo8bGluaz5odHRwczovL3JhbnNvbWZlZWQuaXQvaW5kZXgucGhwP3BhZ2U9cG9zdF9kZXRhaWxzJmFtcDtpZF9wb3N0PTkwMDAxPC9saW5rPgo8Z3VpZD5lMzU4NDI5Yzg0Y2JlMWMzNDY0ZjZmNTY2MmYwMjcyMjwvZ3VpZD4KPGlkPjkwMDAxPC9pZD4KPHB1YkRhdGU+V2VkLCAyNSBOb3YgMjAyNiAwOToxMjo0MCBDRVQ8L3B1YkRhdGU+CjxkYzpjcmVhdG9yPlJhbnNvbUZlZWQ8L2RjOmNyZWF0b3I+CjxkZXNjcmlwdGlvbj48IVtDREFUQVtSYW5zb213YXJlIGdyb3VwIGNhbGxlZCA8Yj5sb2NrYml0MzwvYj4gY2xhaW1zIGF0dGFjayBmb3IgPGI+RXhlbXBsbyBBbGltZW50b3MgTHRkYS48L2I+LiBUaGUgdGFyZ2V0IGNvbWVzIGZyb20gPGI+QnJhemlsPC9iPi4gPGltZyByZWZlcnJlcnBvbGljeT0ibm8tcmVmZXJyZXItd2hlbi1kb3duZ3JhZGUiIHNyYz0iaHR0cHM6Ly93d3cucmFuc29tZmVlZC5pdC9tYXRvbW8vbWF0b21vLnBocD9pZHNpdGU9MSZhbXA7cmVjPTEmYW1wO2FjdGlvbl9uYW1lPVJTUy1DT01QTEVURS1QVUJMSUMiIHN0eWxlPSJib3JkZXI6MCIgYWx0PSIiIC8+PGJyIC8+V2UgaWRlbnRpZnkgdGhpcyBhdHRhY2sgd2l0aCBmb2xsb3dpbmcgPGI+aGFzaCBjb2RlPC9iPjogPGk+OTMyMDczNDJjZjgwNjU1NDFhODZjZGEzY2Y1ZWM5ZDg3MGM4N2JhZjU1NTRlZTA5NGJkNDUxY2YwMmEzNjdjMjwvaT4gKElEOiA5MDAwMSk8YnIgLz48YnIgLz5UYXJnZXQgdmljdGltIDxiPndlYnNpdGU8L2I+OiA8aT5leGVtcGxvLWFsaW1lbnRvcy5leGFtcGxlPC9pPl1dPjwvZGVzY3JpcHRpb24+CjxjYXRlZ29yeT5sb2NrYml0MzwvY2F0ZWdvcnk+CjwvaXRlbT4KPGl0ZW0geG1sbnM6ZGM9J25zOjEnPgo8dGl0bGU+RVhFTVBMTyBTT0xVw4fDlUVTIENPTlTDgUJFSVMgTFREQTwvdGl0bGU+CjxsaW5rPmh0dHBzOi8vcmFuc29tZmVlZC5pdC9pbmRleC5waHA/cGFnZT1wb3N0X2RldGFpbHMmYW1wO2lkX3Bvc3Q9OTAwMDI8L2xpbms+CjxndWlkPmFmNjJkMjkzNDNlM2U1YTZhN2ViMTJiNjliNDkwNGNjPC9ndWlkPgo8aWQ+OTAwMDI8L2lkPgo8cHViRGF0ZT5UdWUsIDI0IE5vdiAyMDI2IDA0OjQ0OjE1IENFVDwvcHViRGF0ZT4KPGRjOmNyZWF0b3I+UmFuc29tRmVlZDwvZGM6Y3JlYXRvcj4KPGRlc2NyaXB0aW9uPjwhW0NEQVRBW1JhbnNvbXdhcmUgZ3JvdXAgY2FsbGVkIDxiPnNwYWNlYmVhcnM8L2I+IGNsYWltcyBhdHRhY2sgZm9yIDxiPkVYRU1QTE8gU09MVcOHw5VFUyBDT05Uw4FCRUlTIExUREE8L2I+LiBUaGUgdGFyZ2V0IGNvbWVzIGZyb20gPGI+QnJhemlsPC9iPi4gPGltZyByZWZlcnJlcnBvbGljeT0ibm8tcmVmZXJyZXItd2hlbi1kb3duZ3JhZGUiIHNyYz0iaHR0cHM6Ly93d3cucmFuc29tZmVlZC5pdC9tYXRvbW8vbWF0b21vLnBocD9pZHNpdGU9MSZhbXA7cmVjPTEmYW1wO2FjdGlvbl9uYW1lPVJTUy1DT01QTEVURS1QVUJMSUMiIHN0eWxlPSJib3JkZXI6MCIgYWx0PSIiIC8+PGJyIC8+V2UgaWRlbnRpZnkgdGhpcyBhdHRhY2sgd2l0aCBmb2xsb3dpbmcgPGI+aGFzaCBjb2RlPC9iPjogPGk+ZTExNzM4N2EyMDk4OTM1ZjNkYWM1N2Q3ZTdkOTc4N2RhZjFkZTczZTRkMWJjZDdiMjQ1OTQ5ZDA4MWQwNDNiYzwvaT4gKElEOiA5MDAwMik8YnIgLz48YnIgLz5UYXJnZXQgdmljdGltIDxiPndlYnNpdGU8L2I+OiA8aT5OL0Q8L2k+XV0+PC9kZXNjcmlwdGlvbj4KPGNhdGVnb3J5PnNwYWNlYmVhcnM8L2NhdGVnb3J5Pgo8L2l0ZW0+CjxpdGVtIHhtbG5zOmRjPSduczoxJz4KPHRpdGxlPmdydXBvZXhlbXBsby5leGFtcGxlPC90aXRsZT4KPGxpbms+aHR0cHM6Ly9yYW5zb21mZWVkLml0L2luZGV4LnBocD9wYWdlPXBvc3RfZGV0YWlscyZhbXA7aWRfcG9zdD05MDAwMzwvbGluaz4KPGd1aWQ+MWFjNGI1NzE2MDFjNjhjMTZiNTM4M2YzNjgzYzU5ZTk8L2d1aWQ+CjxpZD45MDAwMzwvaWQ+CjxwdWJEYXRlPlRodSwgMjYgTm92IDIwMjYgMDE6MTA6MDUgQ0VUPC9wdWJEYXRlPgo8ZGM6Y3JlYXRvcj5SYW5zb21GZWVkPC9kYzpjcmVhdG9yPgo8ZGVzY3JpcHRpb24+PCFbQ0RBVEFbUmFuc29td2FyZSBncm91cCBjYWxsZWQgPGI+cGxheTwvYj4gY2xhaW1zIGF0dGFjayBmb3IgPGI+Z3J1cG9leGVtcGxvLmV4YW1wbGU8L2I+LiBUaGUgdGFyZ2V0IGNvbWVzIGZyb20gPGI+QnJhemlsPC9iPi4gPGltZyByZWZlcnJlcnBvbGljeT0ibm8tcmVmZXJyZXItd2hlbi1kb3duZ3JhZGUiIHNyYz0iaHR0cHM6Ly93d3cucmFuc29tZmVlZC5pdC9tYXRvbW8vbWF0b21vLnBocD9pZHNpdGU9MSZhbXA7cmVjPTEmYW1wO2FjdGlvbl9uYW1lPVJTUy1DT01QTEVURS1QVUJMSUMiIHN0eWxlPSJib3JkZXI6MCIgYWx0PSIiIC8+PGJyIC8+V2UgaWRlbnRpZnkgdGhpcyBhdHRhY2sgd2l0aCBmb2xsb3dpbmcgPGI+aGFzaCBjb2RlPC9iPjogPGk+M2NjMDhhZTMxMjQwMDk5ODc2NzU2OTBhMWNjMjIxMTk5NjFiN2JmZjM4NDFmMmM2Y2M0ZTU2MDIxYzYxOWFjNzwvaT4gKElEOiA5MDAwMyk8YnIgLz48YnIgLz5UYXJnZXQgdmljdGltIDxiPndlYnNpdGU8L2I+OiA8aT5ncnVwb2V4ZW1wbG8uZXhhbXBsZTwvaT5dXT48L2Rlc2NyaXB0aW9uPgo8Y2F0ZWdvcnk+cGxheTwvY2F0ZWdvcnk+CjwvaXRlbT4KPGl0ZW0geG1sbnM6ZGM9J25zOjEnPgo8dGl0bGU+SG9zcGl0YWwgRXhlbXBsbzwvdGl0bGU+CjxsaW5rPmh0dHBzOi8vcmFuc29tZmVlZC5pdC9pbmRleC5waHA/cGFnZT1wb3N0X2RldGFpbHMmYW1wO2lkX3Bvc3Q9OTAwMDQ8L2xpbms+CjxndWlkPmM2YzNlODIyNzJhMjkwYjQ0YzVmZTVkZDJhODc2MTZiPC9ndWlkPgo8aWQ+OTAwMDQ8L2lkPgo8cHViRGF0ZT5UdWUsIDI0IE5vdiAyMDI2IDExOjIwOjAwIENFVDwvcHViRGF0ZT4KPGRjOmNyZWF0b3I+UmFuc29tRmVlZDwvZGM6Y3JlYXRvcj4KPGRlc2NyaXB0aW9uPjwhW0NEQVRBW1JhbnNvbXdhcmUgZ3JvdXAgY2FsbGVkIDxiPnNjYXJsZXR0Z3JvdXA8L2I+IGNsYWltcyBhdHRhY2sgZm9yIDxiPkhvc3BpdGFsIEV4ZW1wbG88L2I+LiBUaGUgdGFyZ2V0IGNvbWVzIGZyb20gPGI+QnJhemlsPC9iPi4gPGltZyByZWZlcnJlcnBvbGljeT0ibm8tcmVmZXJyZXItd2hlbi1kb3duZ3JhZGUiIHNyYz0iaHR0cHM6Ly93d3cucmFuc29tZmVlZC5pdC9tYXRvbW8vbWF0b21vLnBocD9pZHNpdGU9MSZhbXA7cmVjPTEmYW1wO2FjdGlvbl9uYW1lPVJTUy1DT01QTEVURS1QVUJMSUMiIHN0eWxlPSJib3JkZXI6MCIgYWx0PSIiIC8+PGJyIC8+V2UgaWRlbnRpZnkgdGhpcyBhdHRhY2sgd2l0aCBmb2xsb3dpbmcgPGI+aGFzaCBjb2RlPC9iPjogPGk+ZTJiMGUzNjIyOTE5NTkzYWUwYWJmZTFjMDJmOTlmMWE5YzM1YTA4MjU1NmI3MGVkZGZmMTJjNDk2ZGVmYmEwMDwvaT4gKElEOiA5MDAwNCk8YnIgLz48YnIgLz5UYXJnZXQgdmljdGltIDxiPndlYnNpdGU8L2I+OiA8aT5OL0Q8L2k+XV0+PC9kZXNjcmlwdGlvbj4KPGNhdGVnb3J5PnNjYXJsZXR0Z3JvdXA8L2NhdGVnb3J5Pgo8L2l0ZW0+CjwvY2hhbm5lbD4KPC9yc3M+Cg==",
+      "headers": {
+        "content-type": "text/xml;charset=iso-8859-1"
+      },
+      "latency_ms": 810
+    },
+    {
+      "method": "GET",
+      "url": "https://api.ransomfeed.it/search/example.com",
+      "status": 200,
+      "json": [
+        {
+          "id": 32697,
+          "date": "2026-06-03 00:26:52",
+          "victim": "seguros-exemplo.example",
+          "gang": "killsec",
+          "hash": "38d6cc70460cd2dab5acdd1ee9e0a80c93af20eef9825e75b5f9863021d3e573",
+          "country": "Mexico",
+          "website": "example.com",
+          "description": "Price ??? Disclosures 0/1",
+          "city": "",
+          "region": "",
+          "dataset_pub": "",
+          "victim_notes": "",
+          "work_sector": "Insurance services",
+          "fortibleed_leak": "no"
+        },
+        {
+          "id": 32696,
+          "date": "2026-06-03 00:26:20",
+          "victim": "clinica-exemplo.example",
+          "gang": "killsec",
+          "hash": "ab0aa6d41c6d15de45da6559009ad7c4e148c075e73cd731493f7015695134f1",
+          "country": "India",
+          "website": "example.com",
+          "description": "Price ??? Disclosures 0/1",
+          "city": "",
+          "region": "",
+          "dataset_pub": "",
+          "victim_notes": "",
+          "work_sector": "Healthcare services",
+          "fortibleed_leak": "no"
+        }
+      ],
+      "headers": {
+        "content-type": "application/json; charset=UTF-8",
+        "x-ratelimit-limit": "5",
+        "x-ratelimit-remaining": "4"
+      },
+      "latency_ms": 1650
+    }
+  ]
+}

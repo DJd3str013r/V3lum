@@ -1,0 +1,25 @@
+#
+# LOKI C2 IOCs
+# This file contains C2 server and decription
+#
+# FORMAT -----------------------------------------------------------------------
+# 
+# # COMMENT
+# c2-server.tld
+# ip-address
+#
+
+# FireEye Operation Snowman https://goo.gl/x1v7mT
+suroot.com
+58.64.143.244
+effers.com
+
+# APT10 C2 IOCs - Source: AlienVault OTX
+acsocietyy.com
+anvprn.com
+anycal1.com
+
+# Cleo Software Exploitation https://www.huntress.com/blog/threat-advisory-oh-no-cleo-cleo-software-actively-being-exploited-in-the-wild
+176.123.5.126;65
+5.149.249.226;65
+185.181.230.103;65

@@ -1,0 +1,67 @@
+{
+ "_synthetic": "research schema-only sample (keys ['avatar_alt_text', 'avatar_url', 'background_color', 'company', 'description', 'display_name', 'hash', 'hide_default_header_image', 'job_title', 'location', 'profile_url', 'pronouns', 'pronunciation', 'section_visibility', 'verified_accounts']) filled with documentation values; 'links' appears only with an API key (Gravatar docs)",
+ "hash": "eb2b6c0d061bbd5caa545b6d1184a1887b11dba0b1d7fd8ca5b42ebf0ad7d3a8",
+ "display_name": "Example Dev",
+ "profile_url": "https://gravatar.com/exampledev",
+ "avatar_url": "https://0.gravatar.com/avatar/eb2b6c0d061bbd5caa545b6d1184a1887b11dba0b1d7fd8ca5b42ebf0ad7d3a8",
+ "avatar_alt_text": "",
+ "location": "Sao Paulo, Brazil",
+ "description": "free-text bio that must be dropped",
+ "job_title": "Engineer",
+ "company": "Example Org",
+ "pronunciation": "",
+ "pronouns": "",
+ "verified_accounts": [
+  {
+   "service_type": "github",
+   "service_label": "GitHub",
+   "service_icon": "https://example.invalid/icon.svg",
+   "url": "https://github.com/example-dev",
+   "is_hidden": false
+  },
+  {
+   "service_type": "twitter",
+   "service_label": "X",
+   "service_icon": "https://example.invalid/icon.svg",
+   "url": "https://twitter.com/exampledev",
+   "is_hidden": false
+  },
+  {
+   "service_type": "mastodon",
+   "service_label": "Mastodon",
+   "service_icon": "https://example.invalid/icon.svg",
+   "url": "https://mastodon.example/@exampledev",
+   "is_hidden": false
+  },
+  {
+   "service_type": "linkedin",
+   "service_label": "LinkedIn",
+   "service_icon": "https://example.invalid/icon.svg",
+   "url": "https://www.linkedin.com/in/example-dev",
+   "is_hidden": true
+  },
+  {
+   "service_type": "wordpress",
+   "service_label": "WordPress",
+   "service_icon": "https://example.invalid/icon.svg",
+   "url": "javascript:alert(1)",
+   "is_hidden": false
+  }
+ ],
+ "links": [
+  {
+   "label": "Blog",
+   "url": "https://www.blog.example.net/about"
+  }
+ ],
+ "hide_default_header_image": false,
+ "section_visibility": {
+  "hidden_contact_info": false,
+  "hidden_feeds": false,
+  "hidden_links": false,
+  "hidden_interests": false,
+  "hidden_wallet": false,
+  "hidden_photos": false,
+  "hidden_verified_accounts": false
+ }
+}

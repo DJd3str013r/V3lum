@@ -1,0 +1,27 @@
+{
+ "account": {
+  "email": "user@example.com",
+  "plan": "pro",
+  "plan_expiry": "2026-12-31T00:00:00Z",
+  "max_batch_size": {
+   "domain_lookup": 16,
+   "vat_lookup": 16,
+   "domain_bulk_submit": 5000
+  }
+ },
+ "rate_limits": {
+  "requests_per_second": 10,
+  "concurrency": 8
+ },
+ "credits": {
+  "purchased": 200000,
+  "used": 1234,
+  "remaining": 198766
+ },
+ "privacy": {
+  "pii_allowed": true,
+  "flags_supported": [
+   "NOPII"
+  ]
+ }
+}

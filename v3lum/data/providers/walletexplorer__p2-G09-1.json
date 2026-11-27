@@ -1,0 +1,23 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "walletexplorer",
+  "hosts": [],
+  "sources": {
+    "walletexplorer_service_index": {
+      "title": "WalletExplorer home page 'Top wallets' table (service names by category: exchanges, pools, services/others, gambling, old/historic)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.walletexplorer.com/info",
+        "quote": "Registry provider walletexplorer: tier community, terms open.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1, P208 cond 3)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "walletexplorer",
+      "sanitizer": null,
+      "dataset": "walletexplorer_service_index",
+      "notes": "Quote: binding council text (P208 cond 3). www.walletexplorer.com/ (23.6 KB, 383 wallet links under 5 headings, live 2026-11-26) as a monthly runtime dataset: it tells an exchange label from a mixer, market or service so the finding names the exchange a legal request can go to (P208 cond 3). One page a month, no investigated value sent. Used by walletexplorer."
+    }
+  },
+  "error_markers": []
+}

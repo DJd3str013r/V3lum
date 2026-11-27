@@ -1,0 +1,251 @@
+{
+ "domain": "example.org",
+ "expected": {
+  "spf_lookups": 12,
+  "status": "permerror"
+ },
+ "answers": {
+  "example.org TXT": {
+   "Status": 0,
+   "TC": false,
+   "RD": true,
+   "RA": true,
+   "AD": false,
+   "CD": false,
+   "Question": [
+    {
+     "name": "example.org.",
+     "type": 16
+    }
+   ],
+   "Answer": [
+    {
+     "name": "example.org.",
+     "type": 16,
+     "TTL": 300,
+     "data": "v=spf1 ip4:192.0.2.0/24 include:spf1.example.net include:spf2.example.net include:spf3.example.net include:_spf.google.com include:spf.protection.outlook.com include:sendgrid.net a mx ~all"
+    }
+   ]
+  },
+  "spf1.example.net TXT": {
+   "Status": 0,
+   "TC": false,
+   "RD": true,
+   "RA": true,
+   "AD": false,
+   "CD": false,
+   "Question": [
+    {
+     "name": "spf1.example.net.",
+     "type": 16
+    }
+   ],
+   "Answer": [
+    {
+     "name": "spf1.example.net.",
+     "type": 16,
+     "TTL": 300,
+     "data": "v=spf1 include:spf1a.example.net include:spf1b.example.net -all"
+    }
+   ]
+  },
+  "spf1a.example.net TXT": {
+   "Status": 0,
+   "TC": false,
+   "RD": true,
+   "RA": true,
+   "AD": false,
+   "CD": false,
+   "Question": [
+    {
+     "name": "spf1a.example.net.",
+     "type": 16
+    }
+   ],
+   "Answer": [
+    {
+     "name": "spf1a.example.net.",
+     "type": 16,
+     "TTL": 300,
+     "data": "v=spf1 ip4:198.51.100.0/25 -all"
+    }
+   ]
+  },
+  "spf1b.example.net TXT": {
+   "Status": 0,
+   "TC": false,
+   "RD": true,
+   "RA": true,
+   "AD": false,
+   "CD": false,
+   "Question": [
+    {
+     "name": "spf1b.example.net.",
+     "type": 16
+    }
+   ],
+   "Answer": [
+    {
+     "name": "spf1b.example.net.",
+     "type": 16,
+     "TTL": 300,
+     "data": "v=spf1 ip4:198.51.100.128/25 -all"
+    }
+   ]
+  },
+  "spf2.example.net TXT": {
+   "Status": 0,
+   "TC": false,
+   "RD": true,
+   "RA": true,
+   "AD": false,
+   "CD": false,
+   "Question": [
+    {
+     "name": "spf2.example.net.",
+     "type": 16
+    }
+   ],
+   "Answer": [
+    {
+     "name": "spf2.example.net.",
+     "type": 16,
+     "TTL": 300,
+     "data": "v=spf1 ip4:203.0.113.0/26 -all"
+    }
+   ]
+  },
+  "spf3.example.net TXT": {
+   "Status": 0,
+   "TC": false,
+   "RD": true,
+   "RA": true,
+   "AD": false,
+   "CD": false,
+   "Question": [
+    {
+     "name": "spf3.example.net.",
+     "type": 16
+    }
+   ],
+   "Answer": [
+    {
+     "name": "spf3.example.net.",
+     "type": 16,
+     "TTL": 300,
+     "data": "v=spf1 include:spf3a.example.net -all"
+    }
+   ]
+  },
+  "spf3a.example.net TXT": {
+   "Status": 0,
+   "TC": false,
+   "RD": true,
+   "RA": true,
+   "AD": false,
+   "CD": false,
+   "Question": [
+    {
+     "name": "spf3a.example.net.",
+     "type": 16
+    }
+   ],
+   "Answer": [
+    {
+     "name": "spf3a.example.net.",
+     "type": 16,
+     "TTL": 300,
+     "data": "v=spf1 ip6:2001:db8:10::/48 -all"
+    }
+   ]
+  },
+  "_spf.google.com TXT": {
+   "Status": 0,
+   "TC": false,
+   "RD": true,
+   "RA": true,
+   "AD": false,
+   "CD": false,
+   "Question": [
+    {
+     "name": "_spf.google.com.",
+     "type": 16
+    }
+   ],
+   "Answer": [
+    {
+     "name": "_spf.google.com.",
+     "type": 16,
+     "TTL": 300,
+     "data": "v=spf1 ip4:74.125.0.0/16 ip4:209.85.128.0/17 ip6:2001:4860:4864::/56 ~all"
+    }
+   ]
+  },
+  "spf.protection.outlook.com TXT": {
+   "Status": 0,
+   "TC": false,
+   "RD": true,
+   "RA": true,
+   "AD": false,
+   "CD": false,
+   "Question": [
+    {
+     "name": "spf.protection.outlook.com.",
+     "type": 16
+    }
+   ],
+   "Answer": [
+    {
+     "name": "spf.protection.outlook.com.",
+     "type": 16,
+     "TTL": 300,
+     "data": "v=spf1 ip4:40.92.0.0/15 ip4:40.107.0.0/16 ip6:2a01:111:f400::/48 -all"
+    }
+   ]
+  },
+  "sendgrid.net TXT": {
+   "Status": 0,
+   "TC": false,
+   "RD": true,
+   "RA": true,
+   "AD": false,
+   "CD": false,
+   "Question": [
+    {
+     "name": "sendgrid.net.",
+     "type": 16
+    }
+   ],
+   "Answer": [
+    {
+     "name": "sendgrid.net.",
+     "type": 16,
+     "TTL": 300,
+     "data": "v=spf1 ip4:167.89.0.0/17 ip4:149.72.0.0/16 include:ab.sendgrid.net ~all"
+    }
+   ]
+  },
+  "ab.sendgrid.net TXT": {
+   "Status": 0,
+   "TC": false,
+   "RD": true,
+   "RA": true,
+   "AD": false,
+   "CD": false,
+   "Question": [
+    {
+     "name": "ab.sendgrid.net.",
+     "type": 16
+    }
+   ],
+   "Answer": [
+    {
+     "name": "ab.sendgrid.net.",
+     "type": 16,
+     "TTL": 300,
+     "data": "v=spf1 ip4:223.165.113.0/24 ~all"
+    }
+   ]
+  }
+ }
+}

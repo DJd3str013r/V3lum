@@ -1,0 +1,188 @@
+{
+ "_synthetic": "Field names recalled from the Criminal IP API docs for /v1/asset/ip/report (not verified with a key). Values invented on documentation space. Replace with a trimmed team-key capture before merge (condition 5).",
+ "ip": "198.51.100.30",
+ "issues": {
+  "is_vpn": false,
+  "is_cloud": true,
+  "is_tor": false,
+  "is_proxy": false,
+  "is_hosting": true,
+  "is_mobile": false,
+  "is_darkweb": false,
+  "is_scanner": true,
+  "is_snort": false,
+  "is_anonymous_vpn": false
+ },
+ "score": {
+  "inbound": "Dangerous",
+  "outbound": "Moderate"
+ },
+ "user_search_count": 3,
+ "protected_ip": {
+  "count": 0,
+  "data": []
+ },
+ "domain": {
+  "count": 2,
+  "data": [
+   {
+    "domain": "www.example.com",
+    "confirmed_time": "2026-11-18 09:00:00"
+   },
+   {
+    "domain": "files.example.net",
+    "confirmed_time": "2026-11-18 09:00:00"
+   }
+  ]
+ },
+ "whois": {
+  "count": 1,
+  "data": [
+   {
+    "as_name": "EXAMPLE-AS",
+    "as_no": 64500,
+    "org_name": "Example Hosting",
+    "org_country_code": "br",
+    "confirmed_time": "2026-11-18 09:00:00"
+   }
+  ]
+ },
+ "hostname": {
+  "count": 1,
+  "data": [
+   {
+    "domain_name_rep": "host30.example.com",
+    "domain_name_full": "host30.example.com",
+    "confirmed_time": "2026-11-18 09:00:00"
+   }
+  ]
+ },
+ "ids": {
+  "count": 1,
+  "data": [
+   {
+    "classification": "attempted-recon",
+    "message": "ET SCAN example rule",
+    "source_system": "snort",
+    "confirmed_time": "2026-11-18 09:00:00"
+   }
+  ]
+ },
+ "vpn": {
+  "count": 0,
+  "data": []
+ },
+ "anonymous_vpn": {
+  "count": 0,
+  "data": []
+ },
+ "webcam": {
+  "count": 0,
+  "data": []
+ },
+ "honeypot": {
+  "count": 2,
+  "data": [
+   {
+    "ip_address": "198.51.100.30",
+    "log_date": "2026-11-17",
+    "dst_port": 23,
+    "message": "telnet login attempt",
+    "user_agent": "",
+    "protocol_type": "tcp",
+    "confirmed_time": "2026-11-18 09:00:00"
+   }
+  ]
+ },
+ "ip_category": {
+  "count": 1,
+  "data": [
+   {
+    "detect_source": "example-feed",
+    "type": "scanner",
+    "confirmed_time": "2026-11-18 09:00:00"
+   }
+  ]
+ },
+ "port": {
+  "count": 2,
+  "data": [
+   {
+    "app_name": "OpenSSH",
+    "app_version": "8.2p1",
+    "open_port_no": 22,
+    "port_status": "open",
+    "protocol": "SSH",
+    "socket": "tcp",
+    "tags": [
+     "SSH"
+    ],
+    "confirmed_time": "2026-11-18 09:00:00",
+    "is_vulnerability": true
+   },
+   {
+    "app_name": "nginx",
+    "app_version": "1.18.0",
+    "open_port_no": 443,
+    "port_status": "open",
+    "protocol": "HTTPS",
+    "socket": "tcp",
+    "tags": [
+     "HTTPS"
+    ],
+    "sdn_common_name": "www.example.com",
+    "confirmed_time": "2026-11-18 09:00:00",
+    "is_vulnerability": true
+   }
+  ]
+ },
+ "vulnerability": {
+  "count": 3,
+  "data": [
+   {
+    "cve_id": "CVE-2023-38408",
+    "cvssv3_score": 9.8,
+    "cvssv2_score": 0.0,
+    "app_name": "OpenSSH",
+    "app_version": "8.2p1",
+    "open_port_no_list": {
+     "TCP": [
+      22
+     ],
+     "UDP": []
+    }
+   },
+   {
+    "cve_id": "CVE-2021-41617",
+    "cvssv3_score": 7.0,
+    "cvssv2_score": 4.4,
+    "app_name": "OpenSSH",
+    "app_version": "8.2p1",
+    "open_port_no_list": {
+     "TCP": [
+      22
+     ],
+     "UDP": []
+    }
+   },
+   {
+    "cve_id": "CVE-2021-23017",
+    "cvssv3_score": 7.7,
+    "cvssv2_score": 6.8,
+    "app_name": "nginx",
+    "app_version": "1.18.0",
+    "open_port_no_list": {
+     "TCP": [
+      443
+     ],
+     "UDP": []
+    }
+   }
+  ]
+ },
+ "mobile": {
+  "count": 0,
+  "data": []
+ },
+ "status": 200
+}

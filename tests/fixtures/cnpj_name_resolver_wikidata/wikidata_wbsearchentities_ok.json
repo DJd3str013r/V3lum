@@ -1,0 +1,62 @@
+{
+ "searchinfo": {
+  "search": "Banco do Brasil"
+ },
+ "search": [
+  {
+   "id": "Q108220676",
+   "title": "Q108220676",
+   "pageid": 103487257,
+   "concepturi": "http://www.wikidata.org/entity/Q108220676",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q108220676",
+   "display": {
+    "label": {
+     "value": "Imóvel à Rua Exemplo, nº 100",
+     "language": "en"
+    },
+    "description": {
+     "value": "listed good in Juiz de Fora, Minas Gerais, Brazil",
+     "language": "en"
+    }
+   },
+   "label": "Imóvel à Rua Exemplo, nº 100",
+   "description": "listed good in Juiz de Fora, Minas Gerais, Brazil",
+   "match": {
+    "type": "alias",
+    "language": "en",
+    "text": "Banco do Brasil"
+   },
+   "aliases": [
+    "Banco do Brasil"
+   ]
+  },
+  {
+   "id": "Q124319914",
+   "title": "Q124319914",
+   "pageid": 118494076,
+   "concepturi": "http://www.wikidata.org/entity/Q124319914",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q124319914",
+   "display": {
+    "label": {
+     "value": "Banco do Brasil",
+     "language": "en"
+    },
+    "description": {
+     "value": "Pessoa Exemplo (Apelido) collection item, part of the Centro de Memória Unicamp - CMU archive",
+     "language": "en"
+    }
+   },
+   "label": "Banco do Brasil",
+   "description": "Pessoa Exemplo (Apelido) collection item, part of the Centro de Memória Unicamp - CMU archive",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Banco do Brasil"
+   }
+  }
+ ],
+ "search-continue": 2,
+ "success": 1
+}

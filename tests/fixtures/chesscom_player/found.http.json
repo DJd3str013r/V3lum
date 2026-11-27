@@ -1,0 +1,17 @@
+{
+ "_fixture": "REAL live capture 2026-11-26, minimised: official Chess.com Team account; avatar/league dropped",
+ "_meta": {
+  "url": "https://api.chess.com/pub/player/chesscom",
+  "user_agent": "V3LUM/dev",
+  "captured": "2026-11-26T08:32:39Z",
+  "elapsed_s": 0.113,
+  "bytes_original": 465
+ },
+ "status": 200,
+ "headers": {
+  "content-type": "application/json; charset=utf-8",
+  "cache-control": "public, max-age=5",
+  "server": "cloudflare"
+ },
+ "body": "{\"player_id\": 33, \"@id\": \"https://api.chess.com/pub/player/chesscom\", \"url\": \"https://www.chess.com/member/CHESScom\", \"name\": \"Chess.com Team\", \"username\": \"chesscom\", \"followers\": 78457, \"country\": \"https://api.chess.com/pub/country/XX\", \"last_online\": 1795650670, \"joined\": 1178528199, \"status\": \"staff\", \"is_streamer\": false, \"verified\": false, \"streaming_platforms\": []}"
+}

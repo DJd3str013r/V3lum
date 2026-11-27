@@ -1,0 +1,4 @@
+ip,asn,as_org,country,first_seen,last_seen,services,tags,cves,kev,attack,sensors,networks,hits,confidence
+23.132.164.50,401626,"Netiface America, Inc.",US,2026-11-06T00:00:00Z,2026-11-25T19:00:00Z,http;ssh,shell-commands;ssh-bruteforce;web-exploit,CVE-2017-9841,true,T1059;T1059.004;T1078;T1110;T1190;T1552.001;T1592.002,8,4,218,93
+5.255.101.197,60404,Liteserver The Infrastructure Group B.V.,NL,2026-11-22T18:00:00Z,2026-11-23T03:00:00Z,http,shell-commands;vpn-bruteforce;web-exploit,CVE-2019-19781;CVE-2021-41773;CVE-2023-3519,true,T1059.004;T1110;T1190;T1595.002,6,3,129,74
+20.221.75.11,8075,Microsoft Corporation,US,2026-10-31T12:00:00Z,2026-11-24T11:00:00Z,http;imap;mongodb;mysql;rdp;rsync;smtp;ssh,db-bruteforce;db-ransom;mail-bruteforce;rdp;ssh-bruteforce;web-exploit,,false,T1021.001;T1046;T1071.003;T1078;T1110;T1114;T1190;T1210;T1485;T1486;T15

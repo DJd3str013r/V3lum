@@ -1,0 +1,15 @@
+{
+ "domain": "example.com",
+ "nameservers": [
+  {"name": "ns1.example.com", "ip": "192.0.2.10", "expect": "test", "why": "in scope, not a managed provider"},
+  {"name": "ns-512.awsdns-00.net", "ip": "198.51.100.11", "expect": "skip", "why": "Route 53"},
+  {"name": "dns1.p01.nsone.net", "ip": "198.51.100.7", "expect": "skip", "why": "NS1"},
+  {"name": "elvira.ns.cloudflare.com", "ip": "198.51.100.8", "expect": "skip", "why": "Cloudflare"},
+  {"name": "ns-cloud-a1.googledomains.com", "ip": "198.51.100.9", "expect": "skip", "why": "Google Cloud DNS"},
+  {"name": "a.auto.dns.br", "ip": "198.51.100.10", "expect": "skip", "why": "registro.br"},
+  {"name": "ns1.corp-internal.example.net", "ip": "203.0.113.30", "expect": "test", "why": "self-hosted, in scope"}
+ ],
+ "class": "synthetic",
+ "origin": "synthetic NS set for FC3 managed-provider skip test",
+ "notes": "FC3: an NS whose NAME (or ASN) matches a managed DNS provider is skipped 'not tested: managed provider'. Only in-scope non-managed NS are contacted. IPs are documentation ranges; the real ASN match happens in the module."
+}

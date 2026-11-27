@@ -1,0 +1,24 @@
+{
+ "Status": 3,
+ "TC": false,
+ "RD": true,
+ "RA": true,
+ "AD": false,
+ "CD": false,
+ "Question": [
+  {
+   "name": "1.2.0.192.origin.asn.cymru.com.",
+   "type": 16
+  }
+ ],
+ "Authority": [
+  {
+   "name": "asn.cymru.com.",
+   "type": 6,
+   "TTL": 900,
+   "data": "ns1.asn.cymru.com. noc.cymru.com. 1795666587 1800 900 86400 900"
+  }
+ ],
+ "edns_client_subnet": "0.0.0.0/0",
+ "Comment": "Response from 216.31.12.17."
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><feed
+	xmlns="http://www.w3.org/2005/Atom"
+	xmlns:thr="http://purl.org/syndication/thread/1.0"
+	xml:lang="en-US"
+	>
+	<title type="text">The DFIR Report</title>
+	<subtitle type="text">Actionable Cyber Threat Intelligence</subtitle>
+
+	<updated>2026-08-25T18:43:08Z</updated>
+
+	<link rel="alternate" type="text/html" href="https://thedfirreport.com/home/" />
+	<id>https://thedfirreport.com/feed/atom/</id>
+	<link rel="self" type="application/atom+xml" href="https://thedfirreport.com/feed/atom/" />
+
+	<generator uri="https://wordpress.org/" version="7.1.2">WordPress</generator>
+<icon>https://thedfirreport.com/wp-content/uploads/cropped-DFIR-Favicon-Image@2x-32x32.png</icon>
+	<entry>
+		<title type="html"><![CDATA[BengalSEO Part 1: Anatomy of the Operation]]></title>
+		<link rel="alternate" type="text/html" href="https://thedfirreport.com/2026/08/24/bengalseo-part-1-anatomy-of-the-operation/" />
+
+		<id>https://thedfirreport.com/?p=50572</id>
+		<updated>2026-08-25T18:43:08Z</updated>
+		<published>2026-08-24T14:28:41Z</published>
+		</entry>
+<entry>
+		<title type="html"><![CDATA[Apache ActiveMQ Exploit Leads to LockBit Ransomware]]></title>
+		<link rel="alternate" type="text/html" href="https://thedfirreport.com/2026/02/23/apache-activemq-exploit-leads-to-lockbit-ransomware/" />
+
+		<id>https://thedfirreport.com/?p=49832</id>
+		<updated>2026-03-03T16:04:13Z</updated>
+		<published>2026-02-23T14:09:43Z</published>
+		</entry>
+<entry>
+		<title type="html"><![CDATA[From Bing Search to Ransomware: Bumblebee and AdaptixC2 Deliver Akira]]></title>
+		<link rel="alternate" type="text/html" href="https://thedfirreport.com/2026/06/29/from-bing-search-to-ransomware-bumblebee-and-adaptixc2-deliver-akira-3/" />
+
+		<id>https://thedfirreport.com/?p=50310</id>
+		<updated>2026-06-29T14:21:00Z</updated>
+		<published>2026-06-29T13:07:17Z</published>
+		</entry>
+	</feed>

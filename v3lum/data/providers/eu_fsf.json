@@ -1,0 +1,67 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "eu_fsf",
+  "name": "EU Financial Sanctions Files (FSF)",
+  "operator": "European Commission (Directorate-General for Financial Stability, Financial Services and Capital Markets Union)",
+  "hosts": [
+    "webgate.ec.europa.eu"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "EU institution (A8 trusted: government bodies). 'Providers (dataset downloads, no value sent): OFAC/US Treasury, UN Security Council and the European Commission, all trusted tier.' (P219 cond 2).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "The consolidated list of persons, groups and entities subject to EU financial sanctions, published by the Commission; a local copy is as current as its last download (TTL 3 days)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "timeout": 180,
+    "retries": 1,
+    "ttl": 259200,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [
+    {
+      "id": "eu_fsf_token_refused",
+      "statuses": [401, 403],
+      "json_path": "error",
+      "equals": "Forbidden",
+      "regex": null,
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "EU FSF: the download was refused (HTTP 403 JSON): the Commission's public token may have changed"
+    }
+  ],
+  "keys": {},
+  "sources": {
+    "fsf_csv": {
+      "title": "EU FSF consolidated financial sanctions list, CSV 1.1 (';' separated, UTF-8 BOM; dataset matched locally)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://data.europa.eu/data/datasets/consolidated-list-of-persons-groups-and-entities-subject-to-eu-financial-sanctions",
+        "quote": "European Commission reuse notice",
+        "checked_at": "2026-11-26",
+        "reviewer": "batch p1-G10-1 (data.europa.eu licence field COM_REUSE, Commission Decision 2011/833/EU)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "eu_fsf",
+      "sanitizer": null,
+      "dataset": "sanctions_eu_fsf",
+      "notes": "Quote: the licence label of the dataset on data.europa.eu (id COM_REUSE, http://data.europa.eu/eli/dec/2011/833/oj: reuse allowed with acknowledgement of the source), checked 2026-11-26; council text P219 cond 1 'EU FSF CSV (EU open data, reuse with attribution; the Commission's public token is a config value)'; research C0524 'EU open data (reuse with attribution)'. Dataset sanctions_eu_fsf (25.5 MB; Range ignored; about 23 s), TTL 3 days through the dataset manager (`v3lum data update sanctions`), never downloaded during a scan. Without ?token= the server answers 403 JSON {status, error: Forbidden}. Attribution line in reports (P219 cond 12). Used by sanctions_lists (batch p1-G10-1)."
+    }
+  },
+  "notes": "Owned by batch p1-G10-1 (P219 sanctions_lists). Dataset downloads only: no investigated value is ever sent. The public token dG9rZW4tMjAxNw (base64 of 'token-2017') is a constant the Commission publishes for the public file URLs; core.redact masks the token parameter in logs and the MANIFEST."
+}

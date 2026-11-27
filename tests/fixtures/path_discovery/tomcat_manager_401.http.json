@@ -1,0 +1,21 @@
+{
+ "_provenance": {
+  "synthetic": true
+ },
+ "request": {
+  "method": "GET",
+  "host": "app.example.com",
+  "path": "/manager/html"
+ },
+ "response": {
+  "status": 401,
+  "headers": {
+   "Content-Type": "text/html;charset=utf-8",
+   "WWW-Authenticate": "Basic realm=\"Tomcat Manager Application\""
+  },
+  "body": "<!doctype html><html lang=\"en\"><head><title>401 Unauthorized</title></head><body><h1>401 Unauthorized</h1></body></html>"
+ },
+ "history": [],
+ "final_url": null,
+ "transport_error": null
+}

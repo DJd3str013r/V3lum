@@ -1,0 +1,39 @@
+{
+ "nft_transfers": [
+  {
+   "nft_address": "0:118616A1E94829BDFDCE00C74011F5A9AEB780D46C07BAFAA1D069E8A3F5A470",
+   "nft_collection": "0:80D78A35F955A14B679FAA887FF4CD5BFC0F43B4A4EEA2A7E6927F3701B273C2",
+   "transaction_hash": "ZGOxiNMlRjMSUsjhHizCBQNnjLsFfu6+sSlp7lJhurQ=",
+   "transaction_lt": "50570278000001",
+   "transaction_now": 1730731220,
+   "transaction_aborted": false,
+   "old_owner": "0:A6699DCC25C78B2D376C738641930364BC931B7459EBAFDB6B3A0EE24183E2E1",
+   "new_owner": "0:0881FBEDAFD2853D9FC32C1C48554F8B377361903274BB8B64ABCEF86DCDCFAB"
+  }
+ ],
+ "address_book": {
+  "0:118616A1E94829BDFDCE00C74011F5A9AEB780D46C07BAFAA1D069E8A3F5A470": {
+   "user_friendly": "EQARhhah6Ugpvf3OAMdAEfWprreA1GwHuvqh0Gnoo_WkcIVV",
+   "domain": null,
+   "interfaces": [
+    "dns",
+    "nft_item",
+    "teleitem"
+   ]
+  },
+  "0:0881FBEDAFD2853D9FC32C1C48554F8B377361903274BB8B64ABCEF86DCDCFAB": {
+   "user_friendly": "UQAIgfvtr9KFPZ_DLBxIVU-LN3NhkDJ0u4tkq874bc3Pq4mm",
+   "domain": "github.t.me",
+   "interfaces": [
+    "wallet_v4r2"
+   ]
+  },
+  "0:A6699DCC25C78B2D376C738641930364BC931B7459EBAFDB6B3A0EE24183E2E1": {
+   "user_friendly": "UQCmaZ3MJceLLTdsc4ZBkwNkvJMbdFnrr9trOg7iQYPi4YRf",
+   "domain": null,
+   "interfaces": [
+    "wallet_v5r1"
+   ]
+  }
+ }
+}

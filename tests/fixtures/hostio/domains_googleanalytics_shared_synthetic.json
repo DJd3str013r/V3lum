@@ -1,0 +1,31 @@
+{
+ "googleanalytics": "UA-87654321",
+ "total": 1234,
+ "domains": [
+  "site0.example",
+  "site1.example",
+  "site2.example",
+  "site3.example",
+  "site4.example",
+  "site5.example",
+  "site6.example",
+  "site7.example",
+  "site8.example",
+  "site9.example",
+  "site10.example",
+  "site11.example",
+  "site12.example",
+  "site13.example",
+  "site14.example",
+  "site15.example",
+  "site16.example",
+  "site17.example",
+  "site18.example",
+  "site19.example",
+  "site20.example",
+  "site21.example",
+  "site22.example",
+  "site23.example",
+  "site24.example"
+ ]
+}

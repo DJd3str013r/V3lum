@@ -355,14 +355,10 @@ def test_every_execution_path_keeps_the_scope(registry, http, scope_file):
     assert target_calls(http) == [] and calls_to(http, "partner.example.org") == []
 
 
-@pytest.mark.xfail(
-    strict=True,
-    reason="WP04 datasets.py (+ WP08 context.py): an unregistered ad-hoc ctx.data.fetch(name, url) is sent on the default route "
-    "outside the module's scope binding (A7) - see the WP28 report open_issues",
-)
 def test_an_active_module_cannot_reach_out_of_scope_through_ad_hoc_data(registry, http, scope_file):
     """ctx.data is a network path too: an ACTIVE module must not reach an out-of-scope host by
-    'downloading a dataset' from it."""
+    'downloading a dataset' from it (the ad-hoc download goes through the module's own ScopedHttp:
+    its scope binding refuses it exactly like ctx.http)."""
     dns(http, IN_SCOPE_HOST, a=[IN_SCOPE_IP])
     http.add("GET", "https://evil.example.net/wordlist.txt", text="admin\n")
     tried: list[str] = []
@@ -377,6 +373,35 @@ def test_an_active_module_cannot_reach_out_of_scope_through_ad_hoc_data(registry
     active_module("t_safety_data_escape", run)
     scan(make_runtime(http), active_options(scope_file(), {"t_safety_data_escape"}), SEED)
     assert calls_to(http, "evil.example.net") == [], "an out-of-scope host was contacted through ctx.data"
+    assert tried == ["PolicyError"], tried  # refused by the module's own scope binding, exactly like ctx.http
+
+
+def test_an_active_module_cannot_reach_out_of_scope_through_a_dataset_it_registers(registry, http, scope_file):
+    """register_dataset is an import-time call: a dataset an ACTIVE module registers during its run is not a
+    reviewed registration, so ctx.data downloads it through the module's own scope binding - an
+    out-of-scope host is refused (fetch*, index) and never contacted."""
+    from v3lum.core.datasets import register_dataset, unregister_dataset
+
+    dns(http, IN_SCOPE_HOST, a=[IN_SCOPE_IP])
+    http.add("GET", "https://evil.example.net/words.txt", text="admin\n")
+    tried: list[str] = []
+
+    def run(self, ent, ctx):
+        name = register_dataset("t_safety_runtime_words.txt", "https://evil.example.net/words.txt", expect="lines")
+        for read in (ctx.data.fetch_lines, ctx.data.index):
+            try:
+                read(name)
+            except Exception as exc:  # noqa: BLE001 - any refusal counts; the request is what matters
+                tried.append(type(exc).__name__)
+        return self.result(ent)
+
+    active_module("t_safety_data_register", run)
+    try:
+        scan(make_runtime(http), active_options(scope_file(), {"t_safety_data_register"}), SEED)
+    finally:
+        unregister_dataset("t_safety_runtime_words.txt")
+    assert calls_to(http, "evil.example.net") == [], "an out-of-scope host was contacted through a run-time dataset"
+    assert tried == ["PolicyError", "PolicyError"], tried
 
 
 def test_cdn_fronted_in_scope_names_need_shared_infra_hosts(registry, http, scope_file, cdn_noise):

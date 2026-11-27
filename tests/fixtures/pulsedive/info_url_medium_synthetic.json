@@ -1,0 +1,57 @@
+{
+ "qid": null,
+ "iid": 900005,
+ "indicator": "http://login.example.net/account/verify.php",
+ "type": "url",
+ "risk": "medium",
+ "risk_recommended": "medium",
+ "manualrisk": 0,
+ "retired": null,
+ "stamp_added": "2026-11-22 10:00:00",
+ "stamp_updated": "2026-11-23 10:00:00",
+ "stamp_seen": "2026-11-23 10:00:00",
+ "stamp_probed": null,
+ "stamp_retired": null,
+ "recent": 1,
+ "submissions": 1,
+ "umbrella_rank": 0,
+ "umbrella_domain": "",
+ "riskfactors": [
+  {
+   "rfid": 900006,
+   "description": "phishing keywords in URL",
+   "risk": "medium"
+  }
+ ],
+ "redirects": {
+  "from": [],
+  "to": [
+   {
+    "iid": 900007,
+    "indicator": "https://login.example.net/"
+   }
+  ]
+ },
+ "threats": [
+  {
+   "tid": 67,
+   "name": "Phishing",
+   "category": "general",
+   "risk": "high",
+   "stamp_linked": "2026-11-23 10:00:00"
+  }
+ ],
+ "feeds": [
+  {
+   "fid": 900008,
+   "name": "OpenPhish Community",
+   "category": "phishing",
+   "organization": "OpenPhish",
+   "pricing": "free",
+   "stamp_linked": "2026-11-23 10:00:00"
+  }
+ ],
+ "comments": [],
+ "attributes": {},
+ "properties": {}
+}

@@ -1,0 +1,10 @@
+{
+  "org": {"name": "Banco do Brasil S.A."},
+  "domains": [{"name": "bb.com.br", "verification": "attested", "attested_by": "fixture", "attested_date": "2026-11-26", "criticality": "critical"}],
+  "brands": [{"keyword": "Banco do Brasil", "variants": ["BB", "Ourocard"], "criticality": "critical"}],
+  "app_ids": [
+    {"kind": "apple_developer_id", "value": "330984274"},
+    {"kind": "bundle_prefix", "value": "com.bb."},
+    {"kind": "bundle_prefix", "value": "br.com.bb."}
+  ]
+}

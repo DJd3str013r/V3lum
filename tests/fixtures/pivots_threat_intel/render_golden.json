@@ -1,0 +1,90 @@
+[
+ {
+  "ref": "threat_intel_ioc:nerd_ip",
+  "renderer": "core",
+  "type": "ipv4",
+  "value": "8.8.8.8",
+  "url": "https://nerd.cesnet.cz/nerd/ip/8.8.8.8",
+  "source": "live"
+ },
+ {
+  "ref": "scanner_intel_g02_3:greynoise_viz_ip",
+  "renderer": "core",
+  "type": "ipv4",
+  "value": "8.8.8.8",
+  "url": "https://viz.greynoise.io/ips/8.8.8.8",
+  "source": "live"
+ },
+ {
+  "ref": "threat_intel_ioc:fortiguard_search",
+  "renderer": "core",
+  "type": "ipv4",
+  "value": "8.8.8.8",
+  "url": "https://www.fortiguard.com/search?q=8.8.8.8&engine=8",
+  "source": "live"
+ },
+ {
+  "ref": "threat_intel_ioc:urlvoid",
+  "renderer": "module",
+  "type": "domain",
+  "value": "example.com",
+  "url": "https://www.urlvoid.com/scan/example.com/",
+  "source": "spec"
+ },
+ {
+  "ref": "threat_intel_ioc:multirbl",
+  "renderer": "core",
+  "type": "ipv4",
+  "value": "8.8.8.8",
+  "url": "https://multirbl.valli.org/lookup/8.8.8.8.html",
+  "source": "live"
+ },
+ {
+  "ref": "threat_intel_ioc:multirbl",
+  "renderer": "core",
+  "type": "ipv6",
+  "value": "2001:4860:4860::8888",
+  "url": "https://multirbl.valli.org/lookup/2001%3A4860%3A4860%3A%3A8888.html",
+  "source": "live"
+ },
+ {
+  "ref": "threat_intel_ioc:multirbl",
+  "renderer": "core",
+  "type": "domain",
+  "value": "example.com",
+  "url": "https://multirbl.valli.org/lookup/example.com.html",
+  "source": "live"
+ },
+ {
+  "ref": "threat_intel_ioc:honeylabs",
+  "renderer": "core",
+  "type": "ipv4",
+  "value": "8.8.8.8",
+  "url": "https://honeylabs.net/lookup/8.8.8.8",
+  "source": "live"
+ },
+ {
+  "ref": "threat_intel_ioc:cybercrime_tracker",
+  "renderer": "core",
+  "type": "domain",
+  "value": "example.com",
+  "url": "https://cybercrime-tracker.net/index.php?search=example.com",
+  "source": "live"
+ },
+ {
+  "ref": "threat_intel_ioc:cybercrime_tracker_url",
+  "renderer": "module",
+  "type": "url",
+  "value": "http://example.com/panel/gate.php",
+  "url": "https://cybercrime-tracker.net/index.php?search=example.com%2Fpanel%2Fgate.php",
+  "source": "live"
+ },
+ {
+  "ref": "threat_intel_ioc:cybercrime_tracker_url",
+  "renderer": "module",
+  "type": "url",
+  "value": "https://example.com:8443/panel/gate.php?id=1#x",
+  "url": "https://cybercrime-tracker.net/index.php?search=example.com%3A8443%2Fpanel%2Fgate.php",
+  "source": "encoded"
+ }
+]

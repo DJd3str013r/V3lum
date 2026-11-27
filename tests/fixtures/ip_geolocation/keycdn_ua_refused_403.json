@@ -1,0 +1,9 @@
+{
+ "_status": 403,
+ "_observed": "live Thu, 26 Nov 2026 08:24:20 GMT (raw/kc_8888_plain_ua)",
+ "_note": "one request with a generic UA: 403 'User-Agent not properly defined' (FC4: KeyCDN not wired, its mandatory UA keycdn-tools:https://<site> would disclose the company site)",
+ "body": {
+  "status": "error",
+  "description": "User-Agent not properly defined. Please check the docs: https://tools.keycdn.com/geo"
+ }
+}

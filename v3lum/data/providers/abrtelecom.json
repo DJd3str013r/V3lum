@@ -1,0 +1,50 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "abrtelecom",
+  "name": "ABR Telecom Consulta Número (current operator after portability; manual, CAPTCHA)",
+  "operator": "ABR Telecom (Associação Brasileira de Recursos em Telecomunicações)",
+  "hosts": [
+    "consultanumero.abrtelecom.com.br"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "ABR Telecom administers the Brazilian number-portability reference database for the operators under Anatel regulation; published consultation page (A8 trusted); P128 cond 5 'ABR Telecom trusted'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "Authoritative source of the current operator of a ported Brazilian number (read manually by the analyst; V3LUM never automates it)."
+  },
+  "http_profile": {
+    "user_agent": "neutral"
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "consulta_numero": {
+      "title": "Consulta Número landing page (reCAPTCHA form; static manual link for +55 numbers)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://consultanumero.abrtelecom.com.br/consultanumero/consulta/consultaSituacaoAtualCtg",
+        "quote": "The current operator after portability is available only manually through ABR Telecom's 'consulta numero portado' page (reCAPTCHA): a manual pivot link (P128), never automated.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "abrtelecom",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P126 cond 7). URL verified 2026-11-26 (GET of the landing page only, nothing submitted): 200, 'Consulta Número', a reCAPTCHA widget and a POST form with a CSRF token and a 'telefone' field, so no URL parameter can carry the number. The link is therefore static: opening it sends nothing, and the analyst types the number on the page (A9: CAPTCHA walls are manual links only, never automated or bypassed). Used by pivots_phone (+55 phone seeds of an opted-in case)."
+    }
+  },
+  "notes": "Owned by batch p1-G06-1 (P126 cond 7, P128 cond 1 and 5). Manual link only: V3LUM never requests consultanumero.abrtelecom.com.br."
+}

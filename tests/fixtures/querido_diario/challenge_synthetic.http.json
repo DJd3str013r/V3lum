@@ -1,0 +1,18 @@
+{
+ "request": "GET https://api.queridodiario.org.br/gazettes?querystring=%2200.000.000%2F0001-91%22&size=10",
+ "response": {
+  "status": 403,
+  "headers": {
+   "content-type": "text/html; charset=UTF-8",
+   "server": "cloudflare",
+   "cf-mitigated": "challenge"
+  },
+  "body_kind": "text",
+  "body": "<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title></head><body><script src=\"/cdn-cgi/challenge-platform/h/g/orchestrate/chl_page/v1\"></script></body></html>"
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "observed_at": null,
+ "origin": "synthetic",
+ "note": "synthetic: Cloudflare managed challenge; not observed (QD is behind Cloudflare)"
+}

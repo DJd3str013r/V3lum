@@ -1,0 +1,372 @@
+[
+ {
+  "id": "4929902",
+  "descricao": "TRANSPORTE RODOVIÁRIO COLETIVO DE PASSAGEIROS, SOB REGIME DE FRETAMENTO, INTERMUNICIPAL, INTERESTADUAL E INTERNACIONAL",
+  "classe": {
+   "id": "49299",
+   "descricao": "TRANSPORTE RODOVIÁRIO COLETIVO DE PASSAGEIROS, SOB REGIME DE FRETAMENTO, E OUTROS TRANSPORTES RODOVIÁRIOS NÃO ESPECIFICADOS ANTERIORMENTE",
+   "grupo": {
+    "id": "492",
+    "descricao": "TRANSPORTE RODOVIÁRIO DE PASSAGEIROS",
+    "divisao": {
+     "id": "49",
+     "descricao": "TRANSPORTE TERRESTRE",
+     "secao": {
+      "id": "H",
+      "descricao": "TRANSPORTE, ARMAZENAGEM E CORREIO"
+     }
+    }
+   }
+  }
+ },
+ {
+  "id": "6422100",
+  "descricao": "BANCOS MÚLTIPLOS, COM CARTEIRA COMERCIAL",
+  "classe": {
+   "id": "64221",
+   "descricao": "BANCOS MÚLTIPLOS, COM CARTEIRA COMERCIAL",
+   "grupo": {
+    "id": "642",
+    "descricao": "INTERMEDIAÇÃO MONETÁRIA - DEPÓSITOS À VISTA",
+    "divisao": {
+     "id": "64",
+     "descricao": "ATIVIDADES DE SERVIÇOS FINANCEIROS",
+     "secao": {
+      "id": "K",
+      "descricao": "ATIVIDADES FINANCEIRAS, DE SEGUROS E SERVIÇOS RELACIONADOS"
+     }
+    }
+   }
+  }
+ },
+ {
+  "id": "6435201",
+  "descricao": "SOCIEDADES DE CRÉDITO IMOBILIÁRIO",
+  "classe": {
+   "id": "64352",
+   "descricao": "CRÉDITO IMOBILIÁRIO",
+   "grupo": {
+    "id": "643",
+    "descricao": "INTERMEDIAÇÃO NÃO-MONETÁRIA - OUTROS INSTRUMENTOS DE CAPTAÇÃO",
+    "divisao": {
+     "id": "64",
+     "descricao": "ATIVIDADES DE SERVIÇOS FINANCEIROS",
+     "secao": {
+      "id": "K",
+      "descricao": "ATIVIDADES FINANCEIRAS, DE SEGUROS E SERVIÇOS RELACIONADOS"
+     }
+    }
+   }
+  }
+ },
+ {
+  "id": "6511101",
+  "descricao": "SOCIEDADE SEGURADORA DE SEGUROS VIDA",
+  "classe": {
+   "id": "65111",
+   "descricao": "SEGUROS DE VIDA",
+   "grupo": {
+    "id": "651",
+    "descricao": "SEGUROS DE VIDA E NÃO-VIDA",
+    "divisao": {
+     "id": "65",
+     "descricao": "SEGUROS, RESSEGUROS, PREVIDÊNCIA COMPLEMENTAR E PLANOS DE SAÚDE",
+     "secao": {
+      "id": "K",
+      "descricao": "ATIVIDADES FINANCEIRAS, DE SEGUROS E SERVIÇOS RELACIONADOS"
+     }
+    }
+   }
+  }
+ },
+ {
+  "id": "6619302",
+  "descricao": "CORRESPONDENTES DE INSTITUIÇÕES FINANCEIRAS",
+  "classe": {
+   "id": "66193",
+   "descricao": "ATIVIDADES AUXILIARES DOS SERVIÇOS FINANCEIROS NÃO ESPECIFICADAS ANTERIORMENTE",
+   "grupo": {
+    "id": "661",
+    "descricao": "ATIVIDADES AUXILIARES DOS SERVIÇOS FINANCEIROS",
+    "divisao": {
+     "id": "66",
+     "descricao": "ATIVIDADES AUXILIARES DOS SERVIÇOS FINANCEIROS, SEGUROS, PREVIDÊNCIA COMPLEMENTAR E PLANOS DE SAÚDE",
+     "secao": {
+      "id": "K",
+      "descricao": "ATIVIDADES FINANCEIRAS, DE SEGUROS E SERVIÇOS RELACIONADOS"
+     }
+    }
+   }
+  }
+ },
+ {
+  "id": "6619399",
+  "descricao": "OUTRAS ATIVIDADES AUXILIARES DOS SERVIÇOS FINANCEIROS NÃO ESPECIFICADAS ANTERIORMENTE",
+  "classe": {
+   "id": "66193",
+   "descricao": "ATIVIDADES AUXILIARES DOS SERVIÇOS FINANCEIROS NÃO ESPECIFICADAS ANTERIORMENTE",
+   "grupo": {
+    "id": "661",
+    "descricao": "ATIVIDADES AUXILIARES DOS SERVIÇOS FINANCEIROS",
+    "divisao": {
+     "id": "66",
+     "descricao": "ATIVIDADES AUXILIARES DOS SERVIÇOS FINANCEIROS, SEGUROS, PREVIDÊNCIA COMPLEMENTAR E PLANOS DE SAÚDE",
+     "secao": {
+      "id": "K",
+      "descricao": "ATIVIDADES FINANCEIRAS, DE SEGUROS E SERVIÇOS RELACIONADOS"
+     }
+    }
+   }
+  },
+  "atividades": [
+   "ADMINISTRAÇÃO DE PLATAFORMA FACILITADORA DE PAGAMENTOS; ATIVIDADES DE",
+   "ADQUIRENTES E SUBADQUIRENTES; ATIVIDADES DE",
+   "CARTEIRAS DIGITAIS PARA REALIZAÇÃO DE PAGAMENTOS POR MEIO DE DISPOSITIVOS ELETRÔNICOS; SERVIÇOS DE"
+  ]
+ },
+ {
+  "id": "6613400",
+  "descricao": "ADMINISTRAÇÃO DE CARTÕES DE CRÉDITO",
+  "classe": {
+   "id": "66134",
+   "descricao": "ADMINISTRAÇÃO DE CARTÕES DE CRÉDITO",
+   "grupo": {
+    "id": "661",
+    "descricao": "ATIVIDADES AUXILIARES DOS SERVIÇOS FINANCEIROS",
+    "divisao": {
+     "id": "66",
+     "descricao": "ATIVIDADES AUXILIARES DOS SERVIÇOS FINANCEIROS, SEGUROS, PREVIDÊNCIA COMPLEMENTAR E PLANOS DE SAÚDE",
+     "secao": {
+      "id": "K",
+      "descricao": "ATIVIDADES FINANCEIRAS, DE SEGUROS E SERVIÇOS RELACIONADOS"
+     }
+    }
+   }
+  }
+ },
+ {
+  "id": "6311900",
+  "descricao": "TRATAMENTO DE DADOS, PROVEDORES DE SERVIÇOS DE APLICAÇÃO E SERVIÇOS DE HOSPEDAGEM NA INTERNET",
+  "classe": {
+   "id": "63119",
+   "descricao": "TRATAMENTO DE DADOS, PROVEDORES DE SERVIÇOS DE APLICAÇÃO E SERVIÇOS DE HOSPEDAGEM NA INTERNET",
+   "grupo": {
+    "id": "631",
+    "descricao": "TRATAMENTO DE DADOS, HOSPEDAGEM NA INTERNET E OUTRAS ATIVIDADES RELACIONADAS",
+    "divisao": {
+     "id": "63",
+     "descricao": "ATIVIDADES DE PRESTAÇÃO DE SERVIÇOS DE INFORMAÇÃO",
+     "secao": {
+      "id": "J",
+      "descricao": "INFORMAÇÃO E COMUNICAÇÃO"
+     }
+    }
+   }
+  },
+  "atividades": [
+   "ALUGUEL DE HORA EM COMPUTADOR",
+   "BANCO DE DADOS DE TERCEIROS; GESTÃO DE",
+   "BANCO DE DADOS; PRODUÇÃO DE LISTAGENS, TABULAÇÕES, CONSULTAS"
+  ]
+ },
+ {
+  "id": "8011101",
+  "descricao": "ATIVIDADES DE VIGILÂNCIA E SEGURANÇA PRIVADA",
+  "classe": {
+   "id": "80111",
+   "descricao": "ATIVIDADES DE VIGILÂNCIA E SEGURANÇA PRIVADA",
+   "grupo": {
+    "id": "801",
+    "descricao": "ATIVIDADES DE VIGILÂNCIA, SEGURANÇA PRIVADA E TRANSPORTE DE VALORES",
+    "divisao": {
+     "id": "80",
+     "descricao": "ATIVIDADES DE VIGILÂNCIA, SEGURANÇA E INVESTIGAÇÃO",
+     "secao": {
+      "id": "N",
+      "descricao": "ATIVIDADES ADMINISTRATIVAS E SERVIÇOS COMPLEMENTARES"
+     }
+    }
+   }
+  }
+ },
+ {
+  "id": "8030700",
+  "descricao": "ATIVIDADES DE INVESTIGAÇÃO PARTICULAR",
+  "classe": {
+   "id": "80307",
+   "descricao": "ATIVIDADES DE INVESTIGAÇÃO PARTICULAR",
+   "grupo": {
+    "id": "803",
+    "descricao": "ATIVIDADES DE INVESTIGAÇÃO PARTICULAR",
+    "divisao": {
+     "id": "80",
+     "descricao": "ATIVIDADES DE VIGILÂNCIA, SEGURANÇA E INVESTIGAÇÃO",
+     "secao": {
+      "id": "N",
+      "descricao": "ATIVIDADES ADMINISTRATIVAS E SERVIÇOS COMPLEMENTARES"
+     }
+    }
+   }
+  }
+ },
+ {
+  "id": "9200399",
+  "descricao": "EXPLORAÇÃO DE JOGOS DE AZAR E APOSTAS NÃO ESPECIFICADOS ANTERIORMENTE",
+  "classe": {
+   "id": "92003",
+   "descricao": "ATIVIDADES DE EXPLORAÇÃO DE JOGOS DE AZAR E APOSTAS",
+   "grupo": {
+    "id": "920",
+    "descricao": "ATIVIDADES DE EXPLORAÇÃO DE JOGOS DE AZAR E APOSTAS",
+    "divisao": {
+     "id": "92",
+     "descricao": "ATIVIDADES DE EXPLORAÇÃO DE JOGOS DE AZAR E APOSTAS",
+     "secao": {
+      "id": "R",
+      "descricao": "ARTES, CULTURA, ESPORTE E RECREAÇÃO"
+     }
+    }
+   }
+  }
+ },
+ {
+  "id": "9411100",
+  "descricao": "ATIVIDADES DE ORGANIZAÇÕES ASSOCIATIVAS PATRONAIS E EMPRESARIAIS",
+  "classe": {
+   "id": "94111",
+   "descricao": "ATIVIDADES DE ORGANIZAÇÕES ASSOCIATIVAS PATRONAIS E EMPRESARIAIS",
+   "grupo": {
+    "id": "941",
+    "descricao": "ATIVIDADES DE ORGANIZAÇÕES ASSOCIATIVAS PATRONAIS, EMPRESARIAIS E PROFISSIONAIS",
+    "divisao": {
+     "id": "94",
+     "descricao": "ATIVIDADES DE ORGANIZAÇÕES ASSOCIATIVAS",
+     "secao": {
+      "id": "S",
+      "descricao": "OUTRAS ATIVIDADES DE SERVIÇOS"
+     }
+    }
+   }
+  }
+ },
+ {
+  "id": "9420100",
+  "descricao": "ATIVIDADES DE ORGANIZAÇÕES SINDICAIS",
+  "classe": {
+   "id": "94201",
+   "descricao": "ATIVIDADES DE ORGANIZAÇÕES SINDICAIS",
+   "grupo": {
+    "id": "942",
+    "descricao": "ATIVIDADES DE ORGANIZAÇÕES SINDICAIS",
+    "divisao": {
+     "id": "94",
+     "descricao": "ATIVIDADES DE ORGANIZAÇÕES ASSOCIATIVAS",
+     "secao": {
+      "id": "S",
+      "descricao": "OUTRAS ATIVIDADES DE SERVIÇOS"
+     }
+    }
+   }
+  }
+ },
+ {
+  "id": "9430800",
+  "descricao": "ATIVIDADES DE ASSOCIAÇÕES DE DEFESA DE DIREITOS SOCIAIS",
+  "classe": {
+   "id": "94308",
+   "descricao": "ATIVIDADES DE ASSOCIAÇÕES DE DEFESA DE DIREITOS SOCIAIS",
+   "grupo": {
+    "id": "943",
+    "descricao": "ATIVIDADES DE ASSOCIAÇÕES DE DEFESA DE DIREITOS SOCIAIS",
+    "divisao": {
+     "id": "94",
+     "descricao": "ATIVIDADES DE ORGANIZAÇÕES ASSOCIATIVAS",
+     "secao": {
+      "id": "S",
+      "descricao": "OUTRAS ATIVIDADES DE SERVIÇOS"
+     }
+    }
+   }
+  }
+ },
+ {
+  "id": "9491000",
+  "descricao": "ATIVIDADES DE ORGANIZAÇÕES RELIGIOSAS OU FILOSÓFICAS",
+  "classe": {
+   "id": "94910",
+   "descricao": "ATIVIDADES DE ORGANIZAÇÕES RELIGIOSAS",
+   "grupo": {
+    "id": "949",
+    "descricao": "ATIVIDADES DE ORGANIZAÇÕES ASSOCIATIVAS NÃO ESPECIFICADAS ANTERIORMENTE",
+    "divisao": {
+     "id": "94",
+     "descricao": "ATIVIDADES DE ORGANIZAÇÕES ASSOCIATIVAS",
+     "secao": {
+      "id": "S",
+      "descricao": "OUTRAS ATIVIDADES DE SERVIÇOS"
+     }
+    }
+   }
+  }
+ },
+ {
+  "id": "9492800",
+  "descricao": "ATIVIDADES DE ORGANIZAÇÕES POLÍTICAS",
+  "classe": {
+   "id": "94928",
+   "descricao": "ATIVIDADES DE ORGANIZAÇÕES POLÍTICAS",
+   "grupo": {
+    "id": "949",
+    "descricao": "ATIVIDADES DE ORGANIZAÇÕES ASSOCIATIVAS NÃO ESPECIFICADAS ANTERIORMENTE",
+    "divisao": {
+     "id": "94",
+     "descricao": "ATIVIDADES DE ORGANIZAÇÕES ASSOCIATIVAS",
+     "secao": {
+      "id": "S",
+      "descricao": "OUTRAS ATIVIDADES DE SERVIÇOS"
+     }
+    }
+   }
+  }
+ },
+ {
+  "id": "9499500",
+  "descricao": "ATIVIDADES ASSOCIATIVAS NÃO ESPECIFICADAS ANTERIORMENTE",
+  "classe": {
+   "id": "94995",
+   "descricao": "ATIVIDADES ASSOCIATIVAS NÃO ESPECIFICADAS ANTERIORMENTE",
+   "grupo": {
+    "id": "949",
+    "descricao": "ATIVIDADES DE ORGANIZAÇÕES ASSOCIATIVAS NÃO ESPECIFICADAS ANTERIORMENTE",
+    "divisao": {
+     "id": "94",
+     "descricao": "ATIVIDADES DE ORGANIZAÇÕES ASSOCIATIVAS",
+     "secao": {
+      "id": "S",
+      "descricao": "OUTRAS ATIVIDADES DE SERVIÇOS"
+     }
+    }
+   }
+  }
+ },
+ {
+  "id": "8299702",
+  "descricao": "EMISSÃO DE VALES ALIMENTAÇÃO, VALES TRANSPORTE E SIMILARES",
+  "classe": {
+   "id": "82997",
+   "descricao": "ATIVIDADES DE SERVIÇOS PRESTADOS PRINCIPALMENTE ÀS EMPRESAS NÃO ESPECIFICADAS ANTERIORMENTE",
+   "grupo": {
+    "id": "829",
+    "descricao": "OUTRAS ATIVIDADES DE SERVIÇOS PRESTADOS PRINCIPALMENTE ÀS EMPRESAS",
+    "divisao": {
+     "id": "82",
+     "descricao": "SERVIÇOS DE ESCRITÓRIO, DE APOIO ADMINISTRATIVO E OUTROS SERVIÇOS PRESTADOS PRINCIPALMENTE ÀS EMPRESAS",
+     "secao": {
+      "id": "N",
+      "descricao": "ATIVIDADES ADMINISTRATIVAS E SERVIÇOS COMPLEMENTARES"
+     }
+    }
+   }
+  }
+ }
+]

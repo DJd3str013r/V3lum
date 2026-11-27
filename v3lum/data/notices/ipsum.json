@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "ipsum",
+  "source_url": "https://github.com/stamparm/ipsum",
+  "version": "ipsum.txt from the master branch (runtime download, checked 2026-11-26)",
+  "sha256": "",
+  "licence": "Unlicense",
+  "attribution": "IPsum threat intelligence feed by Miroslav Stampar (https://github.com/stamparm/ipsum), released into the public domain (Unlicense).",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/threat_intel_ioc/ip_blocklists.py"
+  ]
+}

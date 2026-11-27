@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<rss version='2.0'>
+<channel>
+<title>Ransom Feed | RSS Complete</title>
+<link>https://ransomfeed.it/</link>
+<description>Ransomware victims RSS <img referrerpolicy="no-referrer-when-downgrade" src="https://matomo.ransomfeed.it/matomo.php?idsite=1&amp;rec=1" style="border:0" alt="" /></description>
+<language>en-us</language>
+<item xmlns:dc='ns:1'>
+<title>Exemplo Alimentos Ltda.</title>
+<link>https://ransomfeed.it/index.php?page=post_details&amp;id_post=90001</link>
+<guid>e358429c84cbe1c3464f6f5662f02722</guid>
+<id>90001</id>
+<pubDate>Wed, 25 Nov 2026 09:12:40 CET</pubDate>
+<dc:creator>RansomFeed</dc:creator>
+<description><![CDATA[Ransomware group called <b>lockbit3</b> claims attack for <b>Exemplo Alimentos Ltda.</b>. The target comes from <b>Brazil</b>. <img referrerpolicy="no-referrer-when-downgrade" src="https://www.ransomfeed.it/matomo/matomo.php?idsite=1&amp;rec=1&amp;action_name=RSS-COMPLETE-PUBLIC" style="border:0" alt="" /><br />We identify this attack with following <b>hash code</b>: <i>93207342cf8065541a86cda3cf5ec9d870c87baf5554ee094bd451cf02a367c2</i> (ID: 90001)<br /><br />Target victim <b>website</b>: <i>exemplo-alimentos.example</i>]]></description>
+<category>lockbit3</category>
+</item>
+<item xmlns:dc='ns:1'>
+<title>EXEMPLO SOLUÇÕES CONTÁBEIS LTDA</title>
+<link>https://ransomfeed.it/index.php?page=post_details&amp;id_post=90002</link>
+<guid>af62d29343e3e5a6a7eb12b69b4904cc</guid>
+<id>90002</id>
+<pubDate>Tue, 24 Nov 2026 04:44:15 CET</pubDate>
+<dc:creator>RansomFeed</dc:creator>
+<description><![CDATA[Ransomware group called <b>spacebears</b> claims attack for <b>EXEMPLO SOLUÇÕES CONTÁBEIS LTDA</b>. The target comes from <b>Brazil</b>. <img referrerpolicy="no-referrer-when-downgrade" src="https://www.ransomfeed.it/matomo/matomo.php?idsite=1&amp;rec=1&amp;action_name=RSS-COMPLETE-PUBLIC" style="border:0" alt="" /><br />We identify this attack with following <b>hash code</b>: <i>e117387a2098935f3dac57d7e7d9787daf1de73e4d1bcd7b245949d081d043bc</i> (ID: 90002)<br /><br />Target victim <b>website</b>: <i>N/D</i>]]></description>
+<category>spacebears</category>
+</item>
+<item xmlns:dc='ns:1'>
+<title>grupoexemplo.example</title>
+<link>https://ransomfeed.it/index.php?page=post_details&amp;id_post=90003</link>
+<guid>1ac4b571601c68c16b5383f3683c59e9</guid>
+<id>90003</id>
+<pubDate>Thu, 26 Nov 2026 01:10:05 CET</pubDate>
+<dc:creator>RansomFeed</dc:creator>
+<description><![CDATA[Ransomware group called <b>play</b> claims attack for <b>grupoexemplo.example</b>. The target comes from <b>Brazil</b>. <img referrerpolicy="no-referrer-when-downgrade" src="https://www.ransomfeed.it/matomo/matomo.php?idsite=1&amp;rec=1&amp;action_name=RSS-COMPLETE-PUBLIC" style="border:0" alt="" /><br />We identify this attack with following <b>hash code</b>: <i>3cc08ae3124009987675690a1cc22119961b7bff3841f2c6cc4e56021c619ac7</i> (ID: 90003)<br /><br />Target victim <b>website</b>: <i>grupoexemplo.example</i>]]></description>
+<category>play</category>
+</item>
+<item xmlns:dc='ns:1'>
+<title>Hospital Exemplo</title>
+<link>https://ransomfeed.it/index.php?page=post_details&amp;id_post=90004</link>
+<guid>c6c3e82272a290b44c5fe5dd2a87616b</guid>
+<id>90004</id>
+<pubDate>Tue, 24 Nov 2026 11:20:00 CET</pubDate>
+<dc:creator>RansomFeed</dc:creator>
+<description><![CDATA[Ransomware group called <b>scarlettgroup</b> claims attack for <b>Hospital Exemplo</b>. The target comes from <b>Brazil</b>. <img referrerpolicy="no-referrer-when-downgrade" src="https://www.ransomfeed.it/matomo/matomo.php?idsite=1&amp;rec=1&amp;action_name=RSS-COMPLETE-PUBLIC" style="border:0" alt="" /><br />We identify this attack with following <b>hash code</b>: <i>e2b0e3622919593ae0abfe1c02f99f1a9c35a082556b70eddff12c496defba00</i> (ID: 90004)<br /><br />Target victim <b>website</b>: <i>N/D</i>]]></description>
+<category>scarlettgroup</category>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "boleto_pix_bcb_str",
+  "source_url": "https://www.bcb.gov.br/content/estabilidadefinanceira/str1/ParticipantesSTR.csv",
+  "version": "ParticipantesSTR.csv as served on 2026-11-26 (Last-Modified Wed, 25 Nov 2026 09:00:30 GMT; 473 participants); bundled snapshot, refreshed weekly at runtime by the dataset manager (boleto_pix_bcb_str)",
+  "sha256": "87c27999d5616384cf583b7ad7e32900114552bb6de3844c21db65da72ad91c8",
+  "licence": "Brazilian open government data (Banco Central do Brasil public information, Lei 12.527/2011)",
+  "attribution": "Fonte: Banco Central do Brasil - participantes do STR (ParticipantesSTR.csv). Bank names and codes as published by the BCB; not endorsed by the BCB.",
+  "bundled": true,
+  "files": [
+    "v3lum/data/boleto_pix/bcb_str_participants.csv",
+    "v3lum/modules/brazil_public_data/boleto_pix.py"
+  ]
+}

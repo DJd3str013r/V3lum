@@ -1,0 +1,34 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "nodes": [
+    {
+      "key": "domain:contoso.example",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "m365_tenant_id": [{"value": "11111111-2222-4333-8444-555555555555", "source": "m365_tenant"}],
+        "m365_brand_name": [{"value": "Contoso Ltd", "source": "m365_tenant"}],
+        "m365_namespace_type": [{"value": "Managed", "source": "m365_tenant"}]
+      }
+    },
+    {
+      "key": "domain:fabrikam.example",
+      "depth": 1,
+      "attributes": {
+        "m365_tenant_id": [{"value": "11111111-2222-4333-8444-555555555555", "source": "m365_tenant"}]
+      }
+    },
+    {
+      "key": "domain:mail.contoso.example",
+      "depth": 1,
+      "attributes": {
+        "m365_tenant_id": [{"value": "11111111-2222-4333-8444-555555555555", "source": "m365_tenant"}]
+      }
+    }
+  ],
+  "edges": [
+    {"src": "domain:contoso.example", "dst": "domain:fabrikam.example", "relation": "same_m365_tenant", "module": "m365_tenant_azmap", "confidence": 0.7}
+  ],
+  "expect": {"m365_shared_tenant": {"min": 1, "max": 1, "severity": "info", "confidence_label": "probable"}}
+}

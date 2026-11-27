@@ -1,0 +1,43 @@
+{
+ "_documented": "Multi-tenant certificate: 24 SANs over 8 registrable domains (> 20 over > 5): P001 shared-certificate rule -> shared_cert attribute, no affiliate pivots.",
+ "result": {
+  "resource": {
+   "fingerprint_sha256": "d07c54d74758b4d0432183033da74324b142c78f3975976502e940718133307e",
+   "names": [
+    "shop1.test",
+    "www.shop1.test",
+    "cdn.shop1.test",
+    "shop2.test",
+    "www.shop2.test",
+    "cdn.shop2.test",
+    "shop3.test",
+    "www.shop3.test",
+    "cdn.shop3.test",
+    "shop4.test",
+    "www.shop4.test",
+    "cdn.shop4.test",
+    "shop5.test",
+    "www.shop5.test",
+    "cdn.shop5.test",
+    "shop6.test",
+    "www.shop6.test",
+    "cdn.shop6.test",
+    "shop7.test",
+    "www.shop7.test",
+    "cdn.shop7.test",
+    "shop8.test",
+    "www.shop8.test",
+    "cdn.shop8.test"
+   ],
+   "parsed": {
+    "subject_dn": "CN=sni.cdn.example.net",
+    "issuer_dn": "C=US, O=Example CA, CN=Example CDN CA",
+    "validity_period": {
+     "not_before": "2026-09-01T00:00:00Z",
+     "not_after": "2026-12-01T00:00:00Z"
+    }
+   }
+  },
+  "extensions": {}
+ }
+}

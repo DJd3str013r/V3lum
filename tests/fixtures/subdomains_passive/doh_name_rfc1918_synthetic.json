@@ -1,0 +1,28 @@
+{
+ "Status": 0,
+ "TC": false,
+ "RD": true,
+ "RA": true,
+ "AD": false,
+ "CD": false,
+ "Question": [
+  {
+   "name": "vpn.example.com.",
+   "type": 1
+  }
+ ],
+ "Answer": [
+  {
+   "name": "vpn.example.com.",
+   "type": 5,
+   "TTL": 300,
+   "data": "vpn-int.example.com."
+  },
+  {
+   "name": "vpn-int.example.com.",
+   "type": 1,
+   "TTL": 300,
+   "data": "10.20.30.40"
+  }
+ ]
+}

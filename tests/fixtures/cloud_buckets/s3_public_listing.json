@@ -1,0 +1,11 @@
+{
+ "request": {"method": "GET", "url": "https://example-corp-public.s3.amazonaws.com/?max-keys=1"},
+ "response": {
+  "status": 200,
+  "headers": {"content-type": "application/xml", "server": "AmazonS3"},
+  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<ListBucketResult xmlns=\"http://s3.amazonaws.com/doc/2006-03-01/\"><Name>example-corp-public</Name><Prefix></Prefix><MaxKeys>1</MaxKeys><IsTruncated>true</IsTruncated><Contents><Key>exports/report.pdf</Key><LastModified>2026-01-01T00:00:00.000Z</LastModified><ETag>&quot;00000000000000000000000000000000&quot;</ETag><Size>12345</Size><StorageClass>STANDARD</StorageClass></Contents></ListBucketResult>"
+ },
+ "class": "research",
+ "origin": "synthetic (documented S3 200 ListBucketResult body)",
+ "notes": "200 ListBucketResult = public listing (FC4). Parser must keep only the key EXTENSION (.pdf) and the 'public listing' flag, never the key name (FC5). Key value is a placeholder."
+}

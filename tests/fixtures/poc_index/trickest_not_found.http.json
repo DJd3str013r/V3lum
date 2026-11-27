@@ -1,0 +1,22 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://raw.githubusercontent.com/trickest/cve/main/2021/CVE-2021-9999999.md",
+  "headers": {}
+ },
+ "response": {
+  "status": 404,
+  "headers": {
+   "content-type": "text/plain; charset=utf-8",
+   "x-github-request-id": "4B98:35A146:385D5E:45C998:6B07DE8B",
+   "x-cache": "MISS",
+   "expires": "Thu, 26 Nov 2026 07:28:55 GMT",
+   "content-length": "14"
+  },
+  "body": "404: Not Found"
+ },
+ "transport_error": null,
+ "elapsed_s": 0.125876,
+ "observed_at": "2026-11-26T07:23:55Z",
+ "note": "No markdown for an unassigned id: 404 text/plain \"404: Not Found\"."
+}

@@ -1,0 +1,128 @@
+{
+ "commit": "01bd31a91d11025e37c776b01edfe61c58dba784",
+ "commit_date": "2026-11-26T11:10:37+00:00",
+ "licence": "MIT",
+ "base": "https://raw.githubusercontent.com/danielmiessler/SecLists/{commit}/{path}",
+ "files": [
+  {
+   "path": "Discovery/Web-Content/common.txt",
+   "sha256": "47fb86ca6fb3f97e5491161581900d6d99851fb16764eacddf16aa85617c956a",
+   "git_blob_sha1": "15bb1c17533b4c0cf0100abe4fa1789093f4e724",
+   "git_blob_sha1_matches_tree": true,
+   "bytes": 38536,
+   "lines": 4752,
+   "accepted_entries": 4697,
+   "over_cap": false,
+   "dropped": {
+    "invalid": 3,
+    "operation_name": 42,
+    "sensitive_actuator": 3,
+    "forbidden_fc6_actuator": 2,
+    "absolute_url": 2,
+    "query_string": 2
+   }
+  },
+  {
+   "path": "Discovery/Web-Content/quickhits.txt",
+   "sha256": "215bacfe96db21647fd18a762be51047901b16adb86a25d4a82c7c0dcd0c39ed",
+   "git_blob_sha1": "f40268ee7021346267c2ed8b6515bb3118680276",
+   "git_blob_sha1_matches_tree": true,
+   "bytes": 40214,
+   "lines": 2571,
+   "accepted_entries": 2451,
+   "over_cap": false,
+   "dropped": {
+    "encoded_meta": 2,
+    "operation_name": 63,
+    "query_string": 5,
+    "forbidden_fc6_actuator": 10,
+    "absolute_url": 1,
+    "invalid": 3,
+    "sensitive_actuator": 35,
+    "traversal": 1
+   }
+  },
+  {
+   "path": "Discovery/Web-Content/api/api-endpoints.txt",
+   "sha256": "7860e451bec345a022018a4f76c820d2e7e130df480e31b80dc35dda06762a46",
+   "git_blob_sha1": "aff3029f97af005c4be3374abc4c8e85817aa340",
+   "git_blob_sha1_matches_tree": true,
+   "bytes": 4523,
+   "lines": 295,
+   "accepted_entries": 276,
+   "over_cap": false,
+   "dropped": {
+    "operation_name": 18,
+    "api_operation": 1
+   }
+  },
+  {
+   "path": "Discovery/Web-Content/common-api-endpoints-mazen160.txt",
+   "sha256": "cd774e12b54e075ac7c34b95b9f2ad908461e0ae43c57fc82976020575adb059",
+   "git_blob_sha1": "cee3ed9752f3e4d2676b8133c741a22186f5132b",
+   "git_blob_sha1_matches_tree": true,
+   "bytes": 1164,
+   "lines": 174,
+   "accepted_entries": 147,
+   "over_cap": false,
+   "dropped": {
+    "operation_name": 27
+   }
+  },
+  {
+   "path": "Discovery/Web-Content/graphql.txt",
+   "sha256": "38db856024fd1cd858ad9e695c443e09038d2e29737eedc321749d92fdf4accd",
+   "git_blob_sha1": "da0d2d7d5c3104b0211582aa7d5b4823836c5636",
+   "git_blob_sha1_matches_tree": true,
+   "bytes": 1653,
+   "lines": 106,
+   "accepted_entries": 106,
+   "over_cap": false,
+   "dropped": {}
+  },
+  {
+   "path": "Discovery/Web-Content/Service-Specific/Swagger.txt",
+   "sha256": "d82654023cb5acca24dadb0aa30cee96fb4245f7c7a45313eeef580083c33be6",
+   "git_blob_sha1": "d92db785c51bdfde3720d274acc685ef05a0dde9",
+   "git_blob_sha1_matches_tree": true,
+   "bytes": 94380,
+   "lines": 3916,
+   "accepted_entries": 3902,
+   "over_cap": false,
+   "dropped": {
+    "query_string": 2,
+    "graphql_introspection": 12
+   }
+  },
+  {
+   "path": "Discovery/Web-Content/Programming-Language-Specific/Java-Spring-Boot.txt",
+   "sha256": "7f2a12a66ef8c71e1e1c13cea7522f72b31c2ccd60152c8366e4ac27d6f2a7bc",
+   "git_blob_sha1": "a591fd457ee3acb7a33a8aaa5eb0b245c8f411e9",
+   "git_blob_sha1_matches_tree": true,
+   "bytes": 3640,
+   "lines": 202,
+   "accepted_entries": 114,
+   "over_cap": false,
+   "dropped": {
+    "sensitive_actuator": 43,
+    "forbidden_fc6_actuator": 45
+   }
+  },
+  {
+   "path": "Discovery/Web-Content/raft-small-directories.txt",
+   "sha256": "06e1ac7b390c17eb9e0da416d0599c785a1541813daa95b01c676bc92d55185f",
+   "git_blob_sha1": "e9cc785d050937669450adb0af2e920d9cea6022",
+   "git_blob_sha1_matches_tree": true,
+   "bytes": 163210,
+   "lines": 20115,
+   "accepted_entries": 20009,
+   "over_cap": true,
+   "dropped": {
+    "operation_name": 79,
+    "sensitive_actuator": 6,
+    "invalid": 20,
+    "forbidden_fc6_actuator": 1
+   }
+  }
+ ]
+}

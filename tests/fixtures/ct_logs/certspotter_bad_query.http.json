@@ -1,0 +1,23 @@
+{
+ "request": "GET https://api.certspotter.com/v1/issuances?domain=&include_subdomains=true&expand=dns_names",
+ "response": {
+  "status": 400,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": {
+   "code": "bad_query",
+   "message": "The value of the \"domain\" query parameter is invalid",
+   "sub_errors": [
+    {
+     "code": "missing_field",
+     "message": "Domain must be specified in the query string",
+     "field": "domain"
+    }
+   ]
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "error body format {code, message, sub_errors}"
+}

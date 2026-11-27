@@ -1,0 +1,19 @@
+{
+ "_meta": {
+  "provenance": "observed",
+  "source": "research/samples/live_cti__checkphish_nokey.json",
+  "request": {
+   "method": "POST",
+   "url": "https://developers.checkphish.ai/api/neo/scan"
+  },
+  "recorded": "2026-11-25",
+  "note": "NOT IMPLEMENTED (P078 condition 2): CheckPhish only scans. Kept for the guard test."
+ },
+ "status": 200,
+ "headers": {},
+ "body": {
+  "jobID": "none",
+  "apiKey": "",
+  "errorMessage": "Invalid API key or API key not enabled. Please contact support@checkphish.ai for support."
+ }
+}

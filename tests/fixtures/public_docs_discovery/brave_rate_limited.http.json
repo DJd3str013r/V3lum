@@ -1,0 +1,25 @@
+{
+ "_provenance": {
+  "synthetic": true,
+  "note": "shape from the provider's public API documentation; NOT captured (no key). Replace with a real capture before enabling the provider (P307 FC10).",
+  "source": "Brave 429 RATE_LIMITED"
+ },
+ "status": 429,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": {
+  "type": "ErrorResponse",
+  "error": {
+   "id": "00000000-0000-0000-0000-000000000000",
+   "status": 429,
+   "code": "RATE_LIMITED",
+   "detail": "Request rate limit exceeded for plan.",
+   "meta": {
+    "plan": "Free",
+    "rate_limit": 1,
+    "rate_current": 2
+   }
+  }
+ }
+}

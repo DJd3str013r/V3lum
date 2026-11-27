@@ -1,0 +1,23 @@
+{
+ "_meta": {
+  "provenance": "observed",
+  "source": "research/samples/live_cti__sucuri_sitecheck.json (trimmed)",
+  "request": {
+   "method": "GET",
+   "url": "https://sitecheck.sucuri.net/api/v3/?scan=example.com"
+  },
+  "recorded": "2026-11-25",
+  "note": "NOT IMPLEMENTED (P078 condition 2): starts a scan when no recent result exists."
+ },
+ "status": 200,
+ "headers": {},
+ "body": {
+  "scan": {
+   "last_scan": "2026-11-25T14:05:06Z"
+  },
+  "site": {
+   "input": "http://example.com/",
+   "domain": "example.com"
+  }
+ }
+}

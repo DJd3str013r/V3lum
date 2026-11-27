@@ -1,0 +1,222 @@
+{
+ "indicator": "nic.br",
+ "type": "domain",
+ "type_title": "Domain",
+ "sections": [
+  "general",
+  "geo",
+  "url_list",
+  "passive_dns",
+  "malware",
+  "whois",
+  "http_scans"
+ ],
+ "validation": [],
+ "false_positive": [],
+ "pulse_info": {
+  "count": 3,
+  "pulses": [
+   {
+    "id": "6b0000000000000000000001",
+    "name": "Community pulse 01",
+    "modified": "2026-08-06T12:11:18.857000",
+    "created": "2026-02-16T06:36:24.788000",
+    "tags": [
+     "Obfuscation: XOR-based String Encryption (0x20)",
+     "T1110.001 (Brute Force: Password Guessing)",
+     "Primary Hash (SHA256): cd3989830da99a69380901769fd78902efb3cd8ba",
+     "MD5 Hash: f8add7e7161460ea2b1970cf4ca535bf",
+     "#PotentialUS-Origin_FalseFlag_Obfuscation"
+    ],
+    "references": [],
+    "adversary": "StealthWorker/GoBrut (The adversary demonstrates advanced telemetry suppression within specialized s",
+    "targeted_countries": [],
+    "malware_families": [
+     {
+      "id": "Malware Family: StealthWorker / GoBrut",
+      "display_name": "Malware Family: StealthWorker / GoBrut",
+      "target": "/malware/Malware Family: StealthWorker / GoBrut"
+     },
+     {
+      "id": "MD5 Hash: f8add7e7161460ea2b1970cf4ca535bf",
+      "display_name": "MD5 Hash: f8add7e7161460ea2b1970cf4ca535bf",
+      "target": null
+     }
+    ],
+    "attack_ids": [
+     {
+      "id": "T1001",
+      "name": "Data Obfuscation",
+      "display_name": "T1001 - Data Obfuscation"
+     }
+    ],
+    "industries": [],
+    "TLP": "green",
+    "cloned_from": null,
+    "author": {
+     "username": "community-user-a",
+     "id": "0"
+    },
+    "indicator_count": 33148,
+    "subscriber_count": 135,
+    "public": 1
+   },
+   {
+    "id": "6b0000000000000000000002",
+    "name": "Community pulse 02",
+    "modified": "2026-05-30T00:28:12.957000",
+    "created": "2026-04-30T04:37:18.870000",
+    "tags": [
+     "united",
+     "as397240",
+     "search",
+     "showing",
+     "as54113"
+    ],
+    "references": [],
+    "adversary": "",
+    "targeted_countries": [
+     "United States of America",
+     "Italy"
+    ],
+    "malware_families": [
+     {
+      "id": "Mirai",
+      "display_name": "Mirai",
+      "target": null
+     },
+     {
+      "id": "Artro",
+      "display_name": "Artro",
+      "target": null
+     }
+    ],
+    "attack_ids": [
+     {
+      "id": "T1071",
+      "name": "Application Layer Protocol",
+      "display_name": "T1071 - Application Layer Protocol"
+     },
+     {
+      "id": "T1105",
+      "name": "Ingress Tool Transfer",
+      "display_name": "T1105 - Ingress Tool Transfer"
+     },
+     {
+      "id": "T1003",
+      "name": "OS Credential Dumping",
+      "display_name": "T1003 - OS Credential Dumping"
+     },
+     {
+      "id": "T1031",
+      "name": "Modify Existing Service",
+      "display_name": "T1031 - Modify Existing Service"
+     },
+     {
+      "id": "T1045",
+      "name": "Software Packing",
+      "display_name": "T1045 - Software Packing"
+     }
+    ],
+    "industries": [],
+    "TLP": "green",
+    "cloned_from": "6b0000000000000000000003",
+    "author": {
+     "username": "community-user-a",
+     "id": "0"
+    },
+    "indicator_count": 31781,
+    "subscriber_count": 121,
+    "public": 1
+   },
+   {
+    "id": "6b0000000000000000000003",
+    "name": "Community pulse 03",
+    "modified": "2024-10-31T16:03:52.240000",
+    "created": "2024-10-01T16:56:04.004000",
+    "tags": [
+     "united",
+     "as397240",
+     "search",
+     "showing",
+     "as54113"
+    ],
+    "references": [],
+    "adversary": "",
+    "targeted_countries": [
+     "United States of America",
+     "Italy"
+    ],
+    "malware_families": [
+     {
+      "id": "Mirai",
+      "display_name": "Mirai",
+      "target": null
+     },
+     {
+      "id": "Artro",
+      "display_name": "Artro",
+      "target": null
+     }
+    ],
+    "attack_ids": [
+     {
+      "id": "T1071",
+      "name": "Application Layer Protocol",
+      "display_name": "T1071 - Application Layer Protocol"
+     },
+     {
+      "id": "T1105",
+      "name": "Ingress Tool Transfer",
+      "display_name": "T1105 - Ingress Tool Transfer"
+     },
+     {
+      "id": "T1003",
+      "name": "OS Credential Dumping",
+      "display_name": "T1003 - OS Credential Dumping"
+     },
+     {
+      "id": "T1031",
+      "name": "Modify Existing Service",
+      "display_name": "T1031 - Modify Existing Service"
+     },
+     {
+      "id": "T1045",
+      "name": "Software Packing",
+      "display_name": "T1045 - Software Packing"
+     }
+    ],
+    "industries": [],
+    "TLP": "green",
+    "cloned_from": null,
+    "author": {
+     "username": "community-user-b",
+     "id": "0"
+    },
+    "indicator_count": 31779,
+    "subscriber_count": 242,
+    "public": 1
+   }
+  ],
+  "references": [],
+  "related": {
+   "alienvault": {
+    "adversary": [],
+    "malware_families": [],
+    "industries": []
+   },
+   "other": {
+    "adversary": [
+     "StealthWorker/GoBrut (The adversary demonstrates advanced telemetry suppression within specialized s"
+    ],
+    "malware_families": [
+     "Md5 hash: f8add7e7161460ea2b1970cf4ca535bf",
+     "Artro",
+     "Malware family: stealthworker / gobrut",
+     "Mirai"
+    ],
+    "industries": []
+   }
+  }
+ }
+}

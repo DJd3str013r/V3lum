@@ -1,0 +1,145 @@
+{
+ "814c12e6-0e88-42fb-a463-601d42b70881": {
+  "Orgc": {
+   "name": "CIRCL",
+   "uuid": "55f6ea5e-2c60-40e5-964f-47a8950d210f"
+  },
+  "Tag": [
+   {
+    "name": "misp-galaxy:mitre-malware=\"Kali365 - S9044\""
+   },
+   {
+    "name": "misp-galaxy:mitre-software=\"Kali365 - S9044\""
+   },
+   {
+    "name": "type:OSINT"
+   },
+   {
+    "name": "osint:lifetime=\"perpetual\""
+   },
+   {
+    "name": "osint:certainty=\"50\""
+   },
+   {
+    "name": "tlp:white"
+   }
+  ],
+  "info": "NEW KALI365 PHAAS KIT BEING ABUSED IN THE WILD",
+  "date": "2026-04-24",
+  "analysis": 0,
+  "threat_level_id": 4,
+  "timestamp": 1789735773
+ },
+ "9c2ec5f6-afa1-4753-891b-d130b4539648": {
+  "Orgc": {
+   "name": "CIRCL",
+   "uuid": "55f6ea5e-2c60-40e5-964f-47a8950d210f"
+  },
+  "Tag": [
+   {
+    "name": "type:OSINT"
+   },
+   {
+    "name": "osint:lifetime=\"perpetual\""
+   },
+   {
+    "name": "osint:certainty=\"50\""
+   },
+   {
+    "name": "tlp:white"
+   },
+   {
+    "name": "tlp:clear"
+   },
+   {
+    "name": "misp-galaxy:producer=\"CIRCL\""
+   }
+  ],
+  "info": "Kunai Analysis Report - Malware Sample Abusing Open Recursive DNS for Exfiltration",
+  "date": "2025-12-15",
+  "analysis": 2,
+  "threat_level_id": 4,
+  "timestamp": 1792524179
+ },
+ "6cb37027-b16f-4d80-aa77-a0dfd2dfe872": {
+  "Orgc": {
+   "name": "Krawczyk Industries Limited",
+   "uuid": "593e9fc8-be28-4cb2-a79b-43f8950d210f"
+  },
+  "Tag": [
+   {
+    "name": "tlp:clear"
+   },
+   {
+    "name": "MALWARE"
+   },
+   {
+    "name": "misp:threat-level=\"medium-risk\""
+   },
+   {
+    "name": "misp:event-type=\"observation\""
+   },
+   {
+    "name": "misp:automation-level=\"unsupervised\""
+   },
+   {
+    "name": "type:OSINT"
+   }
+  ],
+  "info": "Maltrail IOC for 2026-08-14",
+  "date": "2026-08-13",
+  "analysis": 1,
+  "threat_level_id": 2,
+  "timestamp": 1786701604
+ },
+ "5b773e07-e694-458b-b99c-27f30a016219": {
+  "Orgc": {
+   "name": "ESET",
+   "uuid": "55f6ea5e-51ac-4344-bc8c-4170950d210f"
+  },
+  "Tag": [
+   {
+    "name": "misp-galaxy:threat-actor=\"Turla Group\""
+   },
+   {
+    "name": "misp-galaxy:mitre-attack-pattern=\"Component Object Model Hijacking\""
+   },
+   {
+    "name": "misp-galaxy:mitre-attack-pattern=\"Email Collection\""
+   },
+   {
+    "name": "misp-galaxy:mitre-enterprise-attack-attack-pattern=\"Component Object Model Hijacking - T1122\""
+   },
+   {
+    "name": "misp-galaxy:mitre-enterprise-attack-attack-pattern=\"Email Collection - T1114\""
+   },
+   {
+    "name": "tlp:white"
+   }
+  ],
+  "info": "Turla Outlook White Paper",
+  "date": "2018-08-17",
+  "analysis": 0,
+  "threat_level_id": 1,
+  "timestamp": 1795582805
+ },
+ "55b7c901-614c-44d1-a638-440e950d210b": {
+  "Orgc": {
+   "name": "CthulhuSPRL.be",
+   "uuid": "55f6ea5f-fd34-43b8-ac1d-40cb950d210f"
+  },
+  "Tag": [
+   {
+    "name": "type:OSINT"
+   },
+   {
+    "name": "tlp:white"
+   }
+  ],
+  "info": "OSINT Black Vine: Formidable cyberespionage group targeted aerospace, healthcare since 2012 by Symantec",
+  "date": "2015-07-28",
+  "analysis": 2,
+  "threat_level_id": 2,
+  "timestamp": 1456329107
+ }
+}

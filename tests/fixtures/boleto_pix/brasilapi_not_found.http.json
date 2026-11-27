@@ -1,0 +1,9 @@
+{
+ "_note": "GET /api/banks/v1/9999 2026-11-26 live (the module never makes per-value calls; error shape only)",
+ "status": 404,
+ "headers": {
+  "content-type": "application/json; charset=utf-8",
+  "x-vercel-cache": "MISS"
+ },
+ "body": "{\"message\":\"Código bancário não encontrado\",\"type\":\"BANK_CODE_NOT_FOUND\",\"name\":\"NotFoundError\"}"
+}

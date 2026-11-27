@@ -1,0 +1,18 @@
+{
+ "_note": "SLS 302 Location (signature/credential/token redacted) + S3 206 headers, 2026-11-26 live",
+ "location": "https://wc2h-sls-prod-public-published.s3.us-gov-west-1.amazonaws.com/Published/4bd23a9b-4fdf-4f09-a396-4d7e72836c71/2026-11-20/6b7c553e-b803-4d42-8b47-9585baa70caa/SDN.CSV?X-Amz-Expires=3600&X-Amz-Security-Token=REDACTED&response-content-disposition=attachment%3B%20filename%3D%22sdn.csv%22&response-content-type=text%2Fcsv&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=REDACTED&X-Amz-Date=20261126T052139Z&X-Amz-SignedHeaders=host&X-Amz-Signature=REDACTED",
+ "headers": {
+  "Content-Range": "bytes 0-4095/5855269",
+  "Last-Modified": "Mon, 23 Nov 2026 17:32:54 GMT",
+  "ETag": "\"01ec47609feaffd29dc1b6e1b3707859\"",
+  "x-amz-meta-preview-upload-date": "11/20/2026 4:02:06 PM",
+  "x-amz-meta-preview-date": "11/20/2026 4:02:06 PM",
+  "x-amz-meta-publication-id": "1113",
+  "x-amz-meta-preview-description": "Comma delimited primary SDN names",
+  "x-amz-meta-preview-name": "2026-11-20/6b7c553e-b803-4d42-8b47-9585baa70caa/SDN.CSV",
+  "x-amz-meta-preview-upload-userid": "28",
+  "x-amz-meta-delta-name": "2026-11-23_delta.xml",
+  "Content-Type": "text/csv",
+  "Content-Disposition": "attachment; filename=\"sdn.csv\""
+ }
+}

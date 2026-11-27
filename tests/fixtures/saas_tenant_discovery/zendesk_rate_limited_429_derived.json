@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://support.zendesk.com/hc"
+  },
+  "response": {
+    "status": 429,
+    "headers": {
+      "content-type": "text/plain",
+      "retry-after": "60",
+      "server": "cloudflare"
+    },
+    "body": "Too Many Requests"
+  },
+  "class": "derived",
+  "captured_at": "2026-11-26T00:00:00Z",
+  "notes": "429 -> unknown, retry_after kept"
+}

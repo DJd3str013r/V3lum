@@ -1,0 +1,21 @@
+{
+ "_meta": {
+  "module": "org_code_footprint",
+  "case": "cb_org_not_found",
+  "source": "C0760 codeberg.org",
+  "request": {
+   "method": "GET",
+   "url": "https://codeberg.org/api/v1/orgs/qz7k2v9m4p1w8n3x5c6b"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "LIVE",
+  "elapsed_s": 0.522
+ },
+ "status": 404,
+ "headers": {
+  "content-type": "application/json;charset=utf-8",
+  "ratelimit-policy": "\"baseline\";q=2000;w=600",
+  "ratelimit": "\"baseline\";r=1999;t=600"
+ },
+ "body": "{\"message\":\"GetOrgByName\",\"url\":\"https://codeberg.org/api/swagger\",\"errors\":[\"user redirect does not exist [name: qz7k2v9m4p1w8n3x5c6b]\"]}\n"
+}

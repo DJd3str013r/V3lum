@@ -1,0 +1,116 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "preset": "deep"
+  },
+  "nodes": [
+    {
+      "key": "domain:example.net",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "a_records": [
+          {
+            "value": [
+              "198.51.100.20"
+            ],
+            "source": "dns_records"
+          }
+        ],
+        "passive_dns": [
+          {
+            "value": [
+              {
+                "hostname": "example.net",
+                "address": "198.51.100.20",
+                "record_type": "A",
+                "first_seen": "2025-10-01T00:00:00Z",
+                "last_seen": "2026-11-25T00:00:00Z",
+                "historical": null,
+                "sources": [
+                  "mnemonic"
+                ]
+              },
+              {
+                "hostname": "example.net",
+                "address": "203.0.113.5",
+                "record_type": "A",
+                "first_seen": "2021-06-01T00:00:00Z",
+                "last_seen": "2025-09-30T00:00:00Z",
+                "historical": null,
+                "sources": [
+                  "mnemonic"
+                ]
+              },
+              {
+                "hostname": "www.example.net",
+                "address": "203.0.113.99",
+                "record_type": "A",
+                "first_seen": "2021-06-01T00:00:00Z",
+                "last_seen": "2025-09-30T00:00:00Z",
+                "historical": null,
+                "sources": [
+                  "mnemonic"
+                ]
+              }
+            ],
+            "source": "passive_dns"
+          }
+        ]
+      }
+    },
+    {
+      "key": "ipv4:198.51.100.20",
+      "depth": 1,
+      "noise": true,
+      "noise_kind": "cdn",
+      "tags": [
+        "cdn"
+      ],
+      "attributes": {
+        "is_cloud": [
+          {
+            "value": true,
+            "source": "cloud_ranges"
+          }
+        ],
+        "is_cdn": [
+          {
+            "value": true,
+            "source": "cloud_ranges"
+          }
+        ],
+        "cloud_provider": [
+          {
+            "value": "Fastly",
+            "source": "cloud_ranges"
+          }
+        ],
+        "cloud_role": [
+          {
+            "value": "cdn_edge",
+            "source": "cloud_ranges"
+          }
+        ],
+        "cloud_label": [
+          {
+            "value": "Fastly CDN edge",
+            "source": "cloud_ranges"
+          }
+        ]
+      }
+    }
+  ],
+  "expect": {
+    "cdn_origin_hypothesis": {
+      "min": 1,
+      "max": 1,
+      "severity": "info",
+      "confidence_label": "possible"
+    }
+  },
+  "edges": []
+}

@@ -1,0 +1,17 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://malshare.com/api.php?api_key=<KEY>&action=details&hash=00000000000000000000000000000000",
+  "headers": {}
+ },
+ "response": {
+  "status": 404,
+  "headers": {
+   "content-type": "text/html; charset=UTF-8"
+  },
+  "body": "Sample not found by hash (00000000000000000000000000000000)"
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "synthetic: plain-text not-found message as handled by MalShare clients (not documented)"
+}

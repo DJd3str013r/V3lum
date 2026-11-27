@@ -1,0 +1,5 @@
+{
+ "_source": "error-in-200 body with a message outside the documented list (unknown error text)",
+ "error": "true",
+ "message": "INVALID TYPE"
+}

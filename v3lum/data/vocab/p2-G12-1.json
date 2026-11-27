@@ -1,0 +1,60 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p2-G12-1",
+  "title": "Image, QR, PE and YARA names of batch p2-G12-1 (image_metadata, pivots_geo_image, qr_decode, pe_triage, yara_scan)",
+  "owner": "batch p2-G12-1 (P259, P260, P261, P271, P272)",
+  "attributes": {
+    "image_summary": "plain-language first line about an image's metadata (P259 c7): 'taken <date> with <make/model>, GPS present' or 'no EXIF metadata' (missing EXIF is normal and never a finding)",
+    "image_metadata": "image metadata facts (P259): {format, width, height, dates, software, editing_software, xmp_history, iptc_place, thumbnail, anomalies, parser}; claims made by the file, editable",
+    "camera_make": "camera manufacturer recorded in EXIF/XMP (claim made by the file)",
+    "camera_model": "camera model recorded in EXIF/XMP (claim made by the file)",
+    "camera_serial": "camera body serial number recorded in EXIF/XMP (privacy: stripped from STIX/MISP exports unless the analyst opts in for the case, P259 c6)",
+    "lens_model": "lens model recorded in EXIF/XMP",
+    "lens_serial": "lens serial number recorded in EXIF/XMP (privacy: stripped from exports unless the analyst opts in, P259 c6)",
+    "image_software": "software named by the image metadata (EXIF Software/ProcessingSoftware, XMP CreatorTool, PNG Software)",
+    "image_owner": "owner fields of an image (EXIF Artist/Copyright/CameraOwnerName, XMP dc:creator/dc:rights, IPTC By-line/Copyright, PNG Author); personal data: stripped from exports unless the analyst opts in (P259 c6)",
+    "taken_at": "capture time claimed by the image metadata (EXIF DateTimeOriginal, else XMP/IPTC), ISO 8601 with the recorded offset",
+    "last_changed_at": "EXIF DateTime of an image: when the file was last changed by the camera or an editor",
+    "gps_altitude_m": "GPS altitude in metres recorded in an image (privacy: shown only inside the case report)",
+    "gps_timestamp": "GPS UTC time recorded in an image (privacy: shown only inside the case report)",
+    "xmp_document_id": "XMP xmpMM:DocumentID of an image (links copies edited from the same document)",
+    "xmp_original_document_id": "XMP xmpMM:OriginalDocumentID of an image (the first document an edit chain started from)",
+    "qr_summary": "one line about the QR codes and barcodes decoded from an image (P261 c5): 'N code(s) decoded: <kinds>' or 'no QR/barcode found' (never 'clean')",
+    "qr_codes": "QR codes and barcodes decoded from an image: list {format, kind, display (defanged), valid, truncated, route}; payload capped at 4 KB, Wi-Fi passwords and OTP secrets never kept",
+    "pe_summary": "one line about a PE file (P271): type, machine, subsystem, compile time (with reliability), section/import counts, signature status",
+    "imphash": "import-table hash of a PE file (pefile-compatible MD5); also an imphash pivot with expand=False",
+    "rich_header_hash": "MD5 of the decoded Rich header of a PE file (VirusTotal rich_pe_header_hash semantics); attribute only, never a pivot (P271 c5)",
+    "rich_checksum_valid": "whether the Rich header checksum of a PE file matches its DOS header and entries (a mismatch hints at a pasted/forged Rich header)",
+    "compile_time": "COFF TimeDateStamp of a PE file as ISO 8601 (a claim by the linker; see compile_time_flags)",
+    "compile_time_flags": "reliability flags of a PE compile time: zero, future, pre_2000, delphi_1992, debug_timestamp_differs (each = 'unreliable/forged'), reproducible_build (the field holds a build hash, not a date)",
+    "pe_machine": "target machine of a PE file (i386, amd64, arm64...)",
+    "pe_subsystem": "subsystem of a PE file (windows_gui, windows_cui, native, efi_application...)",
+    "pe_sections": "sections of a PE file: list {name, entropy, raw_size, virtual_size, characteristics}",
+    "pe_imports": "imports of a PE file: {dll: [function names or ordN]} (capped)",
+    "pe_signature": "Authenticode facts of a PE file: {present, status 'signed, not verified', signers [{subject, issuer, serial, not_before, not_after, sha256}], timestamped}; no validity claim of any kind (P271 c4)",
+    "pe_packer_hints": "packer and obfuscation hints of a PE file (section names, entropy, W+X, overlay...): context, never a verdict; downgraded to info when a known-good source in the case lists the hash (P271 c7)",
+    "export_dll_name": "DLL name recorded in a PE export directory",
+    "pdb_path": "PDB path recorded in a PE debug directory (privacy: usernames and machine names inside it are never username entities, P271 c6)",
+    "pdb_username": "user name found in a PE's PDB path (privacy attribute; never a username entity or username check, P271 c6)",
+    "pdb_machine": "machine name found in a PE's UNC PDB path (privacy attribute; never an entity, P271 c6)",
+    "yara_hits": "YARA rule hits on a local file: list {rule, original_name, rule_set, author, reference, source_url, score, package_version, licence, kind generic|family|specific, label, strings (identifiers, counts, offsets; never the matched bytes)}",
+    "yara_coverage": "YARA coverage table of a scan: rules loaded / excluded (licence) / excluded (dependency) / failed to compile, package name and version, licence classes allowed (P272 c2, c4)"
+  },
+  "tags": {
+    "edited_image": "image metadata names editing software, an EXIF thumbnail whose aspect ratio differs from the main image, or a change after capture: context, not proof (EXIF can be edited)",
+    "qr_code": "value decoded from a QR code or barcode in an image (quishing triage; decoded URLs are never fetched or opened)",
+    "packer_hint": "PE packer/obfuscation hint (section name, entropy, W+X, overlay): context, never a verdict",
+    "unreliable_timestamp": "a timestamp that is zero, in the future, before 2000, the Delphi 1992 constant or contradicted by another field: unreliable/forged",
+    "yara_match": "a YARA rule matched a local file (rule hit, never a verdict on its own)"
+  },
+  "relations": {
+    "photo_taken_at": "image file -> GPS coordinates recorded in its EXIF/XMP metadata (privacy; never auto-expanded, no automatic geocoding)",
+    "qr_payload": "image file -> value decoded from a QR code or barcode in it (never fetched or opened)",
+    "has_imphash": "PE file -> its import-table hash (imphash)",
+    "yara_family_rule": "local file -> malware family named by the family meta of a family-specific YARA rule that matched it (low confidence)"
+  },
+  "timeline": {
+    "taken_at": "photo taken (EXIF claim)",
+    "compile_time": "PE compile time (linker claim)"
+  }
+}

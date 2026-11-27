@@ -1,0 +1,13 @@
+#
+# Title: Synthetic fixture in Phishing Army format (no Phishing Army data)
+#
+# Expires: 4 hours
+# Generated: 2026-11-25T20:00:25Z
+# Entries: 4
+# Format: domains; version=1
+# Harmless filtering test: amiprotected.it, www.amiprotected.it
+#
+amiprotected.it
+www.amiprotected.it
+phish-login.example.net
+secure-bank.example.org

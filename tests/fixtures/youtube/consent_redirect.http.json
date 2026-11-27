@@ -1,0 +1,9 @@
+{
+ "origin": "synthetic: consent redirect as seen from EU egress (research note); not observed from this egress",
+ "status": 302,
+ "headers": {
+  "content-type": "text/html; charset=UTF-8",
+  "location": "https://consent.youtube.com/m?continue=https%3A%2F%2Fwww.youtube.com%2Ffeeds%2Fvideos.xml%3Fchannel_id%3DUC_x5XG1OV2P6uZZ5FSM9Ttw&gl=DE&m=0&pc=yt&hl=en&src=1"
+ },
+ "body": ""
+}

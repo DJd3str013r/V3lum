@@ -1,0 +1,94 @@
+{
+ "schema": "v3lum.crypto_labels/1",
+ "updated": "2026-11-20",
+ "institutions": {
+  "exchange_exemplo": {
+   "name": "Exchange Exemplo",
+   "kind": "exchange",
+   "country": "BR"
+  }
+ },
+ "labels": [
+  {
+   "address": "TDvSsdrNM5eeXNL3czpa6AxLDHZA9nwe9K",
+   "chain": "tron",
+   "label": "no provenance",
+   "category": "exchange",
+   "institution": "exchange_exemplo",
+   "confidence": "CONFIRMED"
+  },
+  {
+   "address": "not-an-address",
+   "chain": "tron",
+   "label": "bad address",
+   "category": "exchange",
+   "institution": "exchange_exemplo",
+   "confidence": "PROBABLE",
+   "provenance": {
+    "source": "case",
+    "reference": "CASE-2026-0003",
+    "date": "2026-01-02",
+    "added_by": "cti-analyst-01"
+   }
+  },
+  {
+   "address": "0x2B5AD5c4795c026514f8317c7a215E218DcCD6cF",
+   "chain": "evm",
+   "label": "customer wallet",
+   "category": "exchange",
+   "institution": "exchange_exemplo",
+   "confidence": "PROBABLE",
+   "cpf": "000.000.000-00",
+   "owner_name": "Pessoa Exemplo (fictional)",
+   "email": "pessoa@example.com",
+   "provenance": {
+    "source": "case",
+    "reference": "CASE-2026-0004",
+    "date": "2026-02-03",
+    "added_by": "cti-analyst-01"
+   }
+  },
+  {
+   "address": "1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2",
+   "chain": "dogecoin-classic",
+   "label": "unknown chain",
+   "category": "exchange",
+   "institution": "exchange_exemplo",
+   "confidence": "PROBABLE",
+   "provenance": {
+    "source": "case",
+    "reference": "CASE-2026-0005",
+    "date": "2026-02-03",
+    "added_by": "cti-analyst-01"
+   }
+  },
+  {
+   "address": "3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy",
+   "chain": "bitcoin",
+   "label": "bad confidence, unknown institution",
+   "category": "exchange",
+   "institution": "missing_institution",
+   "confidence": "SURE",
+   "provenance": {
+    "source": "case",
+    "reference": "CASE-2026-0006",
+    "date": "2026-02-04",
+    "added_by": "cti-analyst-01"
+   }
+  },
+  {
+   "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
+   "chain": "btc",
+   "label": "bad date",
+   "category": "exchange",
+   "institution": "exchange_exemplo",
+   "confidence": "PROBABLE",
+   "provenance": {
+    "source": "case",
+    "reference": "CASE-2026-0007",
+    "date": "03/02/2026",
+    "added_by": "cti-analyst-01"
+   }
+  }
+ ]
+}

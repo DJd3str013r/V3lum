@@ -1,0 +1,7 @@
+{
+ "status": 200,
+ "headers": {
+  "content-type": "text/html; charset=utf-8"
+ },
+ "body": "<!DOCTYPE html><html><head><title>GLEIF - Maintenance</title></head><body><h1>Scheduled maintenance</h1><p>The API is temporarily unavailable.</p></body></html>"
+}

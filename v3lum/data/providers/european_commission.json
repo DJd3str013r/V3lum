@@ -1,0 +1,55 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "european_commission",
+  "name": "European Commission VIES (VAT Information Exchange System) REST API",
+  "operator": "European Commission (DG TAXUD)",
+  "hosts": [
+    "ec.europa.eu"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Official European Commission service relaying the member states' VAT registers (A8 trusted); P225 'Official EC service, free; tier trusted'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "Authoritative member-state VAT registers relayed by the Commission; member-state back-ends are often unavailable (MS_UNAVAILABLE inside HTTP 200), which is 'could not verify', never 'invalid' (P225 cond 3)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 15.0,
+    "ttl": 86400,
+    "min_interval": 2.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "vies": {
+      "title": "VIES REST: GET /taxation_customs/vies/rest-api/ms/{CC}/vat/{number} (single lookups of analyst-typed seeds)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://ec.europa.eu/taxation_customs/vies/",
+        "quote": "Official VIES REST only (ec.europa.eu .../ms/{CC}/vat/{number}). VATComply is dropped: it wraps the same service and its terms are unknown (A1 unknown terms never run; architect). Opt-in (default_enabled=False). Official EC service, free; tier trusted.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "eu_vies",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P225 cond 2 and 5). Research C0525: always HTTP 200; isValid + userError (VALID / INVALID / INVALID_INPUT / MS_UNAVAILABLE / MS_MAX_CONCURRENT_REQ / TIMEOUT ...). check-status is advisory only (CZ answered while reported Unavailable). No bulk validation: one request per seed, 2 s apart, one at a time (MS_MAX_CONCURRENT_REQ). Batch p3-G10-1."
+    }
+  },
+  "notes": "Owned by batch p3-G10-1 (P225); only the VIES REST paths under ec.europa.eu/taxation_customs/vies/ are used. api.vatcomply.com (C0536) is never called (P225 cond 2) and is not registered."
+}

@@ -1,0 +1,44 @@
+{
+ "metadata": {
+  "count": -1,
+  "current_page": -1,
+  "limit": 2,
+  "next_url": "https://api.ooni.io/api/v1/measurements?domain=example.com&limit=2&cont=20261125170419-20261125170429.381787_ID_webconnectivity_463e42adbc6454b0&order=desc&since=2026-10-27T00%3A00%3A00%2B00%3A00&until=2026-11-26T00%3A00%3A00%2B00%3A00",
+  "offset": 0,
+  "pages": -1
+ },
+ "results": [
+  {
+   "anomaly": false,
+   "confirmed": false,
+   "failure": false,
+   "input": "https://example.com/",
+   "probe_asn": "AS23693",
+   "probe_cc": "ID",
+   "test_name": "web_connectivity",
+   "measurement_url": "https://api.ooni.io/api/v1/raw_measurement?measurement_uid=20261125201325.344013_ID_webconnectivity_81c46cf6cca5ac41",
+   "measurement_start_time": "2026-11-25T20:13:08.000000Z",
+   "measurement_uid": "20261125201325.344013_ID_webconnectivity_81c46cf6cca5ac41",
+   "verification_status": "verified",
+   "scores": {
+    "blocking_general": 0.0
+   }
+  },
+  {
+   "anomaly": false,
+   "confirmed": false,
+   "failure": false,
+   "input": "https://example.com/",
+   "probe_asn": "AS141067",
+   "probe_cc": "ID",
+   "test_name": "web_connectivity",
+   "measurement_url": "https://api.ooni.io/api/v1/raw_measurement?measurement_uid=20261125170429.381787_ID_webconnectivity_463e42adbc6454b0",
+   "measurement_start_time": "2026-11-25T17:04:19.000000Z",
+   "measurement_uid": "20261125170429.381787_ID_webconnectivity_463e42adbc6454b0",
+   "verification_status": "unverified",
+   "scores": {
+    "blocking_general": 0.0
+   }
+  }
+ ]
+}

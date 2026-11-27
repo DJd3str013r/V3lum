@@ -1,0 +1,23 @@
+{
+ "_meta": {
+  "module": "username_check",
+  "case": "pinterest_marker_drift",
+  "source": "C0228 Pinterest",
+  "request": {
+   "method": "GET",
+   "url": "https://www.pinterest.com/oj5nsqgky6am1w4be0ud/",
+   "user_agent": "V3LUM/dev",
+   "redirects": "not followed"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "live check, this sandbox's datacenter egress",
+  "elapsed_s": 0.554,
+  "minimised": true,
+  "note": "random control answers 200 with an empty title; WMN absence marker (301 + home title) no longer matches -> UNKNOWN"
+ },
+ "status": 200,
+ "headers": {
+  "content-type": "text/html; charset=utf-8"
+ },
+ "body": "<!DOCTYPE html><html><head><title></title></head><body></body></html>"
+}

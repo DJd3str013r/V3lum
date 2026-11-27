@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "ahmia_banned_list",
+  "source_url": "https://ahmia.fi/blacklist/",
+  "version": "https://ahmia.fi/blacklist/banned/, runtime download at most daily (`v3lum data update`), checked 2026-11-26",
+  "sha256": "",
+  "licence": "LicenseRef-Ahmia-abuse-filter-offer",
+  "attribution": "Abuse (banned) onion filter list by Ahmia (https://ahmia.fi/blacklist/), used as Ahmia offers it: 'You can use this to filter child sexual abuse material from your own search indexes.' Downloaded at run time, never bundled.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/darkweb_ransomware/onion_safety.py"
+  ]
+}

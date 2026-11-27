@@ -1,0 +1,31 @@
+{
+ "kind": "favicon",
+ "key": "0f7e861db0a2eeb3045c061b5fa6e4afdecd9828ff44f4a53d418d8fac55f080",
+ "mode": "index",
+ "items": [
+  {
+   "d": "example.com",
+   "t": "Example Domain",
+   "cc": "us",
+   "lang": "en",
+   "tech": "nginx",
+   "asn": "64496",
+   "org": "Example Networks",
+   "at": "2026-09-18"
+  },
+  {
+   "d": "example.net",
+   "t": "Example Login",
+   "cc": "br",
+   "lang": "pt",
+   "tech": "cloudflare",
+   "asn": "64500",
+   "org": "Example CDN",
+   "at": "2026-09-17"
+  }
+ ],
+ "next": null,
+ "served": 2,
+ "free_rows": 150,
+ "scanned": 2500
+}

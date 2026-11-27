@@ -1,0 +1,19 @@
+ YLT
+^Expanse
+^FDM 
+^Nuclei
+\$\{jndi:
+censys
+curl
+facebookexternalhit
+Go-http-client
+l9explore
+masscan\/
+Microsoft Office
+Nikto
+python-requests
+Scrapy
+sqlmap
+WhatsApp
+zgrab
+[a-z0-9\-_]*(bot|crawl|headless|archiver|transcoder|spider|uptime|validator|fetcher|checker|reader|extractor|monitoring|analyzer|scraper)

@@ -1,0 +1,14 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "http://assets.example.com/"
+ },
+ "response": {
+  "status": 404,
+  "headers": {
+   "content-type": "application/xml",
+   "server": "AmazonS3"
+  },
+  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>NoSuchBucket</Code><Message>The specified bucket does not exist</Message><BucketName>assets.example.com</BucketName></Error>"
+ }
+}

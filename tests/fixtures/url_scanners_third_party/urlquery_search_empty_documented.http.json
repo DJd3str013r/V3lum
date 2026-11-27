@@ -1,0 +1,28 @@
+{
+ "_meta": {
+  "provenance": "documented",
+  "source": "docs.urlquery.net/docs/api/overview (empty 200)",
+  "request": {
+   "method": "GET",
+   "url": "https://api.urlquery.net/public/v2/reports/search",
+   "params": {
+    "query": "url.domain:example.com AND date:[2026-10-27 TO 2026-11-26]",
+    "limit": 25
+   }
+  }
+ },
+ "status": 200,
+ "headers": {},
+ "body": {
+  "success": true,
+  "data": {
+   "query": "url.domain:example.com AND date:[2026-10-27 TO 2026-11-26]",
+   "items": [],
+   "page": {
+    "limit": 25,
+    "offset": 0,
+    "total_hits": 0
+   }
+  }
+ }
+}

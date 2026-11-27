@@ -1,0 +1,71 @@
+{
+ "request": {
+  "method": "POST",
+  "url": "https://hashlookup.circl.lu/bulk/sha1",
+  "headers": {
+   "Accept": "application/json"
+  },
+  "json": {
+   "hashes": [
+    "e9bca8f4b8c60688eacc7d18c6ba7777c181bb84",
+    "fbd6c739b86afa550187cc80aa6dc139c0790cef",
+    "75f86bdfb72543acc52e4903ba36c3a1a35e8399",
+    "3395856ce81f2b7382dee72602f798b642f14140",
+    "00000079FD7AAC9B2F9C988C50750E1F50B27EB5",
+    "beec18f1cc60f2fba161aa7ef52252ae025cc53c"
+   ]
+  }
+ },
+ "response": {
+  "status": 200,
+  "headers": {
+   "access-control-allow-origin": "https://hashlookup.circl.lu",
+   "content-length": "1262",
+   "content-type": "application/json",
+   "date": "Thu, 26 Nov 2026 05:20:27 GMT",
+   "server": "Werkzeug/1.0.1 Python/3.8.10",
+   "strict-transport-security": "max-age=15768000"
+  },
+  "body": [
+   {
+    "CRC32": "6851CF3C",
+    "FileName": "eicar.com",
+    "FileSize": "68",
+    "KnownMalicious": "malshare.com",
+    "MD5": "44D88612FEA8A8F36DE82E1278ABB02F",
+    "OpSystemCode": "362",
+    "ProductCode": "8175",
+    "RDS:package_id": "304063",
+    "SHA-1": "3395856CE81F2B7382DEE72602F798B642F14140",
+    "SHA-256": "275A021BBFB6489E54D471899F7DB9D1663FC695EC2FE2A2C4538AABF651FD0F",
+    "SHA-512": "CC805D5FAB1FD71A4AB352A9C533E65FB2D5B885518F4E565E68847223B8E6B85CB48F3AFAD842726D99239C9E36505C64B0DC9A061D9E507D833277ADA336AB",
+    "SSDEEP": "3:a+JraNvsgzsVqSwHq9:tJuOgzsko",
+    "SpecialCode": "",
+    "TLSH": "T141A022003B0EEE2BA20B00200032E8B00808020E2CE00A3820A020B8C83308803EC228",
+    "db": "nsrl_legacy",
+    "insert-timestamp": "1751766732.6429627",
+    "mimetype": "text/plain",
+    "nsrl-sha256": "rds241-sha256.zip",
+    "source": "RDS_2025.03.1_android.db",
+    "tar:gname": "root",
+    "tar:uname": "root"
+   },
+   {
+    "CRC32": "7A5407CA",
+    "FileName": "wow64_microsoft-windows-i..timezones.resources_31bf3856ad364e35_10.0.16299.579_de-de_f24979c73226184d.manifest",
+    "FileSize": "2520",
+    "MD5": "8ED4B4ED952526D89899E723F3488DE4",
+    "OpSystemCode": "362",
+    "ProductCode": "190742",
+    "SHA-1": "00000079FD7AAC9B2F9C988C50750E1F50B27EB5",
+    "SpecialCode": "",
+    "db": "nsrl_modern_rds",
+    "insert-timestamp": "1646977909.0909765",
+    "source": "NSRL"
+   }
+  ]
+ },
+ "transport_error": null,
+ "elapsed_s": 0.491389,
+ "note": "6 hashes sent, 2 records back: unknown hashes are silently omitted (3 LOLDrivers sample sha1 + 1 constant); records are flat (OpSystemCode/ProductCode as codes, no parents, no trust)"
+}

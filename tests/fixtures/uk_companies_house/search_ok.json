@@ -1,0 +1,40 @@
+{
+ "kind": "search#companies",
+ "total_results": 2,
+ "items_per_page": 5,
+ "start_index": 0,
+ "page_number": 1,
+ "items": [
+  {
+   "kind": "searchresults#company",
+   "title": "EXAMPLE TRADING LIMITED",
+   "company_number": "00000001",
+   "company_status": "active",
+   "company_type": "ltd",
+   "date_of_creation": "2001-02-03",
+   "address_snippet": "1 Example Street, London, EC1A 1AA",
+   "links": {
+    "self": "/company/00000001"
+   },
+   "description": "00000001 - Incorporated on  3 February 2001",
+   "matches": {
+    "title": [
+     1,
+     7
+    ]
+   }
+  },
+  {
+   "kind": "searchresults#company",
+   "title": "EXAMPLE TRADING (SCOTLAND) LTD",
+   "company_number": "SC000002",
+   "company_status": "dissolved",
+   "company_type": "ltd",
+   "date_of_creation": "2005-06-07",
+   "date_of_cessation": "2015-08-09",
+   "links": {
+    "self": "/company/SC000002"
+   }
+  }
+ ]
+}

@@ -1,0 +1,26 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "etherscan",
+  "hosts": [
+    "bscscan.com",
+    "etherscan.io"
+  ],
+  "sources": {
+    "pivots_crypto_explorer_pages": {
+      "title": "Etherscan and BscScan address pages /address/{evm_address} (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://etherscan.io/terms",
+        "quote": "The pack is offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "etherscan",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P216 cond 1). BscScan is operated by the Etherscan team. Both return Cloudflare/JS shells to automated clients (C0503; templates confirmed through Wayback snapshots): shipped unverified with antibot=true and the badge 'opens in browser; may require challenge' (P216 cond 9). Used by pivots_crypto (pack crypto.json)."
+    }
+  },
+  "error_markers": []
+}

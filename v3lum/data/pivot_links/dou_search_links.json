@@ -1,0 +1,40 @@
+{
+  "schema": "v3lum.pivot_pack/1",
+  "pack": "dou_search_links",
+  "title": "Diario Oficial da Uniao public search (manual)",
+  "notes": "Owned by batch p2-G10-2 (P242 dou_search cond 2-3). www.in.gov.br/robots.txt disallows all robots ('Disallow: /'), so V3LUM never fetches the search page: it is a manual pivot link only, opened by the analyst. The automated part matches the official DOU open-data dumps locally.",
+  "links": [
+    {
+      "id": "dou_search",
+      "label": "DOU search (Imprensa Nacional, exact phrase)",
+      "template": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22{q}%22&s=todos&exactDate=all",
+      "entity_types": ["cnpj", "company_name", "person_name", "keyword"],
+      "category": "company",
+      "host": "www.in.gov.br",
+      "verified": true,
+      "checked_at": "2026-11-25",
+      "privacy": true,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Public DOU search page (q = quoted phrase, s = todos | do1 | do2 | do3, exactDate = all | dia | semana | mes | ano); answered 200 to the research run on 2026-11-25; the build egress gets the connection dropped (2026-11-26). Opening it sends the value to Imprensa Nacional; never auto-opened."
+    },
+    {
+      "id": "dou_search_cnpj",
+      "label": "DOU search by formatted CNPJ (Imprensa Nacional)",
+      "template": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22{cnpj_fmt}%22&s=todos&exactDate=all",
+      "entity_types": ["cnpj"],
+      "category": "company",
+      "host": "www.in.gov.br",
+      "verified": true,
+      "checked_at": "2026-11-25",
+      "privacy": true,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Acts quote CNPJs in the formatted form (00.000.000/0001-91); the search page matches the quoted phrase."
+    }
+  ]
+}

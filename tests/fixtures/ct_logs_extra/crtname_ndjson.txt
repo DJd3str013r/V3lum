@@ -1,0 +1,6 @@
+"example.com"
+{"name":"www.example.com"}
+{"hostname":"api.example.com"}
+"*.dev.example.com"
+{"other":1}
+not a host name

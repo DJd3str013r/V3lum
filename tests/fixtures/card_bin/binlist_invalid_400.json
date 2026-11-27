@@ -1,0 +1,9 @@
+{
+ "_envelope": 1,
+ "_source": "GET https://lookup.binlist.net/000000 (2026-11-26T09:45:58Z, generic client UA, datacenter egress) with Accept-Version: 3: empty body",
+ "status": 400,
+ "headers": {
+  "server": "cloudflare"
+ },
+ "body": ""
+}

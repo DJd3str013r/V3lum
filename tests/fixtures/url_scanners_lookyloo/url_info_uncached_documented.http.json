@@ -1,0 +1,32 @@
+{
+ "_meta": {
+  "provenance": "documented",
+  "source": "genericapi.py (meta.warning text verbatim)",
+  "request": {
+   "method": "POST",
+   "url": "https://lookyloo.circl.lu/json/url_info",
+   "json": {
+    "url": "https://login.example.com/secure/",
+    "cached_captures_only": true,
+    "limit": 20
+   }
+  }
+ },
+ "status": 200,
+ "headers": {},
+ "body": {
+  "meta": {
+   "limit": 2,
+   "offset": 0,
+   "total": 9,
+   "warning": "Some capture are missing, they are probably not cached. You can re-run the query with the `cached_captures_only` parameter set to `False`, but it can take a while."
+  },
+  "response": [
+   {
+    "capture_uuid": "a7993a0d-36e9-45ae-b413-9a6bfa683b95",
+    "start_timestamp": "2026-11-25T20:00:00+00:00",
+    "title": "Example Domain"
+   }
+  ]
+ }
+}

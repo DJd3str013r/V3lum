@@ -1,0 +1,20 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://support.zendesk.com/hc"
+  },
+  "response": {
+    "status": 301,
+    "headers": {
+      "content-type": "text/html; charset=utf-8",
+      "location": "https://support.zendesk.com/hc/en-us",
+      "server": "cloudflare",
+      "cache-control": "no-cache",
+      "zendesk-service": "help-center"
+    },
+    "body": ""
+  },
+  "class": "live",
+  "captured_at": "2026-11-26T11:00:39Z",
+  "notes": "GET /hc on Zendesk's own help center: 301 to same-host /hc/en-us (FC4 expected 200; see notes)"
+}

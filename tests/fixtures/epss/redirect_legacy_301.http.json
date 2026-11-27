@@ -1,0 +1,21 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://epss.cyentia.com/epss_scores-current.csv.gz",
+  "headers": {}
+ },
+ "response": {
+  "status": 301,
+  "headers": {
+   "location": "https://epss.empiricalsecurity.com/epss_scores-current.csv.gz",
+   "server": "AmazonS3",
+   "date": "Thu, 26 Nov 2026 05:16:09 GMT",
+   "x-cache": "Hit from cloudfront",
+   "age": "58"
+  },
+  "body": ""
+ },
+ "transport_error": null,
+ "elapsed_s": 0.138357,
+ "note": "Legacy URL epss.cyentia.com/epss_scores-current.csv.gz: 301 (AmazonS3 via CloudFront) to https://epss.empiricalsecurity.com/epss_scores-current.csv.gz."
+}

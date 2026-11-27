@@ -1,0 +1,11 @@
+{
+ "Meta": {
+  "Errors": []
+ },
+ "FDNS_A": [
+  "192.0.2.20,old.example.com"
+ ],
+ "RDNS": [
+  "192.0.2.21,host21.example.com"
+ ]
+}

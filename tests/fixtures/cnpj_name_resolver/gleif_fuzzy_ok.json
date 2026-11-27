@@ -1,0 +1,95 @@
+{
+ "data": [
+  {
+   "type": "fuzzycompletions",
+   "attributes": {
+    "value": "BANCO DO BRASIL SA"
+   },
+   "relationships": {
+    "lei-records": {
+     "data": {
+      "type": "lei-records",
+      "id": "QE0Q0253K88YAGNPE356"
+     },
+     "links": {
+      "related": "https://api.gleif.org/api/v1/lei-records/QE0Q0253K88YAGNPE356"
+     }
+    }
+   }
+  },
+  {
+   "type": "fuzzycompletions",
+   "attributes": {
+    "value": "BANCO DO BRASIL S.A."
+   },
+   "relationships": {
+    "lei-records": {
+     "data": {
+      "type": "lei-records",
+      "id": "81560032A9148CB5EB22"
+     },
+     "links": {
+      "related": "https://api.gleif.org/api/v1/lei-records/81560032A9148CB5EB22"
+     }
+    }
+   }
+  },
+  {
+   "type": "fuzzycompletions",
+   "attributes": {
+    "value": "Banco do Brasil Americas"
+   },
+   "relationships": {
+    "lei-records": {
+     "data": {
+      "type": "lei-records",
+      "id": "254900667M5CK6Y3DF27"
+     },
+     "links": {
+      "related": "https://api.gleif.org/api/v1/lei-records/254900667M5CK6Y3DF27"
+     }
+    }
+   }
+  },
+  {
+   "type": "fuzzycompletions",
+   "attributes": {
+    "value": "BANCO DO BRASIL SECURITIES LLC"
+   },
+   "relationships": {
+    "lei-records": {
+     "data": {
+      "type": "lei-records",
+      "id": "ZUVRVU9ALBKKBIP1I881"
+     },
+     "links": {
+      "related": "https://api.gleif.org/api/v1/lei-records/ZUVRVU9ALBKKBIP1I881"
+     }
+    }
+   }
+  },
+  {
+   "type": "fuzzycompletions",
+   "attributes": {
+    "value": "Banco do Brasil Aktiengesellschaft"
+   }
+  },
+  {
+   "type": "fuzzycompletions",
+   "attributes": {
+    "value": "BANCO DO BRASIL S.A. - TOKYO BRANCH"
+   },
+   "relationships": {
+    "lei-records": {
+     "data": {
+      "type": "lei-records",
+      "id": "254900UEIXT7K2WDN341"
+     },
+     "links": {
+      "related": "https://api.gleif.org/api/v1/lei-records/254900UEIXT7K2WDN341"
+     }
+    }
+   }
+  }
+ ]
+}

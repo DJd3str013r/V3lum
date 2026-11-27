@@ -1,0 +1,51 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "bgptools",
+  "name": "bgp.tools",
+  "operator": "bgp.tools (Port 179 Ltd)",
+  "hosts": [
+    "bgp.tools"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Identifiable operator with public documentation and several years of public track record (A8 community; P047 chair: 'tier community is the lowest dataset operator (IPtoASN, bgp.tools)').",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "AS names and network classes curated from routing data; the class labels (Eyeball/Content/Carrier) are heuristics."
+  },
+  "http_profile": {
+    "user_agent": "contact",
+    "ttl": 86400
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "asns": {
+      "title": "bgp.tools asns.csv (AS number, name, class, country)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://bgp.tools/kb/api",
+        "quote": "Registry terms: DB-IP Lite CC BY 4.0 (open), IPtoASN PDDL (open), bgp.tools free use with descriptive UA (open), GeoLite2 EULA (license).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "bgp.tools",
+      "sanitizer": null,
+      "dataset": "ip_offline_db.bgptools_asns.csv",
+      "notes": "Quote: binding council text (P047 cond 7); research C0097 terms 'bgp.tools terms (free use, descriptive UA required)' (verified_live 200). asns.csv only (no other path is ever fetched), at most daily, with the contact User-Agent of the http_profile (setting contact_email = the team role mailbox, never an analyst's address; without it the source is SKIPPED 'config', P047 cond 5). Used by ip_offline_db."
+    }
+  },
+  "notes": "Owned by batch p1-G02-2 (P047). The contact User-Agent is a binding host profile (providers.PROFILE_REQUIREMENTS: bgp.tools -> 'contact')."
+}

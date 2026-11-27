@@ -1,0 +1,9 @@
+{
+ "origin": "live check 2026-11-26 from the research datacenter egress (well-formed random video id)",
+ "status": 400,
+ "headers": {
+  "content-type": "application/json; charset=UTF-8",
+  "server": "scaffolding on HTTPServer2"
+ },
+ "body": "Bad Request"
+}

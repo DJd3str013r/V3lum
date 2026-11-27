@@ -1,0 +1,16 @@
+{
+ "request": "GET https://cl0q.com/api/favicon?hash=<sha256>&limit=100",
+ "response": {
+  "status": 429,
+  "headers": {
+   "content-type": "application/json",
+   "retry-after": "20"
+  },
+  "body": {
+   "error": "rate limited"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "documented status (429 rate limited; free key 30/min); body PLACEHOLDER -> RATE_LIMITED"
+}

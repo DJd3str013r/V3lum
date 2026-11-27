@@ -1,0 +1,6 @@
+{
+ "endpoint": "/v1/history/example.com/dns/a",
+ "pages": 0,
+ "records": [],
+ "type": "a/ipv4"
+}

@@ -1,0 +1,244 @@
+{
+ "indicator": "44d88612fea8a8f36de82e1278abb02f",
+ "type": "md5",
+ "type_title": "FileHash-MD5",
+ "sections": [
+  "general",
+  "analysis"
+ ],
+ "validation": [
+  {
+   "source": "whitelist",
+   "message": "Whitelisted hash: MISP",
+   "name": "Whitelisted hash"
+  }
+ ],
+ "false_positive": [],
+ "pulse_info": {
+  "count": 50,
+  "pulses": [
+   {
+    "id": "6b0000000000000000000001",
+    "name": "Community pulse 01",
+    "modified": "2026-10-20T07:14:00.620000",
+    "created": "2025-11-14T07:25:50.524000",
+    "tags": [
+     "whois record",
+     "ssl certificate",
+     "historical ssl"
+    ],
+    "references": [],
+    "adversary": "",
+    "targeted_countries": [
+     "Spain",
+     "Netherlands"
+    ],
+    "malware_families": [
+     {
+      "id": "Jane Doe",
+      "display_name": "Jane Doe",
+      "target": null
+     },
+     {
+      "id": "Mitre Attack",
+      "display_name": "Mitre Attack",
+      "target": null
+     },
+     {
+      "id": "ET",
+      "display_name": "ET",
+      "target": null
+     }
+    ],
+    "attack_ids": [
+     {
+      "id": "T1056",
+      "name": "Input Capture",
+      "display_name": "T1056 - Input Capture"
+     },
+     {
+      "id": "T1027",
+      "name": "Obfuscated Files or Information",
+      "display_name": "T1027 - Obfuscated Files or Information"
+     },
+     {
+      "id": "T1090",
+      "name": "Proxy",
+      "display_name": "T1090 - Proxy"
+     }
+    ],
+    "industries": [],
+    "TLP": "green",
+    "cloned_from": "6b0000000000000000000002",
+    "author": {
+     "username": "community-user-a",
+     "id": "0"
+    },
+    "indicator_count": 13688,
+    "subscriber_count": 160,
+    "public": 1
+   },
+   {
+    "id": "6b0000000000000000000003",
+    "name": "Community pulse 02",
+    "modified": "2026-09-14T23:46:33.025000",
+    "created": "2026-09-14T23:46:33.025000",
+    "tags": [
+     "whois record",
+     "ssl certificate",
+     "historical ssl"
+    ],
+    "references": [],
+    "adversary": "",
+    "targeted_countries": [
+     "Spain",
+     "Netherlands"
+    ],
+    "malware_families": [
+     {
+      "id": "Jane Doe",
+      "display_name": "Jane Doe",
+      "target": null
+     },
+     {
+      "id": "Mitre Attack",
+      "display_name": "Mitre Attack",
+      "target": null
+     },
+     {
+      "id": "ET",
+      "display_name": "ET",
+      "target": null
+     }
+    ],
+    "attack_ids": [
+     {
+      "id": "T1056",
+      "name": "Input Capture",
+      "display_name": "T1056 - Input Capture"
+     },
+     {
+      "id": "T1027",
+      "name": "Obfuscated Files or Information",
+      "display_name": "T1027 - Obfuscated Files or Information"
+     },
+     {
+      "id": "T1090",
+      "name": "Proxy",
+      "display_name": "T1090 - Proxy"
+     }
+    ],
+    "industries": [],
+    "TLP": "green",
+    "cloned_from": "6b0000000000000000000002",
+    "author": {
+     "username": "community-user-a",
+     "id": "0"
+    },
+    "indicator_count": 13104,
+    "subscriber_count": 155,
+    "public": 1
+   },
+   {
+    "id": "6b0000000000000000000004",
+    "name": "Community pulse 03",
+    "modified": "2026-07-13T17:04:00.535000",
+    "created": "2026-06-13T17:01:53.660000",
+    "tags": [],
+    "references": [],
+    "adversary": "Lab3",
+    "targeted_countries": [],
+    "malware_families": [],
+    "attack_ids": [],
+    "industries": [],
+    "TLP": "white",
+    "cloned_from": null,
+    "author": {
+     "username": "community-user-b",
+     "id": "0"
+    },
+    "indicator_count": 1,
+    "subscriber_count": 2,
+    "public": 1
+   },
+   {
+    "id": "6b0000000000000000000005",
+    "name": "Community pulse 04",
+    "modified": "2026-06-13T04:18:01.060000",
+    "created": "2026-05-14T04:45:24.127000",
+    "tags": [
+     "windows",
+     "malware",
+     "ioc"
+    ],
+    "references": [],
+    "adversary": "",
+    "targeted_countries": [],
+    "malware_families": [],
+    "attack_ids": [],
+    "industries": [],
+    "TLP": "white",
+    "cloned_from": null,
+    "author": {
+     "username": "community-user-c",
+     "id": "0"
+    },
+    "indicator_count": 3,
+    "subscriber_count": 3,
+    "public": 1
+   },
+   {
+    "id": "6b0000000000000000000006",
+    "name": "Community pulse 05",
+    "modified": "2026-06-02T00:28:15.681000",
+    "created": "2026-05-03T05:37:05.999000",
+    "tags": [],
+    "references": [],
+    "adversary": "",
+    "targeted_countries": [],
+    "malware_families": [],
+    "attack_ids": [],
+    "industries": [],
+    "TLP": "white",
+    "cloned_from": null,
+    "author": {
+     "username": "community-user-d",
+     "id": "0"
+    },
+    "indicator_count": 2,
+    "subscriber_count": 3,
+    "public": 1
+   }
+  ],
+  "references": [],
+  "related": {
+   "alienvault": {
+    "adversary": [],
+    "malware_families": [],
+    "industries": []
+   },
+   "other": {
+    "adversary": [
+     "Lab3",
+     "Unknown"
+    ],
+    "malware_families": [
+     "",
+     "Trojan.bat.agent.tnkf",
+     "Et",
+     "Urlspirit",
+     "Trojan:o97m/eicar_test_file",
+     "Onenote"
+    ],
+    "industries": [
+     "Technology",
+     "Government",
+     "Education",
+     "Healthcare",
+     "Telecommunications",
+     "Defense"
+    ]
+   }
+  }
+ }
+}

@@ -1,0 +1,14 @@
+{
+ "_envelope": 1,
+ "_synthetic": "429 with the live X-RateLimit header set; body text not observed (no bursts)",
+ "status": 429,
+ "headers": {
+  "content-type": "application/json",
+  "x-ratelimit-limit": "100",
+  "x-ratelimit-remaining": "0",
+  "x-ratelimit-reset": "1795678661"
+ },
+ "body": {
+  "error": "Rate limit exceeded"
+ }
+}

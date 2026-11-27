@@ -1,0 +1,8 @@
+{
+ "description": "OSINT - APT28 malicious NATO document",
+ "link": "https://www.circl.lu/doc/misp/feed-osint/5af150f7-bd58-4f06-9228-89a8950d210f.json",
+ "misp:feed": "https://www.circl.lu/doc/misp/feed-osint",
+ "timestamp": "1525782502",
+ "uuid": "5af150f7-bd58-4f06-9228-89a8950d210f",
+ "_cycat_type": "Item"
+}

@@ -1,0 +1,45 @@
+{
+ "metadata": {
+  "count": 2094,
+  "page": 1,
+  "per_page": 3
+ },
+ "data": [
+  {
+   "uuid": "1073a24f-827b-4a57-a1d6-ca07ba5ea12c",
+   "vulnerability_lookup_origin": "1a89b78e-f703-45f3-bb86-59eb712668bd",
+   "creation_timestamp": "2026-11-24T21:00:05+00:00",
+   "type": "published-proof-of-concept",
+   "source": "Telegram/EXAMPLEchannelHASH0000000000000000000000000000",
+   "content": "",
+   "vulnerability": "CVE-2021-44228",
+   "author": {
+    "login": "automation"
+   }
+  },
+  {
+   "uuid": "38e065c4-8bdd-434a-9019-c15c4041473b",
+   "vulnerability_lookup_origin": "1a89b78e-f703-45f3-bb86-59eb712668bd",
+   "creation_timestamp": "2026-11-24T14:06:25+00:00",
+   "type": "seen",
+   "source": "https://t.me/example_channel/112511",
+   "content": "",
+   "vulnerability": "CVE-2021-44228",
+   "author": {
+    "login": "automation"
+   }
+  },
+  {
+   "uuid": "2b293b02-9696-4f7b-84e9-5815f6bba97f",
+   "vulnerability_lookup_origin": "1a89b78e-f703-45f3-bb86-59eb712668bd",
+   "creation_timestamp": "2026-11-24T14:06:25+00:00",
+   "type": "exploited",
+   "source": "https://t.me/example_channel/112511",
+   "content": "",
+   "vulnerability": "CVE-2021-44228",
+   "author": {
+    "login": "automation"
+   }
+  }
+ ]
+}

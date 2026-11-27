@@ -1,0 +1,101 @@
+{
+ "about": "provenance of the trimmed fixtures (prep for batch p3-G01-2): source live | research | documented | synthetic; contact values are documentation values (example.org/.net, *.example, +55 11 5555-01xx)",
+ "fixtures": {
+  "measurements_anomaly_cn.json": {
+   "source": "live",
+   "origin": "https://api.ooni.io/api/v1/measurements?domain=www.google.com&probe_cc=CN&since=2026-08-01&limit=3",
+   "captured_at": "2026-11-26T08:38:00Z",
+   "note": "HTTP 200 in 1.25s; kept the fields the parser reads (scores reduced to blocking_general and analysis.blocking_type); query_time dropped",
+   "sha256": "50f2986019870dfcff068f1bb182d18eed2d75bb777895db14269e0e8283bf7d",
+   "bytes": 2201
+  },
+  "measurements_ok_id.json": {
+   "source": "research",
+   "origin": "research/samples/caipora_apis_cti__ooni_measurements_domain.json (api.ooni.io, 2026-11-25)",
+   "captured_at": null,
+   "note": "measurements?domain=example.com&limit=2 (no probe_cc); minimised like the CN fixture",
+   "sha256": "7c0ac961fdeff5160daf6d9da6f0707f660ca1022fb565e1d3fb80d2573f0e2a",
+   "bytes": 1505
+  },
+  "measurements_empty_br.http.json": {
+   "source": "live",
+   "origin": "https://api.ooni.io/api/v1/measurements?domain=google.com&probe_cc=BR&limit=3",
+   "captured_at": "2026-11-26T08:37:11Z",
+   "note": "results [] and next_url null: no BR measurement of the exact host google.com in the default 30-day window (www.google.com has 1318 BR measurements in the same window)",
+   "sha256": "ee036f564ef5a290d68dd12e737bc87bcea8cbfbc6b1563bdae06c2f79326d1c",
+   "bytes": 566
+  },
+  "measurements_invalid_cc_empty.json": {
+   "source": "live",
+   "origin": "https://api.ooni.io/api/v1/measurements?domain=example.com&probe_cc=BRA&limit=1",
+   "captured_at": "2026-11-26T08:38:18Z",
+   "note": "probe_cc=BRA (3 letters) answered HTTP 200 with results [] - indistinguishable from 'no measurements'; the module must validate ISO 3166-1 alpha-2 before sending",
+   "sha256": "aaa3ef5f5e57c10227c83e081479455cbe2f36aee5e7b01ab91261c51f66b1bd",
+   "bytes": 138
+  },
+  "measurements_page2_synthetic.json": {
+   "source": "synthetic",
+   "origin": "derived from ooni__measurements_anomaly_cn.json",
+   "captured_at": null,
+   "note": "second page whose metadata.next_url is still set; a third page must not be fetched (FC1 cap)",
+   "sha256": "4b4e878536725b723bd7fd0f4b1889c0099fa7a9f4f449e4aa1c2e44890ac325",
+   "bytes": 902
+  },
+  "aggregation_ok.json": {
+   "source": "research",
+   "origin": "research/samples/caipora_apis_cti__ooni_aggregation_domain.json (api.ooni.io, 2026-11-25)",
+   "captured_at": null,
+   "note": "db_stats dropped; 152 anomalies in 23754 measurements (0.6%) = sporadic noise",
+   "sha256": "5bf670cb2e036a8e3de5a2db4a126f461d1212d9581d1bb9b4def79e40f57808",
+   "bytes": 173
+  },
+  "aggregation_by_country.json": {
+   "source": "live",
+   "origin": "https://api.ooni.io/api/v1/aggregation?domain=www.google.com&since=2026-10-27&until=2026-11-26&axis_x=probe_cc",
+   "captured_at": "2026-11-26T08:38:13Z",
+   "note": "150 rows in the live answer, 7 kept; all probe_cc values seen live: AE AL AM AO AR AT AU AZ BA BD BE BG BH BJ BO BR BY BZ CA CD CH CI CL CM CN CO CR CU CY CZ DE DK DO DZ EC EE EG ES ET FI FR GA GB GE GH GN GP GR GT GY HK HN HR HT HU ID IE IL IN IQ IR IS IT JE JM JO JP KE KG KH KR KZ LB LC LK LR LS LT LU LV LY MA MD ME MG MK ML MM MR MT MU MV MW MX MY MZ NA NC NG NI NL NO NP NZ OM PA PE PH PK PL PR PS PT PY QA RO RS RU RW SA SE SG SI SK SL SN SO SR SV SY TG TH TJ TL TN TR TT TW TZ UA UG US UY UZ VE VN YE ZA ZM ZW",
+   "sha256": "bd190396faebd5b494c5714fab0e72939da3ec7109fc8029ecead977747e9789",
+   "bytes": 1106
+  },
+  "aggregation_empty_synthetic.json": {
+   "source": "synthetic",
+   "origin": "schema of ooni__aggregation_ok.json",
+   "captured_at": null,
+   "note": "a domain OONI never measured from the country: 'no measurements', never 'not blocked'",
+   "sha256": "7f3405a5959f8f3c917b444704174f50872d52c3f0b2f2ee862f58eefb1f809c",
+   "bytes": 162
+  },
+  "explorer_challenge_429.http.json": {
+   "source": "live",
+   "origin": "https://explorer.ooni.org/m/20261125201002.758710_CN_webconnectivity_b30d2f9082c26e35",
+   "captured_at": "2026-11-26T08:44:35Z",
+   "note": "explorer.ooni.org answered 429 then 403 (domain page) with x-vercel-mitigated: challenge; the x-vercel-challenge-token and x-vercel-id headers were dropped; body trimmed to the title",
+   "sha256": "de54b34753460b71be5f8301bf2a944a54bb13aa8ceb6ae2f1a77f185847a909",
+   "bytes": 558
+  },
+  "rate_limited_429_synthetic.http.json": {
+   "source": "synthetic",
+   "origin": "not observed (x-ratelimit-remaining was 3936-3984 during the checks)",
+   "captured_at": null,
+   "note": "429 from the API itself (not a WAF page) -> RATE_LIMITED, could not verify",
+   "sha256": "bc7f1dfdf4f6189ae5894f97b99a5accd5003766640d9c307ab63c2df79356b8",
+   "bytes": 354
+  },
+  "error_502_html_synthetic.http.json": {
+   "source": "synthetic",
+   "origin": "nginx default error page (api.ooni.io runs nginx/1.18.0)",
+   "captured_at": null,
+   "note": "HTML instead of JSON on an error status -> ERROR, could not verify (FC4)",
+   "sha256": "7ddcc287b9a1c13934230ef17928c8c289877f6cb12c4661607cdeb05488717c",
+   "bytes": 439
+  },
+  "licence_data.md": {
+   "source": "live",
+   "origin": "https://github.com/ooni/license/blob/ce329e1d6a2a0d0922d27557123e07e463b7c1e9/data/LICENSE.md (git clone --depth 1; linked as 'Data License' from https://ooni.org/data/)",
+   "captured_at": "2026-11-26T08:39:00Z",
+   "note": "verbatim; data/Readme.md: 'This license applies to all published OONI data ... on https://api.ooni.io and https://explorer.ooni.io.'",
+   "sha256": "d8b297e167973551c31e63a681f5b6b75d61aed3cb73f3842ecd281945cd4928",
+   "bytes": 221
+  }
+ }
+}

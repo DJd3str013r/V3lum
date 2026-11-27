@@ -1,0 +1,30 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p2-G01-3",
+  "title": "Passive subdomains, protective DNS and archive mining (batch p2-G01-3: P016, P020, P060)",
+  "owner": "batch p2-G01-3 (subdomains_passive, subdomains_passive_extra, protective_dns, protective_dns_extra, archive_mining)",
+  "notes": "Discovered subdomains reuse the core attribute 'subdomains' so the graph merges them with ct_logs into one deduplicated list (P016 cond 5); the names below carry per-name provenance and the states that never make a name an asset.",
+  "attributes": {
+    "subdomain_provenance": "per-name provenance of passively discovered subdomains {name: {sources, state, confirmed, stale, last_seen, addresses, cnames}} (capped); state live | internal | null_address | cdn_only | wildcard_only | no_address | historical | unresolved | not_resolved",
+    "subdomains_unconfirmed": "names seen only in one unknown-tier or noisy passive source that do not resolve (non-wildcard): listed apart, never shown as assets or pivoted (P016 cond 7)",
+    "subdomains_historical": "passively discovered subdomains answering NXDOMAIN through DoH (confirmed by a second resolver): historical, never pivoted",
+    "subdomains_unresolved": "passively discovered subdomains whose DoH check could not be verified (SERVFAIL, timeout) or was not attempted (300-name cap): neither live nor historical",
+    "subdomain_wildcards": "wildcard names ('*.x') reported by passive DNS sources under the domain: wildcard records of the parent, never host names",
+    "dns_wildcard": "random-label wildcard probe of the zone {state wildcard | none | unknown, answers, nodata_quirk, reason}: names resolving only to wildcard answers are dropped",
+    "subdomain_coverage": "passive subdomain sources of one run {line 'k/N sources answered', sources {source: {status, reason, partial}}, names, resolved, resolution_cap, not_resolved, wildcard_only_dropped, partial}",
+    "protective_dns": "protective-DNS check {name, checked_at, summary, verdicts [{resolver, category, verdict blocked | not_blocked | could_not_verify | not_applicable, reason, signature, answer}], reference, security_blocked, content_filtered, could_not_verify}; a pass reads 'not blocked by N security resolvers at <time>', never 'clean'",
+    "interesting_archived_urls": "interesting archived URLs grouped by category {config, backup, admin, api, robots_disallow} after the waymore filters (MIT), secrets masked, at most 50 shown; counts and full lists for JSON/appendix, each with first/last capture dates",
+    "archived_robots": "union of the archived robots.txt versions {versions, disallow {path: {first_seen, last_seen, versions}}, allow, sitemap, patterns}: the paths are never requested from the live site",
+    "archived_favicons": "hashes of the distinct archived favicon versions [{favicon_hash (Shodan mmh3), md5, sha256, format, bytes, first_seen, last_seen, snapshots, noise}]: historical",
+    "archived_analytics_ids": "analytics ids found in archived homepage versions [{id, kind, first_seen, last_seen, snapshots}]: historical, dated per snapshot, never linked across eras without overlapping dates"
+  },
+  "tags": {
+    "protective_dns_block": "blocked by a security-category protective DNS resolver (Cloudflare 1.1.1.2, Quad9, OpenDNS, CleanBrowsing security) while the unfiltered reference resolves: all such votes are one upstream family",
+    "content_filter": "blocked only by a family/adult or ads filtering resolver: a content category, never a maliciousness signal (zero risk)"
+  },
+  "relations": {
+    "robots_disallow": "domain -> URL path disallowed in an archived robots.txt version (historical, never requested from the live site)",
+    "historical_favicon": "domain/URL -> favicon hash of an archived favicon version (historical, dated in archived_favicons): never the site's current favicon, never linked across eras without overlapping dates (P060 cond 6)",
+    "historical_analytics_id": "domain/URL -> analytics id found in an archived homepage version (historical, dated in archived_analytics_ids): never linked across eras without overlapping dates (P060 cond 6)"
+  }
+}

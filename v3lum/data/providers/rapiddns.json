@@ -1,0 +1,56 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "rapiddns",
+  "name": "RapidDNS subdomain pages (rapiddns.io, HTML)",
+  "operator": "RapidDNS (rapiddns.io)",
+  "hosts": [
+    "rapiddns.io"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "No API terms reviewed and the data comes from scraping public HTML pages (A8 unknown). Chair decision P016: RapidDNS is a separate toggle with terms 'unknown' until legal records a ToS/robots review.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Passive DNS rows (name, value, type, date) from its own collection; guest pages may be truncated ('Total' above the rows shown) and the HTML layout can change without notice."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "text/html",
+    "timeout": 15,
+    "retries": 0,
+    "ttl": 86400,
+    "min_interval": 2.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "subdomain_pages": {
+      "title": "RapidDNS subdomain page (GET /subdomain/{domain}?full=1, HTML table id='table')",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://rapiddns.io/robots.txt",
+        "quote": "myssl.com (CN operator, terms not reviewed) and RapidDNS (HTML scraping) are separate toggles with terms 'unknown' until legal records them; RapidDNS needs a recorded ToS/robots review",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "rapiddns",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P016 cond 3). robots.txt (fetched 2026-11-26) reads 'User-agent: * / Allow: /' plus a Sitemap line; the ToS page was not reviewed yet (legal input missing). Polite scraping: one page per registrable domain, >= 2 s between requests, the neutral V3LUM UA (never a browser UA to pass a wall); challenge pages are BLOCKED 'challenge' and stop the source (A9, P016 cond 9). Off unless setting subdomains_passive_extra_rapiddns is enabled and legal records the review."
+    }
+  },
+  "notes": "Owned by batch p2-G01-3 (P016, module subdomains_passive_extra, toggle subdomains_passive_extra_rapiddns). The same-IP (reverse IP) pages are not used."
+}

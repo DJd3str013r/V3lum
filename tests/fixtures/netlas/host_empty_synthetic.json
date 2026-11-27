@@ -1,0 +1,24 @@
+{
+ "_synthetic": "Shape reduced from the live 192.0.2.1 answer: no ports, software, whois, DNS, IOC or domains. What Netlas returns for an address it holds nothing on was not observed (no benign value produced it within the request budget).",
+ "privacy": {
+  "is_vpn": false,
+  "is_proxy": false,
+  "is_tor": false
+ },
+ "ip": "203.0.113.7",
+ "type": "ip",
+ "source": [
+  {
+   "id": 1038,
+   "availability": "public",
+   "type": "domains",
+   "scan_label": "2026-10-01",
+   "scan_started_at": "2026-10-01T00:00:00Z",
+   "scan_ended_at": "2026-10-21T18:43:44.575000Z",
+   "is_default": true,
+   "speed": "fast",
+   "state": "full",
+   "count": 3026952876
+  }
+ ]
+}

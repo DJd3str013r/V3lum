@@ -1,0 +1,25 @@
+{
+ "_meta": {
+  "module": "avatar_correlation",
+  "case": "unavatar_rate_limited",
+  "source": "C0276 unavatar.io",
+  "request": {
+   "method": "GET",
+   "url": "https://unavatar.io/google.com?json"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "LIVE",
+  "elapsed_s": 0.157,
+  "note": "first anonymous request from this egress (domain value, not a personal identifier); not in this build (FC8)"
+ },
+ "status": 429,
+ "headers": {
+  "content-type": "application/json; charset=utf-8",
+  "x-rate-limit-limit": "25",
+  "x-rate-limit-remaining": "0",
+  "x-rate-limit-reset": "1795699050816",
+  "retry-after": "21057",
+  "server": "cloudflare"
+ },
+ "body": "{\"status\":\"fail\",\"code\":\"ERATE\",\"more\":\"https://unavatar.io/erate\",\"message\":\"Daily anonymous rate limit reached. Register and use an API key to unlock 50 requests/day. Visit https://unavatar.io/checkout to get started.\"}"
+}

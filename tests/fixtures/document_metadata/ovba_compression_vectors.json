@@ -1,0 +1,13 @@
+{
+ "source": "[MS-OVBA] 3.2.1 (no compression) and 3.2.2 (normal compression) examples; decompression must reproduce \"text\" (tokens checked by hand: copy-token bit counts 4,5,5,5,6,6 along the chunk)",
+ "vectors": [
+  {
+   "compressed_hex": "0119b000616263646566676800696a6b6c6d6e6f70007172737475762e",
+   "text": "abcdefghijklmnopqrstuv."
+  },
+  {
+   "compressed_hex": "012fb000236161616263646582660070616768696a013808616b6c00306d6e6f700671027004107273747576107778797a003c",
+   "text": "#aaabcdefaaaaghijaaaaaklaaamnopqaaaaaaaaaaaarstuvwxyzaaa"
+  }
+ ]
+}

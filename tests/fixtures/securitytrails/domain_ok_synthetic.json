@@ -1,0 +1,67 @@
+{
+ "endpoint": "/v1/domain/example.com",
+ "hostname": "example.com",
+ "apex_domain": "example.com",
+ "alexa_rank": null,
+ "subdomain_count": 4,
+ "current_dns": {
+  "a": {
+   "first_seen": "2024-03-01",
+   "values": [
+    {
+     "ip": "192.0.2.10",
+     "ip_organization": "Example CDN"
+    },
+    {
+     "ip": "192.0.2.11",
+     "ip_organization": "Example CDN"
+    }
+   ]
+  },
+  "aaaa": {
+   "first_seen": "2024-03-01",
+   "values": [
+    {
+     "ipv6": "2001:db8::10",
+     "ipv6_organization": "Example CDN"
+    }
+   ]
+  },
+  "mx": {
+   "first_seen": "2020-01-01",
+   "values": [
+    {
+     "hostname": "mx.example.net",
+     "priority": 10,
+     "hostname_organization": "Example Mail"
+    }
+   ]
+  },
+  "ns": {
+   "first_seen": "2020-01-01",
+   "values": [
+    {
+     "nameserver": "ns1.example.net",
+     "nameserver_organization": "Example DNS"
+    }
+   ]
+  },
+  "soa": {
+   "first_seen": "2020-01-01",
+   "values": [
+    {
+     "email": "hostmaster@example.com",
+     "ttl": 3600
+    }
+   ]
+  },
+  "txt": {
+   "first_seen": "2020-01-01",
+   "values": [
+    {
+     "value": "v=spf1 -all"
+    }
+   ]
+  }
+ }
+}

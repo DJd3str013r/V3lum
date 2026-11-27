@@ -1,0 +1,21 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://www.cisco.com/.well-known/csaf/2021/cisco-sa-nonexistent-probe.json",
+  "headers": {}
+ },
+ "response": {
+  "status": 404,
+  "headers": {
+   "server": "Apache",
+   "content-type": "text/html;charset=utf-8",
+   "cache-control": "no-cache, no-store",
+   "expires": "Thu, 26 Nov 2026 09:44:46 GMT",
+   "content-length": "43662"
+  },
+  "body": "<!DOCTYPE html><html><head><title>Page Not Found - Cisco</title></head><body>[43,662 B Cisco 404 page trimmed]</body></html>"
+ },
+ "transport_error": null,
+ "elapsed_s": 0.648,
+ "note": "Absent document path -> 404 text/html (43,662 B Cisco 404 page). The published-hash URL <doc>.json.sha256 answers the same 404 page: hash not published, not an error."
+}

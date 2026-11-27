@@ -1,0 +1,14 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://bancoexernplo.example/"
+ },
+ "response": {
+  "status": 200,
+  "headers": {
+   "content-type": "application/zip",
+   "content-length": "22"
+  },
+  "body_b64": "UEsFBgAAAAAAAAAAAAAAAAAAAAAAAA=="
+ }
+}

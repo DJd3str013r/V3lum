@@ -1,0 +1,77 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "x_corp",
+  "name": "X (formerly Twitter) oEmbed - publish.twitter.com / publish.x.com",
+  "operator": "X Corp.",
+  "hosts": [
+    "publish.twitter.com",
+    "publish.x.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "X Corp.: an established company with published developer terms, a privacy policy and a business offering (A8 trusted). Council P119 cond 6: registry x (X Corp, oEmbed) tier trusted.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Authoritative for whether X still serves a post through its published oEmbed interface and for the author handle it embeds; a 404 cannot tell deleted, protected and suspended apart, and post text is self-published content."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 10.0,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "day": 300,
+    "rate_per_second": 1.0,
+    "burst": 1,
+    "published": false,
+    "evidence_url": "",
+    "safety_margin": 0.8
+  },
+  "error_markers": [
+    {
+      "id": "x_corp_oembed_error_object",
+      "statuses": [200],
+      "json_path": null,
+      "equals": null,
+      "regex": "\\A\\s*\\{\\s*\"errors?\"\\s*:",
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "X oEmbed: error object inside an HTTP 200 answer (could not verify)"
+    }
+  ],
+  "keys": {},
+  "sources": {
+    "oembed": {
+      "title": "X oEmbed publish.twitter.com/oembed?url=<status URL> (301 -> publish.x.com): author handle and embed text of a post, or 404 when the post is no longer available",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://developer.x.com/en/docs/x-for-websites/oembed-api",
+        "quote": "Terms 'unknown' until legal records the X oEmbed terms and confirms the P059 Internet Archive decision for this use: disabled in every profile until then (A1); default_enabled False.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "x_corp",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P119 cond 6); research C0280 (verified_live 200; 2026-11-26 prep: publish.twitter.com answers 301 to publish.x.com, 200 application/json for a public post, 404 text/html 'Nothing to see here' for an unavailable one). Documented parameters only: url, omit_script=true, dnt=true. A 404 means 'no longer available (deleted, protected or suspended)', never 'deleted' or 'never existed'; 429/5xx = could not verify (P119 cond 3). twitter.com and x.com pages are never requested (not declared hosts). The cdn.syndication.twimg.com tweet-result endpoint (research C0260) is NOT a source of V3LUM: X's terms allow published interfaces only (P119 cond 2) - it may be revisited only with X's written consent recorded by legal. No rate-limit headers were seen; the 300/day budget and 1 req/s are V3LUM's own politeness limits (bulk oEmbed checks are rate-limited, research C0246). publish.x.com sets tracking cookies: the core never stores or replays them."
+    }
+  },
+  "notes": "Owned by batch p3-G05-3 (modules x_twitter_public and x_twitter_recovery, P119). Cache 24 h for 200 and 404 answers (the provider's 100-year max-age is capped). Usernames are PERSONAL_TYPES: personal_data_review is still to be recorded; until then the policy gate sends them only on explicit selection (POL-07)."
+}

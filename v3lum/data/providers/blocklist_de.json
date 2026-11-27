@@ -1,0 +1,52 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "blocklist_de",
+  "name": "blocklist.de",
+  "operator": "blocklist.de (fail2ban reporting project)",
+  "hosts": [
+    "lists.blocklist.de"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Long-running community project with an identifiable operator and public documentation (A8 community).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Fail2ban-style reports of the last 48 h: real attacks, but noisy (shared and dynamic addresses)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "all": {
+      "title": "blocklist.de attack IPs (all.txt, last 48 h)",
+      "terms": {
+        "class": "noncommercial",
+        "evidence_url": "https://www.blocklist.de/",
+        "quote": "Noncommercial, off under the corporate profile until licence-cleared: blocklist.de, CINS, ET compromised IPs, GreenSnow and DataPlane (A1 BR16), VoIPBL, and the FireHOL level1 aggregate (it embeds noncommercial upstreams such as DShield).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": false
+      },
+      "upstream_family": "blocklist.de",
+      "sanitizer": null,
+      "dataset": "ip_blocklists.blocklist_de_all.txt",
+      "notes": "Quote: binding council text (P149 cond 2); research C0348 terms 'Free for non-commercial use; attribute source' (verified_live 200, ETag + If-Modified-Since). LOW fidelity (P149 cond 6). Used by ip_blocklists.",
+      "licensed_alternative": "The open feeds of ip_blocklists (Spamhaus DROP/ASN-DROP, abuse.ch Feodo Tracker and SSLBL, IPsum, Binary Defense) keep running; a licence_allow entry recording the operator's written permission enables this feed."
+    }
+  },
+  "notes": "Owned by batch p1-G02-2 (P149). Downloaded whole by the dataset manager (conditional GET, validation) and matched locally: no value is ever sent. Never redistributed outside the team (P149 cond 2)."
+}

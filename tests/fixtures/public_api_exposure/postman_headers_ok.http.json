@@ -1,0 +1,18 @@
+{
+ "request": "POST https://www.postman.com/_api/ws/proxy (service=search, path=/search-all, size=25, from=0, domain=public) queryText=example.com",
+ "response": {
+  "status": 200,
+  "headers": {
+   "content-type": "application/json; charset=utf-8",
+   "server": "cloudflare",
+   "vary": "Accept-Encoding",
+   "x-cache": "Miss from cloudfront",
+   "via": "1.1 c19e480fa39c4c0cee4daa26ab2e8406.cloudfront.net (CloudFront)",
+   "cf-cache-status": "DYNAMIC"
+  },
+  "body": "<body: see public_api_exposure__postman_ok_example.json>"
+ },
+ "transport_error": null,
+ "elapsed_s": 0.775,
+ "note": "no rate-limit headers are sent by the proxy; Set-Cookie dropped at capture"
+}

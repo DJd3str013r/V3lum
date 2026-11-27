@@ -1,0 +1,17 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://www.example.com/.env",
+  "headers": {
+   "Range": "bytes=0-1023"
+  }
+ },
+ "response": {
+  "status": 200,
+  "headers": {
+   "content-type": "text/html",
+   "content-length": "121"
+  },
+  "body": "<!DOCTYPE html><html><head><title>Blog</title></head><body><pre>\nAPP_KEY=exemplo\nDB_PASSWORD=exemplo\n</pre></body></html>"
+ }
+}

@@ -1,0 +1,51 @@
+{
+ "_provenance": {
+  "synthetic": true,
+  "note": "shape from Brave Search API docs (as p3-G14-1); not captured"
+ },
+ "status": 200,
+ "headers": {
+  "content-type": "application/json",
+  "x-ratelimit-limit": "1, 15000",
+  "x-ratelimit-remaining": "0, 14990",
+  "x-ratelimit-reset": "1, 1419704"
+ },
+ "body": {
+  "type": "search",
+  "query": {
+   "original": "site:example.com (filetype:pdf OR filetype:docx OR filetype:doc OR filetype:xlsx OR filetype:xls OR filetype:pptx OR filetype:ppt)",
+   "more_results_available": false
+  },
+  "web": {
+   "type": "search",
+   "results": [
+    {
+     "type": "search_result",
+     "title": "Relat&oacute;rio Anual <strong>2023</strong>",
+     "url": "https://www.example.com/arquivos/relatorio-anual-2023.pdf",
+     "description": "snippet that must never be stored"
+    },
+    {
+     "type": "search_result",
+     "title": "Edital",
+     "url": "https://licitacoes.example.com/edital-01.pdf"
+    },
+    {
+     "type": "search_result",
+     "title": "Other site",
+     "url": "https://other.example.org/x.pdf"
+    },
+    {
+     "type": "search_result",
+     "title": "HTML page",
+     "url": "https://www.example.com/sobre"
+    },
+    {
+     "type": "search_result",
+     "title": "Not web",
+     "url": "javascript:alert(1)"
+    }
+   ]
+  }
+ }
+}

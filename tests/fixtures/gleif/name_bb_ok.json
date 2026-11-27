@@ -1,0 +1,208 @@
+{
+ "meta": {
+  "goldenCopy": {
+   "publishDate": "2026-11-26T00:00:00Z"
+  },
+  "pagination": {
+   "currentPage": 1,
+   "perPage": 10,
+   "from": 1,
+   "to": 2,
+   "total": 2,
+   "lastPage": 1
+  }
+ },
+ "links": {
+  "first": "https://api.gleif.org/api/v1/lei-records?filter%5Bentity.legalName%5D=BANCO+DO+BRASIL+SA&page%5Bnumber%5D=1&page%5Bsize%5D=10",
+  "last": "https://api.gleif.org/api/v1/lei-records?filter%5Bentity.legalName%5D=BANCO+DO+BRASIL+SA&page%5Bnumber%5D=1&page%5Bsize%5D=10"
+ },
+ "data": [
+  {
+   "type": "lei-records",
+   "id": "QE0Q0253K88YAGNPE356",
+   "attributes": {
+    "lei": "QE0Q0253K88YAGNPE356",
+    "entity": {
+     "legalName": {
+      "name": "BANCO DO BRASIL SA",
+      "language": "pt"
+     },
+     "otherNames": [],
+     "legalAddress": {
+      "addressLines": [
+       "Q SAUN QUADRA 5 BLOCO B TORRE I, II, III",
+       "ANDAR T I SL S101 A S1602 T II SL C101 A",
+       "C1602 TIII SL N101 A N1602",
+       "ASA NORTE"
+      ],
+      "city": "BRASILIA",
+      "region": "BR-DF",
+      "country": "BR",
+      "postalCode": "70040-912"
+     },
+     "headquartersAddress": {
+      "addressLines": [
+       "13 ANDAR",
+       "TORRE I, EDIFICIO BB",
+       "LOTE B",
+       "ST SAUN SETOR DE AUTARQUIAS NORTE, QUADRA 5"
+      ],
+      "city": "BRASILIA",
+      "region": "BR-DF",
+      "country": "BR",
+      "postalCode": "70040-250"
+     },
+     "registeredAt": {
+      "id": "RA000041",
+      "other": null
+     },
+     "registeredAs": "00.000.000/0001-91",
+     "jurisdiction": "BR",
+     "category": "GENERAL",
+     "legalForm": {
+      "id": "X0SD",
+      "other": null
+     },
+     "status": "ACTIVE",
+     "successorEntity": {
+      "lei": null,
+      "name": null
+     },
+     "successorEntities": [],
+     "subCategory": null,
+     "otherAddresses": []
+    },
+    "registration": {
+     "initialRegistrationDate": "2012-06-06T15:52:00Z",
+     "lastUpdateDate": "2026-08-07T07:20:59Z",
+     "status": "ISSUED",
+     "nextRenewalDate": "2027-08-15T13:03:10Z",
+     "managingLou": "5493001KJTIIGC8Y1R12",
+     "corroborationLevel": "FULLY_CORROBORATED",
+     "validatedAt": {
+      "id": "RA000041",
+      "other": null
+     },
+     "validatedAs": "00.000.000/0001-91",
+     "otherValidationAuthorities": []
+    },
+    "bic": [
+     "BRASBRRJXXX",
+     "BRASCNSHXXX",
+     "BRASDEFFXXX",
+     "BRASGB2LXXX",
+     "BRASKYKYXXX",
+     "BRASPAP1XXX",
+     "BRASPYPXXXX",
+     "BRASUS33XXX"
+    ],
+    "mic": null,
+    "qcc": "QBRCYSB8W4",
+    "gem": null
+   },
+   "relationships": {
+    "direct-parent": {
+     "links": {
+      "reporting-exception": "https://api.gleif.org/api/v1/lei-records/QE0Q0253K88YAGNPE356/direct-parent-reporting-exception"
+     }
+    },
+    "ultimate-parent": {
+     "links": {
+      "reporting-exception": "https://api.gleif.org/api/v1/lei-records/QE0Q0253K88YAGNPE356/ultimate-parent-reporting-exception"
+     }
+    },
+    "direct-children": {
+     "links": {
+      "relationship-records": "https://api.gleif.org/api/v1/lei-records/QE0Q0253K88YAGNPE356/direct-child-relationships",
+      "related": "https://api.gleif.org/api/v1/lei-records/QE0Q0253K88YAGNPE356/direct-children"
+     }
+    }
+   }
+  },
+  {
+   "type": "lei-records",
+   "id": "254900VJWGYKL26WF806",
+   "attributes": {
+    "lei": "254900VJWGYKL26WF806",
+    "entity": {
+     "legalName": {
+      "name": "BANCO DO NORDESTE DO BRASIL SA",
+      "language": "pt"
+     },
+     "otherNames": [],
+     "legalAddress": {
+      "addressLines": [
+       "AV DR SILAS MUNGUBA, 5700",
+       "PASSARE"
+      ],
+      "city": "FORTALEZA",
+      "region": "BR-CE",
+      "country": "BR",
+      "postalCode": "60743-902"
+     },
+     "headquartersAddress": {
+      "addressLines": [
+       "AV DR SILAS MUNGUBA, 5700",
+       "PASSARE"
+      ],
+      "city": "FORTALEZA",
+      "region": "BR-CE",
+      "country": "BR",
+      "postalCode": "60743-902"
+     },
+     "registeredAt": {
+      "id": "RA000681",
+      "other": null
+     },
+     "registeredAs": "07.237.373/0001-20",
+     "jurisdiction": "BR",
+     "category": "GENERAL",
+     "legalForm": {
+      "id": "X0SD",
+      "other": null
+     },
+     "status": "ACTIVE",
+     "successorEntity": {
+      "lei": null,
+      "name": null
+     },
+     "successorEntities": [],
+     "subCategory": null,
+     "otherAddresses": []
+    },
+    "registration": {
+     "initialRegistrationDate": "2017-11-17T19:22:03Z",
+     "lastUpdateDate": "2026-10-20T13:53:55Z",
+     "status": "ISSUED",
+     "nextRenewalDate": "2027-10-20T13:53:55Z",
+     "managingLou": "5493001KJTIIGC8Y1R12",
+     "corroborationLevel": "FULLY_CORROBORATED",
+     "validatedAt": {
+      "id": "RA000681",
+      "other": null
+     },
+     "validatedAs": "07.237.373/0001-20",
+     "otherValidationAuthorities": []
+    },
+    "bic": [
+     "BNBRBRCFXXX"
+    ],
+    "mic": null,
+    "qcc": "QBRAUY2AE1",
+    "gem": null
+   },
+   "relationships": {
+    "direct-parent": {
+     "links": {
+      "reporting-exception": "https://api.gleif.org/api/v1/lei-records/254900VJWGYKL26WF806/direct-parent-reporting-exception"
+     }
+    },
+    "ultimate-parent": {
+     "links": {
+      "reporting-exception": "https://api.gleif.org/api/v1/lei-records/254900VJWGYKL26WF806/ultimate-parent-reporting-exception"
+     }
+    }
+   }
+  }
+ ]
+}

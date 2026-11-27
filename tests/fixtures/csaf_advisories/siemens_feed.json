@@ -1,0 +1,114 @@
+{
+ "feed": {
+  "id": "siemens-security-advisories-csaf-feed-tlp-white",
+  "title": "Siemens Security Advisories CSAF feed (TLP:WHITE)",
+  "link": [
+   {
+    "rel": "self",
+    "href": "https://cert-portal.siemens.com/productcert/csaf/ssa-feed-tlp-white.json"
+   }
+  ],
+  "category": [
+   {
+    "scheme": "urn:ietf:params:rolie:category:information-type",
+    "term": "csaf"
+   }
+  ],
+  "updated": "2026-11-24T00:00:00Z",
+  "entry": [
+   {
+    "id": "SSA-242944",
+    "title": "Node2Shell Vulnerability in Siemens Industrial Products",
+    "link": [
+     {
+      "rel": "self",
+      "href": "https://cert-portal.siemens.com/productcert/csaf/ssa-242944.json"
+     },
+     {
+      "rel": "hash",
+      "href": "https://cert-portal.siemens.com/productcert/csaf/ssa-242944.json.sha512"
+     },
+     {
+      "rel": "signature",
+      "href": "https://cert-portal.siemens.com/productcert/csaf/ssa-242944.json.asc"
+     }
+    ],
+    "published": "2026-11-10T00:00:00Z",
+    "updated": "2026-11-24T00:00:00Z",
+    "summary": {
+     "content": "On October 21, 2026, the Node.js project released security updates addressing a critical vulnerability in the Brotli decoder bundled with Node.js, commonly referred to as \"Node2Shell\" (tracked as CVE-2026-111497). The vulnerability is an ou"
+    },
+    "content": {
+     "type": "application/json",
+     "src": "https://cert-portal.siemens.com/productcert/csaf/ssa-242944.json"
+    },
+    "format": {
+     "schema": "https://docs.oasis-open.org/csaf/csaf/v2.0/csaf_json_schema.json",
+     "version": "2.0"
+    }
+   },
+   {
+    "id": "SSA-272816",
+    "title": "Java4Shell Vulnerability in Industrial Edge",
+    "link": [
+     {
+      "rel": "self",
+      "href": "https://cert-portal.siemens.com/productcert/csaf/ssa-272816.json"
+     },
+     {
+      "rel": "hash",
+      "href": "https://cert-portal.siemens.com/productcert/csaf/ssa-272816.json.sha512"
+     },
+     {
+      "rel": "signature",
+      "href": "https://cert-portal.siemens.com/productcert/csaf/ssa-272816.json.asc"
+     }
+    ],
+    "published": "2026-11-18T00:00:00Z",
+    "updated": "2026-11-23T00:00:00Z",
+    "summary": {
+     "content": "Siemens is currently assessing the impact of Java4Shell (CVE-2026-114938) on Industrial Edge. Please check your Industrial Edge Management (IEM) setup and the underlying hardware. **For your system to be exposed to this vulnerability, all o"
+    },
+    "content": {
+     "type": "application/json",
+     "src": "https://cert-portal.siemens.com/productcert/csaf/ssa-272816.json"
+    },
+    "format": {
+     "schema": "https://docs.oasis-open.org/csaf/csaf/v2.0/csaf_json_schema.json",
+     "version": "2.0"
+    }
+   },
+   {
+    "id": "SSA-479842",
+    "title": "Apache Log4j Vulnerabilities - Impact to Siemens Energy Sensformer / Sensgear (Platform, Basic and Advanced)",
+    "link": [
+     {
+      "rel": "self",
+      "href": "https://cert-portal.siemens.com/productcert/csaf/ssa-479842.json"
+     },
+     {
+      "rel": "hash",
+      "href": "https://cert-portal.siemens.com/productcert/csaf/ssa-479842.json.sha512"
+     },
+     {
+      "rel": "signature",
+      "href": "https://cert-portal.siemens.com/productcert/csaf/ssa-479842.json.asc"
+     }
+    ],
+    "published": "2021-12-21T00:00:00Z",
+    "updated": "2021-12-23T00:00:00Z",
+    "summary": {
+     "content": "On 2021-12-09, a vulnerability in Apache Log4j (a logging tool used in many Java-based applications) was disclosed, that could allow remote unauthenticated attackers to execute code on vulnerable systems. The vulnerability is tracked as CVE"
+    },
+    "content": {
+     "type": "application/json",
+     "src": "https://cert-portal.siemens.com/productcert/csaf/ssa-479842.json"
+    },
+    "format": {
+     "schema": "https://docs.oasis-open.org/csaf/csaf/v2.0/csaf_json_schema.json",
+     "version": "2.0"
+    }
+   }
+  ]
+ }
+}

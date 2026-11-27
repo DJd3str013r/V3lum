@@ -1,0 +1,20 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p2-G10-3",
+  "title": "Municipal gazettes, company-name resolution and court-communication vocabulary (P243 querido_diario, P361 cnpj_name_resolver, P362 djen_court_communications)",
+  "owner": "batch p2-G10-3",
+  "notes": "Reused: name_only_match (p1-G10-2), bcb_verified_domain and registry_name_match (p1-G10-3), mentions and context_only (core). penalty_term is re-declared with the description of p2-G10-3's sibling p2-G10-2 (dou_search shares the presentation) so either fragment can land first. CNJ process numbers found in excerpts pivot as KEYWORD with relation 'mentions' and expand=False until the core cnj_process type exists (shared helper of batch p2-G10-2).",
+  "attributes": {
+    "gazette_mentions": "Querido Diario municipal-gazette matches {count (largest total_gazettes of the queries), counts {query kind: total}, fetched, queries [{kind cnpj|razao_social|nome_fantasia|company_name|keyword|person_name, query, state ok|empty|could_not_verify, total, reason}], window {since, until}, top: [{municipality, state, territory_id, date, edition, extra_edition, url, excerpts (<= 300 chars, CPFs masked), penalty_terms, queries}] (5 shown: penalty terms first, then most recent), line, coverage, attribution}",
+    "cnpj_hypotheses": "ranked 'possible CNPJ' hypotheses for a company name (never confirmed links): [{cnpj, name, normalized_name, match_kind exact_razao|exact_fantasia|contains|fuzzy, similarity, source rfb|cvm|bcb|gleif|wikidata, snapshot, active, head_office, situacao, uf, city, cnpj_derived, label, lei, qid, followup}]",
+    "name_resolution": "how a company name was resolved to CNPJ hypotheses {query, normalized, sources {source: state}, local_index {state installed|not_installed|error, snapshot, mode fts5|tokens, rows}, online_fallback, auto_chain {auto, cnpj, reason}, listing (at most 5 lines with the follow-up command), more}"
+  },
+  "tags": {
+    "penalty_term": "gazette excerpt carrying a penalty term (penalidade, inidoneidade, rescisao, multa, sancao, suspensao): ranked first, reviewed by the analyst"
+  },
+  "relations": {
+    "co_mentioned_in_gazette": "CNPJ/company -> another CNPJ named in the same official-gazette excerpt (a hypothesis, never a confirmed link; expand=False)",
+    "possible_cnpj": "company name -> CNPJ hypothesis of the name resolver (local RFB name index, CVM/BCB registries, GLEIF, Wikidata P6204) with match evidence; expand=False unless it is the exact unique razao social of an active head office (P361 FC6)",
+    "wikidata_website": "company name -> official website (P856) of a Wikidata item carrying the hypothesised CNPJ (community-edited; expand=False until the analyst confirms the CNPJ)"
+  }
+}

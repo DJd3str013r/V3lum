@@ -1,0 +1,156 @@
+{
+ "Event": {
+  "uuid": "796a666f-8f4d-50ac-90ac-b1beea15a82d",
+  "info": "V3LUM case 20261126-100000-a1b2: domain:login-acme.example",
+  "date": "2026-11-26",
+  "threat_level_id": "4",
+  "analysis": "0",
+  "distribution": "0",
+  "published": false,
+  "Tag": [
+   {
+    "name": "tlp:amber"
+   },
+   {
+    "name": "workflow:state=\"draft\""
+   },
+   {
+    "name": "misp-galaxy:malpedia=\"V3lumTestLoader\""
+   },
+   {
+    "name": "misp-galaxy:mitre-attack-pattern=\"Phishing - T1566\""
+   },
+   {
+    "name": "misp-galaxy:threat-actor=\"APT28\""
+   }
+  ],
+  "Attribute": [
+   {
+    "uuid": "cae10b7a-9c1b-5eed-b853-f768091e068a",
+    "type": "AS",
+    "category": "Network activity",
+    "value": "AS64500",
+    "to_ids": false,
+    "distribution": "5",
+    "disable_correlation": false,
+    "comment": ""
+   },
+   {
+    "uuid": "c3c55b25-9f56-5f85-9c18-f7bd7b0d84e8",
+    "type": "domain",
+    "category": "Network activity",
+    "value": "login-acme.example",
+    "to_ids": true,
+    "distribution": "5",
+    "disable_correlation": false,
+    "comment": "independent-source consensus (CR27): 2 independent upstream families (feed_a, feed_b) inside the decay window",
+    "last_seen": "2026-11-20T00:00:00.000Z"
+   },
+   {
+    "uuid": "b08765dd-3515-50d4-a6e9-b6e89caed742",
+    "type": "email",
+    "category": "Network activity",
+    "value": "joao.silva@acme-corp.example",
+    "to_ids": false,
+    "distribution": "5",
+    "disable_correlation": false,
+    "comment": ""
+   },
+   {
+    "uuid": "605d6dfa-2540-54b5-9887-1b45cf56b4b5",
+    "type": "full-name",
+    "category": "Person",
+    "value": "Joao Silva Teste",
+    "to_ids": false,
+    "distribution": "5",
+    "disable_correlation": false,
+    "comment": ""
+   },
+   {
+    "uuid": "9a99c5bd-a6af-5868-9e80-6830b778f33f",
+    "type": "ip-dst",
+    "category": "Network activity",
+    "value": "203.0.113.10",
+    "to_ids": false,
+    "distribution": "5",
+    "disable_correlation": false,
+    "comment": ""
+   },
+   {
+    "uuid": "a2dea647-b045-565d-892c-8dbc3cdcf0b1",
+    "type": "phone-number",
+    "category": "Person",
+    "value": "+5511987654321",
+    "to_ids": false,
+    "distribution": "5",
+    "disable_correlation": false,
+    "comment": ""
+   },
+   {
+    "uuid": "93c4e437-b8b1-5216-bb7e-4c47a3261fd7",
+    "type": "sha256",
+    "category": "Payload delivery",
+    "value": "a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1a3f1",
+    "to_ids": true,
+    "distribution": "5",
+    "disable_correlation": false,
+    "comment": "analyst-confirmed: sandbox verdict",
+    "last_seen": "2026-11-21T08:30:00.000Z"
+   },
+   {
+    "uuid": "8db0fe66-50ae-5b77-94ca-d14425c6a197",
+    "type": "text",
+    "category": "Social network",
+    "value": "jsilva_teste",
+    "to_ids": false,
+    "distribution": "5",
+    "disable_correlation": false,
+    "comment": "username"
+   },
+   {
+    "uuid": "6392868b-ed23-5d25-8402-2f212f496fa5",
+    "type": "url",
+    "category": "Network activity",
+    "value": "https://login-acme.example/it's\\path?x=1",
+    "to_ids": false,
+    "distribution": "5",
+    "disable_correlation": false,
+    "comment": ""
+   },
+   {
+    "uuid": "0a236ec1-04b3-5c0e-9d45-38f1c92b7330",
+    "type": "url",
+    "category": "Network activity",
+    "value": "https://login-acme.example/reset?email=joao.silva@acme-corp.example",
+    "to_ids": false,
+    "distribution": "5",
+    "disable_correlation": false,
+    "comment": ""
+   },
+   {
+    "uuid": "a0ef2b25-79c3-5ee1-8f39-a61a050ba9d9",
+    "type": "vulnerability",
+    "category": "External analysis",
+    "value": "CVE-2024-3400",
+    "to_ids": false,
+    "distribution": "5",
+    "disable_correlation": false,
+    "comment": ""
+   }
+  ],
+  "Galaxy": [
+   {
+    "type": "threat-actor",
+    "GalaxyCluster": [
+     {
+      "uuid": "11111111-2222-4333-8444-555555555555",
+      "value": "APT28",
+      "type": "threat-actor",
+      "tag_name": "misp-galaxy:threat-actor=\"APT28\""
+     }
+    ],
+    "uuid": "698774c7-8022-42c4-917f-8d6e4f06ada3"
+   }
+  ]
+ }
+}

@@ -1,0 +1,23 @@
+{
+ "_meta": {
+  "module": "dockerhub",
+  "case": "repositories_ok",
+  "source": "C0234 hub.docker.com",
+  "request": {
+   "method": "GET",
+   "url": "https://hub.docker.com/v2/repositories/docker/?page_size=5&ordering=last_updated"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "LIVE",
+  "elapsed_s": 0.122
+ },
+ "status": 200,
+ "headers": {
+  "content-type": "application/json",
+  "x-ratelimit-limit": "180",
+  "x-ratelimit-remaining": "179",
+  "x-ratelimit-reset": "1795676311",
+  "server": "cloudflare"
+ },
+ "body": "{\"count\":321,\"next\":\"https://hub.docker.com/v2/repositories/docker/?ordering=last_updated&page=2&page_size=5\",\"previous\":null,\"results\":[{\"name\":\"sandbox-templates\",\"namespace\":\"docker\",\"repository_type\":\"image\",\"description\":\"\",\"is_private\":false,\"star_count\":10,\"pull_count\":6908887,\"last_updated\":\"2026-11-26T04:25:20.953596Z\",\"date_registered\":\"2025-09-24T18:57:03.191258Z\"},{\"name\":\"sbx-releases\",\"namespace\":\"docker\",\"repository_type\":\"image\",\"description\":\"Docker Sandboxes Releases Repository\",\"is_private\":false,\"star_count\":0,\"pull_count\":45323,\"last_updated\":\"2026-11-26T03:29:46.832019Z\",\"date_registered\":\"2026-03-30T22:37:25.717213Z\"},{\"name\":\"docker-agent-sbx-templates\",\"namespace\":\"docker\",\"repository_type\":\"image\",\"description\":\"\",\"is_private\":false,\"star_count\":0,\"pull_count\":90140,\"last_updated\":\"2026-11-25T22:56:02.828692Z\",\"date_registered\":\"2026-07-03T16:08:04.778902Z\"},{\"name\":\"docker-agent\",\"namespace\":\"docker\",\"repository_type\":\"image\",\"description\":\"\",\"is_private\":false,\"star_count\":0,\"pull_count\":164957,\"last_updated\":\"2026-11-25T22:55:26.68232Z\",\"date_registered\":\"2026-03-03T11:57:29.577424Z\"},{\"name\":\"compose-bin\",\"namespace\":\"docker\",\"repository_type\":\"image\",\"description\":\"Docker Compose CLI plugin (binary only) \",\"is_private\":false,\"star_count\":7,\"pull_count\":4723037,\"last_updated\":\"2026-11-25T21:17:44.456117Z\",\"date_registered\":\"2023-03-14T10:50:47.902371Z\"}]}"
+}

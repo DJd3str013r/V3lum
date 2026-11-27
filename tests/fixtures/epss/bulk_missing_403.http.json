@@ -1,0 +1,20 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://epss.empiricalsecurity.com/epss_scores-1999-01-01.csv.gz",
+  "headers": {}
+ },
+ "response": {
+  "status": 403,
+  "headers": {
+   "content-type": "application/xml",
+   "date": "Thu, 26 Nov 2026 05:22:46 GMT",
+   "server": "AmazonS3",
+   "x-cache": "Error from cloudfront"
+  },
+  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>AccessDenied</Code><Message>Access Denied</Message></Error>"
+ },
+ "transport_error": null,
+ "elapsed_s": 0.71406,
+ "note": "Missing dated object: 403 application/xml <Error><Code>AccessDenied</Code> (S3 answers AccessDenied, not NoSuchKey, for a missing key). Not a dataset: keep the previous copy."
+}

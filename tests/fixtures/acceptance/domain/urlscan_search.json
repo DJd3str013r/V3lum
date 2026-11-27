@@ -1,0 +1,346 @@
+{
+ "schema": "v3lum.acceptance_routes/1",
+ "module": "urlscan_search",
+ "routes": [
+  {
+   "method": "GET",
+   "url": "https://urlscan.io/api/v1/search/?q=page.domain%3Aexample.com&size=100",
+   "status": 200,
+   "json": {
+    "results": [
+     {
+      "submitter": {},
+      "canonical": {
+       "task": {
+        "url": "example.com"
+       },
+       "page": {
+        "url": "example.com"
+       }
+      },
+      "task": {
+       "visibility": "public",
+       "method": "api",
+       "domain": "www.example.com",
+       "apexDomain": "example.com",
+       "time": "2026-11-26T07:43:15.726Z",
+       "uuid": "01a216ce-efb0-733a-ba6e-8a3b03ed1517",
+       "url": "http://www.example.com/"
+      },
+      "stats": {
+       "uniqIPs": 1,
+       "uniqCountries": 1,
+       "dataLength": 2540,
+       "encodedDataLength": 2149,
+       "requests": 2
+      },
+      "page": {
+       "server": "cloudflare",
+       "redirected": "https-only",
+       "ip": "104.20.23.154",
+       "apexDomainAgeDays": 4367,
+       "mimeType": "text/html",
+       "title": "Example Domain",
+       "url": "https://www.example.com/",
+       "tlsValidDays": 90,
+       "tlsAgeDays": 1,
+       "domainAgeDays": 4367,
+       "tlsValidFrom": "2026-11-24T23:48:34.000Z",
+       "domain": "www.example.com",
+       "umbrellaRank": 44970,
+       "apexDomain": "example.com",
+       "asnname": "CLOUDFLARENET - Cloudflare, Inc., US",
+       "asn": "AS13335",
+       "tlsIssuer": "Cloudflare TLS Issuing ECC CA 3",
+       "status": "200"
+      },
+      "labels": [],
+      "_id": "01a216ce-efb0-733a-ba6e-8a3b03ed1517",
+      "_score": null,
+      "sort": [
+       1795678995726,
+       "01a216ce-efb0-733a-ba6e-8a3b03ed1517"
+      ],
+      "result": "https://urlscan.io/api/v1/result/01a216ce-efb0-733a-ba6e-8a3b03ed1517/",
+      "screenshot": "https://urlscan.io/screenshots/01a216ce-efb0-733a-ba6e-8a3b03ed1517.png"
+     },
+     {
+      "submitter": {},
+      "canonical": {
+       "task": {
+        "url": "example.com"
+       },
+       "page": {
+        "url": "example.com"
+       }
+      },
+      "task": {
+       "visibility": "public",
+       "method": "api",
+       "domain": "www.example.com",
+       "apexDomain": "example.com",
+       "time": "2026-11-26T06:29:07.712Z",
+       "uuid": "01a2168b-1025-759f-818f-58f0338d4b23",
+       "url": "http://www.example.com/"
+      },
+      "stats": {
+       "uniqIPs": 1,
+       "uniqCountries": 1,
+       "dataLength": 2540,
+       "encodedDataLength": 2149,
+       "requests": 2
+      },
+      "page": {
+       "server": "cloudflare",
+       "redirected": "https-only",
+       "ip": "104.20.23.154",
+       "apexDomainAgeDays": 4367,
+       "mimeType": "text/html",
+       "title": "Example Domain",
+       "url": "https://www.example.com/",
+       "tlsValidDays": 90,
+       "tlsAgeDays": 1,
+       "domainAgeDays": 4367,
+       "tlsValidFrom": "2026-11-24T23:48:34.000Z",
+       "domain": "www.example.com",
+       "umbrellaRank": 44970,
+       "apexDomain": "example.com",
+       "asnname": "CLOUDFLARENET - Cloudflare, Inc., US",
+       "asn": "AS13335",
+       "tlsIssuer": "Cloudflare TLS Issuing ECC CA 3",
+       "status": "200"
+      },
+      "labels": [],
+      "_id": "01a2168b-1025-759f-818f-58f0338d4b23",
+      "_score": null,
+      "sort": [
+       1795674547712,
+       "01a2168b-1025-759f-818f-58f0338d4b23"
+      ],
+      "result": "https://urlscan.io/api/v1/result/01a2168b-1025-759f-818f-58f0338d4b23/",
+      "screenshot": "https://urlscan.io/screenshots/01a2168b-1025-759f-818f-58f0338d4b23.png"
+     },
+     {
+      "submitter": {},
+      "canonical": {
+       "task": {
+        "url": "example.com"
+       },
+       "page": {
+        "url": "example.com"
+       }
+      },
+      "task": {
+       "visibility": "public",
+       "method": "api",
+       "domain": "www.example.com",
+       "apexDomain": "example.com",
+       "time": "2026-11-26T06:18:42.397Z",
+       "uuid": "01a21681-83a3-7268-bf1c-a60ffaf9f358",
+       "url": "http://www.example.com/"
+      },
+      "stats": {
+       "uniqIPs": 1,
+       "uniqCountries": 1,
+       "dataLength": 2540,
+       "encodedDataLength": 2151,
+       "requests": 2
+      },
+      "page": {
+       "server": "cloudflare",
+       "redirected": "https-only",
+       "ip": "104.20.23.154",
+       "apexDomainAgeDays": 4367,
+       "mimeType": "text/html",
+       "title": "Example Domain",
+       "url": "https://www.example.com/",
+       "tlsValidDays": 90,
+       "tlsAgeDays": 1,
+       "domainAgeDays": 4367,
+       "tlsValidFrom": "2026-11-24T23:48:34.000Z",
+       "domain": "www.example.com",
+       "umbrellaRank": 44970,
+       "apexDomain": "example.com",
+       "asnname": "CLOUDFLARENET - Cloudflare, Inc., US",
+       "asn": "AS13335",
+       "tlsIssuer": "Cloudflare TLS Issuing ECC CA 3",
+       "status": "200"
+      },
+      "labels": [],
+      "_id": "01a21681-83a3-7268-bf1c-a60ffaf9f358",
+      "_score": null,
+      "sort": [
+       1795673922397,
+       "01a21681-83a3-7268-bf1c-a60ffaf9f358"
+      ],
+      "result": "https://urlscan.io/api/v1/result/01a21681-83a3-7268-bf1c-a60ffaf9f358/",
+      "screenshot": "https://urlscan.io/screenshots/01a21681-83a3-7268-bf1c-a60ffaf9f358.png"
+     }
+    ],
+    "total": 1908,
+    "took": 9726,
+    "has_more": false,
+    "search_date_limit_days": 30
+   },
+   "headers": {
+    "content-type": "application/json; charset=utf-8",
+    "x-rate-limit-scope": "ip-address",
+    "x-rate-limit-action": "search",
+    "x-rate-limit-window": "minute",
+    "x-rate-limit-limit": "30",
+    "x-rate-limit-remaining": "29",
+    "x-rate-limit-reset": "2026-11-26T09:04:00.000Z",
+    "x-rate-limit-reset-after": "21",
+    "x-rate-limit-concurrency-rank": "0",
+    "x-rate-limit-concurrency-limit": "10"
+   },
+   "latency_ms": 10870
+  },
+  {
+   "method": "GET",
+   "url": "https://urlscan.io/api/v1/search/?q=domain%3Aexample.com%20AND%20NOT%20page.domain%3Aexample.com&size=100",
+   "status": 200,
+   "json": {
+    "results": [
+     {
+      "submitter": {},
+      "canonical": {
+       "task": {
+        "url": "techradar.com"
+       },
+       "page": {
+        "url": "techradar.com"
+       }
+      },
+      "task": {
+       "visibility": "public",
+       "method": "api",
+       "domain": "techradar.com",
+       "apexDomain": "techradar.com",
+       "time": "2026-11-26T08:46:02.296Z",
+       "uuid": "01a21707-d617-728e-b35a-45e3b4857ca4",
+       "url": "http://techradar.com/",
+       "tags": [
+        "tranco_l76g4"
+       ]
+      },
+      "stats": {
+       "uniqIPs": 254,
+       "uniqCountries": 13,
+       "dataLength": 28581661,
+       "encodedDataLength": 9420474,
+       "requests": 2119
+      },
+      "page": {
+       "country": "US",
+       "redirected": "parent-domain",
+       "ip": "151.101.194.114",
+       "apexDomainAgeDays": 3562,
+       "language": "en",
+       "mimeType": "text/html",
+       "title": "TechRadar | the technology experts",
+       "url": "https://www.techradar.com/",
+       "tlsValidDays": 89,
+       "tlsAgeDays": 26,
+       "domainAgeDays": 3562,
+       "tlsValidFrom": "2026-10-30T08:58:51.000Z",
+       "domain": "www.techradar.com",
+       "umbrellaRank": 141049,
+       "apexDomain": "techradar.com",
+       "asnname": "FASTLY - Fastly, Inc., US",
+       "asn": "AS54113",
+       "tlsIssuer": "YR2",
+       "status": "200"
+      },
+      "labels": [],
+      "_id": "01a21707-d617-728e-b35a-45e3b4857ca4",
+      "_score": null,
+      "sort": [
+       1795682762296,
+       "01a21707-d617-728e-b35a-45e3b4857ca4"
+      ],
+      "result": "https://urlscan.io/api/v1/result/01a21707-d617-728e-b35a-45e3b4857ca4/",
+      "screenshot": "https://urlscan.io/screenshots/01a21707-d617-728e-b35a-45e3b4857ca4.png"
+     },
+     {
+      "submitter": {},
+      "canonical": {
+       "task": {
+        "url": "wunderground.com"
+       },
+       "page": {
+        "url": "wunderground.com"
+       }
+      },
+      "task": {
+       "visibility": "public",
+       "method": "api",
+       "domain": "wunderground.com",
+       "apexDomain": "wunderground.com",
+       "time": "2026-11-26T08:18:41.340Z",
+       "uuid": "01a216ee-ca46-7001-b983-331bd54873ab",
+       "url": "http://wunderground.com/",
+       "tags": [
+        "tranco_l76g4"
+       ]
+      },
+      "stats": {
+       "uniqIPs": 226,
+       "uniqCountries": 14,
+       "dataLength": 33307754,
+       "encodedDataLength": 12131011,
+       "requests": 1608
+      },
+      "page": {
+       "country": "US",
+       "redirected": "parent-domain",
+       "ip": "2600:1408:c400:38e::2e03",
+       "apexDomainAgeDays": 4992,
+       "language": "en",
+       "mimeType": "text/html",
+       "title": "Local Weather Forecast, News and Conditions | Weather Underground",
+       "url": "https://www.wunderground.com/",
+       "tlsValidDays": 365,
+       "tlsAgeDays": 325,
+       "domainAgeDays": 4979,
+       "tlsValidFrom": "2026-01-05T00:00:00.000Z",
+       "domain": "www.wunderground.com",
+       "umbrellaRank": 50689,
+       "apexDomain": "wunderground.com",
+       "asnname": "AKAMAI-ASN1 Akamai International B.V., NL",
+       "asn": "AS20940",
+       "tlsIssuer": "DigiCert Global G3 TLS ECC SHA384 2020 CA1",
+       "status": "200"
+      },
+      "labels": [],
+      "_id": "01a216ee-ca46-7001-b983-331bd54873ab",
+      "_score": null,
+      "sort": [
+       1795681121340,
+       "01a216ee-ca46-7001-b983-331bd54873ab"
+      ],
+      "result": "https://urlscan.io/api/v1/result/01a216ee-ca46-7001-b983-331bd54873ab/",
+      "screenshot": "https://urlscan.io/screenshots/01a216ee-ca46-7001-b983-331bd54873ab.png"
+     }
+    ],
+    "total": 9200,
+    "took": 1012,
+    "has_more": false,
+    "search_date_limit_days": 30
+   },
+   "headers": {
+    "content-type": "application/json; charset=utf-8",
+    "x-rate-limit-scope": "ip-address",
+    "x-rate-limit-action": "search",
+    "x-rate-limit-window": "minute",
+    "x-rate-limit-limit": "30",
+    "x-rate-limit-remaining": "29",
+    "x-rate-limit-reset": "2026-11-26T09:04:00.000Z",
+    "x-rate-limit-reset-after": "21",
+    "x-rate-limit-concurrency-rank": "0",
+    "x-rate-limit-concurrency-limit": "10"
+   },
+   "latency_ms": 2119
+  }
+ ]
+}

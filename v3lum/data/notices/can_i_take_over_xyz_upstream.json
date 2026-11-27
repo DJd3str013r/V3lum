@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "can_i_take_over_xyz_upstream",
+  "source_url": "https://github.com/EdOverflow/can-i-take-over-xyz",
+  "version": "fingerprints.json at commit 5bd4e12837911c8475486f1da922c9b9c706e632 (sha256 a108bf6e6d10d4e4861c4293eef8c224a0fd243ec4f3a39de321de69f284c64f), pinned 2026-11-26",
+  "sha256": "a108bf6e6d10d4e4861c4293eef8c224a0fd243ec4f3a39de321de69f284c64f",
+  "licence": "CC-BY-4.0",
+  "attribution": "Subdomain-takeover service fingerprints from \"can-i-take-over-xyz\" by EdOverflow and contributors (https://github.com/EdOverflow/can-i-take-over-xyz), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). The full upstream fingerprints.json is an optional runtime download (dataset can_i_take_over_xyz_fingerprints, pinned by commit and SHA-256) read by takeover_candidates and takeover_verify; the reduced bundled copy has its own notice (can_i_take_over_xyz). The multi-resolver and random-label wildcard verification follow theHarvester's documented behaviour (GPL-2.0): ideas only, no code copied.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/pentest_recon/subdomain_takeover.py",
+    "v3lum/data/active_locks/can_i_take_over_xyz_fingerprints.json"
+  ]
+}

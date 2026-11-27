@@ -1,0 +1,40 @@
+{
+ "Count": 1,
+ "Message": "Results returned successfully. NOTE: Any missing decoded values should be interpreted as NHTSA does not have data on the specific variable. Missing value should NOT be interpreted as an indication that a feature or technology is unavailable for a vehicle.",
+ "SearchCriteria": "VIN(s): 5UXWX7C5*BA",
+ "Results": [
+  {
+   "AdditionalErrorText": "",
+   "BodyClass": "Sport Utility Vehicle [SUV]/Multipurpose Vehicle [MPV]",
+   "DisplacementL": "3.0",
+   "Doors": "4",
+   "DriveType": "AWD/All-Wheel Drive",
+   "EngineConfiguration": "",
+   "EngineCylinders": "6",
+   "EngineHP": "300",
+   "EngineModel": "",
+   "ErrorCode": "6",
+   "ErrorText": "6 - Incomplete VIN",
+   "FuelTypePrimary": "Gasoline",
+   "GVWR": "Class 1D: 5,001 - 6,000 lb (2,268 - 2,722 kg)",
+   "Make": "BMW",
+   "MakeID": "452",
+   "Manufacturer": "BMW MANUFACTURER CORPORATION / BMW NORTH AMERICA",
+   "ManufacturerId": "968",
+   "Model": "X3",
+   "ModelID": "1719",
+   "ModelYear": "2011",
+   "PlantCity": "MUNICH",
+   "PlantCompanyName": "",
+   "PlantCountry": "GERMANY",
+   "PlantState": "",
+   "PossibleValues": "",
+   "Series": "",
+   "SuggestedVIN": "",
+   "Trim": "xDrive35i",
+   "VIN": "5UXWX7C5*BA",
+   "VehicleDescriptor": "5UXWX7C5*BA",
+   "VehicleType": "MULTIPURPOSE PASSENGER VEHICLE (MPV)"
+  }
+ ]
+}

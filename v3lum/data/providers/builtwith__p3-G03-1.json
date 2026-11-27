@@ -1,0 +1,42 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "builtwith",
+  "hosts": [],
+  "sources": {},
+  "error_markers": [
+    {
+      "id": "builtwith_credits_exhausted",
+      "statuses": [200],
+      "json_path": "Errors[].Code",
+      "equals": -3,
+      "regex": null,
+      "final_url_regex": null,
+      "maps_to": "quota",
+      "reason_code": "quota",
+      "reason": "BuiltWith: out of API credits (Errors[] code -3 inside an HTTP 200 answer): could not verify until credits are added"
+    },
+    {
+      "id": "builtwith_credits_message",
+      "statuses": [200],
+      "json_path": "Errors[].Message",
+      "equals": null,
+      "regex": "(?i)run out of api credits",
+      "final_url_regex": null,
+      "maps_to": "quota",
+      "reason_code": "quota",
+      "reason": "BuiltWith: 'You've run out of API Credits' inside an HTTP 200 answer: could not verify until credits are added"
+    },
+    {
+      "id": "builtwith_one_lookup_at_a_time",
+      "statuses": [200],
+      "json_path": "Errors[].Code",
+      "equals": -7,
+      "regex": null,
+      "final_url_regex": null,
+      "maps_to": "rate_limited",
+      "reason_code": "rate_limited",
+      "reason": "BuiltWith: only one lookup at a time (Errors[] code -7 inside an HTTP 200 answer): could not verify now"
+    }
+  ],
+  "notes": "Batch p3-G03-1 (P073 builtwith): the Errors[]-in-200 markers the seed left to the owning batch (P073 cond 4: never EMPTY). Official error table (api.builtwith.com/errorCodes, 2026-11-26): -1 format, -2 key, -3 'You've run out of API Credits', -4 technology not found, -5 plan upgrade, -6 internal save, -7 one lookup at a time, -8 invalid/unsupported domain, -99 internal. Exhausted credits map to QUOTA (contract v2 status for a used-up budget, so the P334 quota book stops further paid lookups); code -2/-5 ('You need to login or create an account', plan upgrade) cannot be a marker (markers never map to NEEDS_KEY) and are mapped to NEEDS_KEY by the module; every other code is ERROR. Fixtures: tests/fixtures/builtwith/ (free_badkey_error_in_200.json and domain_badkey_error_in_200.json are real keyless answers; credits_exhausted.json and one_lookup_at_a_time.json are written in the documented shape)."
+}

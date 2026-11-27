@@ -1,0 +1,39 @@
+{
+  "schema": "v3lum.pivot_pack/1",
+  "pack": "passive_dns_robtex",
+  "title": "Robtex lookup pages (manual passive DNS, P015)",
+  "links": [
+    {
+      "id": "robtex_dns_lookup",
+      "label": "Robtex DNS lookup (passive DNS, manual)",
+      "template": "https://www.robtex.com/dns-lookup/{domain}",
+      "entity_types": ["domain"],
+      "category": "passive_dns",
+      "host": "www.robtex.com",
+      "verified": true,
+      "checked_at": "2026-11-25",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Robtex web page for a domain (current and historical DNS, shared hosts). The manual link of passive_dns while the Robtex free API (noncommercial) is skipped under the corporate profile (P015 cond 3). Research C0090 'verified 200'."
+    },
+    {
+      "id": "robtex_ip_lookup",
+      "label": "Robtex IP lookup (passive DNS, manual)",
+      "template": "https://www.robtex.com/ip-lookup/{ip}",
+      "entity_types": ["ipv4", "ipv6"],
+      "category": "passive_dns",
+      "host": "www.robtex.com",
+      "verified": true,
+      "checked_at": "2026-11-25",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Robtex web page for an IP (names seen on it, AS, route). The manual link of passive_dns for IP inputs while the Robtex free API is skipped under the corporate profile (P015 cond 3). Research C0090 'verified 200'."
+    }
+  ]
+}

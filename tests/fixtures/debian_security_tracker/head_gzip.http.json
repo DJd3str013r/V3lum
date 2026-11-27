@@ -1,0 +1,29 @@
+{
+ "request": {
+  "method": "HEAD",
+  "url": "https://security-tracker.debian.org/tracker/data/json",
+  "headers": {
+   "Accept-Encoding": "gzip"
+  }
+ },
+ "response": {
+  "status": 200,
+  "headers": {
+   "server": "BaseHTTP/0.6 Python/3.11.2",
+   "content-type": "application/json",
+   "last-modified": "Thu, 26 Nov 2026 08:36:31 GMT",
+   "cache-control": "max-age=3600, stale-while-revalidate=60",
+   "expires": "Thu, 26 Nov 2026 09:46:05 GMT",
+   "content-encoding": "gzip",
+   "accept-ranges": "bytes",
+   "age": "3415",
+   "via": "1.1 varnish",
+   "x-cache": "HIT",
+   "content-length": "15395177"
+  },
+  "body": ""
+ },
+ "transport_error": null,
+ "elapsed_s": 0.089,
+ "note": "HEAD with Accept-Encoding gzip: content-length 15,395,177 (gzip) for 92.9 MB of JSON; max-age 3600."
+}

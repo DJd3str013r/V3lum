@@ -1,0 +1,86 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "imeidb",
+  "name": "IMEIDB TAC/IMEI device lookup API (imeidb.xyz)",
+  "operator": "imeidb.xyz (KNK; operator details not verified)",
+  "hosts": [
+    "imeidb.xyz"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "Operator identity, data handling and track record not reviewed (P319 cond 4: imeidb.xyz must be recorded as community tier - operator, terms, track record - before the online part runs; until then it is unknown tier and receives nothing).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "D",
+    "justification": "Commercial TAC database of an unreviewed operator; the model returned for a TAC probe is not independently verified."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 15.0,
+    "retries": 0,
+    "ttl": 2592000,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [
+    {
+      "id": "imeidb_invalid_credentials",
+      "statuses": [200],
+      "json_path": "code",
+      "equals": 401,
+      "regex": null,
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "IMEIDB: 'invalid credentials' inside an HTTP 200 body - could not verify (check the imeidb token)"
+    },
+    {
+      "id": "imeidb_out_of_money",
+      "statuses": [200, 402],
+      "json_path": "code",
+      "equals": 402,
+      "regex": null,
+      "final_url_regex": null,
+      "maps_to": "quota",
+      "reason_code": "quota",
+      "reason": "IMEIDB: account balance exhausted (402) - could not verify"
+    }
+  ],
+  "keys": {
+    "imeidb": {
+      "description": "IMEIDB API token of the team account (TAC -> device model lookup; sent only in the X-Api-Key header)",
+      "signup_url": "https://imeidb.xyz/",
+      "env": ["V3LUM_IMEIDB_TOKEN"],
+      "multi_key": false,
+      "plan_hint": "business = a paid IMEIDB plan whose terms legal confirmed for company use (the terms forbid automated access and commercial exploitation without written permission), recorded with `v3lum keys set imeidb --plan business`"
+    }
+  },
+  "sources": {
+    "tac": {
+      "title": "imeidb.xyz /api/imei/<TAC+000000+Luhn>?format=json (device model of the 8-digit TAC; token in the X-Api-Key header)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://imeidb.xyz/terms-and-conditions",
+        "quote": "You can also transfer a token through the X-Api-Key header. [API docs https://imeidb.xyz/api, 2026-11-26]; the terms forbid using 'any robot, spider or other automatic device ... to access ... the Service' and commercial exploitation without written permission: business use depends on the team's plan and a written decision (key_plans).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "imeidb",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Batch p3-G12-1 (P319 imei_check). Only the 8-digit TAC leaves the machine: the API receives TAC + 000000 + the recomputed Luhn digit, never the real serial. Live 2026-11-26: a keyless call with the docs example TAC probe answered HTTP 401 {'success': false, 'message': 'Your request was made with invalid credentials.', 'code': 401} (1.44 s). Documented errors: 401 credentials, 402 out of money, 429 rate limit, 460 invalid IMEI. tacdb.osmocom.org is dead and not used. No success capture with the team's token exists yet (P319 cond 5)."
+    }
+  },
+  "notes": "Owned by batch p3-G12-1 (P319). Unknown tier: the policy gate never sends it a PERSONAL_TYPES value (the IMEI type), so the module receives nothing until a reviewer records the community tier."
+}

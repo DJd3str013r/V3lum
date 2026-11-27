@@ -1,0 +1,120 @@
+{
+ "Status": 0,
+ "TC": false,
+ "RD": true,
+ "RA": true,
+ "AD": false,
+ "CD": false,
+ "Question": [
+  {
+   "name": "google.com.",
+   "type": 16
+  }
+ ],
+ "Answer": [
+  {
+   "name": "google.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "cisco-ci-domain-verification=000000000000000000000000000000000000000000000000000000000000001f"
+  },
+  {
+   "name": "google.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "work-accounts-domain-verification=EXAMPLE00000000000000000000032"
+  },
+  {
+   "name": "google.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "_EXAMPLE000000000000000000000033"
+  },
+  {
+   "name": "google.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "google-site-verification=EXAMPLE000000000000000000000000000000000034"
+  },
+  {
+   "name": "google.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "EXAMPLE0035"
+  },
+  {
+   "name": "google.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "globalsign-smime-dv=EXAMPLE000000000000000000000000000000000036="
+  },
+  {
+   "name": "google.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "v=spf1 include:_spf.google.com ~all"
+  },
+  {
+   "name": "google.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "arcules-domain-verification=EXAMPLE000000000000000000000000000000000037"
+  },
+  {
+   "name": "google.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "onetrust-domain-verification=00000000000000000000000000000026"
+  },
+  {
+   "name": "google.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "apple-domain-verification=EXAMPLE000000039"
+  },
+  {
+   "name": "google.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "MS=0000000000000000000000000000000000000028"
+  },
+  {
+   "name": "google.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "google-site-verification=EXAMPLE000000000000000000000000000000000041"
+  },
+  {
+   "name": "google.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "facebook-domain-verification=EXAMPLE00000000000000000000042"
+  },
+  {
+   "name": "google.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "docusign=00000000-0000-4000-8000-000000000043"
+  },
+  {
+   "name": "google.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "onetrust-domain-verification=0000000000000000000000000000002c"
+  },
+  {
+   "name": "google.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "docusign=00000000-0000-4000-8000-000000000045"
+  },
+  {
+   "name": "google.com.",
+   "type": 16,
+   "TTL": 300,
+   "data": "google-site-verification=EXAMPLE000000000000000000000000000000000046"
+  }
+ ],
+ "edns_client_subnet": "0.0.0.0/0",
+ "Comment": "Response from 216.239.34.10."
+}

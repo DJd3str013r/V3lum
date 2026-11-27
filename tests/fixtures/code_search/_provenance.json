@@ -1,0 +1,109 @@
+{
+ "github_empty.json": {
+  "kind": "synthetic (doc-shaped)",
+  "merge_gate": "NOT a real capture: P305 FC10 requires trimmed real fixtures captured with the team's tokens before the GitHub/GitLab parts merge",
+  "origin": "GitHub REST search/code and GitLab search API documentation shapes; no team token in this sandbox and api.github.com is blocked by the sandbox egress proxy"
+ },
+ "github_incomplete_partial.json": {
+  "kind": "synthetic (doc-shaped)",
+  "merge_gate": "NOT a real capture: P305 FC10 requires trimmed real fixtures captured with the team's tokens before the GitHub/GitLab parts merge",
+  "origin": "GitHub REST search/code and GitLab search API documentation shapes; no team token in this sandbox and api.github.com is blocked by the sandbox egress proxy"
+ },
+ "github_ok.json": {
+  "kind": "synthetic (doc-shaped)",
+  "merge_gate": "NOT a real capture: P305 FC10 requires trimmed real fixtures captured with the team's tokens before the GitHub/GitLab parts merge",
+  "origin": "GitHub REST search/code and GitLab search API documentation shapes; no team token in this sandbox and api.github.com is blocked by the sandbox egress proxy"
+ },
+ "github_proxy_blocked_403.json": {
+  "kind": "real, verbatim",
+  "origin": "research sample live_cti__github_advisories_cve_403.json (2026-11-25)",
+  "why": "a 403 that is NOT a GitHub rate limit: the parser must not map it to RATE_LIMITED (P305 FC8)"
+ },
+ "github_rate_limited_403.json": {
+  "kind": "synthetic (doc-shaped)",
+  "merge_gate": "NOT a real capture: P305 FC10 requires trimmed real fixtures captured with the team's tokens before the GitHub/GitLab parts merge",
+  "origin": "GitHub REST search/code and GitLab search API documentation shapes; no team token in this sandbox and api.github.com is blocked by the sandbox egress proxy"
+ },
+ "github_requires_auth_401.json": {
+  "kind": "synthetic (doc-shaped)",
+  "merge_gate": "NOT a real capture: P305 FC10 requires trimmed real fixtures captured with the team's tokens before the GitHub/GitLab parts merge",
+  "origin": "GitHub REST search/code and GitLab search API documentation shapes; no team token in this sandbox and api.github.com is blocked by the sandbox egress proxy"
+ },
+ "github_secondary_rate_limit_403.json": {
+  "kind": "synthetic (doc-shaped)",
+  "merge_gate": "NOT a real capture: P305 FC10 requires trimmed real fixtures captured with the team's tokens before the GitHub/GitLab parts merge",
+  "origin": "GitHub REST search/code and GitLab search API documentation shapes; no team token in this sandbox and api.github.com is blocked by the sandbox egress proxy"
+ },
+ "github_validation_failed_422.json": {
+  "kind": "synthetic (doc-shaped)",
+  "merge_gate": "NOT a real capture: P305 FC10 requires trimmed real fixtures captured with the team's tokens before the GitHub/GitLab parts merge",
+  "origin": "GitHub REST search/code and GitLab search API documentation shapes; no team token in this sandbox and api.github.com is blocked by the sandbox egress proxy"
+ },
+ "gitlab_empty.json": {
+  "kind": "synthetic (doc-shaped)",
+  "merge_gate": "NOT a real capture: P305 FC10 requires trimmed real fixtures captured with the team's tokens before the GitHub/GitLab parts merge",
+  "origin": "GitHub REST search/code and GitLab search API documentation shapes; no team token in this sandbox and api.github.com is blocked by the sandbox egress proxy"
+ },
+ "gitlab_ok.json": {
+  "kind": "synthetic (doc-shaped)",
+  "merge_gate": "NOT a real capture: P305 FC10 requires trimmed real fixtures captured with the team's tokens before the GitHub/GitLab parts merge",
+  "origin": "GitHub REST search/code and GitLab search API documentation shapes; no team token in this sandbox and api.github.com is blocked by the sandbox egress proxy"
+ },
+ "gitlab_rate_limited_429.txt": {
+  "kind": "synthetic (doc-shaped)",
+  "origin": "GitLab.com rate-limit response (plain text 'Retry later' + RateLimit-* headers)"
+ },
+ "gitlab_scope_unavailable_403.json": {
+  "kind": "synthetic (doc-shaped)",
+  "merge_gate": "NOT a real capture: P305 FC10 requires trimmed real fixtures captured with the team's tokens before the GitHub/GitLab parts merge",
+  "note": "message text guessed: GitLab docs state blobs need advanced/exact code search (Premium/Ultimate) for global and group search; replace with a real capture",
+  "origin": "GitHub REST search/code and GitLab search API documentation shapes; no team token in this sandbox and api.github.com is blocked by the sandbox egress proxy"
+ },
+ "gitlab_unauthorized_401.json": {
+  "kind": "synthetic (doc-shaped)",
+  "merge_gate": "NOT a real capture: P305 FC10 requires trimmed real fixtures captured with the team's tokens before the GitHub/GitLab parts merge",
+  "origin": "GitHub REST search/code and GitLab search API documentation shapes; no team token in this sandbox and api.github.com is blocked by the sandbox egress proxy"
+ },
+ "registry_draft.json": {
+  "kind": "draft data",
+  "origin": "P305 FC1/FC2; Sourcegraph ToS/AUP read live 2026-11-26 (raw/live/sg_terms_*.body)"
+ },
+ "sourcegraph_alert_error_in_200.txt": {
+  "kind": "real, verbatim",
+  "origin": "live 2026-11-26, q=\"example.com\" type:file count:notanumber ... (HTTP 200, 0.18 s)",
+  "why": "error-in-200: 'alert' event 'Unable To Process Query' then 'done' - an ERROR, never EMPTY"
+ },
+ "sourcegraph_backend_missing_partial.txt": {
+  "kind": "real, minimised",
+  "origin": "live 2026-11-26 08:2x UTC, GET https://sourcegraph.com/.api/search/stream?q=%22example.com%22 type:file count:5 timeout:10s patternType:keyword&v=V3&cm=t (5/5 searches of the day answered like this)",
+  "scrub": "subset of the real events (first, first warn, final filters, final progress, done); trace URLs dropped",
+  "why": "HTTP 200, done, matchCount 0 with skipped[backend-missing, severity warn] ('8 backends unavailable'): must be partial/could-not-verify, never EMPTY (rule 5)"
+ },
+ "sourcegraph_chunks_ok.txt": {
+  "content": "documentation values only; the 'secret' is a fake marker string; AKIAIOSFODNN7EXAMPLE is the AWS documentation key (P312 allowlist)",
+  "kind": "synthetic (schema)",
+  "origin": "field names per the Sourcegraph streaming API (EventContentMatch: type, path, repositoryID, repository, repoStars, repoLastFetched, branches, commit, hunks, chunkMatches[{content, contentStart{offset,line,column}, ranges[{start,end}]}], language; EventPathMatch with pathMatches)",
+  "why": "every live cm=t search of 2026-11-26 came back degraded (0 matches), so no real chunkMatches body exists yet; replace with a real capture before merge (P305 FC10 merge gate applies to Sourcegraph too)"
+ },
+ "sourcegraph_empty.txt": {
+  "kind": "derived from real",
+  "origin": "the live 2026-11-26 capture above with the backend-missing (warn) skip removed from the final progress event",
+  "why": "a clean empty answer (done, matchCount 0, info-only skips: forks/archived excluded by default) = EMPTY; not observed live today because every search was degraded"
+ },
+ "sourcegraph_headers_observed.json": {
+  "kind": "real headers subset",
+  "origin": "raw/live/_log.jsonl"
+ },
+ "sourcegraph_lines_ok.txt": {
+  "kind": "real events + derived closing events",
+  "origin": "events 1-5 (filters, 2x progress, filters, matches with 2 lineMatches results) from the research capture of 2026-11-25 (query \"example.com\" type:file count:... patternType:keyword, no cm=t); the closing progress(done=true, matchCount=2, info-only skips) and done events are derived from the shapes captured live on 2026-11-26",
+  "scrub": "as code_search__sourcegraph_truncated_malformed.txt"
+ },
+ "sourcegraph_truncated_malformed.txt": {
+  "kind": "real, scrubbed",
+  "origin": "research sample sourcegraph_stream_search.txt (2026-11-25, cut at 6000 bytes mid-event by the research capture)",
+  "scrub": "repository owners/names, ids and commits replaced; repo topic labels neutralised; trace URLs dropped",
+  "why": "a stream cut before 'done' (max_bytes/deadline): the parser keeps the 2 complete matches and flags truncated"
+ },
+ "_note": "Copied from the batch p2-G14-3 prep run (scratchpad/impl/prep/p2-G14-3/fixtures), re-checked 2026-11-26: no personal data, keys or real secrets (repositories are example-org/example-user, secrets read 'example-not-a-real-secret-*', AKIAIOSFODNN7EXAMPLE is the AWS documentation example). GitHub and GitLab bodies are doc-shaped SYNTHETIC fixtures: the P305 cond 10 merge gate for those parts stays open until trimmed real captures made with the team tokens replace them."
+}

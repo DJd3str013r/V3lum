@@ -1,0 +1,48 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "chainalysis",
+  "name": "Chainalysis free sanctions screening API",
+  "operator": "Chainalysis Inc.",
+  "hosts": ["public.chainalysis.com"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established blockchain-analytics company with published terms, a privacy policy and a business offering (A8 trusted); P205 cond 7 'Registry tiers: Chainalysis ... trusted'.",
+  "tier_reviewer": "council-1 (A8, P205)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "B", "justification": "Chainalysis-curated list of addresses named in sanctions designations (OFAC and others); a match is a list match, not a legal determination (P205 cond 6)."},
+  "http_profile": {"user_agent": "neutral", "accept": "application/json", "timeout": 20, "ttl": 86400, "min_interval": 1.0, "concurrency": 1, "retries": 1},
+  "quota": null,
+  "error_markers": [
+    {"id": "chainalysis_ip_allowlist", "statuses": [403], "json_path": null, "equals": null, "regex": "Allowed IPs List", "final_url_regex": null, "maps_to": "blocked", "reason_code": "challenge", "reason": "Chainalysis REST: the egress IP is not on the Allowed IPs List of the key (allow-list the team egress; could not verify)"}
+  ],
+  "keys": {
+    "chainalysis": {
+      "description": "Chainalysis free sanctions-screening API key (X-API-Key header); the key also needs the team egress IP on its Allowed IPs List",
+      "signup_url": "https://www.chainalysis.com/free-cryptocurrency-sanctions-screening-tools/",
+      "env": ["V3LUM_CHAINALYSIS_KEY"],
+      "multi_key": false,
+      "plan_hint": "a company account; record the plan in key_plans (key-terms, P205 cond 7) before corporate use"
+    }
+  },
+  "sources": {
+    "sanctions_api": {
+      "title": "Chainalysis REST public.chainalysis.com/api/v1/address/{address} (sanctions identifications, all chains)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://www.chainalysis.com/free-cryptocurrency-sanctions-screening-tools/",
+        "quote": "Terms: OFAC lists 'open'; oracle and stablecoin calls 'open' (public contracts, RPC provider ToS recorded); TronGrid and Chainalysis REST 'key-terms' (company accounts, plans recorded). Registry tiers: Chainalysis, PublicNode (Allnodes) and TronGrid (TRON DAO) trusted.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "chainalysis",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P205 cond 7). Research C0490 (verified_needs_key: 403 text/html 'Your IP address is not on the Chainalysis Allowed IPs List' without a key). Second check next to the on-chain oracle, covering non-EVM chains (P205 cond 4); 403 'Allowed IPs List' with a key = BLOCKED (marker chainalysis_ip_allowlist), no key = NEEDS_KEY."
+    }
+  },
+  "notes": "Owned by batch p1-G09-1 (P205 crypto_sanctions_onchain). The keyless on-chain oracle (same upstream family 'chainalysis') runs through the PublicNode RPC (provider publicnode, source ethereum_rpc)."
+}

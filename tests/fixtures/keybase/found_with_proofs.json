@@ -1,0 +1,112 @@
+{
+ "status": {
+  "code": 0,
+  "name": "OK"
+ },
+ "them": [
+  {
+   "id": "0d3a4f5e6b7c8d9e0f1a2b3c4d5e6f19",
+   "basics": {
+    "username": "exampleorg",
+    "ctime": 1420113600,
+    "mtime": 1565618750,
+    "id_version": 12,
+    "last_id_change": 1559390400,
+    "username_cased": "ExampleOrg",
+    "status": 0,
+    "eldest_seqno": 1
+   },
+   "public_keys": {
+    "primary": {
+     "kid": "010105038f7802bb049de654da1751c59484928d27190a",
+     "key_type": 1,
+     "bundle": "-----BEGIN PGP PUBLIC KEY BLOCK-----\n\nmDMEawf1xRYJKwYBBAHaRw8BAQdArHPOt0zT8PgmiHig2r2UxmBVRNx7VSZEnK/R\nE5Pi2wm0K0V4YW1wbGUgT3JnIFNlY3VyaXR5IDxzZWN1cml0eUBleGFtcGxlLmNv\nbT6ImQQTFgoAQRYhBAUDj3gCuwSd5lTaF1HFlISSjScZBQJrB/XFAhsDBQkF1It7\nBQsJCAcCAiICBhUKCQgLAgQWAgMBAh4HAheAAAoJEFHFlISSjScZg/8A/1qobrQa\n4gRUX5oAn3B6Gtyg3Wh2+jqkyZktA0gSzKiXAP0fmQHhtUCOy3a5Him6oRoJ1ulB\nTzTxjnbnZN2W5g68BLQhRXhhbXBsZSBPcmcgPGtleWJhc2VAZXhhbXBsZS5vcmc+\niJkEExYKAEEWIQQFA494ArsEneZU2hdRxZSEko0nGQUCawf1xQIbAwUJBdSLewUL\nCQgHAgIiAgYVCgkICwIEFgIDAQIeBwIXgAAKCRBRxZSEko0nGXj+AP4wdn2AoHmk\nnTN5ooTDNfoiP4PlVa+B42f6WmJtdRXAMgD/avHCsTIQFtzTKIbfZ7aDk7IN2iAO\n4i9U3AoVr6xXRg4=\n=9MXV\n-----END PGP PUBLIC KEY BLOCK-----\n",
+     "ctime": 1420113600,
+     "mtime": 1420113600,
+     "key_fingerprint": "05038f7802bb049de654da1751c59484928d2719",
+     "key_bits": 256,
+     "key_algo": 22,
+     "key_level": 1,
+     "status": 0,
+     "self_signed": true
+    },
+    "all_bundles": [
+     "-----BEGIN PGP PUBLIC KEY BLOCK-----\n\nmDMEawf1xRYJKwYBBAHaRw8BAQdArHPOt0zT8PgmiHig2r2UxmBVRNx7VSZEnK/R\nE5Pi2wm0K0V4YW1wbGUgT3JnIFNlY3VyaXR5IDxzZWN1cml0eUBleGFtcGxlLmNv\nbT6ImQQTFgoAQRYhBAUDj3gCuwSd5lTaF1HFlISSjScZBQJrB/XFAhsDBQkF1It7\nBQsJCAcCAiICBhUKCQgLAgQWAgMBAh4HAheAAAoJEFHFlISSjScZg/8A/1qobrQa\n4gRUX5oAn3B6Gtyg3Wh2+jqkyZktA0gSzKiXAP0fmQHhtUCOy3a5Him6oRoJ1ulB\nTzTxjnbnZN2W5g68BLQhRXhhbXBsZSBPcmcgPGtleWJhc2VAZXhhbXBsZS5vcmc+\niJkEExYKAEEWIQQFA494ArsEneZU2hdRxZSEko0nGQUCawf1xQIbAwUJBdSLewUL\nCQgHAgIiAgYVCgkICwIEFgIDAQIeBwIXgAAKCRBRxZSEko0nGXj+AP4wdn2AoHmk\nnTN5ooTDNfoiP4PlVa+B42f6WmJtdRXAMgD/avHCsTIQFtzTKIbfZ7aDk7IN2iAO\n4i9U3AoVr6xXRg4=\n=9MXV\n-----END PGP PUBLIC KEY BLOCK-----\n"
+    ],
+    "subkeys": [],
+    "sibkeys": [
+     "010105038f7802bb049de654da1751c59484928d27190a"
+    ],
+    "families": {},
+    "eldest_kid": "010105038f7802bb049de654da1751c59484928d27190a",
+    "eldest_key_fingerprint": "05038f7802bb049de654da1751c59484928d2719",
+    "pgp_public_keys": [
+     "-----BEGIN PGP PUBLIC KEY BLOCK-----\n\nmDMEawf1xRYJKwYBBAHaRw8BAQdArHPOt0zT8PgmiHig2r2UxmBVRNx7VSZEnK/R\nE5Pi2wm0K0V4YW1wbGUgT3JnIFNlY3VyaXR5IDxzZWN1cml0eUBleGFtcGxlLmNv\nbT6ImQQTFgoAQRYhBAUDj3gCuwSd5lTaF1HFlISSjScZBQJrB/XFAhsDBQkF1It7\nBQsJCAcCAiICBhUKCQgLAgQWAgMBAh4HAheAAAoJEFHFlISSjScZg/8A/1qobrQa\n4gRUX5oAn3B6Gtyg3Wh2+jqkyZktA0gSzKiXAP0fmQHhtUCOy3a5Him6oRoJ1ulB\nTzTxjnbnZN2W5g68BLQhRXhhbXBsZSBPcmcgPGtleWJhc2VAZXhhbXBsZS5vcmc+\niJkEExYKAEEWIQQFA494ArsEneZU2hdRxZSEko0nGQUCawf1xQIbAwUJBdSLewUL\nCQgHAgIiAgYVCgkICwIEFgIDAQIeBwIXgAAKCRBRxZSEko0nGXj+AP4wdn2AoHmk\nnTN5ooTDNfoiP4PlVa+B42f6WmJtdRXAMgD/avHCsTIQFtzTKIbfZ7aDk7IN2iAO\n4i9U3AoVr6xXRg4=\n=9MXV\n-----END PGP PUBLIC KEY BLOCK-----\n"
+    ]
+   },
+   "proofs_summary": {
+    "by_presentation_group": {},
+    "by_sig_id": {},
+    "all": [
+     {
+      "proof_type": "github",
+      "nametag": "exampleorg",
+      "state": 1,
+      "service_url": "https://github.com/exampleorg",
+      "proof_url": "https://gist.github.com/exampleorg/0123456789abcdef0123456789abcdef",
+      "sig_id": "a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a10f",
+      "proof_id": "a1a1a1a1a1a1a1a1a1a1a1",
+      "human_url": "https://gist.github.com/exampleorg/0123456789abcdef0123456789abcdef",
+      "presentation_group": "github",
+      "presentation_tag": "github"
+     },
+     {
+      "proof_type": "twitter",
+      "nametag": "exampleorg",
+      "state": 1,
+      "service_url": "https://twitter.com/exampleorg",
+      "proof_url": "https://twitter.com/exampleorg/status/1000000000000000001",
+      "sig_id": "b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b20f",
+      "proof_id": "b2b2b2b2b2b2b2b2b2b2b2",
+      "human_url": "https://twitter.com/exampleorg/status/1000000000000000001",
+      "presentation_group": "twitter",
+      "presentation_tag": "twitter"
+     },
+     {
+      "proof_type": "dns",
+      "nametag": "example.com",
+      "state": 1,
+      "service_url": "dns://example.com",
+      "proof_url": "dns://example.com",
+      "sig_id": "c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c30f",
+      "proof_id": "c3c3c3c3c3c3c3c3c3c3c3",
+      "human_url": "dns://example.com",
+      "presentation_group": "example.com",
+      "presentation_tag": "dns"
+     },
+     {
+      "proof_type": "generic_web_site",
+      "nametag": "www.example.com",
+      "state": 1,
+      "service_url": "https://www.example.com",
+      "proof_url": "https://www.example.com/keybase.txt",
+      "sig_id": "d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d40f",
+      "proof_id": "d4d4d4d4d4d4d4d4d4d4d4",
+      "human_url": "https://www.example.com/keybase.txt",
+      "presentation_group": "www.example.com",
+      "presentation_tag": "generic_web_site"
+     }
+    ],
+    "has_web": true
+   },
+   "cryptocurrency_addresses": {
+    "bitcoin": [
+     {
+      "address": "1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2",
+      "sig_id": "e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e50f"
+     }
+    ]
+   }
+  }
+ ]
+}

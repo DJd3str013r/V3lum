@@ -1,0 +1,250 @@
+{
+ "batch": "p2-G03-1",
+ "modules": [
+  {
+   "name": "analytics_ids",
+   "file": "v3lum/modules/url_web/analytics_ids.py",
+   "proposal": "P061",
+   "category": "url_web",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "open",
+   "provider_tier": "n/a (offline, disclosure none)",
+   "keys": [],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [
+    "g03_same_analytics",
+    "g03_analytics_clone"
+   ],
+   "new_vocabulary": [
+    "attribute:analytics_sightings",
+    "attribute:analytics_id_info",
+    "tag:possible_clone"
+   ],
+   "live_check": "offline module (no network): 1 MB adversarial body extracted in < 2 s in the unit tests"
+  },
+  {
+   "name": "gtm_expand",
+   "file": "v3lum/modules/url_web/gtm_expand.py",
+   "proposal": "P061",
+   "category": "url_web",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "open",
+   "provider_tier": "trusted",
+   "keys": [],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:gtm_container",
+    "attribute:gtm_loaded_ids",
+    "attribute:gtm_linker_domains",
+    "attribute:gtm_host_map",
+    "attribute:gtm_script_hosts",
+    "attribute:gtm_pixel_ids",
+    "relation:gtm_loads"
+   ],
+   "live_check": "2026-11-26 OK: GTM-NHZSKTD (public gov.br container) -> 3 ids (G-WGZPDK4DH1, UA-80181585-36, AW-16635352617); unknown GTM-ZZZZ999 -> HTTP 200 decided EMPTY from content"
+  },
+  {
+   "name": "google_safe_browsing",
+   "file": "v3lum/modules/url_web/google_safe_browsing.py",
+   "proposal": "P067",
+   "category": "url_web",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "noncommercial",
+   "provider_tier": "trusted",
+   "keys": [
+    "webrisk",
+    "google_safebrowsing"
+   ],
+   "datasets": [],
+   "pivot_packs": [
+    "url_reporting_g03"
+   ],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:google_safe_browsing",
+    "attribute:lookup_minimisation"
+   ],
+   "live_check": "keyed sources (Web Risk license, Safe Browsing v4 noncommercial): no key available, live check asserts NEEDS_KEY with no request; the keyless 403 / invalid-key 400 answers were recorded live by the prep and replayed offline"
+  },
+  {
+   "name": "phishstats",
+   "file": "v3lum/modules/url_web/phishstats.py",
+   "proposal": "P074",
+   "category": "url_web",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "open",
+   "provider_tier": "community",
+   "keys": [],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:phishstats_records",
+    "attribute:phishstats_query",
+    "relation:listed_phishing_url"
+   ],
+   "live_check": "2026-11-26 OK: ip 1.1.1.1 -> records (25 redacted URL/IP pivots, context only on the IP); domain example.com -> EMPTY; ip 8.8.8.8 recorded for the acceptance route"
+  },
+  {
+   "name": "retirejs_check",
+   "file": "v3lum/modules/url_web/retirejs_check.py",
+   "proposal": "P344",
+   "category": "url_web",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "open",
+   "provider_tier": "n/a (offline, disclosure none; dataset source community)",
+   "keys": [],
+   "datasets": [
+    "retirejs.jsrepository"
+   ],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [
+    "attribute:js_libraries",
+    "attribute:retirejs_repository"
+   ],
+   "live_check": "2026-11-26 OK: dataset retirejs.jsrepository downloaded through DataStore and parsed (78 libraries); bundled snapshot 651,449 bytes (sha256 83bffe85...)"
+  },
+  {
+   "name": "retirejs_osv",
+   "file": "v3lum/modules/url_web/retirejs_check.py",
+   "proposal": "P344",
+   "category": "url_web",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "open",
+   "provider_tier": "trusted",
+   "keys": [],
+   "datasets": [
+    "retirejs.jsrepository"
+   ],
+   "pivot_packs": [],
+   "correlation_rules": [],
+   "new_vocabulary": [],
+   "live_check": "2026-11-26 OK: jquery 1.12.4 -> OSV npm advisories CVE-2019-11358, CVE-2020-11022, CVE-2020-11023, CVE-2015-9251 (4 CVE pivots)"
+  },
+  {
+   "name": "takedown_packet",
+   "file": "v3lum/modules/url_web/takedown_packet.py",
+   "proposal": "P345",
+   "category": "url_web",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "open",
+   "provider_tier": "trusted",
+   "keys": [],
+   "datasets": [
+    "iana.registrar_ids"
+   ],
+   "pivot_packs": [],
+   "correlation_rules": [
+    "g03_takedown_packet_ready"
+   ],
+   "new_vocabulary": [
+    "tag:takedown_ready"
+   ],
+   "live_check": "report exporter (no Module class, no network at report time); 2026-11-26 OK: dataset iana.registrar_ids downloaded and parsed (header validated)"
+  }
+ ],
+ "proposals_not_done": [],
+ "core_requests": [
+  "ctx.http cache-only read for disclosure-none modules (P061 c1, P344 c1: read bodies web_fingerprint/js_endpoints/urlscan already fetched; never a network send); then analytics_ids can accept domain and retirejs_check can read cached JS of a URL",
+  "report format '-f takedown' and a 'v3lum takedown <case>' command (v3lum.commands.command) calling v3lum.modules.url_web.takedown_packet.build_takedown_packet(case) + render_packet_markdown(packet), and an audit row recording the analyst's disclosure decision when a packet is exported (P345 c1, c5)",
+  "a shared core URL-redaction helper for recipient identifiers (e-mails plain/encoded/base64, CPF, phones, opaque tokens, userinfo) - today phishstats.redact_victim_url wraps url_unwrap.redact_url_values (P074 c3, P067 c4, P345 c6)",
+  "a per-scan budget API (P334 quota book scope 'run') for module caps: gtm_expand 5 containers per run, retirejs_osv 20 OSV queries per run (today in-process counters keyed by case id)",
+  "entities.normalize(ANALYTICS_ID): accept 'DC-\\d{6,10}' (Floodlight advertiser ids from GTM containers stay attributes until then)",
+  "config.KNOWN_KEYS: add 'webrisk' (env V3LUM_WEBRISK_KEY) if the literal legacy table is wanted; it is registered through v3lum/data/providers/google_webrisk.json (key_registry) (P067 c1)",
+  "a sanitize-before-cache hook for non-sensitive providers (per-source body transformer) so PhishStats bodies can be cached redacted by the HTTP cache instead of module state (P074 c3/c4)",
+  "reference the pack link 'url_reporting_g03:safe_browsing_status' from the core URL link pack if a single URL pack is wanted (P067 c3)"
+ ],
+ "files": [
+  "docs/backlog/p2-G03-1.md",
+  "tests/fixtures/acceptance/domain/google_safe_browsing.json",
+  "tests/fixtures/acceptance/domain/phishstats.json",
+  "tests/fixtures/acceptance/ipv4/phishstats.json",
+  "tests/fixtures/acceptance/url/analytics_ids.json",
+  "tests/fixtures/acceptance/url/google_safe_browsing.json",
+  "tests/fixtures/acceptance/url/phishstats.json",
+  "tests/fixtures/acceptance/url/retirejs_check.json",
+  "tests/fixtures/acceptance/url/retirejs_osv.json",
+  "tests/fixtures/analytics_ids/empty_live_page_nicbr.html",
+  "tests/fixtures/analytics_ids/ids_mixed_synthetic.html",
+  "tests/fixtures/analytics_ids/ok_live_page_cloudflare.html",
+  "tests/fixtures/google_safe_browsing/gsb_v4_hit_synthetic.json",
+  "tests/fixtures/google_safe_browsing/gsb_v4_invalid_key_400.json",
+  "tests/fixtures/google_safe_browsing/gsb_v4_miss_synthetic.json",
+  "tests/fixtures/google_safe_browsing/gsb_v4_nokey_403.json",
+  "tests/fixtures/google_safe_browsing/server_error_503_synthetic.json",
+  "tests/fixtures/google_safe_browsing/webrisk_hit_synthetic.json",
+  "tests/fixtures/google_safe_browsing/webrisk_invalid_key_400.json",
+  "tests/fixtures/google_safe_browsing/webrisk_miss_synthetic.json",
+  "tests/fixtures/google_safe_browsing/webrisk_nokey_403.json",
+  "tests/fixtures/google_safe_browsing/webrisk_quota_429_synthetic.json",
+  "tests/fixtures/google_safe_browsing/webrisk_service_disabled_403_synthetic.json",
+  "tests/fixtures/gtm_expand/challenge_synthetic.html",
+  "tests/fixtures/gtm_expand/malformed_truncated.js",
+  "tests/fixtures/gtm_expand/not_found_GTM-ZZZZ999.js",
+  "tests/fixtures/gtm_expand/ok_cloudflare_GTM-NDGPDFZ.js",
+  "tests/fixtures/gtm_expand/ok_govbr_GTM-NHZSKTD.js",
+  "tests/fixtures/phishstats/empty.json",
+  "tests/fixtures/phishstats/error_filter_ignored.json",
+  "tests/fixtures/phishstats/headers_ratelimit.json",
+  "tests/fixtures/phishstats/html_instead_of_json.html",
+  "tests/fixtures/phishstats/ok_ip_records.json",
+  "tests/fixtures/phishstats/ok_url_records.json",
+  "tests/fixtures/phishstats/rate_limited_429_synthetic.json",
+  "tests/fixtures/retirejs_check/jquery_1.12.4_min_banner.js",
+  "tests/fixtures/retirejs_check/jsrepository_min.json",
+  "tests/fixtures/retirejs_check/no_known_library.js",
+  "tests/fixtures/retirejs_check/redos_repo_synthetic.json",
+  "tests/fixtures/retirejs_osv/osv_empty.json",
+  "tests/fixtures/retirejs_osv/osv_error_400.json",
+  "tests/fixtures/retirejs_osv/osv_jquery_1.12.4.json",
+  "tests/fixtures/rules/g03_analytics_clone/negative_own_sites_and_template_id.json",
+  "tests/fixtures/rules/g03_analytics_clone/positive_brand_id_on_lookalike.json",
+  "tests/fixtures/rules/g03_same_analytics/negative_archive_eras_do_not_overlap.json",
+  "tests/fixtures/rules/g03_same_analytics/negative_template_and_high_fanout.json",
+  "tests/fixtures/rules/g03_same_analytics/positive_archive_dates_overlap.json",
+  "tests/fixtures/rules/g03_same_analytics/positive_two_sites_one_ga4_id.json",
+  "tests/fixtures/rules/g03_takedown_packet_ready/negative_single_source_hit.json",
+  "tests/fixtures/rules/g03_takedown_packet_ready/positive_br_analyst_confirmed.json",
+  "tests/fixtures/rules/g03_takedown_packet_ready/positive_consensus_registrar_rir_abusix.json",
+  "tests/fixtures/takedown_packet/iana_registrar_ids_min.csv",
+  "tests/live/test_p2_g03_1.py",
+  "tests/modules/test_analytics_ids.py",
+  "tests/modules/test_google_safe_browsing.py",
+  "tests/modules/test_gtm_expand.py",
+  "tests/modules/test_phishstats.py",
+  "tests/modules/test_retirejs_check.py",
+  "tests/modules/test_retirejs_osv.py",
+  "tests/modules/test_takedown_packet.py",
+  "v3lum/correlations/p2_g03_1.py",
+  "v3lum/data/notices/retirejs.json",
+  "v3lum/data/pivot_links/url_reporting_g03.json",
+  "v3lum/data/providers/github__p2-G03-1.json",
+  "v3lum/data/providers/google_safebrowsing.json",
+  "v3lum/data/providers/google_webrisk.json",
+  "v3lum/data/providers/googletagmanager.json",
+  "v3lum/data/providers/iana__p2-G03-1.json",
+  "v3lum/data/providers/netcraft.json",
+  "v3lum/data/providers/osv__p2-G03-1.json",
+  "v3lum/data/providers/phishstats.json",
+  "v3lum/data/retirejs/jsrepository-v4.json",
+  "v3lum/data/vocab/p2-G03-1.json",
+  "v3lum/modules/url_web/analytics_ids.py",
+  "v3lum/modules/url_web/google_safe_browsing.py",
+  "v3lum/modules/url_web/gtm_expand.py",
+  "v3lum/modules/url_web/phishstats.py",
+  "v3lum/modules/url_web/retirejs_check.py",
+  "v3lum/modules/url_web/takedown_packet.py"
+ ],
+ "notes": "All five proposals delivered as PASSIVE modules (no LIGHT/ACTIVE variant requested). P061: analytics_ids (offline, TLP:RED-safe) + gtm_expand (Google fetch) + rules g03_same_analytics (PROBABLE <= 0.7, overlapping dates, provenance per link, cap 10, shared ids excluded) and g03_analytics_clone ('possible clone of <brand> (copied tracking ID)'). P067: google_safe_browsing queries Web Risk (license) or Safe Browsing v4 (noncommercial) only when the policy gate allows the source and a key exists; one coverage line 'needs Web Risk key'; URLs minimised before the lookup; Transparency Report = manual link pack url_reporting_g03. P074: phishstats with encoded filters, filter-ignored detection, victim-URL redaction before any storage, raw body never cached (redacted records cached 1 h in module state), quota block 50/day x 0.8, threshold 5.0 pending CTI confirmation. P344: retirejs_check (offline, bundled Apache-2.0 snapshot + weekly dataset, windowed literal-anchored regex scan, ReDoS harness in tests) + retirejs_osv (OSV npm confirmation through osv__p2-G03-1.json, 10/entity, 20/run). P345: takedown_packet exporter library (registrar > RIR > Abusix > CDN portal ranking, CERT.br for .br/BR-hosted, manual links, SHA-256 evidence with UTC + America/Sao_Paulo, pt-BR/EN templates, redaction, TLP marking) + rule g03_takedown_packet_ready (consensus >= 2 families or analyst confirmation). Registry contract: all batch modules green; failures seen in the full suite belong to other in-progress batches (missing test files / stale notices of bluesky, discord_invite, dockerhub, hybrid_analysis, crypto_address_labels, lol_datasets...). Backlog: docs/backlog/p2-G03-1.md. Tests: batch unit tests 106 passed (7 files); rule fixtures g03_* 9 passed; registry contract green for every batch module; P327 lint clean on all batch module, rule and data files; ruff clean; live checks 8/8 passed with V3LUM_LIVE=1 (2026-11-26). Full offline suite: 14 failures, all in files of other in-progress batches (btc_explorers, discord_invite, typosquat bcb rows, chainabuse/onion_lookup/pivots_pentest registration, stale notices, a transient lint failure that passed on re-run)."
+}

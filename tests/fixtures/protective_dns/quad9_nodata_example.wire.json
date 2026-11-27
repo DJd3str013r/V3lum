@@ -1,0 +1,39 @@
+{
+ "origin": "live",
+ "note": "Quad9, random label under example.com: NOERROR + SOA, no answer (Cloudflare-hosted zone)",
+ "request": {
+  "url": "https://dns.quad9.net/dns-query?dns=AAABAAABAAAAAAAAGHp6LW5vbmV4aXN0ZW50LWxhYmVsLTdxMwdleGFtcGxlA2NvbQAAAQAB",
+  "qname": "zz-nonexistent-label-7q3.example.com.",
+  "qtype": "A"
+ },
+ "http_status": 200,
+ "content_type": "application/dns-message",
+ "wire_b64": "AACBgAABAAAAAQAAGHp6LW5vbmV4aXN0ZW50LWxhYmVsLTdxMwdleGFtcGxlA2NvbQAAAQABwCUABgABAAAHCAAyB2VsbGlvdHQCbnMKY2xvdWRmbGFyZcAtA2Ruc8BNkE5MNgAAJxAAAAlgAAk6gAAABwg=",
+ "decoded": {
+  "id": 0,
+  "rcode": "NOERROR",
+  "flags": [
+   "QR",
+   "RD",
+   "RA"
+  ],
+  "question": [
+   {
+    "name": "zz-nonexistent-label-7q3.example.com.",
+    "type": "A"
+   }
+  ],
+  "answer": [],
+  "authority": [
+   {
+    "name": "example.com.",
+    "type": "SOA",
+    "ttl": 1800,
+    "data": "elliott.ns.cloudflare.com. dns.cloudflare.com. 2421050422 10000 2400 604800 1800"
+   }
+  ],
+  "additional": [],
+  "edns": false,
+  "ede": []
+ }
+}

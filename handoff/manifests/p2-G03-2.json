@@ -1,0 +1,85 @@
+{
+ "batch": "p2-G03-2",
+ "modules": [
+  {
+   "name": "mobile_app_impersonation",
+   "file": "v3lum/modules/url_web/mobile_app_impersonation.py",
+   "proposal": "P346",
+   "category": "url_web",
+   "opsec": "passive",
+   "default_enabled": true,
+   "terms": "license",
+   "provider_tier": "community",
+   "keys": [
+    "koodous"
+   ],
+   "datasets": [],
+   "pivot_packs": [],
+   "correlation_rules": [
+    "mobile_app_apk_official_cert",
+    "mobile_app_apk_link"
+   ],
+   "new_vocabulary": [
+    "attribute:official_apps",
+    "attribute:lookalike_apps",
+    "attribute:app_store_coverage",
+    "tag:lookalike_app",
+    "tag:unverified_app",
+    "tag:apk_link",
+    "relation:app_bundle_id",
+    "relation:app_seller_site",
+    "relation:apk_sample"
+   ],
+   "live_check": "V3LUM_LIVE=1 tests/live/test_p2_g03_2.py, 2 passed (2026-11-26): domain:google.com with a synthetic Google org profile -> OK; Apple iTunes 'google' answered 44 apps (28 official App Store apps, 1 look-alike for review, 15 unrelated), Digital Asset Links google.com/youtube.com answered (38 official Android packages), Koodous NEEDS_KEY without any request (no token); a raw iTunes search for 'wikipedia' got Apple's empty-body 403 (intermittent refusal of this datacenter egress, handled as could-not-verify)."
+  }
+ ],
+ "proposals_not_done": [],
+ "core_requests": [
+  "ctx.wait(seconds) (bounded by the run deadline, cut by the kill switch) or a per-call wait_before for ctx.http: P346 c3 allows ONE same-request retry after an Apple 403 and the live checks suggest ~8 s of back-off; the core limiter applies a raised per-call min_interval only to the request after it, so today the retry waits only the provider pacing (>= 3.75 s)",
+  "URL fetchers of the LIGHT phase (P376/AR02) must refuse automatic downloads of .apk URLs (use mobile_app_impersonation.is_apk_url; P346 c8) - this batch records them only (rule mobile_app_apk_link)",
+  "P378 org_profile schema: document and validate the [[app_ids]] kinds apple_developer_id, apple_seller, apple_track_id, bundle_id, bundle_prefix, android_package, android_cert_sha256 (read by mobile_app_impersonation and apk_triage)",
+  "A seed-run API to read the case's results of other modules (e.g. apk_triage package + certificate SHA-256) so P346 could compare APKs inside the module; today the correlation rule mobile_app_apk_official_cert does it on the graph",
+  "Architect decision (P346 notes W3): sha256 input restricted to APK hashes with apk_triage provenance, to enable Koodous hash lookups (koodous_detail_url is implemented but unused)"
+ ],
+ "files": [
+  "v3lum/modules/url_web/mobile_app_impersonation.py",
+  "v3lum/correlations/p2_g03_2.py",
+  "v3lum/data/providers/apple.json",
+  "v3lum/data/providers/koodous.json",
+  "v3lum/data/vocab/p2-G03-2.json",
+  "tests/modules/test_mobile_app_impersonation.py",
+  "tests/live/test_p2_g03_2.py",
+  "tests/fixtures/mobile_app_impersonation/dal_forbidden_403_synthetic.json",
+  "tests/fixtures/mobile_app_impersonation/dal_google_ok.json",
+  "tests/fixtures/mobile_app_impersonation/dal_invalid_400.json",
+  "tests/fixtures/mobile_app_impersonation/dal_not_published.json",
+  "tests/fixtures/mobile_app_impersonation/itunes_akamai_denied_synthetic.html",
+  "tests/fixtures/mobile_app_impersonation/itunes_blocked_403.headers.json",
+  "tests/fixtures/mobile_app_impersonation/itunes_error_400_synthetic.json",
+  "tests/fixtures/mobile_app_impersonation/itunes_lookup_ok.json",
+  "tests/fixtures/mobile_app_impersonation/itunes_search_bb_ok.json",
+  "tests/fixtures/mobile_app_impersonation/itunes_search_empty_synthetic.json",
+  "tests/fixtures/mobile_app_impersonation/itunes_search_google_ok.json",
+  "tests/fixtures/mobile_app_impersonation/itunes_search_lookalike_synthetic.json",
+  "tests/fixtures/mobile_app_impersonation/itunes_search_malformed.json",
+  "tests/fixtures/mobile_app_impersonation/itunes_search_research_bb.json",
+  "tests/fixtures/mobile_app_impersonation/koodous_detail_docs_example.json",
+  "tests/fixtures/mobile_app_impersonation/koodous_invalid_token_401_synthetic.json",
+  "tests/fixtures/mobile_app_impersonation/koodous_needs_key_401.headers.json",
+  "tests/fixtures/mobile_app_impersonation/koodous_needs_key_401.json",
+  "tests/fixtures/mobile_app_impersonation/koodous_not_found_404_synthetic.json",
+  "tests/fixtures/mobile_app_impersonation/koodous_search_empty_synthetic.json",
+  "tests/fixtures/mobile_app_impersonation/koodous_search_official_package_synthetic.json",
+  "tests/fixtures/mobile_app_impersonation/koodous_search_ok_synthetic.json",
+  "tests/fixtures/mobile_app_impersonation/koodous_throttled_429_synthetic.json",
+  "tests/fixtures/mobile_app_impersonation/org_profile_bb.json",
+  "tests/fixtures/mobile_app_impersonation/org_profile_google.json",
+  "tests/fixtures/rules/mobile_app_apk_official_cert/negative_unlisted_package.json",
+  "tests/fixtures/rules/mobile_app_apk_official_cert/positive_official_certificate.json",
+  "tests/fixtures/rules/mobile_app_apk_official_cert/positive_other_certificate.json",
+  "tests/fixtures/rules/mobile_app_apk_link/negative_no_apk.json",
+  "tests/fixtures/rules/mobile_app_apk_link/positive_apk_links.json",
+  "docs/backlog/p2-G03-2.md"
+ ],
+ "notes": "One PASSIVE module (P346) with three registry sources: apple.itunes_search (license, trusted; new provider 'apple', host itunes.apple.com, min_interval 3 s + token bucket 0.333/s, errorMessage marker), google_dal.statements (open; P008's existing provider and client: fetch_statements/normalize_cert_sha256 imported from v3lum/modules/domain_dns/digital_asset_links.py, no second client) and koodous.apks (key-terms, community; new provider 'koodous', key 'koodous' with env alias V3LUM_KOODOUS_TOKEN, quota scope key 15/day, throttling marker -> QUOTA). Module.terms = license, derived trust_tier = community, max_tlp AMBER, default_enabled True (candidate: under corporate the gate allows only the DAL source until licence_allow clears Apple and key_plans.koodous=business). f-droid.org is not declared (c4: F-Droid dropped). run_on='seeds' plus an in-module is_seed check (c1); company/keyword seeds outside org_profile brands need explicit -M (ScanOptions.include); non-org domains are SKIPPED not_applicable. Official = developer id / track id / seller name / exact bundle id of org_profile, or Android package + certificate in DAL/org_profile; a developer-entered org seller URL or bundle prefix with another seller stays a look-alike with a higher score (W4). Review list (look-alikes + unverified) LOW 'needs analyst review', confidence possible, capped at 20, pivots expand=False, never 'malicious'. Artwork/screenshots/previews never leave the parser. A bare 403 is retried once with the identical request (same UA/headers), then BLOCKED challenge 'could not verify'; challenge/geo pages are never retried. Google Play only as manual links (res.link + Module.manual_link). c4 apk_triage and c8 .apk links are covered by correlation rules in v3lum/correlations/p2_g03_2.py with graph fixtures. Health check: offline=False self-test (P008 client on example.com, plus one benign iTunes search when allowed). Koodous answers with a token are synthetic/doc-example fixtures (backlog: real fixture). No acceptance route file: the module makes no request on the golden inputs (example.com is not an org domain). Registry-contract and P327 lint failures seen during the run belong to other batches in progress (exploit_index, poc_index, msrc_patch_tuesday, github_email_pivot, gravatar, hibp_account, leakcheck_public, lunar_domain_exposure, xposedornot*, isc_dshield, leakix; lint: breach_leak/xposedornot.py). Tests: tests/modules/test_mobile_app_impersonation.py 45 passed; rule fixtures of both rules pass; registry contract green for mobile_app_impersonation; P327 lint clean on the module and the rule pack; ruff clean. Full offline suite: 17 failures, all in other batches' or core files mid-edit (test_ioc_extract x3, test_ransomfeed x7, test_leakix x2, test_typosquat x1, registry contract notices/registration of modules not yet created by other batches x2, multi_source_malicious rule fixtures x2), unchanged on re-run."
+}

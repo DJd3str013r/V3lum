@@ -1,0 +1,14 @@
+{
+ "request": {"method": "GET", "url": "https://cdn.example.com/lib.js", "headers": {"Origin": "https://r4nd0m.v3lum-probe.invalid"}},
+ "response": {
+  "status": 200,
+  "headers": {
+   "content-type": "application/javascript",
+   "access-control-allow-origin": "*"
+  },
+  "body": "console.log('ok');"
+ },
+ "class": "synthetic",
+ "origin": "synthetic (FC5 INFO criterion); mechanics match the research note on public DoH endpoints (ACAO: *, no credentials)",
+ "notes": "ACAO: * => INFO (FC5). Browsers block credentials with '*'."
+}

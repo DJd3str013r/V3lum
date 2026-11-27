@@ -1,0 +1,22 @@
+{
+ "_meta": {
+  "module": "bluesky",
+  "case": "resolvehandle_not_found",
+  "source": "C0231 public.api.bsky.app",
+  "request": {
+   "method": "GET",
+   "url": "https://public.api.bsky.app/xrpc/com.atproto.identity.resolveHandle?handle=example.com"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "LIVE",
+  "elapsed_s": 0.239,
+  "note": "IANA example.com: no Bluesky account can claim it"
+ },
+ "status": 400,
+ "headers": {
+  "content-type": "application/json; charset=utf-8",
+  "cache-control": "public, max-age=5",
+  "server": "BunnyCDN-IL1-941"
+ },
+ "body": "{\"error\":\"InvalidRequest\",\"message\":\"Unable to resolve handle\"}"
+}

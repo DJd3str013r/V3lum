@@ -1,0 +1,19 @@
+[
+ {
+  "id": 4242,
+  "dataInicioAcordo": "10/02/2023",
+  "dataFimAcordo": "10/02/2028",
+  "orgaoResponsavel": "CONTROLADORIA-GERAL DA UNIAO",
+  "situacaoAcordo": "Em Execução",
+  "sancoes": [
+   {
+    "nomeInformadoOrgaoResponsavel": "EMPRESA EXEMPLO ALFA LTDA",
+    "razaoSocial": "EMPRESA EXEMPLO ALFA LTDA",
+    "nomeFantasia": "",
+    "cnpj": "11222333000181",
+    "cnpjFormatado": "11.222.333/0001-81"
+   }
+  ],
+  "quantidade": 1
+ }
+]

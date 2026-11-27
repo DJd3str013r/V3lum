@@ -1,0 +1,50 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 1,
+    "purpose": "AR08 fixture"
+  },
+  "nodes": [
+    {
+      "key": "ipv4:203.0.113.77",
+      "depth": 0,
+      "seed": true,
+      "findings": [
+        {
+          "title": "Listed in ransomware infrastructure feed A",
+          "severity": "high",
+          "confidence": 0.8,
+          "tags": [
+            "ransomware"
+          ],
+          "module": "t_feed_a",
+          "criterion": "fixture",
+          "confidence_label": "probable"
+        },
+        {
+          "title": "Listed in ransomware infrastructure feed B",
+          "severity": "high",
+          "confidence": 0.8,
+          "tags": [
+            "ransomware"
+          ],
+          "module": "t_feed_b",
+          "criterion": "fixture",
+          "confidence_label": "probable"
+        }
+      ]
+    }
+  ],
+  "edges": [],
+  "expect": {
+    "high_signal_tags": {
+      "min": 1,
+      "max": 1,
+      "severity": "high",
+      "confidence_label": "probable"
+    }
+  }
+}

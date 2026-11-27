@@ -1,0 +1,71 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "arin",
+  "name": "ARIN RDAP and Whois-RWS",
+  "operator": "American Registry for Internet Numbers (ARIN)",
+  "hosts": [
+    "rdap.arin.net",
+    "whois.arin.net"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Regional Internet Registry for North America (A8 definitions: internet registries and RIRs are trusted); P003 chair rationale: 'registries are trusted'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "Authoritative registry data for ARIN-administered IP and AS number resources; out-of-region resources are answered with a redirect to the responsible RIR."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/rdap+json",
+    "timeout": 20,
+    "retries": 1,
+    "ttl": 86400,
+    "min_interval": 1.0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "rdap": {
+      "title": "ARIN RDAP /registry/ip/{ip}, /registry/autnum/{asn} (303 to the responsible RIR for out-of-region resources)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.arin.net/resources/registry/whois/tou/",
+        "quote": "The Whois Service is to be used for Internet operational or technical research purposes, including: [...] Automated processing of abuse requests, research and tracking of abuse issues in connection with the maintenance of Whois data, and efforts to maintain accurate SWIP records; and Identifying resources used or suspected of being used for unlawful or harassing purposes.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "rir-rdap",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Binding council text (P003): 'Terms open (public registry data)'; per-query lookups only, no bulk harvesting (P003 cond 3). For legal's record: the same Terms of Use (effective 9 April 2014) prohibit using the Whois Service 'as part of a commercial service or product' or for marketing; V3LUM is an internal defensive tool and never resells or republishes ARIN data. Live 2026-11-26: 8.8.8.8 answers 200 in 0.2 s; 1.1.1.1 (APNIC space) answers 303 See Other to rdap.apnic.net with a body describing the whole /8 (never parsed); AS22548 answers 303 to rdap.lacnic.net, which answers 307 to rdap.registro.br. Natural-person POCs reduce to role/organisation at ingestion (P003 cond 5)."
+    },
+    "whois_rws": {
+      "title": "ARIN Whois-RWS /rest/ip/{ip}.json, org nets and POC searches (not used by default)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.arin.net/resources/registry/whois/tou/",
+        "quote": "The Whois Service is to be used for Internet operational or technical research purposes, including: [...] Identifying resources used or suspected of being used for unlawful or harassing purposes.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "rir-rdap",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "P003 cond 5: 'Whois-RWS POC lookups are off by default'. No module of this build queries whois.arin.net (RDAP covers the per-query needs); registered so a later opt-in module extends this provider instead of creating another one. POC searches return names, e-mails and phones of network administrators: keep only role/organisation contacts (LGPD minimisation)."
+    }
+  },
+  "notes": "Owned by batch p1-G01-1 (P003 rdap). RDAP ttl 24 h (TTL_CLASSES); min_interval 1 s (fair use, no published quota). Other RIRs and domain registries reached through the IANA bootstrap are in _set_rdap_registries.json."
+}

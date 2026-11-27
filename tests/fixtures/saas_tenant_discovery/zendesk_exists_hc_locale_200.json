@@ -1,0 +1,19 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://support.zendesk.com/hc/en-us"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "content-type": "text/html; charset=utf-8",
+      "server": "cloudflare",
+      "cache-control": "max-age=0, public",
+      "zendesk-service": "help-center"
+    },
+    "body": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en-US\">\n<head>\n<meta charset=\"utf-8\" />\n<title>Zendesk help</title>\n</head>\n<body></body>\n</html>\n"
+  },
+  "class": "live",
+  "captured_at": "2026-11-26T11:01:43Z",
+  "notes": "GET /hc/en-us (one hop later, not on the FC2 path): 200, trimmed to the title (20870 B live)"
+}

@@ -1,0 +1,23 @@
+{
+ "Status": 0,
+ "TC": false,
+ "RD": true,
+ "RA": true,
+ "AD": false,
+ "CD": false,
+ "Question": [
+  {
+   "name": "google.com.",
+   "type": 257
+  }
+ ],
+ "Answer": [
+  {
+   "name": "google.com.",
+   "type": 257,
+   "TTL": 19358,
+   "data": "0 issue \"pki.goog\""
+  }
+ ],
+ "edns_client_subnet": "0.0.0.0/0"
+}

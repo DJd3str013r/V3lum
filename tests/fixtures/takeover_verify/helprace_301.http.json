@@ -1,0 +1,14 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "http://support.example.com/"
+ },
+ "response": {
+  "status": 301,
+  "headers": {
+   "location": "https://helprace.com/",
+   "content-length": "0"
+  },
+  "body": ""
+ }
+}

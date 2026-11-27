@@ -1,0 +1,28 @@
+{
+ "took": 15004,
+ "timed_out": true,
+ "_shards": {
+  "total": 24,
+  "successful": 17,
+  "skipped": 3,
+  "failed": 0
+ },
+ "hits": {
+  "total": {
+   "value": 5,
+   "relation": "eq"
+  },
+  "max_score": null,
+  "hits": []
+ },
+ "aggregations": {
+  "first_seen": {
+   "value": 1795168800000.0,
+   "value_as_string": "2026-11-20T10:00:00.000Z"
+  },
+  "last_seen": {
+   "value": 1795545000000.0,
+   "value_as_string": "2026-11-24T18:30:00.000Z"
+  }
+ }
+}

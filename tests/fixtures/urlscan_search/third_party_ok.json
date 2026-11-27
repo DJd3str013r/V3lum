@@ -1,0 +1,97 @@
+{
+ "results": [
+  {
+   "task": {
+    "visibility": "public",
+    "method": "api",
+    "domain": "bluum.ltd",
+    "apexDomain": "bluum.ltd",
+    "time": "2026-11-26T04:05:29.203Z",
+    "uuid": "01a21607-63fd-77ca-97a2-bb4904162031",
+    "url": "http://bluum.ltd/"
+   },
+   "stats": {
+    "uniqIPs": 30,
+    "uniqCountries": 3,
+    "dataLength": 31616775,
+    "requests": 280
+   },
+   "page": {
+    "country": "CA",
+    "server": "cloudflare",
+    "redirected": "https-only",
+    "ip": "23.227.38.32",
+    "apexDomainAgeDays": 1548,
+    "mimeType": "text/html",
+    "title": "Natural Supplements for Women's Hormonal Health | Bluum",
+    "url": "https://bluum.ltd/",
+    "tlsValidDays": 89,
+    "tlsAgeDays": 48,
+    "domainAgeDays": 1548,
+    "tlsValidFrom": "2026-10-08T17:25:03.000Z",
+    "domain": "bluum.ltd",
+    "apexDomain": "bluum.ltd",
+    "asnname": "CLOUDFLARENET - Cloudflare, Inc., US",
+    "asn": "AS13335",
+    "tlsIssuer": "YE2",
+    "status": "200"
+   },
+   "_id": "01a21607-63fd-77ca-97a2-bb4904162031",
+   "sort": [
+    1795665929203,
+    "01a21607-63fd-77ca-97a2-bb4904162031"
+   ],
+   "result": "https://urlscan.io/api/v1/result/01a21607-63fd-77ca-97a2-bb4904162031/",
+   "screenshot": "https://urlscan.io/screenshots/01a21607-63fd-77ca-97a2-bb4904162031.png"
+  },
+  {
+   "task": {
+    "visibility": "public",
+    "method": "api",
+    "domain": "ticket.nyc-whatsapp.com",
+    "apexDomain": "nyc-whatsapp.com",
+    "time": "2026-11-26T04:02:56.079Z",
+    "uuid": "01a21604-85be-719d-bee3-ee411c6167c9",
+    "url": "http://ticket.nyc-whatsapp.com/"
+   },
+   "stats": {
+    "uniqIPs": 180,
+    "uniqCountries": 10,
+    "dataLength": 24720107,
+    "requests": 1268
+   },
+   "page": {
+    "country": "US",
+    "server": "ATS",
+    "redirected": "off-domain",
+    "ip": "69.147.92.11",
+    "apexDomainAgeDays": 4992,
+    "mimeType": "text/html",
+    "title": "Yahoo",
+    "url": "https://tw.yahoo.com/",
+    "tlsValidDays": 51,
+    "tlsAgeDays": 24,
+    "domainAgeDays": 4992,
+    "tlsValidFrom": "2026-11-02T00:00:00.000Z",
+    "domain": "tw.yahoo.com",
+    "umbrellaRank": 211806,
+    "apexDomain": "yahoo.com",
+    "asnname": "YAHOO - Yahoo Holdings Inc., US",
+    "asn": "AS14777",
+    "tlsIssuer": "DigiCert Global G2 TLS RSA SHA256 2020 CA1",
+    "status": "200"
+   },
+   "_id": "01a21604-85be-719d-bee3-ee411c6167c9",
+   "sort": [
+    1795665776079,
+    "01a21604-85be-719d-bee3-ee411c6167c9"
+   ],
+   "result": "https://urlscan.io/api/v1/result/01a21604-85be-719d-bee3-ee411c6167c9/",
+   "screenshot": "https://urlscan.io/screenshots/01a21604-85be-719d-bee3-ee411c6167c9.png"
+  }
+ ],
+ "total": 9156,
+ "took": 58,
+ "has_more": false,
+ "search_date_limit_days": 30
+}

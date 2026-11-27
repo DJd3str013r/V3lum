@@ -1,0 +1,18 @@
+{
+ "server": "krsa_tls12",
+ "probe": "weak_no_pfs",
+ "trust": "self_signed_ca",
+ "ok": true,
+ "stage": "handshake",
+ "version": "TLSv1.2",
+ "cipher": [
+  "AES256-GCM-SHA384",
+  "TLSv1.2",
+  256
+ ],
+ "error_type": null,
+ "reason": null,
+ "library": null,
+ "verify_code": null,
+ "str": null
+}

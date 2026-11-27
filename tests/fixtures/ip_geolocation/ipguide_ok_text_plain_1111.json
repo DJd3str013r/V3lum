@@ -1,0 +1,26 @@
+{
+ "_status": 200,
+ "_observed": "live Thu, 26 Nov 2026 08:24:19 GMT (raw/ig_1111)",
+ "_note": "1.1.1.1: body is JSON TEXT served as text/plain (FC4: parse regardless of header); location all null today",
+ "body": {
+  "ip": "1.1.1.1",
+  "network": {
+   "cidr": "1.1.1.0/24",
+   "hosts": {
+    "start": "1.1.1.1",
+    "end": "1.1.1.254"
+   },
+   "autonomous_system": {
+    "asn": 13335,
+    "name": "CLOUDFLARENET - Cloudflare, Inc.",
+    "organization": "Cloudflare, Inc.",
+    "country": "US",
+    "rir": "ARIN"
+   }
+  },
+  "location": {
+   "city": null,
+   "country": null
+  }
+ }
+}

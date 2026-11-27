@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "opensanctions",
+  "source_url": "https://www.opensanctions.org/licensing/",
+  "version": "targets.simple.csv imported by `python -m v3lum.modules.company_org.opensanctions import` only under a recorded commercial licence, and the licensed yente /match Screening API (key, monthly budget), checked 2026-11-26",
+  "sha256": "",
+  "licence": "CC-BY-NC-4.0 (non-commercial; business use needs an OpenSanctions commercial licence)",
+  "attribution": "Data from OpenSanctions (https://www.opensanctions.org/), CC BY-NC 4.0; commercial use under an OpenSanctions data licence. A match is a possible match to confirm, not a sanctions determination.",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/company_org/opensanctions.py"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "schema": "v3lum.axfr_managed/1",
+  "description": "Managed/authoritative DNS providers whose nameservers the ACTIVE axfr module never contacts (P281 FC3): a zone on a managed provider is almost never AXFR-misconfigured through the customer, and probing the provider's shared NS is noise against a third party. Matched by NS name suffix/substring (case-insensitive, trailing dot stripped). ASN matching is a best-effort refinement the module layers on top when an ASN lookup is available; see docs/backlog/p9-G13-2.md.",
+  "source": "V3LUM batch p9-G13-2 (council list: Cloudflare, Route 53, Azure DNS, Google Cloud DNS, NS1, UltraDNS, Akamai, registro.br)",
+  "licence": "CC0-1.0",
+  "providers": [
+    {"name": "Cloudflare", "ns_markers": [".ns.cloudflare.com", ".cloudflare.com"], "asns": [13335]},
+    {"name": "Route 53", "ns_markers": ["awsdns-", ".awsdns.", "awsdns"], "asns": [16509]},
+    {"name": "Azure DNS", "ns_markers": [".azure-dns.com", ".azure-dns.net", ".azure-dns.org", ".azure-dns.info"], "asns": [8075]},
+    {"name": "Google Cloud DNS", "ns_markers": [".googledomains.com", "ns-cloud-", ".ns.google.com"], "asns": [15169]},
+    {"name": "NS1", "ns_markers": [".nsone.net", ".ns1.net"], "asns": []},
+    {"name": "UltraDNS", "ns_markers": [".ultradns.com", ".ultradns.net", ".ultradns.org", ".ultradns.biz", ".ultradns.info"], "asns": []},
+    {"name": "Akamai", "ns_markers": [".akam.net", ".akamaistream.net", "akamai"], "asns": [20940, 16625]},
+    {"name": "registro.br", "ns_markers": [".dns.br", ".registro.br"], "asns": [22548]}
+  ]
+}

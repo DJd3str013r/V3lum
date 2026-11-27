@@ -1,0 +1,2231 @@
+{
+ "hosts": {
+  "about.me": null,
+  "account-api.icann.org": null,
+  "ahmia.fi": null,
+  "alertas.cais.rnp.br": null,
+  "andreacristaldi.github.io": null,
+  "anubisdb.com": null,
+  "api-pro.ransomware.live": null,
+  "api-publica.datajud.cnj.jus.br": null,
+  "api.abuseipdb.com": null,
+  "api.apis.guru": null,
+  "api.bitaps.com": null,
+  "api.blockchair.com": "blockchair",
+  "api.blockcypher.com": null,
+  "api.builtwith.com": "builtwith",
+  "api.certspotter.com": null,
+  "api.chainabuse.com": "trm_chainabuse",
+  "api.chess.com": null,
+  "api.company-information.service.gov.uk": null,
+  "api.criminalip.io": "criminalip",
+  "api.cycat.org": null,
+  "api.dnsdumpster.com": null,
+  "api.domainsdb.info": null,
+  "api.duckduckgo.com": null,
+  "api.ensdata.net": null,
+  "api.etherscan.io": null,
+  "api.ethplorer.io": null,
+  "api.exa.ai": null,
+  "api.fastly.com": null,
+  "api.fbi.gov": null,
+  "api.first.org": null,
+  "api.gdeltproject.org": null,
+  "api.getgems.io": null,
+  "api.getpostman.com": null,
+  "api.github.com": "github",
+  "api.gleif.org": "gleif",
+  "api.gopluslabs.io": null,
+  "api.gravatar.com": "gravatar",
+  "api.greynoise.io": null,
+  "api.hackertarget.com": "hackertarget",
+  "api.honeypot.is": null,
+  "api.hunter.io": null,
+  "api.internetdata.io": null,
+  "api.ip2location.io": null,
+  "api.ipapi.is": null,
+  "api.ipinfo.io": "ipinfo",
+  "api.iplogs.com": null,
+  "api.ipquery.io": null,
+  "api.lunarcyber.com": null,
+  "api.maclookup.app": null,
+  "api.macvendors.com": null,
+  "api.mailcheck.ai": null,
+  "api.mainnet-beta.solana.com": null,
+  "api.maltiverse.com": null,
+  "api.memory.lol": null,
+  "api.merklemap.com": null,
+  "api.metadefender.com": null,
+  "api.mnemonic.no": null,
+  "api.mojang.com": null,
+  "api.msrc.microsoft.com": null,
+  "api.ooni.io": null,
+  "api.opencnpj.org": null,
+  "api.opensanctions.org": "opensanctions",
+  "api.osv.dev": null,
+  "api.phishstats.info": null,
+  "api.platform.censys.io": null,
+  "api.polyswarm.network": null,
+  "api.portaldatransparencia.gov.br": "transparencia_api",
+  "api.protonmail.ch": null,
+  "api.pwnedpasswords.com": "pwnedpasswords",
+  "api.queridodiario.ok.org.br": null,
+  "api.queridodiario.org.br": "querido_diario",
+  "api.ransomfeed.it": null,
+  "api.ransomware.live": null,
+  "api.ransomwhe.re": null,
+  "api.salic.cultura.gov.br": null,
+  "api.search.brave.com": null,
+  "api.securitycontext.com": null,
+  "api.securitytrails.com": "securitytrails",
+  "api.shadowserver.org": null,
+  "api.shodan.io": "shodan",
+  "api.spyonweb.com": null,
+  "api.ssllabs.com": null,
+  "api.stackexchange.com": null,
+  "api.stopforumspam.org": null,
+  "api.subdomain.app": null,
+  "api.subdomain.center": null,
+  "api.tavily.com": null,
+  "api.trongrid.io": null,
+  "api.tweetfeed.live": null,
+  "api.twitch.tv": null,
+  "api.urldna.io": null,
+  "api.urlquery.net": null,
+  "api.vatcomply.com": null,
+  "api.vpndetection.io": null,
+  "api.vulncheck.com": null,
+  "api.whoisfreaks.com": null,
+  "api.whoxy.com": null,
+  "api.xforce.ibmcloud.com": null,
+  "api.xposedornot.com": null,
+  "api.zoomeye.ai": null,
+  "api2.marginalia-search.com": null,
+  "apilist.tronscanapi.com": null,
+  "app.netlas.io": "netlas",
+  "app.validin.com": null,
+  "apt.etda.or.th": null,
+  "archive.org": "internet_archive",
+  "archive.ph": null,
+  "arctic-shift.photon-reddit.com": null,
+  "arquivo.pt": null,
+  "arquivos.receitafederal.gov.br": "rfb",
+  "atlassian.net": null,
+  "attack-taxii.mitre.org": "mitre",
+  "attack.mitre.org": "mitre",
+  "auth.abuse.ch": "abusech",
+  "azmap.dev": null,
+  "bazaar.abuse.ch": "abusech",
+  "bcb.gov.br": "bcb",
+  "bgp.he.net": null,
+  "bgp.tools": null,
+  "bgpranking-ng.circl.lu": "circl",
+  "binarydefense.com": null,
+  "bing.com": null,
+  "bitcoinwhoswho.com": null,
+  "bitref.com": null,
+  "bleepingcomputer.com": null,
+  "blockchain.com": null,
+  "blockchain.info": null,
+  "blockchair.com": "blockchair",
+  "blocklist.greensnow.co": null,
+  "blockstream.info": null,
+  "botscout.com": null,
+  "botvrij.eu": null,
+  "brasilapi.com.br": "brasilapi",
+  "bscscan.com": null,
+  "bsky.app": null,
+  "buckets.grayhatwarfare.com": "grayhatwarfare",
+  "builtwith.com": "builtwith",
+  "calendar.google.com": "google_calendar",
+  "carbondate.cs.odu.edu": null,
+  "cavalier.hudsonrock.com": null,
+  "cdn.syndication.twimg.com": null,
+  "centralops.net": null,
+  "cep.awesomeapi.com.br": null,
+  "cert-portal.siemens.com": null,
+  "certidoes-apf.apps.tcu.gov.br": null,
+  "chainabuse.com": "trm_chainabuse",
+  "check.torproject.org": "torproject",
+  "checkurl.phishtank.com": null,
+  "cidr-report.org": null,
+  "cinsscore.com": null,
+  "circl.lu": "circl",
+  "cisa.gov": null,
+  "cl0q.com": null,
+  "cloudflare-dns.com": "cloudflare_dns",
+  "cloudflare.com": null,
+  "codeberg.org": "codeberg",
+  "codeload.github.com": "github",
+  "collector.torproject.org": "torproject",
+  "completedns.com": null,
+  "comunica.pje.jus.br": null,
+  "comunicaapi.pje.jus.br": null,
+  "cra.circl.lu": "circl",
+  "crawlgraph.com": null,
+  "crt.name": null,
+  "crt.sh": "crtsh",
+  "cti.api.crowdsec.net": null,
+  "ctl.shodan.io": "shodan_ctl",
+  "cve.circl.lu": "circl_vulnlookup",
+  "cveawg.mitre.org": "mitre",
+  "cvedb.shodan.io": "shodan",
+  "cwe-api.mitre.org": "mitre",
+  "cybercrime-tracker.net": "cybercrime_tracker",
+  "cyberscoop.com": null,
+  "czds-api.icann.org": null,
+  "czds-download-api.icann.org": null,
+  "czds.icann.org": null,
+  "d3fend.mitre.org": "mitre",
+  "dados.cvm.gov.br": "cvm",
+  "dadosabertos-download.cgu.gov.br": null,
+  "dadosabertos.anatel.gov.br": null,
+  "dadosabertos.bndes.gov.br": null,
+  "dadosabertos.compras.gov.br": null,
+  "dadosabertos.pgfn.gov.br": null,
+  "dan.me.uk": null,
+  "darkfeed.io": "darkfeed",
+  "darkreading.com": null,
+  "darkwebinformer.com": "darkwebinformer",
+  "data.iana.org": "iana",
+  "data.opensanctions.org": "opensanctions",
+  "data.phishtank.com": null,
+  "data.sec.gov": null,
+  "databreaches.net": null,
+  "dataplane.org": null,
+  "db.aa419.org": null,
+  "dev.to": "dev_to",
+  "developer.koodous.com": null,
+  "developer.mozilla.org": null,
+  "developers.checkphish.ai": null,
+  "dfir.blog": null,
+  "digitalassetlinks.googleapis.com": "google_dal",
+  "discord.com": null,
+  "disqus.com": null,
+  "dmarcian.com": null,
+  "dns.adguard-dns.com": null,
+  "dns.google": "google_public_dns",
+  "dns.projectdiscovery.io": null,
+  "dns.quad9.net": "quad9",
+  "dnssec-debugger.verisignlabs.com": null,
+  "dnstwister.report": null,
+  "dnsviz.net": null,
+  "docs.oracle.com": null,
+  "dogechain.info": null,
+  "doh.cleanbrowsing.org": null,
+  "doh.opendns.com": null,
+  "dominiosgovbr.sisp.gov.br": null,
+  "dotdb.com": null,
+  "download.db-ip.com": null,
+  "download.maxmind.com": null,
+  "dribbble.com": null,
+  "duckduckgo.com": null,
+  "duolingo.com": null,
+  "ec.europa.eu": null,
+  "efts.sec.gov": null,
+  "email-format.com": null,
+  "emailrep.io": null,
+  "en.fofa.info": "fofa",
+  "en.gravatar.com": "gravatar",
+  "endoflife.date": null,
+  "epss.cyentia.com": null,
+  "eth.blockscout.com": null,
+  "ethereum-rpc.publicnode.com": "publicnode",
+  "etherscan.io": null,
+  "ethplorer.io": null,
+  "euvdservices.enisa.europa.eu": null,
+  "f-droid.org": null,
+  "family.adguard-dns.com": null,
+  "family.cloudflare-dns.com": null,
+  "feeds.feedburner.com": null,
+  "feeds.offseq.com": null,
+  "feodotracker.abuse.ch": "abusech",
+  "filescan.io": null,
+  "find-and-update.company-information.service.gov.uk": null,
+  "fofa.info": "fofa",
+  "fortiguard.com": null,
+  "free.freeipapi.com": null,
+  "free.intelx.io": null,
+  "freeapi.robtex.com": null,
+  "freeipapi.com": null,
+  "ftp.registro.br": "registrobr",
+  "fullhunt.io": null,
+  "geocode.xyz": null,
+  "get.geojs.io": null,
+  "ghostarchive.org": "ghostarchive",
+  "github.com": "github",
+  "gitlab.com": "gitlab",
+  "google.com": "google_web",
+  "googleapis.com": null,
+  "gov.br": null,
+  "gravatar.com": "gravatar",
+  "gstatic.com": null,
+  "hacker-news.firebaseio.com": "hacker_news",
+  "hackerone.com": "hackerone",
+  "hashlookup.circl.lu": "circl",
+  "haveibeenpwned.com": "hibp",
+  "helpnetsecurity.com": null,
+  "hijacklibs.net": null,
+  "hn.algolia.com": null,
+  "hole.cert.pl": null,
+  "honeydb.io": null,
+  "honeylabs.net": "honeylabs",
+  "host.io": "hostio",
+  "hstspreload.org": null,
+  "hub.docker.com": "docker_hub",
+  "huggingface.co": "huggingface",
+  "hunter.how": "hunter_how",
+  "hybrid-analysis.com": null,
+  "i.threatbook.io": null,
+  "iana.org": null,
+  "ichi.global": null,
+  "imeidb.xyz": null,
+  "imgops.com": null,
+  "in.gov.br": null,
+  "index.commoncrawl.org": "commoncrawl",
+  "intel.arkm.com": null,
+  "internetdb.shodan.io": "shodan",
+  "intodns.com": null,
+  "ip-netblocks.whoisxmlapi.com": null,
+  "ip-ranges.amazonaws.com": null,
+  "ip.guide": null,
+  "ip.thc.org": null,
+  "ipguardian.net": null,
+  "ipinfo.io": "ipinfo",
+  "iplists.firehol.org": "firehol",
+  "iplocate.io": null,
+  "iplogs.com": null,
+  "ipqualityscore.com": null,
+  "iptoasn.com": null,
+  "ipwho.is": null,
+  "isc.sans.edu": null,
+  "itunes.apple.com": null,
+  "jamesbrine.com.au": null,
+  "jldc.me": null,
+  "kaggle.com": null,
+  "keybase.io": "keybase",
+  "keys.openpgp.org": null,
+  "keyserver.ubuntu.com": null,
+  "krebsonsecurity.com": null,
+  "leak-lookup.com": null,
+  "leakcheck.io": null,
+  "leakix.net": null,
+  "lens.google.com": "google_lens",
+  "lichess.org": null,
+  "linktr.ee": null,
+  "lists.blocklist.de": null,
+  "litecoinspace.org": null,
+  "login.microsoftonline.com": null,
+  "lolbas-project.github.io": null,
+  "loldrivers.io": null,
+  "lolrmm.io": null,
+  "lookup.binlist.net": null,
+  "lookup.icann.org": null,
+  "lookyloo.circl.lu": "circl",
+  "lyzem.com": null,
+  "mail-api.proton.me": null,
+  "malpedia.caad.fkie.fraunhofer.de": "malpedia",
+  "malshare.com": null,
+  "mask-api.icloud.com": null,
+  "mb-api.abuse.ch": "abusech",
+  "medium.com": null,
+  "mempool.space": "mempool_space",
+  "meta.wikimedia.org": null,
+  "metrics.torproject.org": "torproject",
+  "minhareceita.org": null,
+  "multirbl.valli.org": null,
+  "mxtoolbox.com": null,
+  "myip.ms": null,
+  "myssl.com": null,
+  "nerd.cesnet.cz": null,
+  "netapi.com": null,
+  "networksdb.io": null,
+  "news.google.com": "google_web",
+  "nominatim.openstreetmap.org": null,
+  "nvd.nist.gov": null,
+  "objects.githubusercontent.com": "github",
+  "observatory-api.mdn.mozilla.net": null,
+  "odc.officeapps.live.com": null,
+  "offshoreleaks-data.icij.org": null,
+  "offshoreleaks.icij.org": null,
+  "oklink.com": null,
+  "okta.com": null,
+  "olinda.bcb.gov.br": "bcb",
+  "onion.ail-project.org": null,
+  "onionoo.torproject.org": "torproject",
+  "onionsearchengine.com": null,
+  "onyphe.io": null,
+  "open.cnpja.com": null,
+  "open.kickbox.com": null,
+  "opencep.com": null,
+  "openphish.com": null,
+  "opensanctions.org": "opensanctions",
+  "openstreetmap.org": null,
+  "opentip.kaspersky.com": null,
+  "orkl.eu": null,
+  "osint.bevigil.com": null,
+  "otx.alienvault.com": "otx",
+  "overpass-api.de": null,
+  "peeringdb.com": null,
+  "phishing.army": null,
+  "photon.komoot.io": null,
+  "platform.censys.io": null,
+  "play.google.com": "google_web",
+  "plc.directory": null,
+  "pncp.gov.br": null,
+  "portaldatransparencia.gov.br": "transparencia",
+  "postman.com": null,
+  "proxycheck.io": null,
+  "public.api.bsky.app": null,
+  "public.chainalysis.com": null,
+  "publica.cnpj.ws": null,
+  "publicsuffix.org": "publicsuffix",
+  "publish.twitter.com": null,
+  "pulsedive.com": null,
+  "pypi.org": "pypi",
+  "query.wikidata.org": "wikidata",
+  "radar.cloudflare.com": null,
+  "ransomfeed.it": null,
+  "ransomlook.io": "ransomlook",
+  "ransomware.live": null,
+  "rapid7.com": null,
+  "rapiddns.io": null,
+  "raw.githubusercontent.com": "github",
+  "rdap.arin.net": null,
+  "rdap.org": "rdap_org",
+  "rdap.registro.br": "registrobr",
+  "receitaws.com.br": null,
+  "registro.br": "registrobr",
+  "registry.npmjs.org": "npm",
+  "release-assets.githubusercontent.com": null,
+  "report.netcraft.com": null,
+  "reverse-whois.whoisxmlapi.com": null,
+  "reverseip.domaintools.com": null,
+  "rules.emergingthreats.net": null,
+  "safebrowsing.google.com": "google_web",
+  "safebrowsing.googleapis.com": null,
+  "sanctionslistservice.ofac.treas.gov": null,
+  "scamadviser.com": null,
+  "scamalytics.com": null,
+  "scanmalware.com": null,
+  "schneier.com": null,
+  "scsanctions.un.org": null,
+  "search.censys.io": null,
+  "search.criminalip.io": "criminalip",
+  "search.dnslytics.com": "dnslytics",
+  "search.wikileaks.org": null,
+  "searchdns.netcraft.com": null,
+  "sec.gov": null,
+  "security-tracker.debian.org": null,
+  "security.access.redhat.com": null,
+  "security.cloudflare-dns.com": null,
+  "securityheaders.com": null,
+  "securitytrails.com": "securitytrails",
+  "serpapi.com": null,
+  "services.nvd.nist.gov": null,
+  "servicodados.ibge.gov.br": "ibge",
+  "sessionserver.mojang.com": null,
+  "shodan.io": "shodan_web",
+  "sistemas.anac.gov.br": null,
+  "sistemas.procon.sp.gov.br": null,
+  "sitecheck.sucuri.net": null,
+  "sitereport.netcraft.com": null,
+  "smet.cz": null,
+  "snapchat.com": null,
+  "sochain.com": null,
+  "sourcegraph.com": null,
+  "spamcalls.net": null,
+  "spamhaus.org": null,
+  "sploitus.com": null,
+  "spur.us": null,
+  "sslbl.abuse.ch": "abusech",
+  "ssllabs.com": null,
+  "standards-oui.ieee.org": null,
+  "stat.ripe.net": "ripestat",
+  "steamcommunity.com": null,
+  "storage.googleapis.com": null,
+  "subdomains.jsmon.sh": null,
+  "subdomains.whoisxmlapi.com": null,
+  "t.me": "telegram",
+  "tellows.com.br": null,
+  "tgstat.com": null,
+  "thedfirreport.com": null,
+  "thehack.com.br": null,
+  "therecord.media": null,
+  "threatactorusernames.com": null,
+  "threatbook.io": null,
+  "threatfox-api.abuse.ch": "abusech",
+  "threatfox.abuse.ch": "abusech",
+  "threatview.io": null,
+  "tiktok.com": null,
+  "tineye.com": null,
+  "tls.bufferover.run": null,
+  "tonapi.io": null,
+  "toncenter.com": null,
+  "tools.keycdn.com": null,
+  "tracker.viriback.com": null,
+  "tranco-list.eu": null,
+  "transform.shadowserver.org": null,
+  "transparencyreport.google.com": "google_transparency",
+  "treasury.gov": null,
+  "tria.ge": "triage",
+  "tronscan.org": null,
+  "unavatar.io": null,
+  "unshorten.me": null,
+  "urlhaus-api.abuse.ch": "abusech",
+  "urlhaus.abuse.ch": "abusech",
+  "urlscan.io": "urlscan",
+  "urlvoid.com": null,
+  "viacep.com.br": null,
+  "viewdns.info": "viewdns",
+  "virusshare.com": "virusshare",
+  "virustotal.com": "virustotal",
+  "viz.greynoise.io": null,
+  "voipbl.org": null,
+  "vpic.nhtsa.dot.gov": null,
+  "vulnerability.circl.lu": "circl_vulnlookup",
+  "w3techs.com": null,
+  "wa.me": null,
+  "walletexplorer.com": "walletexplorer",
+  "web-check.as93.net": null,
+  "web.archive.org": "internet_archive",
+  "webarchive.org.uk": null,
+  "webgate.ec.europa.eu": null,
+  "webmii.com": null,
+  "webrisk.googleapis.com": null,
+  "website.informer.com": null,
+  "webtechsurvey.com": null,
+  "who-dat.as93.net": null,
+  "who.is": null,
+  "whois-history.whoisxmlapi.com": null,
+  "whois.arin.net": null,
+  "whois.com": null,
+  "whois.domaintools.com": null,
+  "whoisds.com": null,
+  "whoisxmlapi.com": null,
+  "whoxy.com": null,
+  "widgets.pinterest.com": null,
+  "wikidata.org": "wikidata",
+  "ws-public.interpol.int": null,
+  "www.bcb.gov.br": "bcb",
+  "www.binance.com": null,
+  "www.cert.br": "cert_br",
+  "www.chainabuse.com": "trm_chainabuse",
+  "www.circl.lu": "circl",
+  "www.cisa.gov": null,
+  "www.cisco.com": null,
+  "www.google.com": "google_web",
+  "www.googletagmanager.com": null,
+  "www.gov.br": "govbr",
+  "www.iana.org": "iana",
+  "www.okx.com": null,
+  "www.opensanctions.org": "opensanctions",
+  "www.ransomlook.io": "ransomlook",
+  "www.shodan.io": "shodan",
+  "www.virustotal.com": "virustotal",
+  "www.walletexplorer.com": "walletexplorer",
+  "www.wikidata.org": "wikidata",
+  "yandex.com": null,
+  "yaraify-api.abuse.ch": "abusech",
+  "yaraify.abuse.ch": "abusech",
+  "youtube.com": null,
+  "zendesk.com": null,
+  "zoomeye.org": null
+ },
+ "providers": {
+  "abusech": {
+   "file": "v3lum/data/providers/abusech.json",
+   "hosts": [
+    "mb-api.abuse.ch",
+    "urlhaus-api.abuse.ch",
+    "threatfox-api.abuse.ch",
+    "yaraify-api.abuse.ch",
+    "feodotracker.abuse.ch",
+    "sslbl.abuse.ch",
+    "bazaar.abuse.ch",
+    "urlhaus.abuse.ch",
+    "threatfox.abuse.ch",
+    "yaraify.abuse.ch",
+    "auth.abuse.ch"
+   ],
+   "keys": [
+    "abusech"
+   ],
+   "sources": {
+    "feodotracker": {
+     "title": "Feodo Tracker (botnet C2 IP blocklists)",
+     "terms_class": "open"
+    },
+    "malwarebazaar": {
+     "title": "MalwareBazaar (malware sample metadata by hash)",
+     "terms_class": "license"
+    },
+    "sslbl": {
+     "title": "SSL Blacklist (malicious TLS certificates and JA3 fingerprints)",
+     "terms_class": "open"
+    },
+    "threatfox": {
+     "title": "ThreatFox (IOCs with malware attribution)",
+     "terms_class": "license"
+    },
+    "urlhaus": {
+     "title": "URLhaus (malware distribution URLs)",
+     "terms_class": "license"
+    },
+    "yaraify": {
+     "title": "YARAify (YARA scan results by hash)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": false
+  },
+  "bcb": {
+   "file": "v3lum/data/providers/bcb.json",
+   "hosts": [
+    "bcb.gov.br",
+    "www.bcb.gov.br",
+    "olinda.bcb.gov.br"
+   ],
+   "keys": [],
+   "sources": {
+    "olinda_institutions": {
+     "title": "BCB Olinda Instituicoes_em_funcionamento v1 OData (DominiosVerificados, Sedes*)",
+     "terms_class": "open"
+    },
+    "str_participants": {
+     "title": "BCB STR participants CSV (bank code / ISPB table; UTF-8 BOM, ',' separator)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "blockchair": {
+   "file": "v3lum/data/providers/blockchair.json",
+   "hosts": [
+    "api.blockchair.com",
+    "blockchair.com"
+   ],
+   "keys": [
+    "blockchair"
+   ],
+   "sources": {
+    "api": {
+     "title": "Blockchair API (address dashboards on 40+ chains)",
+     "terms_class": "key-terms"
+    },
+    "explorer_pages": {
+     "title": "Blockchair explorer address pages (manual pivot links)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "brasilapi": {
+   "file": "v3lum/data/providers/brasilapi.json",
+   "hosts": [
+    "brasilapi.com.br"
+   ],
+   "keys": [],
+   "sources": {
+    "banks": {
+     "title": "BrasilAPI banks v1 and PIX participants",
+     "terms_class": "open"
+    },
+    "cep": {
+     "title": "BrasilAPI CEP v2/v1",
+     "terms_class": "open"
+    },
+    "cnpj": {
+     "title": "BrasilAPI CNPJ v1 (Receita Federal open data relay)",
+     "terms_class": "open"
+    },
+    "cvm_brokers": {
+     "title": "BrasilAPI CVM brokers (corretoras)",
+     "terms_class": "open"
+    },
+    "ddd": {
+     "title": "BrasilAPI DDD v1 (Anatel numbering)",
+     "terms_class": "open"
+    },
+    "registrobr": {
+     "title": "BrasilAPI registro.br availability wrapper",
+     "terms_class": "open"
+    }
+   },
+   "tier": "community",
+   "seeded": true
+  },
+  "builtwith": {
+   "file": "v3lum/data/providers/builtwith.json",
+   "hosts": [
+    "api.builtwith.com",
+    "builtwith.com"
+   ],
+   "keys": [
+    "builtwith"
+   ],
+   "sources": {
+    "api": {
+     "title": "BuiltWith API (free1 technology groups; v21 domain and rv2 relationships on paid credits)",
+     "terms_class": "key-terms"
+    },
+    "web_profiles": {
+     "title": "BuiltWith technology and relationship pages builtwith.com/{domain}, /relationships/... (manual pivot links)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "cert_br": {
+   "file": "v3lum/data/providers/cert_br.json",
+   "hosts": [
+    "www.cert.br"
+   ],
+   "keys": [],
+   "sources": {
+    "incident_reporting": {
+     "title": "CERT.br incident notification guidance (manual; Cc cert@cert.br on takedown notifications)",
+     "terms_class": "open"
+    },
+    "rss": {
+     "title": "CERT.br RSS feed /rss/certbr-rss.xml",
+     "terms_class": "unknown"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "circl": {
+   "file": "v3lum/data/providers/circl.json",
+   "hosts": [
+    "circl.lu",
+    "www.circl.lu",
+    "hashlookup.circl.lu",
+    "cra.circl.lu",
+    "bgpranking-ng.circl.lu",
+    "lookyloo.circl.lu"
+   ],
+   "keys": [
+    "circl_pdns_pass",
+    "circl_pdns_user"
+   ],
+   "sources": {
+    "bgpranking": {
+     "title": "CIRCL BGP Ranking (ipasn_history, ASN ranking)",
+     "terms_class": "open"
+    },
+    "hashlookup": {
+     "title": "CIRCL hashlookup (lookup by MD5/SHA-1/SHA-256, bulk, parents/children, info)",
+     "terms_class": "open"
+    },
+    "hashlookup_bloom": {
+     "title": "CIRCL hashlookup full Bloom filter on cra.circl.lu (offline prefilter, 2023 snapshot, ~1 GB)",
+     "terms_class": "open"
+    },
+    "lookyloo": {
+     "title": "CIRCL Lookyloo public instance (capture lookups only; /submit never wired)",
+     "terms_class": "unknown"
+    },
+    "misp_osint_feed": {
+     "title": "CIRCL MISP OSINT feed (TLP:CLEAR manifest, per-event JSON, hashes.csv)",
+     "terms_class": "open"
+    },
+    "pdns": {
+     "title": "CIRCL Passive DNS www.circl.lu/pdns/query (COF/NDJSON; CSIRT account on request)",
+     "terms_class": "license"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "circl_vulnlookup": {
+   "file": "v3lum/data/providers/circl_vulnlookup.json",
+   "hosts": [
+    "vulnerability.circl.lu",
+    "cve.circl.lu"
+   ],
+   "keys": [
+    "circl_vuln"
+   ],
+   "sources": {
+    "api": {
+     "title": "Vulnerability-Lookup API (vulnerability by CVE/GHSA/PySec/CSAF id, EPSS, sightings, CWE; legacy cve.circl.lu alias)",
+     "terms_class": "open"
+    },
+    "vuln_pages": {
+     "title": "Vulnerability-Lookup pages /vuln/{cve} (manual pivot links)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "cloudflare_dns": {
+   "file": "v3lum/data/providers/cloudflare_dns.json",
+   "hosts": [
+    "cloudflare-dns.com"
+   ],
+   "keys": [],
+   "sources": {
+    "doh": {
+     "title": "DNS-over-HTTPS JSON answers (cloudflare-dns.com/dns-query)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": false
+  },
+  "codeberg": {
+   "file": "v3lum/data/providers/codeberg.json",
+   "hosts": [
+    "codeberg.org"
+   ],
+   "keys": [],
+   "sources": {
+    "api": {
+     "title": "Codeberg Forgejo API v1 (users, users/search, orgs, org repos)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "community",
+   "seeded": true
+  },
+  "commoncrawl": {
+   "file": "v3lum/data/providers/commoncrawl.json",
+   "hosts": [
+    "index.commoncrawl.org"
+   ],
+   "keys": [],
+   "sources": {
+    "cdx_index": {
+     "title": "Common Crawl CDX index server (collinfo.json and per-crawl indexes)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "core_doh": {
+   "file": "v3lum/data/providers/core_doh.json",
+   "hosts": [],
+   "keys": [],
+   "sources": {
+    "resolvers": {
+     "title": "DNS answers through the core DoH resolver chain (DoH-only modules declare this source)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": false
+  },
+  "criminalip": {
+   "file": "v3lum/data/providers/criminalip.json",
+   "hosts": [
+    "api.criminalip.io",
+    "search.criminalip.io"
+   ],
+   "keys": [
+    "criminalip"
+   ],
+   "sources": {
+    "asset_api": {
+     "title": "Criminal IP asset API /v1/asset/ip/report (domain scan endpoints are active and never wired)",
+     "terms_class": "key-terms"
+    },
+    "search_pages": {
+     "title": "Criminal IP asset report and search pages (manual pivot links)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "community",
+   "seeded": true
+  },
+  "crtsh": {
+   "file": "v3lum/data/providers/crtsh.json",
+   "hosts": [
+    "crt.sh"
+   ],
+   "keys": [],
+   "sources": {
+    "search": {
+     "title": "crt.sh certificate search (JSON output; identity, O=, SHA-256 queries; HTML report links)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "cvm": {
+   "file": "v3lum/data/providers/cvm.json",
+   "hosts": [
+    "dados.cvm.gov.br"
+   ],
+   "keys": [],
+   "sources": {
+    "cadastral": {
+     "title": "CVM open data: CKAN API and cadastral registries (listed companies, intermediaries, advisers, portfolio managers, crowdfunding)",
+     "terms_class": "open"
+    },
+    "sanctions": {
+     "title": "CVM sanctioning proceedings open data (PROCESSO/SANCIONADOR)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "cybercrime_tracker": {
+   "file": "v3lum/data/providers/cybercrime_tracker.json",
+   "hosts": [
+    "cybercrime-tracker.net"
+   ],
+   "keys": [],
+   "sources": {
+    "panel_list": {
+     "title": "CyberCrime-Tracker C2 panel list all.php (~870 KB, refresh daily)",
+     "terms_class": "open"
+    },
+    "search_pages": {
+     "title": "CyberCrime-Tracker search pages index.php?search= (manual pivot links)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "unknown",
+   "seeded": true
+  },
+  "darkfeed": {
+   "file": "v3lum/data/providers/darkfeed.json",
+   "hosts": [
+    "darkfeed.io"
+   ],
+   "keys": [],
+   "sources": {
+    "rss": {
+     "title": "DarkFeed RSS feed /feed/ (dark-web and ransomware news headlines)",
+     "terms_class": "unknown"
+    }
+   },
+   "tier": "unknown",
+   "seeded": true
+  },
+  "darkwebinformer": {
+   "file": "v3lum/data/providers/darkwebinformer.json",
+   "hosts": [
+    "darkwebinformer.com"
+   ],
+   "keys": [],
+   "sources": {
+    "rss": {
+     "title": "Dark Web Informer RSS feed /rss/ (dark-web news headlines)",
+     "terms_class": "unknown"
+    }
+   },
+   "tier": "unknown",
+   "seeded": true
+  },
+  "dev_to": {
+   "file": "v3lum/data/providers/dev_to.json",
+   "hosts": [
+    "dev.to"
+   ],
+   "keys": [],
+   "sources": {
+    "users_api": {
+     "title": "DEV (Forem) users API /api/users/by_username",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "dnslytics": {
+   "file": "v3lum/data/providers/dnslytics.json",
+   "hosts": [
+    "search.dnslytics.com"
+   ],
+   "keys": [],
+   "sources": {
+    "search_pages": {
+     "title": "DNSlytics domain, IP, ASN and reverse-analytics pages (manual pivot links)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "community",
+   "seeded": true
+  },
+  "docker_hub": {
+   "file": "v3lum/data/providers/docker_hub.json",
+   "hosts": [
+    "hub.docker.com"
+   ],
+   "keys": [],
+   "sources": {
+    "hub_api": {
+     "title": "Docker Hub v2 API (users, orgs, repositories, tags, image layer instructions)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "firehol": {
+   "file": "v3lum/data/providers/firehol.json",
+   "hosts": [
+    "iplists.firehol.org"
+   ],
+   "keys": [],
+   "sources": {
+    "level1": {
+     "title": "FireHOL level1 aggregate netset (and level2/3/webclient on request)",
+     "terms_class": "noncommercial"
+    },
+    "proxies": {
+     "title": "FireHOL proxies netset (open-proxy and anonymizer aggregate)",
+     "terms_class": "noncommercial"
+    }
+   },
+   "tier": "community",
+   "seeded": true
+  },
+  "fofa": {
+   "file": "v3lum/data/providers/fofa.json",
+   "hosts": [
+    "fofa.info",
+    "en.fofa.info"
+   ],
+   "keys": [
+    "fofa_key"
+   ],
+   "sources": {
+    "result_pages": {
+     "title": "FOFA result pages en.fofa.info/result?qbase64= (manual pivot links)",
+     "terms_class": "open"
+    },
+    "search_api": {
+     "title": "FOFA search API /api/v1/search/all (paid membership)",
+     "terms_class": "license"
+    }
+   },
+   "tier": "unknown",
+   "seeded": true
+  },
+  "ghostarchive": {
+   "file": "v3lum/data/providers/ghostarchive.json",
+   "hosts": [
+    "ghostarchive.org"
+   ],
+   "keys": [],
+   "sources": {
+    "search": {
+     "title": "Ghostarchive search pages search?term= (read only)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "unknown",
+   "seeded": true
+  },
+  "github": {
+   "file": "v3lum/data/providers/github.json",
+   "hosts": [
+    "github.com",
+    "api.github.com",
+    "raw.githubusercontent.com",
+    "codeload.github.com",
+    "objects.githubusercontent.com"
+   ],
+   "keys": [
+    "github"
+   ],
+   "sources": {},
+   "tier": "trusted",
+   "seeded": false
+  },
+  "gitlab": {
+   "file": "v3lum/data/providers/gitlab.json",
+   "hosts": [
+    "gitlab.com"
+   ],
+   "keys": [
+    "gitlab"
+   ],
+   "sources": {
+    "blob_search": {
+     "title": "GitLab search API scope=blobs and repository file raw (token)",
+     "terms_class": "key-terms"
+    },
+    "exploitdb_csv": {
+     "title": "Exploit-DB files_exploits.csv hosted at gitlab.com/exploit-database (CVE -> public exploit)",
+     "terms_class": "open"
+    },
+    "groups_api": {
+     "title": "GitLab groups API (top-level group search, group projects)",
+     "terms_class": "open"
+    },
+    "users_api": {
+     "title": "GitLab users API (users?username=, users/{id}) and public {user}.keys/.gpg",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "gleif": {
+   "file": "v3lum/data/providers/gleif.json",
+   "hosts": [
+    "api.gleif.org"
+   ],
+   "keys": [],
+   "sources": {
+    "lei_api": {
+     "title": "GLEIF LEI API v1 (lei-records filters, fuzzycompletions, direct/ultimate parent and children)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "google_calendar": {
+   "file": "v3lum/data/providers/google_calendar.json",
+   "hosts": [
+    "calendar.google.com"
+   ],
+   "keys": [],
+   "sources": {
+    "public_ics": {
+     "title": "Google Calendar public ICS feed /calendar/ical/{email}/public/basic.ics",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "google_dal": {
+   "file": "v3lum/data/providers/google_dal.json",
+   "hosts": [
+    "digitalassetlinks.googleapis.com"
+   ],
+   "keys": [],
+   "sources": {
+    "statements": {
+     "title": "Digital Asset Links statements:list (web site and Android app delegations)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "google_lens": {
+   "file": "v3lum/data/providers/google_lens.json",
+   "hosts": [
+    "lens.google.com"
+   ],
+   "keys": [],
+   "sources": {
+    "upload_by_url": {
+     "title": "Google Lens uploadbyurl?url= (manual reverse-image links)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "google_public_dns": {
+   "file": "v3lum/data/providers/google_public_dns.json",
+   "hosts": [
+    "dns.google"
+   ],
+   "keys": [],
+   "sources": {
+    "doh": {
+     "title": "DNS-over-HTTPS JSON answers (dns.google/resolve)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": false
+  },
+  "google_transparency": {
+   "file": "v3lum/data/providers/google_transparency.json",
+   "hosts": [
+    "transparencyreport.google.com"
+   ],
+   "keys": [],
+   "sources": {
+    "safebrowsing_status": {
+     "title": "Transparency Report /transparencyreport/api/v3/safebrowsing/status (undocumented internal endpoint behind the Site Status page)",
+     "terms_class": "noncommercial"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "google_web": {
+   "file": "v3lum/data/providers/google_web.json",
+   "hosts": [
+    "google.com",
+    "www.google.com",
+    "news.google.com",
+    "play.google.com",
+    "safebrowsing.google.com"
+   ],
+   "keys": [],
+   "sources": {
+    "maps": {
+     "title": "Google Maps URL scheme www.google.com/maps/search/?api=1 (manual links)",
+     "terms_class": "open"
+    },
+    "news_search": {
+     "title": "Google News search page news.google.com/search?q= (manual link; RSS never automated)",
+     "terms_class": "open"
+    },
+    "play_store": {
+     "title": "Google Play store search and app-details pages (manual pivot links, never fetched)",
+     "terms_class": "open"
+    },
+    "safebrowsing_report": {
+     "title": "Safe Browsing report_phish form (manual analyst submission)",
+     "terms_class": "open"
+    },
+    "search": {
+     "title": "Google Search result pages www.google.com/search?q= (dork links, manual only)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "govbr": {
+   "file": "v3lum/data/providers/govbr.json",
+   "hosts": [
+    "www.gov.br"
+   ],
+   "keys": [],
+   "sources": {
+    "anatel_open_data": {
+     "title": "Anatel open-data page www.gov.br/anatel (numbering datasets; deferred)",
+     "terms_class": "open"
+    },
+    "ctir_alerts": {
+     "title": "CTIR Gov alerts and recommendations page www.gov.br/ctir",
+     "terms_class": "unknown"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "gravatar": {
+   "file": "v3lum/data/providers/gravatar.json",
+   "hosts": [
+    "gravatar.com",
+    "api.gravatar.com",
+    "en.gravatar.com"
+   ],
+   "keys": [
+    "gravatar"
+   ],
+   "sources": {
+    "profiles": {
+     "title": "Gravatar v3 profiles API (e-mail hash or username), legacy {u}.json and avatar existence d=404",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "grayhatwarfare": {
+   "file": "v3lum/data/providers/grayhatwarfare.json",
+   "hosts": [
+    "buckets.grayhatwarfare.com"
+   ],
+   "keys": [
+    "grayhat"
+   ],
+   "sources": {
+    "api": {
+     "title": "GrayhatWarfare API v2 (files and buckets by keyword)",
+     "terms_class": "key-terms"
+    },
+    "search_pages": {
+     "title": "GrayhatWarfare files search page files?keywords= (manual pivot links)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "community",
+   "seeded": true
+  },
+  "hacker_news": {
+   "file": "v3lum/data/providers/hacker_news.json",
+   "hosts": [
+    "hacker-news.firebaseio.com"
+   ],
+   "keys": [],
+   "sources": {
+    "firebase_api": {
+     "title": "Hacker News Firebase API v0 (user/{u}.json, item/{id}.json)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "hackerone": {
+   "file": "v3lum/data/providers/hackerone.json",
+   "hosts": [
+    "hackerone.com"
+   ],
+   "keys": [],
+   "sources": {
+    "graphql": {
+     "title": "HackerOne public GraphQL user query (undocumented internal endpoint; BACKLOG, not in this build)",
+     "terms_class": "unknown"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "hackertarget": {
+   "file": "v3lum/data/providers/hackertarget.json",
+   "hosts": [
+    "api.hackertarget.com"
+   ],
+   "keys": [
+    "hackertarget"
+   ],
+   "sources": {
+    "api": {
+     "title": "HackerTarget API (hostsearch, dnslookup, reversedns, reverseiplookup, aslookup, findshareddns, analyticslookup)",
+     "terms_class": "key-terms"
+    }
+   },
+   "tier": "community",
+   "seeded": true
+  },
+  "hibp": {
+   "file": "v3lum/data/providers/hibp.json",
+   "hosts": [
+    "haveibeenpwned.com"
+   ],
+   "keys": [
+    "hibp"
+   ],
+   "sources": {
+    "account": {
+     "title": "HIBP paid-key endpoints (breachedaccount, pasteaccount, stealerlogs, breacheddomain)",
+     "terms_class": "license"
+    },
+    "breach_pages": {
+     "title": "HIBP breach pages /Breach/{Name} (manual links emitted next to HIBP breach names)",
+     "terms_class": "open"
+    },
+    "catalog": {
+     "title": "HIBP breach catalogue /api/v3/breaches (also ?domain=), /breach/{name}, /latestbreach, /dataclasses",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "honeylabs": {
+   "file": "v3lum/data/providers/honeylabs.json",
+   "hosts": [
+    "honeylabs.net"
+   ],
+   "keys": [
+    "honeylabs"
+   ],
+   "sources": {
+    "api": {
+     "title": "HoneyLabs API (CVE, port and ASN telemetry; keyed IP lookup JSON)",
+     "terms_class": "unknown"
+    },
+    "lookup_pages": {
+     "title": "HoneyLabs IP report page /lookup/{ip} (manual pivot links, HTML)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "unknown",
+   "seeded": true
+  },
+  "hostio": {
+   "file": "v3lum/data/providers/hostio.json",
+   "hosts": [
+    "host.io"
+   ],
+   "keys": [
+    "hostio"
+   ],
+   "sources": {
+    "api": {
+     "title": "host.io API (web, dns, related, full; domains by ip/ns/mx/asn/backlinks/redirects/adsense/googleanalytics)",
+     "terms_class": "key-terms"
+    },
+    "domain_pages": {
+     "title": "host.io domain pages host.io/{domain} (manual pivot links)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "community",
+   "seeded": true
+  },
+  "huggingface": {
+   "file": "v3lum/data/providers/huggingface.json",
+   "hosts": [
+    "huggingface.co"
+   ],
+   "keys": [],
+   "sources": {
+    "users_api": {
+     "title": "Hugging Face Hub /api/users/{u}/overview",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "hunter_how": {
+   "file": "v3lum/data/providers/hunter_how.json",
+   "hosts": [
+    "hunter.how"
+   ],
+   "keys": [],
+   "sources": {
+    "search_pages": {
+     "title": "hunter.how search pages list?searchValue= (manual pivot links)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "unknown",
+   "seeded": true
+  },
+  "iana": {
+   "file": "v3lum/data/providers/iana.json",
+   "hosts": [
+    "data.iana.org",
+    "www.iana.org"
+   ],
+   "keys": [],
+   "sources": {
+    "tlds": {
+     "title": "IANA list of top-level domains (tlds-alpha-by-domain.txt) and RDAP bootstrap files",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": false
+  },
+  "ibge": {
+   "file": "v3lum/data/providers/ibge.json",
+   "hosts": [
+    "servicodados.ibge.gov.br"
+   ],
+   "keys": [],
+   "sources": {
+    "cnae": {
+     "title": "IBGE CNAE API v2 (subclasses, classes)",
+     "terms_class": "open"
+    },
+    "localidades": {
+     "title": "IBGE Localidades API v1 (municipalities, states)",
+     "terms_class": "open"
+    },
+    "nomes": {
+     "title": "IBGE Nomes API v2 (Census first-name frequency and ranking)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "internal_doh": {
+   "file": "v3lum/data/providers/internal_doh.json",
+   "hosts": [],
+   "keys": [],
+   "sources": {
+    "resolver": {
+     "title": "DNS answers from the company internal DoH resolver",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": false
+  },
+  "internal_misp": {
+   "file": "v3lum/data/providers/internal_misp.json",
+   "hosts": [],
+   "keys": [
+    "misp"
+   ],
+   "sources": {
+    "events": {
+     "title": "MISP events/attributes via restSearch (read-only)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": false
+  },
+  "internal_opencti": {
+   "file": "v3lum/data/providers/internal_opencti.json",
+   "hosts": [],
+   "keys": [
+    "opencti"
+   ],
+   "sources": {
+    "graphql": {
+     "title": "OpenCTI observables/indicators via the read-only GraphQL API",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": false
+  },
+  "internet_archive": {
+   "file": "v3lum/data/providers/internet_archive.json",
+   "hosts": [
+    "archive.org",
+    "web.archive.org"
+   ],
+   "keys": [],
+   "sources": {
+    "wayback": {
+     "title": "Wayback Machine CDX server, availability API and snapshot replay (id_/if_)",
+     "terms_class": "open"
+    },
+    "wayback_social": {
+     "title": "Wayback CDX for deleted-post recovery of X/Twitter URLs (opt-in per run)",
+     "terms_class": "unknown"
+    },
+    "wayback_web": {
+     "title": "Wayback calendar and URL-list pages web/*/{url} (manual pivot links)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "ipinfo": {
+   "file": "v3lum/data/providers/ipinfo.json",
+   "hosts": [
+    "api.ipinfo.io",
+    "ipinfo.io"
+   ],
+   "keys": [
+    "ipinfo"
+   ],
+   "sources": {
+    "api": {
+     "title": "IPinfo API (Lite /lite/{ip}, core /{ip}/json)",
+     "terms_class": "key-terms"
+    },
+    "web_pages": {
+     "title": "IPinfo IP and ASN pages (manual pivot links)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "keybase": {
+   "file": "v3lum/data/providers/keybase.json",
+   "hosts": [
+    "keybase.io"
+   ],
+   "keys": [],
+   "sources": {
+    "user_lookup": {
+     "title": "Keybase user/lookup.json (basics, proofs_summary, public_keys; github=/twitter=/domain= reverse lookups)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "malpedia": {
+   "file": "v3lum/data/providers/malpedia.json",
+   "hosts": [
+    "malpedia.caad.fkie.fraunhofer.de"
+   ],
+   "keys": [
+    "malpedia"
+   ],
+   "sources": {
+    "api": {
+     "title": "Malpedia API (find/get/list actors and families, bibliography)",
+     "terms_class": "noncommercial"
+    },
+    "pages": {
+     "title": "Malpedia family and actor pages /details/{slug}, /actor/{id} (manual pivot links)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "mempool_space": {
+   "file": "v3lum/data/providers/mempool_space.json",
+   "hosts": [
+    "mempool.space"
+   ],
+   "keys": [],
+   "sources": {
+    "esplora_api": {
+     "title": "mempool.space Esplora-compatible REST API (address, address txs)",
+     "terms_class": "open"
+    },
+    "explorer_pages": {
+     "title": "mempool.space address pages (manual pivot links)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "community",
+   "seeded": true
+  },
+  "mitre": {
+   "file": "v3lum/data/providers/mitre.json",
+   "hosts": [
+    "cveawg.mitre.org",
+    "cwe-api.mitre.org",
+    "attack-taxii.mitre.org",
+    "attack.mitre.org",
+    "d3fend.mitre.org"
+   ],
+   "keys": [],
+   "sources": {
+    "attack_pages": {
+     "title": "ATT&CK technique pages /techniques/{T}/{sub}/ (manual pivot links)",
+     "terms_class": "open"
+    },
+    "attack_taxii": {
+     "title": "MITRE ATT&CK TAXII 2.1 server (collections and objects)",
+     "terms_class": "open"
+    },
+    "cve_services": {
+     "title": "CVE Services API cveawg /api/cve/{id} (CNA and CISA ADP containers)",
+     "terms_class": "open"
+    },
+    "cwe_api": {
+     "title": "CWE REST API /api/v1/cwe/weakness/{id} (dataset refresh only, never per CVE)",
+     "terms_class": "open"
+    },
+    "d3fend_api": {
+     "title": "D3FEND API /api/offensive-technique/attack/{T}.json",
+     "terms_class": "open"
+    },
+    "d3fend_pages": {
+     "title": "D3FEND offensive-technique pages (manual pivot links)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "netlas": {
+   "file": "v3lum/data/providers/netlas.json",
+   "hosts": [
+    "app.netlas.io"
+   ],
+   "keys": [
+    "netlas"
+   ],
+   "sources": {
+    "api": {
+     "title": "Netlas API (host, responses search, domains_count, domains download)",
+     "terms_class": "noncommercial"
+    },
+    "web_pages": {
+     "title": "Netlas host and responses pages (manual pivot links)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "community",
+   "seeded": true
+  },
+  "npm": {
+   "file": "v3lum/data/providers/npm.json",
+   "hosts": [
+    "registry.npmjs.org"
+   ],
+   "keys": [],
+   "sources": {
+    "registry": {
+     "title": "npm registry API (package metadata, -/v1/search maintainer queries)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "opensanctions": {
+   "file": "v3lum/data/providers/opensanctions.json",
+   "hosts": [
+    "api.opensanctions.org",
+    "data.opensanctions.org",
+    "opensanctions.org",
+    "www.opensanctions.org"
+   ],
+   "keys": [
+    "opensanctions"
+   ],
+   "sources": {
+    "bulk_licensed": {
+     "title": "OpenSanctions bulk datasets (default collection targets and index) under a bulk data licence",
+     "terms_class": "license"
+    },
+    "screening_api": {
+     "title": "OpenSanctions API /match and /search under a Screening licence",
+     "terms_class": "license"
+    },
+    "web_search": {
+     "title": "OpenSanctions web search www.opensanctions.org/search (manual pivot links)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "otx": {
+   "file": "v3lum/data/providers/otx.json",
+   "hosts": [
+    "otx.alienvault.com"
+   ],
+   "keys": [
+    "otx"
+   ],
+   "sources": {
+    "indicators": {
+     "title": "OTX indicator API v1 (general, reputation, geo, malware, url_list, passive_dns, http_scans per IPv4/IPv6/domain/hostname/url/file/cve)",
+     "terms_class": "key-terms"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "publicnode": {
+   "file": "v3lum/data/providers/publicnode.json",
+   "hosts": [
+    "ethereum-rpc.publicnode.com"
+   ],
+   "keys": [],
+   "sources": {
+    "ethereum_rpc": {
+     "title": "PublicNode Ethereum JSON-RPC (eth_call to the Chainalysis sanctions oracle, balances)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "publicsuffix": {
+   "file": "v3lum/data/providers/publicsuffix.json",
+   "hosts": [
+    "publicsuffix.org"
+   ],
+   "keys": [],
+   "sources": {
+    "psl": {
+     "title": "public_suffix_list.dat (registrable-domain computation)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": false
+  },
+  "pwnedpasswords": {
+   "file": "v3lum/data/providers/pwnedpasswords.json",
+   "hosts": [
+    "api.pwnedpasswords.com"
+   ],
+   "keys": [],
+   "sources": {
+    "range": {
+     "title": "Pwned Passwords k-anonymity range API /range/{sha1_prefix5} (mode=ntlm)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "pypi": {
+   "file": "v3lum/data/providers/pypi.json",
+   "hosts": [
+    "pypi.org"
+   ],
+   "keys": [],
+   "sources": {
+    "json_api": {
+     "title": "PyPI JSON API /pypi/{package}/json and /pypi/{package}/{version}/json",
+     "terms_class": "open"
+    },
+    "org_pages": {
+     "title": "PyPI organisation pages /org/{org}/ (HTML, one polite request per org)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "quad9": {
+   "file": "v3lum/data/providers/quad9.json",
+   "hosts": [
+    "dns.quad9.net"
+   ],
+   "keys": [],
+   "sources": {
+    "doh": {
+     "title": "DNS-over-HTTPS wire-format answers (dns.quad9.net/dns-query, via the optional dnspython extra)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": false
+  },
+  "querido_diario": {
+   "file": "v3lum/data/providers/querido_diario.json",
+   "hosts": [
+    "api.queridodiario.org.br"
+   ],
+   "keys": [],
+   "sources": {
+    "company": {
+     "title": "Querido Diario company info and partners (/company/info, /company/partners by CNPJ)",
+     "terms_class": "open"
+    },
+    "gazettes": {
+     "title": "Querido Diario gazette search API (/gazettes, /cities)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "community",
+   "seeded": true
+  },
+  "ransomlook": {
+   "file": "v3lum/data/providers/ransomlook.json",
+   "hosts": [
+    "ransomlook.io",
+    "www.ransomlook.io"
+   ],
+   "keys": [],
+   "sources": {
+    "api": {
+     "title": "RansomLook API /api/groups, /api/group/{name}, /api/recent, /api/last/{days}, /api/markets",
+     "terms_class": "open"
+    },
+    "group_pages": {
+     "title": "RansomLook group pages /group/{group} (manual pivot links)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "community",
+   "seeded": true
+  },
+  "rdap_org": {
+   "file": "v3lum/data/providers/rdap_org.json",
+   "hosts": [
+    "rdap.org"
+   ],
+   "keys": [],
+   "sources": {
+    "redirector": {
+     "title": "rdap.org redirector /domain, /ip, /autnum, /entity (302 to the authoritative RDAP server)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "community",
+   "seeded": true
+  },
+  "registrobr": {
+   "file": "v3lum/data/providers/registrobr.json",
+   "hosts": [
+    "registro.br",
+    "rdap.registro.br",
+    "ftp.registro.br"
+   ],
+   "keys": [],
+   "sources": {
+    "asn_blocks": {
+     "title": "NIC.br ASN block list /pub/numeracao/origin/nicbr-asn-blk-latest.txt",
+     "terms_class": "open"
+    },
+    "avail": {
+     "title": "Registro.br domain availability API /v2/ajax/avail/raw/{domain}",
+     "terms_class": "open"
+    },
+    "rdap": {
+     "title": "Registro.br RDAP (domain, entity, ip, autnum)",
+     "terms_class": "open"
+    },
+    "release_list": {
+     "title": "Registro.br domains-in-release list /dominio/lista-processo-liberacao.txt",
+     "terms_class": "open"
+    },
+    "whois_web": {
+     "title": "Registro.br web whois (manual link when RDAP is blocked)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "rfb": {
+   "file": "v3lum/data/providers/rfb.json",
+   "hosts": [
+    "arquivos.receitafederal.gov.br"
+   ],
+   "keys": [],
+   "sources": {
+    "cnpj_open_data": {
+     "title": "RFB CNPJ open-data monthly dump on the WebDAV share (Empresas, Estabelecimentos, Socios and code tables)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "ripestat": {
+   "file": "v3lum/data/providers/ripestat.json",
+   "hosts": [
+    "stat.ripe.net"
+   ],
+   "keys": [],
+   "sources": {
+    "data_api": {
+     "title": "RIPEstat Data API /data/{call}/data.json (network-info, prefix-overview, as-overview, announced-prefixes, whois, abuse-contact-finder, ...)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "securitytrails": {
+   "file": "v3lum/data/providers/securitytrails.json",
+   "hosts": [
+    "api.securitytrails.com",
+    "securitytrails.com"
+   ],
+   "keys": [
+    "securitytrails"
+   ],
+   "sources": {
+    "api": {
+     "title": "SecurityTrails API v1 (domain, subdomains, DNS history, ips/nearby)",
+     "terms_class": "key-terms"
+    },
+    "web_pages": {
+     "title": "SecurityTrails web pages (manual pivot links; Cloudflare-protected)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "shodan": {
+   "file": "v3lum/data/providers/shodan.json",
+   "hosts": [
+    "internetdb.shodan.io",
+    "cvedb.shodan.io",
+    "api.shodan.io",
+    "www.shodan.io"
+   ],
+   "keys": [
+    "shodan"
+   ],
+   "sources": {
+    "api": {
+     "title": "Shodan REST API (keyed host, DNS and search endpoints; on-demand scan endpoints are never wired)",
+     "terms_class": "key-terms"
+    },
+    "cvedb": {
+     "title": "Shodan CVEDB (keyless CVE details, EPSS, KEV flag, product search)",
+     "terms_class": "noncommercial"
+    },
+    "internetdb": {
+     "title": "Shodan InternetDB (keyless open ports, hostnames, CPEs, tags and CVEs per IP)",
+     "terms_class": "noncommercial"
+    }
+   },
+   "tier": "trusted",
+   "seeded": false
+  },
+  "shodan_ctl": {
+   "file": "v3lum/data/providers/shodan_ctl.json",
+   "hosts": [
+    "ctl.shodan.io"
+   ],
+   "keys": [],
+   "sources": {
+    "hostnames": {
+     "title": "Shodan CT log hostnames API /api/v1/domain/{domain}/hostnames (keyless)",
+     "terms_class": "noncommercial"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "shodan_web": {
+   "file": "v3lum/data/providers/shodan_web.json",
+   "hosts": [
+    "shodan.io"
+   ],
+   "keys": [],
+   "sources": {
+    "web_pages": {
+     "title": "Shodan search and host pages via the apex host (manual pivot links)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "telegram": {
+   "file": "v3lum/data/providers/telegram.json",
+   "hosts": [
+    "t.me"
+   ],
+   "keys": [],
+   "sources": {
+    "phone_links": {
+     "title": "t.me/+{e164} deep links (manual pivot links)",
+     "terms_class": "open"
+    },
+    "web_preview": {
+     "title": "Telegram t.me/{name} public preview and t.me/s/{channel} web view (?before= paging)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "torproject": {
+   "file": "v3lum/data/providers/torproject.json",
+   "hosts": [
+    "check.torproject.org",
+    "onionoo.torproject.org",
+    "collector.torproject.org",
+    "metrics.torproject.org"
+   ],
+   "keys": [],
+   "sources": {
+    "collector": {
+     "title": "CollecTor exit lists (recent and archive)",
+     "terms_class": "open"
+    },
+    "exit_list": {
+     "title": "TorDNSEL bulk exit list check.torproject.org/torbulkexitlist",
+     "terms_class": "open"
+    },
+    "exonerator": {
+     "title": "ExoneraTor on metrics.torproject.org (manual pivot links)",
+     "terms_class": "open"
+    },
+    "onionoo": {
+     "title": "Onionoo relay search (details, summary)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "transparencia": {
+   "file": "v3lum/data/providers/transparencia.json",
+   "hosts": [
+    "portaldatransparencia.gov.br"
+   ],
+   "keys": [],
+   "sources": {
+    "bulk_sanctions": {
+     "title": "CGU bulk downloads /download-de-dados/{ceis|cnep|cepim|acordos-leniencia}/{YYYYMMDD} (daily zip files)",
+     "terms_class": "open"
+    },
+    "web_search": {
+     "title": "Portal da Transparencia web search /busca?termo= (manual pivot links)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "transparencia_api": {
+   "file": "v3lum/data/providers/transparencia_api.json",
+   "hosts": [
+    "api.portaldatransparencia.gov.br"
+   ],
+   "keys": [
+    "transparencia"
+   ],
+   "sources": {
+    "api_dados": {
+     "title": "Portal da Transparencia API de dados (pessoa-juridica, CEIS, CNEP, CEPIM, acordos-leniencia, contratos)",
+     "terms_class": "key-terms"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "triage": {
+   "file": "v3lum/data/providers/triage.json",
+   "hosts": [
+    "tria.ge"
+   ],
+   "keys": [
+    "triage"
+   ],
+   "sources": {
+    "report_pages": {
+     "title": "Triage report search pages /s?q= and /reports?q= (manual pivot links)",
+     "terms_class": "open"
+    },
+    "search_api": {
+     "title": "Triage API v0 search (sha256, family, tag, url queries)",
+     "terms_class": "noncommercial"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "trm_chainabuse": {
+   "file": "v3lum/data/providers/trm_chainabuse.json",
+   "hosts": [
+    "api.chainabuse.com",
+    "chainabuse.com",
+    "www.chainabuse.com"
+   ],
+   "keys": [
+    "chainabuse"
+   ],
+   "sources": {
+    "address_pages": {
+     "title": "Chainabuse address pages www.chainabuse.com/address/{a} (manual pivot links, SPA)",
+     "terms_class": "open"
+    },
+    "reports_api": {
+     "title": "Chainabuse reports API v0 (scam reports per address or domain)",
+     "terms_class": "noncommercial"
+    }
+   },
+   "tier": "community",
+   "seeded": true
+  },
+  "urlscan": {
+   "file": "v3lum/data/providers/urlscan.json",
+   "hosts": [
+    "urlscan.io"
+   ],
+   "keys": [
+    "urlscan"
+   ],
+   "sources": {
+    "search": {
+     "title": "urlscan.io Search API and result API (search only; no scan submission)",
+     "terms_class": "noncommercial"
+    },
+    "web_pages": {
+     "title": "urlscan.io domain, IP and search pages (manual pivot links)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "viewdns": {
+   "file": "v3lum/data/providers/viewdns.json",
+   "hosts": [
+    "viewdns.info"
+   ],
+   "keys": [],
+   "sources": {
+    "web_tools": {
+     "title": "ViewDNS web tools (reverse WHOIS, DNS records, reverse IP, IP history; manual pivot links)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "community",
+   "seeded": true
+  },
+  "virusshare": {
+   "file": "v3lum/data/providers/virusshare.json",
+   "hosts": [
+    "virusshare.com"
+   ],
+   "keys": [
+    "virusshare"
+   ],
+   "sources": {
+    "api": {
+     "title": "VirusShare API v2 (file and quick hash lookups)",
+     "terms_class": "unknown"
+    },
+    "hash_lists": {
+     "title": "VirusShare MD5 hash lists hashfiles/VirusShare_{00000..00511}.md5 (historical corpus)",
+     "terms_class": "unknown"
+    }
+   },
+   "tier": "community",
+   "seeded": true
+  },
+  "virustotal": {
+   "file": "v3lum/data/providers/virustotal.json",
+   "hosts": [
+    "virustotal.com",
+    "www.virustotal.com"
+   ],
+   "keys": [],
+   "sources": {
+    "api": {
+     "title": "VirusTotal API v3 (files, domains, ip_addresses, urls, relationships)",
+     "terms_class": "noncommercial"
+    },
+    "gui_links": {
+     "title": "VirusTotal GUI deep links (manual pivot links, always emitted)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  },
+  "walletexplorer": {
+   "file": "v3lum/data/providers/walletexplorer.json",
+   "hosts": [
+    "walletexplorer.com",
+    "www.walletexplorer.com"
+   ],
+   "keys": [],
+   "sources": {
+    "address_pages": {
+     "title": "WalletExplorer address pages (manual pivot links)",
+     "terms_class": "open"
+    },
+    "api": {
+     "title": "WalletExplorer API /api/1/address-lookup and /api/1/wallet (caller id)",
+     "terms_class": "open"
+    }
+   },
+   "tier": "community",
+   "seeded": true
+  },
+  "wikidata": {
+   "file": "v3lum/data/providers/wikidata.json",
+   "hosts": [
+    "wikidata.org",
+    "www.wikidata.org",
+    "query.wikidata.org"
+   ],
+   "keys": [],
+   "sources": {
+    "sparql": {
+     "title": "Wikidata Query Service SPARQL (fixed templates only, LIMIT <= 20, 20 s timeout)",
+     "terms_class": "open"
+    },
+    "wbapi": {
+     "title": "Wikidata API (wbsearchentities, wbgetentities, wbgetclaims) and Special:EntityData",
+     "terms_class": "open"
+    }
+   },
+   "tier": "trusted",
+   "seeded": true
+  }
+ }
+}

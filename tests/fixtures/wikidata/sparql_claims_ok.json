@@ -1,0 +1,133 @@
+{
+ "head": {
+  "vars": [
+   "item",
+   "itemLabel",
+   "isOrg",
+   "rel",
+   "value",
+   "valueLabel"
+  ]
+ },
+ "results": {
+  "bindings": [
+   {
+    "item": {
+     "type": "uri",
+     "value": "http://www.wikidata.org/entity/Q610817"
+    },
+    "value": {
+     "type": "uri",
+     "value": "https://www.bb.com.br/"
+    },
+    "rel": {
+     "type": "literal",
+     "value": "P856"
+    },
+    "itemLabel": {
+     "xml:lang": "pt",
+     "type": "literal",
+     "value": "Banco do Brasil"
+    },
+    "valueLabel": {
+     "type": "literal",
+     "value": "https://www.bb.com.br/"
+    },
+    "isOrg": {
+     "datatype": "http://www.w3.org/2001/XMLSchema#boolean",
+     "type": "literal",
+     "value": "true"
+    }
+   },
+   {
+    "item": {
+     "type": "uri",
+     "value": "http://www.wikidata.org/entity/Q610817"
+    },
+    "value": {
+     "type": "uri",
+     "value": "http://www.wikidata.org/entity/Q28679370"
+    },
+    "rel": {
+     "type": "literal",
+     "value": "P355"
+    },
+    "itemLabel": {
+     "xml:lang": "pt",
+     "type": "literal",
+     "value": "Banco do Brasil"
+    },
+    "valueLabel": {
+     "xml:lang": "pt",
+     "type": "literal",
+     "value": "Banco do Brasil Americas"
+    },
+    "isOrg": {
+     "datatype": "http://www.w3.org/2001/XMLSchema#boolean",
+     "type": "literal",
+     "value": "true"
+    }
+   },
+   {
+    "item": {
+     "type": "uri",
+     "value": "http://www.wikidata.org/entity/Q610817"
+    },
+    "rel": {
+     "type": "literal",
+     "value": "none"
+    },
+    "itemLabel": {
+     "xml:lang": "pt",
+     "type": "literal",
+     "value": "Banco do Brasil"
+    },
+    "isOrg": {
+     "datatype": "http://www.w3.org/2001/XMLSchema#boolean",
+     "type": "literal",
+     "value": "true"
+    }
+   },
+   {
+    "item": {
+     "type": "uri",
+     "value": "http://www.wikidata.org/entity/Q108220676"
+    },
+    "rel": {
+     "type": "literal",
+     "value": "none"
+    },
+    "itemLabel": {
+     "xml:lang": "pt",
+     "type": "literal",
+     "value": "Imóvel à Rua Halfeld, nº 450"
+    },
+    "isOrg": {
+     "datatype": "http://www.w3.org/2001/XMLSchema#boolean",
+     "type": "literal",
+     "value": "false"
+    }
+   },
+   {
+    "item": {
+     "type": "uri",
+     "value": "http://www.wikidata.org/entity/Q124319914"
+    },
+    "rel": {
+     "type": "literal",
+     "value": "none"
+    },
+    "itemLabel": {
+     "xml:lang": "pt",
+     "type": "literal",
+     "value": "Banco do Brasil"
+    },
+    "isOrg": {
+     "datatype": "http://www.w3.org/2001/XMLSchema#boolean",
+     "type": "literal",
+     "value": "false"
+    }
+   }
+  ]
+ }
+}

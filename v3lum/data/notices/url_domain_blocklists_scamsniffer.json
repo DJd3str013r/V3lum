@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "url_domain_blocklists_scamsniffer",
+  "source_url": "https://github.com/scamsniffer/scam-database",
+  "version": "blacklist/domains.json (runtime download only, never bundled)",
+  "sha256": "",
+  "licence": "GPL-3.0",
+  "attribution": "ScamSniffer scam-database (https://github.com/scamsniffer/scam-database), GNU General Public License v3.0: downloaded at runtime only, never bundled or modified (A6).",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/url_web/url_domain_blocklists.py"
+  ]
+}

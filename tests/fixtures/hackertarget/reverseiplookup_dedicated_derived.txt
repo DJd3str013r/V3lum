@@ -1,0 +1,3 @@
+shop.example.com
+login-update.example.net
+example.org

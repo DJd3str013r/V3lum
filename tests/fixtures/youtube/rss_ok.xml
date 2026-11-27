@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns:yt="http://www.youtube.com/xml/schemas/2015" xmlns:media="http://search.yahoo.com/mrss/" xmlns="http://www.w3.org/2005/Atom">
+ <link rel="self" href="http://www.youtube.com/feeds/videos.xml?channel_id=UC_x5XG1OV2P6uZZ5FSM9Ttw"/>
+ <id>yt:channel:_x5XG1OV2P6uZZ5FSM9Ttw</id>
+ <yt:channelId>_x5XG1OV2P6uZZ5FSM9Ttw</yt:channelId>
+ <title>Google for Developers</title>
+ <link rel="alternate" href="https://www.youtube.com/channel/UC_x5XG1OV2P6uZZ5FSM9Ttw"/>
+ <author>
+  <name>Google for Developers</name>
+  <uri>https://www.youtube.com/channel/UC_x5XG1OV2P6uZZ5FSM9Ttw</uri>
+ </author>
+ <published>2007-08-23T00:34:43+00:00</published>
+ <entry>
+  <id>yt:video:WN5O4vWCa54</id>
+  <yt:videoId>WN5O4vWCa54</yt:videoId>
+  <yt:channelId>UC_x5XG1OV2P6uZZ5FSM9Ttw</yt:channelId>
+  <title>5 developer tips for working with Gemini 4</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=WN5O4vWCa54"/>
+  <author>
+   <name>Google for Developers</name>
+   <uri>https://www.youtube.com/channel/UC_x5XG1OV2P6uZZ5FSM9Ttw</uri>
+  </author>
+  <published>2026-11-25T20:00:15+00:00</published>
+  <updated>2026-11-26T06:36:28+00:00</updated>
+  <media:group>
+   <media:title>5 developer tips for working with Gemini 4</media:title>
+   <media:content url="https://www.youtube.com/v/WN5O4vWCa54?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i4.ytimg.com/vi/WN5O4vWCa54/hqdefault.jpg" width="480" height="360"/>
+   <media:description></media:description>
+   <media:community>
+    <media:starRating count="297" average="5.00" min="1" max="5"/>
+    <media:statistics views="16331"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:fpQcDQJQLhg</id>
+  <yt:videoId>fpQcDQJQLhg</yt:videoId>
+  <yt:channelId>UC_x5XG1OV2P6uZZ5FSM9Ttw</yt:channelId>
+  <title>Google Antigravity in action: Building an offline wildlife field guide</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=fpQcDQJQLhg"/>
+  <author>
+   <name>Google for Developers</name>
+   <uri>https://www.youtube.com/channel/UC_x5XG1OV2P6uZZ5FSM9Ttw</uri>
+  </author>
+  <published>2026-11-23T20:00:28+00:00</published>
+  <updated>2026-11-24T09:38:40+00:00</updated>
+  <media:group>
+   <media:title>Google Antigravity in action: Building an offline wildlife field guide</media:title>
+   <media:content url="https://www.youtube.com/v/fpQcDQJQLhg?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i3.ytimg.com/vi/fpQcDQJQLhg/hqdefault.jpg" width="480" height="360"/>
+   <media:description></media:description>
+   <media:community>
+    <media:starRating count="467" average="5.00" min="1" max="5"/>
+    <media:statistics views="33826"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:WN-JK-hMAyg</id>
+  <yt:videoId>WN-JK-hMAyg</yt:videoId>
+  <yt:channelId>UC_x5XG1OV2P6uZZ5FSM9Ttw</yt:channelId>
+  <title>Google Antigravity and Gemini 4: Creating an interactive MIDI mapped 3D world</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=WN-JK-hMAyg"/>
+  <author>
+   <name>Google for Developers</name>
+   <uri>https://www.youtube.com/channel/UC_x5XG1OV2P6uZZ5FSM9Ttw</uri>
+  </author>
+  <published>2026-11-20T20:00:04+00:00</published>
+  <updated>2026-11-24T00:21:30+00:00</updated>
+  <media:group>
+   <media:title>Google Antigravity and Gemini 4: Creating an interactive MIDI mapped 3D world</media:title>
+   <media:content url="https://www.youtube.com/v/WN-JK-hMAyg?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i4.ytimg.com/vi/WN-JK-hMAyg/hqdefault.jpg" width="480" height="360"/>
+   <media:description></media:description>
+   <media:community>
+    <media:starRating count="454" average="5.00" min="1" max="5"/>
+    <media:statistics views="38273"/>
+   </media:community>
+  </media:group>
+ </entry>
+</feed>

@@ -1,0 +1,120 @@
+{
+ "source": "pefile",
+ "size": 3072,
+ "parse_error": null,
+ "machine": 332,
+ "number_of_sections": 65535,
+ "timestamp": 1793534400,
+ "characteristics": 258,
+ "magic": 267,
+ "subsystem": 2,
+ "dll_characteristics": 33088,
+ "entry_point": 4096,
+ "image_base": 4194304,
+ "checksum": 0,
+ "size_of_image": 69632,
+ "size_of_headers": 1024,
+ "sections": [
+  {
+   "name": ".text",
+   "virtual_address": 4096,
+   "virtual_size": 64,
+   "raw_size": 512,
+   "raw_offset": 1024,
+   "characteristics": 1610612768,
+   "entropy": 0.6144
+  },
+  {
+   "name": ".rdata",
+   "virtual_address": 20480,
+   "virtual_size": 484,
+   "raw_size": 512,
+   "raw_offset": 1536,
+   "characteristics": 1073741888,
+   "entropy": 4.1043
+  },
+  {
+   "name": ".data",
+   "virtual_address": 36864,
+   "virtual_size": 64,
+   "raw_size": 512,
+   "raw_offset": 2048,
+   "characteristics": 3221225536,
+   "entropy": 0.2882
+  },
+  {
+   "name": ".rsrc",
+   "virtual_address": 53248,
+   "virtual_size": 310,
+   "raw_size": 512,
+   "raw_offset": 2560,
+   "characteristics": 1073741888,
+   "entropy": 3.4027
+  }
+ ],
+ "imports": [],
+ "exports": [],
+ "debug": [
+  {
+   "type": 2,
+   "timestamp": 1793534400,
+   "size": 90,
+   "pdb": "C:\\Users\\analyst01\\source\\repos\\HelloV3lum\\Release\\HelloV3lum.pdb",
+   "cv_signature": "RSDS",
+   "age": 1,
+   "guid": "3F2504E0-4F89-41D3-9A0C-0305E82C3301"
+  }
+ ],
+ "resources": [
+  {
+   "type": 24,
+   "name": 1,
+   "lang": 1033,
+   "size": 222,
+   "entropy": 4.9949
+  }
+ ],
+ "warnings": [
+  "Invalid section 4. Contents are null-bytes.",
+  "Error parsing the import directory at RVA: 0x7fff0000"
+ ],
+ "imphash": null,
+ "rich": {
+  "key_hex": "61db1d4e",
+  "checksum": 1310579553,
+  "clear_md5": "78d6027a2ea3f913a43381c17bd30995",
+  "entries": [
+   [
+    17069508,
+    7
+   ],
+   [
+    17003972,
+    12
+   ],
+   [
+    17135044,
+    3
+   ],
+   [
+    16741828,
+    1
+   ],
+   [
+    16938436,
+    1
+   ],
+   [
+    65536,
+    99
+   ]
+  ]
+ },
+ "security_dir": {
+  "offset": 0,
+  "size": 0
+ },
+ "overlay": null,
+ "md5": "b28690074531d4f4f126ae5386b73222",
+ "sha256": "186f9f5d490d8d3f90acf59424a8cbc61bdaddb6e335e665a17fe2657a406933"
+}

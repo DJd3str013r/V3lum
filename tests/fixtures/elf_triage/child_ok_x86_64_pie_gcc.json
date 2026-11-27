@@ -1,0 +1,540 @@
+{
+ "build_id": "7c33fea49cce50359ffbfa6aed1ad1a90b5467ac",
+ "capped": [],
+ "comment": [
+  "GCC: (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
+ ],
+ "dynamic": {
+  "flags_1": 134217729,
+  "needed": [
+   "libc.so.6"
+  ],
+  "rpath": null,
+  "runpath": null,
+  "soname": null
+ },
+ "errors": [],
+ "exports": [
+  {
+   "bind": "STB_GLOBAL",
+   "name": "_edata",
+   "type": "STT_NOTYPE"
+  },
+  {
+   "bind": "STB_GLOBAL",
+   "name": "__data_start",
+   "type": "STT_NOTYPE"
+  },
+  {
+   "bind": "STB_GLOBAL",
+   "name": "_end",
+   "type": "STT_NOTYPE"
+  },
+  {
+   "bind": "STB_WEAK",
+   "name": "data_start",
+   "type": "STT_NOTYPE"
+  },
+  {
+   "bind": "STB_GLOBAL",
+   "name": "_IO_stdin_used",
+   "type": "STT_OBJECT"
+  },
+  {
+   "bind": "STB_GLOBAL",
+   "name": "_start",
+   "type": "STT_FUNC"
+  },
+  {
+   "bind": "STB_GLOBAL",
+   "name": "__bss_start",
+   "type": "STT_NOTYPE"
+  },
+  {
+   "bind": "STB_GLOBAL",
+   "name": "main",
+   "type": "STT_FUNC"
+  },
+  {
+   "bind": "STB_GLOBAL",
+   "name": "v3lum_fixture_export",
+   "type": "STT_FUNC"
+  }
+ ],
+ "exports_total": 9,
+ "go_buildinfo": false,
+ "header": {
+  "abiversion": 0,
+  "class": "ELFCLASS64",
+  "data": "ELFDATA2LSB",
+  "entry": 4272,
+  "flags": 0,
+  "machine": "EM_X86_64",
+  "machine_arch": "x64",
+  "osabi": "ELFOSABI_SYSV",
+  "phentsize": 56,
+  "phnum": 13,
+  "phoff": 64,
+  "shentsize": 64,
+  "shnum": 29,
+  "shoff": 12616,
+  "shstrndx": 28,
+  "type": "ET_DYN"
+ },
+ "imports": [
+  {
+   "bind": "STB_GLOBAL",
+   "name": "getenv",
+   "type": "STT_FUNC"
+  },
+  {
+   "bind": "STB_GLOBAL",
+   "name": "__libc_start_main",
+   "type": "STT_FUNC"
+  },
+  {
+   "bind": "STB_WEAK",
+   "name": "_ITM_deregisterTMCloneTable",
+   "type": "STT_NOTYPE"
+  },
+  {
+   "bind": "STB_GLOBAL",
+   "name": "puts",
+   "type": "STT_FUNC"
+  },
+  {
+   "bind": "STB_WEAK",
+   "name": "__gmon_start__",
+   "type": "STT_NOTYPE"
+  },
+  {
+   "bind": "STB_WEAK",
+   "name": "_ITM_registerTMCloneTable",
+   "type": "STT_NOTYPE"
+  },
+  {
+   "bind": "STB_WEAK",
+   "name": "__cxa_finalize",
+   "type": "STT_FUNC"
+  }
+ ],
+ "imports_total": 7,
+ "interpreter": "/lib64/ld-linux-x86-64.so.2",
+ "sections": [
+  {
+   "addr": 0,
+   "flags": 0,
+   "name": "",
+   "offset": 0,
+   "size": 0,
+   "type": "SHT_NULL"
+  },
+  {
+   "addr": 792,
+   "entropy": 3.9408,
+   "flags": 2,
+   "name": ".interp",
+   "offset": 792,
+   "oob": false,
+   "size": 28,
+   "type": "SHT_PROGBITS"
+  },
+  {
+   "addr": 824,
+   "entropy": 1.9345,
+   "flags": 2,
+   "name": ".note.gnu.property",
+   "offset": 824,
+   "oob": false,
+   "size": 48,
+   "type": "SHT_NOTE"
+  },
+  {
+   "addr": 872,
+   "entropy": 4.2472,
+   "flags": 2,
+   "name": ".note.gnu.build-id",
+   "offset": 872,
+   "oob": false,
+   "size": 36,
+   "type": "SHT_NOTE"
+  },
+  {
+   "addr": 908,
+   "entropy": 1.5613,
+   "flags": 2,
+   "name": ".note.ABI-tag",
+   "offset": 908,
+   "oob": false,
+   "size": 32,
+   "type": "SHT_NOTE"
+  },
+  {
+   "addr": 944,
+   "entropy": 4.6839,
+   "flags": 2,
+   "name": ".gnu.hash",
+   "offset": 944,
+   "oob": false,
+   "size": 76,
+   "type": "SHT_GNU_HASH"
+  },
+  {
+   "addr": 1024,
+   "entropy": 1.2464,
+   "flags": 2,
+   "name": ".dynsym",
+   "offset": 1024,
+   "oob": false,
+   "size": 408,
+   "type": "SHT_DYNSYM"
+  },
+  {
+   "addr": 1432,
+   "entropy": 4.5961,
+   "flags": 2,
+   "name": ".dynstr",
+   "offset": 1432,
+   "oob": false,
+   "size": 221,
+   "type": "SHT_STRTAB"
+  },
+  {
+   "addr": 1654,
+   "entropy": 1.4747,
+   "flags": 2,
+   "name": ".gnu.version",
+   "offset": 1654,
+   "oob": false,
+   "size": 34,
+   "type": "SHT_GNU_versym"
+  },
+  {
+   "addr": 1688,
+   "entropy": 2.302,
+   "flags": 2,
+   "name": ".gnu.version_r",
+   "offset": 1688,
+   "oob": false,
+   "size": 48,
+   "type": "SHT_GNU_verneed"
+  },
+  {
+   "addr": 1736,
+   "entropy": 1.3871,
+   "flags": 2,
+   "name": ".rela.dyn",
+   "offset": 1736,
+   "oob": false,
+   "size": 192,
+   "type": "SHT_RELA"
+  },
+  {
+   "addr": 1928,
+   "entropy": 1.0667,
+   "flags": 66,
+   "name": ".rela.plt",
+   "offset": 1928,
+   "oob": false,
+   "size": 48,
+   "type": "SHT_RELA"
+  },
+  {
+   "addr": 4096,
+   "entropy": 4.2364,
+   "flags": 6,
+   "name": ".init",
+   "offset": 4096,
+   "oob": false,
+   "size": 27,
+   "type": "SHT_PROGBITS"
+  },
+  {
+   "addr": 4128,
+   "entropy": 3.7563,
+   "flags": 6,
+   "name": ".plt",
+   "offset": 4128,
+   "oob": false,
+   "size": 48,
+   "type": "SHT_PROGBITS"
+  },
+  {
+   "addr": 4176,
+   "entropy": 3.375,
+   "flags": 6,
+   "name": ".plt.got",
+   "offset": 4176,
+   "oob": false,
+   "size": 16,
+   "type": "SHT_PROGBITS"
+  },
+  {
+   "addr": 4192,
+   "entropy": 3.4375,
+   "flags": 6,
+   "name": ".plt.sec",
+   "offset": 4192,
+   "oob": false,
+   "size": 32,
+   "type": "SHT_PROGBITS"
+  },
+  {
+   "addr": 4224,
+   "entropy": 5.1643,
+   "flags": 6,
+   "name": ".text",
+   "offset": 4224,
+   "oob": false,
+   "size": 290,
+   "type": "SHT_PROGBITS"
+  },
+  {
+   "addr": 4516,
+   "entropy": 3.2389,
+   "flags": 6,
+   "name": ".fini",
+   "offset": 4516,
+   "oob": false,
+   "size": 13,
+   "type": "SHT_PROGBITS"
+  },
+  {
+   "addr": 8192,
+   "entropy": 4.711,
+   "flags": 2,
+   "name": ".rodata",
+   "offset": 8192,
+   "oob": false,
+   "size": 43,
+   "type": "SHT_PROGBITS"
+  },
+  {
+   "addr": 8236,
+   "entropy": 3.1892,
+   "flags": 2,
+   "name": ".eh_frame_hdr",
+   "offset": 8236,
+   "oob": false,
+   "size": 60,
+   "type": "SHT_PROGBITS"
+  },
+  {
+   "addr": 8296,
+   "entropy": 3.262,
+   "flags": 2,
+   "name": ".eh_frame",
+   "offset": 8296,
+   "oob": false,
+   "size": 184,
+   "type": "SHT_PROGBITS"
+  },
+  {
+   "addr": 15792,
+   "entropy": 1.0613,
+   "flags": 3,
+   "name": ".init_array",
+   "offset": 11696,
+   "oob": false,
+   "size": 8,
+   "type": "SHT_INIT_ARRAY"
+  },
+  {
+   "addr": 15800,
+   "entropy": 1.0613,
+   "flags": 3,
+   "name": ".fini_array",
+   "offset": 11704,
+   "oob": false,
+   "size": 8,
+   "type": "SHT_FINI_ARRAY"
+  },
+  {
+   "addr": 15808,
+   "entropy": 1.441,
+   "flags": 3,
+   "name": ".dynamic",
+   "offset": 11712,
+   "oob": false,
+   "size": 496,
+   "type": "SHT_DYNAMIC"
+  },
+  {
+   "addr": 16304,
+   "entropy": 0.5532,
+   "flags": 3,
+   "name": ".got",
+   "offset": 12208,
+   "oob": false,
+   "size": 80,
+   "type": "SHT_PROGBITS"
+  },
+  {
+   "addr": 16384,
+   "entropy": 0.6686,
+   "flags": 3,
+   "name": ".data",
+   "offset": 12288,
+   "oob": false,
+   "size": 16,
+   "type": "SHT_PROGBITS"
+  },
+  {
+   "addr": 16400,
+   "flags": 3,
+   "name": ".bss",
+   "offset": 12304,
+   "size": 8,
+   "type": "SHT_NOBITS"
+  },
+  {
+   "addr": 0,
+   "entropy": 4.1278,
+   "flags": 48,
+   "name": ".comment",
+   "offset": 12304,
+   "oob": false,
+   "size": 45,
+   "type": "SHT_PROGBITS"
+  },
+  {
+   "addr": 0,
+   "entropy": 4.2751,
+   "flags": 0,
+   "name": ".shstrtab",
+   "offset": 12349,
+   "oob": false,
+   "size": 266,
+   "type": "SHT_STRTAB"
+  }
+ ],
+ "segments": [
+  {
+   "filesz": 728,
+   "flags": 4,
+   "memsz": 728,
+   "offset": 64,
+   "type": "PT_PHDR",
+   "vaddr": 64
+  },
+  {
+   "filesz": 28,
+   "flags": 4,
+   "memsz": 28,
+   "offset": 792,
+   "oob": false,
+   "type": "PT_INTERP",
+   "vaddr": 792
+  },
+  {
+   "entropy": 2.9557,
+   "filesz": 1976,
+   "flags": 4,
+   "memsz": 1976,
+   "offset": 0,
+   "oob": false,
+   "type": "PT_LOAD",
+   "vaddr": 0
+  },
+  {
+   "entropy": 5.1778,
+   "filesz": 433,
+   "flags": 5,
+   "memsz": 433,
+   "offset": 4096,
+   "oob": false,
+   "type": "PT_LOAD",
+   "vaddr": 4096
+  },
+  {
+   "entropy": 4.0979,
+   "filesz": 288,
+   "flags": 4,
+   "memsz": 288,
+   "offset": 8192,
+   "oob": false,
+   "type": "PT_LOAD",
+   "vaddr": 8192
+  },
+  {
+   "entropy": 1.3875,
+   "filesz": 608,
+   "flags": 6,
+   "memsz": 616,
+   "offset": 11696,
+   "oob": false,
+   "type": "PT_LOAD",
+   "vaddr": 15792
+  },
+  {
+   "filesz": 496,
+   "flags": 6,
+   "memsz": 496,
+   "offset": 11712,
+   "oob": false,
+   "type": "PT_DYNAMIC",
+   "vaddr": 15808
+  },
+  {
+   "filesz": 48,
+   "flags": 4,
+   "memsz": 48,
+   "offset": 824,
+   "oob": false,
+   "type": "PT_NOTE",
+   "vaddr": 824
+  },
+  {
+   "filesz": 68,
+   "flags": 4,
+   "memsz": 68,
+   "offset": 872,
+   "oob": false,
+   "type": "PT_NOTE",
+   "vaddr": 872
+  },
+  {
+   "filesz": 48,
+   "flags": 4,
+   "memsz": 48,
+   "offset": 824,
+   "type": "PT_GNU_PROPERTY",
+   "vaddr": 824
+  },
+  {
+   "filesz": 60,
+   "flags": 4,
+   "memsz": 60,
+   "offset": 8236,
+   "type": "PT_GNU_EH_FRAME",
+   "vaddr": 8236
+  },
+  {
+   "filesz": 0,
+   "flags": 6,
+   "memsz": 0,
+   "offset": 0,
+   "type": "PT_GNU_STACK",
+   "vaddr": 0
+  },
+  {
+   "filesz": 592,
+   "flags": 4,
+   "memsz": 592,
+   "offset": 11696,
+   "type": "PT_GNU_RELRO",
+   "vaddr": 15792
+  }
+ ],
+ "size": 14472,
+ "source": "pyelftools",
+ "symtab": {
+  "present": false
+ },
+ "upx": {
+  "info_banner": false,
+  "magic_offsets": [],
+  "version": null
+ },
+ "version": "0.33"
+}

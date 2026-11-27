@@ -1,0 +1,56 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "odu_carbondate",
+  "name": "CarbonDate web page age estimator",
+  "operator": "Old Dominion University, Web Science and Digital Libraries Research Group (WS-DL)",
+  "hosts": [
+    "carbondate.cs.odu.edu"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Academic research service of a US university research group (A8 trusted: academic institutions); P059 'All archives are established non-profits or public bodies: tier trusted'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": true,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "An estimate combining archives, search engines and HTTP headers; answered with every source empty for well-known sites on 2026-11-26."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 30,
+    "retries": 0,
+    "ttl": 604800,
+    "min_interval": 10.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "carbondate": {
+      "title": "CarbonDate /cd/{uri} creation-date estimate",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://carbondate.cs.odu.edu/",
+        "quote": "Registry terms (A1 BR3): the Internet Archive (Wayback CDX and availability), Arquivo.pt (FCT public service), Common Crawl (free terms of use) and CarbonDate (ODU academic service) are 'open', each recorded by legal with evidence",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "carbondate",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P059 cond 10). CarbonDate may read the live URI (last-modified, pubdate), so the provider is flagged fetches_target and never receives URLs carrying tokens, query strings or recipient identifiers (P059 cond 3). Deep/-M only (module web_archives_deep, default off). Research C0180: academic service, slow (~5.5 s), one request at a time; the scheme-less path cd/{host}{path} is used because the server merges '//'."
+    }
+  },
+  "notes": "Owned by batch p1-G01-2 (P059 cond 3, module web_archives_deep). One request at a time, 10 s apart, 7-day cache."
+}

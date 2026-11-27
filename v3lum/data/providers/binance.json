@@ -1,0 +1,37 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "binance",
+  "name": "Binance (proof-of-reserves page, manual download only)",
+  "operator": "Binance Holdings Limited",
+  "hosts": ["www.binance.com"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established exchange operator with published terms, a privacy policy and a business offering (A8 BR2). V3LUM never contacts this host: the page answers scripts with a bot interstitial, so the analyst downloads the address list in a browser and imports it with provenance (P358 cond 2).",
+  "tier_reviewer": "batch p2-G09-3 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "B", "justification": "Exchange-published reserve address lists (ownership claimed by the exchange, no per-address signature); snapshots are dated."},
+  "http_profile": {"ttl": 86400},
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "proof_of_reserves": {
+      "title": "Binance proof-of-reserves wallet address list - manual download by the analyst",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://www.binance.com/en/proof-of-reserves",
+        "quote": "",
+        "checked_at": "2026-11-26",
+        "reviewer": "batch p2-G09-3 (research C0788: 'Exchange website terms (manual download for internal labelling)'; not reviewed by legal)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "binance_por",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Never fetched by V3LUM: research 2026-11-25 saw HTTP 202 with an empty body from CloudFront (bot interstitial) for scripts - never automated past it (team rule 1, A9). P358 cond 2: the analyst imports the downloaded list with exchange, PoR date and source URL; unsigned PoR rows are PROBABLE and lose one confidence step after 12 months. Not declared by any module as a registry source: imported files are analyst-provided local data; legal to confirm internal-labelling use of the exchange terms."
+    }
+  }
+}

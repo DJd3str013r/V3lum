@@ -1,0 +1,36 @@
+{
+ "name": "br_ddd",
+ "source_url": "https://example.com/ddd.csv",
+ "generated_at": "26/11/2026",
+ "licence": "x",
+ "ddd": {
+  "11": {
+   "uf": "XX",
+   "main_city": "São Paulo"
+  },
+  "12": {
+   "uf": "SP",
+   "main_city": ""
+  },
+  "1": {
+   "uf": "SP",
+   "main_city": "Santos"
+  },
+  "20": {
+   "uf": "SP",
+   "main_city": "Nowhere"
+  },
+  "23": {
+   "uf": "RJ",
+   "main_city": "Nowhere"
+  },
+  "61": {
+   "uf": "DF",
+   "ufs": [
+    "GO"
+   ],
+   "main_city": "Brasília"
+  },
+  "62": "GO"
+ }
+}

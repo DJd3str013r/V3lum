@@ -1,0 +1,11 @@
+{
+ "_note": "live: Akamai 403 'Request Rate Threshold Exceeded' page for an undeclared tool -> BLOCKED with the contact-UA hint, never 'no filings'",
+ "status": 403,
+ "headers": {
+  "server": "AkamaiGHost",
+  "content-length": "1925",
+  "cache-control": "no-cache, no-store, must-revalidate",
+  "content-type": "text/html"
+ },
+ "body": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\">\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n<title>SEC.gov | Request Rate Threshold Exceeded</title>\n<style>/* trimmed */</style>\n</head>\n\n<body>\n<div id=\"header\">U.S. Securities and Exchange Commission</div>\n<div id=\"content\">\n<h1>Automated access to our sites must comply with SEC.gov's Privacy and Security Policy.</h1>\n\n<p>Please visit <a href=\"https://www.sec.gov/developer\" target=\"_blank\">www.sec.gov/developer</a> for more developer resources and Fair Access guidelines.</p>\n<p>Please visit <a href=\"https://www.sec.gov/privacy\" target=\"_blank\">www.sec.gov/privacy</a> for more information on Privacy Policy.</p>\n\n<p>Reference ID: 0.00000000.0000000000.00000000</p>\n\n</body>\n</html>\n"
+}

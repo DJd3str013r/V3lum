@@ -1,0 +1,19 @@
+{
+ "_meta": {
+  "provenance": "documented",
+  "source": "genericapi.py CaptureRedirects (no redirects)",
+  "request": {
+   "method": "GET",
+   "url": "https://lookyloo.circl.lu/json/9e173218-215c-4550-b302-29801096e268/redirects"
+  }
+ },
+ "status": 200,
+ "headers": {},
+ "body": {
+  "response": {
+   "url": "http://example.com/",
+   "redirects": [],
+   "info": "No redirects"
+  }
+ }
+}

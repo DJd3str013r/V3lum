@@ -1,0 +1,215 @@
+{
+ "data": {
+  "stixCyberObservables": {
+   "edges": [
+    {
+     "node": {
+      "id": "0d6c1f9a-0000-4000-8000-000000000001",
+      "standard_id": "ipv4-addr--0d6c1f9a-0000-5000-8000-000000000001",
+      "entity_type": "IPv4-Addr",
+      "observable_value": "198.51.100.23",
+      "x_opencti_score": 80,
+      "x_opencti_description": "C2 endpoint (synthetic)",
+      "created_at": "2026-10-14T12:00:00.000Z",
+      "updated_at": "2026-11-20T09:30:00.000Z",
+      "createdBy": {
+       "id": "id-org-1",
+       "name": "EXAMPLE-CSIRT",
+       "entity_type": "Organization"
+      },
+      "objectMarking": [
+       {
+        "id": "mk-tlp-amber",
+        "definition_type": "TLP",
+        "definition": "TLP:AMBER",
+        "x_opencti_order": 2
+       },
+       {
+        "id": "mk-pap-amber",
+        "definition_type": "PAP",
+        "definition": "PAP:AMBER",
+        "x_opencti_order": 2
+       }
+      ],
+      "objectLabel": [
+       {
+        "id": "lb-1",
+        "value": "c2"
+       },
+       {
+        "id": "lb-2",
+        "value": "phishing"
+       }
+      ],
+      "reports": {
+       "edges": [
+        {
+         "node": {
+          "id": "rp-1",
+          "name": "Fake bank SMS campaign (synthetic)",
+          "published": "2026-10-15T00:00:00.000Z",
+          "objectMarking": [
+           {
+            "id": "mk-tlp-amber-strict",
+            "definition_type": "TLP",
+            "definition": "TLP:AMBER+STRICT",
+            "x_opencti_order": 3
+           }
+          ]
+         }
+        }
+       ]
+      },
+      "indicators": {
+       "edges": [
+        {
+         "node": {
+          "id": "in-1",
+          "name": "198.51.100.23",
+          "pattern_type": "stix",
+          "pattern": "[ipv4-addr:value = '198.51.100.23']",
+          "valid_from": "2026-10-14T12:00:00.000Z",
+          "valid_until": "2027-01-12T12:00:00.000Z",
+          "revoked": false,
+          "x_opencti_score": 80,
+          "x_opencti_detection": true,
+          "confidence": 75,
+          "objectMarking": [
+           {
+            "id": "mk-tlp-amber",
+            "definition_type": "TLP",
+            "definition": "TLP:AMBER",
+            "x_opencti_order": 2
+           }
+          ]
+         }
+        },
+        {
+         "node": {
+          "id": "in-2",
+          "name": "198.51.100.23 (2025 campaign)",
+          "pattern_type": "stix",
+          "pattern": "[ipv4-addr:value = '198.51.100.23']",
+          "valid_from": "2025-03-01T00:00:00.000Z",
+          "valid_until": "2025-06-01T00:00:00.000Z",
+          "revoked": false,
+          "x_opencti_score": 40,
+          "x_opencti_detection": false,
+          "confidence": 50,
+          "objectMarking": [
+           {
+            "id": "mk-tlp-green",
+            "definition_type": "TLP",
+            "definition": "TLP:GREEN",
+            "x_opencti_order": 1
+           }
+          ]
+         }
+        },
+        {
+         "node": {
+          "id": "in-3",
+          "name": "198.51.100.23 (withdrawn)",
+          "pattern_type": "stix",
+          "pattern": "[ipv4-addr:value = '198.51.100.23']",
+          "valid_from": "2026-09-01T00:00:00.000Z",
+          "valid_until": "2027-09-01T00:00:00.000Z",
+          "revoked": true,
+          "x_opencti_score": 10,
+          "x_opencti_detection": false,
+          "confidence": 30,
+          "objectMarking": [
+           {
+            "id": "mk-tlp-green",
+            "definition_type": "TLP",
+            "definition": "TLP:GREEN",
+            "x_opencti_order": 1
+           }
+          ]
+         }
+        }
+       ]
+      },
+      "stixCoreRelationships": {
+       "edges": [
+        {
+         "node": {
+          "id": "rel-1",
+          "relationship_type": "related-to",
+          "to": {
+           "id": "is-1",
+           "entity_type": "Intrusion-Set",
+           "name": "Example Intrusion Set"
+          }
+         }
+        },
+        {
+         "node": {
+          "id": "rel-2",
+          "relationship_type": "related-to",
+          "to": {
+           "id": "mw-1",
+           "entity_type": "Malware",
+           "name": "Grandoreiro"
+          }
+         }
+        },
+        {
+         "node": {
+          "id": "rel-3",
+          "relationship_type": "related-to",
+          "to": {
+           "id": "ap-1",
+           "entity_type": "Attack-Pattern",
+           "name": "Phishing",
+           "x_mitre_id": "T1566"
+          }
+         }
+        }
+       ]
+      }
+     },
+     "cursor": "c1"
+    },
+    {
+     "node": {
+      "id": "0d6c1f9a-0000-4000-8000-000000000002",
+      "standard_id": "ipv4-addr--x2",
+      "entity_type": "IPv4-Addr",
+      "observable_value": "198.51.100.230",
+      "x_opencti_score": 50,
+      "created_at": "2026-11-01T00:00:00.000Z",
+      "updated_at": "2026-11-01T00:00:00.000Z",
+      "createdBy": null,
+      "objectMarking": [
+       {
+        "id": "mk-tlp-green",
+        "definition_type": "TLP",
+        "definition": "TLP:GREEN",
+        "x_opencti_order": 1
+       }
+      ],
+      "objectLabel": [],
+      "reports": {
+       "edges": []
+      },
+      "indicators": {
+       "edges": []
+      },
+      "stixCoreRelationships": {
+       "edges": []
+      }
+     },
+     "cursor": "c2"
+    }
+   ],
+   "pageInfo": {
+    "startCursor": "c1",
+    "endCursor": "c2",
+    "hasNextPage": false,
+    "hasPreviousPage": false,
+    "globalCount": 2
+   }
+  }
+ }
+}

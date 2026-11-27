@@ -1,0 +1,23 @@
+{
+ "_meta": {
+  "provenance": "observed",
+  "recorded": "2026-11-26",
+  "request": {
+   "method": "GET",
+   "url": "https://lookyloo.circl.lu/json/2e3ccad3-5196-4131-bfbd-b683bbb4e7d0/redirects"
+  }
+ },
+ "status": 200,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": {
+  "response": {
+   "redirects": [
+    "https://krito.fr/",
+    "https://www.krito.fr/"
+   ],
+   "url": "https://krito.fr"
+  }
+ }
+}

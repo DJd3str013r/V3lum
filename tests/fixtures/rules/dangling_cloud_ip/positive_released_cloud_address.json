@@ -1,0 +1,88 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "$comment": "Own name -> cloud address whose indexed certificate and hostnames now belong to another organisation (2 signals): HIGH, PROBABLE",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "org_profile": {
+    "org": {
+      "name": "Acme"
+    },
+    "domains": [
+      {
+        "name": "acme-corp.example",
+        "verification": "txt_verified",
+        "criticality": "high"
+      }
+    ],
+    "cidrs": [
+      {
+        "value": "203.0.113.0/24",
+        "criticality": "high"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "key": "domain:app.acme-corp.example",
+      "depth": 0,
+      "seed": true,
+      "ownership": "own_asset",
+      "tags": [
+        "own_asset"
+      ]
+    },
+    {
+      "key": "ipv4:198.51.100.80",
+      "depth": 1,
+      "seed": false,
+      "noise": true,
+      "noise_kind": "cloud",
+      "attributes": {
+        "cloud_service": [
+          {
+            "value": "EC2",
+            "source": "cloud_ranges"
+          }
+        ],
+        "cert_sans": [
+          {
+            "value": [
+              "shop.other-company.example",
+              "other-company.example"
+            ],
+            "source": "shodan_api"
+          }
+        ],
+        "hostnames": [
+          {
+            "value": [
+              "other-company.example"
+            ],
+            "source": "shodan_internetdb"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "src": "domain:app.acme-corp.example",
+      "dst": "ipv4:198.51.100.80",
+      "relation": "resolves_to",
+      "module": "dns_records",
+      "confidence": 0.9
+    }
+  ],
+  "expect": {
+    "dangling_cloud_ip": {
+      "min": 1,
+      "max": 1,
+      "severity": "high",
+      "confidence_label": "probable"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+ "_meta": {
+  "provenance": "documented",
+  "source": "genericapi.py CaptureHostnames",
+  "request": {
+   "method": "GET",
+   "url": "https://lookyloo.circl.lu/json/9e173218-215c-4550-b302-29801096e268/hostnames"
+  }
+ },
+ "status": 200,
+ "headers": {},
+ "body": {
+  "response": {
+   "hostnames": [
+    "login.example.com",
+    "cdn.example.net",
+    "www.example.org"
+   ]
+  }
+ }
+}

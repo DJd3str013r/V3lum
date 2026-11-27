@@ -1,0 +1,19 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://bazaar.abuse.ch/export/csv/recent/"
+ },
+ "response": {
+  "status": 410,
+  "headers": {
+   "content-length": "291",
+   "content-type": "text/plain",
+   "etag": "\"123-66108540cbca4\"",
+   "last-modified": "Tue, 24 Nov 2026 16:37:38 GMT",
+   "server": "Apache"
+  },
+  "body": "410 Gone: legacy MalwareBazaar file exports are no longer available at this URL.\n\nSince 21 October 2026, abuse.ch file exports need an Auth-Key.\nGet a free Auth-Key at https://auth.abuse.ch/ and switch to the new export URLs:\nhttps://bazaar.abuse.ch/export/\n\nHelp: https://contact.abuse.ch/\n"
+ },
+ "note": "legacy keyless export: 410 Gone since 2026-10-21 (never used, P156 C5)",
+ "elapsed_s": 0.441
+}

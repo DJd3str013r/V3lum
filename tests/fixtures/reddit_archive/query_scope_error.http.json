@@ -1,0 +1,11 @@
+{
+ "origin": "live check 2026-11-26 from the research datacenter egress",
+ "status": 400,
+ "headers": {
+  "content-type": "application/json; charset=utf-8",
+  "server": "cloudflare",
+  "x-ratelimit-reset": "4",
+  "x-ratelimit-reset-at": "1795683360000"
+ },
+ "body": "{\"data\":null,\"error\":\"'query' query parameter requires one of: author, subreddit\"}"
+}

@@ -1,0 +1,33 @@
+{
+ "data": {
+  "networkAddress": "198.51.100.0",
+  "netmask": "255.255.255.0",
+  "minAddress": "198.51.100.1",
+  "maxAddress": "198.51.100.254",
+  "numPossibleHosts": 254,
+  "addressSpaceDesc": "Documentation (TEST-NET-2)",
+  "reportedAddress": [
+   {
+    "ipAddress": "198.51.100.1",
+    "numReports": 631,
+    "mostRecentReport": "2019-03-21T16:35:16+00:00",
+    "abuseConfidenceScore": 88,
+    "countryCode": null
+   },
+   {
+    "ipAddress": "198.51.100.2",
+    "numReports": 16,
+    "mostRecentReport": "2019-03-12T20:31:17+00:00",
+    "abuseConfidenceScore": 0,
+    "countryCode": null
+   },
+   {
+    "ipAddress": "198.51.100.3",
+    "numReports": 17,
+    "mostRecentReport": "2019-03-12T20:31:44+00:00",
+    "abuseConfidenceScore": 0,
+    "countryCode": null
+   }
+  ]
+ }
+}

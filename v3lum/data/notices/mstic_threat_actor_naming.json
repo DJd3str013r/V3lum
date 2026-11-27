@@ -1,0 +1,14 @@
+{
+ "schema": "v3lum.notice/1",
+ "name": "mstic_threat_actor_naming",
+ "source_url": "https://github.com/microsoft/mstic",
+ "version": "PublicFeeds/ThreatActorNaming/MicrosoftMapping.json downloaded 2026-11-26 (184 rows), bundled inside the alias sources",
+ "sha256": "",
+ "licence": "CC-BY-4.0",
+ "attribution": "Threat actor naming map by Microsoft Threat Intelligence (https://github.com/microsoft/mstic), licensed under Creative Commons Attribution 4.0 International (https://creativecommons.org/licenses/by/4.0/). V3LUM uses the name equivalences as vendor assessments, not identities.",
+ "bundled": true,
+ "files": [
+  "v3lum/data/actor_alias_index/alias_sources.json.gz",
+  "v3lum/data/aliases/misp_galaxy_threat_actor.json"
+ ]
+}

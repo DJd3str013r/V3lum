@@ -1,0 +1,20 @@
+{
+ "name": "List of known IPv4 networks belonging to common VPN providers",
+ "type": "cidr",
+ "version": 20261123,
+ "description": "IPv4 networks belonging to common VPN providers, from https://raw.githubusercontent.com/X4BNet/lists_vpn/main/output/vpn/ipv4.txt",
+ "matching_attributes": [
+  "ip-src",
+  "ip-dst",
+  "domain|ip",
+  "ip-src|port",
+  "ip-dst|port"
+ ],
+ "category": "known",
+ "list": [
+  "102.128.164.0/23",
+  "102.129.132.0/24",
+  "102.129.141.0/24",
+  "102.129.143.0/24"
+ ]
+}

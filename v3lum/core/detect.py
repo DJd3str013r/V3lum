@@ -2,24 +2,37 @@
 
 ``detect("john@acme.com")`` -> [Detection(EMAIL, 'john@acme.com', 0.98, ...)]
 ``detect("11987654321")``   -> CPF (if check digits match) and PHONE alternatives
-``extract_iocs(text)``      -> every IOC found in a blob (defanged indicators included)
+``extract_iocs(text)``      -> every IOC found in a blob: a thin wrapper over the P172 engine
+                               :func:`v3lum.core.ioc.extract` (defanged indicators included)
 
 Forcing a type: ``email:foo@bar.com``, ``user:johndoe``, ``name:Jane Doe``...
+
+Detection v2 (P333 cond 4, P323 cond 1, P217 cond 5, AR18): today's precedence is kept, so a typed
+username or phone is never re-typed. The contract-v2 types are detected only from an explicit
+``TYPE:value`` prefix, a URL pattern (``t.me/``, ``discord.gg/``, ``discord.com/invite/``,
+``bsky.app/profile/``, ``steamcommunity.com/``, ``wa.me/``, profile URLs of the merged social
+platforms) or an unambiguous structure (an e-mail header block, ``T1`` + 70 hex for TLSH, a
+leading ``@user@instance`` fediverse handle, a PIX BR Code with a valid CRC16) - never from bare
+hex or digit length. Checksummed formats are typed only with a passing checksum (an EIP-55
+mixed-case mismatch, a Monero or Base58Check failure is not typed; with an explicit prefix it gets
+low confidence). Known malware/actor names from the alias index (``v3lum/data/aliases``) are typed
+malware_family/threat_actor (confidence 0.8) instead of username. Detection is offline: nothing
+is resolved, fetched or looked up (no WebFinger).
 """
 
 from __future__ import annotations
 
-import functools
 import ipaddress
-import json
 import os
 import re
 from dataclasses import dataclass
-from importlib import resources
 
+from v3lum.core import ioc as _ioc
+from v3lum.core import patterns as _patterns
 from v3lum.core import psl
+from v3lum.core import sanitize as _sanitize
 from v3lum.core import validators as val
-from v3lum.core.entities import Entity, EntityType, normalize, refang
+from v3lum.core.entities import ELLIPSIS, Entity, EntityType, normalize, parse_fingerprint, refang, secret_fingerprint
 
 
 @dataclass(frozen=True)
@@ -80,32 +93,80 @@ _RE_PERSON_WORD = re.compile(r"^[A-Za-zÀ-ÖØ-öø-ÿ'’.-]+$")
 _RE_ONION = re.compile(r"^(?:https?://)?(?:[a-z0-9-]+\.)*[a-z2-7]{56}\.onion(?:/.*)?$", re.I)
 
 
-@functools.lru_cache(maxsize=1)
-def _named_index() -> dict[str, tuple[EntityType, str]]:
-    """Known threat-actor / malware names (lower-case alias -> (type, canonical name)).
+_RE_TLSH = re.compile(r"^[Tt]1[0-9A-Fa-f]{70}$")
+_RE_URL_USERINFO = re.compile(r"^[a-z][a-z0-9+.-]*://[^/?#\s@]*@", re.I)
+_RE_FEDIVERSE = re.compile(r"^@[A-Za-z0-9_.-]{1,64}@[A-Za-z0-9.-]+\.[A-Za-z]{2,63}$")
+_RE_HEADER_START = re.compile(r"^(?:From |Received:|Return-Path:|Delivered-To:|From:|Message-ID:|Subject:|Date:|X-[\w-]+:)", re.I)
+#: URL hosts whose links name an account or invite (P333 cond 4).
+_ACCOUNT_URL = re.compile(
+    r"^(?:https?://)?(?:(?:www|m|mobile|web)\.)?(?:t\.me|telegram\.me|telegram\.dog|discord\.gg|discord(?:app)?\.com/invite|"
+    r"bsky\.app/profile|steamcommunity\.com/(?:id|profiles)|wa\.me|api\.whatsapp\.com/send)[/?]",
+    re.I,
+)
 
-    Loaded from bundled ``data/threat_actors.json`` / ``data/malware_families.json`` when present.
+
+def _named(raw: str) -> list[tuple[EntityType, str]]:
+    """Known threat-actor / malware names (alias index, ``v3lum.core.ioc.alias_lookup``)."""
+    try:
+        return _ioc.alias_lookup(raw)
+    except Exception:  # noqa: BLE001 - a damaged alias fragment never breaks detection
+        return []
+
+
+def _typed_url(s_ref: str) -> list[tuple[Entity, str]]:
+    """Typed accounts named by an account/invite URL or a social-platform profile URL."""
+    if not (_ACCOUNT_URL.match(s_ref) or "/" in s_ref):
+        return []
+    try:
+        return _ioc.url_typed_entities(s_ref)
+    except Exception:  # noqa: BLE001
+        return []
+
+
+#: A single value longer than this is never checked as one whole secret (a pasted text instead).
+_SENSITIVE_MAX = 20000
+
+
+def _sensitive_single(s: str) -> list[Detection] | None:
+    """A single value that IS a secret, a payment card or an IBAN (P323 cond 5-7, AR24).
+
+    Returns the only interpretation (secret fingerprint / ``BIN6…last4``), ``[]`` for an IBAN (no
+    entity type: masked everywhere, never investigated) or None for anything else, so a raw key,
+    token or card number never becomes a username/keyword/URL seed that modules would receive.
+    JWTs keep their own (structure-gated) detection below.
     """
-    index: dict[str, tuple[EntityType, str]] = {}
-    for fname, etype in (("malware_families.json", EntityType.MALWARE), ("threat_actors.json", EntityType.THREAT_ACTOR)):
-        try:
-            raw = resources.files("v3lum.data").joinpath(fname).read_text(encoding="utf-8")
-        except (FileNotFoundError, OSError):
+    if not s or len(s) > _SENSITIVE_MAX:
+        return None
+    if ELLIPSIS in s:
+        fp = parse_fingerprint(s)
+        if fp is not None:  # a value scrubbed earlier (sanitize.scrub_text / ioc.scrub)
+            etype = EntityType.TELEGRAM_BOT_TOKEN if fp[0] == "telegram_bot_token" else EntityType.SECRET
+            return [Detection(etype, s, 0.95, f"secret fingerprint ({fp[0]}): masked, never used or sent")]
+        m = re.fullmatch(r"(\d{6})…(\d{4})", s)
+        if m:
+            return [Detection(EntityType.PAYMENT_CARD, s, 0.9, "truncated payment card (BIN6…last4): never investigated")]
+    for hit in _patterns.match_patterns(s, kinds=("secret", "financial")):
+        if hit.start != 0 or hit.end != len(s) or hit.name == "jwt":
             continue
-        try:
-            data = json.loads(raw)
-        except ValueError:
-            continue
-        items = data.get("items", data) if isinstance(data, dict) else data
-        for item in items if isinstance(items, list) else []:
-            name = (item.get("name") or "").strip()
-            if not name:
-                continue
-            for alias in [name, *(item.get("aliases") or [])]:
-                a = str(alias).strip().lower()
-                if len(a) >= 3:
-                    index[a] = (etype, name)
-    return index
+        if hit.name == "iban":
+            return []
+        if hit.kind == "financial":
+            digits = re.sub(r"\D", "", s)
+            if len(digits) == 14 and val.cnpj_valid(digits):
+                return None  # a CNPJ whose digits also pass Luhn
+            brand = _patterns.card_brand(digits) or "card"
+            if len(digits) == 15 and brand not in ("amex", "diners"):
+                return None  # 15 digits: an IMEI as often as a (Maestro) card - today's IMEI reading stays
+            return [Detection(EntityType.PAYMENT_CARD, hit.masked, 0.9,
+                              f"{brand} card number (Luhn): truncated to BIN6…last4, never investigated")]
+        etype = EntityType.TELEGRAM_BOT_TOKEN if hit.entity_type == "telegram_bot_token" else EntityType.SECRET
+        return [Detection(etype, hit.masked, 0.95, f"{hit.name.replace('_', ' ')}: fingerprint only, never used or sent")]
+    for hit in _sanitize.find_secrets(s, distinctive_only=True):
+        if hit.action == "mask" and hit.start == 0 and hit.end == len(s):
+            etype = EntityType.TELEGRAM_BOT_TOKEN if hit.kind == "telegram_bot_token" else EntityType.SECRET
+            return [Detection(etype, secret_fingerprint(hit.kind, hit.value), 0.95,
+                              f"{hit.kind.replace('_', ' ')}: fingerprint only, never used or sent")]
+    return None
 
 
 def _domain_ok(v: str, from_text: bool = False, had_defang: bool = False) -> str | None:
@@ -119,6 +180,15 @@ def _domain_ok(v: str, from_text: bool = False, had_defang: bool = False) -> str
     if from_text and tld in _AMBIGUOUS_TLDS and not had_defang and d.count(".") < 2:
         return None
     return d
+
+
+def _scrubbed(text: str) -> str:
+    """A pasted text as it may be stored (:func:`v3lum.core.ioc.scrub`; spans of a later
+    extraction refer to it). Fails closed: an unscrubbable text keeps only a placeholder."""
+    try:
+        return _ioc.scrub(text)
+    except Exception:  # noqa: BLE001
+        return "[text withheld: it could not be scrubbed]"
 
 
 def _try(etype: EntityType, raw: str) -> str | None:
@@ -148,6 +218,11 @@ def detect(raw: str, explicit: EntityType | None = None) -> list[Detection]:
         value = _try(forced, rest)
         if value is None:
             return []
+        if forced is EntityType.TEXT:
+            value = _scrubbed(value)
+        weak = _forced_weakness(forced, rest.strip())
+        if weak:
+            return [Detection(forced, value, 0.4, f"forced as {forced.value}, but {weak}")]
         return [Detection(forced, value, 1.0, f"forced as {forced.value}")]
 
     s = text.strip()
@@ -159,9 +234,34 @@ def detect(raw: str, explicit: EntityType | None = None) -> list[Detection]:
         if value is not None and not any(d.type == etype and d.value == value for d in out):
             out.append(Detection(etype, value, conf, reason))
 
+    # A value that is itself a secret, a card number or an IBAN (P323 cond 5-7): masked, alone.
+    sensitive = _sensitive_single(s)
+    if sensitive is not None:
+        return sensitive
+
+    # An e-mail header block (P333): header-only blocks are email_headers; a pasted .eml (headers +
+    # body) stays free text with email_headers as an alternative. Text values are stored scrubbed
+    # (ioc.scrub: combos and password hashes dropped, secrets fingerprinted, cards truncated).
+    if "\n" in s and _RE_HEADER_START.match(s):
+        headers = _try(EntityType.EMAIL_HEADERS, _scrubbed(s))
+        if headers:
+            body = re.search(r"\r?\n[ \t]*\r?\n\s*\S", s) is not None
+            if body:
+                add(EntityType.TEXT, _scrubbed(s), 0.95, "e-mail (headers + body): IOC extraction")
+                add(EntityType.EMAIL_HEADERS, headers, 0.7, "e-mail header block (parsed statically)")
+            else:
+                add(EntityType.EMAIL_HEADERS, headers, 0.95, "e-mail header block (parsed statically; nothing is fetched)")
+                add(EntityType.TEXT, _scrubbed(s), 0.7, "or free text: IOC extraction")
+            return _sorted(out)
+
+    # A PIX BR Code (EMV '000201'...'6304' + CRC16): unambiguous structure, may hold spaces.
+    if "\n" not in s and s.startswith("000201") and val.pix_brcode_valid(s):
+        add(EntityType.PIX_BRCODE, _try(EntityType.PIX_BRCODE, s), 0.99, "PIX BR Code (valid CRC16)")
+        return _sorted(out)
+
     # Multi-line / long blobs are free text to mine for IOCs.
     if "\n" in s or (len(s) > 300 and " " in s):
-        add(EntityType.TEXT, s, 0.95, "multi-line text: IOC extraction")
+        add(EntityType.TEXT, _scrubbed(s), 0.95, "multi-line text: IOC extraction")
         return out
 
     # Local file path.
@@ -172,6 +272,8 @@ def detect(raw: str, explicit: EntityType | None = None) -> list[Detection]:
 
     had_defang = refang(s) != s
     s_ref = refang(s)
+    if "@" in s_ref and _RE_URL_USERINFO.match(s_ref):
+        s_ref = _sanitize.scrub_text(s_ref)  # 'https://user:pass@host/' -> 'https://host/' (P145 cond 5)
 
     if _RE_ONION.match(s_ref):
         onion = _try(EntityType.ONION, s_ref)
@@ -179,6 +281,27 @@ def detect(raw: str, explicit: EntityType | None = None) -> list[Detection]:
             add(EntityType.ONION, onion, 0.99, "valid v3 .onion checksum")
             if "/" in re.sub(r"^https?://", "", s_ref):
                 add(EntityType.URL, _try(EntityType.URL, s_ref), 0.7, "onion URL")
+            return _sorted(out)
+
+    if _RE_FEDIVERSE.match(s_ref):
+        add(EntityType.FEDIVERSE_HANDLE, _try(EntityType.FEDIVERSE_HANDLE, s_ref), 0.95, "@user@instance (fediverse handle; no WebFinger lookup)")
+        add(EntityType.EMAIL, _try(EntityType.EMAIL, s_ref[1:]), 0.4, "could be an e-mail address")
+        return _sorted(out)
+
+    if _RE_TLSH.match(s_ref):
+        add(EntityType.TLSH, _try(EntityType.TLSH, s_ref), 0.95, "T1 + 70 hex (TLSH)")
+        return _sorted(out)
+
+    if " " not in s_ref:
+        typed = _typed_url(s_ref)
+        if typed:
+            schemed = bool(_RE_URL.match(s_ref))
+            if schemed:  # today's precedence: a URL stays a URL; the account is an alternative
+                add(EntityType.URL, _try(EntityType.URL, s_ref), 0.98, "has a URL scheme")
+            for ent, note in typed:
+                add(ent.type, ent.value, 0.7 if schemed else 0.95, note)
+            if not schemed:
+                add(EntityType.URL, _try(EntityType.URL, s_ref), 0.7, "link without a scheme")
             return _sorted(out)
 
     if _RE_URL.match(s_ref):
@@ -235,16 +358,15 @@ def detect(raw: str, explicit: EntityType | None = None) -> list[Detection]:
     if val.btc_address_valid(s_ref):
         info = val.btc_address_info(s_ref) or {}
         add(EntityType.BTC, _try(EntityType.BTC, s_ref), 0.99, f"valid Bitcoin {info.get('type', '')} checksum".strip())
-    if _RE_ETH.match(s_ref):
+    if _RE_ETH.match(s_ref) and val.eth_checksum_state(s_ref) != "invalid":  # an EIP-55 mismatch is not typed
         add(EntityType.ETH, s_ref.lower(), 0.97, "0x + 40 hex (Ethereum/EVM)")
-    if _RE_XMR.match(s_ref):
-        add(EntityType.XMR, s_ref, 0.9, "Monero address format")
-    if _RE_LTC.match(s_ref) and not out:
-        add(EntityType.CRYPTO, s_ref, 0.7, "Litecoin address format")
-    if _RE_TRX.match(s_ref) and not out:
-        add(EntityType.CRYPTO, s_ref, 0.7, "TRON address format")
-    if _RE_DOGE.match(s_ref) and not out:
-        add(EntityType.CRYPTO, s_ref, 0.6, "Dogecoin address format")
+    if _RE_XMR.match(s_ref) and val.xmr_address_valid(s_ref):
+        add(EntityType.XMR, s_ref, 0.95, "Monero address (checksum valid)")
+    if (_RE_LTC.match(s_ref) or _RE_TRX.match(s_ref) or _RE_DOGE.match(s_ref) or s_ref[:1] in ("X", "r")) and not out:
+        info = val.crypto_address_info(s_ref)
+        if info is not None and info.checksum_ok and info.chain in ("ltc", "tron", "doge", "dash", "xrp"):
+            label = {"ltc": "Litecoin", "tron": "TRON", "doge": "Dogecoin", "dash": "Dash", "xrp": "XRP"}[info.chain]
+            add(EntityType.CRYPTO, s_ref, 0.95, f"{label} address (checksum valid)")
 
     if _RE_MAC.match(s_ref):
         add(EntityType.MAC, _try(EntityType.MAC, s_ref), 0.95, "MAC address")
@@ -301,11 +423,15 @@ def detect(raw: str, explicit: EntityType | None = None) -> list[Detection]:
         if dom:
             add(EntityType.DOMAIN, dom, 0.97, "hostname with a valid TLD")
 
-    # Named threat actors / malware families (bundled indexes).
-    if not out and len(s) <= 64:
-        hit = _named_index().get(s.lower())
-        if hit:
-            add(hit[0], hit[1], 0.9, f"known {hit[0].label.lower()} name/alias")
+    # Named threat actors / malware families (alias index, AR18): typed instead of username.
+    if not out and len(s) <= 64 and not s.startswith("@"):
+        for etype, canonical in _named(s):
+            known = "malware family" if etype is EntityType.MALWARE else "threat actor"
+            alias = "" if canonical.lower() == s.lower() else f" (alias of {canonical})"
+            add(etype, canonical, 0.8, f"known {known} name{alias}")
+        if out:
+            add(EntityType.KEYWORD, _try(EntityType.KEYWORD, s), 0.3, "or a plain keyword")
+            return _sorted(out)
 
     # Words: username, person, company, keyword.
     if not any(d.confidence >= 0.9 for d in out):
@@ -350,118 +476,35 @@ def primary(detections: list[Detection], threshold: float = 0.75) -> list[Detect
     return strong or detections[:1]
 
 
-# --------------------------------------------------------------------------------------
-# IOC extraction from free text
-# --------------------------------------------------------------------------------------
+def _forced_weakness(forced: EntityType, raw: str) -> str:
+    """Why an explicitly typed value is structurally doubtful ('' when it is fine): failing
+    checksums and non-JWT structures get low confidence instead of 1.0 (P217 cond 5)."""
+    if forced is EntityType.JWT and not _RE_JWT.match(raw):
+        return "it has no JWT structure (eyJ...eyJ...)"
+    if forced is EntityType.ETH and val.eth_checksum_state(raw) == "invalid":
+        return "its EIP-55 checksum does not match"
+    if forced is EntityType.XMR and not val.xmr_address_valid(raw):
+        return "its Monero checksum does not match"
+    if forced is EntityType.CRYPTO:
+        info = val.crypto_address_info(raw)
+        if info is None or info.checksum_ok is False:
+            return "no known chain checksum validates it"
+    return ""
 
-_X_URL = re.compile(r"\b(?:https?|hxxps?|ftp|fxp)(?:\[?:\]?)//[^\s<>\"'`)\]]+", re.I)
-_X_EMAIL = re.compile(r"\b[A-Za-z0-9._%+-]+(?:@|\[@\]|\(@\)|\[at\]|\(at\))[A-Za-z0-9.-]+(?:\.|\[\.\]|\(\.\)|\[dot\])[A-Za-z]{2,}\b", re.I)
-_X_IPV4 = re.compile(r"(?<![\d.])(?:(?:25[0-5]|2[0-4]\d|1?\d?\d)(?:\.|\[\.\]|\(\.\))){3}(?:25[0-5]|2[0-4]\d|1?\d?\d)(?![\d.])")
-_X_IPV6 = re.compile(r"(?<![0-9A-Fa-f:])(?:[0-9A-Fa-f]{1,4}:){2,7}[0-9A-Fa-f]{1,4}(?![0-9A-Fa-f:])|(?<![0-9A-Fa-f:])(?:[0-9A-Fa-f]{1,4}:){1,7}:(?:[0-9A-Fa-f]{1,4})?")
-_X_DOMAIN = re.compile(r"\b(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?(?:\.|\[\.\]|\(\.\)|\[dot\]))+[A-Za-z]{2,24}\b")
-_X_HASH = re.compile(r"\b[0-9a-fA-F]{32}\b|\b[0-9a-fA-F]{40}\b|\b[0-9a-fA-F]{64}\b|\b[0-9a-fA-F]{128}\b")
-_X_CVE = re.compile(r"\bCVE-\d{4}-\d{4,7}\b", re.I)
-_X_MITRE = re.compile(r"\bT\d{4}(?:\.\d{3})?\b")
-_X_BTC = re.compile(r"\b(?:bc1[ac-hj-np-z02-9]{11,71}|[13][a-km-zA-HJ-NP-Z1-9]{25,34})\b")
-_X_ETH = re.compile(r"\b0x[0-9a-fA-F]{40}\b")
-_X_XMR = re.compile(r"\b[48][0-9AB][1-9A-HJ-NP-Za-km-z]{93}\b")
-_X_ONION = re.compile(r"\b[a-z2-7]{56}\.onion\b", re.I)
-_X_ASN = re.compile(r"\bAS\d{2,10}\b")
-_X_CPF = re.compile(r"\b\d{3}\.\d{3}\.\d{3}-\d{2}\b")
-_X_CNPJ = re.compile(r"\b[0-9A-Z]{2}\.[0-9A-Z]{3}\.[0-9A-Z]{3}/[0-9A-Z]{4}-\d{2}\b")
-_X_PHONE = re.compile(r"(?<![\w+])\+\d[\d\s().-]{7,18}\d")
-_X_MAC = re.compile(r"\b(?:[0-9A-Fa-f]{2}[:-]){5}[0-9A-Fa-f]{2}\b")
-_X_JWT = re.compile(r"\beyJ[A-Za-z0-9_-]+\.eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]*")
-_X_ANALYTICS = re.compile(r"\b(?:UA-\d{4,10}-\d{1,4}|GTM-[A-Z0-9]{4,10}|ca-pub-\d{10,20})\b")
+
+# --------------------------------------------------------------------------------------
+# IOC extraction from free text: the P172 engine
+# --------------------------------------------------------------------------------------
 
 
 def extract_iocs(text: str, limit: int = 5000) -> list[Entity]:
-    """Every indicator found in ``text`` (defanged forms understood), de-duplicated, in order."""
-    found: list[Entity] = []
-    seen: set[str] = set()
-    email_spans: list[tuple[int, int]] = []
-    url_hosts: set[str] = set()
+    """Every indicator found in ``text`` (defanged forms understood), de-duplicated, in reading order.
 
-    # Domains written defanged in the original text are trusted even with file-like TLDs.
-    defanged_domains: set[str] = set()
-    for m in _X_DOMAIN.finditer(text):
-        raw = m.group(0)
-        if refang(raw) != raw:
-            defanged_domains.add(refang(raw).lower())
-    text = refang(text)
-
-    def push(etype: EntityType, raw: str) -> None:
-        if len(found) >= limit:
-            return
-        ent = Entity.try_make(etype, raw)
-        if ent and ent.key not in seen:
-            seen.add(ent.key)
-            found.append(ent)
-
-    for m in _X_URL.finditer(text):
-        url = refang(m.group(0)).rstrip(".,;:!?")
-        push(EntityType.URL, url)
-        ent = Entity.try_make(EntityType.URL, url)
-        if ent:
-            from v3lum.core.entities import url_host
-
-            url_hosts.add(url_host(ent.value))
-    for m in _X_EMAIL.finditer(text):
-        email_spans.append(m.span())
-        push(EntityType.EMAIL, refang(m.group(0)))
-    for m in _X_IPV4.finditer(text):
-        push(EntityType.IPV4, refang(m.group(0)))
-    for m in _X_IPV6.finditer(text):
-        cand = m.group(0)
-        if cand.count(":") >= 2:
-            try:
-                ipaddress.IPv6Address(cand)
-                push(EntityType.IPV6, cand)
-            except ValueError:
-                pass
-    for m in _X_ONION.finditer(text):
-        push(EntityType.ONION, m.group(0))
-    for m in _X_DOMAIN.finditer(text):
-        start, end = m.span()
-        if any(s <= start and end <= e for s, e in email_spans):
-            continue
-        raw = m.group(0)
-        dom = _domain_ok(raw, from_text=True, had_defang=raw.lower() in defanged_domains)
-        if dom and not dom.endswith(".onion"):
-            push(EntityType.DOMAIN, dom)
-    for host in url_hosts:
-        dom = _domain_ok(host)
-        if dom:
-            push(EntityType.DOMAIN, dom)
-    for m in _X_HASH.finditer(text):
-        h = m.group(0)
-        if len(set(h.lower())) < 4:
-            continue
-        etype = {32: EntityType.MD5, 40: EntityType.SHA1, 64: EntityType.SHA256, 128: EntityType.SHA512}[len(h)]
-        push(etype, h)
-    for m in _X_CVE.finditer(text):
-        push(EntityType.CVE, m.group(0))
-    for m in _X_MITRE.finditer(text):
-        push(EntityType.MITRE, m.group(0))
-    for m in _X_BTC.finditer(text):
-        if val.btc_address_valid(m.group(0)):
-            push(EntityType.BTC, m.group(0))
-    for m in _X_ETH.finditer(text):
-        push(EntityType.ETH, m.group(0))
-    for m in _X_XMR.finditer(text):
-        push(EntityType.XMR, m.group(0))
-    for m in _X_ASN.finditer(text):
-        push(EntityType.ASN, m.group(0))
-    for m in _X_CPF.finditer(text):
-        push(EntityType.CPF, m.group(0))
-    for m in _X_CNPJ.finditer(text):
-        push(EntityType.CNPJ, m.group(0))
-    for m in _X_PHONE.finditer(text):
-        push(EntityType.PHONE, m.group(0))
-    for m in _X_MAC.finditer(text):
-        push(EntityType.MAC, m.group(0))
-    for m in _X_JWT.finditer(text):
-        push(EntityType.JWT, m.group(0))
-    for m in _X_ANALYTICS.finditer(text):
-        push(EntityType.ANALYTICS_ID, m.group(0))
-    return found
+    Thin wrapper over :func:`v3lum.core.ioc.extract`: ``[e.entity for e in extract(text).entities]``,
+    leaving out names whose TLD is also a file extension and that were not defanged or written with
+    a scheme (``invoice.zip``: low confidence, a file name). CPFs never appear (masked and counted
+    by the engine), card numbers appear as ``payment_card`` ``BIN6…last4`` and secrets as
+    fingerprints (``secret`` / ``telegram_bot_token``).
+    """
+    result = _ioc.extract(text, limit=limit)
+    return [e.entity for e in result.entities if "low_confidence_tld" not in e.flags]

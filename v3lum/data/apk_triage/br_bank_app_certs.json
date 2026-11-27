@@ -1,0 +1,25 @@
+{
+  "schema": "v3lum.app_cert_references/1",
+  "name": "br_bank_app_certs",
+  "title": "Official certificates of Brazilian bank and payment apps (P364 c6 curated, dated list)",
+  "source": "Brand names: public names of Brazilian banks and payment institutions (BCB-authorised; at run time apk_triage adds the brands of P360's BCB DominiosVerificados list from its local copy). Package names and certificate SHA-256 values are added only by the reviewed process (CTI lead + legal), each with its evidence_url (the brand's own /.well-known/assetlinks.json or the store listing) and checked_at.",
+  "licence": "own work (V3LUM)",
+  "checked_at": "2026-11-26",
+  "review_status": "brands curated by batch p1-G12-1; packages and sha256 pending the reviewed process (until then every match reads 'protected brand used, official certificate unknown', P364 c7)",
+  "apps": [
+    {"brand": "Itau", "keywords": ["itau", "itau unibanco"], "exact": [], "packages": [], "sha256": [], "evidence_url": "", "checked_at": ""},
+    {"brand": "Bradesco", "keywords": ["bradesco"], "exact": [], "packages": [], "sha256": [], "evidence_url": "", "checked_at": ""},
+    {"brand": "Banco do Brasil", "keywords": ["banco do brasil"], "exact": ["bb"], "packages": [], "sha256": [], "evidence_url": "", "checked_at": ""},
+    {"brand": "Caixa", "keywords": ["caixa economica", "caixa tem", "caixa federal"], "exact": [], "packages": [], "sha256": [], "evidence_url": "", "checked_at": ""},
+    {"brand": "Santander", "keywords": ["santander"], "exact": [], "packages": [], "sha256": [], "evidence_url": "", "checked_at": ""},
+    {"brand": "Nubank", "keywords": ["nubank"], "exact": [], "packages": [], "sha256": [], "evidence_url": "", "checked_at": ""},
+    {"brand": "Banco Inter", "keywords": ["banco inter"], "exact": [], "packages": [], "sha256": [], "evidence_url": "", "checked_at": ""},
+    {"brand": "C6 Bank", "keywords": ["c6 bank"], "exact": [], "packages": [], "sha256": [], "evidence_url": "", "checked_at": ""},
+    {"brand": "PicPay", "keywords": ["picpay"], "exact": [], "packages": [], "sha256": [], "evidence_url": "", "checked_at": ""},
+    {"brand": "Mercado Pago", "keywords": ["mercado pago", "mercadopago"], "exact": [], "packages": [], "sha256": [], "evidence_url": "", "checked_at": ""},
+    {"brand": "PagBank", "keywords": ["pagbank", "pagseguro"], "exact": [], "packages": [], "sha256": [], "evidence_url": "", "checked_at": ""},
+    {"brand": "Sicredi", "keywords": ["sicredi"], "exact": [], "packages": [], "sha256": [], "evidence_url": "", "checked_at": ""},
+    {"brand": "Sicoob", "keywords": ["sicoob"], "exact": [], "packages": [], "sha256": [], "evidence_url": "", "checked_at": ""},
+    {"brand": "BTG Pactual", "keywords": ["btg pactual"], "exact": [], "packages": [], "sha256": [], "evidence_url": "", "checked_at": ""}
+  ]
+}

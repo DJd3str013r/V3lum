@@ -1,0 +1,14 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "threat_actor_usernames_spmedia",
+  "source_url": "https://github.com/spmedia/Threat-Actor-Usernames-Scrape",
+  "version": "branch main; README 'Last updated: July 20, 2026' (read 2026-11-26); lists refreshed weekly by v3lum data update",
+  "sha256": "",
+  "licence": "MIT",
+  "attribution": "Forum username lists from spmedia/Threat-Actor-Usernames-Scrape (https://github.com/spmedia/Threat-Actor-Usernames-Scrape), MIT License, Copyright (c) Edmond Major III. The lists are downloaded at run time and used only for exact-match membership lookups; the bundled file v3lum/data/threat_actor_handles/lists.json transcribes the README's list names, forum titles and scrape date ranges. Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.",
+  "bundled": true,
+  "files": [
+    "v3lum/data/threat_actor_handles/lists.json",
+    "v3lum/modules/cti_framework/threat_actor_handles.py"
+  ]
+}

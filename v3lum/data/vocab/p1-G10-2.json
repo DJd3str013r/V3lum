@@ -1,0 +1,54 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p1-G10-2",
+  "title": "Brazilian company registry, sanctions certificates, CGU bulk sanctions and name-frequency vocabulary (P236 cnpj_lookup, P239 tcu_certidoes, P240 cgu_sanctions_bulk, P252 ibge_name_frequency)",
+  "owner": "batch p1-G10-2",
+  "notes": "Core names reused where they fit: legal_name, trade_name, status, cnae, partners, address, capital, opened, sanctioned (attributes); sanctions, pep, privacy, context_only, third_party (tags); located_at (relation). Personal data rules: QSA CPFs only as masked by the RFB, never pivots; registry contacts are never same-owner evidence.",
+  "attributes": {
+    "status_date": "ISO date of the current RFB registration status (data_situacao_cadastral; a status date, not data freshness)",
+    "status_reason": "reason the RFB gives for the registration status (motivo da situacao cadastral)",
+    "special_status": "RFB special situation {status, date} when present (situacao especial)",
+    "branch_type": "MATRIZ (head office) or FILIAL (branch) of a CNPJ",
+    "cnaes_secondary": "secondary economic activities [{code, label}] (7-digit CNAE codes; labels as given by the provider until the CNAE tables land)",
+    "legal_nature": "legal nature {code, label} of a company (RFB natureza juridica)",
+    "company_size": "company size class (RFB porte: MICRO EMPRESA, EMPRESA DE PEQUENO PORTE, DEMAIS)",
+    "simples_nacional": "Simples Nacional option {optante, since, excluded}",
+    "mei": "MEI (microempreendedor individual) option {optante, since, excluded}",
+    "individual_entrepreneur": "bool: MEI or empresario individual registration - its name, contacts and address are personal data",
+    "address_details": "registered address parts {street_type, street, number, complement, district, city, uf, cep, ibge_code}",
+    "rfb_emails": "e-mail addresses registered at the RFB for a CNPJ (registry contacts, often the accounting firm; never same-owner evidence)",
+    "rfb_phones": "phones registered at the RFB for a CNPJ (E.164; registry contacts, often the accounting firm; never same-owner evidence)",
+    "qsa": "QSA table as published by the RFB [{name, kind, doc_as_given (RFB-masked CPF or partner CNPJ), role, since, age_band, country, legal_rep}]; shown only in the CNPJ card",
+    "qsa_former": "partners of earlier RFB dumps still listed by a provider (history only, never pivots)",
+    "state_registrations": "state tax registrations (inscricoes estaduais) [{ie, uf, active, updated}]",
+    "federative_entity": "responsible federative entity (ente federativo responsavel) of a public-law entity",
+    "company_age_years": "company age in years from its opening date (an attribute for correlation packs, never a finding by itself)",
+    "cnpj_card": "CNPJ card header {provider, data_date, status, status_plain, opening_date, age_years}",
+    "rfb_snapshot": "RFB open-data dump month an answer comes from (YYYY-MM)",
+    "field_sources": "per-field provenance of a merged record {field: {provider, as_of}}",
+    "field_conflicts": "fields on which providers disagree [{field, chosen {provider, value, as_of}, alternatives [{provider, value, as_of}]}] (the freshest wins)",
+    "provider_chain": "per-provider outcome of a fallback chain [{provider, source, state, reason}]",
+    "providers_pending_review": "providers coded behind a module's normaliser but never called until legal records their terms [{provider, host, reason}]",
+    "certificate_lists": "per-list state of a consolidated sanctions certificate {list: {state: consta | nada_consta | unknown, text, issued_at, emitter, link}}",
+    "certificate_issued_at": "issue time of a consolidated sanctions certificate (TCU dataHoraEmissao, ISO 8601)",
+    "tcu_base_found": "bool: the CNPJ exists in the TCU base (seCnpjEncontradoNaBaseTcu); false means the certificate is not evidence of a clean record",
+    "sanctions_screening": "per-list state of an offline sanctions screening {list: {state: no_record | listed | not_screened, file_date, reason}}",
+    "first_name_frequency": "IBGE Census count of people with this first name {first_name, frequency, source} (aggregate statistics; nothing is inferred about the person)",
+    "homonym_risk": "homonym risk of a name for name-only matches {risk: high | medium | low | unknown, factor, phrase, first_name_tier, common_surname}"
+  },
+  "tags": {
+    "company_status": "company registration not active at the RFB (BAIXADA, INAPTA, SUSPENSA, NULA)",
+    "shared_contact": "registry contact shared by more than 20 CNPJs (possible accountant or virtual office): never same-owner evidence",
+    "name_only_match": "match on a name alone, without any identifier: 'possible match', lowered by the homonym score (P252)"
+  },
+  "relations": {
+    "partner_of": "cnpj -> QSA partner listed by the RFB (person name or company): the pivot is a partner or officer of the company; person names are name-only (identity not established)",
+    "rfb_contact": "cnpj -> e-mail or phone registered at the RFB (registry contact, often the accounting firm): never same-owner evidence",
+    "rfb_contact_domain": "cnpj -> domain of an RFB registry contact e-mail (third party unless registro.br RDAP ties it to the same CNPJ root)",
+    "legal_name": "cnpj -> registered legal name (razao social); never triggers a name-to-CNPJ resolver"
+  },
+  "timeline": {
+    "status_date": "RFB registration status since",
+    "certificate_issued_at": "sanctions certificate issued"
+  }
+}

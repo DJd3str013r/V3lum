@@ -1,0 +1,27 @@
+{
+ "_meta": {
+  "provenance": "observed",
+  "recorded": "2026-11-26",
+  "request": {
+   "method": "GET",
+   "url": "https://api.urlquery.net/public/v2/reports/search",
+   "params": {
+    "query": "url.domain:example.com",
+    "limit": 1
+   }
+  },
+  "note": "No x-apikey header."
+ },
+ "status": 401,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": {
+  "success": false,
+  "error": {
+   "http_code": 401,
+   "error": "MISSING_API_KEY",
+   "message": "API key is required"
+  }
+ }
+}

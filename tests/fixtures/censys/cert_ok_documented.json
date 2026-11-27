@@ -1,0 +1,27 @@
+{
+ "_documented": "CertificateAsset envelope from censys-sdk-python; values invented, one SAN outside the apex (partner.example.net) to test expand=False.",
+ "result": {
+  "resource": {
+   "fingerprint_sha256": "90e589015dcbbb7728e13da5313f08161a476c588a90908d32ddba9dd63f5096",
+   "names": [
+    "example.com",
+    "www.example.com",
+    "api.example.com",
+    "partner.example.net"
+   ],
+   "parsed": {
+    "subject_dn": "CN=example.com",
+    "issuer_dn": "C=US, O=Example CA, CN=Example Issuing CA",
+    "validity_period": {
+     "not_before": "2026-08-01T00:00:00Z",
+     "not_after": "2026-10-30T00:00:00Z",
+     "length_seconds": 7776000
+    }
+   },
+   "precert": false,
+   "validation_level": "DV",
+   "added_at": "2026-08-01T01:00:00Z"
+  },
+  "extensions": {}
+ }
+}

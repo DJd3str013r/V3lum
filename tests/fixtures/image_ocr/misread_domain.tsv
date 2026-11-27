@@ -1,0 +1,11 @@
+level	page_num	block_num	par_num	line_num	word_num	left	top	width	height	conf	text
+1	1	0	0	0	0	0	0	600	144	-1	
+2	1	1	0	0	0	30	35	539	69	-1	
+3	1	1	1	0	0	30	35	539	69	-1	
+4	1	1	1	1	0	30	35	539	27	-1	
+5	1	1	1	1	1	30	36	96	20	93.250526	Acesse
+5	1	1	1	1	2	139	35	430	27	91.882309	rnicrosoft-suporte.example.net
+4	1	1	1	2	0	32	77	523	27	-1	
+5	1	1	1	2	1	32	83	30	15	93.291687	ou
+5	1	1	1	2	2	76	77	389	27	88.192680	paypal-seguro.example.org
+5	1	1	1	2	3	478	83	77	21	96.536568	agora

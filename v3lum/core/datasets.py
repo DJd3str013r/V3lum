@@ -23,6 +23,20 @@ check -> archive extraction (:func:`safe_extract`) -> ``pinned_sha256`` / active
 ``validate(path)`` callback -> only then ``os.replace``. On failure the previous copy is kept and
 :class:`DatasetError` is raised, or the stale copy is returned by ``fetch``.
 
+Ad-hoc downloads (the v1 form ``ctx.data.fetch(name, url)`` with an unregistered name) are not
+datasets of the registry: :class:`DataView` sends them through the calling module's own HTTP scope
+(``ctx.http``: its declared hosts, disclosure, request cap, deadline, run/scope binding and egress
+profile), never through a dataset scope (P327 cond 5, A7). The download is then refused exactly
+like ``ctx.http`` would refuse it: the ``PolicyError`` propagates (SKIPPED 'policy' for an
+undeclared host or a disclosure-'none' module, SKIPPED 'scope' outside an ACTIVE scope) and no stale
+copy masks the refusal. A dataset registered after the run started (registrations happen at import
+time; one made during the run is not reviewed) is routed the same way: every registration carries a
+sequence number and the view, built when the run starts, knows which existed then. The module scope
+must be a module ``ScopedHttp`` (a raw client or a core scope is refused). During a scan such a
+download without a module scope (the store reached around ``ctx.data``), or a ``DataStore.update``
+of a dataset registered after the scan started (``Runtime.scan_dataset_seq``), is refused as well.
+Registered datasets keep their reviewed dataset scope.
+
 During a scan (``Runtime.in_scan``) datasets that are large (``large=True``, a declared
 ``max_bytes`` above 5 MB, or a known size above 5 MB) are never downloaded: an existing copy is
 served at once (marked stale when old) and a missing one raises :class:`DatasetUnavailable`
@@ -120,6 +134,23 @@ _KEY_PARAMS = ("key", "apikey", "api_key", "api-key", "token", "access_token", "
 # ``v3lum data update`` can refresh everything ahead of an offline engagement.
 DATASETS: dict[str, dict[str, Any]] = {}
 _REG_LOCK = threading.Lock()
+#: registration sequence: every registration gets the next number (``DATASETS[name]['seq']``). A
+#: dataset registered after a run started (``DataView``) or a scan started (``Runtime.in_scan``) is not
+#: a reviewed, import-time registration: its downloads go through the calling module's own scope.
+_REG_SEQ = 0
+
+
+def _registration_seq() -> int:
+    """The sequence number of the latest registration (0 before any)."""
+    with _REG_LOCK:
+        return _REG_SEQ
+
+
+def _seq_of(reg: dict[str, Any] | None) -> int:
+    try:
+        return int((reg or {}).get("seq") or 0)
+    except (TypeError, ValueError):
+        return 0
 
 
 # --------------------------------------------------------------------------------------
@@ -254,7 +285,9 @@ def register_dataset(
     a pin. ``archive`` ('gz' | 'bz2' | 'zip') with ``member`` extracts the stored file.
 
     Raises ValueError for an invalid name or field, and when the name is already registered with a
-    different URL.
+    different URL. Each registration gets the next sequence number (an identical re-registration keeps
+    its number): a dataset registered after a run started is not a reviewed registration and
+    ``ctx.data`` downloads it through the module's own scope (``ctx.http``), like an ad-hoc URL.
     """
     check_name(name)
     url = str(url or "").strip()
@@ -305,10 +338,18 @@ def register_dataset(
         "member": member,
         "max_bytes_declared": max_bytes is not None,
     }
+    global _REG_SEQ
     with _REG_LOCK:
         existing = DATASETS.get(name)
         if existing is not None and existing["url"] != url:
             raise ValueError(f"dataset {name!r} is already registered with another URL ({_redact_url(existing['url'])}): pick another name")
+        same = existing is not None and {k: v for k, v in existing.items() if k not in ("seq", "validate")} == \
+            {k: v for k, v in entry.items() if k != "validate"}
+        if same and _seq_of(existing):
+            entry["seq"] = _seq_of(existing)  # the same registration again (a re-import): still the reviewed one
+        else:
+            _REG_SEQ += 1
+            entry["seq"] = _REG_SEQ  # a new or changed registration
         DATASETS[name] = entry
     return name
 
@@ -389,7 +430,21 @@ def _exc_types(*names: str) -> tuple[type[BaseException], ...]:
 
 _PROPAGATE = _exc_types("Cancelled", "DeadlineExceeded", "RequestCapReached")
 _OFFLINE = _exc_types("OfflineError")
+#: a refusal of the calling module's own HTTP scope (ad-hoc downloads): propagated as is
+_POLICY = _exc_types("PolicyError")
 _HTTP_FAILURES = _exc_types("HttpError", "NetworkError", "PolicyError", "ConfigError")
+
+
+def _check_module_scope(http: Any) -> None:
+    """Raise PolicyError unless ``http`` is a module's own ScopedHttp (``ctx.http``): a raw client
+    (``ctx.http.client``, the runtime client) or a core scope (``ctx.doh``) has no module host list,
+    disclosure, run/scope binding or request cap, so a download through it is refused (fail closed)."""
+    scoped_cls = getattr(_http, "ScopedHttp", None)
+    if scoped_cls is None or not isinstance(http, scoped_cls) or getattr(http, "core", False):
+        raise _http.PolicyError(
+            "policy", f"datasets: http= must be the calling module's own scope (ctx.http), not {type(http).__name__}: "
+                      "a raw client or a core scope has no host, scope or egress binding",
+        )
 
 
 def _short(exc: BaseException | str, limit: int = 200) -> str:
@@ -1027,6 +1082,20 @@ class DataStore:
     def _in_scan(self) -> bool:
         return bool(getattr(self.runtime, "in_scan", False)) if self.runtime is not None else False
 
+    def _unreviewed(self, reg: dict[str, Any] | None, registered_before: int | None, in_scan: bool) -> bool:
+        """True when a download of this registration is not a reviewed (import-time) dataset: no
+        registration (the v1 ad-hoc ``fetch(name, url)``), or one made after ``registered_before`` (the
+        run's view) or, during a scan, after the scan started (``Runtime.scan_dataset_seq``)."""
+        if reg is None:
+            return True
+        seq = _seq_of(reg)
+        if seq <= 0:
+            return True  # an entry written into DATASETS directly, not by register_dataset: never reviewed
+        if registered_before is not None and seq > int(registered_before):
+            return True
+        scan_seq = getattr(self.runtime, "scan_dataset_seq", None) if in_scan and self.runtime is not None else None
+        return isinstance(scan_seq, int) and not isinstance(scan_seq, bool) and seq > scan_seq
+
     def _client(self) -> Any:
         return getattr(self.runtime, "http", None) if self.runtime is not None else None
 
@@ -1171,8 +1240,16 @@ class DataStore:
         max_bytes: int | None,
         cap: int | None,
         entry: dict[str, Any] | None,
+        http: Any = None,
     ) -> _Candidate | None:
-        """Download and validate into temp files. None = 304 Not Modified. Raises DatasetError."""
+        """Download and validate into temp files. None = 304 Not Modified. Raises DatasetError.
+
+        ``http`` is the calling module's own scope (``ctx.http``, ad-hoc downloads through
+        :class:`DataView`): the request goes through it and its ``PolicyError`` propagates as is (the
+        module is refused exactly like ``ctx.http`` refuses it). Without it the dataset scope of the
+        registration is used (:meth:`_dataset_http`).
+        """
+        scoped = http is not None
         reg = reg or {}
         host = urlsplit(url).hostname or "?"
         effective_max = int(max_bytes or reg.get("max_bytes") or DEFAULT_MAX_BYTES)
@@ -1183,7 +1260,8 @@ class DataStore:
                 hdrs.setdefault("If-None-Match", str(entry["etag"]))
             if entry.get("last_modified"):
                 hdrs.setdefault("If-Modified-Since", str(entry["last_modified"]))
-        http = self._dataset_http(reg, url)
+        if not scoped:
+            http = self._dataset_http(reg, url)
         if http is None:
             raise DatasetUnavailable(name, f"dataset {name}: no HTTP client (offline): run v3lum data update {name}")
         try:
@@ -1193,6 +1271,10 @@ class DataStore:
         except _OFFLINE as exc:
             raise DatasetUnavailable(name, f"dataset {name} not downloaded (offline mode): run v3lum data update {name}", reason_code="offline") from exc
         except _HTTP_FAILURES as exc:
+            if scoped and isinstance(exc, _POLICY):
+                # the module's own host/disclosure/scope/egress binding refused it: SKIPPED exactly like
+                # ctx.http, never a dataset error (and no stale copy masks the refusal)
+                raise
             code = str(getattr(exc, "reason_code", "") or "error")
             raise DatasetError(f"download of {name} from {host} failed: {_redact_text(str(exc))}", reason_code=code, name=name) from exc
         status = int(getattr(resp, "status", 0) or 0)
@@ -1309,15 +1391,38 @@ class DataStore:
         return any(h and h.lower() in accepted for h in hashes)
 
     # ------------------------------------------------------------------ read API
-    def fetch(self, name: str, url: str | None = None, *, ttl: float | None = None, headers: dict[str, str] | None = None, max_bytes: int | None = None) -> Path:
+    def fetch(
+        self,
+        name: str,
+        url: str | None = None,
+        *,
+        ttl: float | None = None,
+        headers: dict[str, str] | None = None,
+        max_bytes: int | None = None,
+        http: Any = None,
+        registered_before: int | None = None,
+    ) -> Path:
         """Local path of the dataset, downloading/refreshing it when older than ``ttl``.
 
         ``url``/``ttl`` default to the registration (v1 positional calls keep working). A failed
         refresh returns the previous (stale) copy; without one DatasetError/DatasetUnavailable is
         raised. During a scan large datasets are never downloaded (see the module docstring).
+
+        ``http`` is the calling module's own scope (``ctx.http``; :class:`DataView` passes it). Every
+        download that is not a reviewed registration goes through it instead of a dataset scope: an
+        unregistered name with a URL (the v1 ad-hoc form) and a dataset registered after
+        ``registered_before`` (the registration sequence when the run started) or, during a scan,
+        after the scan started (``Runtime.scan_dataset_seq``) - registrations happen at import time.
+        Its refusal (``PolicyError``: undeclared host, disclosure 'none', outside the ACTIVE scope,
+        egress) propagates and is never masked by a stale copy. ``http`` must be a module
+        ``ScopedHttp``: a raw client or a core scope is refused with ``PolicyError``. During a scan
+        such a download without a module scope is refused with ``PolicyError`` (P327 cond 5, A7).
+        Reviewed registrations keep their dataset scope.
         """
         check_name(name)
-        reg = DATASETS.get(name)
+        if http is not None:
+            _check_module_scope(http)
+        reg = DATASETS.get(name)  # read once: the URL, the routing and the download use this registration
         if url is None:
             if reg is None:
                 raise DatasetError(f"dataset {name!r} is not registered (register_dataset) and no URL was given", name=name)
@@ -1340,13 +1445,25 @@ class DataStore:
                     self._mark_stale(name, reg, True)
                     return target
                 raise DatasetUnavailable(name, f"dataset {name} is large (> 5 MB) and is never downloaded during a scan: run v3lum data update {name}")
-            if self._client() is None:
+            # the module's own scope carries every download that is not a reviewed registration
+            route = http if self._unreviewed(reg, registered_before, in_scan) else None
+            if (route if route is not None else self._client()) is None:
                 if exists:
                     self._mark_stale(name, reg, True)
                     return target
                 raise DatasetUnavailable(name, f"dataset {name} is not downloaded: run v3lum data update {name}")
+            if route is None and in_scan and self._unreviewed(reg, registered_before, in_scan):
+                # fail closed: mid-scan, an ad-hoc URL (or a dataset registered during the run) is downloaded only
+                # through the calling module's own scope (ctx.data -> ctx.http); the store reached around ctx.data
+                # has no host/scope binding
+                raise _http.PolicyError(
+                    "policy", f"dataset {name}: ad-hoc download (unregistered name + URL, or a dataset registered during the "
+                              "run) refused during a scan outside the module's ctx.data: it goes through the module's ctx.http "
+                              "(host, scope and egress checks)",
+                )
             try:
-                cand = self._download(name, reg, url, headers=headers, max_bytes=max_bytes, cap=LARGE_BYTES if in_scan else None, entry=entry if exists else None)
+                cand = self._download(name, reg, url, headers=headers, max_bytes=max_bytes, cap=LARGE_BYTES if in_scan else None,
+                                      entry=entry if exists else None, http=route)
             except DatasetError:
                 if exists:
                     self._mark_stale(name, reg, True)
@@ -1413,11 +1530,13 @@ class DataStore:
             self._memo[key] = (stamp, value)
         return value
 
-    def index(self, name: str, *, column: str | int | None = None, fmt: str | None = None) -> DatasetIndex:
+    def index(self, name: str, *, column: str | int | None = None, fmt: str | None = None, http: Any = None,
+              registered_before: int | None = None) -> DatasetIndex:
         """Membership index of a dataset (``contains(value)``, ``len``). ``column`` selects a JSON
         key path, a CSV column (header name or position) or a whitespace field of a line; ``fmt``
-        ('json' | 'csv' | 'lines') overrides the registration's ``expect``."""
-        path = self.fetch(name)
+        ('json' | 'csv' | 'lines') overrides the registration's ``expect``. ``http`` and
+        ``registered_before`` route the download like :meth:`fetch`."""
+        path = self.fetch(name, http=http, registered_before=registered_before)
         reg = DATASETS.get(name) or {}
         kind = fmt or {"json": "json", "csv": "csv"}.get(str(reg.get("expect")), "")
         if not kind:
@@ -1461,9 +1580,14 @@ class DataStore:
             **meta,
         )
 
-    def scoped(self) -> DataView:
-        """A per-run view with the same read API that records the datasets used (``.used``)."""
-        return DataView(self)
+    def scoped(self, *, http: Any = None) -> DataView:
+        """A per-run view with the same read API that records the datasets used (``.used``).
+
+        ``http`` is the module's own HTTP scope (``ctx.http``): ad-hoc downloads of the view
+        (unregistered name + URL) go through it (host, disclosure, request cap, run/scope binding,
+        egress profile); registered datasets keep their dataset scope.
+        """
+        return DataView(self, http=http)
 
     # ------------------------------------------------------------------ maintenance
     def update(self, name: str, *, accept_new: bool = False, expect_sha256: str = "") -> UpdateResult:
@@ -1484,6 +1608,9 @@ class DataStore:
             return UpdateResult(name, "failed", reason="not registered")
         if reg.get("active") and self._in_scan():
             return UpdateResult(name, "failed", reason="active datasets are refreshed only by `v3lum data update`, never mid-scan")
+        if self._in_scan() and self._unreviewed(reg, None, True):
+            # registered during the scan (not at import time): no reviewed dataset scope to download it through
+            return UpdateResult(name, "failed", reason="registered during the scan (registrations happen at import time): not refreshed mid-scan")
         target = self.path(name)
         with self._lock_for(name):
             entry = _read_manifest().get(name) or {}
@@ -1605,10 +1732,23 @@ class DataView:
 
     ``used`` lists one ``{name, sha256, fetched_at, licence}`` per dataset (bundled files carry
     ``fetched_at='bundled'``); the engine copies it into ``ModuleResult.datasets``.
+
+    ``http`` is the module's own scope (``ctx.http``, set by ``Context``). The v1 ad-hoc form
+    ``fetch*(name, url)`` with an unregistered name downloads through it, never through a dataset
+    scope: it is refused exactly like ``ctx.http`` refuses the URL (``PolicyError`` -> SKIPPED
+    'policy' for an undeclared host or disclosure 'none', the ACTIVE scope binding, the egress
+    profile). So does a dataset registered after the view was built (registrations happen at import
+    time: one made during the run is not reviewed). Registered datasets keep their reviewed dataset
+    scope. The binding is the view's: ``http=`` / ``registered_before=`` keywords of the caller are
+    ignored.
     """
 
-    def __init__(self, store: DataStore) -> None:
+    def __init__(self, store: DataStore, *, http: Any = None) -> None:
         self._store = store
+        # set once: the view is shared by the threads of one run, never rebound
+        self._http = http
+        #: registrations up to this sequence number existed when the run started (reviewed, import time)
+        self._registered_before = _registration_seq()
         self.used: list[dict[str, str]] = []
         self._lock = threading.Lock()
 
@@ -1643,28 +1783,42 @@ class DataView:
         self._record({"name": name, "sha256": sha, "fetched_at": "bundled", "licence": BUNDLED_LICENCES.get(name, "")})
 
     # ---- downloadable datasets
+    def _bound(self, kw: dict[str, Any]) -> dict[str, Any]:
+        """The store keywords of one call: the view's binding (the module's own scope and the registration
+        sequence of the run), never a caller's ``http=`` / ``registered_before=``. The store decides the
+        route under its per-name lock from one read of the registry: an ad-hoc download (unregistered
+        name + URL) or a dataset registered during the run goes through the module's scope, a reviewed
+        registration through its dataset scope."""
+        kw = dict(kw)
+        kw.pop("http", None)
+        kw.pop("registered_before", None)
+        if self._http is not None:
+            kw["http"] = self._http
+            kw["registered_before"] = self._registered_before
+        return kw
+
     def fetch(self, name: str, url: str | None = None, **kw: Any) -> Path:
-        path = self._store.fetch(name, url, **kw)
+        path = self._store.fetch(name, url, **self._bound(kw))
         self._cite(name)
         return path
 
     def fetch_text(self, name: str, url: str | None = None, **kw: Any) -> str:
-        value = self._store.fetch_text(name, url, **kw)
+        value = self._store.fetch_text(name, url, **self._bound(kw))
         self._cite(name)
         return value
 
     def fetch_json(self, name: str, url: str | None = None, **kw: Any) -> Any:
-        value = self._store.fetch_json(name, url, **kw)
+        value = self._store.fetch_json(name, url, **self._bound(kw))
         self._cite(name)
         return value
 
     def fetch_lines(self, name: str, url: str | None = None, **kw: Any) -> frozenset[str]:
-        value = self._store.fetch_lines(name, url, **kw)
+        value = self._store.fetch_lines(name, url, **self._bound(kw))
         self._cite(name)
         return value
 
     def index(self, name: str, **kw: Any) -> DatasetIndex:
-        value = self._store.index(name, **kw)
+        value = self._store.index(name, **self._bound(kw))
         self._cite(name)
         return value
 

@@ -1,0 +1,2 @@
+% SYNTHETIC FIXTURE (p2-G01-4 prep): documented whois.cnnic.cn no-match reply
+No matching record.

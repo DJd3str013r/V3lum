@@ -1,0 +1,79 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "$comment": "rua to an external processor that publishes no <domain>._report._dmarc authorization: LOW",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "passive",
+    "tlp": "amber",
+    "depth": 2
+  },
+  "nodes": [
+    {
+      "key": "domain:acme-corp.example",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "spf_status": [
+          {
+            "value": "ok",
+            "source": "email_security_posture"
+          }
+        ],
+        "spf": [
+          {
+            "value": "v=spf1 -all",
+            "source": "email_security_posture"
+          }
+        ],
+        "dmarc": [
+          {
+            "value": "v=DMARC1; p=reject; rua=mailto:r@reports.dmarc-vendor.example,mailto:d@ok-vendor.example",
+            "source": "email_security_posture"
+          }
+        ],
+        "dmarc_policy": [
+          {
+            "value": "reject",
+            "source": "email_security_posture"
+          }
+        ],
+        "dmarc_pct": [
+          {
+            "value": 100,
+            "source": "email_security_posture"
+          }
+        ],
+        "dmarc_sp": [
+          {
+            "value": "reject",
+            "source": "email_security_posture"
+          }
+        ],
+        "dmarc_rua_external": [
+          {
+            "value": [
+              {
+                "dest_domain": "reports.dmarc-vendor.example",
+                "authorized": false
+              },
+              {
+                "dest_domain": "ok-vendor.example",
+                "authorized": true
+              }
+            ],
+            "source": "email_security_posture"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [],
+  "expect": {
+    "dmarc_reports_external_unauthorized": {
+      "min": 1,
+      "max": 1,
+      "severity": "low",
+      "confidence_label": "confirmed"
+    }
+  }
+}

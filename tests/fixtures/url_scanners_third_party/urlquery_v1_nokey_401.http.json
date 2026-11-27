@@ -1,0 +1,15 @@
+{
+ "_meta": {
+  "provenance": "observed",
+  "source": "research/samples/live_cti__urlquery_nokey_401.txt",
+  "request": {
+   "method": "GET",
+   "url": "https://api.urlquery.net/public/v1/search/reports/?query=example.com"
+  },
+  "recorded": "2026-11-25",
+  "note": "v1 API (deprecated per docs.urlquery.net/docs/api/versioning): 401 with an empty body."
+ },
+ "status": 401,
+ "headers": {},
+ "body": "\n"
+}

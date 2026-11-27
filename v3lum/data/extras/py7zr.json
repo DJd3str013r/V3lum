@@ -1,0 +1,9 @@
+{
+  "schema": "v3lum.extra/1",
+  "package": "py7zr",
+  "pip": "py7zr>=1.1",
+  "extra": "full",
+  "licence": "LGPL-2.1-or-later",
+  "justification": "Lists the member headers of 7z archives for archive_listing (P365 c5). Optional and imported dynamically: without it 7z archives are reported with their signature-header facts and an INFO 'member listing needs the optional py7zr extra' finding; nothing is ever extracted through it.",
+  "notes": "Batch p1-G12-1. LGPL used unmodified as an optional pip dependency (A6); pycdlib (UDF-only images) and rarfile are not wired in this build (own RAR header parser)."
+}

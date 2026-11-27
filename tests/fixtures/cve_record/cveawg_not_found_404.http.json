@@ -1,0 +1,24 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://cveawg.mitre.org/api/cve/CVE-2021-9999999",
+  "headers": {}
+ },
+ "response": {
+  "status": 404,
+  "headers": {
+   "date": "Thu, 26 Nov 2026 05:17:25 GMT",
+   "content-type": "application/json; charset=utf-8",
+   "cache-control": "no-store",
+   "ratelimit-policy": "25000;w=60",
+   "ratelimit-limit": "25000",
+   "ratelimit-remaining": "19013",
+   "ratelimit-reset": "11",
+   "etag": "W/\"54-HZ1oce/FawG7iDZPPnZLFH6WU74\""
+  },
+  "body": "{\"error\":\"CVE_RECORD_DNE\",\"message\":\"The cve record for the cve id does not exist.\"}"
+ },
+ "transport_error": null,
+ "elapsed_s": 0.165502,
+ "note": "Syntactically valid, unassigned id (CVE-2021-9999999): 404 {\"error\":\"CVE_RECORD_DNE\"}. Meaningful 404 (absent_statuses {404}) -> EMPTY. A RESERVED id has no record either."
+}

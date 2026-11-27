@@ -1,0 +1,55 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "pgfn",
+  "name": "PGFN open data - Divida Ativa da Uniao (quarterly bulk files)",
+  "operator": "Procuradoria-Geral da Fazenda Nacional (PGFN, Ministerio da Fazenda)",
+  "hosts": [
+    "dadosabertos.pgfn.gov.br"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Government body (A8 trusted): the federal tax attorney's office publishes the Divida Ativa da Uniao as open data; 'Tiers: PGFN, MTE and CVM trusted, BrasilAPI community' (P244 cond 7).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "A",
+    "justification": "Official quarterly extract of the federal debt register; a debt is common among legitimate companies (P244 cond 5: LOW context), and the extract lags the live register by up to one quarter."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "timeout": 120,
+    "retries": 1,
+    "ttl": 0,
+    "min_interval": 2.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "divida_ativa": {
+      "title": "PGFN Divida Ativa da Uniao open data (Sistema SIDA / Previdenciario / FGTS quarterly zips), imported into a local index",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.gov.br/pgfn/pt-br/assuntos/divida-ativa-da-uniao/transparencia-fiscal-1/dados-abertos",
+        "quote": "Tiers: PGFN, MTE and CVM trusted, BrasilAPI community; CVM data share-alike obligations apply only if redistributed.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "pgfn",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P244 cond 7); research C0565 terms 'Open government data (PGFN)' (verified_live 200, directory index and 206 Range heads 2026-11-26). Quarter folders https://dadosabertos.pgfn.gov.br/{YYYY}_trimestre_{0Q}/ hold Dados_abertos_Sistema_SIDA.zip (1.44 GB; the non-previdenciario file is no longer called Nao_Previdenciario), Dados_abertos_Previdenciario.zip and Dados_abertos_FGTS.zip (';', ISO-8859-1). P244 cond 2: opt-in, a separate import (python -m v3lum.modules.brazil_public_data.pgfn_import, to be wired as `v3lum data update pgfn`) streams the zips into an on-disk SQLite index keyed by CNPJ root, never in memory and never mid-scan; natural-person rows are dropped at import unless --include-persons is passed with a recorded purpose; the CAPTCHA-protected listadevedores.pgfn.gov.br app is never used (rule 1). Used by br_cnpj_risk_lists."
+    }
+  },
+  "notes": "Owned by batch p3-G10-2 (P244 br_cnpj_risk_lists). Bulk files only, downloaded by the out-of-band importer with resumable Range requests (2 s between requests, one at a time); no scan-time request (the module is disclosure 'none'). No quota block: a few large files per quarter. .br host: Accept-Language pt-BR by default."
+}

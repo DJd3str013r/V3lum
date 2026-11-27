@@ -1,0 +1,18 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://www.example.com/main.js.map",
+  "headers": {
+   "Range": "bytes=0-1023"
+  }
+ },
+ "response": {
+  "status": 206,
+  "headers": {
+   "content-type": "application/json",
+   "content-range": "bytes 0-147/148",
+   "content-length": "148"
+  },
+  "body": "{\"version\": 3, \"file\": \"main.js\", \"mappings\": \"AAAA,SAASA,IAAI;AACb\", \"sources\": [\"webpack:///./src/index.js\"], \"names\": [\"init\"], \"sourceRoot\": \"\"}"
+ }
+}

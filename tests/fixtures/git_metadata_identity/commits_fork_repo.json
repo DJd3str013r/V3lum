@@ -1,0 +1,68 @@
+[
+ {
+  "sha": "f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1",
+  "html_url": "https://github.com/example-dev/docs/commit/f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1",
+  "commit": {
+   "author": {
+    "name": "Upstream Maintainer",
+    "email": "upstream@example.org",
+    "date": "2026-08-01T00:00:00Z"
+   },
+   "committer": {
+    "name": "Upstream Maintainer",
+    "email": "upstream@example.org",
+    "date": "2026-08-01T00:00:00Z"
+   },
+   "message": "Upstream release\n\nCo-authored-by: Case Person <case.person@example.net>",
+   "verification": {
+    "verified": false,
+    "reason": "unsigned"
+   }
+  },
+  "author": {
+   "login": "upstream-maint",
+   "id": 34567890,
+   "type": "User",
+   "html_url": "https://github.com/upstream-maint"
+  },
+  "committer": {
+   "login": "upstream-maint",
+   "id": 34567890,
+   "type": "User",
+   "html_url": "https://github.com/upstream-maint"
+  }
+ },
+ {
+  "sha": "f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2",
+  "html_url": "https://github.com/example-dev/docs/commit/f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2",
+  "commit": {
+   "author": {
+    "name": "Example Developer",
+    "email": "dev@example.com",
+    "date": "2026-08-21T11:00:00Z"
+   },
+   "committer": {
+    "name": "Example Developer",
+    "email": "dev@example.com",
+    "date": "2026-08-21T11:00:00Z"
+   },
+   "message": "Local tweak",
+   "verification": {
+    "verified": false,
+    "reason": "unsigned"
+   }
+  },
+  "author": {
+   "login": "example-dev",
+   "id": 12345678,
+   "type": "User",
+   "html_url": "https://github.com/example-dev"
+  },
+  "committer": {
+   "login": "example-dev",
+   "id": 12345678,
+   "type": "User",
+   "html_url": "https://github.com/example-dev"
+  }
+ }
+]

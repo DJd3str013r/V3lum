@@ -1,0 +1,10 @@
+{
+ "_envelope": 1,
+ "_source": "live check 2026-11-26 from this datacenter egress: /vks/v1/by-email/test%40example.com",
+ "status": 404,
+ "headers": {
+  "content-type": "text/html; charset=utf-8",
+  "cache-control": "no-cache"
+ },
+ "body": "No key found for email address test@example.com"
+}

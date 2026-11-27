@@ -1,0 +1,6 @@
+[
+ {"label": "lyzem_search_keyword_cve_space", "url": "https://lyzem.com/search?q=CVE-2021-44228%20log4j", "accept": "text/html"},
+ {"label": "wikileaks_search_keyword_cve", "url": "https://search.wikileaks.org/?query=CVE-2021-44228", "accept": "text/html"},
+ {"label": "lyzem_search_url_example", "url": "https://lyzem.com/search?q=https%3A%2F%2Fexample.com%2F", "accept": "text/html"},
+ {"label": "wikileaks_search_hostile_quotes_unicode", "url": "https://search.wikileaks.org/?query=%22A%C3%A7%C3%A3o%22%20example", "accept": "text/html"}
+]

@@ -1,0 +1,130 @@
+[
+ {
+  "ref": "ip_network:bgphe_ip",
+  "renderer": "core",
+  "type": "ipv4",
+  "value": "8.8.8.8",
+  "url": "https://bgp.he.net/ip/8.8.8.8",
+  "source": "live"
+ },
+ {
+  "ref": "ip_network:bgphe_ip",
+  "renderer": "core",
+  "type": "ipv6",
+  "value": "2001:4860:4860::8888",
+  "url": "https://bgp.he.net/ip/2001%3A4860%3A4860%3A%3A8888",
+  "source": "live"
+ },
+ {
+  "ref": "ip_network:bgphe_prefix",
+  "renderer": "module",
+  "type": "cidr",
+  "value": "8.8.8.0/24",
+  "url": "https://bgp.he.net/net/8.8.8.0/24",
+  "source": "live"
+ },
+ {
+  "ref": "ip_network:bgphe_prefix",
+  "renderer": "module",
+  "type": "cidr",
+  "value": "8.8.8.7/24",
+  "url": "https://bgp.he.net/net/8.8.8.0/24",
+  "source": "normalised"
+ },
+ {
+  "ref": "ip_network:bgphe_as",
+  "renderer": "core",
+  "type": "asn",
+  "value": "AS15169",
+  "url": "https://bgp.he.net/AS15169",
+  "source": "spec"
+ },
+ {
+  "ref": "ip_network:bgphe_as",
+  "renderer": "core",
+  "type": "asn",
+  "value": "15169",
+  "url": "https://bgp.he.net/AS15169",
+  "source": "normalised"
+ },
+ {
+  "ref": "ip_network:ipinfo_ip",
+  "renderer": "core",
+  "type": "ipv4",
+  "value": "8.8.8.8",
+  "url": "https://ipinfo.io/8.8.8.8",
+  "source": "live"
+ },
+ {
+  "ref": "ip_network:ipinfo_ip",
+  "renderer": "core",
+  "type": "ipv6",
+  "value": "2001:4860:4860::8888",
+  "url": "https://ipinfo.io/2001%3A4860%3A4860%3A%3A8888",
+  "source": "live"
+ },
+ {
+  "ref": "ip_network:ipinfo_asn",
+  "renderer": "core",
+  "type": "asn",
+  "value": "AS15169",
+  "url": "https://ipinfo.io/AS15169",
+  "source": "live"
+ },
+ {
+  "ref": "tor_relays:exonerator",
+  "renderer": "core",
+  "type": "ipv4",
+  "value": "8.8.8.8",
+  "url": "https://metrics.torproject.org/exonerator.html?ip=8.8.8.8&lang=en",
+  "source": "live"
+ },
+ {
+  "ref": "ip_network:scamalytics",
+  "renderer": "core",
+  "type": "ipv4",
+  "value": "8.8.8.8",
+  "url": "https://scamalytics.com/ip/8.8.8.8",
+  "source": "live"
+ },
+ {
+  "ref": "ip_network:criminalip",
+  "renderer": "module",
+  "type": "ipv4",
+  "value": "9.9.9.9",
+  "url": "https://search.criminalip.io/asset/report/9.9.9.9",
+  "source": "live"
+ },
+ {
+  "ref": "ip_network:fofa_ip",
+  "renderer": "module",
+  "type": "ipv4",
+  "value": "8.8.8.8",
+  "url": "https://en.fofa.info/result?qbase64=aXA9IjguOC44Ljgi",
+  "source": "live"
+ },
+ {
+  "ref": "ip_network:fofa_icon_hash",
+  "renderer": "module",
+  "type": "favicon_hash",
+  "value": "708578229",
+  "url": "https://en.fofa.info/result?qbase64=aWNvbl9oYXNoPSI3MDg1NzgyMjki",
+  "source": "live"
+ },
+ {
+  "ref": "ip_network:cidr_report_as",
+  "renderer": "core",
+  "type": "asn",
+  "value": "AS15169",
+  "url": "https://www.cidr-report.org/cgi-bin/as-report?as=AS15169&view=2.0",
+  "source": "live"
+ },
+ {
+  "ref": "ip_network:myipms",
+  "renderer": "core",
+  "type": "ipv4",
+  "value": "8.8.8.8",
+  "url": "https://myip.ms/info/whois/8.8.8.8",
+  "source": "live"
+ }
+]

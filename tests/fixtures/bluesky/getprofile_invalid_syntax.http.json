@@ -1,0 +1,21 @@
+{
+ "_meta": {
+  "module": "bluesky",
+  "case": "invalid_syntax",
+  "source": "C0231 public.api.bsky.app",
+  "request": {
+   "method": "GET",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=not_a_handle%21"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "LIVE",
+  "elapsed_s": 0.144
+ },
+ "status": 400,
+ "headers": {
+  "content-type": "application/json; charset=utf-8",
+  "cache-control": "public, max-age=5",
+  "server": "BunnyCDN-IL1-940"
+ },
+ "body": "{\"error\":\"InvalidRequest\",\"message\":\"Invalid app.bsky.actor.getProfile params: Invalid AT identifier (got \\\"not_a_handle!\\\")\"}"
+}

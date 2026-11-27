@@ -1,0 +1,63 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "komoot",
+  "name": "Photon geocoder public instance (photon.komoot.io)",
+  "operator": "komoot GmbH (Germany)",
+  "hosts": [
+    "photon.komoot.io"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Identifiable company operating an open-source (Apache-2.0) geocoder over OSM data with public documentation since 2014; fair-use public instance without a service-level commitment (A8 community; P262 cond 2: 'komoot community').",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Same OSM data as Nominatim through a search-as-you-type index: global free-text matching, so homonymous streets abroad are filtered to the seed's country; precision comes from the matched object type."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 15.0,
+    "retries": 0,
+    "ttl": 2592000,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "rate_per_second": 1.0,
+    "burst": 1,
+    "published": false,
+    "evidence_url": "https://photon.komoot.io/",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "geocoding": {
+      "title": "Photon /api (forward) and /reverse geocoding - GeoJSON FeatureCollection, coordinates [lon, lat]",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://photon.komoot.io/",
+        "quote": "Data: ODbL (OSM data); Photon Apache-2.0 (self-hostable). Fair use, no hard published limit (no bulk). [research C0602; P262 cond 2: 'Photon (photon.komoot.io, returns [lon, lat]) is the only fallback']",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "openstreetmap",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Batch p3-G12-1 (P262 geocoding): the only fallback of Nominatim (used when Nominatim is SKIPPED config, BLOCKED, RATE_LIMITED or ERROR, or found nothing). Live 2026-11-26: /api and /reverse 200 in 0.5-0.7 s (cache-control max-age=3600, no rate-limit headers), a random token gives {'features': []}, lat=999 gives HTTP 400 {'lat': [{'message': ...}]}. Search is global: results are kept only in the seed's country (BR)."
+    }
+  },
+  "notes": "Owned by batch p3-G12-1 (P262). Self-limited to 1 req/s (fair use; published: false = V3LUM's own budget, not a provider figure)."
+}

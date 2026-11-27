@@ -1,0 +1,24 @@
+{
+ "_meta": {
+  "module": "username_check",
+  "case": "dribbble_not_found",
+  "source": "C0274/C0228 Dribbble",
+  "request": {
+   "method": "GET",
+   "url": "https://dribbble.com/oj5nsqgky6am1w4be0ud",
+   "user_agent": "V3LUM/dev",
+   "redirects": "not followed"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "live check, this sandbox's datacenter egress",
+  "elapsed_s": 0.159,
+  "minimised": true,
+  "note": "random control; popular-design thumbnails dropped"
+ },
+ "status": 404,
+ "headers": {
+  "content-type": "text/html",
+  "server": "nginx"
+ },
+ "body": "<!DOCTYPE html><html><head><title>Sorry, the page you were looking for doesn't exist. (404)</title></head><body><h1>Whoops, that page is gone.</h1></body></html>"
+}

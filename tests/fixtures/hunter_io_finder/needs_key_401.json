@@ -1,0 +1,17 @@
+{
+ "_envelope": 1,
+ "_source": "research sample live_osint__auth_and_block_responses.json (hunter_nokey, 2026-11-25); the same 401 authentication_failed body answers domain-search and email-count without a key",
+ "status": 401,
+ "headers": {
+  "content-type": "application/json; charset=utf-8"
+ },
+ "body": {
+  "errors": [
+   {
+    "id": "authentication_failed",
+    "code": 401,
+    "details": "No user found for the API key supplied"
+   }
+  ]
+ }
+}

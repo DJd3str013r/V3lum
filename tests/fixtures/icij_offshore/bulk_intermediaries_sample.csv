@@ -1,0 +1,5 @@
+node_id,name,status,internal_id,address,countries,country_codes,sourceID,valid_until,note
+11000007,FIGEST CONSEIL S.A.,ACTIVE,10064,,Switzerland,CHE,Panama Papers,The Panama Papers  data is current through 2015,
+11000010,SYL LOGIC SERVICES SA,ACTIVE,10121,,Switzerland,CHE,Panama Papers,The Panama Papers  data is current through 2015,
+11000024,CLAYVARD LTD.,ACTIVE,10018,,United Kingdom,GBR,Panama Papers,The Panama Papers  data is current through 2015,
+99100001,EXAMPLE CORPORATE SERVICES LTD,ACTIVE,,,Panama,PAN,Pandora Papers - Example Provider,Synthetic row for tests,

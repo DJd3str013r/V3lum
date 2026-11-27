@@ -1,0 +1,16 @@
+{
+ "_synthetic": "/api-info answer shape (documented fields) of a business API plan; replace with a capture made with the team key before merge (P039 cond 8).",
+ "scan_credits": 100,
+ "usage_limits": {
+  "scan_credits": 100,
+  "query_credits": 200,
+  "monitored_ips": 16
+ },
+ "plan": "corp",
+ "https": true,
+ "unlocked": true,
+ "query_credits": 200,
+ "monitored_ips": 0,
+ "unlocked_left": 200,
+ "telnet": true
+}

@@ -1,0 +1,51 @@
+{
+ "kind": "persons-with-significant-control#list",
+ "total_results": 2,
+ "active_count": 2,
+ "ceased_count": 0,
+ "items": [
+  {
+   "kind": "individual-person-with-significant-control",
+   "name": "Mr Person One EXAMPLE",
+   "name_elements": {
+    "title": "Mr",
+    "forename": "Person",
+    "middle_name": "One",
+    "surname": "EXAMPLE"
+   },
+   "natures_of_control": [
+    "ownership-of-shares-75-to-100-percent",
+    "voting-rights-75-to-100-percent"
+   ],
+   "notified_on": "2016-04-06",
+   "date_of_birth": {
+    "month": 1,
+    "year": 1970
+   },
+   "nationality": "British",
+   "country_of_residence": "England",
+   "address": {
+    "address_line_1": "1 Example Street",
+    "locality": "London"
+   }
+  },
+  {
+   "kind": "corporate-entity-person-with-significant-control",
+   "name": "EXAMPLE HOLDINGS PLC",
+   "natures_of_control": [
+    "significant-influence-or-control"
+   ],
+   "notified_on": "2016-04-06",
+   "ceased_on": "2020-02-02",
+   "identification": {
+    "legal_form": "public limited company",
+    "registration_number": "00000004",
+    "country_registered": "England"
+   },
+   "address": {
+    "address_line_1": "4 Example Square",
+    "locality": "London"
+   }
+  }
+ ]
+}

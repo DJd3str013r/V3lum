@@ -1,0 +1,33 @@
+{
+ "request": {
+  "method": "POST",
+  "url": "https://splunk.example.com:8089/servicesNS/nobody/soc_v3lum/saved/searches/v3lum_ioc_ip/dispatch",
+  "headers": {
+   "Authorization": "<Bearer token not stored>"
+  },
+  "form": {
+   "args.value": "198.51.100.23",
+   "dispatch.earliest_time": "-30d",
+   "dispatch.latest_time": "now",
+   "dispatch.max_count": "1000",
+   "dispatch.max_time": "15",
+   "trigger_actions": "0",
+   "output_mode": "json"
+  }
+ },
+ "response": {
+  "status": 403,
+  "headers": {
+   "content-type": "application/json; charset=UTF-8"
+  },
+  "body": {
+   "messages": [
+    {
+     "type": "ERROR",
+     "text": "User 'svc-v3lum-ro' with roles { v3lum_reader } cannot dispatch saved search 'v3lum_ioc_ip': insufficient permission."
+    }
+   ]
+  }
+ },
+ "note": "role cannot dispatch the saved search -> could not verify (configuration)"
+}

@@ -1,0 +1,17 @@
+{
+ "request": "GET https://publica.cnpj.ws/cnpj/00000000000191",
+ "response": {
+  "status": 403,
+  "headers": {
+   "content-type": "text/html; charset=UTF-8",
+   "server": "cloudflare",
+   "cf-mitigated": "challenge"
+  },
+  "body": "<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"refresh\" content=\"390\"></head><body><noscript>Enable JavaScript and cookies to continue</noscript><script src=\"/cdn-cgi/challenge-platform/h/g/orchestrate/chl_page/v1\"></script></body></html>"
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "observed_at": null,
+ "origin": "synthetic",
+ "note": "synthetic: Cloudflare managed-challenge page (cnpj.ws and ReceitaWS sit behind Cloudflare and set its bot-management cookie); not observed - our requests passed"
+}

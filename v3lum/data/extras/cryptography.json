@@ -1,0 +1,9 @@
+{
+  "schema": "v3lum.extra/1",
+  "package": "cryptography",
+  "pip": "cryptography>=42",
+  "extra": "tls",
+  "licence": "Apache-2.0 OR BSD-3-Clause",
+  "justification": "X.509 parsing of the DER chain of a live TLS handshake for tls_inspect (P275 cond 6: certificates are parsed with the optional 'cryptography' extra). Optional: without it tls_inspect parses the DER itself with a bounded standard-library reader (same facts) and falls back to getpeercert() for chains that verify.",
+  "notes": "Batch p9-G03-3. Used unmodified; never required (tls_inspect does not list it in requires_packages)."
+}

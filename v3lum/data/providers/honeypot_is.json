@@ -1,0 +1,54 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "honeypot_is",
+  "name": "Honeypot.is token honeypot check (api.honeypot.is)",
+  "operator": "honeypot.is (operator not identified: no legal entity, address or privacy policy published)",
+  "hosts": [
+    "api.honeypot.is"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "Registry review for P206 cond 5 (2026-11-26): the site and its API terms (docs.honeypot.is/terms, 'Last Update: 2023-12-05') name only 'honeypot.is' as the contracting party - no legal entity, address or privacy policy; honeypot.is/terms and /privacy return the home page. An anonymous operator is tier unknown under the A8 definitions, so goplus_security does not query it (P206 cond 5: 'queried only if its registry review records tier community or higher').",
+  "tier_reviewer": "batch p2-G09-1 (A8 definitions; P206 cond 5 review)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "D",
+    "justification": "Simulated buy/sell on a DEX pair: answers about token contracts only; a wallet and a malformed address both answer 404 'No pairs found' (research C0499, live 2026-11-26)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "ttl": 3600,
+    "min_interval": 1.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "is_honeypot": {
+      "title": "Honeypot.is /v2/IsHoneypot?address= (token contracts only; 404 'No pairs found' = not applicable)",
+      "terms": {
+        "class": "key-terms",
+        "evidence_url": "https://docs.honeypot.is/terms",
+        "quote": "GoPlus and Honeypot.is terms could not be verified (docs JS-only, 2026-11-26): class 'key-terms'; Honeypot.is is queried only if its registry review records tier community or higher.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1, P206 cond 5)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "honeypot_is",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P206 cond 5). The API terms (2023-12-05) forbid resale and making the API or its functionalities available to third parties and say nothing about business use. Research C0499 (verified_live 404 for a wallet): 200 for a token (token, summary{risk, riskLevel, flags}, simulationSuccess, honeypotResult{isHoneypot}, simulationResult{buyTax, sellTax, transferTax}). Live headers 2026-11-26: x-ratelimit-limit 50 per ~5 s window. NOT queried while this provider's tier is 'unknown' (goplus_security keeps a parser and a tier gate only)."
+    }
+  },
+  "notes": "Owned by batch p2-G09-1 (P206). Registered so the host has an owner and the review is recorded; no module declares this source while the tier is 'unknown' (an unknown-tier source would also force goplus_security out of the default set, A3)."
+}

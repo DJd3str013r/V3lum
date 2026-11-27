@@ -1,0 +1,24 @@
+{
+ "_meta": {
+  "module": "dockerhub",
+  "case": "not_found",
+  "source": "C0234 hub.docker.com",
+  "request": {
+   "method": "GET",
+   "url": "https://hub.docker.com/v2/users/qz7k2v9m4p1w8n3x5c6b/"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "LIVE",
+  "elapsed_s": 0.169,
+  "note": "random 20-char control handle that belongs to nobody"
+ },
+ "status": 404,
+ "headers": {
+  "content-type": "application/json",
+  "x-ratelimit-limit": "180",
+  "x-ratelimit-remaining": "180",
+  "x-ratelimit-reset": "1795676309",
+  "server": "cloudflare"
+ },
+ "body": "{\"errinfo\":{\"username\":\"qz7k2v9m4p1w8n3x5c6b\"},\"message\":\"User not found\"}"
+}

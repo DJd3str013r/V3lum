@@ -1,0 +1,7 @@
+{
+ "status": 429,
+ "headers": {
+  "content-type": "application/json;charset=ISO-8859-1"
+ },
+ "body_b64": "eyJFcnJvIG5hIEFQSSI6ICJMaW1pdGUgZGUgcmVxdWlzaef1ZXMgZXhjZWRpZG8ifQ=="
+}

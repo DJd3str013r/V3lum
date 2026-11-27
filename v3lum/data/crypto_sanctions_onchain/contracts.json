@@ -1,0 +1,46 @@
+{
+  "schema": "v3lum.crypto_contracts/1",
+  "description": "Per-chain sanctions-oracle and stablecoin contract addresses read by crypto_sanctions_onchain (P205 cond 3: kept in data with their source). Function selectors are recomputed from the signatures with the core pure-Python Keccak-256 (P217) at load and must match. Add a chain only with its own verified source.",
+  "checked_at": "2026-11-26",
+  "evm": {
+    "ethereum": {
+      "chain_id": 1,
+      "contracts": {
+        "chainalysis_oracle": {
+          "address": "0x40C57923924B5c5c5455c48D93317139ADDaC8fb",
+          "signature": "isSanctioned(address)",
+          "selector": "df592f7d",
+          "kind": "sanctions",
+          "issuer": "Chainalysis sanctions oracle",
+          "source": "research C0484 (Chainalysis sanctions oracle on Ethereum mainnet); verified live 2026-11-26: OFAC-listed 0x0330070FD38Ec3bB94F58FA55D40368271E9e54A -> 0x..01, Ethereum Foundation 0xde0B2956... -> 0x..00"
+        },
+        "usdt": {
+          "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+          "signature": "isBlackListed(address)",
+          "selector": "e47d6060",
+          "kind": "issuer_freeze",
+          "issuer": "Tether (USDT on Ethereum)",
+          "source": "research C0488 (Tether USDT ERC-20 isBlackListed); verified live 2026-11-26 (listed -> 0x..01, Ethereum Foundation -> 0x..00)"
+        },
+        "usdc": {
+          "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+          "signature": "isBlacklisted(address)",
+          "selector": "fe575a87",
+          "kind": "issuer_freeze",
+          "issuer": "Circle (USDC on Ethereum)",
+          "source": "research C0488 (Circle USDC ERC-20 isBlacklisted); verified live 2026-11-26 (listed -> 0x..01, Ethereum Foundation -> 0x..00)"
+        }
+      }
+    }
+  },
+  "tron": {
+    "usdt_trc20": {
+      "address": "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t",
+      "signature": "isBlackListed(address)",
+      "selector": "e47d6060",
+      "kind": "issuer_freeze",
+      "issuer": "Tether (USDT on TRON)",
+      "source": "research C0480/C0488 (USDT-TRC20 isBlackListed via TronGrid triggerconstantcontract); verified live 2026-11-26: OFAC USDT-listed TYK29mbyvVxLaLUKdFSTRADMwoxaVbVZQg -> ..01, a never-used address -> ..00 (the contract address itself reads ..01: not a negative control)"
+    }
+  }
+}

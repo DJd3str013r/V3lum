@@ -1,0 +1,121 @@
+{
+ "data": {
+  "attributes": {
+   "first_submission_date": 1148301722,
+   "last_analysis_date": 1795600000,
+   "last_analysis_results": {
+    "Kaspersky": {
+     "category": "malicious",
+     "engine_name": "Kaspersky",
+     "method": "blacklist",
+     "result": "HEUR:Trojan.Win32.Generic"
+    },
+    "ESET-NOD32": {
+     "category": "malicious",
+     "engine_name": "ESET-NOD32",
+     "method": "blacklist",
+     "result": "a variant of Win32/Agent.XYZ"
+    },
+    "Microsoft": {
+     "category": "malicious",
+     "engine_name": "Microsoft",
+     "method": "blacklist",
+     "result": "Trojan:Win32/Wacatac.B!ml"
+    },
+    "BitDefender": {
+     "category": "malicious",
+     "engine_name": "BitDefender",
+     "method": "blacklist",
+     "result": "Gen:Variant.Synthetic.1"
+    },
+    "Avast": {
+     "category": "malicious",
+     "engine_name": "Avast",
+     "method": "blacklist",
+     "result": "Win32:TrojanX-gen [Trj]"
+    },
+    "Sophos": {
+     "category": "malicious",
+     "engine_name": "Sophos",
+     "method": "blacklist",
+     "result": "Troj/Agent-ABC"
+    },
+    "ClamAV": {
+     "category": "malicious",
+     "engine_name": "ClamAV",
+     "method": "blacklist",
+     "result": "Win.Trojan.Agent-1"
+    },
+    "GData": {
+     "category": "malicious",
+     "engine_name": "GData",
+     "method": "blacklist",
+     "result": "Gen:Variant.Synthetic.1"
+    },
+    "Webroot": {
+     "category": "undetected",
+     "engine_name": "Webroot",
+     "method": "blacklist",
+     "result": null
+    },
+    "Panda": {
+     "category": "type-unsupported",
+     "engine_name": "Panda",
+     "method": "blacklist",
+     "result": null
+    }
+   },
+   "last_analysis_stats": {
+    "confirmed-timeout": 0,
+    "failure": 0,
+    "harmless": 0,
+    "malicious": 8,
+    "suspicious": 0,
+    "timeout": 0,
+    "type-unsupported": 1,
+    "undetected": 1
+   },
+   "md5": "94bc27a41c42bdb00c3de68b6d3365d6",
+   "sha1": "74b6df2f7fb71a4e0a64fc374d40df7286ba58cd",
+   "sha256": "3e9134075b2bf1d15b039867b9a33e0ea1210aab211449c6f0a79cbf7fa8e98e",
+   "meaningful_name": "submitted-name-marker.exe",
+   "names": [
+    "submitted-name-marker.exe"
+   ],
+   "popular_threat_classification": {
+    "suggested_threat_label": "trojan.synthetic/agent",
+    "popular_threat_name": [
+     {
+      "count": 3,
+      "value": "agent"
+     }
+    ],
+    "popular_threat_category": [
+     {
+      "count": 6,
+      "value": "trojan"
+     }
+    ]
+   },
+   "reputation": 3,
+   "size": 68,
+   "tags": [
+    "text",
+    "known-distributor"
+   ],
+   "times_submitted": 100000,
+   "total_votes": {
+    "harmless": 10,
+    "malicious": 2
+   },
+   "type_description": "Win32 EXE",
+   "type_tag": "text",
+   "threat_verdict": "VERDICT_MALICIOUS"
+  },
+  "id": "3e9134075b2bf1d15b039867b9a33e0ea1210aab211449c6f0a79cbf7fa8e98e",
+  "links": {
+   "self": "https://www.virustotal.com/api/v3/files/3e9134075b2bf1d15b039867b9a33e0ea1210aab211449c6f0a79cbf7fa8e98e"
+  },
+  "type": "file"
+ }
+}

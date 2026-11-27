@@ -1,0 +1,89 @@
+{
+ "domain": "example.com",
+ "expected": {
+  "spf_void_lookups": 3,
+  "status": "permerror"
+ },
+ "answers": {
+  "example.com TXT": {
+   "Status": 0,
+   "TC": false,
+   "RD": true,
+   "RA": true,
+   "AD": false,
+   "CD": false,
+   "Question": [
+    {
+     "name": "example.com.",
+     "type": 16
+    }
+   ],
+   "Answer": [
+    {
+     "name": "example.com.",
+     "type": 16,
+     "TTL": 300,
+     "data": "v=spf1 include:gone1.example.com include:gone2.example.com include:empty.example.com -all"
+    }
+   ]
+  },
+  "gone1.example.com TXT": {
+   "Status": 3,
+   "TC": false,
+   "RD": true,
+   "RA": true,
+   "AD": false,
+   "CD": false,
+   "Question": [
+    {
+     "name": "gone1.example.com.",
+     "type": 16
+    }
+   ],
+   "Authority": [
+    {
+     "name": "example.com.",
+     "type": 6,
+     "TTL": 900,
+     "data": "ns1.example.net. hostmaster.example.net. 1 7200 3600 1209600 900"
+    }
+   ]
+  },
+  "gone2.example.com TXT": {
+   "Status": 3,
+   "TC": false,
+   "RD": true,
+   "RA": true,
+   "AD": false,
+   "CD": false,
+   "Question": [
+    {
+     "name": "gone2.example.com.",
+     "type": 16
+    }
+   ],
+   "Authority": [
+    {
+     "name": "example.com.",
+     "type": 6,
+     "TTL": 900,
+     "data": "ns1.example.net. hostmaster.example.net. 1 7200 3600 1209600 900"
+    }
+   ]
+  },
+  "empty.example.com TXT": {
+   "Status": 0,
+   "TC": false,
+   "RD": true,
+   "RA": true,
+   "AD": false,
+   "CD": false,
+   "Question": [
+    {
+     "name": "empty.example.com.",
+     "type": 16
+    }
+   ]
+  }
+ }
+}

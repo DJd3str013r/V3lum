@@ -1,0 +1,33 @@
+{
+  "schema": "v3lum.vocab/1",
+  "pack": "p2-G10-1",
+  "title": "GLEIF LEI records, CEP lookups, CNAE/Receita code tables and the Portal da Transparencia API (P220 gleif, P234 cep_lookup, P235 cnae_tables, P237 portal_transparencia_api)",
+  "owner": "batch p2-G10-1",
+  "notes": "Reused: lei, legal_name, address, city, region, country, cnae, legal_nature, company_size, status, provider_chain, cep_uf_hint, data_attribution, sanctions_screening and sanctioned (core and earlier batches); relations located_at, partner and company_of (core). GLEIF relationships are ownership hints, never scope (P220 cond 5); CNAE sector tags are info context, never risk on their own (P235 cond 4).",
+  "attributes": {
+    "lei_summary": "one line about the LEI record (P220 cond 6): 'LEI <lei> | <legal name> | <registration status> | updated <date> | direct parent: ... | ultimate parent: ...', or 'no LEI for <CNPJ>' (most Brazilian SMEs have none; never a risk signal)",
+    "lei_record": "GLEIF LEI record facts {lei, legal_name, other_names, registration_status (ISSUED/LAPSED/RETIRED...), entity_status, last_update, initial_registration, next_renewal, jurisdiction, registered_at, registered_as, cnpj, legal_form, category, corroboration, bic, legal_address {city, region, country}, golden_copy}",
+    "lei_parents": "GLEIF parents of the LEI record {direct {lei, legal_name, jurisdiction, cnpj} | null, direct_exception {category, reason, reason_text} | null, ultimate ..., ultimate_exception ...}: ownership hints only, never scope",
+    "lei_children": "first page of GLEIF direct children of the LEI record {count (as reported), shown, truncated, children [{lei, legal_name, jurisdiction, registration_status, cnpj}]} (at most 10): ownership hints only, never scope",
+    "lei_candidates": "GLEIF legal entities that only match a name or keyword (hypotheses, never confirmed links) [{lei, legal_name, jurisdiction, registration_status, match}]",
+    "cep_record": "normalised CEP record {postal_code (NNNNN-NNN), address, district, city, region (UF), region_iso (BR-UF), country BR, ibge_code, provider, coordinates {lat, lon, label 'CEP centroid (approximate)'} | null}",
+    "ibge_code": "7-digit IBGE municipality code of the CEP's city (IBGE Localidades)",
+    "cep_ddd": "DDD (area code) ViaCEP reports for the CEP's municipality (context for phone/address cross-checks)",
+    "uf_mismatch": "weak info cross-checks between the UF of a CEP, of a DDD and of a CNPJ record [{check cep_ddd|cep_cnpj|ddd_cnpj, value}]: people and companies move, never raises a score on its own",
+    "cep_reverse_matches": "CEPs ViaCEP lists for an analyst-typed address (reverse search, at most 50) [{postal_code, street, district, city, uf}]",
+    "cnae_detail": "human-readable CNAE subclass {code, code_formatted, label, class, class_label, group, group_label, division, division_label, section, section_label, sector_tags, lgpd_protected, known, table_version}",
+    "cnae_matches": "CNAE subclasses whose description matches an analyst-typed search term [{code_formatted, label, division}] (at most 10)",
+    "sector_tags": "info-context sector tags of a CNAE (financial_insurance, payments_crypto, private_security, gambling_betting): never a risk signal on their own; correlation rules may combine them",
+    "cnae_lgpd_protected": "bool: the CNAE is in division 94 (unions, religious, political and other associations) and is never a risk signal or an attribute of a natural person (LGPD art. 5 II and 11)",
+    "transparencia_summary": "Portal da Transparencia /pessoa-juridica summary flags of a CNPJ {sanctioned_ceis, sanctioned_cnep, sanctioned_cepim, has_contracts, has_agreements, spending_payee, bidder, transfers_payee}",
+    "federal_contracts": "federal contracts of a CNPJ supplier (Portal da Transparencia) {count, count_is_lower_bound, total_value, currency BRL, most_recent [<= 5 {number, object, signed, value, situation, organ}], pages, partial}",
+    "federal_agreements": "federal agreements (convenios) of a CNPJ grantee (Portal da Transparencia) {count, count_is_lower_bound, total_value, most_recent [<= 5 {number, object, signed, value, situation, organ}]}",
+    "federal_payments": "federal payments (despesas, phase 'pagamento') to a CNPJ payee in the current year (Portal da Transparencia) {count, count_is_lower_bound, total_value, currency BRL, year, most_recent [<= 5 {number, signed, value, organ}]}",
+    "cgu_api_sanctions": "sanction rows the Portal da Transparencia API returned for the CNPJ, normalised like the CGU bulk files [{list, sanction_id, category, start, end, organ, status, dedup_key}] (source of the sanction detail)"
+  },
+  "tags": {},
+  "relations": {
+    "lei_candidate": "company name or keyword -> legal entity GLEIF lists for it by name only (a hypothesis, never a confirmed link; expand=False)"
+  },
+  "timeline": {}
+}

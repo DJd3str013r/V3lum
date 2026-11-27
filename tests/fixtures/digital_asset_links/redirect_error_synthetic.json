@@ -1,0 +1,7 @@
+{
+ "maxAge": "599.999999939s",
+ "debugString": "********************* ERRORS *********************\n* Error: unavailable: Error fetching statements from https://example.com./.well-known/assetlinks.json: redirect not allowed.\n",
+ "errorCode": [
+  "ERROR_CODE_REDIRECT"
+ ]
+}

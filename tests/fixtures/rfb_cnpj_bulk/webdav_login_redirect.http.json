@@ -1,0 +1,16 @@
+{
+ "request": "PROPFIND https://arquivos.receitafederal.gov.br/public.php/webdav/",
+ "response": {
+  "status": 302,
+  "headers": {
+   "location": "https://arquivos.receitafederal.gov.br/login?redirect_url=/public.php/webdav/",
+   "content-type": "text/html; charset=UTF-8"
+  },
+  "body": ""
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "observed_at": null,
+ "origin": "synthetic",
+ "note": "synthetic: RFB starts requiring a login -> stop (FC2)"
+}

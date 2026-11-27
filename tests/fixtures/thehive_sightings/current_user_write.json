@@ -1,0 +1,22 @@
+{
+ "_id": "~3112",
+ "_createdAt": 1767225600000,
+ "login": "v3lum-analyst@example.com",
+ "name": "V3LUM read-only service",
+ "hasKey": true,
+ "hasPassword": false,
+ "hasMFA": false,
+ "locked": false,
+ "profile": "analyst",
+ "permissions": [
+  "manageCase/create",
+  "manageCase/update",
+  "manageObservable",
+  "manageAlert/update",
+  "manageTask",
+  "manageAnalyse",
+  "manageShare"
+ ],
+ "organisation": "EXAMPLE-CSIRT",
+ "type": "Service"
+}

@@ -1,0 +1,268 @@
+[
+ {
+  "Name": "AnyDesk",
+  "Category": "RMM",
+  "Created": "2023-09-29",
+  "LastModified": "2026-10-11",
+  "Description": "AnyDesk is a popular remote desktop software that enables users to access\nand control a computer or device from a remote location. It was developed with the\nprimary goal of facilitating remote work, t",
+  "Details": {
+   "Website": "https://anydesk.com/en",
+   "PEMetadata": [
+    {
+     "Filename": "anydesk.exe",
+     "OriginalFileName": "AnyDesk.exe",
+     "Description": "AnyDesk",
+     "Product": "AnyDesk"
+    }
+   ],
+   "InstallationPaths": [
+    "C:\\Program Files (x86)\\AnyDesk\\*",
+    "C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe",
+    "C:\\Program Files\\AnyDesk\\*",
+    "C:\\Program Files (x86)\\AnyDesk-*\\*",
+    "C:\\Program Files (x86)\\AnyDesk-*\\AnyDesk-*.exe",
+    "C:\\Program Files\\AnyDesk-*\\AnyDesk-*.exe"
+   ],
+   "SupportedOS": [
+    "Android",
+    "ChromeOS",
+    "IOS",
+    "Linux",
+    "Mac",
+    "Windows"
+   ]
+  },
+  "Artifacts": {
+   "Network": [
+    {
+     "Domains": [
+      "boot.net.anydesk.com"
+     ],
+     "Ports": [
+      443
+     ]
+    },
+    {
+     "Domains": [],
+     "Ports": [
+      7070
+     ]
+    },
+    {
+     "Domains": [
+      "relay-*.net.anydesk.com"
+     ],
+     "Ports": [
+      80,
+      443,
+      6568
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "Name": "Xpra",
+  "Category": "RAT",
+  "Created": "2024-08-02",
+  "LastModified": "2024-08-02",
+  "Description": "Xpra is a remote monitoring and management (RMM) tool. More information will be added as it becomes available.",
+  "Details": {
+   "Website": "https://github.com/Xpra-org/xpra/",
+   "PEMetadata": {
+    "Filename": "",
+    "OriginalFileName": "",
+    "Description": ""
+   },
+   "InstallationPaths": [
+    "C:\\Program Files (x86)\\Xpra\\*",
+    "*\\Xpra\\*",
+    "*\\Xpra-Launcher.exe",
+    "*\\Xpra-x86_64_Setup.exe"
+   ],
+   "SupportedOS": [
+    "Windows"
+   ]
+  },
+  "Artifacts": {
+   "Network": []
+  }
+ },
+ {
+  "Name": "GetScreen",
+  "Category": "RMM",
+  "Created": "2024-08-02",
+  "LastModified": "2026-05-04",
+  "Description": "GetScreen is a remote monitoring and management (RMM) tool that enables remote\ndesktop access and unattended persistent access via service installation. It can\nbe installed via command line and regist",
+  "Details": {
+   "Website": "https://getscreen.me/",
+   "PEMetadata": {
+    "Filename": "getscreen.exe",
+    "OriginalFileName": "getscreen.exe",
+    "Description": "Getscreen.me agent (ProductName/InternalName: Getscreen.me, CompanyName: Point B Ltd). Distributed as a UPX-packed PE32 (x86) GUI executable from https://getscreen.me/download/getscreen-x86.exe. Current binaries (file version 3.5.0+) are signed by POINT B LTD (Cyprus, registered HE 430957) on a GlobalSign GCC R45 EV CodeSigning chain. Older 2020-2021 era binaries were signed by OOO \"GET SKRIN SOFTVER\" on a COMODO RSA Extended Validation Code Signing CA chain (now expired)."
+   },
+   "InstallationPaths": [
+    "C:\\ProgramData\\Getscreen.me\\",
+    "C:\\Users\\*\\AppData\\Local\\Getscreen.me\\",
+    "C:\\Program Files\\Getscreen.me\\",
+    "C:\\Users\\*\\Downloads\\getscreen-x86.exe",
+    "C:\\Users\\*\\Downloads\\getscreen.upd.exe"
+   ],
+   "SupportedOS": [
+    "Windows"
+   ]
+  },
+  "Artifacts": {
+   "Network": [
+    {
+     "Domains": [
+      "getscreen.me",
+      "GetScreen.me",
+      "*.getscreen.me",
+      "go.getscreen.me",
+      "image.getscreen.me",
+      "px-*.getscreen.me"
+     ],
+     "Ports": [
+      443
+     ]
+    }
+   ]
+  },
+  "FileHashes": {
+   "authenticode": [
+    {
+     "file_name": "rfbhr3zzo.exe",
+     "sha256": "05C954C3A8FB10AAA661264282C52975EA1C74A32B8433CED2555B2CF25EFF60",
+     "sha1": "92AFA21260BC69868A680E6052BC572A19FC88EC"
+    },
+    {
+     "file_name": "Getscreen.me",
+     "sha256": "925EF1C48B8179F2623519434DBB7CD72E5CA92633EDB7841449AC415B61AB49",
+     "sha1": "0CE759DD9ACC3250F8D237E10DACB6FEA5A1C3F3"
+    }
+   ],
+   "page": [
+    {
+     "file_name": "Getscreen.me",
+     "sha256": "4ABE10F84D0F58D30A0D8EAE3092987E72507D63253A1D3B190FE7A65263B0BF",
+     "sha1": "10B8E5D5EE6A573F000233DEF7E7C42136B6BE58"
+    },
+    {
+     "file_name": "2025-12-14_6f3bd1ad8919f9cd6ab1752009741a86_amadey_darkgate_elex_glassworm_helldown_hijackloader_luca-stealer_lynx_njrat",
+     "sha256": "CAC3DA59CBE1207100FCF9DD22A16756767EBA54AAE765BBE760C0E929A5C27B",
+     "sha1": "C73D2C372F8DDB0A11F1AFD84E7CF1D529DD8786"
+    }
+   ]
+  }
+ },
+ {
+  "Name": "Ammyy Admin",
+  "Category": "RMM",
+  "Created": "2024-05-08",
+  "LastModified": "2024-05-08",
+  "Description": "Ammyy Admin is a remote monitoring and management (RMM) tool. Ammyy admin has been used by scammers to gain remote access to victims' computers. The tool is legitimate and is used by IT professionals ",
+  "Details": {
+   "Website": "https://www.ammyy.com",
+   "PEMetadata": {
+    "Filename": "AA_v3.exe",
+    "OriginalFileName": "",
+    "Description": "Ammyy Admin"
+   },
+   "InstallationPaths": [
+    "C:\\\\ProgramData\\\\AMMYY\\\\*",
+    "AMMYY_Admin.exe",
+    "aa_v*.exe",
+    "C:\\Users\\*\\Downloads\\AMMYY_Admin.exe",
+    "*\\AMMYY_Admin.exe"
+   ],
+   "SupportedOS": [
+    "Windows"
+   ]
+  },
+  "Artifacts": {
+   "Network": [
+    {
+     "Domains": [
+      "ammyy.com",
+      "*.ammyy.com"
+     ],
+     "Ports": [
+      5931,
+      80,
+      443,
+      8080
+     ]
+    },
+    {
+     "Domains": [
+      "136.243.104.235",
+      "136.243.104.242",
+      "136.243.18.122"
+     ],
+     "Ports": [
+      443
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "Name": "ScreenConnect",
+  "Category": "RMM",
+  "Created": "2023-10-01",
+  "LastModified": "2026-10-09",
+  "Description": "ScreenConnect is a remote monitoring and management (RMM) tool. More information will be added as it becomes available.",
+  "Details": {
+   "Website": "https://www.connectwise.com",
+   "PEMetadata": [
+    {
+     "Filename": "",
+     "OriginalFileName": "",
+     "Description": ""
+    }
+   ],
+   "InstallationPaths": [
+    "C:\\Program Files (x86)\\ScreenConnect Client (Random)\\ScreenConnect.ClientService.exe",
+    "Remote Workforce Client.exe",
+    "*\\*\\ScreenConnect.ClientService.exe",
+    "C:\\Program Files (x86)\\ScreenConnect Client (<string ID>)\\*",
+    "*\\ScreenConnect Client*\\*",
+    "*\\*\\ScreenConnect.WindowsClient.exe"
+   ],
+   "SupportedOS": [
+    "Android",
+    "IOS",
+    "Linux",
+    "Mac",
+    "Windows"
+   ]
+  },
+  "Artifacts": {
+   "Network": [
+    {
+     "Domains": [
+      "control.connectwise.com",
+      "*.connectwise.com",
+      "*.screenconnect.com"
+     ],
+     "Ports": []
+    },
+    {
+     "Domains": [
+      "instance-*-relay.screenconnect.com"
+     ],
+     "Ports": [
+      443
+     ]
+    },
+    {
+     "Domains": [],
+     "Ports": [
+      8041
+     ]
+    }
+   ]
+  }
+ }
+]

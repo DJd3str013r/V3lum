@@ -1,0 +1,73 @@
+ACRBO 68000Rio Branco                                        Rio Branco                                        682  SIMSIM68121           68171           9581200 S    67483600
+ALMCO 82000Maceió                                            Maceió                                            822  SIMSIM82121           82101           9395698 S    35440599
+AMMNS 92000Manaus                                            Manaus                                            922  SIMSIM92121           92171           3060000 S    60010012
+AMTFE 92065Tefé                                              Tefé                                              923  SIMSIM97121           97171           3220559 S    64430948
+APMPA 96000Macapá                                            Macapá                                            962  SIMSIM96102           96121           00021884N    51035904
+BAFSA 71220Feira de Santana                                  Feira de Santana                                  752  SIMSIM75121           75171           12155904S    38575867
+BAITB 71314Itabuna                                           Itabuna                                           732  SIMSIM73121           73171           14471535S    39164116
+BAJUO 71383Juazeiro                                          Juazeiro                                          748  SIMSIM74121           74171           9245839 S    40301188
+BASDR 71000Salvador                                          Salvador                                          712  SIMSIM71121           71171           12581595S    38303888
+BAVCA 71673Vitória da Conquista                              Vitória da Conquista                              774  SIMSIM77124           77174           14514139S    40503912
+CEFLA 85000Fortaleza                                         Fortaleza                                         852  SIMSIM85121           85171           3431401 S    38323083
+CEJNE 85278Juazeiro do Norte                                 Juazeiro do Norte                                 855  SIMSIM88121           88171           7123639 S    39183023
+DFBSA 61000Brasília                                          Brasília                                          612  SIMSIM61000000000121  61000000000171  15475603S    47520012
+ESCIM 27038Cachoeiro de Itapemirim                           Cachoeiro de Itapemirim                           275  SIMSIM28121           28171           20504631S    41071127
+ESVTA 27000Vitória                                           Vitória                                           272  SIMSIM27121           27171           20190803S    40201608
+GOGNA 62000Goiânia                                           Goiânia                                           622  SIMSIM62121           62171           16400011S    49150000
+GORVD 62166Rio Verde                                         Rio Verde                                         626  SIMSIM64121           64171           17473228S    50550911
+GOVPIO62357Valparaíso de Goiás                               Valparaíso de Goiás                               612A SIMSIM61121           61171           16035436S    47583252
+MAITZ 98050Imperatriz                                        Imperatriz                                        987  SIMSIM99121           99101           5310649 S    47283971
+MASLS 98000São Luís                                          São Luís                                          982  SIMSIM98121           98101           2314799 S    44181007
+MGBHE 31000Belo Horizonte                                    Belo Horizonte                                    312  SIMSIM31121           31171           19490084S    43572088
+MGDVL 31248Divinópolis                                       Divinópolis                                       372  SIMSIM37121           37171           20084056S    44532831
+MGGVS 32503Governador Valadares                              Governador Valadares                              332  SIMSIM33121           33171           18511620S    41571980
+MGJFA 31419Juiz de Fora                                      Juiz de Fora                                      322  SIMSIM32121           32171           21453419S    43202327
+MGMCL 31496Montes Claros                                     Montes Claros                                     382  SIMSIM38121           38171           16434152S    43512807
+MGPCS 31584Poços de Caldas                                   Poços de Caldas                                   355  SIMSIM35121           35171           21464800S    46340912
+MGULA 32549Uberlândia                                        Uberlândia                                        342  SIMSIM34121           34171           18545076S    48162964
+MSCPE 66000Campo Grande                                      Campo Grande                                      672  SIMSIM67121           67171           20263407S    54384488
+MTSSZ 67253Boa Esperança do Norte                            Boa Esperança do Norte                            655C SIMNAO510             510             13.20 S S    56.16 W 
+MTCBA 67000Cuiabá                                            Cuiabá                                            653  SIMSIM65121           65171           15354488S    56054883
+MTROI 67077Rondonópolis                                      Rondonópolis                                      654  SIMSIM66121           66171           16280228S    54381392
+PABLM 91000Belém                                             Belém                                             912  SIMSIM91102           91121           1272098 S    48301404
+PACJAS91359CARAJAS                                           Parauapebas                                       913A SIMSIM94121           94171           06060000S    50070000
+PASRM 91086Santarém                                          Santarém                                          915  SIMSIM93102           93121           2261856 S    54415855
+PBJPA 83000João Pessoa                                       João Pessoa                                       832  SIMSIM83102           83121           7045998 S    34495988
+PEPTA 81119Petrolina                                         Petrolina                                         878  SIMSIM87171           87121           9231917 S    40300971
+PERCE 81000Recife                                            Recife                                            812  SIMSIM81171           81121           8031400 S    34525088
+PIPCZ 86080Picos                                             Picos                                             864  SIMSIM89121           89171           7043795 S    41280119
+PITSA 86000Teresina                                          Teresina                                          862  SIMSIM86121           86171           5052000 S    42480684
+PRBAC 41959Barracão                                          Barracão                                          498  SIMNAO49121           49171           26150071S    53375663
+PRCSC 41135Cascavel                                          Cascavel                                          452  SIMSIM45121           45171           24572628S    53273240
+PRCTA 41000Curitiba                                          Curitiba                                          412  SIMSIM41041121        41041171        25254692S    49161884
+PRFNB 41235Francisco Beltrão                                 Francisco Beltrão                                 465  SIMSIM46121           46171           26045412S    53031259
+PRLDA 41361Londrina                                          Londrina                                          432  SIMSIM43123           43              23181439S    51100876
+PRMGA 41389Maringá                                           Maringá                                           442  SIMSIM44121           44171           23251380S    51555988
+PRPGO 41502Ponta Grossa                                      Ponta Grossa                                      422  SIMSIM42121           42171           25052975S    50100048
+PRRON 41960Rio Negro                                         Rio Negro                                         474  SIMNAO47121           47171           26054199S    49475352
+RJCPS 21057Campos dos Goytacazes                             Campos dos Goytacazes                             247  SIMSIM22102           22121           21454391S    41190516
+RJPTS 21214Petrópolis                                        Petrópolis                                        242  SIMSIM24102           24121           22311199S    43113335
+RJRJO 21000Rio de Janeiro                                    Rio de Janeiro                                    021  SIMSIM21102           21121           22543600S    43103216
+RNNTL 84000Natal                                             Natal                                             842  SIMSIM84102           84121           5474199 S    35123203
+ROPVO 69000Porto Velho                                       Porto Velho                                       692  SIMSIM69121           69171           8454298 S    63541404
+RRBVA 95000Boa Vista                                         Boa Vista                                         926  SIMSIM95121           95171           2491199 N    60401884
+RSCSL 51071Caxias do Sul                                     Caxias do Sul                                     542  SIMSIM54121           54171           29094644S    51104512
+RSPLT 51202Pelotas                                           Pelotas                                           532  SIMSIM53121           53171           31455364S    52201355
+RSPAE 51000Porto Alegre                                      Porto Alegre                                      512  SIMSIM51121           51171           30015808S    51134799
+RSSMA 51275Santa Maria                                       Santa Maria                                       552  SIMSIM55121           55171           29411248S    53485364
+SCCCO 47046Chapecó                                           Chapecó                                           497  SIMSIM4948121         4948171         27060144S    52365472
+SCFNS 47000Florianópolis                                     Florianópolis                                     482  SIMSIM4848121         4848171         27354884S    48325604
+SCJVE 47099Joinville                                         Joinville                                         474  SIMSIM4748121         4748171         26181620S    48505532
+SCPUN 47440Porto União                                       Porto União                                       495  SIMNAO42121           42171           26144236S    51043323
+SEAJU 79000Aracaju                                           Aracaju                                           792  SIMSIM79121           79171           10543600S    37041200
+SPBRR 11065Bariri                                            Bariri                                            146  SIMNAO48121           48171           22042280S    48443768
+SPBRU 11074Bauru                                             Bauru                                             142  SIMSIM14121           14171           22190191S    49033959
+SPCAS 11135Campinas                                          Campinas                                          192  SIMSIM19121           19171           22541908S    47035760
+SPPPE 11507Presidente Prudente                               Presidente Prudente                               182  SIMSIM18121           18171           22071451S    51233299
+SPRPO 11529Ribeirão Preto                                    Ribeirão Preto                                    166  SIMSIM16121           16171           21101163S    47483563
+SPSTS 11592Santos                                            Santos                                            132  SIMSIM13121           13171           23571259S    46200600
+SPSRR 11562São José do Rio Preto                             São José do Rio Preto                             172  SIMSIM17121           17171           20484067S    49223287
+SPSJC 11563São José dos Campos                               São José dos Campos                               123  SIMSIM12121           12171           23112255S    45530275
+SPSPO 11000São Paulo                                         São Paulo                                         011  SIMSIM11121           11171           23330143S    46380203
+SPSOC 11609Sorocaba                                          Sorocaba                                          152  SIMSIM15121           15171           23294884S    47264235
+TOPMJ 64000Palmas                                            Palmas                                            636A SIMSIM63121           63171           10110384S    48200095

@@ -1,0 +1,10 @@
+{
+ "_documented": "Empty SearchQueryResponse.",
+ "result": {
+  "hits": [],
+  "total_hits": 0.0,
+  "next_page_token": "",
+  "previous_page_token": "",
+  "query_duration_millis": 5
+ }
+}

@@ -1,0 +1,32 @@
+{
+  "schema": "v3lum.pivot_pack/1",
+  "pack": "unverified_crypto",
+  "title": "Wallet abuse report pages (P304 cond 12, routed from P216)",
+  "notes": "P304 (batch p2-G14-3): pages that curl cannot verify (SPA or anti-bot). V3LUM never requests these URLs, not even from doctor, and never solves their challenges (P304 cond 1). verified stays false until a team member opens the link in a browser: then verified=true, checked_at=<date>, x_verification='browser', x_checked_by=<name> and the label marker '(browser)' (P304 cond 6); 'curl' never appears here. x_module_links are rendered by the module pivots_unverified (module-side placeholders url_sha256, url_path, cve_num, hunter_q, and the per-link x_max_tlp the frozen schema lacks).",
+  "links": [
+    {
+      "id": "chainabuse_address",
+      "label": "Chainabuse address reports (may show a challenge)",
+      "template": "https://www.chainabuse.com/address/{q}",
+      "entity_types": [
+        "btc_address",
+        "eth_address",
+        "other_crypto_address"
+      ],
+      "category": "reputation",
+      "host": "www.chainabuse.com",
+      "verified": false,
+      "checked_at": "",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "SPA shell; BitcoinAbuse merged here. The explorers of P216 are crypto pack links.",
+      "x_verification": null,
+      "x_checked_by": null,
+      "x_research": "C0505",
+      "x_routed_from": "P216"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+ "query_status": "ok",
+ "data": [
+  {
+   "id": "4726",
+   "ioc": "http://c2.example.org:3606/is-ready",
+   "threat_type": "botnet_cc",
+   "ioc_type": "url",
+   "malware": "win.houdini",
+   "malware_printable": "Houdini",
+   "malware_alias": "Hworm,Jenxcus,Kognito,Njw0rm,WSHRAT,dinihou,dunihi",
+   "malware_malpedia": "https://malpedia.caad.fkie.fraunhofer.de/details/win.houdini",
+   "confidence_level": 100,
+   "first_seen": "2021-03-23 14:50:33 UTC",
+   "last_seen": null,
+   "reference": null,
+   "reporter": "abuse_ch",
+   "tags": [
+    "WSHRAT"
+   ]
+  },
+  {
+   "id": "41",
+   "ioc": "c2-domain.example.org",
+   "threat_type": "botnet_cc",
+   "ioc_type": "domain",
+   "malware": "win.dridex",
+   "malware_printable": "Dridex",
+   "malware_alias": null,
+   "malware_malpedia": "https://malpedia.caad.fkie.fraunhofer.de/details/win.dridex",
+   "confidence_level": 25,
+   "first_seen": "2020-12-08 13:36:27 UTC",
+   "last_seen": "2020-12-09 10:00:00 UTC",
+   "reporter": "reporter_a",
+   "reference": "https://example.com/report/1336229725082177536",
+   "tags": [
+    "exe",
+    "test"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,39 @@
+{
+ "has_more": false,
+ "limit": 50,
+ "status": "OK",
+ "result": [
+  {
+   "artifact_id": "84019208628034991",
+   "id": "84019208628034991",
+   "community": "default",
+   "sha256": "1c7aa8fbe407ac48f3149088e8e8d6005205517b7be30be91ee5621b6512f4d4",
+   "md5": "996b9d5e12080951f2c5241a0246b03e",
+   "sha1": "e37ea46e0bb8ca5101484f0f42af0ac65843b92f",
+   "mimetype": "application/x-dosexec",
+   "extended_type": "PE32+ executable (console) x86-64, for MS Windows",
+   "first_seen": "2024-03-01T00:00:00.000000",
+   "last_seen": "2026-11-01T00:00:00.000000",
+   "detections": {
+    "benign": 0,
+    "malicious": 0,
+    "total": 0
+   },
+   "assertions": [],
+   "polyscore": 0.0,
+   "state": "KNOWN_GOOD",
+   "known_good": [
+    {
+     "tool": "nsrl",
+     "tool_metadata": {
+      "product": "Example OS"
+     },
+     "created": "2026-01-01T00:00:00",
+     "updated": "2026-06-01T00:00:00"
+    }
+   ],
+   "metadata": [],
+   "type": "FILE"
+  }
+ ]
+}

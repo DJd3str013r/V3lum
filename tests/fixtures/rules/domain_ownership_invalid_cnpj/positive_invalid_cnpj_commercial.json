@@ -1,0 +1,43 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {
+    "mode": "light",
+    "tlp": "amber",
+    "purpose": ""
+  },
+  "nodes": [
+    {
+      "key": "domain:loja-barata.example",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "homepage_indicators": [
+          {
+            "value": {
+              "source": "wayback",
+              "cnpjs": [
+                "11.222.333/0001-82"
+              ],
+              "commerce_markers": [
+                "carrinho",
+                "frete",
+                "pix"
+              ]
+            },
+            "source": "web_archives"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [],
+  "expect": {
+    "domain_ownership_invalid_cnpj": {
+      "min": 1,
+      "max": 1,
+      "severity": "low",
+      "confidence_label": "possible"
+    }
+  }
+}

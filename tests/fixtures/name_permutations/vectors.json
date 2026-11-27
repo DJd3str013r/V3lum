@@ -1,0 +1,18 @@
+{
+ "_fixture": "SYNTHETIC test vectors (P251 cond 5): the council's fixture name with and without accents plus placeholder names (Fulano/Beltrano/Sicrano-style); no real person",
+ "cases": [
+  {"id": "fc_fixture_plain", "name": "Jose Carlos de Oliveira Junior"},
+  {"id": "fc_fixture_accents", "name": "José Carlos de Oliveira Júnior"},
+  {"id": "two_tokens", "name": "Fulano da Silva"},
+  {"id": "two_middles", "name": "Ana Beatriz Costa dos Santos Neto"},
+  {"id": "single_token", "name": "Sicrano"},
+  {"id": "only_particles", "name": "de da"},
+  {"id": "punctuation", "name": "Beltrana D'Ávila Jr."},
+  {"id": "empty", "name": "   "}
+ ],
+ "expected": {
+  "fc_fixture": ["joseoliveira", "jose.oliveira", "jose_oliveira", "jose-oliveira", "joliveira", "j.oliveira", "oliveirajose",
+                 "oliveira.jose", "joseo", "josecarlos", "jose.carlos", "jcoliveira", "josecoliveira", "josecarlosoliveira",
+                 "jose.carlos.oliveira"]
+ }
+}

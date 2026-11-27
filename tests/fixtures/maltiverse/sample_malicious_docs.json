@@ -1,0 +1,36 @@
+{
+ "antivirus": [
+  {
+   "description": "AIT:Trojan.Nymeria.3070",
+   "name": "MicroWorld-eScan"
+  },
+  {
+   "description": "Dropper-AutoIt.i",
+   "name": "McAfee"
+  },
+  {
+   "description": "Trojan:AutoIt/Prcablt.SD!MTB",
+   "name": "Microsoft"
+  }
+ ],
+ "av_ratio": 36,
+ "blacklist": [
+  {
+   "count": 1,
+   "description": "AIT:Trojan.Nymeria",
+   "first_seen": "2020-03-22 11:15:06",
+   "last_seen": "2020-03-22 11:15:06",
+   "source": "Hybrid-Analysis"
+  }
+ ],
+ "classification": "malicious",
+ "creation_time": "2020-03-22 11:15:06",
+ "filetype": "PE32 executable (GUI) Intel 80386, for MS Windows",
+ "md5": "e09f2eaebc86f54b48e4fb5101454535",
+ "modification_time": "2020-03-22 11:15:06",
+ "score": 10.0,
+ "sha1": "9f3ed8c9378d957d68010d752f3142e710239a90",
+ "sha256": "b4e29d41ca04fccfa5d92be5bae506c556c6c880a4f5e9932f1e4a0766a2fd15",
+ "size": 3661312,
+ "type": "sample"
+}

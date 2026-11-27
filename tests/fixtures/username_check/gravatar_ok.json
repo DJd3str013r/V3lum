@@ -1,0 +1,24 @@
+{
+ "_meta": {
+  "module": "username_check",
+  "case": "gravatar_ok",
+  "source": "C0232/C0228 Gravatar (WMN 'Gravatar', V3LUM v3lum:gravatar)",
+  "request": {
+   "method": "GET",
+   "url": "https://en.gravatar.com/automattic.json",
+   "user_agent": "V3LUM/dev",
+   "redirects": "not followed"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "live check, this sandbox's datacenter egress",
+  "elapsed_s": 0.307,
+  "minimised": true,
+  "note": "official organisation account; avatar hashes replaced by sha256('')/md5('')"
+ },
+ "status": 200,
+ "headers": {
+  "server": "nginx",
+  "content-type": "application/json"
+ },
+ "body": "{\"entry\":[{\"hash\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"requestHash\":\"automattic\",\"profileUrl\":\"https:\\/\\/gravatar.com\\/automattic\",\"preferredUsername\":\"automattic\",\"thumbnailUrl\":\"https:\\/\\/0.gravatar.com\\/avatar\\/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"photos\":[{\"value\":\"https:\\/\\/0.gravatar.com\\/avatar\\/d41d8cd98f00b204e9800998ecf8427e\",\"type\":\"thumbnail\"}],\"displayName\":\"Automattic\"}]}"
+}

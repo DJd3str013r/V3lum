@@ -1,0 +1,130 @@
+{
+ "build_id": null,
+ "capped": [],
+ "comment": [],
+ "dynamic": {},
+ "errors": [],
+ "exports": [],
+ "exports_total": 0,
+ "go_buildinfo": false,
+ "header": {
+  "abiversion": 0,
+  "class": "ELFCLASS32",
+  "data": "ELFDATA2MSB",
+  "entry": 65696,
+  "flags": 4103,
+  "machine": "EM_MIPS",
+  "machine_arch": "MIPS",
+  "osabi": "ELFOSABI_SYSV",
+  "phentsize": 32,
+  "phnum": 3,
+  "phoff": 52,
+  "shentsize": 40,
+  "shnum": 6,
+  "shoff": 4584,
+  "shstrndx": 5,
+  "type": "ET_EXEC"
+ },
+ "imports": [],
+ "imports_total": 0,
+ "interpreter": null,
+ "sections": [
+  {
+   "addr": 0,
+   "flags": 0,
+   "name": "",
+   "offset": 0,
+   "size": 0,
+   "type": "SHT_NULL"
+  },
+  {
+   "addr": 65696,
+   "entropy": 0.0,
+   "flags": 6,
+   "name": ".text",
+   "offset": 160,
+   "oob": false,
+   "size": 256,
+   "type": "SHT_PROGBITS"
+  },
+  {
+   "addr": 65952,
+   "entropy": 4.2889,
+   "flags": 2,
+   "name": ".rodata",
+   "offset": 416,
+   "oob": false,
+   "size": 32,
+   "type": "SHT_PROGBITS"
+  },
+  {
+   "addr": 65984,
+   "entropy": 7.9531,
+   "flags": 3,
+   "name": ".data",
+   "offset": 448,
+   "oob": false,
+   "size": 4096,
+   "type": "SHT_PROGBITS"
+  },
+  {
+   "addr": 70080,
+   "flags": 3,
+   "name": ".bss",
+   "offset": 4544,
+   "size": 512,
+   "type": "SHT_NOBITS"
+  },
+  {
+   "addr": 0,
+   "entropy": 3.2744,
+   "flags": 0,
+   "name": ".shstrtab",
+   "offset": 4544,
+   "oob": false,
+   "size": 36,
+   "type": "SHT_STRTAB"
+  }
+ ],
+ "segments": [
+  {
+   "entropy": 1.5847,
+   "filesz": 448,
+   "flags": 5,
+   "memsz": 448,
+   "offset": 0,
+   "oob": false,
+   "type": "PT_LOAD",
+   "vaddr": 65536
+  },
+  {
+   "entropy": 7.9531,
+   "filesz": 4096,
+   "flags": 6,
+   "memsz": 4608,
+   "offset": 448,
+   "oob": false,
+   "type": "PT_LOAD",
+   "vaddr": 65984
+  },
+  {
+   "filesz": 0,
+   "flags": 6,
+   "memsz": 0,
+   "offset": 0,
+   "type": "PT_GNU_STACK",
+   "vaddr": 65536
+  }
+ ],
+ "size": 4824,
+ "source": "pyelftools",
+ "symtab": {
+  "present": false
+ },
+ "upx": {
+  "info_banner": false,
+  "magic_offsets": [],
+  "version": null
+ },
+ "version": "0.33"
+}

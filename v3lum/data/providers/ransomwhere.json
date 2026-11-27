@@ -1,0 +1,55 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "ransomwhere",
+  "name": "Ransomwhere (crowdsourced ransomware payment address dataset)",
+  "operator": "Ransomwhere project (Jack Cable; dataset published on Zenodo, DOI 10.5281/zenodo.6512122)",
+  "hosts": [
+    "api.ransomwhe.re"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Open research dataset with a named author, a citable Zenodo DOI (CC BY 4.0) and a public track record since 2021 (A8 community); used offline only (disclosure none: the export is downloaded, no value is sent).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "D",
+    "justification": "Crowdsourced, stale since 2024-10-29 and skewed to older ransomware families (P210 cond 2): a hit is a historical lead, a miss means nothing."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 120,
+    "ttl": 604800,
+    "concurrency": 1,
+    "retries": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "export": {
+      "title": "Ransomwhere full export https://api.ransomwhe.re/export (payment addresses, families, transactions)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://zenodo.org/records/13999026",
+        "quote": "If you use Ransomwhere in your work, please cite the following dataset: Cable, Jack. (2024). Ransomwhere: A Crowdsourced Ransomware Payment Dataset (1.1.0) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.6512122 (ransomwhe.re; Zenodo record 13999026 licence cc-by-4.0)",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "ransomwhere",
+      "sanitizer": null,
+      "dataset": "ransomwhere_export",
+      "notes": "Research C0494 verified_live 200 (2026-11-26): ~5.6 MB JSON, 11,186 bitcoin rows, 136 family strings, last update 2024-10-29T00:56:30Z. No ETag/Last-Modified (CloudFront); gzip works. A wrong route answers 403 {'message': 'Missing Authentication Token'} (API Gateway): the validator keeps the previous copy. Licence CC BY 4.0 (Zenodo record 13999026, version 1.1.0); citation in v3lum/data/notices/ransomwhere_dataset.json. Used by ransomwhere (offline, P210)."
+    }
+  },
+  "notes": "Owned by batch p3-G09-1 (P210). The export is refreshed weekly by `v3lum data update ransomwhere_export` (above 5 MB: never mid-scan) and matched offline; no address is ever sent to the provider."
+}

@@ -1,0 +1,59 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "unshorten_me",
+  "name": "unshorten.me (short-link expansion service)",
+  "operator": "unshorten.me (operator not identified on the site)",
+  "hosts": [
+    "unshorten.me"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "No identifiable operator, no terms of service page (checked 2026-11-26), ad-funded; the council recorded tier unknown for P070 (A8): never default, excluded at TLP:AMBER and above.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": true,
+    "fetches_target": true,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "D",
+    "justification": "Small single-purpose service without documented guarantees; the answer is the service's own fetch of the short link at query time."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "ttl": 604800,
+    "timeout": 20
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "hour": 10,
+    "published": true,
+    "evidence_url": "https://unshorten.me/social_accounts/upgrade",
+    "safety_margin": 0.8
+  },
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "json_api": {
+      "title": "unshorten.me JSON lookup https://unshorten.me/json/<short URL without scheme> (the service fetches the short link)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://unshorten.me/terms-of-service",
+        "quote": "You means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.",
+        "checked_at": "2026-11-26",
+        "reviewer": "batch p9-G03-1 review (A1: published Terms and Conditions, last updated 2023-03-12; no clause restricts business or automated use of the keyless JSON API)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "unshorten.me",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Research C0175 (2026-11-25): keyless v1 JSON {requested_url, success, resolved_url, usage_count, remaining_calls}; free plan 10 new (uncached) lookups per hour per IP (plans page). The docs now describe a v2 token API (/api/v2/unshorten, Authorization: Token) - not wired (no key in the spec). Terms and Conditions at /terms-of-service (TermsFeed template, governed by the law of Nepal) apply to companies as users and do not restrict business or automated use. Submitted URLs are stored (privacy policy https://unshorten.me/privacy-policy): reuses_queries; the service fetches the short link: fetches_target."
+    }
+  },
+  "notes": "Owned by batch p9-G03-1 (P070 unshorten_me). Never default (tier unknown: excluded at TLP:AMBER and above, --allow-unknown at CLEAR/GREEN; fetches_target)."
+}

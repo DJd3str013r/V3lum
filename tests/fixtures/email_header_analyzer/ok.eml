@@ -1,0 +1,93 @@
+Received: from mbx01.corp.example.com (10.20.30.40) by mbx02.corp.example.com
+ (10.20.30.41) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11 via Mailbox
+ Transport; Tue, 24 Nov 2026 13:00:09 +0000
+Received: from mx1.example.com (10.20.30.5) by mbx01.corp.example.com
+ (10.20.30.40) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Tue, 24 Nov
+ 2026 13:00:08 +0000
+Authentication-Results: mx1.example.com; spf=softfail (domain of transitioning
+ bounce@mailer.example.net does not designate 198.51.100.25 as permitted
+ sender) smtp.mailfrom=mailer.example.net; dkim=fail (bad signature)
+ header.d=exemplo-banco.example header.s=s1; dmarc=fail (p=reject dis=none)
+ header.from=exemplo-banco.example
+Received-SPF: SoftFail (mx1.example.com: domain of transitioning
+ bounce@mailer.example.net does not designate 198.51.100.25 as permitted
+ sender) receiver=mx1.example.com; client-ip=198.51.100.25;
+ envelope-from=<bounce@mailer.example.net>; helo=relay.mailer.example.net;
+Received: from relay.mailer.example.net (relay.mailer.example.net [198.51.100.25])
+	by mx1.example.com (Postfix) with ESMTPS id 4N1X2y3ZabcD
+	for <recipient@example.com>; Tue, 24 Nov 2026 10:00:06 -0300 (-03)
+Authentication-Results: mx1.example.com; spf=pass smtp.mailfrom=exemplo-banco.example;
+ dkim=pass header.d=exemplo-banco.example; dmarc=pass header.from=exemplo-banco.example
+ARC-Authentication-Results: i=1; relay.mailer.example.net; spf=pass
+ smtp.mailfrom=mailer.example.net
+Received: from [IPv6:2001:db8:4864:20::32] (unknown [203.0.113.99])
+	by relay.mailer.example.net (Postfix) with ESMTPSA id 7C1D2E3F
+	(envelope-from <bounce@mailer.example.net>); Tue, 24 Nov 2026 13:00:02 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by relay.mailer.example.net (Postfix) with ESMTP id 1A2B3C;
+	Tue, 24 Nov 2026 13:00:04 +0000
+Received: from forged.example.org ([192.0.2.200]) by mail.innocent.example.org
+	with SMTP id 0001; Mon, 23 Nov 2026 13:00:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=exemplo-banco.example;
+ s=s1; h=from:to:subject:date; bh=47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=;
+ b=AAAAfixtureFAKEsignatureAAAA=
+Return-Path: <bounce@mailer.example.net>
+From: =?utf-8?q?Exemplo_Bank_Seguran=C3=A7a_=3Cseguranca=40exemplo-banco=2Eexample?=
+ =?utf-8?q?=3E?= <alerts@mailer.example.net>
+Reply-To: <collect@payout.example.org>
+To: Recipient Example <recipient@example.com>
+Delivered-To: recipient@example.com
+Subject: =?utf-8?b?QcOnw6NvIG5lY2Vzc8OhcmlhOiB2ZXJpZmlxdWUgc3VhIGNvbnRh?=
+Date: Tue, 24 Nov 2026 13:00:00 +0000
+Message-ID: <20261124130000.5f3a@mailer.example.net>
+X-Mailer: PHPMailer 6.9.1 (https://github.com/PHPMailer/PHPMailer)
+X-Originating-IP: [203.0.113.99]
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="==b1=="
+
+--==b1==
+Content-Type: multipart/alternative; boundary="==b2=="
+
+--==b2==
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Prezado cliente,
+
+Sua conta sera bloqueada em 24 horas. Acesse: https://nam12.safelinks.prote=
+ction.outlook.com/?url=3Dhttps%3A%2F%2Fpayout.example.org%2Flogin%3Fu%3DcmV=
+jaXBpZW50QGV4YW1wbGUuY29t&data=3D05%7C02%7Crecipient%40example.com%7Cabc123=
+%7C0%7C0%7C638000000000000000&sdata=3DFIXTUREsdata%3D&reserved=3D0
+
+Atenciosamente,
+Exemplo Bank
+
+--==b2==
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: base64
+
+PGh0bWw+PGJvZHk+CjxwPlByZXphZG8gY2xpZW50ZSwgc3VhIGNvbnRhIHNlciZhYWN1dGU7IGJs
+b3F1ZWFkYS48L3A+CjxwPjxhIGhyZWY9Imh0dHBzOi8vbmFtMTIuc2FmZWxpbmtzLnByb3RlY3Rp
+b24ub3V0bG9vay5jb20vP3VybD1odHRwcyUzQSUyRiUyRnBheW91dC5leGFtcGxlLm9yZyUyRmxv
+Z2luJTNGdSUzRGNtVmphWEJwWlc1MFFHVjRZVzF3YkdVdVkyOXQmYW1wO2RhdGE9MDUlN0MwMiU3
+Q3JlY2lwaWVudCU0MGV4YW1wbGUuY29tJTdDYWJjMTIzJTdDMCU3QzAlN0M2MzgwMDAwMDAwMDAw
+MDAwMDAmYW1wO3NkYXRhPUZJWFRVUkVzZGF0YSUzRCZhbXA7cmVzZXJ2ZWQ9MCI+VmVyaWZpY2Fy
+IGNvbnRhPC9hPjwvcD4KPGltZyBzcmM9Imh0dHBzOi8vdHJhY2sucGF5b3V0LmV4YW1wbGUub3Jn
+L3AuZ2lmP2lkPTdmM2EiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGFsdD0iIj4KPGxpbmsgcmVsPSJz
+dHlsZXNoZWV0IiBocmVmPSJodHRwczovL2Nkbi5wYXlvdXQuZXhhbXBsZS5vcmcvcy5jc3MiPgo8
+Zm9ybSBhY3Rpb249Imh0dHBzOi8vcGF5b3V0LmV4YW1wbGUub3JnL2NvbGxlY3QiIG1ldGhvZD0i
+cG9zdCI+PGlucHV0IG5hbWU9InNlbmhhIj48L2Zvcm0+CjxwPjxhIGhyZWY9ImZpbGU6Ly8yMDMu
+MC4xMTMuNTAvc2hhcmUvZmF0dXJhLnBkZiI+ZmF0dXJhLnBkZjwvYT48L3A+CjwvYm9keT48L2h0
+bWw+Cg==
+--==b2==--
+
+--==b1==
+Content-Type: text/html; name="fatura.html"
+Content-Disposition: attachment; filename="fatura.html"
+Content-Transfer-Encoding: base64
+
+PGh0bWw+PGJvZHk+PHA+RmF0dXJhIGRlIGV4ZW1wbG8gKGZpeHR1cmUgVjNMVU0sIHNlbSBjb250
+ZXVkbyBhdGl2byk8L3A+PC9ib2R5PjwvaHRtbD4K
+--==b1==--

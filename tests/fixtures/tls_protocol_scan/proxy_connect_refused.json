@@ -1,0 +1,10 @@
+{
+ "server": "proxy",
+ "probe": "tls10",
+ "trust": "self_signed_ca",
+ "ok": false,
+ "stage": "connect",
+ "error_type": "OSError",
+ "reason": null,
+ "str": "Tunnel connection failed: 403 Forbidden"
+}

@@ -1,0 +1,123 @@
+{
+  "schema": "v3lum.pivot_pack/1",
+  "pack": "geo_image",
+  "title": "Reverse image search and map pivots (P260): manual links, never fetched by V3LUM",
+  "x_standing_labels": {
+    "reverse_image": "not for identifying people from facial images: use for impersonation, fake-profile and cloned-logo checks within the case purpose"
+  },
+  "x_notes": "Batch p2-G12-1 (P260). Offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them. Every link is an x_module_links entry rendered by the pivots_geo_image module, because the final conditions need checks the frozen core link model cannot express: public image URLs only (cond 8), no links for images from documents or files (cond 9), the per-link max_tlp (cond 1, 10; stored as x_max_tlp), and lat/lon taken from the normalised coordinates through vetted placeholders (cond 11). Placeholders: {url_q} = the image URL percent-encoded (quote, safe=''), query position; {url_path} = the image URL without its scheme, percent-encoded except '/', whole path; {lat} {lon} = the coordinates value split, fixed 6 decimals. File order is the curated analyst-value order (cond 6): TinEye, Google Lens, ImgOps, Yandex for images; OSM, then Google Maps for coordinates.",
+  "links": [],
+  "x_module_links": [
+    {
+      "id": "tineye_url",
+      "label": "TinEye - reverse image search (oldest copy = provenance)",
+      "template": "https://tineye.com/search?url={url_q}",
+      "entity_types": [
+        "url"
+      ],
+      "category": "search",
+      "host": "tineye.com",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": true,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Research C0612 (verified 200 app shell, results fetched client-side; re-checked 2026-11-26). touches_target: TinEye fetches the image from its host."
+    },
+    {
+      "id": "google_lens_url",
+      "label": "Google Lens - visual matches and pages with the image",
+      "template": "https://lens.google.com/uploadbyurl?url={url_q}",
+      "entity_types": [
+        "url"
+      ],
+      "category": "search",
+      "host": "lens.google.com",
+      "verified": true,
+      "checked_at": "2026-11-25",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": true,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Research C0609 (303 to google.com/search?vsrid=..., 2026-11-25; not re-checked: upload-type endpoint). touches_target: Lens fetches the image and keeps it for the search session."
+    },
+    {
+      "id": "imgops_url",
+      "label": "ImgOps - launcher for other reverse-image and forensics tools",
+      "template": "https://imgops.com/{url_path}",
+      "entity_types": [
+        "url"
+      ],
+      "category": "search",
+      "host": "imgops.com",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": true,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Research C0611 (200, re-checked 2026-11-26). Unknown-tier operator: image URL values only. touches_target: the page embeds the image, so the analyst's own browser loads it from its host; the page also links to upload/convert services.",
+      "x_badge": "opening loads the image in your browser directly from its host"
+    },
+    {
+      "id": "yandex_images_url",
+      "label": "Yandex Images - similar images and sites with the image",
+      "template": "https://yandex.com/images/search?rpt=imageview&url={url_q}",
+      "entity_types": [
+        "url"
+      ],
+      "category": "search",
+      "host": "yandex.com",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": false,
+      "publishes": false,
+      "touches_target": true,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Research C0610 (200 with CBIR results, 2.9 s, no CAPTCHA from the research egress, re-checked 2026-11-26; CAPTCHA on bursts). touches_target: Yandex fetches the image. Hidden at TLP:AMBER and above (max_tlp green, cond 10).",
+      "x_max_tlp": "green",
+      "x_warning": "foreign provider (RU): the URL goes to a Russian operator"
+    },
+    {
+      "id": "osm_marker",
+      "label": "OpenStreetMap - marker at the point",
+      "template": "https://www.openstreetmap.org/?mlat={lat}&mlon={lon}&zoom=18",
+      "entity_types": [
+        "coordinates"
+      ],
+      "category": "geo",
+      "host": "www.openstreetmap.org",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": true,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Research C0615 (200, re-checked 2026-11-26). The research template put the value in the #map= fragment (P311: value only in path/query): &zoom=18 instead. Shown only for coordinates already in the case after the analyst opts in (cond 11)."
+    },
+    {
+      "id": "google_maps_point",
+      "label": "Google Maps - search at the point",
+      "template": "https://www.google.com/maps/search/?api=1&query={lat},{lon}",
+      "entity_types": [
+        "coordinates"
+      ],
+      "category": "geo",
+      "host": "www.google.com",
+      "verified": true,
+      "checked_at": "2026-11-26",
+      "privacy": true,
+      "publishes": false,
+      "touches_target": false,
+      "login_required": false,
+      "antibot": false,
+      "notes": "Research C0614 (documented Maps URLs scheme; 200 client app, no consent page from the research egress, re-checked 2026-11-26). Shown only for coordinates already in the case after the analyst opts in (cond 11)."
+    }
+  ]
+}

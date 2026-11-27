@@ -1,0 +1,23 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "ransomware_live",
+  "hosts": [],
+  "sources": {
+    "pivots_darkweb_pages": {
+      "title": "ransomware.live group and search pages /group/{slug}, /search?q= (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.ransomware.live/",
+        "quote": "The pack is offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "ransomware.live",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P203 cond 1). Research C0470 terms 'site terms'. Manual links www.ransomware.live/group/{slug} (slug from the curated per-site table resolved through the P295 alias index, P203 cond 8) and /search?q= (company name, keyword, or a threat actor without a known slug). The keyless v2 API stays noncommercial (A1): manual browsing is the A1 fallback; legal confirms the website terms for analyst use. Claim, leak-file, download and victim-file URLs are never linked (P203 cond 9). Used by pivots_darkweb."
+    }
+  },
+  "error_markers": []
+}

@@ -1,0 +1,48 @@
+{
+ "_meta": {
+  "provenance": "observed",
+  "recorded": "2026-11-26",
+  "request": {
+   "method": "POST",
+   "url": "https://lookyloo.circl.lu/json/hostname_info",
+   "json": {
+    "hostname": "example.com",
+    "cached_captures_only": true,
+    "with_urls_occurrences": false,
+    "limit": 20,
+    "offset": 0
+   }
+  },
+  "note": "Real keyless answer for the IANA example host, trimmed to 2 of the 12 returned captures (meta kept verbatim). hostname_info lists every capture whose tree CONTAINS the host: a1787b91 was submitted as another site that redirects to example.com, 2e3ccad3 is a capture of an unrelated site that only references it."
+ },
+ "status": 200,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": {
+  "meta": {
+   "limit": 20,
+   "offset": 0,
+   "total": 327,
+   "warning": "Some capture are missing, they are probably not cached. You can re-run the query with the `cached_captures_only` parameter set to `False`, but it can take a while."
+  },
+  "response": [
+   {
+    "capture_uuid": "a1787b91-d9d4-4e7f-b5fb-e74004250a43",
+    "hostnodes": [
+     "acfd37b3-7af8-489c-b7ce-5bedd1cf8233"
+    ],
+    "start_timestamp": "2026-09-18T08:19:04.949000+00:00",
+    "title": "Example Domain"
+   },
+   {
+    "capture_uuid": "2e3ccad3-5196-4131-bfbd-b683bbb4e7d0",
+    "hostnodes": [
+     "c7d20450-f765-4363-ba49-99761a144d00"
+    ],
+    "start_timestamp": "2026-08-31T06:40:04.259000+00:00",
+    "title": "Krito - Plateforme de location"
+   }
+  ]
+ }
+}

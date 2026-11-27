@@ -1,0 +1,40 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "nodes": [
+  {
+   "key": "text_blob:sms",
+   "depth": 0,
+   "seed": true
+  },
+  {
+   "key": "url:https://cdn.example.net/files/atualizacao-banco.apk",
+   "depth": 1
+  },
+  {
+   "key": "url:https://example.org/dl?file=token.apk",
+   "depth": 1
+  },
+  {
+   "key": "url:https://example.org/login",
+   "depth": 1
+  }
+ ],
+ "edges": [
+  {
+   "src": "text_blob:sms",
+   "dst": "url:https://cdn.example.net/files/atualizacao-banco.apk",
+   "relation": "mentions",
+   "module": "ioc_extract",
+   "confidence": 0.9
+  }
+ ],
+ "expect": {
+  "mobile_app_apk_link": {
+   "min": 1,
+   "max": 1,
+   "severity": "info",
+   "confidence_label": "confirmed"
+  }
+ }
+}

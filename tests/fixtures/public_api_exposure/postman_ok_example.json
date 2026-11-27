@@ -1,0 +1,332 @@
+{
+ "data": [
+  {
+   "score": 0.01639344262295082,
+   "document": {
+    "entityType": "request",
+    "documentType": "request",
+    "id": "1559645-225b6e89-d024-4196-bbf5-8270811060c6",
+    "name": "Reuse a request",
+    "publisherHandle": "postman",
+    "publisherName": "Postman",
+    "publisherType": "team",
+    "isPublisherVerified": true,
+    "isPublic": true,
+    "workspaceId": "70c7199b-6aee-49a6-a90f-025ad614f294",
+    "workspaceName": "Test examples in Postman",
+    "workspaceSlug": "test-examples-in-postman",
+    "workspaceVisibilityStatus": "public",
+    "url": "https://example.com",
+    "method": "GET",
+    "customHostName": [],
+    "collection": {
+     "id": "1559645-e86aead2-0cb9-4144-b568-46d84251af9b",
+     "name": "Reusing a Request"
+    },
+    "workspaces": [
+     {
+      "id": "70c7199b-6aee-49a6-a90f-025ad614f294",
+      "name": "Test examples in Postman",
+      "slug": "test-examples-in-postman",
+      "visibilityStatus": "public"
+     }
+    ]
+   }
+  },
+  {
+   "score": 0.015151515151515152,
+   "document": {
+    "entityType": "request",
+    "documentType": "request",
+    "id": "00000000-0000-4000-8000-000000000001",
+    "name": "example request",
+    "publisherHandle": "example-user-0001",
+    "publisherName": "Example User 0001",
+    "publisherType": "user",
+    "isPublisherVerified": false,
+    "isPublic": true,
+    "workspaceId": "00000000-0000-4000-8000-000000000002",
+    "workspaceName": "Example Workspace 1",
+    "workspaceSlug": "example-workspace-1",
+    "workspaceVisibilityStatus": "public",
+    "url": "example.com",
+    "method": "GET",
+    "customHostName": [],
+    "collection": {
+     "id": "00000000-0000-4000-8000-000000000003",
+     "name": "Example.com collection"
+    },
+    "workspaces": [
+     {
+      "id": "00000000-0000-4000-8000-000000000002",
+      "name": "Example Workspace 1",
+      "slug": "example-workspace-1",
+      "visibilityStatus": "public"
+     }
+    ]
+   }
+  },
+  {
+   "score": 0.011904761904761904,
+   "document": {
+    "entityType": "request",
+    "documentType": "request",
+    "id": "00000000-0000-4000-8000-000000000004",
+    "name": "Send my username and password to example.com",
+    "publisherHandle": "example-user-0002",
+    "publisherName": "Example User 0002",
+    "publisherType": "user",
+    "isPublisherVerified": false,
+    "isPublic": true,
+    "workspaceId": "00000000-0000-4000-8000-000000000005",
+    "workspaceName": "Example Workspace 2",
+    "workspaceSlug": "example-workspace-2",
+    "workspaceVisibilityStatus": "public",
+    "url": "www.example.com?user=example-user&password=EXAMPLE-NOT-A-SECRET",
+    "method": "GET",
+    "customHostName": [],
+    "collection": {
+     "id": "00000000-0000-4000-8000-000000000006",
+     "name": "Example Data Leakage"
+    },
+    "workspaces": [
+     {
+      "id": "00000000-0000-4000-8000-000000000005",
+      "name": "Example Workspace 2",
+      "slug": "example-workspace-2",
+      "visibilityStatus": "public"
+     }
+    ]
+   }
+  },
+  {
+   "score": 0.015384615384615385,
+   "document": {
+    "entityType": "request",
+    "documentType": "request",
+    "id": "00000000-0000-4000-8000-000000000007",
+    "name": "Make a GET request",
+    "publisherHandle": "example-team-0003",
+    "publisherName": "Example Team 0003",
+    "publisherType": "team",
+    "isPublisherVerified": false,
+    "isPublic": true,
+    "workspaceId": "00000000-0000-4000-8000-000000000008",
+    "workspaceName": "Example Workspace 3",
+    "workspaceSlug": "example-workspace-3",
+    "workspaceVisibilityStatus": "public",
+    "url": "https://example.cisco.com/getRequest",
+    "method": "GET",
+    "customHostName": [],
+    "collection": {
+     "id": "00000000-0000-4000-8000-000000000009",
+     "name": "My Example Collection"
+    },
+    "workspaces": [
+     {
+      "id": "00000000-0000-4000-8000-000000000008",
+      "name": "Example Workspace 3",
+      "slug": "example-workspace-3",
+      "visibilityStatus": "public"
+     }
+    ]
+   }
+  },
+  {
+   "score": 0.012195121951219513,
+   "document": {
+    "entityType": "request",
+    "documentType": "request",
+    "id": "00000000-0000-4000-8000-000000000010",
+    "name": "Ledger export",
+    "publisherHandle": "example-team-0004",
+    "publisherName": "Example Team 0004",
+    "publisherType": "team",
+    "isPublisherVerified": false,
+    "isPublic": true,
+    "workspaceId": "00000000-0000-4000-8000-000000000011",
+    "workspaceName": "Example Workspace 4",
+    "workspaceSlug": "example-workspace-4",
+    "workspaceVisibilityStatus": "public",
+    "url": "https://api.example-casino.test/v1/wallets/{{wallet_id}}/ledger?limit=100",
+    "method": "GET",
+    "customHostName": [],
+    "collection": {
+     "id": "00000000-0000-4000-8000-000000000012",
+     "name": "Casino wallet ledger API (example design)"
+    },
+    "workspaces": [
+     {
+      "id": "00000000-0000-4000-8000-000000000011",
+      "name": "Example Workspace 4",
+      "slug": "example-workspace-4",
+      "visibilityStatus": "public"
+     }
+    ]
+   }
+  },
+  {
+   "score": 0.011764705882352941,
+   "document": {
+    "entityType": "request",
+    "documentType": "request",
+    "id": "00000000-0000-4000-8000-000000000013",
+    "name": "Add a user",
+    "publisherHandle": "example-team-0005",
+    "publisherName": "Example Team 0005",
+    "publisherType": "team",
+    "isPublisherVerified": false,
+    "isPublic": true,
+    "workspaceId": "00000000-0000-4000-8000-000000000014",
+    "workspaceName": "Example Workspace 5",
+    "workspaceSlug": "example-workspace-5",
+    "workspaceVisibilityStatus": "public",
+    "url": "{{base_url}}/signup",
+    "method": "POST",
+    "customHostName": [],
+    "collection": {
+     "id": "00000000-0000-4000-8000-000000000015",
+     "name": "Sprint 13 Tests"
+    },
+    "workspaces": [
+     {
+      "id": "00000000-0000-4000-8000-000000000014",
+      "name": "Example Workspace 5",
+      "slug": "example-workspace-5",
+      "visibilityStatus": "public"
+     }
+    ]
+   }
+  },
+  {
+   "score": 0.014492753623188406,
+   "document": {
+    "entityType": "request",
+    "documentType": "request",
+    "id": "12030214-853c3fa9-421a-49a1-afa0-a548fa3834de",
+    "name": "Monitor Creation Contract Tests",
+    "publisherHandle": "postman",
+    "publisherName": "Postman",
+    "publisherType": "team",
+    "isPublisherVerified": true,
+    "isPublic": true,
+    "workspaceId": "e348c5a0-2965-44cc-87ed-7b316516f38d",
+    "workspaceName": "Postman API Monitoring Examples",
+    "workspaceSlug": "postman-api-monitoring-examples",
+    "workspaceVisibilityStatus": "public",
+    "url": "https://api.getpostman.com/monitors",
+    "method": "POST",
+    "customHostName": [],
+    "collection": {
+     "id": "12030214-2a1714dc-e92f-49e7-83ad-bb98fd761325",
+     "name": "Example 05 - Continuous API Testing"
+    },
+    "workspaces": [
+     {
+      "id": "e348c5a0-2965-44cc-87ed-7b316516f38d",
+      "name": "Postman API Monitoring Examples",
+      "slug": "postman-api-monitoring-examples",
+      "visibilityStatus": "public"
+     }
+    ]
+   }
+  },
+  {
+   "score": 266.33694,
+   "document": {
+    "entityType": "workspace",
+    "documentType": "workspace",
+    "id": "70c7199b-6aee-49a6-a90f-025ad614f294",
+    "name": "Test examples in Postman",
+    "publisherHandle": "postman",
+    "publisherName": "Postman",
+    "publisherType": "team",
+    "isPublisherVerified": true,
+    "isPublic": true,
+    "slug": "test-examples-in-postman",
+    "visibilityStatus": "public",
+    "updatedAt": "2021-10-20T16:23:20",
+    "lastActivityTime": "2026-11-26T01:16:35.829Z",
+    "createdAt": "2021-04-29T15:49:06",
+    "collectionCount": 17,
+    "apiCount": 1
+   }
+  },
+  {
+   "score": 123.58871,
+   "document": {
+    "entityType": "collection",
+    "documentType": "collection",
+    "id": "5917351-614ef93f-8128-4d42-a1de-79751f81b8bc",
+    "name": "Example 04 - Check for Common API Vulnerability",
+    "publisherHandle": "postman",
+    "publisherName": "Postman",
+    "publisherType": "team",
+    "isPublisherVerified": true,
+    "isPublic": true,
+    "workspaceId": "e348c5a0-2965-44cc-87ed-7b316516f38d",
+    "workspaceName": "Postman API Monitoring Examples",
+    "workspaceSlug": "postman-api-monitoring-examples",
+    "workspaceVisibilityStatus": "public",
+    "updatedAt": "2021-10-08T16:25:06",
+    "requestCount": 15,
+    "workspaces": [
+     {
+      "id": "e348c5a0-2965-44cc-87ed-7b316516f38d",
+      "name": "Postman API Monitoring Examples",
+      "slug": "postman-api-monitoring-examples",
+      "visibilityStatus": "public"
+     }
+    ]
+   }
+  },
+  {
+   "score": 76.69719,
+   "document": {
+    "entityType": "extensibleCollection",
+    "documentType": "collection",
+    "id": "00000000-0000-4000-8000-000000000016",
+    "name": "ComfyUI WS Example",
+    "publisherHandle": "example-user-0006",
+    "publisherName": "Example User 0006",
+    "publisherType": "user",
+    "isPublisherVerified": false,
+    "isPublic": true,
+    "workspaceId": "00000000-0000-4000-8000-000000000017",
+    "workspaceName": "Example Workspace 6",
+    "workspaceSlug": "example-workspace-6",
+    "workspaceVisibilityStatus": "public",
+    "updatedAt": "2025-06-16T03:00:26",
+    "requestCount": 1,
+    "workspaces": [
+     {
+      "id": "00000000-0000-4000-8000-000000000017",
+      "name": "Example Workspace 6",
+      "slug": "example-workspace-6",
+      "visibilityStatus": "public"
+     }
+    ]
+   }
+  }
+ ],
+ "meta": {
+  "queryText": "example.com",
+  "total": {
+   "team": 0,
+   "user": 0,
+   "workspace": 571,
+   "document": 0,
+   "api": 0,
+   "apiDefinition": 0,
+   "specification": 0,
+   "collection": 37,
+   "request": 10000,
+   "history": 0,
+   "environment": 0,
+   "mock": 0,
+   "dataset": 0,
+   "flow": 0,
+   "privateNetworkFolder": 0
+  }
+ }
+}

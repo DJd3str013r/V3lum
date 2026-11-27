@@ -1,0 +1,87 @@
+{
+ "generated": 28,
+ "checked": {
+  "g-ithub.com": {
+   "rcode": 3,
+   "nxdomain": true,
+   "a": []
+  },
+  "g1thub.com": {
+   "rcode": 3,
+   "nxdomain": true,
+   "a": []
+  },
+  "ggithub.com": {
+   "rcode": 0,
+   "nxdomain": false,
+   "a": [
+    "192.0.2.10"
+   ]
+  },
+  "gi-thub.com": {
+   "rcode": 0,
+   "nxdomain": false,
+   "a": [
+    "192.0.2.11"
+   ]
+  },
+  "gihtub.com": {
+   "rcode": 0,
+   "nxdomain": false,
+   "a": [
+    "192.0.2.12"
+   ]
+  },
+  "gihub.com": {
+   "rcode": 0,
+   "nxdomain": false,
+   "a": [
+    "192.0.2.13"
+   ]
+  },
+  "giithub.com": {
+   "rcode": 0,
+   "nxdomain": false,
+   "a": [
+    "192.0.2.14"
+   ]
+  },
+  "git-hub.com": {
+   "rcode": 0,
+   "nxdomain": false,
+   "a": [
+    "192.0.2.15"
+   ]
+  },
+  "gith-ub.com": {
+   "rcode": 0,
+   "nxdomain": false,
+   "a": [
+    "192.0.2.16",
+    "192.0.2.17"
+   ]
+  },
+  "githb.com": {
+   "rcode": 0,
+   "nxdomain": false,
+   "a": [
+    "192.0.2.18"
+   ]
+  },
+  "githbu.com": {
+   "rcode": 0,
+   "nxdomain": false,
+   "a": [
+    "192.0.2.19"
+   ]
+  },
+  "githhub.com": {
+   "rcode": 0,
+   "nxdomain": false,
+   "a": [
+    "192.0.2.20"
+   ]
+  }
+ },
+ "_scrubbed": "A records of the lookalike hosts replaced with 192.0.2.0/24 documentation addresses"
+}

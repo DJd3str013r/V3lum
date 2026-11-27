@@ -1,0 +1,15 @@
+{
+ "generator": "phonenumbers 9.0.44 facts (collect_phone_facts schema), batch p1-G06-1 prep 2026-11-26",
+ "lib": "phonenumbers",
+ "lib_version": "9.0.44",
+ "region_hint": "BR",
+ "result": {
+  "input": "+55 11 95555-0100 1234567890",
+  "region_hint": "BR",
+  "parse_error": {
+   "error_type": 4,
+   "name": "TOO_LONG",
+   "msg": "The string supplied is too long to be a phone number."
+  }
+ }
+}

@@ -1,0 +1,178 @@
+{
+ "vulns": [
+  {
+   "id": "GHSA-6c3j-c64m-qhgq",
+   "summary": "XSS in jQuery as used in Drupal, Backdrop CMS, and other products",
+   "aliases": [
+    "CVE-2019-11358",
+    "DRUPAL-CORE-2019-006",
+    "PYSEC-2026-628",
+    "SNYK-JS-JQUERY-174006"
+   ],
+   "modified": "2026-07-08T05:56:09.047237467Z",
+   "published": "2019-04-26T16:29:11Z",
+   "database_specific": {
+    "severity": "MODERATE",
+    "cwe_ids": [
+     "CWE-1321",
+     "CWE-79"
+    ]
+   },
+   "affected": [
+    {
+     "package": {
+      "name": "jquery",
+      "ecosystem": "npm",
+      "purl": "pkg:npm/jquery"
+     },
+     "ranges": [
+      {
+       "type": "SEMVER",
+       "events": [
+        {
+         "introduced": "1.1.4"
+        },
+        {
+         "fixed": "3.4.0"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "GHSA-gxr4-xjj5-5px2",
+   "summary": "Potential XSS vulnerability in jQuery",
+   "aliases": [
+    "BIT-drupal-2020-11022",
+    "CVE-2020-11022"
+   ],
+   "modified": "2026-09-10T03:48:45.850954196Z",
+   "published": "2020-04-29T22:18:55Z",
+   "database_specific": {
+    "severity": "MODERATE",
+    "cwe_ids": [
+     "CWE-79"
+    ]
+   },
+   "affected": [
+    {
+     "package": {
+      "name": "jquery",
+      "ecosystem": "npm",
+      "purl": "pkg:npm/jquery"
+     },
+     "ranges": [
+      {
+       "type": "SEMVER",
+       "events": [
+        {
+         "introduced": "1.12.0"
+        },
+        {
+         "fixed": "3.5.0"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "GHSA-jpcq-cgw6-v4j6",
+   "summary": "Potential XSS vulnerability in jQuery",
+   "aliases": [
+    "BIT-drupal-2020-11023",
+    "CVE-2020-11023"
+   ],
+   "modified": "2026-09-10T03:48:45.809517754Z",
+   "published": "2020-04-29T22:19:14Z",
+   "database_specific": {
+    "severity": "MODERATE",
+    "cwe_ids": [
+     "CWE-79"
+    ]
+   },
+   "affected": [
+    {
+     "package": {
+      "name": "jquery",
+      "ecosystem": "npm",
+      "purl": "pkg:npm/jquery"
+     },
+     "ranges": [
+      {
+       "type": "SEMVER",
+       "events": [
+        {
+         "introduced": "1.0.3"
+        },
+        {
+         "fixed": "3.5.0"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "GHSA-rmxg-73gg-4p98",
+   "summary": "Cross-Site Scripting (XSS) in jquery",
+   "aliases": [
+    "CVE-2015-9251"
+   ],
+   "modified": "2024-03-10T05:18:22.438189Z",
+   "published": "2018-01-22T13:32:06Z",
+   "database_specific": {
+    "severity": "MODERATE",
+    "cwe_ids": [
+     "CWE-79"
+    ]
+   },
+   "affected": [
+    {
+     "package": {
+      "name": "jquery",
+      "ecosystem": "npm",
+      "purl": "pkg:npm/jquery"
+     },
+     "ranges": [
+      {
+       "type": "SEMVER",
+       "events": [
+        {
+         "introduced": "0"
+        },
+        {
+         "fixed": "1.12.2"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "package": {
+      "name": "jquery",
+      "ecosystem": "npm",
+      "purl": "pkg:npm/jquery"
+     },
+     "ranges": [
+      {
+       "type": "SEMVER",
+       "events": [
+        {
+         "introduced": "1.12.3"
+        },
+        {
+         "fixed": "3.0.0"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

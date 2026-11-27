@@ -1,0 +1,22 @@
+/*
+ * YARA-Forge YARA Rule Package
+ * https://github.com/YARAHQ/yara-forge
+ * 
+ * Rule Package Information
+ * Name: core 
+ * Description: Default YARA Rule Package - Core
+ * YARA-Forge Version: 0.9.1
+ * YARA-QA Commit: d8e1d0fa81610340a9ea5a04a36d414b9e5a2e6b
+ * Minimum Quality: 70
+ * Force Include Importance Level: 80
+ * Force Exclude Importance Level: 50
+ * Minimum Age (in days): 1
+ * Minimum Score: 65
+ * Creation Date: 2026-11-22
+ * Number of Rules: 5078
+ * Skipped: 3240 (age), 806 (quality), 950 (score), 2039 (importance)
+ */
+
+import "dotnet"
+import "hash"
+import "pe"

@@ -1,0 +1,21 @@
+{
+ "_meta": {
+  "module": "discord_invite",
+  "case": "expired",
+  "source": "C0233 discord.com",
+  "request": {
+   "method": "GET",
+   "url": "https://discord.com/api/v10/invites/qz7k2v9m4p1w8n3x5c6b?with_counts=true&with_expiration=true"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "LIVE",
+  "elapsed_s": 0.135,
+  "note": "random 20-char control code that belongs to nobody"
+ },
+ "status": 404,
+ "headers": {
+  "content-type": "application/json",
+  "server": "cloudflare"
+ },
+ "body": "{\"message\":\"Unknown Invite\",\"code\":10006}"
+}

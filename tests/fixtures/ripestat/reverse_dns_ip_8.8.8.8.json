@@ -1,0 +1,17 @@
+{
+ "messages": [],
+ "data_call_name": "reverse-dns-ip",
+ "data_call_status": "supported",
+ "cached": false,
+ "status": "ok",
+ "status_code": 200,
+ "time": "2026-11-26T08:15:52.994103",
+ "data": {
+  "query_time": "2026-11-26T08:15:00",
+  "resource": "8.8.8.8",
+  "result": [
+   "dns.google"
+  ],
+  "error": ""
+ }
+}

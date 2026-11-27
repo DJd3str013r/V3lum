@@ -1,0 +1,9 @@
+{
+ "request": "GET https://api.queridodiario.ok.org.br/gazettes?querystring=%22Banco%20do%20Brasil%22&size=1",
+ "response": null,
+ "transport_error": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] ssl/tls alert handshake failure (_ssl.c:1035)>",
+ "elapsed_s": 0.65,
+ "observed_at": "2026-11-26T07:14:40Z",
+ "origin": "live",
+ "note": "old host api.queridodiario.ok.org.br: TLS handshake failure (FC1: never a fallback)"
+}

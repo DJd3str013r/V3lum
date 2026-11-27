@@ -1,0 +1,99 @@
+{
+ "meta": {
+  "goldenCopy": {
+   "publishDate": "2026-11-26T00:00:00Z"
+  },
+  "pagination": {
+   "currentPage": 1,
+   "perPage": 10,
+   "from": 1,
+   "to": 1,
+   "total": 1,
+   "lastPage": 1
+  }
+ },
+ "links": {
+  "first": "https://api.gleif.org/api/v1/lei-records?filter%5Bentity.registeredAs%5D=00.000.000%2F0001-91&page%5Bnumber%5D=1&page%5Bsize%5D=10",
+  "last": "https://api.gleif.org/api/v1/lei-records?filter%5Bentity.registeredAs%5D=00.000.000%2F0001-91&page%5Bnumber%5D=1&page%5Bsize%5D=10"
+ },
+ "data": [
+  {
+   "type": "lei-records",
+   "id": "QE0Q0253K88YAGNPE356",
+   "attributes": {
+    "lei": "QE0Q0253K88YAGNPE356",
+    "entity": {
+     "legalName": {
+      "name": "BANCO DO BRASIL SA",
+      "language": "pt"
+     },
+     "otherNames": [],
+     "legalAddress": {
+      "addressLines": [
+       "Q SAUN QUADRA 5 BLOCO B TORRE I, II, III"
+      ],
+      "city": "BRASILIA",
+      "region": "BR-DF",
+      "country": "BR",
+      "postalCode": "70040-912"
+     },
+     "headquartersAddress": {
+      "addressLines": [
+       "13 ANDAR"
+      ],
+      "city": "BRASILIA",
+      "region": "BR-DF",
+      "country": "BR",
+      "postalCode": "70040-250"
+     },
+     "registeredAt": {
+      "id": "RA000041",
+      "other": null
+     },
+     "registeredAs": "00.000.000/0001-91",
+     "jurisdiction": "BR",
+     "category": "GENERAL",
+     "legalForm": {
+      "id": "X0SD",
+      "other": null
+     },
+     "status": "ACTIVE",
+     "successorEntity": {
+      "lei": null,
+      "name": null
+     }
+    },
+    "registration": {
+     "initialRegistrationDate": "2012-06-06T15:52:00Z",
+     "lastUpdateDate": "2026-08-07T07:20:59Z",
+     "status": "ISSUED",
+     "nextRenewalDate": "2027-08-15T13:03:10Z",
+     "managingLou": "5493001KJTIIGC8Y1R12",
+     "corroborationLevel": "FULLY_CORROBORATED"
+    },
+    "bic": [
+     "BRASBRRJXXX",
+     "BRASCNSHXXX"
+    ]
+   },
+   "relationships": {
+    "direct-parent": {
+     "links": {
+      "reporting-exception": "https://api.gleif.org/api/v1/lei-records/QE0Q0253K88YAGNPE356/direct-parent-reporting-exception"
+     }
+    },
+    "ultimate-parent": {
+     "links": {
+      "reporting-exception": "https://api.gleif.org/api/v1/lei-records/QE0Q0253K88YAGNPE356/ultimate-parent-reporting-exception"
+     }
+    },
+    "direct-children": {
+     "links": {
+      "relationship-records": "https://api.gleif.org/api/v1/lei-records/QE0Q0253K88YAGNPE356/direct-child-relationships",
+      "related": "https://api.gleif.org/api/v1/lei-records/QE0Q0253K88YAGNPE356/direct-children"
+     }
+    }
+   }
+  }
+ ]
+}

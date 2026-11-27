@@ -1,0 +1,146 @@
+{
+ "help": "https://dadosabertos.bndes.gov.br/api/3/action/help_show?name=datastore_search",
+ "success": true,
+ "result": {
+  "include_total": true,
+  "limit": 2,
+  "q": null,
+  "records_format": "objects",
+  "resource_id": "612faa0b-b6be-4b2c-9317-da5dc2c0b901",
+  "records": [
+   {
+    "_id": 1,
+    "cliente": "BANCO REGIONAL DE DESENVOLVIMENTO DO EXTREMO SUL",
+    "cpf_cnpj": "**.*16.560/0001-**",
+    "uf": " RS",
+    "municipio": "TAQUARUCU DO SUL",
+    "data_da_contratacao": "2002-01-02T00:00:00",
+    "valor_da_operacao_em_reais": 1500,
+    "valor_desembolsado_reais": 1500.0,
+    "modalidade_de_apoio": "REEMBOLSÁVEL",
+    "forma_de_apoio": "INDIRETA",
+    "produto": "BNDES AUTOMÁTICO",
+    "instrumento_financeiro": "PRONAF INVESTIMENTO",
+    "porte_do_cliente": "MICRO",
+    "natureza_do_cliente": "PRIVADA",
+    "instituicao_financeira_credenciada": "BANCO REGIONAL DE DESENVOLVIMENTO DO EXTREMO SUL",
+    "cnpj_do_agente_financeiro": "92.816.560.0001-37",
+    "situacao_da_operacao": "ATIVA"
+   },
+   {
+    "_id": 2,
+    "cliente": "BANCO REGIONAL DE DESENVOLVIMENTO DO EXTREMO SUL",
+    "cpf_cnpj": "**.*16.560/0001-**",
+    "uf": " RS",
+    "municipio": "TAQUARUCU DO SUL",
+    "data_da_contratacao": "2002-01-02T00:00:00",
+    "valor_da_operacao_em_reais": 2000,
+    "valor_desembolsado_reais": 2000.0,
+    "modalidade_de_apoio": "REEMBOLSÁVEL",
+    "forma_de_apoio": "INDIRETA",
+    "produto": "BNDES AUTOMÁTICO",
+    "instrumento_financeiro": "PRONAF INVESTIMENTO",
+    "porte_do_cliente": "MICRO",
+    "natureza_do_cliente": "PRIVADA",
+    "instituicao_financeira_credenciada": "BANCO REGIONAL DE DESENVOLVIMENTO DO EXTREMO SUL",
+    "cnpj_do_agente_financeiro": "92.816.560.0001-37",
+    "situacao_da_operacao": "ATIVA"
+   },
+   {
+    "_id": 999,
+    "cliente": "FULANO DE TAL",
+    "cpf_cnpj": "***.456.789-**",
+    "uf": " BA",
+    "municipio": "EXEMPLO",
+    "data_da_contratacao": "2002-01-02T00:00:00",
+    "valor_da_operacao_em_reais": 1500,
+    "valor_desembolsado_reais": 1500.0,
+    "modalidade_de_apoio": "REEMBOLSÁVEL",
+    "forma_de_apoio": "INDIRETA",
+    "produto": "BNDES AUTOMÁTICO",
+    "instrumento_financeiro": "PRONAF INVESTIMENTO",
+    "porte_do_cliente": "MICRO",
+    "natureza_do_cliente": "PESSOA FÍSICA",
+    "instituicao_financeira_credenciada": "BANCO EXEMPLO S.A.",
+    "cnpj_do_agente_financeiro": "11.222.333.0001-81",
+    "situacao_da_operacao": "ATIVA"
+   }
+  ],
+  "fields": [
+   {
+    "id": "_id",
+    "type": "int"
+   },
+   {
+    "id": "cliente",
+    "type": "text"
+   },
+   {
+    "id": "cpf_cnpj",
+    "type": "text"
+   },
+   {
+    "id": "uf",
+    "type": "text"
+   },
+   {
+    "id": "municipio",
+    "type": "text"
+   },
+   {
+    "id": "data_da_contratacao",
+    "type": "timestamp"
+   },
+   {
+    "id": "valor_da_operacao_em_reais",
+    "type": "numeric"
+   },
+   {
+    "id": "valor_desembolsado_reais",
+    "type": "numeric"
+   },
+   {
+    "id": "modalidade_de_apoio",
+    "type": "text"
+   },
+   {
+    "id": "forma_de_apoio",
+    "type": "text"
+   },
+   {
+    "id": "produto",
+    "type": "text"
+   },
+   {
+    "id": "instrumento_financeiro",
+    "type": "text"
+   },
+   {
+    "id": "porte_do_cliente",
+    "type": "text"
+   },
+   {
+    "id": "natureza_do_cliente",
+    "type": "text"
+   },
+   {
+    "id": "instituicao_financeira_credenciada",
+    "type": "text"
+   },
+   {
+    "id": "cnpj_do_agente_financeiro",
+    "type": "text"
+   },
+   {
+    "id": "situacao_da_operacao",
+    "type": "text"
+   }
+  ],
+  "_links": {
+   "start": "/api/3/action/datastore_search?resource_id=612faa0b-b6be-4b2c-9317-da5dc2c0b901&limit=2",
+   "next": "/api/3/action/datastore_search?resource_id=612faa0b-b6be-4b2c-9317-da5dc2c0b901&limit=2&offset=2"
+  },
+  "total": 2398240,
+  "total_was_estimated": false
+ }
+}

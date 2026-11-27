@@ -1,0 +1,15 @@
+{
+ "messages": [],
+ "data_call_name": "network-info",
+ "data_call_status": "supported",
+ "cached": false,
+ "status": "ok",
+ "status_code": 200,
+ "time": "2026-11-26T08:15:48.269430",
+ "data": {
+  "asns": [
+   "15169"
+  ],
+  "prefix": "8.8.8.0/24"
+ }
+}

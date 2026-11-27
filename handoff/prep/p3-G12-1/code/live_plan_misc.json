@@ -1,0 +1,16 @@
+[
+ {"id": "binlist_docs_bin", "gap": 5, "max_bytes": 100000, "headers": {"Accept-Version": "3"},
+  "url": "https://lookup.binlist.net/45717360"},
+ {"id": "teler_bad_crawlers", "gap": 3, "max_bytes": 2000000,
+  "url": "https://raw.githubusercontent.com/kitabisa/teler-resources/master/db/bad-crawlers.txt"},
+ {"id": "binlist_home", "gap": 3, "max_bytes": 500000,
+  "url": "https://binlist.net/"},
+ {"id": "teler_license", "gap": 3, "max_bytes": 200000,
+  "url": "https://raw.githubusercontent.com/kitabisa/teler-resources/master/LICENSE"},
+ {"id": "imeidb_home", "gap": 3, "max_bytes": 500000,
+  "url": "https://imeidb.xyz/"},
+ {"id": "binlist_unknown_bin", "gap": 6, "max_bytes": 100000, "headers": {"Accept-Version": "3"},
+  "url": "https://lookup.binlist.net/000000"},
+ {"id": "teler_not_found", "gap": 3, "max_bytes": 100000,
+  "url": "https://raw.githubusercontent.com/kitabisa/teler-resources/master/db/does-not-exist.txt"}
+]

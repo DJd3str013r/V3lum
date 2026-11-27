@@ -1,0 +1,20 @@
+{
+ "request": "GET https://minhareceita.org/00000000000192",
+ "response": {
+  "status": 400,
+  "headers": {
+   "content-type": "application/json",
+   "cache-control": "max-age=432000",
+   "server": "cloudflare",
+   "cf-cache-status": "MISS"
+  },
+  "body": {
+   "message": "CNPJ 00.000.000/0001-92 inválido."
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": 0.318328,
+ "observed_at": "2026-11-26T05:20:45+00:00",
+ "origin": "live",
+ "note": ""
+}

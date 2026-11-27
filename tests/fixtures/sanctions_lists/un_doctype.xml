@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE CONSOLIDATED_LIST [
+  <!ENTITY a "aaaaaaaaaa">
+  <!ENTITY b "&a;&a;&a;&a;&a;&a;&a;&a;&a;&a;">
+  <!ENTITY xxe SYSTEM "file:///etc/hostname">
+]>
+<CONSOLIDATED_LIST dateGenerated="2026-11-26T00:00:00.000Z"><INDIVIDUALS><INDIVIDUAL><FIRST_NAME>&b;&xxe;</FIRST_NAME></INDIVIDUAL></INDIVIDUALS><ENTITIES/></CONSOLIDATED_LIST>

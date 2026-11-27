@@ -1,0 +1,54 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "arctic_shift",
+  "name": "Arctic Shift Reddit archive API (Pushshift successor)",
+  "operator": "Arctic Shift project (volunteer-run, github.com/ArthurHeitmann/arctic_shift)",
+  "hosts": [
+    "arctic-shift.photon-reddit.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Identifiable operator, public API documentation, active since 2023 (A8 community); P108 cond 1 'Registry provider arctic_shift: tier community'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "C",
+    "justification": "Volunteer archive of public Reddit posts and comments, no SLA ('No uptime or performance guarantees'); it may hold items their authors deleted (labelled, never quoted, P108 cond 5)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 10,
+    "ttl": 86400,
+    "min_interval": 2.0
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "search": {
+      "title": "GET /api/posts/search and /api/comments/search (author=<u>, limit <= 100, one page each; query= only scoped by subreddit)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://github.com/ArthurHeitmann/arctic_shift/blob/master/api/README.md",
+        "quote": "Remember, this is a free service, so be considerate. If you want to process massive amounts of data, use the monthly dumps instead.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "reddit",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Terms 'unknown' (volunteer archive with no published terms; Reddit's Data API terms require an agreement for commercial use, verified 2026-11-26, P108 cond 2): disabled in every licence profile until legal records a class (A1). Only the two search paths are used: never users/interactions, aggregations, users/aggregate_flairs, users/search or comments/tree (they build the subreddit-participation profiles P108 cond 4 forbids). 'query' without author or subreddit answers 400 (observed): a site-wide brand keyword search is impossible. Error JSON ({'error': ...}) at any status and 'Query timed out' are could-not-verify (P108 cond 6); 429 carries X-RateLimit-Reset."
+    }
+  },
+  "notes": "Owned by batch p3-G05-1 (P108 reddit_archive). Rate limits are dynamic (README): min_interval 2 s plus the module's daily_quota; per-call timeout 10 s, module deadline 30 s (P108 cond 6)."
+}

@@ -1,0 +1,38 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "shadowserver",
+  "name": "The Shadowserver Foundation (public ASN and network API)",
+  "operator": "The Shadowserver Foundation (non-profit)",
+  "hosts": ["api.shadowserver.org", "transform.shadowserver.org"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established security non-profit named among the trusted operators by A8 (Shadowserver) with published terms; P033 chair rationale: 'All three operators are established non-profits or CERTs: tier trusted'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "B", "justification": "BGP-derived origin ASN and announced prefixes from Shadowserver's routing view; usually reliable, may lag routing changes by hours."},
+  "http_profile": {"user_agent": "neutral", "accept": "application/json", "ttl": 86400, "min_interval": 1.0, "concurrency": 2},
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "net_api": {
+      "title": "Shadowserver public net/asn API (keyless): ?origin=<IPv4> -> origin ASN, AS name and prefix; ?prefix=<ASN> -> announced prefixes",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.shadowserver.org/what-we-do/network-reporting/api-asn-and-network-queries/",
+        "quote": "Registry (A1 BR3, A8 BR12): PeeringDB (free under its AUP), CIRCL BGP Ranking (free CIRCL service) and the Shadowserver public API (free public-benefit service) are 'open', tier trusted, each with evidence recorded.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "shadowserver",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P033 cond 1); the documentation page (verified 200 on 2026-11-26) points to https://github.com/The-Shadowserver-Foundation/api_utils/wiki and states no further terms. Keyless GET only (P033 cond 5); a key, if one is ever used, goes in a header. Unknown and invalid inputs are echoed as [{\"ip\": \"<query>\"}] with HTTP 200: the module validates its input first and reads an echo without 'asn' as 'no origin data'. Failures are 'could not verify'. The reports API on transform.shadowserver.org (apikey + HMAC) is out of scope (P033 cond 6: registering the company's own netblocks is an institutional DPO/IT decision documented in docs/LEGAL.md): no module declares that host. Used by asn_context."
+    }
+  },
+  "notes": "Created by batch p2-G02-1 (P033 asn_context). transform.shadowserver.org is registered here so the reports host has an owner and a tier; nothing calls it in this build."
+}

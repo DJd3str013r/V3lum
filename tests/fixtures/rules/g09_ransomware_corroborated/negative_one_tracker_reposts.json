@@ -1,0 +1,73 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "options": {
+  "mode": "passive",
+  "tlp": "amber",
+  "depth": 1
+ },
+ "nodes": [
+  {
+   "key": "company_name:Exemplo Alimentos",
+   "depth": 0,
+   "seed": true,
+   "findings": [
+    {
+     "title": "Possible ransomware leak-site claim (name match only)",
+     "severity": "medium",
+     "confidence": 0.4,
+     "confidence_label": "possible",
+     "criterion": "victim name equal after normalisation (accents folded, legal forms stripped) - possible match - verify victim identity",
+     "tags": [
+      "ransomware",
+      "ransomware_claim"
+     ],
+     "module": "ransomlook",
+     "source": "ransomlook.api",
+     "observed_first": "2026-11-24T10:00:00Z",
+     "observed_last": "2026-11-24T10:00:00Z",
+     "key": "exemplo alimentos|lockbit3|2026-11-24",
+     "data": {
+      "tracker": "ransomlook",
+      "victim": "Exemplo Alimentos Ltda.",
+      "victim_key": "exemplo alimentos",
+      "group": "lockbit3",
+      "group_key": "lockbit3",
+      "claimed_date": "2026-11-24",
+      "match_type": "name",
+      "domains": [],
+      "attribution": "documentation fixture"
+     }
+    },
+    {
+     "title": "Possible ransomware leak-site claim (name match only)",
+     "severity": "medium",
+     "confidence": 0.4,
+     "confidence_label": "possible",
+     "criterion": "victim name equal after normalisation (accents folded, legal forms stripped) - possible match - verify victim identity",
+     "tags": [
+      "ransomware",
+      "ransomware_claim"
+     ],
+     "module": "ransomlook",
+     "source": "ransomlook.api",
+     "observed_first": "2026-11-25T10:00:00Z",
+     "observed_last": "2026-11-25T10:00:00Z",
+     "key": "exemplo alimentos|lockbit3|2026-11-25#repost",
+     "data": {
+      "tracker": "ransomlook",
+      "victim": "Exemplo Alimentos Ltda",
+      "victim_key": "exemplo alimentos",
+      "group": "lockbit3",
+      "group_key": "lockbit3",
+      "claimed_date": "2026-11-25",
+      "match_type": "name",
+      "domains": [],
+      "attribution": "documentation fixture"
+     }
+    }
+   ]
+  }
+ ],
+ "edges": []
+}

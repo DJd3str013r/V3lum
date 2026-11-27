@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- synthetic: the documented default XML answer of /api/ip/{ip} (no ?json); values scrubbed -->
+<ip>
+ <number>203.0.113.77</number>
+ <count>9843</count>
+ <attacks>34</attacks>
+ <maxdate>2026-11-20</maxdate>
+ <mindate>2026-10-08</mindate>
+ <as>64500</as>
+ <network>203.0.113.0/24</network>
+</ip>

@@ -1,0 +1,59 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "algolia",
+  "name": "HN Search by Algolia (hn.algolia.com API v1)",
+  "operator": "Algolia, Inc. (Hacker News search index run for Y Combinator)",
+  "hosts": [
+    "hn.algolia.com"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Algolia, Inc. is an established company with published terms and a privacy policy (A8 trusted); P109 cond 4 'Registry providers hacker_news (Y Combinator) and algolia: tier trusted, terms open'.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Search index of public Hacker News items, refreshed continuously; it mirrors the Firebase API (same upstream family) and answers HTTP 500 for unknown users (P109 research C0250)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 10,
+    "ttl": 86400,
+    "min_interval": 1.0
+  },
+  "quota": {
+    "scope": "egress_ip",
+    "hour": 10000,
+    "published": true,
+    "evidence_url": "https://hn.algolia.com/api"
+  },
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "hn_search": {
+      "title": "HN Search API v1: search_by_date?tags=author_<u> (activity) and search?query= (org_profile domain/brand mentions)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://hn.algolia.com/api",
+        "quote": "Registry providers hacker_news (Y Combinator) and algolia: tier trusted, terms open; personal_data_review before default use (A3 BR8).",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "hacker-news",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P109 cond 4); research C0250 '[live_osint] Documented 10,000 requests/hour per IP' (booked through the quota block, P109 cond 3). users/<u> answers 500 HTML for unknown users (observed 2026-11-26): never used for absence, the Firebase 'null' body decides (P109 cond 1)."
+    }
+  },
+  "notes": "Owned by batch p3-G05-1 (P109 hackernews). Same upstream family as hacker_news.firebase_api (it indexes the same items): consensus never counts both. Usernames are PERSONAL_TYPES: personal_data_review is still to be recorded before default use (P109 cond 4)."
+}

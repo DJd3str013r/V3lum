@@ -1,0 +1,30 @@
+{
+  "schema": "v3lum.graph_fixture/1",
+  "now": "2026-11-26T12:00:00Z",
+  "options": {"mode": "passive", "tlp": "amber"},
+  "nodes": [
+    {
+      "key": "phone:+556155550100",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "phone_ddd": [{"value": {"code": "61", "allocated": true, "uf": "DF", "ufs": ["DF", "GO"], "main_city": "Brasília"}, "source": "phone_parse"}]
+      }
+    },
+    {"key": "cep:72800000", "depth": 1, "attributes": {"region": [{"value": "GO", "source": "fixture_cep_module"}]}},
+    {
+      "key": "phone:+5521995550100",
+      "depth": 0,
+      "seed": true,
+      "attributes": {
+        "phone_ddd": [{"value": {"code": "21", "allocated": true, "uf": "RJ", "ufs": ["RJ"], "main_city": "Rio de Janeiro"}, "source": "phone_parse"}]
+      }
+    },
+    {"key": "cpf:11144477735", "depth": 0, "seed": true},
+    {"key": "phone:+558007290001", "depth": 0, "seed": true}
+  ],
+  "edges": [
+    {"src": "phone:+556155550100", "dst": "cep:72800000", "relation": "located_at", "module": "fixture", "confidence": 0.9},
+    {"src": "cpf:11144477735", "dst": "phone:+558007290001", "relation": "phone_of", "module": "fixture", "confidence": 0.9}
+  ]
+}

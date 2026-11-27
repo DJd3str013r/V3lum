@@ -1,0 +1,9 @@
+{
+  "schema": "v3lum.extra/1",
+  "package": "pymsi",
+  "pip": "pymsi==0.0.0rc1",
+  "extra": "msi",
+  "licence": "MIT",
+  "justification": "Reads the Windows Installer CustomAction, Binary and Property tables for windows_artifact_triage (P367 c4). Optional and pre-release (exact pin): without it the module reports 'MSI tables not parsed' and still hashes every stream and decodes script streams.",
+  "notes": "Batch p2-G12-3. Only release so far 0.0.0rc1 (2026-07-26, LLNL copyright + NOTICE); depends on olefile (extra 'full'). Used with strict=False (strict validation prints to stdout). It vendors Binary Refinery CAB/LZX code without a licence header in the wheel: legal review of that code is a precondition for shipping this extra (backlog). Its vendored array code triggers a DeprecationWarning that announces breakage on Python 3.16."
+}

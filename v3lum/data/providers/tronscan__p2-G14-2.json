@@ -1,0 +1,25 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "tronscan",
+  "hosts": [
+    "tronscan.org"
+  ],
+  "sources": {
+    "pivots_crypto_explorer_pages": {
+      "title": "Tronscan address page /#/address/{tron_address} (manual pivot links)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://tronscan.org/#/developer/api",
+        "quote": "The pack is offline data (disclosure 'none'): V3LUM never requests these URLs or any API behind them.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "tronscan",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P216 cond 1). JS application behind Cloudflare for curl (C0503; template confirmed through a Wayback snapshot): unverified, antibot (P216 cond 9). Rendered only for TRON-validated addresses (T + base58check, P217). Used by pivots_crypto."
+    }
+  },
+  "error_markers": []
+}

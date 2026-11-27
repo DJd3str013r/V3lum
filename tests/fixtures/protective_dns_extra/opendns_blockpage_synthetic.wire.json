@@ -1,0 +1,39 @@
+{
+ "origin": "synthetic",
+ "note": "OpenDNS/Umbrella block-page answer (146.112.61.108, documented phishing block page range 146.112.61.104-110; category per IP unverified)",
+ "request": {
+  "url": "https://doh.opendns.com/dns-query?dns=<b64url>",
+  "qname": "malware-test.example.net.",
+  "qtype": "A"
+ },
+ "http_status": 200,
+ "content_type": "application/dns-message",
+ "wire_b64": "AACBgAABAAEAAAAADG1hbHdhcmUtdGVzdAdleGFtcGxlA25ldAAAAQABwAwAAQABAAAAAAAEknA9bA==",
+ "decoded": {
+  "id": 0,
+  "rcode": "NOERROR",
+  "flags": [
+   "QR",
+   "RD",
+   "RA"
+  ],
+  "question": [
+   {
+    "name": "malware-test.example.net.",
+    "type": "A"
+   }
+  ],
+  "answer": [
+   {
+    "name": "malware-test.example.net.",
+    "type": "A",
+    "ttl": 0,
+    "data": "146.112.61.108"
+   }
+  ],
+  "authority": [],
+  "additional": [],
+  "edns": false,
+  "ede": []
+ }
+}

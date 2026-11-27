@@ -1,0 +1,66 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "jamesbrine",
+  "name": "jamesbrine.com.au threat feeds",
+  "operator": "Individual researcher publishing at jamesbrine.com.au",
+  "hosts": [
+    "jamesbrine.com.au"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "Individual operator whose terms were not recorded when the council decided (A8 unknown: individual operators); P147 cond 3 'terms unknown, tier unknown' until legal records them. A promotion needs a recorded review with reviewer and date (A8).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "F",
+    "justification": "Aggregated honeypot/brute-force IP list of a single operator: reliability cannot be judged until reviewed (A8 unknown)."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "ttl": 86400
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "iplist": {
+      "title": "iplist.txt (aggregated malicious IPv4 addresses, one per line)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://jamesbrine.com.au/faq/",
+        "quote": "P147 cond 3 (binding council text): HoneyLabs and James Brine feeds publish no licence: they ship as a separate module honeypot_intel_extra (default_enabled=False, terms 'unknown', tier unknown), disabled in every profile until legal records their terms.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "jamesbrine",
+      "sanitizer": null,
+      "dataset": "honeypot_intel_extra.jamesbrine_iplist.txt",
+      "notes": "Research C0359 (verified_live 200; ~880 KB, cache-control max-age 14400). For legal's review queue: the site FAQ (fetched 2026-11-26) reads 'The data provided here is currently TLP:White and free to use in any form for non-commercial purposes, use for commercial purposes requires prior approval.' Matched locally (P147 cond 4; the 14 MB type_*.json files are never fetched). Used by honeypot_intel_extra."
+    },
+    "activity": {
+      "title": "csv (ipv4, activity, date of the latest day)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://jamesbrine.com.au/faq/",
+        "quote": "P147 cond 3 (binding council text): HoneyLabs and James Brine feeds publish no licence: they ship as a separate module honeypot_intel_extra (default_enabled=False, terms 'unknown', tier unknown), disabled in every profile until legal records their terms.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "jamesbrine",
+      "sanitizer": null,
+      "dataset": "honeypot_intel_extra.jamesbrine_activity.csv",
+      "notes": "Research C0359 (verified_live 200; header 'ipv4, activity, date'). Activity label and date for listed IPs. Used by honeypot_intel_extra."
+    }
+  },
+  "notes": "Owned by batch p2-G02-2 (P147). Downloaded whole by the dataset manager and matched locally: no value is ever sent."
+}

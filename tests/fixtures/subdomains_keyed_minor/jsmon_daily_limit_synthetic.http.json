@@ -1,0 +1,15 @@
+{
+ "request": "GET https://subdomains.jsmon.sh/api/domain/example.com",
+ "response": {
+  "status": 429,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": {
+   "error": "Daily query limit reached"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "Free plan = 3 queries/day (landing page); body PLACEHOLDER -> QUOTA"
+}

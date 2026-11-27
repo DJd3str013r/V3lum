@@ -1,0 +1,17 @@
+{
+ "_benchmark": 0.1,
+ "_meta": {
+  "timestamp": "2026-11-26T00:00:00Z",
+  "index": "vulncheck-kev"
+ },
+ "data": [
+  {
+   "filename": "vulncheck-kev-1795651200.zip",
+   "sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+   "date_added": "2026-11-26T00:00:00Z",
+   "url": "https://vulncheck-backups.example.com/vulncheck-kev-1795651200.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=REDACTED&X-Amz-Signature=REDACTED",
+   "url_ttl_minutes": 15,
+   "url_expires": "2026-11-26T00:15:00Z"
+  }
+ ]
+}

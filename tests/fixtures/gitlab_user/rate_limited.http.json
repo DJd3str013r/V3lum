@@ -1,0 +1,25 @@
+{
+ "_meta": {
+  "module": "gitlab_user",
+  "case": "rate_limited",
+  "source": "C0238 gitlab.com",
+  "request": {
+   "method": "GET",
+   "url": "https://gitlab.com/api/v4/users?username=example-dev"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "DOC-SHAPED",
+  "note": "GitLab rate-limit documentation (throttle response 'Retry later')"
+ },
+ "status": 429,
+ "headers": {
+  "content-type": "text/plain",
+  "ratelimit-name": "throttle_unauthenticated_api",
+  "ratelimit-limit": "500",
+  "ratelimit-observed": "501",
+  "ratelimit-remaining": "0",
+  "ratelimit-reset": "1795676460",
+  "retry-after": "42"
+ },
+ "body": "Retry later\n"
+}

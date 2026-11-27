@@ -1,0 +1,38 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "freeipapi",
+  "name": "FreeIPAPI (keyless IP geolocation)",
+  "operator": "FreeIPAPI (freeipapi.com)",
+  "hosts": ["free.freeipapi.com", "freeipapi.com"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "community",
+  "tier_rationale": "Identifiable public service with documentation and published usage terms (free for commercial and non-commercial use) and a public track record; P051 final condition 3: FreeIPAPI is community tier.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "C", "justification": "Network geolocation is approximate; isProxy is a weak signal only (P051 FC3)."},
+  "http_profile": {"user_agent": "neutral", "accept": "application/json", "ttl": 86400, "min_interval": 1.0, "retries": 0},
+  "quota": {"scope": "egress_ip", "rate_per_second": 1.0, "published": true, "evidence_url": "https://freeipapi.com/", "safety_margin": 0.8},
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "geo": {
+      "title": "FreeIPAPI keyless IP geolocation (GET https://free.freeipapi.com/api/v1/json/{ip}): country, ASN, AS organisation",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://freeipapi.com/",
+        "quote": "free for commercial and non-commercial use",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "freeipapi",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: research record C0101. 60 requests/minute (rate_per_second 1.0 at 80%). The old endpoint https://freeipapi.com/api/json/{ip} answers 307 to the new host, which is called directly. Invalid and reserved inputs answer HTTP 200 with every field null (ipAddress null): ERROR 'address not accepted', never an absence. isProxy is kept only as a weak hint (P051 FC3)."
+    }
+  },
+  "notes": "Owned by batch p3-G02-2 (P051 ip_geolocation). freeipapi.com (old host) is listed so that the 307 redirect of the old endpoint stays inside the provider; V3LUM calls free.freeipapi.com directly."
+}

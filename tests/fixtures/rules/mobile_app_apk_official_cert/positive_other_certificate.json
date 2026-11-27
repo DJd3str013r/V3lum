@@ -1,0 +1,78 @@
+{
+ "schema": "v3lum.graph_fixture/1",
+ "now": "2026-11-26T12:00:00Z",
+ "nodes": [
+  {
+   "key": "domain:example.com",
+   "depth": 0,
+   "seed": true,
+   "attributes": {
+    "official_android_apps": [
+     {
+      "value": [
+       {
+        "package": "com.example.bank",
+        "sha256": [
+         "F0:FD:6C:5B:41:0F:25:CB:25:C3:B5:33:46:C8:97:2F:AE:30:F8:EE:74:11:DF:91:04:80:AD:6B:2D:60:DB:83"
+        ]
+       }
+      ],
+      "source": "digital_asset_links"
+     }
+    ]
+   }
+  },
+  {
+   "key": "file:/cases/sample.apk",
+   "depth": 0,
+   "seed": true,
+   "attributes": {
+    "android_package": [
+     {
+      "value": "com.example.bank",
+      "source": "apk_triage"
+     }
+    ],
+    "apk_signing": [
+     {
+      "value": {
+       "schemes": [
+        "v2"
+       ],
+       "certificates": [
+        {
+         "scheme": "v2",
+         "sha256": "5fd705ffd499fad6b5acb1a2212df1f87df2c007dbf38d86a34405531f1dd78e"
+        }
+       ],
+       "consistent": true,
+       "verified": false
+      },
+      "source": "apk_triage"
+     }
+    ]
+   }
+  },
+  {
+   "key": "code_signing_cert:5fd705ffd499fad6b5acb1a2212df1f87df2c007dbf38d86a34405531f1dd78e",
+   "depth": 1
+  }
+ ],
+ "edges": [
+  {
+   "src": "file:/cases/sample.apk",
+   "dst": "code_signing_cert:5fd705ffd499fad6b5acb1a2212df1f87df2c007dbf38d86a34405531f1dd78e",
+   "relation": "signing_certificate",
+   "module": "apk_triage",
+   "confidence": 0.9
+  }
+ ],
+ "expect": {
+  "mobile_app_apk_official_cert": {
+   "min": 1,
+   "max": 1,
+   "severity": "low",
+   "confidence_label": "possible"
+  }
+ }
+}

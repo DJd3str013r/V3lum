@@ -1,0 +1,13 @@
+{
+  "schema": "v3lum.notice/1",
+  "name": "ooni_data",
+  "source_url": "https://ooni.org/data/",
+  "version": "OONI API v1 measurements and aggregation, queried at run time (licence checked 2026-11-26: github.com/ooni/license data/LICENSE.md, commit ce329e1d6a2a0d0922d27557123e07e463b7c1e9)",
+  "sha256": "",
+  "licence": "CC-BY-NC-SA-4.0",
+  "attribution": "Censorship measurements: OONI - Open Observatory of Network Interference (https://ooni.org/data/), data licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (https://github.com/ooni/license/tree/master/data).",
+  "bundled": false,
+  "files": [
+    "v3lum/modules/domain_dns/ooni.py"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+ "_envelope": 1,
+ "_synthetic": "documented Hunter error envelope {errors: [{id, code, details}]}; not observed (no key) - 403 = rate limit per the docs",
+ "status": 403,
+ "headers": {
+  "content-type": "application/json; charset=utf-8"
+ },
+ "body": {
+  "errors": [
+   {
+    "id": "too_many_requests",
+    "code": 403,
+    "details": "You have reached the rate limit for this endpoint."
+   }
+  ]
+ }
+}

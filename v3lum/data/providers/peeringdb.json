@@ -1,0 +1,46 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "peeringdb",
+  "name": "PeeringDB (network, organisation, IXP and facility records)",
+  "operator": "PeeringDB, Inc. (non-profit)",
+  "hosts": ["peeringdb.com", "www.peeringdb.com"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Established non-profit operating the industry's interconnection database with published AUP, privacy policy and API documentation (A8 trusted: 'All three operators are established non-profits or CERTs: tier trusted', P033 chair rationale).",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "B", "justification": "Records are self-declared by the network operators and usually current; network type, policy and IXP presence are what the operator maintains, not independently verified."},
+  "http_profile": {"user_agent": "neutral", "accept": "application/json", "ttl": 86400, "min_interval": 3.5, "max_bytes": 2000000, "concurrency": 1},
+  "quota": null,
+  "error_markers": [],
+  "keys": {
+    "peeringdb": {
+      "description": "PeeringDB API key (optional: raises the anonymous throttle; sent only as 'Authorization: Api-Key <key>', never in the URL)",
+      "signup_url": "https://www.peeringdb.com/register",
+      "env": ["V3LUM_PEERINGDB_KEY"],
+      "multi_key": false,
+      "plan_hint": "a read-only API key of the team's PeeringDB account (free); keyless lookups work under the anonymous throttle"
+    }
+  },
+  "sources": {
+    "api": {
+      "title": "PeeringDB API: /api/net?asn=&depth=2 (operator, network type, policy, IXPs, facilities), /api/org/{id} (organisation name), /api/net?name__contains= (company name search)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.peeringdb.com/aup",
+        "quote": "Except for Internet operational purposes approved by PeeringDB, no part of the PeeringDB data may be reproduced, stored in a retrieval system, or transmitted [...] Any use of this material to target advertising or similar activities is explicitly forbidden [...] 'Internet operational issues' [...] would include network trouble-shooting, abuse reporting, and Internet research and analysis. It would not include compiling marketing lists, demographic mapping, or any other commercial application.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "peeringdb",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Class 'open' is the binding council decision (P033 cond 1: 'PeeringDB (free under its AUP) [...] open, tier trusted'); the AUP quote above bounds the use to Internet operational purposes (abuse reporting, research and analysis). P033 cond 3: poc/contact objects are dropped at ingestion and never stored or reused (no harvesting or marketing); only role names are kept. The bare host peeringdb.com answers 301 to www.peeringdb.com (observed 2026-11-26), so the module calls www directly. Anonymous queries are throttled (about 20 per minute observed by research): min_interval 3.5 s, optional key 'peeringdb' in the Authorization header. Unknown ASNs answer 404 {data: [], meta: {error: 'Entity not found'}} (a documented absence). Used by asn_context."
+    }
+  },
+  "notes": "Created by batch p2-G02-1 (P033 asn_context). Other batches extend it (peeringdb__<suffix>.json)."
+}

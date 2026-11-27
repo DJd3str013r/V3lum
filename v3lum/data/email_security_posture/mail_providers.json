@@ -1,0 +1,28 @@
+{
+  "schema": "v3lum.mail_providers/1",
+  "description": "SaaS/ESP mail providers recognised by email_security_posture (P002 cond 5): SPF include:/redirect=/a:/mx: targets under these domains, and every target the core noise list classes as saas/cloud/hosting/cdn/webmail, are third-party mail infrastructure (third_party_mail): their netblocks are never the organisation's. MX suffixes name the mailbox provider in the posture summary.",
+  "owner": "batch p1-G01-1 (P002 email_security_posture); V3LUM-authored list",
+  "checked_at": "2026-11-26",
+  "spf": [
+    ["_spf.google.com", "Google Workspace"], ["_netblocks.google.com", "Google Workspace"], ["_netblocks2.google.com", "Google Workspace"],
+    ["_netblocks3.google.com", "Google Workspace"], ["google.com", "Google Workspace"], ["googlemail.com", "Google Workspace"],
+    ["spf.protection.outlook.com", "Microsoft 365"], ["outlook.com", "Microsoft 365"], ["spf.protection.office365.us", "Microsoft 365"],
+    ["hotmail.com", "Microsoft 365"], ["sendgrid.net", "SendGrid"], ["mcsv.net", "Mailchimp"], ["mandrillapp.com", "Mailchimp/Mandrill"],
+    ["mailchimp.com", "Mailchimp"], ["amazonses.com", "Amazon SES"], ["mailgun.org", "Mailgun"], ["sparkpostmail.com", "SparkPost"],
+    ["mtasv.net", "Postmark"], ["zoho.com", "Zoho"], ["zohomail.com", "Zoho"], ["protonmail.ch", "Proton"], ["proton.me", "Proton"],
+    ["zendesk.com", "Zendesk"], ["salesforce.com", "Salesforce"], ["exacttarget.com", "Salesforce Marketing Cloud"],
+    ["mktomail.com", "Marketo"], ["hubspotemail.net", "HubSpot"], ["hubspot.net", "HubSpot"], ["mailjet.com", "Mailjet"],
+    ["sendinblue.com", "Brevo"], ["brevo.com", "Brevo"], ["elasticemail.com", "Elastic Email"], ["emailsrvr.com", "Rackspace"],
+    ["secureserver.net", "GoDaddy"], ["messagelabs.com", "Broadcom MessageLabs"], ["mimecast.com", "Mimecast"],
+    ["pphosted.com", "Proofpoint"], ["ess.barracudanetworks.com", "Barracuda"], ["stspg-customer.com", "Atlassian Statuspage"],
+    ["atlassian.net", "Atlassian"], ["freshdesk.com", "Freshworks"], ["yandex.net", "Yandex"], ["icloud.com", "Apple iCloud"],
+    ["locaweb.com.br", "Locaweb"], ["kinghost.net", "KingHost"], ["uol.com.br", "UOL"], ["hostinger.com", "Hostinger"],
+    ["websitewelcome.com", "HostGator"], ["rdstation.com.br", "RD Station"], ["mailersend.net", "MailerSend"], ["smtp2go.com", "SMTP2GO"]
+  ],
+  "mx": [
+    ["mail.protection.outlook.com", "Microsoft 365"], ["google.com", "Google Workspace"], ["googlemail.com", "Google Workspace"],
+    ["protonmail.ch", "Proton"], ["zoho.com", "Zoho"], ["locaweb.com.br", "Locaweb"], ["pphosted.com", "Proofpoint"],
+    ["mimecast.com", "Mimecast"], ["amazonaws.com", "Amazon SES/WorkMail"], ["secureserver.net", "GoDaddy"],
+    ["kinghost.net", "KingHost"], ["uol.com.br", "UOL"], ["hostinger.com", "Hostinger"], ["yandex.net", "Yandex"]
+  ]
+}

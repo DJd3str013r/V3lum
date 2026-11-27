@@ -1,0 +1,13 @@
+{
+ "_envelope": 1,
+ "_synthetic": "secondary limit answer as documented by GitHub (not provoked)",
+ "status": 403,
+ "headers": {
+  "retry-after": "60",
+  "content-type": "application/json; charset=utf-8"
+ },
+ "body": {
+  "message": "You have exceeded a secondary rate limit. Please wait a few minutes before you try again.",
+  "documentation_url": "https://docs.github.com/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits"
+ }
+}

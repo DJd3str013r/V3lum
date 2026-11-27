@@ -1,0 +1,63 @@
+{
+ "build_id": null,
+ "capped": [],
+ "comment": [],
+ "dynamic": {},
+ "errors": [],
+ "exports": [],
+ "exports_total": 0,
+ "go_buildinfo": false,
+ "header": {
+  "abiversion": 0,
+  "class": "ELFCLASS32",
+  "data": "ELFDATA2LSB",
+  "entry": 32948,
+  "flags": 83886592,
+  "machine": "EM_ARM",
+  "machine_arch": "ARM",
+  "osabi": "ELFOSABI_LINUX",
+  "phentsize": 32,
+  "phnum": 2,
+  "phoff": 52,
+  "shentsize": 40,
+  "shnum": 0,
+  "shoff": 0,
+  "shstrndx": 0,
+  "type": "ET_EXEC"
+ },
+ "imports": [],
+ "imports_total": 0,
+ "interpreter": null,
+ "sections": [],
+ "segments": [
+  {
+   "entropy": 7.9431,
+   "filesz": 6844,
+   "flags": 5,
+   "memsz": 6844,
+   "offset": 0,
+   "oob": false,
+   "type": "PT_LOAD",
+   "vaddr": 32768
+  },
+  {
+   "filesz": 0,
+   "flags": 6,
+   "memsz": 24000,
+   "offset": 0,
+   "type": "PT_LOAD",
+   "vaddr": 1081344
+  }
+ ],
+ "size": 6844,
+ "source": "pyelftools",
+ "symtab": {
+  "present": false
+ },
+ "upx": {
+  "info_banner": false,
+  "magic_offsets": [],
+  "version": null
+ },
+ "version": "0.33"
+}

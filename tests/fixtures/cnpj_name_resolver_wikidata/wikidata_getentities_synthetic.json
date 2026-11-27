@@ -1,0 +1,94 @@
+{
+ "entities": {
+  "Q610817": {
+   "type": "item",
+   "id": "Q610817",
+   "labels": {
+    "pt": {
+     "language": "pt",
+     "value": "Banco do Brasil"
+    },
+    "en": {
+     "language": "en",
+     "value": "Banco do Brasil"
+    }
+   },
+   "aliases": {
+    "pt": [
+     {
+      "language": "pt",
+      "value": "BB"
+     }
+    ]
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "datatype": "wikibase-item",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 22687,
+         "id": "Q22687"
+        },
+        "type": "wikibase-entityid"
+       }
+      },
+      "type": "statement",
+      "rank": "normal"
+     }
+    ],
+    "P6204": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P6204",
+       "datatype": "external-id",
+       "datavalue": {
+        "value": "00.000.000/0001-91",
+        "type": "string"
+       }
+      },
+      "type": "statement",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P6204",
+       "datatype": "external-id",
+       "datavalue": {
+        "value": "00000000000191",
+        "type": "string"
+       }
+      },
+      "type": "statement",
+      "rank": "deprecated"
+     }
+    ],
+    "P856": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "datatype": "url",
+       "datavalue": {
+        "value": "https://www.bb.com.br/",
+        "type": "string"
+       }
+      },
+      "type": "statement",
+      "rank": "preferred"
+     }
+    ]
+   }
+  },
+  "Q0": {
+   "id": "Q0",
+   "missing": ""
+  }
+ }
+}

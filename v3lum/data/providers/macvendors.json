@@ -1,0 +1,40 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "macvendors",
+  "name": "MACVendors.com API (keyless endpoint)",
+  "operator": "MACVendors.com (maintainers named on its About page, Canada)",
+  "hosts": ["api.macvendors.com"],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "unknown",
+  "tier_rationale": "Not reviewed yet: 'Both providers need a recorded community tier before that module runs (A8)' (P315 cond 3; council-1 chunk C reviewer queue: 'tiers for ... maclookup.app and macvendors (P315)'). Evidence for the reviewer (read 2026-11-26): maintainers named on the About page, public API documentation with limits, terms of service and privacy policy pages, free lookup service for many years ('free since the day it launched'). Until a community tier is recorded the opt-in mac_oui_online module never sends a prefix at AMBER or above.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {"publishes_queries": false, "reuses_queries": false, "fetches_target": false, "sensitive": false},
+  "personal_data_review": null,
+  "reliability": {"grade": "B", "justification": "Relays the IEEE registry ('The data comes straight from the IEEE Standards Association'); keyless answers carry the organisation name only."},
+  "http_profile": {"user_agent": "neutral", "accept": "text/plain", "ttl": 2592000, "min_interval": 1.0, "timeout": 15},
+  "quota": {"scope": "egress_ip", "day": 1000, "rate_per_second": 1, "published": true, "evidence_url": "https://macvendors.com/api"},
+  "error_markers": [
+    {"id": "mac_oui_online_macvendors_errors_in_200", "statuses": [200], "json_path": "errors", "regex": ".",
+     "maps_to": "error", "reason_code": "error", "reason": "macvendors.com: an 'errors' object inside an HTTP 200 answer (could not verify)"}
+  ],
+  "keys": {},
+  "sources": {
+    "lookup": {
+      "title": "GET https://api.macvendors.com/{prefix} keyless (6, 7 or 9 hex digits of the registry prefix only, never a full MAC)",
+      "terms": {
+        "class": "unknown",
+        "evidence_url": "https://macvendors.com/terms-of-service",
+        "quote": "Permission is granted to temporarily download one copy of the materials (information or software) on MACVendors' website for personal, non-commercial transitory viewing only.",
+        "checked_at": "2026-11-26",
+        "reviewer": "batch p2-G12-2 (legal review pending: the site-wide terms read non-commercial while the API page says 'Our goal is to make our data accessible to anyone that wants to use it')",
+        "free_plan_business_use": null
+      },
+      "upstream_family": "ieee_ra",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "API page (2026-11-26): 'No registration or API key for up to 1,000 requests a day'; 200 = vendor name as text/plain; '404 Not found. No vendor has registered that prefix. The body is a JSON error that says why, such as Not Found or Locally Administered Address. This counts as a request.'; '429 Slow down. Over the per-second or daily limit. Comes with a Retry-After header. A per-second 429 does not count against your daily quota.'; '1 request/second, 1,000/day without an API key'. Prep live 2026-11-26: malformed input also answers 404 Not Found (the module validates first). Class unknown until legal reads the site-wide terms against the API page (A1: unknown never runs under the corporate profile)."
+    }
+  }
+}

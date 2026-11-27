@@ -1,0 +1,23 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://www.onyphe.io/api/v2/summary/ip/8.8.8.8"
+ },
+ "response": {
+  "status": 400,
+  "headers": {
+   "Content-Type": "application/json"
+  },
+  "body": {
+   "count": 0,
+   "error": 2,
+   "myip": "203.0.113.10",
+   "status": "nok",
+   "text": "No API key given",
+   "took": 0,
+   "total": 0
+  }
+ },
+ "observed": "research_sample",
+ "note": "No Authorization header -> HTTP 400 {error:2, text:'No API key given', status:'nok'}. The caller IP echoed in 'myip' was replaced by a documentation address."
+}

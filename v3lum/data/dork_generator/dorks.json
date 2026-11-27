@@ -1,0 +1,812 @@
+{
+  "schema": "v3lum.dork_pack/1",
+  "pack": "dorks",
+  "title": "V3LUM search-engine dork pack (P306)",
+  "notes": "V3LUM-owned dorks written from search-operator facts (site:, filetype:, inurl:, intitle:, ip:, url:). Nothing is copied from sitedorks or msdorkdump (AGPL), PhoneInfoga (GPL) or dorks_hunter / Fast-Google-Dorks-Scan (no licence) (P306 cond 2, A6). Links only: V3LUM never queries, scrapes or renders a search engine (cond 1). Placeholders are substituted with re.sub through validators (never str.format); {sites} expands the row's site_list. Every rendered query keeps <= 32 words and fewer than 30 site: operators (cond 2).",
+  "engines": {
+    "google": {
+      "host": "www.google.com",
+      "base": "https://www.google.com/search?q="
+    },
+    "bing": {
+      "host": "www.bing.com",
+      "base": "https://www.bing.com/search?q="
+    },
+    "duckduckgo": {
+      "host": "duckduckgo.com",
+      "base": "https://duckduckgo.com/?q="
+    }
+  },
+  "site_lists": {
+    "collab_paste": {
+      "title": "Collaboration and paste sites (domains and brands only, cond 5)",
+      "sites": [
+        "trello.com",
+        "atlassian.net",
+        "pastebin.com",
+        "docs.google.com"
+      ]
+    },
+    "br_complaints": {
+      "title": "Brazilian complaint sites",
+      "sites": [
+        "reclameaqui.com.br",
+        "consumidor.gov.br"
+      ]
+    },
+    "br_marketplaces": {
+      "title": "Brazilian marketplaces",
+      "sites": [
+        "mercadolivre.com.br",
+        "olx.com.br",
+        "shopee.com.br"
+      ]
+    },
+    "br_legal": {
+      "title": "Brazilian legal-records portals (company names only: a person name there is people-search by proxy)",
+      "sites": [
+        "jusbrasil.com.br",
+        "escavador.com"
+      ]
+    },
+    "br_gov": {
+      "title": "gov.br portals and the Diario Oficial da Uniao",
+      "sites": [
+        "gov.br",
+        "in.gov.br"
+      ]
+    },
+    "br_forums": {
+      "title": "Brazilian forums (initial list; the team curates it)",
+      "sites": [
+        "reddit.com/r/brasil",
+        "forum.clubedohardware.com.br",
+        "adrenaline.com.br",
+        "tecmundo.com.br"
+      ]
+    },
+    "br_fraud_cnpj": {
+      "title": "Where a CNPJ shows up in complaints, court records and government portals",
+      "sites": [
+        "reclameaqui.com.br",
+        "jusbrasil.com.br",
+        "gov.br"
+      ]
+    },
+    "docs": {
+      "title": "Document-sharing sites",
+      "sites": [
+        "docs.google.com",
+        "scribd.com",
+        "slideshare.net",
+        "issuu.com",
+        "anyflip.com",
+        "pt.scribd.com"
+      ]
+    },
+    "dev": {
+      "title": "Developer and project sites",
+      "sites": [
+        "trello.com",
+        "atlassian.net",
+        "gitlab.com",
+        "bitbucket.org",
+        "replit.com",
+        "codepen.io"
+      ]
+    },
+    "forms": {
+      "title": "Form builders (credential-phishing pages impersonating a brand)",
+      "sites": [
+        "docs.google.com/forms",
+        "forms.office.com",
+        "forms.gle",
+        "typeform.com",
+        "jotform.com"
+      ]
+    },
+    "storage": {
+      "title": "Public cloud-storage shares",
+      "sites": [
+        "drive.google.com",
+        "dropbox.com",
+        "onedrive.live.com",
+        "1drv.ms",
+        "mega.nz",
+        "box.com"
+      ]
+    },
+    "social": {
+      "title": "Major social platforms",
+      "sites": [
+        "instagram.com",
+        "x.com",
+        "facebook.com",
+        "tiktok.com",
+        "youtube.com",
+        "github.com"
+      ]
+    }
+  },
+  "dorks": [
+    {
+      "id": "exp_documents",
+      "family": "exposure",
+      "group": "exposure",
+      "label": "Documents indexed on the domain",
+      "query": "site:{domain} (filetype:pdf OR filetype:docx OR filetype:doc OR filetype:xlsx OR filetype:xls OR filetype:pptx OR filetype:odt OR filetype:csv)",
+      "entity_types": [
+        "domain"
+      ],
+      "engines": [
+        "google",
+        "bing",
+        "duckduckgo"
+      ],
+      "privacy": false,
+      "scope": "typed_or_own",
+      "curated": true,
+      "notes": ""
+    },
+    {
+      "id": "exp_configs",
+      "family": "exposure",
+      "group": "exposure",
+      "label": "Config, backup, database and log files",
+      "query": "site:{domain} (filetype:env OR filetype:conf OR filetype:ini OR filetype:cfg OR filetype:bak OR filetype:sql OR filetype:log OR filetype:old)",
+      "entity_types": [
+        "domain"
+      ],
+      "engines": [
+        "google",
+        "bing",
+        "duckduckgo"
+      ],
+      "privacy": false,
+      "scope": "typed_or_own",
+      "curated": true,
+      "notes": ""
+    },
+    {
+      "id": "exp_directory_listing",
+      "family": "exposure",
+      "group": "exposure",
+      "label": "Directory listings",
+      "query": "site:{domain} intitle:\"index of\"",
+      "entity_types": [
+        "domain"
+      ],
+      "engines": [
+        "google",
+        "bing",
+        "duckduckgo"
+      ],
+      "privacy": false,
+      "scope": "typed_or_own",
+      "curated": true,
+      "notes": ""
+    },
+    {
+      "id": "exp_panels",
+      "family": "exposure",
+      "group": "exposure",
+      "label": "Login and admin panels",
+      "query": "site:{domain} (inurl:login OR inurl:admin OR inurl:portal OR inurl:dashboard OR inurl:wp-admin)",
+      "entity_types": [
+        "domain"
+      ],
+      "engines": [
+        "google",
+        "bing",
+        "duckduckgo"
+      ],
+      "privacy": false,
+      "scope": "typed_or_own",
+      "curated": true,
+      "notes": ""
+    },
+    {
+      "id": "exp_errors",
+      "family": "exposure",
+      "group": "exposure",
+      "label": "Error and stack-trace leakage",
+      "query": "site:{domain} (\"SQL syntax\" OR \"Fatal error\" OR \"stack trace\" OR \"Warning: include\")",
+      "entity_types": [
+        "domain"
+      ],
+      "engines": [
+        "google",
+        "bing",
+        "duckduckgo"
+      ],
+      "privacy": false,
+      "scope": "typed_or_own",
+      "curated": false,
+      "notes": ""
+    },
+    {
+      "id": "exp_git",
+      "family": "exposure",
+      "group": "exposure",
+      "label": "Exposed version-control folders",
+      "query": "site:{domain} (inurl:\".git\" OR inurl:\".svn\")",
+      "entity_types": [
+        "domain"
+      ],
+      "engines": [
+        "google",
+        "bing",
+        "duckduckgo"
+      ],
+      "privacy": false,
+      "scope": "typed_or_own",
+      "curated": false,
+      "notes": ""
+    },
+    {
+      "id": "exp_wordpress",
+      "family": "exposure",
+      "group": "exposure",
+      "label": "WordPress paths",
+      "query": "site:{domain} (inurl:wp-content OR inurl:wp-includes OR inurl:wp-json)",
+      "entity_types": [
+        "domain"
+      ],
+      "engines": [
+        "google",
+        "bing",
+        "duckduckgo"
+      ],
+      "privacy": false,
+      "scope": "typed_or_own",
+      "curated": false,
+      "notes": ""
+    },
+    {
+      "id": "exp_subdomains",
+      "family": "exposure",
+      "group": "exposure",
+      "label": "Indexed subdomains",
+      "query": "site:*.{domain} -site:www.{domain}",
+      "entity_types": [
+        "domain"
+      ],
+      "engines": [
+        "google",
+        "bing"
+      ],
+      "privacy": false,
+      "scope": "typed_or_own",
+      "curated": false,
+      "notes": ""
+    },
+    {
+      "id": "exp_collab_domain",
+      "family": "exposure",
+      "group": "exposure",
+      "label": "Domain on collaboration and paste sites",
+      "query": "\"{domain}\" ({sites})",
+      "entity_types": [
+        "domain"
+      ],
+      "engines": [
+        "google",
+        "bing",
+        "duckduckgo"
+      ],
+      "privacy": false,
+      "scope": "typed_or_own",
+      "curated": true,
+      "notes": "",
+      "site_list": "collab_paste"
+    },
+    {
+      "id": "exp_collab_brand",
+      "family": "exposure",
+      "group": "exposure",
+      "label": "Brand on collaboration and paste sites",
+      "query": "\"{company}\" ({sites})",
+      "entity_types": [
+        "company_name"
+      ],
+      "engines": [
+        "google",
+        "bing",
+        "duckduckgo"
+      ],
+      "privacy": false,
+      "scope": "typed_or_own",
+      "curated": true,
+      "notes": "",
+      "site_list": "collab_paste"
+    },
+    {
+      "id": "bing_ip",
+      "family": "bing_operator",
+      "group": "bing_operator",
+      "label": "Sites Bing indexed on the IP (ip:)",
+      "query": "ip:{ip}",
+      "entity_types": [
+        "ipv4"
+      ],
+      "engines": [
+        "bing"
+      ],
+      "privacy": false,
+      "scope": "seed_only",
+      "curated": true,
+      "notes": ""
+    },
+    {
+      "id": "bing_url",
+      "family": "bing_operator",
+      "group": "bing_operator",
+      "label": "Is the URL indexed (url:)",
+      "query": "url:{url}",
+      "entity_types": [
+        "url"
+      ],
+      "engines": [
+        "bing"
+      ],
+      "privacy": false,
+      "scope": "seed_only",
+      "curated": true,
+      "notes": ""
+    },
+    {
+      "id": "site_br_complaints",
+      "family": "site_category",
+      "group": "br_sites",
+      "label": "Complaints (Reclame Aqui, consumidor.gov.br)",
+      "query": "\"{company}\" ({sites})",
+      "entity_types": [
+        "company_name"
+      ],
+      "engines": [
+        "google",
+        "bing",
+        "duckduckgo"
+      ],
+      "privacy": false,
+      "scope": "seed_only",
+      "curated": true,
+      "notes": "",
+      "site_list": "br_complaints"
+    },
+    {
+      "id": "site_br_marketplaces",
+      "family": "site_category",
+      "group": "br_sites",
+      "label": "Marketplaces (Mercado Livre, OLX, Shopee)",
+      "query": "\"{term}\" ({sites})",
+      "entity_types": [
+        "company_name",
+        "keyword"
+      ],
+      "engines": [
+        "google",
+        "bing",
+        "duckduckgo"
+      ],
+      "privacy": false,
+      "scope": "seed_only",
+      "curated": false,
+      "notes": "",
+      "site_list": "br_marketplaces"
+    },
+    {
+      "id": "site_br_legal",
+      "family": "site_category",
+      "group": "br_sites",
+      "label": "Court records (Jusbrasil, Escavador) for the company",
+      "query": "\"{company}\" ({sites})",
+      "entity_types": [
+        "company_name"
+      ],
+      "engines": [
+        "google",
+        "bing",
+        "duckduckgo"
+      ],
+      "privacy": false,
+      "scope": "seed_only",
+      "curated": false,
+      "notes": "company names only: a person name there is people-search by proxy (P311, rule 4)",
+      "site_list": "br_legal"
+    },
+    {
+      "id": "site_br_gov",
+      "family": "site_category",
+      "group": "br_sites",
+      "label": "gov.br portals and the Diario Oficial",
+      "query": "\"{company}\" ({sites})",
+      "entity_types": [
+        "company_name"
+      ],
+      "engines": [
+        "google",
+        "bing",
+        "duckduckgo"
+      ],
+      "privacy": false,
+      "scope": "seed_only",
+      "curated": false,
+      "notes": "",
+      "site_list": "br_gov"
+    },
+    {
+      "id": "site_br_forums",
+      "family": "site_category",
+      "group": "br_sites",
+      "label": "Brazilian forums",
+      "query": "\"{term}\" ({sites})",
+      "entity_types": [
+        "company_name",
+        "keyword"
+      ],
+      "engines": [
+        "google",
+        "bing",
+        "duckduckgo"
+      ],
+      "privacy": false,
+      "scope": "seed_only",
+      "curated": false,
+      "notes": "initial list: the team curates the forum sites",
+      "site_list": "br_forums"
+    },
+    {
+      "id": "site_docs",
+      "family": "site_category",
+      "group": "docs_dev",
+      "label": "Document-sharing sites",
+      "query": "\"{term}\" ({sites})",
+      "entity_types": [
+        "company_name",
+        "keyword"
+      ],
+      "engines": [
+        "google",
+        "bing",
+        "duckduckgo"
+      ],
+      "privacy": false,
+      "scope": "seed_only",
+      "curated": false,
+      "notes": "",
+      "site_list": "docs"
+    },
+    {
+      "id": "site_dev",
+      "family": "site_category",
+      "group": "docs_dev",
+      "label": "Developer and project sites",
+      "query": "\"{domain}\" ({sites})",
+      "entity_types": [
+        "domain"
+      ],
+      "engines": [
+        "google",
+        "bing",
+        "duckduckgo"
+      ],
+      "privacy": false,
+      "scope": "seed_only",
+      "curated": false,
+      "notes": "",
+      "site_list": "dev"
+    },
+    {
+      "id": "site_forms",
+      "family": "site_category",
+      "group": "docs_dev",
+      "label": "Form builders using the brand (phishing forms)",
+      "query": "\"{term}\" ({sites})",
+      "entity_types": [
+        "company_name",
+        "keyword"
+      ],
+      "engines": [
+        "google",
+        "bing",
+        "duckduckgo"
+      ],
+      "privacy": false,
+      "scope": "seed_only",
+      "curated": false,
+      "notes": "",
+      "site_list": "forms"
+    },
+    {
+      "id": "site_storage",
+      "family": "site_category",
+      "group": "docs_dev",
+      "label": "Public cloud-storage shares",
+      "query": "\"{domain}\" ({sites})",
+      "entity_types": [
+        "domain"
+      ],
+      "engines": [
+        "google",
+        "bing",
+        "duckduckgo"
+      ],
+      "privacy": false,
+      "scope": "seed_only",
+      "curated": false,
+      "notes": "",
+      "site_list": "storage"
+    },
+    {
+      "id": "fraud_cnpj_sites",
+      "family": "br_fraud",
+      "group": "br_fraud",
+      "label": "CNPJ on Reclame Aqui, Jusbrasil and gov.br",
+      "query": "(\"{cnpj_fmt}\" OR \"{cnpj_digits}\") ({sites})",
+      "entity_types": [
+        "cnpj"
+      ],
+      "engines": [
+        "google",
+        "bing",
+        "duckduckgo"
+      ],
+      "privacy": false,
+      "scope": "seed_only",
+      "curated": true,
+      "notes": "",
+      "site_list": "br_fraud_cnpj"
+    },
+    {
+      "id": "fraud_cnpj_terms",
+      "family": "br_fraud",
+      "group": "br_fraud",
+      "label": "CNPJ with scam terms",
+      "query": "(\"{cnpj_fmt}\" OR \"{cnpj_digits}\") (golpe OR fraude OR estelionato)",
+      "entity_types": [
+        "cnpj"
+      ],
+      "engines": [
+        "google",
+        "bing",
+        "duckduckgo"
+      ],
+      "privacy": false,
+      "scope": "seed_only",
+      "curated": true,
+      "notes": ""
+    },
+    {
+      "id": "fraud_company_terms",
+      "family": "br_fraud",
+      "group": "br_fraud",
+      "label": "Company with scam terms",
+      "query": "\"{company}\" (golpe OR fraude OR \"reclame aqui\")",
+      "entity_types": [
+        "company_name"
+      ],
+      "engines": [
+        "google",
+        "bing",
+        "duckduckgo"
+      ],
+      "privacy": false,
+      "scope": "seed_only",
+      "curated": true,
+      "notes": ""
+    },
+    {
+      "id": "fraud_pix",
+      "family": "pix",
+      "group": "br_fraud",
+      "label": "PIX key (random key) with scam terms",
+      "query": "\"{pix}\" (golpe OR fraude OR estelionato)",
+      "entity_types": [
+        "pix_key"
+      ],
+      "engines": [
+        "google",
+        "bing",
+        "duckduckgo"
+      ],
+      "privacy": true,
+      "scope": "seed_only",
+      "curated": true,
+      "notes": "random (EVP) keys only: a CPF key never produces a dork (rule 4)"
+    },
+    {
+      "id": "fraud_phone",
+      "family": "phone",
+      "group": "br_fraud",
+      "label": "Phone variants with scam terms",
+      "query": "({phone_variants}) (golpe OR fraude OR whatsapp)",
+      "entity_types": [
+        "phone"
+      ],
+      "engines": [
+        "google",
+        "bing",
+        "duckduckgo"
+      ],
+      "privacy": true,
+      "scope": "seed_only",
+      "curated": true,
+      "notes": ""
+    },
+    {
+      "id": "fraud_wa_links",
+      "family": "phone",
+      "group": "br_fraud",
+      "label": "wa.me and api.whatsapp.com links for the number",
+      "query": "(\"wa.me/{phone_wa}\" OR \"api.whatsapp.com/send?phone={phone_wa}\")",
+      "entity_types": [
+        "phone"
+      ],
+      "engines": [
+        "google",
+        "bing",
+        "duckduckgo"
+      ],
+      "privacy": true,
+      "scope": "seed_only",
+      "curated": false,
+      "notes": ""
+    },
+    {
+      "id": "fraud_tme_links",
+      "family": "username",
+      "group": "br_fraud",
+      "label": "t.me links for the handle",
+      "query": "\"t.me/{user}\"",
+      "entity_types": [
+        "username",
+        "telegram_handle"
+      ],
+      "engines": [
+        "google",
+        "bing",
+        "duckduckgo"
+      ],
+      "privacy": true,
+      "scope": "seed_only",
+      "curated": false,
+      "notes": ""
+    },
+    {
+      "id": "phone_exact",
+      "family": "phone",
+      "group": "person",
+      "label": "Exact phone variants",
+      "query": "{phone_variants}",
+      "entity_types": [
+        "phone"
+      ],
+      "engines": [
+        "google",
+        "bing",
+        "duckduckgo"
+      ],
+      "privacy": true,
+      "scope": "seed_only",
+      "curated": true,
+      "notes": ""
+    },
+    {
+      "id": "email_exact",
+      "family": "email",
+      "group": "person",
+      "label": "Exact e-mail address",
+      "query": "\"{email}\"",
+      "entity_types": [
+        "email"
+      ],
+      "engines": [
+        "google",
+        "bing",
+        "duckduckgo"
+      ],
+      "privacy": true,
+      "scope": "seed_only",
+      "curated": true,
+      "notes": ""
+    },
+    {
+      "id": "username_exact",
+      "family": "username",
+      "group": "person",
+      "label": "Exact handle",
+      "query": "\"{user}\"",
+      "entity_types": [
+        "username",
+        "telegram_handle"
+      ],
+      "engines": [
+        "google",
+        "bing",
+        "duckduckgo"
+      ],
+      "privacy": true,
+      "scope": "seed_only",
+      "curated": true,
+      "notes": ""
+    },
+    {
+      "id": "username_social",
+      "family": "username",
+      "group": "person",
+      "label": "Handle on social platforms",
+      "query": "\"{user}\" ({sites})",
+      "entity_types": [
+        "username"
+      ],
+      "engines": [
+        "google",
+        "bing",
+        "duckduckgo"
+      ],
+      "privacy": true,
+      "scope": "seed_only",
+      "curated": false,
+      "notes": "",
+      "site_list": "social"
+    },
+    {
+      "id": "person_exact",
+      "family": "person",
+      "group": "person",
+      "label": "Exact name",
+      "query": "\"{name}\"",
+      "entity_types": [
+        "person_name"
+      ],
+      "engines": [
+        "google",
+        "bing",
+        "duckduckgo"
+      ],
+      "privacy": true,
+      "scope": "seed_only",
+      "curated": false,
+      "notes": ""
+    },
+    {
+      "id": "linkedin_xray_person",
+      "family": "linkedin_xray",
+      "group": "person",
+      "label": "LinkedIn X-ray: the person at the own organisation",
+      "query": "site:linkedin.com/in \"{name}\" \"{own_company}\"",
+      "entity_types": [
+        "person_name"
+      ],
+      "engines": [
+        "google",
+        "bing",
+        "duckduckgo"
+      ],
+      "privacy": true,
+      "scope": "own_org_only",
+      "curated": false,
+      "notes": "only with the organisation name of the org_profile (own employees assessment)"
+    },
+    {
+      "id": "linkedin_xray_company",
+      "family": "linkedin_xray",
+      "group": "person",
+      "label": "LinkedIn X-ray: profiles naming the own organisation",
+      "query": "site:linkedin.com/in \"{own_company}\"",
+      "entity_types": [
+        "company_name"
+      ],
+      "engines": [
+        "google",
+        "bing",
+        "duckduckgo"
+      ],
+      "privacy": true,
+      "scope": "own_org_only",
+      "curated": false,
+      "notes": "only when the company is the own organisation of the org_profile"
+    }
+  ]
+}

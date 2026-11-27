@@ -1,0 +1,15 @@
+{
+ "request": "GET https://tls.bufferover.run/dns?q=.example.com",
+ "response": {
+  "status": 429,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": {
+   "message": "Limit Exceeded"
+  }
+ },
+ "transport_error": null,
+ "elapsed_s": null,
+ "note": "AWS API Gateway usage-plan quota body (PLACEHOLDER): bare 'Limit Exceeded' -> QUOTA"
+}

@@ -1,0 +1,19 @@
+{
+ "_meta": {
+  "module": "pypi_package",
+  "case": "not_found",
+  "source": "C0253 pypi.org",
+  "request": {
+   "method": "GET",
+   "url": "https://pypi.org/pypi/qz7k2v9m4p1w8n3x5c6b/json"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "LIVE",
+  "elapsed_s": 0.129
+ },
+ "status": 404,
+ "headers": {
+  "content-type": "application/json"
+ },
+ "body": "{\"message\":\"Not Found\"}"
+}

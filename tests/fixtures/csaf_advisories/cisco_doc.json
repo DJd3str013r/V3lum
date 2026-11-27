@@ -1,0 +1,337 @@
+{
+ "document": {
+  "acknowledgments": [
+   {
+    "summary": "These vulnerabilities were disclosed by the Apache Software Foundation."
+   }
+  ],
+  "category": "csaf_security_advisory",
+  "csaf_version": "2.0",
+  "notes": [
+   {
+    "category": "summary",
+    "title": "Summary",
+    "text": "Critical Vulnerabilities in Apache Log4j Java Logging Library\r\n\r\nOn December 9, 2021, the following critical vulnerability in the Apache Log4j Java logging library affecting all Log4j2 versions earlier than 2.15.0 was disclosed:\r\n\r\nCVE-2021-44228: Apache Log4j2 JNDI features do not protect against a"
+   },
+   {
+    "category": "general",
+    "title": "Fixed Software",
+    "text": "For information about fixed software releases, consult the Cisco bugs identified in the Vulnerable Products [\"#vp\"] section of this advisory.\r\n\r\nWhen considering software upgrades, customers are advised to regularly consult the advisories for Cisco products, which are available from the Cisco Securi"
+   },
+   {
+    "category": "general",
+    "title": "Exploitation and Public Announcements",
+    "text": "The Cisco Product Security Incident Response Team (PSIRT) is aware that proof-of-concept exploit code is available for the vulnerabilities described in this advisory."
+   },
+   {
+    "category": "legal_disclaimer",
+    "title": "Legal Disclaimer",
+    "text": "THIS DOCUMENT IS PROVIDED ON AN \"AS IS\" BASIS AND DOES NOT IMPLY ANY KIND OF GUARANTEE OR WARRANTY, INCLUDING THE WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR USE. YOUR USE OF THE INFORMATION ON THE DOCUMENT OR MATERIALS LINKED FROM THE DOCUMENT IS AT YOUR OWN RISK. CISCO RESERVES THE RIGHT TO CHANGE OR UPDATE THIS DOCUMENT AT ANY TIME.\r\n\r\nA standalone copy or paraphrase of the text of this document that omits the distribution URL is an uncontrolled copy and may lack important information or contain factual errors. The information in this document is intended for end users of Cisco products."
+   }
+  ],
+  "publisher": {
+   "category": "vendor",
+   "contact_details": "psirt@cisco.com",
+   "issuing_authority": "Cisco PSIRT",
+   "name": "Cisco",
+   "namespace": "https://cisco.com"
+  },
+  "references": [
+   {
+    "category": "self",
+    "summary": "Vulnerabilities in Apache Log4j Library Affecting Cisco Products: December 2021",
+    "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-apache-log4j-qRuKNEbd"
+   },
+   {
+    "category": "external",
+    "summary": "Cisco Security Vulnerability Policy",
+    "url": "https://sec.cloudapps.cisco.com/security/center/resources/security_vulnerability_policy.html"
+   },
+   {
+    "category": "external",
+    "summary": "Apache Log4j Security Vulnerabilities",
+    "url": "https://logging.apache.org/log4j/2.x/security.html"
+   }
+  ],
+  "title": "Vulnerabilities in Apache Log4j Library Affecting Cisco Products: December 2021",
+  "tracking": {
+   "current_release_date": "2022-01-31T21:16:10+00:00",
+   "generator": {
+    "date": "2026-11-14T03:29:06+00:00",
+    "engine": {
+     "name": "TVCE"
+    }
+   },
+   "id": "cisco-sa-apache-log4j-qRuKNEbd",
+   "initial_release_date": "2021-12-10T18:45:00+00:00",
+   "revision_history": [
+    {
+     "date": "2021-12-10T18:45:00+00:00",
+     "number": "1.0.0",
+     "summary": "Initial public release."
+    },
+    {
+     "date": "2022-01-31T21:16:10+00:00",
+     "number": "1.32.0",
+     "summary": "Updated vulnerable products."
+    }
+   ],
+   "status": "final",
+   "version": "1.32.0"
+  }
+ },
+ "product_tree": {
+  "branches": [
+   {
+    "name": "Cisco",
+    "category": "vendor",
+    "branches": [
+     {
+      "name": "Cisco Unified Communications Manager IM and Presence Service",
+      "category": "product_family",
+      "product": {
+       "name": "Cisco Unified Communications Manager IM and Presence Service ",
+       "product_id": "CSAFPID-189784"
+      }
+     },
+     {
+      "name": "Cisco Evolved Programmable Network Manager (EPNM)",
+      "category": "product_family",
+      "product": {
+       "name": "Cisco Evolved Programmable Network Manager (EPNM) ",
+       "product_id": "CSAFPID-213688"
+      }
+     },
+     {
+      "name": "Cisco Network Services Orchestrator",
+      "category": "product_family",
+      "product": {
+       "name": "Cisco Network Services Orchestrator ",
+       "product_id": "CSAFPID-227765"
+      }
+     },
+     {
+      "name": "Cisco Unified Communications Manager / Cisco Unity Connection",
+      "category": "product_family",
+      "product": {
+       "name": "Cisco Unified Communications Manager / Cisco Unity Connection ",
+       "product_id": "CSAFPID-277610"
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "vulnerabilities": [
+  {
+   "cve": "CVE-2021-44832",
+   "notes": [
+    {
+     "category": "other",
+     "title": "Affected Product Comprehensiveness",
+     "text": "Complete."
+    }
+   ],
+   "product_status": {
+    "known_affected": [
+     "CSAFPID-213688",
+     "CSAFPID-227765",
+     "CSAFPID-277610",
+     "CSAFPID-189784"
+    ]
+   },
+   "remediations": [
+    {
+     "category": "vendor_fix",
+     "details": "Cisco has released software updates that address this vulnerability.",
+     "product_ids": [
+      "CSAFPID-227765",
+      "CSAFPID-213688",
+      "CSAFPID-189784",
+      "CSAFPID-277610"
+     ],
+     "url": "https://software.cisco.com"
+    }
+   ],
+   "scores": [
+    {
+     "cvss_v3": {
+      "baseScore": 6.6,
+      "baseSeverity": "MEDIUM",
+      "vectorString": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H",
+      "version": "3.1"
+     },
+     "products": [
+      "CSAFPID-213688",
+      "CSAFPID-227765",
+      "CSAFPID-277610",
+      "CSAFPID-189784"
+     ]
+    }
+   ],
+   "title": "vuln-CVE-2021-44832"
+  },
+  {
+   "cve": "CVE-2021-45046",
+   "ids": [
+    {
+     "system_name": "Cisco Bug ID",
+     "text": "CSCwa47310"
+    },
+    {
+     "system_name": "Cisco Bug ID",
+     "text": "CSCwa56230"
+    }
+   ],
+   "notes": [
+    {
+     "category": "other",
+     "title": "Affected Product Comprehensiveness",
+     "text": "Complete."
+    }
+   ],
+   "product_status": {
+    "known_affected": [
+     "CSAFPID-227765",
+     "CSAFPID-277610",
+     "CSAFPID-213688",
+     "CSAFPID-189784"
+    ]
+   },
+   "remediations": [
+    {
+     "category": "vendor_fix",
+     "details": "Cisco has released software updates that address this vulnerability.",
+     "product_ids": [
+      "CSAFPID-277610",
+      "CSAFPID-189784",
+      "CSAFPID-227765",
+      "CSAFPID-213688"
+     ],
+     "url": "https://software.cisco.com"
+    }
+   ],
+   "scores": [
+    {
+     "cvss_v3": {
+      "baseScore": 9.0,
+      "baseSeverity": "CRITICAL",
+      "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H",
+      "version": "3.1"
+     },
+     "products": [
+      "CSAFPID-227765",
+      "CSAFPID-277610",
+      "CSAFPID-213688",
+      "CSAFPID-189784"
+     ]
+    }
+   ],
+   "title": "vuln-CVE-2021-45046"
+  },
+  {
+   "cve": "CVE-2021-44228",
+   "ids": [
+    {
+     "system_name": "Cisco Bug ID",
+     "text": "CSCwa56230"
+    }
+   ],
+   "notes": [
+    {
+     "category": "other",
+     "title": "Affected Product Comprehensiveness",
+     "text": "Complete."
+    }
+   ],
+   "product_status": {
+    "known_affected": [
+     "CSAFPID-277610",
+     "CSAFPID-189784"
+    ]
+   },
+   "remediations": [
+    {
+     "category": "vendor_fix",
+     "details": "Cisco has released software updates that address this vulnerability.",
+     "product_ids": [
+      "CSAFPID-189784",
+      "CSAFPID-277610"
+     ],
+     "url": "https://software.cisco.com"
+    }
+   ],
+   "scores": [
+    {
+     "cvss_v3": {
+      "baseScore": 10.0,
+      "baseSeverity": "CRITICAL",
+      "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+      "version": "3.1"
+     },
+     "products": [
+      "CSAFPID-277610",
+      "CSAFPID-189784"
+     ]
+    }
+   ],
+   "title": "Vulnerability in Apache Log4j Library Affecting Cisco Products: December 2021"
+  },
+  {
+   "cve": "CVE-2021-45105",
+   "ids": [
+    {
+     "system_name": "Cisco Bug ID",
+     "text": "CSCwa56230"
+    },
+    {
+     "system_name": "Cisco Bug ID",
+     "text": "CSCwa54650"
+    },
+    {
+     "system_name": "Cisco Bug ID",
+     "text": "CSCwa47310"
+    }
+   ],
+   "notes": [
+    {
+     "category": "other",
+     "title": "Affected Product Comprehensiveness",
+     "text": "Complete."
+    }
+   ],
+   "product_status": {
+    "known_affected": [
+     "CSAFPID-189784",
+     "CSAFPID-213688"
+    ]
+   },
+   "remediations": [
+    {
+     "category": "vendor_fix",
+     "details": "Cisco has released software updates that address this vulnerability.",
+     "product_ids": [
+      "CSAFPID-213688",
+      "CSAFPID-189784"
+     ],
+     "url": "https://software.cisco.com"
+    }
+   ],
+   "scores": [
+    {
+     "cvss_v3": {
+      "baseScore": 5.9,
+      "baseSeverity": "MEDIUM",
+      "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "version": "3.1"
+     },
+     "products": [
+      "CSAFPID-189784",
+      "CSAFPID-213688"
+     ]
+    }
+   ],
+   "title": "Vulnerability in Apache Log4j Library Affecting Cisco Products: December 2021 (CVE-2021-45105)"
+  }
+ ]
+}

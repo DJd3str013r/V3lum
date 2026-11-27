@@ -1,0 +1,36 @@
+{
+ "now": "2026-11-26T00:00:00Z",
+ "vectors": [
+  {
+   "platform": "x",
+   "id": "1536682540265873408",
+   "created": "2022-06-14T12:10:42.437Z",
+   "source": "P314 c6 (TweetedAt/research smoke test)"
+  },
+  {
+   "platform": "discord",
+   "id": "613425648685547541",
+   "created": "2019-08-20T17:34:31.544Z",
+   "source": "P314 c6 (Snow-Stamp/research smoke test)"
+  },
+  {
+   "platform": "tiktok",
+   "id": "6718335390845095173",
+   "created": "2019-07-27T13:32:33Z",
+   "source": "P314 c6 (Bellingcat tiktok-timestamp/research smoke test)"
+  },
+  {
+   "platform": "discord",
+   "id": "1235579295498416149",
+   "created": "2024-05-02T13:11:00.000Z",
+   "rendered": "created ~2024-05-02 13:11 UTC (decoded from the ID)",
+   "source": "constructed round-trip (P314 c5 rendering example)"
+  },
+  {
+   "platform": "linkedin",
+   "id": "7034310859677622848",
+   "created": "2023-02-23T00:00:00.123Z",
+   "source": "constructed round-trip: no published LinkedIn vector in the spec (first 41 bits = ms)"
+  }
+ ]
+}

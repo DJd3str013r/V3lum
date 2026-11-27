@@ -1,0 +1,84 @@
+{
+ "cves": [
+  {
+   "cve_id": "CVE-2026-109618",
+   "summary": "PHP uses longjmp() for out-of-memory (OOM) errors to exit the current context and abort handling of the request. Some contexts may not properly account for this scenario and leave request memory in an uninitialized state before performing an allocation. The subsequent request cleanup procedure may read or branch on this memory. Multiple OOM strategies can consistently trigger this condition and lead to remote code execution (RCE).",
+   "cvss": 9.2,
+   "cvss_version": 4.0,
+   "cvss_v2": null,
+   "cvss_v3": 9.8,
+   "cvss_v4": 9.2,
+   "epss": 0.99999,
+   "ranking_epss": 0.99999,
+   "kev": true,
+   "propose_action": "PHP contains an out-of-memory corruption vulnerability that allows for unauthenticated remote code execution.",
+   "ransomware_campaign": "Unknown",
+   "vendor": null,
+   "product": null,
+   "version": null,
+   "published_time": "2026-10-21T14:17:09",
+   "references": [
+    "https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w",
+    "http://www.openwall.com/lists/oss-security/2026/10/21/6"
+   ],
+   "euvd": {
+    "id": "EUVD-2026-107260",
+    "published_time": "2026-10-21T13:48:34",
+    "cvss": 9.2,
+    "cvss_version": "4.0",
+    "epss": 1.0,
+    "assigner": "php",
+    "products": [
+     "PHP",
+     "PHP",
+     "PHP",
+     "PHP"
+    ],
+    "vendors": [
+     "PHP Group"
+    ]
+   },
+   "ghsa": null
+  },
+  {
+   "cve_id": "CVE-2026-109618",
+   "summary": "PHP uses longjmp() for out-of-memory (OOM) errors to exit the current context and abort handling of the request. Some contexts may not properly account for this scenario and leave request memory in an uninitialized state before performing an allocation. The subsequent request cleanup procedure may read or branch on this memory. Multiple OOM strategies can consistently trigger this condition and lead to remote code execution (RCE).",
+   "cvss": 9.2,
+   "cvss_version": 4.0,
+   "cvss_v2": null,
+   "cvss_v3": 9.8,
+   "cvss_v4": 9.2,
+   "epss": 0.99999,
+   "ranking_epss": 0.99999,
+   "kev": true,
+   "propose_action": "PHP contains an out-of-memory corruption vulnerability that allows for unauthenticated remote code execution.",
+   "ransomware_campaign": "Unknown",
+   "vendor": "php",
+   "product": "php",
+   "version": null,
+   "published_time": "2026-10-21T14:17:09",
+   "references": [
+    "https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w",
+    "http://www.openwall.com/lists/oss-security/2026/10/21/6"
+   ],
+   "euvd": {
+    "id": "EUVD-2026-107260",
+    "published_time": "2026-10-21T13:48:34",
+    "cvss": 9.2,
+    "cvss_version": "4.0",
+    "epss": 1.0,
+    "assigner": "php",
+    "products": [
+     "PHP",
+     "PHP",
+     "PHP",
+     "PHP"
+    ],
+    "vendors": [
+     "PHP Group"
+    ]
+   },
+   "ghsa": null
+  }
+ ]
+}

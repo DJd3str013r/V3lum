@@ -1,0 +1,29 @@
+{
+  "schema": "v3lum.platforms/1",
+  "platforms": {
+    "bluesky": {
+      "title": "Bluesky",
+      "aliases": ["bsky"],
+      "profile_url_patterns": ["https://bsky.app/profile/{handle}"],
+      "reserved_handles": []
+    },
+    "npm": {
+      "title": "npm",
+      "aliases": ["npmjs"],
+      "profile_url_patterns": ["https://www.npmjs.com/~{handle}"],
+      "reserved_handles": []
+    },
+    "pypi": {
+      "title": "PyPI",
+      "aliases": [],
+      "profile_url_patterns": ["https://pypi.org/user/{handle}/"],
+      "reserved_handles": []
+    },
+    "discord": {
+      "title": "Discord",
+      "aliases": [],
+      "profile_url_patterns": ["https://discord.com/users/{handle}"],
+      "reserved_handles": []
+    }
+  }
+}

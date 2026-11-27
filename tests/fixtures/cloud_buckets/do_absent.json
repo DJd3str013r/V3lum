@@ -1,0 +1,11 @@
+{
+ "request": {"method": "GET", "url": "https://example-corp-nope-xyz.nyc3.digitaloceanspaces.com/?max-keys=1"},
+ "response": {
+  "status": 404,
+  "headers": {"content-type": "application/xml"},
+  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Error><Code>NoSuchBucket</Code><Message>The specified bucket does not exist</Message><BucketName>example-corp-nope-xyz</BucketName><RequestId>tx00000000000000000000-0000000000-aaaaaaa-nyc3</RequestId></Error>"
+ },
+ "class": "research",
+ "origin": "research/samples/design_cti_analysis_checks.json#bucket_semantics.do_spaces",
+ "notes": "404 NoSuchBucket = absent (FC4). RequestId scrubbed."
+}

@@ -1,0 +1,151 @@
+{
+ "took": 26070,
+ "timed_out": false,
+ "_shards": {
+  "total": 1,
+  "successful": 1,
+  "skipped": 0,
+  "failed": 0
+ },
+ "hits": {
+  "total": {
+   "value": 10000,
+   "relation": "gte"
+  },
+  "max_score": 1.0,
+  "hits": [
+   {
+    "_index": "api_publica_tjac",
+    "_id": "TJAC_G1_07000551020188010022",
+    "_score": 1.0,
+    "_source": {
+     "tribunal": "TJAC",
+     "grau": "G1",
+     "numeroProcesso": "07000551020188010022",
+     "dataAjuizamento": "20180412093322",
+     "orgaoJulgador": {
+      "codigo": 74302,
+      "nome": "Vara Unica de Porto Acre",
+      "codigoMunicipioIBGE": null
+     },
+     "classe": {
+      "codigo": 1116,
+      "nome": "Execução Fiscal"
+     },
+     "assuntos": [
+      {
+       "codigo": 6017,
+       "nome": "Dívida Ativa (Execução Fiscal)"
+      }
+     ],
+     "movimentos": [
+      {
+       "codigo": 60,
+       "dataHora": "2026-09-19T00:28:59.000Z",
+       "nome": "Expedição de documento",
+       "complementosTabelados": [
+        {
+         "codigo": 4,
+         "descricao": "tipo_de_documento",
+         "valor": 107,
+         "nome": "Certidão"
+        }
+       ],
+       "orgaoJulgador": {
+        "codigo": "74302",
+        "nome": "Vara Unica de Porto Acre"
+       }
+      },
+      {
+       "codigo": 60,
+       "dataHora": "2026-09-08T11:04:51.000Z",
+       "nome": "Expedição de documento",
+       "complementosTabelados": [
+        {
+         "codigo": 4,
+         "descricao": "tipo_de_documento",
+         "valor": 107,
+         "nome": "Certidão"
+        }
+       ],
+       "orgaoJulgador": {
+        "codigo": "74302",
+        "nome": "Vara Unica de Porto Acre"
+       }
+      },
+      {
+       "codigo": 11010,
+       "dataHora": "2026-08-31T12:58:53.000Z",
+       "nome": "Mero expediente",
+       "orgaoJulgador": {
+        "codigo": "74302",
+        "nome": "Vara Unica de Porto Acre"
+       }
+      },
+      {
+       "codigo": 11383,
+       "dataHora": "2026-09-08T09:54:20.000Z",
+       "nome": "Ato ordinatório",
+       "orgaoJulgador": {
+        "codigo": "74302",
+        "nome": "Vara Unica de Porto Acre"
+       }
+      },
+      {
+       "codigo": 51,
+       "dataHora": "2026-09-30T12:31:09.000Z",
+       "nome": "Conclusão",
+       "complementosTabelados": [
+        {
+         "codigo": 3,
+         "descricao": "tipo_de_conclusao",
+         "valor": 6,
+         "nome": "para decisão"
+        }
+       ],
+       "orgaoJulgador": {
+        "codigo": "74302",
+        "nome": "Vara Unica de Porto Acre"
+       }
+      },
+      {
+       "codigo": 85,
+       "dataHora": "2026-09-27T18:16:47.000Z",
+       "nome": "Petição",
+       "complementosTabelados": [
+        {
+         "codigo": 19,
+         "descricao": "tipo_de_peticao",
+         "valor": 58,
+         "nome": "Petição inicial"
+        }
+       ],
+       "orgaoJulgador": {
+        "codigo": "74302",
+        "nome": "Vara Unica de Porto Acre"
+       }
+      },
+      {
+       "codigo": 11383,
+       "dataHora": "2019-05-17T14:11:23.000Z",
+       "nome": "Ato ordinatório",
+       "orgaoJulgador": {
+        "codigo": "74302",
+        "nome": "Vara Unica de Porto Acre"
+       }
+      },
+      {
+       "codigo": 132,
+       "dataHora": "2019-07-16T14:36:54.000Z",
+       "nome": "Recebimento",
+       "orgaoJulgador": {
+        "codigo": "74302",
+        "nome": "Vara Unica de Porto Acre"
+       }
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

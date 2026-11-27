@@ -1,0 +1,55 @@
+{
+  "schema": "v3lum.provider/1",
+  "id": "blockchain_com",
+  "name": "Blockchain.com Data API (blockchain.info rawaddr / multiaddr / balance)",
+  "operator": "Blockchain.com, Inc.",
+  "hosts": [
+    "blockchain.info"
+  ],
+  "hosts_from_settings": [],
+  "internal": false,
+  "tier": "trusted",
+  "tier_rationale": "Blockchain.com, an established company with published terms, a privacy policy and a business offering (A8 trusted). Registry tiers: Blockstream, Blockchain.com, BlockCypher and Blockchair trusted; mempool.space and litecoinspace community.",
+  "tier_reviewer": "council-1 (A8)",
+  "tier_date": "2026-11-26",
+  "flags": {
+    "publishes_queries": false,
+    "reuses_queries": false,
+    "fetches_target": false,
+    "sensitive": false
+  },
+  "personal_data_review": null,
+  "reliability": {
+    "grade": "B",
+    "justification": "Explorer API over its own Bitcoin nodes: balances and transactions are chain facts; multiaddr transaction lists carry only the queried wallet's outputs."
+  },
+  "http_profile": {
+    "user_agent": "neutral",
+    "accept": "application/json",
+    "timeout": 5.0,
+    "ttl": 3600,
+    "min_interval": 10.0,
+    "concurrency": 1
+  },
+  "quota": null,
+  "error_markers": [],
+  "keys": {},
+  "sources": {
+    "data_api": {
+      "title": "Blockchain.com Data API: rawaddr (summary + full txs), multiaddr/balance (batch summaries, %7C separators)",
+      "terms": {
+        "class": "open",
+        "evidence_url": "https://www.blockchain.com/legal/terms",
+        "quote": "Per-adapter terms recorded: Esplora, mempool, litecoinspace and Blockchain.com 'open'; BlockCypher and Blockchair 'key-terms'.",
+        "checked_at": "2026-11-26",
+        "reviewer": "council-1 (A1)",
+        "free_plan_business_use": true
+      },
+      "upstream_family": "blockchain.com",
+      "sanitizer": null,
+      "dataset": null,
+      "notes": "Quote: binding council text (P211 cond 6). Research C0481 (verified_live 200): rawaddr/{a}?limit=50&offset=k, multiaddr?active=a1%7Ca2 (the separator must be URL-encoded: a raw '|' returned {'error':'invalid address'}), balance?active=a; invalid address -> 404 {'error':'not-found-or-invalid-arg'} (prep live 2026-11-26). Documented ~1 request / 10 s sustained -> min_interval 10 s. Used by btc_explorers (BTC fallback)."
+    }
+  },
+  "notes": "Owned by batch p2-G09-2 (P211). Soft limits ~1 req/10 s (research C0481): min_interval 10 s on the host, crypto ttl 1 h, 5 s timeout; 429 = RATE_LIMITED (host short-circuited for the run)."
+}

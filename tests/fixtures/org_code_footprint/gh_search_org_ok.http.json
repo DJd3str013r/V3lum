@@ -1,0 +1,27 @@
+{
+ "_meta": {
+  "module": "org_code_footprint",
+  "case": "gh_search_org_ok",
+  "source": "C0758 api.github.com",
+  "request": {
+   "method": "GET",
+   "url": "https://api.github.com/search/users?q=microsoft+type:org&per_page=5"
+  },
+  "captured_at": "2026-11-26",
+  "origin": "LIVE",
+  "elapsed_s": 0.26,
+  "note": "rate headers reflect a token injected by the research egress proxy (search 30/min); keyless is 10/min. Items trimmed to 3; the *_url templates are kept because they are socid 'GitHub API' flags."
+ },
+ "status": 200,
+ "headers": {
+  "content-type": "application/json; charset=utf-8",
+  "x-ratelimit-limit": "30",
+  "x-ratelimit-remaining": "30",
+  "x-ratelimit-reset": "1795677950",
+  "x-ratelimit-used": "1",
+  "x-ratelimit-resource": "search",
+  "link": "<https://api.github.com/search/users?q=microsoft+type%3Aorg&per_page=5&page=2>; rel=\"next\", <https://api.github.com/search/users?q=microsoft+type%3Aorg&per_page=5&page=200>; rel=\"last\"",
+  "x-github-api-version-selected": "2022-11-28"
+ },
+ "body": "{\n  \"total_count\": 2367,\n  \"incomplete_results\": false,\n  \"items\": [\n    {\n      \"login\": \"microsoft\",\n      \"id\": 6154722,\n      \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjYxNTQ3MjI=\",\n      \"avatar_url\": \"https://avatars.githubusercontent.com/u/6154722?v=4\",\n      \"html_url\": \"https://github.com/microsoft\",\n      \"gists_url\": \"https://api.github.com/users/microsoft/gists{/gist_id}\",\n      \"received_events_url\": \"https://api.github.com/users/microsoft/received_events\",\n      \"type\": \"Organization\",\n      \"user_view_type\": \"public\",\n      \"site_admin\": false,\n      \"score\": 1.0\n    },\n    {\n      \"login\": \"MicrosoftDocs\",\n      \"id\": 22479449,\n      \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjIyNDc5NDQ5\",\n      \"avatar_url\": \"https://avatars.githubusercontent.com/u/22479449?v=4\",\n      \"html_url\": \"https://github.com/MicrosoftDocs\",\n      \"gists_url\": \"https://api.github.com/users/MicrosoftDocs/gists{/gist_id}\",\n      \"received_events_url\": \"https://api.github.com/users/MicrosoftDocs/received_events\",\n      \"type\": \"Organization\",\n      \"user_view_type\": \"public\",\n      \"site_admin\": false,\n      \"score\": 1.0\n    },\n    {\n      \"login\": \"MicrosoftLearning\",\n      \"id\": 10467123,\n      \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjEwNDY3MTIz\",\n      \"avatar_url\": \"https://avatars.githubusercontent.com/u/10467123?v=4\",\n      \"html_url\": \"https://github.com/MicrosoftLearning\",\n      \"gists_url\": \"https://api.github.com/users/MicrosoftLearning/gists{/gist_id}\",\n      \"received_events_url\": \"https://api.github.com/users/MicrosoftLearning/received_events\",\n      \"type\": \"Organization\",\n      \"user_view_type\": \"public\",\n      \"site_admin\": false,\n      \"score\": 1.0\n    }\n  ]\n}"
+}

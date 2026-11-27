@@ -1,0 +1,75 @@
+{
+  "schema": "v3lum.provider-ext/1",
+  "extends": "ripestat",
+  "hosts": [],
+  "sources": {},
+  "error_markers": [
+    {
+      "id": "ripestat_envelope_rate_limited",
+      "statuses": [200],
+      "json_path": "status_code",
+      "equals": 429,
+      "regex": null,
+      "final_url_regex": null,
+      "maps_to": "rate_limited",
+      "reason_code": "rate_limited",
+      "reason": "RIPEstat: too many requests (answer envelope status_code 429): could not verify"
+    },
+    {
+      "id": "ripestat_message_rate_limited",
+      "statuses": [200, 503],
+      "json_path": "messages[].1",
+      "equals": null,
+      "regex": "(?i)rate.?limit|too many requests|request limit exceeded",
+      "final_url_regex": null,
+      "maps_to": "rate_limited",
+      "reason_code": "rate_limited",
+      "reason": "RIPEstat: rate-limit message in the answer envelope: could not verify"
+    },
+    {
+      "id": "ripestat_call_unsupported",
+      "statuses": [200, 404],
+      "json_path": "data_call_status",
+      "equals": null,
+      "regex": "(?i)^unsupported",
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "RIPEstat: data call unsupported (answer envelope data_call_status): could not verify"
+    },
+    {
+      "id": "ripestat_message_error",
+      "statuses": [200, 400, 404],
+      "json_path": "messages[].0",
+      "equals": "error",
+      "regex": null,
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "RIPEstat: error message in the answer envelope (e.g. unsupported resource): could not verify"
+    },
+    {
+      "id": "ripestat_envelope_status_error",
+      "statuses": [200],
+      "json_path": "status",
+      "equals": null,
+      "regex": "^(?!ok$)",
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "RIPEstat: answer envelope status is not 'ok': could not verify"
+    },
+    {
+      "id": "ripestat_envelope_status_code",
+      "statuses": [200],
+      "json_path": "status_code",
+      "equals": null,
+      "regex": "^[45][0-9][0-9]$",
+      "final_url_regex": null,
+      "maps_to": "error",
+      "reason_code": "error",
+      "reason": "RIPEstat: answer envelope status_code 4xx/5xx inside HTTP 200: could not verify"
+    }
+  ],
+  "notes": "Batch p1-G02-1 (module ripestat, P031 cond 3 and 7): the RIPEstat JSON envelope {status, status_code, messages[[type, text]], data_call_status} is checked on every answer, HTTP 200 included, and maps to ERROR or RATE_LIMITED, never EMPTY. Order matters (first match wins): rate-limit markers first. Real fixtures: tests/fixtures/ripestat/network_info_error_400.json (HTTP 400, messages of type error, status 'error') and unsupported_call_404.json (data_call_status 'unsupported'); the rate-limit envelope was never observed and is tested with a fixture labelled synthetic."
+}

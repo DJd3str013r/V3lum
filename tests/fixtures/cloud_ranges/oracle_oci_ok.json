@@ -1,0 +1,46 @@
+{
+ "last_updated_timestamp": "2026-10-28T02:47:53.012304",
+ "regions": [
+  {
+   "region": "sa-saopaulo-1",
+   "cidrs": [
+    {
+     "cidr": "129.148.16.0/20",
+     "tags": [
+      "OCI"
+     ]
+    },
+    {
+     "cidr": "144.22.64.0/18",
+     "tags": [
+      "OCI"
+     ]
+    },
+    {
+     "cidr": "129.148.12.0/22",
+     "tags": [
+      "OSN"
+     ]
+    },
+    {
+     "cidr": "134.70.84.0/22",
+     "tags": [
+      "OSN",
+      "OBJECT_STORAGE"
+     ]
+    }
+   ]
+  },
+  {
+   "region": "sa-vinhedo-1",
+   "cidrs": [
+    {
+     "cidr": "134.65.16.0/20",
+     "tags": [
+      "OCI"
+     ]
+    }
+   ]
+  }
+ ]
+}

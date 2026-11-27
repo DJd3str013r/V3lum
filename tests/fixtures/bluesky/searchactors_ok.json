@@ -1,0 +1,22 @@
+{
+ "actors": [
+  {
+   "did": "did:plc:z72i7hdynmk6r22z27h6tvur",
+   "handle": "bsky.app",
+   "displayName": "Bluesky",
+   "createdAt": "2023-04-12T04:53:57.057Z"
+  },
+  {
+   "did": "did:plc:examplecandidatexxxa2345",
+   "handle": "candidate-1.example.com",
+   "createdAt": "2023-07-17T21:54:28.741Z",
+   "displayName": "Candidate 1"
+  },
+  {
+   "did": "did:plc:examplecandidatexxxn2345",
+   "handle": "candidate-2.example.com",
+   "createdAt": "2026-03-31T23:39:06.356Z",
+   "displayName": "Candidate 2"
+  }
+ ]
+}

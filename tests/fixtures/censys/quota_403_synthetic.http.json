@@ -1,0 +1,19 @@
+{
+ "request": {
+  "method": "POST",
+  "url": "https://api.platform.censys.io/v3/global/search/query"
+ },
+ "response": {
+  "status": 403,
+  "headers": {
+   "Content-Type": "application/problem+json"
+  },
+  "body": {
+   "title": "Forbidden",
+   "status": 403,
+   "detail": "Insufficient credits: your organization has no remaining credits for this period"
+  }
+ },
+ "observed": "synthetic",
+ "note": "How credit exhaustion is signalled (402 or 403, wording) is not verified; the marker keys on 'credit'/'quota' words, then on 402."
+}

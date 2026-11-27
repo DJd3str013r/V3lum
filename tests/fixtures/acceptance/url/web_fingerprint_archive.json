@@ -1,0 +1,324 @@
+{
+ "schema": "v3lum.acceptance_routes/1",
+ "module": "web_fingerprint_archive",
+ "notes": "Wayback availability (real answer) and an id_ snapshot of example.com (real 2009 pywb capture: body + x-archive-orig headers). The webappanalyzer dataset downloads are answered with the hand-written fingerprint file of tests/fixtures/web_fingerprint/ (P072 cond 4: the GPL-3.0 data is never committed, not even as a fixture); the other technology files are empty objects.",
+ "routes": [
+  {
+   "method": "GET",
+   "url": "https://archive.org/wayback/available?url=https%3A%2F%2Fexample.com%2F",
+   "status": 200,
+   "json": {
+    "url": "example.com",
+    "archived_snapshots": {
+     "closest": {
+      "status": "200",
+      "available": true,
+      "url": "http://web.archive.org/web/20261126034206/https://example.com/",
+      "timestamp": "20261126034206"
+     }
+    }
+   },
+   "headers": {
+    "content-type": "application/json"
+   },
+   "latency_ms": 250
+  },
+  {
+   "method": "GET",
+   "url": "https://web.archive.org/web/20261126034206id_/https://example.com/",
+   "status": 200,
+   "text": "<HTML>\n<HEAD>\n  <TITLE>Example Web Page</TITLE>\n</HEAD> \n<body>  \n<p>You have reached this web page by typing &quot;example.com&quot;,\n&quot;example.net&quot;,\n  or &quot;example.org&quot; into your web browser.</p>\n<p>These domain names are reserved for use in documentation and are not available \n  for registration. See <a href=\"http://www.rfc-editor.org/rfc/rfc2606.txt\">RFC \n  2606</a>, Section 3.</p>\n</BODY>\n</HTML>\n\n",
+   "headers": {
+    "content-type": "text/html; charset=UTF-8",
+    "memento-datetime": "Tue, 22 Dec 2009 15:32:17 GMT",
+    "x-archive-orig-age": "1623",
+    "x-archive-orig-connection": "close",
+    "x-archive-orig-date": "Tue, 22 Dec 2009 15:20:17 GMT",
+    "x-archive-orig-etag": "\"b300b4-1b6-4059a80bfd280\"",
+    "x-archive-orig-last-modified": "Tue, 15 Nov 2005 13:24:10 GMT",
+    "x-archive-orig-server": "Apache/2.2.3 (Red Hat)"
+   },
+   "latency_ms": 600
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/enthec/webappanalyzer/main/src/technologies/_.json",
+   "status": 200,
+   "text": "{}",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 250
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/enthec/webappanalyzer/main/src/technologies/a.json",
+   "status": 200,
+   "text": "{\n \"Akamai\": {\"cats\": [31], \"headers\": {\"Server\": \"^AkamaiGHost$\"}, \"website\": \"https://example.com/handwritten\"},\n \"Amazon CloudFront\": {\"cats\": [31], \"headers\": {\"Via\": \"\\\\(CloudFront\\\\)$\", \"X-Amz-Cf-Id\": \"\"}, \"website\": \"https://example.com/handwritten\"},\n \"Apache HTTP Server\": {\"cats\": [22], \"headers\": {\"Server\": \"^Apache(?:/([\\\\d.]+))?\\\\;version:\\\\1\"}, \"cpe\": \"cpe:2.3:a:apache:http_server:*:*:*:*:*:*:*:*\", \"website\": \"https://example.com/handwritten\"},\n \"Astro\": {\"cats\": [57], \"meta\": {\"generator\": \"^Astro v((?:\\\\d+\\\\.)+\\\\d+)\\\\;version:\\\\1\"}, \"scriptSrc\": [\"/_astro/[\\\\w.-]+\\\\.js\\\\;confidence:50\"], \"website\": \"https://example.com/handwritten\"},\n \"Bootstrap\": {\"cats\": [66], \"scriptSrc\": [\"bootstrap/((?:\\\\d+\\\\.)+\\\\d+)/(?:js/)?bootstrap(?:\\\\.bundle)?(?:\\\\.min)?\\\\.js\\\\;version:\\\\1\", \"/bootstrap(?:\\\\.bundle)?(?:\\\\.min)?\\\\.js\"], \"cpe\": \"cpe:2.3:a:getbootstrap:bootstrap:*:*:*:*:*:*:*:*\", \"website\": \"https://example.com/handwritten\"},\n \"cdnjs\": {\"cats\": [31], \"scriptSrc\": [\"//cdnjs\\\\.cloudflare\\\\.com/\"], \"implies\": [\"Cloudflare\\\\;confidence:50\"], \"website\": \"https://example.com/handwritten\"},\n \"Cloudflare\": {\"cats\": [31], \"headers\": {\"Server\": \"^cloudflare$\", \"CF-Ray\": \"\"}, \"cookies\": {\"__cf_bm\": \"\"}, \"scriptSrc\": [\"/cdn-cgi/scripts/[\\\\w/.-]*cloudflare-static/email-decode\"], \"dns\": {\"NS\": [\"\\\\.ns\\\\.cloudflare\\\\.com\\\\.?$\"]}, \"cpe\": \"cpe:2.3:a:cloudflare:cloudflare:*:*:*:*:*:*:*:*\", \"website\": \"https://example.com/handwritten\"},\n \"Font Awesome\": {\"cats\": [17], \"html\": [\"<link[^>]{0,200}use\\\\.fontawesome\\\\.com/releases/v((?:\\\\d+\\\\.)+\\\\d+)/\\\\;version:\\\\1\"], \"website\": \"https://example.com/handwritten\"},\n \"Google Analytics\": {\"cats\": [10], \"scriptSrc\": [\"googletagmanager\\\\.com/gtag/js\\\\?id=(?:UA|G)-\"], \"website\": \"https://example.com/handwritten\"},\n \"Google Tag Manager\": {\"cats\": [42], \"scriptSrc\": [\"googletagmanager\\\\.com/(?:gtm|gtag/js)\"], \"html\": [\"<!-- (?:End )?Google Tag Manager -->\"], \"website\": \"https://example.com/handwritten\"},\n \"Google Workspace\": {\"cats\": [30], \"dns\": {\"MX\": [\"(?:^|\\\\s)(?:alt\\\\d\\\\.)?aspmx\\\\.l\\\\.google\\\\.com\\\\.?$\", \"\\\\.googlemail\\\\.com\\\\.?$\", \"^\\\\d+\\\\s+smtp\\\\.google\\\\.com\\\\.?$\"]}, \"website\": \"https://example.com/handwritten\"},\n \"html5shiv\": {\"cats\": [59], \"scriptSrc\": [\"html5shiv/((?:\\\\d+\\\\.)+\\\\d+)/html5shiv(?:\\\\.min)?\\\\.js\\\\;version:\\\\1\"], \"website\": \"https://example.com/handwritten\"},\n \"jQuery\": {\"cats\": [59], \"scriptSrc\": [\"jquery[.-]((?:\\\\d+\\\\.)+\\\\d+)(?:\\\\.min)?\\\\.js\\\\;version:\\\\1\", \"/jquery/((?:\\\\d+\\\\.)+\\\\d+)/jquery(?:\\\\.min)?\\\\.js\\\\;version:\\\\1\", \"/jquery(?:\\\\.min)?\\\\.js\\\\;confidence:50\"], \"cpe\": \"cpe:2.3:a:jquery:jquery:*:*:*:*:*:*:*:*\", \"website\": \"https://example.com/handwritten\"},\n \"Let's Encrypt\": {\"cats\": [70], \"certIssuer\": \"^Let's Encrypt$\", \"website\": \"https://example.com/handwritten\"},\n \"Microsoft 365\": {\"cats\": [30], \"dns\": {\"MX\": [\"\\\\.mail\\\\.protection\\\\.outlook\\\\.com\\\\.?$\"], \"TXT\": [\"^\\\"?MS=ms\\\\d+\"]}, \"website\": \"https://example.com/handwritten\"},\n \"Microsoft IIS\": {\"cats\": [22], \"headers\": {\"Server\": \"^Microsoft-IIS(?:/([\\\\d.]+))?\\\\;version:\\\\1\"}, \"implies\": [\"Windows Server\"], \"website\": \"https://example.com/handwritten\"},\n \"Modernizr\": {\"cats\": [59], \"scriptSrc\": [\"modernizr(?:[.-]custom)?(?:\\\\.min)?\\\\.js\"], \"website\": \"https://example.com/handwritten\"},\n \"Moment.js\": {\"cats\": [59], \"scriptSrc\": [\"moment\\\\.js/((?:\\\\d+\\\\.)+\\\\d+)/moment(?:\\\\.min)?\\\\.js\\\\;version:\\\\1\", \"/moment(?:\\\\.min)?\\\\.js\"], \"cpe\": \"cpe:2.3:a:momentjs:moment:*:*:*:*:*:node.js:*:*\", \"website\": \"https://example.com/handwritten\"},\n \"MySQL\": {\"cats\": [34], \"website\": \"https://example.com/handwritten\"},\n \"Nginx\": {\"cats\": [22], \"headers\": {\"Server\": \"^nginx(?:/([\\\\d.]+))?\\\\;version:\\\\1\"}, \"cpe\": \"cpe:2.3:a:f5:nginx:*:*:*:*:*:*:*:*\", \"website\": \"https://example.com/handwritten\"},\n \"OneTrust\": {\"cats\": [67], \"scriptSrc\": [\"otSDKStub\\\\.js\", \"cdn\\\\.cookielaw\\\\.org/\"], \"cookies\": {\"OptanonConsent\": \"\"}, \"website\": \"https://example.com/handwritten\"},\n \"PHP\": {\"cats\": [27], \"headers\": {\"X-Powered-By\": \"^PHP/?([\\\\d.]+)?\\\\;version:\\\\1\"}, \"cookies\": {\"PHPSESSID\": \"\"}, \"cpe\": \"cpe:2.3:a:php:php:*:*:*:*:*:*:*:*\", \"website\": \"https://example.com/handwritten\"},\n \"Plausible Analytics\": {\"cats\": [10], \"scriptSrc\": [\"plausible\\\\.io/js/\", \"/js/script\\\\.(?:[\\\\w-]+\\\\.)*(?:outbound-links|file-downloads|hash)\\\\.(?:[\\\\w-]+\\\\.)*js\\\\;confidence:50\"], \"website\": \"https://example.com/handwritten\"},\n \"Popper\": {\"cats\": [59], \"scriptSrc\": [\"popper(?:\\\\.js)?/((?:\\\\d+\\\\.)+\\\\d+)/(?:umd/)?popper(?:\\\\.min)?\\\\.js\\\\;version:\\\\1\"], \"website\": \"https://example.com/handwritten\"},\n \"reCAPTCHA\": {\"cats\": [16], \"scriptSrc\": [\"(?:google|recaptcha)\\\\.(?:com|net)/recaptcha/(?:api|enterprise)\\\\.js\"], \"website\": \"https://example.com/handwritten\"},\n \"Red Hat\": {\"cats\": [28], \"headers\": {\"Server\": \"\\\\(Red Hat\\\\)\"}, \"website\": \"https://example.com/handwritten\"},\n \"Respond.js\": {\"cats\": [59], \"scriptSrc\": [\"respond\\\\.js/((?:\\\\d+\\\\.)+\\\\d+)/respond(?:\\\\.min)?\\\\.js\\\\;version:\\\\1\"], \"website\": \"https://example.com/handwritten\"},\n \"Windows Server\": {\"cats\": [28], \"website\": \"https://example.com/handwritten\"},\n \"WordPress\": {\"cats\": [1, 11], \"meta\": {\"generator\": \"^WordPress(?: ([\\\\d.]+))?\\\\;version:\\\\1\"}, \"html\": [\"/wp-(?:content|includes)/\"], \"headers\": {\"X-Pingback\": \"/xmlrpc\\\\.php$\"}, \"implies\": [\"PHP\", \"MySQL\\\\;confidence:50\"], \"cpe\": \"cpe:2.3:a:wordpress:wordpress:*:*:*:*:*:*:*:*\", \"website\": \"https://example.com/handwritten\"},\n \"WP Rocket\": {\"cats\": [23], \"html\": [\"<!-- This website is like a Rocket\"], \"requires\": [\"WordPress\"], \"website\": \"https://example.com/handwritten\"},\n \"HSTS\": {\"cats\": [16], \"headers\": {\"Strict-Transport-Security\": \"\"}, \"website\": \"https://example.com/handwritten\"}\n}\n",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 250
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/enthec/webappanalyzer/main/src/technologies/b.json",
+   "status": 200,
+   "text": "{}",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 250
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/enthec/webappanalyzer/main/src/technologies/c.json",
+   "status": 200,
+   "text": "{}",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 250
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/enthec/webappanalyzer/main/src/technologies/d.json",
+   "status": 200,
+   "text": "{}",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 250
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/enthec/webappanalyzer/main/src/technologies/e.json",
+   "status": 200,
+   "text": "{}",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 250
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/enthec/webappanalyzer/main/src/technologies/f.json",
+   "status": 200,
+   "text": "{}",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 250
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/enthec/webappanalyzer/main/src/technologies/g.json",
+   "status": 200,
+   "text": "{}",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 250
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/enthec/webappanalyzer/main/src/technologies/h.json",
+   "status": 200,
+   "text": "{}",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 250
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/enthec/webappanalyzer/main/src/technologies/i.json",
+   "status": 200,
+   "text": "{}",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 250
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/enthec/webappanalyzer/main/src/technologies/j.json",
+   "status": 200,
+   "text": "{}",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 250
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/enthec/webappanalyzer/main/src/technologies/k.json",
+   "status": 200,
+   "text": "{}",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 250
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/enthec/webappanalyzer/main/src/technologies/l.json",
+   "status": 200,
+   "text": "{}",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 250
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/enthec/webappanalyzer/main/src/technologies/m.json",
+   "status": 200,
+   "text": "{}",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 250
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/enthec/webappanalyzer/main/src/technologies/n.json",
+   "status": 200,
+   "text": "{}",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 250
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/enthec/webappanalyzer/main/src/technologies/o.json",
+   "status": 200,
+   "text": "{}",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 250
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/enthec/webappanalyzer/main/src/technologies/p.json",
+   "status": 200,
+   "text": "{}",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 250
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/enthec/webappanalyzer/main/src/technologies/q.json",
+   "status": 200,
+   "text": "{}",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 250
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/enthec/webappanalyzer/main/src/technologies/r.json",
+   "status": 200,
+   "text": "{}",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 250
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/enthec/webappanalyzer/main/src/technologies/s.json",
+   "status": 200,
+   "text": "{}",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 250
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/enthec/webappanalyzer/main/src/technologies/t.json",
+   "status": 200,
+   "text": "{}",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 250
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/enthec/webappanalyzer/main/src/technologies/u.json",
+   "status": 200,
+   "text": "{}",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 250
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/enthec/webappanalyzer/main/src/technologies/v.json",
+   "status": 200,
+   "text": "{}",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 250
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/enthec/webappanalyzer/main/src/technologies/w.json",
+   "status": 200,
+   "text": "{}",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 250
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/enthec/webappanalyzer/main/src/technologies/x.json",
+   "status": 200,
+   "text": "{}",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 250
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/enthec/webappanalyzer/main/src/technologies/y.json",
+   "status": 200,
+   "text": "{}",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 250
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/enthec/webappanalyzer/main/src/technologies/z.json",
+   "status": 200,
+   "text": "{}",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 250
+  },
+  {
+   "method": "GET",
+   "url": "https://raw.githubusercontent.com/enthec/webappanalyzer/main/src/categories.json",
+   "status": 200,
+   "text": "{\n \"1\": {\"name\": \"CMS\", \"priority\": 1, \"groups\": [3]},\n \"10\": {\"name\": \"Analytics\", \"priority\": 9, \"groups\": [8]},\n \"11\": {\"name\": \"Blogs\", \"priority\": 1, \"groups\": [3]},\n \"16\": {\"name\": \"Security\", \"priority\": 9, \"groups\": [16]},\n \"17\": {\"name\": \"Font scripts\", \"priority\": 9, \"groups\": [9]},\n \"22\": {\"name\": \"Web servers\", \"priority\": 8, \"groups\": [7]},\n \"23\": {\"name\": \"Caching\", \"priority\": 7, \"groups\": [7]},\n \"27\": {\"name\": \"Programming languages\", \"priority\": 5, \"groups\": [9]},\n \"28\": {\"name\": \"Operating systems\", \"priority\": 6, \"groups\": [7]},\n \"30\": {\"name\": \"Webmail\", \"priority\": 2, \"groups\": [4]},\n \"31\": {\"name\": \"CDN\", \"priority\": 9, \"groups\": [7]},\n \"34\": {\"name\": \"Databases\", \"priority\": 5, \"groups\": [7]},\n \"42\": {\"name\": \"Tag managers\", \"priority\": 9, \"groups\": [8]},\n \"57\": {\"name\": \"Static site generator\", \"priority\": 1, \"groups\": [9]},\n \"59\": {\"name\": \"JavaScript libraries\", \"priority\": 9, \"groups\": [9]},\n \"66\": {\"name\": \"UI frameworks\", \"priority\": 7, \"groups\": [9]},\n \"67\": {\"name\": \"Cookie compliance\", \"priority\": 9, \"groups\": [16]},\n \"70\": {\"name\": \"SSL/TLS certificate authorities\", \"priority\": 9, \"groups\": [16]}\n}\n",
+   "headers": {
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "latency_ms": 200
+  }
+ ]
+}

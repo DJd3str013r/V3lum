@@ -1,0 +1,30 @@
+{
+ "request": {
+  "method": "POST",
+  "url": "https://siem.example.com:9200/logs-proxy-*,logs-dns-*/_search",
+  "headers": {
+   "Authorization": "<ApiKey value not stored>",
+   "Content-Type": "application/json"
+  }
+ },
+ "response": {
+  "status": 429,
+  "headers": {
+   "content-type": "application/json"
+  },
+  "body": {
+   "error": {
+    "root_cause": [
+     {
+      "type": "es_rejected_execution_exception",
+      "reason": "rejected execution of org.elasticsearch.action.search.SearchQueryThenFetchAsyncAction on EsThreadPoolExecutor[name = node-data-01/search, queue capacity = 1000, active threads = 13, queued tasks = 1000]"
+     }
+    ],
+    "type": "es_rejected_execution_exception",
+    "reason": "rejected execution of org.elasticsearch.action.search.SearchQueryThenFetchAsyncAction on EsThreadPoolExecutor[name = node-data-01/search, queue capacity = 1000, active threads = 13, queued tasks = 1000]"
+   },
+   "status": 429
+  }
+ },
+ "note": "search thread pool full -> rate_limited, back off"
+}
