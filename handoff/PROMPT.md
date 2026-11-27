@@ -5,10 +5,9 @@
 > feito com o Claude Agent SDK, rodando dentro de um clone do repositório. A Messages API sozinha (sem ferramentas) não consegue
 > editar o repositório nem rodar testes.
 >
-> **Pré-requisito:** o trabalho que ainda não foi enviado ao GitHub (cerca de 2.100 arquivos) e o material de planejamento
-> (planos, specs, manifestos) existem só no container da sessão anterior. Eles precisam estar no branch antes de usar o
-> prompt, com o commit WIP e a pasta `handoff/` descritos na seção 3. Sem isso, o novo Claude não encontra metade das
-> referências abaixo.
+> Tudo o que o prompt cita já está no GitHub: o commit WIP `b241169` no branch `claude/dazzling-carson-xxxj7r` contém o
+> trabalho não revisado e a pasta `handoff/` com o material de planejamento. Este mesmo texto também está em
+> `handoff/PROMPT.md`.
 
 ---
 
@@ -86,14 +85,13 @@ Repositório: `https://github.com/DJd3str013r/V3lum`, branch `claude/dazzling-ca
 | `839ebe8` | onda 2 (checkpoint) |
 | `3d182e7` | onda 2 integrada e auditada; onda 3 (WP13–WP16, WP18); pacotes de correlação WP24; suíte de segurança parte A (`tests/safety/`) |
 
-**Commit WIP (pré-requisito, feito antes de entregar este prompt):** contém todo o trabalho não revisado, que não estava
-no branch:
+**Commit WIP `b241169`** (o mais recente): contém todo o trabalho que ainda não foi revisado nem integrado:
 - WP17, WP23 e onda 4 (WP19–WP22);
 - WP26 (modo watch);
 - correção de 2 brechas de segurança (download ad-hoc de dados e lint);
 - ~78 lotes de módulos implementados.
 
-**Pasta `handoff/` (pré-requisito, copiada do material de planejamento):**
+**Pasta `handoff/`** (no mesmo commit; o mapa de caminhos está em `handoff/README.md`):
 - `handoff/plan/plan.json`: plano do núcleo, com 31 work packages WP01–WP31 em 5 ondas. Cada pacote tem `spec`,
   `public_api`, `owns` (os arquivos que ele possui), `depends_on`, `tests` e `acceptance`. Também traz
   `module_author_contract`.
@@ -111,8 +109,16 @@ no branch:
 - `handoff/reports/wave{1,2,3}_reports.json` e `wave{1,2}_integration.json`: relatórios de implementação, revisão,
   integração e auditoria.
 - `handoff/module_lanes.json`: a lista de lotes ("lanes" PASSIVE + "late" p9 LIGHT/ACTIVE).
-- `handoff/tools/`: ferramentas usadas na sessão anterior. Rode-as com `python3 -I`, adaptando os caminhos:
-  - `module_gate.py`: portão mecânico de qualidade de lote;
+- `handoff/tools/`: ferramentas usadas na sessão anterior. Rode-as com `python3 -I`:
+  - `module_gate.py`: portão mecânico de qualidade de lote. Ele espera o layout antigo, então recrie-o com links
+    simbólicos antes de rodar:
+
+    ```bash
+    mkdir -p /tmp/v3s/impl && ln -sfn "$PWD/handoff/manifests" /tmp/v3s/impl/modules && ln -sfn "$PWD/handoff/providers_seed" /tmp/v3s/impl/providers_seed
+    ```
+
+    Depois rode `python3 -I handoff/tools/module_gate.py /tmp/v3s . <lote> [<lote> ...]`. O resultado fica em
+    `/tmp/v3s/impl/modules/gates/`.
   - `carry_forward.py`, `wave_reports.py`;
   - os scripts de workflow `.js`, como referência dos prompts usados.
 - `handoff/prep/<lote>/`: notas e parsers de preparação dos 5 lotes que ainda não foram implementados.
@@ -152,10 +158,11 @@ no branch:
     corrigirem defeitos.
   - PASSIVE: nenhuma revisão de lote completa.
 - Lotes que passaram no `module_gate.py` (portão mecânico): p1-G01-1, p1-G02-1, p1-G02-2, p1-G04-1, p1-G05-1, p1-G05-2,
-  p1-G06-1, p1-G07-1, p1-G07-2, p1-G08-1, p1-G09-1. p1-G01-2 e p1-G03-1 falharam em 1 item cada; veja `gates/` se existir.
+  p1-G06-1, p1-G07-1, p1-G07-2, p1-G08-1, p1-G09-1. p1-G01-2 e p1-G03-1 falharam em 1 item cada (rode de novo para ver).
   Os demais lotes ainda não passaram pelo portão.
 
-**Suíte offline completa na árvore inteira** (com o WIP), 26/11 às 23h: quase tudo verde. Falham 7 testes:
+**Suíte offline completa no commit `b241169`**, rodada em 26/11 às 23h: quase tudo verde (cerca de 14 mil testes).
+Falham 7 testes, mais 1 visto depois:
 - `tests/test_rule_api.py::test_legacy_flag_on_the_eight_legacy_rules`, `tests/test_engine_status_mapping.py::test_rules_receive_a_rule_context`
   e `tests/test_engine_suppression.py::test_breach_and_infostealer_respects_generic_and_third_party_addresses`: o WP22
   removeu regras legadas. Decida se os testes mudam ou se as regras voltam como aliases; o contrato congelado manda manter
@@ -166,6 +173,9 @@ no branch:
   em `datasets.py`.
 - `tests/modules/test_typosquat.py::test_bcb_rows_and_dataset_discovery`: depende da ordem do registro global DATASETS.
 - `tests/modules/test_windows_artifact_triage.py::test_lnk_powershell_dropper`: bug do lote p2-G12-3.
+- `tests/modules/test_sensitive_files.py::test_loopback_server_through_the_real_transport`: o módulo termina com
+  "stopped: cancelled" contra o servidor local do teste. Falha também com os arquivos originais; suspeita de interação com
+  variáveis de proxy do ambiente ou com o prazo da execução. Investigue.
 
 ## 5. Como trabalhar
 
@@ -203,12 +213,20 @@ no branch:
   - `handoff/tools/module_gate.py` sem problemas, revisando à mão os avisos de e-mail, CPF e telefone em fixtures.
 - **Commits:** em pontos consistentes, com a suíte verde, ou como checkpoint rotulado.
   - Antes de dar push em fixtures de módulos, confirme que não há dados pessoais nem segredos: GitHub guarda o histórico.
+  - O repositório tem *push protection* de segredos ligada. Até um token falso com formato real (webhook do Slack,
+    `sk_test_...` do Stripe, `ghp_...`) bloqueia o push.
+    - Em código e testes, monte esses valores por concatenação, por exemplo
+      `"https://hooks.slack.com/services/" + "T00000000/B00000000/" + "X" * 24`.
+    - Em fixtures de texto, use um marcador (por exemplo `@@SLACK_DOC_WEBHOOK@@`) que o teste substitui; veja
+      `tests/modules/test_secret_scanner.py::template`.
+    - Ou use valores sem formato de chave, como `fake-stripe-test-secret-0000`.
+    - Se o push for barrado, corrija o arquivo e faça `git commit --amend` enquanto o commit ainda não foi enviado.
   - Mensagens em inglês, com corpo explicando o quê e por quê.
 
 ## 6. O que falta, em ordem
 
 **T0. Preparação:**
-1. Clone o repositório e faça checkout do branch.
+1. Clone o repositório e faça checkout do branch `claude/dazzling-carson-xxxj7r` (último commit `b241169` ou posterior).
 2. Crie o venv e rode a suíte completa e o ruff; anote as falhas.
 3. Leia `docs/MODULE_GUIDE.md`, `docs/contract_additions/*.md`, `handoff/carry/contract_notes.md` e o `plan.json`
    (onda 3 em diante).
